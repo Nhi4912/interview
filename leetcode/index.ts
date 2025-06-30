@@ -51,6 +51,8 @@ export * from "./backtracking/problems/03-permutations";
 export * from "./backtracking/problems/04-generate-parentheses";
 export * from "./backtracking/problems/05-combination-sum";
 export * from "./backtracking/problems/06-word-search";
+export * from "./backtracking/problems/07-n-queens";
+export * from "./backtracking/problems/08-sudoku-solver";
 
 // Math Problems
 export * from "./math/problems/01-fizz-buzz";
