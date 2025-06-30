@@ -102,6 +102,36 @@ export {
   testRotateImage,
   performanceComparison as rotateImagePerformanceComparison,
 } from "./array/problems/11-rotate-image";
+export {
+  threeSum,
+  threeSumSet,
+  threeSumBruteForce,
+  threeSumMap,
+  threeSumRecursive,
+  threeSumWithGenerator,
+  threeSumClass,
+  threeSumFunctional,
+  ThreeSumSolver,
+  threeSumGenerator,
+  testThreeSum,
+  performanceComparison as threeSumPerformanceComparison,
+} from "./array/problems/12-3sum";
+export {
+  setZeroes,
+  setZeroesExtraSpace,
+  setZeroesSet,
+  setZeroesMap,
+  setZeroesFunctional,
+  setZeroesGenerator,
+  setZeroesClass,
+  setZeroesBitwise,
+  MatrixZeroSetter,
+  zeroPositionGenerator,
+  printMatrix as printMatrixZeroes,
+  createTestMatrix,
+  testSetMatrixZeroes,
+  performanceComparison as setZeroesPerformanceComparison,
+} from "./array/problems/13-set-matrix-zeroes";
 
 // String Problems
 export {
@@ -178,6 +208,21 @@ export {
   performanceComparison as palindromeStringPerformanceComparison,
   characterAnalysis,
 } from "./string/problems/05-valid-palindrome";
+export {
+  myAtoi,
+  myAtoiRegex,
+  myAtoiParseInt,
+  myAtoiCharByChar,
+  myAtoiBigInt,
+  myAtoiFunctional,
+  myAtoiGenerator,
+  myAtoiClass,
+  myAtoiBitwise,
+  AtoiParser,
+  characterGenerator as atoiCharacterGenerator,
+  testMyAtoi,
+  performanceComparison as atoiPerformanceComparison,
+} from "./string/problems/06-string-to-integer-atoi";
 
 // Linked List Problems
 export {
