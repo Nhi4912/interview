@@ -13,19 +13,6 @@ export * from "./array/problems/02-best-time-to-buy-and-sell-stock-ii";
 export * from "./array/problems/03-rotate-array";
 export * from "./array/problems/04-two-sum";
 export {
-  containsDuplicate,
-  containsDuplicateMap,
-  containsDuplicateFunctional,
-  containsDuplicateSort,
-  containsDuplicateObject,
-  containsDuplicateBruteForce,
-  containsDuplicateIncludes,
-  containsDuplicateBitwise,
-  testContainsDuplicate,
-  performanceComparison as containsDuplicatePerformanceComparison,
-  memoryAnalysis as containsDuplicateMemoryAnalysis,
-} from "./array/problems/05-contains-duplicate";
-export {
   singleNumber,
   singleNumberSet,
   singleNumberMap,
@@ -38,6 +25,51 @@ export {
   performanceComparison as singleNumberPerformanceComparison,
   xorPropertiesDemo,
 } from "./array/problems/06-single-number";
+export {
+  intersect,
+  intersectSort,
+  intersectObject,
+  intersectBinarySearch,
+  intersectFunctional,
+  intersectSet,
+  intersectCounter,
+  intersectWithGenerator,
+  intersectGenerator,
+  Counter,
+  testIntersection,
+  performanceComparison as intersectionPerformanceComparison,
+} from "./array/problems/07-intersection-of-two-arrays-ii";
+export {
+  plusOne,
+  plusOneFunctional,
+  plusOneRecursive,
+  plusOneReduce,
+  plusOneMap,
+  plusOneWithGenerator,
+  plusOneGenerator,
+  plusOneBitwise,
+  plusOneClass,
+  BigNumber,
+  testPlusOne,
+  performanceComparison as plusOnePerformanceComparison,
+  carryDemo,
+} from "./array/problems/08-plus-one";
+export {
+  moveZeroes,
+  moveZeroesSwap,
+  moveZeroesFilter,
+  moveZeroesReduce,
+  moveZeroesGenerator,
+  moveZeroesArrayMethods,
+  moveZeroesQueue,
+  moveZeroesClass,
+  moveZeroesBitwise,
+  ZeroMover,
+  nonZeroGenerator,
+  testMoveZeroes,
+  performanceComparison as moveZeroesPerformanceComparison,
+  zeroDistributionAnalysis,
+} from "./array/problems/09-move-zeroes";
 
 // String Problems
 export {
@@ -65,6 +97,37 @@ export {
   performanceComparison as reverseIntegerPerformanceComparison,
   overflowDemo,
 } from "./string/problems/02-reverse-integer";
+export {
+  firstUniqChar,
+  firstUniqCharArray,
+  firstUniqCharObject,
+  firstUniqCharIndexOf,
+  firstUniqCharSet,
+  firstUniqCharFunctional,
+  firstUniqCharQueue,
+  firstUniqCharBitwise,
+  firstUniqCharGenerator,
+  characterGenerator,
+  testFirstUniqChar,
+  performanceComparison as firstUniqCharPerformanceComparison,
+  frequencyAnalysis,
+} from "./string/problems/03-first-unique-character-in-a-string";
+export {
+  isAnagram,
+  isAnagramArray,
+  isAnagramSort,
+  isAnagramObject,
+  isAnagramSet,
+  isAnagramFunctional,
+  isAnagramCounter,
+  isAnagramGenerator,
+  isAnagramBitwise,
+  Counter as AnagramCounter,
+  characterGenerator as anagramCharacterGenerator,
+  testValidAnagram,
+  performanceComparison as anagramPerformanceComparison,
+  anagramAnalysis,
+} from "./string/problems/04-valid-anagram";
 
 // Linked List Problems
 export {
@@ -97,6 +160,25 @@ export {
   testMergeTwoSortedLists,
   performanceComparison as mergeListsPerformanceComparison,
 } from "./linked-list/problems/02-merge-two-sorted-lists";
+export {
+  ListNode as ListNodePalindrome,
+  isPalindrome,
+  isPalindromeArray,
+  isPalindromeRecursive,
+  isPalindromeStack,
+  isPalindromeString,
+  isPalindromeTwoPointers,
+  isPalindromeGenerator,
+  isPalindromeClass,
+  LinkedList,
+  listGenerator,
+  reverseList as reverseListPalindrome,
+  createLinkedList as createLinkedListPalindrome,
+  linkedListToArray as linkedListToArrayPalindrome,
+  printLinkedList as printLinkedListPalindrome,
+  testPalindromeLinkedList,
+  performanceComparison as palindromePerformanceComparison,
+} from "./linked-list/problems/03-palindrome-linked-list";
 
 // Tree/Graph Problems
 export {
@@ -223,16 +305,20 @@ export function runAllTests() {
   // testBestTimeToBuyAndSellStockII();
   // testRotateArray();
   // testTwoSum();
+  // testIntersection();
+  // testPlusOne();
 
   // String tests
   console.log("=== STRING PROBLEMS ===");
   // testReverseString();
   // testReverseInteger();
+  // testFirstUniqChar();
 
   // Linked List tests
   console.log("=== LINKED LIST PROBLEMS ===");
   // testReverseLinkedList();
   // testMergeTwoSortedLists();
+  // testPalindromeLinkedList();
 
   // Tree/Graph tests
   console.log("=== TREE/GRAPH PROBLEMS ===");
@@ -272,8 +358,10 @@ export function runAllPerformanceComparisons() {
 
   // stringPerformanceComparison();
   // reverseIntegerPerformanceComparison();
+  // firstUniqCharPerformanceComparison();
   // linkedListPerformanceComparison();
   // mergeListsPerformanceComparison();
+  // palindromePerformanceComparison();
   // treePerformanceComparison();
   // bstPerformanceComparison();
   // dpPerformanceComparison();
@@ -282,6 +370,8 @@ export function runAllPerformanceComparisons() {
   // mathPerformanceComparison();
   // sortingPerformanceComparison();
   // otherPerformanceComparison();
+  // intersectionPerformanceComparison();
+  // plusOnePerformanceComparison();
 
   console.log("✅ All performance comparisons completed!");
 }
