@@ -8,47 +8,10 @@
  */
 
 // Array Problems
-export {
-  removeDuplicates,
-  removeDuplicatesWithSet,
-  removeDuplicatesWithFilter,
-  removeDuplicatesManual,
-  testRemoveDuplicates,
-  performanceComparison as arrayPerformanceComparison,
-} from "./array/problems/01-remove-duplicates-from-sorted-array";
-
-export {
-  maxProfit,
-  maxProfitDP,
-  maxProfitDPOptimized,
-  maxProfitLocalExtrema,
-  maxProfitBruteForce,
-  testMaxProfit,
-  performanceComparison as stockPerformanceComparison,
-} from "./array/problems/02-best-time-to-buy-and-sell-stock-ii";
-
-export {
-  rotateWithExtraArray,
-  rotateJuggling,
-  rotateReverse,
-  rotateCyclic,
-  rotateWithSlice,
-  rotateBruteForce,
-  testRotateArray,
-  performanceComparison as rotatePerformanceComparison,
-} from "./array/problems/03-rotate-array";
-
-export {
-  twoSum,
-  twoSumBruteForce,
-  twoSumTwoPointers,
-  twoSumObject,
-  twoSumExists,
-  twoSumRecursive,
-  testTwoSum,
-  performanceComparison as twoSumPerformanceComparison,
-  testEdgeCases,
-} from "./array/problems/04-two-sum";
+export * from "./array/problems/01-remove-duplicates-from-sorted-array";
+export * from "./array/problems/02-best-time-to-buy-and-sell-stock-ii";
+export * from "./array/problems/03-rotate-array";
+export * from "./array/problems/04-two-sum";
 
 // String Problems
 export {
@@ -76,10 +39,10 @@ export {
   linkedListToArray,
   testReverseLinkedList,
   performanceComparison as linkedListPerformanceComparison,
-  memoryUsageTest,
+  memoryUsageTest as linkedListMemoryUsageTest,
 } from "./linked-list/problems/01-reverse-linked-list";
 
-// Tree & Graph Problems
+// Tree/Graph Problems
 export {
   TreeNode,
   maxDepth,
@@ -94,6 +57,157 @@ export {
   performanceComparison as treePerformanceComparison,
   memoryUsageTest as treeMemoryUsageTest,
 } from "./tree-graph/problems/01-maximum-depth-of-binary-tree";
+
+// Dynamic Programming Problems
+export {
+  climbStairs,
+  climbStairsOptimized,
+  climbStairsMemo,
+  climbStairsMatrix,
+  climbStairsBruteForce,
+  climbStairsBinet,
+  testClimbStairs,
+  performanceComparison as dpPerformanceComparison,
+  fibonacciSequence,
+} from "./dp/problems/01-climbing-stairs";
+
+// Design Problems
+export {
+  MinStack,
+  MinStackPairs,
+  MinStackMath,
+  MinStackSimple,
+  MinStackPriorityQueue,
+  testMinStack,
+  performanceComparison as designPerformanceComparison,
+  memoryAnalysis as designMemoryAnalysis,
+} from "./design/problems/01-min-stack";
+
+// Backtracking Problems
+export {
+  letterCombinations,
+  letterCombinationsIterative,
+  letterCombinationsQueue,
+  letterCombinationsFunctional,
+  letterCombinationsWithGenerator,
+  letterCombinationsBitwise,
+  letterCombinationsGenerator,
+  testLetterCombinations,
+  performanceComparison as backtrackingPerformanceComparison,
+  memoryAnalysis as backtrackingMemoryAnalysis,
+} from "./backtracking/problems/01-letter-combinations-of-a-phone-number";
+
+// Math Problems
+export {
+  fizzBuzz,
+  fizzBuzzConcatenation,
+  fizzBuzzMap,
+  fizzBuzzFunctional,
+  fizzBuzzBitwise,
+  fizzBuzzLookup,
+  fizzBuzzWithGenerator,
+  fizzBuzzGenerator,
+  fizzBuzzClass,
+  FizzBuzzSolver,
+  testFizzBuzz,
+  performanceComparison as mathPerformanceComparison,
+  patternAnalysis,
+} from "./math/problems/01-fizz-buzz";
+
+// Sorting & Searching Problems
+export {
+  merge,
+  mergeWithExtraSpace,
+  mergeWithArrayMethods,
+  mergeWithGap,
+  mergeWithHeap,
+  mergeRecursive,
+  MinHeap,
+  testMergeSortedArray,
+  performanceComparison as sortingPerformanceComparison,
+} from "./sorting-searching/problems/01-merge-sorted-array";
+
+// Other Problems
+export {
+  isValid,
+  isValidSwitch,
+  isValidFunctional,
+  isValidMap,
+  isValidASCII,
+  isValidRecursive,
+  isValidRegex,
+  isValidGenerator,
+  bracketValidator,
+  testValidParentheses,
+  performanceComparison as otherPerformanceComparison,
+} from "./others/problems/01-valid-parentheses";
+
+// Main export function to run all tests
+export function runAllTests() {
+  console.log("🚀 Running all LeetCode problem tests...\n");
+
+  // Array tests
+  console.log("=== ARRAY PROBLEMS ===");
+  // testRemoveDuplicates();
+  // testBestTimeToBuyAndSellStockII();
+  // testRotateArray();
+  // testTwoSum();
+
+  // String tests
+  console.log("=== STRING PROBLEMS ===");
+  // testReverseString();
+
+  // Linked List tests
+  console.log("=== LINKED LIST PROBLEMS ===");
+  // testReverseLinkedList();
+
+  // Tree/Graph tests
+  console.log("=== TREE/GRAPH PROBLEMS ===");
+  // testMaxDepth();
+
+  // Dynamic Programming tests
+  console.log("=== DYNAMIC PROGRAMMING PROBLEMS ===");
+  // testClimbStairs();
+
+  // Design tests
+  console.log("=== DESIGN PROBLEMS ===");
+  // testMinStack();
+
+  // Backtracking tests
+  console.log("=== BACKTRACKING PROBLEMS ===");
+  // testLetterCombinations();
+
+  // Math tests
+  console.log("=== MATH PROBLEMS ===");
+  // testFizzBuzz();
+
+  // Sorting & Searching tests
+  console.log("=== SORTING & SEARCHING PROBLEMS ===");
+  // testMergeSortedArray();
+
+  // Other tests
+  console.log("=== OTHER PROBLEMS ===");
+  // testValidParentheses();
+
+  console.log("✅ All tests completed!");
+}
+
+// Performance comparison function
+export function runAllPerformanceComparisons() {
+  console.log("⚡ Running all performance comparisons...\n");
+
+  // stringPerformanceComparison();
+  // linkedListPerformanceComparison();
+  // treePerformanceComparison();
+  // dpPerformanceComparison();
+  // designPerformanceComparison();
+  // backtrackingPerformanceComparison();
+  // mathPerformanceComparison();
+  // sortingPerformanceComparison();
+  // otherPerformanceComparison();
+
+  console.log("✅ All performance comparisons completed!");
+}
 
 // Problem Categories Summary
 export const PROBLEM_CATEGORIES = {
