@@ -46,6 +46,11 @@ export * from "./dp/problems/01-climbing-stairs";
 
 // Backtracking Problems
 export * from "./backtracking/problems/01-letter-combinations-of-a-phone-number";
+export * from "./backtracking/problems/02-subsets";
+export * from "./backtracking/problems/03-permutations";
+export * from "./backtracking/problems/04-generate-parentheses";
+export * from "./backtracking/problems/05-combination-sum";
+export * from "./backtracking/problems/06-word-search";
 
 // Math Problems
 export * from "./math/problems/01-fizz-buzz";
@@ -115,6 +120,11 @@ export function runAllTests() {
   // Backtracking Tests
   console.log("\n=== BACKTRACKING PROBLEMS ===");
   // testLetterCombinations();
+  // testSubsets();
+  // testPermute();
+  // testGenerateParenthesis();
+  // testCombinationSum();
+  // testExist();
 
   // Math Tests
   console.log("\n=== MATH PROBLEMS ===");
@@ -195,7 +205,14 @@ export const problemCategories = {
   },
   backtracking: {
     name: "Backtracking Problems",
-    problems: ["Letter Combinations of a Phone Number"],
+    problems: [
+      "Letter Combinations of a Phone Number",
+      "Subsets",
+      "Permutations",
+      "Generate Parentheses",
+      "Combination Sum",
+      "Word Search",
+    ],
   },
   math: {
     name: "Math Problems",
