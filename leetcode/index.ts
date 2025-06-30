@@ -25,6 +25,9 @@ export * from "./string/problems/05-valid-palindrome";
 export * from "./string/problems/06-string-to-integer-atoi";
 export * from "./string/problems/07-implement-strstr";
 export * from "./string/problems/08-longest-common-prefix";
+export * from "./string/problems/09-group-anagrams";
+export * from "./string/problems/10-longest-substring-without-repeating-characters";
+export * from "./string/problems/11-longest-palindromic-substring";
 
 // Linked List Problems
 export * from "./linked-list/problems/01-reverse-linked-list";
@@ -96,6 +99,9 @@ export function runAllTests() {
   // testMyAtoi();
   // testStrStr();
   // testLongestCommonPrefix();
+  // testGroupAnagrams();
+  // testLengthOfLongestSubstring();
+  // testLongestPalindrome();
 
   // Linked List Tests
   console.log("\n=== LINKED LIST PROBLEMS ===");
@@ -179,6 +185,9 @@ export const problemCategories = {
       "String to Integer (atoi)",
       "Implement strStr()",
       "Longest Common Prefix",
+      "Group Anagrams",
+      "Longest Substring Without Repeating Characters",
+      "Longest Palindromic Substring",
     ],
   },
   linkedList: {
