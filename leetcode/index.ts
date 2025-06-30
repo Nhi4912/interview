@@ -70,6 +70,38 @@ export {
   performanceComparison as moveZeroesPerformanceComparison,
   zeroDistributionAnalysis,
 } from "./array/problems/09-move-zeroes";
+export {
+  isValidSudoku,
+  isValidSudokuArray,
+  isValidSudokuBitwise,
+  isValidSudokuMap,
+  isValidSudokuFunctional,
+  isValidSudokuGenerator,
+  isValidSudokuClass,
+  isValidSudokuRegex,
+  SudokuValidator,
+  rowGenerator,
+  colGenerator,
+  boxGenerator,
+  testValidSudoku,
+  performanceComparison as sudokuPerformanceComparison,
+} from "./array/problems/10-valid-sudoku";
+export {
+  rotate,
+  rotateLayerByLayer,
+  rotateWithExtraSpace,
+  rotateWithGenerator,
+  rotateFunctional,
+  rotateClass,
+  rotateBitwise,
+  rotateArrayMethods,
+  MatrixRotator,
+  matrixGenerator,
+  printMatrix,
+  createMatrix,
+  testRotateImage,
+  performanceComparison as rotateImagePerformanceComparison,
+} from "./array/problems/11-rotate-image";
 
 // String Problems
 export {
@@ -128,6 +160,24 @@ export {
   performanceComparison as anagramPerformanceComparison,
   anagramAnalysis,
 } from "./string/problems/04-valid-anagram";
+export {
+  isPalindrome as isPalindromeString,
+  isPalindromeFilter,
+  isPalindromeRegex,
+  isPalindromeRecursive as isPalindromeStringRecursive,
+  isPalindromeStack as isPalindromeStringStack,
+  isPalindromeFunctional,
+  isPalindromeGenerator as isPalindromeStringGenerator,
+  isPalindromeClass as isPalindromeStringClass,
+  isPalindromeBitwise as isPalindromeStringBitwise,
+  PalindromeChecker,
+  alphanumericGenerator,
+  isAlphanumeric,
+  toLowerCase,
+  testValidPalindrome,
+  performanceComparison as palindromeStringPerformanceComparison,
+  characterAnalysis,
+} from "./string/problems/05-valid-palindrome";
 
 // Linked List Problems
 export {
@@ -162,11 +212,11 @@ export {
 } from "./linked-list/problems/02-merge-two-sorted-lists";
 export {
   ListNode as ListNodePalindrome,
-  isPalindrome,
+  isPalindrome as isPalindromeLinkedList,
   isPalindromeArray,
   isPalindromeRecursive,
   isPalindromeStack,
-  isPalindromeString,
+  isPalindromeString as isPalindromeLinkedListString,
   isPalindromeTwoPointers,
   isPalindromeGenerator,
   isPalindromeClass,
