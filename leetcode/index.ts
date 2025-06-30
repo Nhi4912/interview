@@ -127,6 +127,8 @@ export function runAllTests() {
   // testGenerateParenthesis();
   // testCombinationSum();
   // testExist();
+  // testSolveNQueens();
+  // testSolveSudoku();
 
   // Math Tests
   console.log("\n=== MATH PROBLEMS ===");
@@ -214,6 +216,8 @@ export const problemCategories = {
       "Generate Parentheses",
       "Combination Sum",
       "Word Search",
+      "N-Queens",
+      "Sudoku Solver",
     ],
   },
   math: {
