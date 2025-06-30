@@ -12,6 +12,32 @@ export * from "./array/problems/01-remove-duplicates-from-sorted-array";
 export * from "./array/problems/02-best-time-to-buy-and-sell-stock-ii";
 export * from "./array/problems/03-rotate-array";
 export * from "./array/problems/04-two-sum";
+export {
+  containsDuplicate,
+  containsDuplicateMap,
+  containsDuplicateFunctional,
+  containsDuplicateSort,
+  containsDuplicateObject,
+  containsDuplicateBruteForce,
+  containsDuplicateIncludes,
+  containsDuplicateBitwise,
+  testContainsDuplicate,
+  performanceComparison as containsDuplicatePerformanceComparison,
+  memoryAnalysis as containsDuplicateMemoryAnalysis,
+} from "./array/problems/05-contains-duplicate";
+export {
+  singleNumber,
+  singleNumberSet,
+  singleNumberMap,
+  singleNumberFunctional,
+  singleNumberSort,
+  singleNumberObject,
+  singleNumberMath,
+  singleNumberBitwise,
+  testSingleNumber,
+  performanceComparison as singleNumberPerformanceComparison,
+  xorPropertiesDemo,
+} from "./array/problems/06-single-number";
 
 // String Problems
 export {
@@ -25,6 +51,20 @@ export {
   performanceComparison as stringPerformanceComparison,
   testUnicode,
 } from "./string/problems/01-reverse-string";
+export {
+  reverse,
+  reverseString as reverseIntegerString,
+  reverseArray,
+  reverseBitwise,
+  reverseBigInt,
+  reverseRecursive,
+  reverseLog,
+  reverseGenerator,
+  digitGenerator,
+  testReverseInteger,
+  performanceComparison as reverseIntegerPerformanceComparison,
+  overflowDemo,
+} from "./string/problems/02-reverse-integer";
 
 // Linked List Problems
 export {
@@ -41,6 +81,22 @@ export {
   performanceComparison as linkedListPerformanceComparison,
   memoryUsageTest as linkedListMemoryUsageTest,
 } from "./linked-list/problems/01-reverse-linked-list";
+export {
+  ListNode as ListNodeMerge,
+  mergeTwoLists,
+  mergeTwoListsRecursive,
+  mergeTwoListsInPlace,
+  mergeTwoListsArray,
+  mergeTwoListsSentinel,
+  mergeTwoListsPriorityQueue,
+  PriorityQueue,
+  linkedListToArray as linkedListToArrayMerge,
+  arrayToLinkedList,
+  createLinkedList as createLinkedListMerge,
+  printLinkedList,
+  testMergeTwoSortedLists,
+  performanceComparison as mergeListsPerformanceComparison,
+} from "./linked-list/problems/02-merge-two-sorted-lists";
 
 // Tree/Graph Problems
 export {
@@ -57,6 +113,21 @@ export {
   performanceComparison as treePerformanceComparison,
   memoryUsageTest as treeMemoryUsageTest,
 } from "./tree-graph/problems/01-maximum-depth-of-binary-tree";
+export {
+  TreeNode as TreeNodeBST,
+  isValidBST,
+  isValidBSTRange,
+  isValidBSTIterative,
+  isValidBSTArray,
+  isValidBSTMorris,
+  isValidBSTGenerator,
+  isValidBSTBFS,
+  inorderGenerator,
+  createBinaryTree as createBinaryTreeBST,
+  printTree as printTreeBST,
+  testValidateBST,
+  performanceComparison as bstPerformanceComparison,
+} from "./tree-graph/problems/02-validate-binary-search-tree";
 
 // Dynamic Programming Problems
 export {
@@ -156,14 +227,17 @@ export function runAllTests() {
   // String tests
   console.log("=== STRING PROBLEMS ===");
   // testReverseString();
+  // testReverseInteger();
 
   // Linked List tests
   console.log("=== LINKED LIST PROBLEMS ===");
   // testReverseLinkedList();
+  // testMergeTwoSortedLists();
 
   // Tree/Graph tests
   console.log("=== TREE/GRAPH PROBLEMS ===");
   // testMaxDepth();
+  // testValidateBST();
 
   // Dynamic Programming tests
   console.log("=== DYNAMIC PROGRAMMING PROBLEMS ===");
@@ -197,8 +271,11 @@ export function runAllPerformanceComparisons() {
   console.log("⚡ Running all performance comparisons...\n");
 
   // stringPerformanceComparison();
+  // reverseIntegerPerformanceComparison();
   // linkedListPerformanceComparison();
+  // mergeListsPerformanceComparison();
   // treePerformanceComparison();
+  // bstPerformanceComparison();
   // dpPerformanceComparison();
   // designPerformanceComparison();
   // backtrackingPerformanceComparison();
