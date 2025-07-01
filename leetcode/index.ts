@@ -35,6 +35,10 @@ export * from "./linked-list/problems/02-merge-two-sorted-lists";
 export * from "./linked-list/problems/03-palindrome-linked-list";
 export * from "./linked-list/problems/04-remove-nth-node-from-end-of-list";
 export * from "./linked-list/problems/05-delete-node-in-a-linked-list";
+export * from "./linked-list/problems/06-linked-list-cycle";
+export * from "./linked-list/problems/07-add-two-numbers";
+export * from "./linked-list/problems/08-odd-even-linked-list";
+export * from "./linked-list/problems/09-intersection-of-two-linked-lists";
 
 // Tree/Graph Problems
 export * from "./tree-graph/problems/01-maximum-depth-of-binary-tree";
@@ -110,6 +114,10 @@ export function runAllTests() {
   // testIsPalindromeLinkedList();
   // testRemoveNthFromEnd();
   // testDeleteNode();
+  // testHasCycle();
+  // testAddTwoNumbers();
+  // testOddEvenList();
+  // testGetIntersectionNode();
 
   // Tree/Graph Tests
   console.log("\n=== TREE/GRAPH PROBLEMS ===");
@@ -198,6 +206,10 @@ export const problemCategories = {
       "Palindrome Linked List",
       "Remove Nth Node From End of List",
       "Delete Node in a Linked List",
+      "Linked List Cycle",
+      "Add Two Numbers",
+      "Odd Even Linked List",
+      "Intersection of Two Linked Lists",
     ],
   },
   treeGraph: {
