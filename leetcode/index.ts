@@ -28,6 +28,9 @@ export * from "./string/problems/08-longest-common-prefix";
 export * from "./string/problems/09-group-anagrams";
 export * from "./string/problems/10-longest-substring-without-repeating-characters";
 export * from "./string/problems/11-longest-palindromic-substring";
+export * from "./string/problems/12-roman-to-integer";
+export * from "./string/problems/13-integer-to-roman";
+export * from "./string/problems/14-zigzag-conversion";
 
 // Linked List Problems
 export * from "./linked-list/problems/01-reverse-linked-list";
@@ -44,6 +47,9 @@ export * from "./linked-list/problems/09-intersection-of-two-linked-lists";
 export * from "./tree-graph/problems/01-maximum-depth-of-binary-tree";
 export * from "./tree-graph/problems/02-validate-binary-search-tree";
 export * from "./tree-graph/problems/03-binary-tree-level-order-traversal";
+export * from "./tree-graph/problems/04-symmetric-tree";
+export * from "./tree-graph/problems/05-convert-sorted-array-to-binary-search-tree";
+export * from "./tree-graph/problems/06-binary-tree-inorder-traversal";
 
 // Design Problems
 export * from "./design/problems/01-min-stack";
@@ -106,6 +112,9 @@ export function runAllTests() {
   // testGroupAnagrams();
   // testLengthOfLongestSubstring();
   // testLongestPalindrome();
+  // testRomanToInt();
+  // testIntToRoman();
+  // testConvert();
 
   // Linked List Tests
   console.log("\n=== LINKED LIST PROBLEMS ===");
@@ -124,6 +133,9 @@ export function runAllTests() {
   // testMaxDepth();
   // testIsValidBST();
   // testLevelOrder();
+  // testIsSymmetric();
+  // testSortedArrayToBST();
+  // testInorderTraversal();
 
   // Design Tests
   console.log("\n=== DESIGN PROBLEMS ===");
@@ -196,6 +208,9 @@ export const problemCategories = {
       "Group Anagrams",
       "Longest Substring Without Repeating Characters",
       "Longest Palindromic Substring",
+      "Roman to Integer",
+      "Integer to Roman",
+      "ZigZag Conversion",
     ],
   },
   linkedList: {
@@ -218,6 +233,9 @@ export const problemCategories = {
       "Maximum Depth of Binary Tree",
       "Validate Binary Search Tree",
       "Binary Tree Level Order Traversal",
+      "Symmetric Tree",
+      "Convert Sorted Array to Binary Search Tree",
+      "Binary Tree Inorder Traversal",
     ],
   },
   design: {
