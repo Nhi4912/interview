@@ -50,6 +50,14 @@
 - Eliminate render-blocking resources
 - Minimize main thread work
 
+### Performance Optimization Techniques
+
+- **Code Splitting**: Dynamic imports, route-based splitting
+- **Lazy Loading**: Images, components, routes
+- **Caching Strategies**: Browser, CDN, application caching
+- **Minification**: JavaScript, CSS, HTML compression
+- **Image Optimization**: Formats, compression, responsive images
+
 ## Performance Metrics
 
 ### Core Web Vitals
@@ -392,48 +400,28 @@ function InfiniteScroll({ fetchData, renderItem }) {
 
 ## Advanced Topics
 
-### Performance Monitoring
+### Modern Performance Features
 
-#### 1. Real User Monitoring (RUM)
+#### 1. Web Workers
 
-**Definition**: Collecting performance data from actual users.
-
-**Metrics to Track**:
-
-- Page load times
-- Core Web Vitals
-- Error rates
-- User interactions
-- Geographic performance
-
-#### 2. Performance Budgets
-
-**Definition**: Setting limits for performance metrics.
-
-**Implementation**:
+**Definition**: Background threads for CPU-intensive tasks.
 
 ```javascript
-// webpack-bundle-analyzer
-const BundleAnalyzerPlugin =
-  require("webpack-bundle-analyzer").BundleAnalyzerPlugin;
-
-module.exports = {
-  plugins: [new BundleAnalyzerPlugin()],
+// Main thread
+const worker = new Worker("worker.js");
+worker.postMessage({ data: largeDataset });
+worker.onmessage = (e) => {
+  console.log("Result:", e.data);
 };
 
-// Performance budget
-module.exports = {
-  performance: {
-    hints: "warning",
-    maxAssetSize: 244000,
-    maxEntrypointSize: 244000,
-  },
+// Worker thread (worker.js)
+self.onmessage = (e) => {
+  const result = expensiveCalculation(e.data.data);
+  self.postMessage(result);
 };
 ```
 
-### Advanced Optimization Techniques
-
-#### 1. Service Workers
+#### 2. Service Workers
 
 **Definition**: Scripts that run in the background for offline functionality and caching.
 
@@ -453,24 +441,39 @@ self.addEventListener("fetch", (event) => {
 });
 ```
 
-#### 2. Web Workers
+#### 3. WebAssembly
 
-**Definition**: Background threads for CPU-intensive tasks.
+**Definition**: High-performance code execution.
 
-```javascript
-// Main thread
-const worker = new Worker("worker.js");
-worker.postMessage({ data: largeDataset });
-worker.onmessage = (e) => {
-  console.log("Result:", e.data);
-};
+### Performance Monitoring
 
-// Worker thread (worker.js)
-self.onmessage = (e) => {
-  const result = expensiveCalculation(e.data.data);
-  self.postMessage(result);
-};
-```
+#### 1. Real User Monitoring (RUM)
+
+**Definition**: Collecting performance data from actual users.
+
+**Metrics to Track**:
+
+- Page load times
+- Core Web Vitals
+- Error rates
+- User interactions
+- Geographic performance
+
+#### 2. Synthetic Monitoring
+
+**Definition**: Lab-based testing.
+
+#### 3. Performance APIs
+
+**Definition**: Navigation Timing, Resource Timing.
+
+#### 4. Error Tracking
+
+**Definition**: Performance-related errors.
+
+#### 5. A/B Testing
+
+**Definition**: Performance impact measurement.
 
 ## Tools and Monitoring
 

@@ -1,4 +1,4 @@
-# HTML/CSS Interview Preparation Guide
+# HTML & CSS Interview Preparation
 
 ## Table of Contents
 
@@ -57,6 +57,18 @@
 - Color contrast
 - Alt text for images
 
+#### 4. Document Structure
+
+**Definition**: DOCTYPE, html, head, body elements
+
+#### 5. Meta Tags
+
+**Definition**: SEO, viewport, charset, social media tags
+
+#### 6. Forms
+
+**Definition**: Input types, validation, accessibility
+
 ### CSS Fundamentals
 
 #### 1. Box Model
@@ -70,7 +82,31 @@
 - Border: The border around the element
 - Margin: Space outside the border
 
-#### 2. CSS Selectors
+#### 2. Positioning
+
+**Definition**: Methods for controlling the position of elements.
+
+**Types**:
+
+- Static: Default position
+- Relative: Positioned relative to its normal position
+- Absolute: Positioned relative to the nearest positioned ancestor
+- Fixed: Positioned relative to the viewport
+- Sticky: Positioned based on scroll position
+
+#### 3. Display Properties
+
+**Definition**: Methods for displaying elements.
+
+**Types**:
+
+- Block: Takes up full width of parent
+- Inline: Does not start on a new line
+- Inline-block: Like inline but can set dimensions
+- Flex: One-dimensional layout
+- Grid: Two-dimensional layout
+
+#### 4. Selectors
 
 **Definition**: Patterns used to select and style HTML elements.
 
@@ -83,225 +119,127 @@
 - Pseudo-classes: `:hover`, `:focus`, `:nth-child()`
 - Pseudo-elements: `::before`, `::after`
 
-#### 3. CSS Layout Systems
+#### 5. Specificity
 
-**Definition**: Methods for controlling how elements are positioned and arranged.
+**Definition**: How CSS rules are prioritized.
 
-**Types**:
+#### 6. Cascade
 
-- Normal flow
-- Flexbox
-- Grid
-- Float
-- Position (relative, absolute, fixed, sticky)
+**Definition**: How styles are inherited and overridden.
+
+### CSS Layout Systems
+
+#### 1. Flexbox
+
+**Definition**: One-dimensional layout method for arranging items in rows or columns.
+
+#### 2. CSS Grid
+
+**Definition**: Two-dimensional layout system for creating complex web layouts.
+
+### CSS Custom Properties
+
+**Definition**: CSS variables that can be reused throughout stylesheets.
 
 ## Common Interview Questions
 
 ### HTML Questions
 
-#### Q1: What is the difference between `<div>` and `<span>`?
+#### Q1: What is semantic HTML and why is it important?
 
 **Answer**:
+Semantic HTML uses meaningful tags that describe their content and purpose. Benefits include:
 
-- `<div>` is a block-level element that starts on a new line and takes full width
-- `<span>` is an inline element that doesn't start on a new line and only takes necessary width
-- `<div>` is used for larger content blocks, `<span>` for smaller text portions
+- Better accessibility for screen readers
+- Improved SEO and search engine understanding
+- Cleaner, more maintainable code
+- Better developer experience
 
 **Example**:
 
 ```html
-<div>This is a block element</div>
-<span>This is an inline element</span>
+<!-- Non-semantic -->
+<div class="header">...</div>
+<div class="nav">...</div>
+
+<!-- Semantic -->
+<header>...</header>
+<nav>...</nav>
 ```
 
-#### Q2: Explain the difference between GET and POST methods
+#### Q2: Explain the difference between GET and POST methods in forms.
 
 **Answer**:
 
-- **GET**: Used to retrieve data, parameters in URL, limited data size, cacheable, bookmarkable
-- **POST**: Used to submit data, parameters in request body, unlimited data size, not cacheable, not bookmarkable
+- **GET**: Data is sent in URL parameters, visible in browser history, limited data size, idempotent
+- **POST**: Data is sent in request body, not visible in URL, unlimited data size, not idempotent
 
-#### Q3: What are data attributes and how do you use them?
+#### Q3: What are ARIA attributes and when should you use them?
 
 **Answer**:
-Data attributes (`data-*`) allow storing custom data on HTML elements.
+ARIA (Accessible Rich Internet Applications) attributes provide additional information to assistive technologies:
 
-```html
-<div data-user-id="123" data-role="admin">User Info</div>
-```
-
-```javascript
-const element = document.querySelector("div");
-const userId = element.dataset.userId; // "123"
-```
+- `aria-label`: Provides accessible name
+- `aria-describedby`: Links to descriptive text
+- `aria-hidden`: Hides elements from screen readers
+- `aria-expanded`: Indicates expandable content state
 
 ### CSS Questions
 
-#### Q1: Explain CSS specificity
+#### Q1: Explain the CSS box model.
 
 **Answer**:
-CSS specificity determines which styles are applied when multiple rules target the same element.
+The box model consists of:
 
-**Specificity Hierarchy** (highest to lowest):
+- **Content**: The actual content area
+- **Padding**: Space between content and border
+- **Border**: The border around the element
+- **Margin**: Space outside the border
 
-1. Inline styles (`style="..."`)
-2. ID selectors (`#id`)
-3. Class selectors (`.class`), attributes (`[attr]`), pseudo-classes (`:hover`)
-4. Element selectors (`div`, `p`)
+**Example**:
 
-**Calculation**:
+```css
+/* Box model visualization */
+.element {
+  width: 200px; /* Content width */
+  padding: 20px; /* Inner spacing */
+  border: 2px solid; /* Border */
+  margin: 10px; /* Outer spacing */
+  box-sizing: border-box; /* Include padding/border in width */
+}
+```
 
-- Inline: 1000 points
-- ID: 100 points
-- Class/Attribute/Pseudo-class: 10 points
-- Element: 1 point
-
-#### Q2: What is the difference between `display: none` and `visibility: hidden`?
+#### Q2: What's the difference between display: none and visibility: hidden?
 
 **Answer**:
 
 - `display: none`: Removes element from layout completely, no space taken
 - `visibility: hidden`: Hides element but preserves space in layout
 
-#### Q3: Explain CSS Grid vs Flexbox
+#### Q3: Explain CSS specificity and how it works.
 
 **Answer**:
-**Flexbox**:
+Specificity determines which CSS rules apply when there are conflicts:
 
-- One-dimensional layout (row or column)
-- Content-based sizing
-- Better for component layouts
-
-**Grid**:
-
-- Two-dimensional layout (rows and columns)
-- Container-based sizing
-- Better for page layouts
-
-#### Q4: What is the CSS cascade?
-
-**Answer**:
-The cascade determines how conflicting CSS rules are resolved based on:
-
-1. Origin (user agent, user, author)
-2. Specificity
-3. Source order (later rules override earlier ones)
-
-### Advanced Questions
-
-#### Q1: How would you create a responsive design?
-
-**Answer**:
-
-```css
-/* Mobile-first approach */
-.container {
-  width: 100%;
-  padding: 10px;
-}
-
-/* Tablet */
-@media (min-width: 768px) {
-  .container {
-    width: 750px;
-    margin: 0 auto;
-  }
-}
-
-/* Desktop */
-@media (min-width: 1024px) {
-  .container {
-    width: 1000px;
-  }
-}
-```
-
-#### Q2: Explain CSS preprocessors (Sass, Less)
-
-**Answer**:
-CSS preprocessors extend CSS with features like:
-
-- Variables
-- Nesting
-- Mixins
-- Functions
-- Mathematical operations
-
-**Sass Example**:
-
-```scss
-$primary-color: #007bff;
-
-.button {
-  background-color: $primary-color;
-
-  &:hover {
-    background-color: darken($primary-color, 10%);
-  }
-
-  &--large {
-    padding: 20px;
-  }
-}
-```
-
-#### Q3: How do you optimize CSS performance?
-
-**Answer**:
-
-1. **Minify CSS**: Remove whitespace and comments
-2. **Use efficient selectors**: Avoid deep nesting
-3. **Reduce specificity conflicts**: Use BEM methodology
-4. **Critical CSS**: Inline above-the-fold styles
-5. **CSS-in-JS**: Only load styles for rendered components
-6. **Purge unused CSS**: Remove dead code
-
-## Advanced Topics
-
-### CSS Architecture
-
-#### 1. BEM Methodology
-
-**Definition**: Block Element Modifier methodology for naming CSS classes.
-
-**Structure**:
-
-- Block: `.block`
-- Element: `.block__element`
-- Modifier: `.block--modifier` or `.block__element--modifier`
+1. Inline styles (1000)
+2. ID selectors (100)
+3. Class selectors, attributes, pseudo-classes (10)
+4. Element selectors, pseudo-elements (1)
 
 **Example**:
 
 ```css
-.card {
-}
-.card__title {
-}
-.card__content {
-}
-.card--featured {
-}
-.card__title--large {
-}
+#header .nav a {
+} /* Specificity: 111 */
+.nav a {
+} /* Specificity: 11 */
+a {
+} /* Specificity: 1 */
 ```
 
-#### 2. CSS Custom Properties
+## Advanced Topics
 
-**Definition**: CSS variables that can be reused throughout stylesheets.
-
-```css
-:root {
-  --primary-color: #007bff;
-  --spacing-unit: 8px;
-}
-
-.button {
-  background-color: var(--primary-color);
-  padding: calc(var(--spacing-unit) * 2);
-}
-```
-
-### Modern CSS Features
+### CSS Layout Systems
 
 #### 1. CSS Grid
 
@@ -331,6 +269,65 @@ $primary-color: #007bff;
   flex-wrap: wrap;
 }
 ```
+
+### Responsive Design
+
+#### 1. Media Queries
+
+**Definition**: Breakpoints and responsive strategies.
+
+```css
+/* Mobile-first approach */
+.container {
+  width: 100%;
+  padding: 10px;
+}
+
+/* Tablet */
+@media (min-width: 768px) {
+  .container {
+    width: 750px;
+    margin: 0 auto;
+  }
+}
+
+/* Desktop */
+@media (min-width: 1024px) {
+  .container {
+    width: 1000px;
+  }
+}
+```
+
+#### 2. Mobile-First Design
+
+**Definition**: Progressive enhancement approach.
+
+#### 3. Fluid Typography
+
+**Definition**: Scalable text sizing.
+
+#### 4. Responsive Images
+
+**Definition**: Picture element, srcset, sizes.
+
+### Performance & Optimization
+
+#### 1. Critical CSS
+
+**Definition**: Above-the-fold styles.
+
+#### 2. CSS Optimization
+
+**Definition**: Minification, purging, tree-shaking.
+
+#### 3. CSS Loading Strategies
+
+**Definition**: Critical, async, preload.
+
+#### 4. CSS Architecture
+
+**Definition**: BEM, SMACSS, ITCSS.
 
 ## Best Practices
 

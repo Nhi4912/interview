@@ -1,203 +1,779 @@
-# Networking Interview Preparation Guide
-
-## Table of Contents
-
-- [Core Concepts](#core-concepts)
-- [Common Interview Questions](#common-interview-questions)
-- [Advanced Topics](#advanced-topics)
-- [Security](#security)
-- [Performance](#performance)
-- [Practice Problems](#practice-problems)
+# Networking Interview Preparation
 
 ## Core Concepts
 
 ### HTTP Fundamentals
 
-#### 1. HTTP Protocol
+- **HTTP Methods**: GET, POST, PUT, DELETE, PATCH, HEAD, OPTIONS
+- **Status Codes**: 1xx (Informational), 2xx (Success), 3xx (Redirection), 4xx (Client Error), 5xx (Server Error)
+- **Headers**: Request/Response headers, content negotiation, caching
+- **Request/Response Cycle**: How HTTP communication works
+- **Stateless Nature**: Each request is independent
 
-**Definition**: HyperText Transfer Protocol is the foundation of data communication on the World Wide Web.
+### HTTPS & Security
 
-**Key Characteristics**:
+- **SSL/TLS**: Encryption protocols
+- **Certificates**: Digital certificates and validation
+- **Mixed Content**: HTTP/HTTPS security issues
+- **CORS**: Cross-Origin Resource Sharing
+- **Security Headers**: CSP, HSTS, X-Frame-Options
 
-- Stateless protocol
-- Request-response model
-- Text-based protocol
-- Client-server architecture
+### Web APIs
 
-#### 2. HTTP Methods
+- **REST APIs**: Representational State Transfer
+- **GraphQL**: Query language for APIs
+- **WebSockets**: Real-time bidirectional communication
+- **Server-Sent Events**: One-way real-time updates
+- **gRPC**: High-performance RPC framework
 
-**Definition**: Different types of requests that can be made to a server.
+## Advanced Topics
 
-**Common Methods**:
+### Network Performance
 
-- **GET**: Retrieve data (safe, idempotent)
-- **POST**: Submit data (not safe, not idempotent)
-- **PUT**: Replace resource (not safe, idempotent)
-- **PATCH**: Partial update (not safe, not idempotent)
-- **DELETE**: Remove resource (not safe, idempotent)
-- **HEAD**: Get headers only (safe, idempotent)
-- **OPTIONS**: Get allowed methods (safe, idempotent)
+- **HTTP/2**: Multiplexing, server push, header compression
+- **HTTP/3**: QUIC protocol, improved performance
+- **CDN**: Content Delivery Networks
+- **Caching Strategies**: Browser, CDN, application caching
+- **Compression**: Gzip, Brotli, compression optimization
 
-#### 3. HTTP Status Codes
+### Browser Networking
 
-**Definition**: Three-digit codes that indicate the result of an HTTP request.
+- **Connection Limits**: Browser connection pooling
+- **Resource Hints**: Preload, prefetch, preconnect
+- **Service Workers**: Offline capabilities, caching
+- **Progressive Web Apps**: Network-independent apps
 
-**Categories**:
-
-- **1xx (Informational)**: Request received, continuing process
-- **2xx (Success)**: Request successfully received, understood, and accepted
-- **3xx (Redirection)**: Further action needed to complete request
-- **4xx (Client Error)**: Request contains bad syntax or cannot be fulfilled
-- **5xx (Server Error)**: Server failed to fulfill valid request
-
-**Common Status Codes**:
-
-- 200 OK
-- 201 Created
-- 204 No Content
-- 301 Moved Permanently
-- 400 Bad Request
-- 401 Unauthorized
-- 403 Forbidden
-- 404 Not Found
-- 500 Internal Server Error
-- 502 Bad Gateway
-- 503 Service Unavailable
-
-### Web APIs and Communication
-
-#### 1. REST APIs
-
-**Definition**: Representational State Transfer is an architectural style for designing networked applications.
-
-**Principles**:
-
-- Stateless
-- Client-server separation
-- Cacheable
-- Uniform interface
-- Layered system
-- Code on demand (optional)
-
-#### 2. GraphQL
-
-**Definition**: Query language and runtime for APIs that provides a complete description of the data.
-
-**Key Features**:
-
-- Single endpoint
-- Strong typing
-- Introspection
-- Real-time updates with subscriptions
-- Over-fetching and under-fetching prevention
-
-#### 3. WebSockets
-
-**Definition**: Protocol providing full-duplex communication channels over a single TCP connection.
-
-**Characteristics**:
-
-- Bidirectional communication
-- Real-time data transfer
-- Lower latency than HTTP polling
-- Persistent connection
-
-## Common Interview Questions
+## Common Interview Questions & Answers
 
 ### HTTP Questions
 
-#### Q1: Explain the difference between HTTP/1.1 and HTTP/2
+**Q: Explain the difference between HTTP and HTTPS.**
+A:
 
-**Answer**:
-**HTTP/1.1**:
+- **HTTP**: Unencrypted, data sent in plain text, vulnerable to interception
+- **HTTPS**: Encrypted using SSL/TLS, secure communication, requires certificate
+- **Ports**: HTTP uses port 80, HTTPS uses port 443
+- **Security**: HTTPS provides confidentiality, integrity, and authentication
 
-- Single request per connection (with keep-alive)
-- Head-of-line blocking
-- Text-based protocol
-- No header compression
+**Q: What are the main HTTP methods and when would you use each?**
+A:
 
-**HTTP/2**:
+- **GET**: Retrieve data (idempotent, cacheable)
+- **POST**: Create new resource (not idempotent, not cacheable)
+- **PUT**: Update entire resource (idempotent)
+- **PATCH**: Partial update (not idempotent)
+- **DELETE**: Remove resource (idempotent)
+- **HEAD**: Get headers only (idempotent, cacheable)
+- **OPTIONS**: Get allowed methods
 
-- Multiplexed requests over single connection
-- Binary protocol
-- Header compression (HPACK)
-- Server push capability
-- Stream prioritization
+**Q: Explain HTTP status codes 200, 201, 400, 401, 403, 404, 500.**
+A:
 
-#### Q2: What is CORS and how does it work?
+- **200 OK**: Request successful
+- **201 Created**: Resource created successfully
+- **400 Bad Request**: Client error in request
+- **401 Unauthorized**: Authentication required
+- **403 Forbidden**: Authenticated but not authorized
+- **404 Not Found**: Resource not found
+- **500 Internal Server Error**: Server error
 
-**Answer**:
-CORS (Cross-Origin Resource Sharing) is a security feature that restricts web pages from making requests to different domains.
+### CORS Questions
 
-**How it works**:
+**Q: What is CORS and why is it needed?**
+A: CORS (Cross-Origin Resource Sharing) is a security feature that controls which domains can access resources from your domain. It prevents malicious websites from making requests to your API on behalf of users.
 
-1. Browser sends preflight OPTIONS request for complex requests
-2. Server responds with CORS headers
-3. Browser allows/denies the actual request based on CORS policy
+**Q: How do you handle CORS in a web application?**
+A:
 
-**Common Headers**:
+```javascript
+// Server-side (Node.js/Express)
+app.use(
+  cors({
+    origin: ["https://yourdomain.com", "https://app.yourdomain.com"],
+    methods: ["GET", "POST", "PUT", "DELETE"],
+    allowedHeaders: ["Content-Type", "Authorization"],
+    credentials: true,
+  })
+);
 
-- `Access-Control-Allow-Origin`
-- `Access-Control-Allow-Methods`
-- `Access-Control-Allow-Headers`
-- `Access-Control-Allow-Credentials`
+// Client-side
+fetch("https://api.example.com/data", {
+  method: "POST",
+  headers: {
+    "Content-Type": "application/json",
+  },
+  credentials: "include", // Include cookies
+  body: JSON.stringify(data),
+});
+```
 
-#### Q3: Explain the difference between cookies and localStorage
+### WebSocket Questions
 
-**Answer**:
-**Cookies**:
+**Q: When would you use WebSockets instead of HTTP?**
+A: Use WebSockets for:
 
-- Sent with every HTTP request
-- Limited size (~4KB)
-- Can be httpOnly (not accessible via JavaScript)
-- Can be secure (HTTPS only)
-- Can have expiration dates
+- Real-time applications (chat, gaming, live updates)
+- Bidirectional communication
+- Low-latency requirements
+- Persistent connections
+- Server push notifications
 
-**localStorage**:
+**Q: How do you implement a WebSocket connection?**
+A:
 
-- Only accessible via JavaScript
-- Larger storage capacity (~5-10MB)
-- Never expires (until cleared)
-- Same-origin policy
-- No automatic transmission
+```javascript
+// Client-side
+const socket = new WebSocket("wss://api.example.com/ws");
 
-#### Q4: What is the difference between GET and POST?
+socket.onopen = function (event) {
+  console.log("Connected to WebSocket");
+  socket.send(JSON.stringify({ type: "join", room: "chat" }));
+};
 
-**Answer**:
-**GET**:
+socket.onmessage = function (event) {
+  const data = JSON.parse(event.data);
+  console.log("Received:", data);
+};
 
-- Used for retrieving data
-- Parameters in URL
-- Limited data size
-- Cacheable
-- Bookmarkable
-- Idempotent
+socket.onclose = function (event) {
+  console.log("Disconnected from WebSocket");
+};
 
-**POST**:
+// Server-side (Node.js with ws library)
+const WebSocket = require("ws");
+const wss = new WebSocket.Server({ port: 8080 });
 
-- Used for submitting data
-- Parameters in request body
-- Unlimited data size
-- Not cacheable
-- Not bookmarkable
-- Not idempotent
+wss.on("connection", function connection(ws) {
+  ws.on("message", function incoming(message) {
+    const data = JSON.parse(message);
+    // Handle message
+    ws.send(JSON.stringify({ type: "response", data: "processed" }));
+  });
+});
+```
 
-### Advanced Questions
+## Advanced Interview Questions
 
-#### Q1: How does HTTPS work?
+**Q: How does HTTP/2 improve performance over HTTP/1.1?**
+A: HTTP/2 improvements:
 
-**Answer**:
-HTTPS (HTTP Secure) uses TLS/SSL encryption:
+- **Multiplexing**: Multiple requests over single connection
+- **Server Push**: Server can push resources proactively
+- **Header Compression**: HPACK compression for headers
+- **Binary Protocol**: More efficient than text-based HTTP/1.1
+- **Stream Prioritization**: Prioritize important resources
 
-1. **Handshake**: Client and server agree on encryption parameters
-2. **Certificate Verification**: Client verifies server's identity
-3. **Key Exchange**: Shared secret key is established
-4. **Encrypted Communication**: All data is encrypted using the shared key
+**Q: Explain the difference between REST and GraphQL.**
+A:
+**REST**:
 
-**Benefits**:
+- Multiple endpoints for different resources
+- Over-fetching/under-fetching issues
+- Stateless, cacheable
+- Simple to implement
 
-- Data confidentiality
-- Data integrity
+**GraphQL**:
+
+- Single endpoint for all data
+- Precise data fetching
+- Strong typing system
+- Introspection capabilities
+
+**Q: How would you implement request caching in a frontend application?**
+A:
+
+```javascript
+class RequestCache {
+  constructor() {
+    this.cache = new Map();
+    this.maxAge = 5 * 60 * 1000; // 5 minutes
+  }
+
+  async get(url, options = {}) {
+    const key = this.generateKey(url, options);
+    const cached = this.cache.get(key);
+
+    if (cached && Date.now() - cached.timestamp < this.maxAge) {
+      return cached.data;
+    }
+
+    const response = await fetch(url, options);
+    const data = await response.json();
+
+    this.cache.set(key, {
+      data,
+      timestamp: Date.now(),
+    });
+
+    return data;
+  }
+
+  generateKey(url, options) {
+    return `${url}-${JSON.stringify(options)}`;
+  }
+
+  clear() {
+    this.cache.clear();
+  }
+}
+```
+
+## Practical Problems & Solutions
+
+### Problem 1: Implement a Retry Mechanism
+
+**Challenge**: Create a function that retries failed HTTP requests with exponential backoff.
+
+```javascript
+async function fetchWithRetry(url, options = {}, maxRetries = 3) {
+  let lastError;
+
+  for (let attempt = 0; attempt <= maxRetries; attempt++) {
+    try {
+      const response = await fetch(url, options);
+
+      if (!response.ok) {
+        throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+      }
+
+      return response;
+    } catch (error) {
+      lastError = error;
+
+      if (attempt === maxRetries) {
+        throw lastError;
+      }
+
+      // Exponential backoff: 1s, 2s, 4s
+      const delay = Math.pow(2, attempt) * 1000;
+      await new Promise((resolve) => setTimeout(resolve, delay));
+    }
+  }
+}
+
+// Usage
+try {
+  const response = await fetchWithRetry("https://api.example.com/data", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ data: "test" }),
+  });
+  const data = await response.json();
+  console.log(data);
+} catch (error) {
+  console.error("Request failed after retries:", error);
+}
+```
+
+### Problem 2: Create a Request Queue
+
+**Challenge**: Implement a queue system to limit concurrent requests and prevent overwhelming the server.
+
+```javascript
+class RequestQueue {
+  constructor(maxConcurrent = 3) {
+    this.maxConcurrent = maxConcurrent;
+    this.running = 0;
+    this.queue = [];
+  }
+
+  async add(requestFn) {
+    return new Promise((resolve, reject) => {
+      this.queue.push({
+        requestFn,
+        resolve,
+        reject,
+      });
+      this.process();
+    });
+  }
+
+  async process() {
+    if (this.running >= this.maxConcurrent || this.queue.length === 0) {
+      return;
+    }
+
+    this.running++;
+    const { requestFn, resolve, reject } = this.queue.shift();
+
+    try {
+      const result = await requestFn();
+      resolve(result);
+    } catch (error) {
+      reject(error);
+    } finally {
+      this.running--;
+      this.process();
+    }
+  }
+
+  getStats() {
+    return {
+      running: this.running,
+      queued: this.queue.length,
+      maxConcurrent: this.maxConcurrent,
+    };
+  }
+}
+
+// Usage
+const queue = new RequestQueue(2);
+
+// Add requests to queue
+const promises = [
+  queue.add(() => fetch("https://api.example.com/data1")),
+  queue.add(() => fetch("https://api.example.com/data2")),
+  queue.add(() => fetch("https://api.example.com/data3")),
+  queue.add(() => fetch("https://api.example.com/data4")),
+];
+
+const results = await Promise.all(promises);
+console.log("All requests completed");
+```
+
+### Problem 3: Implement Request/Response Interceptors
+
+**Challenge**: Create a system to intercept and modify HTTP requests and responses.
+
+```javascript
+class HttpClient {
+  constructor() {
+    this.requestInterceptors = [];
+    this.responseInterceptors = [];
+  }
+
+  addRequestInterceptor(interceptor) {
+    this.requestInterceptors.push(interceptor);
+  }
+
+  addResponseInterceptor(interceptor) {
+    this.responseInterceptors.push(interceptor);
+  }
+
+  async request(url, options = {}) {
+    // Apply request interceptors
+    let modifiedOptions = { ...options };
+    for (const interceptor of this.requestInterceptors) {
+      modifiedOptions = await interceptor(url, modifiedOptions);
+    }
+
+    // Make the request
+    let response = await fetch(url, modifiedOptions);
+
+    // Apply response interceptors
+    for (const interceptor of this.responseInterceptors) {
+      response = await interceptor(response);
+    }
+
+    return response;
+  }
+
+  async get(url, options = {}) {
+    return this.request(url, { ...options, method: "GET" });
+  }
+
+  async post(url, data, options = {}) {
+    return this.request(url, {
+      ...options,
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        ...options.headers,
+      },
+      body: JSON.stringify(data),
+    });
+  }
+}
+
+// Usage
+const client = new HttpClient();
+
+// Add authentication interceptor
+client.addRequestInterceptor(async (url, options) => {
+  const token = localStorage.getItem("authToken");
+  if (token) {
+    options.headers = {
+      ...options.headers,
+      Authorization: `Bearer ${token}`,
+    };
+  }
+  return options;
+});
+
+// Add error handling interceptor
+client.addResponseInterceptor(async (response) => {
+  if (!response.ok) {
+    if (response.status === 401) {
+      // Redirect to login
+      window.location.href = "/login";
+    }
+    throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+  }
+  return response;
+});
+
+// Use the client
+try {
+  const response = await client.get("https://api.example.com/user");
+  const user = await response.json();
+  console.log(user);
+} catch (error) {
+  console.error("Request failed:", error);
+}
+```
+
+### Problem 4: Create a WebSocket Manager
+
+**Challenge**: Build a WebSocket manager that handles reconnection, message queuing, and event handling.
+
+```javascript
+class WebSocketManager {
+  constructor(url, options = {}) {
+    this.url = url;
+    this.options = {
+      reconnectAttempts: 5,
+      reconnectInterval: 1000,
+      heartbeatInterval: 30000,
+      ...options
+    };
+
+    this.socket = null;
+    this.reconnectCount = 0;
+    this.messageQueue = [];
+    this.eventListeners = new Map();
+    this.isConnecting = false;
+    this.heartbeatTimer = null;
+  }
+
+  connect() {
+    if (this.isConnecting || this.socket?.readyState === WebSocket.OPEN) {
+      return;
+    }
+
+    this.isConnecting = true;
+    this.socket = new WebSocket(this.url);
+
+    this.socket.onopen = () => {
+      console.log('WebSocket connected');
+      this.isConnecting = false;
+      this.reconnectCount = 0;
+      this.startHeartbeat();
+      this.flushMessageQueue();
+    };
+
+    this.socket.onmessage = (event) => {
+      const data = JSON.parse(event.data);
+      this.handleMessage(data);
+    };
+
+    this.socket.onclose = (event) => {
+      console.log('WebSocket disconnected:', event.code, event.reason);
+      this.stopHeartbeat();
+      this.emit('disconnect', event);
+
+      if (!event.wasClean && this.reconnectCount < this.options.reconnectAttempts) {
+        this.scheduleReconnect();
+      }
+    };
+
+    this.socket.onerror = (error) => {
+      console.error('WebSocket error:', error);
+      this.emit('error', error);
+    };
+  }
+
+  disconnect() {
+    if (this.socket) {
+      this.socket.close(1000, 'Client disconnect');
+    }
+  }
+
+  send(data) {
+    if (this.socket?.readyState === WebSocket.OPEN) {
+      this.socket.send(JSON.stringify(data));
+    } else {
+      this.messageQueue.push(data);
+    }
+  }
+
+  on(event, callback) {
+    if (!this.eventListeners.has(event)) {
+      this.eventListeners.set(event, []);
+    }
+    this.eventListeners.get(event).push(callback);
+  }
+
+  off(event, callback) {
+    const listeners = this.eventListeners.get(event);
+    if (listeners) {
+      const index = listeners.indexOf(callback);
+      if (index > -1) {
+        listeners.splice(index, 1);
+      }
+    }
+  }
+
+  emit(event, data) {
+    const listeners = this.eventListeners.get(event);
+    if (listeners) {
+      listeners.forEach(callback => callback(data));
+    }
+  }
+
+  private handleMessage(data) {
+    if (data.type === 'pong') {
+      // Heartbeat response
+      return;
+    }
+
+    this.emit('message', data);
+    this.emit(data.type, data);
+  }
+
+  private flushMessageQueue() {
+    while (this.messageQueue.length > 0) {
+      const message = this.messageQueue.shift();
+      this.send(message);
+    }
+  }
+
+  private scheduleReconnect() {
+    this.reconnectCount++;
+    const delay = this.options.reconnectInterval * Math.pow(2, this.reconnectCount - 1);
+
+    setTimeout(() => {
+      this.connect();
+    }, delay);
+  }
+
+  private startHeartbeat() {
+    this.heartbeatTimer = setInterval(() => {
+      this.send({ type: 'ping' });
+    }, this.options.heartbeatInterval);
+  }
+
+  private stopHeartbeat() {
+    if (this.heartbeatTimer) {
+      clearInterval(this.heartbeatTimer);
+      this.heartbeatTimer = null;
+    }
+  }
+}
+
+// Usage
+const ws = new WebSocketManager('wss://api.example.com/ws');
+
+ws.on('connect', () => {
+  console.log('Connected to WebSocket');
+});
+
+ws.on('message', (data) => {
+  console.log('Received message:', data);
+});
+
+ws.on('chat', (data) => {
+  console.log('Chat message:', data.message);
+});
+
+ws.on('disconnect', () => {
+  console.log('Disconnected from WebSocket');
+});
+
+ws.connect();
+
+// Send a message
+ws.send({ type: 'chat', message: 'Hello, world!' });
+```
+
+### Problem 5: Implement API Rate Limiting
+
+**Challenge**: Create a client-side rate limiter to prevent exceeding API rate limits.
+
+```javascript
+class RateLimiter {
+  constructor(maxRequests, timeWindow) {
+    this.maxRequests = maxRequests;
+    this.timeWindow = timeWindow;
+    this.requests = [];
+  }
+
+  async throttle(requestFn) {
+    const now = Date.now();
+
+    // Remove expired requests
+    this.requests = this.requests.filter(
+      (timestamp) => now - timestamp < this.timeWindow
+    );
+
+    if (this.requests.length >= this.maxRequests) {
+      const oldestRequest = this.requests[0];
+      const waitTime = this.timeWindow - (now - oldestRequest);
+      await new Promise((resolve) => setTimeout(resolve, waitTime));
+    }
+
+    this.requests.push(now);
+    return requestFn();
+  }
+
+  getRemainingRequests() {
+    const now = Date.now();
+    this.requests = this.requests.filter(
+      (timestamp) => now - timestamp < this.timeWindow
+    );
+    return this.maxRequests - this.requests.length;
+  }
+}
+
+// Usage
+const rateLimiter = new RateLimiter(10, 60000); // 10 requests per minute
+
+async function makeApiCall(endpoint) {
+  return rateLimiter.throttle(async () => {
+    const response = await fetch(`https://api.example.com/${endpoint}`);
+    return response.json();
+  });
+}
+
+// Make multiple API calls
+const promises = [
+  makeApiCall("users"),
+  makeApiCall("posts"),
+  makeApiCall("comments"),
+  // ... more calls
+];
+
+const results = await Promise.all(promises);
+console.log("API calls completed");
+```
+
+## Network Optimization Techniques
+
+### Resource Hints
+
+```html
+<!-- Preload critical resources -->
+<link rel="preload" href="/critical.css" as="style" />
+<link rel="preload" href="/main.js" as="script" />
+
+<!-- Prefetch non-critical resources -->
+<link rel="prefetch" href="/next-page.js" />
+
+<!-- Preconnect to external domains -->
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://cdn.example.com" />
+```
+
+### Service Worker Caching
+
+```javascript
+// Service Worker for caching
+self.addEventListener("install", (event) => {
+  event.waitUntil(
+    caches.open("v1").then((cache) => {
+      return cache.addAll([
+        "/",
+        "/styles/main.css",
+        "/scripts/main.js",
+        "/images/logo.png",
+      ]);
+    })
+  );
+});
+
+self.addEventListener("fetch", (event) => {
+  event.respondWith(
+    caches.match(event.request).then((response) => {
+      return response || fetch(event.request);
+    })
+  );
+});
+```
+
+### HTTP/2 Server Push
+
+```javascript
+// Server-side (Node.js with http2)
+const http2 = require("http2");
+const fs = require("fs");
+
+const server = http2.createSecureServer({
+  key: fs.readFileSync("key.pem"),
+  cert: fs.readFileSync("cert.pem"),
+});
+
+server.on("stream", (stream, headers) => {
+  if (headers[":path"] === "/") {
+    // Push critical resources
+    stream.pushStream(
+      { ":path": "/styles/critical.css" },
+      (err, pushStream) => {
+        pushStream.respondWithFile("/styles/critical.css");
+      }
+    );
+
+    stream.pushStream({ ":path": "/scripts/main.js" }, (err, pushStream) => {
+      pushStream.respondWithFile("/scripts/main.js");
+    });
+
+    stream.respondWithFile("/index.html");
+  }
+});
+```
+
+## Best Practices
+
+### Security
+
+- Always use HTTPS in production
+- Implement proper CORS policies
+- Validate and sanitize all inputs
+- Use security headers (CSP, HSTS, etc.)
+- Implement rate limiting
+- Use authentication tokens
+
+### Performance
+
+- Minimize HTTP requests
+- Use CDNs for static assets
+- Implement proper caching strategies
+- Compress responses (Gzip/Brotli)
+- Use HTTP/2 when possible
+- Optimize images and assets
+
+### Error Handling
+
+- Implement proper error boundaries
+- Use exponential backoff for retries
+- Provide meaningful error messages
+- Log errors for debugging
+- Handle network timeouts
+
+## Resources
+
+### Documentation
+
+- [MDN Web Docs - HTTP](https://developer.mozilla.org/en-US/docs/Web/HTTP)
+- [MDN Web Docs - WebSockets](https://developer.mozilla.org/en-US/docs/Web/API/WebSockets_API)
+- [HTTP/2 Specification](https://http2.github.io/http2-spec/)
+- [CORS Documentation](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS)
+
+### Tools
+
+- [Postman](https://www.postman.com/) - API testing
+- [WebSocket King](https://websocketking.com/) - WebSocket testing
+- [HTTP/2 Test](https://tools.keycdn.com/http2-test) - HTTP/2 support check
+- [SSL Labs](https://www.ssllabs.com/ssltest/) - SSL/TLS testing
+
+### Practice Platforms
+
+- [HTTPbin](https://httpbin.org/) - HTTP testing
+- [WebSocket Echo Test](https://www.websocket.org/echo.html)
+- [REST API Testing](https://jsonplaceholder.typicode.com/)
+
+---
+
+_This guide covers essential networking concepts for frontend interviews, including practical problems and advanced techniques commonly asked at Big Tech companies._
+
 - Server authentication
 - Protection against man-in-the-middle attacks
 
