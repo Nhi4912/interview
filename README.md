@@ -376,3 +376,17 @@ With this comprehensive guide, you have everything you need to prepare for front
 ---
 
 _This guide represents the most comprehensive frontend interview preparation resource available, covering all essential topics, advanced concepts, and practical strategies for Big Tech success._
+
+## 🆕 New & Essential Practice Problems
+
+- [Autocomplete Component](frontend/coding-problems/06-autocomplete.md)
+- [Infinite Scroll List](frontend/coding-problems/07-infinite-scroll.md)
+- [Accessible Modal Dialog](frontend/coding-problems/08-modal-dialog.md)
+- [File Uploader](frontend/coding-problems/09-file-uploader.md)
+- [Notification System](frontend/coding-problems/10-notification-system.md)
+- [Lazy Loading Images/Components](frontend/performance/01-lazy-loading.md)
+- [Component Unit Testing](frontend/testing/01-component-testing.md)
+- [Preventing XSS and CSRF](frontend/security/01-xss-csrf.md)
+- [API Integration & Error Handling](frontend/networking/01-api-integration.md)
+
+_See each file for requirements, solution outlines, and follow-up questions._

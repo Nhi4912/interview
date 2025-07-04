@@ -278,3 +278,394 @@ class CustomTable extends DynamicTable {
   }
 }
 ```
+
+## Interview Deep Dive: Dynamic Table
+
+### Follow-up Questions
+
+1. **How would you add keyboard navigation for accessibility?**
+
+   - Use `tabindex="0"` on rows and headers.
+   - Add keyboard event listeners for arrow keys, Enter, and Escape.
+   - Use ARIA roles: `role="table"`, `role="row"`, `role="columnheader"`, `role="cell"`.
+
+2. **How would you handle large datasets (10,000+ rows)?**
+
+   - Implement virtual scrolling (windowing) using libraries like `react-window` or custom logic.
+   - Only render visible rows to improve performance.
+
+3. **How would you support custom cell rendering (e.g., links, buttons, icons)?**
+
+   - Allow passing a `renderCell` function as a prop or method override.
+   - Example: `renderCell(value, column, row)`
+
+4. **How would you make the table accessible for screen readers?**
+   - Use semantic HTML: `<table>`, `<thead>`, `<tbody>`, `<th>`, `<td>`.
+   - Add `scope="col"` to header cells.
+   - Provide captions and summaries if needed.
+
+---
+
+### Diagram: Table Rendering Flow
+
+```mermaid
+flowchart TD
+  A[Input Data Array] --> B[Generate Headers]
+  B --> C[Render Filters]
+  C --> D[Apply Filters]
+  D --> E[Sort Data]
+  E --> F[Render Table Rows]
+```
+
+---
+
+### Advanced Problem: Virtualized Dynamic Table (React)
+
+**Challenge:** Implement a dynamic table with virtual scrolling for large datasets in React.
+
+**Solution Outline:**
+
+- Use `react-window` or similar for windowing.
+- Only render visible rows.
+- Keep sorting/filtering logic in parent component.
+
+**Sample Implementation:**
+
+```jsx
+import { FixedSizeList as List } from "react-window";
+
+function VirtualizedTable({ data, height, rowHeight }) {
+  const headers = Object.keys(data[0] || {});
+
+  return (
+    <div style={{ width: "100%" }}>
+      <table className="dynamic-table">
+        <thead>
+          <tr>
+            {headers.map((header) => (
+              <th key={header}>{header}</th>
+            ))}
+          </tr>
+        </thead>
+      </table>
+      <List
+        height={height}
+        itemCount={data.length}
+        itemSize={rowHeight}
+        width="100%"
+      >
+        {({ index, style }) => (
+          <div style={style}>
+            <table className="dynamic-table">
+              <tbody>
+                <tr>
+                  {headers.map((header) => (
+                    <td key={header}>{data[index][header]}</td>
+                  ))}
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        )}
+      </List>
+    </div>
+  );
+}
+```
+
+---
+
+### System Design: Table Component API
+
+- `data`: Array of objects
+- `columns`: Optional array of column configs (label, key, sortable, filterable, renderCell)
+- `onSort`: Callback for sort changes
+- `onFilter`: Callback for filter changes
+- `rowKey`: Function or string for unique row id
+
+---
+
+## More Dynamic Table Interview Problems
+
+### Problem 2: Editable Table Cells
+
+**Question:** How would you allow users to edit table cells inline and save changes?
+
+**Solution Outline:**
+
+- Render each cell as a text input or select when in edit mode.
+- Track editing state (row/column).
+- Save changes on blur or Enter, revert on Escape.
+
+**Sample Implementation (JS):**
+
+```js
+// In your DynamicTable class, add editing state and handlers
+// Pseudocode for cell rendering:
+renderCell(value, rowIdx, colKey) {
+  if (this.editing && this.editing.row === rowIdx && this.editing.col === colKey) {
+    return `<input value="${value}" onblur="saveEdit()" onkeydown="handleKey(event)" />`;
+  }
+  return `<span ondblclick="startEdit(${rowIdx}, '${colKey}')">${value}</span>`;
+}
+```
+
+---
+
+### Problem 3: Row Selection and Bulk Actions
+
+**Question:** How would you implement row selection (single/multi) and bulk actions (delete, export)?
+
+**Solution Outline:**
+
+- Add a checkbox to each row and a master checkbox in the header.
+- Track selected row IDs in state.
+- Provide bulk action buttons (e.g., Delete Selected, Export Selected).
+
+**Sample Implementation (JS):**
+
+```js
+// Add a 'selected' property to each row or track selected IDs in a Set
+// Render checkboxes in the first column
+// Add event listeners for bulk action buttons
+```
+
+---
+
+### Problem 4: Column Reordering
+
+**Question:** How would you allow users to reorder columns via drag-and-drop?
+
+**Solution Outline:**
+
+- Use HTML5 Drag and Drop API or a library (e.g., react-beautiful-dnd).
+- Update the columns order in state on drop.
+- Re-render table with new column order.
+
+**Sample Implementation (React):**
+
+```jsx
+// Use react-beautiful-dnd's <DragDropContext> and <Droppable> for columns
+// On drag end, update columns array order
+```
+
+---
+
+### Problem 5: Server-Side Pagination and Filtering
+
+**Question:** How would you handle tables with millions of rows (server-side pagination/filtering)?
+
+**Solution Outline:**
+
+- Fetch only the current page of data from the server.
+- Send filter/sort params in API requests.
+- Show loading indicators and handle errors.
+
+**Sample API Call:**
+
+```js
+fetch(`/api/table?page=2&pageSize=50&sort=age&filter=city:Boston`)
+  .then((res) => res.json())
+  .then((data) => updateTable(data));
+```
+
+---
+
+### Problem 6: Accessibility for Dynamic Tables
+
+**Question:** What are the key accessibility considerations for dynamic tables?
+
+**Answer:**
+
+- Use semantic HTML (`<table>`, `<thead>`, `<tbody>`, `<th>`, `<td>`)
+- Add ARIA roles and properties as needed
+- Ensure keyboard navigation (tab, arrow keys)
+- Provide visible focus indicators
+- Announce changes to screen readers (e.g., row added/removed)
+
+---
+
+_These additional problems cover editing, selection, column reordering, server-side data, and accessibility—key areas for dynamic table interviews. Practice implementing and discussing these features!_
+
+---
+
+### Diagram: Table Rendering Flow
+
+```mermaid
+flowchart TD
+  A[Input Data Array] --> B[Generate Headers]
+  B --> C[Render Filters]
+  C --> D[Apply Filters]
+  D --> E[Sort Data]
+  E --> F[Render Table Rows]
+```
+
+---
+
+### Advanced Problem: Virtualized Dynamic Table (React)
+
+**Challenge:** Implement a dynamic table with virtual scrolling for large datasets in React.
+
+**Solution Outline:**
+
+- Use `react-window` or similar for windowing.
+- Only render visible rows.
+- Keep sorting/filtering logic in parent component.
+
+**Sample Implementation:**
+
+```jsx
+import { FixedSizeList as List } from "react-window";
+
+function VirtualizedTable({ data, height, rowHeight }) {
+  const headers = Object.keys(data[0] || {});
+
+  return (
+    <div style={{ width: "100%" }}>
+      <table className="dynamic-table">
+        <thead>
+          <tr>
+            {headers.map((header) => (
+              <th key={header}>{header}</th>
+            ))}
+          </tr>
+        </thead>
+      </table>
+      <List
+        height={height}
+        itemCount={data.length}
+        itemSize={rowHeight}
+        width="100%"
+      >
+        {({ index, style }) => (
+          <div style={style}>
+            <table className="dynamic-table">
+              <tbody>
+                <tr>
+                  {headers.map((header) => (
+                    <td key={header}>{data[index][header]}</td>
+                  ))}
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        )}
+      </List>
+    </div>
+  );
+}
+```
+
+---
+
+### System Design: Table Component API
+
+- `data`: Array of objects
+- `columns`: Optional array of column configs (label, key, sortable, filterable, renderCell)
+- `onSort`: Callback for sort changes
+- `onFilter`: Callback for filter changes
+- `rowKey`: Function or string for unique row id
+
+---
+
+## More Dynamic Table Interview Problems
+
+### Problem 2: Editable Table Cells
+
+**Question:** How would you allow users to edit table cells inline and save changes?
+
+**Solution Outline:**
+
+- Render each cell as a text input or select when in edit mode.
+- Track editing state (row/column).
+- Save changes on blur or Enter, revert on Escape.
+
+**Sample Implementation (JS):**
+
+```js
+// In your DynamicTable class, add editing state and handlers
+// Pseudocode for cell rendering:
+renderCell(value, rowIdx, colKey) {
+  if (this.editing && this.editing.row === rowIdx && this.editing.col === colKey) {
+    return `<input value="${value}" onblur="saveEdit()" onkeydown="handleKey(event)" />`;
+  }
+  return `<span ondblclick="startEdit(${rowIdx}, '${colKey}')">${value}</span>`;
+}
+```
+
+---
+
+### Problem 3: Row Selection and Bulk Actions
+
+**Question:** How would you implement row selection (single/multi) and bulk actions (delete, export)?
+
+**Solution Outline:**
+
+- Add a checkbox to each row and a master checkbox in the header.
+- Track selected row IDs in state.
+- Provide bulk action buttons (e.g., Delete Selected, Export Selected).
+
+**Sample Implementation (JS):**
+
+```js
+// Add a 'selected' property to each row or track selected IDs in a Set
+// Render checkboxes in the first column
+// Add event listeners for bulk action buttons
+```
+
+---
+
+### Problem 4: Column Reordering
+
+**Question:** How would you allow users to reorder columns via drag-and-drop?
+
+**Solution Outline:**
+
+- Use HTML5 Drag and Drop API or a library (e.g., react-beautiful-dnd).
+- Update the columns order in state on drop.
+- Re-render table with new column order.
+
+**Sample Implementation (React):**
+
+```jsx
+// Use react-beautiful-dnd's <DragDropContext> and <Droppable> for columns
+// On drag end, update columns array order
+```
+
+---
+
+### Problem 5: Server-Side Pagination and Filtering
+
+**Question:** How would you handle tables with millions of rows (server-side pagination/filtering)?
+
+**Solution Outline:**
+
+- Fetch only the current page of data from the server.
+- Send filter/sort params in API requests.
+- Show loading indicators and handle errors.
+
+**Sample API Call:**
+
+```js
+fetch(`/api/table?page=2&pageSize=50&sort=age&filter=city:Boston`)
+  .then((res) => res.json())
+  .then((data) => updateTable(data));
+```
+
+---
+
+### Problem 6: Accessibility for Dynamic Tables
+
+**Question:** What are the key accessibility considerations for dynamic tables?
+
+**Answer:**
+
+- Use semantic HTML (`<table>`, `<thead>`, `<tbody>`, `<th>`, `<td>`)
+- Add ARIA roles and properties as needed
+- Ensure keyboard navigation (tab, arrow keys)
+- Provide visible focus indicators
+- Announce changes to screen readers (e.g., row added/removed)
+
+---
+
+_These additional problems cover editing, selection, column reordering, server-side data, and accessibility—key areas for dynamic table interviews. Practice implementing and discussing these features!_
