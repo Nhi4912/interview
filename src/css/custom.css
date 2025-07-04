@@ -1,0 +1,265 @@
+/**
+ * Any CSS included here will be global. The classic template
+ * bundles Infima by default. Infima is a CSS framework designed to
+ * work well for content-focused websites.
+ */
+
+/* You can override the default Infima variables here. */
+:root {
+  --ifm-color-primary: #646cff;
+  --ifm-color-primary-dark: #535bf2;
+  --ifm-color-primary-darker: #4c52e3;
+  --ifm-color-primary-darkest: #3b41d1;
+  --ifm-color-primary-light: #7c82ff;
+  --ifm-color-primary-lighter: #8b91ff;
+  --ifm-color-primary-lightest: #a5a9ff;
+  --ifm-code-font-size: 95%;
+  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
+  --ifm-background-color: #ffffff;
+  --ifm-background-surface-color: #f8f9fa;
+  --ifm-color-emphasis-0: #f8f9fa;
+  --ifm-color-emphasis-100: #e9ecef;
+  --ifm-color-emphasis-200: #dee2e6;
+  --ifm-color-emphasis-300: #ced4da;
+  --ifm-color-emphasis-400: #adb5bd;
+  --ifm-color-emphasis-500: #6c757d;
+  --ifm-color-emphasis-600: #495057;
+  --ifm-color-emphasis-700: #343a40;
+  --ifm-color-emphasis-800: #212529;
+  --ifm-color-emphasis-900: #000000;
+}
+
+/* For readability concerns, you should choose a lighter palette in dark mode. */
+[data-theme="dark"] {
+  --ifm-color-primary: #646cff;
+  --ifm-color-primary-dark: #535bf2;
+  --ifm-color-primary-darker: #4c52e3;
+  --ifm-color-primary-darkest: #3b41d1;
+  --ifm-color-primary-light: #7c82ff;
+  --ifm-color-primary-lighter: #8b91ff;
+  --ifm-color-primary-lightest: #a5a9ff;
+  --docusaurus-highlighted-code-line-bg: rgba(255, 255, 255, 0.1);
+  --ifm-background-color: #0a0a0a;
+  --ifm-background-surface-color: #1a1a1a;
+  --ifm-color-emphasis-0: #000000;
+  --ifm-color-emphasis-100: #1a1a1a;
+  --ifm-color-emphasis-200: #2d2d2d;
+  --ifm-color-emphasis-300: #404040;
+  --ifm-color-emphasis-400: #525252;
+  --ifm-color-emphasis-500: #737373;
+  --ifm-color-emphasis-600: #a3a3a3;
+  --ifm-color-emphasis-700: #d4d4d4;
+  --ifm-color-emphasis-800: #e5e5e5;
+  --ifm-color-emphasis-900: #fafafa;
+}
+
+/* Custom styles for the frontend interview guide */
+.hero {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+}
+
+/* Dark theme enhancements */
+[data-theme="dark"] {
+  /* Smooth transitions for theme switching */
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+[data-theme="dark"] .hero {
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+}
+
+/* Code block dark theme improvements */
+[data-theme="dark"] .prism-code {
+  background-color: #1e1e1e;
+  border: 1px solid #404040;
+}
+
+/* Card dark theme improvements */
+[data-theme="dark"] .feature-card {
+  background-color: var(--ifm-background-surface-color);
+  border-color: var(--ifm-color-emphasis-300);
+}
+
+[data-theme="dark"] .feature-card:hover {
+  box-shadow: 0 4px 12px rgba(255, 255, 255, 0.1);
+}
+
+/* Interview question dark theme */
+[data-theme="dark"] .interview-question {
+  background-color: var(--ifm-background-surface-color);
+  border-color: var(--ifm-color-primary);
+}
+
+[data-theme="dark"] .interview-answer {
+  background-color: rgba(34, 197, 94, 0.1);
+  border-color: #22c55e;
+}
+
+/* Code challenge dark theme */
+[data-theme="dark"] .code-challenge {
+  background-color: var(--ifm-background-surface-color);
+  border-color: var(--ifm-color-primary);
+}
+
+/* Sidebar dark theme improvements */
+[data-theme="dark"] .theme-doc-sidebar-container {
+  border-color: var(--ifm-color-emphasis-300);
+  background-color: var(--ifm-background-surface-color);
+}
+
+/* Table dark theme */
+[data-theme="dark"] table {
+  background-color: var(--ifm-background-surface-color);
+}
+
+[data-theme="dark"] th {
+  background-color: var(--ifm-color-emphasis-200);
+}
+
+[data-theme="dark"] td {
+  border-color: var(--ifm-color-emphasis-300);
+}
+
+/* Blockquote dark theme */
+[data-theme="dark"] blockquote {
+  background-color: var(--ifm-background-surface-color);
+  border-color: var(--ifm-color-emphasis-300);
+}
+
+.hero__title {
+  font-size: 3rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+.hero__subtitle {
+  font-size: 1.5rem;
+  opacity: 0.9;
+}
+
+/* Code block styling */
+.prism-code {
+  border-radius: 8px;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+/* Mermaid diagram styling */
+.mermaid {
+  text-align: center;
+  margin: 2rem 0;
+  padding: 1rem;
+  background: #f8f9fa;
+  border-radius: 8px;
+}
+
+[data-theme="dark"] .mermaid {
+  background: #2d3748;
+}
+
+/* Custom card styling */
+.feature-card {
+  border: 1px solid var(--ifm-color-emphasis-300);
+  border-radius: 8px;
+  padding: 1.5rem;
+  margin: 1rem 0;
+  transition: all 0.3s ease;
+}
+
+.feature-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Progress indicator */
+.progress-bar {
+  background: var(--ifm-color-primary);
+  height: 4px;
+  border-radius: 2px;
+  transition: width 0.3s ease;
+}
+
+/* Interview question styling */
+.interview-question {
+  background: var(--ifm-color-emphasis-100);
+  border-left: 4px solid var(--ifm-color-primary);
+  padding: 1rem;
+  margin: 1rem 0;
+  border-radius: 0 8px 8px 0;
+}
+
+.interview-answer {
+  background: var(--ifm-color-emphasis-50);
+  border-left: 4px solid var(--ifm-color-success);
+  padding: 1rem;
+  margin: 1rem 0;
+  border-radius: 0 8px 8px 0;
+}
+
+/* Code challenge styling */
+.code-challenge {
+  background: var(--ifm-color-emphasis-100);
+  border: 2px solid var(--ifm-color-primary);
+  border-radius: 8px;
+  padding: 1.5rem;
+  margin: 1.5rem 0;
+}
+
+.code-challenge__title {
+  font-weight: bold;
+  color: var(--ifm-color-primary);
+  margin-bottom: 1rem;
+}
+
+/* Navigation improvements */
+.navbar__brand {
+  font-weight: bold;
+}
+
+.navbar__item {
+  font-weight: 500;
+}
+
+/* Sidebar improvements */
+.theme-doc-sidebar-container {
+  border-right: 1px solid var(--ifm-color-emphasis-300);
+}
+
+.theme-doc-sidebar-item-category-level-1
+  > .theme-doc-sidebar-item-category
+  > .theme-doc-sidebar-item-category-label {
+  font-weight: bold;
+  color: var(--ifm-color-primary);
+}
+
+/* Footer improvements */
+.footer {
+  background: var(--ifm-color-emphasis-900);
+  color: var(--ifm-color-emphasis-100);
+}
+
+/* Responsive improvements */
+@media (max-width: 768px) {
+  .hero__title {
+    font-size: 2rem;
+  }
+
+  .hero__subtitle {
+    font-size: 1.2rem;
+  }
+}
+
+/* Print styles */
+@media print {
+  .navbar,
+  .footer,
+  .theme-doc-sidebar {
+    display: none !important;
+  }
+
+  .theme-doc-markdown {
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+}

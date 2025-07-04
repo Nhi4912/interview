@@ -30,6 +30,36 @@
 
 ---
 
+## 🌐 Live Site
+
+**Visit the live documentation site:** [https://nhi4912.github.io](https://nhi4912.github.io)
+
+---
+
+## 🚀 Local Development & Deployment
+
+### Quick Start
+
+```bash
+# Install dependencies
+npm install
+
+# Start development server
+npm start
+
+# Build for production
+npm run build
+
+# Deploy to GitHub Pages
+npm run deploy
+```
+
+### Detailed Setup
+
+See [DEPLOYMENT.md](DEPLOYMENT.md) for complete setup and deployment instructions.
+
+---
+
 ## 📋 Overview
 
 This repository contains a comprehensive frontend interview preparation guide designed specifically for Big Tech companies (Google, Meta, Amazon, Microsoft, Apple, Netflix, etc.). The guide covers everything from fundamentals to advanced topics with practical examples, interview questions, and real-world problems.
