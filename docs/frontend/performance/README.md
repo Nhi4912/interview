@@ -536,4 +536,4 @@ Identify and optimize the critical rendering path for a web application.
 
 ---
 
-_This guide covers essential performance optimization concepts for frontend interviews at Big Tech companies. Focus on understanding Core Web Vitals, optimization techniques, and practical implementation strategies._
+_This guide covers essential performance optimization concepts for frontend interviews at companies companies. Focus on understanding Core Web Vitals, optimization techniques, and practical implementation strategies._

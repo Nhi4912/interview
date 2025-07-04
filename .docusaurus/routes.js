@@ -3,478 +3,478 @@ import ComponentCreator from '@docusaurus/ComponentCreator';
 
 export default [
   {
-    path: '/docs',
-    component: ComponentCreator('/docs', '4fa'),
+    path: '/interview/docs',
+    component: ComponentCreator('/interview/docs', '357'),
     routes: [
       {
-        path: '/docs',
-        component: ComponentCreator('/docs', '0fc'),
+        path: '/interview/docs',
+        component: ComponentCreator('/interview/docs', '0e9'),
         routes: [
           {
-            path: '/docs',
-            component: ComponentCreator('/docs', '79a'),
+            path: '/interview/docs',
+            component: ComponentCreator('/interview/docs', 'cce'),
             routes: [
               {
-                path: '/docs/frontend',
-                component: ComponentCreator('/docs/frontend', 'b2e'),
+                path: '/interview/docs/frontend',
+                component: ComponentCreator('/interview/docs/frontend', '014'),
                 exact: true
               },
               {
-                path: '/docs/frontend-interview-complete-guide',
-                component: ComponentCreator('/docs/frontend-interview-complete-guide', 'bb3'),
+                path: '/interview/docs/frontend-interview-complete-guide',
+                component: ComponentCreator('/interview/docs/frontend-interview-complete-guide', 'e27'),
                 exact: true,
                 sidebar: "tutorialSidebar"
               },
               {
-                path: '/docs/frontend/accessibility',
-                component: ComponentCreator('/docs/frontend/accessibility', '83b'),
+                path: '/interview/docs/frontend/accessibility',
+                component: ComponentCreator('/interview/docs/frontend/accessibility', '1b1'),
                 exact: true,
                 sidebar: "frontendSidebar"
               },
               {
-                path: '/docs/frontend/advanced',
-                component: ComponentCreator('/docs/frontend/advanced', '593'),
+                path: '/interview/docs/frontend/advanced',
+                component: ComponentCreator('/interview/docs/frontend/advanced', 'b74'),
                 exact: true,
                 sidebar: "frontendSidebar"
               },
               {
-                path: '/docs/frontend/architecture/frontend-system-design-framework',
-                component: ComponentCreator('/docs/frontend/architecture/frontend-system-design-framework', 'f17'),
+                path: '/interview/docs/frontend/architecture/frontend-system-design-framework',
+                component: ComponentCreator('/interview/docs/frontend/architecture/frontend-system-design-framework', '43e'),
                 exact: true
               },
               {
-                path: '/docs/frontend/browser-apis',
-                component: ComponentCreator('/docs/frontend/browser-apis', '56d'),
+                path: '/interview/docs/frontend/browser-apis',
+                component: ComponentCreator('/interview/docs/frontend/browser-apis', '273'),
                 exact: true
               },
               {
-                path: '/docs/frontend/challenges',
-                component: ComponentCreator('/docs/frontend/challenges', '41c'),
+                path: '/interview/docs/frontend/challenges',
+                component: ComponentCreator('/interview/docs/frontend/challenges', 'bdd'),
                 exact: true
               },
               {
-                path: '/docs/frontend/coding-problems',
-                component: ComponentCreator('/docs/frontend/coding-problems', '2f6'),
+                path: '/interview/docs/frontend/coding-problems',
+                component: ComponentCreator('/interview/docs/frontend/coding-problems', '4fa'),
                 exact: true,
                 sidebar: "frontendSidebar"
               },
               {
-                path: '/docs/frontend/coding-problems/autocomplete',
-                component: ComponentCreator('/docs/frontend/coding-problems/autocomplete', '44a'),
+                path: '/interview/docs/frontend/coding-problems/autocomplete',
+                component: ComponentCreator('/interview/docs/frontend/coding-problems/autocomplete', 'c46'),
                 exact: true,
                 sidebar: "frontendSidebar"
               },
               {
-                path: '/docs/frontend/coding-problems/css-grid-dashboard',
-                component: ComponentCreator('/docs/frontend/coding-problems/css-grid-dashboard', '6e2'),
+                path: '/interview/docs/frontend/coding-problems/css-grid-dashboard',
+                component: ComponentCreator('/interview/docs/frontend/coding-problems/css-grid-dashboard', 'd28'),
                 exact: true,
                 sidebar: "frontendSidebar"
               },
               {
-                path: '/docs/frontend/coding-problems/css-layout-challenges',
-                component: ComponentCreator('/docs/frontend/coding-problems/css-layout-challenges', '789'),
+                path: '/interview/docs/frontend/coding-problems/css-layout-challenges',
+                component: ComponentCreator('/interview/docs/frontend/coding-problems/css-layout-challenges', '0de'),
                 exact: true,
                 sidebar: "frontendSidebar"
               },
               {
-                path: '/docs/frontend/coding-problems/custom-hook',
-                component: ComponentCreator('/docs/frontend/coding-problems/custom-hook', '75e'),
+                path: '/interview/docs/frontend/coding-problems/custom-hook',
+                component: ComponentCreator('/interview/docs/frontend/coding-problems/custom-hook', 'a6e'),
                 exact: true,
                 sidebar: "frontendSidebar"
               },
               {
-                path: '/docs/frontend/coding-problems/dashboard-layout',
-                component: ComponentCreator('/docs/frontend/coding-problems/dashboard-layout', '7c5'),
+                path: '/interview/docs/frontend/coding-problems/dashboard-layout',
+                component: ComponentCreator('/interview/docs/frontend/coding-problems/dashboard-layout', '9c8'),
                 exact: true,
                 sidebar: "frontendSidebar"
               },
               {
-                path: '/docs/frontend/coding-problems/debounce-throttle',
-                component: ComponentCreator('/docs/frontend/coding-problems/debounce-throttle', '070'),
+                path: '/interview/docs/frontend/coding-problems/debounce-throttle',
+                component: ComponentCreator('/interview/docs/frontend/coding-problems/debounce-throttle', '50a'),
                 exact: true,
                 sidebar: "frontendSidebar"
               },
               {
-                path: '/docs/frontend/coding-problems/debounce-throttle',
-                component: ComponentCreator('/docs/frontend/coding-problems/debounce-throttle', '90b'),
+                path: '/interview/docs/frontend/coding-problems/debounce-throttle',
+                component: ComponentCreator('/interview/docs/frontend/coding-problems/debounce-throttle', 'b27'),
                 exact: true,
                 sidebar: "frontendSidebar"
               },
               {
-                path: '/docs/frontend/coding-problems/drag-and-drop',
-                component: ComponentCreator('/docs/frontend/coding-problems/drag-and-drop', '8ef'),
+                path: '/interview/docs/frontend/coding-problems/drag-and-drop',
+                component: ComponentCreator('/interview/docs/frontend/coding-problems/drag-and-drop', 'a63'),
                 exact: true,
                 sidebar: "frontendSidebar"
               },
               {
-                path: '/docs/frontend/coding-problems/dynamic-table',
-                component: ComponentCreator('/docs/frontend/coding-problems/dynamic-table', '442'),
+                path: '/interview/docs/frontend/coding-problems/dynamic-table',
+                component: ComponentCreator('/interview/docs/frontend/coding-problems/dynamic-table', 'c89'),
                 exact: true,
                 sidebar: "frontendSidebar"
               },
               {
-                path: '/docs/frontend/coding-problems/error-boundary',
-                component: ComponentCreator('/docs/frontend/coding-problems/error-boundary', '1cf'),
+                path: '/interview/docs/frontend/coding-problems/error-boundary',
+                component: ComponentCreator('/interview/docs/frontend/coding-problems/error-boundary', '839'),
                 exact: true,
                 sidebar: "frontendSidebar"
               },
               {
-                path: '/docs/frontend/coding-problems/file-uploader',
-                component: ComponentCreator('/docs/frontend/coding-problems/file-uploader', '698'),
+                path: '/interview/docs/frontend/coding-problems/file-uploader',
+                component: ComponentCreator('/interview/docs/frontend/coding-problems/file-uploader', '29f'),
                 exact: true,
                 sidebar: "frontendSidebar"
               },
               {
-                path: '/docs/frontend/coding-problems/infinite-scroll',
-                component: ComponentCreator('/docs/frontend/coding-problems/infinite-scroll', '309'),
+                path: '/interview/docs/frontend/coding-problems/infinite-scroll',
+                component: ComponentCreator('/interview/docs/frontend/coding-problems/infinite-scroll', 'cd8'),
                 exact: true,
                 sidebar: "frontendSidebar"
               },
               {
-                path: '/docs/frontend/coding-problems/infinite-scroll',
-                component: ComponentCreator('/docs/frontend/coding-problems/infinite-scroll', '6fb'),
+                path: '/interview/docs/frontend/coding-problems/infinite-scroll',
+                component: ComponentCreator('/interview/docs/frontend/coding-problems/infinite-scroll', 'ef7'),
                 exact: true,
                 sidebar: "frontendSidebar"
               },
               {
-                path: '/docs/frontend/coding-problems/modal-dialog',
-                component: ComponentCreator('/docs/frontend/coding-problems/modal-dialog', 'e63'),
+                path: '/interview/docs/frontend/coding-problems/modal-dialog',
+                component: ComponentCreator('/interview/docs/frontend/coding-problems/modal-dialog', '85c'),
                 exact: true,
                 sidebar: "frontendSidebar"
               },
               {
-                path: '/docs/frontend/coding-problems/notification-system',
-                component: ComponentCreator('/docs/frontend/coding-problems/notification-system', '8c4'),
+                path: '/interview/docs/frontend/coding-problems/notification-system',
+                component: ComponentCreator('/interview/docs/frontend/coding-problems/notification-system', 'f20'),
                 exact: true,
                 sidebar: "frontendSidebar"
               },
               {
-                path: '/docs/frontend/coding-problems/performance-optimization',
-                component: ComponentCreator('/docs/frontend/coding-problems/performance-optimization', '2db'),
+                path: '/interview/docs/frontend/coding-problems/performance-optimization',
+                component: ComponentCreator('/interview/docs/frontend/coding-problems/performance-optimization', 'eb8'),
                 exact: true,
                 sidebar: "frontendSidebar"
               },
               {
-                path: '/docs/frontend/coding-problems/react-form-validation',
-                component: ComponentCreator('/docs/frontend/coding-problems/react-form-validation', 'f05'),
+                path: '/interview/docs/frontend/coding-problems/react-form-validation',
+                component: ComponentCreator('/interview/docs/frontend/coding-problems/react-form-validation', '9fa'),
                 exact: true,
                 sidebar: "frontendSidebar"
               },
               {
-                path: '/docs/frontend/coding-problems/react-form-validation',
-                component: ComponentCreator('/docs/frontend/coding-problems/react-form-validation', 'c7e'),
+                path: '/interview/docs/frontend/coding-problems/react-form-validation',
+                component: ComponentCreator('/interview/docs/frontend/coding-problems/react-form-validation', '28e'),
                 exact: true,
                 sidebar: "frontendSidebar"
               },
               {
-                path: '/docs/frontend/coding-problems/state-management',
-                component: ComponentCreator('/docs/frontend/coding-problems/state-management', 'dda'),
+                path: '/interview/docs/frontend/coding-problems/state-management',
+                component: ComponentCreator('/interview/docs/frontend/coding-problems/state-management', 'b58'),
                 exact: true,
                 sidebar: "frontendSidebar"
               },
               {
-                path: '/docs/frontend/coding-problems/summary',
-                component: ComponentCreator('/docs/frontend/coding-problems/summary', 'c19'),
+                path: '/interview/docs/frontend/coding-problems/summary',
+                component: ComponentCreator('/interview/docs/frontend/coding-problems/summary', 'bf7'),
                 exact: true,
                 sidebar: "frontendSidebar"
               },
               {
-                path: '/docs/frontend/coding-problems/typescript-challenges',
-                component: ComponentCreator('/docs/frontend/coding-problems/typescript-challenges', '5c4'),
+                path: '/interview/docs/frontend/coding-problems/typescript-challenges',
+                component: ComponentCreator('/interview/docs/frontend/coding-problems/typescript-challenges', 'ca8'),
                 exact: true,
                 sidebar: "frontendSidebar"
               },
               {
-                path: '/docs/frontend/coding-problems/undo-redo',
-                component: ComponentCreator('/docs/frontend/coding-problems/undo-redo', '7c7'),
+                path: '/interview/docs/frontend/coding-problems/undo-redo',
+                component: ComponentCreator('/interview/docs/frontend/coding-problems/undo-redo', 'a11'),
                 exact: true,
                 sidebar: "frontendSidebar"
               },
               {
-                path: '/docs/frontend/coding-problems/virtual-scrolling',
-                component: ComponentCreator('/docs/frontend/coding-problems/virtual-scrolling', '7bf'),
+                path: '/interview/docs/frontend/coding-problems/virtual-scrolling',
+                component: ComponentCreator('/interview/docs/frontend/coding-problems/virtual-scrolling', '789'),
                 exact: true,
                 sidebar: "frontendSidebar"
               },
               {
-                path: '/docs/frontend/fundamentals/closure-scope-deep-dive',
-                component: ComponentCreator('/docs/frontend/fundamentals/closure-scope-deep-dive', 'c06'),
+                path: '/interview/docs/frontend/fundamentals/closure-scope-deep-dive',
+                component: ComponentCreator('/interview/docs/frontend/fundamentals/closure-scope-deep-dive', '9a9'),
                 exact: true,
                 sidebar: "frontendSidebar"
               },
               {
-                path: '/docs/frontend/fundamentals/dom-manipulation-deep-dive',
-                component: ComponentCreator('/docs/frontend/fundamentals/dom-manipulation-deep-dive', '6bb'),
+                path: '/interview/docs/frontend/fundamentals/dom-manipulation-deep-dive',
+                component: ComponentCreator('/interview/docs/frontend/fundamentals/dom-manipulation-deep-dive', 'acd'),
                 exact: true,
                 sidebar: "frontendSidebar"
               },
               {
-                path: '/docs/frontend/fundamentals/event-loop-deep-dive',
-                component: ComponentCreator('/docs/frontend/fundamentals/event-loop-deep-dive', 'a2a'),
+                path: '/interview/docs/frontend/fundamentals/event-loop-deep-dive',
+                component: ComponentCreator('/interview/docs/frontend/fundamentals/event-loop-deep-dive', '366'),
                 exact: true,
                 sidebar: "frontendSidebar"
               },
               {
-                path: '/docs/frontend/html-css',
-                component: ComponentCreator('/docs/frontend/html-css', '367'),
+                path: '/interview/docs/frontend/html-css',
+                component: ComponentCreator('/interview/docs/frontend/html-css', 'f41'),
                 exact: true,
                 sidebar: "frontendSidebar"
               },
               {
-                path: '/docs/frontend/internationalization',
-                component: ComponentCreator('/docs/frontend/internationalization', 'f22'),
+                path: '/interview/docs/frontend/internationalization',
+                component: ComponentCreator('/interview/docs/frontend/internationalization', 'f03'),
                 exact: true,
                 sidebar: "frontendSidebar"
               },
               {
-                path: '/docs/frontend/interview-strategy/technical-communication',
-                component: ComponentCreator('/docs/frontend/interview-strategy/technical-communication', '7b4'),
+                path: '/interview/docs/frontend/interview-strategy/technical-communication',
+                component: ComponentCreator('/interview/docs/frontend/interview-strategy/technical-communication', 'bfc'),
                 exact: true
               },
               {
-                path: '/docs/frontend/javascript',
-                component: ComponentCreator('/docs/frontend/javascript', 'dc6'),
+                path: '/interview/docs/frontend/javascript',
+                component: ComponentCreator('/interview/docs/frontend/javascript', '799'),
                 exact: true
               },
               {
-                path: '/docs/frontend/javascript/fundamentals',
-                component: ComponentCreator('/docs/frontend/javascript/fundamentals', '9bf'),
+                path: '/interview/docs/frontend/javascript/fundamentals',
+                component: ComponentCreator('/interview/docs/frontend/javascript/fundamentals', '130'),
                 exact: true,
                 sidebar: "frontendSidebar"
               },
               {
-                path: '/docs/frontend/missing-content',
-                component: ComponentCreator('/docs/frontend/missing-content', 'f12'),
+                path: '/interview/docs/frontend/missing-content',
+                component: ComponentCreator('/interview/docs/frontend/missing-content', '69b'),
                 exact: true
               },
               {
-                path: '/docs/frontend/networking',
-                component: ComponentCreator('/docs/frontend/networking', 'd84'),
+                path: '/interview/docs/frontend/networking',
+                component: ComponentCreator('/interview/docs/frontend/networking', 'c61'),
                 exact: true,
                 sidebar: "frontendSidebar"
               },
               {
-                path: '/docs/frontend/networking/api-integration',
-                component: ComponentCreator('/docs/frontend/networking/api-integration', '7d8'),
+                path: '/interview/docs/frontend/networking/api-integration',
+                component: ComponentCreator('/interview/docs/frontend/networking/api-integration', '6a2'),
                 exact: true,
                 sidebar: "frontendSidebar"
               },
               {
-                path: '/docs/frontend/performance',
-                component: ComponentCreator('/docs/frontend/performance', 'b57'),
+                path: '/interview/docs/frontend/performance',
+                component: ComponentCreator('/interview/docs/frontend/performance', '1ae'),
                 exact: true,
                 sidebar: "frontendSidebar"
               },
               {
-                path: '/docs/frontend/performance/lazy-loading',
-                component: ComponentCreator('/docs/frontend/performance/lazy-loading', 'ee7'),
+                path: '/interview/docs/frontend/performance/lazy-loading',
+                component: ComponentCreator('/interview/docs/frontend/performance/lazy-loading', '5ab'),
                 exact: true,
                 sidebar: "frontendSidebar"
               },
               {
-                path: '/docs/frontend/projects',
-                component: ComponentCreator('/docs/frontend/projects', 'cd6'),
+                path: '/interview/docs/frontend/projects',
+                component: ComponentCreator('/interview/docs/frontend/projects', 'c95'),
                 exact: true,
                 sidebar: "frontendSidebar"
               },
               {
-                path: '/docs/frontend/react/advanced-patterns',
-                component: ComponentCreator('/docs/frontend/react/advanced-patterns', '832'),
+                path: '/interview/docs/frontend/react/advanced-patterns',
+                component: ComponentCreator('/interview/docs/frontend/react/advanced-patterns', '3a9'),
                 exact: true,
                 sidebar: "frontendSidebar"
               },
               {
-                path: '/docs/frontend/react/core',
-                component: ComponentCreator('/docs/frontend/react/core', '280'),
+                path: '/interview/docs/frontend/react/core',
+                component: ComponentCreator('/interview/docs/frontend/react/core', '602'),
                 exact: true,
                 sidebar: "frontendSidebar"
               },
               {
-                path: '/docs/frontend/security',
-                component: ComponentCreator('/docs/frontend/security', '3b3'),
+                path: '/interview/docs/frontend/security',
+                component: ComponentCreator('/interview/docs/frontend/security', 'ec0'),
                 exact: true,
                 sidebar: "frontendSidebar"
               },
               {
-                path: '/docs/frontend/security/xss-csrf',
-                component: ComponentCreator('/docs/frontend/security/xss-csrf', 'cc9'),
+                path: '/interview/docs/frontend/security/xss-csrf',
+                component: ComponentCreator('/interview/docs/frontend/security/xss-csrf', 'ae3'),
                 exact: true,
                 sidebar: "frontendSidebar"
               },
               {
-                path: '/docs/frontend/system-design',
-                component: ComponentCreator('/docs/frontend/system-design', 'c39'),
+                path: '/interview/docs/frontend/system-design',
+                component: ComponentCreator('/interview/docs/frontend/system-design', '532'),
                 exact: true,
                 sidebar: "frontendSidebar"
               },
               {
-                path: '/docs/frontend/system-design/component-design',
-                component: ComponentCreator('/docs/frontend/system-design/component-design', '20e'),
+                path: '/interview/docs/frontend/system-design/component-design',
+                component: ComponentCreator('/interview/docs/frontend/system-design/component-design', '76d'),
                 exact: true,
                 sidebar: "frontendSidebar"
               },
               {
-                path: '/docs/frontend/system-design/design-systems',
-                component: ComponentCreator('/docs/frontend/system-design/design-systems', '37f'),
+                path: '/interview/docs/frontend/system-design/design-systems',
+                component: ComponentCreator('/interview/docs/frontend/system-design/design-systems', '3fb'),
                 exact: true,
                 sidebar: "frontendSidebar"
               },
               {
-                path: '/docs/frontend/system-design/frontend-architecture',
-                component: ComponentCreator('/docs/frontend/system-design/frontend-architecture', '265'),
+                path: '/interview/docs/frontend/system-design/frontend-architecture',
+                component: ComponentCreator('/interview/docs/frontend/system-design/frontend-architecture', 'e59'),
                 exact: true,
                 sidebar: "frontendSidebar"
               },
               {
-                path: '/docs/frontend/system-design/performance',
-                component: ComponentCreator('/docs/frontend/system-design/performance', 'd8f'),
+                path: '/interview/docs/frontend/system-design/performance',
+                component: ComponentCreator('/interview/docs/frontend/system-design/performance', 'd61'),
                 exact: true,
                 sidebar: "frontendSidebar"
               },
               {
-                path: '/docs/frontend/system-design/state-management',
-                component: ComponentCreator('/docs/frontend/system-design/state-management', '352'),
+                path: '/interview/docs/frontend/system-design/state-management',
+                component: ComponentCreator('/interview/docs/frontend/system-design/state-management', 'a3f'),
                 exact: true,
                 sidebar: "frontendSidebar"
               },
               {
-                path: '/docs/frontend/testing',
-                component: ComponentCreator('/docs/frontend/testing', '979'),
+                path: '/interview/docs/frontend/testing',
+                component: ComponentCreator('/interview/docs/frontend/testing', '50a'),
                 exact: true,
                 sidebar: "frontendSidebar"
               },
               {
-                path: '/docs/frontend/testing/component-testing',
-                component: ComponentCreator('/docs/frontend/testing/component-testing', '7a6'),
+                path: '/interview/docs/frontend/testing/component-testing',
+                component: ComponentCreator('/interview/docs/frontend/testing/component-testing', 'df0'),
                 exact: true,
                 sidebar: "frontendSidebar"
               },
               {
-                path: '/docs/frontend/tools',
-                component: ComponentCreator('/docs/frontend/tools', '841'),
+                path: '/interview/docs/frontend/tools',
+                component: ComponentCreator('/interview/docs/frontend/tools', '165'),
                 exact: true,
                 sidebar: "frontendSidebar"
               },
               {
-                path: '/docs/frontend/typescript',
-                component: ComponentCreator('/docs/frontend/typescript', '849'),
+                path: '/interview/docs/frontend/typescript',
+                component: ComponentCreator('/interview/docs/frontend/typescript', 'bb3'),
                 exact: true
               },
               {
-                path: '/docs/interview-checklist',
-                component: ComponentCreator('/docs/interview-checklist', '67f'),
+                path: '/interview/docs/interview-checklist',
+                component: ComponentCreator('/interview/docs/interview-checklist', 'eef'),
                 exact: true,
                 sidebar: "tutorialSidebar"
               },
               {
-                path: '/docs/intro',
-                component: ComponentCreator('/docs/intro', 'aed'),
+                path: '/interview/docs/intro',
+                component: ComponentCreator('/interview/docs/intro', 'b29'),
                 exact: true,
                 sidebar: "tutorialSidebar"
               },
               {
-                path: '/docs/leetcode/array',
-                component: ComponentCreator('/docs/leetcode/array', 'c74'),
+                path: '/interview/docs/leetcode/array',
+                component: ComponentCreator('/interview/docs/leetcode/array', 'a47'),
                 exact: true,
                 sidebar: "leetcodeSidebar"
               },
               {
-                path: '/docs/leetcode/backtracking',
-                component: ComponentCreator('/docs/leetcode/backtracking', '06d'),
+                path: '/interview/docs/leetcode/backtracking',
+                component: ComponentCreator('/interview/docs/leetcode/backtracking', 'aa5'),
                 exact: true,
                 sidebar: "leetcodeSidebar"
               },
               {
-                path: '/docs/leetcode/design',
-                component: ComponentCreator('/docs/leetcode/design', '09b'),
+                path: '/interview/docs/leetcode/design',
+                component: ComponentCreator('/interview/docs/leetcode/design', '895'),
                 exact: true,
                 sidebar: "leetcodeSidebar"
               },
               {
-                path: '/docs/leetcode/dp',
-                component: ComponentCreator('/docs/leetcode/dp', '660'),
+                path: '/interview/docs/leetcode/dp',
+                component: ComponentCreator('/interview/docs/leetcode/dp', '8b0'),
                 exact: true,
                 sidebar: "leetcodeSidebar"
               },
               {
-                path: '/docs/leetcode/linked-list',
-                component: ComponentCreator('/docs/leetcode/linked-list', '830'),
+                path: '/interview/docs/leetcode/linked-list',
+                component: ComponentCreator('/interview/docs/leetcode/linked-list', '38f'),
                 exact: true,
                 sidebar: "leetcodeSidebar"
               },
               {
-                path: '/docs/leetcode/math',
-                component: ComponentCreator('/docs/leetcode/math', '3f7'),
+                path: '/interview/docs/leetcode/math',
+                component: ComponentCreator('/interview/docs/leetcode/math', 'e5b'),
                 exact: true,
                 sidebar: "leetcodeSidebar"
               },
               {
-                path: '/docs/leetcode/others',
-                component: ComponentCreator('/docs/leetcode/others', '626'),
+                path: '/interview/docs/leetcode/others',
+                component: ComponentCreator('/interview/docs/leetcode/others', '9d3'),
                 exact: true,
                 sidebar: "leetcodeSidebar"
               },
               {
-                path: '/docs/leetcode/sorting-searching',
-                component: ComponentCreator('/docs/leetcode/sorting-searching', '33e'),
+                path: '/interview/docs/leetcode/sorting-searching',
+                component: ComponentCreator('/interview/docs/leetcode/sorting-searching', 'b1d'),
                 exact: true,
                 sidebar: "leetcodeSidebar"
               },
               {
-                path: '/docs/leetcode/string',
-                component: ComponentCreator('/docs/leetcode/string', '8a0'),
+                path: '/interview/docs/leetcode/string',
+                component: ComponentCreator('/interview/docs/leetcode/string', 'aec'),
                 exact: true,
                 sidebar: "leetcodeSidebar"
               },
               {
-                path: '/docs/leetcode/tree-graph',
-                component: ComponentCreator('/docs/leetcode/tree-graph', 'd98'),
+                path: '/interview/docs/leetcode/tree-graph',
+                component: ComponentCreator('/interview/docs/leetcode/tree-graph', 'b85'),
                 exact: true,
                 sidebar: "leetcodeSidebar"
               },
               {
-                path: '/docs/progress-tracker',
-                component: ComponentCreator('/docs/progress-tracker', 'c37'),
+                path: '/interview/docs/progress-tracker',
+                component: ComponentCreator('/interview/docs/progress-tracker', 'e87'),
                 exact: true,
                 sidebar: "tutorialSidebar"
               },
               {
-                path: '/docs/templates/behavioral-answer',
-                component: ComponentCreator('/docs/templates/behavioral-answer', '711'),
+                path: '/interview/docs/templates/behavioral-answer',
+                component: ComponentCreator('/interview/docs/templates/behavioral-answer', 'e11'),
                 exact: true
               },
               {
-                path: '/docs/templates/system-design-answer',
-                component: ComponentCreator('/docs/templates/system-design-answer', '933'),
+                path: '/interview/docs/templates/system-design-answer',
+                component: ComponentCreator('/interview/docs/templates/system-design-answer', 'd3f'),
                 exact: true
               },
               {
-                path: '/docs/theory-and-visuals',
-                component: ComponentCreator('/docs/theory-and-visuals', 'f4b'),
+                path: '/interview/docs/theory-and-visuals',
+                component: ComponentCreator('/interview/docs/theory-and-visuals', 'ecb'),
                 exact: true,
                 sidebar: "theorySidebar"
               },
               {
-                path: '/docs/theory-and-visuals/browser-architecture',
-                component: ComponentCreator('/docs/theory-and-visuals/browser-architecture', 'e35'),
+                path: '/interview/docs/theory-and-visuals/browser-architecture',
+                component: ComponentCreator('/interview/docs/theory-and-visuals/browser-architecture', '6e8'),
                 exact: true,
                 sidebar: "theorySidebar"
               },
               {
-                path: '/docs/theory-and-visuals/javascript-engine-deep-dive',
-                component: ComponentCreator('/docs/theory-and-visuals/javascript-engine-deep-dive', 'a51'),
+                path: '/interview/docs/theory-and-visuals/javascript-engine-deep-dive',
+                component: ComponentCreator('/interview/docs/theory-and-visuals/javascript-engine-deep-dive', 'b00'),
                 exact: true,
                 sidebar: "theorySidebar"
               },
               {
-                path: '/docs/theory-and-visuals/knowledge-integration-map',
-                component: ComponentCreator('/docs/theory-and-visuals/knowledge-integration-map', 'def'),
+                path: '/interview/docs/theory-and-visuals/knowledge-integration-map',
+                component: ComponentCreator('/interview/docs/theory-and-visuals/knowledge-integration-map', '190'),
                 exact: true,
                 sidebar: "theorySidebar"
               },
               {
-                path: '/docs/theory-and-visuals/network-protocols-deep-dive',
-                component: ComponentCreator('/docs/theory-and-visuals/network-protocols-deep-dive', 'ca5'),
+                path: '/interview/docs/theory-and-visuals/network-protocols-deep-dive',
+                component: ComponentCreator('/interview/docs/theory-and-visuals/network-protocols-deep-dive', '99c'),
                 exact: true,
                 sidebar: "theorySidebar"
               }

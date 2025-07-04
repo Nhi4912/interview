@@ -772,7 +772,7 @@ server.on("stream", (stream, headers) => {
 
 ---
 
-_This guide covers essential networking concepts for frontend interviews, including practical problems and advanced techniques commonly asked at Big Tech companies._
+_This guide covers essential networking concepts for frontend interviews, including practical problems and advanced techniques commonly asked at companies companies._
 
 - Server authentication
 - Protection against man-in-the-middle attacks
@@ -1033,4 +1033,4 @@ Build a peer-to-peer video calling application using WebRTC.
 
 ---
 
-_This guide covers essential networking concepts for frontend interviews at Big Tech companies. Focus on understanding HTTP fundamentals, security best practices, and modern web protocols._
+_This guide covers essential networking concepts for frontend interviews at companies companies. Focus on understanding HTTP fundamentals, security best practices, and modern web protocols._

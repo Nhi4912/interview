@@ -1072,4 +1072,4 @@ Create a responsive pricing table with hover effects and feature lists.
 
 ---
 
-_This guide covers the essential HTML/CSS concepts needed for frontend interviews at Big Tech companies. Focus on understanding the fundamentals, practicing common patterns, and being able to explain your design decisions._
+_This guide covers the essential HTML/CSS concepts needed for frontend interviews at companies companies. Focus on understanding the fundamentals, practicing common patterns, and being able to explain your design decisions._

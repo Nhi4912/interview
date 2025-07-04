@@ -1,6 +1,6 @@
 # Other Problems - LeetCode Collection
 
-**Bộ sưu tập bài tập khác từ LeetCode cho phỏng vấn Big Tech**
+**Bộ sưu tập bài tập khác từ LeetCode cho phỏng vấn companies**
 
 ## 📋 Problem List / Danh sách bài tập
 
@@ -11,7 +11,7 @@
 - **Difficulty**: Easy
 - **LeetCode Link**: https://leetcode.com/problems/valid-parentheses/
 - **Category**: Stack, String
-- **Companies**: Google, Amazon, Microsoft, Facebook
+- **Companies**: Various companies
 - **Key Concepts**: Stack operations, bracket matching
 
 #### 2. Implement Queue using Stacks
@@ -19,7 +19,7 @@
 - **Difficulty**: Easy
 - **LeetCode Link**: https://leetcode.com/problems/implement-queue-using-stacks/
 - **Category**: Stack, Queue, Design
-- **Companies**: Amazon, Google, Microsoft
+- **Companies**: Various companies
 - **Key Concepts**: Stack operations, queue simulation
 
 #### 3. Implement Stack using Queues
@@ -27,7 +27,7 @@
 - **Difficulty**: Easy
 - **LeetCode Link**: https://leetcode.com/problems/implement-stack-using-queues/
 - **Category**: Stack, Queue, Design
-- **Companies**: Amazon, Google, Microsoft
+- **Companies**: Various companies
 - **Key Concepts**: Queue operations, stack simulation
 
 #### 4. Min Stack
@@ -35,7 +35,7 @@
 - **Difficulty**: Easy
 - **LeetCode Link**: https://leetcode.com/problems/min-stack/
 - **Category**: Stack, Design
-- **Companies**: Amazon, Google, Microsoft, Facebook
+- **Companies**: Various companies
 - **Key Concepts**: Auxiliary stack, O(1) operations
 
 #### 5. Valid Anagram
@@ -43,7 +43,7 @@
 - **Difficulty**: Easy
 - **LeetCode Link**: https://leetcode.com/problems/valid-anagram/
 - **Category**: String, Hash Table, Sorting
-- **Companies**: Google, Amazon, Microsoft, Facebook
+- **Companies**: Various companies
 - **Key Concepts**: Character frequency, sorting
 
 ### Medium Level / Mức độ trung bình
@@ -53,7 +53,7 @@
 - **Difficulty**: Medium
 - **LeetCode Link**: https://leetcode.com/problems/lru-cache/
 - **Category**: Hash Table, Linked List, Design
-- **Companies**: Amazon, Google, Microsoft, Facebook
+- **Companies**: Various companies
 - **Key Concepts**: Cache eviction, doubly linked list
 
 #### 7. Design Circular Queue
@@ -61,7 +61,7 @@
 - **Difficulty**: Medium
 - **LeetCode Link**: https://leetcode.com/problems/design-circular-queue/
 - **Category**: Array, Queue, Design
-- **Companies**: Google, Amazon, Microsoft
+- **Companies**: Various companies
 - **Key Concepts**: Circular buffer, modulo operations
 
 #### 8. Design Circular Deque
@@ -69,7 +69,7 @@
 - **Difficulty**: Medium
 - **LeetCode Link**: https://leetcode.com/problems/design-circular-deque/
 - **Category**: Array, Queue, Design
-- **Companies**: Google, Amazon, Microsoft
+- **Companies**: Various companies
 - **Key Concepts**: Double-ended queue, circular buffer
 
 #### 9. Design Hit Counter
@@ -77,7 +77,7 @@
 - **Difficulty**: Medium
 - **LeetCode Link**: https://leetcode.com/problems/design-hit-counter/
 - **Category**: Design, Queue
-- **Companies**: Google, Amazon, Microsoft
+- **Companies**: Various companies
 - **Key Concepts**: Time-based operations, sliding window
 
 #### 10. Design Browser History
@@ -85,7 +85,7 @@
 - **Difficulty**: Medium
 - **LeetCode Link**: https://leetcode.com/problems/design-browser-history/
 - **Category**: Array, Stack, Design
-- **Companies**: Google, Amazon, Microsoft
+- **Companies**: Various companies
 - **Key Concepts**: Navigation history, undo/redo
 
 ## 🎯 Study Tips / Mẹo học tập

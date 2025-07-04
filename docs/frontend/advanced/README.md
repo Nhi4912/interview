@@ -832,4 +832,4 @@ const button = designSystem.createComponent("Button", {
 
 ---
 
-_This guide covers advanced frontend topics essential for senior-level interviews at Big Tech companies, including modern web technologies, performance optimization, and architectural patterns._
+_This guide covers advanced frontend topics essential for senior-level interviews at companies companies, including modern web technologies, performance optimization, and architectural patterns._

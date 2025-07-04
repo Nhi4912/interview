@@ -908,4 +908,4 @@ describe("Performance Tests", () => {
 
 ---
 
-_This guide covers essential testing concepts for frontend interviews, including practical problems and advanced techniques commonly asked at Big Tech companies._
+_This guide covers essential testing concepts for frontend interviews, including practical problems and advanced techniques commonly asked at companies companies._

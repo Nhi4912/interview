@@ -1,6 +1,6 @@
 # Math Problems - LeetCode Collection
 
-**Bộ sưu tập bài tập Math từ LeetCode cho phỏng vấn Big Tech**
+**Bộ sưu tập bài tập Math từ LeetCode cho phỏng vấn companies**
 
 ## 📋 Problem List / Danh sách bài tập
 
@@ -11,7 +11,7 @@
 - **Difficulty**: Easy
 - **LeetCode Link**: https://leetcode.com/problems/fizz-buzz/
 - **Category**: Math, String
-- **Companies**: Google, Amazon, Microsoft, Facebook
+- **Companies**: Various companies
 - **Key Concepts**: Modulo operation, string concatenation
 
 #### 2. Count Primes
@@ -19,7 +19,7 @@
 - **Difficulty**: Easy
 - **LeetCode Link**: https://leetcode.com/problems/count-primes/
 - **Category**: Math, Hash Table
-- **Companies**: Amazon, Google, Microsoft
+- **Companies**: Various companies
 - **Key Concepts**: Sieve of Eratosthenes, prime number generation
 
 #### 3. Power of Three
@@ -27,7 +27,7 @@
 - **Difficulty**: Easy
 - **LeetCode Link**: https://leetcode.com/problems/power-of-three/
 - **Category**: Math
-- **Companies**: Google, Amazon, Microsoft
+- **Companies**: Various companies
 - **Key Concepts**: Logarithm, mathematical properties
 
 #### 4. Roman to Integer
@@ -35,7 +35,7 @@
 - **Difficulty**: Easy
 - **LeetCode Link**: https://leetcode.com/problems/roman-to-integer/
 - **Category**: Math, String
-- **Companies**: Amazon, Google, Microsoft, Facebook
+- **Companies**: Various companies
 - **Key Concepts**: Roman numeral rules, mapping
 
 ### Medium Level / Mức độ trung bình
@@ -45,7 +45,7 @@
 - **Difficulty**: Easy
 - **LeetCode Link**: https://leetcode.com/problems/happy-number/
 - **Category**: Math, Hash Table
-- **Companies**: Google, Amazon, Microsoft
+- **Companies**: Various companies
 - **Key Concepts**: Cycle detection, mathematical sequence
 
 #### 6. Factorial Trailing Zeroes
@@ -53,7 +53,7 @@
 - **Difficulty**: Easy
 - **LeetCode Link**: https://leetcode.com/problems/factorial-trailing-zeroes/
 - **Category**: Math
-- **Companies**: Google, Amazon, Microsoft
+- **Companies**: Various companies
 - **Key Concepts**: Prime factorization, counting factors
 
 #### 7. Excel Sheet Column Number
@@ -61,7 +61,7 @@
 - **Difficulty**: Easy
 - **LeetCode Link**: https://leetcode.com/problems/excel-sheet-column-number/
 - **Category**: Math, String
-- **Companies**: Amazon, Google, Microsoft
+- **Companies**: Various companies
 - **Key Concepts**: Base conversion, string to number
 
 #### 8. Pow(x, n)
@@ -69,7 +69,7 @@
 - **Difficulty**: Medium
 - **LeetCode Link**: https://leetcode.com/problems/powx-n/
 - **Category**: Math, Recursion
-- **Companies**: Amazon, Google, Microsoft, Facebook
+- **Companies**: Various companies
 - **Key Concepts**: Fast power algorithm, binary exponentiation
 
 #### 9. Sqrt(x)
@@ -77,7 +77,7 @@
 - **Difficulty**: Easy
 - **LeetCode Link**: https://leetcode.com/problems/sqrtx/
 - **Category**: Math, Binary Search
-- **Companies**: Amazon, Google, Microsoft, Facebook
+- **Companies**: Various companies
 - **Key Concepts**: Binary search, integer square root
 
 #### 10. Divide Two Integers
@@ -85,7 +85,7 @@
 - **Difficulty**: Medium
 - **LeetCode Link**: https://leetcode.com/problems/divide-two-integers/
 - **Category**: Math, Bit Manipulation
-- **Companies**: Amazon, Google, Microsoft
+- **Companies**: Various companies
 - **Key Concepts**: Bit shifting, long division
 
 #### 11. Fraction to Recurring Decimal
@@ -93,7 +93,7 @@
 - **Difficulty**: Medium
 - **LeetCode Link**: https://leetcode.com/problems/fraction-to-recurring-decimal/
 - **Category**: Math, Hash Table
-- **Companies**: Google, Amazon, Microsoft
+- **Companies**: Various companies
 - **Key Concepts**: Long division, cycle detection
 
 ## 🎯 Study Tips / Mẹo học tập

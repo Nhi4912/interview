@@ -1,6 +1,6 @@
 # Backtracking Problems - LeetCode Collection
 
-**Bộ sưu tập bài tập Backtracking từ LeetCode cho phỏng vấn Big Tech**
+**Bộ sưu tập bài tập Backtracking từ LeetCode cho phỏng vấn companies**
 
 ## 📋 Problem List / Danh sách bài tập
 
@@ -11,7 +11,7 @@
 - **Difficulty**: Medium
 - **LeetCode Link**: https://leetcode.com/problems/letter-combinations-of-a-phone-number/
 - **Category**: Backtracking, String
-- **Companies**: Amazon, Google, Facebook, Microsoft
+- **Companies**: Various companies
 - **Key Concepts**: Recursive backtracking, string combinations
 
 ### Medium Level / Mức độ trung bình
@@ -21,7 +21,7 @@
 - **Difficulty**: Medium
 - **LeetCode Link**: https://leetcode.com/problems/subsets/
 - **Category**: Backtracking, Array
-- **Companies**: Amazon, Google, Facebook, Microsoft
+- **Companies**: Various companies
 - **Key Concepts**: Power set generation, recursive backtracking
 
 #### 3. Permutations
@@ -29,7 +29,7 @@
 - **Difficulty**: Medium
 - **LeetCode Link**: https://leetcode.com/problems/permutations/
 - **Category**: Backtracking, Array
-- **Companies**: Amazon, Google, Facebook, Microsoft
+- **Companies**: Various companies
 - **Key Concepts**: Permutation generation, recursive backtracking
 
 #### 4. Combination Sum
@@ -37,7 +37,7 @@
 - **Difficulty**: Medium
 - **LeetCode Link**: https://leetcode.com/problems/combination-sum/
 - **Category**: Backtracking, Array
-- **Companies**: Amazon, Google, Facebook, Microsoft
+- **Companies**: Various companies
 - **Key Concepts**: Sum combinations, recursive backtracking
 
 #### 5. Generate Parentheses
@@ -45,7 +45,7 @@
 - **Difficulty**: Medium
 - **LeetCode Link**: https://leetcode.com/problems/generate-parentheses/
 - **Category**: Backtracking, String
-- **Companies**: Amazon, Google, Facebook, Microsoft
+- **Companies**: Various companies
 - **Key Concepts**: Valid parentheses generation, recursive backtracking
 
 #### 6. Word Search
@@ -53,7 +53,7 @@
 - **Difficulty**: Medium
 - **LeetCode Link**: https://leetcode.com/problems/word-search/
 - **Category**: Backtracking, Matrix
-- **Companies**: Amazon, Google, Facebook, Microsoft
+- **Companies**: Various companies
 - **Key Concepts**: Matrix traversal, recursive backtracking
 
 #### 7. N-Queens
@@ -61,7 +61,7 @@
 - **Difficulty**: Hard
 - **LeetCode Link**: https://leetcode.com/problems/n-queens/
 - **Category**: Backtracking, Matrix
-- **Companies**: Amazon, Google, Facebook, Microsoft
+- **Companies**: Various companies
 - **Key Concepts**: Constraint satisfaction, recursive backtracking
 
 #### 8. Sudoku Solver
@@ -69,7 +69,7 @@
 - **Difficulty**: Hard
 - **LeetCode Link**: https://leetcode.com/problems/sudoku-solver/
 - **Category**: Backtracking, Matrix
-- **Companies**: Amazon, Google, Facebook, Microsoft
+- **Companies**: Various companies
 - **Key Concepts**: Constraint satisfaction, recursive backtracking
 
 ## 🎯 Study Tips / Mẹo học tập

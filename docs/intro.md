@@ -4,7 +4,7 @@ sidebar_position: 1
 
 # Frontend Interview Preparation Guide
 
-Welcome to the comprehensive Frontend Interview Preparation Guide designed specifically for Big Tech companies (Google, Meta, Amazon, Microsoft, Apple, Netflix, etc.).
+Welcome to the comprehensive Frontend Interview Preparation Guide designed for frontend developers at all levels.
 
 ## 🎯 What You'll Find Here
 
@@ -34,29 +34,22 @@ This guide covers everything from fundamentals to advanced topics with practical
 ### 📋 Interview Preparation
 
 - **6-week preparation roadmap**
-- **Company-specific preparation guides**
+- **Interview preparation guides**
 - **Technical skills assessment**
 - **Success metrics and indicators**
 
-## 🏢 Target Companies
+## 🏢 Interview Types
 
-This guide is specifically designed for:
+This guide covers various interview formats:
 
-### Big Tech Companies
+### Company Sizes
 
-- **Google** - Algorithm focus, system design, "Googleyness"
-- **Meta (Facebook)** - React deep dive, performance, impact
-- **Amazon** - Leadership principles, system design, customer focus
-- **Microsoft** - Problem solving, collaboration, technical depth
-- **Apple** - Quality focus, user experience, attention to detail
-- **Netflix** - Performance, scalability, innovation
-
-### International Companies
-
-- **Shopify** - E-commerce, React, performance
-- **Airbnb** - React, design systems, internationalization
-- **Uber** - Real-time systems, performance, mobile web
-- **Stripe** - Security, payment systems, developer experience
+- **Startups** - Practical skills, quick problem solving, culture fit
+- **Mid-size Companies** - Balanced technical and behavioral interviews
+- **Large Companies** - Structured process, system design, scalability
+- **Remote Companies** - Communication skills, self-management, async work
+- **Agency Work** - Client projects, diverse tech stacks, deadlines
+- **Freelance** - Portfolio focus, business skills, client management
 
 ## 🚀 Quick Start
 

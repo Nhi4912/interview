@@ -1,6 +1,6 @@
 # String Problems - LeetCode Collection
 
-**Bộ sưu tập bài tập String từ LeetCode cho phỏng vấn Big Tech**
+**Bộ sưu tập bài tập String từ LeetCode cho phỏng vấn companies**
 
 ## 📋 Problem List / Danh sách bài tập
 
@@ -11,7 +11,7 @@
 - **Difficulty**: Easy
 - **LeetCode Link**: https://leetcode.com/problems/reverse-string/
 - **Category**: String, Two Pointers
-- **Companies**: Google, Amazon, Microsoft
+- **Companies**: Various companies
 - **Key Concepts**: In-place reversal, two pointers
 
 #### 2. Reverse Integer
@@ -19,7 +19,7 @@
 - **Difficulty**: Easy
 - **LeetCode Link**: https://leetcode.com/problems/reverse-integer/
 - **Category**: Math, String
-- **Companies**: Google, Amazon, Microsoft, Apple
+- **Companies**: Various companies
 - **Key Concepts**: Integer overflow, digit manipulation
 
 #### 3. First Unique Character in a String
@@ -27,7 +27,7 @@
 - **Difficulty**: Easy
 - **LeetCode Link**: https://leetcode.com/problems/first-unique-character-in-a-string/
 - **Category**: String, Hash Table
-- **Companies**: Amazon, Google, Microsoft
+- **Companies**: Various companies
 - **Key Concepts**: Frequency counting, hash map
 
 #### 4. Valid Anagram
@@ -35,7 +35,7 @@
 - **Difficulty**: Easy
 - **LeetCode Link**: https://leetcode.com/problems/valid-anagram/
 - **Category**: String, Hash Table, Sorting
-- **Companies**: Google, Amazon, Microsoft, Facebook
+- **Companies**: Various companies
 - **Key Concepts**: Character frequency, sorting
 
 #### 5. Valid Palindrome
@@ -43,7 +43,7 @@
 - **Difficulty**: Easy
 - **LeetCode Link**: https://leetcode.com/problems/valid-palindrome/
 - **Category**: String, Two Pointers
-- **Companies**: Facebook, Amazon, Google
+- **Companies**: Various companies
 - **Key Concepts**: Two pointers, character validation
 
 #### 6. String to Integer (atoi)
@@ -51,7 +51,7 @@
 - **Difficulty**: Medium
 - **LeetCode Link**: https://leetcode.com/problems/string-to-integer-atoi/
 - **Category**: String, Math
-- **Companies**: Amazon, Microsoft, Google
+- **Companies**: Various companies
 - **Key Concepts**: Edge cases, overflow handling
 
 #### 7. Implement strStr()
@@ -59,7 +59,7 @@
 - **Difficulty**: Easy
 - **LeetCode Link**: https://leetcode.com/problems/implement-strstr/
 - **Category**: String, Two Pointers
-- **Companies**: Facebook, Amazon, Google
+- **Companies**: Various companies
 - **Key Concepts**: String matching, KMP algorithm
 
 #### 8. Longest Common Prefix
@@ -67,7 +67,7 @@
 - **Difficulty**: Easy
 - **LeetCode Link**: https://leetcode.com/problems/longest-common-prefix/
 - **Category**: String
-- **Companies**: Google, Amazon, Microsoft
+- **Companies**: Various companies
 - **Key Concepts**: Prefix matching, vertical scanning
 
 ### Medium Level / Mức độ trung bình
@@ -77,7 +77,7 @@
 - **Difficulty**: Medium
 - **LeetCode Link**: https://leetcode.com/problems/group-anagrams/
 - **Category**: String, Hash Table
-- **Companies**: Amazon, Google, Facebook, Microsoft
+- **Companies**: Various companies
 - **Key Concepts**: Anagram grouping, hash map
 
 #### 10. Longest Substring Without Repeating Characters
@@ -85,7 +85,7 @@
 - **Difficulty**: Medium
 - **LeetCode Link**: https://leetcode.com/problems/longest-substring-without-repeating-characters/
 - **Category**: String, Hash Table, Two Pointers
-- **Companies**: Google, Amazon, Facebook, Microsoft
+- **Companies**: Various companies
 - **Key Concepts**: Sliding window, hash set
 
 #### 11. Longest Palindromic Substring
@@ -93,7 +93,7 @@
 - **Difficulty**: Medium
 - **LeetCode Link**: https://leetcode.com/problems/longest-palindromic-substring/
 - **Category**: String, Dynamic Programming
-- **Companies**: Amazon, Google, Facebook, Microsoft
+- **Companies**: Various companies
 - **Key Concepts**: Expand around center, DP approach
 
 #### 12. Increasing Triplet Subsequence
@@ -101,7 +101,7 @@
 - **Difficulty**: Medium
 - **LeetCode Link**: https://leetcode.com/problems/increasing-triplet-subsequence/
 - **Category**: Array, Greedy
-- **Companies**: Facebook, Amazon, Google
+- **Companies**: Various companies
 - **Key Concepts**: Greedy algorithm, maintaining two minimums
 
 #### 13. Missing Ranges
@@ -109,7 +109,7 @@
 - **Difficulty**: Easy
 - **LeetCode Link**: https://leetcode.com/problems/missing-ranges/
 - **Category**: Array
-- **Companies**: Google, Facebook
+- **Companies**: Various companies
 - **Key Concepts**: Range handling, edge cases
 
 #### 14. Count and Say
@@ -117,7 +117,7 @@
 - **Difficulty**: Easy
 - **LeetCode Link**: https://leetcode.com/problems/count-and-say/
 - **Category**: String, Array
-- **Companies**: Facebook, Amazon
+- **Companies**: Various companies
 - **Key Concepts**: String generation, pattern recognition
 
 ## 🎯 Study Tips / Mẹo học tập

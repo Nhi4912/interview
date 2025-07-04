@@ -613,4 +613,4 @@ Create a notification system with real-time updates, user preferences, and cross
 
 ---
 
-_This guide covers essential system design concepts for frontend interviews at Big Tech companies. Focus on understanding scalable architectures, component design patterns, and practical implementation strategies._
+_This guide covers essential system design concepts for frontend interviews at companies companies. Focus on understanding scalable architectures, component design patterns, and practical implementation strategies._

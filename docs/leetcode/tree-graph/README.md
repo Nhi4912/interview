@@ -1,6 +1,6 @@
 # Tree & Graph Problems - LeetCode Collection
 
-**Bộ sưu tập bài tập Tree & Graph từ LeetCode cho phỏng vấn Big Tech**
+**Bộ sưu tập bài tập Tree & Graph từ LeetCode cho phỏng vấn companies**
 
 ## 📋 Problem List / Danh sách bài tập
 
@@ -11,7 +11,7 @@
 - **Difficulty**: Easy
 - **LeetCode Link**: https://leetcode.com/problems/maximum-depth-of-binary-tree/
 - **Category**: Tree, DFS
-- **Companies**: Google, Amazon, Microsoft, Facebook
+- **Companies**: Various companies
 - **Key Concepts**: Recursive DFS, tree traversal
 
 #### 2. Validate Binary Search Tree
@@ -19,7 +19,7 @@
 - **Difficulty**: Medium
 - **LeetCode Link**: https://leetcode.com/problems/validate-binary-search-tree/
 - **Category**: Tree, DFS
-- **Companies**: Amazon, Google, Microsoft, Facebook
+- **Companies**: Various companies
 - **Key Concepts**: BST properties, inorder traversal
 
 #### 3. Symmetric Tree
@@ -27,7 +27,7 @@
 - **Difficulty**: Easy
 - **LeetCode Link**: https://leetcode.com/problems/symmetric-tree/
 - **Category**: Tree, DFS
-- **Companies**: Amazon, Google, Microsoft
+- **Companies**: Various companies
 - **Key Concepts**: Mirror comparison, recursive approach
 
 #### 4. Binary Tree Level Order Traversal
@@ -35,7 +35,7 @@
 - **Difficulty**: Medium
 - **LeetCode Link**: https://leetcode.com/problems/binary-tree-level-order-traversal/
 - **Category**: Tree, BFS
-- **Companies**: Amazon, Google, Microsoft, Facebook
+- **Companies**: Various companies
 - **Key Concepts**: Level-order traversal, queue
 
 #### 5. Convert Sorted Array to Binary Search Tree
@@ -43,7 +43,7 @@
 - **Difficulty**: Easy
 - **LeetCode Link**: https://leetcode.com/problems/convert-sorted-array-to-binary-search-tree/
 - **Category**: Tree, DFS
-- **Companies**: Amazon, Google, Microsoft
+- **Companies**: Various companies
 - **Key Concepts**: Balanced BST construction, divide and conquer
 
 ### Medium Level / Mức độ trung bình
@@ -53,7 +53,7 @@
 - **Difficulty**: Easy
 - **LeetCode Link**: https://leetcode.com/problems/binary-tree-inorder-traversal/
 - **Category**: Tree, DFS
-- **Companies**: Amazon, Google, Microsoft, Facebook
+- **Companies**: Various companies
 - **Key Concepts**: Inorder traversal, iterative approach
 
 #### 7. Binary Tree Zigzag Level Order Traversal
@@ -61,7 +61,7 @@
 - **Difficulty**: Medium
 - **LeetCode Link**: https://leetcode.com/problems/binary-tree-zigzag-level-order-traversal/
 - **Category**: Tree, BFS
-- **Companies**: Amazon, Google, Microsoft
+- **Companies**: Various companies
 - **Key Concepts**: Level-order with direction change
 
 #### 8. Construct Binary Tree from Preorder and Inorder Traversal
@@ -69,7 +69,7 @@
 - **Difficulty**: Medium
 - **LeetCode Link**: https://leetcode.com/problems/construct-binary-tree-from-preorder-and-inorder-traversal/
 - **Category**: Tree, DFS
-- **Companies**: Amazon, Google, Microsoft, Facebook
+- **Companies**: Various companies
 - **Key Concepts**: Tree reconstruction, hash map
 
 #### 9. Populating Next Right Pointers in Each Node
@@ -77,7 +77,7 @@
 - **Difficulty**: Medium
 - **LeetCode Link**: https://leetcode.com/problems/populating-next-right-pointers-in-each-node/
 - **Category**: Tree, BFS
-- **Companies**: Amazon, Google, Microsoft, Facebook
+- **Companies**: Various companies
 - **Key Concepts**: Level-order traversal, pointer manipulation
 
 #### 10. Kth Smallest Element in a BST
@@ -85,7 +85,7 @@
 - **Difficulty**: Medium
 - **LeetCode Link**: https://leetcode.com/problems/kth-smallest-element-in-a-bst/
 - **Category**: Tree, DFS
-- **Companies**: Amazon, Google, Microsoft
+- **Companies**: Various companies
 - **Key Concepts**: Inorder traversal, kth element
 
 #### 11. Inorder Successor in BST
@@ -93,7 +93,7 @@
 - **Difficulty**: Medium
 - **LeetCode Link**: https://leetcode.com/problems/inorder-successor-in-bst/
 - **Category**: Tree, DFS
-- **Companies**: Amazon, Google, Microsoft
+- **Companies**: Various companies
 - **Key Concepts**: BST properties, successor finding
 
 #### 12. Number of Islands
@@ -101,7 +101,7 @@
 - **Difficulty**: Medium
 - **LeetCode Link**: https://leetcode.com/problems/number-of-islands/
 - **Category**: Graph, DFS/BFS
-- **Companies**: Amazon, Google, Microsoft, Facebook
+- **Companies**: Various companies
 - **Key Concepts**: Connected components, flood fill
 
 ## 🎯 Study Tips / Mẹo học tập

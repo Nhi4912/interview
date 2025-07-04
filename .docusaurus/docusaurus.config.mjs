@@ -5,12 +5,12 @@
  */
 export default {
   "title": "Frontend Interview Preparation Guide",
-  "tagline": "Complete guide for Big Tech frontend interviews",
+  "tagline": "Complete guide for frontend developer interviews",
   "favicon": "img/favicon.ico",
   "url": "https://nhi4912.github.io",
-  "baseUrl": "/",
-  "organizationName": "nhi4912",
-  "projectName": "nhi4912.github.io",
+  "baseUrl": "/interview/",
+  "organizationName": "Nhi4912",
+  "projectName": "interview",
   "deploymentBranch": "gh-pages",
   "trailingSlash": false,
   "onBrokenLinks": "warn",
@@ -29,11 +29,11 @@ export default {
       {
         "docs": {
           "sidebarPath": "/Users/nee/Documents/interview/sidebars.js",
-          "editUrl": "https://github.com/nhi4912/nhi4912.github.io/tree/main/"
+          "editUrl": "https://github.com/Nhi4912/interview/tree/main/"
         },
         "blog": {
           "showReadingTime": true,
-          "editUrl": "https://github.com/nhi4912/nhi4912.github.io/tree/main/"
+          "editUrl": "https://github.com/Nhi4912/interview/tree/main/"
         },
         "theme": {
           "customCss": "/Users/nee/Documents/interview/src/css/custom.css"
@@ -80,7 +80,7 @@ export default {
           "label": "Theory"
         },
         {
-          "href": "https://github.com/nhi4912/nhi4912.github.io",
+          "href": "https://github.com/Nhi4912/interview",
           "label": "GitHub",
           "position": "right"
         }
@@ -108,7 +108,7 @@ export default {
           "items": [
             {
               "label": "GitHub",
-              "href": "https://github.com/nhi4912/nhi4912.github.io"
+              "href": "https://github.com/Nhi4912/interview"
             }
           ]
         }

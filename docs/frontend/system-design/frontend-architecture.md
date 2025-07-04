@@ -1,6 +1,6 @@
-# Frontend Architecture for Big Tech Interviews
+# Frontend Architecture for companies Interviews
 
-**Kiến trúc Frontend cho phỏng vấn Big Tech**
+**Kiến trúc Frontend cho phỏng vấn companies**
 
 ## 1. Application Types
 

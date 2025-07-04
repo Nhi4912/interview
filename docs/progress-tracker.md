@@ -1,6 +1,6 @@
 # 📊 Interview Preparation Progress Tracker
 
-**Theo dõi tiến độ luyện thi phỏng vấn Big Tech**
+**Theo dõi tiến độ luyện thi phỏng vấn companies**
 
 ## 🎯 Overall Progress / Tiến độ tổng thể
 

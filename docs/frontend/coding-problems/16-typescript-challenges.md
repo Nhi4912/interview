@@ -867,4 +867,4 @@ const formHTML = form.generateHTML();
 document.getElementById('form-container')!.innerHTML = formHTML;
 ```
 
-These TypeScript challenges demonstrate advanced type system usage, generic programming, and real-world application patterns that are commonly tested in senior frontend interviews at Big Tech companies.
+These TypeScript challenges demonstrate advanced type system usage, generic programming, and real-world application patterns that are commonly tested in senior frontend interviews at companies companies.

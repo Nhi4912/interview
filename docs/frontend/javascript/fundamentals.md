@@ -978,4 +978,4 @@ console.log(graph.dfsIterative("A")); // ["A", "C", "E", "F", "D", "B"]
 
 ---
 
-_This comprehensive guide covers essential JavaScript concepts, advanced patterns, and practical implementation problems. Practice these concepts thoroughly for frontend interviews at Big Tech companies._
+_This comprehensive guide covers essential JavaScript concepts, advanced patterns, and practical implementation problems. Practice these concepts thoroughly for frontend interviews at companies companies._

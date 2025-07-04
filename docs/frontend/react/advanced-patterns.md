@@ -1079,4 +1079,4 @@ function App() {
 - They don't catch errors in event handlers, async code, or during SSR
 - Use libraries like `react-error-boundary` for hook-based error boundaries
 
-This comprehensive guide covers advanced React patterns and interview questions essential for senior frontend positions at Big Tech companies.
+This comprehensive guide covers advanced React patterns and interview questions essential for senior frontend positions at companies companies.

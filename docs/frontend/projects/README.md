@@ -1903,4 +1903,4 @@ src/
 
 ---
 
-_This guide provides comprehensive project examples and interview scenarios for frontend development, covering real-world applications and advanced techniques commonly asked at Big Tech companies._
+_This guide provides comprehensive project examples and interview scenarios for frontend development, covering real-world applications and advanced techniques commonly asked at companies companies._

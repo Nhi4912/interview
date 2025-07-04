@@ -4,19 +4,19 @@
 /** @type {import('@docusaurus/types').Config} */
 const config = {
   title: "Frontend Interview Preparation Guide",
-  tagline: "Complete guide for Big Tech frontend interviews",
+  tagline: "Complete guide for frontend developer interviews",
   favicon: "img/favicon.ico",
 
   // Set the production url of your site here
   url: "https://nhi4912.github.io",
   // Set the /<baseUrl>/ pathname under which your site is served
   // For GitHub pages deployment, it is often '/<projectName>/'
-  baseUrl: "/",
+  baseUrl: "/interview/",
 
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
-  organizationName: "nhi4912", // Usually your GitHub org/user name.
-  projectName: "nhi4912.github.io", // Usually your repo name.
+  organizationName: "Nhi4912", // Usually your GitHub org/user name.
+  projectName: "interview", // Usually your repo name.
   deploymentBranch: "gh-pages",
   trailingSlash: false,
 
@@ -40,13 +40,13 @@ const config = {
           sidebarPath: require.resolve("./sidebars.js"),
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
-          editUrl: "https://github.com/nhi4912/nhi4912.github.io/tree/main/",
+          editUrl: "https://github.com/Nhi4912/interview/tree/main/",
         },
         blog: {
           showReadingTime: true,
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
-          editUrl: "https://github.com/nhi4912/nhi4912.github.io/tree/main/",
+          editUrl: "https://github.com/Nhi4912/interview/tree/main/",
         },
         theme: {
           customCss: require.resolve("./src/css/custom.css"),
@@ -97,7 +97,7 @@ const config = {
             label: "Theory",
           },
           {
-            href: "https://github.com/nhi4912/nhi4912.github.io",
+            href: "https://github.com/Nhi4912/interview",
             label: "GitHub",
             position: "right",
           },
@@ -124,7 +124,7 @@ const config = {
             items: [
               {
                 label: "GitHub",
-                href: "https://github.com/nhi4912/nhi4912.github.io",
+                href: "https://github.com/Nhi4912/interview",
               },
             ],
           },

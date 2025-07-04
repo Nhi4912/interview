@@ -1,6 +1,6 @@
 # Design Problems - LeetCode Collection
 
-**Bộ sưu tập bài tập Design từ LeetCode cho phỏng vấn Big Tech**
+**Bộ sưu tập bài tập Design từ LeetCode cho phỏng vấn companies**
 
 ## 📋 Problem List / Danh sách bài tập
 
@@ -11,7 +11,7 @@
 - **Difficulty**: Medium
 - **LeetCode Link**: https://leetcode.com/problems/shuffle-an-array/
 - **Category**: Design, Array
-- **Companies**: Google, Amazon, Microsoft
+- **Companies**: Various companies
 - **Key Concepts**: Fisher-Yates shuffle, random number generation
 
 #### 2. Min Stack
@@ -19,7 +19,7 @@
 - **Difficulty**: Easy
 - **LeetCode Link**: https://leetcode.com/problems/min-stack/
 - **Category**: Design, Stack
-- **Companies**: Amazon, Google, Microsoft, Facebook
+- **Companies**: Various companies
 - **Key Concepts**: Auxiliary stack, O(1) operations
 
 ### Medium Level / Mức độ trung bình
@@ -29,7 +29,7 @@
 - **Difficulty**: Medium
 - **LeetCode Link**: https://leetcode.com/problems/flatten-2d-vector/
 - **Category**: Design, Array
-- **Companies**: Google, Amazon, Microsoft
+- **Companies**: Various companies
 - **Key Concepts**: Iterator design, 2D array traversal
 
 #### 4. Serialize and Deserialize Binary Tree
@@ -37,7 +37,7 @@
 - **Difficulty**: Hard
 - **LeetCode Link**: https://leetcode.com/problems/serialize-and-deserialize-binary-tree/
 - **Category**: Design, Tree
-- **Companies**: Amazon, Google, Microsoft, Facebook
+- **Companies**: Various companies
 - **Key Concepts**: Tree serialization, string manipulation
 
 #### 5. Insert Delete GetRandom O(1)
@@ -45,7 +45,7 @@
 - **Difficulty**: Medium
 - **LeetCode Link**: https://leetcode.com/problems/insert-delete-getrandom-o1/
 - **Category**: Design, Hash Table, Array
-- **Companies**: Amazon, Google, Microsoft, Facebook
+- **Companies**: Various companies
 - **Key Concepts**: Hash map + array combination
 
 #### 6. Design Tic-Tac-Toe
@@ -53,7 +53,7 @@
 - **Difficulty**: Medium
 - **LeetCode Link**: https://leetcode.com/problems/design-tic-tac-toe/
 - **Category**: Design, Array
-- **Companies**: Google, Amazon, Microsoft
+- **Companies**: Various companies
 - **Key Concepts**: Win condition checking, efficient design
 
 ## 🎯 Study Tips / Mẹo học tập

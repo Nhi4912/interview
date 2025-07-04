@@ -1188,4 +1188,4 @@ class TranslationLoader {
 
 ---
 
-_This guide covers essential internationalization concepts for frontend interviews, including practical problems and advanced techniques commonly asked at Big Tech companies._
+_This guide covers essential internationalization concepts for frontend interviews, including practical problems and advanced techniques commonly asked at companies companies._

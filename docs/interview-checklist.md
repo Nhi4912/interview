@@ -458,4 +458,4 @@ With this comprehensive checklist, you have a clear roadmap for frontend intervi
 
 ---
 
-_This checklist provides a structured approach to frontend interview preparation, ensuring you cover all essential topics and are well-prepared for Big Tech interviews._
+_This checklist provides a structured approach to frontend interview preparation, ensuring you cover all essential topics and are well-prepared for companies interviews._

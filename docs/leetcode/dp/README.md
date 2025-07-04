@@ -1,6 +1,6 @@
 # Dynamic Programming Problems - LeetCode Collection
 
-**Bộ sưu tập bài tập Dynamic Programming từ LeetCode cho phỏng vấn Big Tech**
+**Bộ sưu tập bài tập Dynamic Programming từ LeetCode cho phỏng vấn companies**
 
 ## 📋 Problem List / Danh sách bài tập
 
@@ -11,7 +11,7 @@
 - **Difficulty**: Easy
 - **LeetCode Link**: https://leetcode.com/problems/climbing-stairs/
 - **Category**: Dynamic Programming
-- **Companies**: Google, Amazon, Microsoft, Facebook
+- **Companies**: Various companies
 - **Key Concepts**: Fibonacci sequence, memoization
 
 #### 2. Best Time to Buy and Sell Stock
@@ -19,7 +19,7 @@
 - **Difficulty**: Easy
 - **LeetCode Link**: https://leetcode.com/problems/best-time-to-buy-and-sell-stock/
 - **Category**: Dynamic Programming, Array
-- **Companies**: Amazon, Google, Microsoft, Facebook
+- **Companies**: Various companies
 - **Key Concepts**: Kadane's algorithm, one pass
 
 #### 3. Maximum Subarray
@@ -27,7 +27,7 @@
 - **Difficulty**: Easy
 - **LeetCode Link**: https://leetcode.com/problems/maximum-subarray/
 - **Category**: Dynamic Programming, Array
-- **Companies**: Amazon, Google, Microsoft, Facebook
+- **Companies**: Various companies
 - **Key Concepts**: Kadane's algorithm, local vs global max
 
 #### 4. House Robber
@@ -35,7 +35,7 @@
 - **Difficulty**: Easy
 - **LeetCode Link**: https://leetcode.com/problems/house-robber/
 - **Category**: Dynamic Programming
-- **Companies**: Amazon, Google, Microsoft, Facebook
+- **Companies**: Various companies
 - **Key Concepts**: State machine, rob vs not rob
 
 ### Medium Level / Mức độ trung bình
@@ -45,7 +45,7 @@
 - **Difficulty**: Medium
 - **LeetCode Link**: https://leetcode.com/problems/jump-game/
 - **Category**: Dynamic Programming, Greedy
-- **Companies**: Amazon, Google, Microsoft, Facebook
+- **Companies**: Various companies
 - **Key Concepts**: Greedy approach, reachable position
 
 #### 6. Unique Paths
@@ -53,7 +53,7 @@
 - **Difficulty**: Medium
 - **LeetCode Link**: https://leetcode.com/problems/unique-paths/
 - **Category**: Dynamic Programming, Math
-- **Companies**: Amazon, Google, Microsoft, Facebook
+- **Companies**: Various companies
 - **Key Concepts**: Grid DP, combination formula
 
 #### 7. Coin Change
@@ -61,7 +61,7 @@
 - **Difficulty**: Medium
 - **LeetCode Link**: https://leetcode.com/problems/coin-change/
 - **Category**: Dynamic Programming
-- **Companies**: Amazon, Google, Microsoft, Facebook
+- **Companies**: Various companies
 - **Key Concepts**: Unbounded knapsack, minimum coins
 
 #### 8. Longest Increasing Subsequence
@@ -69,7 +69,7 @@
 - **Difficulty**: Medium
 - **LeetCode Link**: https://leetcode.com/problems/longest-increasing-subsequence/
 - **Category**: Dynamic Programming, Binary Search
-- **Companies**: Amazon, Google, Microsoft, Facebook
+- **Companies**: Various companies
 - **Key Concepts**: Patience sorting, binary search optimization
 
 ## 🎯 Study Tips / Mẹo học tập

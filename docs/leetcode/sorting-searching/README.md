@@ -1,6 +1,6 @@
 # Sorting & Searching Problems - LeetCode Collection
 
-**Bộ sưu tập bài tập Sorting & Searching từ LeetCode cho phỏng vấn Big Tech**
+**Bộ sưu tập bài tập Sorting & Searching từ LeetCode cho phỏng vấn companies**
 
 ## 📋 Problem List / Danh sách bài tập
 
@@ -11,7 +11,7 @@
 - **Difficulty**: Easy
 - **LeetCode Link**: https://leetcode.com/problems/merge-sorted-array/
 - **Category**: Array, Two Pointers
-- **Companies**: Amazon, Google, Microsoft, Facebook
+- **Companies**: Various companies
 - **Key Concepts**: Merge algorithm, in-place modification
 
 #### 2. First Bad Version
@@ -19,7 +19,7 @@
 - **Difficulty**: Easy
 - **LeetCode Link**: https://leetcode.com/problems/first-bad-version/
 - **Category**: Binary Search
-- **Companies**: Google, Amazon, Microsoft, Facebook
+- **Companies**: Various companies
 - **Key Concepts**: Binary search, version control
 
 ### Medium Level / Mức độ trung bình
@@ -29,7 +29,7 @@
 - **Difficulty**: Medium
 - **LeetCode Link**: https://leetcode.com/problems/sort-colors/
 - **Category**: Array, Two Pointers, Sorting
-- **Companies**: Amazon, Google, Microsoft, Facebook
+- **Companies**: Various companies
 - **Key Concepts**: Dutch national flag algorithm, three-way partitioning
 
 #### 4. Top K Frequent Elements
@@ -37,7 +37,7 @@
 - **Difficulty**: Medium
 - **LeetCode Link**: https://leetcode.com/problems/top-k-frequent-elements/
 - **Category**: Hash Table, Heap, Sorting
-- **Companies**: Amazon, Google, Microsoft, Facebook
+- **Companies**: Various companies
 - **Key Concepts**: Frequency counting, heap operations
 
 #### 5. Kth Largest Element in an Array
@@ -45,7 +45,7 @@
 - **Difficulty**: Medium
 - **LeetCode Link**: https://leetcode.com/problems/kth-largest-element-in-an-array/
 - **Category**: Array, Divide and Conquer, Sorting
-- **Companies**: Amazon, Google, Microsoft, Facebook
+- **Companies**: Various companies
 - **Key Concepts**: Quickselect algorithm, partition
 
 #### 6. Find Peak Element
@@ -53,7 +53,7 @@
 - **Difficulty**: Medium
 - **LeetCode Link**: https://leetcode.com/problems/find-peak-element/
 - **Category**: Array, Binary Search
-- **Companies**: Google, Amazon, Microsoft, Facebook
+- **Companies**: Various companies
 - **Key Concepts**: Binary search, peak finding
 
 #### 7. Search for a Range
@@ -61,7 +61,7 @@
 - **Difficulty**: Medium
 - **LeetCode Link**: https://leetcode.com/problems/search-for-a-range/
 - **Category**: Array, Binary Search
-- **Companies**: Google, Amazon, Microsoft, Facebook
+- **Companies**: Various companies
 - **Key Concepts**: Binary search variations, range finding
 
 #### 8. Merge Intervals
@@ -69,7 +69,7 @@
 - **Difficulty**: Medium
 - **LeetCode Link**: https://leetcode.com/problems/merge-intervals/
 - **Category**: Array, Sorting
-- **Companies**: Amazon, Google, Microsoft, Facebook
+- **Companies**: Various companies
 - **Key Concepts**: Interval merging, sorting
 
 #### 9. Search in Rotated Sorted Array
@@ -77,7 +77,7 @@
 - **Difficulty**: Medium
 - **LeetCode Link**: https://leetcode.com/problems/search-in-rotated-sorted-array/
 - **Category**: Array, Binary Search
-- **Companies**: Amazon, Google, Microsoft, Facebook
+- **Companies**: Various companies
 - **Key Concepts**: Binary search in rotated array
 
 #### 10. Meeting Rooms II
@@ -85,7 +85,7 @@
 - **Difficulty**: Medium
 - **LeetCode Link**: https://leetcode.com/problems/meeting-rooms-ii/
 - **Category**: Heap, Greedy, Sorting
-- **Companies**: Google, Amazon, Microsoft, Facebook
+- **Companies**: Various companies
 - **Key Concepts**: Interval scheduling, heap usage
 
 #### 11. Search a 2D Matrix II
@@ -93,7 +93,7 @@
 - **Difficulty**: Medium
 - **LeetCode Link**: https://leetcode.com/problems/search-a-2d-matrix-ii/
 - **Category**: Array, Binary Search, Divide and Conquer
-- **Companies**: Amazon, Google, Microsoft, Facebook
+- **Companies**: Various companies
 - **Key Concepts**: 2D binary search, matrix traversal
 
 ## 🎯 Study Tips / Mẹo học tập

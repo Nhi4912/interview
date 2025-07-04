@@ -1,6 +1,6 @@
 # Linked List Problems - LeetCode Collection
 
-**Bộ sưu tập bài tập Linked List từ LeetCode cho phỏng vấn Big Tech**
+**Bộ sưu tập bài tập Linked List từ LeetCode cho phỏng vấn companies**
 
 ## 📋 Problem List / Danh sách bài tập
 
@@ -11,7 +11,7 @@
 - **Difficulty**: Easy
 - **LeetCode Link**: https://leetcode.com/problems/delete-node-in-a-linked-list/
 - **Category**: Linked List
-- **Companies**: Google, Amazon, Microsoft
+- **Companies**: Various companies
 - **Key Concepts**: Node deletion without head reference
 
 #### 2. Remove Nth Node From End of List
@@ -19,7 +19,7 @@
 - **Difficulty**: Medium
 - **LeetCode Link**: https://leetcode.com/problems/remove-nth-node-from-end-of-list/
 - **Category**: Linked List, Two Pointers
-- **Companies**: Amazon, Google, Microsoft, Facebook
+- **Companies**: Various companies
 - **Key Concepts**: Two pointers, fast and slow pointer
 
 #### 3. Reverse Linked List
@@ -27,7 +27,7 @@
 - **Difficulty**: Easy
 - **LeetCode Link**: https://leetcode.com/problems/reverse-linked-list/
 - **Category**: Linked List
-- **Companies**: Google, Amazon, Microsoft, Facebook
+- **Companies**: Various companies
 - **Key Concepts**: Iterative and recursive reversal
 
 #### 4. Merge Two Sorted Lists
@@ -35,7 +35,7 @@
 - **Difficulty**: Easy
 - **LeetCode Link**: https://leetcode.com/problems/merge-two-sorted-lists/
 - **Category**: Linked List
-- **Companies**: Amazon, Google, Microsoft, Facebook
+- **Companies**: Various companies
 - **Key Concepts**: Merge algorithm, dummy node
 
 #### 5. Palindrome Linked List
@@ -43,7 +43,7 @@
 - **Difficulty**: Easy
 - **LeetCode Link**: https://leetcode.com/problems/palindrome-linked-list/
 - **Category**: Linked List, Two Pointers
-- **Companies**: Amazon, Google, Microsoft
+- **Companies**: Various companies
 - **Key Concepts**: Reverse half, two pointers
 
 #### 6. Linked List Cycle
@@ -51,7 +51,7 @@
 - **Difficulty**: Easy
 - **LeetCode Link**: https://leetcode.com/problems/linked-list-cycle/
 - **Category**: Linked List, Two Pointers
-- **Companies**: Amazon, Google, Microsoft, Facebook
+- **Companies**: Various companies
 - **Key Concepts**: Floyd's cycle detection algorithm
 
 ### Medium Level / Mức độ trung bình
@@ -61,7 +61,7 @@
 - **Difficulty**: Medium
 - **LeetCode Link**: https://leetcode.com/problems/add-two-numbers/
 - **Category**: Linked List, Math
-- **Companies**: Amazon, Google, Microsoft, Facebook
+- **Companies**: Various companies
 - **Key Concepts**: Digit by digit addition, carry handling
 
 #### 8. Odd Even Linked List
@@ -69,7 +69,7 @@
 - **Difficulty**: Medium
 - **LeetCode Link**: https://leetcode.com/problems/odd-even-linked-list/
 - **Category**: Linked List
-- **Companies**: Amazon, Google, Microsoft
+- **Companies**: Various companies
 - **Key Concepts**: Separating odd and even nodes
 
 #### 9. Intersection of Two Linked Lists
@@ -77,7 +77,7 @@
 - **Difficulty**: Easy
 - **LeetCode Link**: https://leetcode.com/problems/intersection-of-two-linked-lists/
 - **Category**: Linked List, Two Pointers
-- **Companies**: Amazon, Google, Microsoft, Facebook
+- **Companies**: Various companies
 - **Key Concepts**: Finding intersection point
 
 ## 🎯 Study Tips / Mẹo học tập

@@ -1,4 +1,4 @@
-# Frontend Interview Preparation - Big Tech Companies
+# Frontend Interview Preparation - companies Companies
 
 Welcome! This is your hub for all frontend interview topics, practice, and projects. Use the links below to jump to each section, learn, and practice efficiently.
 
