@@ -1040,13 +1040,150 @@ function AccessibleForm() {
 
 ---
 
-# More Resources
-
-- [Deque University: Accessible React](https://dequeuniversity.com/library/react/)
-- [MDN: ARIA Live Regions](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Live_Regions)
-- [WAI-ARIA Authoring Practices](https://www.w3.org/WAI/ARIA/apg/)
-- [WebAIM: Keyboard Accessibility](https://webaim.org/techniques/keyboard/)
+# Deep Dive: JavaScript, React, HTML, and Networking Interview Problems
 
 ---
 
-_This section provides deep dives, diagrams, and practical problems for accessibility and related frontend fundamentals. Use these as reference and practice for Big Tech interviews._
+## JavaScript: Core Interview Problems & Diagrams
+
+### Problem: Debounce vs Throttle
+
+**Question:** Explain debounce and throttle. Implement both in JavaScript. When would you use each?
+
+**Answer:**
+
+- **Debounce:** Ensures a function is only called after a certain period of inactivity. Useful for search input, window resize.
+- **Throttle:** Ensures a function is called at most once every X ms. Useful for scroll, mousemove events.
+
+```js
+// Debounce
+function debounce(fn, delay) {
+  let timer;
+  return function (...args) {
+    clearTimeout(timer);
+    timer = setTimeout(() => fn.apply(this, args), delay);
+  };
+}
+
+// Throttle
+function throttle(fn, limit) {
+  let inThrottle;
+  return function (...args) {
+    if (!inThrottle) {
+      fn.apply(this, args);
+      inThrottle = true;
+      setTimeout(() => (inThrottle = false), limit);
+    }
+  };
+}
+```
+
+**Diagram:**
+
+```mermaid
+gantt
+title Debounce vs Throttle Timeline
+section Debounce
+User Input :a1, 2025-07-05, 1d
+Wait :a2, after a1, 1d
+Function Fires :a3, after a2, 1d
+section Throttle
+User Input :b1, 2025-07-05, 1d
+Function Fires :b2, after b1, 1d
+Wait :b3, after b2, 1d
+Function Fires :b4, after b3, 1d
+```
+
+---
+
+## React: Key Interview Problem
+
+### Problem: Controlled vs Uncontrolled Components
+
+**Question:** What is the difference between controlled and uncontrolled components in React? Give examples.
+
+**Answer:**
+
+- **Controlled:** Form data is handled by React state. Example: `<input value={value} onChange={setValue} />`
+- **Uncontrolled:** Form data is handled by the DOM. Example: `<input ref={inputRef} />`
+
+**Diagram:**
+
+```mermaid
+flowchart TD
+  A[User Input] -->|onChange| B[React State]
+  B -->|value| C[Input Value]
+  D[Uncontrolled: Input Value] --> E[DOM]
+```
+
+---
+
+## HTML: Semantic Structure & Accessibility
+
+### Problem: Accessible Navigation
+
+**Question:** How do you create a navigation bar that is accessible to screen readers and keyboard users?
+
+**Answer:**
+
+- Use `<nav aria-label="Main navigation">`.
+- Use `<ul role="menubar">` and `<li role="none">`.
+- Each link: `role="menuitem"`, `aria-current` for active.
+
+**Example:**
+
+```jsx
+<nav aria-label="Main navigation">
+  <ul role="menubar">
+    <li role="none">
+      <a href="/home" role="menuitem" aria-current="page">
+        Home
+      </a>
+    </li>
+    <li role="none">
+      <a href="/about" role="menuitem">
+        About
+      </a>
+    </li>
+  </ul>
+</nav>
+```
+
+---
+
+## Networking: CORS, Preflight, and Security
+
+### Problem: Explain CORS and Preflight
+
+**Question:** What is CORS? What is a preflight request? How do you handle CORS in frontend apps?
+
+**Answer:**
+
+- **CORS (Cross-Origin Resource Sharing):** A browser security feature that restricts cross-origin HTTP requests.
+- **Preflight:** An OPTIONS request sent before certain requests (e.g., with custom headers or methods) to check if the server allows it.
+- **Handling:** Set appropriate headers on the server (`Access-Control-Allow-Origin`, etc.). On frontend, handle errors and show user-friendly messages.
+
+**Diagram:**
+
+```mermaid
+sequenceDiagram
+  participant Browser
+  participant Server
+  Browser->>Server: OPTIONS /api/data (preflight)
+  Server-->>Browser: 200 OK + CORS headers
+  Browser->>Server: GET /api/data
+  Server-->>Browser: 200 OK + data
+```
+
+---
+
+# More Practice & Resources
+
+- [Frontend Interview Handbook](https://frontendinterviewhandbook.com/)
+- [React Docs: Accessibility](https://react.dev/learn/accessibility)
+- [MDN: JavaScript Event Loop](https://developer.mozilla.org/en-US/docs/Web/JavaScript/EventLoop)
+- [What is CORS? (MDN)](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS)
+
+---
+
+_Use these deep dives, diagrams, and problems to master core frontend interview topics. Practice explaining and drawing diagrams in interviews!_
