@@ -485,6 +485,11 @@ export default [
     ]
   },
   {
+    path: '/interview/',
+    component: ComponentCreator('/interview/', '19b'),
+    exact: true
+  },
+  {
     path: '*',
     component: ComponentCreator('*'),
   },
