@@ -362,3 +362,206 @@ const TodoApp = ({ store }) => {
 6. **Action Creators**: Reusable action functions
 7. **Immutable Updates**: Always return new state objects
 8. **Debugging**: Built-in logging middleware
+
+---
+
+# React Interview Deep Dive: Questions, Diagrams, and Explanations
+
+## 1. What is the Virtual DOM and how does React use it?
+
+**Answer:**
+
+- The Virtual DOM is a lightweight JS representation of the real DOM.
+- React updates the Virtual DOM first, then efficiently updates the real DOM using a diffing algorithm (reconciliation).
+
+**Diagram:**
+
+```mermaid
+flowchart LR
+  A[Component State Change] --> B[Virtual DOM Update]
+  B --> C[Diffing Algorithm]
+  C --> D[Minimal Real DOM Updates]
+```
+
+---
+
+## 2. Explain React's Reconciliation Process
+
+**Answer:**
+
+- When state/props change, React creates a new Virtual DOM tree.
+- It compares (diffs) the new tree with the previous one.
+- Only the changed nodes are updated in the real DOM.
+
+**Diagram:**
+
+```mermaid
+sequenceDiagram
+  participant User
+  participant React
+  participant DOM
+  User->>React: setState()
+  React->>React: Create new Virtual DOM
+  React->>React: Diff with old Virtual DOM
+  React->>DOM: Update only changed nodes
+```
+
+---
+
+## 3. What are React Hooks? Name and explain the most common ones.
+
+**Answer:**
+
+- Hooks let you use state and lifecycle features in function components.
+- Common hooks:
+  - `useState`: Local state
+  - `useEffect`: Side effects (data fetching, subscriptions)
+  - `useContext`: Access context
+  - `useReducer`: Complex state logic
+  - `useRef`: Mutable refs, DOM access
+  - `useMemo`/`useCallback`: Memoization
+
+---
+
+## 4. How does Context API work? When should you use it?
+
+**Answer:**
+
+- Context provides a way to pass data through the component tree without props drilling.
+- Use for global data (theme, user, locale) but avoid for high-frequency updates (use state management instead).
+
+**Diagram:**
+
+```mermaid
+flowchart TD
+  A[Provider] --> B[Child 1]
+  A --> C[Child 2]
+  C --> D[Grandchild]
+```
+
+---
+
+## 5. What is a Higher-Order Component (HOC)?
+
+**Answer:**
+
+- A function that takes a component and returns a new component with enhanced behavior.
+- Used for code reuse (e.g., authentication, logging, theming).
+
+**Example:**
+
+```js
+function withLogger(WrappedComponent) {
+  return function (props) {
+    useEffect(() => {
+      console.log("Mounted");
+    }, []);
+    return <WrappedComponent {...props} />;
+  };
+}
+```
+
+---
+
+## 6. Explain React's key prop and why it's important.
+
+**Answer:**
+
+- The `key` prop helps React identify which items have changed, are added, or are removed in a list.
+- Keys should be unique and stable (not array index).
+
+---
+
+## 7. What is code splitting and how do you implement it in React?
+
+**Answer:**
+
+- Code splitting breaks your app into smaller bundles for faster load times.
+- Use `React.lazy` and `Suspense` for dynamic imports.
+
+**Example:**
+
+```js
+const LazyComponent = React.lazy(() => import("./LazyComponent"));
+```
+
+---
+
+## 8. How do you optimize performance in React apps?
+
+**Answer:**
+
+- Use memoization (`React.memo`, `useMemo`, `useCallback`)
+- Avoid unnecessary re-renders
+- Use virtualization for large lists
+- Code splitting and lazy loading
+- Minimize state in high-frequency components
+
+---
+
+## 9. What is an Error Boundary? How do you use it?
+
+**Answer:**
+
+- A React component that catches JS errors in its child tree and displays a fallback UI.
+- Implement with a class component using `componentDidCatch` and `getDerivedStateFromError`.
+
+---
+
+## 10. How does React handle events? How is it different from the DOM?
+
+**Answer:**
+
+- React uses a synthetic event system for cross-browser compatibility.
+- Events are wrapped and pooled for performance.
+- Event handlers are camelCase (`onClick`), not lowercase (`onclick`).
+
+---
+
+## 11. What is the difference between controlled and uncontrolled components?
+
+**Answer:**
+
+- Controlled: Form data managed by React state.
+- Uncontrolled: Form data managed by the DOM (useRef).
+
+---
+
+## 12. How do you test React components?
+
+**Answer:**
+
+- Use Jest and React Testing Library.
+- Test rendering, user interactions, and output.
+- Mock APIs and context as needed.
+
+---
+
+## 13. How do you handle side effects in React?
+
+**Answer:**
+
+- Use `useEffect` for data fetching, subscriptions, manual DOM changes.
+- Clean up effects to avoid memory leaks.
+
+---
+
+## 14. What is prop drilling and how do you avoid it?
+
+**Answer:**
+
+- Prop drilling: Passing props through many layers.
+- Avoid with Context API or state management libraries.
+
+---
+
+## 15. Explain React's rendering lifecycle (function and class components).
+
+**Answer:**
+
+- Function: Render -> commit -> effects (`useEffect` runs after paint)
+- Class: constructor -> render -> componentDidMount -> updates -> componentWillUnmount
+
+---
+
+_Use these questions, diagrams, and explanations to prepare for all levels of React interviews. Practice drawing diagrams and explaining concepts out loud!_
