@@ -190,7 +190,7 @@
 
 ### Week 1: Foundation
 
-**Date**: ****\_****
+**Date**: \***\*\_\*\***
 **Goals**:
 
 - [ ] Complete 10 Easy LeetCode problems
@@ -205,7 +205,7 @@
 
 ### Week 2: Intermediate
 
-**Date**: ****\_****
+**Date**: \***\*\_\*\***
 **Goals**:
 
 - [ ] Complete 10 Medium LeetCode problems
@@ -220,7 +220,7 @@
 
 ### Week 3: Advanced
 
-**Date**: ****\_****
+**Date**: \***\*\_\*\***
 **Goals**:
 
 - [ ] Complete 10 Hard LeetCode problems
@@ -257,68 +257,26 @@
 
 ## 🎯 Company-Specific Preparation
 
-### Google
-
-- [ ] Algorithm efficiency focus
-- [ ] System design practice
-- [ ] Clean code principles
-- [ ] Behavioral questions
-
-### Amazon
-
-- [ ] Leadership principles
-- [ ] Data structure mastery
-- [ ] Object-oriented design
-- [ ] Customer obsession
-
-### Facebook/Meta
-
-- [ ] Problem solving approach
-- [ ] System design scalability
-- [ ] Cultural fit questions
-- [ ] Innovation focus
-
-### Microsoft
-
-- [ ] Coding quality
-- [ ] Problem solving
-- [ ] System design
-- [ ] Team collaboration
-
-### Axon (Vietnam)
-
-- [ ] Frontend development
-- [ ] React/TypeScript
-- [ ] JavaScript fundamentals
-- [ ] Vietnamese market knowledge
-
-### Grab (Vietnam)
-
-- [ ] Full-stack development
-- [ ] System design
-- [ ] Scalability
-- [ ] Southeast Asia market
-
 ## 📊 Daily Practice Log
 
 ### Template for Daily Log
 
-**Date**: ****\_****
-**Time Spent**: **_ hours
-**Problems Solved**: _**/3
-**Topics Covered**: **_
-**Challenges Faced**: _**
+**Date**: \***\*\_\*\***
+**Time Spent**: **\_ hours
+**Problems Solved**: \_**/3
+**Topics Covered**: **\_
+**Challenges Faced**: \_**
 **Tomorrow's Goals**: \_\_\_
 
 ### Week 1 Daily Logs
 
-- Day 1: ****\_****
-- Day 2: ****\_****
-- Day 3: ****\_****
-- Day 4: ****\_****
-- Day 5: ****\_****
-- Day 6: ****\_****
-- Day 7: ****\_****
+- Day 1: \***\*\_\*\***
+- Day 2: \***\*\_\*\***
+- Day 3: \***\*\_\*\***
+- Day 4: \***\*\_\*\***
+- Day 5: \***\*\_\*\***
+- Day 6: \***\*\_\*\***
+- Day 7: \***\*\_\*\***
 
 ## 🏆 Achievement Badges
 
@@ -383,6 +341,6 @@
 
 ---
 
-**Last Updated**: ****\_****
-**Total Study Time**: **_ hours
-**Overall Progress**: _**%
+**Last Updated**: \***\*\_\*\***
+**Total Study Time**: **\_ hours
+**Overall Progress**: \_**%

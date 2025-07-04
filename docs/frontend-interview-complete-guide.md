@@ -238,37 +238,7 @@ This comprehensive guide covers all essential topics for frontend engineering in
 - **Innovation**: Has implemented creative solutions to problems
 - **Impact**: Has delivered measurable results in previous roles
 
-## 🎯 companies Interview Specifics
-
-### Google
-
-- **Focus**: Algorithm problems, system design, Googleyness
-- **Preparation**: Practice coding problems, behavioral questions
-- **Process**: Phone screen → Onsite (4-5 interviews)
-
-### Meta
-
-- **Focus**: React, JavaScript, system design, behavioral
-- **Preparation**: React deep dive, performance optimization
-- **Process**: Phone screen → Onsite (4-5 interviews)
-
-### Amazon
-
-- **Focus**: Leadership principles, system design, coding
-- **Preparation**: STAR method, Amazon leadership principles
-- **Process**: Phone screen → Onsite (4-5 interviews)
-
-### Microsoft
-
-- **Focus**: Problem solving, system design, cultural fit
-- **Preparation**: Algorithm problems, Microsoft technologies
-- **Process**: Phone screen → Onsite (4-5 interviews)
-
-### Apple
-
-- **Focus**: Technical depth, attention to detail, user experience
-- **Preparation**: iOS/web development, design thinking
-- **Process**: Phone screen → Onsite (4-5 interviews)
+## 🎯 Interview Specifics
 
 ## 📚 Additional Resources
 
