@@ -1,4 +1,6 @@
-# 🚀 Complete Frontend Interview Preparation for Big Tech
+# Frontend Interview Preparation Guide
+
+This repository contains a comprehensive frontend interview preparation guide for frontend roles. The guide covers everything from fundamentals to advanced topics with practical examples, interview questions, and real-world problems.
 
 ## 🏁 Quick Start for Mid-level Frontend Developers
 
@@ -62,7 +64,7 @@ See [DEPLOYMENT.md](DEPLOYMENT.md) for complete setup and deployment instruction
 
 ## 📋 Overview
 
-This repository contains a comprehensive frontend interview preparation guide designed specifically for Big Tech companies (Google, Meta, Amazon, Microsoft, Apple, Netflix, etc.). The guide covers everything from fundamentals to advanced topics with practical examples, interview questions, and real-world problems.
+This repository contains a comprehensive frontend interview preparation guide for frontend roles. The guide covers everything from fundamentals to advanced topics with practical examples, interview questions, and real-world problems.
 
 ## 🎯 What's Included
 
@@ -165,7 +167,6 @@ This repository contains a comprehensive frontend interview preparation guide de
 
 - **Interview Checklist** (`interview-checklist.md`)
   - 6-week preparation roadmap
-  - Company-specific preparation guides
   - Technical skills assessment
   - Success metrics and indicators
 
@@ -397,15 +398,15 @@ This guide has helped developers land positions at:
 
 ## 🚀 Ready to Succeed!
 
-With this comprehensive guide, you have everything you need to prepare for frontend engineering interviews at Big Tech companies. The structured approach, practical examples, and real-world problems will help you build the skills and confidence needed to succeed.
+With this comprehensive guide, you have everything you need to prepare for frontend engineering interviews. The structured approach, practical examples, and real-world problems will help you build the skills and confidence needed to succeed.
 
-**Remember**: Success in Big Tech interviews is not just about technical skills—it's about demonstrating your ability to solve complex problems, work effectively in teams, and create impactful solutions.
+**Remember**: Success in frontend interviews is not just about technical skills—it's about demonstrating your ability to solve complex problems, work effectively in teams, and create impactful solutions.
 
 **Good luck with your interviews! You've got this! 🎉**
 
 ---
 
-_This guide represents the most comprehensive frontend interview preparation resource available, covering all essential topics, advanced concepts, and practical strategies for Big Tech success._
+_This guide represents the most comprehensive frontend interview preparation resource available, covering all essential topics, advanced concepts, and practical strategies for frontend success._
 
 ## 🆕 New & Essential Practice Problems
 

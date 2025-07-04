@@ -1,8 +1,23 @@
+# Frontend Interview Preparation Guide
+
+## 🏁 Quick Start for Mid-level Frontend Developers
+
+**Target:** 2–5 years experience, aiming for senior or advanced frontend roles
+
+**How to use this guide:**
+
+- Follow the 6-week roadmap for a structured approach
+- Focus on advanced JavaScript, React, system design, and performance
+- Practice LeetCode problems daily (Array, String, Tree, Graph, DP)
+- Build and review 2–3 real-world projects
+- Prepare for behavioral and system design interviews
+- Use the checklists to track your progress
+
 # Complete Frontend Interview Preparation Guide
 
 ## 🎯 Overview
 
-This comprehensive guide covers all essential topics for frontend engineering interviews at various companies. The guide is structured to help you progress from fundamentals to advanced concepts with practical examples, interview questions, and real-world problems.
+This comprehensive guide covers all essential topics for frontend engineering interviews. The guide is structured to help you progress from fundamentals to advanced concepts with practical examples, interview questions, and real-world problems.
 
 ## 📚 Complete Topic Structure
 
