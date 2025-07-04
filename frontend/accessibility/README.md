@@ -775,335 +775,278 @@ class AccessibleDataTable {
 }
 ```
 
-## Practical Problems & Solutions
+---
 
-### Problem 1: Implement Accessible Form Validation
+# Deep Dive: Accessibility in React, JS, HTML, and Networking
 
-**Challenge**: Create accessible form validation with proper error announcements and focus management.
+## React Accessibility Fundamentals
 
-```javascript
-class AccessibleFormValidator {
-  constructor(form) {
-    this.form = form;
-    this.errors = new Map();
-    this.liveRegion = null;
+- **Accessible Components**: Use semantic elements (`<button>`, `<nav>`, `<form>`) and ARIA roles only when necessary.
+- **Focus Management**: Use `useRef` and `useEffect` to manage focus for modals, dialogs, and dynamic content.
+- **Keyboard Navigation**: Ensure all interactive elements are keyboard accessible (tab, arrow keys, Enter, Space).
+- **Error Announcements**: Use ARIA live regions for form validation and dynamic updates.
 
-    this.setupForm();
-  }
+**Example: Accessible Modal in React**
 
-  setupForm() {
-    // Create live region for announcements
-    this.createLiveRegion();
+```jsx
+import { useRef, useEffect } from "react";
 
-    // Add form validation
-    this.form.addEventListener("submit", this.handleSubmit.bind(this));
+function AccessibleModal({ isOpen, onClose, children }) {
+  const modalRef = useRef();
 
-    // Add real-time validation
-    const inputs = this.form.querySelectorAll("input, select, textarea");
-    inputs.forEach((input) => {
-      input.addEventListener("blur", this.validateField.bind(this, input));
-      input.addEventListener("input", this.clearFieldError.bind(this, input));
-    });
-  }
-
-  createLiveRegion() {
-    this.liveRegion = document.createElement("div");
-    this.liveRegion.setAttribute("aria-live", "polite");
-    this.liveRegion.setAttribute("aria-atomic", "true");
-    this.liveRegion.className = "sr-only";
-    document.body.appendChild(this.liveRegion);
-  }
-
-  validateField(field) {
-    const fieldName = field.name || field.id;
-    const value = field.value.trim();
-    const errors = [];
-
-    // Required field validation
-    if (field.hasAttribute("required") && !value) {
-      errors.push(`${this.getFieldLabel(field)} is required`);
+  useEffect(() => {
+    if (isOpen) {
+      modalRef.current.focus();
     }
+  }, [isOpen]);
 
-    // Email validation
-    if (field.type === "email" && value) {
-      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-      if (!emailRegex.test(value)) {
-        errors.push("Please enter a valid email address");
-      }
-    }
+  return (
+    <div
+      ref={modalRef}
+      role="dialog"
+      aria-modal="true"
+      tabIndex="-1"
+      style={{ display: isOpen ? "block" : "none" }}
+    >
+      <button onClick={onClose} aria-label="Close modal">
+        &times;
+      </button>
+      {children}
+    </div>
+  );
+}
+```
 
-    // Password validation
-    if (field.type === "password" && value) {
-      if (value.length < 8) {
-        errors.push("Password must be at least 8 characters long");
-      }
-      if (!/[A-Z]/.test(value)) {
-        errors.push("Password must contain at least one uppercase letter");
-      }
-      if (!/[a-z]/.test(value)) {
-        errors.push("Password must contain at least one lowercase letter");
-      }
-      if (!/\d/.test(value)) {
-        errors.push("Password must contain at least one number");
-      }
-    }
+---
 
-    // Custom validation
-    const customValidation = field.dataset.validation;
-    if (customValidation) {
-      const validationResult = this.runCustomValidation(
-        value,
-        customValidation
-      );
-      if (validationResult) {
-        errors.push(validationResult);
-      }
-    }
+## JavaScript Accessibility Patterns
 
-    // Update field error state
-    this.updateFieldError(field, errors);
+- **Event Delegation**: Use event delegation for dynamic lists and menus to ensure keyboard and screen reader support.
+- **ARIA Attributes**: Dynamically update ARIA attributes for stateful components (e.g., `aria-expanded`, `aria-selected`).
+- **Live Regions**: Use ARIA live regions for notifications and status updates.
 
-    return errors.length === 0;
+**Example: Announcing Dynamic Updates**
+
+```js
+function announce(message) {
+  let liveRegion = document.getElementById("live-region");
+  if (!liveRegion) {
+    liveRegion = document.createElement("div");
+    liveRegion.id = "live-region";
+    liveRegion.setAttribute("aria-live", "polite");
+    liveRegion.className = "sr-only";
+    document.body.appendChild(liveRegion);
   }
+  liveRegion.textContent = message;
+}
+```
 
-  updateFieldError(field, errors) {
-    const fieldName = field.name || field.id;
+---
 
-    if (errors.length > 0) {
-      // Store errors
-      this.errors.set(fieldName, errors);
+## HTML Accessibility Best Practices
 
-      // Add error attributes
-      field.setAttribute("aria-invalid", "true");
-      field.setAttribute(
-        "aria-describedby",
-        this.createErrorElement(field, errors)
-      );
+- **Landmarks**: Use `<header>`, `<nav>`, `<main>`, `<footer>` for page structure.
+- **Form Labels**: Always associate `<label>` with `<input>` using `for` and `id`.
+- **Table Accessibility**: Use `<th scope="col">` and `<caption>` for data tables.
 
-      // Announce error
-      this.announceError(field, errors);
-    } else {
-      // Clear errors
-      this.errors.delete(fieldName);
-      field.removeAttribute("aria-invalid");
-      this.removeErrorElement(field);
-    }
-  }
+**Diagram: Semantic HTML Structure**
 
-  createErrorElement(field, errors) {
-    // Remove existing error element
-    this.removeErrorElement(field);
+```mermaid
+graph TD;
+  A[<header>] --> B[<nav>];
+  A --> C[<main>];
+  C --> D[<section>];
+  C --> E[<article>];
+  C --> F[<aside>];
+  A --> G[<footer>];
+```
 
-    // Create new error element
-    const errorId = `${field.id || field.name}-error`;
-    const errorElement = document.createElement("div");
-    errorElement.id = errorId;
-    errorElement.className = "field-error";
-    errorElement.setAttribute("role", "alert");
-    errorElement.textContent = errors.join(". ");
+---
 
-    // Insert after field
-    field.parentNode.insertBefore(errorElement, field.nextSibling);
+## Networking & Accessibility
 
-    return errorId;
-  }
+- **Error Handling**: Show accessible error messages for failed network requests.
+- **Loading States**: Use ARIA live regions to announce loading and completion.
+- **Progress Indicators**: Use `role="progressbar"` and update `aria-valuenow`.
 
-  removeErrorElement(field) {
-    const errorElement = field.parentNode.querySelector(".field-error");
-    if (errorElement) {
-      errorElement.remove();
-    }
-  }
+**Example: Accessible Fetch with Error Announcement**
 
-  announceError(field, errors) {
-    const fieldLabel = this.getFieldLabel(field);
-    const errorMessage = errors.join(". ");
-    this.liveRegion.textContent = `${fieldLabel}: ${errorMessage}`;
-  }
-
-  getFieldLabel(field) {
-    // Try to get label from associated label element
-    const label = document.querySelector(`label[for="${field.id}"]`);
-    if (label) {
-      return label.textContent;
-    }
-
-    // Try to get label from aria-label
-    if (field.getAttribute("aria-label")) {
-      return field.getAttribute("aria-label");
-    }
-
-    // Try to get label from placeholder
-    if (field.placeholder) {
-      return field.placeholder;
-    }
-
-    // Fallback to field name
-    return field.name || field.id || "Field";
-  }
-
-  runCustomValidation(value, validationType) {
-    switch (validationType) {
-      case "phone":
-        const phoneRegex = /^[\+]?[1-9][\d]{0,15}$/;
-        if (!phoneRegex.test(value.replace(/\s/g, ""))) {
-          return "Please enter a valid phone number";
-        }
-        break;
-
-      case "zipcode":
-        const zipRegex = /^\d{5}(-\d{4})?$/;
-        if (!zipRegex.test(value)) {
-          return "Please enter a valid ZIP code";
-        }
-        break;
-
-      case "url":
-        try {
-          new URL(value);
-        } catch {
-          return "Please enter a valid URL";
-        }
-        break;
-    }
-
-    return null;
-  }
-
-  clearFieldError(field) {
-    // Clear error on input if field is valid
-    if (this.validateField(field)) {
-      this.updateFieldError(field, []);
-    }
-  }
-
-  handleSubmit(event) {
-    event.preventDefault();
-
-    // Validate all fields
-    const inputs = this.form.querySelectorAll("input, select, textarea");
-    let isValid = true;
-
-    inputs.forEach((input) => {
-      if (!this.validateField(input)) {
-        isValid = false;
-      }
-    });
-
-    if (isValid) {
-      // Submit form
-      this.form.submit();
-    } else {
-      // Focus first error field
-      const firstErrorField = this.form.querySelector('[aria-invalid="true"]');
-      if (firstErrorField) {
-        firstErrorField.focus();
-      }
-
-      // Announce form errors
-      const totalErrors = Array.from(this.errors.values()).flat().length;
-      this.liveRegion.textContent = `Form has ${totalErrors} error${
-        totalErrors !== 1 ? "s" : ""
-      }. Please review and correct.`;
-    }
-  }
-
-  getFormErrors() {
-    return this.errors;
-  }
-
-  clearAllErrors() {
-    this.errors.clear();
-    const inputs = this.form.querySelectorAll("input, select, textarea");
-    inputs.forEach((input) => {
-      input.removeAttribute("aria-invalid");
-      this.removeErrorElement(input);
-    });
+```js
+async function fetchData(url) {
+  try {
+    announce("Loading data...");
+    const response = await fetch(url);
+    if (!response.ok) throw new Error("Network error");
+    announce("Data loaded successfully");
+    return await response.json();
+  } catch (error) {
+    announce("Error loading data: " + error.message);
+    throw error;
   }
 }
 ```
 
-## Accessibility Best Practices
+---
 
-### Semantic HTML Structure
+# Practice Problems & Deep Dive Answers
 
-```html
-<!-- Good semantic structure -->
-<main>
-  <h1>Page Title</h1>
-  <nav aria-label="Main navigation">
-    <ul>
-      <li><a href="/home" aria-current="page">Home</a></li>
-      <li><a href="/about">About</a></li>
-    </ul>
-  </nav>
+## Problem 1: Accessible Custom Dropdown (React)
 
-  <section aria-labelledby="section-heading">
-    <h2 id="section-heading">Section Title</h2>
-    <p>Content here...</p>
-  </section>
-</main>
+**Challenge:** Build a dropdown that is fully accessible (keyboard, ARIA, focus management).
 
-<!-- Accessible form -->
-<form>
-  <fieldset>
-    <legend>Personal Information</legend>
-    <label for="name">Name:</label>
-    <input id="name" type="text" required aria-describedby="name-help" />
-    <div id="name-help">Enter your full name</div>
-  </fieldset>
-</form>
+**Solution Outline:**
+
+- Use `role="button"` for the trigger, `aria-haspopup`, `aria-expanded`.
+- Use `role="menu"` and `role="menuitem"` for the dropdown and items.
+- Manage focus with refs and keyboard events.
+
+**Sample Implementation:**
+
+```jsx
+function AccessibleDropdown({ options, onSelect }) {
+  const [open, setOpen] = useState(false);
+  const [focused, setFocused] = useState(0);
+  const triggerRef = useRef();
+  const menuRef = useRef();
+
+  useEffect(() => {
+    if (open && menuRef.current) {
+      menuRef.current.children[focused]?.focus();
+    }
+  }, [open, focused]);
+
+  return (
+    <div>
+      <button
+        ref={triggerRef}
+        aria-haspopup="true"
+        aria-expanded={open}
+        onClick={() => setOpen((v) => !v)}
+        onKeyDown={(e) => {
+          if (e.key === "ArrowDown") {
+            setOpen(true);
+            setFocused(0);
+          }
+        }}
+      >
+        Select option
+      </button>
+      {open && (
+        <ul
+          ref={menuRef}
+          role="menu"
+          tabIndex="-1"
+          style={{ border: "1px solid #ccc", padding: 0 }}
+        >
+          {options.map((opt, i) => (
+            <li
+              key={opt}
+              role="menuitem"
+              tabIndex={-1}
+              onClick={() => {
+                onSelect(opt);
+                setOpen(false);
+              }}
+              onKeyDown={(e) => {
+                if (e.key === "ArrowDown")
+                  setFocused((f) => (f + 1) % options.length);
+                if (e.key === "ArrowUp")
+                  setFocused((f) => (f - 1 + options.length) % options.length);
+                if (e.key === "Enter") {
+                  onSelect(opt);
+                  setOpen(false);
+                }
+                if (e.key === "Escape") setOpen(false);
+              }}
+            >
+              {opt}
+            </li>
+          ))}
+        </ul>
+      )}
+    </div>
+  );
+}
 ```
 
-### ARIA Best Practices
+## Problem 2: Accessible Error Handling in Forms
 
-```javascript
-// Proper ARIA usage
-const accessibleComponent = {
-  // Live regions for dynamic content
-  announceChange: (message) => {
-    const liveRegion = document.getElementById("live-region");
-    liveRegion.textContent = message;
-  },
+**Challenge:** Announce errors and focus the first invalid field.
 
-  // Progress indicators
-  updateProgress: (value) => {
-    const progress = document.getElementById("progress");
-    progress.setAttribute("aria-valuenow", value);
-    progress.setAttribute("aria-valuetext", `${value}% complete`);
-  },
+**Solution:**
 
-  // Expandable content
-  setupExpandable: (trigger, content) => {
-    trigger.setAttribute("aria-expanded", "false");
-    trigger.setAttribute("aria-controls", content.id);
-    content.setAttribute("aria-hidden", "true");
-  },
-};
+- Use ARIA live regions for error messages.
+- Use `aria-invalid` and `aria-describedby` on invalid fields.
+- Focus the first invalid field on submit.
+
+**Sample Implementation:**
+
+```jsx
+function AccessibleForm() {
+  const [errors, setErrors] = useState({});
+  const liveRef = useRef();
+
+  function handleSubmit(e) {
+    e.preventDefault();
+    const form = e.target;
+    const username = form.username.value.trim();
+    const password = form.password.value.trim();
+    const newErrors = {};
+    if (!username) newErrors.username = "Username required";
+    if (!password) newErrors.password = "Password required";
+    setErrors(newErrors);
+    if (Object.keys(newErrors).length > 0) {
+      liveRef.current.textContent = Object.values(newErrors).join(". ");
+      const firstError = form.querySelector('[aria-invalid="true"]');
+      if (firstError) firstError.focus();
+    } else {
+      liveRef.current.textContent = "Form submitted successfully!";
+    }
+  }
+
+  return (
+    <form onSubmit={handleSubmit}>
+      <label htmlFor="username">Username:</label>
+      <input
+        id="username"
+        name="username"
+        aria-invalid={!!errors.username}
+        aria-describedby={errors.username ? "username-error" : undefined}
+      />
+      {errors.username && (
+        <div id="username-error" role="alert">
+          {errors.username}
+        </div>
+      )}
+      <label htmlFor="password">Password:</label>
+      <input
+        id="password"
+        name="password"
+        type="password"
+        aria-invalid={!!errors.password}
+        aria-describedby={errors.password ? "password-error" : undefined}
+      />
+      {errors.password && (
+        <div id="password-error" role="alert">
+          {errors.password}
+        </div>
+      )}
+      <button type="submit">Submit</button>
+      <div ref={liveRef} aria-live="polite" className="sr-only" />
+    </form>
+  );
+}
 ```
-
-## Resources
-
-### Documentation
-
-- [WCAG 2.1 Guidelines](https://www.w3.org/WAI/WCAG21/quickref/)
-- [ARIA Authoring Practices](https://www.w3.org/WAI/ARIA/apg/)
-- [Web Accessibility Initiative](https://www.w3.org/WAI/)
-- [MDN Accessibility](https://developer.mozilla.org/en-US/docs/Web/Accessibility)
-
-### Tools
-
-- [axe DevTools](https://www.deque.com/axe/) - Accessibility testing
-- [WAVE](https://wave.webaim.org/) - Web accessibility evaluation
-- [Lighthouse](https://developers.google.com/web/tools/lighthouse) - Accessibility auditing
-- [Color Contrast Analyzer](https://www.tpgi.com/color-contrast-checker/)
-
-### Practice Platforms
-
-- [Web Accessibility Tutorials](https://www.w3.org/WAI/tutorials/)
-- [Accessibility Testing](https://www.w3.org/WAI/ER/tools/)
-- [A11y Project](https://www.a11yproject.com/) - Accessibility resources
 
 ---
 
-_This guide covers essential accessibility concepts for frontend interviews, including practical problems and advanced techniques commonly asked at Big Tech companies._
+# More Resources
+
+- [Deque University: Accessible React](https://dequeuniversity.com/library/react/)
+- [MDN: ARIA Live Regions](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Live_Regions)
+- [WAI-ARIA Authoring Practices](https://www.w3.org/WAI/ARIA/apg/)
+- [WebAIM: Keyboard Accessibility](https://webaim.org/techniques/keyboard/)
+
+---
+
+_This section provides deep dives, diagrams, and practical problems for accessibility and related frontend fundamentals. Use these as reference and practice for Big Tech interviews._

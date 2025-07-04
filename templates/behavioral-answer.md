@@ -18,12 +18,14 @@ Use this template to structure your answers to behavioral questions.
 - What specific steps did you take?
 - Why did you choose those actions?
 - Highlight teamwork, leadership, or problem-solving
+- What obstacles did you face and how did you overcome them?
 
 ## R – Result
 
 - What was the outcome?
 - Quantify impact if possible (metrics, improvements)
 - What did you learn or what would you do differently?
+- How did this experience help you grow or prepare for future challenges?
 
 ---
 
