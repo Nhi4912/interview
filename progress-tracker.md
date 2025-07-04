@@ -1,17 +1,15 @@
 # 📊 Interview Preparation Progress Tracker
 
-**Theo dõi tiến độ luyện thi phỏng vấn Big Tech**
+## 🎯 Overall Progress
 
-## 🎯 Overall Progress / Tiến độ tổng thể
-
-### Target Goals / Mục tiêu
+### Target Goals
 
 - [ ] **LeetCode Problems**: 100 problems solved
 - [ ] **System Design**: 10 designs practiced
 - [ ] **Mock Interviews**: 20 sessions completed
 - [ ] **Behavioral Questions**: 50 questions prepared
 
-### Current Status / Trạng thái hiện tại
+### Current Status
 
 - **LeetCode Problems**: 0/100 (0%)
 - **System Design**: 0/10 (0%)
@@ -190,7 +188,7 @@
 
 ### Week 1: Foundation
 
-**Date**: ****\_****
+**Date**: \***\*\_\*\***
 **Goals**:
 
 - [ ] Complete 10 Easy LeetCode problems
@@ -205,7 +203,7 @@
 
 ### Week 2: Intermediate
 
-**Date**: ****\_****
+**Date**: \***\*\_\*\***
 **Goals**:
 
 - [ ] Complete 10 Medium LeetCode problems
@@ -220,7 +218,7 @@
 
 ### Week 3: Advanced
 
-**Date**: ****\_****
+**Date**: \***\*\_\*\***
 **Goals**:
 
 - [ ] Complete 10 Hard LeetCode problems
@@ -303,22 +301,22 @@
 
 ### Template for Daily Log
 
-**Date**: ****\_****
-**Time Spent**: **_ hours
-**Problems Solved**: _**/3
-**Topics Covered**: **_
-**Challenges Faced**: _**
+**Date**: \***\*\_\*\***
+**Time Spent**: **\_ hours
+**Problems Solved**: \_**/3
+**Topics Covered**: **\_
+**Challenges Faced**: \_**
 **Tomorrow's Goals**: \_\_\_
 
 ### Week 1 Daily Logs
 
-- Day 1: ****\_****
-- Day 2: ****\_****
-- Day 3: ****\_****
-- Day 4: ****\_****
-- Day 5: ****\_****
-- Day 6: ****\_****
-- Day 7: ****\_****
+- Day 1: \***\*\_\*\***
+- Day 2: \***\*\_\*\***
+- Day 3: \***\*\_\*\***
+- Day 4: \***\*\_\*\***
+- Day 5: \***\*\_\*\***
+- Day 6: \***\*\_\*\***
+- Day 7: \***\*\_\*\***
 
 ## 🏆 Achievement Badges
 
@@ -383,6 +381,6 @@
 
 ---
 
-**Last Updated**: ****\_****
-**Total Study Time**: **_ hours
-**Overall Progress**: _**%
+**Last Updated**: \***\*\_\*\***
+**Total Study Time**: **\_ hours
+**Overall Progress**: \_**%

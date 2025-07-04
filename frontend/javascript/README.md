@@ -1,8 +1,6 @@
 # JavaScript Fundamentals for Big Tech Interviews
 
-**Kiến thức cơ bản JavaScript cho phỏng vấn Big Tech**
-
-## 🎯 Overview / Tổng quan
+## 🎯 Overview
 
 JavaScript is the foundation of modern frontend development. Big Tech companies expect deep understanding of JavaScript fundamentals, including ES6+ features, asynchronous programming, and advanced concepts.
 

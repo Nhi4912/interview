@@ -1,8 +1,8 @@
-# Complete Frontend Interview Preparation Guide for Big Tech
+# Complete Frontend Interview Preparation Guide
 
 ## 🎯 Overview
 
-This comprehensive guide covers all essential topics for frontend engineering interviews at Big Tech companies (Google, Meta, Amazon, Microsoft, Apple, Netflix, etc.). The guide is structured to help you progress from fundamentals to advanced concepts with practical examples, interview questions, and real-world problems.
+This comprehensive guide covers all essential topics for frontend engineering interviews. The guide is structured to help you progress from fundamentals to advanced concepts with practical examples, interview questions, and real-world problems.
 
 ## 📚 Complete Topic Structure
 

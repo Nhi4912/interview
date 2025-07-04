@@ -51,7 +51,7 @@ sidebar_position: 1
 
 # Frontend Interview Preparation Guide
 
-Welcome to the comprehensive Frontend Interview Preparation Guide designed specifically for Big Tech companies.
+Welcome to the comprehensive Frontend Interview Preparation Guide designed.
 
 ## 🎯 Quick Start
 
