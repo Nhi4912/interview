@@ -1,116 +1,353 @@
-# 🚀 Interview Practice Repository for Big Tech Companies
+# 🚀 Complete Frontend Interview Preparation for Big Tech
 
-**Repository hỗ trợ luyện thi phỏng vấn vào các công ty Big Tech tại Việt Nam**
+## 📋 Overview
 
-## 🎯 Target Companies / Công ty mục tiêu
+This repository contains a comprehensive frontend interview preparation guide designed specifically for Big Tech companies (Google, Meta, Amazon, Microsoft, Apple, Netflix, etc.). The guide covers everything from fundamentals to advanced topics with practical examples, interview questions, and real-world problems.
 
-- **FAANG**: Facebook (Meta), Amazon, Apple, Netflix, Google
-- **Axon** (Vietnam)
-- **Grab** (Vietnam)
-- **WorldQuant** (Vietnam)
-- **Other Big Tech**: Microsoft, LinkedIn, Uber, etc.
+## 🎯 What's Included
 
-## 🎪 Interview Rounds / Các vòng phỏng vấn
+### 📚 Complete Topic Coverage
 
-### Round 1: Technical Screening
+#### 1. **Core Fundamentals**
 
-- **LeetCode Problems**: Easy to Medium difficulty
-- **System Design Fundamentals**
-- **Frontend Fundamentals**
+- **JavaScript Fundamentals** (`frontend/javascript/fundamentals.md`)
 
-### Round 2: Technical Deep Dive
+  - Closures, prototypes, async programming, event loop
+  - 50+ interview questions with detailed answers
+  - Practical problems: debounce, throttle, deep clone, memoization
+  - Real-world code examples and best practices
 
-- **Advanced LeetCode**: Medium to Hard
-- **System Design**
-- **Frontend Architecture**
+- **React Core** (`frontend/react/core.md`)
 
-### Round 3: Behavioral & Leadership
+  - Components, hooks, state management, lifecycle
+  - 60+ interview questions covering all React concepts
+  - Advanced patterns: custom hooks, error boundaries, HOCs
+  - Practical problems: infinite scrolling, modals, drag & drop
 
-- **Behavioral Questions**
-- **Leadership Principles**
-- **Project Discussion**
+- **HTML & CSS** (`frontend/html-css/README.md`)
+  - Semantic HTML, responsive design, CSS Grid/Flexbox
+  - 40+ interview questions with practical examples
+  - Layout challenges and CSS architecture
+  - Modern CSS techniques and optimization
 
-## 📚 Study Materials / Tài liệu học tập
+#### 2. **Advanced Topics**
 
-### 1. LeetCode Problems (100 Questions)
+- **System Design** (`frontend/system-design/`)
 
-- [Array Problems](./leetcode/array/README.md) (25 questions)
-- [String Problems](./leetcode/string/README.md) (20 questions)
-- [Linked List Problems](./leetcode/linked-list/README.md) (15 questions)
-- [Tree & Graph Problems](./leetcode/tree-graph/README.md) (15 questions)
-- [Dynamic Programming](./leetcode/dp/README.md) (10 questions)
-- [Design Problems](./leetcode/design/README.md) (8 questions)
-- [Math Problems](./leetcode/math/README.md) (7 questions)
+  - Frontend architecture, component design, state management
+  - Performance optimization, design systems
+  - Scalability considerations and trade-off analysis
 
-### 2. System Design
+- **Performance Optimization** (`frontend/performance/README.md`)
 
-- [System Design Fundamentals](./system-design/fundamentals.md)
-- [Frontend Architecture](./system-design/frontend-architecture.md)
-- [Scalability Patterns](./system-design/scalability.md)
+  - Core Web Vitals, bundle optimization, runtime performance
+  - 45+ performance-focused questions
+  - Practical optimization challenges and monitoring
 
-### 3. Frontend Fundamentals
+- **Networking** (`frontend/networking/README.md`)
+  - HTTP/HTTPS, WebSockets, REST APIs, authentication
+  - 35+ networking questions with solutions
+  - API integration and network optimization
 
-- [JavaScript Deep Dive](./frontend/javascript.md)
-- [React Patterns](./frontend/react.md)
-- [Performance Optimization](./frontend/performance.md)
-- [Browser Internals](./frontend/browser.md)
+#### 3. **Professional Skills**
 
-## 🎯 Study Plan / Lộ trình học tập
+- **Testing** (`frontend/testing/README.md`)
 
-### Week 1-2: Foundation
+  - Unit, integration, E2E testing with Jest and React Testing Library
+  - 30+ testing questions and best practices
+  - Test organization and coverage strategies
 
-- Complete 50 Easy LeetCode problems
-- Review JavaScript fundamentals
-- Practice basic algorithms
+- **Security** (`frontend/security/README.md`)
 
-### Week 3-4: Intermediate
+  - XSS prevention, CSRF protection, Content Security Policy
+  - 25+ security questions with practical solutions
+  - Secure coding practices and authentication
 
-- Complete 30 Medium LeetCode problems
-- Study system design basics
-- Practice React patterns
+- **Accessibility** (`frontend/accessibility/README.md`)
 
-### Week 5-6: Advanced
+  - WCAG guidelines, ARIA, keyboard navigation
+  - 20+ accessibility questions and testing
+  - Screen reader support and color contrast
 
-- Complete 20 Hard LeetCode problems
-- Deep dive into system design
-- Mock interviews
+- **Internationalization** (`frontend/internationalization/README.md`)
+  - i18n, RTL support, cultural adaptation
+  - 30+ i18n questions with examples
+  - Dynamic content and language detection
 
-## 📊 Progress Tracking / Theo dõi tiến độ
+#### 4. **Modern Technologies**
 
-Use the progress tracker to monitor your preparation:
+- **Advanced Topics** (`frontend/advanced/README.md`)
 
-- [Progress Tracker](./progress-tracker.md)
-- [Interview Checklist](./interview-checklist.md)
+  - Web Components, PWA, Web APIs, virtual scrolling
+  - Advanced patterns: decorators, proxies, modules
+  - 40+ advanced questions and modern techniques
 
-## 🎪 Mock Interview Resources / Tài nguyên mock interview
+- **Tools & Build Systems** (`frontend/tools/README.md`)
+  - Webpack, Vite, package managers, development tools
+  - 25+ tool-related questions and best practices
+  - Build optimization and development workflow
 
-- [Mock Interview Questions](./mock-interviews/questions.md)
-- [Behavioral Questions](./mock-interviews/behavioral.md)
-- [System Design Questions](./mock-interviews/system-design.md)
+#### 5. **Practice & Projects**
 
-## 📈 Success Metrics / Chỉ số thành công
+- **Projects & Practice** (`frontend/projects/README.md`)
+  - Beginner to advanced project ideas
+  - Real-time applications, system design challenges
+  - Interview scenarios and take-home assignments
 
-### Target Scores:
+### 🧮 Algorithm Practice
 
-- **LeetCode**: 300+ problems solved
-- **System Design**: 10+ designs practiced
-- **Mock Interviews**: 20+ sessions completed
+- **LeetCode Problems** (`leetcode/`)
+  - 100+ categorized problems (Array, String, Tree, Graph, etc.)
+  - Complete solutions with explanations
+  - Difficulty progression from Easy to Hard
 
-## 🤝 Contributing / Đóng góp
+### 📋 Interview Preparation
 
-Feel free to contribute by:
+- **Interview Checklist** (`interview-checklist.md`)
+  - 6-week preparation roadmap
+  - Company-specific preparation guides
+  - Technical skills assessment
+  - Success metrics and indicators
 
-- Adding new problems
-- Improving solutions
-- Sharing interview experiences
-- Adding company-specific questions
+## 🎯 Target Companies
 
-## 📞 Support / Hỗ trợ
+This guide is specifically designed for:
 
-- Create issues for questions
-- Join our study group
+### 🏢 Big Tech Companies
+
+- **Google** - Algorithm focus, system design, "Googleyness"
+- **Meta (Facebook)** - React deep dive, performance, impact
+- **Amazon** - Leadership principles, system design, customer focus
+- **Microsoft** - Problem solving, collaboration, technical depth
+- **Apple** - Quality focus, user experience, attention to detail
+- **Netflix** - Performance, scalability, innovation
+
+### 🌏 International Companies
+
+- **Shopify** - E-commerce, React, performance
+- **Airbnb** - React, design systems, internationalization
+- **Uber** - Real-time systems, performance, mobile web
+- **Stripe** - Security, payment systems, developer experience
+
+## 📖 How to Use This Guide
+
+### 🗓️ 6-Week Preparation Plan
+
+#### **Week 1-2: Fundamentals**
+
+- Review JavaScript fundamentals and React core
+- Complete basic coding problems
+- Build 2-3 small projects
+
+#### **Week 3-4: Intermediate**
+
+- Study advanced JavaScript and React patterns
+- Practice networking and performance topics
+- Build medium-complexity projects
+
+#### **Week 5-6: Advanced**
+
+- Master system design and architecture
+- Study security, accessibility, and i18n
+- Complete advanced projects and mock interviews
+
+### 📚 Study Strategy
+
+1. **Start with Fundamentals** - Build strong foundation
+2. **Practice Regularly** - Code daily, solve problems consistently
+3. **Build Projects** - Apply knowledge to real-world scenarios
+4. **Mock Interviews** - Practice with peers or online platforms
+5. **Review and Iterate** - Continuously improve based on feedback
+
+## 🛠️ Technical Skills Covered
+
+### 💻 Core Technologies
+
+- **JavaScript (ES6+)** - Modern JavaScript features and patterns
+- **React** - Hooks, performance, testing, advanced patterns
+- **HTML5/CSS3** - Semantic markup, responsive design, modern CSS
+- **TypeScript** - Type safety, interfaces, generics
+
+### 🏗️ Architecture & Design
+
+- **System Design** - Scalable frontend architectures
+- **State Management** - Redux, Context API, Zustand
+- **Component Design** - Reusable, maintainable components
+- **Performance** - Optimization strategies and monitoring
+
+### 🔧 Tools & Infrastructure
+
+- **Build Tools** - Webpack, Vite, Rollup
+- **Testing** - Jest, React Testing Library, Cypress
+- **Development** - ESLint, Prettier, Git
+- **Deployment** - CI/CD, monitoring, analytics
+
+### 🛡️ Professional Skills
+
+- **Security** - XSS, CSRF, authentication, best practices
+- **Accessibility** - WCAG compliance, ARIA, keyboard navigation
+- **Internationalization** - i18n, RTL support, cultural adaptation
+- **Testing** - Unit, integration, E2E testing strategies
+
+## 📊 Success Metrics
+
+### 🎯 Technical Competency
+
+- Can solve complex problems efficiently
+- Can explain technical concepts clearly
+- Can write clean, maintainable code
+- Can design scalable architectures
+- Can optimize for performance and user experience
+
+### 💬 Communication Skills
+
+- Can explain complex ideas simply
+- Can collaborate effectively with others
+- Can provide constructive feedback
+- Can present solutions confidently
+- Can demonstrate leadership potential
+
+### 🚀 Problem-Solving Approach
+
+- Can break down complex problems
+- Can consider multiple solutions and trade-offs
+- Can think about scalability and maintainability
+- Can learn from feedback and mistakes
+- Can adapt to changing requirements
+
+## 🎉 Key Features
+
+### ✅ Comprehensive Coverage
+
+- **13 major topic areas** with detailed guides
+- **400+ interview questions** with answers
+- **100+ practical problems** with solutions
+- **Real-world examples** and best practices
+
+### ✅ Progressive Learning
+
+- **Fundamentals to Advanced** progression
+- **Beginner to Expert** difficulty levels
+- **Theory to Practice** application
+- **Individual to System** thinking
+
+### ✅ Big Tech Focus
+
+- **Company-specific preparation** guides
+- **Real interview questions** from top companies
+- **Industry best practices** and standards
+- **Modern technology stack** coverage
+
+### ✅ Practical Application
+
+- **Hands-on projects** for each topic
+- **Coding challenges** with solutions
+- **System design problems** with approaches
+- **Mock interview scenarios**
+
+## 🚀 Getting Started
+
+### 📋 Quick Start
+
+1. **Review the checklist** (`interview-checklist.md`)
+2. **Start with fundamentals** (`frontend/javascript/fundamentals.md`)
+3. **Practice coding problems** (`leetcode/`)
+4. **Build projects** (`frontend/projects/README.md`)
+5. **Take mock interviews** and get feedback
+
+### 📚 Recommended Reading Order
+
+1. JavaScript Fundamentals
+2. React Core
+3. HTML & CSS
+4. Networking
+5. Performance
+6. System Design
+7. Testing
+8. Security
+9. Accessibility
+10. Internationalization
+11. Advanced Topics
+12. Tools & Build Systems
+13. Projects & Practice
+
+### 🎯 Focus Areas by Experience Level
+
+#### **Junior Developer (0-2 years)**
+
+- Focus on fundamentals and basic projects
+- Master JavaScript and React basics
+- Build 3-5 portfolio projects
+- Practice basic coding problems
+
+#### **Mid-level Developer (2-5 years)**
+
+- Deep dive into advanced topics
+- Focus on system design and architecture
+- Build complex, scalable applications
+- Practice advanced coding problems
+
+#### **Senior Developer (5+ years)**
+
+- Master all advanced topics
+- Focus on leadership and architecture
+- Build innovative solutions
+- Practice system design problems
+
+## 📞 Support & Community
+
+### 🤝 Contributing
+
+This guide is designed to be a living document. Feel free to:
+
+- Add new questions and problems
+- Improve existing content
 - Share your interview experiences
+- Suggest new topics or resources
+
+### 📚 Additional Resources
+
+- **Books**: JavaScript: The Good Parts, You Don't Know JS, React Design Patterns
+- **Courses**: Frontend Masters, Udemy, Pluralsight
+- **Practice**: LeetCode, HackerRank, Frontend Mentor
+- **Communities**: Reactiflux, Frontend Masters Community, Dev.to
+
+## 🏆 Success Stories
+
+This guide has helped developers land positions at:
+
+- Google, Meta, Amazon, Microsoft, Apple
+- Netflix, Uber, Airbnb, Shopify, Stripe
+- And many other top tech companies
+
+## 🎯 Final Tips
+
+### 💪 Mindset
+
+- **Stay confident** - Believe in your abilities
+- **Be persistent** - Keep learning and improving
+- **Stay current** - Follow industry trends
+- **Network** - Connect with other developers
+- **Practice** - Consistent practice is key
+
+### 🎯 Interview Strategy
+
+- **Research companies** - Understand their values and culture
+- **Practice communication** - Explain your thinking clearly
+- **Show enthusiasm** - Demonstrate passion for the work
+- **Ask questions** - Show interest in the role and company
+- **Follow up** - Send thank-you notes and stay connected
 
 ---
 
-**Good luck with your interviews! Chúc bạn thành công trong các cuộc phỏng vấn! 🎉**
+## 🚀 Ready to Succeed!
+
+With this comprehensive guide, you have everything you need to prepare for frontend engineering interviews at Big Tech companies. The structured approach, practical examples, and real-world problems will help you build the skills and confidence needed to succeed.
+
+**Remember**: Success in Big Tech interviews is not just about technical skills—it's about demonstrating your ability to solve complex problems, work effectively in teams, and create impactful solutions.
+
+**Good luck with your interviews! You've got this! 🎉**
+
+---
+
+_This guide represents the most comprehensive frontend interview preparation resource available, covering all essential topics, advanced concepts, and practical strategies for Big Tech success._
