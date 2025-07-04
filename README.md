@@ -4,7 +4,7 @@ This repository contains a comprehensive frontend interview preparation guide fo
 
 ## 🏁 Quick Start for Mid-level Frontend Developers
 
-**Target:** 2-5 years experience, aiming for Big Tech (Google, Meta, Amazon, Microsoft, Apple, Netflix, etc.)
+**Target:** 2-5 years experience.
 
 **How to use this repo:**
 
