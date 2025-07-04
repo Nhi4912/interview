@@ -1,5 +1,29 @@
 # Frontend Interview Preparation Checklist
 
+## 🏁 Progress Tracker
+
+| Section                | Status | Notes |
+| ---------------------- | ------ | ----- |
+| JS Fundamentals        | [ ]    |       |
+| React Core             | [ ]    |       |
+| HTML & CSS             | [ ]    |       |
+| System Design          | [ ]    |       |
+| Performance            | [ ]    |       |
+| Networking             | [ ]    |       |
+| Testing                | [ ]    |       |
+| Security               | [ ]    |       |
+| Accessibility          | [ ]    |       |
+| Internationalization   | [ ]    |       |
+| Advanced Topics        | [ ]    |       |
+| Tools & Build Systems  | [ ]    |       |
+| Projects & Practice    | [ ]    |       |
+| Coding Problems        | [ ]    |       |
+| System Design Practice | [ ]    |       |
+| Behavioral Prep        | [ ]    |       |
+| Mock Interviews        | [ ]    |       |
+
+---
+
 ## 🎯 Pre-Interview Preparation (4-6 weeks)
 
 ### Week 1-2: Fundamentals Review

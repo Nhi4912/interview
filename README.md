@@ -1,5 +1,35 @@
 # 🚀 Complete Frontend Interview Preparation for Big Tech
 
+## 🏁 Quick Start for Mid-level Frontend Developers
+
+**Target:** 2-5 years experience, aiming for Big Tech (Google, Meta, Amazon, Microsoft, Apple, Netflix, etc.)
+
+**How to use this repo:**
+
+- **1. Follow the [Interview Checklist](interview-checklist.md)** for a 6-week plan
+- **2. Study by topic:**
+  - [JavaScript Fundamentals](frontend/javascript/fundamentals.md)
+  - [React Core](frontend/react/core.md)
+  - [HTML & CSS](frontend/html-css/README.md)
+  - [System Design](frontend/system-design/README.md)
+  - [Performance](frontend/performance/README.md)
+  - [Testing](frontend/testing/README.md)
+  - [Security](frontend/security/README.md)
+  - [Accessibility](frontend/accessibility/README.md)
+  - [Internationalization](frontend/internationalization/README.md)
+  - [Advanced Topics](frontend/advanced/README.md)
+  - [Tools & Build Systems](frontend/tools/README.md)
+  - [Projects & Practice](frontend/projects/README.md)
+- **3. Practice coding:**
+  - [LeetCode Problems](leetcode/)
+  - [Frontend Coding Challenges](frontend/coding-problems/)
+- **4. Preview & Practice:**
+  - [System Design Templates](frontend/system-design/)
+  - [Behavioral Interview Guide](interview-checklist.md#behavioral)
+  - [Mock Interview Scenarios](frontend/projects/README.md)
+
+---
+
 ## 📋 Overview
 
 This repository contains a comprehensive frontend interview preparation guide designed specifically for Big Tech companies (Google, Meta, Amazon, Microsoft, Apple, Netflix, etc.). The guide covers everything from fundamentals to advanced topics with practical examples, interview questions, and real-world problems.
@@ -133,31 +163,26 @@ This guide is specifically designed for:
 
 ### 🗓️ 6-Week Preparation Plan
 
-#### **Week 1-2: Fundamentals**
+#### **Sample Weekly Plan for Mid-level**
 
-- Review JavaScript fundamentals and React core
-- Complete basic coding problems
-- Build 2-3 small projects
+- **Mon-Tue:** Study 1-2 topics, take notes
+- **Wed:** Practice 2-3 coding problems
+- **Thu:** Build/extend a project or system design
+- **Fri:** Review, self-quiz, or do a mock interview
+- **Sat-Sun:** Behavioral prep, review weak areas
 
-#### **Week 3-4: Intermediate**
+---
 
-- Study advanced JavaScript and React patterns
-- Practice networking and performance topics
-- Build medium-complexity projects
+## 🧑‍💻 Preview & Practice
 
-#### **Week 5-6: Advanced**
+- [Coding Problem Templates](frontend/coding-problems/)
+- [System Design Practice](frontend/system-design/)
+- [System Design Answer Template](templates/system-design-answer.md)
+- [Behavioral Interview Questions](interview-checklist.md#behavioral)
+- [Behavioral Answer Template (STAR)](templates/behavioral-answer.md)
+- [Project Ideas & Take-home Assignments](frontend/projects/README.md)
 
-- Master system design and architecture
-- Study security, accessibility, and i18n
-- Complete advanced projects and mock interviews
-
-### 📚 Study Strategy
-
-1. **Start with Fundamentals** - Build strong foundation
-2. **Practice Regularly** - Code daily, solve problems consistently
-3. **Build Projects** - Apply knowledge to real-world scenarios
-4. **Mock Interviews** - Practice with peers or online platforms
-5. **Review and Iterate** - Continuously improve based on feedback
+---
 
 ## 🛠️ Technical Skills Covered
 
