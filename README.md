@@ -4,31 +4,29 @@ This repository contains a comprehensive frontend interview preparation guide fo
 
 ## 🏁 Quick Start for Mid-level Frontend Developers
 
-**Target:** 2-5 years experience.
+**Target:** 2-5 years experience looking to excel in frontend interviews.
 
-**How to use this repo:**
+**🎯 Complete Learning Path:**
 
-- **1. Follow the [Interview Checklist](interview-checklist.md)** for a 6-week plan
-- **2. Study by topic:**
-  - [JavaScript Fundamentals](frontend/javascript/fundamentals.md)
-  - [React Core](frontend/react/core.md)
-  - [HTML & CSS](frontend/html-css/README.md)
-  - [System Design](frontend/system-design/README.md)
-  - [Performance](frontend/performance/README.md)
-  - [Testing](frontend/testing/README.md)
-  - [Security](frontend/security/README.md)
-  - [Accessibility](frontend/accessibility/README.md)
-  - [Internationalization](frontend/internationalization/README.md)
-  - [Advanced Topics](frontend/advanced/README.md)
-  - [Tools & Build Systems](frontend/tools/README.md)
-  - [Projects & Practice](frontend/projects/README.md)
-- **3. Practice coding:**
-  - [LeetCode Problems](leetcode/)
-  - [Frontend Coding Challenges](frontend/coding-problems/)
-- **4. Preview & Practice:**
-  - [System Design Templates](frontend/system-design/)
-  - [Behavioral Interview Guide](interview-checklist.md#behavioral)
-  - [Mock Interview Scenarios](frontend/projects/README.md)
+### 1. **Start with the Master Guide** 
+- **[📋 Master Interview Guide](frontend/MASTER_INTERVIEW_GUIDE.md)** - Your complete 6-week study plan
+- **[🗺️ Knowledge Integration Map](frontend/KNOWLEDGE_INTEGRATION_MAP.md)** - See how all concepts connect
+
+### 2. **Study Core Topics with Visual Learning:**
+- **[💻 JavaScript Interview Questions](frontend/javascript/interview-questions.md)** - 120+ questions with visual diagrams
+- **[⚛️ React Interview Questions](frontend/react/interview-questions.md)** - 100+ questions with lifecycle visualizations  
+- **[🎨 CSS Interview Questions](frontend/html-css/css-interview-questions.md)** - 80+ questions with layout diagrams
+- **[🚀 Performance Interview Questions](frontend/performance/performance-interview-questions.md)** - Core Web Vitals & optimization
+- **[🔐 Browser & Security Questions](frontend/browser-fundamentals/browser-interview-questions.md)** - Architecture & security
+
+### 3. **Practice with Real Scenarios:**
+- **[🧮 Coding Problems](frontend/coding-problems/)** - 16 hands-on challenges
+- **[🏗️ System Design](frontend/system-design/)** - Architecture interviews
+- **[📊 LeetCode Problems](leetcode/)** - Algorithm practice
+
+### 4. **Master Interview Skills:**
+- **[🎯 Technical Communication](frontend/interview-strategy/technical-communication.md)** - STAR method & presentation
+- **[🏛️ System Design Framework](frontend/architecture/frontend-system-design-framework.md)** - 6-step approach
 
 ---
 
@@ -68,29 +66,27 @@ This repository contains a comprehensive frontend interview preparation guide fo
 
 ## 🎯 What's Included
 
-### 📚 Complete Topic Coverage
+### 📚 Complete Topic Coverage with Visual Learning
 
-#### 1. **Core Fundamentals**
+#### 1. **Core Fundamentals with Visual Diagrams**
 
-- **JavaScript Fundamentals** (`frontend/javascript/fundamentals.md`)
-
+- **JavaScript Interview Questions** (`frontend/javascript/interview-questions.md`)
+  - 120+ questions with visual memory model diagrams
   - Closures, prototypes, async programming, event loop
-  - 50+ interview questions with detailed answers
-  - Practical problems: debounce, throttle, deep clone, memoization
-  - Real-world code examples and best practices
+  - Progressive difficulty: 🟢 Beginner → 🟡 Intermediate → 🔴 Advanced
+  - Visual explanations for complex concepts
 
-- **React Core** (`frontend/react/core.md`)
+- **React Interview Questions** (`frontend/react/interview-questions.md`)
+  - 100+ questions with component lifecycle visualizations
+  - Hooks, performance, testing, advanced patterns
+  - Visual component trees and state flow diagrams
+  - Real-world implementation examples
 
-  - Components, hooks, state management, lifecycle
-  - 60+ interview questions covering all React concepts
-  - Advanced patterns: custom hooks, error boundaries, HOCs
-  - Practical problems: infinite scrolling, modals, drag & drop
-
-- **HTML & CSS** (`frontend/html-css/README.md`)
-  - Semantic HTML, responsive design, CSS Grid/Flexbox
-  - 40+ interview questions with practical examples
-  - Layout challenges and CSS architecture
-  - Modern CSS techniques and optimization
+- **CSS Interview Questions** (`frontend/html-css/css-interview-questions.md`)
+  - 80+ questions with box model and layout diagrams
+  - Flexbox/Grid visual explanations
+  - Responsive design patterns with ASCII art
+  - Modern CSS architecture and optimization
 
 #### 2. **Advanced Topics**
 
@@ -100,11 +96,11 @@ This repository contains a comprehensive frontend interview preparation guide fo
   - Performance optimization, design systems
   - Scalability considerations and trade-off analysis
 
-- **Performance Optimization** (`frontend/performance/README.md`)
-
-  - Core Web Vitals, bundle optimization, runtime performance
-  - 45+ performance-focused questions
-  - Practical optimization challenges and monitoring
+- **Performance Interview Questions** (`frontend/performance/performance-interview-questions.md`)
+  - Core Web Vitals visualization and optimization strategies
+  - 60+ performance-focused questions with visual metrics
+  - Practical optimization challenges and monitoring techniques
+  - Loading timeline diagrams and performance budgets
 
 - **Networking** (`frontend/networking/README.md`)
   - HTTP/HTTPS, WebSockets, REST APIs, authentication
@@ -119,11 +115,11 @@ This repository contains a comprehensive frontend interview preparation guide fo
   - 30+ testing questions and best practices
   - Test organization and coverage strategies
 
-- **Security** (`frontend/security/README.md`)
-
-  - XSS prevention, CSRF protection, Content Security Policy
-  - 25+ security questions with practical solutions
-  - Secure coding practices and authentication
+- **Browser & Security Questions** (`frontend/browser-fundamentals/browser-interview-questions.md`)
+  - Browser architecture diagrams and security best practices
+  - 70+ security and browser questions with visual explanations
+  - XSS/CSRF prevention with practical examples
+  - Secure authentication and storage mechanisms
 
 - **Accessibility** (`frontend/accessibility/README.md`)
 
@@ -273,12 +269,12 @@ This guide is specifically designed for:
 
 ## 🎉 Key Features
 
-### ✅ Comprehensive Coverage
+### ✅ Comprehensive Coverage with Visual Learning
 
-- **13 major topic areas** with detailed guides
-- **400+ interview questions** with answers
-- **100+ practical problems** with solutions
-- **Real-world examples** and best practices
+- **13 major topic areas** with detailed guides and visual diagrams
+- **500+ interview questions** with answers and ASCII art explanations
+- **100+ practical problems** with solutions and step-by-step guides
+- **Real-world examples** and best practices with visual representations
 
 ### ✅ Progressive Learning
 
@@ -408,16 +404,29 @@ With this comprehensive guide, you have everything you need to prepare for front
 
 _This guide represents the most comprehensive frontend interview preparation resource available, covering all essential topics, advanced concepts, and practical strategies for frontend success._
 
-## 🆕 New & Essential Practice Problems
+## 🆕 New & Essential Study Materials
 
+### 📋 **Master Guides**
+- **[📋 Master Interview Guide](frontend/MASTER_INTERVIEW_GUIDE.md)** - Complete 6-week study plan with progress tracking
+- **[🗺️ Knowledge Integration Map](frontend/KNOWLEDGE_INTEGRATION_MAP.md)** - Visual learning paths and concept connections
+
+### 💻 **Interview Question Collections**
+- **[💻 JavaScript Interview Questions](frontend/javascript/interview-questions.md)** - 120+ questions with visual diagrams
+- **[⚛️ React Interview Questions](frontend/react/interview-questions.md)** - 100+ questions with lifecycle visualizations  
+- **[🎨 CSS Interview Questions](frontend/html-css/css-interview-questions.md)** - 80+ questions with layout diagrams
+- **[🚀 Performance Interview Questions](frontend/performance/performance-interview-questions.md)** - Core Web Vitals & optimization
+- **[🔐 Browser & Security Questions](frontend/browser-fundamentals/browser-interview-questions.md)** - Architecture & security
+
+### 🧮 **Practical Problems**
 - [Autocomplete Component](frontend/coding-problems/06-autocomplete.md)
 - [Infinite Scroll List](frontend/coding-problems/07-infinite-scroll.md)
 - [Accessible Modal Dialog](frontend/coding-problems/08-modal-dialog.md)
 - [File Uploader](frontend/coding-problems/09-file-uploader.md)
 - [Notification System](frontend/coding-problems/10-notification-system.md)
-- [Lazy Loading Images/Components](frontend/performance/01-lazy-loading.md)
-- [Component Unit Testing](frontend/testing/01-component-testing.md)
-- [Preventing XSS and CSRF](frontend/security/01-xss-csrf.md)
-- [API Integration & Error Handling](frontend/networking/01-api-integration.md)
+- [Drag & Drop](frontend/coding-problems/11-drag-and-drop.md)
+- [Dashboard Layout](frontend/coding-problems/12-dashboard-layout.md)
+- [Undo/Redo System](frontend/coding-problems/13-undo-redo.md)
+- [Custom Hook](frontend/coding-problems/14-custom-hook.md)
+- [Error Boundary](frontend/coding-problems/15-error-boundary.md)
 
-_See each file for requirements, solution outlines, and follow-up questions._
+_All materials include visual diagrams, progressive difficulty levels, and GitHub Pages compatibility._
