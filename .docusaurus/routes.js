@@ -3,6 +3,41 @@ import ComponentCreator from '@docusaurus/ComponentCreator';
 
 export default [
   {
+    path: '/interview/__docusaurus/debug',
+    component: ComponentCreator('/interview/__docusaurus/debug', 'afa'),
+    exact: true
+  },
+  {
+    path: '/interview/__docusaurus/debug/config',
+    component: ComponentCreator('/interview/__docusaurus/debug/config', '96d'),
+    exact: true
+  },
+  {
+    path: '/interview/__docusaurus/debug/content',
+    component: ComponentCreator('/interview/__docusaurus/debug/content', 'ad3'),
+    exact: true
+  },
+  {
+    path: '/interview/__docusaurus/debug/globalData',
+    component: ComponentCreator('/interview/__docusaurus/debug/globalData', '5c2'),
+    exact: true
+  },
+  {
+    path: '/interview/__docusaurus/debug/metadata',
+    component: ComponentCreator('/interview/__docusaurus/debug/metadata', 'dd1'),
+    exact: true
+  },
+  {
+    path: '/interview/__docusaurus/debug/registry',
+    component: ComponentCreator('/interview/__docusaurus/debug/registry', '2af'),
+    exact: true
+  },
+  {
+    path: '/interview/__docusaurus/debug/routes',
+    component: ComponentCreator('/interview/__docusaurus/debug/routes', 'f47'),
+    exact: true
+  },
+  {
     path: '/interview/docs',
     component: ComponentCreator('/interview/docs', '357'),
     routes: [

@@ -1,234 +1,231 @@
-# TypeScript for Frontend Interviews
+# TypeScript Interview Preparation Guide
 
-## Table of Contents
-- [TypeScript Fundamentals](#typescript-fundamentals)
-- [Advanced Types](#advanced-types)
-- [React with TypeScript](#react-with-typescript)
-- [Interview Questions](#interview-questions)
-- [Best Practices](#best-practices)
-- [Common Patterns](#common-patterns)
+## 🎯 Overview
 
-## TypeScript Fundamentals
+TypeScript has become essential for modern frontend development. This guide covers advanced TypeScript concepts, patterns, and interview questions specifically designed for mid-level frontend developers.
 
-### Why TypeScript?
-TypeScript is a superset of JavaScript that adds static type definitions. It's essential for modern frontend development and frequently tested in interviews.
+## 📚 Table of Contents
 
-**Key Benefits:**
-- **Static Type Checking**: Catch errors at compile time
-- **Better IDE Support**: Enhanced autocomplete, refactoring, and navigation
-- **Self-Documenting Code**: Types serve as documentation
-- **Easier Refactoring**: Compiler helps identify breaking changes
-- **Better Team Collaboration**: Clear interfaces and contracts
+1. [Core Concepts](#core-concepts)
+2. [Advanced Types](#advanced-types)
+3. [Generic Patterns](#generic-patterns)
+4. [Utility Types](#utility-types)
+5. [Advanced Patterns](#advanced-patterns)
+6. [React + TypeScript](#react--typescript)
+7. [Performance & Best Practices](#performance--best-practices)
+8. [Interview Questions](#interview-questions)
+9. [Practical Examples](#practical-examples)
 
-### Basic Types
+---
+
+## 🔧 Core Concepts
+
+### Type System Fundamentals
+
+TypeScript's type system is structural, not nominal. This means types are compatible if they have the same structure, regardless of their names.
 
 ```typescript
-// Primitive types
-let name: string = "John";
-let age: number = 25;
-let isActive: boolean = true;
-let nothing: null = null;
-let undefined: undefined = undefined;
-
-// Arrays
-let numbers: number[] = [1, 2, 3];
-let strings: Array<string> = ["a", "b", "c"];
-
-// Tuples
-let person: [string, number] = ["John", 25];
-
-// Enums
-enum Color {
-  Red,
-  Green,
-  Blue
-}
-let c: Color = Color.Green;
-
-// Any (use sparingly)
-let anything: any = 42;
-anything = "hello";
-anything = true;
-
-// Unknown (safer than any)
-let userInput: unknown;
-if (typeof userInput === "string") {
-  console.log(userInput.toUpperCase());
+// Structural typing example
+interface Point {
+  x: number;
+  y: number;
 }
 
-// Never (functions that never return)
-function throwError(message: string): never {
-  throw new Error(message);
+interface Vector2D {
+  x: number;
+  y: number;
 }
 
-// Void (no return value)
-function logMessage(message: string): void {
-  console.log(message);
-}
+// These are compatible because they have the same structure
+const point: Point = { x: 1, y: 2 };
+const vector: Vector2D = point; // ✅ Valid
 ```
 
-### Objects and Interfaces
+**Visual Representation:**
 
-```typescript
-// Object types
-let user: { name: string; age: number } = {
-  name: "John",
-  age: 25
-};
-
-// Interface definition
-interface User {
-  readonly id: number;
-  name: string;
-  email: string;
-  age?: number; // Optional property
-}
-
-// Using interfaces
-const createUser = (userData: User): User => {
-  return {
-    id: Math.random(),
-    ...userData
-  };
-};
-
-// Extending interfaces
-interface AdminUser extends User {
-  permissions: string[];
-  isAdmin: boolean;
-}
-
-// Index signatures
-interface StringDictionary {
-  [key: string]: string;
-}
-
-const dictionary: StringDictionary = {
-  hello: "world",
-  foo: "bar"
-};
+```
+TypeScript Type System
+├── Structural Typing
+│   ├── Shape-based compatibility
+│   ├── Duck typing principle
+│   └── No nominal type checking
+├── Static Analysis
+│   ├── Compile-time type checking
+│   ├── IDE support and IntelliSense
+│   └── Refactoring safety
+└── Gradual Adoption
+    ├── JavaScript compatibility
+    ├── Optional type annotations
+    └── Progressive enhancement
 ```
 
-### Functions
+### Type Inference
+
+TypeScript can infer types automatically in many cases:
 
 ```typescript
-// Function types
-type MathOperation = (a: number, b: number) => number;
+// Basic inference
+const message = "Hello World"; // type: string
+const numbers = [1, 2, 3]; // type: number[]
+const user = { name: "John", age: 30 }; // type: { name: string; age: number; }
 
-const add: MathOperation = (a, b) => a + b;
-const multiply: MathOperation = (a, b) => a * b;
-
-// Function overloads
-function process(input: string): string;
-function process(input: number): number;
-function process(input: string | number): string | number {
-  if (typeof input === "string") {
-    return input.toUpperCase();
-  }
-  return input * 2;
+// Function return inference
+function add(a: number, b: number) {
+  return a + b; // return type inferred as number
 }
 
-// Rest parameters
-function sum(...numbers: number[]): number {
-  return numbers.reduce((total, num) => total + num, 0);
-}
-
-// Optional parameters
-function greet(name: string, greeting?: string): string {
-  return `${greeting || "Hello"}, ${name}!`;
-}
-
-// Default parameters
-function createUser(name: string, age: number = 18): User {
-  return { id: Math.random(), name, email: `${name}@example.com`, age };
-}
-```
-
-## Advanced Types
-
-### Union and Intersection Types
-
-```typescript
-// Union types
-type StringOrNumber = string | number;
-type Status = "loading" | "success" | "error";
-
-function processId(id: StringOrNumber): void {
-  if (typeof id === "string") {
-    console.log(id.toUpperCase());
-  } else {
-    console.log(id.toFixed(2));
-  }
-}
-
-// Intersection types
-interface Person {
-  name: string;
-  age: number;
-}
-
-interface Employee {
-  employeeId: number;
-  department: string;
-}
-
-type PersonEmployee = Person & Employee;
-
-const emp: PersonEmployee = {
-  name: "John",
-  age: 30,
-  employeeId: 123,
-  department: "Engineering"
-};
-```
-
-### Generics
-
-```typescript
-// Generic functions
+// Generic inference
 function identity<T>(arg: T): T {
   return arg;
 }
 
-const stringResult = identity<string>("hello");
-const numberResult = identity<number>(42);
+const result = identity("hello"); // T inferred as string
+```
 
-// Generic interfaces
-interface ApiResponse<T> {
-  data: T;
-  status: number;
-  message: string;
-}
+---
 
-interface User {
-  id: number;
+## 🚀 Advanced Types
+
+### Union and Intersection Types
+
+```typescript
+// Union Types - "OR" relationship
+type Status = "loading" | "success" | "error";
+type ID = string | number;
+
+// Intersection Types - "AND" relationship
+interface HasName {
   name: string;
 }
 
-const userResponse: ApiResponse<User> = {
-  data: { id: 1, name: "John" },
-  status: 200,
-  message: "Success"
-};
-
-// Generic classes
-class Repository<T> {
-  private items: T[] = [];
-
-  add(item: T): void {
-    this.items.push(item);
-  }
-
-  findById(id: number): T | undefined {
-    return this.items.find((item: any) => item.id === id);
-  }
-
-  getAll(): T[] {
-    return [...this.items];
-  }
+interface HasAge {
+  age: number;
 }
 
-// Generic constraints
+type Person = HasName & HasAge; // Must have both name AND age
+
+// Practical example
+type ButtonProps = {
+  variant: "primary" | "secondary" | "danger";
+  size: "small" | "medium" | "large";
+} & React.ButtonHTMLAttributes<HTMLButtonElement>;
+```
+
+**Visual Diagram:**
+
+```
+Union Types (|)
+┌─────────────┐    ┌─────────────┐
+│   String    │ OR │   Number    │
+└─────────────┘    └─────────────┘
+       │                   │
+       └─────┬─────────────┘
+             │
+    ┌────────▼────────┐
+    │ String | Number │
+    └─────────────────┘
+
+Intersection Types (&)
+┌─────────────┐    ┌─────────────┐
+│   HasName   │AND │   HasAge    │
+└─────────────┘    └─────────────┘
+       │                   │
+       └─────┬─────────────┘
+             │
+    ┌────────▼────────┐
+    │ HasName & HasAge │
+    └─────────────────┘
+```
+
+### Conditional Types
+
+Conditional types allow you to create types that depend on other types:
+
+```typescript
+// Basic conditional type
+type NonNullable<T> = T extends null | undefined ? never : T;
+
+// Advanced conditional type with inference
+type ReturnType<T> = T extends (...args: any[]) => infer R ? R : any;
+
+// Practical example: Extract props from React component
+type ComponentProps<T> = T extends React.ComponentType<infer P> ? P : never;
+
+// Usage
+interface MyComponentProps {
+  title: string;
+  count: number;
+}
+
+const MyComponent: React.FC<MyComponentProps> = () => null;
+type ExtractedProps = ComponentProps<typeof MyComponent>; // MyComponentProps
+```
+
+**Conditional Type Flow:**
+
+```
+Input Type T
+     │
+     ▼
+┌─────────────┐
+│ T extends U │
+└─────────────┘
+     │
+     ▼
+┌─────────────┐
+│   True?     │
+└─────────────┘
+     │
+     ▼
+┌─────────────┐    ┌─────────────┐
+│   Type A    │ OR │   Type B    │
+└─────────────┘    └─────────────┘
+```
+
+### Mapped Types
+
+Mapped types allow you to create new types by transforming existing ones:
+
+```typescript
+// Basic mapped type
+type Readonly<T> = {
+  readonly [P in keyof T]: T[P];
+};
+
+// Optional properties
+type Partial<T> = {
+  [P in keyof T]?: T[P];
+};
+
+// Required properties
+type Required<T> = {
+  [P in keyof T]-?: T[P];
+};
+
+// Practical example: API response transformation
+interface User {
+  id: number;
+  name: string;
+  email: string;
+}
+
+type CreateUserRequest = Partial<User>; // All fields optional
+type UpdateUserRequest = Partial<User> & { id: number }; // id required, others optional
+```
+
+---
+
+## 🔄 Generic Patterns
+
+### Generic Constraints
+
+```typescript
+// Basic constraint
+function getProperty<T, K extends keyof T>(obj: T, key: K): T[K] {
+  return obj[key];
+}
+
+// Multiple constraints
 interface HasLength {
   length: number;
 }
@@ -238,93 +235,199 @@ function logLength<T extends HasLength>(arg: T): T {
   return arg;
 }
 
-// Conditional types
-type NonNullable<T> = T extends null | undefined ? never : T;
-
-// Mapped types
-type Partial<T> = {
-  [P in keyof T]?: T[P];
-};
-
-type Required<T> = {
-  [P in keyof T]-?: T[P];
-};
-
-type Readonly<T> = {
-  readonly [P in keyof T]: T[P];
-};
+// Advanced constraint with conditional types
+type ArrayElement<T> = T extends (infer U)[] ? U : never;
+type StringArray = string[];
+type StringElement = ArrayElement<StringArray>; // string
 ```
 
-### Utility Types
+### Generic Utility Functions
 
 ```typescript
-// Built-in utility types
+// Generic debounce function
+function debounce<T extends (...args: any[]) => any>(
+  func: T,
+  delay: number
+): (...args: Parameters<T>) => void {
+  let timeoutId: NodeJS.Timeout;
+
+  return (...args: Parameters<T>) => {
+    clearTimeout(timeoutId);
+    timeoutId = setTimeout(() => func(...args), delay);
+  };
+}
+
+// Generic memoization
+function memoize<T extends (...args: any[]) => any>(func: T): T {
+  const cache = new Map();
+
+  return ((...args: Parameters<T>): ReturnType<T> => {
+    const key = JSON.stringify(args);
+    if (cache.has(key)) {
+      return cache.get(key);
+    }
+    const result = func(...args);
+    cache.set(key, result);
+    return result;
+  }) as T;
+}
+```
+
+---
+
+## 🛠️ Utility Types
+
+### Built-in Utility Types
+
+```typescript
+// Partial - makes all properties optional
 interface User {
   id: number;
   name: string;
   email: string;
-  age: number;
 }
 
-// Partial - makes all properties optional
 type PartialUser = Partial<User>;
-
-// Required - makes all properties required
-type RequiredUser = Required<User>;
-
-// Readonly - makes all properties readonly
-type ReadonlyUser = Readonly<User>;
+// Equivalent to: { id?: number; name?: string; email?: string; }
 
 // Pick - selects specific properties
-type UserPreview = Pick<User, "id" | "name">;
+type UserCredentials = Pick<User, "email" | "name">;
 
 // Omit - excludes specific properties
 type UserWithoutId = Omit<User, "id">;
 
-// Record - creates an object type with specific key and value types
-type UserRoles = Record<string, string[]>;
+// Record - creates object type with specific keys and values
+type StatusMap = Record<"loading" | "success" | "error", string>;
 
 // ReturnType - extracts return type of function
-function getUser(): User {
-  return { id: 1, name: "John", email: "john@example.com", age: 25 };
-}
+type FetchResult = ReturnType<typeof fetch>;
 
-type GetUserReturnType = ReturnType<typeof getUser>; // User
-
-// Parameters - extracts parameter types
-function updateUser(id: number, updates: Partial<User>): void {}
-
-type UpdateUserParams = Parameters<typeof updateUser>; // [number, Partial<User>]
+// Parameters - extracts parameter types of function
+type FetchParams = Parameters<typeof fetch>;
 ```
 
-## React with TypeScript
+### Custom Utility Types
+
+```typescript
+// Deep partial
+type DeepPartial<T> = {
+  [P in keyof T]?: T[P] extends object ? DeepPartial<T[P]> : T[P];
+};
+
+// Deep readonly
+type DeepReadonly<T> = {
+  readonly [P in keyof T]: T[P] extends object ? DeepReadonly<T[P]> : T[P];
+};
+
+// Extract function types
+type FunctionPropertyNames<T> = {
+  [K in keyof T]: T[K] extends Function ? K : never;
+}[keyof T];
+
+// Extract promise types
+type UnwrapPromise<T> = T extends Promise<infer U> ? U : T;
+
+// Extract array types
+type UnwrapArray<T> = T extends (infer U)[] ? U : T;
+```
+
+---
+
+## 🎯 Advanced Patterns
+
+### Template Literal Types
+
+```typescript
+// Basic template literal types
+type EventName = "click" | "hover" | "focus";
+type HandlerName = `on${Capitalize<EventName>}`;
+// Result: 'onClick' | 'onHover' | 'onFocus'
+
+// Advanced template literal types
+type CSSUnits = "px" | "em" | "rem" | "%";
+type CSSValue = `${number}${CSSUnits}`;
+// Result: '10px' | '2em' | '1.5rem' | '50%'
+
+// API endpoint types
+type HTTPMethod = "GET" | "POST" | "PUT" | "DELETE";
+type APIEndpoint = `/api/${string}`;
+type APIHandler = `${HTTPMethod} ${APIEndpoint}`;
+```
+
+### Branded Types
+
+```typescript
+// Branded types for type safety
+type UserId = string & { readonly brand: unique symbol };
+type Email = string & { readonly brand: unique symbol };
+
+// Type guards
+function isUserId(value: string): value is UserId {
+  return /^[a-zA-Z0-9]{8,}$/.test(value);
+}
+
+function isEmail(value: string): value is Email {
+  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
+}
+
+// Usage
+function createUser(id: string, email: string) {
+  if (!isUserId(id)) throw new Error("Invalid user ID");
+  if (!isEmail(email)) throw new Error("Invalid email");
+
+  // Now TypeScript knows these are branded types
+  return { id: id as UserId, email: email as Email };
+}
+```
+
+### Discriminated Unions
+
+```typescript
+// Discriminated union pattern
+type RequestState<T> =
+  | { status: "idle" }
+  | { status: "loading" }
+  | { status: "success"; data: T }
+  | { status: "error"; error: string };
+
+// Usage with type guards
+function handleRequest<T>(state: RequestState<T>) {
+  switch (state.status) {
+    case "idle":
+      return "Ready to fetch";
+    case "loading":
+      return "Loading...";
+    case "success":
+      return `Data: ${state.data}`; // TypeScript knows data exists
+    case "error":
+      return `Error: ${state.error}`; // TypeScript knows error exists
+  }
+}
+```
+
+---
+
+## ⚛️ React + TypeScript
 
 ### Component Types
 
 ```typescript
-import React, { useState, useEffect, ReactNode } from 'react';
-
-// Props interface
+// Function component with props
 interface ButtonProps {
-  children: ReactNode;
-  onClick: () => void;
-  variant?: 'primary' | 'secondary';
-  disabled?: boolean;
+  variant: "primary" | "secondary";
+  size: "small" | "medium" | "large";
+  onClick?: () => void;
+  children: React.ReactNode;
 }
 
-// Function component
-const Button: React.FC<ButtonProps> = ({ 
-  children, 
-  onClick, 
-  variant = 'primary', 
-  disabled = false 
+const Button: React.FC<ButtonProps> = ({
+  variant,
+  size,
+  onClick,
+  children,
 }) => {
   return (
-    <button 
-      onClick={onClick} 
-      disabled={disabled}
-      className={`btn btn-${variant}`}
-    >
+    <button className={`btn btn-${variant} btn-${size}`} onClick={onClick}>
       {children}
     </button>
   );
@@ -333,625 +436,616 @@ const Button: React.FC<ButtonProps> = ({
 // Generic component
 interface ListProps<T> {
   items: T[];
-  renderItem: (item: T) => ReactNode;
+  renderItem: (item: T, index: number) => React.ReactNode;
   keyExtractor: (item: T) => string | number;
 }
 
 function List<T>({ items, renderItem, keyExtractor }: ListProps<T>) {
   return (
     <ul>
-      {items.map(item => (
-        <li key={keyExtractor(item)}>
-          {renderItem(item)}
-        </li>
+      {items.map((item, index) => (
+        <li key={keyExtractor(item)}>{renderItem(item, index)}</li>
       ))}
     </ul>
   );
 }
-
-// Using the generic component
-interface User {
-  id: number;
-  name: string;
-}
-
-const UserList: React.FC<{ users: User[] }> = ({ users }) => {
-  return (
-    <List
-      items={users}
-      keyExtractor={user => user.id}
-      renderItem={user => <span>{user.name}</span>}
-    />
-  );
-};
 ```
 
-### Hooks with TypeScript
+### Hook Types
 
 ```typescript
-import { useState, useEffect, useCallback, useMemo, useRef } from 'react';
-
-// useState with explicit types
-const [count, setCount] = useState<number>(0);
-const [user, setUser] = useState<User | null>(null);
-const [loading, setLoading] = useState<boolean>(false);
-
-// useEffect with cleanup
-useEffect(() => {
-  const timer = setTimeout(() => {
-    setCount(prev => prev + 1);
-  }, 1000);
-
-  return () => clearTimeout(timer);
-}, []);
-
-// useCallback with proper typing
-const handleClick = useCallback((id: number) => {
-  console.log('Clicked:', id);
-}, []);
-
-// useMemo with type inference
-const expensiveValue = useMemo(() => {
-  return items.filter(item => item.active).length;
-}, [items]);
-
-// useRef with DOM elements
-const inputRef = useRef<HTMLInputElement>(null);
-
-const focusInput = () => {
-  inputRef.current?.focus();
-};
-
-// Custom hook with TypeScript
-interface UseApiResult<T> {
-  data: T | null;
-  loading: boolean;
-  error: string | null;
-  refetch: () => void;
-}
-
-function useApi<T>(url: string): UseApiResult<T> {
-  const [data, setData] = useState<T | null>(null);
-  const [loading, setLoading] = useState<boolean>(true);
-  const [error, setError] = useState<string | null>(null);
-
-  const fetchData = useCallback(async () => {
+// Custom hook with proper typing
+function useLocalStorage<T>(
+  key: string,
+  initialValue: T
+): [T, (value: T | ((prev: T) => T)) => void] {
+  const [storedValue, setStoredValue] = useState<T>(() => {
     try {
-      setLoading(true);
-      setError(null);
-      const response = await fetch(url);
-      
-      if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
-      }
-      
-      const result = await response.json();
-      setData(result);
-    } catch (err) {
-      setError(err instanceof Error ? err.message : 'An error occurred');
-    } finally {
-      setLoading(false);
+      const item = window.localStorage.getItem(key);
+      return item ? JSON.parse(item) : initialValue;
+    } catch (error) {
+      console.error(error);
+      return initialValue;
     }
-  }, [url]);
-
-  useEffect(() => {
-    fetchData();
-  }, [fetchData]);
-
-  return { data, loading, error, refetch: fetchData };
-}
-
-// Using the custom hook
-interface ApiUser {
-  id: number;
-  name: string;
-  email: string;
-}
-
-const UserComponent: React.FC = () => {
-  const { data: user, loading, error, refetch } = useApi<ApiUser>('/api/user/1');
-
-  if (loading) return <div>Loading...</div>;
-  if (error) return <div>Error: {error}</div>;
-  if (!user) return <div>No user found</div>;
-
-  return (
-    <div>
-      <h1>{user.name}</h1>
-      <p>{user.email}</p>
-      <button onClick={refetch}>Refresh</button>
-    </div>
-  );
-};
-```
-
-### Context with TypeScript
-
-```typescript
-import React, { createContext, useContext, useReducer, ReactNode } from 'react';
-
-// State interface
-interface AppState {
-  user: User | null;
-  theme: 'light' | 'dark';
-  notifications: Notification[];
-}
-
-// Actions
-type AppAction = 
-  | { type: 'SET_USER'; payload: User | null }
-  | { type: 'SET_THEME'; payload: 'light' | 'dark' }
-  | { type: 'ADD_NOTIFICATION'; payload: Notification }
-  | { type: 'REMOVE_NOTIFICATION'; payload: string };
-
-// Context type
-interface AppContextType {
-  state: AppState;
-  dispatch: React.Dispatch<AppAction>;
-}
-
-// Create context
-const AppContext = createContext<AppContextType | undefined>(undefined);
-
-// Reducer
-const appReducer = (state: AppState, action: AppAction): AppState => {
-  switch (action.type) {
-    case 'SET_USER':
-      return { ...state, user: action.payload };
-    case 'SET_THEME':
-      return { ...state, theme: action.payload };
-    case 'ADD_NOTIFICATION':
-      return { 
-        ...state, 
-        notifications: [...state.notifications, action.payload] 
-      };
-    case 'REMOVE_NOTIFICATION':
-      return {
-        ...state,
-        notifications: state.notifications.filter(n => n.id !== action.payload)
-      };
-    default:
-      return state;
-  }
-};
-
-// Provider component
-interface AppProviderProps {
-  children: ReactNode;
-}
-
-export const AppProvider: React.FC<AppProviderProps> = ({ children }) => {
-  const [state, dispatch] = useReducer(appReducer, {
-    user: null,
-    theme: 'light',
-    notifications: []
   });
 
+  const setValue = (value: T | ((prev: T) => T)) => {
+    try {
+      const valueToStore =
+        value instanceof Function ? value(storedValue) : value;
+      setStoredValue(valueToStore);
+      window.localStorage.setItem(key, JSON.stringify(valueToStore));
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  return [storedValue, setValue];
+}
+
+// Usage
+const [user, setUser] = useLocalStorage<User | null>("user", null);
+```
+
+### Event Handlers
+
+```typescript
+// Properly typed event handlers
+interface FormProps {
+  onSubmit: (data: FormData) => void;
+  onChange: (field: string, value: string) => void;
+}
+
+const Form: React.FC<FormProps> = ({ onSubmit, onChange }) => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const formData = new FormData(e.currentTarget);
+    onSubmit(formData);
+  };
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    onChange(e.target.name, e.target.value);
+  };
+
   return (
-    <AppContext.Provider value={{ state, dispatch }}>
-      {children}
-    </AppContext.Provider>
+    <form onSubmit={handleSubmit}>
+      <input name="email" type="email" onChange={handleInputChange} />
+    </form>
   );
 };
-
-// Custom hook
-export const useAppContext = (): AppContextType => {
-  const context = useContext(AppContext);
-  if (!context) {
-    throw new Error('useAppContext must be used within an AppProvider');
-  }
-  return context;
-};
 ```
 
-## Interview Questions
+---
 
-### 1. What is TypeScript and why would you use it?
+## ⚡ Performance & Best Practices
 
-**Answer:**
-TypeScript is a statically typed superset of JavaScript that compiles to plain JavaScript. Key benefits include:
+### Type Performance
 
-- **Static Type Checking**: Catches errors at compile time rather than runtime
-- **Better IDE Support**: Enhanced autocomplete, refactoring, and navigation
-- **Self-Documenting Code**: Types serve as documentation for APIs and functions
-- **Easier Refactoring**: Compiler helps identify breaking changes across codebase
-- **Better Team Collaboration**: Clear interfaces and contracts between team members
-
-### 2. Explain the difference between `interface` and `type` in TypeScript.
-
-**Answer:**
 ```typescript
-// Interface - can be extended and merged
-interface User {
+// Avoid complex conditional types in hot paths
+// ❌ Bad - complex conditional type
+type ComplexType<T> = T extends string
+  ? string
+  : T extends number
+  ? number
+  : T extends boolean
+  ? boolean
+  : never;
+
+// ✅ Good - use union types when possible
+type SimpleType = string | number | boolean;
+
+// Use const assertions for better inference
+const colors = ["red", "green", "blue"] as const;
+type Color = (typeof colors)[number]; // 'red' | 'green' | 'blue'
+```
+
+### Compiler Performance
+
+```typescript
+// Use project references for large codebases
+// tsconfig.json
+{
+  "compilerOptions": {
+    "composite": true,
+    "declaration": true,
+    "declarationMap": true
+  },
+  "references": [
+    { "path": "./packages/shared" },
+    { "path": "./packages/components" }
+  ]
+}
+
+// Use path mapping for better imports
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["src/*"],
+      "@/components/*": ["src/components/*"],
+      "@/utils/*": ["src/utils/*"]
+    }
+  }
+}
+```
+
+---
+
+## ❓ Interview Questions
+
+### Basic Level
+
+**Q1: What is the difference between `interface` and `type`?**
+
+**Answer:**
+
+```typescript
+// Interfaces can be extended and merged
+interface Animal {
   name: string;
+}
+
+interface Animal {
   age: number;
 }
+// Result: Animal has both name and age
 
-interface User {
-  email: string; // Declaration merging
-}
-
-interface AdminUser extends User {
-  permissions: string[];
-}
-
-// Type - more flexible, supports unions, intersections
-type Status = 'loading' | 'success' | 'error';
-type User = {
+// Types cannot be merged
+type Animal = {
   name: string;
+};
+
+type Animal = {
+  // ❌ Error: Duplicate identifier
   age: number;
 };
 
-type AdminUser = User & {
-  permissions: string[];
-};
+// Interfaces can only describe object shapes
+interface User {
+  name: string;
+}
+
+// Types can describe unions, primitives, etc.
+type Status = "loading" | "success" | "error";
+type UserOrNull = User | null;
 ```
 
-**Key Differences:**
-- **Interfaces** can be extended and merged, better for object shapes
-- **Types** are more flexible, support unions, intersections, and primitives
-- **Interfaces** are preferred for public APIs that might be extended
-- **Types** are preferred for complex type compositions
-
-### 3. What are generics and why are they useful?
+**Q2: Explain the `keyof` operator**
 
 **Answer:**
-Generics allow you to write reusable code that works with multiple types while maintaining type safety.
-
-```typescript
-// Without generics - not reusable
-function identityString(arg: string): string {
-  return arg;
-}
-
-function identityNumber(arg: number): number {
-  return arg;
-}
-
-// With generics - reusable and type-safe
-function identity<T>(arg: T): T {
-  return arg;
-}
-
-const stringResult = identity<string>("hello"); // string
-const numberResult = identity<number>(42); // number
-
-// Generic constraints
-interface Lengthwise {
-  length: number;
-}
-
-function logLength<T extends Lengthwise>(arg: T): T {
-  console.log(arg.length); // Now we know it has a length property
-  return arg;
-}
-```
-
-### 4. How do you handle asynchronous operations in TypeScript?
-
-**Answer:**
-```typescript
-// Promise types
-async function fetchUser(id: number): Promise<User> {
-  const response = await fetch(`/api/users/${id}`);
-  
-  if (!response.ok) {
-    throw new Error(`HTTP error! status: ${response.status}`);
-  }
-  
-  return response.json();
-}
-
-// Error handling with custom error types
-class ApiError extends Error {
-  constructor(
-    message: string,
-    public status: number,
-    public code: string
-  ) {
-    super(message);
-    this.name = 'ApiError';
-  }
-}
-
-async function fetchUserWithErrorHandling(id: number): Promise<User> {
-  try {
-    const response = await fetch(`/api/users/${id}`);
-    
-    if (!response.ok) {
-      throw new ApiError(
-        `Failed to fetch user`,
-        response.status,
-        'FETCH_ERROR'
-      );
-    }
-    
-    return response.json();
-  } catch (error) {
-    if (error instanceof ApiError) {
-      console.error('API Error:', error.message, error.status);
-    } else {
-      console.error('Unknown error:', error);
-    }
-    throw error;
-  }
-}
-```
-
-### 5. What are utility types and how do you use them?
-
-**Answer:**
-Utility types are built-in TypeScript types that help transform existing types.
 
 ```typescript
 interface User {
   id: number;
   name: string;
   email: string;
-  age: number;
 }
 
-// Partial - makes all properties optional
-type PartialUser = Partial<User>;
-// { id?: number; name?: string; email?: string; age?: number; }
+type UserKeys = keyof User; // 'id' | 'name' | 'email'
 
-// Pick - selects specific properties
-type UserPreview = Pick<User, 'id' | 'name'>;
-// { id: number; name: string; }
-
-// Omit - excludes specific properties
-type CreateUserRequest = Omit<User, 'id'>;
-// { name: string; email: string; age: number; }
-
-// Record - creates object with specific key/value types
-type UserRoles = Record<string, string[]>;
-// { [key: string]: string[] }
-
-// ReturnType - extracts function return type
-function getUser(): User {
-  return { id: 1, name: 'John', email: 'john@example.com', age: 25 };
+// Practical usage
+function getProperty<T, K extends keyof T>(obj: T, key: K): T[K] {
+  return obj[key];
 }
 
-type GetUserReturn = ReturnType<typeof getUser>; // User
+const user: User = { id: 1, name: "John", email: "john@example.com" };
+const name = getProperty(user, "name"); // string
+const id = getProperty(user, "id"); // number
 ```
 
-## Best Practices
+### Intermediate Level
 
-### 1. Type Definitions
+**Q3: How do you create a type-safe event emitter?**
 
-```typescript
-// ✅ Good - Use interfaces for object shapes
-interface User {
-  readonly id: number;
-  name: string;
-  email: string;
-  age?: number;
-}
-
-// ✅ Good - Use types for unions and computed types
-type Status = 'loading' | 'success' | 'error';
-type UserKeys = keyof User;
-
-// ❌ Avoid - Don't use any
-function process(data: any): any {
-  return data;
-}
-
-// ✅ Good - Use unknown for unknown data
-function process(data: unknown): string {
-  if (typeof data === 'string') {
-    return data.toUpperCase();
-  }
-  return String(data);
-}
-```
-
-### 2. Function Types
+**Answer:**
 
 ```typescript
-// ✅ Good - Explicit return types for public APIs
-function calculateTotal(items: Item[]): number {
-  return items.reduce((sum, item) => sum + item.price, 0);
-}
+type EventMap = {
+  userLogin: { userId: string; timestamp: number };
+  userLogout: { userId: string };
+  message: { text: string; from: string };
+};
 
-// ✅ Good - Use readonly for arrays that shouldn't be modified
-function processItems(items: readonly Item[]): Item[] {
-  return items.filter(item => item.active);
-}
+class TypedEventEmitter {
+  private listeners: {
+    [K in keyof EventMap]?: Array<(data: EventMap[K]) => void>;
+  } = {};
 
-// ✅ Good - Use function overloads for multiple signatures
-function format(value: string): string;
-function format(value: number): string;
-function format(value: Date): string;
-function format(value: string | number | Date): string {
-  if (value instanceof Date) {
-    return value.toISOString();
-  }
-  return String(value);
-}
-```
-
-### 3. Error Handling
-
-```typescript
-// ✅ Good - Custom error types
-class ValidationError extends Error {
-  constructor(
-    message: string,
-    public field: string,
-    public code: string
+  on<K extends keyof EventMap>(
+    event: K,
+    listener: (data: EventMap[K]) => void
   ) {
-    super(message);
-    this.name = 'ValidationError';
-  }
-}
-
-// ✅ Good - Result type pattern
-type Result<T, E = Error> = 
-  | { success: true; data: T }
-  | { success: false; error: E };
-
-async function safeApiCall<T>(url: string): Promise<Result<T>> {
-  try {
-    const response = await fetch(url);
-    const data = await response.json();
-    return { success: true, data };
-  } catch (error) {
-    return { 
-      success: false, 
-      error: error instanceof Error ? error : new Error(String(error))
-    };
-  }
-}
-```
-
-## Common Patterns
-
-### 1. Builder Pattern
-
-```typescript
-class UserBuilder {
-  private user: Partial<User> = {};
-
-  setName(name: string): this {
-    this.user.name = name;
-    return this;
-  }
-
-  setEmail(email: string): this {
-    this.user.email = email;
-    return this;
-  }
-
-  setAge(age: number): this {
-    this.user.age = age;
-    return this;
-  }
-
-  build(): User {
-    if (!this.user.name || !this.user.email) {
-      throw new Error('Name and email are required');
+    if (!this.listeners[event]) {
+      this.listeners[event] = [];
     }
-    
-    return {
-      id: Math.random(),
-      name: this.user.name,
-      email: this.user.email,
-      age: this.user.age || 18
-    };
+    this.listeners[event]!.push(listener);
+  }
+
+  emit<K extends keyof EventMap>(event: K, data: EventMap[K]) {
+    const eventListeners = this.listeners[event];
+    if (eventListeners) {
+      eventListeners.forEach((listener) => listener(data));
+    }
   }
 }
 
 // Usage
-const user = new UserBuilder()
-  .setName('John')
-  .setEmail('john@example.com')
-  .setAge(25)
-  .build();
+const emitter = new TypedEventEmitter();
+emitter.on("userLogin", (data) => {
+  console.log(data.userId); // TypeScript knows this is string
+  console.log(data.timestamp); // TypeScript knows this is number
+});
 ```
 
-### 2. Factory Pattern
+**Q4: How do you implement a type-safe API client?**
+
+**Answer:**
 
 ```typescript
-interface Shape {
-  area(): number;
-  perimeter(): number;
-}
-
-class Circle implements Shape {
-  constructor(private radius: number) {}
-
-  area(): number {
-    return Math.PI * this.radius ** 2;
-  }
-
-  perimeter(): number {
-    return 2 * Math.PI * this.radius;
-  }
-}
-
-class Rectangle implements Shape {
-  constructor(private width: number, private height: number) {}
-
-  area(): number {
-    return this.width * this.height;
-  }
-
-  perimeter(): number {
-    return 2 * (this.width + this.height);
-  }
-}
-
-type ShapeType = 'circle' | 'rectangle';
-
-interface ShapeConfig {
-  type: 'circle';
-  radius: number;
-} | {
-  type: 'rectangle';
-  width: number;
-  height: number;
+// Define API endpoints with their types
+type APIEndpoints = {
+  "GET /users": { response: User[]; params: { page?: number } };
+  "POST /users": { response: User; body: CreateUserRequest };
+  "GET /users/:id": { response: User; params: { id: string } };
+  "PUT /users/:id": {
+    response: User;
+    body: UpdateUserRequest;
+    params: { id: string };
+  };
 };
 
-class ShapeFactory {
-  static createShape(config: ShapeConfig): Shape {
-    switch (config.type) {
-      case 'circle':
-        return new Circle(config.radius);
-      case 'rectangle':
-        return new Rectangle(config.width, config.height);
-      default:
-        throw new Error('Unknown shape type');
-    }
+class TypedAPIClient {
+  async request<K extends keyof APIEndpoints>(
+    endpoint: K,
+    options: {
+      method?: "GET" | "POST" | "PUT" | "DELETE";
+      params?: APIEndpoints[K]["params"];
+      body?: APIEndpoints[K] extends { body: any }
+        ? APIEndpoints[K]["body"]
+        : never;
+    } = {}
+  ): Promise<APIEndpoints[K]["response"]> {
+    // Implementation here
+    return {} as APIEndpoints[K]["response"];
   }
 }
+
+// Usage
+const api = new TypedAPIClient();
+
+// TypeScript ensures type safety
+const users = await api.request("GET /users", { params: { page: 1 } });
+const newUser = await api.request("POST /users", {
+  body: { name: "John", email: "john@example.com" },
+});
 ```
 
-### 3. Repository Pattern
+### Advanced Level
+
+**Q5: How do you implement a type-safe state machine?**
+
+**Answer:**
 
 ```typescript
-interface Repository<T> {
-  findById(id: string): Promise<T | null>;
-  findAll(): Promise<T[]>;
-  create(item: Omit<T, 'id'>): Promise<T>;
-  update(id: string, item: Partial<T>): Promise<T>;
-  delete(id: string): Promise<void>;
+type StateMachine<TState extends string, TEvent extends string> = {
+  [K in TState]: {
+    [E in TEvent]?: TState;
+  };
+};
+
+type TrafficLightState = "red" | "yellow" | "green";
+type TrafficLightEvent = "next" | "emergency";
+
+const trafficLightMachine: StateMachine<TrafficLightState, TrafficLightEvent> =
+  {
+    red: {
+      next: "green",
+      emergency: "red",
+    },
+    yellow: {
+      next: "red",
+      emergency: "red",
+    },
+    green: {
+      next: "yellow",
+      emergency: "red",
+    },
+  };
+
+class StateMachineController<TState extends string, TEvent extends string> {
+  private currentState: TState;
+  private machine: StateMachine<TState, TEvent>;
+
+  constructor(initialState: TState, machine: StateMachine<TState, TEvent>) {
+    this.currentState = initialState;
+    this.machine = machine;
+  }
+
+  transition(event: TEvent): TState {
+    const currentStateConfig = this.machine[this.currentState];
+    const nextState = currentStateConfig[event];
+
+    if (!nextState) {
+      throw new Error(`Invalid transition: ${this.currentState} -> ${event}`);
+    }
+
+    this.currentState = nextState;
+    return nextState;
+  }
+
+  getCurrentState(): TState {
+    return this.currentState;
+  }
 }
 
-class UserRepository implements Repository<User> {
-  constructor(private apiClient: ApiClient) {}
+// Usage
+const controller = new StateMachineController("red", trafficLightMachine);
+const newState = controller.transition("next"); // 'green'
+```
 
-  async findById(id: string): Promise<User | null> {
-    try {
-      const response = await this.apiClient.get(`/users/${id}`);
-      return response.data;
-    } catch (error) {
-      if (error.status === 404) {
-        return null;
+**Q6: How do you create a type-safe builder pattern?**
+
+**Answer:**
+
+```typescript
+class QueryBuilder<T extends Record<string, any> = {}> {
+  private query: T;
+
+  constructor(query: T = {} as T) {
+    this.query = query;
+  }
+
+  select<K extends keyof T>(fields: K[]): QueryBuilder<Pick<T, K>> {
+    return new QueryBuilder<Pick<T, K>>(
+      fields.reduce((acc, field) => {
+        acc[field] = this.query[field];
+        return acc;
+      }, {} as Pick<T, K>)
+    );
+  }
+
+  where<K extends keyof T>(
+    field: K,
+    operator: "eq" | "gt" | "lt",
+    value: T[K]
+  ): QueryBuilder<T> {
+    return new QueryBuilder({
+      ...this.query,
+      [field]: { operator, value },
+    });
+  }
+
+  build(): T {
+    return this.query;
+  }
+}
+
+// Usage
+interface User {
+  id: number;
+  name: string;
+  email: string;
+  age: number;
+}
+
+const query = new QueryBuilder<User>()
+  .select(["name", "email"])
+  .where("age", "gt", 18)
+  .build();
+
+// TypeScript ensures type safety throughout the chain
+```
+
+---
+
+## 🎯 Practical Examples
+
+### Type-Safe Form Validation
+
+```typescript
+type ValidationRule<T> = {
+  validate: (value: T) => boolean;
+  message: string;
+};
+
+type ValidationSchema<T> = {
+  [K in keyof T]?: ValidationRule<T[K]>[];
+};
+
+class FormValidator<T extends Record<string, any>> {
+  private schema: ValidationSchema<T>;
+
+  constructor(schema: ValidationSchema<T>) {
+    this.schema = schema;
+  }
+
+  validate(data: T): {
+    isValid: boolean;
+    errors: Partial<Record<keyof T, string[]>>;
+  } {
+    const errors: Partial<Record<keyof T, string[]>> = {};
+    let isValid = true;
+
+    for (const [field, rules] of Object.entries(this.schema)) {
+      if (rules) {
+        const fieldErrors: string[] = [];
+        const value = data[field as keyof T];
+
+        for (const rule of rules) {
+          if (!rule.validate(value)) {
+            fieldErrors.push(rule.message);
+            isValid = false;
+          }
+        }
+
+        if (fieldErrors.length > 0) {
+          errors[field as keyof T] = fieldErrors;
+        }
       }
-      throw error;
+    }
+
+    return { isValid, errors };
+  }
+}
+
+// Usage
+interface LoginForm {
+  email: string;
+  password: string;
+}
+
+const loginSchema: ValidationSchema<LoginForm> = {
+  email: [
+    {
+      validate: (value) => value.includes("@"),
+      message: "Email must contain @",
+    },
+    {
+      validate: (value) => value.length > 0,
+      message: "Email is required",
+    },
+  ],
+  password: [
+    {
+      validate: (value) => value.length >= 8,
+      message: "Password must be at least 8 characters",
+    },
+  ],
+};
+
+const validator = new FormValidator(loginSchema);
+const result = validator.validate({
+  email: "invalid-email",
+  password: "123",
+});
+
+console.log(result.errors); // Type-safe error object
+```
+
+### Type-Safe API Response Handling
+
+```typescript
+type APIResponse<T> =
+  | { status: "success"; data: T }
+  | { status: "error"; error: string; code: number };
+
+class APIClient {
+  async request<T>(url: string): Promise<APIResponse<T>> {
+    try {
+      const response = await fetch(url);
+      const data = await response.json();
+
+      if (response.ok) {
+        return { status: "success", data };
+      } else {
+        return {
+          status: "error",
+          error: data.message || "Unknown error",
+          code: response.status,
+        };
+      }
+    } catch (error) {
+      return {
+        status: "error",
+        error: error instanceof Error ? error.message : "Network error",
+        code: 0,
+      };
     }
   }
+}
 
-  async findAll(): Promise<User[]> {
-    const response = await this.apiClient.get('/users');
-    return response.data;
+// Usage with type guards
+function handleResponse<T>(response: APIResponse<T>): T {
+  if (response.status === "success") {
+    return response.data; // TypeScript knows this is T
+  } else {
+    throw new Error(`${response.code}: ${response.error}`);
+  }
+}
+
+const client = new APIClient();
+const userResponse = await client.request<User>("/api/users/1");
+
+if (userResponse.status === "success") {
+  console.log(userResponse.data.name); // TypeScript knows this is safe
+} else {
+  console.error(userResponse.error); // TypeScript knows this is error
+}
+```
+
+---
+
+## 📊 Performance Monitoring
+
+### TypeScript Performance Metrics
+
+```typescript
+// Measure type checking performance
+interface PerformanceMetrics {
+  compilationTime: number;
+  typeCheckingTime: number;
+  bundleSize: number;
+  memoryUsage: number;
+}
+
+class TypeScriptPerformanceMonitor {
+  private startTime: number = 0;
+  private typeCheckStart: number = 0;
+
+  startCompilation() {
+    this.startTime = performance.now();
   }
 
-  async create(userData: Omit<User, 'id'>): Promise<User> {
-    const response = await this.apiClient.post('/users', userData);
-    return response.data;
+  startTypeChecking() {
+    this.typeCheckStart = performance.now();
   }
 
-  async update(id: string, userData: Partial<User>): Promise<User> {
-    const response = await this.apiClient.put(`/users/${id}`, userData);
-    return response.data;
+  endTypeChecking(): number {
+    return performance.now() - this.typeCheckStart;
   }
 
-  async delete(id: string): Promise<void> {
-    await this.apiClient.delete(`/users/${id}`);
+  endCompilation(): PerformanceMetrics {
+    const compilationTime = performance.now() - this.startTime;
+
+    return {
+      compilationTime,
+      typeCheckingTime: this.endTypeChecking(),
+      bundleSize: this.getBundleSize(),
+      memoryUsage: this.getMemoryUsage(),
+    };
+  }
+
+  private getBundleSize(): number {
+    // Implementation to get bundle size
+    return 0;
+  }
+
+  private getMemoryUsage(): number {
+    // Implementation to get memory usage
+    return 0;
   }
 }
 ```
 
-This comprehensive TypeScript guide covers all the essential concepts and patterns you'll need for frontend interviews. The key is to understand not just the syntax, but when and why to use different TypeScript features to write more maintainable and type-safe code.
+---
+
+## 🔗 Related Topics
+
+- [JavaScript Fundamentals](./javascript/fundamentals.md)
+- [React Advanced Patterns](./react/advanced-patterns.md)
+- [Performance Optimization](./performance/README.md)
+- [Build Tools](./tools/README.md)
+
+---
+
+## 📚 Additional Resources
+
+- [TypeScript Official Handbook](https://www.typescriptlang.org/docs/)
+- [TypeScript Deep Dive](https://basarat.gitbook.io/typescript/)
+- [TypeScript Design Patterns](https://refactoring.guru/design-patterns/typescript)
+- [Advanced TypeScript Patterns](https://www.typescriptlang.org/docs/handbook/advanced-types.html)
+
+---
+
+This comprehensive TypeScript guide provides the knowledge and practical examples needed to excel in frontend interviews. Focus on understanding the type system deeply and practicing with real-world scenarios.
