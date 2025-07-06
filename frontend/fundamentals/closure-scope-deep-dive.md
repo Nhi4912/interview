@@ -1,6 +1,7 @@
 # JavaScript Closures & Scope: Complete Deep Dive
 
 ## Table of Contents
+
 - [Understanding Scope](#understanding-scope)
 - [Lexical Scoping](#lexical-scoping)
 - [What are Closures?](#what-are-closures)
@@ -22,18 +23,22 @@
 #### Types of Scope in JavaScript:
 
 **1. Global Scope**
+
 - Variables accessible from anywhere in the program
 - Properties of the global object (window in browsers)
 
 **2. Function Scope**
+
 - Variables accessible only within the function
 - Created when function is invoked
 
 **3. Block Scope** (ES6+)
+
 - Variables accessible only within the block {}
 - Applies to `let` and `const` declarations
 
 **4. Module Scope** (ES6+)
+
 - Variables accessible only within the module
 - Top-level scope of a module
 
@@ -69,29 +74,30 @@ JavaScript uses a **scope chain** to resolve variable access:
 
 ```javascript
 // Global Scope
-const globalVar = 'I am global';
+const globalVar = "I am global";
 
 function outerFunction() {
-    // Outer Function Scope
-    const outerVar = 'I am outer';
-    
-    function innerFunction() {
-        // Inner Function Scope
-        const innerVar = 'I am inner';
-        
-        console.log(innerVar);  // ✅ Accessible - same scope
-        console.log(outerVar);  // ✅ Accessible - outer scope
-        console.log(globalVar); // ✅ Accessible - global scope
-    }
-    
-    innerFunction();
-    console.log(innerVar); // ❌ ReferenceError - not in scope
+  // Outer Function Scope
+  const outerVar = "I am outer";
+
+  function innerFunction() {
+    // Inner Function Scope
+    const innerVar = "I am inner";
+
+    console.log(innerVar); // ✅ Accessible - same scope
+    console.log(outerVar); // ✅ Accessible - outer scope
+    console.log(globalVar); // ✅ Accessible - global scope
+  }
+
+  innerFunction();
+  console.log(innerVar); // ❌ ReferenceError - not in scope
 }
 
 outerFunction();
 ```
 
 **Scope Chain Resolution:**
+
 ```
 innerFunction scope: { innerVar }
         ↓ (if not found)
@@ -111,25 +117,27 @@ ReferenceError: variable is not defined
 #### Key Principles:
 
 **1. Static Scope**
+
 - Scope is determined at **compile time**
 - Based on **where** variables and functions are declared
 - **Not** where they are called
 
 **2. Nested Function Access**
+
 - Inner functions have access to outer function variables
 - Outer functions **cannot** access inner function variables
 
 ### Lexical Scoping Example
 
 ```javascript
-const name = 'Global John';
+const name = "Global John";
 
 function createGreeting() {
-    const name = 'Function John';
-    
-    return function greet() {
-        console.log(`Hello, ${name}!`);
-    };
+  const name = "Function John";
+
+  return function greet() {
+    console.log(`Hello, ${name}!`);
+  };
 }
 
 const greeting = createGreeting();
@@ -140,6 +148,7 @@ greeting(); // "Hello, Function John!"
 ```
 
 **Visual Representation:**
+
 ```
 ┌─────────────────────────────────────────┐
 │         LEXICAL ENVIRONMENT            │
@@ -165,26 +174,29 @@ A **Closure** is a feature where an inner function has access to variables from 
 #### Three Key Characteristics:
 
 **1. Access to Outer Variables**
+
 - Inner function can access outer function's variables
 
 **2. Persistent Scope**
+
 - Outer function's variables remain accessible even after it returns
 
 **3. Data Privacy**
+
 - Variables in the closure are private to that specific instance
 
 ### Simple Closure Example
 
 ```javascript
 function outerFunction(x) {
-    // This variable is "captured" by the closure
-    const outerVariable = x;
-    
-    function innerFunction(y) {
-        console.log(outerVariable + y);
-    }
-    
-    return innerFunction;
+  // This variable is "captured" by the closure
+  const outerVariable = x;
+
+  function innerFunction(y) {
+    console.log(outerVariable + y);
+  }
+
+  return innerFunction;
 }
 
 const myClosure = outerFunction(10);
@@ -231,12 +243,12 @@ Every function in JavaScript maintains a reference to its **Lexical Environment*
 
 ```javascript
 function makeCounter() {
-    let count = 0; // This is in the Lexical Environment
-    
-    return function() {
-        count++; // Accesses the captured variable
-        return count;
-    };
+  let count = 0; // This is in the Lexical Environment
+
+  return function () {
+    count++; // Accesses the captured variable
+    return count;
+  };
 }
 
 const counter1 = makeCounter();
@@ -249,6 +261,7 @@ console.log(counter1()); // 3
 ```
 
 **Memory Structure:**
+
 ```
 ┌─────────────────────────────────────────┐
 │           MEMORY HEAP                   │
@@ -275,16 +288,16 @@ console.log(counter1()); // 3
 
 ```javascript
 function createFunctions() {
-    const functions = [];
-    
-    // Common mistake
-    for (var i = 0; i < 3; i++) {
-        functions.push(function() {
-            console.log(i); // Captures reference to 'i'
-        });
-    }
-    
-    return functions;
+  const functions = [];
+
+  // Common mistake
+  for (var i = 0; i < 3; i++) {
+    functions.push(function () {
+      console.log(i); // Captures reference to 'i'
+    });
+  }
+
+  return functions;
 }
 
 const funcs = createFunctions();
@@ -294,6 +307,7 @@ funcs[2](); // 3 (not 2!)
 ```
 
 **Why this happens:**
+
 ```
 All three functions share the same lexical environment
 that contains the variable 'i'.
@@ -305,17 +319,19 @@ All functions reference the same 'i' variable.
 **Solutions:**
 
 **1. Use `let` (block scope):**
+
 ```javascript
 function createFunctions() {
-    const functions = [];
-    
-    for (let i = 0; i < 3; i++) { // 'let' creates new scope each iteration
-        functions.push(function() {
-            console.log(i);
-        });
-    }
-    
-    return functions;
+  const functions = [];
+
+  for (let i = 0; i < 3; i++) {
+    // 'let' creates new scope each iteration
+    functions.push(function () {
+      console.log(i);
+    });
+  }
+
+  return functions;
 }
 
 const funcs = createFunctions();
@@ -325,19 +341,22 @@ funcs[2](); // 2
 ```
 
 **2. Use IIFE (Immediately Invoked Function Expression):**
+
 ```javascript
 function createFunctions() {
-    const functions = [];
-    
-    for (var i = 0; i < 3; i++) {
-        functions.push((function(index) {
-            return function() {
-                console.log(index);
-            };
-        })(i)); // IIFE creates new scope with 'index'
-    }
-    
-    return functions;
+  const functions = [];
+
+  for (var i = 0; i < 3; i++) {
+    functions.push(
+      (function (index) {
+        return function () {
+          console.log(index);
+        };
+      })(i)
+    ); // IIFE creates new scope with 'index'
+  }
+
+  return functions;
 }
 ```
 
@@ -348,59 +367,56 @@ function createFunctions() {
 Create private variables and methods:
 
 ```javascript
-const Calculator = (function() {
-    // Private variables
-    let history = [];
-    let currentValue = 0;
-    
-    // Private methods
-    function addToHistory(operation, value) {
-        history.push(`${operation}: ${value}`);
+const Calculator = (function () {
+  // Private variables
+  let history = [];
+  let currentValue = 0;
+
+  // Private methods
+  function addToHistory(operation, value) {
+    history.push(`${operation}: ${value}`);
+  }
+
+  function validateNumber(num) {
+    if (typeof num !== "number" || isNaN(num)) {
+      throw new Error("Invalid number");
     }
-    
-    function validateNumber(num) {
-        if (typeof num !== 'number' || isNaN(num)) {
-            throw new Error('Invalid number');
-        }
-    }
-    
-    // Public API
-    return {
-        add(num) {
-            validateNumber(num);
-            currentValue += num;
-            addToHistory('ADD', num);
-            return this; // Method chaining
-        },
-        
-        subtract(num) {
-            validateNumber(num);
-            currentValue -= num;
-            addToHistory('SUBTRACT', num);
-            return this;
-        },
-        
-        getValue() {
-            return currentValue;
-        },
-        
-        getHistory() {
-            return [...history]; // Return copy, not reference
-        },
-        
-        clear() {
-            currentValue = 0;
-            history = [];
-            return this;
-        }
-    };
+  }
+
+  // Public API
+  return {
+    add(num) {
+      validateNumber(num);
+      currentValue += num;
+      addToHistory("ADD", num);
+      return this; // Method chaining
+    },
+
+    subtract(num) {
+      validateNumber(num);
+      currentValue -= num;
+      addToHistory("SUBTRACT", num);
+      return this;
+    },
+
+    getValue() {
+      return currentValue;
+    },
+
+    getHistory() {
+      return [...history]; // Return copy, not reference
+    },
+
+    clear() {
+      currentValue = 0;
+      history = [];
+      return this;
+    },
+  };
 })();
 
 // Usage
-Calculator
-    .add(10)
-    .subtract(3)
-    .add(5);
+Calculator.add(10).subtract(3).add(5);
 
 console.log(Calculator.getValue()); // 12
 console.log(Calculator.getHistory()); // ['ADD: 10', 'SUBTRACT: 3', 'ADD: 5']
@@ -415,48 +431,48 @@ Create objects with private state:
 
 ```javascript
 function createBankAccount(initialBalance = 0) {
-    let balance = initialBalance;
-    let transactionHistory = [];
-    
-    function recordTransaction(type, amount) {
-        transactionHistory.push({
-            type,
-            amount,
-            timestamp: new Date(),
-            balanceAfter: balance
-        });
-    }
-    
-    return {
-        deposit(amount) {
-            if (amount <= 0) {
-                throw new Error('Deposit amount must be positive');
-            }
-            balance += amount;
-            recordTransaction('DEPOSIT', amount);
-            return balance;
-        },
-        
-        withdraw(amount) {
-            if (amount <= 0) {
-                throw new Error('Withdrawal amount must be positive');
-            }
-            if (amount > balance) {
-                throw new Error('Insufficient funds');
-            }
-            balance -= amount;
-            recordTransaction('WITHDRAWAL', amount);
-            return balance;
-        },
-        
-        getBalance() {
-            return balance;
-        },
-        
-        getTransactionHistory() {
-            return transactionHistory.map(t => ({ ...t })); // Deep copy
-        }
-    };
+  let balance = initialBalance;
+  let transactionHistory = [];
+
+  function recordTransaction(type, amount) {
+    transactionHistory.push({
+      type,
+      amount,
+      timestamp: new Date(),
+      balanceAfter: balance,
+    });
+  }
+
+  return {
+    deposit(amount) {
+      if (amount <= 0) {
+        throw new Error("Deposit amount must be positive");
+      }
+      balance += amount;
+      recordTransaction("DEPOSIT", amount);
+      return balance;
+    },
+
+    withdraw(amount) {
+      if (amount <= 0) {
+        throw new Error("Withdrawal amount must be positive");
+      }
+      if (amount > balance) {
+        throw new Error("Insufficient funds");
+      }
+      balance -= amount;
+      recordTransaction("WITHDRAWAL", amount);
+      return balance;
+    },
+
+    getBalance() {
+      return balance;
+    },
+
+    getTransactionHistory() {
+      return transactionHistory.map((t) => ({ ...t })); // Deep copy
+    },
+  };
 }
 
 const account1 = createBankAccount(100);
@@ -478,39 +494,39 @@ Maintain state in event handlers:
 
 ```javascript
 function createButtonWithCounter(buttonId) {
-    let clickCount = 0;
-    let lastClickTime = null;
-    
-    const button = document.getElementById(buttonId);
-    
-    button.addEventListener('click', function(event) {
-        clickCount++;
-        const now = Date.now();
-        const timeSinceLastClick = lastClickTime ? now - lastClickTime : 0;
-        
-        console.log(`Button clicked ${clickCount} times`);
-        
-        if (timeSinceLastClick > 0) {
-            console.log(`Time since last click: ${timeSinceLastClick}ms`);
-        }
-        
-        lastClickTime = now;
-        
-        // Update button text with click count
-        button.textContent = `Clicked ${clickCount} times`;
-    });
-    
-    return {
-        getClickCount: () => clickCount,
-        reset: () => {
-            clickCount = 0;
-            lastClickTime = null;
-            button.textContent = 'Click me';
-        }
-    };
+  let clickCount = 0;
+  let lastClickTime = null;
+
+  const button = document.getElementById(buttonId);
+
+  button.addEventListener("click", function (event) {
+    clickCount++;
+    const now = Date.now();
+    const timeSinceLastClick = lastClickTime ? now - lastClickTime : 0;
+
+    console.log(`Button clicked ${clickCount} times`);
+
+    if (timeSinceLastClick > 0) {
+      console.log(`Time since last click: ${timeSinceLastClick}ms`);
+    }
+
+    lastClickTime = now;
+
+    // Update button text with click count
+    button.textContent = `Clicked ${clickCount} times`;
+  });
+
+  return {
+    getClickCount: () => clickCount,
+    reset: () => {
+      clickCount = 0;
+      lastClickTime = null;
+      button.textContent = "Click me";
+    },
+  };
 }
 
-const buttonCounter = createButtonWithCounter('myButton');
+const buttonCounter = createButtonWithCounter("myButton");
 ```
 
 ### 4. Memoization (Caching)
@@ -519,27 +535,27 @@ Cache expensive function results:
 
 ```javascript
 function memoize(fn) {
-    const cache = new Map();
-    
-    return function(...args) {
-        const key = JSON.stringify(args);
-        
-        if (cache.has(key)) {
-            console.log('Cache hit!');
-            return cache.get(key);
-        }
-        
-        console.log('Computing result...');
-        const result = fn.apply(this, args);
-        cache.set(key, result);
-        return result;
-    };
+  const cache = new Map();
+
+  return function (...args) {
+    const key = JSON.stringify(args);
+
+    if (cache.has(key)) {
+      console.log("Cache hit!");
+      return cache.get(key);
+    }
+
+    console.log("Computing result...");
+    const result = fn.apply(this, args);
+    cache.set(key, result);
+    return result;
+  };
 }
 
 // Expensive function
 function fibonacci(n) {
-    if (n <= 1) return n;
-    return fibonacci(n - 1) + fibonacci(n - 2);
+  if (n <= 1) return n;
+  return fibonacci(n - 1) + fibonacci(n - 2);
 }
 
 const memoizedFibonacci = memoize(fibonacci);
@@ -556,13 +572,13 @@ Create specialized functions:
 ```javascript
 // Partial Application
 function multiply(a, b, c) {
-    return a * b * c;
+  return a * b * c;
 }
 
 function partial(fn, ...fixedArgs) {
-    return function(...remainingArgs) {
-        return fn(...fixedArgs, ...remainingArgs);
-    };
+  return function (...remainingArgs) {
+    return fn(...fixedArgs, ...remainingArgs);
+  };
 }
 
 const multiplyByTwo = partial(multiply, 2);
@@ -573,15 +589,15 @@ console.log(multiplyByTwoAndThree(5)); // 2 * 3 * 5 = 30
 
 // Currying
 function curry(fn) {
-    return function curried(...args) {
-        if (args.length >= fn.length) {
-            return fn.apply(this, args);
-        } else {
-            return function(...nextArgs) {
-                return curried.apply(this, args.concat(nextArgs));
-            };
-        }
-    };
+  return function curried(...args) {
+    if (args.length >= fn.length) {
+      return fn.apply(this, args);
+    } else {
+      return function (...nextArgs) {
+        return curried.apply(this, args.concat(nextArgs));
+      };
+    }
+  };
 }
 
 const curriedMultiply = curry(multiply);
@@ -598,14 +614,15 @@ console.log(curriedMultiply(2)(3, 4)); // 24
 Closures can lead to memory leaks if not handled properly:
 
 **Problem: Accidental Object Retention**
+
 ```javascript
 function attachListeners() {
-    const largeObject = new Array(1000000).fill('data');
-    
-    document.getElementById('button').addEventListener('click', function() {
-        // This closure keeps largeObject in memory
-        console.log('Button clicked');
-    });
+  const largeObject = new Array(1000000).fill("data");
+
+  document.getElementById("button").addEventListener("click", function () {
+    // This closure keeps largeObject in memory
+    console.log("Button clicked");
+  });
 }
 
 attachListeners();
@@ -613,22 +630,25 @@ attachListeners();
 ```
 
 **Solution: Explicit Cleanup**
+
 ```javascript
 function attachListeners() {
-    const largeObject = new Array(1000000).fill('data');
-    
-    function clickHandler() {
-        console.log('Button clicked');
-        // Don't reference largeObject here
-    }
-    
-    document.getElementById('button').addEventListener('click', clickHandler);
-    
-    // Cleanup function
-    return function cleanup() {
-        document.getElementById('button').removeEventListener('click', clickHandler);
-        // largeObject will be garbage collected
-    };
+  const largeObject = new Array(1000000).fill("data");
+
+  function clickHandler() {
+    console.log("Button clicked");
+    // Don't reference largeObject here
+  }
+
+  document.getElementById("button").addEventListener("click", clickHandler);
+
+  // Cleanup function
+  return function cleanup() {
+    document
+      .getElementById("button")
+      .removeEventListener("click", clickHandler);
+    // largeObject will be garbage collected
+  };
 }
 
 const cleanup = attachListeners();
@@ -639,45 +659,51 @@ cleanup();
 ### Memory Leak Prevention
 
 **1. Avoid Unnecessary Variable Capture**
+
 ```javascript
 // BAD: Captures unnecessary variables
 function createHandler(data) {
-    const largeArray = new Array(1000000);
-    const someOtherStuff = { /* ... */ };
-    
-    return function() {
-        console.log(data); // Only needs 'data', but captures everything
-    };
+  const largeArray = new Array(1000000);
+  const someOtherStuff = {
+    /* ... */
+  };
+
+  return function () {
+    console.log(data); // Only needs 'data', but captures everything
+  };
 }
 
 // GOOD: Only capture what you need
 function createHandler(data) {
-    const largeArray = new Array(1000000);
-    const someOtherStuff = { /* ... */ };
-    
-    // Extract only what you need
-    const neededData = data;
-    
-    return function() {
-        console.log(neededData);
-    };
+  const largeArray = new Array(1000000);
+  const someOtherStuff = {
+    /* ... */
+  };
+
+  // Extract only what you need
+  const neededData = data;
+
+  return function () {
+    console.log(neededData);
+  };
 }
 ```
 
 **2. Break Circular References**
+
 ```javascript
 function setupComponent() {
-    const element = document.getElementById('component');
-    
-    element.onclick = function() {
-        // Circular reference: element -> function -> element
-        element.style.color = 'red';
-    };
-    
-    // Break the cycle
-    return function cleanup() {
-        element.onclick = null;
-    };
+  const element = document.getElementById("component");
+
+  element.onclick = function () {
+    // Circular reference: element -> function -> element
+    element.style.color = "red";
+  };
+
+  // Break the cycle
+  return function cleanup() {
+    element.onclick = null;
+  };
 }
 ```
 
@@ -777,15 +803,16 @@ Step 3: Look in Global Scope
 ### Closure Performance Impact
 
 **1. Memory Usage**
+
 ```javascript
 // Each closure instance maintains its own scope
 function createCounter() {
-    let count = 0;
-    const largeArray = new Array(1000000); // Each instance has this!
-    
-    return function() {
-        return ++count;
-    };
+  let count = 0;
+  const largeArray = new Array(1000000); // Each instance has this!
+
+  return function () {
+    return ++count;
+  };
 }
 
 // Creates 1000 closures, each with its own largeArray
@@ -793,16 +820,17 @@ const counters = Array.from({ length: 1000 }, createCounter);
 ```
 
 **2. Garbage Collection**
+
 ```javascript
 // Closure prevents garbage collection
 let globalRef;
 
 function createClosure() {
-    const largeData = new Array(1000000).fill('data');
-    
-    globalRef = function() {
-        return largeData.length; // Keeps largeData alive
-    };
+  const largeData = new Array(1000000).fill("data");
+
+  globalRef = function () {
+    return largeData.length; // Keeps largeData alive
+  };
 }
 
 createClosure();
@@ -812,34 +840,33 @@ createClosure();
 **3. Performance Optimization**
 
 **Bad: Recreating closures in render**
+
 ```javascript
 function MyComponent({ items }) {
-    return items.map(item => (
-        <button 
-            key={item.id}
-            onClick={() => handleClick(item.id)} // New closure each render!
-        >
-            {item.name}
-        </button>
-    ));
+  return items.map((item) => (
+    <button
+      key={item.id}
+      onClick={() => handleClick(item.id)} // New closure each render!
+    >
+      {item.name}
+    </button>
+  ));
 }
 ```
 
 **Good: Memoized or stable references**
+
 ```javascript
 function MyComponent({ items }) {
-    const handleClick = useCallback((id) => {
-        // Handle click
-    }, []);
-    
-    return items.map(item => (
-        <button 
-            key={item.id}
-            onClick={() => handleClick(item.id)}
-        >
-            {item.name}
-        </button>
-    ));
+  const handleClick = useCallback((id) => {
+    // Handle click
+  }, []);
+
+  return items.map((item) => (
+    <button key={item.id} onClick={() => handleClick(item.id)}>
+      {item.name}
+    </button>
+  ));
 }
 ```
 
@@ -849,66 +876,71 @@ function MyComponent({ items }) {
 
 ```javascript
 for (var i = 0; i < 3; i++) {
-    setTimeout(function() {
-        console.log(i);
-    }, 100);
+  setTimeout(function () {
+    console.log(i);
+  }, 100);
 }
 ```
 
 **Answer**: It will output `3` three times.
 
 **Explanation**:
+
 - The `setTimeout` callbacks are executed after the loop completes
 - All three closures capture a reference to the same variable `i`
 - When the callbacks execute, `i` has the value 3 (the final value after the loop)
 
 **Solutions**:
+
 ```javascript
 // Solution 1: Use let (block scope)
 for (let i = 0; i < 3; i++) {
-    setTimeout(function() {
-        console.log(i); // 0, 1, 2
-    }, 100);
+  setTimeout(function () {
+    console.log(i); // 0, 1, 2
+  }, 100);
 }
 
 // Solution 2: IIFE
 for (var i = 0; i < 3; i++) {
-    (function(j) {
-        setTimeout(function() {
-            console.log(j); // 0, 1, 2
-        }, 100);
-    })(i);
+  (function (j) {
+    setTimeout(function () {
+      console.log(j); // 0, 1, 2
+    }, 100);
+  })(i);
 }
 
 // Solution 3: bind
 for (var i = 0; i < 3; i++) {
-    setTimeout(function(j) {
-        console.log(j); // 0, 1, 2
-    }.bind(null, i), 100);
+  setTimeout(
+    function (j) {
+      console.log(j); // 0, 1, 2
+    }.bind(null, i),
+    100
+  );
 }
 ```
 
 ### Q2: Explain how this module pattern works:
 
 ```javascript
-const Module = (function() {
-    let privateVar = 0;
-    
-    function privateFunction() {
-        console.log('Private function called');
-    }
-    
-    return {
-        publicMethod() {
-            privateVar++;
-            privateFunction();
-            return privateVar;
-        },
-        
-        getPrivateVar() {
-            return privateVar;
-        }
-    };
+const Module = (function () {
+  let privateVar = 0;
+
+  function privateFunction() {
+    console.log("Private function called");
+  }
+
+  return {
+    publicMethod() {
+      privateVar++;
+      privateFunction();
+      return privateVar;
+    },
+
+    getPrivateVar() {
+      return privateVar;
+    },
+  };
 })();
 ```
 
@@ -922,6 +954,7 @@ This is the **Module Pattern** using an IIFE (Immediately Invoked Function Expre
 5. **Encapsulation**: Private variables cannot be accessed directly from outside
 
 **Usage**:
+
 ```javascript
 console.log(Module.publicMethod()); // 1
 console.log(Module.getPrivateVar()); // 1
@@ -933,20 +966,21 @@ console.log(Module.privateVar); // undefined (private)
 ```javascript
 // Approach 1
 function createMultiplier(x) {
-    return function(y) {
-        return x * y;
-    };
+  return function (y) {
+    return x * y;
+  };
 }
 
 // Approach 2
 function multiply(x, y) {
-    return x * y;
+  return x * y;
 }
 ```
 
 **Answer**:
 
 **Approach 1 (Closure)**:
+
 - Creates a **specialized function** with `x` "baked in"
 - Each call to `createMultiplier` creates a new closure
 - Useful for **partial application** and **function specialization**
@@ -961,6 +995,7 @@ console.log(triple(5)); // 15
 ```
 
 **Approach 2 (Regular function)**:
+
 - Direct multiplication without closure
 - More **memory efficient**
 - Requires both parameters each time
@@ -976,80 +1011,84 @@ console.log(multiply(3, 5)); // 15
 **Answer**:
 
 **1. Module Pattern with IIFE**:
+
 ```javascript
-const MyModule = (function() {
-    // Private variables and methods
-    let privateCounter = 0;
-    
-    function privateMethod() {
-        console.log('This is private');
-    }
-    
-    function incrementCounter() {
-        privateCounter++;
-        privateMethod();
-    }
-    
-    // Public API
-    return {
-        increment: incrementCounter,
-        getCount() {
-            return privateCounter;
-        }
-    };
+const MyModule = (function () {
+  // Private variables and methods
+  let privateCounter = 0;
+
+  function privateMethod() {
+    console.log("This is private");
+  }
+
+  function incrementCounter() {
+    privateCounter++;
+    privateMethod();
+  }
+
+  // Public API
+  return {
+    increment: incrementCounter,
+    getCount() {
+      return privateCounter;
+    },
+  };
 })();
 ```
 
 **2. Factory Function**:
+
 ```javascript
 function createObject() {
-    let privateVar = 'secret';
-    
-    function privateMethod() {
-        return `Accessing ${privateVar}`;
-    }
-    
-    return {
-        publicMethod() {
-            return privateMethod();
-        }
-    };
+  let privateVar = "secret";
+
+  function privateMethod() {
+    return `Accessing ${privateVar}`;
+  }
+
+  return {
+    publicMethod() {
+      return privateMethod();
+    },
+  };
 }
 ```
 
 **3. WeakMap Pattern**:
+
 ```javascript
 const privateData = new WeakMap();
 
 class MyClass {
-    constructor() {
-        privateData.set(this, {
-            secret: 'private value',
-            privateMethod() {
-                return 'This is private';
-            }
-        });
-    }
-    
-    publicMethod() {
-        const data = privateData.get(this);
-        return data.privateMethod();
-    }
+  constructor() {
+    privateData.set(this, {
+      secret: "private value",
+      privateMethod() {
+        return "This is private";
+      },
+    });
+  }
+
+  publicMethod() {
+    const data = privateData.get(this);
+    return data.privateMethod();
+  }
 }
 ```
 
 **4. Private Fields (ES2022)**:
+
 ```javascript
 class MyClass {
-    #privateField = 'secret';
-    
-    #privateMethod() {
-        return 'This is private';
-    }
-    
-    publicMethod() {
-        return this.#privateMethod();
-    }
+  #privateField = "secret";
+
+  #privateMethod() {
+    return "This is private";
+  }
+
+  publicMethod() {
+    return this.#privateMethod();
+  }
 }
 ```
 
@@ -1060,71 +1099,74 @@ class MyClass {
 **Common Memory Leak Scenarios**:
 
 **1. Event Listeners with Closures**:
+
 ```javascript
 // PROBLEM: Memory leak
 function setupComponent() {
-    const largeData = new Array(1000000);
-    
-    document.getElementById('button').onclick = function() {
-        console.log('Clicked'); // Keeps largeData in memory
-    };
+  const largeData = new Array(1000000);
+
+  document.getElementById("button").onclick = function () {
+    console.log("Clicked"); // Keeps largeData in memory
+  };
 }
 
 // SOLUTION: Explicit cleanup
 function setupComponent() {
-    const largeData = new Array(1000000);
-    
-    function clickHandler() {
-        console.log('Clicked');
-        // Don't reference largeData
-    }
-    
-    const button = document.getElementById('button');
-    button.onclick = clickHandler;
-    
-    return function cleanup() {
-        button.onclick = null;
-        // Now largeData can be garbage collected
-    };
+  const largeData = new Array(1000000);
+
+  function clickHandler() {
+    console.log("Clicked");
+    // Don't reference largeData
+  }
+
+  const button = document.getElementById("button");
+  button.onclick = clickHandler;
+
+  return function cleanup() {
+    button.onclick = null;
+    // Now largeData can be garbage collected
+  };
 }
 ```
 
 **2. Circular References**:
+
 ```javascript
 // PROBLEM: Circular reference
 function createNode() {
-    const node = {
-        parent: null,
-        children: [],
-        cleanup: function() {
-            // This creates a circular reference
-            this.parent = null;
-            this.children = [];
-        }
-    };
-    
-    return node;
+  const node = {
+    parent: null,
+    children: [],
+    cleanup: function () {
+      // This creates a circular reference
+      this.parent = null;
+      this.children = [];
+    },
+  };
+
+  return node;
 }
 
 // SOLUTION: WeakMap or explicit cleanup
 const nodeCleanup = new WeakMap();
 
 function createNode() {
-    const node = {
-        parent: null,
-        children: []
-    };
-    
-    nodeCleanup.set(node, function() {
-        node.parent = null;
-        node.children = [];
-    });
-    
-    return node;
+  const node = {
+    parent: null,
+    children: [],
+  };
+
+  nodeCleanup.set(node, function () {
+    node.parent = null;
+    node.children = [];
+  });
+
+  return node;
 }
 ```
 
 **Prevention Strategies**:
+
 1. **Remove event listeners** when no longer needed
 2. **Avoid capturing unnecessary variables** in closures
 3. **Use WeakMap** for private data
@@ -1132,3 +1174,65 @@ function createNode() {
 5. **Use tools** like Chrome DevTools Memory tab to detect leaks
 
 This comprehensive guide covers closures and scope from fundamental concepts to advanced patterns, providing the deep understanding needed for senior frontend engineering interviews.
+
+# Additional Advanced Interview Q&A and Visuals
+
+## Q: How can closures cause memory leaks in JavaScript applications?
+
+**Answer (English):**
+
+- Closures keep references to variables in their scope chain
+- If a closure references large data or DOM nodes, and is attached to a global or long-lived object (e.g., event handler), the data cannot be garbage collected
+- Always clean up event handlers and avoid unnecessary references in closures
+
+**Answer (Vietnamese):**
+
+- Closure giữ tham chiếu tới biến trong scope chain
+- Nếu closure tham chiếu dữ liệu lớn hoặc DOM node, và được gán cho global hoặc object sống lâu (ví dụ event handler), dữ liệu sẽ không được giải phóng bộ nhớ
+- Luôn cleanup event handler và tránh giữ tham chiếu không cần thiết trong closure
+
+---
+
+## Diagram: Closure Memory Leak
+
+```mermaid
+flowchart TD
+  A[Create Closure] --> B[References Large Data]
+  B --> C[Assign to Global/Event Handler]
+  C --> D[Large Data Not GC'd]
+  D --> E[Memory Leak]
+```
+
+---
+
+## Q: How would you use closures to implement a private counter with increment and reset methods?
+
+**Answer (English):**
+
+- Use a factory function that returns an object with methods
+- The counter variable is private in the closure
+
+```javascript
+function createCounter() {
+  let count = 0;
+  return {
+    increment() {
+      return ++count;
+    },
+    reset() {
+      count = 0;
+      return count;
+    },
+  };
+}
+const counter = createCounter();
+counter.increment(); // 1
+counter.reset(); // 0
+```
+
+**Answer (Vietnamese):**
+
+- Dùng factory function trả về object chứa các method
+- Biến counter là private trong closure
+
+---

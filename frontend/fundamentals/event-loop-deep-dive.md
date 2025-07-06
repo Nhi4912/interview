@@ -1,6 +1,7 @@
 # JavaScript Event Loop: Complete Deep Dive
 
 ## Table of Contents
+
 - [Understanding the Event Loop](#understanding-the-event-loop)
 - [Call Stack Fundamentals](#call-stack-fundamentals)
 - [Web APIs and Browser Environment](#web-apis-and-browser-environment)
@@ -21,16 +22,19 @@ The **Event Loop** is the fundamental mechanism that allows JavaScript to perfor
 #### Key Concepts:
 
 **1. Single-Threaded Nature**
+
 - JavaScript has only **one call stack**
 - Only **one thing can happen at a time**
 - But it can handle **asynchronous operations** through the event loop
 
 **2. Non-Blocking I/O**
+
 - Long-running operations don't freeze the UI
 - Callbacks are scheduled for later execution
 - Maintains responsive user interfaces
 
 **3. Concurrency Model**
+
 - JavaScript achieves concurrency through the event loop
 - Multiple operations can be **initiated** simultaneously
 - But they're **executed** one at a time
@@ -72,25 +76,27 @@ The **Call Stack** is a LIFO (Last In, First Out) data structure that keeps trac
 #### Stack Operations:
 
 **1. Function Call (Push)**
+
 ```javascript
 function first() {
-    console.log('First function');
-    second();
+  console.log("First function");
+  second();
 }
 
 function second() {
-    console.log('Second function');
-    third();
+  console.log("Second function");
+  third();
 }
 
 function third() {
-    console.log('Third function');
+  console.log("Third function");
 }
 
 first();
 ```
 
 **Call Stack Visualization:**
+
 ```
 Step 1: first() called
 ┌─────────────┐
@@ -137,13 +143,14 @@ When the call stack exceeds its limit:
 
 ```javascript
 function recursiveFunction() {
-    recursiveFunction(); // Infinite recursion
+  recursiveFunction(); // Infinite recursion
 }
 
 recursiveFunction(); // RangeError: Maximum call stack size exceeded
 ```
 
 **Prevention Strategies:**
+
 - Use iterative solutions when possible
 - Implement proper base cases in recursion
 - Use setTimeout for deep recursion to break stack
@@ -157,40 +164,43 @@ Web APIs are browser-provided interfaces that allow JavaScript to interact with 
 #### Common Web APIs:
 
 **1. Timer APIs**
+
 ```javascript
 // setTimeout - executes after delay
-setTimeout(() => console.log('Timer callback'), 1000);
+setTimeout(() => console.log("Timer callback"), 1000);
 
 // setInterval - executes repeatedly
-setInterval(() => console.log('Interval callback'), 1000);
+setInterval(() => console.log("Interval callback"), 1000);
 
 // setImmediate (Node.js)
-setImmediate(() => console.log('Immediate callback'));
+setImmediate(() => console.log("Immediate callback"));
 ```
 
 **2. DOM APIs**
+
 ```javascript
 // Event listeners
-document.addEventListener('click', () => {
-    console.log('Click handled');
+document.addEventListener("click", () => {
+  console.log("Click handled");
 });
 
 // DOM manipulation
-document.getElementById('button').onclick = () => {
-    console.log('Button clicked');
+document.getElementById("button").onclick = () => {
+  console.log("Button clicked");
 };
 ```
 
 **3. Network APIs**
+
 ```javascript
 // Fetch API
-fetch('/api/data')
-    .then(response => response.json())
-    .then(data => console.log(data));
+fetch("/api/data")
+  .then((response) => response.json())
+  .then((data) => console.log(data));
 
 // XMLHttpRequest
 const xhr = new XMLHttpRequest();
-xhr.open('GET', '/api/data');
+xhr.open("GET", "/api/data");
 xhr.onload = () => console.log(xhr.responseText);
 xhr.send();
 ```
@@ -205,13 +215,13 @@ When you call a Web API:
 4. **Callback**: Browser places callback in appropriate queue
 
 ```javascript
-console.log('Start');
+console.log("Start");
 
 setTimeout(() => {
-    console.log('Timer callback');
+  console.log("Timer callback");
 }, 0);
 
-console.log('End');
+console.log("End");
 
 // Output:
 // Start
@@ -226,11 +236,13 @@ console.log('End');
 The Event Loop manages two main types of queues with different priorities:
 
 #### 1. Macrotask Queue (Task Queue)
+
 - **Lower priority**
 - Processed **after** microtasks
 - **Sources**: setTimeout, setInterval, I/O operations, UI events
 
 #### 2. Microtask Queue
+
 - **Higher priority**
 - Processed **before** macrotasks
 - **Sources**: Promises, queueMicrotask, MutationObserver
@@ -263,19 +275,19 @@ Event Loop Priority (High to Low):
 ### Detailed Example
 
 ```javascript
-console.log('1: Start');
+console.log("1: Start");
 
-setTimeout(() => console.log('2: setTimeout'), 0);
+setTimeout(() => console.log("2: setTimeout"), 0);
 
 Promise.resolve()
-    .then(() => console.log('3: Promise 1'))
-    .then(() => console.log('4: Promise 2'));
+  .then(() => console.log("3: Promise 1"))
+  .then(() => console.log("4: Promise 2"));
 
-queueMicrotask(() => console.log('5: queueMicrotask'));
+queueMicrotask(() => console.log("5: queueMicrotask"));
 
-setTimeout(() => console.log('6: setTimeout 2'), 0);
+setTimeout(() => console.log("6: setTimeout 2"), 0);
 
-console.log('7: End');
+console.log("7: End");
 
 // Execution Order:
 // 1: Start
@@ -371,11 +383,13 @@ The Event Loop operates in phases:
 ### Browser Event Loop vs Node.js
 
 **Browser Event Loop:**
+
 - Simpler model
 - Focuses on user interaction
 - Microtasks processed after each macrotask
 
 **Node.js Event Loop:**
+
 - More complex with phases
 - Handles I/O efficiently
 - Different microtask timing
@@ -524,9 +538,9 @@ Output:         "start", "end", "promise", "timeout"
 **Reality**: setTimeout(fn, 0) schedules execution for the next event loop cycle.
 
 ```javascript
-console.log('1');
-setTimeout(() => console.log('2'), 0);
-console.log('3');
+console.log("1");
+setTimeout(() => console.log("2"), 0);
+console.log("3");
 
 // Output: 1, 3, 2 (not 1, 2, 3)
 ```
@@ -536,9 +550,9 @@ console.log('3');
 **Reality**: Promise callbacks are asynchronous microtasks.
 
 ```javascript
-console.log('1');
-Promise.resolve().then(() => console.log('2'));
-console.log('3');
+console.log("1");
+Promise.resolve().then(() => console.log("2"));
+console.log("3");
 
 // Output: 1, 3, 2
 ```
@@ -548,9 +562,9 @@ console.log('3');
 **Reality**: Microtasks have higher priority than macrotasks.
 
 ```javascript
-setTimeout(() => console.log('setTimeout'), 0);
-Promise.resolve().then(() => console.log('Promise'));
-queueMicrotask(() => console.log('queueMicrotask'));
+setTimeout(() => console.log("setTimeout"), 0);
+Promise.resolve().then(() => console.log("Promise"));
+queueMicrotask(() => console.log("queueMicrotask"));
 
 // Output: Promise, queueMicrotask, setTimeout
 ```
@@ -564,16 +578,16 @@ queueMicrotask(() => console.log('queueMicrotask'));
 ```javascript
 // BAD: Blocks event loop
 function heavyComputation() {
-    let result = 0;
-    for (let i = 0; i < 1000000000; i++) {
-        result += i;
-    }
-    return result;
+  let result = 0;
+  for (let i = 0; i < 1000000000; i++) {
+    result += i;
+  }
+  return result;
 }
 
-console.log('Start');
+console.log("Start");
 heavyComputation(); // Blocks everything
-console.log('End');
+console.log("End");
 ```
 
 **Solution: Break work into chunks:**
@@ -581,34 +595,35 @@ console.log('End');
 ```javascript
 // GOOD: Non-blocking approach
 function heavyComputationAsync(start, end, chunkSize = 1000000) {
-    return new Promise((resolve) => {
-        let result = 0;
-        let current = start;
-        
-        function processChunk() {
-            const chunkEnd = Math.min(current + chunkSize, end);
-            
-            for (let i = current; i < chunkEnd; i++) {
-                result += i;
-            }
-            
-            current = chunkEnd;
-            
-            if (current < end) {
-                setTimeout(processChunk, 0); // Yield control
-            } else {
-                resolve(result);
-            }
-        }
-        
-        processChunk();
-    });
+  return new Promise((resolve) => {
+    let result = 0;
+    let current = start;
+
+    function processChunk() {
+      const chunkEnd = Math.min(current + chunkSize, end);
+
+      for (let i = current; i < chunkEnd; i++) {
+        result += i;
+      }
+
+      current = chunkEnd;
+
+      if (current < end) {
+        setTimeout(processChunk, 0); // Yield control
+      } else {
+        resolve(result);
+      }
+    }
+
+    processChunk();
+  });
 }
 
-console.log('Start');
-heavyComputationAsync(0, 1000000000)
-    .then(result => console.log('Result:', result));
-console.log('End');
+console.log("Start");
+heavyComputationAsync(0, 1000000000).then((result) =>
+  console.log("Result:", result)
+);
+console.log("End");
 // Output: Start, End, Result: [number]
 ```
 
@@ -619,7 +634,7 @@ console.log('End');
 ```javascript
 // BAD: Infinite microtask loop
 function recursiveMicrotask() {
-    Promise.resolve().then(recursiveMicrotask);
+  Promise.resolve().then(recursiveMicrotask);
 }
 
 recursiveMicrotask(); // Blocks all macrotasks!
@@ -630,13 +645,13 @@ recursiveMicrotask(); // Blocks all macrotasks!
 ```javascript
 // GOOD: Mix microtasks and macrotasks
 function balancedRecursion(count = 0) {
-    if (count % 100 === 0) {
-        // Use macrotask every 100 iterations
-        setTimeout(() => balancedRecursion(count + 1), 0);
-    } else {
-        // Use microtask for most iterations
-        Promise.resolve().then(() => balancedRecursion(count + 1));
-    }
+  if (count % 100 === 0) {
+    // Use macrotask every 100 iterations
+    setTimeout(() => balancedRecursion(count + 1), 0);
+  } else {
+    // Use microtask for most iterations
+    Promise.resolve().then(() => balancedRecursion(count + 1));
+  }
 }
 ```
 
@@ -645,23 +660,24 @@ function balancedRecursion(count = 0) {
 ### Q1: What will this code output and why?
 
 ```javascript
-console.log('A');
+console.log("A");
 
-setTimeout(() => console.log('B'), 0);
+setTimeout(() => console.log("B"), 0);
 
 Promise.resolve().then(() => {
-    console.log('C');
-    setTimeout(() => console.log('D'), 0);
+  console.log("C");
+  setTimeout(() => console.log("D"), 0);
 });
 
-Promise.resolve().then(() => console.log('E'));
+Promise.resolve().then(() => console.log("E"));
 
-console.log('F');
+console.log("F");
 ```
 
 **Answer**: A, F, C, E, B, D
 
 **Explanation**:
+
 1. **A** - Synchronous console.log
 2. **F** - Synchronous console.log
 3. **C** - First Promise microtask (higher priority)
@@ -674,12 +690,14 @@ console.log('F');
 **Answer**:
 
 **Microtasks**:
+
 - Higher priority in event loop
 - Processed completely before any macrotask
 - Sources: Promises, queueMicrotask, MutationObserver
 - Can starve macrotasks if not careful
 
 **Macrotasks**:
+
 - Lower priority in event loop
 - Only one processed per event loop cycle
 - Sources: setTimeout, setInterval, I/O, UI events
@@ -690,49 +708,52 @@ console.log('F');
 **Answer**:
 
 **1. Web Workers**:
+
 ```javascript
 // main.js
-const worker = new Worker('computation-worker.js');
-worker.postMessage({data: largeDataset});
-worker.onmessage = (e) => console.log('Result:', e.data);
+const worker = new Worker("computation-worker.js");
+worker.postMessage({ data: largeDataset });
+worker.onmessage = (e) => console.log("Result:", e.data);
 
 // computation-worker.js
-self.onmessage = function(e) {
-    const result = heavyComputation(e.data);
-    self.postMessage(result);
+self.onmessage = function (e) {
+  const result = heavyComputation(e.data);
+  self.postMessage(result);
 };
 ```
 
 **2. Time-slicing**:
+
 ```javascript
 async function processLargeArray(array, processor) {
-    const CHUNK_SIZE = 1000;
-    
-    for (let i = 0; i < array.length; i += CHUNK_SIZE) {
-        const chunk = array.slice(i, i + CHUNK_SIZE);
-        chunk.forEach(processor);
-        
-        // Yield control every chunk
-        await new Promise(resolve => setTimeout(resolve, 0));
-    }
+  const CHUNK_SIZE = 1000;
+
+  for (let i = 0; i < array.length; i += CHUNK_SIZE) {
+    const chunk = array.slice(i, i + CHUNK_SIZE);
+    chunk.forEach(processor);
+
+    // Yield control every chunk
+    await new Promise((resolve) => setTimeout(resolve, 0));
+  }
 }
 ```
 
 **3. RequestIdleCallback**:
+
 ```javascript
 function processWhenIdle(tasks) {
-    function processTasks(deadline) {
-        while (deadline.timeRemaining() > 0 && tasks.length > 0) {
-            const task = tasks.shift();
-            task();
-        }
-        
-        if (tasks.length > 0) {
-            requestIdleCallback(processTasks);
-        }
+  function processTasks(deadline) {
+    while (deadline.timeRemaining() > 0 && tasks.length > 0) {
+      const task = tasks.shift();
+      task();
     }
-    
-    requestIdleCallback(processTasks);
+
+    if (tasks.length > 0) {
+      requestIdleCallback(processTasks);
+    }
+  }
+
+  requestIdleCallback(processTasks);
 }
 ```
 
@@ -741,18 +762,20 @@ function processWhenIdle(tasks) {
 **Answer**:
 
 **setTimeout(fn, 0)**:
+
 - Macrotask - lower priority
 - Minimum delay of 4ms in browsers
 - Processed after current microtasks
 
 **queueMicrotask(fn)**:
+
 - Microtask - higher priority
 - No artificial delay
 - Processed before any macrotasks
 
 ```javascript
-queueMicrotask(() => console.log('microtask'));
-setTimeout(() => console.log('macrotask'), 0);
+queueMicrotask(() => console.log("microtask"));
+setTimeout(() => console.log("macrotask"), 0);
 // Output: microtask, macrotask
 ```
 
@@ -762,55 +785,55 @@ setTimeout(() => console.log('macrotask'), 0);
 
 ```javascript
 class NonBlockingRenderer {
-    constructor() {
-        this.renderQueue = [];
-        this.isRendering = false;
+  constructor() {
+    this.renderQueue = [];
+    this.isRendering = false;
+  }
+
+  async render(items) {
+    this.renderQueue.push(...items);
+
+    if (!this.isRendering) {
+      this.isRendering = true;
+      await this.processRenderQueue();
+      this.isRendering = false;
     }
-    
-    async render(items) {
-        this.renderQueue.push(...items);
-        
-        if (!this.isRendering) {
-            this.isRendering = true;
-            await this.processRenderQueue();
-            this.isRendering = false;
-        }
+  }
+
+  async processRenderQueue() {
+    const CHUNK_SIZE = 50;
+
+    while (this.renderQueue.length > 0) {
+      const chunk = this.renderQueue.splice(0, CHUNK_SIZE);
+
+      // Render chunk synchronously
+      chunk.forEach((item) => this.renderItem(item));
+
+      // Yield control to prevent blocking
+      await this.yieldControl();
     }
-    
-    async processRenderQueue() {
-        const CHUNK_SIZE = 50;
-        
-        while (this.renderQueue.length > 0) {
-            const chunk = this.renderQueue.splice(0, CHUNK_SIZE);
-            
-            // Render chunk synchronously
-            chunk.forEach(item => this.renderItem(item));
-            
-            // Yield control to prevent blocking
-            await this.yieldControl();
-        }
-    }
-    
-    yieldControl() {
-        return new Promise(resolve => {
-            if (this.shouldYield()) {
-                setTimeout(resolve, 0); // Macrotask
-            } else {
-                queueMicrotask(resolve); // Microtask
-            }
-        });
-    }
-    
-    shouldYield() {
-        // Yield if we've been running for too long
-        return performance.now() % 16 > 5; // ~5ms threshold
-    }
-    
-    renderItem(item) {
-        const element = document.createElement('div');
-        element.textContent = item.text;
-        document.body.appendChild(element);
-    }
+  }
+
+  yieldControl() {
+    return new Promise((resolve) => {
+      if (this.shouldYield()) {
+        setTimeout(resolve, 0); // Macrotask
+      } else {
+        queueMicrotask(resolve); // Microtask
+      }
+    });
+  }
+
+  shouldYield() {
+    // Yield if we've been running for too long
+    return performance.now() % 16 > 5; // ~5ms threshold
+  }
+
+  renderItem(item) {
+    const element = document.createElement("div");
+    element.textContent = item.text;
+    document.body.appendChild(element);
+  }
 }
 ```
 
@@ -818,43 +841,43 @@ class NonBlockingRenderer {
 
 ```javascript
 class PromiseQueue {
-    constructor(concurrency = 1) {
-        this.concurrency = concurrency;
-        this.running = 0;
-        this.queue = [];
+  constructor(concurrency = 1) {
+    this.concurrency = concurrency;
+    this.running = 0;
+    this.queue = [];
+  }
+
+  add(promiseFactory) {
+    return new Promise((resolve, reject) => {
+      this.queue.push({
+        promiseFactory,
+        resolve,
+        reject,
+      });
+
+      this.process();
+    });
+  }
+
+  async process() {
+    if (this.running >= this.concurrency || this.queue.length === 0) {
+      return;
     }
-    
-    add(promiseFactory) {
-        return new Promise((resolve, reject) => {
-            this.queue.push({
-                promiseFactory,
-                resolve,
-                reject
-            });
-            
-            this.process();
-        });
+
+    this.running++;
+    const { promiseFactory, resolve, reject } = this.queue.shift();
+
+    try {
+      const result = await promiseFactory();
+      resolve(result);
+    } catch (error) {
+      reject(error);
+    } finally {
+      this.running--;
+      // Process next item in next microtask
+      queueMicrotask(() => this.process());
     }
-    
-    async process() {
-        if (this.running >= this.concurrency || this.queue.length === 0) {
-            return;
-        }
-        
-        this.running++;
-        const { promiseFactory, resolve, reject } = this.queue.shift();
-        
-        try {
-            const result = await promiseFactory();
-            resolve(result);
-        } catch (error) {
-            reject(error);
-        } finally {
-            this.running--;
-            // Process next item in next microtask
-            queueMicrotask(() => this.process());
-        }
-    }
+  }
 }
 
 // Usage
@@ -862,9 +885,75 @@ const queue = new PromiseQueue(3); // Max 3 concurrent operations
 
 // Add multiple async operations
 for (let i = 0; i < 10; i++) {
-    queue.add(() => fetch(`/api/data/${i}`))
-        .then(response => console.log(`Completed ${i}`));
+  queue
+    .add(() => fetch(`/api/data/${i}`))
+    .then((response) => console.log(`Completed ${i}`));
 }
 ```
+
+# Additional Advanced Interview Q&A and Visuals
+
+## Q: What is the output of the following code and why?
+
+```javascript
+console.log("A");
+setTimeout(() => console.log("B"), 0);
+(async () => {
+  console.log("C");
+  await null;
+  console.log("D");
+})();
+console.log("E");
+```
+
+**Answer (English):**
+A, C, E, D, B
+
+- Synchronous: A, C, E
+- Awaited code (D) is a microtask, runs after sync code
+- setTimeout (B) is a macrotask, runs after microtasks
+
+**Answer (Vietnamese):**
+A, C, E, D, B
+
+- Lệnh đồng bộ: A, C, E
+- D (sau await) là microtask, chạy sau code đồng bộ
+- B (setTimeout) là macrotask, chạy sau microtask
+
+---
+
+## Q: How would you debug a UI freeze caused by a long-running synchronous function?
+
+**Answer (English):**
+
+- Use Chrome DevTools Performance tab to record and find long tasks
+- Refactor code to break work into smaller chunks (setTimeout, requestIdleCallback)
+- Move heavy computation to a Web Worker
+
+**Answer (Vietnamese):**
+
+- Dùng Chrome DevTools Performance để tìm task dài
+- Chia nhỏ công việc bằng setTimeout, requestIdleCallback
+- Đưa xử lý nặng sang Web Worker
+
+---
+
+## Diagram: Event Loop with Async/Await and Timers
+
+```mermaid
+sequenceDiagram
+  participant Main
+  participant Microtask
+  participant Macrotask
+  Main->>Main: console.log('A')
+  Main->>Main: setTimeout(...)
+  Main->>Main: (async) console.log('C')
+  Main->>Microtask: await null (schedules D)
+  Main->>Main: console.log('E')
+  Microtask->>Main: console.log('D')
+  Macrotask->>Main: console.log('B')
+```
+
+---
 
 This comprehensive deep-dive covers the Event Loop from fundamental concepts to advanced implementation patterns, providing the theoretical knowledge and practical understanding needed for senior frontend engineering interviews.
