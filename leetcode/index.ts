@@ -22,6 +22,9 @@ export * from "./array/problems/20-trapping-rain-water";
 export * from "./array/problems/21-merge-intervals";
 export * from "./array/problems/22-meeting-rooms-ii";
 export * from "./array/problems/23-insert-interval";
+export * from "./array/problems/24-three-sum-closest";
+export * from "./array/problems/25-four-sum";
+export * from "./array/problems/26-remove-duplicates-from-sorted-array-ii";
 
 // String Problems
 export * from "./string/problems/01-reverse-string";
@@ -96,6 +99,8 @@ export * from "./backtracking/problems/11-restore-ip-addresses";
 
 // Math Problems
 export * from "./math/problems/01-fizz-buzz";
+export * from "./math/problems/02-pow-x-n";
+export * from "./math/problems/03-sqrt-x";
 
 // Sorting & Searching Problems
 export * from "./sorting-searching/problems/01-merge-sorted-array";
@@ -229,6 +234,9 @@ export const problemCategories = {
       "Merge Intervals (Advanced)",
       "Meeting Rooms II",
       "Insert Interval",
+      "3Sum Closest",
+      "4Sum",
+      "Remove Duplicates from Sorted Array II",
     ],
   },
   string: {
@@ -314,7 +322,7 @@ export const problemCategories = {
   },
   math: {
     name: "Math Problems",
-    problems: ["Fizz Buzz"],
+    problems: ["Fizz Buzz", "Pow(x, n)", "Sqrt(x)"],
   },
   sortingSearching: {
     name: "Sorting & Searching Problems",
