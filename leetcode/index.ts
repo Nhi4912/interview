@@ -15,6 +15,10 @@ export * from "./array/problems/13-set-matrix-zeroes";
 export * from "./array/problems/14-increasing-triplet-subsequence";
 export * from "./array/problems/15-missing-ranges";
 export * from "./array/problems/16-count-and-say";
+export * from "./array/problems/17-product-of-array-except-self";
+export * from "./array/problems/18-container-with-most-water";
+export * from "./array/problems/19-merge-intervals";
+export * from "./array/problems/20-trapping-rain-water";
 
 // String Problems
 export * from "./string/problems/01-reverse-string";
@@ -31,6 +35,11 @@ export * from "./string/problems/11-longest-palindromic-substring";
 export * from "./string/problems/12-roman-to-integer";
 export * from "./string/problems/13-integer-to-roman";
 export * from "./string/problems/14-zigzag-conversion";
+export * from "./string/problems/15-minimum-window-substring";
+export * from "./string/problems/16-valid-palindrome-ii";
+export * from "./string/problems/17-sliding-window-maximum";
+export * from "./string/problems/18-longest-substring-with-at-most-k-distinct";
+export * from "./string/problems/19-find-all-anagrams-in-string";
 
 // Linked List Problems
 export * from "./linked-list/problems/01-reverse-linked-list";
@@ -42,6 +51,8 @@ export * from "./linked-list/problems/06-linked-list-cycle";
 export * from "./linked-list/problems/07-add-two-numbers";
 export * from "./linked-list/problems/08-odd-even-linked-list";
 export * from "./linked-list/problems/09-intersection-of-two-linked-lists";
+export * from "./linked-list/problems/10-merge-k-sorted-lists";
+export * from "./linked-list/problems/11-copy-list-with-random-pointer";
 
 // Tree/Graph Problems
 export * from "./tree-graph/problems/01-maximum-depth-of-binary-tree";
@@ -50,12 +61,19 @@ export * from "./tree-graph/problems/03-binary-tree-level-order-traversal";
 export * from "./tree-graph/problems/04-symmetric-tree";
 export * from "./tree-graph/problems/05-convert-sorted-array-to-binary-search-tree";
 export * from "./tree-graph/problems/06-binary-tree-inorder-traversal";
+export * from "./tree-graph/problems/13-word-ladder";
+export * from "./tree-graph/problems/14-serialize-deserialize-binary-tree";
+export * from "./tree-graph/problems/15-course-schedule-ii";
 
 // Design Problems
 export * from "./design/problems/01-min-stack";
+export * from "./design/problems/09-lru-cache";
 
 // Dynamic Programming Problems
 export * from "./dp/problems/01-climbing-stairs";
+export * from "./dp/problems/09-longest-common-subsequence";
+export * from "./dp/problems/10-edit-distance";
+export * from "./dp/problems/11-regular-expression-matching";
 
 // Backtracking Problems
 export * from "./backtracking/problems/01-letter-combinations-of-a-phone-number";
@@ -66,12 +84,17 @@ export * from "./backtracking/problems/05-combination-sum";
 export * from "./backtracking/problems/06-word-search";
 export * from "./backtracking/problems/07-n-queens";
 export * from "./backtracking/problems/08-sudoku-solver";
+export * from "./backtracking/problems/09-word-search-ii";
+export * from "./backtracking/problems/10-palindrome-partitioning";
+export * from "./backtracking/problems/11-restore-ip-addresses";
 
 // Math Problems
 export * from "./math/problems/01-fizz-buzz";
 
 // Sorting & Searching Problems
 export * from "./sorting-searching/problems/01-merge-sorted-array";
+export * from "./sorting-searching/problems/02-find-k-largest-elements";
+export * from "./sorting-searching/problems/03-search-in-rotated-sorted-array";
 
 // Others Problems
 export * from "./others/problems/01-valid-parentheses";
@@ -192,6 +215,10 @@ export const problemCategories = {
       "Increasing Triplet Subsequence",
       "Missing Ranges",
       "Count and Say",
+      "Product of Array Except Self",
+      "Container With Most Water",
+      "Merge Intervals",
+      "Trapping Rain Water",
     ],
   },
   string: {
@@ -211,6 +238,11 @@ export const problemCategories = {
       "Roman to Integer",
       "Integer to Roman",
       "ZigZag Conversion",
+      "Minimum Window Substring",
+      "Valid Palindrome II",
+      "Sliding Window Maximum",
+      "Longest Substring with At Most K Distinct Characters",
+      "Find All Anagrams in a String",
     ],
   },
   linkedList: {
@@ -225,6 +257,8 @@ export const problemCategories = {
       "Add Two Numbers",
       "Odd Even Linked List",
       "Intersection of Two Linked Lists",
+      "Merge k Sorted Lists",
+      "Copy List with Random Pointer",
     ],
   },
   treeGraph: {
@@ -236,15 +270,18 @@ export const problemCategories = {
       "Symmetric Tree",
       "Convert Sorted Array to Binary Search Tree",
       "Binary Tree Inorder Traversal",
+      "Word Ladder",
+      "Serialize and Deserialize Binary Tree",
+      "Course Schedule II",
     ],
   },
   design: {
     name: "Design Problems",
-    problems: ["Min Stack"],
+    problems: ["Min Stack", "LRU Cache"],
   },
   dp: {
     name: "Dynamic Programming Problems",
-    problems: ["Climbing Stairs"],
+    problems: ["Climbing Stairs", "Longest Common Subsequence", "Edit Distance", "Regular Expression Matching"],
   },
   backtracking: {
     name: "Backtracking Problems",
@@ -257,6 +294,9 @@ export const problemCategories = {
       "Word Search",
       "N-Queens",
       "Sudoku Solver",
+      "Word Search II",
+      "Palindrome Partitioning",
+      "Restore IP Addresses",
     ],
   },
   math: {
@@ -265,7 +305,7 @@ export const problemCategories = {
   },
   sortingSearching: {
     name: "Sorting & Searching Problems",
-    problems: ["Merge Sorted Array"],
+    problems: ["Merge Sorted Array", "Kth Largest Element in Array", "Search in Rotated Sorted Array"],
   },
   others: {
     name: "Others Problems",
