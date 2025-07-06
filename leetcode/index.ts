@@ -19,6 +19,9 @@ export * from "./array/problems/17-product-of-array-except-self";
 export * from "./array/problems/18-container-with-most-water";
 export * from "./array/problems/19-merge-intervals";
 export * from "./array/problems/20-trapping-rain-water";
+export * from "./array/problems/21-merge-intervals";
+export * from "./array/problems/22-meeting-rooms-ii";
+export * from "./array/problems/23-insert-interval";
 
 // String Problems
 export * from "./string/problems/01-reverse-string";
@@ -64,6 +67,9 @@ export * from "./tree-graph/problems/06-binary-tree-inorder-traversal";
 export * from "./tree-graph/problems/13-word-ladder";
 export * from "./tree-graph/problems/14-serialize-deserialize-binary-tree";
 export * from "./tree-graph/problems/15-course-schedule-ii";
+export * from "./tree-graph/problems/16-lowest-common-ancestor-binary-tree";
+export * from "./tree-graph/problems/17-binary-tree-maximum-path-sum";
+export * from "./tree-graph/problems/18-alien-dictionary";
 
 // Design Problems
 export * from "./design/problems/01-min-stack";
@@ -95,6 +101,7 @@ export * from "./math/problems/01-fizz-buzz";
 export * from "./sorting-searching/problems/01-merge-sorted-array";
 export * from "./sorting-searching/problems/02-find-k-largest-elements";
 export * from "./sorting-searching/problems/03-search-in-rotated-sorted-array";
+export * from "./sorting-searching/problems/04-median-of-two-sorted-arrays";
 
 // Others Problems
 export * from "./others/problems/01-valid-parentheses";
@@ -218,7 +225,10 @@ export const problemCategories = {
       "Product of Array Except Self",
       "Container With Most Water",
       "Merge Intervals",
-      "Trapping Rain Water",
+      "Trapping Rain Water", 
+      "Merge Intervals (Advanced)",
+      "Meeting Rooms II",
+      "Insert Interval",
     ],
   },
   string: {
@@ -273,6 +283,9 @@ export const problemCategories = {
       "Word Ladder",
       "Serialize and Deserialize Binary Tree",
       "Course Schedule II",
+      "Lowest Common Ancestor of Binary Tree",
+      "Binary Tree Maximum Path Sum",
+      "Alien Dictionary",
     ],
   },
   design: {
@@ -305,7 +318,7 @@ export const problemCategories = {
   },
   sortingSearching: {
     name: "Sorting & Searching Problems",
-    problems: ["Merge Sorted Array", "Kth Largest Element in Array", "Search in Rotated Sorted Array"],
+    problems: ["Merge Sorted Array", "Kth Largest Element in Array", "Search in Rotated Sorted Array", "Median of Two Sorted Arrays"],
   },
   others: {
     name: "Others Problems",
