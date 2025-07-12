@@ -467,7 +467,6 @@ const UserComponent: React.FC = () => {
   );
 };
 ```
-{% endraw %}
 
 ### Context with TypeScript
 
@@ -547,7 +546,6 @@ export const useAppContext = (): AppContextType => {
   return context;
 };
 ```
-{% endraw %}
 
 ## Interview Questions
 
@@ -682,7 +680,6 @@ async function fetchUserWithErrorHandling(id: number): Promise<User> {
   }
 }
 ```
-{% endraw %}
 
 ### 5. What are utility types and how do you use them?
 
@@ -959,6 +956,5 @@ class UserRepository implements Repository<User> {
   }
 }
 ```
-{% endraw %}
 
 This comprehensive TypeScript guide covers all the essential concepts and patterns you'll need for frontend interviews. The key is to understand not just the syntax, but when and why to use different TypeScript features to write more maintainable and type-safe code.

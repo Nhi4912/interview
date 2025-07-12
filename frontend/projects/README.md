@@ -1566,7 +1566,6 @@ class SocialFeed {
   }
 }
 ```
-{% endraw %}
 
 ### Performance Optimization Challenge
 
@@ -1800,7 +1799,6 @@ const cachedFetch = optimizer.createRequestCache();
 // Use cached fetch for API calls
 const products = await cachedFetch("/api/products");
 ```
-{% endraw %}
 
 ## Portfolio Projects
 

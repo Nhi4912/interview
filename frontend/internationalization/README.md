@@ -508,7 +508,6 @@ function ProductCard({ product }) {
   );
 }
 ```
-{% endraw %}
 
 **Q: How do you handle dynamic content and user-generated text in multiple languages?**
 A: Advanced dynamic content handling:
@@ -710,7 +709,6 @@ class DynamicContentManager {
   }
 }
 ```
-{% endraw %}
 
 ## Practical Problems & Solutions
 
@@ -876,7 +874,6 @@ console.log(formatter.formatDate(date, "en-US")); // "December 25, 2023"
 console.log(formatter.formatDate(date, "es-ES")); // "25 de diciembre de 2023"
 console.log(formatter.formatDate(date, "ja-JP")); // "2023年12月25日"
 ```
-{% endraw %}
 
 ### Problem 2: Create a Dynamic Language Switcher
 
@@ -1062,7 +1059,6 @@ function LanguageSwitcherComponent() {
   );
 }
 ```
-{% endraw %}
 
 ## i18n Best Practices
 
@@ -1170,7 +1166,6 @@ class TranslationLoader {
   }
 }
 ```
-{% endraw %}
 
 ## Resources
 

@@ -424,7 +424,6 @@ try {
   console.error("Request failed:", error);
 }
 ```
-{% endraw %}
 
 ### Problem 4: Create a WebSocket Manager
 
@@ -649,7 +648,6 @@ const promises = [
 const results = await Promise.all(promises);
 console.log("API calls completed");
 ```
-{% endraw %}
 
 ## Network Optimization Techniques
 

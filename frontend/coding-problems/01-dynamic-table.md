@@ -375,7 +375,6 @@ function VirtualizedTable({ data, height, rowHeight }) {
   );
 }
 ```
-{% endraw %}
 
 ---
 
@@ -413,7 +412,6 @@ renderCell(value, rowIdx, colKey) {
   return `<span ondblclick="startEdit(${rowIdx}, '${colKey}')">${value}</span>`;
 }
 ```
-{% endraw %}
 
 ---
 
@@ -560,7 +558,6 @@ function VirtualizedTable({ data, height, rowHeight }) {
   );
 }
 ```
-{% endraw %}
 
 ---
 
@@ -598,7 +595,6 @@ renderCell(value, rowIdx, colKey) {
   return `<span ondblclick="startEdit(${rowIdx}, '${colKey}')">${value}</span>`;
 }
 ```
-{% endraw %}
 
 ---
 

@@ -414,7 +414,6 @@ class SecureAuthManager {
   }
 }
 ```
-{% endraw %}
 
 **Q: How do you implement secure file uploads?**
 A: Secure file upload implementation with validation and scanning:
@@ -624,7 +623,6 @@ class SecureFileUpload {
   }
 }
 ```
-{% endraw %}
 
 ## Practical Problems & Solutions
 
@@ -953,7 +951,6 @@ class SecurityChecker {
   }
 }
 ```
-{% endraw %}
 
 ## Resources
 

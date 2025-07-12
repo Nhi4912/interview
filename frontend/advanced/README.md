@@ -378,7 +378,6 @@ const createStyles = (theme) => ({
   },
 });
 ```
-{% endraw %}
 
 ## Advanced JavaScript Patterns
 
@@ -420,7 +419,6 @@ const scrollHandler = throttle(() => {
   // Handle scroll events
   console.log("Scroll position:", window.scrollY);
 }, 100);
-{% endraw %}
 ```
 
 ### Proxy Pattern
@@ -466,7 +464,6 @@ try {
   console.error("Validation error:", error.message);
 }
 ```
-{% endraw %}
 
 ### Module Pattern
 
@@ -530,7 +527,6 @@ class MouseTracker extends React.Component {
     </h1>
   )}
 />;
-{% endraw %}
 ```
 
 ### Higher-Order Components (HOC)
@@ -680,7 +676,6 @@ function ExpensiveList({ items, filter }) {
   );
 }
 ```
-{% endraw %}
 
 ### Architecture Questions
 
@@ -815,7 +810,6 @@ const button = designSystem.createComponent("Button", {
   },
 });
 ```
-{% endraw %}
 
 ## Resources
 

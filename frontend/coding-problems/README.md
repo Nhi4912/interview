@@ -814,7 +814,6 @@ class AdvancedSearchComponent {
   }
 }
 ```
-{% endraw %}
 
 **CSS for Search Components**:
 
@@ -1200,7 +1199,6 @@ const RegistrationForm = () => {
   );
 };
 ```
-{% endraw %}
 
 **CSS for Form Validation**:
 

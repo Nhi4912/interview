@@ -824,7 +824,6 @@ canvas.height = 600;
 const viewer = new Model3DViewer(canvas);
 viewer.loadOBJ('/models/teapot.obj');
 ```
-{% endraw %}
 
 ### CSS Styling
 

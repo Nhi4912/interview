@@ -645,7 +645,6 @@ module.exports = {
   },
 };
 ```
-{% endraw %}
 
 ### Problem 5: Create a Build Performance Monitor
 
@@ -863,7 +862,6 @@ module.exports = {
   ],
 };
 ```
-{% endraw %}
 
 ## Build Optimization Techniques
 

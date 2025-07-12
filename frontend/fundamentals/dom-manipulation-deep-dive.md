@@ -318,7 +318,6 @@ const dataElement = DOMSelector.byData("role", "button");
 const multiClass = DOMSelector.byClasses(["btn", "primary"]);
 const parentSection = DOMSelector.closest(button, "section");
 ```
-{% endraw %}
 
 ## Creating and Modifying Elements
 
@@ -441,7 +440,6 @@ for (let i = 0; i < 1000; i++) {
   container.appendChild(div); // Reflow on each iteration!
 }
 ```
-{% endraw %}
 
 **Solution: Document Fragment**
 
@@ -458,7 +456,6 @@ for (let i = 0; i < 1000; i++) {
 
 container.appendChild(fragment); // Single reflow
 ```
-{% endraw %}
 
 **Advanced Fragment Usage**
 
@@ -513,7 +510,6 @@ processor
   }))
   .commitTo(document.getElementById("list"));
 ```
-{% endraw %}
 
 ## Event System Deep Dive
 
@@ -945,7 +941,6 @@ const virtualList = new VirtualList(
   20 // visible count
 );
 ```
-{% endraw %}
 
 ## Modern DOM APIs
 
@@ -1248,7 +1243,6 @@ for (let i = 0; i < 1000; i++) {
   container.appendChild(div); // Reflow on each append
 }
 ```
-{% endraw %}
 
 **Good approaches:**
 
@@ -1266,7 +1260,6 @@ for (let i = 0; i < 1000; i++) {
 
 container.appendChild(fragment); // Single reflow
 ```
-{% endraw %}
 
 **2. innerHTML with array join:**
 
@@ -1280,7 +1273,6 @@ for (let i = 0; i < 1000; i++) {
 
 container.innerHTML = html.join(""); // Single reflow
 ```
-{% endraw %}
 
 **3. Template strings:**
 
@@ -1289,7 +1281,6 @@ const container = document.getElementById("container");
 const items = Array.from({ length: 1000 }, (_, i) => `<div>Item ${i}</div>`);
 container.innerHTML = items.join("");
 ```
-{% endraw %}
 
 ### Q4: What are the performance implications of different DOM querying methods?
 

@@ -454,7 +454,6 @@ function UserProfile({ userId }) {
   );
 }
 ```
-{% endraw %}
 
 #### Higher-Order Components (HOCs)
 
@@ -667,7 +666,6 @@ function TodoApp() {
   );
 }
 ```
-{% endraw %}
 
 ### 4. Advanced Performance Optimization
 
@@ -785,7 +783,6 @@ function LargeList() {
   );
 }
 ```
-{% endraw %}
 
 ### 5. Advanced Testing Strategies
 

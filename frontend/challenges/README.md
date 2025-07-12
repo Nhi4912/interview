@@ -548,7 +548,6 @@ const ChatApp = () => {
   );
 };
 ```
-{% endraw %}
 
 ### Challenge 4: E-commerce Product Catalog
 
@@ -825,7 +824,6 @@ const ProductCatalog = () => {
   );
 };
 ```
-{% endraw %}
 
 ## Advanced Challenges
 
@@ -1086,7 +1084,6 @@ const Dashboard = () => {
   );
 };
 ```
-{% endraw %}
 
 ## System Design Challenges
 
@@ -1249,7 +1246,6 @@ const SocialFeed = () => {
   );
 };
 ```
-{% endraw %}
 
 ## Performance Challenges
 
@@ -1455,7 +1451,6 @@ const DataTable = ({ data, columns }) => {
   );
 };
 ```
-{% endraw %}
 
 ## Interview Scenarios
 

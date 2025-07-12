@@ -350,7 +350,6 @@ class SearchableVirtualScroller extends VirtualScroller {
   }
 }
 ```
-{% endraw %}
 
 ## Performance Optimizations
 
@@ -416,7 +415,6 @@ class OptimizedVirtualScroller extends VirtualScroller {
   }
 }
 ```
-{% endraw %}
 
 ## Key Features
 

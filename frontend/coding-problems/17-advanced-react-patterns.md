@@ -436,7 +436,6 @@ const FormModal = () => {
   );
 };
 ```
-{% endraw %}
 
 ## 🎯 Problem 3: Compound Component Accordion
 
@@ -711,7 +710,6 @@ const AdvancedAccordionDemo = () => {
   );
 };
 ```
-{% endraw %}
 
 ## 🎨 CSS Styling
 

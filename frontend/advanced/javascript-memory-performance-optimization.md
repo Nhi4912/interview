@@ -531,7 +531,6 @@ vectors.forEach(vector => vector.destroy());
 
 console.log('Pool stats after release:', Vector3Pool.getInstance().getStats());
 ```
-{% endraw %}
 
 ### 2. Lazy Loading and Code Splitting
 
@@ -742,7 +741,6 @@ async function loadDashboard() {
   }
 }
 ```
-{% endraw %}
 
 ### 3. Virtual Scrolling Implementation
 
@@ -1017,7 +1015,6 @@ function createVirtualScrollDemo() {
   return virtualList;
 }
 ```
-{% endraw %}
 
 ## 🔍 Performance Monitoring and Debugging
 
@@ -1379,6 +1376,5 @@ setTimeout(() => {
   
 }, 10000);
 ```
-{% endraw %}
 
 This comprehensive guide covers advanced JavaScript memory management and performance optimization techniques essential for frontend interviews at big tech companies. The practical examples demonstrate real-world application of these concepts and provide tools for performance debugging and optimization.

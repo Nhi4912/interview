@@ -819,7 +819,6 @@ function AccessibleModal({ isOpen, onClose, children }) {
   );
 }
 ```
-{% endraw %}
 
 ---
 
@@ -972,7 +971,6 @@ function AccessibleDropdown({ options, onSelect }) {
   );
 }
 ```
-{% endraw %}
 
 ## Problem 2: Accessible Error Handling in Forms
 
@@ -1042,7 +1040,6 @@ function AccessibleForm() {
   );
 }
 ```
-{% endraw %}
 
 ---
 
@@ -1154,7 +1151,6 @@ flowchart TD
   </ul>
 </nav>
 ```
-{% endraw %}
 
 ---
 

@@ -531,7 +531,6 @@ function createButtonWithCounter(buttonId) {
 
 const buttonCounter = createButtonWithCounter("myButton");
 ```
-{% endraw %}
 
 ### 4. Memoization (Caching)
 
@@ -1057,7 +1056,6 @@ function createObject() {
   };
 }
 ```
-{% endraw %}
 
 **3. WeakMap Pattern**:
 

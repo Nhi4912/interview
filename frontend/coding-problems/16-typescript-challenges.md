@@ -869,6 +869,5 @@ console.log('Errors:', validation.errors);
 const formHTML = form.generateHTML();
 document.getElementById('form-container')!.innerHTML = formHTML;
 ```
-{% endraw %}
 
 These TypeScript challenges demonstrate advanced type system usage, generic programming, and real-world application patterns that are commonly tested in senior frontend interviews at Big Tech companies.

@@ -626,7 +626,6 @@ class TeamsWhiteboardIntegration {
   }
 }
 ```
-{% endraw %}
 
 ### **Cultural Values**
 - **Respect**: Inclusive and diverse perspectives
@@ -887,7 +886,6 @@ class PrivacyManager {
   }
 }
 ```
-{% endraw %}
 
 ### **Design Philosophy**
 - **Simplicity**: Elegant, minimal solutions

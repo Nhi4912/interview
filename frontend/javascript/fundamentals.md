@@ -496,7 +496,6 @@ emitter.on("userLogin", (user) => {
 
 emitter.emit("userLogin", { name: "John", id: 1 });
 ```
-{% endraw %}
 
 ## Practice Problems
 

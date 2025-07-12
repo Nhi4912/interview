@@ -869,7 +869,6 @@ class JWTSecurityManager {
   }
 }
 ```
-{% endraw %}
 
 ---
 
@@ -1229,6 +1228,5 @@ const useSecureForm = (schema: Record<string, ValidationRule>) => {
   return { validateField, validateForm, errors, isValid };
 };
 ```
-{% endraw %}
 
 This comprehensive security framework provides defense-in-depth protection against common frontend vulnerabilities while maintaining usability and performance. The patterns demonstrated here are essential for building secure applications in enterprise environments.

@@ -206,7 +206,6 @@ class Dog extends Animal {
 const dog = new Dog("Rex", "Golden Retriever");
 console.log(dog.speak()); // "Rex barks"
 ```
-{% endraw %}
 
 ### 5. Asynchronous Programming / Lập trình bất đồng bộ
 

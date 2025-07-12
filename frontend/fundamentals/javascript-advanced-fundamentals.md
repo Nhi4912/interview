@@ -1165,7 +1165,6 @@ class WebWorkerDemo {
   }
 }
 ```
-{% endraw %}
 
 ---
 
@@ -1515,6 +1514,5 @@ class PrototypeDemo {
   }
 }
 ```
-{% endraw %}
 
 This comprehensive guide covers the fundamental JavaScript concepts that are crucial for frontend interviews, providing both theoretical understanding and practical implementation examples that demonstrate mastery of the language.

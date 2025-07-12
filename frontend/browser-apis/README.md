@@ -1156,7 +1156,6 @@ const infiniteScroll = new InfiniteScroll(async () => {
 
 infiniteScroll.init(document.getElementById('items-container'));
 ```
-{% endraw %}
 
 ## Interview Questions
 

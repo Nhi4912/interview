@@ -1002,7 +1002,6 @@ function SearchComponent() {
   );
 }
 ```
-{% endraw %}
 
 #### Diagram: Custom Hook Lifecycle
 

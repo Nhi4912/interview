@@ -691,7 +691,6 @@ class ESBuildOptimizer {
   }
 }
 ```
-{% endraw %}
 
 ---
 
@@ -1065,7 +1064,6 @@ class CIPerfomanceMonitor {
   }
 }
 ```
-{% endraw %}
 
 ### **Docker Optimization for Frontend**
 
