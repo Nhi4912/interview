@@ -9,6 +9,7 @@ Performance optimization is critical for frontend applications, especially at Bi
 
 ### **Comprehensive Performance Monitoring**
 
+{% raw %}
 ```javascript
 // Advanced performance monitoring system
 class PerformanceMonitor {
@@ -638,6 +639,7 @@ class PerformanceMonitor {
   }
 }
 ```
+{% endraw %}
 
 ---
 

@@ -1264,6 +1264,7 @@ const SocialFeed = () => {
 
 **Implementation**:
 
+{% raw %}
 ```javascript
 const DataTable = ({ data, columns }) => {
   const [sortConfig, setSortConfig] = useState({ key: null, direction: "asc" });
@@ -1452,6 +1453,7 @@ const DataTable = ({ data, columns }) => {
   );
 };
 ```
+{% endraw %}
 
 ## Interview Scenarios
 

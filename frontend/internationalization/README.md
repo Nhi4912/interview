@@ -296,6 +296,7 @@ console.log(formatPluralMessage("items", 2, "ar")); // "عنصران"
 **Q: How would you implement a complete i18n system for a React application?**
 A: Comprehensive i18n system implementation:
 
+{% raw %}
 ```javascript
 // i18n configuration and utilities
 class I18nManager {
@@ -507,6 +508,7 @@ function ProductCard({ product }) {
   );
 }
 ```
+{% endraw %}
 
 **Q: How do you handle dynamic content and user-generated text in multiple languages?**
 A: Advanced dynamic content handling:

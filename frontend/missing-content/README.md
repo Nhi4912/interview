@@ -670,6 +670,7 @@ function TodoApp() {
 
 #### Virtual Scrolling Implementation
 
+{% raw %}
 ```jsx
 // Virtual Scrolling Implementation
 class VirtualScroller extends Component {
@@ -782,6 +783,7 @@ function LargeList() {
   );
 }
 ```
+{% endraw %}
 
 ### 5. Advanced Testing Strategies
 
