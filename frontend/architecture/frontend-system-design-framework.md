@@ -216,6 +216,7 @@ Constraints:
 - Technology flexibility
 
 **Implementation Example:**
+{% raw %}
 ```typescript
 // Presentation Layer
 interface PostComponentProps {
@@ -275,6 +276,7 @@ class PostService {
   }
 }
 ```
+{% endraw %}
 
 ### Micro-Frontend Architecture
 
@@ -353,6 +355,7 @@ Application
 
 **Example: Social Feed Component Design**
 
+{% raw %}
 ```typescript
 // High-level container component
 interface FeedContainerProps {
@@ -448,6 +451,7 @@ const PostCard: React.FC<PostCardProps> = ({ post, style }) => {
   );
 };
 ```
+{% endraw %}
 
 ### Component Patterns
 
@@ -493,6 +497,7 @@ const PostPresentational: React.FC<PostPresentationalProps> = ({
 ```
 
 **2. Compound Components Pattern**
+{% raw %}
 ```typescript
 // API Design
 <Tabs defaultActiveKey="tab1">
@@ -532,6 +537,7 @@ Tabs.Tab = Tab;
 Tabs.TabPanels = TabPanels;
 Tabs.TabPanel = TabPanel;
 ```
+{% endraw %}
 
 **3. Render Props Pattern**
 ```typescript
@@ -606,6 +612,7 @@ const ParentComponent = () => {
 ```
 
 **3. Context State Pattern**
+{% raw %}
 ```typescript
 // For application-wide state
 interface AppState {
@@ -629,6 +636,7 @@ const AppStateProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
   );
 };
 ```
+{% endraw %}
 
 **4. External State Management**
 ```typescript
@@ -802,6 +810,7 @@ const CriticalResourceLoader = () => {
 **3. Virtualization for Large Lists**
 
 {% raw %}
+{% raw %}
 ```typescript
 interface VirtualListProps<T> {
   items: T[];
@@ -846,6 +855,7 @@ const VirtualList = <T,>({
   );
 };
 ```
+{% endraw %}
 {% endraw %}
 
 ### Caching Strategies
@@ -966,6 +976,7 @@ const useMemoryCache = <T>(key: string, fetcher: () => Promise<T>) => {
 
 **Key Components:**
 
+{% raw %}
 ```typescript
 // Feed container with real-time updates
 const FeedContainer = () => {
@@ -1022,6 +1033,7 @@ const VirtualizedFeed = ({ posts, loading, error }) => {
   );
 };
 ```
+{% endraw %}
 
 ### Example 2: Google Docs-like Editor
 

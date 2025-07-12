@@ -111,6 +111,7 @@ const dictionary: StringDictionary = {
 
 ### Functions
 
+{% raw %}
 ```typescript
 // Function types
 type MathOperation = (a: number, b: number) => number;
@@ -143,6 +144,7 @@ function createUser(name: string, age: number = 18): User {
   return { id: Math.random(), name, email: `${name}@example.com`, age };
 }
 ```
+{% endraw %}
 
 ## Advanced Types
 
@@ -301,6 +303,7 @@ type UpdateUserParams = Parameters<typeof updateUser>; // [number, Partial<User>
 
 ### Component Types
 
+{% raw %}
 ```typescript
 import React, { useState, useEffect, ReactNode } from 'react';
 
@@ -365,9 +368,11 @@ const UserList: React.FC<{ users: User[] }> = ({ users }) => {
   );
 };
 ```
+{% endraw %}
 
 ### Hooks with TypeScript
 
+{% raw %}
 ```typescript
 import { useState, useEffect, useCallback, useMemo, useRef } from 'react';
 
@@ -464,9 +469,11 @@ const UserComponent: React.FC = () => {
   );
 };
 ```
+{% endraw %}
 
 ### Context with TypeScript
 
+{% raw %}
 ```typescript
 import React, { createContext, useContext, useReducer, ReactNode } from 'react';
 
@@ -543,6 +550,7 @@ export const useAppContext = (): AppContextType => {
   return context;
 };
 ```
+{% endraw %}
 
 ## Interview Questions
 
@@ -630,6 +638,7 @@ function logLength<T extends Lengthwise>(arg: T): T {
 ### 4. How do you handle asynchronous operations in TypeScript?
 
 **Answer:**
+{% raw %}
 ```typescript
 // Promise types
 async function fetchUser(id: number): Promise<User> {
@@ -677,6 +686,7 @@ async function fetchUserWithErrorHandling(id: number): Promise<User> {
   }
 }
 ```
+{% endraw %}
 
 ### 5. What are utility types and how do you use them?
 
@@ -909,6 +919,7 @@ class ShapeFactory {
 
 ### 3. Repository Pattern
 
+{% raw %}
 ```typescript
 interface Repository<T> {
   findById(id: string): Promise<T | null>;
@@ -953,5 +964,6 @@ class UserRepository implements Repository<User> {
   }
 }
 ```
+{% endraw %}
 
 This comprehensive TypeScript guide covers all the essential concepts and patterns you'll need for frontend interviews. The key is to understand not just the syntax, but when and why to use different TypeScript features to write more maintainable and type-safe code.

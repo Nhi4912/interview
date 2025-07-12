@@ -231,6 +231,7 @@ const TodoApp = () => {
 **Implementation**:
 
 {% raw %}
+{% raw %}
 ```javascript
 const WeatherApp = () => {
   const [weather, setWeather] = useState(null);
@@ -355,6 +356,7 @@ const WeatherApp = () => {
 };
 ```
 {% endraw %}
+{% endraw %}
 
 ## Intermediate Challenges
 
@@ -373,6 +375,7 @@ const WeatherApp = () => {
 
 **Implementation**:
 
+{% raw %}
 ```javascript
 // WebSocket connection
 const useWebSocket = (url) => {
@@ -549,6 +552,7 @@ const ChatApp = () => {
   );
 };
 ```
+{% endraw %}
 
 ### Challenge 4: E-commerce Product Catalog
 
@@ -565,6 +569,7 @@ const ChatApp = () => {
 
 **Implementation**:
 
+{% raw %}
 ```javascript
 const ProductCatalog = () => {
   const [products, setProducts] = useState([]);
@@ -825,6 +830,7 @@ const ProductCatalog = () => {
   );
 };
 ```
+{% endraw %}
 
 ## Advanced Challenges
 
@@ -842,6 +848,7 @@ const ProductCatalog = () => {
 
 **Implementation**:
 
+{% raw %}
 ```javascript
 import { Line, Bar, Pie } from "react-chartjs-2";
 
@@ -1091,6 +1098,7 @@ const Dashboard = () => {
   );
 };
 ```
+{% endraw %}
 
 ## System Design Challenges
 
@@ -1108,6 +1116,7 @@ const Dashboard = () => {
 
 **Architecture Design**:
 
+{% raw %}
 ```javascript
 // Feed component with virtualization
 const SocialFeed = () => {
@@ -1253,6 +1262,7 @@ const SocialFeed = () => {
   );
 };
 ```
+{% endraw %}
 
 ## Performance Challenges
 
@@ -1270,6 +1280,7 @@ const SocialFeed = () => {
 
 **Implementation**:
 
+{% raw %}
 ```javascript
 const DataTable = ({ data, columns }) => {
   const [sortConfig, setSortConfig] = useState({ key: null, direction: "asc" });
@@ -1458,6 +1469,7 @@ const DataTable = ({ data, columns }) => {
   );
 };
 ```
+{% endraw %}
 
 ## Interview Scenarios
 

@@ -19,6 +19,7 @@ Create a particle system that responds to mouse interaction with realistic physi
 
 ### Solution
 
+{% raw %}
 ```typescript
 interface Particle {
   x: number;
@@ -173,6 +174,7 @@ canvas.height = window.innerHeight;
 
 const particleSystem = new ParticleSystem(canvas);
 ```
+{% endraw %}
 
 ---
 
@@ -190,6 +192,7 @@ Create a real-time chart that can handle 10,000+ data points with smooth animati
 
 ### Solution
 
+{% raw %}
 ```typescript
 interface DataPoint {
   timestamp: number;
@@ -444,6 +447,7 @@ setInterval(() => {
   chart.addDataPoint('Memory Usage', Math.random() * 100);
 }, 100);
 ```
+{% endraw %}
 
 ---
 
@@ -461,6 +465,7 @@ Create a 3D model viewer that can load and display OBJ files with lighting, mate
 
 ### Solution
 
+{% raw %}
 ```typescript
 interface Vertex {
   position: [number, number, number];
@@ -821,6 +826,7 @@ canvas.height = 600;
 const viewer = new Model3DViewer(canvas);
 viewer.loadOBJ('/models/teapot.obj');
 ```
+{% endraw %}
 
 ### CSS Styling
 

@@ -229,6 +229,7 @@ class GarbageCollectionDemo {
 
 ### **Advanced Scope and Closure Patterns**
 
+{% raw %}
 ```javascript
 // Understanding execution context and scope chain
 class ExecutionContextDemo {
@@ -510,6 +511,7 @@ class AdvancedClosurePatterns {
   }
 }
 ```
+{% endraw %}
 
 ---
 
@@ -517,6 +519,7 @@ class AdvancedClosurePatterns {
 
 ### **Advanced Promise Patterns**
 
+{% raw %}
 ```javascript
 // Advanced promise patterns and error handling
 class AdvancedPromisePatterns {
@@ -863,6 +866,7 @@ class AsyncAwaitPatterns {
   }
 }
 ```
+{% endraw %}
 
 ---
 
@@ -870,6 +874,7 @@ class AsyncAwaitPatterns {
 
 ### **Understanding the Event Loop**
 
+{% raw %}
 ```javascript
 // Event loop demonstration and microtask understanding
 class EventLoopDemo {
@@ -1162,6 +1167,7 @@ class WebWorkerDemo {
   }
 }
 ```
+{% endraw %}
 
 ---
 
@@ -1169,6 +1175,7 @@ class WebWorkerDemo {
 
 ### **Advanced Prototype Patterns**
 
+{% raw %}
 ```javascript
 // Understanding prototype chain and inheritance
 class PrototypeDemo {
@@ -1511,5 +1518,6 @@ class PrototypeDemo {
   }
 }
 ```
+{% endraw %}
 
 This comprehensive guide covers the fundamental JavaScript concepts that are crucial for frontend interviews, providing both theoretical understanding and practical implementation examples that demonstrate mastery of the language.

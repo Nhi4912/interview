@@ -10,6 +10,7 @@ This document identifies missing content, duplicates, and opportunities for impr
 
 #### Web APIs Deep Dive
 
+{% raw %}
 ```javascript
 // Modern Web APIs Implementation Guide
 
@@ -311,11 +312,13 @@ class AdvancedServiceWorker {
   }
 }
 ```
+{% endraw %}
 
 ### 2. Advanced React Patterns
 
 #### Compound Components Pattern
 
+{% raw %}
 ```jsx
 // Compound Components Implementation
 const Tabs = ({ children, defaultIndex = 0 }) => {
@@ -404,9 +407,11 @@ function App() {
   );
 }
 ```
+{% endraw %}
 
 #### Render Props Pattern
 
+{% raw %}
 ```jsx
 // Render Props Implementation
 class DataFetcher extends Component {
@@ -451,6 +456,7 @@ function UserProfile({ userId }) {
   );
 }
 ```
+{% endraw %}
 
 #### Higher-Order Components (HOCs)
 
@@ -514,6 +520,7 @@ function App() {
 
 #### Custom State Management with Context
 
+{% raw %}
 ```jsx
 // Advanced State Management Implementation
 const StateContext = createContext();
@@ -663,11 +670,13 @@ function TodoApp() {
   );
 }
 ```
+{% endraw %}
 
 ### 4. Advanced Performance Optimization
 
 #### Virtual Scrolling Implementation
 
+{% raw %}
 ```jsx
 // Virtual Scrolling Implementation
 class VirtualScroller extends Component {
@@ -780,6 +789,7 @@ function LargeList() {
   );
 }
 ```
+{% endraw %}
 
 ### 5. Advanced Testing Strategies
 

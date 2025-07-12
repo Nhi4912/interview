@@ -9,6 +9,7 @@ Modern frontend applications face sophisticated security threats. Big Tech compa
 
 ### **Content Security Policy (CSP) Implementation**
 
+{% raw %}
 ```typescript
 // csp-manager.ts
 interface CSPDirective {
@@ -234,9 +235,11 @@ class CSPManager {
   }
 }
 ```
+{% endraw %}
 
 ### **Trusted Types Implementation**
 
+{% raw %}
 ```typescript
 // trusted-types.ts
 interface TrustedTypesPolicy {
@@ -497,6 +500,7 @@ class TrustedTypesManager {
   }
 }
 ```
+{% endraw %}
 
 ---
 
@@ -504,6 +508,7 @@ class TrustedTypesManager {
 
 ### **JWT Security Implementation**
 
+{% raw %}
 ```typescript
 // jwt-security.ts
 interface JWTHeader {
@@ -866,6 +871,7 @@ class JWTSecurityManager {
   }
 }
 ```
+{% endraw %}
 
 ---
 
@@ -873,6 +879,7 @@ class JWTSecurityManager {
 
 ### **Advanced Input Validation Framework**
 
+{% raw %}
 ```typescript
 // input-validator.ts
 interface ValidationRule {
@@ -1225,5 +1232,6 @@ const useSecureForm = (schema: Record<string, ValidationRule>) => {
   return { validateField, validateForm, errors, isValid };
 };
 ```
+{% endraw %}
 
 This comprehensive security framework provides defense-in-depth protection against common frontend vulnerabilities while maintaining usability and performance. The patterns demonstrated here are essential for building secure applications in enterprise environments.

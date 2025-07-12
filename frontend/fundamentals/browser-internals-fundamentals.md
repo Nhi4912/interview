@@ -570,6 +570,7 @@ class CriticalRenderingPath {
 
 ### **V8 Engine Deep Dive**
 
+{% raw %}
 ```javascript
 // Understanding V8 optimization patterns
 class V8OptimizationDemo {
@@ -961,6 +962,7 @@ class V8OptimizationDemo {
   }
 }
 ```
+{% endraw %}
 
 ---
 
@@ -968,6 +970,7 @@ class V8OptimizationDemo {
 
 ### **Storage and Persistence APIs**
 
+{% raw %}
 ```javascript
 // Comprehensive storage API demonstration
 class WebStorageManager {
@@ -1402,5 +1405,6 @@ class WebStorageManager {
   }
 }
 ```
+{% endraw %}
 
 This comprehensive guide covers the essential browser internals and web platform fundamentals necessary for understanding modern web development and optimizing frontend applications at the browser level.

@@ -1220,6 +1220,7 @@ body {
 }
 ```
 
+{% raw %}
 ```javascript
 // Advanced CSS loading strategies
 class CSSLoadingOptimizer {
@@ -1488,5 +1489,6 @@ class OptimizedStyledComponents {
   }
 }
 ```
+{% endraw %}
 
 This comprehensive HTML and CSS fundamentals guide provides the foundation for building modern, accessible, and performant web applications that meet the standards expected at Big Tech companies.

@@ -14,6 +14,7 @@ Create a custom React hook for form validation with multiple validation rules.
 
 ## Solution
 
+{% raw %}
 ```javascript
 // useFormValidation.js
 import { useState, useCallback, useEffect } from "react";
@@ -351,6 +352,7 @@ const RegistrationForm = () => {
   );
 };
 ```
+{% endraw %}
 
 ## CSS Styling
 
@@ -429,6 +431,7 @@ const RegistrationForm = () => {
 
 ### Custom Validation Components
 
+{% raw %}
 ```javascript
 // Custom Input Component
 const ValidatedInput = ({
@@ -490,9 +493,11 @@ const AdvancedForm = () => {
   );
 };
 ```
+{% endraw %}
 
 ### Async Validation with Loading States
 
+{% raw %}
 ```javascript
 const useAsyncValidation = (validator, delay = 500) => {
   const [isValidating, setIsValidating] = useState(false);
@@ -541,6 +546,7 @@ const UsernameField = () => {
   );
 };
 ```
+{% endraw %}
 
 ## Key Features
 

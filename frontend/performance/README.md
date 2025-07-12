@@ -187,6 +187,7 @@ module.exports = {
 
 **Implementation**:
 
+{% raw %}
 ```javascript
 function VirtualList({ items, itemHeight, containerHeight }) {
   const [scrollTop, setScrollTop] = useState(0);
@@ -207,6 +208,7 @@ function VirtualList({ items, itemHeight, containerHeight }) {
   );
 }
 ```
+{% endraw %}
 
 #### 2. Memoization
 

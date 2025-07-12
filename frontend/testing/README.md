@@ -680,6 +680,7 @@ describe("Authentication Flow", () => {
 
 **Challenge**: Implement visual regression testing for UI components.
 
+{% raw %}
 ```javascript
 // visual-regression.test.js
 import { render } from "@testing-library/react";
@@ -772,6 +773,7 @@ describe("Visual Regression Tests", () => {
   });
 });
 ```
+{% endraw %}
 
 ## Testing Best Practices
 
@@ -844,6 +846,7 @@ jest.mock("./ExpensiveComponent", () => {
 
 ### Performance Testing
 
+{% raw %}
 ```javascript
 // Performance test example
 describe("Performance Tests", () => {
@@ -883,6 +886,7 @@ describe("Performance Tests", () => {
   });
 });
 ```
+{% endraw %}
 
 ## Resources
 

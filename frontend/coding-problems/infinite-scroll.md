@@ -14,6 +14,7 @@ Implement infinite scroll functionality for a list of items.
 
 ## Solution
 
+{% raw %}
 ```javascript
 class InfiniteScroll {
   constructor(containerId, options = {}) {
@@ -191,6 +192,7 @@ class InfiniteScroll {
 // Usage
 const infiniteScroll = new InfiniteScroll("infinite-scroll-container");
 ```
+{% endraw %}
 
 ## CSS Styling
 
@@ -307,6 +309,7 @@ const infiniteScroll = new InfiniteScroll("infinite-scroll-container");
 
 ## Advanced Usage
 
+{% raw %}
 ```javascript
 // With custom options
 const advancedInfiniteScroll = new InfiniteScroll("container", {
@@ -338,3 +341,4 @@ class CustomInfiniteScroll extends InfiniteScroll {
   }
 }
 ```
+{% endraw %}

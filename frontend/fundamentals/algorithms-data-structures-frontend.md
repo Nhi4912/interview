@@ -495,6 +495,7 @@ class UITreeStructures {
 
 ### **Component Dependency Resolution**
 
+{% raw %}
 ```javascript
 // Graph algorithms for managing component dependencies and relationships
 class FrontendGraphAlgorithms {
@@ -803,6 +804,7 @@ class FrontendGraphAlgorithms {
   }
 }
 ```
+{% endraw %}
 
 ---
 
@@ -810,6 +812,7 @@ class FrontendGraphAlgorithms {
 
 ### **Frontend-Specific Optimizations**
 
+{% raw %}
 ```javascript
 // Optimization algorithms for frontend performance
 class FrontendOptimizationAlgorithms {
@@ -1202,5 +1205,6 @@ class FrontendOptimizationAlgorithms {
   }
 }
 ```
+{% endraw %}
 
 This comprehensive guide provides essential algorithms and data structures specifically tailored for frontend development challenges, optimization problems, and user interface requirements commonly encountered in Big Tech interviews.

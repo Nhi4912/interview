@@ -8,6 +8,7 @@ Memory management and performance optimization are critical topics in frontend i
 
 ### 1. Memory Allocation and Management
 
+{% raw %}
 ```javascript
 // Memory allocation visualization
 class MemoryAnalyzer {
@@ -189,9 +190,11 @@ memoryAnalyzer.simulateGC();
 memoryAnalyzer.detectMemoryLeaks();
 memoryAnalyzer.simulateMemoryPressure();
 ```
+{% endraw %}
 
 ### 2. Memory Leak Prevention Patterns
 
+{% raw %}
 ```javascript
 // Common memory leak patterns and solutions
 class MemoryLeakPrevention {
@@ -407,11 +410,13 @@ class MemoryLeakPrevention {
   }
 }
 ```
+{% endraw %}
 
 ## ⚡ Performance Optimization Techniques
 
 ### 1. Object Pooling
 
+{% raw %}
 ```javascript
 // Object pooling for performance optimization
 class ObjectPool {
@@ -528,9 +533,11 @@ vectors.forEach(vector => vector.destroy());
 
 console.log('Pool stats after release:', Vector3Pool.getInstance().getStats());
 ```
+{% endraw %}
 
 ### 2. Lazy Loading and Code Splitting
 
+{% raw %}
 ```javascript
 // Advanced lazy loading implementation
 class LazyLoader {
@@ -738,9 +745,11 @@ async function loadDashboard() {
   }
 }
 ```
+{% endraw %}
 
 ### 3. Virtual Scrolling Implementation
 
+{% raw %}
 ```javascript
 // High-performance virtual scrolling
 class VirtualScrollList {
@@ -1012,11 +1021,13 @@ function createVirtualScrollDemo() {
   return virtualList;
 }
 ```
+{% endraw %}
 
 ## 🔍 Performance Monitoring and Debugging
 
 ### 1. Advanced Performance Profiling
 
+{% raw %}
 ```javascript
 // Comprehensive performance profiler
 class PerformanceProfiler {
@@ -1373,5 +1384,6 @@ setTimeout(() => {
   
 }, 10000);
 ```
+{% endraw %}
 
 This comprehensive guide covers advanced JavaScript memory management and performance optimization techniques essential for frontend interviews at big tech companies. The practical examples demonstrate real-world application of these concepts and provide tools for performance debugging and optimization.

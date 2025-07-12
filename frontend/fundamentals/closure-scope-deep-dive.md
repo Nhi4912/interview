@@ -129,6 +129,7 @@ ReferenceError: variable is not defined
 
 ### Lexical Scoping Example
 
+{% raw %}
 ```javascript
 const name = "Global John";
 
@@ -146,6 +147,7 @@ greeting(); // "Hello, Function John!"
 // Even though we call greeting() in global scope,
 // it still uses the 'name' from where it was defined
 ```
+{% endraw %}
 
 **Visual Representation:**
 
@@ -366,6 +368,7 @@ function createFunctions() {
 
 Create private variables and methods:
 
+{% raw %}
 ```javascript
 const Calculator = (function () {
   // Private variables
@@ -424,6 +427,7 @@ console.log(Calculator.getHistory()); // ['ADD: 10', 'SUBTRACT: 3', 'ADD: 5']
 // Private variables are not accessible
 console.log(Calculator.history); // undefined
 ```
+{% endraw %}
 
 ### 2. Factory Functions
 
@@ -492,6 +496,7 @@ console.log(account1.balance); // undefined (private)
 
 Maintain state in event handlers:
 
+{% raw %}
 ```javascript
 function createButtonWithCounter(buttonId) {
   let clickCount = 0;
@@ -528,6 +533,7 @@ function createButtonWithCounter(buttonId) {
 
 const buttonCounter = createButtonWithCounter("myButton");
 ```
+{% endraw %}
 
 ### 4. Memoization (Caching)
 
@@ -1038,6 +1044,7 @@ const MyModule = (function () {
 
 **2. Factory Function**:
 
+{% raw %}
 ```javascript
 function createObject() {
   let privateVar = "secret";
@@ -1053,6 +1060,7 @@ function createObject() {
   };
 }
 ```
+{% endraw %}
 
 **3. WeakMap Pattern**:
 

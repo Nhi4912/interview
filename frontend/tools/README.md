@@ -192,6 +192,7 @@ const RemoteButton = React.lazy(() => import("remote/Button"));
 
 **Challenge**: Build a webpack loader that processes custom file types.
 
+{% raw %}
 ```javascript
 // custom-loader.js
 module.exports = function (source) {
@@ -251,6 +252,7 @@ module.exports = {
   },
 };
 ```
+{% endraw %}
 
 ### Problem 2: Implement a Build Pipeline with Gulp
 
@@ -377,6 +379,7 @@ exports.default = dev;
 
 **Challenge**: Build a Babel plugin that transforms code for specific use cases.
 
+{% raw %}
 ```javascript
 // babel-plugin-transform-logger.js
 module.exports = function({ types: t }) {
@@ -505,11 +508,13 @@ function add(a, b) {
   return a + b;
 }
 ```
+{% endraw %}
 
 ### Problem 4: Implement a Custom ESLint Rule
 
 **Challenge**: Create an ESLint rule for enforcing coding standards.
 
+{% raw %}
 ```javascript
 // eslint-plugin-custom-rules.js
 module.exports = {
@@ -642,11 +647,13 @@ module.exports = {
   },
 };
 ```
+{% endraw %}
 
 ### Problem 5: Create a Build Performance Monitor
 
 **Challenge**: Build a system to monitor and optimize build performance.
 
+{% raw %}
 ```javascript
 // build-performance-monitor.js
 const fs = require("fs");
@@ -859,6 +866,7 @@ module.exports = {
   ],
 };
 ```
+{% endraw %}
 
 ## Build Optimization Techniques
 

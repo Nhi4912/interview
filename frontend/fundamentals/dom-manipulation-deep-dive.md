@@ -105,6 +105,7 @@ The DOM represents documents as a tree of **nodes**:
 
 ### Node Types (Complete List)
 
+{% raw %}
 ```javascript
 // Node types with their numeric constants
 const NODE_TYPES = {
@@ -139,6 +140,7 @@ function analyzeNode(node) {
   }
 }
 ```
+{% endraw %}
 
 ### Node Properties and Relationships
 
@@ -183,6 +185,7 @@ element.getRootNode(); // Root node (document or shadow root)
 </div>
 ```
 
+{% raw %}
 ```javascript
 const container = document.getElementById("container");
 
@@ -209,6 +212,7 @@ for (let node of container.childNodes) {
 // Element: P
 // Element: SPAN
 ```
+{% endraw %}
 
 ## Element Selection Methods
 
@@ -271,6 +275,7 @@ console.log(staticCollection.length); // 3 (doesn't change)
 
 **3. Custom Selection Utilities**
 
+{% raw %}
 ```javascript
 class DOMSelector {
   // Enhanced getElementById with error handling
@@ -315,6 +320,7 @@ const dataElement = DOMSelector.byData("role", "button");
 const multiClass = DOMSelector.byClasses(["btn", "primary"]);
 const parentSection = DOMSelector.closest(button, "section");
 ```
+{% endraw %}
 
 ## Creating and Modifying Elements
 
@@ -428,6 +434,7 @@ document.body.appendChild(container);
 
 **Problem: Multiple DOM Manipulations**
 
+{% raw %}
 ```javascript
 // SLOW: Each appendChild causes reflow
 const container = document.getElementById("container");
@@ -437,9 +444,11 @@ for (let i = 0; i < 1000; i++) {
   container.appendChild(div); // Reflow on each iteration!
 }
 ```
+{% endraw %}
 
 **Solution: Document Fragment**
 
+{% raw %}
 ```javascript
 // FAST: Only one reflow at the end
 const container = document.getElementById("container");
@@ -453,9 +462,11 @@ for (let i = 0; i < 1000; i++) {
 
 container.appendChild(fragment); // Single reflow
 ```
+{% endraw %}
 
 **Advanced Fragment Usage**
 
+{% raw %}
 ```javascript
 class DOMBatchProcessor {
   constructor() {
@@ -507,6 +518,7 @@ processor
   }))
   .commitTo(document.getElementById("list"));
 ```
+{% endraw %}
 
 ## Event System Deep Dive
 
@@ -859,6 +871,7 @@ element.className = "optimized-style";
 
 **3. Virtualization for Large Lists**
 
+{% raw %}
 ```javascript
 class VirtualList {
   constructor(container, items, itemHeight, visibleCount) {
@@ -938,6 +951,7 @@ const virtualList = new VirtualList(
   20 // visible count
 );
 ```
+{% endraw %}
 
 ## Modern DOM APIs
 
@@ -1232,6 +1246,7 @@ document.getElementById("outer").addEventListener("click", () => {
 
 **Bad approach (causes 1000 reflows):**
 
+{% raw %}
 ```javascript
 const container = document.getElementById("container");
 for (let i = 0; i < 1000; i++) {
@@ -1240,11 +1255,13 @@ for (let i = 0; i < 1000; i++) {
   container.appendChild(div); // Reflow on each append
 }
 ```
+{% endraw %}
 
 **Good approaches:**
 
 **1. Document Fragment:**
 
+{% raw %}
 ```javascript
 const container = document.getElementById("container");
 const fragment = document.createDocumentFragment();
@@ -1257,9 +1274,11 @@ for (let i = 0; i < 1000; i++) {
 
 container.appendChild(fragment); // Single reflow
 ```
+{% endraw %}
 
 **2. innerHTML with array join:**
 
+{% raw %}
 ```javascript
 const container = document.getElementById("container");
 const html = [];
@@ -1270,14 +1289,17 @@ for (let i = 0; i < 1000; i++) {
 
 container.innerHTML = html.join(""); // Single reflow
 ```
+{% endraw %}
 
 **3. Template strings:**
 
+{% raw %}
 ```javascript
 const container = document.getElementById("container");
 const items = Array.from({ length: 1000 }, (_, i) => `<div>Item ${i}</div>`);
 container.innerHTML = items.join("");
 ```
+{% endraw %}
 
 ### Q4: What are the performance implications of different DOM querying methods?
 

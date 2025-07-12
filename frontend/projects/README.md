@@ -840,6 +840,7 @@ class ShoppingCart {
 
 **Technical Implementation**:
 
+{% raw %}
 ```javascript
 class ChatApplication {
   constructor() {
@@ -1071,6 +1072,7 @@ class ChatApplication {
   }
 }
 ```
+{% endraw %}
 
 ### Dashboard with Real-Time Analytics
 
@@ -1088,6 +1090,7 @@ class ChatApplication {
 
 **Technical Implementation**:
 
+{% raw %}
 ```javascript
 class DashboardManager {
   constructor() {
@@ -1349,6 +1352,7 @@ class ChartWidget {
   }
 }
 ```
+{% endraw %}
 
 ## Interview Scenarios
 
@@ -1369,6 +1373,7 @@ class ChartWidget {
 
 **Solution Architecture**:
 
+{% raw %}
 ```javascript
 // Feed component with virtual scrolling
 class SocialFeed {
@@ -1563,6 +1568,7 @@ class SocialFeed {
   }
 }
 ```
+{% endraw %}
 
 ### Performance Optimization Challenge
 
@@ -1577,6 +1583,7 @@ class SocialFeed {
 
 **Optimization Strategy**:
 
+{% raw %}
 ```javascript
 // Performance optimization implementation
 class PerformanceOptimizer {
@@ -1796,6 +1803,7 @@ const cachedFetch = optimizer.createRequestCache();
 // Use cached fetch for API calls
 const products = await cachedFetch("/api/products");
 ```
+{% endraw %}
 
 ## Portfolio Projects
 

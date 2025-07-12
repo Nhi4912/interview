@@ -52,6 +52,7 @@ Create a Higher-Order Component that:
 
 ### Solution
 
+{% raw %}
 ```javascript
 import React, { useState, useEffect, useCallback } from 'react';
 
@@ -185,9 +186,11 @@ const EnhancedUserList = withDataFetcher('/api/users', {
   onError: (error) => console.error('Failed to load users:', error)
 })(UserList);
 ```
+{% endraw %}
 
 ### Advanced HOC with Authentication
 
+{% raw %}
 ```javascript
 const withAuth = (requiredRole = null) => (WrappedComponent) => {
   const WithAuth = (props) => {
@@ -248,6 +251,7 @@ const withAuth = (requiredRole = null) => (WrappedComponent) => {
 const AdminDashboard = withAuth('admin')(Dashboard);
 const UserProfile = withAuth()(Profile);
 ```
+{% endraw %}
 
 ## 🎯 Problem 2: Flexible Modal with Render Props
 
@@ -262,6 +266,7 @@ Create a Modal component using render props that:
 
 ### Solution
 
+{% raw %}
 ```javascript
 import React, { useState, useEffect, useCallback, useRef } from 'react';
 import { createPortal } from 'react-dom';
@@ -433,6 +438,7 @@ const FormModal = () => {
   );
 };
 ```
+{% endraw %}
 
 ## 🎯 Problem 3: Compound Component Accordion
 
@@ -447,6 +453,7 @@ Create an Accordion compound component system that:
 
 ### Solution
 
+{% raw %}
 ```javascript
 import React, { 
   createContext, 
@@ -707,6 +714,7 @@ const AdvancedAccordionDemo = () => {
   );
 };
 ```
+{% endraw %}
 
 ## 🎨 CSS Styling
 

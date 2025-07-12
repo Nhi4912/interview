@@ -14,6 +14,7 @@ Create a comprehensive set of TypeScript utility types that can be used in real-
 
 ### Solution:
 
+{% raw %}
 ```typescript
 // DeepReadonly - makes all properties deeply readonly
 type DeepReadonly<T> = {
@@ -192,6 +193,7 @@ async function fetchUsers() {
   // createResponse.data is typed as User
 }
 ```
+{% endraw %}
 
 ## Problem 2: Type-Safe Event System
 
@@ -206,6 +208,7 @@ Build a type-safe event emitter system that ensures event names and payload type
 
 ### Solution:
 
+{% raw %}
 ```typescript
 // Event map interface - defines available events and their payload types
 interface EventMap {
@@ -428,6 +431,7 @@ advancedEmitter.emit('user:login', {
   timestamp: new Date()
 });
 ```
+{% endraw %}
 
 ## Problem 3: Generic Form Builder
 
@@ -442,6 +446,7 @@ Create a type-safe form builder that generates forms based on schema definitions
 
 ### Solution:
 
+{% raw %}
 ```typescript
 // Base field types
 type FieldType = 'text' | 'email' | 'password' | 'number' | 'select' | 'checkbox' | 'date';
@@ -866,5 +871,6 @@ console.log('Errors:', validation.errors);
 const formHTML = form.generateHTML();
 document.getElementById('form-container')!.innerHTML = formHTML;
 ```
+{% endraw %}
 
 These TypeScript challenges demonstrate advanced type system usage, generic programming, and real-world application patterns that are commonly tested in senior frontend interviews at Big Tech companies.

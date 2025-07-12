@@ -95,6 +95,7 @@ function TodoApp() {
 
 ### Custom Hooks
 
+{% raw %}
 ```jsx
 // Custom hook for API calls
 function useApi(url) {
@@ -204,11 +205,13 @@ function useForm(initialValues, validate) {
   };
 }
 ```
+{% endraw %}
 
 ## Performance Optimization
 
 ### React.memo and useMemo
 
+{% raw %}
 ```jsx
 // React.memo for component memoization
 const ExpensiveComponent = React.memo(({ data, onClick }) => {
@@ -276,6 +279,7 @@ function TodoList({ todos, onToggle, onDelete }) {
   );
 }
 ```
+{% endraw %}
 
 ### Code Splitting and Lazy Loading
 
@@ -449,6 +453,7 @@ function useCSS(css) {
 
 ### Context + Reducer Pattern
 
+{% raw %}
 ```jsx
 // State management with Context and Reducer
 const AppStateContext = createContext();
@@ -508,6 +513,7 @@ function useAppDispatch() {
   return context;
 }
 ```
+{% endraw %}
 
 ### Zustand Integration
 
@@ -744,6 +750,7 @@ function UserList() {
 
 ### Compound Components Pattern
 
+{% raw %}
 ```jsx
 // Compound components for tabs
 const TabsContext = createContext();
@@ -815,6 +822,7 @@ function App() {
   );
 }
 ```
+{% endraw %}
 
 ## Server-Side Rendering
 

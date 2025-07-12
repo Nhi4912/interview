@@ -536,6 +536,7 @@ const VirtualizedFeed = ({ posts, onLoadMore }) => {
 
 ### 2. Real-time Chat Application
 
+{% raw %}
 ```javascript
 // Chat Application System Design
 class ChatApplicationSystem {
@@ -714,9 +715,11 @@ const ChatRoom = ({ roomId }) => {
   }
 }
 ```
+{% endraw %}
 
 ### 3. E-commerce Platform
 
+{% raw %}
 ```javascript
 // E-commerce Platform System Design
 class EcommercePlatformSystem {
@@ -944,6 +947,7 @@ const ShoppingCart = () => {
   }
 }
 ```
+{% endraw %}
 
 ## 📊 Performance and Scalability Considerations
 

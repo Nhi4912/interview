@@ -25,6 +25,7 @@
 
 **Solution**:
 
+{% raw %}
 ```javascript
 class DynamicTable {
   constructor(containerId, data) {
@@ -179,6 +180,7 @@ const sampleData = [
 
 const table = new DynamicTable("table-container", sampleData);
 ```
+{% endraw %}
 
 **CSS Styling**:
 
@@ -275,6 +277,7 @@ const table = new DynamicTable("table-container", sampleData);
 
 **Solution**:
 
+{% raw %}
 ```javascript
 class InfiniteScroll {
   constructor(containerId, options = {}) {
@@ -452,6 +455,7 @@ class InfiniteScroll {
 // Usage
 const infiniteScroll = new InfiniteScroll("infinite-scroll-container");
 ```
+{% endraw %}
 
 **CSS Styling**:
 
@@ -573,6 +577,7 @@ const infiniteScroll = new InfiniteScroll("infinite-scroll-container");
 
 **Solution**:
 
+{% raw %}
 ```javascript
 class FunctionOptimizer {
   static debounce(func, delay, immediate = false) {
@@ -811,6 +816,7 @@ class AdvancedSearchComponent {
   }
 }
 ```
+{% endraw %}
 
 **CSS for Search Components**:
 
@@ -886,6 +892,7 @@ class AdvancedSearchComponent {
 
 **Solution**:
 
+{% raw %}
 ```javascript
 // useFormValidation.js
 import { useState, useCallback, useEffect } from 'react';
@@ -1196,6 +1203,7 @@ const RegistrationForm = () => {
   );
 };
 ```
+{% endraw %}
 
 **CSS for Form Validation**:
 

@@ -9,6 +9,7 @@ Modern frontend development relies heavily on sophisticated build tools and DevO
 
 ### **Webpack vs Vite vs esbuild Performance Analysis**
 
+{% raw %}
 ```typescript
 // webpack.config.js - Advanced Configuration
 import { Configuration, DefinePlugin, ProgressPlugin } from 'webpack';
@@ -331,9 +332,11 @@ class WebpackOptimizer {
   }
 }
 ```
+{% endraw %}
 
 ### **Vite Configuration for Maximum Performance**
 
+{% raw %}
 ```typescript
 // vite.config.ts
 import { defineConfig, loadEnv, Plugin } from 'vite';
@@ -518,9 +521,11 @@ class ViteOptimizer {
   }
 }
 ```
+{% endraw %}
 
 ### **esbuild for Maximum Speed**
 
+{% raw %}
 ```typescript
 // esbuild.config.ts
 import { build, BuildOptions, Plugin } from 'esbuild';
@@ -688,6 +693,7 @@ class ESBuildOptimizer {
   }
 }
 ```
+{% endraw %}
 
 ---
 
@@ -895,6 +901,7 @@ jobs:
 
 ### **Advanced Performance Monitoring**
 
+{% raw %}
 ```typescript
 // performance-monitor.ts
 interface PerformanceMetrics {
@@ -1061,6 +1068,7 @@ class CIPerfomanceMonitor {
   }
 }
 ```
+{% endraw %}
 
 ### **Docker Optimization for Frontend**
 

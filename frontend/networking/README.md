@@ -182,6 +182,7 @@ A:
 **Q: How would you implement request caching in a frontend application?**
 A:
 
+{% raw %}
 ```javascript
 class RequestCache {
   constructor() {
@@ -217,6 +218,7 @@ class RequestCache {
   }
 }
 ```
+{% endraw %}
 
 ## Practical Problems & Solutions
 
@@ -224,6 +226,7 @@ class RequestCache {
 
 **Challenge**: Create a function that retries failed HTTP requests with exponential backoff.
 
+{% raw %}
 ```javascript
 async function fetchWithRetry(url, options = {}, maxRetries = 3) {
   let lastError;
@@ -264,6 +267,7 @@ try {
   console.error("Request failed after retries:", error);
 }
 ```
+{% endraw %}
 
 ### Problem 2: Create a Request Queue
 
@@ -335,6 +339,7 @@ console.log("All requests completed");
 
 **Challenge**: Create a system to intercept and modify HTTP requests and responses.
 
+{% raw %}
 ```javascript
 class HttpClient {
   constructor() {
@@ -421,6 +426,7 @@ try {
   console.error("Request failed:", error);
 }
 ```
+{% endraw %}
 
 ### Problem 4: Create a WebSocket Manager
 
@@ -589,6 +595,7 @@ ws.send({ type: 'chat', message: 'Hello, world!' });
 
 **Challenge**: Create a client-side rate limiter to prevent exceeding API rate limits.
 
+{% raw %}
 ```javascript
 class RateLimiter {
   constructor(maxRequests, timeWindow) {
@@ -645,6 +652,7 @@ const promises = [
 const results = await Promise.all(promises);
 console.log("API calls completed");
 ```
+{% endraw %}
 
 ## Network Optimization Techniques
 

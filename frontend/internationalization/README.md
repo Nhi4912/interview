@@ -83,6 +83,7 @@ const translations = {
 **Q: How do you implement RTL support in a React application?**
 A: Comprehensive RTL implementation:
 
+{% raw %}
 ```javascript
 // RTL support utilities
 class RTLSupport {
@@ -173,10 +174,12 @@ const rtlStyles = `
   }
 `;
 ```
+{% endraw %}
 
 **Q: How do you handle pluralization in different languages?**
 A: Advanced pluralization with ICU MessageFormat:
 
+{% raw %}
 ```javascript
 class PluralizationManager {
   constructor() {
@@ -288,12 +291,14 @@ console.log(formatPluralMessage("items", 0, "ar")); // "لا توجد عناصر
 console.log(formatPluralMessage("items", 1, "ar")); // "عنصر واحد"
 console.log(formatPluralMessage("items", 2, "ar")); // "عنصران"
 ```
+{% endraw %}
 
 ## Advanced Interview Questions
 
 **Q: How would you implement a complete i18n system for a React application?**
 A: Comprehensive i18n system implementation:
 
+{% raw %}
 ```javascript
 // i18n configuration and utilities
 class I18nManager {
@@ -505,10 +510,12 @@ function ProductCard({ product }) {
   );
 }
 ```
+{% endraw %}
 
 **Q: How do you handle dynamic content and user-generated text in multiple languages?**
 A: Advanced dynamic content handling:
 
+{% raw %}
 ```javascript
 class DynamicContentManager {
   constructor() {
@@ -706,6 +713,7 @@ class DynamicContentManager {
   }
 }
 ```
+{% endraw %}
 
 ## Practical Problems & Solutions
 
@@ -713,6 +721,7 @@ class DynamicContentManager {
 
 **Challenge**: Create a comprehensive formatting system for different locales.
 
+{% raw %}
 ```javascript
 class LocaleFormatter {
   constructor() {
@@ -871,11 +880,13 @@ console.log(formatter.formatDate(date, "en-US")); // "December 25, 2023"
 console.log(formatter.formatDate(date, "es-ES")); // "25 de diciembre de 2023"
 console.log(formatter.formatDate(date, "ja-JP")); // "2023年12月25日"
 ```
+{% endraw %}
 
 ### Problem 2: Create a Dynamic Language Switcher
 
 **Challenge**: Build a language switcher that handles locale changes and maintains user preferences.
 
+{% raw %}
 ```javascript
 class LanguageSwitcher {
   constructor() {
@@ -1056,6 +1067,7 @@ function LanguageSwitcherComponent() {
   );
 }
 ```
+{% endraw %}
 
 ## i18n Best Practices
 
@@ -1122,6 +1134,7 @@ const TranslationKeys = {
 
 ### Performance Optimization
 
+{% raw %}
 ```javascript
 // Lazy loading translations
 class TranslationLoader {
@@ -1163,6 +1176,7 @@ class TranslationLoader {
   }
 }
 ```
+{% endraw %}
 
 ## Resources
 

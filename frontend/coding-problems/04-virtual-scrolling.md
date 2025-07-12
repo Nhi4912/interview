@@ -14,6 +14,7 @@ Implement virtual scrolling for a large list of items to improve performance whe
 
 ## Solution
 
+{% raw %}
 ```javascript
 class VirtualScroller {
   constructor(container, options = {}) {
@@ -168,6 +169,7 @@ const items = Array.from({ length: 10000 }, (_, i) => ({
 
 virtualScroller.setItems(items);
 ```
+{% endraw %}
 
 ## CSS Styling
 
@@ -220,6 +222,7 @@ virtualScroller.setItems(items);
 
 ### Dynamic Height Support
 
+{% raw %}
 ```javascript
 class DynamicVirtualScroller extends VirtualScroller {
   constructor(container, options = {}) {
@@ -282,9 +285,11 @@ class DynamicVirtualScroller extends VirtualScroller {
   }
 }
 ```
+{% endraw %}
 
 ### Search and Filter Support
 
+{% raw %}
 ```javascript
 class SearchableVirtualScroller extends VirtualScroller {
   constructor(container, options = {}) {
@@ -347,11 +352,13 @@ class SearchableVirtualScroller extends VirtualScroller {
   }
 }
 ```
+{% endraw %}
 
 ## Performance Optimizations
 
 ### Memory Management
 
+{% raw %}
 ```javascript
 class OptimizedVirtualScroller extends VirtualScroller {
   constructor(container, options = {}) {
@@ -412,6 +419,7 @@ class OptimizedVirtualScroller extends VirtualScroller {
   }
 }
 ```
+{% endraw %}
 
 ## Key Features
 

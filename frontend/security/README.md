@@ -85,6 +85,7 @@ A: CSRF (Cross-Site Request Forgery) tricks users into performing unwanted actio
 
 **Prevention Techniques:**
 
+{% raw %}
 ```javascript
 // 1. CSRF Tokens
 class CSRFProtection {
@@ -142,10 +143,12 @@ fetch("/api/update", {
   body: JSON.stringify(data),
 });
 ```
+{% endraw %}
 
 **Q: How do you implement Content Security Policy?**
 A: CSP is a security header that controls which resources can be loaded.
 
+{% raw %}
 ```javascript
 // 1. Basic CSP Implementation
 const cspHeader = {
@@ -235,12 +238,14 @@ class HashCSP {
   }
 }
 ```
+{% endraw %}
 
 ## Advanced Interview Questions
 
 **Q: How would you implement secure authentication in a frontend application?**
 A: Comprehensive authentication security implementation:
 
+{% raw %}
 ```javascript
 class SecureAuthManager {
   constructor() {
@@ -411,10 +416,12 @@ class SecureAuthManager {
   }
 }
 ```
+{% endraw %}
 
 **Q: How do you implement secure file uploads?**
 A: Secure file upload implementation with validation and scanning:
 
+{% raw %}
 ```javascript
 class SecureFileUpload {
   constructor() {
@@ -620,6 +627,7 @@ class SecureFileUpload {
   }
 }
 ```
+{% endraw %}
 
 ## Practical Problems & Solutions
 
@@ -907,6 +915,7 @@ class InputValidator {
 
 ### Security Headers Implementation
 
+{% raw %}
 ```javascript
 // Security headers middleware (server-side)
 const securityHeaders = {
@@ -948,6 +957,7 @@ class SecurityChecker {
   }
 }
 ```
+{% endraw %}
 
 ## Resources
 

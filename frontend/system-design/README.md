@@ -155,6 +155,7 @@ src/
 
 **Example**:
 
+{% raw %}
 ```javascript
 // Good: Single responsibility
 const UserAvatar = ({ user, size }) => (
@@ -183,6 +184,7 @@ const UserCard = ({ user }) => (
   </div>
 );
 ```
+{% endraw %}
 
 #### 2. Composition Pattern
 

@@ -282,6 +282,7 @@ flowchart TD
 
 #### Sample Implementation:
 
+{% raw %}
 ```javascript
 class ApiService {
   constructor(baseURL) {
@@ -355,6 +356,7 @@ function useApi() {
   return { data, loading, error, fetchData };
 }
 ```
+{% endraw %}
 
 ---
 
@@ -458,6 +460,7 @@ flowchart TD
 
 #### Sample Implementation:
 
+{% raw %}
 ```javascript
 // XSS Prevention
 import DOMPurify from "dompurify";
@@ -505,6 +508,7 @@ const cspHeaders = {
     "font-src 'self' https://fonts.gstatic.com;",
 };
 ```
+{% endraw %}
 
 #### Diagram: Security Layers
 
@@ -877,6 +881,7 @@ flowchart LR
 
 #### Sample Implementation:
 
+{% raw %}
 ```javascript
 // useDebounce Hook
 function useDebounce(value, delay) {
@@ -999,6 +1004,7 @@ function SearchComponent() {
   );
 }
 ```
+{% endraw %}
 
 #### Diagram: Custom Hook Lifecycle
 

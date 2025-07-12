@@ -16,6 +16,7 @@ Implement virtual scrolling for a large list of items to improve performance.
 
 ### Solution
 
+{% raw %}
 ```javascript
 class VirtualScroller {
   constructor(container, options = {}) {
@@ -170,6 +171,7 @@ const items = Array.from({ length: 10000 }, (_, i) => ({
 
 virtualScroller.setItems(items);
 ```
+{% endraw %}
 
 ```css
 .virtual-scroller {
@@ -402,6 +404,7 @@ Implement a search functionality with debouncing and caching for better performa
 
 ### Solution
 
+{% raw %}
 ```javascript
 class SearchManager {
   constructor(options = {}) {
@@ -577,6 +580,7 @@ const searchManager = new SearchManager({
   maxResults: 30,
 });
 ```
+{% endraw %}
 
 ```css
 .search-container {

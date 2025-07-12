@@ -72,6 +72,7 @@ function performHeavyCalculation(data) {
 
 ### Advanced Web Worker with Shared Array Buffer
 
+{% raw %}
 ```javascript
 // main.js
 class WorkerPool {
@@ -164,6 +165,7 @@ async function processLargeDataset(dataset) {
   }
 }
 ```
+{% endraw %}
 
 ## Service Workers
 
@@ -831,6 +833,7 @@ async function trackUserLocation() {
 
 ### getUserMedia for Camera Access
 
+{% raw %}
 ```javascript
 class CameraManager {
   constructor() {
@@ -1009,9 +1012,11 @@ async function initCamera() {
   }
 }
 ```
+{% endraw %}
 
 ## Intersection Observer
 
+{% raw %}
 ```javascript
 class IntersectionObserverManager {
   constructor(callback, options = {}) {
@@ -1153,6 +1158,7 @@ const infiniteScroll = new InfiniteScroll(async () => {
 
 infiniteScroll.init(document.getElementById('items-container'));
 ```
+{% endraw %}
 
 ## Interview Questions
 

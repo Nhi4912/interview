@@ -12,6 +12,7 @@ JavaScript is the foundation of modern frontend development. Big Tech companies 
 
 #### Primitive Types / Kiểu dữ liệu nguyên thủy
 
+{% raw %}
 ```javascript
 // Number
 let num = 42;
@@ -39,6 +40,7 @@ let symbol = Symbol("description");
 // BigInt (ES2020)
 let bigInt = 9007199254740991n;
 ```
+{% endraw %}
 
 #### Reference Types / Kiểu dữ liệu tham chiếu
 
@@ -154,6 +156,7 @@ const calculator = (function () {
 
 #### Prototype Chain / Chuỗi prototype
 
+{% raw %}
 ```javascript
 // Constructor function
 function Person(name) {
@@ -171,9 +174,11 @@ console.log(person.sayHello()); // "Hello, I'm John"
 console.log(person.__proto__ === Person.prototype); // true
 console.log(Person.prototype.__proto__ === Object.prototype); // true
 ```
+{% endraw %}
 
 #### ES6 Classes / Lớp ES6
 
+{% raw %}
 ```javascript
 class Animal {
   constructor(name) {
@@ -203,6 +208,7 @@ class Dog extends Animal {
 const dog = new Dog("Rex", "Golden Retriever");
 console.log(dog.speak()); // "Rex barks"
 ```
+{% endraw %}
 
 ### 5. Asynchronous Programming / Lập trình bất đồng bộ
 

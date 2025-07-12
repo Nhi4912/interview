@@ -19,6 +19,7 @@ Implement a robust offline-first application with background sync, push notifica
 
 ### Solution
 
+{% raw %}
 ```typescript
 // sw.ts - Service Worker
 const CACHE_NAME = 'app-cache-v1';
@@ -335,6 +336,7 @@ self.addEventListener('message', (event) => {
   event.waitUntil(sw.handleMessage(event));
 });
 ```
+{% endraw %}
 
 ```typescript
 // main.ts - Main Application
@@ -511,6 +513,7 @@ Create a virtualized list component that efficiently handles millions of items u
 
 ### Solution
 
+{% raw %}
 ```typescript
 interface VirtualItem {
   id: string;
@@ -846,6 +849,7 @@ const container = document.getElementById('virtual-list-container')!;
 const items = generateItems(1000000); // 1 million items
 const virtualList = new VirtualizedList(container, items);
 ```
+{% endraw %}
 
 ### CSS Styling
 

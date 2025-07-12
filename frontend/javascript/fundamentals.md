@@ -239,6 +239,7 @@ console.log(counter()); // 3
 
 **Practical Example**:
 
+{% raw %}
 ```javascript
 function createGreeter(greeting) {
   return function (name) {
@@ -252,6 +253,7 @@ const sayGoodbye = createGreeter("Goodbye");
 console.log(sayHello("John")); // "Hello, John!"
 console.log(sayGoodbye("John")); // "Goodbye, John!"
 ```
+{% endraw %}
 
 ### Q4: What is the event loop in JavaScript?
 
@@ -321,6 +323,7 @@ async function getData() {
 
 **Answer**:
 
+{% raw %}
 ```javascript
 function debounce(func, delay) {
   let timeoutId;
@@ -342,6 +345,7 @@ const debouncedSearch = debounce((query) => {
 debouncedSearch("hello");
 debouncedSearch("hello world");
 ```
+{% endraw %}
 
 ### Q7: Implement a throttle function
 
@@ -450,6 +454,7 @@ console.log(expensiveFunction(5)); // 10 (from cache)
 
 **Answer**:
 
+{% raw %}
 ```javascript
 class EventEmitter {
   constructor() {
@@ -493,6 +498,7 @@ emitter.on("userLogin", (user) => {
 
 emitter.emit("userLogin", { name: "John", id: 1 });
 ```
+{% endraw %}
 
 ## Practice Problems
 

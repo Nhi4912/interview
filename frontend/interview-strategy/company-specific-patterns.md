@@ -99,6 +99,7 @@ class GoogleAutocomplete {
 - **Focus**: React ecosystem, real-time systems, user engagement
 
 ### **Technical Emphasis**
+{% raw %}
 ```typescript
 // Meta emphasizes React patterns and real-time features
 // Example: Implement Facebook's News Feed with optimistic updates
@@ -215,6 +216,7 @@ function useNewsFeed(userId: string) {
   return { posts, createPost, loading };
 }
 ```
+{% endraw %}
 
 ### **Behavioral Expectations**
 - **Move Fast**: Bias for action, rapid iteration
@@ -243,6 +245,7 @@ function useNewsFeed(userId: string) {
 - **Focus**: Customer obsession, operational excellence, scalability
 
 ### **Technical Emphasis**
+{% raw %}
 ```typescript
 // Amazon emphasizes scalability and customer-focused solutions
 // Example: Design Amazon's product recommendation engine
@@ -379,6 +382,7 @@ class ProductRecommendationService {
   }
 }
 ```
+{% endraw %}
 
 ### **Leadership Principles Focus**
 - **Customer Obsession**: Always start with customer needs
@@ -408,6 +412,7 @@ class ProductRecommendationService {
 - **Focus**: Collaboration, inclusive design, enterprise solutions
 
 ### **Technical Emphasis**
+{% raw %}
 ```typescript
 // Microsoft emphasizes accessibility and enterprise-grade solutions
 // Example: Implement Microsoft Teams' collaborative whiteboard
@@ -623,6 +628,7 @@ class TeamsWhiteboardIntegration {
   }
 }
 ```
+{% endraw %}
 
 ### **Cultural Values**
 - **Respect**: Inclusive and diverse perspectives
@@ -651,6 +657,7 @@ class TeamsWhiteboardIntegration {
 - **Focus**: User experience, performance, attention to detail
 
 ### **Technical Emphasis**
+{% raw %}
 ```typescript
 // Apple emphasizes user experience and performance optimization
 // Example: Implement Safari's intelligent tab management
@@ -883,6 +890,7 @@ class PrivacyManager {
   }
 }
 ```
+{% endraw %}
 
 ### **Design Philosophy**
 - **Simplicity**: Elegant, minimal solutions

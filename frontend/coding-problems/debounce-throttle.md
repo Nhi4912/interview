@@ -14,6 +14,7 @@ Implement debounce and throttle functions for performance optimization.
 
 ## Solution
 
+{% raw %}
 ```javascript
 class FunctionOptimizer {
   static debounce(func, delay, immediate = false) {
@@ -252,6 +253,7 @@ class AdvancedSearchComponent {
   }
 }
 ```
+{% endraw %}
 
 ## CSS Styling
 

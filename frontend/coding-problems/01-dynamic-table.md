@@ -14,6 +14,7 @@ Create a function that generates a dynamic table from an array of objects with s
 
 ## Solution
 
+{% raw %}
 ```javascript
 class DynamicTable {
   constructor(containerId, data) {
@@ -168,6 +169,7 @@ const sampleData = [
 
 const table = new DynamicTable("table-container", sampleData);
 ```
+{% endraw %}
 
 ## CSS Styling
 
@@ -261,6 +263,7 @@ const table = new DynamicTable("table-container", sampleData);
 
 ## Advanced Usage
 
+{% raw %}
 ```javascript
 // With custom styling
 const customTable = new DynamicTable("custom-table", data);
@@ -278,6 +281,7 @@ class CustomTable extends DynamicTable {
   }
 }
 ```
+{% endraw %}
 
 ## Interview Deep Dive: Dynamic Table
 
@@ -331,6 +335,7 @@ flowchart TD
 
 **Sample Implementation:**
 
+{% raw %}
 ```jsx
 import { FixedSizeList as List } from "react-window";
 
@@ -372,6 +377,7 @@ function VirtualizedTable({ data, height, rowHeight }) {
   );
 }
 ```
+{% endraw %}
 
 ---
 
@@ -399,6 +405,7 @@ function VirtualizedTable({ data, height, rowHeight }) {
 
 **Sample Implementation (JS):**
 
+{% raw %}
 ```js
 // In your DynamicTable class, add editing state and handlers
 // Pseudocode for cell rendering:
@@ -409,6 +416,7 @@ renderCell(value, rowIdx, colKey) {
   return `<span ondblclick="startEdit(${rowIdx}, '${colKey}')">${value}</span>`;
 }
 ```
+{% endraw %}
 
 ---
 
@@ -514,6 +522,7 @@ flowchart TD
 
 **Sample Implementation:**
 
+{% raw %}
 ```jsx
 import { FixedSizeList as List } from "react-window";
 
@@ -555,6 +564,7 @@ function VirtualizedTable({ data, height, rowHeight }) {
   );
 }
 ```
+{% endraw %}
 
 ---
 
@@ -582,6 +592,7 @@ function VirtualizedTable({ data, height, rowHeight }) {
 
 **Sample Implementation (JS):**
 
+{% raw %}
 ```js
 // In your DynamicTable class, add editing state and handlers
 // Pseudocode for cell rendering:
@@ -592,6 +603,7 @@ renderCell(value, rowIdx, colKey) {
   return `<span ondblclick="startEdit(${rowIdx}, '${colKey}')">${value}</span>`;
 }
 ```
+{% endraw %}
 
 ---
 

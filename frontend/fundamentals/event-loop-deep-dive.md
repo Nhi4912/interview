@@ -839,6 +839,7 @@ class NonBlockingRenderer {
 
 ### Example 2: Promise Queue with Concurrency Control
 
+{% raw %}
 ```javascript
 class PromiseQueue {
   constructor(concurrency = 1) {
@@ -890,6 +891,7 @@ for (let i = 0; i < 10; i++) {
     .then((response) => console.log(`Completed ${i}`));
 }
 ```
+{% endraw %}
 
 # Additional Advanced Interview Q&A and Visuals
 
