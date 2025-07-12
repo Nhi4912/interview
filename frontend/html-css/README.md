@@ -670,6 +670,7 @@ CSS Custom Properties allow you to define reusable values that can be updated dy
 
 ### 3. CSS-in-JS Patterns
 
+{% raw %}
 ```css
 /* CSS-in-JS considerations */
 .component {
@@ -695,6 +696,7 @@ CSS Custom Properties allow you to define reusable values that can be updated dy
   }
 }
 ```
+{% endraw %}
 
 ## Performance & Optimization
 

@@ -840,6 +840,7 @@ const CriticalResourceLoader = () => {
 **3. Virtualization for Large Lists**
 
 
+{% raw %}
 ```typescript
 interface VirtualListProps<T> {
   items: T[];
@@ -884,6 +885,7 @@ const VirtualList = <T>({
   );
 };
 ```
+{% endraw %}
 
 
 ### Caching Strategies

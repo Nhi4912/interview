@@ -55,6 +55,7 @@ graph TB
 
 ### HTTP Headers Deep Dive
 
+{% raw %}
 ```javascript
 // Common HTTP Headers
 const httpHeaders = {
@@ -224,6 +225,7 @@ try {
   console.error("HTTP request failed:", error);
 }
 ```
+{% endraw %}
 
 ## 🔌 WebSocket Protocol
 
@@ -251,6 +253,7 @@ sequenceDiagram
 
 ### WebSocket Implementation
 
+{% raw %}
 ```javascript
 class WebSocketClient {
   constructor(url, options = {}) {
@@ -504,6 +507,7 @@ chat.on("userLeft", (userId) => {
 // Send a message
 chat.sendChatMessage("Hello, everyone!");
 ```
+{% endraw %}
 
 ## 🚀 HTTP/2 & HTTP/3
 
@@ -528,6 +532,7 @@ graph TB
 
 ### HTTP/2 Implementation
 
+{% raw %}
 ```javascript
 // HTTP/2 Client with Server Push
 class HTTP2Client {
@@ -670,6 +675,7 @@ class HTTP3Client {
   }
 }
 ```
+{% endraw %}
 
 ## 💾 Caching Strategies
 
@@ -695,6 +701,7 @@ graph TB
 
 ### Advanced Caching Implementation
 
+{% raw %}
 ```javascript
 class CacheManager {
   constructor() {
@@ -977,6 +984,7 @@ async function fetchWithCache(url, options = {}) {
 // Example usage
 const users = await fetchWithCache("/api/users");
 ```
+{% endraw %}
 
 ## 🔒 Security Protocols
 
@@ -1006,6 +1014,7 @@ sequenceDiagram
 
 ### Security Implementation
 
+{% raw %}
 ```javascript
 class SecurityManager {
   constructor() {
@@ -1147,6 +1156,7 @@ console.log(sanitized); // &lt;script&gt;alert("xss")&lt;/script&gt;
 // Generate CSRF token
 const csrfToken = security.generateCSRFToken();
 ```
+{% endraw %}
 
 ## ⚡ Performance Optimization
 

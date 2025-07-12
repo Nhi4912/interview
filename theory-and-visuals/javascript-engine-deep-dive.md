@@ -377,6 +377,7 @@ function fastLoop() {
 
 ### Profiling Tools
 
+{% raw %}
 ```javascript
 // 1. Performance API
 function profileFunction() {
@@ -414,9 +415,11 @@ function memoryProfile() {
   console.log(`Memory used: ${endMemory - startMemory} bytes`);
 }
 ```
+{% endraw %}
 
 ### Chrome DevTools Profiling
 
+{% raw %}
 ```javascript
 // 1. CPU Profiling
 function cpuIntensiveTask() {
@@ -457,6 +460,7 @@ function performanceMarks() {
   console.log(`Duration: ${measure.duration}ms`);
 }
 ```
+{% endraw %}
 
 ## 🎯 Best Practices
 

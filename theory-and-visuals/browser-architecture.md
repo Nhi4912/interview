@@ -359,6 +359,7 @@ const cspNonce = `
 
 ### Cross-Origin Resource Sharing (CORS)
 
+{% raw %}
 ```javascript
 // CORS Implementation
 class CORSHandler {
@@ -439,11 +440,13 @@ class CORSClient {
   }
 }
 ```
+{% endraw %}
 
 ## ⚡ Performance Optimization
 
 ### Rendering Performance
 
+{% raw %}
 ```javascript
 // 1. Optimize Layout Thrashing
 class LayoutOptimizer {
@@ -631,6 +634,7 @@ document.querySelectorAll("[data-src]").forEach((element) => {
   lazyLoader.observe(element);
 });
 ```
+{% endraw %}
 
 ## 🎯 Memory Management
 
@@ -751,6 +755,7 @@ class RequestManager {
 
 ### Real User Monitoring (RUM)
 
+{% raw %}
 ```javascript
 class PerformanceMonitor {
   constructor() {
@@ -878,6 +883,7 @@ window.addEventListener("load", () => {
   }, 1000);
 });
 ```
+{% endraw %}
 
 ---
 

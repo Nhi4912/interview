@@ -58,6 +58,7 @@ graph TB
 
 ### 1. Navigation and Resource Loading
 
+{% raw %}
 ```javascript
 // Performance timing visualization
 class NavigationTiming {
@@ -118,9 +119,11 @@ class NavigationTiming {
 NavigationTiming.measureNavigation();
 NavigationTiming.visualizeWaterfall();
 ```
+{% endraw %}
 
 ### 2. HTML Parsing and DOM Construction
 
+{% raw %}
 ```javascript
 // DOM construction simulation
 class DOMParser {
@@ -227,9 +230,11 @@ class DOMParser {
   }
 }
 ```
+{% endraw %}
 
 ### 3. CSS Parsing and CSSOM Construction
 
+{% raw %}
 ```javascript
 // CSSOM construction simulation
 class CSSOMBuilder {
@@ -351,9 +356,11 @@ class CSSOMBuilder {
   }
 }
 ```
+{% endraw %}
 
 ### 4. Layout (Reflow) Engine
 
+{% raw %}
 ```javascript
 // Layout engine simulation
 class LayoutEngine {
@@ -662,9 +669,11 @@ class LayoutEngine {
   }
 }
 ```
+{% endraw %}
 
 ### 5. Paint and Composite
 
+{% raw %}
 ```javascript
 // Paint and composite simulation
 class PaintCompositeEngine {
@@ -1003,6 +1012,7 @@ class PaintCompositeEngine {
   }
 }
 ```
+{% endraw %}
 
 ## 🚀 Performance Optimization Techniques
 
@@ -1090,6 +1100,7 @@ class ResourcePriority {
 
 ### 2. Layout Optimization
 
+{% raw %}
 ```javascript
 // Layout optimization utilities
 class LayoutOptimizer {
@@ -1170,6 +1181,7 @@ class LayoutOptimizer {
   }
 }
 ```
+{% endraw %}
 
 ## 🧠 Interview Questions and Scenarios
 
@@ -1179,6 +1191,7 @@ class LayoutOptimizer {
 
 **Answer Framework**:
 
+{% raw %}
 ```javascript
 class PerformanceDebugger {
   static debugSlowPage() {
@@ -1281,6 +1294,7 @@ class PerformanceDebugger {
   }
 }
 ```
+{% endraw %}
 
 ### 2. Rendering Pipeline Questions
 
@@ -1288,6 +1302,7 @@ class PerformanceDebugger {
 
 **Answer**: Different CSS properties trigger different stages of the rendering pipeline:
 
+{% raw %}
 ```javascript
 class RenderingPipelineAnalyzer {
   static analyzeCSSPropertyImpact(property, value) {
@@ -1365,5 +1380,6 @@ class RenderingPipelineAnalyzer {
   }
 }
 ```
+{% endraw %}
 
 This comprehensive guide provides deep insights into browser architecture and rendering pipeline, essential knowledge for frontend interviews at big tech companies. The practical examples and performance debugging techniques demonstrate real-world application of these concepts.
