@@ -840,6 +840,7 @@ const ProductCatalog = () => {
 
 **Implementation**:
 
+{% raw %}
 ```javascript
 import { Line, Bar, Pie } from "react-chartjs-2";
 
@@ -1083,6 +1084,7 @@ const Dashboard = () => {
   );
 };
 ```
+{% endraw %}
 
 ## System Design Challenges
 
