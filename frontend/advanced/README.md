@@ -624,6 +624,7 @@ function usePrevious(value) {
 **Q: How would you optimize a large list rendering?**
 A: Multiple optimization strategies:
 
+{% raw %}
 ```javascript
 // 1. Virtual Scrolling
 function VirtualList({ items, itemHeight, containerHeight }) {
@@ -675,6 +676,7 @@ function ExpensiveList({ items, filter }) {
   );
 }
 ```
+{% endraw %}
 
 ### Architecture Questions
 

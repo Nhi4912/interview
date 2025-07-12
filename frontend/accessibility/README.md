@@ -790,6 +790,7 @@ class AccessibleDataTable {
 
 **Example: Accessible Modal in React**
 
+{% raw %}
 ```jsx
 import { useRef, useEffect } from "react";
 
@@ -818,6 +819,7 @@ function AccessibleModal({ isOpen, onClose, children }) {
   );
 }
 ```
+{% endraw %}
 
 ---
 
@@ -904,6 +906,7 @@ async function fetchData(url) {
 
 **Sample Implementation:**
 
+{% raw %}
 ```jsx
 function AccessibleDropdown({ options, onSelect }) {
   const [open, setOpen] = useState(false);
@@ -970,6 +973,7 @@ function AccessibleDropdown({ options, onSelect }) {
   );
 }
 ```
+{% endraw %}
 
 ## Problem 2: Accessible Error Handling in Forms
 

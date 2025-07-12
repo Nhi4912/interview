@@ -381,6 +381,7 @@ Application
 **Example: Social Feed Component Design**
 
 
+{% raw %}
 ```typescript
 // High-level container component
 interface FeedContainerProps {
@@ -479,6 +480,7 @@ const PostCard: React.FC<PostCardProps> = ({ post, style }) => {
   );
 };
 ```
+{% endraw %}
 
 
 ### Component Patterns
@@ -1010,6 +1012,7 @@ const useMemoryCache = <T>(key: string, fetcher: () => Promise<T>) => {
 **Key Components:**
 
 
+{% raw %}
 ```typescript
 // Feed container with real-time updates
 const FeedContainer = () => {
@@ -1066,6 +1069,7 @@ const VirtualizedFeed = ({ posts, loading, error }) => {
   );
 };
 ```
+{% endraw %}
 
 
 ### Example 2: Google Docs-like Editor
