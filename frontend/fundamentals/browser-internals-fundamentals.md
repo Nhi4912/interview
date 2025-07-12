@@ -970,7 +970,6 @@ class V8OptimizationDemo {
 
 ### **Storage and Persistence APIs**
 
-{% raw %}
 ```javascript
 // Comprehensive storage API demonstration
 class WebStorageManager {

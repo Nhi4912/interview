@@ -404,7 +404,6 @@ Implement a search functionality with debouncing and caching for better performa
 
 ### Solution
 
-{% raw %}
 ```javascript
 class SearchManager {
   constructor(options = {}) {

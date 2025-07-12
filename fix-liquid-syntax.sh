@@ -1,44 +1,65 @@
 #!/bin/bash
 
 # Fix Liquid syntax errors in markdown files by wrapping code blocks containing '{{' or '${' with {% raw %} ... {% endraw %}
-# Applies to all markdown files in frontend/
+# This script properly handles the raw tags to prevent malformed output
 
 echo "Scanning all markdown files in frontend/ for Liquid conflicts..."
 
 find frontend/ -name "*.md" | while read file; do
   echo "Processing $file..."
-  # Use awk to process code blocks
+  
+  # Create a temporary file
+  temp_file=$(mktemp)
+  
+  # Use awk to properly process code blocks
   awk '
-  BEGIN { inblock=0; blocktype=""; blocklines=""; }
-  /^```(js|jsx|tsx|ts|javascript|typescript)/ {
-    inblock=1;
-    blocktype=$0;
-    blocklines=$0"\n";
+  BEGIN { 
+    in_code_block = 0; 
+    code_block_content = ""; 
+    code_block_start = ""; 
+  }
+  
+  # Start of code block
+  /^```(js|jsx|tsx|ts|javascript|typescript|js|ts)$/ {
+    in_code_block = 1;
+    code_block_start = $0;
+    code_block_content = $0 "\n";
     next;
   }
-  inblock && /^```/ {
-    blocklines=blocklines $0"\n";
-    # Check if block contains {{ or ${
-    if (blocklines ~ /\{\{/ || blocklines ~ /\$\{/) {
+  
+  # End of code block
+  in_code_block && /^```$/ {
+    code_block_content = code_block_content $0 "\n";
+    
+    # Check if this code block contains {{ or ${
+    if (code_block_content ~ /\{\{/ || code_block_content ~ /\$\{/) {
       print "{% raw %}";
-      printf "%s", blocklines;
+      printf "%s", code_block_content;
       print "{% endraw %}";
     } else {
-      printf "%s", blocklines;
+      printf "%s", code_block_content;
     }
-    inblock=0;
-    blocktype="";
-    blocklines="";
+    
+    in_code_block = 0;
+    code_block_content = "";
+    code_block_start = "";
     next;
   }
-  inblock {
-    blocklines=blocklines $0"\n";
+  
+  # Inside code block
+  in_code_block {
+    code_block_content = code_block_content $0 "\n";
     next;
   }
+  
+  # Outside code block - just print
   {
     print $0;
   }
-  ' "$file" > "$file.tmp" && mv "$file.tmp" "$file"
+  ' "$file" > "$temp_file"
+  
+  # Replace original file with fixed content
+  mv "$temp_file" "$file"
 done
 
-echo "All code blocks with Liquid conflicts are now wrapped in raw tags!"
+echo "All code blocks with Liquid conflicts are now properly wrapped in raw tags!"

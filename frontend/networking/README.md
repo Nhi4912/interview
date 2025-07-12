@@ -226,7 +226,6 @@ class RequestCache {
 
 **Challenge**: Create a function that retries failed HTTP requests with exponential backoff.
 
-{% raw %}
 ```javascript
 async function fetchWithRetry(url, options = {}, maxRetries = 3) {
   let lastError;
@@ -339,7 +338,6 @@ console.log("All requests completed");
 
 **Challenge**: Create a system to intercept and modify HTTP requests and responses.
 
-{% raw %}
 ```javascript
 class HttpClient {
   constructor() {
@@ -595,7 +593,6 @@ ws.send({ type: 'chat', message: 'Hello, world!' });
 
 **Challenge**: Create a client-side rate limiter to prevent exceeding API rate limits.
 
-{% raw %}
 ```javascript
 class RateLimiter {
   constructor(maxRequests, timeWindow) {

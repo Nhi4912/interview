@@ -263,7 +263,6 @@ const table = new DynamicTable("table-container", sampleData);
 
 ## Advanced Usage
 
-{% raw %}
 ```javascript
 // With custom styling
 const customTable = new DynamicTable("custom-table", data);
@@ -335,7 +334,6 @@ flowchart TD
 
 **Sample Implementation:**
 
-{% raw %}
 ```jsx
 import { FixedSizeList as List } from "react-window";
 
@@ -405,7 +403,6 @@ function VirtualizedTable({ data, height, rowHeight }) {
 
 **Sample Implementation (JS):**
 
-{% raw %}
 ```js
 // In your DynamicTable class, add editing state and handlers
 // Pseudocode for cell rendering:
@@ -522,7 +519,6 @@ flowchart TD
 
 **Sample Implementation:**
 
-{% raw %}
 ```jsx
 import { FixedSizeList as List } from "react-window";
 
@@ -592,7 +588,6 @@ function VirtualizedTable({ data, height, rowHeight }) {
 
 **Sample Implementation (JS):**
 
-{% raw %}
 ```js
 // In your DynamicTable class, add editing state and handlers
 // Pseudocode for cell rendering:

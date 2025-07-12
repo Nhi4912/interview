@@ -833,7 +833,6 @@ async function trackUserLocation() {
 
 ### getUserMedia for Camera Access
 
-{% raw %}
 ```javascript
 class CameraManager {
   constructor() {
@@ -1016,7 +1015,6 @@ async function initCamera() {
 
 ## Intersection Observer
 
-{% raw %}
 ```javascript
 class IntersectionObserverManager {
   constructor(callback, options = {}) {

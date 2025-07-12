@@ -548,7 +548,6 @@ const accessibleModal = new AccessibleModal(modal, trigger);
 **Q: How do you implement accessible data tables?**
 A: Accessible table implementation with sorting and filtering:
 
-{% raw %}
 ```javascript
 class AccessibleDataTable {
   constructor(table) {
@@ -792,8 +791,6 @@ class AccessibleDataTable {
 
 **Example: Accessible Modal in React**
 
-{% raw %}
-{% raw %}
 ```jsx
 import { useRef, useEffect } from "react";
 
@@ -822,7 +819,6 @@ function AccessibleModal({ isOpen, onClose, children }) {
   );
 }
 ```
-{% endraw %}
 {% endraw %}
 
 ---
@@ -910,8 +906,6 @@ async function fetchData(url) {
 
 **Sample Implementation:**
 
-{% raw %}
-{% raw %}
 ```jsx
 function AccessibleDropdown({ options, onSelect }) {
   const [open, setOpen] = useState(false);
@@ -979,7 +973,6 @@ function AccessibleDropdown({ options, onSelect }) {
 }
 ```
 {% endraw %}
-{% endraw %}
 
 ## Problem 2: Accessible Error Handling in Forms
 
@@ -993,7 +986,6 @@ function AccessibleDropdown({ options, onSelect }) {
 
 **Sample Implementation:**
 
-{% raw %}
 ```jsx
 function AccessibleForm() {
   const [errors, setErrors] = useState({});
@@ -1146,7 +1138,6 @@ flowchart TD
 
 **Example:**
 
-{% raw %}
 ```jsx
 <nav aria-label="Main navigation">
   <ul role="menubar">

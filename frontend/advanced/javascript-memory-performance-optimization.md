@@ -194,7 +194,6 @@ memoryAnalyzer.simulateMemoryPressure();
 
 ### 2. Memory Leak Prevention Patterns
 
-{% raw %}
 ```javascript
 // Common memory leak patterns and solutions
 class MemoryLeakPrevention {
@@ -416,7 +415,6 @@ class MemoryLeakPrevention {
 
 ### 1. Object Pooling
 
-{% raw %}
 ```javascript
 // Object pooling for performance optimization
 class ObjectPool {
@@ -537,7 +535,6 @@ console.log('Pool stats after release:', Vector3Pool.getInstance().getStats());
 
 ### 2. Lazy Loading and Code Splitting
 
-{% raw %}
 ```javascript
 // Advanced lazy loading implementation
 class LazyLoader {
@@ -749,7 +746,6 @@ async function loadDashboard() {
 
 ### 3. Virtual Scrolling Implementation
 
-{% raw %}
 ```javascript
 // High-performance virtual scrolling
 class VirtualScrollList {
@@ -1027,7 +1023,6 @@ function createVirtualScrollDemo() {
 
 ### 1. Advanced Performance Profiling
 
-{% raw %}
 ```javascript
 // Comprehensive performance profiler
 class PerformanceProfiler {

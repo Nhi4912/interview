@@ -846,7 +846,6 @@ jest.mock("./ExpensiveComponent", () => {
 
 ### Performance Testing
 
-{% raw %}
 ```javascript
 // Performance test example
 describe("Performance Tests", () => {

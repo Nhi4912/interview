@@ -513,7 +513,6 @@ Create a virtualized list component that efficiently handles millions of items u
 
 ### Solution
 
-{% raw %}
 ```typescript
 interface VirtualItem {
   id: string;

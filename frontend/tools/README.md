@@ -379,7 +379,6 @@ exports.default = dev;
 
 **Challenge**: Build a Babel plugin that transforms code for specific use cases.
 
-{% raw %}
 ```javascript
 // babel-plugin-transform-logger.js
 module.exports = function({ types: t }) {
@@ -514,7 +513,6 @@ function add(a, b) {
 
 **Challenge**: Create an ESLint rule for enforcing coding standards.
 
-{% raw %}
 ```javascript
 // eslint-plugin-custom-rules.js
 module.exports = {
@@ -653,7 +651,6 @@ module.exports = {
 
 **Challenge**: Build a system to monitor and optimize build performance.
 
-{% raw %}
 ```javascript
 // build-performance-monitor.js
 const fs = require("fs");

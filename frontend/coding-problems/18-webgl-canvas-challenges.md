@@ -192,7 +192,6 @@ Create a real-time chart that can handle 10,000+ data points with smooth animati
 
 ### Solution
 
-{% raw %}
 ```typescript
 interface DataPoint {
   timestamp: number;
@@ -465,7 +464,6 @@ Create a 3D model viewer that can load and display OBJ files with lighting, mate
 
 ### Solution
 
-{% raw %}
 ```typescript
 interface Vertex {
   position: [number, number, number];

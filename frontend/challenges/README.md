@@ -230,8 +230,6 @@ const TodoApp = () => {
 
 **Implementation**:
 
-{% raw %}
-{% raw %}
 ```javascript
 const WeatherApp = () => {
   const [weather, setWeather] = useState(null);
@@ -356,7 +354,6 @@ const WeatherApp = () => {
 };
 ```
 {% endraw %}
-{% endraw %}
 
 ## Intermediate Challenges
 
@@ -375,7 +372,6 @@ const WeatherApp = () => {
 
 **Implementation**:
 
-{% raw %}
 ```javascript
 // WebSocket connection
 const useWebSocket = (url) => {
@@ -569,7 +565,6 @@ const ChatApp = () => {
 
 **Implementation**:
 
-{% raw %}
 ```javascript
 const ProductCatalog = () => {
   const [products, setProducts] = useState([]);
@@ -848,7 +843,6 @@ const ProductCatalog = () => {
 
 **Implementation**:
 
-{% raw %}
 ```javascript
 import { Line, Bar, Pie } from "react-chartjs-2";
 
@@ -1016,7 +1010,6 @@ const Dashboard = () => {
           <h3>Sales Trend</h3>
           <Line
             data={salesChartData}
-{% raw %}
             options={{
               responsive: true,
               plugins: {
@@ -1026,7 +1019,6 @@ const Dashboard = () => {
                 y: { beginAtZero: true },
               },
             }}
-{% endraw %}
           />
         </div>
 
@@ -1034,14 +1026,12 @@ const Dashboard = () => {
           <h3>User Distribution</h3>
           <Pie
             data={usersChartData}
-{% raw %}
             options={{
               responsive: true,
               plugins: {
                 legend: { position: "bottom" },
               },
             }}
-{% endraw %}
           />
         </div>
 
@@ -1049,7 +1039,6 @@ const Dashboard = () => {
           <h3>Revenue by Month</h3>
           <Bar
             data={revenueChartData}
-{% raw %}
             options={{
               responsive: true,
               plugins: {
@@ -1059,7 +1048,6 @@ const Dashboard = () => {
                 y: { beginAtZero: true },
               },
             }}
-{% endraw %}
           />
         </div>
 
@@ -1116,7 +1104,6 @@ const Dashboard = () => {
 
 **Architecture Design**:
 
-{% raw %}
 ```javascript
 // Feed component with virtualization
 const SocialFeed = () => {
@@ -1280,7 +1267,6 @@ const SocialFeed = () => {
 
 **Implementation**:
 
-{% raw %}
 ```javascript
 const DataTable = ({ data, columns }) => {
   const [sortConfig, setSortConfig] = useState({ key: null, direction: "asc" });

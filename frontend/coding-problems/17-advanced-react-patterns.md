@@ -190,7 +190,6 @@ const EnhancedUserList = withDataFetcher('/api/users', {
 
 ### Advanced HOC with Authentication
 
-{% raw %}
 ```javascript
 const withAuth = (requiredRole = null) => (WrappedComponent) => {
   const WithAuth = (props) => {
@@ -266,7 +265,6 @@ Create a Modal component using render props that:
 
 ### Solution
 
-{% raw %}
 ```javascript
 import React, { useState, useEffect, useCallback, useRef } from 'react';
 import { createPortal } from 'react-dom';
@@ -453,7 +451,6 @@ Create an Accordion compound component system that:
 
 ### Solution
 
-{% raw %}
 ```javascript
 import React, { 
   createContext, 

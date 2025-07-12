@@ -318,7 +318,6 @@ class AdvancedServiceWorker {
 
 #### Compound Components Pattern
 
-{% raw %}
 ```jsx
 // Compound Components Implementation
 const Tabs = ({ children, defaultIndex = 0 }) => {
@@ -411,7 +410,6 @@ function App() {
 
 #### Render Props Pattern
 
-{% raw %}
 ```jsx
 // Render Props Implementation
 class DataFetcher extends Component {
@@ -520,7 +518,6 @@ function App() {
 
 #### Custom State Management with Context
 
-{% raw %}
 ```jsx
 // Advanced State Management Implementation
 const StateContext = createContext();
@@ -676,7 +673,6 @@ function TodoApp() {
 
 #### Virtual Scrolling Implementation
 
-{% raw %}
 ```jsx
 // Virtual Scrolling Implementation
 class VirtualScroller extends Component {

@@ -1,6 +1,7 @@
 # Frontend System Design Framework
 
 ## Table of Contents
+
 - [System Design Interview Approach](#system-design-interview-approach)
 - [Requirements Gathering Framework](#requirements-gathering-framework)
 - [Architecture Patterns](#architecture-patterns)
@@ -16,36 +17,42 @@
 ### The 6-Step Framework
 
 **Step 1: Clarify Requirements (5 minutes)**
+
 - Functional requirements
 - Non-functional requirements
 - Scale and constraints
 - User personas
 
 **Step 2: High-Level Architecture (10 minutes)**
+
 - System components
 - Data flow
 - Technology stack
 - Third-party integrations
 
 **Step 3: Component Design (15 minutes)**
+
 - Component hierarchy
 - Props and state design
 - Reusability patterns
 - Component communication
 
 **Step 4: State Management (10 minutes)**
+
 - State architecture
 - Data flow patterns
 - Caching strategies
 - Real-time updates
 
 **Step 5: Performance & Scalability (10 minutes)**
+
 - Loading strategies
 - Bundle optimization
 - Caching approaches
 - Monitoring and metrics
 
 **Step 6: Deep Dive & Trade-offs (10 minutes)**
+
 - Specific implementation details
 - Alternative approaches
 - Trade-off analysis
@@ -54,6 +61,7 @@
 ### Communication Strategy During Design
 
 **Think Aloud Process:**
+
 ```
 "Let me start by understanding the requirements..."
 "I'm thinking about the user journey here..."
@@ -63,6 +71,7 @@
 ```
 
 **Visual Communication:**
+
 ```
 ┌─────────────────────────────────────────────────────┐
 │                Design Process                       │
@@ -81,6 +90,7 @@
 ### Functional Requirements Analysis
 
 **Template Questions:**
+
 ```
 User Experience:
 - Who are the primary users?
@@ -110,6 +120,7 @@ Integration:
 ### Non-Functional Requirements
 
 **Performance Requirements:**
+
 ```
 Loading Performance:
 - Initial page load time target?
@@ -128,6 +139,7 @@ Scalability:
 ```
 
 **Quality Requirements:**
+
 ```
 Reliability:
 - Uptime requirements?
@@ -150,6 +162,7 @@ Maintainability:
 **Question:** "Design a social media feed like Twitter"
 
 **Requirements Gathering:**
+
 ```
 Functional Requirements:
 ✓ Display posts in chronological order
@@ -210,6 +223,7 @@ Constraints:
 ```
 
 **Benefits:**
+
 - Clear separation of concerns
 - Easier testing and maintenance
 - Scalable team structure
@@ -217,6 +231,7 @@ Constraints:
 
 **Implementation Example:**
 {% raw %}
+
 ```typescript
 // Presentation Layer
 interface PostComponentProps {
@@ -225,12 +240,16 @@ interface PostComponentProps {
   onComment: (postId: string, comment: string) => void;
 }
 
-const PostComponent: React.FC<PostComponentProps> = ({ post, onLike, onComment }) => {
+const PostComponent: React.FC<PostComponentProps> = ({
+  post,
+  onLike,
+  onComment,
+}) => {
   return (
     <article className="post">
       <PostHeader author={post.author} timestamp={post.createdAt} />
       <PostContent content={post.content} media={post.media} />
-      <PostActions 
+      <PostActions
         likes={post.likes}
         onLike={() => onLike(post.id)}
         onComment={(comment) => onComment(post.id, comment)}
@@ -266,16 +285,19 @@ const usePostInteractions = () => {
 class PostService {
   static async likePost(postId: string): Promise<void> {
     const response = await apiClient.post(`/posts/${postId}/like`);
-    if (!response.ok) throw new Error('Failed to like post');
+    if (!response.ok) throw new Error("Failed to like post");
   }
 
   static async addComment(postId: string, comment: string): Promise<Comment> {
-    const response = await apiClient.post(`/posts/${postId}/comments`, { comment });
-    if (!response.ok) throw new Error('Failed to add comment');
+    const response = await apiClient.post(`/posts/${postId}/comments`, {
+      comment,
+    });
+    if (!response.ok) throw new Error("Failed to add comment");
     return response.json();
   }
 }
 ```
+
 {% endraw %}
 
 ### Micro-Frontend Architecture
@@ -305,12 +327,14 @@ class PostService {
 ```
 
 **Benefits:**
+
 - Team autonomy
 - Technology diversity
 - Independent deployment
 - Scalable development
 
 **Challenges:**
+
 - Complexity overhead
 - Bundle duplication
 - Cross-module communication
@@ -347,6 +371,7 @@ Application
 ### Component Hierarchy Design
 
 **Design Principles:**
+
 1. **Single Responsibility**: Each component has one clear purpose
 2. **Composition over Inheritance**: Build complex UI through composition
 3. **Props Down, Events Up**: Unidirectional data flow
@@ -355,23 +380,26 @@ Application
 
 **Example: Social Feed Component Design**
 
-{% raw %}
+
 ```typescript
 // High-level container component
 interface FeedContainerProps {
   userId?: string;
-  feedType: 'home' | 'user' | 'trending';
+  feedType: "home" | "user" | "trending";
 }
 
 const FeedContainer: React.FC<FeedContainerProps> = ({ userId, feedType }) => {
-  const { posts, loading, error, loadMore, hasMore } = useFeed(feedType, userId);
-  
+  const { posts, loading, error, loadMore, hasMore } = useFeed(
+    feedType,
+    userId
+  );
+
   return (
     <div className="feed-container">
       <FeedHeader feedType={feedType} />
       <PostCreator onPostCreate={handlePostCreate} />
-      <PostList 
-        posts={posts} 
+      <PostList
+        posts={posts}
         loading={loading}
         error={error}
         onLoadMore={loadMore}
@@ -390,26 +418,26 @@ interface PostListProps {
   hasMore: boolean;
 }
 
-const PostList: React.FC<PostListProps> = ({ 
-  posts, 
-  loading, 
-  error, 
-  onLoadMore, 
-  hasMore 
+const PostList: React.FC<PostListProps> = ({
+  posts,
+  loading,
+  error,
+  onLoadMore,
+  hasMore,
 }) => {
   const { containerRef, visibleItems } = useVirtualization(posts, POST_HEIGHT);
-  
+
   return (
     <div ref={containerRef} className="post-list">
       <InfiniteScroll onLoadMore={onLoadMore} hasMore={hasMore}>
         {visibleItems.map(({ item: post, index }) => (
-          <PostCard 
-            key={post.id} 
-            post={post} 
-            style={{ 
-              position: 'absolute',
+          <PostCard
+            key={post.id}
+            post={post}
+            style={{
+              position: "absolute",
               top: index * POST_HEIGHT,
-              height: POST_HEIGHT
+              height: POST_HEIGHT,
             }}
           />
         ))}
@@ -428,20 +456,20 @@ interface PostCardProps {
 
 const PostCard: React.FC<PostCardProps> = ({ post, style }) => {
   const { likePost, sharePost, reportPost } = usePostActions();
-  
+
   return (
     <article className="post-card" style={style}>
-      <PostHeader 
-        author={post.author} 
+      <PostHeader
+        author={post.author}
         timestamp={post.createdAt}
         onReport={() => reportPost(post.id)}
       />
-      <PostContent 
-        content={post.content} 
+      <PostContent
+        content={post.content}
         media={post.media}
         hashtags={post.hashtags}
       />
-      <PostActions 
+      <PostActions
         post={post}
         onLike={() => likePost(post.id)}
         onShare={() => sharePost(post.id)}
@@ -451,23 +479,25 @@ const PostCard: React.FC<PostCardProps> = ({ post, style }) => {
   );
 };
 ```
+
 {% endraw %}
 
 ### Component Patterns
 
 **1. Container/Presentational Pattern**
+
 ```typescript
 // Container (Smart Component)
 const PostContainerComponent = ({ postId }: { postId: string }) => {
   const { post, loading, error } = usePost(postId);
   const { likePost, sharePost } = usePostActions();
-  
+
   if (loading) return <LoadingSpinner />;
   if (error) return <ErrorMessage error={error} />;
   if (!post) return <NotFound />;
-  
+
   return (
-    <PostPresentational 
+    <PostPresentational
       post={post}
       onLike={() => likePost(postId)}
       onShare={() => sharePost(postId)}
@@ -485,7 +515,7 @@ interface PostPresentationalProps {
 const PostPresentational: React.FC<PostPresentationalProps> = ({
   post,
   onLike,
-  onShare
+  onShare,
 }) => (
   <div className="post">
     <h2>{post.title}</h2>
@@ -497,7 +527,7 @@ const PostPresentational: React.FC<PostPresentationalProps> = ({
 ```
 
 **2. Compound Components Pattern**
-{% raw %}
+
 ```typescript
 // API Design
 <Tabs defaultActiveKey="tab1">
@@ -524,7 +554,7 @@ const Tabs: React.FC<TabsProps> & {
   TabPanel: typeof TabPanel;
 } = ({ children, defaultActiveKey }) => {
   const [activeKey, setActiveKey] = useState(defaultActiveKey);
-  
+
   return (
     <TabsContext.Provider value={% raw %}{{ activeKey, setActiveKey }}{% endraw %}>
       <div className="tabs">{children}</div>
@@ -537,9 +567,9 @@ Tabs.Tab = Tab;
 Tabs.TabPanels = TabPanels;
 Tabs.TabPanel = TabPanel;
 ```
-{% endraw %}
 
 **3. Render Props Pattern**
+
 ```typescript
 interface DataFetcherProps<T> {
   url: string;
@@ -551,9 +581,9 @@ interface DataFetcherProps<T> {
   }) => React.ReactNode;
 }
 
-const DataFetcher = <T,>({ url, children }: DataFetcherProps<T>) => {
+const DataFetcher = <T>({ url, children }: DataFetcherProps<T>) => {
   const { data, loading, error, refetch } = useApiData<T>(url);
-  
+
   return <>{children({ data, loading, error, refetch })}</>;
 };
 
@@ -566,7 +596,7 @@ const DataFetcher = <T,>({ url, children }: DataFetcherProps<T>) => {
       {users && <UserList users={users} />}
     </div>
   )}
-</DataFetcher>
+</DataFetcher>;
 ```
 
 ## State Management Architecture
@@ -574,21 +604,22 @@ const DataFetcher = <T,>({ url, children }: DataFetcherProps<T>) => {
 ### State Architecture Patterns
 
 **1. Local State Pattern**
+
 ```typescript
 // For simple, component-specific state
 const Counter = () => {
   const [count, setCount] = useState(0);
   const [step, setStep] = useState(1);
-  
+
   return (
     <div>
       <span>Count: {count}</span>
       <button onClick={() => setCount(count + step)}>
         Increment by {step}
       </button>
-      <input 
-        type="number" 
-        value={step} 
+      <input
+        type="number"
+        value={step}
         onChange={(e) => setStep(parseInt(e.target.value))}
       />
     </div>
@@ -597,11 +628,12 @@ const Counter = () => {
 ```
 
 **2. Lifted State Pattern**
+
 ```typescript
 // When multiple components need the same state
 const ParentComponent = () => {
   const [sharedData, setSharedData] = useState(initialData);
-  
+
   return (
     <div>
       <ChildA data={sharedData} onUpdate={setSharedData} />
@@ -612,7 +644,7 @@ const ParentComponent = () => {
 ```
 
 **3. Context State Pattern**
-{% raw %}
+
 ```typescript
 // For application-wide state
 interface AppState {
@@ -628,7 +660,7 @@ const AppStateContext = createContext<{
 
 const AppStateProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
   const [state, dispatch] = useReducer(appReducer, initialState);
-  
+
   return (
     <AppStateContext.Provider value={% raw %}{{ state, dispatch }}{% endraw %}>
       {children}
@@ -636,9 +668,10 @@ const AppStateProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
   );
 };
 ```
-{% endraw %}
+
 
 **4. External State Management**
+
 ```typescript
 // Using Zustand for global state
 interface StoreState {
@@ -652,26 +685,29 @@ interface StoreState {
 const useStore = create<StoreState>((set, get) => ({
   posts: [],
   currentUser: null,
-  
-  addPost: (post) => set((state) => ({ 
-    posts: [post, ...state.posts] 
-  })),
-  
+
+  addPost: (post) =>
+    set((state) => ({
+      posts: [post, ...state.posts],
+    })),
+
   setUser: (user) => set({ currentUser: user }),
-  
-  likePost: (postId) => set((state) => ({
-    posts: state.posts.map(post => 
-      post.id === postId 
-        ? { ...post, likes: post.likes + 1, likedByUser: true }
-        : post
-    )
-  }))
+
+  likePost: (postId) =>
+    set((state) => ({
+      posts: state.posts.map((post) =>
+        post.id === postId
+          ? { ...post, likes: post.likes + 1, likedByUser: true }
+          : post
+      ),
+    })),
 }));
 ```
 
 ### Data Flow Patterns
 
 **Unidirectional Data Flow:**
+
 ```
 ┌─────────────────────────────────────────────────────┐
 │                 Data Flow Pattern                   │
@@ -686,26 +722,25 @@ const useStore = create<StoreState>((set, get) => ({
 ```
 
 **Implementation Example:**
+
 ```typescript
 // Parent manages state and provides actions
 const FeedContainer = () => {
   const [posts, setPosts] = useState<Post[]>([]);
   const [loading, setLoading] = useState(false);
-  
+
   const addPost = useCallback((newPost: Post) => {
-    setPosts(current => [newPost, ...current]);
+    setPosts((current) => [newPost, ...current]);
   }, []);
-  
+
   const likePost = useCallback((postId: string) => {
-    setPosts(current => 
-      current.map(post => 
-        post.id === postId 
-          ? { ...post, likes: post.likes + 1 }
-          : post
+    setPosts((current) =>
+      current.map((post) =>
+        post.id === postId ? { ...post, likes: post.likes + 1 } : post
       )
     );
   }, []);
-  
+
   return (
     <div>
       <PostCreator onSubmit={addPost} />
@@ -717,12 +752,8 @@ const FeedContainer = () => {
 // Children receive data and callbacks
 const PostList = ({ posts, onLike }) => (
   <div>
-    {posts.map(post => (
-      <PostCard 
-        key={post.id} 
-        post={post} 
-        onLike={() => onLike(post.id)} 
-      />
+    {posts.map((post) => (
+      <PostCard key={post.id} post={post} onLike={() => onLike(post.id)} />
     ))}
   </div>
 );
@@ -733,11 +764,12 @@ const PostList = ({ posts, onLike }) => (
 ### Loading Strategies
 
 **1. Progressive Loading**
+
 ```typescript
 // Code splitting with lazy loading
-const FeedPage = lazy(() => import('./pages/FeedPage'));
-const ProfilePage = lazy(() => import('./pages/ProfilePage'));
-const MessagesPage = lazy(() => import('./pages/MessagesPage'));
+const FeedPage = lazy(() => import("./pages/FeedPage"));
+const ProfilePage = lazy(() => import("./pages/ProfilePage"));
+const MessagesPage = lazy(() => import("./pages/MessagesPage"));
 
 const App = () => (
   <Router>
@@ -752,20 +784,18 @@ const App = () => (
 );
 
 // Component-level lazy loading
-const HeavyComponent = lazy(() => 
-  import('./HeavyComponent').then(module => ({
-    default: module.HeavyComponent
+const HeavyComponent = lazy(() =>
+  import("./HeavyComponent").then((module) => ({
+    default: module.HeavyComponent,
   }))
 );
 
 const ParentComponent = () => {
   const [showHeavy, setShowHeavy] = useState(false);
-  
+
   return (
     <div>
-      <button onClick={() => setShowHeavy(true)}>
-        Load Heavy Component
-      </button>
+      <button onClick={() => setShowHeavy(true)}>Load Heavy Component</button>
       {showHeavy && (
         <Suspense fallback={<ComponentLoader />}>
           <HeavyComponent />
@@ -777,40 +807,40 @@ const ParentComponent = () => {
 ```
 
 **2. Resource Prioritization**
+
 ```typescript
 // Critical resource loading
 const CriticalResourceLoader = () => {
   useEffect(() => {
     // Preload critical resources
     const criticalResources = [
-      '/api/user/current',
-      '/api/feed/recent',
-      '/fonts/primary.woff2'
+      "/api/user/current",
+      "/api/feed/recent",
+      "/fonts/primary.woff2",
     ];
-    
-    criticalResources.forEach(resource => {
-      if (resource.startsWith('/api/')) {
+
+    criticalResources.forEach((resource) => {
+      if (resource.startsWith("/api/")) {
         // Prefetch API data
-        fetch(resource).then(response => response.json());
+        fetch(resource).then((response) => response.json());
       } else {
         // Preload static resources
-        const link = document.createElement('link');
-        link.rel = 'preload';
+        const link = document.createElement("link");
+        link.rel = "preload";
         link.href = resource;
-        link.as = resource.includes('font') ? 'font' : 'fetch';
+        link.as = resource.includes("font") ? "font" : "fetch";
         document.head.appendChild(link);
       }
     });
   }, []);
-  
+
   return null;
 };
 ```
 
 **3. Virtualization for Large Lists**
 
-{% raw %}
-{% raw %}
+
 ```typescript
 interface VirtualListProps<T> {
   items: T[];
@@ -819,30 +849,30 @@ interface VirtualListProps<T> {
   renderItem: (item: T, index: number) => React.ReactNode;
 }
 
-const VirtualList = <T,>({ 
-  items, 
-  itemHeight, 
-  containerHeight, 
-  renderItem 
+const VirtualList = <T>({
+  items,
+  itemHeight,
+  containerHeight,
+  renderItem,
 }: VirtualListProps<T>) => {
   const [scrollTop, setScrollTop] = useState(0);
-  
+
   const visibleStart = Math.floor(scrollTop / itemHeight);
   const visibleEnd = Math.min(
     visibleStart + Math.ceil(containerHeight / itemHeight) + 1,
     items.length
   );
-  
+
   const visibleItems = items.slice(visibleStart, visibleEnd);
   const totalHeight = items.length * itemHeight;
   const offsetY = visibleStart * itemHeight;
-  
+
   return (
-    <div 
-      style={{ height: containerHeight, overflow: 'auto' }}
+    <div
+      style={{ height: containerHeight, overflow: "auto" }}
       onScroll={(e) => setScrollTop(e.currentTarget.scrollTop)}
     >
-      <div style={{ height: totalHeight, position: 'relative' }}>
+      <div style={{ height: totalHeight, position: "relative" }}>
         <div style={{ transform: `translateY(${offsetY}px)` }}>
           {visibleItems.map((item, index) => (
             <div key={visibleStart + index} style={{ height: itemHeight }}>
@@ -855,27 +885,27 @@ const VirtualList = <T,>({
   );
 };
 ```
-{% endraw %}
-{% endraw %}
+
 
 ### Caching Strategies
 
 **1. Browser Caching**
+
 ```typescript
 // Service Worker caching strategy
-const CACHE_NAME = 'social-feed-v1';
+const CACHE_NAME = "social-feed-v1";
 const CACHE_STRATEGIES = {
-  static: 'cache-first',    // CSS, JS, images
-  api: 'network-first',     // API calls
-  feed: 'stale-while-revalidate'  // Social feed data
+  static: "cache-first", // CSS, JS, images
+  api: "network-first", // API calls
+  feed: "stale-while-revalidate", // Social feed data
 };
 
-self.addEventListener('fetch', (event) => {
+self.addEventListener("fetch", (event) => {
   const url = new URL(event.request.url);
-  
-  if (url.pathname.startsWith('/api/feed')) {
+
+  if (url.pathname.startsWith("/api/feed")) {
     event.respondWith(staleWhileRevalidate(event.request));
-  } else if (url.pathname.startsWith('/api/')) {
+  } else if (url.pathname.startsWith("/api/")) {
     event.respondWith(networkFirst(event.request));
   } else if (url.pathname.match(/\.(css|js|png|jpg)$/)) {
     event.respondWith(cacheFirst(event.request));
@@ -884,15 +914,16 @@ self.addEventListener('fetch', (event) => {
 ```
 
 **2. Memory Caching**
+
 ```typescript
 // React Query for API caching
 const usePosts = (feedType: string) => {
   return useQuery({
-    queryKey: ['posts', feedType],
+    queryKey: ["posts", feedType],
     queryFn: () => fetchPosts(feedType),
     staleTime: 5 * 60 * 1000, // 5 minutes
     cacheTime: 10 * 60 * 1000, // 10 minutes
-    refetchOnWindowFocus: false
+    refetchOnWindowFocus: false,
   });
 };
 
@@ -901,17 +932,17 @@ const useMemoryCache = <T>(key: string, fetcher: () => Promise<T>) => {
   const cache = useRef<Map<string, { data: T; timestamp: number }>>(new Map());
   const [data, setData] = useState<T | null>(null);
   const [loading, setLoading] = useState(false);
-  
+
   const getData = useCallback(async () => {
     const cached = cache.current.get(key);
     const now = Date.now();
-    
+
     // Use cache if less than 5 minutes old
-    if (cached && (now - cached.timestamp) < 5 * 60 * 1000) {
+    if (cached && now - cached.timestamp < 5 * 60 * 1000) {
       setData(cached.data);
       return;
     }
-    
+
     setLoading(true);
     try {
       const result = await fetcher();
@@ -921,11 +952,11 @@ const useMemoryCache = <T>(key: string, fetcher: () => Promise<T>) => {
       setLoading(false);
     }
   }, [key, fetcher]);
-  
+
   useEffect(() => {
     getData();
   }, [getData]);
-  
+
   return { data, loading, refetch: getData };
 };
 ```
@@ -935,6 +966,7 @@ const useMemoryCache = <T>(key: string, fetcher: () => Promise<T>) => {
 ### Example 1: Twitter-like Feed
 
 **Requirements:**
+
 - Real-time feed updates
 - Infinite scrolling
 - Media support (images, videos)
@@ -976,32 +1008,32 @@ const useMemoryCache = <T>(key: string, fetcher: () => Promise<T>) => {
 
 **Key Components:**
 
-{% raw %}
+
 ```typescript
 // Feed container with real-time updates
 const FeedContainer = () => {
   const { posts, loading, error } = useFeed();
   const { socket } = useWebSocket();
-  
+
   useEffect(() => {
-    socket.on('new_post', (post: Post) => {
+    socket.on("new_post", (post: Post) => {
       // Add new post to feed
-      queryClient.setQueryData(['feed'], (old: Post[]) => [post, ...old]);
+      queryClient.setQueryData(["feed"], (old: Post[]) => [post, ...old]);
     });
-    
-    socket.on('post_updated', (updatedPost: Post) => {
+
+    socket.on("post_updated", (updatedPost: Post) => {
       // Update existing post
-      queryClient.setQueryData(['feed'], (old: Post[]) => 
-        old.map(post => post.id === updatedPost.id ? updatedPost : post)
+      queryClient.setQueryData(["feed"], (old: Post[]) =>
+        old.map((post) => (post.id === updatedPost.id ? updatedPost : post))
       );
     });
-    
+
     return () => {
-      socket.off('new_post');
-      socket.off('post_updated');
+      socket.off("new_post");
+      socket.off("post_updated");
     };
   }, [socket, queryClient]);
-  
+
   return (
     <div className="feed-container">
       <PostComposer />
@@ -1013,17 +1045,17 @@ const FeedContainer = () => {
 // Virtualized feed for performance
 const VirtualizedFeed = ({ posts, loading, error }) => {
   const { containerRef, visibleItems } = useVirtualization(posts, 200);
-  
+
   return (
     <div ref={containerRef} className="feed">
       {visibleItems.map(({ item: post, index }) => (
-        <PostCard 
-          key={post.id} 
-          post={post} 
-          style={{ 
-            position: 'absolute',
+        <PostCard
+          key={post.id}
+          post={post}
+          style={{
+            position: "absolute",
             top: index * 200,
-            height: 200
+            height: 200,
           }}
         />
       ))}
@@ -1033,11 +1065,12 @@ const VirtualizedFeed = ({ posts, loading, error }) => {
   );
 };
 ```
-{% endraw %}
+
 
 ### Example 2: Google Docs-like Editor
 
 **Requirements:**
+
 - Real-time collaborative editing
 - Rich text formatting
 - Document structure (headings, lists, etc.)

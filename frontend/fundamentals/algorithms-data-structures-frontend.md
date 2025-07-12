@@ -812,7 +812,6 @@ class FrontendGraphAlgorithms {
 
 ### **Frontend-Specific Optimizations**
 
-{% raw %}
 ```javascript
 // Optimization algorithms for frontend performance
 class FrontendOptimizationAlgorithms {

@@ -222,7 +222,6 @@ virtualScroller.setItems(items);
 
 ### Dynamic Height Support
 
-{% raw %}
 ```javascript
 class DynamicVirtualScroller extends VirtualScroller {
   constructor(container, options = {}) {
@@ -289,7 +288,6 @@ class DynamicVirtualScroller extends VirtualScroller {
 
 ### Search and Filter Support
 
-{% raw %}
 ```javascript
 class SearchableVirtualScroller extends VirtualScroller {
   constructor(container, options = {}) {
@@ -358,7 +356,6 @@ class SearchableVirtualScroller extends VirtualScroller {
 
 ### Memory Management
 
-{% raw %}
 ```javascript
 class OptimizedVirtualScroller extends VirtualScroller {
   constructor(container, options = {}) {

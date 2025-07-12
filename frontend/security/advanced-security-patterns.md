@@ -239,7 +239,6 @@ class CSPManager {
 
 ### **Trusted Types Implementation**
 
-{% raw %}
 ```typescript
 // trusted-types.ts
 interface TrustedTypesPolicy {
@@ -508,7 +507,6 @@ class TrustedTypesManager {
 
 ### **JWT Security Implementation**
 
-{% raw %}
 ```typescript
 // jwt-security.ts
 interface JWTHeader {
@@ -879,7 +877,6 @@ class JWTSecurityManager {
 
 ### **Advanced Input Validation Framework**
 
-{% raw %}
 ```typescript
 // input-validator.ts
 interface ValidationRule {

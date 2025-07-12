@@ -719,7 +719,6 @@ const ChatRoom = ({ roomId }) => {
 
 ### 3. E-commerce Platform
 
-{% raw %}
 ```javascript
 // E-commerce Platform System Design
 class EcommercePlatformSystem {

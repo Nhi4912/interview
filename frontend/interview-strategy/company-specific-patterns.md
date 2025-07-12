@@ -245,7 +245,6 @@ function useNewsFeed(userId: string) {
 - **Focus**: Customer obsession, operational excellence, scalability
 
 ### **Technical Emphasis**
-{% raw %}
 ```typescript
 // Amazon emphasizes scalability and customer-focused solutions
 // Example: Design Amazon's product recommendation engine
@@ -412,7 +411,6 @@ class ProductRecommendationService {
 - **Focus**: Collaboration, inclusive design, enterprise solutions
 
 ### **Technical Emphasis**
-{% raw %}
 ```typescript
 // Microsoft emphasizes accessibility and enterprise-grade solutions
 // Example: Implement Microsoft Teams' collaborative whiteboard
@@ -657,7 +655,6 @@ class TeamsWhiteboardIntegration {
 - **Focus**: User experience, performance, attention to detail
 
 ### **Technical Emphasis**
-{% raw %}
 ```typescript
 // Apple emphasizes user experience and performance optimization
 // Example: Implement Safari's intelligent tab management

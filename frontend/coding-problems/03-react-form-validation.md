@@ -431,7 +431,6 @@ const RegistrationForm = () => {
 
 ### Custom Validation Components
 
-{% raw %}
 ```javascript
 // Custom Input Component
 const ValidatedInput = ({
@@ -497,7 +496,6 @@ const AdvancedForm = () => {
 
 ### Async Validation with Loading States
 
-{% raw %}
 ```javascript
 const useAsyncValidation = (validator, delay = 500) => {
   const [isValidating, setIsValidating] = useState(false);

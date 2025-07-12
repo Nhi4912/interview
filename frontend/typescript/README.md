@@ -303,7 +303,6 @@ type UpdateUserParams = Parameters<typeof updateUser>; // [number, Partial<User>
 
 ### Component Types
 
-{% raw %}
 ```typescript
 import React, { useState, useEffect, ReactNode } from 'react';
 
@@ -372,7 +371,6 @@ const UserList: React.FC<{ users: User[] }> = ({ users }) => {
 
 ### Hooks with TypeScript
 
-{% raw %}
 ```typescript
 import { useState, useEffect, useCallback, useMemo, useRef } from 'react';
 
@@ -473,7 +471,6 @@ const UserComponent: React.FC = () => {
 
 ### Context with TypeScript
 
-{% raw %}
 ```typescript
 import React, { createContext, useContext, useReducer, ReactNode } from 'react';
 
@@ -638,7 +635,6 @@ function logLength<T extends Lengthwise>(arg: T): T {
 ### 4. How do you handle asynchronous operations in TypeScript?
 
 **Answer:**
-{% raw %}
 ```typescript
 // Promise types
 async function fetchUser(id: number): Promise<User> {
@@ -919,7 +915,6 @@ class ShapeFactory {
 
 ### 3. Repository Pattern
 
-{% raw %}
 ```typescript
 interface Repository<T> {
   findById(id: string): Promise<T | null>;

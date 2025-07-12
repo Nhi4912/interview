@@ -29,7 +29,6 @@
 ### Bundle Optimization
 
 {% raw %}
-{% raw %}
 ```javascript
 // Dynamic imports for code splitting
 const loadComponent = async (componentName) => {
@@ -44,7 +43,6 @@ const routes = {
   "/settings": () => import("./pages/Settings.js"),
 };
 ```
-{% endraw %}
 {% endraw %}
 
 ### Memory Management
@@ -93,8 +91,6 @@ class EventManager {
 
 ### Virtual Scrolling
 
-{% raw %}
-{% raw %}
 ```javascript
 class VirtualScroller {
   constructor(container, itemHeight, totalItems, renderItem) {
@@ -160,7 +156,6 @@ class VirtualScroller {
   }
 }
 ```
-{% endraw %}
 {% endraw %}
 
 ## Advanced State Management
@@ -339,8 +334,6 @@ manager.use((context, next) => {
 
 ### CSS-in-JS Advanced
 
-{% raw %}
-{% raw %}
 ```javascript
 const createStyles = (theme) => ({
   button: {
@@ -386,7 +379,6 @@ const createStyles = (theme) => ({
 });
 ```
 {% endraw %}
-{% endraw %}
 
 ## Advanced JavaScript Patterns
 
@@ -418,7 +410,6 @@ function throttle(func, limit) {
   };
 }
 
-{% raw %}
 // Usage
 const expensiveOperation = debounce((searchTerm) => {
   // API call or expensive computation
@@ -434,7 +425,6 @@ const scrollHandler = throttle(() => {
 
 ### Proxy Pattern
 
-{% raw %}
 ```javascript
 class ValidationProxy {
   constructor(target, schema) {
@@ -458,7 +448,6 @@ class ValidationProxy {
   }
 }
 
-{% raw %}
 // Usage
 const userSchema = {
   name: (value) => typeof value === "string" && value.length > 0,
@@ -476,7 +465,6 @@ try {
 } catch (error) {
   console.error("Validation error:", error.message);
 }
-{% endraw %}
 ```
 {% endraw %}
 
@@ -534,7 +522,6 @@ class MouseTracker extends React.Component {
   }
 }
 
-{% raw %}
 // Usage
 <MouseTracker
   render={({ x, y }) => (
@@ -642,8 +629,6 @@ function usePrevious(value) {
 **Q: How would you optimize a large list rendering?**
 A: Multiple optimization strategies:
 
-{% raw %}
-{% raw %}
 ```javascript
 // 1. Virtual Scrolling
 function VirtualList({ items, itemHeight, containerHeight }) {
@@ -696,14 +681,12 @@ function ExpensiveList({ items, filter }) {
 }
 ```
 {% endraw %}
-{% endraw %}
 
 ### Architecture Questions
 
 **Q: How would you design a scalable component library?**
 A: Comprehensive design system:
 
-{% raw %}
 ```javascript
 // Design System Architecture
 class DesignSystem {
@@ -766,7 +749,6 @@ class DesignSystem {
     return component;
   }
 
-{% raw %}
   // Style generation
   generateStyles(componentName, variant = "default", props = {}) {
     const component = this.components.get(componentName);
@@ -793,10 +775,8 @@ class DesignSystem {
       return theme[token] || this.tokens.get(token) || match;
     });
   }
-{% endraw %}
 }
 
-{% raw %}
 // Usage
 const designSystem = new DesignSystem();
 
@@ -834,7 +814,6 @@ const button = designSystem.createComponent("Button", {
     cursor: "pointer",
   },
 });
-{% endraw %}
 ```
 {% endraw %}
 

@@ -156,7 +156,6 @@ const calculator = (function () {
 
 #### Prototype Chain / Chuỗi prototype
 
-{% raw %}
 ```javascript
 // Constructor function
 function Person(name) {
@@ -178,7 +177,6 @@ console.log(Person.prototype.__proto__ === Object.prototype); // true
 
 #### ES6 Classes / Lớp ES6
 
-{% raw %}
 ```javascript
 class Animal {
   constructor(name) {

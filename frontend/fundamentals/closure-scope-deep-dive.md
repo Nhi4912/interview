@@ -368,7 +368,6 @@ function createFunctions() {
 
 Create private variables and methods:
 
-{% raw %}
 ```javascript
 const Calculator = (function () {
   // Private variables
@@ -496,7 +495,6 @@ console.log(account1.balance); // undefined (private)
 
 Maintain state in event handlers:
 
-{% raw %}
 ```javascript
 function createButtonWithCounter(buttonId) {
   let clickCount = 0;
@@ -1044,7 +1042,6 @@ const MyModule = (function () {
 
 **2. Factory Function**:
 
-{% raw %}
 ```javascript
 function createObject() {
   let privateVar = "secret";

@@ -336,7 +336,6 @@ class WebpackOptimizer {
 
 ### **Vite Configuration for Maximum Performance**
 
-{% raw %}
 ```typescript
 // vite.config.ts
 import { defineConfig, loadEnv, Plugin } from 'vite';
@@ -525,7 +524,6 @@ class ViteOptimizer {
 
 ### **esbuild for Maximum Speed**
 
-{% raw %}
 ```typescript
 // esbuild.config.ts
 import { build, BuildOptions, Plugin } from 'esbuild';
@@ -901,7 +899,6 @@ jobs:
 
 ### **Advanced Performance Monitoring**
 
-{% raw %}
 ```typescript
 // performance-monitor.ts
 interface PerformanceMetrics {

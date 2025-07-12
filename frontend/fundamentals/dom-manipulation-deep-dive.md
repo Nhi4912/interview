@@ -185,7 +185,6 @@ element.getRootNode(); // Root node (document or shadow root)
 </div>
 ```
 
-{% raw %}
 ```javascript
 const container = document.getElementById("container");
 
@@ -275,7 +274,6 @@ console.log(staticCollection.length); // 3 (doesn't change)
 
 **3. Custom Selection Utilities**
 
-{% raw %}
 ```javascript
 class DOMSelector {
   // Enhanced getElementById with error handling
@@ -434,7 +432,6 @@ document.body.appendChild(container);
 
 **Problem: Multiple DOM Manipulations**
 
-{% raw %}
 ```javascript
 // SLOW: Each appendChild causes reflow
 const container = document.getElementById("container");
@@ -448,7 +445,6 @@ for (let i = 0; i < 1000; i++) {
 
 **Solution: Document Fragment**
 
-{% raw %}
 ```javascript
 // FAST: Only one reflow at the end
 const container = document.getElementById("container");
@@ -466,7 +462,6 @@ container.appendChild(fragment); // Single reflow
 
 **Advanced Fragment Usage**
 
-{% raw %}
 ```javascript
 class DOMBatchProcessor {
   constructor() {
@@ -871,7 +866,6 @@ element.className = "optimized-style";
 
 **3. Virtualization for Large Lists**
 
-{% raw %}
 ```javascript
 class VirtualList {
   constructor(container, items, itemHeight, visibleCount) {
@@ -1246,7 +1240,6 @@ document.getElementById("outer").addEventListener("click", () => {
 
 **Bad approach (causes 1000 reflows):**
 
-{% raw %}
 ```javascript
 const container = document.getElementById("container");
 for (let i = 0; i < 1000; i++) {
@@ -1261,7 +1254,6 @@ for (let i = 0; i < 1000; i++) {
 
 **1. Document Fragment:**
 
-{% raw %}
 ```javascript
 const container = document.getElementById("container");
 const fragment = document.createDocumentFragment();
@@ -1278,7 +1270,6 @@ container.appendChild(fragment); // Single reflow
 
 **2. innerHTML with array join:**
 
-{% raw %}
 ```javascript
 const container = document.getElementById("container");
 const html = [];
@@ -1293,7 +1284,6 @@ container.innerHTML = html.join(""); // Single reflow
 
 **3. Template strings:**
 
-{% raw %}
 ```javascript
 const container = document.getElementById("container");
 const items = Array.from({ length: 1000 }, (_, i) => `<div>Item ${i}</div>`);

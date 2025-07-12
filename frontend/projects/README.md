@@ -1090,7 +1090,6 @@ class ChatApplication {
 
 **Technical Implementation**:
 
-{% raw %}
 ```javascript
 class DashboardManager {
   constructor() {
@@ -1373,7 +1372,6 @@ class ChartWidget {
 
 **Solution Architecture**:
 
-{% raw %}
 ```javascript
 // Feed component with virtual scrolling
 class SocialFeed {
@@ -1583,7 +1581,6 @@ class SocialFeed {
 
 **Optimization Strategy**:
 
-{% raw %}
 ```javascript
 // Performance optimization implementation
 class PerformanceOptimizer {

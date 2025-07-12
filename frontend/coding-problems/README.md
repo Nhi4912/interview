@@ -277,7 +277,6 @@ const table = new DynamicTable("table-container", sampleData);
 
 **Solution**:
 
-{% raw %}
 ```javascript
 class InfiniteScroll {
   constructor(containerId, options = {}) {
@@ -577,7 +576,6 @@ const infiniteScroll = new InfiniteScroll("infinite-scroll-container");
 
 **Solution**:
 
-{% raw %}
 ```javascript
 class FunctionOptimizer {
   static debounce(func, delay, immediate = false) {
@@ -892,7 +890,6 @@ class AdvancedSearchComponent {
 
 **Solution**:
 
-{% raw %}
 ```javascript
 // useFormValidation.js
 import { useState, useCallback, useEffect } from 'react';

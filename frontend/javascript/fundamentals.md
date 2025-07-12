@@ -323,7 +323,6 @@ async function getData() {
 
 **Answer**:
 
-{% raw %}
 ```javascript
 function debounce(func, delay) {
   let timeoutId;
@@ -454,7 +453,6 @@ console.log(expensiveFunction(5)); // 10 (from cache)
 
 **Answer**:
 
-{% raw %}
 ```javascript
 class EventEmitter {
   constructor() {

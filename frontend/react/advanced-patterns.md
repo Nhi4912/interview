@@ -211,7 +211,6 @@ function useForm(initialValues, validate) {
 
 ### React.memo and useMemo
 
-{% raw %}
 ```jsx
 // React.memo for component memoization
 const ExpensiveComponent = React.memo(({ data, onClick }) => {
@@ -453,7 +452,6 @@ function useCSS(css) {
 
 ### Context + Reducer Pattern
 
-{% raw %}
 ```jsx
 // State management with Context and Reducer
 const AppStateContext = createContext();
@@ -750,7 +748,6 @@ function UserList() {
 
 ### Compound Components Pattern
 
-{% raw %}
 ```jsx
 // Compound components for tabs
 const TabsContext = createContext();

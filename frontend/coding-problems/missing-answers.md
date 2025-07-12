@@ -460,7 +460,6 @@ flowchart TD
 
 #### Sample Implementation:
 
-{% raw %}
 ```javascript
 // XSS Prevention
 import DOMPurify from "dompurify";
@@ -881,7 +880,6 @@ flowchart LR
 
 #### Sample Implementation:
 
-{% raw %}
 ```javascript
 // useDebounce Hook
 function useDebounce(value, delay) {

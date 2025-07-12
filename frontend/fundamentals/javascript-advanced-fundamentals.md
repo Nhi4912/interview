@@ -519,7 +519,6 @@ class AdvancedClosurePatterns {
 
 ### **Advanced Promise Patterns**
 
-{% raw %}
 ```javascript
 // Advanced promise patterns and error handling
 class AdvancedPromisePatterns {
@@ -874,7 +873,6 @@ class AsyncAwaitPatterns {
 
 ### **Understanding the Event Loop**
 
-{% raw %}
 ```javascript
 // Event loop demonstration and microtask understanding
 class EventLoopDemo {
@@ -1175,7 +1173,6 @@ class WebWorkerDemo {
 
 ### **Advanced Prototype Patterns**
 
-{% raw %}
 ```javascript
 // Understanding prototype chain and inheritance
 class PrototypeDemo {

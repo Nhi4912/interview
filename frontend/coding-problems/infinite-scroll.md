@@ -309,7 +309,6 @@ const infiniteScroll = new InfiniteScroll("infinite-scroll-container");
 
 ## Advanced Usage
 
-{% raw %}
 ```javascript
 // With custom options
 const advancedInfiniteScroll = new InfiniteScroll("container", {

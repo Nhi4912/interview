@@ -208,7 +208,6 @@ Build a type-safe event emitter system that ensures event names and payload type
 
 ### Solution:
 
-{% raw %}
 ```typescript
 // Event map interface - defines available events and their payload types
 interface EventMap {
@@ -446,7 +445,6 @@ Create a type-safe form builder that generates forms based on schema definitions
 
 ### Solution:
 
-{% raw %}
 ```typescript
 // Base field types
 type FieldType = 'text' | 'email' | 'password' | 'number' | 'select' | 'checkbox' | 'date';
