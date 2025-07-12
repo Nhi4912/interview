@@ -409,7 +409,6 @@ class MemoryLeakPrevention {
   }
 }
 ```
-{% endraw %}
 
 ## ⚡ Performance Optimization Techniques
 
