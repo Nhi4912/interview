@@ -468,7 +468,7 @@ function sanitizeInput(input) {
 
 function renderUserContent(content) {
   const sanitized = sanitizeInput(content);
-  return <div dangerouslySetInnerHTML={{ __html: sanitized }} />;
+  return <div dangerouslySetInnerHTML={% raw %}{{ __html: sanitized }}{% endraw %} />;
 }
 
 // CSRF Prevention

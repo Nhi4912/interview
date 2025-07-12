@@ -521,7 +521,7 @@ const Tabs: React.FC<TabsProps> & {
   const [activeKey, setActiveKey] = useState(defaultActiveKey);
   
   return (
-    <TabsContext.Provider value={{ activeKey, setActiveKey }}>
+    <TabsContext.Provider value={% raw %}{{ activeKey, setActiveKey }}{% endraw %}>
       <div className="tabs">{children}</div>
     </TabsContext.Provider>
   );
@@ -623,7 +623,7 @@ const AppStateProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
   const [state, dispatch] = useReducer(appReducer, initialState);
   
   return (
-    <AppStateContext.Provider value={{ state, dispatch }}>
+    <AppStateContext.Provider value={% raw %}{{ state, dispatch }}{% endraw %}>
       {children}
     </AppStateContext.Provider>
   );

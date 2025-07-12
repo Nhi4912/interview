@@ -752,7 +752,7 @@ function Tabs({ children, defaultValue }) {
   const [activeTab, setActiveTab] = useState(defaultValue);
 
   return (
-    <TabsContext.Provider value={{ activeTab, setActiveTab }}>
+    <TabsContext.Provider value={% raw %}{{ activeTab, setActiveTab }}{% endraw %}>
       <div className="tabs">{children}</div>
     </TabsContext.Provider>
   );

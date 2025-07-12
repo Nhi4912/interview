@@ -1009,6 +1009,7 @@ const Dashboard = () => {
           <h3>Sales Trend</h3>
           <Line
             data={salesChartData}
+{% raw %}
             options={{
               responsive: true,
               plugins: {
@@ -1018,6 +1019,7 @@ const Dashboard = () => {
                 y: { beginAtZero: true },
               },
             }}
+{% endraw %}
           />
         </div>
 
@@ -1025,12 +1027,14 @@ const Dashboard = () => {
           <h3>User Distribution</h3>
           <Pie
             data={usersChartData}
+{% raw %}
             options={{
               responsive: true,
               plugins: {
                 legend: { position: "bottom" },
               },
             }}
+{% endraw %}
           />
         </div>
 
@@ -1038,6 +1042,7 @@ const Dashboard = () => {
           <h3>Revenue by Month</h3>
           <Bar
             data={revenueChartData}
+{% raw %}
             options={{
               responsive: true,
               plugins: {
@@ -1047,6 +1052,7 @@ const Dashboard = () => {
                 y: { beginAtZero: true },
               },
             }}
+{% endraw %}
           />
         </div>
 

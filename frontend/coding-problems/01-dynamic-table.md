@@ -338,7 +338,7 @@ function VirtualizedTable({ data, height, rowHeight }) {
   const headers = Object.keys(data[0] || {});
 
   return (
-    <div style={{ width: "100%" }}>
+    <div style={% raw %}{{ width: "100%" }}{% endraw %}>
       <table className="dynamic-table">
         <thead>
           <tr>
@@ -521,7 +521,7 @@ function VirtualizedTable({ data, height, rowHeight }) {
   const headers = Object.keys(data[0] || {});
 
   return (
-    <div style={{ width: "100%" }}>
+    <div style={% raw %}{{ width: "100%" }}{% endraw %}>
       <table className="dynamic-table">
         <thead>
           <tr>
