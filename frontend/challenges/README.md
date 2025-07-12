@@ -353,7 +353,6 @@ const WeatherApp = () => {
   );
 };
 ```
-{% endraw %}
 
 ## Intermediate Challenges
 

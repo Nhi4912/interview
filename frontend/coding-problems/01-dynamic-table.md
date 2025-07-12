@@ -169,7 +169,6 @@ const sampleData = [
 
 const table = new DynamicTable("table-container", sampleData);
 ```
-{% endraw %}
 
 ## CSS Styling
 
@@ -280,7 +279,6 @@ class CustomTable extends DynamicTable {
   }
 }
 ```
-{% endraw %}
 
 ## Interview Deep Dive: Dynamic Table
 

@@ -1404,6 +1404,5 @@ class WebStorageManager {
   }
 }
 ```
-{% endraw %}
 
 This comprehensive guide covers the essential browser internals and web platform fundamentals necessary for understanding modern web development and optimizing frontend applications at the browser level.

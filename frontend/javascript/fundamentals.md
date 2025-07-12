@@ -344,7 +344,6 @@ const debouncedSearch = debounce((query) => {
 debouncedSearch("hello");
 debouncedSearch("hello world");
 ```
-{% endraw %}
 
 ### Q7: Implement a throttle function
 

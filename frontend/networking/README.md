@@ -266,7 +266,6 @@ try {
   console.error("Request failed after retries:", error);
 }
 ```
-{% endraw %}
 
 ### Problem 2: Create a Request Queue
 

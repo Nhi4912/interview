@@ -250,7 +250,6 @@ const withAuth = (requiredRole = null) => (WrappedComponent) => {
 const AdminDashboard = withAuth('admin')(Dashboard);
 const UserProfile = withAuth()(Profile);
 ```
-{% endraw %}
 
 ## 🎯 Problem 2: Flexible Modal with Render Props
 

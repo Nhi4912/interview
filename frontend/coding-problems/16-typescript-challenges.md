@@ -430,7 +430,6 @@ advancedEmitter.emit('user:login', {
   timestamp: new Date()
 });
 ```
-{% endraw %}
 
 ## Problem 3: Generic Form Builder
 

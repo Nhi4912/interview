@@ -426,7 +426,6 @@ console.log(Calculator.getHistory()); // ['ADD: 10', 'SUBTRACT: 3', 'ADD: 5']
 // Private variables are not accessible
 console.log(Calculator.history); // undefined
 ```
-{% endraw %}
 
 ### 2. Factory Functions
 

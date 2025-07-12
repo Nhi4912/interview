@@ -446,7 +446,6 @@ setInterval(() => {
   chart.addDataPoint('Memory Usage', Math.random() * 100);
 }, 100);
 ```
-{% endraw %}
 
 ---
 

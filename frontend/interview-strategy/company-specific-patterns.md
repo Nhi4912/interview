@@ -381,7 +381,6 @@ class ProductRecommendationService {
   }
 }
 ```
-{% endraw %}
 
 ### **Leadership Principles Focus**
 - **Customer Obsession**: Always start with customer needs

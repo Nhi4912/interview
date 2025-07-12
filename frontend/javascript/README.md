@@ -173,7 +173,6 @@ console.log(person.sayHello()); // "Hello, I'm John"
 console.log(person.__proto__ === Person.prototype); // true
 console.log(Person.prototype.__proto__ === Object.prototype); // true
 ```
-{% endraw %}
 
 #### ES6 Classes / Lớp ES6
 

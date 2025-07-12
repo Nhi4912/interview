@@ -848,7 +848,6 @@ const container = document.getElementById('virtual-list-container')!;
 const items = generateItems(1000000); // 1 million items
 const virtualList = new VirtualizedList(container, items);
 ```
-{% endraw %}
 
 ### CSS Styling
 

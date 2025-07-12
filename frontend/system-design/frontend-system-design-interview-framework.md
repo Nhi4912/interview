@@ -946,7 +946,6 @@ const ShoppingCart = () => {
   }
 }
 ```
-{% endraw %}
 
 ## 📊 Performance and Scalability Considerations
 

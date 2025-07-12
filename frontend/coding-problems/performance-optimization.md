@@ -579,7 +579,6 @@ const searchManager = new SearchManager({
   maxResults: 30,
 });
 ```
-{% endraw %}
 
 ```css
 .search-container {

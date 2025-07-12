@@ -356,7 +356,6 @@ function useApi() {
   return { data, loading, error, fetchData };
 }
 ```
-{% endraw %}
 
 ---
 
@@ -507,7 +506,6 @@ const cspHeaders = {
     "font-src 'self' https://fonts.gstatic.com;",
 };
 ```
-{% endraw %}
 
 #### Diagram: Security Layers
 

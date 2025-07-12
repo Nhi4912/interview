@@ -776,7 +776,6 @@ class AccessibleDataTable {
   }
 }
 ```
-{% endraw %}
 
 ---
 

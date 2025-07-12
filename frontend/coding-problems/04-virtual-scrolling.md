@@ -284,7 +284,6 @@ class DynamicVirtualScroller extends VirtualScroller {
   }
 }
 ```
-{% endraw %}
 
 ### Search and Filter Support
 

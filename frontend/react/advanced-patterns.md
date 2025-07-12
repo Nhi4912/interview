@@ -278,7 +278,6 @@ function TodoList({ todos, onToggle, onDelete }) {
   );
 }
 ```
-{% endraw %}
 
 ### Code Splitting and Lazy Loading
 

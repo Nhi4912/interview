@@ -865,7 +865,6 @@ class AsyncAwaitPatterns {
   }
 }
 ```
-{% endraw %}
 
 ---
 

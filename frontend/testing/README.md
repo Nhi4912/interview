@@ -885,7 +885,6 @@ describe("Performance Tests", () => {
   });
 });
 ```
-{% endraw %}
 
 ## Resources
 

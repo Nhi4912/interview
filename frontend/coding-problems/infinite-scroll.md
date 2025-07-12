@@ -340,4 +340,3 @@ class CustomInfiniteScroll extends InfiniteScroll {
   }
 }
 ```
-{% endraw %}

@@ -211,7 +211,6 @@ for (let node of container.childNodes) {
 // Element: P
 // Element: SPAN
 ```
-{% endraw %}
 
 ## Element Selection Methods
 

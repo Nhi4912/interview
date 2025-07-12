@@ -1011,7 +1011,6 @@ async function initCamera() {
   }
 }
 ```
-{% endraw %}
 
 ## Intersection Observer
 

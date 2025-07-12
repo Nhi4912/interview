@@ -367,7 +367,6 @@ const UserList: React.FC<{ users: User[] }> = ({ users }) => {
   );
 };
 ```
-{% endraw %}
 
 ### Hooks with TypeScript
 

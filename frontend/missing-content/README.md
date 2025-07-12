@@ -406,7 +406,6 @@ function App() {
   );
 }
 ```
-{% endraw %}
 
 #### Render Props Pattern
 

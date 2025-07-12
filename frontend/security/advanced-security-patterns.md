@@ -499,7 +499,6 @@ class TrustedTypesManager {
   }
 }
 ```
-{% endraw %}
 
 ---
 

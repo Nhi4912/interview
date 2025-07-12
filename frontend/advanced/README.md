@@ -156,7 +156,6 @@ class VirtualScroller {
   }
 }
 ```
-{% endraw %}
 
 ## Advanced State Management
 

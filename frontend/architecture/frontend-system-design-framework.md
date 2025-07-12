@@ -479,7 +479,6 @@ const PostCard: React.FC<PostCardProps> = ({ post, style }) => {
   );
 };
 ```
-{% endraw %}
 
 
 ### Component Patterns

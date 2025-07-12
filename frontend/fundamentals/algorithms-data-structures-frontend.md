@@ -1204,6 +1204,5 @@ class FrontendOptimizationAlgorithms {
   }
 }
 ```
-{% endraw %}
 
 This comprehensive guide provides essential algorithms and data structures specifically tailored for frontend development challenges, optimization problems, and user interface requirements commonly encountered in Big Tech interviews.

@@ -290,7 +290,6 @@ console.log(formatPluralMessage("items", 0, "ar")); // "لا توجد عناصر
 console.log(formatPluralMessage("items", 1, "ar")); // "عنصر واحد"
 console.log(formatPluralMessage("items", 2, "ar")); // "عنصران"
 ```
-{% endraw %}
 
 ## Advanced Interview Questions
 

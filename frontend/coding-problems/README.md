@@ -454,7 +454,6 @@ class InfiniteScroll {
 // Usage
 const infiniteScroll = new InfiniteScroll("infinite-scroll-container");
 ```
-{% endraw %}
 
 **CSS Styling**:
 

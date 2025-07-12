@@ -507,7 +507,6 @@ function add(a, b) {
   return a + b;
 }
 ```
-{% endraw %}
 
 ### Problem 4: Implement a Custom ESLint Rule
 

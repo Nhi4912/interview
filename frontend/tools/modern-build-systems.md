@@ -520,7 +520,6 @@ class ViteOptimizer {
   }
 }
 ```
-{% endraw %}
 
 ### **esbuild for Maximum Speed**
 
