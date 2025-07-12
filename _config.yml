@@ -1,0 +1,63 @@
+# Site settings
+title: Frontend Interview Preparation Guide
+description: Comprehensive frontend interview materials for Big Tech companies
+url: ""
+baseurl: ""
+
+# Build settings
+markdown: kramdown
+highlighter: rouge
+theme: minima
+
+# Plugins
+plugins:
+  - jekyll-feed
+  - jekyll-sitemap
+  - jekyll-seo-tag
+
+# Collections
+collections:
+  frontend:
+    output: true
+    permalink: /:collection/:name/
+  leetcode:
+    output: true
+    permalink: /:collection/:name/
+
+# Defaults
+defaults:
+  - scope:
+      path: ""
+      type: "posts"
+    values:
+      layout: "post"
+  - scope:
+      path: ""
+      type: "pages"
+    values:
+      layout: "page"
+  - scope:
+      path: ""
+      type: "frontend"
+    values:
+      layout: "page"
+  - scope:
+      path: ""
+      type: "leetcode"
+    values:
+      layout: "page"
+
+# Syntax highlighting
+kramdown:
+  syntax_highlighter: rouge
+  syntax_highlighter_opts:
+    css_class: 'highlight'
+    span:
+      line_numbers: false
+    block:
+      line_numbers: true
+
+# Include TypeScript files
+include:
+  - "*.ts"
+  - "*.tsx"

@@ -1,0 +1,43 @@
+---
+layout: default
+---
+
+<article class="post">
+  <header class="post-header">
+    <h1 class="post-title">{{ page.title | escape }}</h1>
+    {% if page.difficulty %}
+      <span class="difficulty-badge {{ page.difficulty }}">{{ page.difficulty }}</span>
+    {% endif %}
+    {% if page.topics %}
+      <div class="topics">
+        {% for topic in page.topics %}
+          <span class="topic-tag">{{ topic }}</span>
+        {% endfor %}
+      </div>
+    {% endif %}
+  </header>
+
+  <div class="post-content">
+    {{ content }}
+  </div>
+
+  {% if page.solution_file %}
+    <div class="solution-section">
+      <h2>💡 Solution</h2>
+      <div class="highlight">
+        <pre><code class="language-typescript">{{ site.data[page.solution_file] | escape }}</code></pre>
+      </div>
+    </div>
+  {% endif %}
+
+  {% if page.related_problems %}
+    <div class="related-section">
+      <h2>🔗 Related Problems</h2>
+      <ul>
+        {% for problem in page.related_problems %}
+          <li><a href="{{ problem.url }}">{{ problem.title }}</a></li>
+        {% endfor %}
+      </ul>
+    </div>
+  {% endif %}
+</article>
