@@ -58,6 +58,7 @@ A: WCAG 2.1 has three levels: A, AA, and AAA. Key guidelines include:
 
 **Implementation Examples:**
 
+{% raw %}
 ```javascript
 // 1. Semantic HTML structure
 function AccessibleNavigation() {
@@ -122,6 +123,7 @@ function LiveRegion() {
   );
 }
 ```
+{% endraw %}
 
 **Q: How do you implement keyboard navigation for custom components?**
 A: Comprehensive keyboard navigation implementation:
@@ -788,6 +790,7 @@ class AccessibleDataTable {
 
 **Example: Accessible Modal in React**
 
+{% raw %}
 ```jsx
 import { useRef, useEffect } from "react";
 
@@ -816,6 +819,7 @@ function AccessibleModal({ isOpen, onClose, children }) {
   );
 }
 ```
+{% endraw %}
 
 ---
 
@@ -902,6 +906,7 @@ async function fetchData(url) {
 
 **Sample Implementation:**
 
+{% raw %}
 ```jsx
 function AccessibleDropdown({ options, onSelect }) {
   const [open, setOpen] = useState(false);
@@ -968,6 +973,7 @@ function AccessibleDropdown({ options, onSelect }) {
   );
 }
 ```
+{% endraw %}
 
 ## Problem 2: Accessible Error Handling in Forms
 
@@ -981,6 +987,7 @@ function AccessibleDropdown({ options, onSelect }) {
 
 **Sample Implementation:**
 
+{% raw %}
 ```jsx
 function AccessibleForm() {
   const [errors, setErrors] = useState({});
@@ -1037,6 +1044,7 @@ function AccessibleForm() {
   );
 }
 ```
+{% endraw %}
 
 ---
 
@@ -1132,6 +1140,7 @@ flowchart TD
 
 **Example:**
 
+{% raw %}
 ```jsx
 <nav aria-label="Main navigation">
   <ul role="menubar">
@@ -1148,6 +1157,7 @@ flowchart TD
   </ul>
 </nav>
 ```
+{% endraw %}
 
 ---
 

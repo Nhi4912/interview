@@ -43,6 +43,7 @@
 
 **Expected Features**:
 
+{% raw %}
 ```javascript
 // Core functionality
 const TodoApp = () => {
@@ -144,6 +145,7 @@ const TodoApp = () => {
   );
 };
 ```
+{% endraw %}
 
 **CSS Styling**:
 
@@ -228,6 +230,7 @@ const TodoApp = () => {
 
 **Implementation**:
 
+{% raw %}
 ```javascript
 const WeatherApp = () => {
   const [weather, setWeather] = useState(null);
@@ -351,6 +354,7 @@ const WeatherApp = () => {
   );
 };
 ```
+{% endraw %}
 
 ## Intermediate Challenges
 
