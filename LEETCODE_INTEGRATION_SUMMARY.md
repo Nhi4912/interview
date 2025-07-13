@@ -59,7 +59,8 @@ leetcode/
 
 ### **Professional Jekyll Structure**
 
-{% raw %}
+Each problem page uses this front matter structure:
+
 ```yaml
 ---
 layout: page
@@ -70,7 +71,6 @@ tags: [Array, Hash Table, Two Pointers]
 leetcode_url: "https://leetcode.com/problems/two-sum/"
 ---
 ```
-{% endraw %}
 
 ### **Rich Content**
 
