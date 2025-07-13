@@ -1,3 +1,11 @@
+---
+layout: page
+title: "React Advanced Patterns & Interview Questions"
+description: "Advanced React patterns including hooks, performance optimization, React 18 features, state management, and comprehensive interview preparation"
+category: "React"
+tags: [react, hooks, performance, react-18, state-management, patterns, testing, interview-questions]
+---
+
 # React Advanced Patterns & Interview Questions
 
 ## Table of Contents

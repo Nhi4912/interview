@@ -1,3 +1,11 @@
+---
+layout: page
+title: "Lazy Loading Images and Components"
+description: "Implementation guide for lazy loading techniques using Intersection Observer and React.lazy to improve performance and user experience"
+category: "Performance"
+tags: [lazy-loading, intersection-observer, react-lazy, performance-optimization, images, components, web-vitals]
+---
+
 # Problem: Lazy Loading Images and Components
 
 ## Description

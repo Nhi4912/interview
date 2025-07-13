@@ -1,3 +1,11 @@
+---
+layout: page
+title: "Advanced React Patterns"
+difficulty: Hard
+category: "Coding Problems"
+tags: [react, hoc, render-props, compound-components, advanced-patterns]
+---
+
 # Advanced React Patterns for Big Tech Interviews
 
 ## 🎯 Overview

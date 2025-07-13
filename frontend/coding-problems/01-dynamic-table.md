@@ -1,3 +1,11 @@
+---
+layout: page
+title: "Dynamic Table Generator"
+difficulty: Hard
+category: "Coding Problems"
+tags: [javascript, dom-manipulation, sorting, filtering, accessibility, performance]
+---
+
 # Problem 1: Dynamic Table Generator
 
 ## Problem Description

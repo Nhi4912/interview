@@ -1,3 +1,11 @@
+---
+layout: page
+title: "Design Systems for Frontend Interviews"
+description: "Essential guide to design systems including component libraries, design tokens, theming, accessibility, and tools like Storybook"
+category: "System Design"
+tags: [design-systems, components, storybook, accessibility, theming, atomic-design, frontend-architecture]
+---
+
 # Design Systems for Frontend Interviews
 
 **Design System cho phỏng vấn Frontend**

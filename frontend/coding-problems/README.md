@@ -1,3 +1,11 @@
+---
+layout: page
+title: "Frontend Coding Problems & Solutions"
+description: "Comprehensive collection of frontend coding challenges with complete solutions covering DOM manipulation, React patterns, algorithms, and performance optimization"
+category: "Frontend"
+tags: [coding-problems, dom-manipulation, react, javascript, algorithms, performance, interview-prep]
+---
+
 # Frontend Coding Problems & Solutions
 
 ## Table of Contents

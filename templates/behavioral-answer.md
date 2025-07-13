@@ -1,3 +1,11 @@
+---
+layout: page
+title: "Behavioral Interview Answer Template (STAR Method)"
+description: "Structured template using the STAR method (Situation, Task, Action, Result) for answering behavioral interview questions effectively"
+category: "Templates"
+tags: [behavioral-interviews, star-method, interview-preparation, communication, storytelling]
+---
+
 # Behavioral Interview Answer Template (STAR Method)
 
 Use this template to structure your answers to behavioral questions.

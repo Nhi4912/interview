@@ -1,3 +1,11 @@
+---
+layout: page
+title: "System Design Interview Answer Template"
+description: "Comprehensive template for structuring system design interview answers including requirements, architecture, scalability, and trade-offs"
+category: "Templates"
+tags: [system-design, interview-template, architecture, scalability, performance, reliability, trade-offs]
+---
+
 # System Design Interview Answer Template
 
 Use this template to structure your answers in system design interviews. Adapt as needed for the specific problem.

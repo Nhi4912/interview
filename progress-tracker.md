@@ -1,3 +1,11 @@
+---
+layout: page
+title: "Interview Preparation Progress Tracker"
+description: "Track your progress through LeetCode problems, system design practice, mock interviews, and skill development for Big Tech interviews"
+category: tracking
+tags: [progress, tracker, leetcode, system-design, mock-interview, preparation, metrics]
+---
+
 # 📊 Interview Preparation Progress Tracker
 
 **Theo dõi tiến độ luyện thi phỏng vấn Big Tech**

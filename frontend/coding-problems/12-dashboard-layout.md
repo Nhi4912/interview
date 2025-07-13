@@ -1,3 +1,11 @@
+---
+layout: page
+title: "Responsive Dashboard Layout"
+difficulty: Easy
+category: "Coding Problems"
+tags: [css, responsive-design, grid, flexbox, accessibility]
+---
+
 # Problem: Responsive Dashboard Layout
 
 ## Description

@@ -1,3 +1,11 @@
+---
+layout: page
+title: "Virtual Scrolling Implementation"
+difficulty: Hard
+category: "Coding Problems"
+tags: [javascript, performance, virtualization, large-datasets, optimization, memory-management]
+---
+
 # Problem 4: Virtual Scrolling Implementation
 
 ## Problem Description

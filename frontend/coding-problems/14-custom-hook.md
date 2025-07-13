@@ -1,3 +1,11 @@
+---
+layout: page
+title: "Custom React Hook"
+difficulty: Medium
+category: "Coding Problems"
+tags: [react, hooks, custom-hooks, debounce, local-storage]
+---
+
 # Problem: Custom React Hook
 
 ## Description

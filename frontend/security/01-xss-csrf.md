@@ -1,3 +1,11 @@
+---
+layout: page
+title: "XSS and CSRF Prevention"
+description: "Comprehensive guide to preventing Cross-Site Scripting (XSS) and Cross-Site Request Forgery (CSRF) attacks in frontend applications"
+category: security
+tags: [security, xss, csrf, frontend, web-security, sanitization]
+---
+
 # Problem: Preventing XSS and CSRF
 
 ## Description

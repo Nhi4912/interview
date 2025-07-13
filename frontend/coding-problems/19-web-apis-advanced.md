@@ -1,3 +1,11 @@
+---
+layout: page
+title: "Advanced Web APIs Challenges"
+difficulty: Hard
+category: "Coding Problems"
+tags: [web-apis, service-worker, webrtc, intersection-observer, performance]
+---
+
 # Advanced Web APIs Challenges
 
 ## Overview

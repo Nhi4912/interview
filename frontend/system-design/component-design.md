@@ -1,3 +1,11 @@
+---
+layout: page
+title: "Component Design for Frontend Interviews"
+description: "Component design principles covering reusability, composition, state management, and common patterns for scalable frontend architecture"
+category: "System Design"
+tags: [component-design, reusability, composition, props, state, context, patterns, frontend-architecture]
+---
+
 # Component Design for Frontend Interviews
 
 **Thiết kế Component cho phỏng vấn Frontend**

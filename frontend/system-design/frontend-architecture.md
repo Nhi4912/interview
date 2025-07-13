@@ -1,3 +1,11 @@
+---
+layout: page
+title: "Frontend Architecture for Big Tech Interviews"
+description: "Comprehensive guide to frontend architecture patterns and design principles for technical interviews"
+category: System Design
+tags: [Architecture, System Design, SPA, SSR, Performance]
+---
+
 # Frontend Architecture for Big Tech Interviews
 
 **Kiến trúc Frontend cho phỏng vấn Big Tech**

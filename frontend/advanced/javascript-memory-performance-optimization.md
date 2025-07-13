@@ -1,3 +1,11 @@
+---
+layout: page
+title: "JavaScript Memory Management and Performance Optimization"
+description: "Advanced techniques for JavaScript memory management, performance optimization, and debugging in modern web applications"
+category: advanced
+tags: [javascript, performance, memory-management, optimization, debugging, advanced, gc]
+---
+
 # Modern JavaScript Memory Management and Performance Optimization
 
 ## 🎯 Overview

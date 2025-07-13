@@ -1,3 +1,11 @@
+---
+layout: page
+title: "TypeScript Coding Challenges"
+difficulty: Hard
+category: "Coding Problems"
+tags: [typescript, type-system, generics, utility-types, advanced-patterns]
+---
+
 # TypeScript Coding Challenges
 
 ## Problem 1: Advanced Type Utilities

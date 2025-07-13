@@ -1,3 +1,11 @@
+---
+layout: page
+title: "Notification System"
+difficulty: Medium
+category: "Coding Problems"
+tags: [react, context, accessibility, toast, state-management]
+---
+
 # Problem: Notification System
 
 ## Description

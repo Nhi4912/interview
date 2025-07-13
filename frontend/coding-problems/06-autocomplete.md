@@ -1,3 +1,11 @@
+---
+layout: page
+title: "Autocomplete Component"
+difficulty: Medium
+category: "Coding Problems"
+tags: [react, accessibility, api-integration, keyboard-navigation, aria]
+---
+
 # Problem: Autocomplete Component
 
 ## Description

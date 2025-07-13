@@ -1,3 +1,11 @@
+---
+layout: page
+title: "React Component Unit Testing"
+description: "Complete guide to writing comprehensive unit tests for React components using Jest and React Testing Library"
+category: testing
+tags: [testing, react, jest, react-testing-library, unit-testing, frontend]
+---
+
 # Problem: Component Unit Testing
 
 ## Description

@@ -1,3 +1,11 @@
+---
+layout: page
+title: "Browser Architecture and Rendering Pipeline Deep Dive"
+description: "Comprehensive guide to browser internals, rendering pipeline, performance optimization, and debugging techniques for frontend interviews"
+category: "Theory"
+tags: [browser-architecture, rendering-pipeline, performance, optimization, dom, cssom, layout, paint, composite, web-vitals]
+---
+
 # Browser Architecture and Rendering Pipeline Deep Dive
 
 ## 🎯 Overview

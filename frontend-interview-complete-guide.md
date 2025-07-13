@@ -1,3 +1,11 @@
+---
+layout: page
+title: "Complete Frontend Interview Guide for Big Tech"
+description: "The ultimate comprehensive guide covering all essential topics for frontend engineering interviews at Google, Meta, Amazon, Microsoft, Apple, and Netflix"
+category: guide
+tags: [frontend, interview, big-tech, comprehensive, guide, preparation, javascript, react]
+---
+
 # Complete Frontend Interview Preparation Guide for Big Tech
 
 ## 🎯 Overview

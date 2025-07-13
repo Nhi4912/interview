@@ -1,3 +1,11 @@
+---
+layout: page
+title: "Infinite Scroll List"
+difficulty: Medium
+category: "Coding Problems"
+tags: [react, performance, api-integration, virtualization, intersection-observer]
+---
+
 # Problem: Infinite Scroll List
 
 ## Description

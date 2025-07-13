@@ -1,3 +1,11 @@
+---
+layout: page
+title: "React Form Validation with Custom Hooks"
+difficulty: Hard
+category: "Coding Problems"
+tags: [react, hooks, form-validation, async-validation, custom-hooks]
+---
+
 # Problem 3: React Form Validation with Custom Hooks
 
 ## Problem Description

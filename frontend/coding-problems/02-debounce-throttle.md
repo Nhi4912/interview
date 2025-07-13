@@ -1,3 +1,11 @@
+---
+layout: page
+title: "Debounce and Throttle Implementation"
+difficulty: Medium
+category: "Coding Problems"
+tags: [javascript, performance, event-handling, optimization, search]
+---
+
 # Problem 2: Debounce and Throttle Implementation
 
 ## Problem Description

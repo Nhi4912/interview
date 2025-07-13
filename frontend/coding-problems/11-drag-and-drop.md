@@ -1,3 +1,11 @@
+---
+layout: page
+title: "Drag and Drop List"
+difficulty: Hard
+category: "Coding Problems"
+tags: [javascript, drag-drop, accessibility, keyboard-navigation, state-management]
+---
+
 # Problem: Drag and Drop List
 
 ## Description

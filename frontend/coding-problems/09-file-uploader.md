@@ -1,3 +1,11 @@
+---
+layout: page
+title: "File Uploader"
+difficulty: Medium
+category: "Coding Problems"
+tags: [javascript, react, file-handling, drag-drop, progress, ui]
+---
+
 # Problem: File Uploader
 
 ## Description

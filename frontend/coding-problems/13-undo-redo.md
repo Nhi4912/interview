@@ -1,3 +1,11 @@
+---
+layout: page
+title: "Undo/Redo Functionality"
+difficulty: Medium
+category: "Coding Problems"
+tags: [javascript, state-management, data-structures, command-pattern]
+---
+
 # Problem: Undo/Redo Functionality
 
 ## Description

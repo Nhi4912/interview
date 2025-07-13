@@ -1,3 +1,11 @@
+---
+layout: page
+title: "API Integration and Error Handling"
+description: "Best practices for integrating with REST APIs and implementing robust error handling in frontend applications"
+category: networking
+tags: [api, networking, error-handling, http, frontend, integration]
+---
+
 # Problem: API Integration and Error Handling
 
 ## Description

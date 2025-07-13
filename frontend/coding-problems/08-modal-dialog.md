@@ -1,3 +1,11 @@
+---
+layout: page
+title: "Accessible Modal Dialog"
+difficulty: Medium
+category: "Coding Problems"
+tags: [react, accessibility, focus-management, aria, modal]
+---
+
 # Problem: Accessible Modal Dialog
 
 ## Description

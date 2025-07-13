@@ -1,3 +1,11 @@
+---
+layout: page
+title: "Simple State Management System"
+difficulty: Hard
+category: "Coding Problems"
+tags: [javascript, react, state-management, redux, middleware, architecture]
+---
+
 # Problem 5: Simple State Management System
 
 ## Problem Description

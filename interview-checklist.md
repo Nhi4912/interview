@@ -1,3 +1,11 @@
+---
+layout: page
+title: "Frontend Interview Preparation Checklist"
+description: "Comprehensive 6-week preparation roadmap for Big Tech frontend engineering interviews with detailed milestones and goals"
+category: preparation
+tags: [interview, checklist, preparation, frontend, big-tech, roadmap, career]
+---
+
 # Frontend Interview Preparation Checklist
 
 ## 🏁 Progress Tracker

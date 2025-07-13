@@ -1,3 +1,11 @@
+---
+layout: page
+title: "React Error Boundary"
+difficulty: Medium
+category: "Coding Problems"
+tags: [react, error-handling, class-components, monitoring]
+---
+
 # Problem: React Error Boundary
 
 ## Description

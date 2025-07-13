@@ -1,3 +1,11 @@
+---
+layout: page
+title: "WebGL & Canvas Advanced Challenges"
+difficulty: Hard
+category: "Coding Problems"
+tags: [webgl, canvas, graphics, performance, 3d-rendering, particle-systems]
+---
+
 # WebGL & Canvas Advanced Challenges
 
 ## Overview
