@@ -283,6 +283,7 @@ flowchart TD
 #### Sample Implementation:
 
 {% raw %}
+
 ```javascript
 class ApiService {
   constructor(baseURL) {
@@ -356,6 +357,8 @@ function useApi() {
   return { data, loading, error, fetchData };
 }
 ```
+
+{% endraw %}
 
 ---
 

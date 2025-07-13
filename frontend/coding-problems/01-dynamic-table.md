@@ -3,7 +3,8 @@ layout: page
 title: "Dynamic Table Generator"
 difficulty: Hard
 category: "Coding Problems"
-tags: [javascript, dom-manipulation, sorting, filtering, accessibility, performance]
+tags:
+  [javascript, dom-manipulation, sorting, filtering, accessibility, performance]
 ---
 
 # Problem 1: Dynamic Table Generator
@@ -23,6 +24,7 @@ Create a function that generates a dynamic table from an array of objects with s
 ## Solution
 
 {% raw %}
+
 ```javascript
 class DynamicTable {
   constructor(containerId, data) {
@@ -177,6 +179,8 @@ const sampleData = [
 
 const table = new DynamicTable("table-container", sampleData);
 ```
+
+{% endraw %}
 
 ## CSS Styling
 

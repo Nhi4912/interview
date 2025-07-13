@@ -7,8 +7,9 @@ All **126 LeetCode problems** are now fully integrated and will render beautiful
 ## 📊 What Was Added
 
 ### **Problem Categories (All Live on Website)**
+
 - **Array Problems**: 26 problems ➜ `/leetcode/array/`
-- **String Problems**: 19 problems ➜ `/leetcode/string/`  
+- **String Problems**: 19 problems ➜ `/leetcode/string/`
 - **Tree & Graph**: 18 problems ➜ `/leetcode/tree-graph/`
 - **Linked List**: 11 problems ➜ `/leetcode/linked-list/`
 - **Dynamic Programming**: 11 problems ➜ `/leetcode/dp/`
@@ -19,6 +20,7 @@ All **126 LeetCode problems** are now fully integrated and will render beautiful
 - **Math Problems**: 5 problems ➜ `/leetcode/math/`
 
 ### **File Structure Created**
+
 ```
 leetcode/
 ├── index.md (main overview page)
@@ -40,12 +42,14 @@ leetcode/
 ## 🌟 New Homepage Features
 
 ### **Updated Knowledge Map**
+
 - **LeetCode Problems**: Main hub for all 126 problems
 - **Array & String**: Direct access to 45 fundamental problems
 - **Trees & Graphs**: 18 advanced tree/graph algorithms
 - **Dynamic Programming**: 11 classic DP problems
 
 ### **Updated Statistics**
+
 - ✅ 15+ Topics Covered
 - ✅ 100+ Coding Problems
 - ✅ **126 LeetCode Problems** (updated!)
@@ -54,6 +58,9 @@ leetcode/
 ## 🎯 Each Problem Page Includes
 
 ### **Professional Jekyll Structure**
+
+{% raw %}
+
 ```yaml
 ---
 layout: page
@@ -65,7 +72,10 @@ leetcode_url: "https://leetcode.com/problems/two-sum/"
 ---
 ```
 
+{% endraw %}
+
 ### **Rich Content**
+
 - ✅ **Problem description** and examples
 - ✅ **Multiple TypeScript solutions** (optimal + alternative approaches)
 - ✅ **Time & space complexity analysis**
@@ -76,17 +86,20 @@ leetcode_url: "https://leetcode.com/problems/two-sum/"
 ## 🔗 Navigation Integration
 
 ### **Main Dashboard**
+
 - Hero section links to algorithm practice
 - Knowledge map cards for direct category access
 - Stats reflect actual problem counts
 
 ### **Category Pages**
+
 - Each category has a comprehensive overview
 - Lists all problems with difficulty levels
 - Study strategies and key concepts
 - Links to individual problem solutions
 
 ### **Problem Pages**
+
 - Clean, readable TypeScript code
 - Professional formatting with syntax highlighting
 - Interview-focused explanations
@@ -95,12 +108,14 @@ leetcode_url: "https://leetcode.com/problems/two-sum/"
 ## 🛡️ Technical Excellence
 
 ### **Jekyll Compatibility**
+
 - ✅ All TypeScript code wrapped in `{% raw %}` tags
 - ✅ Proper front matter for SEO and navigation
 - ✅ No liquid syntax conflicts
 - ✅ Mobile-responsive design
 
 ### **User Experience**
+
 - ✅ Fast navigation between problems
 - ✅ Category-based organization
 - ✅ Difficulty-based filtering
