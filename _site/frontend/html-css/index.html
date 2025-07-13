@@ -1475,7 +1475,363 @@
 
 <h3 id="html-questions">HTML Questions</h3>
 
-<h4 id="q1-what-is-semantic-html-and-why-is-it-important">Q1: What is semantic HTML and why is it important?</h4>
+<h4 id="basic-html-elements-and-structure">Basic HTML Elements and Structure</h4>
+
+<h4 id="q1-what-is-an-html-element">Q1: What is an HTML element?</h4>
+
+<p><strong>Answer</strong> (Easy):
+HTML elements are the building blocks of HTML documents. They consist of opening and closing tags that can be nested within each other. Elements define the structure and content of a webpage.</p>
+
+<p><strong>Common examples</strong>:</p>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">&lt;h1&gt;</code> to <code class="language-plaintext highlighter-rouge">&lt;h6&gt;</code>: Headings</li>
+  <li><code class="language-plaintext highlighter-rouge">&lt;p&gt;</code>: Paragraphs</li>
+  <li><code class="language-plaintext highlighter-rouge">&lt;div&gt;</code>: Generic container</li>
+  <li><code class="language-plaintext highlighter-rouge">&lt;span&gt;</code>: Inline container</li>
+  <li><code class="language-plaintext highlighter-rouge">&lt;img&gt;</code>: Images</li>
+  <li><code class="language-plaintext highlighter-rouge">&lt;a&gt;</code>: Links</li>
+</ul>
+
+<h4 id="q2-what-type-of-information-do-we-typically-place-inside-the-head-section-of-an-html-document">Q2: What type of information do we typically place inside the <code class="language-plaintext highlighter-rouge">&lt;head&gt;</code> section of an HTML document?</h4>
+
+<p><strong>Answer</strong> (Easy):
+The <code class="language-plaintext highlighter-rouge">&lt;head&gt;</code> section contains metadata that is primarily machine-readable and not displayed on the page:</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">&lt;title&gt;</code>: Page title</li>
+  <li><code class="language-plaintext highlighter-rouge">&lt;meta&gt;</code>: Metadata like charset, description, viewport</li>
+  <li><code class="language-plaintext highlighter-rouge">&lt;link&gt;</code>: External resources (CSS, icons)</li>
+  <li><code class="language-plaintext highlighter-rouge">&lt;script&gt;</code>: JavaScript files</li>
+  <li><code class="language-plaintext highlighter-rouge">&lt;style&gt;</code>: Internal CSS</li>
+</ul>
+
+<h4 id="q3-what-are-some-common-types-of-meta-elements">Q3: What are some common types of <code class="language-plaintext highlighter-rouge">&lt;meta&gt;</code> elements?</h4>
+
+<p><strong>Answer</strong> (Medium):
+Common meta elements and their purposes:</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">&lt;meta charset="UTF-8"&gt;</code>: Character encoding</li>
+  <li><code class="language-plaintext highlighter-rouge">&lt;meta name="description" content="..."&gt;</code>: Page description for SEO</li>
+  <li><code class="language-plaintext highlighter-rouge">&lt;meta name="viewport" content="width=device-width, initial-scale=1"&gt;</code>: Responsive design viewport</li>
+  <li><code class="language-plaintext highlighter-rouge">&lt;meta name="keywords" content="..."&gt;</code>: Keywords for SEO</li>
+  <li><code class="language-plaintext highlighter-rouge">&lt;meta property="og:title" content="..."&gt;</code>: Open Graph for social media</li>
+</ul>
+
+<h4 id="q4-what-are-semantic-elements">Q4: What are semantic elements?</h4>
+
+<p><strong>Answer</strong> (Medium):
+Semantic elements clearly describe their meaning and purpose in HTML5. They provide better structure, accessibility, and SEO benefits compared to generic elements.</p>
+
+<p><strong>Examples</strong>:</p>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">&lt;header&gt;</code>: Page or section header</li>
+  <li><code class="language-plaintext highlighter-rouge">&lt;nav&gt;</code>: Navigation links</li>
+  <li><code class="language-plaintext highlighter-rouge">&lt;main&gt;</code>: Main content area</li>
+  <li><code class="language-plaintext highlighter-rouge">&lt;section&gt;</code>: Thematic grouping of content</li>
+  <li><code class="language-plaintext highlighter-rouge">&lt;article&gt;</code>: Independent, self-contained content</li>
+  <li><code class="language-plaintext highlighter-rouge">&lt;aside&gt;</code>: Sidebar content</li>
+  <li><code class="language-plaintext highlighter-rouge">&lt;footer&gt;</code>: Page or section footer</li>
+</ul>
+
+<p><strong>Non-semantic examples</strong>: <code class="language-plaintext highlighter-rouge">&lt;div&gt;</code>, <code class="language-plaintext highlighter-rouge">&lt;span&gt;</code></p>
+
+<h3 id="hyperlinks-and-navigation">Hyperlinks and Navigation</h3>
+
+<h4 id="q5-how-do-you-link-to-an-element-within-the-same-page">Q5: How do you link to an element within the same page?</h4>
+
+<p><strong>Answer</strong> (Medium):
+Use the <code class="language-plaintext highlighter-rouge">id</code> attribute of the target element in the anchor tag’s <code class="language-plaintext highlighter-rouge">href</code> attribute:</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+</pre></td><td class="rouge-code"><pre><span class="c">&lt;!-- Link --&gt;</span>
+<span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"#section1"</span><span class="nt">&gt;</span>Go to Section 1<span class="nt">&lt;/a&gt;</span>
+
+<span class="c">&lt;!-- Target element --&gt;</span>
+<span class="nt">&lt;section</span> <span class="na">id=</span><span class="s">"section1"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;h2&gt;</span>Section 1 Content<span class="nt">&lt;/h2&gt;</span>
+<span class="nt">&lt;/section&gt;</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<h4 id="q6-whats-the-difference-between-absolute-and-relative-links">Q6: What’s the difference between absolute and relative links?</h4>
+
+<p><strong>Answer</strong> (Medium):</p>
+<ul>
+  <li><strong>Absolute links</strong>: Include the full URL with protocol and domain
+    <div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre><span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"https://example.com/page.html"</span><span class="nt">&gt;</span>Absolute link<span class="nt">&lt;/a&gt;</span>
+</pre></td></tr></tbody></table></code></pre></div>    </div>
+  </li>
+  <li><strong>Relative links</strong>: Reference files relative to the current page location
+    <div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+</pre></td><td class="rouge-code"><pre><span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"page.html"</span><span class="nt">&gt;</span>Same directory<span class="nt">&lt;/a&gt;</span>
+<span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"../page.html"</span><span class="nt">&gt;</span>Parent directory<span class="nt">&lt;/a&gt;</span>
+<span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"subfolder/page.html"</span><span class="nt">&gt;</span>Subdirectory<span class="nt">&lt;/a&gt;</span>
+</pre></td></tr></tbody></table></code></pre></div>    </div>
+  </li>
+</ul>
+
+<h4 id="q7-what-is-the-purpose-of-the-target-attribute-in-anchor-tags">Q7: What is the purpose of the <code class="language-plaintext highlighter-rouge">target</code> attribute in anchor tags?</h4>
+
+<p><strong>Answer</strong> (Medium):
+The <code class="language-plaintext highlighter-rouge">target</code> attribute specifies where to open the linked document:</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">_self</code> (default): Same window/tab</li>
+  <li><code class="language-plaintext highlighter-rouge">_blank</code>: New window/tab</li>
+  <li><code class="language-plaintext highlighter-rouge">_parent</code>: Parent frame</li>
+  <li><code class="language-plaintext highlighter-rouge">_top</code>: Full body of the window</li>
+</ul>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre><span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"https://example.com"</span> <span class="na">target=</span><span class="s">"_blank"</span><span class="nt">&gt;</span>Open in new tab<span class="nt">&lt;/a&gt;</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<h4 id="q8-why-is-it-important-to-set-relnoopener-when-opening-links-to-third-party-websites-in-a-new-tab">Q8: Why is it important to set <code class="language-plaintext highlighter-rouge">rel="noopener"</code> when opening links to third-party websites in a new tab?</h4>
+
+<p><strong>Answer</strong> (Hard):
+Security vulnerability prevention: When using <code class="language-plaintext highlighter-rouge">target="_blank"</code>, the new page gets access to the original page through <code class="language-plaintext highlighter-rouge">window.opener</code>. This can be exploited for:</p>
+
+<ul>
+  <li>Phishing attacks (redirecting the original page)</li>
+  <li>Cross-origin attacks</li>
+  <li>Performance issues</li>
+</ul>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+</pre></td><td class="rouge-code"><pre><span class="c">&lt;!-- Secure approach --&gt;</span>
+<span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"https://external-site.com"</span> <span class="na">target=</span><span class="s">"_blank"</span> <span class="na">rel=</span><span class="s">"noopener noreferrer"</span><span class="nt">&gt;</span>
+  External link
+<span class="nt">&lt;/a&gt;</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p><strong>Note</strong>: Modern browsers are implementing this behavior by default.</p>
+
+<h3 id="multimedia-and-embedded-content">Multimedia and Embedded Content</h3>
+
+<h4 id="q9-what-are-some-common-image-formats-used-on-the-web">Q9: What are some common image formats used on the web?</h4>
+
+<p><strong>Answer</strong> (Easy):
+Common formats:</p>
+<ul>
+  <li><strong>JPEG</strong>: Photos, complex images with many colors</li>
+  <li><strong>PNG</strong>: Images with transparency, screenshots</li>
+  <li><strong>GIF</strong>: Simple animations, limited colors</li>
+  <li><strong>SVG</strong>: Vector graphics, icons, logos</li>
+  <li><strong>WebP</strong>: Modern format with better compression</li>
+  <li><strong>AVIF</strong>: Next-generation format with superior compression</li>
+</ul>
+
+<h4 id="q10-how-do-you-ensure-images-are-displayed-with-appropriate-sizes">Q10: How do you ensure images are displayed with appropriate sizes?</h4>
+
+<p><strong>Answer</strong> (Medium):
+Basic approach using HTML attributes:</p>
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre><span class="nt">&lt;img</span> <span class="na">src=</span><span class="s">"image.jpg"</span> <span class="na">width=</span><span class="s">"300"</span> <span class="na">height=</span><span class="s">"200"</span> <span class="na">alt=</span><span class="s">"Description"</span><span class="nt">&gt;</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>Advanced approaches:</p>
+<div class="language-css highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+</pre></td><td class="rouge-code"><pre><span class="c">/* CSS approach */</span>
+<span class="nc">.responsive-image</span> <span class="p">{</span>
+  <span class="nl">width</span><span class="p">:</span> <span class="m">100%</span><span class="p">;</span>
+  <span class="nl">height</span><span class="p">:</span> <span class="nb">auto</span><span class="p">;</span>
+  <span class="nl">max-width</span><span class="p">:</span> <span class="m">500px</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c">/* Using aspect-ratio */</span>
+<span class="nc">.image-container</span> <span class="p">{</span>
+  <span class="py">aspect-ratio</span><span class="p">:</span> <span class="m">16</span><span class="p">/</span><span class="m">9</span><span class="p">;</span>
+  <span class="nl">overflow</span><span class="p">:</span> <span class="nb">hidden</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+</pre></td><td class="rouge-code"><pre><span class="c">&lt;!-- Responsive images with srcset --&gt;</span>
+<span class="nt">&lt;img</span> <span class="na">srcset=</span><span class="s">"image-320w.jpg 320w,
+             image-640w.jpg 640w,
+             image-960w.jpg 960w"</span>
+     <span class="na">sizes=</span><span class="s">"(max-width: 320px) 280px,
+            (max-width: 640px) 600px,
+            960px"</span>
+     <span class="na">src=</span><span class="s">"image-640w.jpg"</span>
+     <span class="na">alt=</span><span class="s">"Responsive image"</span><span class="nt">&gt;</span>
+
+<span class="c">&lt;!-- Picture element for art direction --&gt;</span>
+<span class="nt">&lt;picture&gt;</span>
+  <span class="nt">&lt;source</span> <span class="na">media=</span><span class="s">"(min-width: 800px)"</span> <span class="na">srcset=</span><span class="s">"desktop.jpg"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;source</span> <span class="na">media=</span><span class="s">"(min-width: 400px)"</span> <span class="na">srcset=</span><span class="s">"tablet.jpg"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;img</span> <span class="na">src=</span><span class="s">"mobile.jpg"</span> <span class="na">alt=</span><span class="s">"Responsive image"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;/picture&gt;</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<h4 id="q11-what-is-image-lazy-loading">Q11: What is image lazy loading?</h4>
+
+<p><strong>Answer</strong> (Hard):
+Lazy loading defers loading of images that are not in the viewport, improving initial page performance:</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+</pre></td><td class="rouge-code"><pre><span class="c">&lt;!-- Native lazy loading --&gt;</span>
+<span class="nt">&lt;img</span> <span class="na">src=</span><span class="s">"image.jpg"</span> <span class="na">loading=</span><span class="s">"lazy"</span> <span class="na">alt=</span><span class="s">"Description"</span><span class="nt">&gt;</span>
+
+<span class="c">&lt;!-- Intersection Observer API approach --&gt;</span>
+<span class="nt">&lt;img</span> <span class="na">data-src=</span><span class="s">"image.jpg"</span> <span class="na">class=</span><span class="s">"lazy-load"</span> <span class="na">alt=</span><span class="s">"Description"</span><span class="nt">&gt;</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+</pre></td><td class="rouge-code"><pre><span class="c1">// JavaScript implementation</span>
+<span class="kd">const</span> <span class="nx">images</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">querySelectorAll</span><span class="p">(</span><span class="dl">'</span><span class="s1">.lazy-load</span><span class="dl">'</span><span class="p">);</span>
+<span class="kd">const</span> <span class="nx">imageObserver</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">IntersectionObserver</span><span class="p">((</span><span class="nx">entries</span><span class="p">,</span> <span class="nx">observer</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="nx">entries</span><span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="nx">entry</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">entry</span><span class="p">.</span><span class="nx">isIntersecting</span><span class="p">)</span> <span class="p">{</span>
+      <span class="kd">const</span> <span class="nx">img</span> <span class="o">=</span> <span class="nx">entry</span><span class="p">.</span><span class="nx">target</span><span class="p">;</span>
+      <span class="nx">img</span><span class="p">.</span><span class="nx">src</span> <span class="o">=</span> <span class="nx">img</span><span class="p">.</span><span class="nx">dataset</span><span class="p">.</span><span class="nx">src</span><span class="p">;</span>
+      <span class="nx">img</span><span class="p">.</span><span class="nx">classList</span><span class="p">.</span><span class="nx">remove</span><span class="p">(</span><span class="dl">'</span><span class="s1">lazy-load</span><span class="dl">'</span><span class="p">);</span>
+      <span class="nx">observer</span><span class="p">.</span><span class="nx">unobserve</span><span class="p">(</span><span class="nx">img</span><span class="p">);</span>
+    <span class="p">}</span>
+  <span class="p">});</span>
+<span class="p">});</span>
+
+<span class="nx">images</span><span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="nx">img</span> <span class="o">=&gt;</span> <span class="nx">imageObserver</span><span class="p">.</span><span class="nx">observe</span><span class="p">(</span><span class="nx">img</span><span class="p">));</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<h4 id="q12-what-is-the-purpose-of-the-iframe-element">Q12: What is the purpose of the <code class="language-plaintext highlighter-rouge">&lt;iframe&gt;</code> element?</h4>
+
+<p><strong>Answer</strong> (Medium):
+The <code class="language-plaintext highlighter-rouge">&lt;iframe&gt;</code> element embeds content from another webpage or external source within the current page:</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+</pre></td><td class="rouge-code"><pre><span class="nt">&lt;iframe</span> 
+  <span class="na">src=</span><span class="s">"https://www.youtube.com/embed/VIDEO_ID"</span>
+  <span class="na">width=</span><span class="s">"560"</span> 
+  <span class="na">height=</span><span class="s">"315"</span>
+  <span class="na">frameborder=</span><span class="s">"0"</span>
+  <span class="na">allowfullscreen</span><span class="nt">&gt;</span>
+<span class="nt">&lt;/iframe&gt;</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>Common uses:</p>
+<ul>
+  <li>Embedding videos (YouTube, Vimeo)</li>
+  <li>Maps (Google Maps)</li>
+  <li>Third-party widgets</li>
+  <li>Payment forms</li>
+</ul>
+
+<h4 id="q13-how-can-a-page-inside-an-iframe-communicate-with-its-parent-page">Q13: How can a page inside an <code class="language-plaintext highlighter-rouge">&lt;iframe&gt;</code> communicate with its parent page?</h4>
+
+<p><strong>Answer</strong> (Hard):
+Communication methods depend on the origin:</p>
+
+<p><strong>Same-origin communication</strong>:</p>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+</pre></td><td class="rouge-code"><pre><span class="c1">// From iframe to parent</span>
+<span class="nx">parent</span><span class="p">.</span><span class="nx">someFunction</span><span class="p">();</span>
+<span class="nb">window</span><span class="p">.</span><span class="nx">parent</span><span class="p">.</span><span class="nx">postMessage</span><span class="p">(</span><span class="dl">'</span><span class="s1">Hello parent</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">*</span><span class="dl">'</span><span class="p">);</span>
+
+<span class="c1">// From parent to iframe</span>
+<span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="dl">'</span><span class="s1">myIframe</span><span class="dl">'</span><span class="p">).</span><span class="nx">contentWindow</span><span class="p">.</span><span class="nx">someFunction</span><span class="p">();</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p><strong>Cross-origin communication</strong> (using postMessage API):</p>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+</pre></td><td class="rouge-code"><pre><span class="c1">// From iframe to parent</span>
+<span class="nb">window</span><span class="p">.</span><span class="nx">parent</span><span class="p">.</span><span class="nx">postMessage</span><span class="p">({</span>
+  <span class="na">type</span><span class="p">:</span> <span class="dl">'</span><span class="s1">IFRAME_MESSAGE</span><span class="dl">'</span><span class="p">,</span>
+  <span class="na">data</span><span class="p">:</span> <span class="dl">'</span><span class="s1">Hello from iframe</span><span class="dl">'</span>
+<span class="p">},</span> <span class="dl">'</span><span class="s1">https://parent-domain.com</span><span class="dl">'</span><span class="p">);</span>
+
+<span class="c1">// Parent listening for messages</span>
+<span class="nb">window</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="dl">'</span><span class="s1">message</span><span class="dl">'</span><span class="p">,</span> <span class="p">(</span><span class="nx">event</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nx">event</span><span class="p">.</span><span class="nx">origin</span> <span class="o">!==</span> <span class="dl">'</span><span class="s1">https://iframe-domain.com</span><span class="dl">'</span><span class="p">)</span> <span class="k">return</span><span class="p">;</span>
+  
+  <span class="k">if</span> <span class="p">(</span><span class="nx">event</span><span class="p">.</span><span class="nx">data</span><span class="p">.</span><span class="nx">type</span> <span class="o">===</span> <span class="dl">'</span><span class="s1">IFRAME_MESSAGE</span><span class="dl">'</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">Received:</span><span class="dl">'</span><span class="p">,</span> <span class="nx">event</span><span class="p">.</span><span class="nx">data</span><span class="p">.</span><span class="nx">data</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">});</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<h3 id="advanced-html-topics">Advanced HTML Topics</h3>
+
+<h4 id="q14-what-is-semantic-html-and-why-is-it-important">Q14: What is semantic HTML and why is it important?</h4>
 
 <p><strong>Answer</strong>:
 Semantic HTML uses meaningful tags that describe their content and purpose. Benefits include:</p>
@@ -1505,7 +1861,7 @@ Semantic HTML uses meaningful tags that describe their content and purpose. Bene
 <span class="nt">&lt;nav&gt;</span>...<span class="nt">&lt;/nav&gt;</span>
 </pre></td></tr></tbody></table></code></pre></div></div>
 
-<h4 id="q2-explain-the-difference-between-get-and-post-methods-in-forms">Q2: Explain the difference between GET and POST methods in forms.</h4>
+<h4 id="q15-explain-the-difference-between-get-and-post-methods-in-forms">Q15: Explain the difference between GET and POST methods in forms.</h4>
 
 <p><strong>Answer</strong>:</p>
 
@@ -1514,7 +1870,7 @@ Semantic HTML uses meaningful tags that describe their content and purpose. Bene
   <li><strong>POST</strong>: Data is sent in request body, not visible in URL, unlimited data size, not idempotent</li>
 </ul>
 
-<h4 id="q3-what-are-aria-attributes-and-when-should-you-use-them">Q3: What are ARIA attributes and when should you use them?</h4>
+<h4 id="q16-what-are-aria-attributes-and-when-should-you-use-them">Q16: What are ARIA attributes and when should you use them?</h4>
 
 <p><strong>Answer</strong>:
 ARIA (Accessible Rich Internet Applications) attributes provide additional information to assistive technologies:</p>
@@ -1524,6 +1880,98 @@ ARIA (Accessible Rich Internet Applications) attributes provide additional infor
   <li><code class="language-plaintext highlighter-rouge">aria-describedby</code>: Links to descriptive text</li>
   <li><code class="language-plaintext highlighter-rouge">aria-hidden</code>: Hides elements from screen readers</li>
   <li><code class="language-plaintext highlighter-rouge">aria-expanded</code>: Indicates expandable content state</li>
+</ul>
+
+<h3 id="html5-and-modern-web-features">HTML5 and Modern Web Features</h3>
+
+<h4 id="q17-what-does-a-doctype-do">Q17: What does a doctype do?</h4>
+
+<p><strong>Answer</strong>:
+The doctype declaration tells the browser which version of HTML the page is written in and ensures the page is rendered in standards mode rather than quirks mode.</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre><span class="cp">&lt;!DOCTYPE html&gt;</span> <span class="c">&lt;!-- HTML5 doctype --&gt;</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<h4 id="q18-whats-the-difference-between-full-standards-mode-almost-standards-mode-and-quirks-mode">Q18: What’s the difference between full standards mode, almost standards mode, and quirks mode?</h4>
+
+<p><strong>Answer</strong>:</p>
+<ul>
+  <li><strong>Standards mode</strong>: Modern CSS and HTML standards are followed</li>
+  <li><strong>Almost standards mode</strong>: A few quirks remain for table cell sizing</li>
+  <li><strong>Quirks mode</strong>: Legacy behavior for old websites, non-standard rendering</li>
+</ul>
+
+<h4 id="q19-whats-the-difference-between-html-and-xhtml">Q19: What’s the difference between HTML and XHTML?</h4>
+
+<p><strong>Answer</strong>:</p>
+<ul>
+  <li><strong>HTML</strong>: More forgiving syntax, self-closing tags optional</li>
+  <li><strong>XHTML</strong>: XML-based, stricter syntax, all tags must be properly closed and lowercase</li>
+</ul>
+
+<h4 id="q20-what-are-data--attributes-useful-for">Q20: What are <code class="language-plaintext highlighter-rouge">data-*</code> attributes useful for?</h4>
+
+<p><strong>Answer</strong>:
+Custom data attributes store private custom data on HTML elements:</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+</pre></td><td class="rouge-code"><pre><span class="nt">&lt;div</span> <span class="na">data-user-id=</span><span class="s">"123"</span> <span class="na">data-role=</span><span class="s">"admin"</span> <span class="na">data-theme=</span><span class="s">"dark"</span><span class="nt">&gt;</span>
+  Content
+<span class="nt">&lt;/div&gt;</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+</pre></td><td class="rouge-code"><pre><span class="c1">// Access via JavaScript</span>
+<span class="kd">const</span> <span class="nx">element</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="dl">'</span><span class="s1">div</span><span class="dl">'</span><span class="p">);</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">element</span><span class="p">.</span><span class="nx">dataset</span><span class="p">.</span><span class="nx">userId</span><span class="p">);</span> <span class="c1">// "123"</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">element</span><span class="p">.</span><span class="nx">dataset</span><span class="p">.</span><span class="nx">role</span><span class="p">);</span>   <span class="c1">// "admin"</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<h4 id="q21-describe-the-difference-between-cookie-sessionstorage-and-localstorage">Q21: Describe the difference between <code class="language-plaintext highlighter-rouge">cookie</code>, <code class="language-plaintext highlighter-rouge">sessionStorage</code>, and <code class="language-plaintext highlighter-rouge">localStorage</code>.</h4>
+
+<p><strong>Answer</strong>:</p>
+<ul>
+  <li><strong>Cookies</strong>: Sent with every HTTP request, 4KB limit, can set expiration</li>
+  <li><strong>sessionStorage</strong>: Tab-scoped, cleared when tab closes, 5-10MB limit</li>
+  <li><strong>localStorage</strong>: Domain-scoped, persists until manually cleared, 5-10MB limit</li>
+</ul>
+
+<h4 id="q22-describe-the-difference-between-script-script-async-and-script-defer">Q22: Describe the difference between <code class="language-plaintext highlighter-rouge">&lt;script&gt;</code>, <code class="language-plaintext highlighter-rouge">&lt;script async&gt;</code>, and <code class="language-plaintext highlighter-rouge">&lt;script defer&gt;</code>.</h4>
+
+<p><strong>Answer</strong>:</p>
+<ul>
+  <li><strong><code class="language-plaintext highlighter-rouge">&lt;script&gt;</code></strong>: Blocks HTML parsing while downloading and executing</li>
+  <li><strong><code class="language-plaintext highlighter-rouge">&lt;script async&gt;</code></strong>: Downloads in parallel, executes immediately when ready (may interrupt parsing)</li>
+  <li><strong><code class="language-plaintext highlighter-rouge">&lt;script defer&gt;</code></strong>: Downloads in parallel, executes after HTML parsing is complete</li>
+</ul>
+
+<h4 id="q23-why-is-placing-css-link-tags-in-head-and-javascript-script-tags-before-body-generally-a-good-idea">Q23: Why is placing CSS <code class="language-plaintext highlighter-rouge">&lt;link&gt;</code> tags in <code class="language-plaintext highlighter-rouge">&lt;head&gt;</code> and JavaScript <code class="language-plaintext highlighter-rouge">&lt;script&gt;</code> tags before <code class="language-plaintext highlighter-rouge">&lt;/body&gt;</code> generally a good idea?</h4>
+
+<p><strong>Answer</strong>:</p>
+<ul>
+  <li><strong>CSS in <code class="language-plaintext highlighter-rouge">&lt;head&gt;</code></strong>: Prevents flash of unstyled content (FOUC), enables progressive rendering</li>
+  <li><strong>JavaScript before <code class="language-plaintext highlighter-rouge">&lt;/body&gt;</code></strong>: Allows DOM to be fully parsed before script execution, improves perceived performance</li>
+</ul>
+
+<p><strong>Exceptions</strong>: Critical CSS inline, essential JavaScript that needs to run early</p>
+
+<h4 id="q24-what-is-progressive-rendering">Q24: What is progressive rendering?</h4>
+
+<p><strong>Answer</strong>:
+Progressive rendering is the practice of improving perceived performance by displaying content as soon as possible:</p>
+
+<ul>
+  <li>Prioritizing above-the-fold content</li>
+  <li>Lazy loading non-critical resources</li>
+  <li>Streaming HTML responses</li>
+  <li>Using skeleton screens during loading</li>
+  <li>Implementing critical CSS</li>
 </ul>
 
 <h3 id="css-questions">CSS Questions</h3>

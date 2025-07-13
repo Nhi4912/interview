@@ -6,6 +6,7 @@ import HomePage from "./pages/HomePage";
 import ProgressTracker from "./pages/ProgressTracker";
 import InterviewChecklist from "./pages/InterviewChecklist";
 import CompleteGuide from "./pages/CompleteGuide";
+import MarkdownViewer from "./components/MarkdownViewer";
 import Footer from "./components/Footer";
 
 function App() {
@@ -28,8 +29,8 @@ function App() {
             path="/frontend-interview-complete-guide"
             element={<CompleteGuide />}
           />
-          <Route path="/frontend/*" element={<div>Frontend Topic Page</div>} />
-          <Route path="/leetcode/*" element={<div>LeetCode Page</div>} />
+          <Route path="/frontend/*" element={<MarkdownViewer />} />
+          <Route path="/leetcode/*" element={<MarkdownViewer />} />
         </Routes>
       </Box>
       <Footer />

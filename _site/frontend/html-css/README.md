@@ -836,7 +836,265 @@ body > div > ul > li > a {
 
 ### HTML Questions
 
-#### Q1: What is semantic HTML and why is it important?
+#### Basic HTML Elements and Structure
+
+#### Q1: What is an HTML element?
+
+**Answer** (Easy):
+HTML elements are the building blocks of HTML documents. They consist of opening and closing tags that can be nested within each other. Elements define the structure and content of a webpage.
+
+**Common examples**:
+- `<h1>` to `<h6>`: Headings
+- `<p>`: Paragraphs
+- `<div>`: Generic container
+- `<span>`: Inline container
+- `<img>`: Images
+- `<a>`: Links
+
+#### Q2: What type of information do we typically place inside the `<head>` section of an HTML document?
+
+**Answer** (Easy):
+The `<head>` section contains metadata that is primarily machine-readable and not displayed on the page:
+
+- `<title>`: Page title
+- `<meta>`: Metadata like charset, description, viewport
+- `<link>`: External resources (CSS, icons)
+- `<script>`: JavaScript files
+- `<style>`: Internal CSS
+
+#### Q3: What are some common types of `<meta>` elements?
+
+**Answer** (Medium):
+Common meta elements and their purposes:
+
+- `<meta charset="UTF-8">`: Character encoding
+- `<meta name="description" content="...">`: Page description for SEO
+- `<meta name="viewport" content="width=device-width, initial-scale=1">`: Responsive design viewport
+- `<meta name="keywords" content="...">`: Keywords for SEO
+- `<meta property="og:title" content="...">`: Open Graph for social media
+
+#### Q4: What are semantic elements?
+
+**Answer** (Medium):
+Semantic elements clearly describe their meaning and purpose in HTML5. They provide better structure, accessibility, and SEO benefits compared to generic elements.
+
+**Examples**:
+- `<header>`: Page or section header
+- `<nav>`: Navigation links
+- `<main>`: Main content area
+- `<section>`: Thematic grouping of content
+- `<article>`: Independent, self-contained content
+- `<aside>`: Sidebar content
+- `<footer>`: Page or section footer
+
+**Non-semantic examples**: `<div>`, `<span>`
+
+### Hyperlinks and Navigation
+
+#### Q5: How do you link to an element within the same page?
+
+**Answer** (Medium):
+Use the `id` attribute of the target element in the anchor tag's `href` attribute:
+
+```html
+<!-- Link -->
+<a href="#section1">Go to Section 1</a>
+
+<!-- Target element -->
+<section id="section1">
+  <h2>Section 1 Content</h2>
+</section>
+```
+
+#### Q6: What's the difference between absolute and relative links?
+
+**Answer** (Medium):
+- **Absolute links**: Include the full URL with protocol and domain
+  ```html
+  <a href="https://example.com/page.html">Absolute link</a>
+  ```
+- **Relative links**: Reference files relative to the current page location
+  ```html
+  <a href="page.html">Same directory</a>
+  <a href="../page.html">Parent directory</a>
+  <a href="subfolder/page.html">Subdirectory</a>
+  ```
+
+#### Q7: What is the purpose of the `target` attribute in anchor tags?
+
+**Answer** (Medium):
+The `target` attribute specifies where to open the linked document:
+
+- `_self` (default): Same window/tab
+- `_blank`: New window/tab
+- `_parent`: Parent frame
+- `_top`: Full body of the window
+
+```html
+<a href="https://example.com" target="_blank">Open in new tab</a>
+```
+
+#### Q8: Why is it important to set `rel="noopener"` when opening links to third-party websites in a new tab?
+
+**Answer** (Hard):
+Security vulnerability prevention: When using `target="_blank"`, the new page gets access to the original page through `window.opener`. This can be exploited for:
+
+- Phishing attacks (redirecting the original page)
+- Cross-origin attacks
+- Performance issues
+
+```html
+<!-- Secure approach -->
+<a href="https://external-site.com" target="_blank" rel="noopener noreferrer">
+  External link
+</a>
+```
+
+**Note**: Modern browsers are implementing this behavior by default.
+
+### Multimedia and Embedded Content
+
+#### Q9: What are some common image formats used on the web?
+
+**Answer** (Easy):
+Common formats:
+- **JPEG**: Photos, complex images with many colors
+- **PNG**: Images with transparency, screenshots
+- **GIF**: Simple animations, limited colors
+- **SVG**: Vector graphics, icons, logos
+- **WebP**: Modern format with better compression
+- **AVIF**: Next-generation format with superior compression
+
+#### Q10: How do you ensure images are displayed with appropriate sizes?
+
+**Answer** (Medium):
+Basic approach using HTML attributes:
+```html
+<img src="image.jpg" width="300" height="200" alt="Description">
+```
+
+Advanced approaches:
+```css
+/* CSS approach */
+.responsive-image {
+  width: 100%;
+  height: auto;
+  max-width: 500px;
+}
+
+/* Using aspect-ratio */
+.image-container {
+  aspect-ratio: 16/9;
+  overflow: hidden;
+}
+```
+
+```html
+<!-- Responsive images with srcset -->
+<img srcset="image-320w.jpg 320w,
+             image-640w.jpg 640w,
+             image-960w.jpg 960w"
+     sizes="(max-width: 320px) 280px,
+            (max-width: 640px) 600px,
+            960px"
+     src="image-640w.jpg"
+     alt="Responsive image">
+
+<!-- Picture element for art direction -->
+<picture>
+  <source media="(min-width: 800px)" srcset="desktop.jpg">
+  <source media="(min-width: 400px)" srcset="tablet.jpg">
+  <img src="mobile.jpg" alt="Responsive image">
+</picture>
+```
+
+#### Q11: What is image lazy loading?
+
+**Answer** (Hard):
+Lazy loading defers loading of images that are not in the viewport, improving initial page performance:
+
+```html
+<!-- Native lazy loading -->
+<img src="image.jpg" loading="lazy" alt="Description">
+
+<!-- Intersection Observer API approach -->
+<img data-src="image.jpg" class="lazy-load" alt="Description">
+```
+
+```javascript
+// JavaScript implementation
+const images = document.querySelectorAll('.lazy-load');
+const imageObserver = new IntersectionObserver((entries, observer) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      const img = entry.target;
+      img.src = img.dataset.src;
+      img.classList.remove('lazy-load');
+      observer.unobserve(img);
+    }
+  });
+});
+
+images.forEach(img => imageObserver.observe(img));
+```
+
+#### Q12: What is the purpose of the `<iframe>` element?
+
+**Answer** (Medium):
+The `<iframe>` element embeds content from another webpage or external source within the current page:
+
+```html
+<iframe 
+  src="https://www.youtube.com/embed/VIDEO_ID"
+  width="560" 
+  height="315"
+  frameborder="0"
+  allowfullscreen>
+</iframe>
+```
+
+Common uses:
+- Embedding videos (YouTube, Vimeo)
+- Maps (Google Maps)
+- Third-party widgets
+- Payment forms
+
+#### Q13: How can a page inside an `<iframe>` communicate with its parent page?
+
+**Answer** (Hard):
+Communication methods depend on the origin:
+
+**Same-origin communication**:
+```javascript
+// From iframe to parent
+parent.someFunction();
+window.parent.postMessage('Hello parent', '*');
+
+// From parent to iframe
+document.getElementById('myIframe').contentWindow.someFunction();
+```
+
+**Cross-origin communication** (using postMessage API):
+```javascript
+// From iframe to parent
+window.parent.postMessage({
+  type: 'IFRAME_MESSAGE',
+  data: 'Hello from iframe'
+}, 'https://parent-domain.com');
+
+// Parent listening for messages
+window.addEventListener('message', (event) => {
+  if (event.origin !== 'https://iframe-domain.com') return;
+  
+  if (event.data.type === 'IFRAME_MESSAGE') {
+    console.log('Received:', event.data.data);
+  }
+});
+```
+
+### Advanced HTML Topics
+
+#### Q14: What is semantic HTML and why is it important?
 
 **Answer**:
 Semantic HTML uses meaningful tags that describe their content and purpose. Benefits include:
@@ -858,14 +1116,14 @@ Semantic HTML uses meaningful tags that describe their content and purpose. Bene
 <nav>...</nav>
 ```
 
-#### Q2: Explain the difference between GET and POST methods in forms.
+#### Q15: Explain the difference between GET and POST methods in forms.
 
 **Answer**:
 
 - **GET**: Data is sent in URL parameters, visible in browser history, limited data size, idempotent
 - **POST**: Data is sent in request body, not visible in URL, unlimited data size, not idempotent
 
-#### Q3: What are ARIA attributes and when should you use them?
+#### Q16: What are ARIA attributes and when should you use them?
 
 **Answer**:
 ARIA (Accessible Rich Internet Applications) attributes provide additional information to assistive technologies:
@@ -874,6 +1132,81 @@ ARIA (Accessible Rich Internet Applications) attributes provide additional infor
 - `aria-describedby`: Links to descriptive text
 - `aria-hidden`: Hides elements from screen readers
 - `aria-expanded`: Indicates expandable content state
+
+### HTML5 and Modern Web Features
+
+#### Q17: What does a doctype do?
+
+**Answer**:
+The doctype declaration tells the browser which version of HTML the page is written in and ensures the page is rendered in standards mode rather than quirks mode.
+
+```html
+<!DOCTYPE html> <!-- HTML5 doctype -->
+```
+
+#### Q18: What's the difference between full standards mode, almost standards mode, and quirks mode?
+
+**Answer**:
+- **Standards mode**: Modern CSS and HTML standards are followed
+- **Almost standards mode**: A few quirks remain for table cell sizing
+- **Quirks mode**: Legacy behavior for old websites, non-standard rendering
+
+#### Q19: What's the difference between HTML and XHTML?
+
+**Answer**:
+- **HTML**: More forgiving syntax, self-closing tags optional
+- **XHTML**: XML-based, stricter syntax, all tags must be properly closed and lowercase
+
+#### Q20: What are `data-*` attributes useful for?
+
+**Answer**:
+Custom data attributes store private custom data on HTML elements:
+
+```html
+<div data-user-id="123" data-role="admin" data-theme="dark">
+  Content
+</div>
+```
+
+```javascript
+// Access via JavaScript
+const element = document.querySelector('div');
+console.log(element.dataset.userId); // "123"
+console.log(element.dataset.role);   // "admin"
+```
+
+#### Q21: Describe the difference between `cookie`, `sessionStorage`, and `localStorage`.
+
+**Answer**:
+- **Cookies**: Sent with every HTTP request, 4KB limit, can set expiration
+- **sessionStorage**: Tab-scoped, cleared when tab closes, 5-10MB limit
+- **localStorage**: Domain-scoped, persists until manually cleared, 5-10MB limit
+
+#### Q22: Describe the difference between `<script>`, `<script async>`, and `<script defer>`.
+
+**Answer**:
+- **`<script>`**: Blocks HTML parsing while downloading and executing
+- **`<script async>`**: Downloads in parallel, executes immediately when ready (may interrupt parsing)
+- **`<script defer>`**: Downloads in parallel, executes after HTML parsing is complete
+
+#### Q23: Why is placing CSS `<link>` tags in `<head>` and JavaScript `<script>` tags before `</body>` generally a good idea?
+
+**Answer**:
+- **CSS in `<head>`**: Prevents flash of unstyled content (FOUC), enables progressive rendering
+- **JavaScript before `</body>`**: Allows DOM to be fully parsed before script execution, improves perceived performance
+
+**Exceptions**: Critical CSS inline, essential JavaScript that needs to run early
+
+#### Q24: What is progressive rendering?
+
+**Answer**:
+Progressive rendering is the practice of improving perceived performance by displaying content as soon as possible:
+
+- Prioritizing above-the-fold content
+- Lazy loading non-critical resources
+- Streaming HTML responses
+- Using skeleton screens during loading
+- Implementing critical CSS
 
 ### CSS Questions
 

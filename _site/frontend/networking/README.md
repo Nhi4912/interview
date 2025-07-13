@@ -45,19 +45,428 @@
 
 ## Common Interview Questions & Answers
 
-### HTTP Questions
+### HTTP Fundamentals & Client-Server Model
 
-**Q: Explain the difference between HTTP and HTTPS.**
-A:
+#### Q1: Describe the client-server model?
 
+**Answer** (Easy):
+In the traditional client-server model, the browser acts as the client and the backend acts as the server. The client sends requests and the server generates responses.
+
+**Key Components**:
+- **Client**: Initiates requests (browsers, mobile apps)
+- **Server**: Processes requests and sends responses
+- **Request**: Contains method, headers, and optional body
+- **Response**: Contains status code, headers, and optional body
+
+#### Q2: What is the role of HTTP request methods (HTTP Verbs)?
+
+**Answer** (Medium):
+HTTP methods define the intended action for a given resource:
+
+- **GET**: Retrieve data (idempotent, cacheable, safe)
+- **POST**: Create new resource (not idempotent, not cacheable)
+- **PUT**: Update entire resource (idempotent)
+- **PATCH**: Partial update (not idempotent)
+- **DELETE**: Remove resource (idempotent)
+- **HEAD**: Get headers only (idempotent, cacheable, safe)
+- **OPTIONS**: Get allowed methods and CORS preflight
+
+**Idempotent**: Multiple identical requests have the same effect as a single request
+**Safe**: Method doesn't modify server state
+
+#### Q3: What is the purpose of HTTP response status codes?
+
+**Answer** (Medium):
+Status codes indicate whether a request was successful or failed. They are grouped into categories:
+
+- **1xx (Informational)**: Request received, processing continues
+- **2xx (Success)**: Request successfully received and processed
+  - 200 OK, 201 Created, 204 No Content
+- **3xx (Redirection)**: Further action needed to complete request
+  - 301 Moved Permanently, 302 Found, 304 Not Modified
+- **4xx (Client Error)**: Client-side error
+  - 400 Bad Request, 401 Unauthorized, 403 Forbidden, 404 Not Found
+- **5xx (Server Error)**: Server-side error
+  - 500 Internal Server Error, 502 Bad Gateway, 503 Service Unavailable
+
+#### Q4: What's the difference between HTTP headers and request body?
+
+**Answer** (Medium):
+**HTTP Headers**:
+- Contain metadata about the request/response
+- Include information like content type, authentication, caching directives
+- Present on both requests and responses
+- Key-value pairs
+
+**Request Body**:
+- Contains the actual payload data
+- Used with methods like POST, PUT, PATCH
+- Can contain JSON, form data, files, etc.
+- Optional depending on request type
+
+```http
+POST /api/users HTTP/1.1
+Host: example.com
+Content-Type: application/json
+Authorization: Bearer token123
+
+{
+  "name": "John Doe",
+  "email": "john@example.com"
+}
+```
+
+#### Q5: List some common HTTP headers and describe their purposes
+
+**Answer** (Medium):
+**Request Headers**:
+- `Accept`: Media types client can process
+- `Authorization`: Authentication credentials
+- `Content-Type`: Type of data in request body
+- `User-Agent`: Client application information
+- `Referer`: URL of the referring page
+
+**Response Headers**:
+- `Content-Type`: Type of data in response body
+- `Set-Cookie`: Set cookies in client
+- `Cache-Control`: Caching directives
+- `ETag`: Entity tag for caching
+- `Location`: Redirect URL
+- `Access-Control-Allow-Origin`: CORS permissions
+
+**Security Headers**:
+- `Content-Security-Policy`: XSS protection
+- `X-Frame-Options`: Clickjacking protection
+- `Strict-Transport-Security`: Force HTTPS
+
+### State Management & Cookies
+
+#### Q6: HTTP is a stateless protocol - what does this mean?
+
+**Answer** (Hard):
+HTTP stateless means each request is processed independently without knowledge of previous requests. The server doesn't retain information about the client between requests.
+
+**Implications**:
+- No memory of previous interactions
+- Each request must contain all necessary information
+- Requires mechanisms like cookies, sessions, or tokens to maintain state
+
+**Solutions for State Management**:
+```javascript
+// Cookies - server sets, browser sends automatically
+document.cookie = "sessionId=abc123; Secure; HttpOnly";
+
+// Local Storage - client-side only
+localStorage.setItem('user', JSON.stringify(userData));
+
+// Session Storage - tab-scoped
+sessionStorage.setItem('tempData', value);
+
+// JWT Tokens - stateless authentication
+const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...';
+```
+
+#### Q7: What is the purpose of HTTP cookies?
+
+**Answer** (Easy):
+Cookies are small pieces of data that servers send to browsers. The browser stores them and sends them back with subsequent requests to the same domain.
+
+**Common Uses**:
+- Session management (login state)
+- Personalization (user preferences)
+- Tracking (analytics, advertising)
+
+```javascript
+// Server sets cookie
+res.setHeader('Set-Cookie', 'sessionId=abc123; HttpOnly; Secure; SameSite=Lax');
+
+// Client sends cookie automatically
+// Cookie: sessionId=abc123
+```
+
+#### Q8: What are cookies commonly used for?
+
+**Answer** (Medium):
+**Session Management**:
+- User authentication status
+- Shopping cart contents
+- User preferences
+
+**Personalization**:
+- Language settings
+- Theme preferences
+- Recently viewed items
+
+**Tracking**:
+- Analytics data
+- Advertising targeting
+- User behavior analysis
+
+#### Q9: What's the difference between first-party and third-party cookies?
+
+**Answer** (Medium):
+**First-party cookies**:
+- Set by the domain you're currently visiting
+- Used for site functionality (login, preferences)
+- Generally accepted by users and browsers
+
+**Third-party cookies**:
+- Set by domains other than the current site
+- Used for cross-site tracking and advertising
+- Increasingly blocked by browsers
+- Privacy concerns
+
+```html
+<!-- First-party cookie -->
+<script>
+  document.cookie = "theme=dark; domain=.mysite.com";
+</script>
+
+<!-- Third-party cookie (from embedded content) -->
+<img src="https://tracker.com/pixel.gif" />
+```
+
+#### Q10: What's the purpose of setting Secure and HttpOnly attributes on cookies?
+
+**Answer** (Hard):
+**Secure attribute**:
+- Cookie only transmitted over HTTPS
+- Prevents interception over unsecured connections
+- Essential for sensitive data
+
+**HttpOnly attribute**:
+- Cookie not accessible via JavaScript
+- Prevents XSS attacks from stealing cookies
+- Server-side only access
+
+```javascript
+// Secure cookie setup
+res.setHeader('Set-Cookie', [
+  'sessionId=abc123; HttpOnly; Secure; SameSite=Strict; Max-Age=3600'
+]);
+
+// ❌ This won't work with HttpOnly
+document.cookie; // Won't include HttpOnly cookies
+
+// ✅ Automatically sent with requests
+fetch('/api/data'); // Includes HttpOnly cookies
+```
+
+### Content Types & MIME Types
+
+#### Q11: What is a MIME type and what's its purpose?
+
+**Answer** (Medium):
+MIME (Multipurpose Internet Mail Extensions) type indicates the format of a byte stream (usually a file). Browser behavior varies based on the MIME type sent by the server.
+
+**Format**: `type/subtype`
+
+**Common MIME Types**:
+- `text/html`: HTML documents
+- `text/css`: CSS stylesheets  
+- `application/json`: JSON data
+- `application/javascript`: JavaScript files
+- `image/jpeg`, `image/png`: Images
+- `video/mp4`: Video files
+
+```http
+Content-Type: application/json; charset=utf-8
+Content-Type: text/html; charset=utf-8
+Content-Type: multipart/form-data; boundary=something
+```
+
+#### Q12: How do browsers and clients use headers to negotiate content representation?
+
+**Answer** (Hard):
+Content negotiation allows clients to specify preferred content types, languages, and encodings.
+
+**Client Request Headers**:
+- `Accept`: Preferred media types
+- `Accept-Language`: Preferred languages
+- `Accept-Encoding`: Supported compressions
+- `Accept-Charset`: Character encodings
+
+**Server Response Headers**:
+- `Content-Type`: Actual media type sent
+- `Content-Language`: Language of content
+- `Content-Encoding`: Compression used
+- `Vary`: Headers used for negotiation
+
+```http
+# Client request
+Accept: application/json, text/html;q=0.9, */*;q=0.8
+Accept-Language: en-US,en;q=0.9,es;q=0.8
+Accept-Encoding: gzip, deflate, br
+
+# Server response
+Content-Type: application/json; charset=utf-8
+Content-Language: en-US
+Content-Encoding: gzip
+Vary: Accept, Accept-Language, Accept-Encoding
+```
+
+#### Q13: HTTP/1 is a text protocol - how do you send binary data?
+
+**Answer** (Hard):
+Binary data is encoded for transmission over text-based HTTP/1:
+
+**Content Encoding Methods**:
+- **Base64**: Encodes binary as ASCII text
+- **Multipart**: For forms with files
+- **URL encoding**: For form data
+
+```javascript
+// Base64 encoding for JSON payloads
+const fileBuffer = await file.arrayBuffer();
+const base64String = btoa(String.fromCharCode(...new Uint8Array(fileBuffer)));
+
+fetch('/api/upload', {
+  method: 'POST',
+  headers: { 'Content-Type': 'application/json' },
+  body: JSON.stringify({ file: base64String })
+});
+
+// FormData for file uploads (multipart/form-data)
+const formData = new FormData();
+formData.append('file', file);
+
+fetch('/api/upload', {
+  method: 'POST',
+  body: formData // Browser sets Content-Type automatically
+});
+```
+
+### Streaming & Real-time Communication
+
+#### Q14: How can a client stream data from a server without constantly polling?
+
+**Answer** (Hard):
+Several techniques enable real-time data streaming without polling:
+
+**Long Polling**:
+- Client holds request open until server has data
+- Server responds when data available or timeout occurs
+- Client immediately makes new request
+
+**Server-Sent Events (SSE)**:
+- One-way communication from server to client
+- Built-in reconnection and event types
+- Uses standard HTTP
+
+**WebSockets**:
+- Full-duplex, bidirectional communication
+- Persistent connection after handshake
+- Lower latency than HTTP
+
+```javascript
+// Server-Sent Events
+const eventSource = new EventSource('/events');
+eventSource.onmessage = (event) => {
+  console.log('Data:', event.data);
+};
+
+// WebSocket
+const ws = new WebSocket('wss://api.example.com/ws');
+ws.onmessage = (event) => {
+  console.log('Data:', JSON.parse(event.data));
+};
+ws.send(JSON.stringify({ type: 'subscribe', channel: 'updates' }));
+
+// Long Polling
+async function longPoll() {
+  try {
+    const response = await fetch('/poll', { 
+      method: 'GET',
+      headers: { 'Cache-Control': 'no-cache' }
+    });
+    const data = await response.json();
+    handleData(data);
+  } catch (error) {
+    console.error('Polling error:', error);
+  } finally {
+    setTimeout(longPoll, 1000); // Retry after 1 second
+  }
+}
+```
+
+**Comparison**:
+- **WebSockets**: Bidirectional, low latency, complex setup
+- **SSE**: Simple, automatic reconnection, one-way only
+- **Long Polling**: Compatible with all browsers, higher server load
+
+### HTTP Versions & Evolution
+
+#### Q15: What's new in HTTP/2?
+
+**Answer** (Hard):
+HTTP/2 introduces several performance improvements over HTTP/1.1:
+
+**Key Features**:
+- **Stream Multiplexing**: Multiple requests over single connection
+- **Header Compression**: HPACK algorithm reduces header overhead
+- **Server Push**: Server proactively sends resources
+- **Binary Protocol**: More efficient than text-based HTTP/1.1
+- **Stream Prioritization**: Important resources loaded first
+
+```javascript
+// HTTP/1.1 limitations
+// - 6 connections per domain limit
+// - Head-of-line blocking
+// - Header redundancy
+// - No server push
+
+// HTTP/2 benefits
+// - Single connection multiplexing
+// - Compressed headers
+// - Server can push CSS/JS without request
+// - Binary framing layer
+```
+
+**Server Push Example**:
+```javascript
+// Server can push critical resources
+// When client requests /index.html
+// Server also pushes /style.css and /script.js
+```
+
+#### Q16: What's new in HTTP/3?
+
+**Answer** (Hard):
+HTTP/3 is the latest version, though not yet widely deployed:
+
+**Key Innovation - QUIC Protocol**:
+- Uses UDP instead of TCP as transport layer
+- Eliminates head-of-line blocking at transport level
+- Built-in encryption (TLS 1.3)
+- Connection migration support
+- 0-RTT connection establishment
+
+**Benefits over HTTP/2**:
+- No TCP head-of-line blocking
+- Better performance on unreliable networks
+- Faster connection establishment
+- Improved congestion control
+
+```javascript
+// HTTP/3 is still emerging
+// Not widely supported yet
+// Benefits primarily for high-latency/lossy networks
+// Mobile networks see significant improvements
+```
+
+### Advanced HTTP Topics
+
+#### Q17: Explain the difference between HTTP and HTTPS.
+
+**Answer**:
 - **HTTP**: Unencrypted, data sent in plain text, vulnerable to interception
 - **HTTPS**: Encrypted using SSL/TLS, secure communication, requires certificate
 - **Ports**: HTTP uses port 80, HTTPS uses port 443
 - **Security**: HTTPS provides confidentiality, integrity, and authentication
 
-**Q: What are the main HTTP methods and when would you use each?**
-A:
+#### Q18: What are the main HTTP methods and when would you use each?
 
+**Answer**:
 - **GET**: Retrieve data (idempotent, cacheable)
 - **POST**: Create new resource (not idempotent, not cacheable)
 - **PUT**: Update entire resource (idempotent)
@@ -66,9 +475,9 @@ A:
 - **HEAD**: Get headers only (idempotent, cacheable)
 - **OPTIONS**: Get allowed methods
 
-**Q: Explain HTTP status codes 200, 201, 400, 401, 403, 404, 500.**
-A:
+#### Q19: Explain HTTP status codes 200, 201, 400, 401, 403, 404, 500.
 
+**Answer**:
 - **200 OK**: Request successful
 - **201 Created**: Resource created successfully
 - **400 Bad Request**: Client error in request

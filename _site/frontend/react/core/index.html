@@ -310,9 +310,1975 @@
 
 <h3 id="8-track-network-status-with-a-custom-hook">8. Track network status with a custom hook</h3>
 
+<h2 id="comprehensive-react-interview-questions--answers">Comprehensive React Interview Questions &amp; Answers</h2>
+
+<h3 id="q1-explain-the-virtual-dom-and-its-benefits">Q1: Explain the Virtual DOM and its benefits</h3>
+
+<p><strong>Answer</strong>:
+The Virtual DOM is a JavaScript representation of the real DOM that React keeps in memory.</p>
+
+<p><strong>Benefits</strong>:</p>
+<ul>
+  <li><strong>Performance</strong>: Batch DOM updates and minimize expensive operations</li>
+  <li><strong>Predictability</strong>: Declarative programming model</li>
+  <li><strong>Cross-browser compatibility</strong>: React handles browser differences</li>
+</ul>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+</pre></td><td class="rouge-code"><pre><span class="c1">// How Virtual DOM works</span>
+<span class="kd">function</span> <span class="nx">ComponentExample</span><span class="p">()</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="p">[</span><span class="nx">count</span><span class="p">,</span> <span class="nx">setCount</span><span class="p">]</span> <span class="o">=</span> <span class="nx">useState</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+  
+  <span class="c1">// Each render creates a new Virtual DOM tree</span>
+  <span class="k">return</span> <span class="p">(</span>
+    <span class="o">&lt;</span><span class="nx">div</span><span class="o">&gt;</span>
+      <span class="o">&lt;</span><span class="nx">h1</span><span class="o">&gt;</span><span class="nx">Count</span><span class="p">:</span> <span class="p">{</span><span class="nx">count</span><span class="p">}</span><span class="o">&lt;</span><span class="sr">/h1</span><span class="err">&gt;
+</span>      <span class="o">&lt;</span><span class="nx">button</span> <span class="nx">onClick</span><span class="o">=</span><span class="p">{()</span> <span class="o">=&gt;</span> <span class="nx">setCount</span><span class="p">(</span><span class="nx">count</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)}</span><span class="o">&gt;</span>
+        <span class="nx">Increment</span>
+      <span class="o">&lt;</span><span class="sr">/button</span><span class="err">&gt;
+</span>    <span class="o">&lt;</span><span class="sr">/div</span><span class="err">&gt;
+</span>  <span class="p">);</span>
+<span class="p">}</span>
+
+<span class="c1">// Virtual DOM representation (simplified)</span>
+<span class="kd">const</span> <span class="nx">virtualDOM</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="na">type</span><span class="p">:</span> <span class="dl">'</span><span class="s1">div</span><span class="dl">'</span><span class="p">,</span>
+  <span class="na">props</span><span class="p">:</span> <span class="p">{</span>
+    <span class="na">children</span><span class="p">:</span> <span class="p">[</span>
+      <span class="p">{</span>
+        <span class="na">type</span><span class="p">:</span> <span class="dl">'</span><span class="s1">h1</span><span class="dl">'</span><span class="p">,</span>
+        <span class="na">props</span><span class="p">:</span> <span class="p">{</span> <span class="na">children</span><span class="p">:</span> <span class="dl">'</span><span class="s1">Count: 0</span><span class="dl">'</span> <span class="p">}</span>
+      <span class="p">},</span>
+      <span class="p">{</span>
+        <span class="na">type</span><span class="p">:</span> <span class="dl">'</span><span class="s1">button</span><span class="dl">'</span><span class="p">,</span>
+        <span class="na">props</span><span class="p">:</span> <span class="p">{</span>
+          <span class="na">onClick</span><span class="p">:</span> <span class="nx">handleClick</span><span class="p">,</span>
+          <span class="na">children</span><span class="p">:</span> <span class="dl">'</span><span class="s1">Increment</span><span class="dl">'</span>
+        <span class="p">}</span>
+      <span class="p">}</span>
+    <span class="p">]</span>
+  <span class="p">}</span>
+<span class="p">};</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<h3 id="q2-what-is-the-difference-between-state-and-props">Q2: What is the difference between state and props?</h3>
+
+<p><strong>Answer</strong>:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th><strong>State</strong></th>
+      <th><strong>Props</strong></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Mutable</td>
+      <td>Immutable</td>
+    </tr>
+    <tr>
+      <td>Owned by component</td>
+      <td>Passed from parent</td>
+    </tr>
+    <tr>
+      <td>Can trigger re-renders</td>
+      <td>Read-only</td>
+    </tr>
+    <tr>
+      <td>Local to component</td>
+      <td>Shared data</td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+</pre></td><td class="rouge-code"><pre><span class="c1">// Parent component passing props</span>
+<span class="kd">function</span> <span class="nx">Parent</span><span class="p">()</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="p">[</span><span class="nx">parentState</span><span class="p">,</span> <span class="nx">setParentState</span><span class="p">]</span> <span class="o">=</span> <span class="nx">useState</span><span class="p">(</span><span class="dl">'</span><span class="s1">parent data</span><span class="dl">'</span><span class="p">);</span>
+  
+  <span class="k">return</span> <span class="p">(</span>
+    <span class="o">&lt;</span><span class="nx">Child</span> 
+      <span class="nx">propFromParent</span><span class="o">=</span><span class="p">{</span><span class="nx">parentState</span><span class="p">}</span>
+      <span class="nx">onUpdate</span><span class="o">=</span><span class="p">{</span><span class="nx">setParentState</span><span class="p">}</span>
+    <span class="sr">/</span><span class="err">&gt;
+</span>  <span class="p">);</span>
+<span class="p">}</span>
+
+<span class="c1">// Child component receiving props and managing state</span>
+<span class="kd">function</span> <span class="nx">Child</span><span class="p">({</span> <span class="nx">propFromParent</span><span class="p">,</span> <span class="nx">onUpdate</span> <span class="p">})</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="p">[</span><span class="nx">childState</span><span class="p">,</span> <span class="nx">setChildState</span><span class="p">]</span> <span class="o">=</span> <span class="nx">useState</span><span class="p">(</span><span class="dl">'</span><span class="s1">child data</span><span class="dl">'</span><span class="p">);</span>
+  
+  <span class="k">return</span> <span class="p">(</span>
+    <span class="o">&lt;</span><span class="nx">div</span><span class="o">&gt;</span>
+      <span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span><span class="nx">Prop</span><span class="p">:</span> <span class="p">{</span><span class="nx">propFromParent</span><span class="p">}</span><span class="o">&lt;</span><span class="sr">/p</span><span class="err">&gt;
+</span>      <span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span><span class="nx">State</span><span class="p">:</span> <span class="p">{</span><span class="nx">childState</span><span class="p">}</span><span class="o">&lt;</span><span class="sr">/p</span><span class="err">&gt;
+</span>      <span class="o">&lt;</span><span class="nx">button</span> <span class="nx">onClick</span><span class="o">=</span><span class="p">{()</span> <span class="o">=&gt;</span> <span class="nx">setChildState</span><span class="p">(</span><span class="dl">'</span><span class="s1">updated</span><span class="dl">'</span><span class="p">)}</span><span class="o">&gt;</span>
+        <span class="nx">Update</span> <span class="nx">State</span>
+      <span class="o">&lt;</span><span class="sr">/button</span><span class="err">&gt;
+</span>      <span class="o">&lt;</span><span class="nx">button</span> <span class="nx">onClick</span><span class="o">=</span><span class="p">{()</span> <span class="o">=&gt;</span> <span class="nx">onUpdate</span><span class="p">(</span><span class="dl">'</span><span class="s1">updated parent</span><span class="dl">'</span><span class="p">)}</span><span class="o">&gt;</span>
+        <span class="nx">Update</span> <span class="nx">Parent</span>
+      <span class="o">&lt;</span><span class="sr">/button</span><span class="err">&gt;
+</span>    <span class="o">&lt;</span><span class="sr">/div</span><span class="err">&gt;
+</span>  <span class="p">);</span>
+<span class="p">}</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<h3 id="q3-explain-react-hooks-and-their-rules">Q3: Explain React hooks and their rules</h3>
+
+<p><strong>Answer</strong>:
+Hooks are functions that let you use state and other React features in functional components.</p>
+
+<p><strong>Rules of Hooks</strong>:</p>
+<ol>
+  <li>Only call hooks at the top level</li>
+  <li>Only call hooks from React functions</li>
+  <li>Hooks must be called in the same order every time</li>
+</ol>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+</pre></td><td class="rouge-code"><pre><span class="c1">// ✅ Correct - hooks at top level</span>
+<span class="kd">function</span> <span class="nx">MyComponent</span><span class="p">()</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="p">[</span><span class="nx">count</span><span class="p">,</span> <span class="nx">setCount</span><span class="p">]</span> <span class="o">=</span> <span class="nx">useState</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+  <span class="kd">const</span> <span class="p">[</span><span class="nx">name</span><span class="p">,</span> <span class="nx">setName</span><span class="p">]</span> <span class="o">=</span> <span class="nx">useState</span><span class="p">(</span><span class="dl">''</span><span class="p">);</span>
+  
+  <span class="nx">useEffect</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="nb">document</span><span class="p">.</span><span class="nx">title</span> <span class="o">=</span> <span class="s2">`Count: </span><span class="p">${</span><span class="nx">count</span><span class="p">}</span><span class="s2">`</span><span class="p">;</span>
+  <span class="p">},</span> <span class="p">[</span><span class="nx">count</span><span class="p">]);</span>
+  
+  <span class="k">return</span> <span class="o">&lt;</span><span class="nx">div</span><span class="o">&gt;</span><span class="p">{</span><span class="nx">count</span><span class="p">}</span><span class="o">&lt;</span><span class="sr">/div&gt;</span><span class="err">;
+</span><span class="p">}</span>
+
+<span class="c1">// ❌ Wrong - conditional hook</span>
+<span class="kd">function</span> <span class="nx">BadComponent</span><span class="p">({</span> <span class="nx">shouldCount</span> <span class="p">})</span> <span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nx">shouldCount</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="p">[</span><span class="nx">count</span><span class="p">,</span> <span class="nx">setCount</span><span class="p">]</span> <span class="o">=</span> <span class="nx">useState</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span> <span class="c1">// ❌ Conditional hook</span>
+  <span class="p">}</span>
+  
+  <span class="k">return</span> <span class="o">&lt;</span><span class="nx">div</span><span class="o">&gt;</span><span class="nx">Bad</span><span class="o">&lt;</span><span class="sr">/div&gt;</span><span class="err">;
+</span><span class="p">}</span>
+
+<span class="c1">// ✅ Correct - conditional logic inside hook</span>
+<span class="kd">function</span> <span class="nx">GoodComponent</span><span class="p">({</span> <span class="nx">shouldCount</span> <span class="p">})</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="p">[</span><span class="nx">count</span><span class="p">,</span> <span class="nx">setCount</span><span class="p">]</span> <span class="o">=</span> <span class="nx">useState</span><span class="p">(</span><span class="nx">shouldCount</span> <span class="p">?</span> <span class="mi">0</span> <span class="p">:</span> <span class="kc">null</span><span class="p">);</span>
+  
+  <span class="nx">useEffect</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">shouldCount</span><span class="p">)</span> <span class="p">{</span>
+      <span class="c1">// Conditional logic inside hook</span>
+    <span class="p">}</span>
+  <span class="p">},</span> <span class="p">[</span><span class="nx">shouldCount</span><span class="p">]);</span>
+  
+  <span class="k">return</span> <span class="o">&lt;</span><span class="nx">div</span><span class="o">&gt;</span><span class="nx">Good</span><span class="o">&lt;</span><span class="sr">/div&gt;</span><span class="err">;
+</span><span class="p">}</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<h3 id="q4-what-is-useeffect-and-how-does-it-work">Q4: What is useEffect and how does it work?</h3>
+
+<p><strong>Answer</strong>:
+useEffect performs side effects in functional components, replacing lifecycle methods.</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+</pre></td><td class="rouge-code"><pre><span class="k">import</span> <span class="nx">React</span><span class="p">,</span> <span class="p">{</span> <span class="nx">useState</span><span class="p">,</span> <span class="nx">useEffect</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">react</span><span class="dl">'</span><span class="p">;</span>
+
+<span class="kd">function</span> <span class="nx">EffectExamples</span><span class="p">()</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="p">[</span><span class="nx">count</span><span class="p">,</span> <span class="nx">setCount</span><span class="p">]</span> <span class="o">=</span> <span class="nx">useState</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+  <span class="kd">const</span> <span class="p">[</span><span class="nx">data</span><span class="p">,</span> <span class="nx">setData</span><span class="p">]</span> <span class="o">=</span> <span class="nx">useState</span><span class="p">(</span><span class="kc">null</span><span class="p">);</span>
+  
+  <span class="c1">// 1. Effect runs after every render (no dependency array)</span>
+  <span class="nx">useEffect</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">Runs after every render</span><span class="dl">'</span><span class="p">);</span>
+  <span class="p">});</span>
+  
+  <span class="c1">// 2. Effect runs only once (empty dependency array)</span>
+  <span class="nx">useEffect</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">Runs only on mount</span><span class="dl">'</span><span class="p">);</span>
+    
+    <span class="c1">// Cleanup function (componentWillUnmount)</span>
+    <span class="k">return</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+      <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">Cleanup on unmount</span><span class="dl">'</span><span class="p">);</span>
+    <span class="p">};</span>
+  <span class="p">},</span> <span class="p">[]);</span>
+  
+  <span class="c1">// 3. Effect runs when count changes</span>
+  <span class="nx">useEffect</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="nb">document</span><span class="p">.</span><span class="nx">title</span> <span class="o">=</span> <span class="s2">`Count: </span><span class="p">${</span><span class="nx">count</span><span class="p">}</span><span class="s2">`</span><span class="p">;</span>
+  <span class="p">},</span> <span class="p">[</span><span class="nx">count</span><span class="p">]);</span>
+  
+  <span class="c1">// 4. Data fetching with cleanup</span>
+  <span class="nx">useEffect</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="kd">let</span> <span class="nx">cancelled</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span>
+    
+    <span class="k">async</span> <span class="kd">function</span> <span class="nx">fetchData</span><span class="p">()</span> <span class="p">{</span>
+      <span class="k">try</span> <span class="p">{</span>
+        <span class="kd">const</span> <span class="nx">response</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">fetch</span><span class="p">(</span><span class="dl">'</span><span class="s1">/api/data</span><span class="dl">'</span><span class="p">);</span>
+        <span class="kd">const</span> <span class="nx">result</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">response</span><span class="p">.</span><span class="nx">json</span><span class="p">();</span>
+        
+        <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">cancelled</span><span class="p">)</span> <span class="p">{</span>
+          <span class="nx">setData</span><span class="p">(</span><span class="nx">result</span><span class="p">);</span>
+        <span class="p">}</span>
+      <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">cancelled</span><span class="p">)</span> <span class="p">{</span>
+          <span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="dl">'</span><span class="s1">Fetch error:</span><span class="dl">'</span><span class="p">,</span> <span class="nx">error</span><span class="p">);</span>
+        <span class="p">}</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+    
+    <span class="nx">fetchData</span><span class="p">();</span>
+    
+    <span class="c1">// Cleanup function to prevent memory leaks</span>
+    <span class="k">return</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+      <span class="nx">cancelled</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
+    <span class="p">};</span>
+  <span class="p">},</span> <span class="p">[]);</span>
+  
+  <span class="k">return</span> <span class="p">(</span>
+    <span class="o">&lt;</span><span class="nx">div</span><span class="o">&gt;</span>
+      <span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span><span class="nx">Count</span><span class="p">:</span> <span class="p">{</span><span class="nx">count</span><span class="p">}</span><span class="o">&lt;</span><span class="sr">/p</span><span class="err">&gt;
+</span>      <span class="o">&lt;</span><span class="nx">button</span> <span class="nx">onClick</span><span class="o">=</span><span class="p">{()</span> <span class="o">=&gt;</span> <span class="nx">setCount</span><span class="p">(</span><span class="nx">count</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)}</span><span class="o">&gt;</span>
+        <span class="nx">Increment</span>
+      <span class="o">&lt;</span><span class="sr">/button</span><span class="err">&gt;
+</span>    <span class="o">&lt;</span><span class="sr">/div</span><span class="err">&gt;
+</span>  <span class="p">);</span>
+<span class="p">}</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<h3 id="q5-explain-react-context-and-when-to-use-it">Q5: Explain React Context and when to use it</h3>
+
+<p><strong>Answer</strong>:
+Context provides a way to pass data through the component tree without prop drilling.</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+</pre></td><td class="rouge-code"><pre><span class="c1">// Create context</span>
+<span class="kd">const</span> <span class="nx">ThemeContext</span> <span class="o">=</span> <span class="nx">React</span><span class="p">.</span><span class="nx">createContext</span><span class="p">();</span>
+<span class="kd">const</span> <span class="nx">UserContext</span> <span class="o">=</span> <span class="nx">React</span><span class="p">.</span><span class="nx">createContext</span><span class="p">();</span>
+
+<span class="c1">// Provider component</span>
+<span class="kd">function</span> <span class="nx">App</span><span class="p">()</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="p">[</span><span class="nx">theme</span><span class="p">,</span> <span class="nx">setTheme</span><span class="p">]</span> <span class="o">=</span> <span class="nx">useState</span><span class="p">(</span><span class="dl">'</span><span class="s1">light</span><span class="dl">'</span><span class="p">);</span>
+  <span class="kd">const</span> <span class="p">[</span><span class="nx">user</span><span class="p">,</span> <span class="nx">setUser</span><span class="p">]</span> <span class="o">=</span> <span class="nx">useState</span><span class="p">(</span><span class="kc">null</span><span class="p">);</span>
+  
+  <span class="k">return</span> <span class="p">(</span>
+    <span class="o">&lt;</span><span class="nx">ThemeContext</span><span class="p">.</span><span class="nx">Provider</span> <span class="nx">value</span><span class="o">=</span><span class="p">{</span><span class="s2">`{theme, setTheme}`</span><span class="p">}</span><span class="o">&gt;</span>
+      <span class="o">&lt;</span><span class="nx">UserContext</span><span class="p">.</span><span class="nx">Provider</span> <span class="nx">value</span><span class="o">=</span><span class="p">{</span><span class="s2">`{user, setUser}`</span><span class="p">}</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="nx">Layout</span> <span class="o">/&gt;</span>
+      <span class="o">&lt;</span><span class="sr">/UserContext.Provider</span><span class="err">&gt;
+</span>    <span class="o">&lt;</span><span class="sr">/ThemeContext.Provider</span><span class="err">&gt;
+</span>  <span class="p">);</span>
+<span class="p">}</span>
+
+<span class="c1">// Custom hooks for context</span>
+<span class="kd">function</span> <span class="nx">useTheme</span><span class="p">()</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="nx">context</span> <span class="o">=</span> <span class="nx">useContext</span><span class="p">(</span><span class="nx">ThemeContext</span><span class="p">);</span>
+  <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">context</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">throw</span> <span class="k">new</span> <span class="nb">Error</span><span class="p">(</span><span class="dl">'</span><span class="s1">useTheme must be used within ThemeProvider</span><span class="dl">'</span><span class="p">);</span>
+  <span class="p">}</span>
+  <span class="k">return</span> <span class="nx">context</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kd">function</span> <span class="nx">useUser</span><span class="p">()</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="nx">context</span> <span class="o">=</span> <span class="nx">useContext</span><span class="p">(</span><span class="nx">UserContext</span><span class="p">);</span>
+  <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">context</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">throw</span> <span class="k">new</span> <span class="nb">Error</span><span class="p">(</span><span class="dl">'</span><span class="s1">useUser must be used within UserProvider</span><span class="dl">'</span><span class="p">);</span>
+  <span class="p">}</span>
+  <span class="k">return</span> <span class="nx">context</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c1">// Consumer components</span>
+<span class="kd">function</span> <span class="nx">Header</span><span class="p">()</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="p">{</span> <span class="nx">theme</span><span class="p">,</span> <span class="nx">setTheme</span> <span class="p">}</span> <span class="o">=</span> <span class="nx">useTheme</span><span class="p">();</span>
+  <span class="kd">const</span> <span class="p">{</span> <span class="nx">user</span> <span class="p">}</span> <span class="o">=</span> <span class="nx">useUser</span><span class="p">();</span>
+  
+  <span class="k">return</span> <span class="p">(</span>
+    <span class="o">&lt;</span><span class="nx">header</span> <span class="nx">className</span><span class="o">=</span><span class="p">{</span><span class="s2">`header-</span><span class="p">${</span><span class="nx">theme</span><span class="p">}</span><span class="s2">`</span><span class="p">}</span><span class="o">&gt;</span>
+      <span class="o">&lt;</span><span class="nx">h1</span><span class="o">&gt;</span><span class="nx">Welcome</span> <span class="p">{</span><span class="nx">user</span><span class="p">?.</span><span class="nx">name</span><span class="p">}</span><span class="o">&lt;</span><span class="sr">/h1</span><span class="err">&gt;
+</span>      <span class="o">&lt;</span><span class="nx">button</span> <span class="nx">onClick</span><span class="o">=</span><span class="p">{()</span> <span class="o">=&gt;</span> <span class="nx">setTheme</span><span class="p">(</span><span class="nx">theme</span> <span class="o">===</span> <span class="dl">'</span><span class="s1">light</span><span class="dl">'</span> <span class="p">?</span> <span class="dl">'</span><span class="s1">dark</span><span class="dl">'</span> <span class="p">:</span> <span class="dl">'</span><span class="s1">light</span><span class="dl">'</span><span class="p">)}</span><span class="o">&gt;</span>
+        <span class="nx">Toggle</span> <span class="nx">Theme</span>
+      <span class="o">&lt;</span><span class="sr">/button</span><span class="err">&gt;
+</span>    <span class="o">&lt;</span><span class="sr">/header</span><span class="err">&gt;
+</span>  <span class="p">);</span>
+<span class="p">}</span>
+
+<span class="c1">// Advanced context pattern with reducer</span>
+<span class="kd">const</span> <span class="nx">StateContext</span> <span class="o">=</span> <span class="nx">React</span><span class="p">.</span><span class="nx">createContext</span><span class="p">();</span>
+<span class="kd">const</span> <span class="nx">DispatchContext</span> <span class="o">=</span> <span class="nx">React</span><span class="p">.</span><span class="nx">createContext</span><span class="p">();</span>
+
+<span class="kd">function</span> <span class="nx">appReducer</span><span class="p">(</span><span class="nx">state</span><span class="p">,</span> <span class="nx">action</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">switch</span> <span class="p">(</span><span class="nx">action</span><span class="p">.</span><span class="nx">type</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">case</span> <span class="dl">'</span><span class="s1">SET_USER</span><span class="dl">'</span><span class="p">:</span>
+      <span class="k">return</span> <span class="p">{</span> <span class="p">...</span><span class="nx">state</span><span class="p">,</span> <span class="na">user</span><span class="p">:</span> <span class="nx">action</span><span class="p">.</span><span class="nx">payload</span> <span class="p">};</span>
+    <span class="k">case</span> <span class="dl">'</span><span class="s1">SET_THEME</span><span class="dl">'</span><span class="p">:</span>
+      <span class="k">return</span> <span class="p">{</span> <span class="p">...</span><span class="nx">state</span><span class="p">,</span> <span class="na">theme</span><span class="p">:</span> <span class="nx">action</span><span class="p">.</span><span class="nx">payload</span> <span class="p">};</span>
+    <span class="k">case</span> <span class="dl">'</span><span class="s1">TOGGLE_LOADING</span><span class="dl">'</span><span class="p">:</span>
+      <span class="k">return</span> <span class="p">{</span> <span class="p">...</span><span class="nx">state</span><span class="p">,</span> <span class="na">loading</span><span class="p">:</span> <span class="o">!</span><span class="nx">state</span><span class="p">.</span><span class="nx">loading</span> <span class="p">};</span>
+    <span class="nl">default</span><span class="p">:</span>
+      <span class="k">return</span> <span class="nx">state</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">function</span> <span class="nx">AppProvider</span><span class="p">({</span> <span class="nx">children</span> <span class="p">})</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="p">[</span><span class="nx">state</span><span class="p">,</span> <span class="nx">dispatch</span><span class="p">]</span> <span class="o">=</span> <span class="nx">useReducer</span><span class="p">(</span><span class="nx">appReducer</span><span class="p">,</span> <span class="p">{</span>
+    <span class="na">user</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span>
+    <span class="na">theme</span><span class="p">:</span> <span class="dl">'</span><span class="s1">light</span><span class="dl">'</span><span class="p">,</span>
+    <span class="na">loading</span><span class="p">:</span> <span class="kc">false</span>
+  <span class="p">});</span>
+  
+  <span class="k">return</span> <span class="p">(</span>
+    <span class="o">&lt;</span><span class="nx">StateContext</span><span class="p">.</span><span class="nx">Provider</span> <span class="nx">value</span><span class="o">=</span><span class="p">{</span><span class="nx">state</span><span class="p">}</span><span class="o">&gt;</span>
+      <span class="o">&lt;</span><span class="nx">DispatchContext</span><span class="p">.</span><span class="nx">Provider</span> <span class="nx">value</span><span class="o">=</span><span class="p">{</span><span class="nx">dispatch</span><span class="p">}</span><span class="o">&gt;</span>
+        <span class="p">{</span><span class="nx">children</span><span class="p">}</span>
+      <span class="o">&lt;</span><span class="sr">/DispatchContext.Provider</span><span class="err">&gt;
+</span>    <span class="o">&lt;</span><span class="sr">/StateContext.Provider</span><span class="err">&gt;
+</span>  <span class="p">);</span>
+<span class="p">}</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<h3 id="q6-what-is-react-reconciliation-and-the-key-prop">Q6: What is React reconciliation and the key prop?</h3>
+
+<p><strong>Answer</strong>:
+Reconciliation is React’s diffing algorithm to determine what changes to make to the DOM.</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+</pre></td><td class="rouge-code"><pre><span class="c1">// Without keys (inefficient)</span>
+<span class="kd">function</span> <span class="nx">BadList</span><span class="p">({</span> <span class="nx">items</span> <span class="p">})</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="p">(</span>
+    <span class="o">&lt;</span><span class="nx">ul</span><span class="o">&gt;</span>
+      <span class="p">{</span><span class="nx">items</span><span class="p">.</span><span class="nx">map</span><span class="p">((</span><span class="nx">item</span><span class="p">,</span> <span class="nx">index</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">(</span>
+        <span class="o">&lt;</span><span class="nx">li</span> <span class="nx">key</span><span class="o">=</span><span class="p">{</span><span class="nx">index</span><span class="p">}</span><span class="o">&gt;</span><span class="p">{</span><span class="nx">item</span><span class="p">.</span><span class="nx">name</span><span class="p">}</span><span class="o">&lt;</span><span class="sr">/li&gt; /</span><span class="o">/</span> <span class="err">❌</span> <span class="nx">Using</span> <span class="nx">index</span> <span class="k">as</span> <span class="nx">key</span>
+      <span class="p">))}</span>
+    <span class="o">&lt;</span><span class="sr">/ul</span><span class="err">&gt;
+</span>  <span class="p">);</span>
+<span class="p">}</span>
+
+<span class="c1">// With proper keys (efficient)</span>
+<span class="kd">function</span> <span class="nx">GoodList</span><span class="p">({</span> <span class="nx">items</span> <span class="p">})</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="p">(</span>
+    <span class="o">&lt;</span><span class="nx">ul</span><span class="o">&gt;</span>
+      <span class="p">{</span><span class="nx">items</span><span class="p">.</span><span class="nx">map</span><span class="p">(</span><span class="nx">item</span> <span class="o">=&gt;</span> <span class="p">(</span>
+        <span class="o">&lt;</span><span class="nx">li</span> <span class="nx">key</span><span class="o">=</span><span class="p">{</span><span class="nx">item</span><span class="p">.</span><span class="nx">id</span><span class="p">}</span><span class="o">&gt;</span><span class="p">{</span><span class="nx">item</span><span class="p">.</span><span class="nx">name</span><span class="p">}</span><span class="o">&lt;</span><span class="sr">/li&gt; /</span><span class="o">/</span> <span class="err">✅</span> <span class="nx">Using</span> <span class="nx">stable</span> <span class="nx">unique</span> <span class="nx">ID</span>
+      <span class="p">))}</span>
+    <span class="o">&lt;</span><span class="sr">/ul</span><span class="err">&gt;
+</span>  <span class="p">);</span>
+<span class="p">}</span>
+
+<span class="c1">// Complex example showing reconciliation</span>
+<span class="kd">function</span> <span class="nx">TodoList</span><span class="p">()</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="p">[</span><span class="nx">todos</span><span class="p">,</span> <span class="nx">setTodos</span><span class="p">]</span> <span class="o">=</span> <span class="nx">useState</span><span class="p">([</span>
+    <span class="p">{</span> <span class="na">id</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="na">text</span><span class="p">:</span> <span class="dl">'</span><span class="s1">Learn React</span><span class="dl">'</span><span class="p">,</span> <span class="na">completed</span><span class="p">:</span> <span class="kc">false</span> <span class="p">},</span>
+    <span class="p">{</span> <span class="na">id</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="na">text</span><span class="p">:</span> <span class="dl">'</span><span class="s1">Build app</span><span class="dl">'</span><span class="p">,</span> <span class="na">completed</span><span class="p">:</span> <span class="kc">false</span> <span class="p">}</span>
+  <span class="p">]);</span>
+  
+  <span class="kd">const</span> <span class="nx">addTodo</span> <span class="o">=</span> <span class="p">(</span><span class="nx">text</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="nx">setTodos</span><span class="p">([...</span><span class="nx">todos</span><span class="p">,</span> <span class="p">{</span>
+      <span class="na">id</span><span class="p">:</span> <span class="nb">Date</span><span class="p">.</span><span class="nx">now</span><span class="p">(),</span>
+      <span class="nx">text</span><span class="p">,</span>
+      <span class="na">completed</span><span class="p">:</span> <span class="kc">false</span>
+    <span class="p">}]);</span>
+  <span class="p">};</span>
+  
+  <span class="kd">const</span> <span class="nx">toggleTodo</span> <span class="o">=</span> <span class="p">(</span><span class="nx">id</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="nx">setTodos</span><span class="p">(</span><span class="nx">todos</span><span class="p">.</span><span class="nx">map</span><span class="p">(</span><span class="nx">todo</span> <span class="o">=&gt;</span>
+      <span class="nx">todo</span><span class="p">.</span><span class="nx">id</span> <span class="o">===</span> <span class="nx">id</span> <span class="p">?</span> <span class="p">{</span> <span class="p">...</span><span class="nx">todo</span><span class="p">,</span> <span class="na">completed</span><span class="p">:</span> <span class="o">!</span><span class="nx">todo</span><span class="p">.</span><span class="nx">completed</span> <span class="p">}</span> <span class="p">:</span> <span class="nx">todo</span>
+    <span class="p">));</span>
+  <span class="p">};</span>
+  
+  <span class="k">return</span> <span class="p">(</span>
+    <span class="o">&lt;</span><span class="nx">div</span><span class="o">&gt;</span>
+      <span class="p">{</span><span class="nx">todos</span><span class="p">.</span><span class="nx">map</span><span class="p">(</span><span class="nx">todo</span> <span class="o">=&gt;</span> <span class="p">(</span>
+        <span class="o">&lt;</span><span class="nx">TodoItem</span> 
+          <span class="nx">key</span><span class="o">=</span><span class="p">{</span><span class="nx">todo</span><span class="p">.</span><span class="nx">id</span><span class="p">}</span> <span class="c1">// Critical for performance</span>
+          <span class="nx">todo</span><span class="o">=</span><span class="p">{</span><span class="nx">todo</span><span class="p">}</span>
+          <span class="nx">onToggle</span><span class="o">=</span><span class="p">{</span><span class="nx">toggleTodo</span><span class="p">}</span>
+        <span class="sr">/</span><span class="err">&gt;
+</span>      <span class="p">))}</span>
+    <span class="o">&lt;</span><span class="sr">/div</span><span class="err">&gt;
+</span>  <span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kd">function</span> <span class="nx">TodoItem</span><span class="p">({</span> <span class="nx">todo</span><span class="p">,</span> <span class="nx">onToggle</span> <span class="p">})</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="p">(</span>
+    <span class="o">&lt;</span><span class="nx">div</span> <span class="nx">onClick</span><span class="o">=</span><span class="p">{()</span> <span class="o">=&gt;</span> <span class="nx">onToggle</span><span class="p">(</span><span class="nx">todo</span><span class="p">.</span><span class="nx">id</span><span class="p">)}</span><span class="o">&gt;</span>
+      <span class="p">{</span><span class="nx">todo</span><span class="p">.</span><span class="nx">text</span><span class="p">}</span> <span class="p">{</span><span class="nx">todo</span><span class="p">.</span><span class="nx">completed</span> <span class="p">?</span> <span class="dl">'</span><span class="s1">✓</span><span class="dl">'</span> <span class="p">:</span> <span class="dl">'</span><span class="s1">○</span><span class="dl">'</span><span class="p">}</span>
+    <span class="o">&lt;</span><span class="sr">/div</span><span class="err">&gt;
+</span>  <span class="p">);</span>
+<span class="p">}</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<h3 id="q7-explain-react-performance-optimization-techniques">Q7: Explain React performance optimization techniques</h3>
+
+<p><strong>Answer</strong>:
+Several techniques can optimize React applications:</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+</pre></td><td class="rouge-code"><pre><span class="c1">// 1. React.memo - Prevent unnecessary re-renders</span>
+<span class="kd">const</span> <span class="nx">ExpensiveComponent</span> <span class="o">=</span> <span class="nx">React</span><span class="p">.</span><span class="nx">memo</span><span class="p">(</span><span class="kd">function</span> <span class="nx">ExpensiveComponent</span><span class="p">({</span> <span class="nx">data</span><span class="p">,</span> <span class="nx">onClick</span> <span class="p">})</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">ExpensiveComponent rendered</span><span class="dl">'</span><span class="p">);</span>
+  
+  <span class="k">return</span> <span class="p">(</span>
+    <span class="o">&lt;</span><span class="nx">div</span><span class="o">&gt;</span>
+      <span class="p">{</span><span class="nx">data</span><span class="p">.</span><span class="nx">map</span><span class="p">(</span><span class="nx">item</span> <span class="o">=&gt;</span> <span class="p">(</span>
+        <span class="o">&lt;</span><span class="nx">div</span> <span class="nx">key</span><span class="o">=</span><span class="p">{</span><span class="nx">item</span><span class="p">.</span><span class="nx">id</span><span class="p">}</span> <span class="nx">onClick</span><span class="o">=</span><span class="p">{()</span> <span class="o">=&gt;</span> <span class="nx">onClick</span><span class="p">(</span><span class="nx">item</span><span class="p">)}</span><span class="o">&gt;</span>
+          <span class="p">{</span><span class="nx">item</span><span class="p">.</span><span class="nx">name</span><span class="p">}</span>
+        <span class="o">&lt;</span><span class="sr">/div</span><span class="err">&gt;
+</span>      <span class="p">))}</span>
+    <span class="o">&lt;</span><span class="sr">/div</span><span class="err">&gt;
+</span>  <span class="p">);</span>
+<span class="p">},</span> <span class="p">(</span><span class="nx">prevProps</span><span class="p">,</span> <span class="nx">nextProps</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="c1">// Custom comparison function (optional)</span>
+  <span class="k">return</span> <span class="nx">prevProps</span><span class="p">.</span><span class="nx">data</span><span class="p">.</span><span class="nx">length</span> <span class="o">===</span> <span class="nx">nextProps</span><span class="p">.</span><span class="nx">data</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span>
+<span class="p">});</span>
+
+<span class="c1">// 2. useMemo - Memoize expensive calculations</span>
+<span class="kd">function</span> <span class="nx">DataProcessor</span><span class="p">({</span> <span class="nx">items</span><span class="p">,</span> <span class="nx">filter</span> <span class="p">})</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="nx">processedData</span> <span class="o">=</span> <span class="nx">useMemo</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">Processing data...</span><span class="dl">'</span><span class="p">);</span>
+    <span class="k">return</span> <span class="nx">items</span>
+      <span class="p">.</span><span class="nx">filter</span><span class="p">(</span><span class="nx">item</span> <span class="o">=&gt;</span> <span class="nx">item</span><span class="p">.</span><span class="nx">category</span> <span class="o">===</span> <span class="nx">filter</span><span class="p">)</span>
+      <span class="p">.</span><span class="nx">map</span><span class="p">(</span><span class="nx">item</span> <span class="o">=&gt;</span> <span class="p">({</span>
+        <span class="p">...</span><span class="nx">item</span><span class="p">,</span>
+        <span class="na">processed</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+        <span class="na">timestamp</span><span class="p">:</span> <span class="nb">Date</span><span class="p">.</span><span class="nx">now</span><span class="p">()</span>
+      <span class="p">}))</span>
+      <span class="p">.</span><span class="nx">sort</span><span class="p">((</span><span class="nx">a</span><span class="p">,</span> <span class="nx">b</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">a</span><span class="p">.</span><span class="nx">name</span><span class="p">.</span><span class="nx">localeCompare</span><span class="p">(</span><span class="nx">b</span><span class="p">.</span><span class="nx">name</span><span class="p">));</span>
+  <span class="p">},</span> <span class="p">[</span><span class="nx">items</span><span class="p">,</span> <span class="nx">filter</span><span class="p">]);</span>
+  
+  <span class="k">return</span> <span class="p">(</span>
+    <span class="o">&lt;</span><span class="nx">div</span><span class="o">&gt;</span>
+      <span class="p">{</span><span class="nx">processedData</span><span class="p">.</span><span class="nx">map</span><span class="p">(</span><span class="nx">item</span> <span class="o">=&gt;</span> <span class="p">(</span>
+        <span class="o">&lt;</span><span class="nx">div</span> <span class="nx">key</span><span class="o">=</span><span class="p">{</span><span class="nx">item</span><span class="p">.</span><span class="nx">id</span><span class="p">}</span><span class="o">&gt;</span><span class="p">{</span><span class="nx">item</span><span class="p">.</span><span class="nx">name</span><span class="p">}</span><span class="o">&lt;</span><span class="sr">/div</span><span class="err">&gt;
+</span>      <span class="p">))}</span>
+    <span class="o">&lt;</span><span class="sr">/div</span><span class="err">&gt;
+</span>  <span class="p">);</span>
+<span class="p">}</span>
+
+<span class="c1">// 3. useCallback - Memoize functions</span>
+<span class="kd">function</span> <span class="nx">Parent</span><span class="p">()</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="p">[</span><span class="nx">count</span><span class="p">,</span> <span class="nx">setCount</span><span class="p">]</span> <span class="o">=</span> <span class="nx">useState</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+  <span class="kd">const</span> <span class="p">[</span><span class="nx">items</span><span class="p">,</span> <span class="nx">setItems</span><span class="p">]</span> <span class="o">=</span> <span class="nx">useState</span><span class="p">([]);</span>
+  
+  <span class="c1">// ❌ New function on every render</span>
+  <span class="kd">const</span> <span class="nx">handleClick</span> <span class="o">=</span> <span class="p">(</span><span class="nx">item</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">Clicked:</span><span class="dl">'</span><span class="p">,</span> <span class="nx">item</span><span class="p">);</span>
+  <span class="p">};</span>
+  
+  <span class="c1">// ✅ Memoized function</span>
+  <span class="kd">const</span> <span class="nx">handleClickMemoized</span> <span class="o">=</span> <span class="nx">useCallback</span><span class="p">((</span><span class="nx">item</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">Clicked:</span><span class="dl">'</span><span class="p">,</span> <span class="nx">item</span><span class="p">);</span>
+  <span class="p">},</span> <span class="p">[]);</span> <span class="c1">// No dependencies, function never changes</span>
+  
+  <span class="kd">const</span> <span class="nx">addItem</span> <span class="o">=</span> <span class="nx">useCallback</span><span class="p">((</span><span class="nx">newItem</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="nx">setItems</span><span class="p">(</span><span class="nx">prev</span> <span class="o">=&gt;</span> <span class="p">[...</span><span class="nx">prev</span><span class="p">,</span> <span class="nx">newItem</span><span class="p">]);</span>
+  <span class="p">},</span> <span class="p">[]);</span>
+  
+  <span class="k">return</span> <span class="p">(</span>
+    <span class="o">&lt;</span><span class="nx">div</span><span class="o">&gt;</span>
+      <span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span><span class="nx">Count</span><span class="p">:</span> <span class="p">{</span><span class="nx">count</span><span class="p">}</span><span class="o">&lt;</span><span class="sr">/p</span><span class="err">&gt;
+</span>      <span class="o">&lt;</span><span class="nx">button</span> <span class="nx">onClick</span><span class="o">=</span><span class="p">{()</span> <span class="o">=&gt;</span> <span class="nx">setCount</span><span class="p">(</span><span class="nx">count</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)}</span><span class="o">&gt;</span><span class="nx">Increment</span><span class="o">&lt;</span><span class="sr">/button</span><span class="err">&gt;
+</span>      <span class="o">&lt;</span><span class="nx">ExpensiveComponent</span> 
+        <span class="nx">data</span><span class="o">=</span><span class="p">{</span><span class="nx">items</span><span class="p">}</span>
+        <span class="nx">onClick</span><span class="o">=</span><span class="p">{</span><span class="nx">handleClickMemoized</span><span class="p">}</span>
+      <span class="sr">/</span><span class="err">&gt;
+</span>    <span class="o">&lt;</span><span class="sr">/div</span><span class="err">&gt;
+</span>  <span class="p">);</span>
+<span class="p">}</span>
+
+<span class="c1">// 4. Code splitting with React.lazy</span>
+<span class="kd">const</span> <span class="nx">LazyComponent</span> <span class="o">=</span> <span class="nx">React</span><span class="p">.</span><span class="nx">lazy</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="k">import</span><span class="p">(</span><span class="dl">'</span><span class="s1">./LazyComponent</span><span class="dl">'</span><span class="p">));</span>
+
+<span class="kd">function</span> <span class="nx">App</span><span class="p">()</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="p">(</span>
+    <span class="o">&lt;</span><span class="nx">div</span><span class="o">&gt;</span>
+      <span class="o">&lt;</span><span class="nx">Suspense</span> <span class="nx">fallback</span><span class="o">=</span><span class="p">{</span><span class="o">&lt;</span><span class="nx">div</span><span class="o">&gt;</span><span class="nx">Loading</span><span class="p">...</span><span class="o">&lt;</span><span class="sr">/div&gt;}</span><span class="err">&gt;
+</span>        <span class="o">&lt;</span><span class="nx">LazyComponent</span> <span class="o">/&gt;</span>
+      <span class="o">&lt;</span><span class="sr">/Suspense</span><span class="err">&gt;
+</span>    <span class="o">&lt;</span><span class="sr">/div</span><span class="err">&gt;
+</span>  <span class="p">);</span>
+<span class="p">}</span>
+
+<span class="c1">// 5. Virtual scrolling for large lists</span>
+<span class="kd">function</span> <span class="nx">VirtualizedList</span><span class="p">({</span> <span class="nx">items</span> <span class="p">})</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="p">[</span><span class="nx">startIndex</span><span class="p">,</span> <span class="nx">setStartIndex</span><span class="p">]</span> <span class="o">=</span> <span class="nx">useState</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+  <span class="kd">const</span> <span class="p">[</span><span class="nx">endIndex</span><span class="p">,</span> <span class="nx">setEndIndex</span><span class="p">]</span> <span class="o">=</span> <span class="nx">useState</span><span class="p">(</span><span class="mi">10</span><span class="p">);</span>
+  <span class="kd">const</span> <span class="nx">itemHeight</span> <span class="o">=</span> <span class="mi">50</span><span class="p">;</span>
+  <span class="kd">const</span> <span class="nx">containerHeight</span> <span class="o">=</span> <span class="mi">500</span><span class="p">;</span>
+  
+  <span class="kd">const</span> <span class="nx">visibleItems</span> <span class="o">=</span> <span class="nx">items</span><span class="p">.</span><span class="nx">slice</span><span class="p">(</span><span class="nx">startIndex</span><span class="p">,</span> <span class="nx">endIndex</span><span class="p">);</span>
+  
+  <span class="kd">const</span> <span class="nx">handleScroll</span> <span class="o">=</span> <span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="nx">scrollTop</span> <span class="o">=</span> <span class="nx">e</span><span class="p">.</span><span class="nx">target</span><span class="p">.</span><span class="nx">scrollTop</span><span class="p">;</span>
+    <span class="kd">const</span> <span class="nx">newStartIndex</span> <span class="o">=</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">floor</span><span class="p">(</span><span class="nx">scrollTop</span> <span class="o">/</span> <span class="nx">itemHeight</span><span class="p">);</span>
+    <span class="kd">const</span> <span class="nx">newEndIndex</span> <span class="o">=</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">min</span><span class="p">(</span>
+      <span class="nx">newStartIndex</span> <span class="o">+</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">ceil</span><span class="p">(</span><span class="nx">containerHeight</span> <span class="o">/</span> <span class="nx">itemHeight</span><span class="p">),</span>
+      <span class="nx">items</span><span class="p">.</span><span class="nx">length</span>
+    <span class="p">);</span>
+    
+    <span class="nx">setStartIndex</span><span class="p">(</span><span class="nx">newStartIndex</span><span class="p">);</span>
+    <span class="nx">setEndIndex</span><span class="p">(</span><span class="nx">newEndIndex</span><span class="p">);</span>
+  <span class="p">};</span>
+  
+  <span class="k">return</span> <span class="p">(</span>
+    <span class="o">&lt;</span><span class="nx">div</span> 
+      <span class="nx">style</span><span class="o">=</span><span class="p">{</span><span class="s2">`{height: </span><span class="p">${</span><span class="nx">containerHeight</span><span class="p">}</span><span class="s2">px, overflow: 'auto'}`</span><span class="p">}</span>
+      <span class="nx">onScroll</span><span class="o">=</span><span class="p">{</span><span class="nx">handleScroll</span><span class="p">}</span>
+    <span class="o">&gt;</span>
+      <span class="o">&lt;</span><span class="nx">div</span> <span class="nx">style</span><span class="o">=</span><span class="p">{</span><span class="s2">`{height: </span><span class="p">${</span><span class="nx">items</span><span class="p">.</span><span class="nx">length</span> <span class="o">*</span> <span class="nx">itemHeight</span><span class="p">}</span><span class="s2">px, position: 'relative'}`</span><span class="p">}</span><span class="o">&gt;</span>
+        <span class="p">{</span><span class="nx">visibleItems</span><span class="p">.</span><span class="nx">map</span><span class="p">((</span><span class="nx">item</span><span class="p">,</span> <span class="nx">index</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">(</span>
+          <span class="o">&lt;</span><span class="nx">div</span>
+            <span class="nx">key</span><span class="o">=</span><span class="p">{</span><span class="nx">item</span><span class="p">.</span><span class="nx">id</span><span class="p">}</span>
+            <span class="nx">style</span><span class="o">=</span><span class="p">{</span><span class="s2">`{
+              position: 'absolute',
+              top: </span><span class="p">${(</span><span class="nx">startIndex</span> <span class="o">+</span> <span class="nx">index</span><span class="p">)</span> <span class="o">*</span> <span class="nx">itemHeight</span><span class="p">}</span><span class="s2">px,
+              height: </span><span class="p">${</span><span class="nx">itemHeight</span><span class="p">}</span><span class="s2">px,
+              width: '100%'
+            }`</span><span class="p">}</span>
+          <span class="o">&gt;</span>
+            <span class="p">{</span><span class="nx">item</span><span class="p">.</span><span class="nx">name</span><span class="p">}</span>
+          <span class="o">&lt;</span><span class="sr">/div</span><span class="err">&gt;
+</span>        <span class="p">))}</span>
+      <span class="o">&lt;</span><span class="sr">/div</span><span class="err">&gt;
+</span>    <span class="o">&lt;</span><span class="sr">/div</span><span class="err">&gt;
+</span>  <span class="p">);</span>
+<span class="p">}</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<h3 id="q8-what-are-custom-hooks-and-how-do-you-create-them">Q8: What are custom hooks and how do you create them?</h3>
+
+<p><strong>Answer</strong>:
+Custom hooks are JavaScript functions that use other hooks and allow you to extract component logic.</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155
+156
+157
+158
+159
+160
+161
+162
+163
+164
+165
+166
+167
+168
+169
+170
+171
+172
+173
+174
+175
+176
+</pre></td><td class="rouge-code"><pre><span class="c1">// 1. useLocalStorage hook</span>
+<span class="kd">function</span> <span class="nx">useLocalStorage</span><span class="p">(</span><span class="nx">key</span><span class="p">,</span> <span class="nx">initialValue</span><span class="p">)</span> <span class="p">{</span>
+  <span class="c1">// State to store our value</span>
+  <span class="kd">const</span> <span class="p">[</span><span class="nx">storedValue</span><span class="p">,</span> <span class="nx">setStoredValue</span><span class="p">]</span> <span class="o">=</span> <span class="nx">useState</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="k">try</span> <span class="p">{</span>
+      <span class="kd">const</span> <span class="nx">item</span> <span class="o">=</span> <span class="nb">window</span><span class="p">.</span><span class="nx">localStorage</span><span class="p">.</span><span class="nx">getItem</span><span class="p">(</span><span class="nx">key</span><span class="p">);</span>
+      <span class="k">return</span> <span class="nx">item</span> <span class="p">?</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span><span class="nx">item</span><span class="p">)</span> <span class="p">:</span> <span class="nx">initialValue</span><span class="p">;</span>
+    <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="s2">`Error reading localStorage key "</span><span class="p">${</span><span class="nx">key</span><span class="p">}</span><span class="s2">":`</span><span class="p">,</span> <span class="nx">error</span><span class="p">);</span>
+      <span class="k">return</span> <span class="nx">initialValue</span><span class="p">;</span>
+    <span class="p">}</span>
+  <span class="p">});</span>
+  
+  <span class="c1">// Return a wrapped version of useState's setter function that persists the value</span>
+  <span class="kd">const</span> <span class="nx">setValue</span> <span class="o">=</span> <span class="nx">useCallback</span><span class="p">((</span><span class="nx">value</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="k">try</span> <span class="p">{</span>
+      <span class="c1">// Allow value to be a function so we have the same API as useState</span>
+      <span class="kd">const</span> <span class="nx">valueToStore</span> <span class="o">=</span> <span class="nx">value</span> <span class="k">instanceof</span> <span class="nb">Function</span> <span class="p">?</span> <span class="nx">value</span><span class="p">(</span><span class="nx">storedValue</span><span class="p">)</span> <span class="p">:</span> <span class="nx">value</span><span class="p">;</span>
+      <span class="nx">setStoredValue</span><span class="p">(</span><span class="nx">valueToStore</span><span class="p">);</span>
+      <span class="nb">window</span><span class="p">.</span><span class="nx">localStorage</span><span class="p">.</span><span class="nx">setItem</span><span class="p">(</span><span class="nx">key</span><span class="p">,</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">valueToStore</span><span class="p">));</span>
+    <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="s2">`Error setting localStorage key "</span><span class="p">${</span><span class="nx">key</span><span class="p">}</span><span class="s2">":`</span><span class="p">,</span> <span class="nx">error</span><span class="p">);</span>
+    <span class="p">}</span>
+  <span class="p">},</span> <span class="p">[</span><span class="nx">key</span><span class="p">,</span> <span class="nx">storedValue</span><span class="p">]);</span>
+  
+  <span class="k">return</span> <span class="p">[</span><span class="nx">storedValue</span><span class="p">,</span> <span class="nx">setValue</span><span class="p">];</span>
+<span class="p">}</span>
+
+<span class="c1">// 2. useDebounce hook</span>
+<span class="kd">function</span> <span class="nx">useDebounce</span><span class="p">(</span><span class="nx">value</span><span class="p">,</span> <span class="nx">delay</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="p">[</span><span class="nx">debouncedValue</span><span class="p">,</span> <span class="nx">setDebouncedValue</span><span class="p">]</span> <span class="o">=</span> <span class="nx">useState</span><span class="p">(</span><span class="nx">value</span><span class="p">);</span>
+  
+  <span class="nx">useEffect</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="nx">handler</span> <span class="o">=</span> <span class="nx">setTimeout</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+      <span class="nx">setDebouncedValue</span><span class="p">(</span><span class="nx">value</span><span class="p">);</span>
+    <span class="p">},</span> <span class="nx">delay</span><span class="p">);</span>
+    
+    <span class="k">return</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+      <span class="nx">clearTimeout</span><span class="p">(</span><span class="nx">handler</span><span class="p">);</span>
+    <span class="p">};</span>
+  <span class="p">},</span> <span class="p">[</span><span class="nx">value</span><span class="p">,</span> <span class="nx">delay</span><span class="p">]);</span>
+  
+  <span class="k">return</span> <span class="nx">debouncedValue</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c1">// 3. useFetch hook</span>
+<span class="kd">function</span> <span class="nx">useFetch</span><span class="p">(</span><span class="nx">url</span><span class="p">,</span> <span class="nx">options</span> <span class="o">=</span> <span class="p">{})</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="p">[</span><span class="nx">data</span><span class="p">,</span> <span class="nx">setData</span><span class="p">]</span> <span class="o">=</span> <span class="nx">useState</span><span class="p">(</span><span class="kc">null</span><span class="p">);</span>
+  <span class="kd">const</span> <span class="p">[</span><span class="nx">loading</span><span class="p">,</span> <span class="nx">setLoading</span><span class="p">]</span> <span class="o">=</span> <span class="nx">useState</span><span class="p">(</span><span class="kc">true</span><span class="p">);</span>
+  <span class="kd">const</span> <span class="p">[</span><span class="nx">error</span><span class="p">,</span> <span class="nx">setError</span><span class="p">]</span> <span class="o">=</span> <span class="nx">useState</span><span class="p">(</span><span class="kc">null</span><span class="p">);</span>
+  
+  <span class="nx">useEffect</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="kd">let</span> <span class="nx">cancelled</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span>
+    
+    <span class="kd">const</span> <span class="nx">fetchData</span> <span class="o">=</span> <span class="k">async</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+      <span class="k">try</span> <span class="p">{</span>
+        <span class="nx">setLoading</span><span class="p">(</span><span class="kc">true</span><span class="p">);</span>
+        <span class="nx">setError</span><span class="p">(</span><span class="kc">null</span><span class="p">);</span>
+        
+        <span class="kd">const</span> <span class="nx">response</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">fetch</span><span class="p">(</span><span class="nx">url</span><span class="p">,</span> <span class="nx">options</span><span class="p">);</span>
+        
+        <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">response</span><span class="p">.</span><span class="nx">ok</span><span class="p">)</span> <span class="p">{</span>
+          <span class="k">throw</span> <span class="k">new</span> <span class="nb">Error</span><span class="p">(</span><span class="s2">`HTTP error! status: </span><span class="p">${</span><span class="nx">response</span><span class="p">.</span><span class="nx">status</span><span class="p">}</span><span class="s2">`</span><span class="p">);</span>
+        <span class="p">}</span>
+        
+        <span class="kd">const</span> <span class="nx">result</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">response</span><span class="p">.</span><span class="nx">json</span><span class="p">();</span>
+        
+        <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">cancelled</span><span class="p">)</span> <span class="p">{</span>
+          <span class="nx">setData</span><span class="p">(</span><span class="nx">result</span><span class="p">);</span>
+        <span class="p">}</span>
+      <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">cancelled</span><span class="p">)</span> <span class="p">{</span>
+          <span class="nx">setError</span><span class="p">(</span><span class="nx">err</span><span class="p">.</span><span class="nx">message</span><span class="p">);</span>
+        <span class="p">}</span>
+      <span class="p">}</span> <span class="k">finally</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">cancelled</span><span class="p">)</span> <span class="p">{</span>
+          <span class="nx">setLoading</span><span class="p">(</span><span class="kc">false</span><span class="p">);</span>
+        <span class="p">}</span>
+      <span class="p">}</span>
+    <span class="p">};</span>
+    
+    <span class="nx">fetchData</span><span class="p">();</span>
+    
+    <span class="k">return</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+      <span class="nx">cancelled</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
+    <span class="p">};</span>
+  <span class="p">},</span> <span class="p">[</span><span class="nx">url</span><span class="p">,</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">options</span><span class="p">)]);</span>
+  
+  <span class="k">return</span> <span class="p">{</span> <span class="nx">data</span><span class="p">,</span> <span class="nx">loading</span><span class="p">,</span> <span class="nx">error</span> <span class="p">};</span>
+<span class="p">}</span>
+
+<span class="c1">// 4. useWindowSize hook</span>
+<span class="kd">function</span> <span class="nx">useWindowSize</span><span class="p">()</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="p">[</span><span class="nx">windowSize</span><span class="p">,</span> <span class="nx">setWindowSize</span><span class="p">]</span> <span class="o">=</span> <span class="nx">useState</span><span class="p">({</span>
+    <span class="na">width</span><span class="p">:</span> <span class="kc">undefined</span><span class="p">,</span>
+    <span class="na">height</span><span class="p">:</span> <span class="kc">undefined</span><span class="p">,</span>
+  <span class="p">});</span>
+  
+  <span class="nx">useEffect</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="kd">function</span> <span class="nx">handleResize</span><span class="p">()</span> <span class="p">{</span>
+      <span class="nx">setWindowSize</span><span class="p">({</span>
+        <span class="na">width</span><span class="p">:</span> <span class="nb">window</span><span class="p">.</span><span class="nx">innerWidth</span><span class="p">,</span>
+        <span class="na">height</span><span class="p">:</span> <span class="nb">window</span><span class="p">.</span><span class="nx">innerHeight</span><span class="p">,</span>
+      <span class="p">});</span>
+    <span class="p">}</span>
+    
+    <span class="c1">// Add event listener</span>
+    <span class="nb">window</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="dl">'</span><span class="s1">resize</span><span class="dl">'</span><span class="p">,</span> <span class="nx">handleResize</span><span class="p">);</span>
+    
+    <span class="c1">// Call handler right away so state gets updated with initial window size</span>
+    <span class="nx">handleResize</span><span class="p">();</span>
+    
+    <span class="c1">// Remove event listener on cleanup</span>
+    <span class="k">return</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="nb">window</span><span class="p">.</span><span class="nx">removeEventListener</span><span class="p">(</span><span class="dl">'</span><span class="s1">resize</span><span class="dl">'</span><span class="p">,</span> <span class="nx">handleResize</span><span class="p">);</span>
+  <span class="p">},</span> <span class="p">[]);</span>
+  
+  <span class="k">return</span> <span class="nx">windowSize</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c1">// 5. useToggle hook</span>
+<span class="kd">function</span> <span class="nx">useToggle</span><span class="p">(</span><span class="nx">initialValue</span> <span class="o">=</span> <span class="kc">false</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="p">[</span><span class="nx">value</span><span class="p">,</span> <span class="nx">setValue</span><span class="p">]</span> <span class="o">=</span> <span class="nx">useState</span><span class="p">(</span><span class="nx">initialValue</span><span class="p">);</span>
+  
+  <span class="kd">const</span> <span class="nx">toggle</span> <span class="o">=</span> <span class="nx">useCallback</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="nx">setValue</span><span class="p">(</span><span class="nx">prev</span> <span class="o">=&gt;</span> <span class="o">!</span><span class="nx">prev</span><span class="p">);</span>
+  <span class="p">},</span> <span class="p">[]);</span>
+  
+  <span class="kd">const</span> <span class="nx">setTrue</span> <span class="o">=</span> <span class="nx">useCallback</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="nx">setValue</span><span class="p">(</span><span class="kc">true</span><span class="p">);</span>
+  <span class="p">},</span> <span class="p">[]);</span>
+  
+  <span class="kd">const</span> <span class="nx">setFalse</span> <span class="o">=</span> <span class="nx">useCallback</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="nx">setValue</span><span class="p">(</span><span class="kc">false</span><span class="p">);</span>
+  <span class="p">},</span> <span class="p">[]);</span>
+  
+  <span class="k">return</span> <span class="p">[</span><span class="nx">value</span><span class="p">,</span> <span class="p">{</span> <span class="nx">toggle</span><span class="p">,</span> <span class="nx">setTrue</span><span class="p">,</span> <span class="nx">setFalse</span><span class="p">,</span> <span class="nx">setValue</span> <span class="p">}];</span>
+<span class="p">}</span>
+
+<span class="c1">// Usage examples</span>
+<span class="kd">function</span> <span class="nx">App</span><span class="p">()</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="p">[</span><span class="nx">name</span><span class="p">,</span> <span class="nx">setName</span><span class="p">]</span> <span class="o">=</span> <span class="nx">useLocalStorage</span><span class="p">(</span><span class="dl">'</span><span class="s1">name</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">Anonymous</span><span class="dl">'</span><span class="p">);</span>
+  <span class="kd">const</span> <span class="p">[</span><span class="nx">searchTerm</span><span class="p">,</span> <span class="nx">setSearchTerm</span><span class="p">]</span> <span class="o">=</span> <span class="nx">useState</span><span class="p">(</span><span class="dl">''</span><span class="p">);</span>
+  <span class="kd">const</span> <span class="nx">debouncedSearchTerm</span> <span class="o">=</span> <span class="nx">useDebounce</span><span class="p">(</span><span class="nx">searchTerm</span><span class="p">,</span> <span class="mi">500</span><span class="p">);</span>
+  <span class="kd">const</span> <span class="p">{</span> <span class="nx">data</span><span class="p">,</span> <span class="nx">loading</span><span class="p">,</span> <span class="nx">error</span> <span class="p">}</span> <span class="o">=</span> <span class="nx">useFetch</span><span class="p">(</span><span class="dl">'</span><span class="s1">/api/users</span><span class="dl">'</span><span class="p">);</span>
+  <span class="kd">const</span> <span class="p">{</span> <span class="nx">width</span><span class="p">,</span> <span class="nx">height</span> <span class="p">}</span> <span class="o">=</span> <span class="nx">useWindowSize</span><span class="p">();</span>
+  <span class="kd">const</span> <span class="p">[</span><span class="nx">isVisible</span><span class="p">,</span> <span class="p">{</span> <span class="nx">toggle</span><span class="p">,</span> <span class="nx">setTrue</span><span class="p">,</span> <span class="nx">setFalse</span> <span class="p">}]</span> <span class="o">=</span> <span class="nx">useToggle</span><span class="p">();</span>
+  
+  <span class="k">return</span> <span class="p">(</span>
+    <span class="o">&lt;</span><span class="nx">div</span><span class="o">&gt;</span>
+      <span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span><span class="nx">Name</span><span class="p">:</span> <span class="p">{</span><span class="nx">name</span><span class="p">}</span><span class="o">&lt;</span><span class="sr">/p</span><span class="err">&gt;
+</span>      <span class="o">&lt;</span><span class="nx">input</span> 
+        <span class="nx">value</span><span class="o">=</span><span class="p">{</span><span class="nx">name</span><span class="p">}</span>
+        <span class="nx">onChange</span><span class="o">=</span><span class="p">{(</span><span class="nx">e</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">setName</span><span class="p">(</span><span class="nx">e</span><span class="p">.</span><span class="nx">target</span><span class="p">.</span><span class="nx">value</span><span class="p">)}</span>
+        <span class="nx">placeholder</span><span class="o">=</span><span class="dl">"</span><span class="s2">Enter your name</span><span class="dl">"</span>
+      <span class="o">/&gt;</span>
+      
+      <span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span><span class="nx">Window</span> <span class="nx">size</span><span class="p">:</span> <span class="p">{</span><span class="nx">width</span><span class="p">}</span> <span class="nx">x</span> <span class="p">{</span><span class="nx">height</span><span class="p">}</span><span class="o">&lt;</span><span class="sr">/p</span><span class="err">&gt;
+</span>      
+      <span class="o">&lt;</span><span class="nx">input</span>
+        <span class="nx">value</span><span class="o">=</span><span class="p">{</span><span class="nx">searchTerm</span><span class="p">}</span>
+        <span class="nx">onChange</span><span class="o">=</span><span class="p">{(</span><span class="nx">e</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">setSearchTerm</span><span class="p">(</span><span class="nx">e</span><span class="p">.</span><span class="nx">target</span><span class="p">.</span><span class="nx">value</span><span class="p">)}</span>
+        <span class="nx">placeholder</span><span class="o">=</span><span class="dl">"</span><span class="s2">Search...</span><span class="dl">"</span>
+      <span class="o">/&gt;</span>
+      <span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span><span class="nx">Debounced</span><span class="p">:</span> <span class="p">{</span><span class="nx">debouncedSearchTerm</span><span class="p">}</span><span class="o">&lt;</span><span class="sr">/p</span><span class="err">&gt;
+</span>      
+      <span class="p">{</span><span class="nx">loading</span> <span class="o">&amp;&amp;</span> <span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span><span class="nx">Loading</span><span class="p">...</span><span class="o">&lt;</span><span class="sr">/p&gt;</span><span class="err">}
+</span>      <span class="p">{</span><span class="nx">error</span> <span class="o">&amp;&amp;</span> <span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span><span class="nb">Error</span><span class="p">:</span> <span class="p">{</span><span class="nx">error</span><span class="p">}</span><span class="o">&lt;</span><span class="sr">/p&gt;</span><span class="err">}
+</span>      <span class="p">{</span><span class="nx">data</span> <span class="o">&amp;&amp;</span> <span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span><span class="nx">Users</span> <span class="nx">loaded</span><span class="p">:</span> <span class="p">{</span><span class="nx">data</span><span class="p">.</span><span class="nx">length</span><span class="p">}</span><span class="o">&lt;</span><span class="sr">/p&gt;</span><span class="err">}
+</span>      
+      <span class="o">&lt;</span><span class="nx">button</span> <span class="nx">onClick</span><span class="o">=</span><span class="p">{</span><span class="nx">toggle</span><span class="p">}</span><span class="o">&gt;</span>
+        <span class="p">{</span><span class="nx">isVisible</span> <span class="p">?</span> <span class="dl">'</span><span class="s1">Hide</span><span class="dl">'</span> <span class="p">:</span> <span class="dl">'</span><span class="s1">Show</span><span class="dl">'</span><span class="p">}</span>
+      <span class="o">&lt;</span><span class="sr">/button</span><span class="err">&gt;
+</span>      <span class="p">{</span><span class="nx">isVisible</span> <span class="o">&amp;&amp;</span> <span class="o">&lt;</span><span class="nx">div</span><span class="o">&gt;</span><span class="nx">Toggle</span> <span class="nx">content</span><span class="o">!&lt;</span><span class="sr">/div&gt;</span><span class="err">}
+</span>    <span class="o">&lt;</span><span class="sr">/div</span><span class="err">&gt;
+</span>  <span class="p">);</span>
+<span class="p">}</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<h3 id="q9-explain-react-error-boundaries">Q9: Explain React Error Boundaries</h3>
+
+<p><strong>Answer</strong>:
+Error boundaries are React components that catch JavaScript errors anywhere in their child component tree.</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155
+156
+157
+158
+159
+</pre></td><td class="rouge-code"><pre><span class="c1">// Error Boundary class component</span>
+<span class="kd">class</span> <span class="nx">ErrorBoundary</span> <span class="kd">extends</span> <span class="nx">React</span><span class="p">.</span><span class="nx">Component</span> <span class="p">{</span>
+  <span class="kd">constructor</span><span class="p">(</span><span class="nx">props</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">super</span><span class="p">(</span><span class="nx">props</span><span class="p">);</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">state</span> <span class="o">=</span> <span class="p">{</span> <span class="na">hasError</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span> <span class="na">error</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span> <span class="na">errorInfo</span><span class="p">:</span> <span class="kc">null</span> <span class="p">};</span>
+  <span class="p">}</span>
+  
+  <span class="kd">static</span> <span class="nx">getDerivedStateFromError</span><span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// Update state so the next render will show the fallback UI</span>
+    <span class="k">return</span> <span class="p">{</span> <span class="na">hasError</span><span class="p">:</span> <span class="kc">true</span> <span class="p">};</span>
+  <span class="p">}</span>
+  
+  <span class="nx">componentDidCatch</span><span class="p">(</span><span class="nx">error</span><span class="p">,</span> <span class="nx">errorInfo</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// You can log the error to an error reporting service</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="dl">'</span><span class="s1">Error caught by boundary:</span><span class="dl">'</span><span class="p">,</span> <span class="nx">error</span><span class="p">,</span> <span class="nx">errorInfo</span><span class="p">);</span>
+    
+    <span class="k">this</span><span class="p">.</span><span class="nx">setState</span><span class="p">({</span>
+      <span class="nx">error</span><span class="p">,</span>
+      <span class="nx">errorInfo</span>
+    <span class="p">});</span>
+    
+    <span class="c1">// Log to error tracking service</span>
+    <span class="c1">// logErrorToService(error, errorInfo);</span>
+  <span class="p">}</span>
+  
+  <span class="nx">render</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">state</span><span class="p">.</span><span class="nx">hasError</span><span class="p">)</span> <span class="p">{</span>
+      <span class="c1">// Fallback UI</span>
+      <span class="k">return</span> <span class="p">(</span>
+        <span class="o">&lt;</span><span class="nx">div</span> <span class="nx">className</span><span class="o">=</span><span class="dl">"</span><span class="s2">error-boundary</span><span class="dl">"</span><span class="o">&gt;</span>
+          <span class="o">&lt;</span><span class="nx">h2</span><span class="o">&gt;</span><span class="nx">Something</span> <span class="nx">went</span> <span class="nx">wrong</span><span class="o">!&lt;</span><span class="sr">/h2</span><span class="err">&gt;
+</span>          <span class="p">{</span><span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">NODE_ENV</span> <span class="o">===</span> <span class="dl">'</span><span class="s1">development</span><span class="dl">'</span> <span class="o">&amp;&amp;</span> <span class="p">(</span>
+            <span class="o">&lt;</span><span class="nx">details</span> <span class="nx">style</span><span class="o">=</span><span class="p">{</span><span class="s2">`{whiteSpace: 'pre-wrap'}`</span><span class="p">}</span><span class="o">&gt;</span>
+              <span class="o">&lt;</span><span class="nx">summary</span><span class="o">&gt;</span><span class="nb">Error</span> <span class="nx">details</span> <span class="p">(</span><span class="nx">dev</span> <span class="nx">only</span><span class="p">)</span><span class="o">&lt;</span><span class="sr">/summary</span><span class="err">&gt;
+</span>              <span class="p">{</span><span class="k">this</span><span class="p">.</span><span class="nx">state</span><span class="p">.</span><span class="nx">error</span> <span class="o">&amp;&amp;</span> <span class="k">this</span><span class="p">.</span><span class="nx">state</span><span class="p">.</span><span class="nx">error</span><span class="p">.</span><span class="nx">toString</span><span class="p">()}</span>
+              <span class="o">&lt;</span><span class="nx">br</span> <span class="o">/&gt;</span>
+              <span class="p">{</span><span class="k">this</span><span class="p">.</span><span class="nx">state</span><span class="p">.</span><span class="nx">errorInfo</span><span class="p">.</span><span class="nx">componentStack</span><span class="p">}</span>
+            <span class="o">&lt;</span><span class="sr">/details</span><span class="err">&gt;
+</span>          <span class="p">)}</span>
+          <span class="o">&lt;</span><span class="nx">button</span> <span class="nx">onClick</span><span class="o">=</span><span class="p">{()</span> <span class="o">=&gt;</span> <span class="k">this</span><span class="p">.</span><span class="nx">setState</span><span class="p">({</span> <span class="na">hasError</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span> <span class="na">error</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span> <span class="na">errorInfo</span><span class="p">:</span> <span class="kc">null</span> <span class="p">})}</span><span class="o">&gt;</span>
+            <span class="nx">Try</span> <span class="nx">again</span>
+          <span class="o">&lt;</span><span class="sr">/button</span><span class="err">&gt;
+</span>        <span class="o">&lt;</span><span class="sr">/div</span><span class="err">&gt;
+</span>      <span class="p">);</span>
+    <span class="p">}</span>
+    
+    <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">props</span><span class="p">.</span><span class="nx">children</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// Hook-based error boundary (using error boundary library)</span>
+<span class="kd">function</span> <span class="nx">useErrorHandler</span><span class="p">()</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="p">[</span><span class="nx">error</span><span class="p">,</span> <span class="nx">setError</span><span class="p">]</span> <span class="o">=</span> <span class="nx">useState</span><span class="p">(</span><span class="kc">null</span><span class="p">);</span>
+  
+  <span class="kd">const</span> <span class="nx">resetError</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="nx">setError</span><span class="p">(</span><span class="kc">null</span><span class="p">);</span>
+  
+  <span class="kd">const</span> <span class="nx">captureError</span> <span class="o">=</span> <span class="nx">useCallback</span><span class="p">((</span><span class="nx">error</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="nx">setError</span><span class="p">(</span><span class="nx">error</span><span class="p">);</span>
+  <span class="p">},</span> <span class="p">[]);</span>
+  
+  <span class="nx">useEffect</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">throw</span> <span class="nx">error</span><span class="p">;</span>
+    <span class="p">}</span>
+  <span class="p">},</span> <span class="p">[</span><span class="nx">error</span><span class="p">]);</span>
+  
+  <span class="k">return</span> <span class="p">{</span> <span class="nx">captureError</span><span class="p">,</span> <span class="nx">resetError</span> <span class="p">};</span>
+<span class="p">}</span>
+
+<span class="c1">// Component that might throw errors</span>
+<span class="kd">function</span> <span class="nx">ProblematicComponent</span><span class="p">({</span> <span class="nx">shouldError</span> <span class="p">})</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="p">{</span> <span class="nx">captureError</span> <span class="p">}</span> <span class="o">=</span> <span class="nx">useErrorHandler</span><span class="p">();</span>
+  
+  <span class="nx">useEffect</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">shouldError</span><span class="p">)</span> <span class="p">{</span>
+      <span class="c1">// Simulate an async error</span>
+      <span class="nx">setTimeout</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+        <span class="nx">captureError</span><span class="p">(</span><span class="k">new</span> <span class="nb">Error</span><span class="p">(</span><span class="dl">'</span><span class="s1">Async error occurred!</span><span class="dl">'</span><span class="p">));</span>
+      <span class="p">},</span> <span class="mi">1000</span><span class="p">);</span>
+    <span class="p">}</span>
+  <span class="p">},</span> <span class="p">[</span><span class="nx">shouldError</span><span class="p">,</span> <span class="nx">captureError</span><span class="p">]);</span>
+  
+  <span class="k">if</span> <span class="p">(</span><span class="nx">shouldError</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">throw</span> <span class="k">new</span> <span class="nb">Error</span><span class="p">(</span><span class="dl">'</span><span class="s1">Render error occurred!</span><span class="dl">'</span><span class="p">);</span>
+  <span class="p">}</span>
+  
+  <span class="k">return</span> <span class="o">&lt;</span><span class="nx">div</span><span class="o">&gt;</span><span class="nx">Component</span> <span class="nx">working</span> <span class="nx">fine</span><span class="o">!&lt;</span><span class="sr">/div&gt;</span><span class="err">;
+</span><span class="p">}</span>
+
+<span class="c1">// App with error boundary</span>
+<span class="kd">function</span> <span class="nx">App</span><span class="p">()</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="p">[</span><span class="nx">shouldError</span><span class="p">,</span> <span class="nx">setShouldError</span><span class="p">]</span> <span class="o">=</span> <span class="nx">useState</span><span class="p">(</span><span class="kc">false</span><span class="p">);</span>
+  
+  <span class="k">return</span> <span class="p">(</span>
+    <span class="o">&lt;</span><span class="nx">div</span><span class="o">&gt;</span>
+      <span class="o">&lt;</span><span class="nx">h1</span><span class="o">&gt;</span><span class="nb">Error</span> <span class="nx">Boundary</span> <span class="nx">Demo</span><span class="o">&lt;</span><span class="sr">/h1</span><span class="err">&gt;
+</span>      <span class="o">&lt;</span><span class="nx">button</span> <span class="nx">onClick</span><span class="o">=</span><span class="p">{()</span> <span class="o">=&gt;</span> <span class="nx">setShouldError</span><span class="p">(</span><span class="o">!</span><span class="nx">shouldError</span><span class="p">)}</span><span class="o">&gt;</span>
+        <span class="p">{</span><span class="nx">shouldError</span> <span class="p">?</span> <span class="dl">'</span><span class="s1">Fix Component</span><span class="dl">'</span> <span class="p">:</span> <span class="dl">'</span><span class="s1">Break Component</span><span class="dl">'</span><span class="p">}</span>
+      <span class="o">&lt;</span><span class="sr">/button</span><span class="err">&gt;
+</span>      
+      <span class="o">&lt;</span><span class="nx">ErrorBoundary</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="nx">ProblematicComponent</span> <span class="nx">shouldError</span><span class="o">=</span><span class="p">{</span><span class="nx">shouldError</span><span class="p">}</span> <span class="sr">/</span><span class="err">&gt;
+</span>      <span class="o">&lt;</span><span class="sr">/ErrorBoundary</span><span class="err">&gt;
+</span>    <span class="o">&lt;</span><span class="sr">/div</span><span class="err">&gt;
+</span>  <span class="p">);</span>
+<span class="p">}</span>
+
+<span class="c1">// Advanced error boundary with retry logic</span>
+<span class="kd">class</span> <span class="nx">RetryErrorBoundary</span> <span class="kd">extends</span> <span class="nx">React</span><span class="p">.</span><span class="nx">Component</span> <span class="p">{</span>
+  <span class="kd">constructor</span><span class="p">(</span><span class="nx">props</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">super</span><span class="p">(</span><span class="nx">props</span><span class="p">);</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">state</span> <span class="o">=</span> <span class="p">{</span>
+      <span class="na">hasError</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+      <span class="na">retryCount</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+      <span class="na">maxRetries</span><span class="p">:</span> <span class="mi">3</span>
+    <span class="p">};</span>
+  <span class="p">}</span>
+  
+  <span class="kd">static</span> <span class="nx">getDerivedStateFromError</span><span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="p">{</span> <span class="na">hasError</span><span class="p">:</span> <span class="kc">true</span> <span class="p">};</span>
+  <span class="p">}</span>
+  
+  <span class="nx">componentDidCatch</span><span class="p">(</span><span class="nx">error</span><span class="p">,</span> <span class="nx">errorInfo</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="dl">'</span><span class="s1">Error in RetryErrorBoundary:</span><span class="dl">'</span><span class="p">,</span> <span class="nx">error</span><span class="p">,</span> <span class="nx">errorInfo</span><span class="p">);</span>
+  <span class="p">}</span>
+  
+  <span class="nx">handleRetry</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="p">{</span> <span class="nx">retryCount</span><span class="p">,</span> <span class="nx">maxRetries</span> <span class="p">}</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">state</span><span class="p">;</span>
+    
+    <span class="k">if</span> <span class="p">(</span><span class="nx">retryCount</span> <span class="o">&lt;</span> <span class="nx">maxRetries</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">this</span><span class="p">.</span><span class="nx">setState</span><span class="p">({</span>
+        <span class="na">hasError</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+        <span class="na">retryCount</span><span class="p">:</span> <span class="nx">retryCount</span> <span class="o">+</span> <span class="mi">1</span>
+      <span class="p">});</span>
+    <span class="p">}</span>
+  <span class="p">};</span>
+  
+  <span class="nx">render</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="p">{</span> <span class="nx">hasError</span><span class="p">,</span> <span class="nx">retryCount</span><span class="p">,</span> <span class="nx">maxRetries</span> <span class="p">}</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">state</span><span class="p">;</span>
+    
+    <span class="k">if</span> <span class="p">(</span><span class="nx">hasError</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">return</span> <span class="p">(</span>
+        <span class="o">&lt;</span><span class="nx">div</span> <span class="nx">className</span><span class="o">=</span><span class="dl">"</span><span class="s2">error-boundary</span><span class="dl">"</span><span class="o">&gt;</span>
+          <span class="o">&lt;</span><span class="nx">h3</span><span class="o">&gt;</span><span class="nx">Component</span> <span class="nb">Error</span><span class="o">&lt;</span><span class="sr">/h3</span><span class="err">&gt;
+</span>          <span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span><span class="nx">Retry</span> <span class="nx">attempt</span><span class="p">:</span> <span class="p">{</span><span class="nx">retryCount</span><span class="p">}</span><span class="sr">/{maxRetries}&lt;/</span><span class="nx">p</span><span class="o">&gt;</span>
+          <span class="p">{</span><span class="nx">retryCount</span> <span class="o">&lt;</span> <span class="nx">maxRetries</span> <span class="p">?</span> <span class="p">(</span>
+            <span class="o">&lt;</span><span class="nx">button</span> <span class="nx">onClick</span><span class="o">=</span><span class="p">{</span><span class="k">this</span><span class="p">.</span><span class="nx">handleRetry</span><span class="p">}</span><span class="o">&gt;</span>
+              <span class="nx">Retry</span> <span class="p">({</span><span class="nx">maxRetries</span> <span class="o">-</span> <span class="nx">retryCount</span><span class="p">}</span> <span class="nx">attempts</span> <span class="nx">left</span><span class="p">)</span>
+            <span class="o">&lt;</span><span class="sr">/button</span><span class="err">&gt;
+</span>          <span class="p">)</span> <span class="p">:</span> <span class="p">(</span>
+            <span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span><span class="nx">Maximum</span> <span class="nx">retries</span> <span class="nx">exceeded</span><span class="p">.</span> <span class="nx">Please</span> <span class="nx">refresh</span> <span class="nx">the</span> <span class="nx">page</span><span class="p">.</span><span class="o">&lt;</span><span class="sr">/p</span><span class="err">&gt;
+</span>          <span class="p">)}</span>
+        <span class="o">&lt;</span><span class="sr">/div</span><span class="err">&gt;
+</span>      <span class="p">);</span>
+    <span class="p">}</span>
+    
+    <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">props</span><span class="p">.</span><span class="nx">children</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<h3 id="q10-what-are-higher-order-components-hocs">Q10: What are Higher-Order Components (HOCs)?</h3>
+
+<p><strong>Answer</strong>:
+HOCs are functions that take a component and return a new component with additional functionality.</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155
+156
+157
+158
+159
+160
+</pre></td><td class="rouge-code"><pre><span class="c1">// Basic HOC pattern</span>
+<span class="kd">function</span> <span class="nx">withLoading</span><span class="p">(</span><span class="nx">Component</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="kd">function</span> <span class="nx">WithLoadingComponent</span><span class="p">({</span> <span class="nx">isLoading</span><span class="p">,</span> <span class="p">...</span><span class="nx">props</span> <span class="p">})</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">isLoading</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">return</span> <span class="o">&lt;</span><span class="nx">div</span><span class="o">&gt;</span><span class="nx">Loading</span><span class="p">...</span><span class="o">&lt;</span><span class="sr">/div&gt;</span><span class="err">;
+</span>    <span class="p">}</span>
+    
+    <span class="k">return</span> <span class="o">&lt;</span><span class="nx">Component</span> <span class="p">{...</span><span class="nx">props</span><span class="p">}</span> <span class="sr">/&gt;</span><span class="err">;
+</span>  <span class="p">};</span>
+<span class="p">}</span>
+
+<span class="c1">// HOC with authentication</span>
+<span class="kd">function</span> <span class="nx">withAuth</span><span class="p">(</span><span class="nx">Component</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="kd">function</span> <span class="nx">AuthenticatedComponent</span><span class="p">(</span><span class="nx">props</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="p">[</span><span class="nx">user</span><span class="p">,</span> <span class="nx">setUser</span><span class="p">]</span> <span class="o">=</span> <span class="nx">useState</span><span class="p">(</span><span class="kc">null</span><span class="p">);</span>
+    <span class="kd">const</span> <span class="p">[</span><span class="nx">loading</span><span class="p">,</span> <span class="nx">setLoading</span><span class="p">]</span> <span class="o">=</span> <span class="nx">useState</span><span class="p">(</span><span class="kc">true</span><span class="p">);</span>
+    
+    <span class="nx">useEffect</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+      <span class="c1">// Check authentication status</span>
+      <span class="nx">checkAuthStatus</span><span class="p">()</span>
+        <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">setUser</span><span class="p">)</span>
+        <span class="p">.</span><span class="k">finally</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="nx">setLoading</span><span class="p">(</span><span class="kc">false</span><span class="p">));</span>
+    <span class="p">},</span> <span class="p">[]);</span>
+    
+    <span class="k">if</span> <span class="p">(</span><span class="nx">loading</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">return</span> <span class="o">&lt;</span><span class="nx">div</span><span class="o">&gt;</span><span class="nx">Checking</span> <span class="nx">authentication</span><span class="p">...</span><span class="o">&lt;</span><span class="sr">/div&gt;</span><span class="err">;
+</span>    <span class="p">}</span>
+    
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">user</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">return</span> <span class="o">&lt;</span><span class="nx">div</span><span class="o">&gt;</span><span class="nx">Please</span> <span class="nx">log</span> <span class="k">in</span> <span class="nx">to</span> <span class="nx">access</span> <span class="k">this</span> <span class="nx">page</span><span class="p">.</span><span class="o">&lt;</span><span class="sr">/div&gt;</span><span class="err">;
+</span>    <span class="p">}</span>
+    
+    <span class="k">return</span> <span class="o">&lt;</span><span class="nx">Component</span> <span class="p">{...</span><span class="nx">props</span><span class="p">}</span> <span class="nx">user</span><span class="o">=</span><span class="p">{</span><span class="nx">user</span><span class="p">}</span> <span class="sr">/&gt;</span><span class="err">;
+</span>  <span class="p">};</span>
+<span class="p">}</span>
+
+<span class="c1">// HOC for API data fetching</span>
+<span class="kd">function</span> <span class="nx">withDataFetching</span><span class="p">(</span><span class="nx">url</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="kd">function</span><span class="p">(</span><span class="nx">Component</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="kd">function</span> <span class="nx">WithDataComponent</span><span class="p">(</span><span class="nx">props</span><span class="p">)</span> <span class="p">{</span>
+      <span class="kd">const</span> <span class="p">[</span><span class="nx">data</span><span class="p">,</span> <span class="nx">setData</span><span class="p">]</span> <span class="o">=</span> <span class="nx">useState</span><span class="p">(</span><span class="kc">null</span><span class="p">);</span>
+      <span class="kd">const</span> <span class="p">[</span><span class="nx">loading</span><span class="p">,</span> <span class="nx">setLoading</span><span class="p">]</span> <span class="o">=</span> <span class="nx">useState</span><span class="p">(</span><span class="kc">true</span><span class="p">);</span>
+      <span class="kd">const</span> <span class="p">[</span><span class="nx">error</span><span class="p">,</span> <span class="nx">setError</span><span class="p">]</span> <span class="o">=</span> <span class="nx">useState</span><span class="p">(</span><span class="kc">null</span><span class="p">);</span>
+      
+      <span class="nx">useEffect</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+        <span class="nx">fetch</span><span class="p">(</span><span class="nx">url</span><span class="p">)</span>
+          <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">response</span> <span class="o">=&gt;</span> <span class="nx">response</span><span class="p">.</span><span class="nx">json</span><span class="p">())</span>
+          <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">setData</span><span class="p">)</span>
+          <span class="p">.</span><span class="k">catch</span><span class="p">(</span><span class="nx">setError</span><span class="p">)</span>
+          <span class="p">.</span><span class="k">finally</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="nx">setLoading</span><span class="p">(</span><span class="kc">false</span><span class="p">));</span>
+      <span class="p">},</span> <span class="p">[]);</span>
+      
+      <span class="k">return</span> <span class="p">(</span>
+        <span class="o">&lt;</span><span class="nx">Component</span> 
+          <span class="p">{...</span><span class="nx">props</span><span class="p">}</span>
+          <span class="nx">data</span><span class="o">=</span><span class="p">{</span><span class="nx">data</span><span class="p">}</span>
+          <span class="nx">loading</span><span class="o">=</span><span class="p">{</span><span class="nx">loading</span><span class="p">}</span>
+          <span class="nx">error</span><span class="o">=</span><span class="p">{</span><span class="nx">error</span><span class="p">}</span>
+        <span class="sr">/</span><span class="err">&gt;
+</span>      <span class="p">);</span>
+    <span class="p">};</span>
+  <span class="p">};</span>
+<span class="p">}</span>
+
+<span class="c1">// HOC for performance tracking</span>
+<span class="kd">function</span> <span class="nx">withPerformanceTracking</span><span class="p">(</span><span class="nx">Component</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="kd">function</span> <span class="nx">TrackedComponent</span><span class="p">(</span><span class="nx">props</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="nx">componentName</span> <span class="o">=</span> <span class="nx">Component</span><span class="p">.</span><span class="nx">displayName</span> <span class="o">||</span> <span class="nx">Component</span><span class="p">.</span><span class="nx">name</span><span class="p">;</span>
+    
+    <span class="nx">useEffect</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+      <span class="kd">const</span> <span class="nx">startTime</span> <span class="o">=</span> <span class="nx">performance</span><span class="p">.</span><span class="nx">now</span><span class="p">();</span>
+      
+      <span class="k">return</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+        <span class="kd">const</span> <span class="nx">endTime</span> <span class="o">=</span> <span class="nx">performance</span><span class="p">.</span><span class="nx">now</span><span class="p">();</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">`</span><span class="p">${</span><span class="nx">componentName</span><span class="p">}</span><span class="s2"> render time: </span><span class="p">${</span><span class="nx">endTime</span> <span class="o">-</span> <span class="nx">startTime</span><span class="p">}</span><span class="s2">ms`</span><span class="p">);</span>
+      <span class="p">};</span>
+    <span class="p">});</span>
+    
+    <span class="k">return</span> <span class="o">&lt;</span><span class="nx">Component</span> <span class="p">{...</span><span class="nx">props</span><span class="p">}</span> <span class="sr">/&gt;</span><span class="err">;
+</span>  <span class="p">};</span>
+<span class="p">}</span>
+
+<span class="c1">// Composing multiple HOCs</span>
+<span class="kd">const</span> <span class="nx">enhance</span> <span class="o">=</span> <span class="nx">compose</span><span class="p">(</span>
+  <span class="nx">withAuth</span><span class="p">,</span>
+  <span class="nx">withLoading</span><span class="p">,</span>
+  <span class="nx">withPerformanceTracking</span><span class="p">,</span>
+  <span class="nx">withDataFetching</span><span class="p">(</span><span class="dl">'</span><span class="s1">/api/user-data</span><span class="dl">'</span><span class="p">)</span>
+<span class="p">);</span>
+
+<span class="kd">function</span> <span class="nx">UserProfile</span><span class="p">({</span> <span class="nx">user</span><span class="p">,</span> <span class="nx">data</span><span class="p">,</span> <span class="nx">loading</span><span class="p">,</span> <span class="nx">error</span> <span class="p">})</span> <span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="k">return</span> <span class="o">&lt;</span><span class="nx">div</span><span class="o">&gt;</span><span class="nb">Error</span><span class="p">:</span> <span class="p">{</span><span class="nx">error</span><span class="p">.</span><span class="nx">message</span><span class="p">}</span><span class="o">&lt;</span><span class="sr">/div&gt;</span><span class="err">;
+</span>  
+  <span class="k">return</span> <span class="p">(</span>
+    <span class="o">&lt;</span><span class="nx">div</span><span class="o">&gt;</span>
+      <span class="o">&lt;</span><span class="nx">h1</span><span class="o">&gt;</span><span class="nx">Welcome</span><span class="p">,</span> <span class="p">{</span><span class="nx">user</span><span class="p">.</span><span class="nx">name</span><span class="p">}</span><span class="o">!&lt;</span><span class="sr">/h1</span><span class="err">&gt;
+</span>      <span class="p">{</span><span class="nx">data</span> <span class="o">&amp;&amp;</span> <span class="p">(</span>
+        <span class="o">&lt;</span><span class="nx">div</span><span class="o">&gt;</span>
+          <span class="o">&lt;</span><span class="nx">h2</span><span class="o">&gt;</span><span class="nx">Your</span> <span class="nx">Data</span><span class="p">:</span><span class="o">&lt;</span><span class="sr">/h2</span><span class="err">&gt;
+</span>          <span class="o">&lt;</span><span class="nx">pre</span><span class="o">&gt;</span><span class="p">{</span><span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">data</span><span class="p">,</span> <span class="kc">null</span><span class="p">,</span> <span class="mi">2</span><span class="p">)}</span><span class="o">&lt;</span><span class="sr">/pre</span><span class="err">&gt;
+</span>        <span class="o">&lt;</span><span class="sr">/div</span><span class="err">&gt;
+</span>      <span class="p">)}</span>
+    <span class="o">&lt;</span><span class="sr">/div</span><span class="err">&gt;
+</span>  <span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kd">const</span> <span class="nx">EnhancedUserProfile</span> <span class="o">=</span> <span class="nx">enhance</span><span class="p">(</span><span class="nx">UserProfile</span><span class="p">);</span>
+
+<span class="c1">// Modern alternative using custom hooks</span>
+<span class="kd">function</span> <span class="nx">useAuth</span><span class="p">()</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="p">[</span><span class="nx">user</span><span class="p">,</span> <span class="nx">setUser</span><span class="p">]</span> <span class="o">=</span> <span class="nx">useState</span><span class="p">(</span><span class="kc">null</span><span class="p">);</span>
+  <span class="kd">const</span> <span class="p">[</span><span class="nx">loading</span><span class="p">,</span> <span class="nx">setLoading</span><span class="p">]</span> <span class="o">=</span> <span class="nx">useState</span><span class="p">(</span><span class="kc">true</span><span class="p">);</span>
+  
+  <span class="nx">useEffect</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="nx">checkAuthStatus</span><span class="p">()</span>
+      <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">setUser</span><span class="p">)</span>
+      <span class="p">.</span><span class="k">finally</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="nx">setLoading</span><span class="p">(</span><span class="kc">false</span><span class="p">));</span>
+  <span class="p">},</span> <span class="p">[]);</span>
+  
+  <span class="k">return</span> <span class="p">{</span> <span class="nx">user</span><span class="p">,</span> <span class="nx">loading</span> <span class="p">};</span>
+<span class="p">}</span>
+
+<span class="kd">function</span> <span class="nx">useDataFetching</span><span class="p">(</span><span class="nx">url</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="p">[</span><span class="nx">data</span><span class="p">,</span> <span class="nx">setData</span><span class="p">]</span> <span class="o">=</span> <span class="nx">useState</span><span class="p">(</span><span class="kc">null</span><span class="p">);</span>
+  <span class="kd">const</span> <span class="p">[</span><span class="nx">loading</span><span class="p">,</span> <span class="nx">setLoading</span><span class="p">]</span> <span class="o">=</span> <span class="nx">useState</span><span class="p">(</span><span class="kc">true</span><span class="p">);</span>
+  <span class="kd">const</span> <span class="p">[</span><span class="nx">error</span><span class="p">,</span> <span class="nx">setError</span><span class="p">]</span> <span class="o">=</span> <span class="nx">useState</span><span class="p">(</span><span class="kc">null</span><span class="p">);</span>
+  
+  <span class="nx">useEffect</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="nx">fetch</span><span class="p">(</span><span class="nx">url</span><span class="p">)</span>
+      <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">response</span> <span class="o">=&gt;</span> <span class="nx">response</span><span class="p">.</span><span class="nx">json</span><span class="p">())</span>
+      <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">setData</span><span class="p">)</span>
+      <span class="p">.</span><span class="k">catch</span><span class="p">(</span><span class="nx">setError</span><span class="p">)</span>
+      <span class="p">.</span><span class="k">finally</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="nx">setLoading</span><span class="p">(</span><span class="kc">false</span><span class="p">));</span>
+  <span class="p">},</span> <span class="p">[</span><span class="nx">url</span><span class="p">]);</span>
+  
+  <span class="k">return</span> <span class="p">{</span> <span class="nx">data</span><span class="p">,</span> <span class="nx">loading</span><span class="p">,</span> <span class="nx">error</span> <span class="p">};</span>
+<span class="p">}</span>
+
+<span class="c1">// Modern component using hooks instead of HOCs</span>
+<span class="kd">function</span> <span class="nx">ModernUserProfile</span><span class="p">()</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="p">{</span> <span class="nx">user</span><span class="p">,</span> <span class="na">loading</span><span class="p">:</span> <span class="nx">authLoading</span> <span class="p">}</span> <span class="o">=</span> <span class="nx">useAuth</span><span class="p">();</span>
+  <span class="kd">const</span> <span class="p">{</span> <span class="nx">data</span><span class="p">,</span> <span class="na">loading</span><span class="p">:</span> <span class="nx">dataLoading</span><span class="p">,</span> <span class="nx">error</span> <span class="p">}</span> <span class="o">=</span> <span class="nx">useDataFetching</span><span class="p">(</span><span class="dl">'</span><span class="s1">/api/user-data</span><span class="dl">'</span><span class="p">);</span>
+  
+  <span class="k">if</span> <span class="p">(</span><span class="nx">authLoading</span><span class="p">)</span> <span class="k">return</span> <span class="o">&lt;</span><span class="nx">div</span><span class="o">&gt;</span><span class="nx">Checking</span> <span class="nx">authentication</span><span class="p">...</span><span class="o">&lt;</span><span class="sr">/div&gt;</span><span class="err">;
+</span>  <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">user</span><span class="p">)</span> <span class="k">return</span> <span class="o">&lt;</span><span class="nx">div</span><span class="o">&gt;</span><span class="nx">Please</span> <span class="nx">log</span> <span class="k">in</span><span class="p">.</span><span class="o">&lt;</span><span class="sr">/div&gt;</span><span class="err">;
+</span>  <span class="k">if</span> <span class="p">(</span><span class="nx">dataLoading</span><span class="p">)</span> <span class="k">return</span> <span class="o">&lt;</span><span class="nx">div</span><span class="o">&gt;</span><span class="nx">Loading</span><span class="p">...</span><span class="o">&lt;</span><span class="sr">/div&gt;</span><span class="err">;
+</span>  <span class="k">if</span> <span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="k">return</span> <span class="o">&lt;</span><span class="nx">div</span><span class="o">&gt;</span><span class="nb">Error</span><span class="p">:</span> <span class="p">{</span><span class="nx">error</span><span class="p">.</span><span class="nx">message</span><span class="p">}</span><span class="o">&lt;</span><span class="sr">/div&gt;</span><span class="err">;
+</span>  
+  <span class="k">return</span> <span class="p">(</span>
+    <span class="o">&lt;</span><span class="nx">div</span><span class="o">&gt;</span>
+      <span class="o">&lt;</span><span class="nx">h1</span><span class="o">&gt;</span><span class="nx">Welcome</span><span class="p">,</span> <span class="p">{</span><span class="nx">user</span><span class="p">.</span><span class="nx">name</span><span class="p">}</span><span class="o">!&lt;</span><span class="sr">/h1</span><span class="err">&gt;
+</span>      <span class="p">{</span><span class="nx">data</span> <span class="o">&amp;&amp;</span> <span class="p">(</span>
+        <span class="o">&lt;</span><span class="nx">div</span><span class="o">&gt;</span>
+          <span class="o">&lt;</span><span class="nx">h2</span><span class="o">&gt;</span><span class="nx">Your</span> <span class="nx">Data</span><span class="p">:</span><span class="o">&lt;</span><span class="sr">/h2</span><span class="err">&gt;
+</span>          <span class="o">&lt;</span><span class="nx">pre</span><span class="o">&gt;</span><span class="p">{</span><span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">data</span><span class="p">,</span> <span class="kc">null</span><span class="p">,</span> <span class="mi">2</span><span class="p">)}</span><span class="o">&lt;</span><span class="sr">/pre</span><span class="err">&gt;
+</span>        <span class="o">&lt;</span><span class="sr">/div</span><span class="err">&gt;
+</span>      <span class="p">)}</span>
+    <span class="o">&lt;</span><span class="sr">/div</span><span class="err">&gt;
+</span>  <span class="p">);</span>
+<span class="p">}</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
 <hr />
 
-<p><em>This guide covers all base React concepts and key knowledge for interviews. Practice explaining, diagramming, and implementing each topic!</em></p>
+<p><em>This comprehensive guide covers essential React concepts, advanced patterns, and practical implementation problems. Practice these concepts thoroughly for frontend interviews at Big Tech companies.</em></p>
 
         </div>
     </article>
