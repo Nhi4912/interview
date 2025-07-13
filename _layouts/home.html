@@ -2,255 +2,282 @@
 layout: default
 ---
 
-<div class="hero">
-    <div class="hero-container">
-        <div class="hero-content">
-            <h1 class="hero-title">Frontend Interview Preparation Guide</h1>
-            <p class="hero-description">Master frontend interviews at Big Tech companies with comprehensive coding challenges, system design patterns, and algorithmic problem-solving</p>
-            <div class="hero-actions">
-                <a href="{{ '/frontend/' | relative_url }}" class="btn btn-primary">Start Learning</a>
-                <a href="{{ '/leetcode/' | relative_url }}" class="btn btn-secondary">Practice Algorithms</a>
-            </div>
-            <div class="hero-stats">
-                <div class="stat">
-                    <span class="stat-number">100+</span>
-                    <span class="stat-label">Coding Problems</span>
-                </div>
-                <div class="stat">
-                    <span class="stat-number">15+</span>
-                    <span class="stat-label">Frontend Topics</span>
-                </div>
-                <div class="stat">
-                    <span class="stat-number">200+</span>
-                    <span class="stat-label">Algorithm Solutions</span>
-                </div>
-            </div>
-        </div>
-        <div class="hero-visual">
-            <div class="code-preview">
-                <div class="code-header">
-                    <div class="code-dots">
-                        <span class="dot dot-red"></span>
-                        <span class="dot dot-yellow"></span>
-                        <span class="dot dot-green"></span>
-                    </div>
-                    <span class="code-title">interview-prep.js</span>
-                </div>
-                <div class="code-content">
-                    <pre><code class="language-javascript">
-// React Virtual Scrolling Component
-const VirtualList = ({ items, itemHeight }) => {
-  const [scrollTop, setScrollTop] = useState(0);
-  
-  const visibleStart = Math.floor(scrollTop / itemHeight);
-  const visibleEnd = Math.min(
-    visibleStart + containerHeight / itemHeight,
-    items.length
-  );
-  
-  return (
-    &lt;div onScroll={e => setScrollTop(e.target.scrollTop)}&gt;
-      {items.slice(visibleStart, visibleEnd).map(item => 
-        &lt;Item key={item.id} data={item} /&gt;
-      )}
-    &lt;/div&gt;
-  );
-};
-                    </code></pre>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-<section class="features">
-    <div class="features-container">
-        <h2 class="section-title">Everything You Need for Frontend Interviews</h2>
-        <div class="features-grid">
-            <div class="feature-card">
-                <div class="feature-icon">
-                    <i data-feather="code"></i>
-                </div>
-                <h3>Frontend Challenges</h3>
-                <p>Real interview coding problems covering React, vanilla JavaScript, CSS, and modern frontend patterns</p>
-                <a href="{{ '/frontend/coding-problems/' | relative_url }}" class="feature-link">
-                    Explore Challenges <i data-feather="arrow-right"></i>
-                </a>
-            </div>
-            
-            <div class="feature-card">
-                <div class="feature-icon">
-                    <i data-feather="cpu"></i>
-                </div>
-                <h3>Algorithm Practice</h3>
-                <p>200+ LeetCode problems organized by category with detailed TypeScript solutions and explanations</p>
-                <a href="{{ '/leetcode/' | relative_url }}" class="feature-link">
-                    Practice Algorithms <i data-feather="arrow-right"></i>
-                </a>
-            </div>
-            
-            <div class="feature-card">
-                <div class="feature-icon">
-                    <i data-feather="layers"></i>
-                </div>
-                <h3>System Design</h3>
-                <p>Frontend architecture patterns, scalability concepts, and system design frameworks for interviews</p>
-                <a href="{{ '/frontend/system-design/' | relative_url }}" class="feature-link">
-                    Learn Architecture <i data-feather="arrow-right"></i>
-                </a>
-            </div>
-            
-            <div class="feature-card">
-                <div class="feature-icon">
-                    <i data-feather="zap"></i>
-                </div>
-                <h3>Performance</h3>
-                <p>Core Web Vitals, optimization techniques, and performance monitoring for production applications</p>
-                <a href="{{ '/frontend/performance/' | relative_url }}" class="feature-link">
-                    Optimize Performance <i data-feather="arrow-right"></i>
-                </a>
-            </div>
-            
-            <div class="feature-card">
-                <div class="feature-icon">
-                    <i data-feather="shield"></i>
-                </div>
-                <h3>Security</h3>
-                <p>XSS prevention, CSRF protection, authentication patterns, and frontend security best practices</p>
-                <a href="{{ '/frontend/security/' | relative_url }}" class="feature-link">
-                    Secure Applications <i data-feather="arrow-right"></i>
-                </a>
-            </div>
-            
-            <div class="feature-card">
-                <div class="feature-icon">
-                    <i data-feather="check-circle"></i>
-                </div>
-                <h3>Testing</h3>
-                <p>Unit testing, integration testing, E2E testing with modern tools and frameworks</p>
-                <a href="{{ '/frontend/testing/' | relative_url }}" class="feature-link">
-                    Master Testing <i data-feather="arrow-right"></i>
-                </a>
-            </div>
+<section id="home" class="hero">
+    <div class="container">
+        <h1>Frontend Interview Mastery</h1>
+        <p>Your comprehensive guide to acing frontend interviews at top tech companies. Track progress, visualize knowledge, and master fundamentals.</p>
+        <div class="cta-buttons">
+            <a href="#progress" class="btn btn-primary">Start Learning</a>
+            <a href="https://github.com/nee/interview" class="btn btn-secondary">View on GitHub</a>
         </div>
     </div>
 </section>
 
-<section class="study-path">
-    <div class="study-path-container">
-        <h2 class="section-title">Structured Learning Path</h2>
-        <div class="path-timeline">
-            <div class="path-step">
-                <div class="step-number">1</div>
-                <div class="step-content">
-                    <h3>Foundation</h3>
-                    <p>Master JavaScript fundamentals, ES6+, and core React concepts</p>
-                    <div class="step-links">
-                        <a href="{{ '/frontend/javascript/' | relative_url }}">JavaScript</a>
-                        <a href="{{ '/frontend/react/' | relative_url }}">React</a>
-                    </div>
+<section class="container">
+    <div class="stats">
+        <div class="stat-card">
+            <div class="stat-number">15+</div>
+            <div class="stat-label">Topics Covered</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-number">100+</div>
+            <div class="stat-label">Coding Problems</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-number">200+</div>
+            <div class="stat-label">Algorithm Solutions</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-number">6 Week</div>
+            <div class="stat-label">Study Plan</div>
+        </div>
+    </div>
+</section>
+
+<section id="progress" class="container">
+    <div class="progress-section">
+        <h2 style="text-align: center; margin-bottom: 2rem;">Learning Progress</h2>
+        <div class="progress-grid">
+            <div class="progress-item">
+                <div class="progress-header">
+                    <span class="progress-title">JavaScript Fundamentals</span>
+                    <span class="progress-percentage">95%</span>
+                </div>
+                <div class="progress-bar">
+                    <div class="progress-fill" style="width: 95%"></div>
+                </div>
+                <div class="progress-topics">
+                    <span class="topic-tag">Closures</span>
+                    <span class="topic-tag">Promises</span>
+                    <span class="topic-tag">Event Loop</span>
+                    <span class="topic-tag">Prototypes</span>
                 </div>
             </div>
-            
-            <div class="path-step">
-                <div class="step-number">2</div>
-                <div class="step-content">
-                    <h3>Algorithms</h3>
-                    <p>Practice data structures and algorithms with increasing complexity</p>
-                    <div class="step-links">
-                        <a href="{{ '/leetcode/array/' | relative_url }}">Arrays</a>
-                        <a href="{{ '/leetcode/string/' | relative_url }}">Strings</a>
-                        <a href="{{ '/leetcode/tree-graph/' | relative_url }}">Trees</a>
-                    </div>
+
+            <div class="progress-item">
+                <div class="progress-header">
+                    <span class="progress-title">React & Modern Frameworks</span>
+                    <span class="progress-percentage">85%</span>
+                </div>
+                <div class="progress-bar">
+                    <div class="progress-fill" style="width: 85%"></div>
+                </div>
+                <div class="progress-topics">
+                    <span class="topic-tag">Hooks</span>
+                    <span class="topic-tag">State Management</span>
+                    <span class="topic-tag">Performance</span>
+                    <span class="topic-tag">Testing</span>
                 </div>
             </div>
-            
-            <div class="path-step">
-                <div class="step-number">3</div>
-                <div class="step-content">
-                    <h3>Frontend Skills</h3>
-                    <p>Build real-world components and solve practical coding challenges</p>
-                    <div class="step-links">
-                        <a href="{{ '/frontend/coding-problems/' | relative_url }}">Coding Problems</a>
-                        <a href="{{ '/frontend/challenges/' | relative_url }}">Advanced Challenges</a>
-                    </div>
+
+            <div class="progress-item">
+                <div class="progress-header">
+                    <span class="progress-title">System Design</span>
+                    <span class="progress-percentage">60%</span>
+                </div>
+                <div class="progress-bar">
+                    <div class="progress-fill" style="width: 60%"></div>
+                </div>
+                <div class="progress-topics">
+                    <span class="topic-tag">Architecture</span>
+                    <span class="topic-tag">Scalability</span>
+                    <span class="topic-tag">Performance</span>
+                    <span class="topic-tag">Security</span>
                 </div>
             </div>
-            
-            <div class="path-step">
-                <div class="step-number">4</div>
-                <div class="step-content">
-                    <h3>System Design</h3>
-                    <p>Learn frontend architecture, performance optimization, and scalability</p>
-                    <div class="step-links">
-                        <a href="{{ '/frontend/system-design/' | relative_url }}">Architecture</a>
-                        <a href="{{ '/frontend/performance/' | relative_url }}">Performance</a>
-                    </div>
+
+            <div class="progress-item">
+                <div class="progress-header">
+                    <span class="progress-title">Algorithms & Data Structures</span>
+                    <span class="progress-percentage">70%</span>
+                </div>
+                <div class="progress-bar">
+                    <div class="progress-fill" style="width: 70%"></div>
+                </div>
+                <div class="progress-topics">
+                    <span class="topic-tag">Arrays</span>
+                    <span class="topic-tag">Trees</span>
+                    <span class="topic-tag">Sorting</span>
+                    <span class="topic-tag">Dynamic Programming</span>
                 </div>
             </div>
         </div>
     </div>
 </section>
 
-<section class="topics-overview">
-    <div class="topics-container">
-        <div class="topics-content">
-            <h2 class="section-title">Comprehensive Topic Coverage</h2>
-            <div class="topics-grid">
-                <div class="topic-category">
-                    <h3>Core Technologies</h3>
-                    <ul>
-                        <li><a href="{{ '/frontend/javascript/' | relative_url }}">JavaScript ES6+</a></li>
-                        <li><a href="{{ '/frontend/react/' | relative_url }}">React & Hooks</a></li>
-                        <li><a href="{{ '/frontend/typescript/' | relative_url }}">TypeScript</a></li>
-                        <li><a href="{{ '/frontend/html-css/' | relative_url }}">HTML5 & CSS3</a></li>
-                    </ul>
+<section id="knowledge" class="container knowledge-map">
+    <h2 style="text-align: center; margin-bottom: 2rem;">Knowledge Map</h2>
+    <div class="knowledge-grid">
+        <div class="knowledge-card" data-href="{{ '/frontend/javascript/' | relative_url }}">
+            <div class="card-icon">🚀</div>
+            <h3 class="card-title">JavaScript Core</h3>
+            <p class="card-description">Master closures, prototypes, async/await, and ES6+ features essential for modern development.</p>
+            <div class="card-footer">
+                <span class="difficulty-badge difficulty-advanced">Advanced</span>
+                <div class="completion-indicator">
+                    <div class="completion-circle completed"></div>
+                    <span>Completed</span>
                 </div>
-                
-                <div class="topic-category">
-                    <h3>Advanced Concepts</h3>
-                    <ul>
-                        <li><a href="{{ '/frontend/system-design/' | relative_url }}">System Design</a></li>
-                        <li><a href="{{ '/frontend/performance/' | relative_url }}">Performance</a></li>
-                        <li><a href="{{ '/frontend/security/' | relative_url }}">Security</a></li>
-                        <li><a href="{{ '/frontend/accessibility/' | relative_url }}">Accessibility</a></li>
-                    </ul>
+            </div>
+        </div>
+
+        <div class="knowledge-card" data-href="{{ '/frontend/react/' | relative_url }}">
+            <div class="card-icon">⚛️</div>
+            <h3 class="card-title">React Ecosystem</h3>
+            <p class="card-description">Deep dive into React hooks, state management, performance optimization, and testing strategies.</p>
+            <div class="card-footer">
+                <span class="difficulty-badge difficulty-intermediate">Intermediate</span>
+                <div class="completion-indicator">
+                    <div class="completion-circle in-progress"></div>
+                    <span>In Progress</span>
                 </div>
-                
-                <div class="topic-category">
-                    <h3>Algorithms</h3>
-                    <ul>
-                        <li><a href="{{ '/leetcode/array/' | relative_url }}">Arrays & Strings</a></li>
-                        <li><a href="{{ '/leetcode/tree-graph/' | relative_url }}">Trees & Graphs</a></li>
-                        <li><a href="{{ '/leetcode/dp/' | relative_url }}">Dynamic Programming</a></li>
-                        <li><a href="{{ '/leetcode/backtracking/' | relative_url }}">Backtracking</a></li>
-                    </ul>
+            </div>
+        </div>
+
+        <div class="knowledge-card" data-href="{{ '/frontend/html-css/' | relative_url }}">
+            <div class="card-icon">🎨</div>
+            <h3 class="card-title">CSS & Styling</h3>
+            <p class="card-description">Flexbox, Grid, animations, responsive design, and modern CSS architectures.</p>
+            <div class="card-footer">
+                <span class="difficulty-badge difficulty-beginner">Beginner</span>
+                <div class="completion-indicator">
+                    <div class="completion-circle completed"></div>
+                    <span>Completed</span>
                 </div>
-                
-                <div class="topic-category">
-                    <h3>Interview Prep</h3>
-                    <ul>
-                        <li><a href="{{ '/interview-checklist.html' | relative_url }}">Interview Checklist</a></li>
-                        <li><a href="{{ '/progress-tracker.html' | relative_url }}">Progress Tracker</a></li>
-                        <li><a href="{{ '/templates/' | relative_url }}">Answer Templates</a></li>
-                        <li><a href="{{ '/frontend/interview-strategy/' | relative_url }}">Strategy Guide</a></li>
-                    </ul>
+            </div>
+        </div>
+
+        <div class="knowledge-card" data-href="{{ '/frontend/tools/' | relative_url }}">
+            <div class="card-icon">🔧</div>
+            <h3 class="card-title">Build Tools</h3>
+            <p class="card-description">Webpack, Vite, Babel, and modern development tooling for optimized workflows.</p>
+            <div class="card-footer">
+                <span class="difficulty-badge difficulty-intermediate">Intermediate</span>
+                <div class="completion-indicator">
+                    <div class="completion-circle in-progress"></div>
+                    <span>In Progress</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="knowledge-card" data-href="{{ '/frontend/browser-apis/' | relative_url }}">
+            <div class="card-icon">🌐</div>
+            <h3 class="card-title">Web APIs</h3>
+            <p class="card-description">DOM manipulation, Fetch API, Web Storage, Service Workers, and browser APIs.</p>
+            <div class="card-footer">
+                <span class="difficulty-badge difficulty-intermediate">Intermediate</span>
+                <div class="completion-indicator">
+                    <div class="completion-circle"></div>
+                    <span>Not Started</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="knowledge-card" data-href="{{ '/frontend/system-design/' | relative_url }}">
+            <div class="card-icon">🏗️</div>
+            <h3 class="card-title">System Design</h3>
+            <p class="card-description">Frontend architecture, scalability patterns, performance optimization, and best practices.</p>
+            <div class="card-footer">
+                <span class="difficulty-badge difficulty-advanced">Advanced</span>
+                <div class="completion-indicator">
+                    <div class="completion-circle in-progress"></div>
+                    <span>In Progress</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="knowledge-card" data-href="{{ '/frontend/testing/' | relative_url }}">
+            <div class="card-icon">🧪</div>
+            <h3 class="card-title">Testing</h3>
+            <p class="card-description">Unit testing, integration testing, E2E testing with Jest, React Testing Library, and Cypress.</p>
+            <div class="card-footer">
+                <span class="difficulty-badge difficulty-intermediate">Intermediate</span>
+                <div class="completion-indicator">
+                    <div class="completion-circle"></div>
+                    <span>Not Started</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="knowledge-card" data-href="{{ '/frontend/performance/' | relative_url }}">
+            <div class="card-icon">📱</div>
+            <h3 class="card-title">Performance</h3>
+            <p class="card-description">Core Web Vitals, optimization techniques, and performance monitoring for production applications.</p>
+            <div class="card-footer">
+                <span class="difficulty-badge difficulty-intermediate">Intermediate</span>
+                <div class="completion-indicator">
+                    <div class="completion-circle"></div>
+                    <span>Not Started</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="knowledge-card" data-href="{{ '/frontend/security/' | relative_url }}">
+            <div class="card-icon">🔒</div>
+            <h3 class="card-title">Security</h3>
+            <p class="card-description">XSS prevention, CSRF protection, authentication, authorization, and secure coding practices.</p>
+            <div class="card-footer">
+                <span class="difficulty-badge difficulty-advanced">Advanced</span>
+                <div class="completion-indicator">
+                    <div class="completion-circle"></div>
+                    <span>Not Started</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="knowledge-card" data-href="{{ '/leetcode/' | relative_url }}">
+            <div class="card-icon">💻</div>
+            <h3 class="card-title">Algorithms</h3>
+            <p class="card-description">200+ LeetCode problems organized by category with detailed TypeScript solutions and explanations.</p>
+            <div class="card-footer">
+                <span class="difficulty-badge difficulty-advanced">Advanced</span>
+                <div class="completion-indicator">
+                    <div class="completion-circle in-progress"></div>
+                    <span>In Progress</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="knowledge-card" data-href="{{ '/frontend/coding-problems/' | relative_url }}">
+            <div class="card-icon">🎯</div>
+            <h3 class="card-title">Coding Challenges</h3>
+            <p class="card-description">Real interview coding problems covering React, vanilla JavaScript, CSS, and modern frontend patterns.</p>
+            <div class="card-footer">
+                <span class="difficulty-badge difficulty-intermediate">Intermediate</span>
+                <div class="completion-indicator">
+                    <div class="completion-circle in-progress"></div>
+                    <span>In Progress</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="knowledge-card" data-href="{{ '/interview-checklist.html' | relative_url }}">
+            <div class="card-icon">📋</div>
+            <h3 class="card-title">Interview Prep</h3>
+            <p class="card-description">Comprehensive 6-week preparation plan, progress tracking, and interview strategy guides.</p>
+            <div class="card-footer">
+                <span class="difficulty-badge difficulty-beginner">Beginner</span>
+                <div class="completion-indicator">
+                    <div class="completion-circle"></div>
+                    <span>Not Started</span>
                 </div>
             </div>
         </div>
     </div>
 </section>
 
-<section class="cta">
-    <div class="cta-container">
-        <div class="cta-content">
-            <h2>Ready to Ace Your Frontend Interview?</h2>
-            <p>Start with our comprehensive checklist and track your progress through structured preparation</p>
-            <div class="cta-actions">
-                <a href="{{ '/interview-checklist.html' | relative_url }}" class="btn btn-primary">Get Started</a>
-                <a href="{{ '/progress-tracker.html' | relative_url }}" class="btn btn-outline">Track Progress</a>
-            </div>
-        </div>
+<section id="github" class="container">
+    <div class="github-section">
+        <h2 style="margin-bottom: 1rem;">GitHub Repository</h2>
+        <p style="color: var(--text-secondary); margin-bottom: 2rem;">
+            Access the complete interview preparation materials, code examples, and practice problems.
+        </p>
+        <a href="https://github.com/nee/interview" class="github-link" target="_blank">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+            </svg>
+            View Repository
+        </a>
     </div>
 </section>
 

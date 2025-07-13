@@ -1,3 +1,313 @@
+// Modern Frontend Interview Hub JavaScript
+
+document.addEventListener('DOMContentLoaded', function() {
+    // Initialize all features
+    initSmoothScrolling();
+    initProgressAnimations();
+    initKnowledgeCardInteractions();
+    initNavigationEffects();
+    initStatCounters();
+    
+    console.log('Frontend Interview Hub initialized');
+});
+
+// Smooth scrolling for navigation links
+function initSmoothScrolling() {
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                target.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
+        });
+    });
+}
+
+// Animate progress bars on scroll
+function initProgressAnimations() {
+    const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('animate-fade-in');
+                
+                // Animate progress bars if this is a progress section
+                if (entry.target.classList.contains('progress-section')) {
+                    animateProgressBars();
+                }
+            }
+        });
+    }, observerOptions);
+
+    // Observe all cards and progress items
+    document.querySelectorAll('.knowledge-card, .progress-item, .stat-card, .progress-section').forEach(el => {
+        observer.observe(el);
+    });
+}
+
+// Update progress bars with animation
+function animateProgressBars() {
+    const progressBars = document.querySelectorAll('.progress-fill');
+    progressBars.forEach(bar => {
+        const width = bar.style.width;
+        bar.style.width = '0%';
+        setTimeout(() => {
+            bar.style.width = width;
+        }, 300);
+    });
+}
+
+// Enhanced knowledge card interactions
+function initKnowledgeCardInteractions() {
+    document.querySelectorAll('.knowledge-card').forEach(card => {
+        card.addEventListener('mouseenter', () => {
+            card.style.transform = 'translateY(-8px) scale(1.02)';
+            card.style.boxShadow = '0 25px 50px rgba(0, 0, 0, 0.4)';
+        });
+        
+        card.addEventListener('mouseleave', () => {
+            card.style.transform = 'translateY(0) scale(1)';
+            card.style.boxShadow = '';
+        });
+
+        // Add click functionality and ripple effect
+        card.addEventListener('click', function(e) {
+            createRipple(e, this);
+            
+            // Navigate to href if data-href is present
+            const href = this.getAttribute('data-href');
+            if (href) {
+                setTimeout(() => {
+                    window.location.href = href;
+                }, 300); // Small delay for ripple effect
+            }
+        });
+        
+        // Add cursor pointer for clickable cards
+        if (card.getAttribute('data-href')) {
+            card.style.cursor = 'pointer';
+        }
+    });
+}
+
+// Create ripple effect for buttons and cards
+function createRipple(event, element) {
+    const ripple = document.createElement('span');
+    const rect = element.getBoundingClientRect();
+    const size = Math.max(rect.width, rect.height);
+    const x = event.clientX - rect.left - size / 2;
+    const y = event.clientY - rect.top - size / 2;
+    
+    ripple.style.width = ripple.style.height = size + 'px';
+    ripple.style.left = x + 'px';
+    ripple.style.top = y + 'px';
+    ripple.style.position = 'absolute';
+    ripple.style.borderRadius = '50%';
+    ripple.style.background = 'rgba(99, 102, 241, 0.3)';
+    ripple.style.transform = 'scale(0)';
+    ripple.style.animation = 'ripple 0.6s linear';
+    ripple.style.pointerEvents = 'none';
+    
+    element.style.position = 'relative';
+    element.style.overflow = 'hidden';
+    element.appendChild(ripple);
+    
+    setTimeout(() => {
+        ripple.remove();
+    }, 600);
+}
+
+// Add ripple animation to CSS
+const style = document.createElement('style');
+style.textContent = `
+    @keyframes ripple {
+        to {
+            transform: scale(4);
+            opacity: 0;
+        }
+    }
+`;
+document.head.appendChild(style);
+
+// Navigation effects
+function initNavigationEffects() {
+    const nav = document.querySelector('nav');
+    if (!nav) return;
+    
+    let lastScrollY = window.scrollY;
+    
+    window.addEventListener('scroll', () => {
+        const currentScrollY = window.scrollY;
+        
+        // Hide/show navigation on scroll
+        if (currentScrollY > lastScrollY && currentScrollY > 100) {
+            nav.style.transform = 'translateY(-100%)';
+        } else {
+            nav.style.transform = 'translateY(0)';
+        }
+        
+        lastScrollY = currentScrollY;
+        
+        // Update navigation background opacity
+        const opacity = Math.min(currentScrollY / 100, 0.95);
+        nav.style.background = `rgba(15, 23, 42, ${opacity})`;
+    });
+}
+
+// Animate stat counters
+function initStatCounters() {
+    const statNumbers = document.querySelectorAll('.stat-number');
+    
+    const counterObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                animateCounter(entry.target);
+                counterObserver.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.5 });
+    
+    statNumbers.forEach(stat => {
+        counterObserver.observe(stat);
+    });
+}
+
+function animateCounter(element) {
+    const text = element.textContent;
+    const hasPlus = text.includes('+');
+    const hasPercent = text.includes('%');
+    const hasWeek = text.includes('Week');
+    
+    let finalNumber;
+    if (hasWeek) {
+        finalNumber = parseInt(text);
+    } else {
+        finalNumber = parseInt(text.replace(/[+%]/g, ''));
+    }
+    
+    let current = 0;
+    const increment = finalNumber / 50;
+    const timer = setInterval(() => {
+        current += increment;
+        if (current >= finalNumber) {
+            current = finalNumber;
+            clearInterval(timer);
+        }
+        
+        let displayText = Math.floor(current).toString();
+        if (hasPlus) displayText += '+';
+        if (hasPercent) displayText += '%';
+        if (hasWeek) displayText += ' Week';
+        
+        element.textContent = displayText;
+    }, 40);
+}
+
+// Add button click effects
+document.querySelectorAll('.btn').forEach(button => {
+    button.addEventListener('click', function(e) {
+        createRipple(e, this);
+    });
+    
+    button.addEventListener('mousedown', function() {
+        this.style.transform = 'translateY(-1px) scale(0.98)';
+    });
+    
+    button.addEventListener('mouseup', function() {
+        this.style.transform = '';
+    });
+});
+
+// Parallax effect for hero section
+window.addEventListener('scroll', () => {
+    const hero = document.querySelector('.hero');
+    if (hero) {
+        const scrolled = window.pageYOffset;
+        hero.style.transform = `translateY(${scrolled * 0.2}px)`;
+    }
+});
+
+// Add loading animation
+window.addEventListener('load', () => {
+    document.body.classList.add('loaded');
+    
+    // Stagger animation for cards
+    const cards = document.querySelectorAll('.knowledge-card');
+    cards.forEach((card, index) => {
+        setTimeout(() => {
+            card.style.opacity = '1';
+            card.style.transform = 'translateY(0)';
+        }, index * 100);
+    });
+});
+
+// Initialize cards as hidden for loading animation
+document.querySelectorAll('.knowledge-card').forEach(card => {
+    card.style.opacity = '0';
+    card.style.transform = 'translateY(30px)';
+    card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+});
+
+// Enhanced scroll effects for progress bars
+function createAdvancedProgressAnimation() {
+    const progressItems = document.querySelectorAll('.progress-item');
+    
+    const progressObserver = new IntersectionObserver((entries) => {
+        entries.forEach((entry, index) => {
+            if (entry.isIntersecting) {
+                setTimeout(() => {
+                    entry.target.classList.add('animate-fade-in');
+                    const progressBar = entry.target.querySelector('.progress-fill');
+                    if (progressBar) {
+                        const width = progressBar.style.width;
+                        progressBar.style.width = '0%';
+                        setTimeout(() => {
+                            progressBar.style.width = width;
+                        }, 200);
+                    }
+                }, index * 150);
+            }
+        });
+    }, { threshold: 0.3 });
+    
+    progressItems.forEach(item => {
+        progressObserver.observe(item);
+    });
+}
+
+// Initialize advanced animations
+createAdvancedProgressAnimation();
+
+// Add keyboard navigation
+document.addEventListener('keydown', (e) => {
+    if (e.key === 'Tab') {
+        document.body.classList.add('keyboard-navigation');
+    }
+});
+
+document.addEventListener('mousedown', () => {
+    document.body.classList.remove('keyboard-navigation');
+});
+
+// Add focus styles for accessibility
+const focusStyle = document.createElement('style');
+focusStyle.textContent = `
+    .keyboard-navigation *:focus {
+        outline: 2px solid var(--primary) !important;
+        outline-offset: 2px !important;
+    }
+`;
+document.head.appendChild(focusStyle);
+
+// Legacy support for existing functionality
 // Theme toggle functionality
 class ThemeManager {
   constructor() {
@@ -6,8 +316,8 @@ class ThemeManager {
   }
   
   init() {
-    // Load saved theme or default to light
-    const savedTheme = localStorage.getItem('theme') || 'light';
+    // Load saved theme or default to dark for new design
+    const savedTheme = localStorage.getItem('theme') || 'dark';
     this.setTheme(savedTheme);
     
     // Add event listener for theme toggle
@@ -28,469 +338,5 @@ class ThemeManager {
   }
 }
 
-// Navigation functionality
-class NavigationManager {
-  constructor() {
-    this.navToggle = document.getElementById('navToggle');
-    this.navMenu = document.getElementById('navMenu');
-    this.init();
-  }
-  
-  init() {
-    if (this.navToggle && this.navMenu) {
-      this.navToggle.addEventListener('click', () => this.toggleNav());
-    }
-    
-    // Close nav when clicking outside
-    document.addEventListener('click', (e) => {
-      if (!this.navToggle.contains(e.target) && !this.navMenu.contains(e.target)) {
-        this.closeNav();
-      }
-    });
-    
-    // Close nav when window is resized to desktop
-    window.addEventListener('resize', () => {
-      if (window.innerWidth > 768) {
-        this.closeNav();
-      }
-    });
-  }
-  
-  toggleNav() {
-    this.navToggle.classList.toggle('active');
-    this.navMenu.classList.toggle('active');
-  }
-  
-  closeNav() {
-    this.navToggle.classList.remove('active');
-    this.navMenu.classList.remove('active');
-  }
-}
-
-// Table of Contents generator
-class TableOfContents {
-  constructor() {
-    this.tocContainer = document.getElementById('toc');
-    this.init();
-  }
-  
-  init() {
-    if (!this.tocContainer) return;
-    
-    const headings = document.querySelectorAll('.content-body h2, .content-body h3, .content-body h4');
-    if (headings.length === 0) return;
-    
-    const tocList = this.generateTOC(headings);
-    this.tocContainer.appendChild(tocList);
-    
-    // Add active state tracking
-    this.addActiveStateTracking(headings);
-  }
-  
-  generateTOC(headings) {
-    const ul = document.createElement('ul');
-    
-    headings.forEach((heading, index) => {
-      // Generate ID if not present
-      if (!heading.id) {
-        heading.id = this.generateId(heading.textContent);
-      }
-      
-      const li = document.createElement('li');
-      const a = document.createElement('a');
-      a.href = `#${heading.id}`;
-      a.textContent = heading.textContent;
-      a.className = heading.tagName.toLowerCase();
-      
-      li.appendChild(a);
-      ul.appendChild(li);
-    });
-    
-    return ul;
-  }
-  
-  generateId(text) {
-    return text
-      .toLowerCase()
-      .replace(/[^\w\s-]/g, '')
-      .replace(/\s+/g, '-')
-      .trim();
-  }
-  
-  addActiveStateTracking(headings) {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          const id = entry.target.id;
-          const tocLink = this.tocContainer.querySelector(`a[href="#${id}"]`);
-          
-          if (entry.isIntersecting) {
-            // Remove active class from all links
-            this.tocContainer.querySelectorAll('a').forEach(link => {
-              link.classList.remove('active');
-            });
-            
-            // Add active class to current link
-            if (tocLink) {
-              tocLink.classList.add('active');
-            }
-          }
-        });
-      },
-      {
-        rootMargin: '-20% 0px -80% 0px'
-      }
-    );
-    
-    headings.forEach(heading => observer.observe(heading));
-  }
-}
-
-// Code syntax highlighting and copy functionality
-class CodeManager {
-  constructor() {
-    this.init();
-  }
-  
-  init() {
-    this.addCopyButtons();
-    this.addLanguageLabels();
-  }
-  
-  addCopyButtons() {
-    const codeBlocks = document.querySelectorAll('pre code');
-    
-    codeBlocks.forEach(codeBlock => {
-      const pre = codeBlock.parentElement;
-      const wrapper = document.createElement('div');
-      wrapper.className = 'code-block-wrapper';
-      
-      // Create copy button
-      const copyButton = document.createElement('button');
-      copyButton.className = 'code-copy-btn';
-      copyButton.innerHTML = '<i data-feather="copy"></i>';
-      copyButton.title = 'Copy to clipboard';
-      
-      copyButton.addEventListener('click', () => {
-        navigator.clipboard.writeText(codeBlock.textContent).then(() => {
-          copyButton.innerHTML = '<i data-feather="check"></i>';
-          copyButton.classList.add('copied');
-          
-          setTimeout(() => {
-            copyButton.innerHTML = '<i data-feather="copy"></i>';
-            copyButton.classList.remove('copied');
-          }, 2000);
-        });
-      });
-      
-      // Wrap the pre element
-      pre.parentNode.insertBefore(wrapper, pre);
-      wrapper.appendChild(pre);
-      wrapper.appendChild(copyButton);
-    });
-  }
-  
-  addLanguageLabels() {
-    const codeBlocks = document.querySelectorAll('pre code[class*="language-"]');
-    
-    codeBlocks.forEach(codeBlock => {
-      const language = codeBlock.className.match(/language-(\w+)/)?.[1];
-      if (language) {
-        const pre = codeBlock.parentElement;
-        const wrapper = pre.parentElement;
-        
-        if (wrapper && wrapper.classList.contains('code-block-wrapper')) {
-          const label = document.createElement('span');
-          label.className = 'code-language-label';
-          label.textContent = language;
-          wrapper.appendChild(label);
-        }
-      }
-    });
-  }
-}
-
-// Search functionality
-class SearchManager {
-  constructor() {
-    this.searchInput = document.getElementById('searchInput');
-    this.searchResults = document.getElementById('searchResults');
-    this.init();
-  }
-  
-  init() {
-    if (!this.searchInput) return;
-    
-    this.searchInput.addEventListener('input', (e) => {
-      this.performSearch(e.target.value);
-    });
-    
-    // Close search results when clicking outside
-    document.addEventListener('click', (e) => {
-      if (!this.searchInput.contains(e.target) && !this.searchResults.contains(e.target)) {
-        this.hideResults();
-      }
-    });
-  }
-  
-  performSearch(query) {
-    if (query.length < 2) {
-      this.hideResults();
-      return;
-    }
-    
-    // Simple client-side search (in a real implementation, you might use a search index)
-    const results = this.searchContent(query);
-    this.displayResults(results);
-  }
-  
-  searchContent(query) {
-    // This is a simplified search - in practice, you'd want a more sophisticated search index
-    const pages = document.querySelectorAll('a[href]');
-    const results = [];
-    
-    pages.forEach(link => {
-      const text = link.textContent.toLowerCase();
-      const href = link.getAttribute('href');
-      
-      if (text.includes(query.toLowerCase()) && href.startsWith('/')) {
-        results.push({
-          title: link.textContent,
-          url: href
-        });
-      }
-    });
-    
-    return results.slice(0, 10); // Limit to 10 results
-  }
-  
-  displayResults(results) {
-    if (!this.searchResults) return;
-    
-    this.searchResults.innerHTML = '';
-    
-    if (results.length === 0) {
-      const noResults = document.createElement('div');
-      noResults.className = 'search-no-results';
-      noResults.textContent = 'No results found';
-      this.searchResults.appendChild(noResults);
-    } else {
-      results.forEach(result => {
-        const resultItem = document.createElement('a');
-        resultItem.className = 'search-result-item';
-        resultItem.href = result.url;
-        resultItem.textContent = result.title;
-        this.searchResults.appendChild(resultItem);
-      });
-    }
-    
-    this.searchResults.style.display = 'block';
-  }
-  
-  hideResults() {
-    if (this.searchResults) {
-      this.searchResults.style.display = 'none';
-    }
-  }
-}
-
-// Progress tracking
-class ProgressTracker {
-  constructor() {
-    this.init();
-  }
-  
-  init() {
-    this.loadProgress();
-    this.addProgressButtons();
-  }
-  
-  loadProgress() {
-    const progress = JSON.parse(localStorage.getItem('interviewProgress') || '{}');
-    
-    // Mark completed items
-    Object.keys(progress).forEach(key => {
-      if (progress[key]) {
-        const element = document.querySelector(`[data-progress-key="${key}"]`);
-        if (element) {
-          element.classList.add('completed');
-        }
-      }
-    });
-  }
-  
-  addProgressButtons() {
-    // Add "Mark as Complete" buttons to problem pages
-    if (window.location.pathname.includes('/frontend/coding-problems/') || 
-        window.location.pathname.includes('/leetcode/')) {
-      this.addCompletionButton();
-    }
-  }
-  
-  addCompletionButton() {
-    const contentHeader = document.querySelector('.content-header');
-    if (!contentHeader) return;
-    
-    const progressKey = window.location.pathname;
-    const isCompleted = this.isCompleted(progressKey);
-    
-    const button = document.createElement('button');
-    button.className = `progress-btn ${isCompleted ? 'completed' : ''}`;
-    button.innerHTML = isCompleted ? 
-      '<i data-feather="check"></i> Completed' : 
-      '<i data-feather="circle"></i> Mark Complete';
-    
-    button.addEventListener('click', () => {
-      this.toggleProgress(progressKey, button);
-    });
-    
-    contentHeader.appendChild(button);
-  }
-  
-  isCompleted(key) {
-    const progress = JSON.parse(localStorage.getItem('interviewProgress') || '{}');
-    return progress[key] || false;
-  }
-  
-  toggleProgress(key, button) {
-    const progress = JSON.parse(localStorage.getItem('interviewProgress') || '{}');
-    progress[key] = !progress[key];
-    localStorage.setItem('interviewProgress', JSON.stringify(progress));
-    
-    if (progress[key]) {
-      button.classList.add('completed');
-      button.innerHTML = '<i data-feather="check"></i> Completed';
-    } else {
-      button.classList.remove('completed');
-      button.innerHTML = '<i data-feather="circle"></i> Mark Complete';
-    }
-    
-    // Re-initialize feather icons
-    if (window.feather) {
-      window.feather.replace();
-    }
-  }
-}
-
-// Smooth scrolling for anchor links
-class SmoothScroll {
-  constructor() {
-    this.init();
-  }
-  
-  init() {
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', (e) => {
-        e.preventDefault();
-        const target = document.querySelector(anchor.getAttribute('href'));
-        if (target) {
-          target.scrollIntoView({
-            behavior: 'smooth',
-            block: 'start'
-          });
-        }
-      });
-    });
-  }
-}
-
-// Initialize everything when DOM is loaded
-document.addEventListener('DOMContentLoaded', () => {
-  // Initialize Feather icons
-  if (window.feather) {
-    window.feather.replace();
-  }
-  
-  // Initialize managers
-  new ThemeManager();
-  new NavigationManager();
-  new TableOfContents();
-  new CodeManager();
-  new SearchManager();
-  new ProgressTracker();
-  new SmoothScroll();
-  
-  // Re-initialize Feather icons after dynamic content
-  if (window.feather) {
-    window.feather.replace();
-  }
-});
-
-// Add CSS for code functionality
-const additionalCSS = `
-.code-block-wrapper {
-  position: relative;
-}
-
-.code-copy-btn {
-  position: absolute;
-  top: 8px;
-  right: 8px;
-  background: var(--color-bg-secondary);
-  border: 1px solid var(--color-border);
-  border-radius: var(--border-radius-sm);
-  padding: 4px 8px;
-  cursor: pointer;
-  opacity: 0;
-  transition: opacity var(--transition-fast);
-  color: var(--color-text-secondary);
-}
-
-.code-copy-btn:hover {
-  background: var(--color-primary);
-  color: white;
-}
-
-.code-copy-btn.copied {
-  background: var(--color-success);
-  color: white;
-}
-
-.code-block-wrapper:hover .code-copy-btn {
-  opacity: 1;
-}
-
-.code-language-label {
-  position: absolute;
-  top: 8px;
-  left: 8px;
-  background: var(--color-primary);
-  color: white;
-  padding: 2px 6px;
-  border-radius: var(--border-radius-sm);
-  font-size: 0.75rem;
-  font-weight: 500;
-  text-transform: uppercase;
-}
-
-.progress-btn {
-  display: inline-flex;
-  align-items: center;
-  gap: var(--spacing-xs);
-  padding: var(--spacing-sm) var(--spacing-md);
-  background: var(--color-bg-secondary);
-  border: 1px solid var(--color-border);
-  border-radius: var(--border-radius-md);
-  color: var(--color-text-secondary);
-  cursor: pointer;
-  transition: all var(--transition-fast);
-  margin-top: var(--spacing-md);
-}
-
-.progress-btn:hover {
-  background: var(--color-primary);
-  color: white;
-  border-color: var(--color-primary);
-}
-
-.progress-btn.completed {
-  background: var(--color-success);
-  color: white;
-  border-color: var(--color-success);
-}
-`;
-
-// Inject additional CSS
-const styleSheet = document.createElement('style');
-styleSheet.textContent = additionalCSS;
-document.head.appendChild(styleSheet);
+// Initialize theme manager
+new ThemeManager();
