@@ -1,195 +1,69 @@
-# String Problems - LeetCode Collection
+---
+layout: page
+title: "String Problems"
+category: String
+description: "LeetCode String problems with TypeScript solutions"
+total_problems: 19
+tags: [String, LeetCode, Interview Preparation]
+---
 
-**Bộ sưu tập bài tập String từ LeetCode cho phỏng vấn Big Tech**
+# String Problems
 
-## 📋 Problem List / Danh sách bài tập
+**LeetCode String problem collection for technical interviews**
 
-### Easy Level / Mức độ dễ
+## 📊 Overview
 
-#### 1. Reverse String
+- **Total Problems**: 19
+- **Difficulty Range**: Easy to Hard
+- **Language**: TypeScript
+- **Focus**: Technical interview preparation
 
-- **Difficulty**: Easy
-- **LeetCode Link**: https://leetcode.com/problems/reverse-string/
-- **Category**: String, Two Pointers
-- **Companies**: Google, Amazon, Microsoft
-- **Key Concepts**: In-place reversal, two pointers
+## 📋 Problem List
 
-#### 2. Reverse Integer
+- [Reverse String](problems/01-reverse-string.md) - **Easy** - [LeetCode](https://leetcode.com/problems/reverse-string/)\n- [Reverse Integer](problems/02-reverse-integer.md) - **Hard** - [LeetCode](https://leetcode.com/problems/reverse-integer/)\n- [First Unique Character in a String](problems/03-first-unique-character-in-a-string.md) - **Easy** - [LeetCode](https://leetcode.com/problems/first-unique-character-in-a-string/)\n- [Valid Anagram](problems/04-valid-anagram.md) - **Easy** - [LeetCode](https://leetcode.com/problems/valid-anagram/)\n- [Valid Palindrome](problems/05-valid-palindrome.md) - **Easy** - [LeetCode](https://leetcode.com/problems/valid-palindrome/)\n- [String to Integer (atoi)](problems/06-string-to-integer-atoi.md) - **Easy** - [LeetCode](https://leetcode.com/problems/string-to-integer-atoi-/)\n- [Implement strStr()](problems/07-implement-strstr.md) - **Easy** - [LeetCode](https://leetcode.com/problems/implement-strstr-/)\n- [Longest Common Prefix](problems/08-longest-common-prefix.md) - **Hard** - [LeetCode](https://leetcode.com/problems/longest-common-prefix/)\n- [Group Anagram](problems/09-group-anagrams.md) - **Hard** - [LeetCode](https://leetcode.com/problems/group-anagram/)\n- [Longest Substring Without Repeating Character](problems/10-longest-substring-without-repeating-characters.md) - **Hard** - [LeetCode](https://leetcode.com/problems/longest-substring-without-repeating-character/)\n- [Longest Palindromic Substring](problems/11-longest-palindromic-substring.md) - **Hard** - [LeetCode](https://leetcode.com/problems/longest-palindromic-substring/)\n- [Roman to Integer](problems/12-roman-to-integer.md) - **Hard** - [LeetCode](https://leetcode.com/problems/roman-to-integer/)\n- [Integer to Roman](problems/13-integer-to-roman.md) - **Easy** - [LeetCode](https://leetcode.com/problems/integer-to-roman/)\n- [ZigZag Conversion](problems/14-zigzag-conversion.md) - **Easy** - [LeetCode](https://leetcode.com/problems/zigzag-conversion/)\n- [Minimum Window Substring](problems/15-minimum-window-substring.md) - **Easy** - [LeetCode](https://leetcode.com/problems/minimum-window-substring/)\n- [Valid Palindrome II](problems/16-valid-palindrome-ii.md) - **Easy** - [LeetCode](https://leetcode.com/problems/valid-palindrome-ii/)\n- [Sliding Window Maximum](problems/17-sliding-window-maximum.md) - **Hard** - [LeetCode](https://leetcode.com/problems/sliding-window-maximum/)\n- [Longest Substring with At Most K Distinct Character](problems/18-longest-substring-with-at-most-k-distinct.md) - **Easy** - [LeetCode](https://leetcode.com/problems/longest-substring-with-at-most-k-distinct-character/)\n- [Find All Anagrams in a String](problems/19-find-all-anagrams-in-string.md) - **Easy** - [LeetCode](https://leetcode.com/problems/find-all-anagrams-in-a-string/)\n
 
-- **Difficulty**: Easy
-- **LeetCode Link**: https://leetcode.com/problems/reverse-integer/
-- **Category**: Math, String
-- **Companies**: Google, Amazon, Microsoft, Apple
-- **Key Concepts**: Integer overflow, digit manipulation
+## 🎯 Key Concepts
 
-#### 3. First Unique Character in a String
+- String manipulation
+- Pattern matching
+- Sliding window on strings
+- String parsing and validation
+- Character frequency counting
 
-- **Difficulty**: Easy
-- **LeetCode Link**: https://leetcode.com/problems/first-unique-character-in-a-string/
-- **Category**: String, Hash Table
-- **Companies**: Amazon, Google, Microsoft
-- **Key Concepts**: Frequency counting, hash map
+## 📚 Study Strategy
 
-#### 4. Valid Anagram
+### Beginner Level
+1. Start with Easy problems
+2. Understand basic patterns
+3. Focus on time complexity
+4. Practice implementation
 
-- **Difficulty**: Easy
-- **LeetCode Link**: https://leetcode.com/problems/valid-anagram/
-- **Category**: String, Hash Table, Sorting
-- **Companies**: Google, Amazon, Microsoft, Facebook
-- **Key Concepts**: Character frequency, sorting
+### Intermediate Level
+1. Tackle Medium problems
+2. Learn optimization techniques
+3. Handle edge cases
+4. Practice multiple approaches
 
-#### 5. Valid Palindrome
+### Advanced Level
+1. Solve Hard problems
+2. Optimize space complexity
+3. Interview simulation
+4. Explain solutions clearly
 
-- **Difficulty**: Easy
-- **LeetCode Link**: https://leetcode.com/problems/valid-palindrome/
-- **Category**: String, Two Pointers
-- **Companies**: Facebook, Amazon, Google
-- **Key Concepts**: Two pointers, character validation
+## 🔗 Navigation
 
-#### 6. String to Integer (atoi)
-
-- **Difficulty**: Medium
-- **LeetCode Link**: https://leetcode.com/problems/string-to-integer-atoi/
-- **Category**: String, Math
-- **Companies**: Amazon, Microsoft, Google
-- **Key Concepts**: Edge cases, overflow handling
-
-#### 7. Implement strStr()
-
-- **Difficulty**: Easy
-- **LeetCode Link**: https://leetcode.com/problems/implement-strstr/
-- **Category**: String, Two Pointers
-- **Companies**: Facebook, Amazon, Google
-- **Key Concepts**: String matching, KMP algorithm
-
-#### 8. Longest Common Prefix
-
-- **Difficulty**: Easy
-- **LeetCode Link**: https://leetcode.com/problems/longest-common-prefix/
-- **Category**: String
-- **Companies**: Google, Amazon, Microsoft
-- **Key Concepts**: Prefix matching, vertical scanning
-
-### Medium Level / Mức độ trung bình
-
-#### 9. Group Anagrams
-
-- **Difficulty**: Medium
-- **LeetCode Link**: https://leetcode.com/problems/group-anagrams/
-- **Category**: String, Hash Table
-- **Companies**: Amazon, Google, Facebook, Microsoft
-- **Key Concepts**: Anagram grouping, hash map
-
-#### 10. Longest Substring Without Repeating Characters
-
-- **Difficulty**: Medium
-- **LeetCode Link**: https://leetcode.com/problems/longest-substring-without-repeating-characters/
-- **Category**: String, Hash Table, Two Pointers
-- **Companies**: Google, Amazon, Facebook, Microsoft
-- **Key Concepts**: Sliding window, hash set
-
-#### 11. Longest Palindromic Substring
-
-- **Difficulty**: Medium
-- **LeetCode Link**: https://leetcode.com/problems/longest-palindromic-substring/
-- **Category**: String, Dynamic Programming
-- **Companies**: Amazon, Google, Facebook, Microsoft
-- **Key Concepts**: Expand around center, DP approach
-
-#### 12. Increasing Triplet Subsequence
-
-- **Difficulty**: Medium
-- **LeetCode Link**: https://leetcode.com/problems/increasing-triplet-subsequence/
-- **Category**: Array, Greedy
-- **Companies**: Facebook, Amazon, Google
-- **Key Concepts**: Greedy algorithm, maintaining two minimums
-
-#### 13. Missing Ranges
-
-- **Difficulty**: Easy
-- **LeetCode Link**: https://leetcode.com/problems/missing-ranges/
-- **Category**: Array
-- **Companies**: Google, Facebook
-- **Key Concepts**: Range handling, edge cases
-
-#### 14. Count and Say
-
-- **Difficulty**: Easy
-- **LeetCode Link**: https://leetcode.com/problems/count-and-say/
-- **Category**: String, Array
-- **Companies**: Facebook, Amazon
-- **Key Concepts**: String generation, pattern recognition
-
-## 🎯 Study Tips / Mẹo học tập
-
-### Common Patterns / Các mẫu thường gặp:
-
-1. **Two Pointers**: For palindrome, reverse, substring problems
-2. **Hash Table**: For frequency counting, anagram detection
-3. **Sliding Window**: For substring problems with constraints
-4. **String Manipulation**: Character by character processing
-5. **Regular Expressions**: For complex string matching
-
-### Time Complexity Targets / Mục tiêu độ phức tạp:
-
-- **Easy**: O(n) time, O(1) or O(n) space
-- **Medium**: O(n) or O(n²) time, O(1) or O(n) space
-
-### Common Mistakes / Lỗi thường gặp:
-
-1. Not handling edge cases (empty string, single character)
-2. Forgetting case sensitivity
-3. Not considering Unicode characters
-4. Missing overflow handling in integer conversion
-5. Inefficient string concatenation
-
-## 📊 Practice Strategy / Chiến lược luyện tập
-
-### Week 1: Foundation
-
-- Complete all Easy problems (1-8)
-- Focus on string manipulation basics
-- Practice character frequency counting
-
-### Week 2: Intermediate
-
-- Complete Medium problems (9-14)
-- Practice sliding window technique
-- Work on palindrome problems
-
-### Week 3: Advanced
-
-- Revisit problems with different approaches
-- Practice optimization techniques
-- Focus on edge case handling
-
-## 🔗 Related Topics / Chủ đề liên quan
-
-- [Array Problems](../array/README.md)
-- [Hash Table Patterns](./hash-table.md)
-- [Two Pointers Technique](./two-pointers.md)
-- [Sliding Window](./sliding-window.md)
-
-## 💡 Key Algorithms / Thuật toán quan trọng
-
-### 1. KMP Algorithm
-
-- Used in string matching problems
-- Time complexity: O(n + m)
-- Space complexity: O(m)
-
-### 2. Rabin-Karp Algorithm
-
-- Used for pattern matching
-- Time complexity: O(n + m) average case
-- Space complexity: O(1)
-
-### 3. Manacher's Algorithm
-
-- Used for finding longest palindromic substring
-- Time complexity: O(n)
-- Space complexity: O(n)
+- [Back to LeetCode Index](../index.md)
+- [All Categories](../README.md)
+ other_name="Tree/Graph" ;;
+            "linked-list") other_name="Linked List" ;;
+            "dp") other_name="Dynamic Programming" ;;
+            "sorting-searching") other_name="Sorting/Searching" ;;
+            *) other_name="" ;;
+        esac
+        echo "- [](..//README.md)"
+    fi
+done)
 
 ---
 
-**Next: [Linked List Problems](../linked-list/README.md)**
+**Total Problems: 19** | **Last Updated: 2025-07-13**

@@ -11,7 +11,7 @@ Master data structures and algorithms with our comprehensive collection of LeetC
 ## Problem Categories
 
 ### [Array & String Problems](array/)
-**26 Problems** covering fundamental array operations and string manipulation
+**45 Problems** covering fundamental array operations (26) and string manipulation (19)
 
 Key concepts:
 - Two pointers technique
