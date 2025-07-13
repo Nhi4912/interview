@@ -1,0 +1,683 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Visual Architecture Diagrams | Frontend Interview Preparation Guide</title>
+    <meta name="description" content="Comprehensive frontend interview materials for Big Tech companies">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="/assets/css/main.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <header>
+        <nav class="container">
+            <div class="logo">Frontend Interview Hub</div>
+            <ul class="nav-links">
+                <li><a href="/">Home</a></li>
+                <li><a href="#progress">Progress</a></li>
+                <li><a href="#knowledge">Knowledge</a></li>
+                <li><a href="https://github.com/nee/interview">GitHub</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <div class="content-container">
+    
+        <nav class="breadcrumb">
+            <ol>
+                <li><a href="/">Home</a></li>
+                
+                
+                
+                    
+                
+                    
+                        
+                        
+                            <li><a href="/frontend/">Frontend</a></li>
+                        
+                    
+                
+                    
+                        
+                        
+                            <li><a href="/frontend/system-design/">System design</a></li>
+                        
+                    
+                
+                    
+                        
+                        
+                            <li class="active">Visual architecture diagrams</li>
+                        
+                    
+                
+            </ol>
+        </nav>
+    
+    
+    <article class="content">
+        
+            <header class="content-header">
+                <h1 class="content-title">Visual Architecture Diagrams</h1>
+                
+                
+            </header>
+        
+        
+        <div class="content-body">
+            <h1 id="visual-architecture-diagrams">Visual Architecture Diagrams</h1>
+
+<h2 id="frontend-system-design-visual-reference">Frontend System Design Visual Reference</h2>
+
+<h3 id="1-browser-rendering-pipeline">1. Browser Rendering Pipeline</h3>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+</pre></td><td class="rouge-code"><pre>┌─────────────────────────────────────────────────────────────────┐
+│                    BROWSER RENDERING PIPELINE                   │
+├─────────────────────────────────────────────────────────────────┤
+│                                                                 │
+│  User Input: URL                                               │
+│       ↓                                                        │
+│  ┌─────────────┐    ┌──────────────┐    ┌─────────────────┐   │
+│  │ DNS Lookup  │ →  │ TCP Handshake│ →  │ HTTP Request    │   │
+│  └─────────────┘    └──────────────┘    └─────────────────┘   │
+│       ↓                                                        │
+│  ┌─────────────────────────────────────────────────────────┐   │
+│  │                HTML PARSING                             │   │
+│  │  ┌─────────────┐    ┌──────────────┐                   │   │
+│  │  │ HTML Parser │ →  │   DOM Tree   │                   │   │
+│  │  └─────────────┘    └──────────────┘                   │   │
+│  └─────────────────────────────────────────────────────────┘   │
+│       ↓                                                        │
+│  ┌─────────────────────────────────────────────────────────┐   │
+│  │                CSS PARSING                              │   │
+│  │  ┌─────────────┐    ┌──────────────┐                   │   │
+│  │  │ CSS Parser  │ →  │  CSSOM Tree  │                   │   │
+│  │  └─────────────┘    └──────────────┘                   │   │
+│  └─────────────────────────────────────────────────────────┘   │
+│       ↓                                                        │
+│  ┌─────────────────────────────────────────────────────────┐   │
+│  │              JAVASCRIPT EXECUTION                       │   │
+│  │  ┌─────────────┐    ┌──────────────┐                   │   │
+│  │  │ JS Engine   │ →  │ DOM Updates  │                   │   │
+│  │  └─────────────┘    └──────────────┘                   │   │
+│  └─────────────────────────────────────────────────────────┘   │
+│       ↓                                                        │
+│  ┌─────────────────────────────────────────────────────────┐   │
+│  │                RENDER PIPELINE                          │   │
+│  │  ┌──────────┐  ┌────────┐  ┌───────┐  ┌─────────────┐  │   │
+│  │  │ Render   │→ │ Layout │→ │ Paint │→ │ Composite   │  │   │
+│  │  │ Tree     │  │ (Refl) │  │       │  │             │  │   │
+│  │  └──────────┘  └────────┘  └───────┘  └─────────────┘  │   │
+│  └─────────────────────────────────────────────────────────┘   │
+│       ↓                                                        │
+│  ┌─────────────────────────────────────────────────────────┐   │
+│  │                 SCREEN DISPLAY                          │   │
+│  └─────────────────────────────────────────────────────────┘   │
+└─────────────────────────────────────────────────────────────────┘
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<h3 id="2-react-fiber-architecture">2. React Fiber Architecture</h3>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+</pre></td><td class="rouge-code"><pre>┌─────────────────────────────────────────────────────────────────┐
+│                    REACT FIBER ARCHITECTURE                     │
+├─────────────────────────────────────────────────────────────────┤
+│                                                                 │
+│  ┌─────────────────┐    ┌──────────────────┐                   │
+│  │   Scheduler     │ →  │    Work Loop     │                   │
+│  │  - Priority     │    │  - Time Slicing  │                   │
+│  │  - Task Queue   │    │  - Interruption  │                   │
+│  └─────────────────┘    └──────────────────┘                   │
+│         ↓                         ↓                            │
+│  ┌─────────────────────────────────────────────────────────┐   │
+│  │                 FIBER TREE                              │   │
+│  │                                                         │   │
+│  │     App                                                 │   │
+│  │      ├── Header (Priority: 3)                          │   │
+│  │      ├── Main                                           │   │
+│  │      │    ├── Sidebar (Priority: 2)                    │   │
+│  │      │    └── Content (Priority: 1)                    │   │
+│  │      └── Footer (Priority: 4)                          │   │
+│  │                                                         │   │
+│  │  Each node is a Fiber with:                            │   │
+│  │  - type, props, state                                  │   │
+│  │  - child, sibling, return pointers                     │   │
+│  │  - effectTag, priority                                 │   │
+│  └─────────────────────────────────────────────────────────┘   │
+│         ↓                                                       │
+│  ┌─────────────────────────────────────────────────────────┐   │
+│  │              RECONCILIATION PHASES                      │   │
+│  │                                                         │   │
+│  │  Phase 1: RENDER (Interruptible)                       │   │
+│  │  ┌─────────────┐    ┌──────────────┐                   │   │
+│  │  │ Diff Algo   │ →  │ Effect List  │                   │   │
+│  │  │ - Compare   │    │ - Updates    │                   │   │
+│  │  │ - Mark      │    │ - Insertions │                   │   │
+│  │  └─────────────┘    └──────────────┘                   │   │
+│  │                                                         │   │
+│  │  Phase 2: COMMIT (Not Interruptible)                   │   │
+│  │  ┌─────────────┐    ┌──────────────┐                   │   │
+│  │  │ Apply       │ →  │ DOM Updates  │                   │   │
+│  │  │ Effects     │    │ Lifecycle    │                   │   │
+│  │  └─────────────┘    └──────────────┘                   │   │
+│  └─────────────────────────────────────────────────────────┘   │
+└─────────────────────────────────────────────────────────────────┘
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<h3 id="3-micro-frontend-architecture">3. Micro-Frontend Architecture</h3>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+</pre></td><td class="rouge-code"><pre>┌─────────────────────────────────────────────────────────────────┐
+│                  MICRO-FRONTEND ARCHITECTURE                    │
+├─────────────────────────────────────────────────────────────────┤
+│                                                                 │
+│  ┌─────────────────────────────────────────────────────────┐   │
+│  │                 SHELL APPLICATION                       │   │
+│  │  ┌─────────────┐  ┌─────────────┐  ┌─────────────────┐  │   │
+│  │  │   Router    │  │  Auth Guard │  │ Error Boundary  │  │   │
+│  │  └─────────────┘  └─────────────┘  └─────────────────┘  │   │
+│  └─────────────────────────────────────────────────────────┘   │
+│         ↓              ↓              ↓                        │
+│  ┌─────────────┐ ┌─────────────┐ ┌─────────────────────────┐   │
+│  │  MF Header  │ │ MF Sidebar  │ │      MF Main Content    │   │
+│  │             │ │             │ │                         │   │
+│  │ - React 18  │ │ - Vue 3     │ │     - Angular 15        │   │
+│  │ - Team A    │ │ - Team B    │ │     - Team C            │   │
+│  │ - Port 3001 │ │ - Port 3002 │ │     - Port 3003         │   │
+│  └─────────────┘ └─────────────┘ └─────────────────────────┘   │
+│         ↓              ↓              ↓                        │
+│  ┌─────────────────────────────────────────────────────────┐   │
+│  │              SHARED DEPENDENCIES                        │   │
+│  │  ┌─────────────┐  ┌─────────────┐  ┌─────────────────┐  │   │
+│  │  │   Shared    │  │   Design    │  │   State Mgmt    │  │   │
+│  │  │   Utils     │  │   System    │  │   (Redux/Zustand)│  │   │
+│  │  └─────────────┘  └─────────────┘  └─────────────────┘  │   │
+│  └─────────────────────────────────────────────────────────┘   │
+│                                                                 │
+│  Module Federation (Webpack 5):                                │
+│  ┌─────────────────────────────────────────────────────────┐   │
+│  │  Shell: ModuleFederationPlugin({                        │   │
+│  │    remotes: {                                           │   │
+│  │      header: "header@http://localhost:3001/remoteEntry.js" │
+│  │      sidebar: "sidebar@http://localhost:3002/remoteEntry.js"│
+│  │      main: "main@http://localhost:3003/remoteEntry.js"  │   │
+│  │    }                                                    │   │
+│  │  })                                                     │   │
+│  └─────────────────────────────────────────────────────────┘   │
+└─────────────────────────────────────────────────────────────────┘
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<h3 id="4-performance-optimization-flow">4. Performance Optimization Flow</h3>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+</pre></td><td class="rouge-code"><pre>┌─────────────────────────────────────────────────────────────────┐
+│               PERFORMANCE OPTIMIZATION PIPELINE                 │
+├─────────────────────────────────────────────────────────────────┤
+│                                                                 │
+│  ┌─────────────────────────────────────────────────────────┐   │
+│  │                   MEASUREMENT                           │   │
+│  │  ┌─────────────┐  ┌─────────────┐  ┌─────────────────┐  │   │
+│  │  │ Lighthouse  │  │ Web Vitals  │  │ Custom Metrics  │  │   │
+│  │  │ - LCP       │  │ - FID       │  │ - TTI           │  │   │
+│  │  │ - CLS       │  │ - FCP       │  │ - Bundle Size   │  │   │
+│  │  └─────────────┘  └─────────────┘  └─────────────────┘  │   │
+│  └─────────────────────────────────────────────────────────┘   │
+│         ↓                                                       │
+│  ┌─────────────────────────────────────────────────────────┐   │
+│  │                   ANALYSIS                              │   │
+│  │  ┌─────────────┐  ┌─────────────┐  ┌─────────────────┐  │   │
+│  │  │ Bundle      │  │ Runtime     │  │ Network         │  │   │
+│  │  │ Analysis    │  │ Performance │  │ Optimization    │  │   │
+│  │  │ - Tree      │  │ - Memory    │  │ - Caching       │  │   │
+│  │  │   Shaking   │  │ - CPU Usage │  │ - Compression   │  │   │
+│  │  │ - Code      │  │ - Frame     │  │ - CDN           │  │   │
+│  │  │   Splitting │  │   Drops     │  │ - Preloading    │  │   │
+│  │  └─────────────┘  └─────────────┘  └─────────────────┘  │   │
+│  └─────────────────────────────────────────────────────────┘   │
+│         ↓                                                       │
+│  ┌─────────────────────────────────────────────────────────┐   │
+│  │                 OPTIMIZATION                            │   │
+│  │                                                         │   │
+│  │  Build Time:           Runtime:           Load Time:    │   │
+│  │  ┌─────────────┐      ┌─────────────┐    ┌──────────┐   │   │
+│  │  │ Tree Shake  │      │ Memoization │    │ Lazy     │   │   │
+│  │  │ Dead Code   │      │ Virtualize  │    │ Loading  │   │   │
+│  │  │ Minification│      │ Debounce    │    │ Prefetch │   │   │
+│  │  │ Compression │      │ Web Workers │    │ Preload  │   │   │
+│  │  └─────────────┘      └─────────────┘    └──────────┘   │   │
+│  └─────────────────────────────────────────────────────────┘   │
+│         ↓                                                       │
+│  ┌─────────────────────────────────────────────────────────┐   │
+│  │                 MONITORING                              │   │
+│  │  ┌─────────────┐  ┌─────────────┐  ┌─────────────────┐  │   │
+│  │  │ Real User   │  │ Synthetic   │  │ Performance     │  │   │
+│  │  │ Monitoring  │  │ Testing     │  │ Budget          │  │   │
+│  │  │ (RUM)       │  │ - CI/CD     │  │ - Alerts        │  │   │
+│  │  └─────────────┘  └─────────────┘  └─────────────────┘  │   │
+│  └─────────────────────────────────────────────────────────┘   │
+└─────────────────────────────────────────────────────────────────┘
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<h3 id="5-state-management-architecture-comparison">5. State Management Architecture Comparison</h3>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+</pre></td><td class="rouge-code"><pre>┌─────────────────────────────────────────────────────────────────┐
+│              STATE MANAGEMENT PATTERNS COMPARISON               │
+├─────────────────────────────────────────────────────────────────┤
+│                                                                 │
+│  ┌─────────────────────────────────────────────────────────┐   │
+│  │                    REDUX PATTERN                        │   │
+│  │                                                         │   │
+│  │  Component → Action → Reducer → Store → Component      │   │
+│  │      ↑                                      ↓          │   │
+│  │      └──────────── UI Update ←──────────────┘          │   │
+│  │                                                         │   │
+│  │  Pros: Predictable, DevTools, Time Travel              │   │
+│  │  Cons: Boilerplate, Learning Curve                     │   │
+│  └─────────────────────────────────────────────────────────┘   │
+│                                                                 │
+│  ┌─────────────────────────────────────────────────────────┐   │
+│  │                   ZUSTAND PATTERN                       │   │
+│  │                                                         │   │
+│  │  Component → Store.setState() → Store → Component      │   │
+│  │      ↑                                      ↓          │   │
+│  │      └──────────── Re-render ←──────────────┘          │   │
+│  │                                                         │   │
+│  │  Pros: Simple API, Small Bundle, TypeScript            │   │
+│  │  Cons: Less Ecosystem, Manual Optimization             │   │
+│  └─────────────────────────────────────────────────────────┘   │
+│                                                                 │
+│  ┌─────────────────────────────────────────────────────────┐   │
+│  │                 REACT CONTEXT PATTERN                   │   │
+│  │                                                         │   │
+│  │  Provider → Consumer/useContext → State → Provider     │   │
+│  │      ↑                                      ↓          │   │
+│  │      └──────────── Re-render ←──────────────┘          │   │
+│  │                                                         │   │
+│  │  Pros: Built-in, No Dependencies                       │   │
+│  │  Cons: Performance Issues, Prop Drilling               │   │
+│  └─────────────────────────────────────────────────────────┘   │
+│                                                                 │
+│  ┌─────────────────────────────────────────────────────────┐   │
+│  │                   JOTAI PATTERN                         │   │
+│  │                                                         │   │
+│  │  Atom → useAtom() → Component → Atom Update            │   │
+│  │    ↑                               ↓                   │   │
+│  │    └──────── Atomic Updates ←──────┘                   │   │
+│  │                                                         │   │
+│  │  Pros: Atomic, Bottom-up, Minimal Re-renders           │   │
+│  │  Cons: New Paradigm, Smaller Community                 │   │
+│  └─────────────────────────────────────────────────────────┘   │
+└─────────────────────────────────────────────────────────────────┘
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<h3 id="6-security-threat-model">6. Security Threat Model</h3>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+</pre></td><td class="rouge-code"><pre>┌─────────────────────────────────────────────────────────────────┐
+│                   FRONTEND SECURITY THREATS                     │
+├─────────────────────────────────────────────────────────────────┤
+│                                                                 │
+│  ┌─────────────────────────────────────────────────────────┐   │
+│  │                    XSS ATTACKS                          │   │
+│  │                                                         │   │
+│  │  Stored XSS:     Reflected XSS:     DOM-based XSS:     │   │
+│  │  ┌─────────┐     ┌─────────────┐    ┌─────────────┐    │   │
+│  │  │Database │ →   │URL Parameter│ →  │JavaScript   │ →  │   │
+│  │  │Payload  │     │Payload      │    │Sink         │    │   │
+│  │  └─────────┘     └─────────────┘    └─────────────┘    │   │
+│  │                                                         │   │
+│  │  Prevention:                                            │   │
+│  │  • Content Security Policy (CSP)                       │   │
+│  │  • Input Sanitization                                  │   │
+│  │  • Output Encoding                                     │   │
+│  │  • HTTP-only Cookies                                   │   │
+│  └─────────────────────────────────────────────────────────┘   │
+│                                                                 │
+│  ┌─────────────────────────────────────────────────────────┐   │
+│  │                   CSRF ATTACKS                          │   │
+│  │                                                         │   │
+│  │  Malicious Site → User Browser → Legitimate Site       │   │
+│  │       ↓               ↓              ↓                 │   │
+│  │  ┌─────────┐     ┌─────────┐    ┌─────────────┐        │   │
+│  │  │Hidden   │     │Cookies  │    │Unauthorized │        │   │
+│  │  │Form     │  →  │Sent     │ →  │Action       │        │   │
+│  │  └─────────┘     └─────────┘    └─────────────┘        │   │
+│  │                                                         │   │
+│  │  Prevention:                                            │   │
+│  │  • CSRF Tokens                                         │   │
+│  │  • SameSite Cookies                                    │   │
+│  │  • Origin Header Validation                            │   │
+│  │  • Custom Headers                                      │   │
+│  └─────────────────────────────────────────────────────────┘   │
+│                                                                 │
+│  ┌─────────────────────────────────────────────────────────┐   │
+│  │               SUPPLY CHAIN ATTACKS                      │   │
+│  │                                                         │   │
+│  │  npm Package → Build Process → Production Bundle       │   │
+│  │       ↓             ↓              ↓                   │   │
+│  │  ┌─────────┐   ┌─────────┐    ┌─────────────┐          │   │
+│  │  │Malicious│   │Webpack  │    │Injected     │          │   │
+│  │  │Code     │ → │Bundle   │ →  │Payload      │          │   │
+│  │  └─────────┘   └─────────┘    └─────────────┘          │   │
+│  │                                                         │   │
+│  │  Prevention:                                            │   │
+│  │  • Package Auditing (npm audit)                        │   │
+│  │  • Subresource Integrity (SRI)                         │   │
+│  │  • Lock Files (package-lock.json)                      │   │
+│  │  • Dependency Scanning                                 │   │
+│  └─────────────────────────────────────────────────────────┘   │
+└─────────────────────────────────────────────────────────────────┘
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>These visual diagrams provide clear mental models for complex frontend concepts that are crucial for system design interviews at Big Tech companies.</p>
+
+        </div>
+    </article>
+</div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Study Resources</h3>
+                    <p>Comprehensive collection of frontend interview questions, coding challenges, and system design problems.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Progress Tracking</h3>
+                    <p>Monitor your learning journey with detailed progress indicators and completion status.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Big Tech Ready</h3>
+                    <p>Curated content specifically designed for interviews at Google, Meta, Amazon, Apple, and Netflix.</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Frontend Interview Hub. Built for aspiring frontend engineers.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="/assets/js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,1875 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tools &amp; Build Systems Interview Preparation | Frontend Interview Preparation Guide</title>
+    <meta name="description" content="Comprehensive frontend interview materials for Big Tech companies">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="/assets/css/main.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <header>
+        <nav class="container">
+            <div class="logo">Frontend Interview Hub</div>
+            <ul class="nav-links">
+                <li><a href="/">Home</a></li>
+                <li><a href="#progress">Progress</a></li>
+                <li><a href="#knowledge">Knowledge</a></li>
+                <li><a href="https://github.com/nee/interview">GitHub</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <div class="content-container">
+    
+        <nav class="breadcrumb">
+            <ol>
+                <li><a href="/">Home</a></li>
+                
+                
+                
+                    
+                
+                    
+                        
+                        
+                            <li><a href="/frontend/">Frontend</a></li>
+                        
+                    
+                
+                    
+                        
+                        
+                            <li class="active">Tools &amp; build systems interview preparation</li>
+                        
+                    
+                
+            </ol>
+        </nav>
+    
+    
+    <article class="content">
+        
+            <header class="content-header">
+                <h1 class="content-title">Tools &amp; Build Systems Interview Preparation</h1>
+                
+                
+            </header>
+        
+        
+        <div class="content-body">
+            <h1 id="tools--build-systems-interview-preparation">Tools &amp; Build Systems Interview Preparation</h1>
+
+<h2 id="table-of-contents">Table of Contents</h2>
+
+<ul>
+  <li><a href="#core-concepts">Core Concepts</a></li>
+  <li><a href="#build-tools">Build Tools</a></li>
+  <li><a href="#package-managers">Package Managers</a></li>
+  <li><a href="#development-tools">Development Tools</a></li>
+  <li><a href="#testing-tools">Testing Tools</a></li>
+  <li><a href="#deployment-tools">Deployment Tools</a></li>
+  <li><a href="#common-interview-questions">Common Interview Questions</a></li>
+  <li><a href="#best-practices">Best Practices</a></li>
+  <li><a href="#practice-problems">Practice Problems</a></li>
+</ul>
+
+<h2 id="core-concepts">Core Concepts</h2>
+
+<h3 id="build-tools-fundamentals">Build Tools Fundamentals</h3>
+
+<ul>
+  <li><strong>Bundlers</strong>: Webpack, Vite, Rollup, Parcel</li>
+  <li><strong>Transpilers</strong>: Babel, TypeScript, SWC</li>
+  <li><strong>Package Managers</strong>: npm, yarn, pnpm</li>
+  <li><strong>Task Runners</strong>: npm scripts, Gulp, Grunt</li>
+  <li><strong>Development Servers</strong>: Hot reload, HMR, proxy</li>
+</ul>
+
+<h3 id="modern-build-features">Modern Build Features</h3>
+
+<ul>
+  <li><strong>Tree Shaking</strong>: Dead code elimination</li>
+  <li><strong>Code Splitting</strong>: Dynamic imports, chunking</li>
+  <li><strong>Module Federation</strong>: Micro-frontend architecture</li>
+  <li><strong>Source Maps</strong>: Debugging support</li>
+  <li><strong>Asset Optimization</strong>: Minification, compression</li>
+</ul>
+
+<h2 id="advanced-topics">Advanced Topics</h2>
+
+<h3 id="build-performance">Build Performance</h3>
+
+<ul>
+  <li><strong>Incremental Builds</strong>: Only rebuild changed files</li>
+  <li><strong>Parallel Processing</strong>: Multi-threading builds</li>
+  <li><strong>Caching Strategies</strong>: Persistent cache, build cache</li>
+  <li><strong>Lazy Loading</strong>: On-demand module loading</li>
+  <li><strong>Bundle Analysis</strong>: Size optimization</li>
+</ul>
+
+<h3 id="development-experience">Development Experience</h3>
+
+<ul>
+  <li><strong>Hot Module Replacement</strong>: Instant updates</li>
+  <li><strong>Fast Refresh</strong>: React component updates</li>
+  <li><strong>Error Overlay</strong>: In-browser error display</li>
+  <li><strong>Source Maps</strong>: Debug original code</li>
+  <li><strong>Environment Variables</strong>: Configuration management</li>
+</ul>
+
+<h2 id="common-interview-questions--answers">Common Interview Questions &amp; Answers</h2>
+
+<h3 id="build-tools-questions">Build Tools Questions</h3>
+
+<p><strong>Q: What’s the difference between Webpack and Vite?</strong>
+A:
+<strong>Webpack</strong>:</p>
+
+<ul>
+  <li>Bundles everything at build time</li>
+  <li>Slower development startup</li>
+  <li>More configuration options</li>
+  <li>Better for complex applications</li>
+</ul>
+
+<p><strong>Vite</strong>:</p>
+
+<ul>
+  <li>Uses native ES modules in development</li>
+  <li>Instant server startup</li>
+  <li>Faster hot reload</li>
+  <li>Simpler configuration</li>
+  <li>Better for modern applications</li>
+</ul>
+
+<p><strong>Q: Explain tree shaking and how it works.</strong>
+A: Tree shaking eliminates dead code by analyzing import/export statements:</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+</pre></td><td class="rouge-code"><pre><span class="c1">// Only used exports are included in bundle</span>
+<span class="k">import</span> <span class="p">{</span> <span class="nx">add</span><span class="p">,</span> <span class="nx">subtract</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">./math</span><span class="dl">"</span><span class="p">;</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">add</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">));</span> <span class="c1">// Only 'add' function is included</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p><strong>Q: How does code splitting work in modern bundlers?</strong>
+A: Code splitting divides bundles into smaller chunks:</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+</pre></td><td class="rouge-code"><pre><span class="c1">// Dynamic import creates separate chunk</span>
+<span class="kd">const</span> <span class="nx">LazyComponent</span> <span class="o">=</span> <span class="nx">React</span><span class="p">.</span><span class="nx">lazy</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="k">import</span><span class="p">(</span><span class="dl">"</span><span class="s2">./LazyComponent</span><span class="dl">"</span><span class="p">));</span>
+
+<span class="c1">// Route-based splitting</span>
+<span class="kd">const</span> <span class="nx">HomePage</span> <span class="o">=</span> <span class="nx">React</span><span class="p">.</span><span class="nx">lazy</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="k">import</span><span class="p">(</span><span class="dl">"</span><span class="s2">./pages/HomePage</span><span class="dl">"</span><span class="p">));</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<h3 id="advanced-questions">Advanced Questions</h3>
+
+<p><strong>Q: How would you optimize a large webpack bundle?</strong>
+A: Multiple optimization strategies:</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+</pre></td><td class="rouge-code"><pre><span class="c1">// webpack.config.js</span>
+<span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="na">optimization</span><span class="p">:</span> <span class="p">{</span>
+    <span class="na">splitChunks</span><span class="p">:</span> <span class="p">{</span>
+      <span class="na">chunks</span><span class="p">:</span> <span class="dl">"</span><span class="s2">all</span><span class="dl">"</span><span class="p">,</span>
+      <span class="na">cacheGroups</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">vendor</span><span class="p">:</span> <span class="p">{</span>
+          <span class="na">test</span><span class="p">:</span> <span class="sr">/</span><span class="se">[\\/]</span><span class="sr">node_modules</span><span class="se">[\\/]</span><span class="sr">/</span><span class="p">,</span>
+          <span class="na">name</span><span class="p">:</span> <span class="dl">"</span><span class="s2">vendors</span><span class="dl">"</span><span class="p">,</span>
+          <span class="na">chunks</span><span class="p">:</span> <span class="dl">"</span><span class="s2">all</span><span class="dl">"</span><span class="p">,</span>
+        <span class="p">},</span>
+        <span class="na">common</span><span class="p">:</span> <span class="p">{</span>
+          <span class="na">name</span><span class="p">:</span> <span class="dl">"</span><span class="s2">common</span><span class="dl">"</span><span class="p">,</span>
+          <span class="na">minChunks</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+          <span class="na">chunks</span><span class="p">:</span> <span class="dl">"</span><span class="s2">all</span><span class="dl">"</span><span class="p">,</span>
+        <span class="p">},</span>
+      <span class="p">},</span>
+    <span class="p">},</span>
+    <span class="na">minimize</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="na">minimizer</span><span class="p">:</span> <span class="p">[</span>
+      <span class="k">new</span> <span class="nx">TerserPlugin</span><span class="p">({</span>
+        <span class="na">terserOptions</span><span class="p">:</span> <span class="p">{</span>
+          <span class="na">compress</span><span class="p">:</span> <span class="p">{</span>
+            <span class="na">drop_console</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+          <span class="p">},</span>
+        <span class="p">},</span>
+      <span class="p">}),</span>
+    <span class="p">],</span>
+  <span class="p">},</span>
+  <span class="na">module</span><span class="p">:</span> <span class="p">{</span>
+    <span class="na">rules</span><span class="p">:</span> <span class="p">[</span>
+      <span class="p">{</span>
+        <span class="na">test</span><span class="p">:</span> <span class="sr">/</span><span class="se">\.</span><span class="sr">js$/</span><span class="p">,</span>
+        <span class="na">exclude</span><span class="p">:</span> <span class="sr">/node_modules/</span><span class="p">,</span>
+        <span class="na">use</span><span class="p">:</span> <span class="p">{</span>
+          <span class="na">loader</span><span class="p">:</span> <span class="dl">"</span><span class="s2">babel-loader</span><span class="dl">"</span><span class="p">,</span>
+          <span class="na">options</span><span class="p">:</span> <span class="p">{</span>
+            <span class="na">presets</span><span class="p">:</span> <span class="p">[</span><span class="dl">"</span><span class="s2">@babel/preset-env</span><span class="dl">"</span><span class="p">],</span>
+            <span class="na">plugins</span><span class="p">:</span> <span class="p">[</span><span class="dl">"</span><span class="s2">@babel/plugin-transform-runtime</span><span class="dl">"</span><span class="p">],</span>
+          <span class="p">},</span>
+        <span class="p">},</span>
+      <span class="p">},</span>
+    <span class="p">],</span>
+  <span class="p">},</span>
+<span class="p">};</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p><strong>Q: How would you implement Module Federation?</strong>
+A: Module Federation allows sharing code between applications:</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+</pre></td><td class="rouge-code"><pre><span class="c1">// Host application (webpack.config.js)</span>
+<span class="kd">const</span> <span class="nx">ModuleFederationPlugin</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">"</span><span class="s2">webpack/lib/container/ModuleFederationPlugin</span><span class="dl">"</span><span class="p">);</span>
+
+<span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="na">plugins</span><span class="p">:</span> <span class="p">[</span>
+    <span class="k">new</span> <span class="nx">ModuleFederationPlugin</span><span class="p">({</span>
+      <span class="na">name</span><span class="p">:</span> <span class="dl">"</span><span class="s2">host</span><span class="dl">"</span><span class="p">,</span>
+      <span class="na">remotes</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">remote</span><span class="p">:</span> <span class="dl">"</span><span class="s2">remote@http://localhost:3001/remoteEntry.js</span><span class="dl">"</span><span class="p">,</span>
+      <span class="p">},</span>
+      <span class="na">shared</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">react</span><span class="p">:</span> <span class="p">{</span> <span class="na">singleton</span><span class="p">:</span> <span class="kc">true</span> <span class="p">},</span>
+        <span class="dl">"</span><span class="s2">react-dom</span><span class="dl">"</span><span class="p">:</span> <span class="p">{</span> <span class="na">singleton</span><span class="p">:</span> <span class="kc">true</span> <span class="p">},</span>
+      <span class="p">},</span>
+    <span class="p">}),</span>
+  <span class="p">],</span>
+<span class="p">};</span>
+
+<span class="c1">// Remote application</span>
+<span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="na">plugins</span><span class="p">:</span> <span class="p">[</span>
+    <span class="k">new</span> <span class="nx">ModuleFederationPlugin</span><span class="p">({</span>
+      <span class="na">name</span><span class="p">:</span> <span class="dl">"</span><span class="s2">remote</span><span class="dl">"</span><span class="p">,</span>
+      <span class="na">filename</span><span class="p">:</span> <span class="dl">"</span><span class="s2">remoteEntry.js</span><span class="dl">"</span><span class="p">,</span>
+      <span class="na">exposes</span><span class="p">:</span> <span class="p">{</span>
+        <span class="dl">"</span><span class="s2">./Button</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">./src/components/Button</span><span class="dl">"</span><span class="p">,</span>
+      <span class="p">},</span>
+      <span class="na">shared</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">react</span><span class="p">:</span> <span class="p">{</span> <span class="na">singleton</span><span class="p">:</span> <span class="kc">true</span> <span class="p">},</span>
+        <span class="dl">"</span><span class="s2">react-dom</span><span class="dl">"</span><span class="p">:</span> <span class="p">{</span> <span class="na">singleton</span><span class="p">:</span> <span class="kc">true</span> <span class="p">},</span>
+      <span class="p">},</span>
+    <span class="p">}),</span>
+  <span class="p">],</span>
+<span class="p">};</span>
+
+<span class="c1">// Usage in host</span>
+<span class="kd">const</span> <span class="nx">RemoteButton</span> <span class="o">=</span> <span class="nx">React</span><span class="p">.</span><span class="nx">lazy</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="k">import</span><span class="p">(</span><span class="dl">"</span><span class="s2">remote/Button</span><span class="dl">"</span><span class="p">));</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<h2 id="practical-problems--solutions">Practical Problems &amp; Solutions</h2>
+
+<h3 id="problem-1-create-a-custom-webpack-loader">Problem 1: Create a Custom Webpack Loader</h3>
+
+<p><strong>Challenge</strong>: Build a webpack loader that processes custom file types.</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+</pre></td><td class="rouge-code"><pre><span class="c1">// custom-loader.js</span>
+<span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">source</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="nx">callback</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="k">async</span><span class="p">();</span>
+
+  <span class="c1">// Get options</span>
+  <span class="kd">const</span> <span class="nx">options</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">getOptions</span><span class="p">();</span>
+
+  <span class="c1">// Process the source</span>
+  <span class="kd">let</span> <span class="nx">processedSource</span> <span class="o">=</span> <span class="nx">source</span><span class="p">;</span>
+
+  <span class="c1">// Example: Replace placeholders</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nx">options</span><span class="p">.</span><span class="nx">replacements</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nb">Object</span><span class="p">.</span><span class="nx">entries</span><span class="p">(</span><span class="nx">options</span><span class="p">.</span><span class="nx">replacements</span><span class="p">).</span><span class="nx">forEach</span><span class="p">(([</span><span class="nx">key</span><span class="p">,</span> <span class="nx">value</span><span class="p">])</span> <span class="o">=&gt;</span> <span class="p">{</span>
+      <span class="nx">processedSource</span> <span class="o">=</span> <span class="nx">processedSource</span><span class="p">.</span><span class="nx">replace</span><span class="p">(</span>
+        <span class="k">new</span> <span class="nb">RegExp</span><span class="p">(</span><span class="s2">`\\{\\{</span><span class="p">${</span><span class="nx">key</span><span class="p">}</span><span class="s2">\\}\\}`</span><span class="p">,</span> <span class="dl">"</span><span class="s2">g</span><span class="dl">"</span><span class="p">),</span>
+        <span class="nx">value</span>
+      <span class="p">);</span>
+    <span class="p">});</span>
+  <span class="p">}</span>
+
+  <span class="c1">// Example: Add metadata</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nx">options</span><span class="p">.</span><span class="nx">addMetadata</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">processedSource</span> <span class="o">=</span> <span class="s2">`/* Generated at </span><span class="p">${</span><span class="k">new</span> <span class="nb">Date</span><span class="p">().</span><span class="nx">toISOString</span><span class="p">()}</span><span class="s2"> */\n</span><span class="p">${</span><span class="nx">processedSource</span><span class="p">}</span><span class="s2">`</span><span class="p">;</span>
+  <span class="p">}</span>
+
+  <span class="c1">// Example: Transform content</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nx">options</span><span class="p">.</span><span class="nx">transform</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">processedSource</span> <span class="o">=</span> <span class="nx">options</span><span class="p">.</span><span class="nx">transform</span><span class="p">(</span><span class="nx">processedSource</span><span class="p">);</span>
+  <span class="p">}</span>
+
+  <span class="c1">// Return processed source</span>
+  <span class="nx">callback</span><span class="p">(</span><span class="kc">null</span><span class="p">,</span> <span class="nx">processedSource</span><span class="p">);</span>
+<span class="p">};</span>
+
+<span class="c1">// webpack.config.js</span>
+<span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="na">module</span><span class="p">:</span> <span class="p">{</span>
+    <span class="na">rules</span><span class="p">:</span> <span class="p">[</span>
+      <span class="p">{</span>
+        <span class="na">test</span><span class="p">:</span> <span class="sr">/</span><span class="se">\.</span><span class="sr">custom$/</span><span class="p">,</span>
+        <span class="na">use</span><span class="p">:</span> <span class="p">[</span>
+          <span class="p">{</span>
+            <span class="na">loader</span><span class="p">:</span> <span class="nx">path</span><span class="p">.</span><span class="nx">resolve</span><span class="p">(</span><span class="dl">"</span><span class="s2">./custom-loader.js</span><span class="dl">"</span><span class="p">),</span>
+            <span class="na">options</span><span class="p">:</span> <span class="p">{</span>
+              <span class="na">replacements</span><span class="p">:</span> <span class="p">{</span>
+                <span class="na">API_URL</span><span class="p">:</span> <span class="dl">"</span><span class="s2">https://api.example.com</span><span class="dl">"</span><span class="p">,</span>
+                <span class="na">VERSION</span><span class="p">:</span> <span class="dl">"</span><span class="s2">1.0.0</span><span class="dl">"</span><span class="p">,</span>
+              <span class="p">},</span>
+              <span class="na">addMetadata</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+              <span class="na">transform</span><span class="p">:</span> <span class="p">(</span><span class="nx">source</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">source</span><span class="p">.</span><span class="nx">toUpperCase</span><span class="p">(),</span>
+            <span class="p">},</span>
+          <span class="p">},</span>
+        <span class="p">],</span>
+      <span class="p">},</span>
+    <span class="p">],</span>
+  <span class="p">},</span>
+<span class="p">};</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<h3 id="problem-2-implement-a-build-pipeline-with-gulp">Problem 2: Implement a Build Pipeline with Gulp</h3>
+
+<p><strong>Challenge</strong>: Create a Gulp build system for a modern web application.</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+</pre></td><td class="rouge-code"><pre><span class="c1">// gulpfile.js</span>
+<span class="kd">const</span> <span class="nx">gulp</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">"</span><span class="s2">gulp</span><span class="dl">"</span><span class="p">);</span>
+<span class="kd">const</span> <span class="nx">sass</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">"</span><span class="s2">gulp-sass</span><span class="dl">"</span><span class="p">)(</span><span class="nx">require</span><span class="p">(</span><span class="dl">"</span><span class="s2">sass</span><span class="dl">"</span><span class="p">));</span>
+<span class="kd">const</span> <span class="nx">autoprefixer</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">"</span><span class="s2">gulp-autoprefixer</span><span class="dl">"</span><span class="p">);</span>
+<span class="kd">const</span> <span class="nx">uglify</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">"</span><span class="s2">gulp-uglify</span><span class="dl">"</span><span class="p">);</span>
+<span class="kd">const</span> <span class="nx">imagemin</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">"</span><span class="s2">gulp-imagemin</span><span class="dl">"</span><span class="p">);</span>
+<span class="kd">const</span> <span class="nx">browserSync</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">"</span><span class="s2">browser-sync</span><span class="dl">"</span><span class="p">).</span><span class="nx">create</span><span class="p">();</span>
+<span class="kd">const</span> <span class="nx">del</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">"</span><span class="s2">del</span><span class="dl">"</span><span class="p">);</span>
+<span class="kd">const</span> <span class="nx">webpack</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">"</span><span class="s2">webpack-stream</span><span class="dl">"</span><span class="p">);</span>
+
+<span class="c1">// Clean build directory</span>
+<span class="kd">function</span> <span class="nx">clean</span><span class="p">()</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="nx">del</span><span class="p">([</span><span class="dl">"</span><span class="s2">dist/**/*</span><span class="dl">"</span><span class="p">]);</span>
+<span class="p">}</span>
+
+<span class="c1">// Process SCSS</span>
+<span class="kd">function</span> <span class="nx">styles</span><span class="p">()</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="nx">gulp</span>
+    <span class="p">.</span><span class="nx">src</span><span class="p">(</span><span class="dl">"</span><span class="s2">src/styles/**/*.scss</span><span class="dl">"</span><span class="p">)</span>
+    <span class="p">.</span><span class="nx">pipe</span><span class="p">(</span><span class="nx">sass</span><span class="p">({</span> <span class="na">outputStyle</span><span class="p">:</span> <span class="dl">"</span><span class="s2">compressed</span><span class="dl">"</span> <span class="p">}).</span><span class="nx">on</span><span class="p">(</span><span class="dl">"</span><span class="s2">error</span><span class="dl">"</span><span class="p">,</span> <span class="nx">sass</span><span class="p">.</span><span class="nx">logError</span><span class="p">))</span>
+    <span class="p">.</span><span class="nx">pipe</span><span class="p">(</span><span class="nx">autoprefixer</span><span class="p">())</span>
+    <span class="p">.</span><span class="nx">pipe</span><span class="p">(</span><span class="nx">gulp</span><span class="p">.</span><span class="nx">dest</span><span class="p">(</span><span class="dl">"</span><span class="s2">dist/css</span><span class="dl">"</span><span class="p">))</span>
+    <span class="p">.</span><span class="nx">pipe</span><span class="p">(</span><span class="nx">browserSync</span><span class="p">.</span><span class="nx">stream</span><span class="p">());</span>
+<span class="p">}</span>
+
+<span class="c1">// Process JavaScript with Webpack</span>
+<span class="kd">function</span> <span class="nx">scripts</span><span class="p">()</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="nx">gulp</span>
+    <span class="p">.</span><span class="nx">src</span><span class="p">(</span><span class="dl">"</span><span class="s2">src/js/index.js</span><span class="dl">"</span><span class="p">)</span>
+    <span class="p">.</span><span class="nx">pipe</span><span class="p">(</span>
+      <span class="nx">webpack</span><span class="p">({</span>
+        <span class="na">mode</span><span class="p">:</span> <span class="dl">"</span><span class="s2">production</span><span class="dl">"</span><span class="p">,</span>
+        <span class="na">output</span><span class="p">:</span> <span class="p">{</span>
+          <span class="na">filename</span><span class="p">:</span> <span class="dl">"</span><span class="s2">bundle.js</span><span class="dl">"</span><span class="p">,</span>
+        <span class="p">},</span>
+        <span class="na">module</span><span class="p">:</span> <span class="p">{</span>
+          <span class="na">rules</span><span class="p">:</span> <span class="p">[</span>
+            <span class="p">{</span>
+              <span class="na">test</span><span class="p">:</span> <span class="sr">/</span><span class="se">\.</span><span class="sr">js$/</span><span class="p">,</span>
+              <span class="na">exclude</span><span class="p">:</span> <span class="sr">/node_modules/</span><span class="p">,</span>
+              <span class="na">use</span><span class="p">:</span> <span class="p">{</span>
+                <span class="na">loader</span><span class="p">:</span> <span class="dl">"</span><span class="s2">babel-loader</span><span class="dl">"</span><span class="p">,</span>
+                <span class="na">options</span><span class="p">:</span> <span class="p">{</span>
+                  <span class="na">presets</span><span class="p">:</span> <span class="p">[</span><span class="dl">"</span><span class="s2">@babel/preset-env</span><span class="dl">"</span><span class="p">],</span>
+                <span class="p">},</span>
+              <span class="p">},</span>
+            <span class="p">},</span>
+          <span class="p">],</span>
+        <span class="p">},</span>
+      <span class="p">})</span>
+    <span class="p">)</span>
+    <span class="p">.</span><span class="nx">pipe</span><span class="p">(</span><span class="nx">gulp</span><span class="p">.</span><span class="nx">dest</span><span class="p">(</span><span class="dl">"</span><span class="s2">dist/js</span><span class="dl">"</span><span class="p">))</span>
+    <span class="p">.</span><span class="nx">pipe</span><span class="p">(</span><span class="nx">browserSync</span><span class="p">.</span><span class="nx">stream</span><span class="p">());</span>
+<span class="p">}</span>
+
+<span class="c1">// Optimize images</span>
+<span class="kd">function</span> <span class="nx">images</span><span class="p">()</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="nx">gulp</span>
+    <span class="p">.</span><span class="nx">src</span><span class="p">(</span><span class="dl">"</span><span class="s2">src/images/**/*</span><span class="dl">"</span><span class="p">)</span>
+    <span class="p">.</span><span class="nx">pipe</span><span class="p">(</span>
+      <span class="nx">imagemin</span><span class="p">([</span>
+        <span class="nx">imagemin</span><span class="p">.</span><span class="nx">gifsicle</span><span class="p">({</span> <span class="na">interlaced</span><span class="p">:</span> <span class="kc">true</span> <span class="p">}),</span>
+        <span class="nx">imagemin</span><span class="p">.</span><span class="nx">mozjpeg</span><span class="p">({</span> <span class="na">quality</span><span class="p">:</span> <span class="mi">75</span><span class="p">,</span> <span class="na">progressive</span><span class="p">:</span> <span class="kc">true</span> <span class="p">}),</span>
+        <span class="nx">imagemin</span><span class="p">.</span><span class="nx">optipng</span><span class="p">({</span> <span class="na">optimizationLevel</span><span class="p">:</span> <span class="mi">5</span> <span class="p">}),</span>
+        <span class="nx">imagemin</span><span class="p">.</span><span class="nx">svgo</span><span class="p">({</span>
+          <span class="na">plugins</span><span class="p">:</span> <span class="p">[{</span> <span class="na">removeViewBox</span><span class="p">:</span> <span class="kc">true</span> <span class="p">},</span> <span class="p">{</span> <span class="na">cleanupIDs</span><span class="p">:</span> <span class="kc">false</span> <span class="p">}],</span>
+        <span class="p">}),</span>
+      <span class="p">])</span>
+    <span class="p">)</span>
+    <span class="p">.</span><span class="nx">pipe</span><span class="p">(</span><span class="nx">gulp</span><span class="p">.</span><span class="nx">dest</span><span class="p">(</span><span class="dl">"</span><span class="s2">dist/images</span><span class="dl">"</span><span class="p">));</span>
+<span class="p">}</span>
+
+<span class="c1">// Copy HTML files</span>
+<span class="kd">function</span> <span class="nx">html</span><span class="p">()</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="nx">gulp</span>
+    <span class="p">.</span><span class="nx">src</span><span class="p">(</span><span class="dl">"</span><span class="s2">src/**/*.html</span><span class="dl">"</span><span class="p">)</span>
+    <span class="p">.</span><span class="nx">pipe</span><span class="p">(</span><span class="nx">gulp</span><span class="p">.</span><span class="nx">dest</span><span class="p">(</span><span class="dl">"</span><span class="s2">dist</span><span class="dl">"</span><span class="p">))</span>
+    <span class="p">.</span><span class="nx">pipe</span><span class="p">(</span><span class="nx">browserSync</span><span class="p">.</span><span class="nx">stream</span><span class="p">());</span>
+<span class="p">}</span>
+
+<span class="c1">// Watch for changes</span>
+<span class="kd">function</span> <span class="nx">watch</span><span class="p">()</span> <span class="p">{</span>
+  <span class="nx">browserSync</span><span class="p">.</span><span class="nx">init</span><span class="p">({</span>
+    <span class="na">server</span><span class="p">:</span> <span class="p">{</span>
+      <span class="na">baseDir</span><span class="p">:</span> <span class="dl">"</span><span class="s2">./dist</span><span class="dl">"</span><span class="p">,</span>
+    <span class="p">},</span>
+  <span class="p">});</span>
+
+  <span class="nx">gulp</span><span class="p">.</span><span class="nx">watch</span><span class="p">(</span><span class="dl">"</span><span class="s2">src/styles/**/*.scss</span><span class="dl">"</span><span class="p">,</span> <span class="nx">styles</span><span class="p">);</span>
+  <span class="nx">gulp</span><span class="p">.</span><span class="nx">watch</span><span class="p">(</span><span class="dl">"</span><span class="s2">src/js/**/*.js</span><span class="dl">"</span><span class="p">,</span> <span class="nx">scripts</span><span class="p">);</span>
+  <span class="nx">gulp</span><span class="p">.</span><span class="nx">watch</span><span class="p">(</span><span class="dl">"</span><span class="s2">src/images/**/*</span><span class="dl">"</span><span class="p">,</span> <span class="nx">images</span><span class="p">);</span>
+  <span class="nx">gulp</span><span class="p">.</span><span class="nx">watch</span><span class="p">(</span><span class="dl">"</span><span class="s2">src/**/*.html</span><span class="dl">"</span><span class="p">,</span> <span class="nx">html</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="c1">// Development build</span>
+<span class="kd">const</span> <span class="nx">dev</span> <span class="o">=</span> <span class="nx">gulp</span><span class="p">.</span><span class="nx">series</span><span class="p">(</span>
+  <span class="nx">clean</span><span class="p">,</span>
+  <span class="nx">gulp</span><span class="p">.</span><span class="nx">parallel</span><span class="p">(</span><span class="nx">styles</span><span class="p">,</span> <span class="nx">scripts</span><span class="p">,</span> <span class="nx">images</span><span class="p">,</span> <span class="nx">html</span><span class="p">),</span>
+  <span class="nx">watch</span>
+<span class="p">);</span>
+
+<span class="c1">// Production build</span>
+<span class="kd">const</span> <span class="nx">build</span> <span class="o">=</span> <span class="nx">gulp</span><span class="p">.</span><span class="nx">series</span><span class="p">(</span><span class="nx">clean</span><span class="p">,</span> <span class="nx">gulp</span><span class="p">.</span><span class="nx">parallel</span><span class="p">(</span><span class="nx">styles</span><span class="p">,</span> <span class="nx">scripts</span><span class="p">,</span> <span class="nx">images</span><span class="p">,</span> <span class="nx">html</span><span class="p">));</span>
+
+<span class="c1">// Export tasks</span>
+<span class="nx">exports</span><span class="p">.</span><span class="nx">clean</span> <span class="o">=</span> <span class="nx">clean</span><span class="p">;</span>
+<span class="nx">exports</span><span class="p">.</span><span class="nx">styles</span> <span class="o">=</span> <span class="nx">styles</span><span class="p">;</span>
+<span class="nx">exports</span><span class="p">.</span><span class="nx">scripts</span> <span class="o">=</span> <span class="nx">scripts</span><span class="p">;</span>
+<span class="nx">exports</span><span class="p">.</span><span class="nx">images</span> <span class="o">=</span> <span class="nx">images</span><span class="p">;</span>
+<span class="nx">exports</span><span class="p">.</span><span class="nx">html</span> <span class="o">=</span> <span class="nx">html</span><span class="p">;</span>
+<span class="nx">exports</span><span class="p">.</span><span class="nx">watch</span> <span class="o">=</span> <span class="nx">watch</span><span class="p">;</span>
+<span class="nx">exports</span><span class="p">.</span><span class="nx">dev</span> <span class="o">=</span> <span class="nx">dev</span><span class="p">;</span>
+<span class="nx">exports</span><span class="p">.</span><span class="nx">build</span> <span class="o">=</span> <span class="nx">build</span><span class="p">;</span>
+<span class="nx">exports</span><span class="p">.</span><span class="k">default</span> <span class="o">=</span> <span class="nx">dev</span><span class="p">;</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<h3 id="problem-3-create-a-custom-babel-plugin">Problem 3: Create a Custom Babel Plugin</h3>
+
+<p><strong>Challenge</strong>: Build a Babel plugin that transforms code for specific use cases.</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+</pre></td><td class="rouge-code"><pre><span class="c1">// babel-plugin-transform-logger.js</span>
+<span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="kd">function</span><span class="p">({</span> <span class="na">types</span><span class="p">:</span> <span class="nx">t</span> <span class="p">})</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="p">{</span>
+    <span class="na">visitor</span><span class="p">:</span> <span class="p">{</span>
+      <span class="c1">// Transform console.log calls</span>
+      <span class="nx">CallExpression</span><span class="p">(</span><span class="nx">path</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kd">const</span> <span class="p">{</span> <span class="nx">node</span> <span class="p">}</span> <span class="o">=</span> <span class="nx">path</span><span class="p">;</span>
+
+        <span class="k">if</span> <span class="p">(</span>
+          <span class="nx">t</span><span class="p">.</span><span class="nx">isMemberExpression</span><span class="p">(</span><span class="nx">node</span><span class="p">.</span><span class="nx">callee</span><span class="p">)</span> <span class="o">&amp;&amp;</span>
+          <span class="nx">t</span><span class="p">.</span><span class="nx">isIdentifier</span><span class="p">(</span><span class="nx">node</span><span class="p">.</span><span class="nx">callee</span><span class="p">.</span><span class="nx">object</span><span class="p">,</span> <span class="p">{</span> <span class="na">name</span><span class="p">:</span> <span class="dl">'</span><span class="s1">console</span><span class="dl">'</span> <span class="p">})</span> <span class="o">&amp;&amp;</span>
+          <span class="nx">t</span><span class="p">.</span><span class="nx">isIdentifier</span><span class="p">(</span><span class="nx">node</span><span class="p">.</span><span class="nx">callee</span><span class="p">.</span><span class="nx">property</span><span class="p">,</span> <span class="p">{</span> <span class="na">name</span><span class="p">:</span> <span class="dl">'</span><span class="s1">log</span><span class="dl">'</span> <span class="p">})</span>
+        <span class="p">)</span> <span class="p">{</span>
+          <span class="c1">// Add timestamp and file information</span>
+          <span class="kd">const</span> <span class="nx">timestamp</span> <span class="o">=</span> <span class="nx">t</span><span class="p">.</span><span class="nx">stringLiteral</span><span class="p">(</span><span class="k">new</span> <span class="nb">Date</span><span class="p">().</span><span class="nx">toISOString</span><span class="p">());</span>
+          <span class="kd">const</span> <span class="nx">filename</span> <span class="o">=</span> <span class="nx">t</span><span class="p">.</span><span class="nx">stringLiteral</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">file</span><span class="p">.</span><span class="nx">opts</span><span class="p">.</span><span class="nx">filename</span> <span class="o">||</span> <span class="dl">'</span><span class="s1">unknown</span><span class="dl">'</span><span class="p">);</span>
+
+          <span class="kd">const</span> <span class="nx">newArgs</span> <span class="o">=</span> <span class="p">[</span>
+            <span class="nx">timestamp</span><span class="p">,</span>
+            <span class="nx">t</span><span class="p">.</span><span class="nx">stringLiteral</span><span class="p">(</span><span class="dl">'</span><span class="s1">[</span><span class="dl">'</span> <span class="o">+</span> <span class="nx">filename</span> <span class="o">+</span> <span class="dl">'</span><span class="s1">]</span><span class="dl">'</span><span class="p">),</span>
+            <span class="p">...</span><span class="nx">node</span><span class="p">.</span><span class="nx">arguments</span>
+          <span class="p">];</span>
+
+          <span class="nx">path</span><span class="p">.</span><span class="nx">replaceWith</span><span class="p">(</span>
+            <span class="nx">t</span><span class="p">.</span><span class="nx">callExpression</span><span class="p">(</span>
+              <span class="nx">t</span><span class="p">.</span><span class="nx">memberExpression</span><span class="p">(</span>
+                <span class="nx">t</span><span class="p">.</span><span class="nx">identifier</span><span class="p">(</span><span class="dl">'</span><span class="s1">console</span><span class="dl">'</span><span class="p">),</span>
+                <span class="nx">t</span><span class="p">.</span><span class="nx">identifier</span><span class="p">(</span><span class="dl">'</span><span class="s1">log</span><span class="dl">'</span><span class="p">)</span>
+              <span class="p">),</span>
+              <span class="nx">newArgs</span>
+            <span class="p">)</span>
+          <span class="p">);</span>
+        <span class="p">}</span>
+      <span class="p">},</span>
+
+      <span class="c1">// Transform function declarations to add logging</span>
+      <span class="nx">FunctionDeclaration</span><span class="p">(</span><span class="nx">path</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kd">const</span> <span class="p">{</span> <span class="nx">node</span> <span class="p">}</span> <span class="o">=</span> <span class="nx">path</span><span class="p">;</span>
+
+        <span class="k">if</span> <span class="p">(</span><span class="nx">node</span><span class="p">.</span><span class="nx">id</span><span class="p">)</span> <span class="p">{</span>
+          <span class="c1">// Add function entry logging</span>
+          <span class="kd">const</span> <span class="nx">logStatement</span> <span class="o">=</span> <span class="nx">t</span><span class="p">.</span><span class="nx">expressionStatement</span><span class="p">(</span>
+            <span class="nx">t</span><span class="p">.</span><span class="nx">callExpression</span><span class="p">(</span>
+              <span class="nx">t</span><span class="p">.</span><span class="nx">memberExpression</span><span class="p">(</span>
+                <span class="nx">t</span><span class="p">.</span><span class="nx">identifier</span><span class="p">(</span><span class="dl">'</span><span class="s1">console</span><span class="dl">'</span><span class="p">),</span>
+                <span class="nx">t</span><span class="p">.</span><span class="nx">identifier</span><span class="p">(</span><span class="dl">'</span><span class="s1">log</span><span class="dl">'</span><span class="p">)</span>
+              <span class="p">),</span>
+              <span class="p">[</span>
+                <span class="nx">t</span><span class="p">.</span><span class="nx">stringLiteral</span><span class="p">(</span><span class="s2">`Entering function: </span><span class="p">${</span><span class="nx">node</span><span class="p">.</span><span class="nx">id</span><span class="p">.</span><span class="nx">name</span><span class="p">}</span><span class="s2">`</span><span class="p">),</span>
+                <span class="p">...</span><span class="nx">node</span><span class="p">.</span><span class="nx">params</span><span class="p">.</span><span class="nx">map</span><span class="p">(</span><span class="nx">param</span> <span class="o">=&gt;</span>
+                  <span class="nx">t</span><span class="p">.</span><span class="nx">objectProperty</span><span class="p">(</span>
+                    <span class="nx">t</span><span class="p">.</span><span class="nx">identifier</span><span class="p">(</span><span class="nx">param</span><span class="p">.</span><span class="nx">name</span><span class="p">),</span>
+                    <span class="nx">t</span><span class="p">.</span><span class="nx">identifier</span><span class="p">(</span><span class="nx">param</span><span class="p">.</span><span class="nx">name</span><span class="p">)</span>
+                  <span class="p">)</span>
+                <span class="p">)</span>
+              <span class="p">]</span>
+            <span class="p">)</span>
+          <span class="p">);</span>
+
+          <span class="k">if</span> <span class="p">(</span><span class="nx">node</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">type</span> <span class="o">===</span> <span class="dl">'</span><span class="s1">BlockStatement</span><span class="dl">'</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nx">node</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">unshift</span><span class="p">(</span><span class="nx">logStatement</span><span class="p">);</span>
+          <span class="p">}</span>
+        <span class="p">}</span>
+      <span class="p">},</span>
+
+      <span class="c1">// Transform arrow functions</span>
+      <span class="nx">ArrowFunctionExpression</span><span class="p">(</span><span class="nx">path</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kd">const</span> <span class="p">{</span> <span class="nx">node</span> <span class="p">}</span> <span class="o">=</span> <span class="nx">path</span><span class="p">;</span>
+
+        <span class="c1">// Add performance measurement for arrow functions</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nx">path</span><span class="p">.</span><span class="nx">parent</span><span class="p">.</span><span class="nx">type</span> <span class="o">===</span> <span class="dl">'</span><span class="s1">VariableDeclarator</span><span class="dl">'</span> <span class="o">&amp;&amp;</span> <span class="nx">path</span><span class="p">.</span><span class="nx">parent</span><span class="p">.</span><span class="nx">id</span><span class="p">)</span> <span class="p">{</span>
+          <span class="kd">const</span> <span class="nx">functionName</span> <span class="o">=</span> <span class="nx">path</span><span class="p">.</span><span class="nx">parent</span><span class="p">.</span><span class="nx">id</span><span class="p">.</span><span class="nx">name</span><span class="p">;</span>
+
+          <span class="kd">const</span> <span class="nx">performanceStart</span> <span class="o">=</span> <span class="nx">t</span><span class="p">.</span><span class="nx">expressionStatement</span><span class="p">(</span>
+            <span class="nx">t</span><span class="p">.</span><span class="nx">assignmentExpression</span><span class="p">(</span>
+              <span class="dl">'</span><span class="s1">=</span><span class="dl">'</span><span class="p">,</span>
+              <span class="nx">t</span><span class="p">.</span><span class="nx">memberExpression</span><span class="p">(</span>
+                <span class="nx">t</span><span class="p">.</span><span class="nx">identifier</span><span class="p">(</span><span class="dl">'</span><span class="s1">performance</span><span class="dl">'</span><span class="p">),</span>
+                <span class="nx">t</span><span class="p">.</span><span class="nx">identifier</span><span class="p">(</span><span class="dl">'</span><span class="s1">mark</span><span class="dl">'</span><span class="p">)</span>
+              <span class="p">),</span>
+              <span class="nx">t</span><span class="p">.</span><span class="nx">callExpression</span><span class="p">(</span>
+                <span class="nx">t</span><span class="p">.</span><span class="nx">memberExpression</span><span class="p">(</span>
+                  <span class="nx">t</span><span class="p">.</span><span class="nx">identifier</span><span class="p">(</span><span class="dl">'</span><span class="s1">performance</span><span class="dl">'</span><span class="p">),</span>
+                  <span class="nx">t</span><span class="p">.</span><span class="nx">identifier</span><span class="p">(</span><span class="dl">'</span><span class="s1">mark</span><span class="dl">'</span><span class="p">)</span>
+                <span class="p">),</span>
+                <span class="p">[</span><span class="nx">t</span><span class="p">.</span><span class="nx">stringLiteral</span><span class="p">(</span><span class="s2">`</span><span class="p">${</span><span class="nx">functionName</span><span class="p">}</span><span class="s2">-start`</span><span class="p">)]</span>
+              <span class="p">)</span>
+            <span class="p">)</span>
+          <span class="p">);</span>
+
+          <span class="kd">const</span> <span class="nx">performanceEnd</span> <span class="o">=</span> <span class="nx">t</span><span class="p">.</span><span class="nx">expressionStatement</span><span class="p">(</span>
+            <span class="nx">t</span><span class="p">.</span><span class="nx">callExpression</span><span class="p">(</span>
+              <span class="nx">t</span><span class="p">.</span><span class="nx">memberExpression</span><span class="p">(</span>
+                <span class="nx">t</span><span class="p">.</span><span class="nx">identifier</span><span class="p">(</span><span class="dl">'</span><span class="s1">performance</span><span class="dl">'</span><span class="p">),</span>
+                <span class="nx">t</span><span class="p">.</span><span class="nx">identifier</span><span class="p">(</span><span class="dl">'</span><span class="s1">mark</span><span class="dl">'</span><span class="p">)</span>
+              <span class="p">),</span>
+              <span class="p">[</span><span class="nx">t</span><span class="p">.</span><span class="nx">stringLiteral</span><span class="p">(</span><span class="s2">`</span><span class="p">${</span><span class="nx">functionName</span><span class="p">}</span><span class="s2">-end`</span><span class="p">)]</span>
+            <span class="p">)</span>
+          <span class="p">);</span>
+
+          <span class="k">if</span> <span class="p">(</span><span class="nx">node</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">type</span> <span class="o">===</span> <span class="dl">'</span><span class="s1">BlockStatement</span><span class="dl">'</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nx">node</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">unshift</span><span class="p">(</span><span class="nx">performanceStart</span><span class="p">);</span>
+            <span class="nx">node</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">performanceEnd</span><span class="p">);</span>
+          <span class="p">}</span>
+        <span class="p">}</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+  <span class="p">};</span>
+<span class="p">};</span>
+
+<span class="c1">// Usage in .babelrc</span>
+<span class="p">{</span>
+  <span class="dl">"</span><span class="s2">plugins</span><span class="dl">"</span><span class="p">:</span> <span class="p">[</span><span class="dl">"</span><span class="s2">./babel-plugin-transform-logger.js</span><span class="dl">"</span><span class="p">]</span>
+<span class="p">}</span>
+
+<span class="c1">// Example transformation</span>
+<span class="c1">// Before:</span>
+<span class="kd">function</span> <span class="nx">add</span><span class="p">(</span><span class="nx">a</span><span class="p">,</span> <span class="nx">b</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="nx">a</span> <span class="o">+</span> <span class="nx">b</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c1">// After:</span>
+<span class="kd">function</span> <span class="nx">add</span><span class="p">(</span><span class="nx">a</span><span class="p">,</span> <span class="nx">b</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">Entering function: add</span><span class="dl">"</span><span class="p">,</span> <span class="p">{</span> <span class="nx">a</span><span class="p">,</span> <span class="nx">b</span> <span class="p">});</span>
+  <span class="k">return</span> <span class="nx">a</span> <span class="o">+</span> <span class="nx">b</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<h3 id="problem-4-implement-a-custom-eslint-rule">Problem 4: Implement a Custom ESLint Rule</h3>
+
+<p><strong>Challenge</strong>: Create an ESLint rule for enforcing coding standards.</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+</pre></td><td class="rouge-code"><pre><span class="c1">// eslint-plugin-custom-rules.js</span>
+<span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="na">rules</span><span class="p">:</span> <span class="p">{</span>
+    <span class="dl">"</span><span class="s2">no-console-in-production</span><span class="dl">"</span><span class="p">:</span> <span class="p">{</span>
+      <span class="na">meta</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">type</span><span class="p">:</span> <span class="dl">"</span><span class="s2">suggestion</span><span class="dl">"</span><span class="p">,</span>
+        <span class="na">docs</span><span class="p">:</span> <span class="p">{</span>
+          <span class="na">description</span><span class="p">:</span> <span class="dl">"</span><span class="s2">Disallow console statements in production code</span><span class="dl">"</span><span class="p">,</span>
+          <span class="na">category</span><span class="p">:</span> <span class="dl">"</span><span class="s2">Best Practices</span><span class="dl">"</span><span class="p">,</span>
+          <span class="na">recommended</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+        <span class="p">},</span>
+        <span class="na">fixable</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span>
+        <span class="na">schema</span><span class="p">:</span> <span class="p">[],</span>
+      <span class="p">},</span>
+      <span class="nx">create</span><span class="p">(</span><span class="nx">context</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="p">{</span>
+          <span class="nx">CallExpression</span><span class="p">(</span><span class="nx">node</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">if</span> <span class="p">(</span>
+              <span class="nx">node</span><span class="p">.</span><span class="nx">callee</span><span class="p">.</span><span class="nx">type</span> <span class="o">===</span> <span class="dl">"</span><span class="s2">MemberExpression</span><span class="dl">"</span> <span class="o">&amp;&amp;</span>
+              <span class="nx">node</span><span class="p">.</span><span class="nx">callee</span><span class="p">.</span><span class="nx">object</span><span class="p">.</span><span class="nx">name</span> <span class="o">===</span> <span class="dl">"</span><span class="s2">console</span><span class="dl">"</span>
+            <span class="p">)</span> <span class="p">{</span>
+              <span class="nx">context</span><span class="p">.</span><span class="nx">report</span><span class="p">({</span>
+                <span class="nx">node</span><span class="p">,</span>
+                <span class="na">message</span><span class="p">:</span>
+                  <span class="dl">"</span><span class="s2">Console statements are not allowed in production code</span><span class="dl">"</span><span class="p">,</span>
+              <span class="p">});</span>
+            <span class="p">}</span>
+          <span class="p">},</span>
+        <span class="p">};</span>
+      <span class="p">},</span>
+    <span class="p">},</span>
+
+    <span class="dl">"</span><span class="s2">prefer-const-over-let</span><span class="dl">"</span><span class="p">:</span> <span class="p">{</span>
+      <span class="na">meta</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">type</span><span class="p">:</span> <span class="dl">"</span><span class="s2">suggestion</span><span class="dl">"</span><span class="p">,</span>
+        <span class="na">docs</span><span class="p">:</span> <span class="p">{</span>
+          <span class="na">description</span><span class="p">:</span> <span class="dl">"</span><span class="s2">Prefer const over let when variable is not reassigned</span><span class="dl">"</span><span class="p">,</span>
+          <span class="na">category</span><span class="p">:</span> <span class="dl">"</span><span class="s2">Best Practices</span><span class="dl">"</span><span class="p">,</span>
+          <span class="na">recommended</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+        <span class="p">},</span>
+        <span class="na">fixable</span><span class="p">:</span> <span class="dl">"</span><span class="s2">code</span><span class="dl">"</span><span class="p">,</span>
+        <span class="na">schema</span><span class="p">:</span> <span class="p">[],</span>
+      <span class="p">},</span>
+      <span class="nx">create</span><span class="p">(</span><span class="nx">context</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="p">{</span>
+          <span class="nx">VariableDeclaration</span><span class="p">(</span><span class="nx">node</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">if</span> <span class="p">(</span><span class="nx">node</span><span class="p">.</span><span class="nx">kind</span> <span class="o">===</span> <span class="dl">"</span><span class="s2">let</span><span class="dl">"</span><span class="p">)</span> <span class="p">{</span>
+              <span class="nx">node</span><span class="p">.</span><span class="nx">declarations</span><span class="p">.</span><span class="nx">forEach</span><span class="p">((</span><span class="nx">declarator</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+                <span class="k">if</span> <span class="p">(</span><span class="nx">declarator</span><span class="p">.</span><span class="nx">id</span><span class="p">.</span><span class="nx">type</span> <span class="o">===</span> <span class="dl">"</span><span class="s2">Identifier</span><span class="dl">"</span><span class="p">)</span> <span class="p">{</span>
+                  <span class="kd">const</span> <span class="nx">variable</span> <span class="o">=</span> <span class="nx">context</span>
+                    <span class="p">.</span><span class="nx">getScope</span><span class="p">()</span>
+                    <span class="p">.</span><span class="nx">variables</span><span class="p">.</span><span class="nx">find</span><span class="p">((</span><span class="nx">v</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">v</span><span class="p">.</span><span class="nx">name</span> <span class="o">===</span> <span class="nx">declarator</span><span class="p">.</span><span class="nx">id</span><span class="p">.</span><span class="nx">name</span><span class="p">);</span>
+
+                  <span class="k">if</span> <span class="p">(</span>
+                    <span class="nx">variable</span> <span class="o">&amp;&amp;</span>
+                    <span class="o">!</span><span class="nx">variable</span><span class="p">.</span><span class="nx">references</span><span class="p">.</span><span class="nx">some</span><span class="p">((</span><span class="nx">ref</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">ref</span><span class="p">.</span><span class="nx">isWrite</span><span class="p">())</span>
+                  <span class="p">)</span> <span class="p">{</span>
+                    <span class="nx">context</span><span class="p">.</span><span class="nx">report</span><span class="p">({</span>
+                      <span class="nx">node</span><span class="p">,</span>
+                      <span class="na">message</span><span class="p">:</span>
+                        <span class="dl">"</span><span class="s2">Use const instead of let for variables that are not reassigned</span><span class="dl">"</span><span class="p">,</span>
+                      <span class="nx">fix</span><span class="p">(</span><span class="nx">fixer</span><span class="p">)</span> <span class="p">{</span>
+                        <span class="k">return</span> <span class="nx">fixer</span><span class="p">.</span><span class="nx">replaceText</span><span class="p">(</span>
+                          <span class="nx">node</span><span class="p">,</span>
+                          <span class="nx">node</span><span class="p">.</span><span class="nx">sourceCode</span><span class="p">.</span><span class="nx">getText</span><span class="p">(</span><span class="nx">node</span><span class="p">).</span><span class="nx">replace</span><span class="p">(</span><span class="dl">"</span><span class="s2">let</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">const</span><span class="dl">"</span><span class="p">)</span>
+                        <span class="p">);</span>
+                      <span class="p">},</span>
+                    <span class="p">});</span>
+                  <span class="p">}</span>
+                <span class="p">}</span>
+              <span class="p">});</span>
+            <span class="p">}</span>
+          <span class="p">},</span>
+        <span class="p">};</span>
+      <span class="p">},</span>
+    <span class="p">},</span>
+
+    <span class="dl">"</span><span class="s2">no-magic-numbers</span><span class="dl">"</span><span class="p">:</span> <span class="p">{</span>
+      <span class="na">meta</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">type</span><span class="p">:</span> <span class="dl">"</span><span class="s2">suggestion</span><span class="dl">"</span><span class="p">,</span>
+        <span class="na">docs</span><span class="p">:</span> <span class="p">{</span>
+          <span class="na">description</span><span class="p">:</span> <span class="dl">"</span><span class="s2">Disallow magic numbers without named constants</span><span class="dl">"</span><span class="p">,</span>
+          <span class="na">category</span><span class="p">:</span> <span class="dl">"</span><span class="s2">Best Practices</span><span class="dl">"</span><span class="p">,</span>
+          <span class="na">recommended</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+        <span class="p">},</span>
+        <span class="na">fixable</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span>
+        <span class="na">schema</span><span class="p">:</span> <span class="p">[</span>
+          <span class="p">{</span>
+            <span class="na">type</span><span class="p">:</span> <span class="dl">"</span><span class="s2">object</span><span class="dl">"</span><span class="p">,</span>
+            <span class="na">properties</span><span class="p">:</span> <span class="p">{</span>
+              <span class="na">ignore</span><span class="p">:</span> <span class="p">{</span>
+                <span class="na">type</span><span class="p">:</span> <span class="dl">"</span><span class="s2">array</span><span class="dl">"</span><span class="p">,</span>
+                <span class="na">items</span><span class="p">:</span> <span class="p">{</span> <span class="na">type</span><span class="p">:</span> <span class="dl">"</span><span class="s2">number</span><span class="dl">"</span> <span class="p">},</span>
+              <span class="p">},</span>
+            <span class="p">},</span>
+          <span class="p">},</span>
+        <span class="p">],</span>
+      <span class="p">},</span>
+      <span class="nx">create</span><span class="p">(</span><span class="nx">context</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kd">const</span> <span class="nx">options</span> <span class="o">=</span> <span class="nx">context</span><span class="p">.</span><span class="nx">options</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">||</span> <span class="p">{};</span>
+        <span class="kd">const</span> <span class="nx">ignore</span> <span class="o">=</span> <span class="nx">options</span><span class="p">.</span><span class="nx">ignore</span> <span class="o">||</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">];</span>
+
+        <span class="k">return</span> <span class="p">{</span>
+          <span class="nx">Literal</span><span class="p">(</span><span class="nx">node</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">if</span> <span class="p">(</span>
+              <span class="k">typeof</span> <span class="nx">node</span><span class="p">.</span><span class="nx">value</span> <span class="o">===</span> <span class="dl">"</span><span class="s2">number</span><span class="dl">"</span> <span class="o">&amp;&amp;</span>
+              <span class="o">!</span><span class="nx">ignore</span><span class="p">.</span><span class="nx">includes</span><span class="p">(</span><span class="nx">node</span><span class="p">.</span><span class="nx">value</span><span class="p">)</span> <span class="o">&amp;&amp;</span>
+              <span class="nx">node</span><span class="p">.</span><span class="nx">parent</span><span class="p">.</span><span class="nx">type</span> <span class="o">!==</span> <span class="dl">"</span><span class="s2">VariableDeclarator</span><span class="dl">"</span>
+            <span class="p">)</span> <span class="p">{</span>
+              <span class="nx">context</span><span class="p">.</span><span class="nx">report</span><span class="p">({</span>
+                <span class="nx">node</span><span class="p">,</span>
+                <span class="na">message</span><span class="p">:</span> <span class="s2">`Magic number </span><span class="p">${</span><span class="nx">node</span><span class="p">.</span><span class="nx">value</span><span class="p">}</span><span class="s2"> should be defined as a named constant`</span><span class="p">,</span>
+              <span class="p">});</span>
+            <span class="p">}</span>
+          <span class="p">},</span>
+        <span class="p">};</span>
+      <span class="p">},</span>
+    <span class="p">},</span>
+  <span class="p">},</span>
+<span class="p">};</span>
+
+<span class="c1">// Usage in .eslintrc.js</span>
+<span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="na">plugins</span><span class="p">:</span> <span class="p">[</span><span class="dl">"</span><span class="s2">custom-rules</span><span class="dl">"</span><span class="p">],</span>
+  <span class="na">rules</span><span class="p">:</span> <span class="p">{</span>
+    <span class="dl">"</span><span class="s2">custom-rules/no-console-in-production</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">error</span><span class="dl">"</span><span class="p">,</span>
+    <span class="dl">"</span><span class="s2">custom-rules/prefer-const-over-let</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">warn</span><span class="dl">"</span><span class="p">,</span>
+    <span class="dl">"</span><span class="s2">custom-rules/no-magic-numbers</span><span class="dl">"</span><span class="p">:</span> <span class="p">[</span><span class="dl">"</span><span class="s2">error</span><span class="dl">"</span><span class="p">,</span> <span class="p">{</span> <span class="na">ignore</span><span class="p">:</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">100</span><span class="p">]</span> <span class="p">}],</span>
+  <span class="p">},</span>
+<span class="p">};</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<h3 id="problem-5-create-a-build-performance-monitor">Problem 5: Create a Build Performance Monitor</h3>
+
+<p><strong>Challenge</strong>: Build a system to monitor and optimize build performance.</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155
+156
+157
+158
+159
+160
+161
+162
+163
+164
+165
+166
+167
+168
+169
+170
+171
+172
+173
+174
+175
+176
+177
+178
+179
+180
+181
+182
+183
+184
+185
+186
+187
+188
+189
+190
+191
+192
+193
+194
+195
+196
+197
+198
+199
+200
+201
+202
+203
+204
+205
+206
+207
+208
+209
+210
+</pre></td><td class="rouge-code"><pre><span class="c1">// build-performance-monitor.js</span>
+<span class="kd">const</span> <span class="nx">fs</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">"</span><span class="s2">fs</span><span class="dl">"</span><span class="p">);</span>
+<span class="kd">const</span> <span class="nx">path</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">"</span><span class="s2">path</span><span class="dl">"</span><span class="p">);</span>
+<span class="kd">const</span> <span class="p">{</span> <span class="nx">performance</span> <span class="p">}</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">"</span><span class="s2">perf_hooks</span><span class="dl">"</span><span class="p">);</span>
+
+<span class="kd">class</span> <span class="nx">BuildPerformanceMonitor</span> <span class="p">{</span>
+  <span class="kd">constructor</span><span class="p">(</span><span class="nx">options</span> <span class="o">=</span> <span class="p">{})</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">options</span> <span class="o">=</span> <span class="p">{</span>
+      <span class="na">outputFile</span><span class="p">:</span> <span class="dl">"</span><span class="s2">build-metrics.json</span><span class="dl">"</span><span class="p">,</span>
+      <span class="na">threshold</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">buildTime</span><span class="p">:</span> <span class="mi">30000</span><span class="p">,</span> <span class="c1">// 30 seconds</span>
+        <span class="na">bundleSize</span><span class="p">:</span> <span class="mi">1024</span> <span class="o">*</span> <span class="mi">1024</span><span class="p">,</span> <span class="c1">// 1MB</span>
+        <span class="na">memoryUsage</span><span class="p">:</span> <span class="mi">500</span> <span class="o">*</span> <span class="mi">1024</span> <span class="o">*</span> <span class="mi">1024</span><span class="p">,</span> <span class="c1">// 500MB</span>
+      <span class="p">},</span>
+      <span class="p">...</span><span class="nx">options</span><span class="p">,</span>
+    <span class="p">};</span>
+
+    <span class="k">this</span><span class="p">.</span><span class="nx">metrics</span> <span class="o">=</span> <span class="p">{</span>
+      <span class="na">startTime</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span>
+      <span class="na">endTime</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span>
+      <span class="na">duration</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+      <span class="na">memoryUsage</span><span class="p">:</span> <span class="p">[],</span>
+      <span class="na">bundleSizes</span><span class="p">:</span> <span class="p">{},</span>
+      <span class="na">warnings</span><span class="p">:</span> <span class="p">[],</span>
+      <span class="na">errors</span><span class="p">:</span> <span class="p">[],</span>
+    <span class="p">};</span>
+
+    <span class="k">this</span><span class="p">.</span><span class="nx">startTime</span> <span class="o">=</span> <span class="kc">null</span><span class="p">;</span>
+  <span class="p">}</span>
+
+  <span class="nx">start</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">startTime</span> <span class="o">=</span> <span class="nx">performance</span><span class="p">.</span><span class="nx">now</span><span class="p">();</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">metrics</span><span class="p">.</span><span class="nx">startTime</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Date</span><span class="p">().</span><span class="nx">toISOString</span><span class="p">();</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">metrics</span><span class="p">.</span><span class="nx">memoryUsage</span> <span class="o">=</span> <span class="p">[];</span>
+
+    <span class="c1">// Monitor memory usage</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">memoryInterval</span> <span class="o">=</span> <span class="nx">setInterval</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+      <span class="kd">const</span> <span class="nx">usage</span> <span class="o">=</span> <span class="nx">process</span><span class="p">.</span><span class="nx">memoryUsage</span><span class="p">();</span>
+      <span class="k">this</span><span class="p">.</span><span class="nx">metrics</span><span class="p">.</span><span class="nx">memoryUsage</span><span class="p">.</span><span class="nx">push</span><span class="p">({</span>
+        <span class="na">timestamp</span><span class="p">:</span> <span class="nb">Date</span><span class="p">.</span><span class="nx">now</span><span class="p">(),</span>
+        <span class="na">heapUsed</span><span class="p">:</span> <span class="nx">usage</span><span class="p">.</span><span class="nx">heapUsed</span><span class="p">,</span>
+        <span class="na">heapTotal</span><span class="p">:</span> <span class="nx">usage</span><span class="p">.</span><span class="nx">heapTotal</span><span class="p">,</span>
+        <span class="na">external</span><span class="p">:</span> <span class="nx">usage</span><span class="p">.</span><span class="nx">external</span><span class="p">,</span>
+      <span class="p">});</span>
+    <span class="p">},</span> <span class="mi">1000</span><span class="p">);</span>
+
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">🚀 Build performance monitoring started</span><span class="dl">"</span><span class="p">);</span>
+  <span class="p">}</span>
+
+  <span class="nx">end</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="k">this</span><span class="p">.</span><span class="nx">startTime</span><span class="p">)</span> <span class="k">return</span><span class="p">;</span>
+
+    <span class="k">this</span><span class="p">.</span><span class="nx">metrics</span><span class="p">.</span><span class="nx">endTime</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Date</span><span class="p">().</span><span class="nx">toISOString</span><span class="p">();</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">metrics</span><span class="p">.</span><span class="nx">duration</span> <span class="o">=</span> <span class="nx">performance</span><span class="p">.</span><span class="nx">now</span><span class="p">()</span> <span class="o">-</span> <span class="k">this</span><span class="p">.</span><span class="nx">startTime</span><span class="p">;</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">memoryInterval</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">clearInterval</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">memoryInterval</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="k">this</span><span class="p">.</span><span class="nx">analyzePerformance</span><span class="p">();</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">saveMetrics</span><span class="p">();</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">generateReport</span><span class="p">();</span>
+  <span class="p">}</span>
+
+  <span class="nx">addBundleSize</span><span class="p">(</span><span class="nx">name</span><span class="p">,</span> <span class="nx">size</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">metrics</span><span class="p">.</span><span class="nx">bundleSizes</span><span class="p">[</span><span class="nx">name</span><span class="p">]</span> <span class="o">=</span> <span class="nx">size</span><span class="p">;</span>
+  <span class="p">}</span>
+
+  <span class="nx">addWarning</span><span class="p">(</span><span class="nx">warning</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">metrics</span><span class="p">.</span><span class="nx">warnings</span><span class="p">.</span><span class="nx">push</span><span class="p">({</span>
+      <span class="na">message</span><span class="p">:</span> <span class="nx">warning</span><span class="p">,</span>
+      <span class="na">timestamp</span><span class="p">:</span> <span class="nb">Date</span><span class="p">.</span><span class="nx">now</span><span class="p">(),</span>
+    <span class="p">});</span>
+  <span class="p">}</span>
+
+  <span class="nx">addError</span><span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">metrics</span><span class="p">.</span><span class="nx">errors</span><span class="p">.</span><span class="nx">push</span><span class="p">({</span>
+      <span class="na">message</span><span class="p">:</span> <span class="nx">error</span><span class="p">,</span>
+      <span class="na">timestamp</span><span class="p">:</span> <span class="nb">Date</span><span class="p">.</span><span class="nx">now</span><span class="p">(),</span>
+    <span class="p">});</span>
+  <span class="p">}</span>
+
+  <span class="nx">analyzePerformance</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="p">{</span> <span class="nx">duration</span><span class="p">,</span> <span class="nx">bundleSizes</span><span class="p">,</span> <span class="nx">memoryUsage</span> <span class="p">}</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">metrics</span><span class="p">;</span>
+    <span class="kd">const</span> <span class="p">{</span> <span class="nx">threshold</span> <span class="p">}</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">options</span><span class="p">;</span>
+
+    <span class="c1">// Check build time</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">duration</span> <span class="o">&gt;</span> <span class="nx">threshold</span><span class="p">.</span><span class="nx">buildTime</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">console</span><span class="p">.</span><span class="nx">warn</span><span class="p">(</span>
+        <span class="s2">`⚠️  Build time (</span><span class="p">${</span><span class="nx">duration</span><span class="p">.</span><span class="nx">toFixed</span><span class="p">(</span><span class="mi">2</span><span class="p">)}</span><span class="s2">ms) exceeds threshold (</span><span class="p">${</span>
+          <span class="nx">threshold</span><span class="p">.</span><span class="nx">buildTime</span>
+        <span class="p">}</span><span class="s2">ms)`</span>
+      <span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="c1">// Check bundle sizes</span>
+    <span class="nb">Object</span><span class="p">.</span><span class="nx">entries</span><span class="p">(</span><span class="nx">bundleSizes</span><span class="p">).</span><span class="nx">forEach</span><span class="p">(([</span><span class="nx">name</span><span class="p">,</span> <span class="nx">size</span><span class="p">])</span> <span class="o">=&gt;</span> <span class="p">{</span>
+      <span class="k">if</span> <span class="p">(</span><span class="nx">size</span> <span class="o">&gt;</span> <span class="nx">threshold</span><span class="p">.</span><span class="nx">bundleSize</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">warn</span><span class="p">(</span>
+          <span class="s2">`⚠️  Bundle </span><span class="p">${</span><span class="nx">name</span><span class="p">}</span><span class="s2"> size (</span><span class="p">${(</span><span class="nx">size</span> <span class="o">/</span> <span class="mi">1024</span> <span class="o">/</span> <span class="mi">1024</span><span class="p">).</span><span class="nx">toFixed</span><span class="p">(</span>
+            <span class="mi">2</span>
+          <span class="p">)}</span><span class="s2">MB) exceeds threshold (</span><span class="p">${</span><span class="nx">threshold</span><span class="p">.</span><span class="nx">bundleSize</span> <span class="o">/</span> <span class="mi">1024</span> <span class="o">/</span> <span class="mi">1024</span><span class="p">}</span><span class="s2">MB)`</span>
+        <span class="p">);</span>
+      <span class="p">}</span>
+    <span class="p">});</span>
+
+    <span class="c1">// Check memory usage</span>
+    <span class="kd">const</span> <span class="nx">maxMemory</span> <span class="o">=</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">max</span><span class="p">(...</span><span class="nx">memoryUsage</span><span class="p">.</span><span class="nx">map</span><span class="p">((</span><span class="nx">m</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">m</span><span class="p">.</span><span class="nx">heapUsed</span><span class="p">));</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">maxMemory</span> <span class="o">&gt;</span> <span class="nx">threshold</span><span class="p">.</span><span class="nx">memoryUsage</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">console</span><span class="p">.</span><span class="nx">warn</span><span class="p">(</span>
+        <span class="s2">`⚠️  Peak memory usage (</span><span class="p">${(</span><span class="nx">maxMemory</span> <span class="o">/</span> <span class="mi">1024</span> <span class="o">/</span> <span class="mi">1024</span><span class="p">).</span><span class="nx">toFixed</span><span class="p">(</span>
+          <span class="mi">2</span>
+        <span class="p">)}</span><span class="s2">MB) exceeds threshold (</span><span class="p">${</span><span class="nx">threshold</span><span class="p">.</span><span class="nx">memoryUsage</span> <span class="o">/</span> <span class="mi">1024</span> <span class="o">/</span> <span class="mi">1024</span><span class="p">}</span><span class="s2">MB)`</span>
+      <span class="p">);</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+
+  <span class="nx">saveMetrics</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="nx">outputPath</span> <span class="o">=</span> <span class="nx">path</span><span class="p">.</span><span class="nx">resolve</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">options</span><span class="p">.</span><span class="nx">outputFile</span><span class="p">);</span>
+    <span class="nx">fs</span><span class="p">.</span><span class="nx">writeFileSync</span><span class="p">(</span><span class="nx">outputPath</span><span class="p">,</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">metrics</span><span class="p">,</span> <span class="kc">null</span><span class="p">,</span> <span class="mi">2</span><span class="p">));</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">`📊 Build metrics saved to </span><span class="p">${</span><span class="nx">outputPath</span><span class="p">}</span><span class="s2">`</span><span class="p">);</span>
+  <span class="p">}</span>
+
+  <span class="nx">generateReport</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="p">{</span> <span class="nx">duration</span><span class="p">,</span> <span class="nx">bundleSizes</span><span class="p">,</span> <span class="nx">memoryUsage</span><span class="p">,</span> <span class="nx">warnings</span><span class="p">,</span> <span class="nx">errors</span> <span class="p">}</span> <span class="o">=</span>
+      <span class="k">this</span><span class="p">.</span><span class="nx">metrics</span><span class="p">;</span>
+
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">"</span><span class="se">\n</span><span class="s2">📈 Build Performance Report</span><span class="dl">"</span><span class="p">);</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">========================</span><span class="dl">"</span><span class="p">);</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">`⏱️  Build Duration: </span><span class="p">${</span><span class="nx">duration</span><span class="p">.</span><span class="nx">toFixed</span><span class="p">(</span><span class="mi">2</span><span class="p">)}</span><span class="s2">ms`</span><span class="p">);</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">`📦 Bundle Sizes:`</span><span class="p">);</span>
+
+    <span class="nb">Object</span><span class="p">.</span><span class="nx">entries</span><span class="p">(</span><span class="nx">bundleSizes</span><span class="p">).</span><span class="nx">forEach</span><span class="p">(([</span><span class="nx">name</span><span class="p">,</span> <span class="nx">size</span><span class="p">])</span> <span class="o">=&gt;</span> <span class="p">{</span>
+      <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">`   </span><span class="p">${</span><span class="nx">name</span><span class="p">}</span><span class="s2">: </span><span class="p">${(</span><span class="nx">size</span> <span class="o">/</span> <span class="mi">1024</span><span class="p">).</span><span class="nx">toFixed</span><span class="p">(</span><span class="mi">2</span><span class="p">)}</span><span class="s2">KB`</span><span class="p">);</span>
+    <span class="p">});</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="nx">memoryUsage</span><span class="p">.</span><span class="nx">length</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+      <span class="kd">const</span> <span class="nx">avgMemory</span> <span class="o">=</span>
+        <span class="nx">memoryUsage</span><span class="p">.</span><span class="nx">reduce</span><span class="p">((</span><span class="nx">sum</span><span class="p">,</span> <span class="nx">m</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">sum</span> <span class="o">+</span> <span class="nx">m</span><span class="p">.</span><span class="nx">heapUsed</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span> <span class="o">/</span>
+        <span class="nx">memoryUsage</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span>
+      <span class="kd">const</span> <span class="nx">maxMemory</span> <span class="o">=</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">max</span><span class="p">(...</span><span class="nx">memoryUsage</span><span class="p">.</span><span class="nx">map</span><span class="p">((</span><span class="nx">m</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">m</span><span class="p">.</span><span class="nx">heapUsed</span><span class="p">));</span>
+
+      <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">`💾 Memory Usage:`</span><span class="p">);</span>
+      <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">`   Average: </span><span class="p">${(</span><span class="nx">avgMemory</span> <span class="o">/</span> <span class="mi">1024</span> <span class="o">/</span> <span class="mi">1024</span><span class="p">).</span><span class="nx">toFixed</span><span class="p">(</span><span class="mi">2</span><span class="p">)}</span><span class="s2">MB`</span><span class="p">);</span>
+      <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">`   Peak: </span><span class="p">${(</span><span class="nx">maxMemory</span> <span class="o">/</span> <span class="mi">1024</span> <span class="o">/</span> <span class="mi">1024</span><span class="p">).</span><span class="nx">toFixed</span><span class="p">(</span><span class="mi">2</span><span class="p">)}</span><span class="s2">MB`</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="nx">warnings</span><span class="p">.</span><span class="nx">length</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">`⚠️  Warnings: </span><span class="p">${</span><span class="nx">warnings</span><span class="p">.</span><span class="nx">length</span><span class="p">}</span><span class="s2">`</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="nx">errors</span><span class="p">.</span><span class="nx">length</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">`❌ Errors: </span><span class="p">${</span><span class="nx">errors</span><span class="p">.</span><span class="nx">length</span><span class="p">}</span><span class="s2">`</span><span class="p">);</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+
+  <span class="nx">getMetrics</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="p">{</span> <span class="p">...</span><span class="k">this</span><span class="p">.</span><span class="nx">metrics</span> <span class="p">};</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// Webpack plugin</span>
+<span class="kd">class</span> <span class="nx">BuildPerformancePlugin</span> <span class="p">{</span>
+  <span class="kd">constructor</span><span class="p">(</span><span class="nx">options</span> <span class="o">=</span> <span class="p">{})</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">monitor</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">BuildPerformanceMonitor</span><span class="p">(</span><span class="nx">options</span><span class="p">);</span>
+  <span class="p">}</span>
+
+  <span class="nx">apply</span><span class="p">(</span><span class="nx">compiler</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">compiler</span><span class="p">.</span><span class="nx">hooks</span><span class="p">.</span><span class="nx">beforeRun</span><span class="p">.</span><span class="nx">tap</span><span class="p">(</span><span class="dl">"</span><span class="s2">BuildPerformancePlugin</span><span class="dl">"</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+      <span class="k">this</span><span class="p">.</span><span class="nx">monitor</span><span class="p">.</span><span class="nx">start</span><span class="p">();</span>
+    <span class="p">});</span>
+
+    <span class="nx">compiler</span><span class="p">.</span><span class="nx">hooks</span><span class="p">.</span><span class="nx">done</span><span class="p">.</span><span class="nx">tap</span><span class="p">(</span><span class="dl">"</span><span class="s2">BuildPerformancePlugin</span><span class="dl">"</span><span class="p">,</span> <span class="p">(</span><span class="nx">stats</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+      <span class="c1">// Add bundle sizes</span>
+      <span class="kd">const</span> <span class="nx">assets</span> <span class="o">=</span> <span class="nx">stats</span><span class="p">.</span><span class="nx">compilation</span><span class="p">.</span><span class="nx">assets</span><span class="p">;</span>
+      <span class="nb">Object</span><span class="p">.</span><span class="nx">keys</span><span class="p">(</span><span class="nx">assets</span><span class="p">).</span><span class="nx">forEach</span><span class="p">((</span><span class="nx">name</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nx">name</span><span class="p">.</span><span class="nx">endsWith</span><span class="p">(</span><span class="dl">"</span><span class="s2">.js</span><span class="dl">"</span><span class="p">)</span> <span class="o">||</span> <span class="nx">name</span><span class="p">.</span><span class="nx">endsWith</span><span class="p">(</span><span class="dl">"</span><span class="s2">.css</span><span class="dl">"</span><span class="p">))</span> <span class="p">{</span>
+          <span class="k">this</span><span class="p">.</span><span class="nx">monitor</span><span class="p">.</span><span class="nx">addBundleSize</span><span class="p">(</span><span class="nx">name</span><span class="p">,</span> <span class="nx">assets</span><span class="p">[</span><span class="nx">name</span><span class="p">].</span><span class="nx">size</span><span class="p">());</span>
+        <span class="p">}</span>
+      <span class="p">});</span>
+
+      <span class="c1">// Add warnings and errors</span>
+      <span class="nx">stats</span><span class="p">.</span><span class="nx">compilation</span><span class="p">.</span><span class="nx">warnings</span><span class="p">.</span><span class="nx">forEach</span><span class="p">((</span><span class="nx">warning</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">monitor</span><span class="p">.</span><span class="nx">addWarning</span><span class="p">(</span><span class="nx">warning</span><span class="p">.</span><span class="nx">message</span><span class="p">);</span>
+      <span class="p">});</span>
+
+      <span class="nx">stats</span><span class="p">.</span><span class="nx">compilation</span><span class="p">.</span><span class="nx">errors</span><span class="p">.</span><span class="nx">forEach</span><span class="p">((</span><span class="nx">error</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">monitor</span><span class="p">.</span><span class="nx">addError</span><span class="p">(</span><span class="nx">error</span><span class="p">.</span><span class="nx">message</span><span class="p">);</span>
+      <span class="p">});</span>
+
+      <span class="k">this</span><span class="p">.</span><span class="nx">monitor</span><span class="p">.</span><span class="nx">end</span><span class="p">();</span>
+    <span class="p">});</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// Usage in webpack.config.js</span>
+<span class="kd">const</span> <span class="nx">BuildPerformancePlugin</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">"</span><span class="s2">./build-performance-monitor</span><span class="dl">"</span><span class="p">);</span>
+
+<span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="c1">// ... webpack config</span>
+  <span class="na">plugins</span><span class="p">:</span> <span class="p">[</span>
+    <span class="k">new</span> <span class="nx">BuildPerformancePlugin</span><span class="p">({</span>
+      <span class="na">threshold</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">buildTime</span><span class="p">:</span> <span class="mi">20000</span><span class="p">,</span>
+        <span class="na">bundleSize</span><span class="p">:</span> <span class="mi">512</span> <span class="o">*</span> <span class="mi">1024</span><span class="p">,</span>
+        <span class="na">memoryUsage</span><span class="p">:</span> <span class="mi">300</span> <span class="o">*</span> <span class="mi">1024</span> <span class="o">*</span> <span class="mi">1024</span><span class="p">,</span>
+      <span class="p">},</span>
+    <span class="p">}),</span>
+  <span class="p">],</span>
+<span class="p">};</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<h2 id="build-optimization-techniques">Build Optimization Techniques</h2>
+
+<h3 id="webpack-optimization">Webpack Optimization</h3>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+</pre></td><td class="rouge-code"><pre><span class="c1">// webpack.config.js</span>
+<span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="na">optimization</span><span class="p">:</span> <span class="p">{</span>
+    <span class="na">splitChunks</span><span class="p">:</span> <span class="p">{</span>
+      <span class="na">chunks</span><span class="p">:</span> <span class="dl">"</span><span class="s2">all</span><span class="dl">"</span><span class="p">,</span>
+      <span class="na">cacheGroups</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">vendor</span><span class="p">:</span> <span class="p">{</span>
+          <span class="na">test</span><span class="p">:</span> <span class="sr">/</span><span class="se">[\\/]</span><span class="sr">node_modules</span><span class="se">[\\/]</span><span class="sr">/</span><span class="p">,</span>
+          <span class="na">name</span><span class="p">:</span> <span class="dl">"</span><span class="s2">vendors</span><span class="dl">"</span><span class="p">,</span>
+          <span class="na">chunks</span><span class="p">:</span> <span class="dl">"</span><span class="s2">all</span><span class="dl">"</span><span class="p">,</span>
+        <span class="p">},</span>
+        <span class="na">common</span><span class="p">:</span> <span class="p">{</span>
+          <span class="na">name</span><span class="p">:</span> <span class="dl">"</span><span class="s2">common</span><span class="dl">"</span><span class="p">,</span>
+          <span class="na">minChunks</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+          <span class="na">chunks</span><span class="p">:</span> <span class="dl">"</span><span class="s2">all</span><span class="dl">"</span><span class="p">,</span>
+        <span class="p">},</span>
+      <span class="p">},</span>
+    <span class="p">},</span>
+    <span class="na">runtimeChunk</span><span class="p">:</span> <span class="dl">"</span><span class="s2">single</span><span class="dl">"</span><span class="p">,</span>
+    <span class="na">moduleIds</span><span class="p">:</span> <span class="dl">"</span><span class="s2">deterministic</span><span class="dl">"</span><span class="p">,</span>
+    <span class="na">chunkIds</span><span class="p">:</span> <span class="dl">"</span><span class="s2">deterministic</span><span class="dl">"</span><span class="p">,</span>
+  <span class="p">},</span>
+  <span class="na">cache</span><span class="p">:</span> <span class="p">{</span>
+    <span class="na">type</span><span class="p">:</span> <span class="dl">"</span><span class="s2">filesystem</span><span class="dl">"</span><span class="p">,</span>
+    <span class="na">buildDependencies</span><span class="p">:</span> <span class="p">{</span>
+      <span class="na">config</span><span class="p">:</span> <span class="p">[</span><span class="nx">__filename</span><span class="p">],</span>
+    <span class="p">},</span>
+  <span class="p">},</span>
+<span class="p">};</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<h3 id="vite-configuration">Vite Configuration</h3>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+</pre></td><td class="rouge-code"><pre><span class="c1">// vite.config.js</span>
+<span class="k">import</span> <span class="p">{</span> <span class="nx">defineConfig</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">vite</span><span class="dl">"</span><span class="p">;</span>
+<span class="k">import</span> <span class="nx">react</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">@vitejs/plugin-react</span><span class="dl">"</span><span class="p">;</span>
+
+<span class="k">export</span> <span class="k">default</span> <span class="nx">defineConfig</span><span class="p">({</span>
+  <span class="na">plugins</span><span class="p">:</span> <span class="p">[</span><span class="nx">react</span><span class="p">()],</span>
+  <span class="na">build</span><span class="p">:</span> <span class="p">{</span>
+    <span class="na">rollupOptions</span><span class="p">:</span> <span class="p">{</span>
+      <span class="na">output</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">manualChunks</span><span class="p">:</span> <span class="p">{</span>
+          <span class="na">vendor</span><span class="p">:</span> <span class="p">[</span><span class="dl">"</span><span class="s2">react</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">react-dom</span><span class="dl">"</span><span class="p">],</span>
+          <span class="na">utils</span><span class="p">:</span> <span class="p">[</span><span class="dl">"</span><span class="s2">lodash</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">axios</span><span class="dl">"</span><span class="p">],</span>
+        <span class="p">},</span>
+      <span class="p">},</span>
+    <span class="p">},</span>
+    <span class="na">chunkSizeWarningLimit</span><span class="p">:</span> <span class="mi">1000</span><span class="p">,</span>
+  <span class="p">},</span>
+  <span class="na">server</span><span class="p">:</span> <span class="p">{</span>
+    <span class="na">hmr</span><span class="p">:</span> <span class="p">{</span>
+      <span class="na">overlay</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+    <span class="p">},</span>
+  <span class="p">},</span>
+<span class="p">});</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<h2 id="best-practices">Best Practices</h2>
+
+<h3 id="performance">Performance</h3>
+
+<ul>
+  <li>Use persistent caching</li>
+  <li>Implement incremental builds</li>
+  <li>Parallelize build tasks</li>
+  <li>Optimize bundle splitting</li>
+  <li>Monitor build metrics</li>
+</ul>
+
+<h3 id="development-experience-1">Development Experience</h3>
+
+<ul>
+  <li>Fast hot reload</li>
+  <li>Clear error messages</li>
+  <li>Source maps for debugging</li>
+  <li>Environment-specific configs</li>
+  <li>Automated testing integration</li>
+</ul>
+
+<h3 id="production-optimization">Production Optimization</h3>
+
+<ul>
+  <li>Tree shaking and dead code elimination</li>
+  <li>Asset compression and optimization</li>
+  <li>CDN integration</li>
+  <li>Cache busting strategies</li>
+  <li>Bundle analysis and monitoring</li>
+</ul>
+
+<h2 id="resources">Resources</h2>
+
+<h3 id="documentation">Documentation</h3>
+
+<ul>
+  <li><a href="https://webpack.js.org/">Webpack Documentation</a></li>
+  <li><a href="https://vitejs.dev/">Vite Documentation</a></li>
+  <li><a href="https://babeljs.io/">Babel Documentation</a></li>
+  <li><a href="https://eslint.org/">ESLint Documentation</a></li>
+</ul>
+
+<h3 id="tools">Tools</h3>
+
+<ul>
+  <li><a href="https://github.com/webpack-contrib/webpack-bundle-analyzer">Webpack Bundle Analyzer</a></li>
+  <li><a href="https://github.com/btd/rollup-plugin-visualizer">Vite Bundle Analyzer</a></li>
+  <li><a href="https://bundlephobia.com/">Bundlephobia</a> - Package size analysis</li>
+  <li><a href="https://chrisbateman.github.io/webpack-visualizer/">Webpack Visualizer</a></li>
+</ul>
+
+<h3 id="practice-platforms">Practice Platforms</h3>
+
+<ul>
+  <li><a href="https://github.com/webpack/webpack/tree/master/examples">Webpack Examples</a></li>
+  <li><a href="https://github.com/vitejs/vite/tree/main/packages/create-vite/template-vanilla">Vite Examples</a></li>
+  <li><a href="https://github.com/jamiebuilds/babel-handbook">Babel Plugin Handbook</a></li>
+</ul>
+
+<hr />
+
+<p><em>This guide covers essential build tools and systems for frontend interviews, including practical problems and advanced techniques commonly asked at Big Tech companies.</em></p>
+
+        </div>
+    </article>
+</div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Study Resources</h3>
+                    <p>Comprehensive collection of frontend interview questions, coding challenges, and system design problems.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Progress Tracking</h3>
+                    <p>Monitor your learning journey with detailed progress indicators and completion status.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Big Tech Ready</h3>
+                    <p>Curated content specifically designed for interviews at Google, Meta, Amazon, Apple, and Netflix.</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Frontend Interview Hub. Built for aspiring frontend engineers.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="/assets/js/main.js"></script>
+</body>
+</html>

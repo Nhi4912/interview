@@ -1,0 +1,777 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inorder Successor in BST | Frontend Interview Preparation Guide</title>
+    <meta name="description" content="Comprehensive frontend interview materials for Big Tech companies">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="/assets/css/main.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <header>
+        <nav class="container">
+            <div class="logo">Frontend Interview Hub</div>
+            <ul class="nav-links">
+                <li><a href="/">Home</a></li>
+                <li><a href="#progress">Progress</a></li>
+                <li><a href="#knowledge">Knowledge</a></li>
+                <li><a href="https://github.com/nee/interview">GitHub</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <div class="content-container">
+    
+        <nav class="breadcrumb">
+            <ol>
+                <li><a href="/">Home</a></li>
+                
+                
+                
+                    
+                
+                    
+                        
+                        
+                            <li><a href="/leetcode/">Leetcode</a></li>
+                        
+                    
+                
+                    
+                        
+                        
+                            <li><a href="/leetcode/tree-graph/">Tree graph</a></li>
+                        
+                    
+                
+                    
+                        
+                        
+                            <li><a href="/leetcode/tree-graph/problems/">Problems</a></li>
+                        
+                    
+                
+                    
+                        
+                        
+                            <li class="active">Inorder successor in bst</li>
+                        
+                    
+                
+            </ol>
+        </nav>
+    
+    
+    <article class="content">
+        
+            <header class="content-header">
+                <h1 class="content-title">Inorder Successor in BST</h1>
+                
+                
+                    <div class="content-meta">
+                        <span class="difficulty difficulty-easy">Easy</span>
+                        
+                            <span class="category">Tree/Graph</span>
+                        
+                        
+                            <div class="tags">
+                                
+                                    <span class="tag">Tree/Graph</span>
+                                
+                            </div>
+                        
+                    </div>
+                
+            </header>
+        
+        
+        <div class="content-body">
+            <h1 id="inorder-successor-in-bst">Inorder Successor in BST</h1>
+
+<h2 id="problem-description">Problem Description</h2>
+
+<ul>
+  <li>return the in-order successor of that node in the BST. If the given node  * has no in-order successor in the tree, return null.  *  *  * Companies: Amazon, Google, Microsoft</li>
+</ul>
+
+<h2 id="solutions">Solutions</h2>
+
+<p>/**</p>
+<ul>
+  <li>Inorder Successor in BST
+ *</li>
+  <li>Problem: Given the root of a binary search tree and a node p in it,</li>
+  <li>return the in-order successor of that node in the BST. If the given node</li>
+  <li>has no in-order successor in the tree, return null.
+ *</li>
+  <li>LeetCode: https://leetcode.com/problems/inorder-successor-in-bst/
+ *</li>
+  <li>Companies: Amazon, Google, Microsoft
+ *</li>
+  <li>Difficulty: Medium
+ *</li>
+  <li>Key Concepts: BST properties, inorder traversal, successor finding
+ */</li>
+</ul>
+
+<p>/**</p>
+<ul>
+  <li>Definition for a binary tree node.
+ */
+class TreeNode {
+  val: number;
+  left: TreeNode | null;
+  right: TreeNode | null;</li>
+</ul>
+
+<p>constructor(
+    val: number = 0,
+    left: TreeNode | null = null,
+    right: TreeNode | null = null
+  ) {
+    this.val = val;
+    this.left = left;
+    this.right = right;
+  }
+}</p>
+
+<p>/**</p>
+<ul>
+  <li>Solution 1: Inorder Traversal with Stack (Iterative)
+ *</li>
+  <li>Time Complexity: O(n) - Worst case visit all nodes</li>
+  <li>Space Complexity: O(h) - Stack space
+ *</li>
+  <li>Approach:</li>
+  <li>
+    <ol>
+      <li>Use iterative inorder traversal</li>
+    </ol>
+  </li>
+  <li>
+    <ol>
+      <li>Keep track of previous node</li>
+    </ol>
+  </li>
+  <li>
+    <ol>
+      <li>When current node equals target, return previous node
+ *</li>
+    </ol>
+  </li>
+  <li>Thuật toán:</li>
+  <li>
+    <ol>
+      <li>Sử dụng duyệt inorder với stack</li>
+    </ol>
+  </li>
+  <li>
+    <ol>
+      <li>Theo dõi nút trước đó</li>
+    </ol>
+  </li>
+  <li>
+    <ol>
+      <li>Khi nút hiện tại bằng nút đích, trả về nút trước đó
+ */
+function inorderSuccessor(root: TreeNode | null, p: TreeNode): TreeNode | null {
+  if (!root) return null;</li>
+    </ol>
+  </li>
+</ul>
+
+<p>const stack: TreeNode[] = [];
+  let current = root;
+  let previous: TreeNode | null = null;</p>
+
+<p>while (current || stack.length &gt; 0) {
+    // Go to the leftmost node
+    while (current) {
+      stack.push(current);
+      current = current.left;
+    }</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+</pre></td><td class="rouge-code"><pre>// Process current node
+current = stack.pop()!;
+
+// If previous node was the target, current is the successor
+if (previous === p) {
+  return current;
+}
+
+previous = current;
+current = current.right;   }
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>return null; // No successor found
+}</p>
+
+<p>/**</p>
+<ul>
+  <li>Solution 2: BST Properties (Optimal)
+ *</li>
+  <li>Time Complexity: O(h) - Height of the tree</li>
+  <li>Space Complexity: O(1) - Only using a few pointers
+ *</li>
+  <li>Approach:</li>
+  <li>
+    <ol>
+      <li>If p has right child, successor is leftmost node in right subtree</li>
+    </ol>
+  </li>
+  <li>
+    <ol>
+      <li>If p has no right child, successor is the first ancestor where p is in left subtree</li>
+    </ol>
+  </li>
+  <li>
+    <ol>
+      <li>Use BST properties to navigate efficiently
+ *</li>
+    </ol>
+  </li>
+  <li>Thuật toán:</li>
+  <li>
+    <ol>
+      <li>Nếu p có con phải, successor là nút ngoài cùng bên trái của cây con phải</li>
+    </ol>
+  </li>
+  <li>
+    <ol>
+      <li>Nếu p không có con phải, successor là tổ tiên đầu tiên mà p nằm trong cây con trái</li>
+    </ol>
+  </li>
+  <li>
+    <ol>
+      <li>Sử dụng tính chất BST để điều hướng hiệu quả
+ */
+function inorderSuccessorOptimal(
+  root: TreeNode | null,
+  p: TreeNode
+): TreeNode | null {
+  if (!root) return null;</li>
+    </ol>
+  </li>
+</ul>
+
+<p>// If p has right child, successor is leftmost node in right subtree
+  if (p.right) {
+    let successor = p.right;
+    while (successor.left) {
+      successor = successor.left;
+    }
+    return successor;
+  }</p>
+
+<p>// If p has no right child, find the first ancestor where p is in left subtree
+  let successor: TreeNode | null = null;
+  let current = root;</p>
+
+<p>while (current !== p) {
+    if (p.val &lt; current.val) {
+      successor = current; // Current could be the successor
+      current = current.left;
+    } else {
+      current = current.right;
+    }
+  }</p>
+
+<p>return successor;
+}</p>
+
+<p>/**</p>
+<ul>
+  <li>Solution 3: Recursive Approach
+ *</li>
+  <li>Time Complexity: O(h) - Height of the tree</li>
+  <li>Space Complexity: O(h) - Recursion stack
+ *</li>
+  <li>Approach:</li>
+  <li>
+    <ol>
+      <li>Use recursive BST search</li>
+    </ol>
+  </li>
+  <li>
+    <ol>
+      <li>Keep track of potential successor</li>
+    </ol>
+  </li>
+  <li>
+    <ol>
+      <li>Navigate based on node values
+ *</li>
+    </ol>
+  </li>
+  <li>Thuật toán:</li>
+  <li>
+    <ol>
+      <li>Sử dụng tìm kiếm BST đệ quy</li>
+    </ol>
+  </li>
+  <li>
+    <ol>
+      <li>Theo dõi successor tiềm năng</li>
+    </ol>
+  </li>
+  <li>
+    <ol>
+      <li>Điều hướng dựa trên giá trị nút
+ */
+function inorderSuccessorRecursive(
+  root: TreeNode | null,
+  p: TreeNode
+): TreeNode | null {
+  let successor: TreeNode | null = null;</li>
+    </ol>
+  </li>
+</ul>
+
+<p>function findSuccessor(node: TreeNode | null): void {
+    if (!node) return;</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+</pre></td><td class="rouge-code"><pre>if (p.val &lt; node.val) {
+  successor = node; // Current node could be successor
+  findSuccessor(node.left);
+} else {
+  findSuccessor(node.right);
+}   }
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>findSuccessor(root);</p>
+
+<p>// If p has right child, find leftmost in right subtree
+  if (p.right) {
+    let temp = p.right;
+    while (temp.left) {
+      temp = temp.left;
+    }
+    return temp;
+  }</p>
+
+<p>return successor;
+}</p>
+
+<p>/**</p>
+<ul>
+  <li>Solution 4: Morris Traversal (O(1) Space)
+ *</li>
+  <li>Time Complexity: O(n) - Each edge is traversed at most 3 times</li>
+  <li>Space Complexity: O(1) - Only using a few pointers
+ *</li>
+  <li>Approach:</li>
+  <li>
+    <ol>
+      <li>Use Morris traversal to avoid stack/recursion</li>
+    </ol>
+  </li>
+  <li>
+    <ol>
+      <li>Keep track of previous node</li>
+    </ol>
+  </li>
+  <li>
+    <ol>
+      <li>Find successor during traversal
+ *</li>
+    </ol>
+  </li>
+  <li>Thuật toán:</li>
+  <li>
+    <ol>
+      <li>Sử dụng Morris traversal để tránh stack/đệ quy</li>
+    </ol>
+  </li>
+  <li>
+    <ol>
+      <li>Theo dõi nút trước đó</li>
+    </ol>
+  </li>
+  <li>
+    <ol>
+      <li>Tìm successor trong quá trình duyệt
+ */
+function inorderSuccessorMorris(
+  root: TreeNode | null,
+  p: TreeNode
+): TreeNode | null {
+  if (!root) return null;</li>
+    </ol>
+  </li>
+</ul>
+
+<p>let current = root;
+  let previous: TreeNode | null = null;</p>
+
+<p>while (current) {
+    if (!current.left) {
+      // Process current node
+      if (previous === p) {
+        return current;
+      }
+      previous = current;
+      current = current.right;
+    } else {
+      // Find inorder predecessor
+      let predecessor = current.left;
+      while (predecessor.right &amp;&amp; predecessor.right !== current) {
+        predecessor = predecessor.right;
+      }</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+</pre></td><td class="rouge-code"><pre>  if (!predecessor.right) {
+    // Create temporary link
+    predecessor.right = current;
+    current = current.left;
+  } else {
+    // Remove temporary link and process current node
+    predecessor.right = null;
+    if (previous === p) {
+      return current;
+    }
+    previous = current;
+    current = current.right;
+  }
+}   }
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>return null;
+}</p>
+
+<p>/**</p>
+<ul>
+  <li>Solution 5: Two-Pass Approach
+ *</li>
+  <li>Time Complexity: O(n) - Two passes through the tree</li>
+  <li>Space Complexity: O(n) - Store all nodes in order
+ *</li>
+  <li>Approach:</li>
+  <li>
+    <ol>
+      <li>First pass: collect all nodes in inorder</li>
+    </ol>
+  </li>
+  <li>
+    <ol>
+      <li>Second pass: find target node and return next node
+ *</li>
+    </ol>
+  </li>
+  <li>Thuật toán:</li>
+  <li>
+    <ol>
+      <li>Lần đầu: thu thập tất cả nút theo thứ tự inorder</li>
+    </ol>
+  </li>
+  <li>
+    <ol>
+      <li>Lần hai: tìm nút đích và trả về nút tiếp theo
+ */
+function inorderSuccessorTwoPass(
+  root: TreeNode | null,
+  p: TreeNode
+): TreeNode | null {
+  if (!root) return null;</li>
+    </ol>
+  </li>
+</ul>
+
+<p>const nodes: TreeNode[] = [];</p>
+
+<p>// Collect all nodes in inorder
+  function inorder(node: TreeNode | null): void {
+    if (!node) return;
+    inorder(node.left);
+    nodes.push(node);
+    inorder(node.right);
+  }</p>
+
+<p>inorder(root);</p>
+
+<p>// Find target node and return next node
+  for (let i = 0; i &lt; nodes.length - 1; i++) {
+    if (nodes[i] === p) {
+      return nodes[i + 1];
+    }
+  }</p>
+
+<p>return null; // Target is the last node or not found
+}</p>
+
+<p>/**</p>
+<ul>
+  <li>Utility function to create BST from array
+ */
+function createBST(values: number[]): TreeNode | null {
+  if (values.length === 0) return null;</li>
+</ul>
+
+<p>const root = new TreeNode(values[0]);</p>
+
+<p>for (let i = 1; i &lt; values.length; i++) {
+    insertBST(root, values[i]);
+  }</p>
+
+<p>return root;
+}</p>
+
+<p>function insertBST(root: TreeNode, val: number): void {
+  if (val &lt; root.val) {
+    if (root.left) {
+      insertBST(root.left, val);
+    } else {
+      root.left = new TreeNode(val);
+    }
+  } else {
+    if (root.right) {
+      insertBST(root.right, val);
+    } else {
+      root.right = new TreeNode(val);
+    }
+  }
+}</p>
+
+<p>/**</p>
+<ul>
+  <li>Utility function to find node by value
+ */
+function findNode(root: TreeNode | null, val: number): TreeNode | null {
+  if (!root) return null;</li>
+</ul>
+
+<p>if (root.val === val) return root;</p>
+
+<p>if (val &lt; root.val) {
+    return findNode(root.left, val);
+  } else {
+    return findNode(root.right, val);
+  }
+}</p>
+
+<p>/**</p>
+<ul>
+  <li>Utility function to print tree in inorder
+ */
+function printInorder(root: TreeNode | null): number[] {
+  const result: number[] = [];</li>
+</ul>
+
+<p>function inorder(node: TreeNode | null): void {
+    if (!node) return;
+    inorder(node.left);
+    result.push(node.val);
+    inorder(node.right);
+  }</p>
+
+<p>inorder(root);
+  return result;
+}</p>
+
+<p>// Test cases
+function runTests(): void {
+  console.log(“=== Testing Inorder Successor in BST ===\n”);</p>
+
+<p>// Test Case 1: Simple BST
+  console.log(“Test Case 1: Simple BST”);
+  const tree1 = createBST([2, 1, 3]);
+  const p1 = findNode(tree1, 1);</p>
+
+<p>console.log(“BST values (inorder):”, printInorder(tree1));
+  console.log(<code class="language-plaintext highlighter-rouge">Finding successor of node ${p1?.val}</code>);</p>
+
+<p>console.log(“Iterative approach:”, inorderSuccessor(tree1, p1!)?.val);
+  console.log(“Optimal approach:”, inorderSuccessorOptimal(tree1, p1!)?.val);
+  console.log(
+    “Recursive approach:”,
+    inorderSuccessorRecursive(tree1, p1!)?.val
+  );
+  console.log(“Morris approach:”, inorderSuccessorMorris(tree1, p1!)?.val);
+  console.log(“Two-pass approach:”, inorderSuccessorTwoPass(tree1, p1!)?.val);
+  console.log();</p>
+
+<p>// Test Case 2: Larger BST
+  console.log(“Test Case 2: Larger BST”);
+  const tree2 = createBST([5, 3, 6, 2, 4, null, null, 1]);
+  const p2 = findNode(tree2, 4);</p>
+
+<p>console.log(“BST values (inorder):”, printInorder(tree2));
+  console.log(<code class="language-plaintext highlighter-rouge">Finding successor of node ${p2?.val}</code>);</p>
+
+<p>console.log(“Iterative approach:”, inorderSuccessor(tree2, p2!)?.val);
+  console.log(“Optimal approach:”, inorderSuccessorOptimal(tree2, p2!)?.val);
+  console.log(
+    “Recursive approach:”,
+    inorderSuccessorRecursive(tree2, p2!)?.val
+  );
+  console.log(“Morris approach:”, inorderSuccessorMorris(tree2, p2!)?.val);
+  console.log(“Two-pass approach:”, inorderSuccessorTwoPass(tree2, p2!)?.val);
+  console.log();</p>
+
+<p>// Test Case 3: Node with right child
+  console.log(“Test Case 3: Node with right child”);
+  const tree3 = createBST([5, 3, 6, 2, 4, null, null, 1]);
+  const p3 = findNode(tree3, 3);</p>
+
+<p>console.log(“BST values (inorder):”, printInorder(tree3));
+  console.log(<code class="language-plaintext highlighter-rouge">Finding successor of node ${p3?.val}</code>);</p>
+
+<p>console.log(“Iterative approach:”, inorderSuccessor(tree3, p3!)?.val);
+  console.log(“Optimal approach:”, inorderSuccessorOptimal(tree3, p3!)?.val);
+  console.log(
+    “Recursive approach:”,
+    inorderSuccessorRecursive(tree3, p3!)?.val
+  );
+  console.log(“Morris approach:”, inorderSuccessorMorris(tree3, p3!)?.val);
+  console.log(“Two-pass approach:”, inorderSuccessorTwoPass(tree3, p3!)?.val);
+  console.log();</p>
+
+<p>// Test Case 4: Last node (no successor)
+  console.log(“Test Case 4: Last node (no successor)”);
+  const tree4 = createBST([5, 3, 6, 2, 4, null, null, 1]);
+  const p4 = findNode(tree4, 6);</p>
+
+<p>console.log(“BST values (inorder):”, printInorder(tree4));
+  console.log(<code class="language-plaintext highlighter-rouge">Finding successor of node ${p4?.val}</code>);</p>
+
+<p>console.log(“Iterative approach:”, inorderSuccessor(tree4, p4!));
+  console.log(“Optimal approach:”, inorderSuccessorOptimal(tree4, p4!));
+  console.log(“Recursive approach:”, inorderSuccessorRecursive(tree4, p4!));
+  console.log(“Morris approach:”, inorderSuccessorMorris(tree4, p4!));
+  console.log(“Two-pass approach:”, inorderSuccessorTwoPass(tree4, p4!));
+  console.log();</p>
+
+<p>// Test Case 5: Single node
+  console.log(“Test Case 5: Single node”);
+  const tree5 = createBST([1]);
+  const p5 = findNode(tree5, 1);</p>
+
+<p>console.log(“BST values (inorder):”, printInorder(tree5));
+  console.log(<code class="language-plaintext highlighter-rouge">Finding successor of node ${p5?.val}</code>);</p>
+
+<p>console.log(“Iterative approach:”, inorderSuccessor(tree5, p5!));
+  console.log(“Optimal approach:”, inorderSuccessorOptimal(tree5, p5!));
+  console.log(“Recursive approach:”, inorderSuccessorRecursive(tree5, p5!));
+  console.log(“Morris approach:”, inorderSuccessorMorris(tree5, p5!));
+  console.log(“Two-pass approach:”, inorderSuccessorTwoPass(tree5, p5!));
+  console.log();</p>
+
+<p>// Performance comparison
+  console.log(“=== Performance Comparison ===”);</p>
+
+<p>// Create a large BST
+  const largeValues = Array.from({ length: 10000 }, (_, i) =&gt; i + 1);
+  const largeTree = createBST(largeValues);
+  const pLarge = findNode(largeTree, 5000);</p>
+
+<p>console.time(“Iterative Approach”);
+  inorderSuccessor(largeTree, pLarge!);
+  console.timeEnd(“Iterative Approach”);</p>
+
+<p>const largeTree2 = createBST(largeValues);
+  const pLarge2 = findNode(largeTree2, 5000);
+  console.time(“Optimal Approach”);
+  inorderSuccessorOptimal(largeTree2, pLarge2!);
+  console.timeEnd(“Optimal Approach”);</p>
+
+<p>const largeTree3 = createBST(largeValues);
+  const pLarge3 = findNode(largeTree3, 5000);
+  console.time(“Recursive Approach”);
+  inorderSuccessorRecursive(largeTree3, pLarge3!);
+  console.timeEnd(“Recursive Approach”);</p>
+
+<p>const largeTree4 = createBST(largeValues);
+  const pLarge4 = findNode(largeTree4, 5000);
+  console.time(“Morris Approach”);
+  inorderSuccessorMorris(largeTree4, pLarge4!);
+  console.timeEnd(“Morris Approach”);</p>
+
+<p>const largeTree5 = createBST(largeValues);
+  const pLarge5 = findNode(largeTree5, 5000);
+  console.time(“Two-Pass Approach”);
+  inorderSuccessorTwoPass(largeTree5, pLarge5!);
+  console.timeEnd(“Two-Pass Approach”);
+}</p>
+
+<p>// Run tests
+runTests();</p>
+
+<p>export {
+  inorderSuccessor,
+  inorderSuccessorOptimal,
+  inorderSuccessorRecursive,
+  inorderSuccessorMorris,
+  TreeNode,
+};</p>
+
+
+        </div>
+    </article>
+</div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Study Resources</h3>
+                    <p>Comprehensive collection of frontend interview questions, coding challenges, and system design problems.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Progress Tracking</h3>
+                    <p>Monitor your learning journey with detailed progress indicators and completion status.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Big Tech Ready</h3>
+                    <p>Curated content specifically designed for interviews at Google, Meta, Amazon, Apple, and Netflix.</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Frontend Interview Hub. Built for aspiring frontend engineers.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="/assets/js/main.js"></script>
+</body>
+</html>

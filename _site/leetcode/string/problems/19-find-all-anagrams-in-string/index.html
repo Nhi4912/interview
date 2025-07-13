@@ -1,0 +1,1319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Find All Anagrams in a String | Frontend Interview Preparation Guide</title>
+    <meta name="description" content="Comprehensive frontend interview materials for Big Tech companies">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="/assets/css/main.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <header>
+        <nav class="container">
+            <div class="logo">Frontend Interview Hub</div>
+            <ul class="nav-links">
+                <li><a href="/">Home</a></li>
+                <li><a href="#progress">Progress</a></li>
+                <li><a href="#knowledge">Knowledge</a></li>
+                <li><a href="https://github.com/nee/interview">GitHub</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <div class="content-container">
+    
+        <nav class="breadcrumb">
+            <ol>
+                <li><a href="/">Home</a></li>
+                
+                
+                
+                    
+                
+                    
+                        
+                        
+                            <li><a href="/leetcode/">Leetcode</a></li>
+                        
+                    
+                
+                    
+                        
+                        
+                            <li><a href="/leetcode/string/">String</a></li>
+                        
+                    
+                
+                    
+                        
+                        
+                            <li><a href="/leetcode/string/problems/">Problems</a></li>
+                        
+                    
+                
+                    
+                        
+                        
+                            <li class="active">Find all anagrams in a string</li>
+                        
+                    
+                
+            </ol>
+        </nav>
+    
+    
+    <article class="content">
+        
+            <header class="content-header">
+                <h1 class="content-title">Find All Anagrams in a String</h1>
+                
+                
+                    <div class="content-meta">
+                        <span class="difficulty difficulty-easy">Easy</span>
+                        
+                            <span class="category">String</span>
+                        
+                        
+                            <div class="tags">
+                                
+                                    <span class="tag">String</span>
+                                
+                                    <span class="tag">Hash Table</span>
+                                
+                                    <span class="tag">Sliding Window</span>
+                                
+                                    <span class="tag">Sorting</span>
+                                
+                            </div>
+                        
+                    </div>
+                
+            </header>
+        
+        
+        <div class="content-body">
+            <h1 id="find-all-anagrams-in-a-string">Find All Anagrams in a String</h1>
+
+<p><strong>LeetCode Problem # * 438. Find All Anagrams in a String</strong></p>
+
+<h2 id="problem-description">Problem Description</h2>
+
+<p>LeetCode problem solution with multiple approaches and explanations.</p>
+
+<h2 id="solutions">Solutions</h2>
+
+<p>/**</p>
+<ul>
+  <li>
+    <ol>
+      <li>Find All Anagrams in a String</li>
+    </ol>
+  </li>
+  <li></li>
+  <li>Given two strings s and p, return an array of all the start indices of p’s anagrams in s.</li>
+  <li>You may return the answer in any order.</li>
+  <li></li>
+  <li>An Anagram is a word or phrase formed by rearranging the letters of a different word or phrase,</li>
+  <li>typically using all the original letters exactly once.</li>
+  <li></li>
+  <li>Example 1:</li>
+  <li>Input: s = “abab”, p = “ab”</li>
+  <li>Output: [0,2]</li>
+  <li>Explanation:</li>
+  <li>The substring with start index = 0 is “ab”, which is an anagram of “ab”.</li>
+  <li>The substring with start index = 2 is “ab”, which is an anagram of “ab”.</li>
+  <li></li>
+  <li>Example 2:</li>
+  <li>Input: s = “abab”, p = “ab”</li>
+  <li>Output: [0,2]</li>
+  <li></li>
+  <li>Example 3:</li>
+  <li>Input: s = “baa”, p = “aa”</li>
+  <li>Output: [1]</li>
+  <li></li>
+  <li>Constraints:</li>
+  <li>
+    <ul>
+      <li>1 &lt;= s.length, p.length &lt;= 3 * 10^4</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>s and p consist of lowercase English letters only.
+ */</li>
+    </ul>
+  </li>
+</ul>
+
+<p>// Solution 1: Sliding Window with HashMap
+// Time: O(s + p), Space: O(p)
+export function findAnagrams1(s: string, p: string): number[] {
+    if (s.length &lt; p.length) return [];</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+</pre></td><td class="rouge-code"><pre>const result: number[] = [];
+const pCount = new Map&lt;string, number&gt;();
+const windowCount = new Map&lt;string, number&gt;();
+
+// Count characters in p
+for (const char of p) {
+    pCount.set(char, (pCount.get(char) || 0) + 1);
+}
+
+const windowSize = p.length;
+
+// Initialize first window
+for (let i = 0; i &lt; windowSize; i++) {
+    const char = s[i];
+    windowCount.set(char, (windowCount.get(char) || 0) + 1);
+}
+
+// Check if first window is anagram
+if (mapsEqual(pCount, windowCount)) {
+    result.push(0);
+}
+
+// Slide the window
+for (let i = windowSize; i &lt; s.length; i++) {
+    // Add new character
+    const newChar = s[i];
+    windowCount.set(newChar, (windowCount.get(newChar) || 0) + 1);
+    
+    // Remove old character
+    const oldChar = s[i - windowSize];
+    windowCount.set(oldChar, windowCount.get(oldChar)! - 1);
+    if (windowCount.get(oldChar) === 0) {
+        windowCount.delete(oldChar);
+    }
+    
+    // Check if current window is anagram
+    if (mapsEqual(pCount, windowCount)) {
+        result.push(i - windowSize + 1);
+    }
+}
+
+return result;
+
+function mapsEqual(map1: Map&lt;string, number&gt;, map2: Map&lt;string, number&gt;): boolean {
+    if (map1.size !== map2.size) return false;
+    
+    for (const [key, value] of map1) {
+        if (map2.get(key) !== value) return false;
+    }
+    
+    return true;
+} }
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>// Solution 2: Sliding Window with Array (Optimized)
+// Time: O(s + p), Space: O(1)
+export function findAnagrams2(s: string, p: string): number[] {
+    if (s.length &lt; p.length) return [];</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+</pre></td><td class="rouge-code"><pre>const result: number[] = [];
+const pCount = new Array(26).fill(0);
+const windowCount = new Array(26).fill(0);
+
+// Count characters in p
+for (const char of p) {
+    pCount[char.charCodeAt(0) - 97]++;
+}
+
+const windowSize = p.length;
+
+// Process first window
+for (let i = 0; i &lt; windowSize; i++) {
+    windowCount[s.charCodeAt(i) - 97]++;
+}
+
+// Check first window
+if (arraysEqual(pCount, windowCount)) {
+    result.push(0);
+}
+
+// Slide the window
+for (let i = windowSize; i &lt; s.length; i++) {
+    // Add new character
+    windowCount[s.charCodeAt(i) - 97]++;
+    
+    // Remove old character
+    windowCount[s.charCodeAt(i - windowSize) - 97]--;
+    
+    // Check current window
+    if (arraysEqual(pCount, windowCount)) {
+        result.push(i - windowSize + 1);
+    }
+}
+
+return result;
+
+function arraysEqual(arr1: number[], arr2: number[]): boolean {
+    for (let i = 0; i &lt; 26; i++) {
+        if (arr1[i] !== arr2[i]) return false;
+    }
+    return true;
+} }
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>// Solution 3: Sliding Window with Match Counter
+// Time: O(s + p), Space: O(1)
+export function findAnagrams3(s: string, p: string): number[] {
+    if (s.length &lt; p.length) return [];</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+</pre></td><td class="rouge-code"><pre>const result: number[] = [];
+const count = new Array(26).fill(0);
+
+// Count characters in p (positive) and first window of s (negative)
+for (let i = 0; i &lt; p.length; i++) {
+    count[p.charCodeAt(i) - 97]++;
+    count[s.charCodeAt(i) - 97]--;
+}
+
+let matches = 0;
+for (let i = 0; i &lt; 26; i++) {
+    if (count[i] === 0) matches++;
+}
+
+// Check first window
+if (matches === 26) {
+    result.push(0);
+}
+
+// Slide the window
+for (let i = p.length; i &lt; s.length; i++) {
+    // Add new character
+    const newCharIdx = s.charCodeAt(i) - 97;
+    if (count[newCharIdx] === 0) matches--;
+    count[newCharIdx]--;
+    if (count[newCharIdx] === 0) matches++;
+    
+    // Remove old character
+    const oldCharIdx = s.charCodeAt(i - p.length) - 97;
+    if (count[oldCharIdx] === 0) matches--;
+    count[oldCharIdx]++;
+    if (count[oldCharIdx] === 0) matches++;
+    
+    // Check if anagram
+    if (matches === 26) {
+        result.push(i - p.length + 1);
+    }
+}
+
+return result; }
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>// Solution 4: Rolling Hash with Collision Check
+// Time: O(s + p), Space: O(1)
+export function findAnagrams4(s: string, p: string): number[] {
+    if (s.length &lt; p.length) return [];</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+</pre></td><td class="rouge-code"><pre>const result: number[] = [];
+
+// Calculate hash for pattern
+let pHash = 0;
+for (const char of p) {
+    pHash += char.charCodeAt(0);
+}
+
+// Calculate hash for first window
+let windowHash = 0;
+for (let i = 0; i &lt; p.length; i++) {
+    windowHash += s.charCodeAt(i);
+}
+
+// Check first window with collision verification
+if (windowHash === pHash &amp;&amp; isAnagram(s.substring(0, p.length), p)) {
+    result.push(0);
+}
+
+// Slide the window
+for (let i = p.length; i &lt; s.length; i++) {
+    // Update rolling hash
+    windowHash += s.charCodeAt(i) - s.charCodeAt(i - p.length);
+    
+    // Check if hash matches and verify anagram
+    if (windowHash === pHash) {
+        const substring = s.substring(i - p.length + 1, i + 1);
+        if (isAnagram(substring, p)) {
+            result.push(i - p.length + 1);
+        }
+    }
+}
+
+return result;
+
+function isAnagram(str1: string, str2: string): boolean {
+    if (str1.length !== str2.length) return false;
+    
+    const count = new Array(26).fill(0);
+    for (let i = 0; i &lt; str1.length; i++) {
+        count[str1.charCodeAt(i) - 97]++;
+        count[str2.charCodeAt(i) - 97]--;
+    }
+    
+    return count.every(c =&gt; c === 0);
+} }
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>// Solution 5: Bit Manipulation with XOR
+// Time: O(s + p), Space: O(1)
+export function findAnagrams5(s: string, p: string): number[] {
+    if (s.length &lt; p.length) return [];</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+</pre></td><td class="rouge-code"><pre>const result: number[] = [];
+
+// Create bit pattern for p
+let pPattern = 0;
+const pCount = new Array(26).fill(0);
+for (const char of p) {
+    const idx = char.charCodeAt(0) - 97;
+    pCount[idx]++;
+    pPattern ^= (1 &lt;&lt; idx);
+}
+
+// Create bit pattern for first window
+let windowPattern = 0;
+const windowCount = new Array(26).fill(0);
+for (let i = 0; i &lt; p.length; i++) {
+    const idx = s.charCodeAt(i) - 97;
+    windowCount[idx]++;
+    windowPattern ^= (1 &lt;&lt; idx);
+}
+
+// Check first window (bit pattern match + count verification)
+if (windowPattern === pPattern &amp;&amp; arraysEqual(pCount, windowCount)) {
+    result.push(0);
+}
+
+// Slide the window
+for (let i = p.length; i &lt; s.length; i++) {
+    // Add new character
+    const newIdx = s.charCodeAt(i) - 97;
+    if (windowCount[newIdx] === 0) windowPattern ^= (1 &lt;&lt; newIdx);
+    windowCount[newIdx]++;
+    if (windowCount[newIdx] % 2 === 0) windowPattern ^= (1 &lt;&lt; newIdx);
+    
+    // Remove old character
+    const oldIdx = s.charCodeAt(i - p.length) - 97;
+    if (windowCount[oldIdx] % 2 === 1) windowPattern ^= (1 &lt;&lt; oldIdx);
+    windowCount[oldIdx]--;
+    if (windowCount[oldIdx] === 0) windowPattern ^= (1 &lt;&lt; oldIdx);
+    
+    // Check if anagram (requires both bit pattern and count match)
+    if (windowPattern === pPattern &amp;&amp; arraysEqual(pCount, windowCount)) {
+        result.push(i - p.length + 1);
+    }
+}
+
+return result;
+
+function arraysEqual(arr1: number[], arr2: number[]): boolean {
+    for (let i = 0; i &lt; 26; i++) {
+        if (arr1[i] !== arr2[i]) return false;
+    }
+    return true;
+} }
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>// Solution 6: Prime Hash with Modular Arithmetic
+// Time: O(s + p), Space: O(1)
+export function findAnagrams6(s: string, p: string): number[] {
+    if (s.length &lt; p.length) return [];</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+</pre></td><td class="rouge-code"><pre>const result: number[] = [];
+
+// Prime numbers for each character (a-z)
+const primes = [2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67, 71, 73, 79, 83, 89, 97, 101];
+const MOD = 1e9 + 7;
+
+// Calculate hash for pattern
+let pHash = 1;
+for (const char of p) {
+    pHash = (pHash * primes[char.charCodeAt(0) - 97]) % MOD;
+}
+
+// Calculate hash for first window
+let windowHash = 1;
+for (let i = 0; i &lt; p.length; i++) {
+    windowHash = (windowHash * primes[s.charCodeAt(i) - 97]) % MOD;
+}
+
+// Check first window
+if (windowHash === pHash) {
+    result.push(0);
+}
+
+// Precompute modular multiplicative inverse
+function modInverse(a: number, m: number): number {
+    return modPow(a, m - 2, m);
+}
+
+function modPow(base: number, exp: number, mod: number): number {
+    let result = 1;
+    while (exp &gt; 0) {
+        if (exp % 2 === 1) {
+            result = (result * base) % mod;
+        }
+        base = (base * base) % mod;
+        exp = Math.floor(exp / 2);
+    }
+    return result;
+}
+
+// Slide the window
+for (let i = p.length; i &lt; s.length; i++) {
+    // Add new character
+    const newPrime = primes[s.charCodeAt(i) - 97];
+    windowHash = (windowHash * newPrime) % MOD;
+    
+    // Remove old character
+    const oldPrime = primes[s.charCodeAt(i - p.length) - 97];
+    const oldInverse = modInverse(oldPrime, MOD);
+    windowHash = (windowHash * oldInverse) % MOD;
+    
+    // Check if hash matches
+    if (windowHash === pHash) {
+        result.push(i - p.length + 1);
+    }
+}
+
+return result; }
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>// Test cases
+export function testFindAnagrams() {
+    console.log(“Testing Find All Anagrams in a String:”);</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+</pre></td><td class="rouge-code"><pre>const testCases = [
+    {
+        s: "abab",
+        p: "ab",
+        expected: [0, 2]
+    },
+    {
+        s: "abab",
+        p: "ab",
+        expected: [0, 2]
+    },
+    {
+        s: "baa",
+        p: "aa",
+        expected: [1]
+    },
+    {
+        s: "cbaebabacd",
+        p: "abc",
+        expected: [1, 6]
+    },
+    {
+        s: "aaaaaaaaaa",
+        p: "aaaaaaaaaa",
+        expected: [0]
+    },
+    {
+        s: "aab",
+        p: "ab",
+        expected: [1]
+    },
+    {
+        s: "a",
+        p: "ab",
+        expected: []
+    }
+];
+
+const solutions = [
+    { name: "HashMap Sliding Window", fn: findAnagrams1 },
+    { name: "Array Optimization", fn: findAnagrams2 },
+    { name: "Match Counter", fn: findAnagrams3 },
+    { name: "Rolling Hash", fn: findAnagrams4 },
+    { name: "Bit Manipulation", fn: findAnagrams5 },
+    { name: "Prime Hash", fn: findAnagrams6 }
+];
+
+solutions.forEach(solution =&gt; {
+    console.log(`\n${solution.name}:`);
+    testCases.forEach((test, i) =&gt; {
+        const result = solution.fn(test.s, test.p);
+        result.sort((a, b) =&gt; a - b); // Sort for comparison
+        const passed = JSON.stringify(result) === JSON.stringify(test.expected);
+        console.log(`  Test ${i + 1}: ${passed ? 'PASS' : 'FAIL'}`);
+        if (!passed) {
+            console.log(`    Input: s="${test.s}", p="${test.p}"`);
+            console.log(`    Expected: ${JSON.stringify(test.expected)}`);
+            console.log(`    Got: ${JSON.stringify(result)}`);
+        }
+    });
+}); }
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>/**</p>
+<ul>
+  <li>Key Insights:</li>
+  <li></li>
+  <li>
+    <ol>
+      <li><strong>Anagram Detection</strong>:</li>
+    </ol>
+  </li>
+  <li>
+    <ul>
+      <li>Same characters with same frequencies</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Order doesn’t matter, only character counts</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Fixed window size equals pattern length</li>
+    </ul>
+  </li>
+  <li></li>
+  <li>
+    <ol>
+      <li><strong>Sliding Window Strategy</strong>:</li>
+    </ol>
+  </li>
+  <li>
+    <ul>
+      <li>
+        <table>
+          <tbody>
+            <tr>
+              <td>Maintain window of size</td>
+              <td>p</td>
+            </tr>
+          </tbody>
+        </table>
+      </li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Add new character, remove old character</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Compare character frequencies efficiently</li>
+    </ul>
+  </li>
+  <li></li>
+  <li>
+    <ol>
+      <li><strong>Frequency Comparison Methods</strong>:</li>
+    </ol>
+  </li>
+  <li>
+    <ul>
+      <li>Direct array/map comparison</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Match counter (track when frequencies align)</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Hash-based approaches with collision detection</li>
+    </ul>
+  </li>
+  <li></li>
+  <li>
+    <ol>
+      <li><strong>Time Complexity</strong>: O(s + p)</li>
+    </ol>
+  </li>
+  <li>
+    <ul>
+      <li>Linear scan of string s</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Constant time window updates</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Frequency comparison optimizations</li>
+    </ul>
+  </li>
+  <li></li>
+  <li>
+    <ol>
+      <li><strong>Space Complexity</strong>: O(1)</li>
+    </ol>
+  </li>
+  <li>
+    <ul>
+      <li>Fixed-size arrays for character counts</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Independent of input string lengths</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Only 26 lowercase English letters</li>
+    </ul>
+  </li>
+  <li></li>
+  <li>
+    <ol>
+      <li><strong>Optimization Techniques</strong>:</li>
+    </ol>
+  </li>
+  <li>
+    <ul>
+      <li>Array instead of HashMap for limited alphabet</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Match counter to avoid full array comparison</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Hash functions for quick similarity checks</li>
+    </ul>
+  </li>
+  <li></li>
+  <li>
+    <ol>
+      <li><strong>Interview Strategy</strong>:</li>
+    </ol>
+  </li>
+  <li>
+    <ul>
+      <li>Start with basic sliding window + HashMap</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Optimize to array for character counting</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Add match counter for efficiency</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Discuss hash-based approaches as advanced</li>
+    </ul>
+  </li>
+  <li></li>
+  <li>
+    <ol>
+      <li><strong>Edge Cases</strong>:</li>
+    </ol>
+  </li>
+  <li>
+    <ul>
+      <li>Pattern longer than string</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Single character pattern/string</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Pattern with all same characters</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>No anagrams found</li>
+    </ul>
+  </li>
+  <li></li>
+  <li>
+    <ol>
+      <li><strong>Common Mistakes</strong>:</li>
+    </ol>
+  </li>
+  <li>
+    <ul>
+      <li>Forgetting to remove old character from window</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Incorrect frequency comparison logic</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Off-by-one errors in indexing</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Not handling empty results</li>
+    </ul>
+  </li>
+  <li></li>
+  <li>
+    <ol>
+      <li><strong>Hash Function Considerations</strong>:</li>
+    </ol>
+  </li>
+  <li>
+    <ul>
+      <li>Rolling hash for quick updates</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Prime multiplication for uniqueness</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Collision detection still necessary</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Modular arithmetic for overflow prevention</li>
+    </ul>
+  </li>
+  <li></li>
+  <li>
+    <ol>
+      <li><strong>Big Tech Variations</strong>:</li>
+    </ol>
+  </li>
+  <li>
+    <ul>
+      <li>Google: Unicode character support</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Meta: Case-insensitive anagrams</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Amazon: Multiple pattern matching</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Microsoft: Streaming data processing</li>
+    </ul>
+  </li>
+  <li></li>
+  <li>
+    <ol>
+      <li><strong>Follow-up Questions</strong>:</li>
+    </ol>
+  </li>
+  <li>
+    <ul>
+      <li>Return actual anagram substrings</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Handle case sensitivity</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Support Unicode characters</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Find longest anagram substring</li>
+    </ul>
+  </li>
+  <li></li>
+  <li>
+    <ol>
+      <li><strong>Real-world Applications</strong>:</li>
+    </ol>
+  </li>
+  <li>
+    <ul>
+      <li>Plagiarism detection systems</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>DNA sequence analysis</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Text similarity algorithms</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Search engine query processing</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Spell checker implementations</li>
+    </ul>
+  </li>
+  <li></li>
+  <li>
+    <ol>
+      <li><strong>Alternative Approaches</strong>:</li>
+    </ol>
+  </li>
+  <li>
+    <ul>
+      <li>Sorting-based comparison (O(n log n))</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Trie-based pattern matching</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Suffix array algorithms</li>
+    </ul>
+  </li>
+  <li></li>
+  <li>
+    <ol>
+      <li><strong>Performance Considerations</strong>:</li>
+    </ol>
+  </li>
+  <li>
+    <ul>
+      <li>Cache-friendly array access patterns</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Minimal allocations in tight loops</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Branch prediction optimization</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Early termination strategies
+ */</li>
+    </ul>
+  </li>
+</ul>
+
+
+        </div>
+    </article>
+</div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Study Resources</h3>
+                    <p>Comprehensive collection of frontend interview questions, coding challenges, and system design problems.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Progress Tracking</h3>
+                    <p>Monitor your learning journey with detailed progress indicators and completion status.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Big Tech Ready</h3>
+                    <p>Curated content specifically designed for interviews at Google, Meta, Amazon, Apple, and Netflix.</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Frontend Interview Hub. Built for aspiring frontend engineers.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="/assets/js/main.js"></script>
+</body>
+</html>

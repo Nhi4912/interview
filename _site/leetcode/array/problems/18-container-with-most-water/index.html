@@ -1,0 +1,681 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Container With Most Water | Frontend Interview Preparation Guide</title>
+    <meta name="description" content="Comprehensive frontend interview materials for Big Tech companies">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="/assets/css/main.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <header>
+        <nav class="container">
+            <div class="logo">Frontend Interview Hub</div>
+            <ul class="nav-links">
+                <li><a href="/">Home</a></li>
+                <li><a href="#progress">Progress</a></li>
+                <li><a href="#knowledge">Knowledge</a></li>
+                <li><a href="https://github.com/nee/interview">GitHub</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <div class="content-container">
+    
+        <nav class="breadcrumb">
+            <ol>
+                <li><a href="/">Home</a></li>
+                
+                
+                
+                    
+                
+                    
+                        
+                        
+                            <li><a href="/leetcode/">Leetcode</a></li>
+                        
+                    
+                
+                    
+                        
+                        
+                            <li><a href="/leetcode/array/">Array</a></li>
+                        
+                    
+                
+                    
+                        
+                        
+                            <li><a href="/leetcode/array/problems/">Problems</a></li>
+                        
+                    
+                
+                    
+                        
+                        
+                            <li class="active">Container with most water</li>
+                        
+                    
+                
+            </ol>
+        </nav>
+    
+    
+    <article class="content">
+        
+            <header class="content-header">
+                <h1 class="content-title">Container With Most Water</h1>
+                
+                
+                    <div class="content-meta">
+                        <span class="difficulty difficulty-hard">Hard</span>
+                        
+                            <span class="category">Array</span>
+                        
+                        
+                            <div class="tags">
+                                
+                                    <span class="tag">Array</span>
+                                
+                                    <span class="tag">Two Pointers</span>
+                                
+                                    <span class="tag">Hash Table</span>
+                                
+                            </div>
+                        
+                    </div>
+                
+            </header>
+        
+        
+        <div class="content-body">
+            <h1 id="container-with-most-water">Container With Most Water</h1>
+
+<p><strong>LeetCode Problem # * 11. Container With Most Water</strong></p>
+
+<h2 id="problem-description">Problem Description</h2>
+
+<p>LeetCode problem solution with multiple approaches and explanations.</p>
+
+<h2 id="solutions">Solutions</h2>
+
+<p>/**</p>
+<ul>
+  <li>
+    <ol>
+      <li>Container With Most Water</li>
+    </ol>
+  </li>
+  <li></li>
+  <li>You are given an integer array height of length n. There are n vertical lines drawn such that</li>
+  <li>the two endpoints of the ith line are (i, 0) and (i, height[i]).</li>
+  <li></li>
+  <li>Find two lines that together with the x-axis form a container that can hold the most water.</li>
+  <li></li>
+  <li>Return the maximum amount of water a container can store.</li>
+  <li></li>
+  <li>Notice that you may not slant the container.</li>
+  <li></li>
+  <li>Example 1:</li>
+  <li>Input: height = [1,8,6,2,5,4,8,3,7]</li>
+  <li>Output: 49</li>
+  <li>Explanation: The above vertical lines are represented by array [1,8,6,2,5,4,8,3,7].</li>
+  <li>In this case, the max area of water (blue section) the container can contain is 49.</li>
+  <li></li>
+  <li>Example 2:</li>
+  <li>Input: height = [1,1]</li>
+  <li>Output: 1</li>
+  <li></li>
+  <li>Constraints:</li>
+  <li>
+    <ul>
+      <li>n == height.length</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>2 &lt;= n &lt;= 10^5</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>0 &lt;= height[i] &lt;= 10^4
+ */</li>
+    </ul>
+  </li>
+</ul>
+
+<p>// Solution 1: Brute Force (Check all pairs)
+// Time: O(n²), Space: O(1)
+export function maxArea1(height: number[]): number {
+    let maxArea = 0;</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+</pre></td><td class="rouge-code"><pre>for (let i = 0; i &lt; height.length; i++) {
+    for (let j = i + 1; j &lt; height.length; j++) {
+        const width = j - i;
+        const minHeight = Math.min(height[i], height[j]);
+        const area = width * minHeight;
+        maxArea = Math.max(maxArea, area);
+    }
+}
+
+return maxArea; }
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>// Solution 2: Two Pointers (Optimal)
+// Time: O(n), Space: O(1)
+export function maxArea2(height: number[]): number {
+    let left = 0;
+    let right = height.length - 1;
+    let maxArea = 0;</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+</pre></td><td class="rouge-code"><pre>while (left &lt; right) {
+    // Calculate current area
+    const width = right - left;
+    const currentHeight = Math.min(height[left], height[right]);
+    const area = width * currentHeight;
+    maxArea = Math.max(maxArea, area);
+    
+    // Move the pointer with smaller height
+    if (height[left] &lt; height[right]) {
+        left++;
+    } else {
+        right--;
+    }
+}
+
+return maxArea; }
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>// Solution 3: Two Pointers with Optimization (Skip smaller heights)
+// Time: O(n), Space: O(1)
+export function maxArea3(height: number[]): number {
+    let left = 0;
+    let right = height.length - 1;
+    let maxArea = 0;</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+</pre></td><td class="rouge-code"><pre>while (left &lt; right) {
+    const width = right - left;
+    const leftHeight = height[left];
+    const rightHeight = height[right];
+    const currentHeight = Math.min(leftHeight, rightHeight);
+    const area = width * currentHeight;
+    
+    maxArea = Math.max(maxArea, area);
+    
+    // Skip all smaller or equal heights on the side we're moving
+    if (leftHeight &lt; rightHeight) {
+        const currentLeftHeight = leftHeight;
+        while (left &lt; right &amp;&amp; height[left] &lt;= currentLeftHeight) {
+            left++;
+        }
+    } else {
+        const currentRightHeight = rightHeight;
+        while (left &lt; right &amp;&amp; height[right] &lt;= currentRightHeight) {
+            right--;
+        }
+    }
+}
+
+return maxArea; }
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>// Solution 4: Divide and Conquer
+// Time: O(n log n), Space: O(log n)
+export function maxArea4(height: number[]): number {
+    function divideAndConquer(heights: number[], start: number, end: number): number {
+        if (start &gt;= end) return 0;</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+</pre></td><td class="rouge-code"><pre>    // Base case: only two elements
+    if (end - start === 1) {
+        return Math.min(heights[start], heights[end]) * (end - start);
+    }
+    
+    const mid = Math.floor((start + end) / 2);
+    
+    // Max area in left half
+    const leftMax = divideAndConquer(heights, start, mid);
+    
+    // Max area in right half
+    const rightMax = divideAndConquer(heights, mid + 1, end);
+    
+    // Max area crossing the middle
+    let crossMax = 0;
+    for (let i = start; i &lt;= mid; i++) {
+        for (let j = mid + 1; j &lt;= end; j++) {
+            const area = Math.min(heights[i], heights[j]) * (j - i);
+            crossMax = Math.max(crossMax, area);
+        }
+    }
+    
+    return Math.max(leftMax, rightMax, crossMax);
+}
+
+return divideAndConquer(height, 0, height.length - 1); }
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>// Solution 5: Dynamic Programming with Memoization
+// Time: O(n²), Space: O(n²)
+export function maxArea5(height: number[]): number {
+    const memo = new Map&lt;string, number&gt;();</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+</pre></td><td class="rouge-code"><pre>function dp(left: number, right: number): number {
+    if (left &gt;= right) return 0;
+    
+    const key = `${left},${right}`;
+    if (memo.has(key)) {
+        return memo.get(key)!;
+    }
+    
+    const width = right - left;
+    const currentHeight = Math.min(height[left], height[right]);
+    const currentArea = width * currentHeight;
+    
+    // Try moving left pointer
+    const leftMove = dp(left + 1, right);
+    
+    // Try moving right pointer
+    const rightMove = dp(left, right - 1);
+    
+    const result = Math.max(currentArea, leftMove, rightMove);
+    memo.set(key, result);
+    return result;
+}
+
+return dp(0, height.length - 1); }
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>// Test cases
+export function testMaxArea() {
+    console.log(“Testing Container With Most Water:”);</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+</pre></td><td class="rouge-code"><pre>const testCases = [
+    {
+        input: [1, 8, 6, 2, 5, 4, 8, 3, 7],
+        expected: 49
+    },
+    {
+        input: [1, 1],
+        expected: 1
+    },
+    {
+        input: [1, 2, 1],
+        expected: 2
+    },
+    {
+        input: [1, 3, 2, 5, 25, 24, 5],
+        expected: 24
+    },
+    {
+        input: [2, 3, 4, 5, 18, 17, 6],
+        expected: 17
+    }
+];
+
+const solutions = [
+    { name: "Brute Force", fn: maxArea1 },
+    { name: "Two Pointers", fn: maxArea2 },
+    { name: "Two Pointers Optimized", fn: maxArea3 },
+    { name: "Divide and Conquer", fn: maxArea4 },
+    { name: "Dynamic Programming", fn: maxArea5 }
+];
+
+solutions.forEach(solution =&gt; {
+    console.log(`\n${solution.name}:`);
+    testCases.forEach((test, i) =&gt; {
+        const result = solution.fn(test.input);
+        const passed = result === test.expected;
+        console.log(`  Test ${i + 1}: ${passed ? 'PASS' : 'FAIL'}`);
+        if (!passed) {
+            console.log(`    Expected: ${test.expected}`);
+            console.log(`    Got: ${result}`);
+        }
+    });
+}); }
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>/**</p>
+<ul>
+  <li>Key Insights:</li>
+  <li></li>
+  <li>
+    <ol>
+      <li><strong>Two Pointers Intuition</strong>:</li>
+    </ol>
+  </li>
+  <li>
+    <ul>
+      <li>Start with maximum width (leftmost and rightmost)</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Move the pointer with smaller height (bottleneck)</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Moving the taller pointer cannot increase area</li>
+    </ul>
+  </li>
+  <li></li>
+  <li>
+    <ol>
+      <li><strong>Why Two Pointers Work</strong>:</li>
+    </ol>
+  </li>
+  <li>
+    <ul>
+      <li>Width decreases as we move inward</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Only way to increase area is by increasing height</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Moving shorter pointer gives chance for taller container</li>
+    </ul>
+  </li>
+  <li></li>
+  <li>
+    <ol>
+      <li><strong>Time Complexity Analysis</strong>:</li>
+    </ol>
+  </li>
+  <li>
+    <ul>
+      <li>Brute Force: O(n²) - check all pairs</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Two Pointers: O(n) - single pass</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Divide &amp; Conquer: O(n log n) - not optimal for this problem</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>DP: O(n²) - overkill with memoization</li>
+    </ul>
+  </li>
+  <li></li>
+  <li>
+    <ol>
+      <li><strong>Space Complexity</strong>:</li>
+    </ol>
+  </li>
+  <li>
+    <ul>
+      <li>Two Pointers: O(1) - most efficient</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Others: O(n) to O(n²) due to recursion/memoization</li>
+    </ul>
+  </li>
+  <li></li>
+  <li>
+    <ol>
+      <li><strong>Interview Strategy</strong>:</li>
+    </ol>
+  </li>
+  <li>
+    <ul>
+      <li>Start with brute force explanation</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Identify the key insight about moving pointers</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Implement two pointers solution</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Discuss why it works mathematically</li>
+    </ul>
+  </li>
+  <li></li>
+  <li>
+    <ol>
+      <li><strong>Common Mistakes</strong>:</li>
+    </ol>
+  </li>
+  <li>
+    <ul>
+      <li>Moving both pointers simultaneously</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Moving the taller pointer instead of shorter</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Not understanding why two pointers guarantee optimal solution</li>
+    </ul>
+  </li>
+  <li></li>
+  <li>
+    <ol>
+      <li><strong>Follow-up Questions</strong>:</li>
+    </ol>
+  </li>
+  <li>
+    <ul>
+      <li>What if we need to find the actual indices?</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>How to handle negative heights?</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Can we solve with different constraints?
+ */</li>
+    </ul>
+  </li>
+</ul>
+
+
+        </div>
+    </article>
+</div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Study Resources</h3>
+                    <p>Comprehensive collection of frontend interview questions, coding challenges, and system design problems.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Progress Tracking</h3>
+                    <p>Monitor your learning journey with detailed progress indicators and completion status.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Big Tech Ready</h3>
+                    <p>Curated content specifically designed for interviews at Google, Meta, Amazon, Apple, and Netflix.</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Frontend Interview Hub. Built for aspiring frontend engineers.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="/assets/js/main.js"></script>
+</body>
+</html>

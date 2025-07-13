@@ -1,0 +1,1234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Given an array nums of n integers, return an array of all the unique quadruplets  | Frontend Interview Preparation Guide</title>
+    <meta name="description" content="Comprehensive frontend interview materials for Big Tech companies">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="/assets/css/main.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <header>
+        <nav class="container">
+            <div class="logo">Frontend Interview Hub</div>
+            <ul class="nav-links">
+                <li><a href="/">Home</a></li>
+                <li><a href="#progress">Progress</a></li>
+                <li><a href="#knowledge">Knowledge</a></li>
+                <li><a href="https://github.com/nee/interview">GitHub</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <div class="content-container">
+    
+        <nav class="breadcrumb">
+            <ol>
+                <li><a href="/">Home</a></li>
+                
+                
+                
+                    
+                
+                    
+                        
+                        
+                            <li><a href="/leetcode/">Leetcode</a></li>
+                        
+                    
+                
+                    
+                        
+                        
+                            <li><a href="/leetcode/array/">Array</a></li>
+                        
+                    
+                
+                    
+                        
+                        
+                            <li><a href="/leetcode/array/problems/">Problems</a></li>
+                        
+                    
+                
+                    
+                        
+                        
+                            <li class="active">Given an array nums of n integers, return an array of all the unique quadruplets </li>
+                        
+                    
+                
+            </ol>
+        </nav>
+    
+    
+    <article class="content">
+        
+            <header class="content-header">
+                <h1 class="content-title">Given an array nums of n integers, return an array of all the unique quadruplets </h1>
+                
+                
+                    <div class="content-meta">
+                        <span class="difficulty difficulty-hard">Hard</span>
+                        
+                            <span class="category">Array</span>
+                        
+                        
+                            <div class="tags">
+                                
+                                    <span class="tag">Array</span>
+                                
+                                    <span class="tag">Two Pointers</span>
+                                
+                                    <span class="tag">Hash Table</span>
+                                
+                            </div>
+                        
+                    </div>
+                
+            </header>
+        
+        
+        <div class="content-body">
+            <h1 id="given-an-array-nums-of-n-integers-return-an-array-of-all-the-unique-quadruplets">Given an array nums of n integers, return an array of all the unique quadruplets</h1>
+
+<p><strong>LeetCode Problem # * 18. 4Sum</strong></p>
+
+<h2 id="problem-description">Problem Description</h2>
+
+<p>LeetCode problem solution with multiple approaches and explanations.</p>
+
+<h2 id="solutions">Solutions</h2>
+
+<p>/**</p>
+<ul>
+  <li>
+    <ol>
+      <li>4Sum</li>
+    </ol>
+  </li>
+  <li></li>
+  <li>Given an array nums of n integers, return an array of all the unique quadruplets</li>
+  <li>[nums[a], nums[b], nums[c], nums[d]] such that:</li>
+  <li>
+    <ul>
+      <li>0 &lt;= a, b, c, d &lt; n</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>a, b, c, and d are distinct.</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>nums[a] + nums[b] + nums[c] + nums[d] == target</li>
+    </ul>
+  </li>
+  <li></li>
+  <li>You may return the answer in any order.</li>
+  <li></li>
+  <li>Example 1:</li>
+  <li>Input: nums = [1,0,-1,0,-2,2], target = 0</li>
+  <li>Output: [[-2,-1,1,2],[-2,0,0,2],[-1,0,0,1]]</li>
+  <li></li>
+  <li>Example 2:</li>
+  <li>Input: nums = [2,2,2,2,2], target = 8</li>
+  <li>Output: [[2,2,2,2]]</li>
+  <li></li>
+  <li>Constraints:</li>
+  <li>
+    <ul>
+      <li>1 &lt;= nums.length &lt;= 200</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>-10^9 &lt;= nums[i] &lt;= 10^9</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>-10^9 &lt;= target &lt;= 10^9
+ */</li>
+    </ul>
+  </li>
+</ul>
+
+<p>// Solution 1: Two Pointers (Optimal)
+// Time: O(n^3), Space: O(1)
+export function fourSum1(nums: number[], target: number): number[][] {
+    nums.sort((a, b) =&gt; a - b);
+    const result: number[][] = [];
+    const n = nums.length;</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+</pre></td><td class="rouge-code"><pre>for (let i = 0; i &lt; n - 3; i++) {
+    // Skip duplicates for first element
+    if (i &gt; 0 &amp;&amp; nums[i] === nums[i - 1]) continue;
+    
+    // Early termination optimizations
+    if (nums[i] + nums[i + 1] + nums[i + 2] + nums[i + 3] &gt; target) break;
+    if (nums[i] + nums[n - 3] + nums[n - 2] + nums[n - 1] &lt; target) continue;
+    
+    for (let j = i + 1; j &lt; n - 2; j++) {
+        // Skip duplicates for second element
+        if (j &gt; i + 1 &amp;&amp; nums[j] === nums[j - 1]) continue;
+        
+        // Early termination for inner loop
+        if (nums[i] + nums[j] + nums[j + 1] + nums[j + 2] &gt; target) break;
+        if (nums[i] + nums[j] + nums[n - 2] + nums[n - 1] &lt; target) continue;
+        
+        let left = j + 1;
+        let right = n - 1;
+        
+        while (left &lt; right) {
+            const sum = nums[i] + nums[j] + nums[left] + nums[right];
+            
+            if (sum === target) {
+                result.push([nums[i], nums[j], nums[left], nums[right]]);
+                
+                // Skip duplicates for third element
+                while (left &lt; right &amp;&amp; nums[left] === nums[left + 1]) left++;
+                // Skip duplicates for fourth element
+                while (left &lt; right &amp;&amp; nums[right] === nums[right - 1]) right--;
+                
+                left++;
+                right--;
+            } else if (sum &lt; target) {
+                left++;
+            } else {
+                right--;
+            }
+        }
+    }
+}
+
+return result; }
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>// Solution 2: Hash Map Approach
+// Time: O(n^3), Space: O(n^2)
+export function fourSum2(nums: number[], target: number): number[][] {
+    nums.sort((a, b) =&gt; a - b);
+    const result: number[][] = [];
+    const n = nums.length;</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+</pre></td><td class="rouge-code"><pre>// Create map of pair sums to indices
+const pairSums = new Map&lt;number, [number, number][]&gt;();
+
+for (let i = 0; i &lt; n - 1; i++) {
+    for (let j = i + 1; j &lt; n; j++) {
+        const sum = nums[i] + nums[j];
+        if (!pairSums.has(sum)) {
+            pairSums.set(sum, []);
+        }
+        pairSums.get(sum)!.push([i, j]);
+    }
+}
+
+const seen = new Set&lt;string&gt;();
+
+for (let i = 0; i &lt; n - 3; i++) {
+    for (let j = i + 1; j &lt; n - 2; j++) {
+        const twoSum = nums[i] + nums[j];
+        const needed = target - twoSum;
+        
+        if (pairSums.has(needed)) {
+            for (const [k, l] of pairSums.get(needed)!) {
+                if (k &gt; j &amp;&amp; l &gt; k) { // Ensure no index overlap
+                    const quad = [nums[i], nums[j], nums[k], nums[l]];
+                    const key = quad.join(',');
+                    
+                    if (!seen.has(key)) {
+                        seen.add(key);
+                        result.push(quad);
+                    }
+                }
+            }
+        }
+    }
+}
+
+return result; }
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>// Solution 3: Recursive k-Sum Generalization
+// Time: O(n^3), Space: O(n)
+export function fourSum3(nums: number[], target: number): number[][] {
+    nums.sort((a, b) =&gt; a - b);</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+</pre></td><td class="rouge-code"><pre>function kSum(nums: number[], target: number, k: number, start: number): number[][] {
+    const result: number[][] = [];
+    
+    if (start &gt;= nums.length) return result;
+    
+    // Base case: 2Sum
+    if (k === 2) {
+        let left = start;
+        let right = nums.length - 1;
+        
+        while (left &lt; right) {
+            const sum = nums[left] + nums[right];
+            
+            if (sum === target) {
+                result.push([nums[left], nums[right]]);
+                
+                while (left &lt; right &amp;&amp; nums[left] === nums[left + 1]) left++;
+                while (left &lt; right &amp;&amp; nums[right] === nums[right - 1]) right--;
+                
+                left++;
+                right--;
+            } else if (sum &lt; target) {
+                left++;
+            } else {
+                right--;
+            }
+        }
+        
+        return result;
+    }
+    
+    // Recursive case: k &gt; 2
+    for (let i = start; i &lt;= nums.length - k; i++) {
+        if (i &gt; start &amp;&amp; nums[i] === nums[i - 1]) continue;
+        
+        const subResults = kSum(nums, target - nums[i], k - 1, i + 1);
+        
+        for (const subResult of subResults) {
+            result.push([nums[i], ...subResult]);
+        }
+    }
+    
+    return result;
+}
+
+return kSum(nums, target, 4, 0); }
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>// Solution 4: Brute Force with Pruning
+// Time: O(n^4), Space: O(1)
+export function fourSum4(nums: number[], target: number): number[][] {
+    nums.sort((a, b) =&gt; a - b);
+    const result: number[][] = [];
+    const n = nums.length;</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+</pre></td><td class="rouge-code"><pre>for (let i = 0; i &lt; n - 3; i++) {
+    if (i &gt; 0 &amp;&amp; nums[i] === nums[i - 1]) continue;
+    
+    for (let j = i + 1; j &lt; n - 2; j++) {
+        if (j &gt; i + 1 &amp;&amp; nums[j] === nums[j - 1]) continue;
+        
+        for (let k = j + 1; k &lt; n - 1; k++) {
+            if (k &gt; j + 1 &amp;&amp; nums[k] === nums[k - 1]) continue;
+            
+            for (let l = k + 1; l &lt; n; l++) {
+                if (l &gt; k + 1 &amp;&amp; nums[l] === nums[l - 1]) continue;
+                
+                if (nums[i] + nums[j] + nums[k] + nums[l] === target) {
+                    result.push([nums[i], nums[j], nums[k], nums[l]]);
+                }
+            }
+        }
+    }
+}
+
+return result; }
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>// Solution 5: Hash Set for Unique Quadruplets
+// Time: O(n^3), Space: O(n)
+export function fourSum5(nums: number[], target: number): number[][] {
+    nums.sort((a, b) =&gt; a - b);
+    const result: number[][] = [];
+    const n = nums.length;
+    const seen = new Set<string>();</string></p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+</pre></td><td class="rouge-code"><pre>for (let i = 0; i &lt; n - 3; i++) {
+    for (let j = i + 1; j &lt; n - 2; j++) {
+        const complement = new Set&lt;number&gt;();
+        
+        for (let k = j + 1; k &lt; n; k++) {
+            const needed = target - nums[i] - nums[j] - nums[k];
+            
+            if (complement.has(needed)) {
+                const quad = [nums[i], nums[j], needed, nums[k]].sort((a, b) =&gt; a - b);
+                const key = quad.join(',');
+                
+                if (!seen.has(key)) {
+                    seen.add(key);
+                    result.push(quad);
+                }
+            }
+            
+            complement.add(nums[k]);
+        }
+    }
+}
+
+return result; }
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>// Solution 6: Divide and Conquer
+// Time: O(n^3), Space: O(n)
+export function fourSum6(nums: number[], target: number): number[][] {
+    nums.sort((a, b) =&gt; a - b);</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+</pre></td><td class="rouge-code"><pre>function findQuadruplets(start: number, end: number, currentQuad: number[], targetSum: number, k: number): number[][] {
+    const result: number[][] = [];
+    
+    if (k === 0) {
+        if (targetSum === 0) {
+            result.push([...currentQuad]);
+        }
+        return result;
+    }
+    
+    if (end - start + 1 &lt; k) return result;
+    
+    for (let i = start; i &lt;= end - k + 1; i++) {
+        if (i &gt; start &amp;&amp; nums[i] === nums[i - 1]) continue;
+        
+        currentQuad.push(nums[i]);
+        const subResults = findQuadruplets(i + 1, end, currentQuad, targetSum - nums[i], k - 1);
+        result.push(...subResults);
+        currentQuad.pop();
+    }
+    
+    return result;
+}
+
+return findQuadruplets(0, nums.length - 1, [], target, 4); }
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>// Test cases
+export function testFourSum() {
+    console.log(“Testing 4Sum:”);</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+</pre></td><td class="rouge-code"><pre>const testCases = [
+    {
+        nums: [1, 0, -1, 0, -2, 2],
+        target: 0,
+        expected: [[-2, -1, 1, 2], [-2, 0, 0, 2], [-1, 0, 0, 1]]
+    },
+    {
+        nums: [2, 2, 2, 2, 2],
+        target: 8,
+        expected: [[2, 2, 2, 2]]
+    },
+    {
+        nums: [1, -2, -5, -4, -3, 3, 3, 5],
+        target: -11,
+        expected: [[-5, -4, -3, 1]]
+    },
+    {
+        nums: [],
+        target: 0,
+        expected: []
+    },
+    {
+        nums: [1, 2, 3],
+        target: 6,
+        expected: []
+    },
+    {
+        nums: [-3, -2, -1, 0, 0, 1, 2, 3],
+        target: 0,
+        expected: [[-3, -2, 2, 3], [-3, -1, 1, 3], [-3, 0, 0, 3], [-3, 0, 1, 2], [-2, -1, 0, 3], [-2, -1, 1, 2], [-2, 0, 0, 2], [-1, 0, 0, 1]]
+    }
+];
+
+const solutions = [
+    { name: "Two Pointers (Optimal)", fn: fourSum1 },
+    { name: "Hash Map Approach", fn: fourSum2 },
+    { name: "Recursive k-Sum", fn: fourSum3 },
+    { name: "Brute Force", fn: fourSum4 },
+    { name: "Hash Set Unique", fn: fourSum5 },
+    { name: "Divide and Conquer", fn: fourSum6 }
+];
+
+function normalizeResult(result: number[][]): number[][] {
+    return result.map(quad =&gt; [...quad].sort((a, b) =&gt; a - b)).sort();
+}
+
+function arraysEqual(a: number[][], b: number[][]): boolean {
+    const normalA = normalizeResult(a);
+    const normalB = normalizeResult(b);
+    
+    if (normalA.length !== normalB.length) return false;
+    
+    for (let i = 0; i &lt; normalA.length; i++) {
+        if (normalA[i].length !== normalB[i].length) return false;
+        for (let j = 0; j &lt; normalA[i].length; j++) {
+            if (normalA[i][j] !== normalB[i][j]) return false;
+        }
+    }
+    
+    return true;
+}
+
+solutions.forEach(solution =&gt; {
+    console.log(`\n${solution.name}:`);
+    testCases.forEach((test, i) =&gt; {
+        const result = solution.fn([...test.nums], test.target);
+        const passed = arraysEqual(result, test.expected);
+        console.log(`  Test ${i + 1}: ${passed ? 'PASS' : 'FAIL'}`);
+        if (!passed) {
+            console.log(`    Input: nums=${JSON.stringify(test.nums)}, target=${test.target}`);
+            console.log(`    Expected: ${JSON.stringify(normalizeResult(test.expected))}`);
+            console.log(`    Got: ${JSON.stringify(normalizeResult(result))}`);
+        }
+    });
+}); }
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>/**</p>
+<ul>
+  <li>Key Insights:</li>
+  <li></li>
+  <li>
+    <ol>
+      <li><strong>Problem Complexity</strong>:</li>
+    </ol>
+  </li>
+  <li>
+    <ul>
+      <li>Extension of 3Sum to four elements</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Need to find all unique quadruplets summing to target</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Avoid duplicate quadruplets in result</li>
+    </ul>
+  </li>
+  <li></li>
+  <li>
+    <ol>
+      <li><strong>Two Pointers Strategy</strong>:</li>
+    </ol>
+  </li>
+  <li>
+    <ul>
+      <li>Fix first two elements with nested loops</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Use two pointers for remaining two elements</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Reduces complexity from O(n^4) to O(n^3)</li>
+    </ul>
+  </li>
+  <li></li>
+  <li>
+    <ol>
+      <li><strong>Duplicate Handling</strong>:</li>
+    </ol>
+  </li>
+  <li>
+    <ul>
+      <li>Skip duplicate values at each level</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Essential for avoiding duplicate quadruplets</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Must be careful with indexing when skipping</li>
+    </ul>
+  </li>
+  <li></li>
+  <li>
+    <ol>
+      <li><strong>Early Termination Optimizations</strong>:</li>
+    </ol>
+  </li>
+  <li>
+    <ul>
+      <li>Check minimum/maximum possible sums</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Break early when target impossible to reach</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Significant performance improvement in practice</li>
+    </ul>
+  </li>
+  <li></li>
+  <li>
+    <ol>
+      <li><strong>Time Complexity</strong>: O(n^3)</li>
+    </ol>
+  </li>
+  <li>
+    <ul>
+      <li>O(n log n) for sorting</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>O(n^3) for triple nested approach</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Best possible for general case</li>
+    </ul>
+  </li>
+  <li></li>
+  <li>
+    <ol>
+      <li><strong>Space Complexity</strong>: O(1)</li>
+    </ol>
+  </li>
+  <li>
+    <ul>
+      <li>Two pointers approach uses constant space</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Hash map approaches use O(n^2) space</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Result space not counted in complexity</li>
+    </ul>
+  </li>
+  <li></li>
+  <li>
+    <ol>
+      <li><strong>k-Sum Generalization</strong>:</li>
+    </ol>
+  </li>
+  <li>
+    <ul>
+      <li>Can be extended to any k-sum problem</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Recursive approach works for arbitrary k</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Base case is 2Sum with two pointers</li>
+    </ul>
+  </li>
+  <li></li>
+  <li>
+    <ol>
+      <li><strong>Interview Strategy</strong>:</li>
+    </ol>
+  </li>
+  <li>
+    <ul>
+      <li>Start with brute force O(n^4) approach</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Optimize to O(n^3) with two pointers</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Add duplicate handling and optimizations</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Discuss k-sum generalization</li>
+    </ul>
+  </li>
+  <li></li>
+  <li>
+    <ol>
+      <li><strong>Alternative Approaches</strong>:</li>
+    </ol>
+  </li>
+  <li>
+    <ul>
+      <li>Hash map for faster lookup</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Recursive k-sum implementation</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Divide and conquer strategies</li>
+    </ul>
+  </li>
+  <li></li>
+  <li>
+    <ol>
+      <li><strong>Edge Cases</strong>:</li>
+    </ol>
+  </li>
+  <li>
+    <ul>
+      <li>Empty array or insufficient elements</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>All elements the same</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>No valid quadruplets exist</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Multiple solutions with same elements</li>
+    </ul>
+  </li>
+  <li></li>
+  <li>
+    <ol>
+      <li><strong>Optimization Techniques</strong>:</li>
+    </ol>
+  </li>
+  <li>
+    <ul>
+      <li>Early termination based on bounds</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Efficient duplicate skipping</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Pruning impossible branches</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Minimizing redundant calculations</li>
+    </ul>
+  </li>
+  <li></li>
+  <li>
+    <ol>
+      <li><strong>Common Mistakes</strong>:</li>
+    </ol>
+  </li>
+  <li>
+    <ul>
+      <li>Not handling duplicates properly</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Index management errors</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Wrong termination conditions</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Inefficient duplicate detection</li>
+    </ul>
+  </li>
+  <li></li>
+  <li>
+    <ol>
+      <li><strong>Big Tech Variations</strong>:</li>
+    </ol>
+  </li>
+  <li>
+    <ul>
+      <li>Google: k-Sum with k as parameter</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Meta: 4Sum with specific constraints</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Amazon: Closest 4Sum to target</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Microsoft: 4Sum with repeated elements</li>
+    </ul>
+  </li>
+  <li></li>
+  <li>
+    <ol>
+      <li><strong>Follow-up Questions</strong>:</li>
+    </ol>
+  </li>
+  <li>
+    <ul>
+      <li>Generalize to k-Sum problem</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Find 4Sum closest to target</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Count number of valid quadruplets</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>4Sum with distinct elements only</li>
+    </ul>
+  </li>
+  <li></li>
+  <li>
+    <ol>
+      <li><strong>Real-world Applications</strong>:</li>
+    </ol>
+  </li>
+  <li>
+    <ul>
+      <li>Portfolio optimization (4 assets)</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Resource allocation problems</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Chemical equation balancing</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Game theory combinations</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Statistical correlation analysis</li>
+    </ul>
+  </li>
+  <li></li>
+  <li>
+    <ol>
+      <li><strong>Pattern Recognition</strong>:</li>
+    </ol>
+  </li>
+  <li>
+    <ul>
+      <li>Multi-pointer technique extension</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Nested loop optimization patterns</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Duplicate elimination strategies</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Search space pruning techniques</li>
+    </ul>
+  </li>
+  <li></li>
+  <li>
+    <ol>
+      <li><strong>Implementation Tips</strong>:</li>
+    </ol>
+  </li>
+  <li>
+    <ul>
+      <li>Careful index management in loops</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Proper duplicate skipping logic</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Efficient early termination checks</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Clean quadruplet construction</li>
+    </ul>
+  </li>
+  <li></li>
+  <li>
+    <ol>
+      <li><strong>Performance Considerations</strong>:</li>
+    </ol>
+  </li>
+  <li>
+    <ul>
+      <li>Early termination crucial for large inputs</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Duplicate handling affects average case</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Memory usage varies by approach</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Cache-friendly access patterns
+ */</li>
+    </ul>
+  </li>
+</ul>
+
+
+        </div>
+    </article>
+</div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Study Resources</h3>
+                    <p>Comprehensive collection of frontend interview questions, coding challenges, and system design problems.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Progress Tracking</h3>
+                    <p>Monitor your learning journey with detailed progress indicators and completion status.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Big Tech Ready</h3>
+                    <p>Curated content specifically designed for interviews at Google, Meta, Amazon, Apple, and Netflix.</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Frontend Interview Hub. Built for aspiring frontend engineers.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="/assets/js/main.js"></script>
+</body>
+</html>

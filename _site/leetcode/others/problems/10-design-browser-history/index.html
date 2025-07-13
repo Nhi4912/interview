@@ -1,0 +1,1023 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Design Browser History | Frontend Interview Preparation Guide</title>
+    <meta name="description" content="Comprehensive frontend interview materials for Big Tech companies">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="/assets/css/main.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <header>
+        <nav class="container">
+            <div class="logo">Frontend Interview Hub</div>
+            <ul class="nav-links">
+                <li><a href="/">Home</a></li>
+                <li><a href="#progress">Progress</a></li>
+                <li><a href="#knowledge">Knowledge</a></li>
+                <li><a href="https://github.com/nee/interview">GitHub</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <div class="content-container">
+    
+        <nav class="breadcrumb">
+            <ol>
+                <li><a href="/">Home</a></li>
+                
+                
+                
+                    
+                
+                    
+                        
+                        
+                            <li><a href="/leetcode/">Leetcode</a></li>
+                        
+                    
+                
+                    
+                        
+                        
+                            <li><a href="/leetcode/others/">Others</a></li>
+                        
+                    
+                
+                    
+                        
+                        
+                            <li><a href="/leetcode/others/problems/">Problems</a></li>
+                        
+                    
+                
+                    
+                        
+                        
+                            <li class="active">Design browser history</li>
+                        
+                    
+                
+            </ol>
+        </nav>
+    
+    
+    <article class="content">
+        
+            <header class="content-header">
+                <h1 class="content-title">Design Browser History</h1>
+                
+                
+                    <div class="content-meta">
+                        <span class="difficulty difficulty-easy">Easy</span>
+                        
+                            <span class="category">Others</span>
+                        
+                        
+                            <div class="tags">
+                                
+                                    <span class="tag">Others</span>
+                                
+                                    <span class="tag">Hash Table</span>
+                                
+                            </div>
+                        
+                    </div>
+                
+            </header>
+        
+        
+        <div class="content-body">
+            <h1 id="design-browser-history">Design Browser History</h1>
+
+<h2 id="problem-description">Problem Description</h2>
+
+<ul>
+  <li>
+    <ul>
+      <li>You have a browser of one tab where you start on the homepage and you can visit  * another url, get back in the history number of steps or move forward in the  * history number of steps.  *</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="solutions">Solutions</h2>
+
+<p>/**</p>
+<ul>
+  <li>Design Browser History
+ *</li>
+  <li>Problem: https://leetcode.com/problems/design-browser-history/
+ *</li>
+  <li>You have a browser of one tab where you start on the homepage and you can visit</li>
+  <li>another url, get back in the history number of steps or move forward in the</li>
+  <li>history number of steps.
+ *</li>
+  <li>Implement the BrowserHistory class:</li>
+  <li>
+    <ul>
+      <li>BrowserHistory(string homepage) Initializes the object with the homepage of the browser.</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>void visit(string url) Visits url from the current page. It clears up all the</li>
+    </ul>
+  </li>
+  <li>forward history.</li>
+  <li>
+    <ul>
+      <li>string back(int steps) Move steps back in history. If you can only return x steps</li>
+    </ul>
+  </li>
+  <li>in the history and steps &gt; x, you will return only x steps. Return the current</li>
+  <li>url after moving back in history at most steps.</li>
+  <li>
+    <ul>
+      <li>string forward(int steps) Move steps forward in history. If you can only forward</li>
+    </ul>
+  </li>
+  <li>x steps in the history and steps &gt; x, you will forward only x steps. Return the</li>
+  <li>current url after forwarding in history at most steps.
+ *</li>
+  <li>Example:</li>
+  <li>Input:</li>
+  <li>[“BrowserHistory”,”visit”,”visit”,”visit”,”back”,”back”,”forward”,”visit”,”forward”,”back”,”back”]</li>
+  <li>[[“leetcode.com”],[“google.com”],[“facebook.com”],[“youtube.com”],[1],[1],[1],[“linkedin.com”],[2],[2],[7]]</li>
+  <li>Output: [null,null,null,null,”facebook.com”,”google.com”,”facebook.com”,null,”linkedin.com”,”google.com”,”leetcode.com”]
+ *</li>
+  <li>Explanation:</li>
+  <li>BrowserHistory browserHistory = new BrowserHistory(“leetcode.com”);</li>
+  <li>browserHistory.visit(“google.com”);       // You are in “leetcode.com”. Visit “google.com”</li>
+  <li>browserHistory.visit(“facebook.com”);     // You are in “google.com”. Visit “facebook.com”</li>
+  <li>browserHistory.visit(“youtube.com”);      // You are in “facebook.com”. Visit “youtube.com”</li>
+  <li>browserHistory.back(1);                   // You are in “youtube.com”, move back to “facebook.com” return “facebook.com”</li>
+  <li>browserHistory.back(1);                   // You are in “facebook.com”, move back to “google.com” return “google.com”</li>
+  <li>browserHistory.forward(1);                // You are in “google.com”, move forward to “facebook.com” return “facebook.com”</li>
+  <li>browserHistory.visit(“linkedin.com”);     // You are in “facebook.com”. Visit “linkedin.com”</li>
+  <li>browserHistory.forward(2);                // You are in “linkedin.com”, you cannot move forward any more steps.</li>
+  <li>browserHistory.back(2);                   // You are in “linkedin.com”, move back two steps to “facebook.com” then to “google.com”, return “google.com”</li>
+  <li>browserHistory.back(7);                   // You are in “google.com”, you can move back only one step to “leetcode.com”, return “leetcode.com”
+ *</li>
+  <li>Constraints:</li>
+  <li>
+    <ul>
+      <li>1 &lt;= homepage.length &lt;= 20</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>1 &lt;= url.length &lt;= 20</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>1 &lt;= steps &lt;= 100</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>homepage and url consist of ‘.’ or lower case English letters.</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>At most 5000 calls will be made to visit, back, and forward.
+ *</li>
+    </ul>
+  </li>
+  <li>Solution Approaches:</li>
+  <li>
+    <ol>
+      <li>Array-based implementation with current position</li>
+    </ol>
+  </li>
+  <li>
+    <ol>
+      <li>Stack-based implementation</li>
+    </ol>
+  </li>
+  <li>
+    <ol>
+      <li>Doubly linked list implementation</li>
+    </ol>
+  </li>
+  <li>
+    <ol>
+      <li>With additional features and statistics
+ *</li>
+    </ol>
+  </li>
+  <li>Time Complexity: O(1) for visit, O(steps) for back/forward</li>
+  <li>Space Complexity: O(n) where n is the number of visited URLs
+ */</li>
+</ul>
+
+<p>/**</p>
+<ul>
+  <li>BrowserHistory - Array-based Implementation
+ *</li>
+  <li>BrowserHistory - Triển khai dựa trên Array
+ *</li>
+  <li>This approach uses an array to store the history and a current position pointer
+ */
+class BrowserHistory {
+  private history: string[];
+  private currentIndex: number;</li>
+</ul>
+
+<p>constructor(homepage: string) {
+    this.history = [homepage];
+    this.currentIndex = 0;
+  }</p>
+
+<p>/**</p>
+<ul>
+  <li>Visit a new URL</li>
+  <li>Truy cập một URL mới
+   */
+  visit(url: string): void {
+    // Remove all forward history
+    this.history = this.history.slice(0, this.currentIndex + 1);</li>
+</ul>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+</pre></td><td class="rouge-code"><pre>// Add new URL
+this.history.push(url);
+this.currentIndex++;   }
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>/**</p>
+<ul>
+  <li>Move back in history</li>
+  <li>Di chuyển ngược trong lịch sử
+   */
+  back(steps: number): string {
+    const newIndex = Math.max(0, this.currentIndex - steps);
+    this.currentIndex = newIndex;
+    return this.history[this.currentIndex];
+  }</li>
+</ul>
+
+<p>/**</p>
+<ul>
+  <li>Move forward in history</li>
+  <li>Di chuyển tiến trong lịch sử
+   */
+  forward(steps: number): string {
+    const newIndex = Math.min(
+ this.history.length - 1,
+ this.currentIndex + steps
+    );
+    this.currentIndex = newIndex;
+    return this.history[this.currentIndex];
+  }</li>
+</ul>
+
+<p>/**</p>
+<ul>
+  <li>Get current URL</li>
+  <li>Lấy URL hiện tại
+   */
+  getCurrentUrl(): string {
+    return this.history[this.currentIndex];
+  }</li>
+</ul>
+
+<p>/**</p>
+<ul>
+  <li>Get current position in history</li>
+  <li>Lấy vị trí hiện tại trong lịch sử
+   */
+  getCurrentPosition(): number {
+    return this.currentIndex;
+  }</li>
+</ul>
+
+<p>/**</p>
+<ul>
+  <li>Get total history size</li>
+  <li>Lấy tổng kích thước lịch sử
+   */
+  getHistorySize(): number {
+    return this.history.length;
+  }</li>
+</ul>
+
+<p>/**</p>
+<ul>
+  <li>Get the internal state for debugging</li>
+  <li>Lấy trạng thái nội bộ để debug
+   */
+  getState(): { history: string[]; currentIndex: number; currentUrl: string } {
+    return {
+ history: […this.history],
+ currentIndex: this.currentIndex,
+ currentUrl: this.history[this.currentIndex],
+    };
+  }
+}</li>
+</ul>
+
+<p>/**</p>
+<ul>
+  <li>Alternative Implementation: Stack-based Approach
+ *</li>
+  <li>Triển khai thay thế: Phương pháp dựa trên Stack
+ */
+class BrowserHistoryStack {
+  private backStack: string[];
+  private forwardStack: string[];
+  private currentUrl: string;</li>
+</ul>
+
+<p>constructor(homepage: string) {
+    this.backStack = [];
+    this.forwardStack = [];
+    this.currentUrl = homepage;
+  }</p>
+
+<p>visit(url: string): void {
+    // Push current URL to back stack
+    this.backStack.push(this.currentUrl);</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+</pre></td><td class="rouge-code"><pre>// Clear forward stack
+this.forwardStack = [];
+
+// Set new current URL
+this.currentUrl = url;   }
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>back(steps: number): string {
+    const actualSteps = Math.min(steps, this.backStack.length);</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+</pre></td><td class="rouge-code"><pre>for (let i = 0; i &lt; actualSteps; i++) {
+  // Push current URL to forward stack
+  this.forwardStack.push(this.currentUrl);
+
+  // Pop from back stack and set as current
+  this.currentUrl = this.backStack.pop()!;
+}
+
+return this.currentUrl;   }
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>forward(steps: number): string {
+    const actualSteps = Math.min(steps, this.forwardStack.length);</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+</pre></td><td class="rouge-code"><pre>for (let i = 0; i &lt; actualSteps; i++) {
+  // Push current URL to back stack
+  this.backStack.push(this.currentUrl);
+
+  // Pop from forward stack and set as current
+  this.currentUrl = this.forwardStack.pop()!;
+}
+
+return this.currentUrl;   }
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>getCurrentUrl(): string {
+    return this.currentUrl;
+  }</p>
+
+<p>getBackStackSize(): number {
+    return this.backStack.length;
+  }</p>
+
+<p>getForwardStackSize(): number {
+    return this.forwardStack.length;
+  }
+}</p>
+
+<p>/**</p>
+<ul>
+  <li>Doubly Linked List Implementation
+ *</li>
+  <li>Triển khai Doubly Linked List
+ */
+class HistoryNode {
+  url: string;
+  prev: HistoryNode | null;
+  next: HistoryNode | null;</li>
+</ul>
+
+<p>constructor(url: string) {
+    this.url = url;
+    this.prev = null;
+    this.next = null;
+  }
+}</p>
+
+<p>class BrowserHistoryLinkedList {
+  private head: HistoryNode;
+  private current: HistoryNode;</p>
+
+<p>constructor(homepage: string) {
+    this.head = new HistoryNode(homepage);
+    this.current = this.head;
+  }</p>
+
+<p>visit(url: string): void {
+    // Create new node
+    const newNode = new HistoryNode(url);</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+</pre></td><td class="rouge-code"><pre>// Link current node to new node
+this.current.next = newNode;
+newNode.prev = this.current;
+
+// Set new node as current
+this.current = newNode;   }
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>back(steps: number): string {
+    for (let i = 0; i &lt; steps &amp;&amp; this.current.prev; i++) {
+      this.current = this.current.prev;
+    }</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre>return this.current.url;   }
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>forward(steps: number): string {
+    for (let i = 0; i &lt; steps &amp;&amp; this.current.next; i++) {
+      this.current = this.current.next;
+    }</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre>return this.current.url;   }
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>getCurrentUrl(): string {
+    return this.current.url;
+  }</p>
+
+<p>/**</p>
+<ul>
+  <li>Get all URLs in history</li>
+  <li>Lấy tất cả URL trong lịch sử
+   */
+  getAllUrls(): string[] {
+    const urls: string[] = [];
+    let current = this.head;</li>
+</ul>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+</pre></td><td class="rouge-code"><pre>while (current) {
+  urls.push(current.url);
+  current = current.next!;
+}
+
+return urls;   } }
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>/**</p>
+<ul>
+  <li>Implementation with Statistics and Monitoring
+ *</li>
+  <li>Triển khai với thống kê và giám sát
+ */
+class BrowserHistoryWithStats extends BrowserHistory {
+  private visitCount: number;
+  private backCount: number;
+  private forwardCount: number;
+  private operationHistory: Array&lt;{
+ operation: string;
+ url?: string;
+ steps?: number;
+ timestamp: number;
+  }&gt;;</li>
+</ul>
+
+<p>constructor(homepage: string) {
+    super(homepage);
+    this.visitCount = 0;
+    this.backCount = 0;
+    this.forwardCount = 0;
+    this.operationHistory = [];
+  }</p>
+
+<p>visit(url: string): void {
+    super.visit(url);
+    this.visitCount++;</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+</pre></td><td class="rouge-code"><pre>this.operationHistory.push({
+  operation: "visit",
+  url,
+  timestamp: Date.now(),
+});   }
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>back(steps: number): string {
+    const result = super.back(steps);
+    this.backCount++;</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+</pre></td><td class="rouge-code"><pre>this.operationHistory.push({
+  operation: "back",
+  steps,
+  timestamp: Date.now(),
+});
+
+return result;   }
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>forward(steps: number): string {
+    const result = super.forward(steps);
+    this.forwardCount++;</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+</pre></td><td class="rouge-code"><pre>this.operationHistory.push({
+  operation: "forward",
+  steps,
+  timestamp: Date.now(),
+});
+
+return result;   }
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>/**</p>
+<ul>
+  <li>Get browser statistics</li>
+  <li>Lấy thống kê trình duyệt
+   */
+  getStats(): {
+    visitCount: number;
+    backCount: number;
+    forwardCount: number;
+    totalOperations: number;
+    averageStepsPerNavigation: number;
+    recentActivity: Array&lt;{
+ operation: string;
+ url?: string;
+ steps?: number;
+ timestamp: number;
+    }&gt;;
+  } {
+    const totalOperations =
+ this.visitCount + this.backCount + this.forwardCount;</li>
+</ul>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+</pre></td><td class="rouge-code"><pre>// Calculate average steps per navigation
+let totalSteps = 0;
+let navigationCount = 0;
+
+for (const op of this.operationHistory) {
+  if (op.operation === "back" || op.operation === "forward") {
+    totalSteps += op.steps || 0;
+    navigationCount++;
+  }
+}
+
+const averageStepsPerNavigation =
+  navigationCount &gt; 0 ? totalSteps / navigationCount : 0;
+
+return {
+  visitCount: this.visitCount,
+  backCount: this.backCount,
+  forwardCount: this.forwardCount,
+  totalOperations,
+  averageStepsPerNavigation,
+  recentActivity: this.operationHistory.slice(-10), // Last 10 operations
+};   }
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>/**</p>
+<ul>
+  <li>Get navigation patterns</li>
+  <li>Lấy mẫu điều hướng
+   */
+  getNavigationPatterns(): {
+    backToForwardRatio: number;
+    mostVisitedUrls: Map&lt;string, number&gt;;
+    averageSessionLength: number;
+  } {
+    const urlVisits = new Map&lt;string, number&gt;();
+    let sessionCount = 0;
+    let totalSessionLength = 0;</li>
+</ul>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+</pre></td><td class="rouge-code"><pre>for (const op of this.operationHistory) {
+  if (op.operation === "visit" &amp;&amp; op.url) {
+    urlVisits.set(op.url, (urlVisits.get(op.url) || 0) + 1);
+    sessionCount++;
+  }
+}
+
+const backToForwardRatio =
+  this.forwardCount &gt; 0
+    ? this.backCount / this.forwardCount
+    : this.backCount;
+const averageSessionLength =
+  sessionCount &gt; 0 ? totalSessionLength / sessionCount : 0;
+
+return {
+  backToForwardRatio,
+  mostVisitedUrls: urlVisits,
+  averageSessionLength,
+};   } }
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>/**</p>
+<ul>
+  <li>Implementation with Bookmarks and Favorites
+ *</li>
+  <li>Triển khai với Bookmarks và Favorites
+ */
+class BrowserHistoryWithBookmarks extends BrowserHistory {
+  private bookmarks: Set<string>;
+  private favorites: Map&lt;string, number&gt;; // URL -&gt; visit count</string></li>
+</ul>
+
+<p>constructor(homepage: string) {
+    super(homepage);
+    this.bookmarks = new Set();
+    this.favorites = new Map();
+  }</p>
+
+<p>visit(url: string): void {
+    super.visit(url);</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre></td><td class="rouge-code"><pre>// Update favorites count
+this.favorites.set(url, (this.favorites.get(url) || 0) + 1);   }
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>/**</p>
+<ul>
+  <li>Add current URL to bookmarks</li>
+  <li>Thêm URL hiện tại vào bookmarks
+   */
+  addBookmark(): boolean {
+    const currentUrl = this.getCurrentUrl();
+    if (this.bookmarks.has(currentUrl)) {
+ return false; // Already bookmarked
+    }</li>
+</ul>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre></td><td class="rouge-code"><pre>this.bookmarks.add(currentUrl);
+return true;   }
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>/**</p>
+<ul>
+  <li>Remove current URL from bookmarks</li>
+  <li>Xóa URL hiện tại khỏi bookmarks
+   */
+  removeBookmark(): boolean {
+    const currentUrl = this.getCurrentUrl();
+    return this.bookmarks.delete(currentUrl);
+  }</li>
+</ul>
+
+<p>/**</p>
+<ul>
+  <li>Check if current URL is bookmarked</li>
+  <li>Kiểm tra xem URL hiện tại có được bookmark không
+   */
+  isBookmarked(): boolean {
+    return this.bookmarks.has(this.getCurrentUrl());
+  }</li>
+</ul>
+
+<p>/**</p>
+<ul>
+  <li>Get all bookmarks</li>
+  <li>Lấy tất cả bookmarks
+   */
+  getBookmarks(): string[] {
+    return Array.from(this.bookmarks);
+  }</li>
+</ul>
+
+<p>/**</p>
+<ul>
+  <li>Get top visited URLs (favorites)</li>
+  <li>Lấy các URL được truy cập nhiều nhất
+   */
+  getTopVisitedUrls(count: number = 5): Array&lt;{ url: string; visits: number }&gt; {
+    return Array.from(this.favorites.entries())
+ .sort((a, b) =&gt; b[1] - a[1])
+ .slice(0, count)
+ .map(([url, visits]) =&gt; ({ url, visits }));
+  }
+}</li>
+</ul>
+
+<p>/**</p>
+<ul>
+  <li>Performance Comparison Function
+ *</li>
+  <li>Hàm so sánh hiệu suất các phương pháp
+ */
+function compareBrowserHistoryImplementations(
+  operations: Array&lt;{
+ type: “visit” | “back” | “forward”;
+ url?: string;
+ steps?: number;
+  }&gt;
+): void {
+  console.log(
+ “Browser History Implementation Performance Comparison / So sánh hiệu suất triển khai Browser History”
+  );
+  console.log(“=”.repeat(90));</li>
+</ul>
+
+<p>const implementations = [
+    { name: “Array-based”, history: new BrowserHistory(“homepage.com”) },
+    { name: “Stack-based”, history: new BrowserHistoryStack(“homepage.com”) },
+    {
+      name: “Linked List”,
+      history: new BrowserHistoryLinkedList(“homepage.com”),
+    },
+  ];</p>
+
+<p>for (const impl of implementations) {
+    console.log(<code class="language-plaintext highlighter-rouge">\nTesting ${impl.name}:</code>);</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+</pre></td><td class="rouge-code"><pre>const start = performance.now();
+
+for (const op of operations) {
+  switch (op.type) {
+    case "visit":
+      impl.history.visit(op.url!);
+      break;
+    case "back":
+      impl.history.back(op.steps!);
+      break;
+    case "forward":
+      impl.history.forward(op.steps!);
+      break;
+  }
+}
+
+const end = performance.now();
+console.log(`  Time: ${(end - start).toFixed(4)}ms`);
+console.log(`  Current URL: ${impl.history.getCurrentUrl()}`);   } }
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>/**</p>
+<ul>
+  <li>Test Cases
+ *</li>
+  <li>Các trường hợp kiểm thử
+ */
+function runTests(): void {
+  console.log(“Browser History Tests / Kiểm thử Browser History”);
+  console.log(“=”.repeat(50));</li>
+</ul>
+
+<p>// Test 1: Basic operations
+  console.log(“\nTest 1: Basic operations / Các thao tác cơ bản”);
+  const history1 = new BrowserHistory(“leetcode.com”);
+  history1.visit(“google.com”);
+  history1.visit(“facebook.com”);
+  history1.visit(“youtube.com”);
+  console.log(<code class="language-plaintext highlighter-rouge">back(1): ${history1.back(1)}</code>); // Expected: “facebook.com”
+  console.log(<code class="language-plaintext highlighter-rouge">back(1): ${history1.back(1)}</code>); // Expected: “google.com”
+  console.log(<code class="language-plaintext highlighter-rouge">forward(1): ${history1.forward(1)}</code>); // Expected: “facebook.com”
+  history1.visit(“linkedin.com”);
+  console.log(<code class="language-plaintext highlighter-rouge">forward(2): ${history1.forward(2)}</code>); // Expected: “linkedin.com”
+  console.log(<code class="language-plaintext highlighter-rouge">back(2): ${history1.back(2)}</code>); // Expected: “google.com”
+  console.log(<code class="language-plaintext highlighter-rouge">back(7): ${history1.back(7)}</code>); // Expected: “leetcode.com”</p>
+
+<p>// Test 2: Statistics tracking
+  console.log(“\nTest 2: Statistics tracking / Theo dõi thống kê”);
+  const statHistory = new BrowserHistoryWithStats(“homepage.com”);</p>
+
+<p>statHistory.visit(“google.com”);
+  statHistory.visit(“facebook.com”);
+  statHistory.back(1);
+  statHistory.forward(1);
+  statHistory.visit(“youtube.com”);
+  statHistory.back(2);</p>
+
+<p>const stats = statHistory.getStats();
+  console.log(<code class="language-plaintext highlighter-rouge">Visit count: ${stats.visitCount}</code>);
+  console.log(<code class="language-plaintext highlighter-rouge">Back count: ${stats.backCount}</code>);
+  console.log(<code class="language-plaintext highlighter-rouge">Forward count: ${stats.forwardCount}</code>);
+  console.log(<code class="language-plaintext highlighter-rouge">Total operations: ${stats.totalOperations}</code>);
+  console.log(
+    <code class="language-plaintext highlighter-rouge">Average steps per navigation: ${stats.averageStepsPerNavigation.toFixed(
+      2
+    )}</code>
+  );</p>
+
+<p>// Test 3: Bookmarks and favorites
+  console.log(“\nTest 3: Bookmarks and favorites / Bookmarks và favorites”);
+  const bookmarkHistory = new BrowserHistoryWithBookmarks(“homepage.com”);</p>
+
+<p>bookmarkHistory.visit(“google.com”);
+  bookmarkHistory.addBookmark();
+  bookmarkHistory.visit(“facebook.com”);
+  bookmarkHistory.visit(“google.com”); // Visit again
+  bookmarkHistory.addBookmark();</p>
+
+<p>console.log(<code class="language-plaintext highlighter-rouge">Is current bookmarked: ${bookmarkHistory.isBookmarked()}</code>);
+  console.log(<code class="language-plaintext highlighter-rouge">Bookmarks: [${bookmarkHistory.getBookmarks().join(", ")}]</code>);
+  console.log(
+    <code class="language-plaintext highlighter-rouge">Top visited: ${JSON.stringify(bookmarkHistory.getTopVisitedUrls(3))}</code>
+  );</p>
+
+<p>// Test 4: State inspection
+  console.log(“\nTest 4: State inspection / Kiểm tra trạng thái”);
+  const stateHistory = new BrowserHistory(“homepage.com”);
+  stateHistory.visit(“google.com”);
+  stateHistory.visit(“facebook.com”);</p>
+
+<p>console.log(“Current state:”);
+  console.log(stateHistory.getState());</p>
+
+<p>stateHistory.back(1);</p>
+
+<p>console.log(“After back(1):”);
+  console.log(stateHistory.getState());</p>
+
+<p>// Test 5: Performance comparison
+  console.log(“\nTest 5: Performance comparison / So sánh hiệu suất”);
+  const testOperations = [
+    { type: “visit” as const, url: “google.com” },
+    { type: “visit” as const, url: “facebook.com” },
+    { type: “visit” as const, url: “youtube.com” },
+    { type: “back” as const, steps: 1 },
+    { type: “back” as const, steps: 1 },
+    { type: “forward” as const, steps: 1 },
+    { type: “visit” as const, url: “linkedin.com” },
+    { type: “forward” as const, steps: 2 },
+    { type: “back” as const, steps: 2 },
+  ];</p>
+
+<p>compareBrowserHistoryImplementations(testOperations);
+}</p>
+
+<p>// Uncomment to run tests
+// runTests();</p>
+
+<p>export {
+  BrowserHistory,
+  BrowserHistoryStack,
+  BrowserHistoryLinkedList,
+  BrowserHistoryWithStats,
+  BrowserHistoryWithBookmarks,
+  HistoryNode,
+  compareBrowserHistoryImplementations,
+  runTests,
+};</p>
+
+
+        </div>
+    </article>
+</div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Study Resources</h3>
+                    <p>Comprehensive collection of frontend interview questions, coding challenges, and system design problems.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Progress Tracking</h3>
+                    <p>Monitor your learning journey with detailed progress indicators and completion status.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Big Tech Ready</h3>
+                    <p>Curated content specifically designed for interviews at Google, Meta, Amazon, Apple, and Netflix.</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Frontend Interview Hub. Built for aspiring frontend engineers.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="/assets/js/main.js"></script>
+</body>
+</html>

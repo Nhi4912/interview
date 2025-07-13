@@ -1,0 +1,2158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Closures &amp; Scope: Complete Deep Dive | Frontend Interview Preparation Guide</title>
+    <meta name="description" content="Comprehensive frontend interview materials for Big Tech companies">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="/assets/css/main.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <header>
+        <nav class="container">
+            <div class="logo">Frontend Interview Hub</div>
+            <ul class="nav-links">
+                <li><a href="/">Home</a></li>
+                <li><a href="#progress">Progress</a></li>
+                <li><a href="#knowledge">Knowledge</a></li>
+                <li><a href="https://github.com/nee/interview">GitHub</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <div class="content-container">
+    
+        <nav class="breadcrumb">
+            <ol>
+                <li><a href="/">Home</a></li>
+                
+                
+                
+                    
+                
+                    
+                        
+                        
+                            <li><a href="/frontend/">Frontend</a></li>
+                        
+                    
+                
+                    
+                        
+                        
+                            <li><a href="/frontend/fundamentals/">Fundamentals</a></li>
+                        
+                    
+                
+                    
+                        
+                        
+                            <li class="active">Javascript closures &amp; scope: complete deep dive</li>
+                        
+                    
+                
+            </ol>
+        </nav>
+    
+    
+    <article class="content">
+        
+            <header class="content-header">
+                <h1 class="content-title">JavaScript Closures &amp; Scope: Complete Deep Dive</h1>
+                
+                
+            </header>
+        
+        
+        <div class="content-body">
+            <h1 id="javascript-closures--scope-complete-deep-dive">JavaScript Closures &amp; Scope: Complete Deep Dive</h1>
+
+<h2 id="table-of-contents">Table of Contents</h2>
+
+<ul>
+  <li><a href="#understanding-scope">Understanding Scope</a></li>
+  <li><a href="#lexical-scoping">Lexical Scoping</a></li>
+  <li><a href="#what-are-closures">What are Closures?</a></li>
+  <li><a href="#how-closures-work">How Closures Work</a></li>
+  <li><a href="#closure-use-cases">Closure Use Cases</a></li>
+  <li><a href="#memory-management">Memory Management</a></li>
+  <li><a href="#visual-diagrams">Visual Diagrams</a></li>
+  <li><a href="#common-patterns">Common Patterns</a></li>
+  <li><a href="#performance-considerations">Performance Considerations</a></li>
+  <li><a href="#interview-questions--answers">Interview Questions &amp; Answers</a></li>
+  <li><a href="#advanced-examples">Advanced Examples</a></li>
+</ul>
+
+<h2 id="understanding-scope">Understanding Scope</h2>
+
+<h3 id="what-is-scope">What is Scope?</h3>
+
+<p><strong>Scope</strong> determines the accessibility of variables, functions, and objects in different parts of your code. It defines the <strong>context</strong> in which variables exist and can be accessed.</p>
+
+<h4 id="types-of-scope-in-javascript">Types of Scope in JavaScript:</h4>
+
+<p><strong>1. Global Scope</strong></p>
+
+<ul>
+  <li>Variables accessible from anywhere in the program</li>
+  <li>Properties of the global object (window in browsers)</li>
+</ul>
+
+<p><strong>2. Function Scope</strong></p>
+
+<ul>
+  <li>Variables accessible only within the function</li>
+  <li>Created when function is invoked</li>
+</ul>
+
+<p><strong>3. Block Scope</strong> (ES6+)</p>
+
+<ul>
+  <li>Variables accessible only within the block {}</li>
+  <li>Applies to <code class="language-plaintext highlighter-rouge">let</code> and <code class="language-plaintext highlighter-rouge">const</code> declarations</li>
+</ul>
+
+<p><strong>4. Module Scope</strong> (ES6+)</p>
+
+<ul>
+  <li>Variables accessible only within the module</li>
+  <li>Top-level scope of a module</li>
+</ul>
+
+<h3 id="scope-chain">Scope Chain</h3>
+
+<p>JavaScript uses a <strong>scope chain</strong> to resolve variable access:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+</pre></td><td class="rouge-code"><pre>┌─────────────────────────────────────────┐
+│            SCOPE CHAIN                  │
+│                                         │
+│  Inner Scope                            │
+│  ┌─────────────────────────────────┐    │
+│  │  Look for variable here first  │    │
+│  │  ↓ Not found? Go up the chain  │    │
+│  └─────────────────────────────────┘    │
+│                │                        │
+│  Outer Scope   ↓                        │
+│  ┌─────────────────────────────────┐    │
+│  │  Look for variable here        │    │
+│  │  ↓ Not found? Continue up      │    │
+│  └─────────────────────────────────┘    │
+│                │                        │
+│  Global Scope  ↓                        │
+│  ┌─────────────────────────────────┐    │
+│  │  Look for variable here        │    │
+│  │  ↓ Not found? ReferenceError   │    │
+│  └─────────────────────────────────┘    │
+└─────────────────────────────────────────┘
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<h3 id="detailed-scope-example">Detailed Scope Example</h3>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+</pre></td><td class="rouge-code"><pre><span class="c1">// Global Scope</span>
+<span class="kd">const</span> <span class="nx">globalVar</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">I am global</span><span class="dl">"</span><span class="p">;</span>
+
+<span class="kd">function</span> <span class="nx">outerFunction</span><span class="p">()</span> <span class="p">{</span>
+  <span class="c1">// Outer Function Scope</span>
+  <span class="kd">const</span> <span class="nx">outerVar</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">I am outer</span><span class="dl">"</span><span class="p">;</span>
+
+  <span class="kd">function</span> <span class="nx">innerFunction</span><span class="p">()</span> <span class="p">{</span>
+    <span class="c1">// Inner Function Scope</span>
+    <span class="kd">const</span> <span class="nx">innerVar</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">I am inner</span><span class="dl">"</span><span class="p">;</span>
+
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">innerVar</span><span class="p">);</span> <span class="c1">// ✅ Accessible - same scope</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">outerVar</span><span class="p">);</span> <span class="c1">// ✅ Accessible - outer scope</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">globalVar</span><span class="p">);</span> <span class="c1">// ✅ Accessible - global scope</span>
+  <span class="p">}</span>
+
+  <span class="nx">innerFunction</span><span class="p">();</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">innerVar</span><span class="p">);</span> <span class="c1">// ❌ ReferenceError - not in scope</span>
+<span class="p">}</span>
+
+<span class="nx">outerFunction</span><span class="p">();</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p><strong>Scope Chain Resolution:</strong></p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+</pre></td><td class="rouge-code"><pre>innerFunction scope: { innerVar }
+        ↓ (if not found)
+outerFunction scope: { outerVar }
+        ↓ (if not found)
+Global scope: { globalVar }
+        ↓ (if not found)
+ReferenceError: variable is not defined
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<h2 id="lexical-scoping">Lexical Scoping</h2>
+
+<h3 id="what-is-lexical-scoping">What is Lexical Scoping?</h3>
+
+<p><strong>Lexical Scoping</strong> means that the scope of variables is determined by where they are declared in the code, not where they are called from.</p>
+
+<h4 id="key-principles">Key Principles:</h4>
+
+<p><strong>1. Static Scope</strong></p>
+
+<ul>
+  <li>Scope is determined at <strong>compile time</strong></li>
+  <li>Based on <strong>where</strong> variables and functions are declared</li>
+  <li><strong>Not</strong> where they are called</li>
+</ul>
+
+<p><strong>2. Nested Function Access</strong></p>
+
+<ul>
+  <li>Inner functions have access to outer function variables</li>
+  <li>Outer functions <strong>cannot</strong> access inner function variables</li>
+</ul>
+
+<h3 id="lexical-scoping-example">Lexical Scoping Example</h3>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+</pre></td><td class="rouge-code"><pre><span class="kd">const</span> <span class="nx">name</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">Global John</span><span class="dl">"</span><span class="p">;</span>
+
+<span class="kd">function</span> <span class="nx">createGreeting</span><span class="p">()</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="nx">name</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">Function John</span><span class="dl">"</span><span class="p">;</span>
+
+  <span class="k">return</span> <span class="kd">function</span> <span class="nx">greet</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">`Hello, </span><span class="p">${</span><span class="nx">name</span><span class="p">}</span><span class="s2">!`</span><span class="p">);</span>
+  <span class="p">};</span>
+<span class="p">}</span>
+
+<span class="kd">const</span> <span class="nx">greeting</span> <span class="o">=</span> <span class="nx">createGreeting</span><span class="p">();</span>
+<span class="nx">greeting</span><span class="p">();</span> <span class="c1">// "Hello, Function John!"</span>
+
+<span class="c1">// Even though we call greeting() in global scope,</span>
+<span class="c1">// it still uses the 'name' from where it was defined</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p><strong>Visual Representation:</strong></p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+</pre></td><td class="rouge-code"><pre>┌─────────────────────────────────────────┐
+│         LEXICAL ENVIRONMENT            │
+│                                         │
+│  Global: { name: 'Global John' }        │
+│  │                                      │
+│  └─ createGreeting(): {                 │
+│       name: 'Function John',            │
+│       greet: function() {...}           │
+│     }                                   │
+│                                         │
+│  greet() function "remembers"           │
+│  the scope where it was created         │
+└─────────────────────────────────────────┘
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<h2 id="what-are-closures">What are Closures?</h2>
+
+<h3 id="definition">Definition</h3>
+
+<p>A <strong>Closure</strong> is a feature where an inner function has access to variables from its outer (enclosing) scope even after the outer function has finished executing.</p>
+
+<h4 id="three-key-characteristics">Three Key Characteristics:</h4>
+
+<p><strong>1. Access to Outer Variables</strong></p>
+
+<ul>
+  <li>Inner function can access outer function’s variables</li>
+</ul>
+
+<p><strong>2. Persistent Scope</strong></p>
+
+<ul>
+  <li>Outer function’s variables remain accessible even after it returns</li>
+</ul>
+
+<p><strong>3. Data Privacy</strong></p>
+
+<ul>
+  <li>Variables in the closure are private to that specific instance</li>
+</ul>
+
+<h3 id="simple-closure-example">Simple Closure Example</h3>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+</pre></td><td class="rouge-code"><pre><span class="kd">function</span> <span class="nx">outerFunction</span><span class="p">(</span><span class="nx">x</span><span class="p">)</span> <span class="p">{</span>
+  <span class="c1">// This variable is "captured" by the closure</span>
+  <span class="kd">const</span> <span class="nx">outerVariable</span> <span class="o">=</span> <span class="nx">x</span><span class="p">;</span>
+
+  <span class="kd">function</span> <span class="nx">innerFunction</span><span class="p">(</span><span class="nx">y</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">outerVariable</span> <span class="o">+</span> <span class="nx">y</span><span class="p">);</span>
+  <span class="p">}</span>
+
+  <span class="k">return</span> <span class="nx">innerFunction</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kd">const</span> <span class="nx">myClosure</span> <span class="o">=</span> <span class="nx">outerFunction</span><span class="p">(</span><span class="mi">10</span><span class="p">);</span>
+<span class="nx">myClosure</span><span class="p">(</span><span class="mi">5</span><span class="p">);</span> <span class="c1">// Outputs: 15</span>
+
+<span class="c1">// outerFunction has finished executing,</span>
+<span class="c1">// but innerFunction still has access to outerVariable</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<h3 id="closure-creation-process">Closure Creation Process</h3>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+</pre></td><td class="rouge-code"><pre>Step 1: outerFunction(10) is called
+┌─────────────────────────────────────┐
+│ outerFunction Execution Context     │
+│ Variables: { x: 10, outerVariable: 10 } │
+│ Functions: { innerFunction }        │
+└─────────────────────────────────────┘
+
+Step 2: innerFunction is created and returned
+┌─────────────────────────────────────┐
+│ Closure Created                     │
+│ Contains: { outerVariable: 10 }     │
+│ Function: innerFunction             │
+└─────────────────────────────────────┘
+
+Step 3: outerFunction execution context is destroyed
+But the closure preserves outerVariable!
+
+Step 4: myClosure(5) is called
+┌─────────────────────────────────────┐
+│ innerFunction Execution Context     │
+│ Has access to: { y: 5 }            │
+│ Plus closure: { outerVariable: 10 } │
+│ Result: 10 + 5 = 15                 │
+└─────────────────────────────────────┘
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<h2 id="how-closures-work">How Closures Work</h2>
+
+<h3 id="behind-the-scenes-lexical-environment">Behind the Scenes: Lexical Environment</h3>
+
+<p>Every function in JavaScript maintains a reference to its <strong>Lexical Environment</strong>:</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+</pre></td><td class="rouge-code"><pre><span class="kd">function</span> <span class="nx">makeCounter</span><span class="p">()</span> <span class="p">{</span>
+  <span class="kd">let</span> <span class="nx">count</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="c1">// This is in the Lexical Environment</span>
+
+  <span class="k">return</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+    <span class="nx">count</span><span class="o">++</span><span class="p">;</span> <span class="c1">// Accesses the captured variable</span>
+    <span class="k">return</span> <span class="nx">count</span><span class="p">;</span>
+  <span class="p">};</span>
+<span class="p">}</span>
+
+<span class="kd">const</span> <span class="nx">counter1</span> <span class="o">=</span> <span class="nx">makeCounter</span><span class="p">();</span>
+<span class="kd">const</span> <span class="nx">counter2</span> <span class="o">=</span> <span class="nx">makeCounter</span><span class="p">();</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">counter1</span><span class="p">());</span> <span class="c1">// 1</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">counter1</span><span class="p">());</span> <span class="c1">// 2</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">counter2</span><span class="p">());</span> <span class="c1">// 1 (independent closure)</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">counter1</span><span class="p">());</span> <span class="c1">// 3</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p><strong>Memory Structure:</strong></p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+</pre></td><td class="rouge-code"><pre>┌─────────────────────────────────────────┐
+│           MEMORY HEAP                   │
+│                                         │
+│  counter1 Closure:                      │
+│  ┌─────────────────────────────────┐    │
+│  │ Lexical Environment:            │    │
+│  │ { count: 3 }                    │    │
+│  │ Function: [anonymous function]  │    │
+│  └─────────────────────────────────┘    │
+│                                         │
+│  counter2 Closure:                      │
+│  ┌─────────────────────────────────┐    │
+│  │ Lexical Environment:            │    │
+│  │ { count: 1 }                    │    │
+│  │ Function: [anonymous function]  │    │
+│  └─────────────────────────────────┘    │
+└─────────────────────────────────────────┘
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<h3 id="variable-capture-vs-reference">Variable Capture vs Reference</h3>
+
+<p><strong>Important</strong>: Closures capture variables by <strong>reference</strong>, not by value:</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+</pre></td><td class="rouge-code"><pre><span class="kd">function</span> <span class="nx">createFunctions</span><span class="p">()</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="nx">functions</span> <span class="o">=</span> <span class="p">[];</span>
+
+  <span class="c1">// Common mistake</span>
+  <span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="mi">3</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">functions</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+      <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">i</span><span class="p">);</span> <span class="c1">// Captures reference to 'i'</span>
+    <span class="p">});</span>
+  <span class="p">}</span>
+
+  <span class="k">return</span> <span class="nx">functions</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kd">const</span> <span class="nx">funcs</span> <span class="o">=</span> <span class="nx">createFunctions</span><span class="p">();</span>
+<span class="nx">funcs</span><span class="p">[</span><span class="mi">0</span><span class="p">]();</span> <span class="c1">// 3 (not 0!)</span>
+<span class="nx">funcs</span><span class="p">[</span><span class="mi">1</span><span class="p">]();</span> <span class="c1">// 3 (not 1!)</span>
+<span class="nx">funcs</span><span class="p">[</span><span class="mi">2</span><span class="p">]();</span> <span class="c1">// 3 (not 2!)</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p><strong>Why this happens:</strong></p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+</pre></td><td class="rouge-code"><pre>All three functions share the same lexical environment
+that contains the variable 'i'.
+
+When the loop finishes, i = 3.
+All functions reference the same 'i' variable.
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p><strong>Solutions:</strong></p>
+
+<p><strong>1. Use <code class="language-plaintext highlighter-rouge">let</code> (block scope):</strong></p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+</pre></td><td class="rouge-code"><pre><span class="kd">function</span> <span class="nx">createFunctions</span><span class="p">()</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="nx">functions</span> <span class="o">=</span> <span class="p">[];</span>
+
+  <span class="k">for</span> <span class="p">(</span><span class="kd">let</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="mi">3</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// 'let' creates new scope each iteration</span>
+    <span class="nx">functions</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+      <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">i</span><span class="p">);</span>
+    <span class="p">});</span>
+  <span class="p">}</span>
+
+  <span class="k">return</span> <span class="nx">functions</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kd">const</span> <span class="nx">funcs</span> <span class="o">=</span> <span class="nx">createFunctions</span><span class="p">();</span>
+<span class="nx">funcs</span><span class="p">[</span><span class="mi">0</span><span class="p">]();</span> <span class="c1">// 0</span>
+<span class="nx">funcs</span><span class="p">[</span><span class="mi">1</span><span class="p">]();</span> <span class="c1">// 1</span>
+<span class="nx">funcs</span><span class="p">[</span><span class="mi">2</span><span class="p">]();</span> <span class="c1">// 2</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p><strong>2. Use IIFE (Immediately Invoked Function Expression):</strong></p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+</pre></td><td class="rouge-code"><pre><span class="kd">function</span> <span class="nx">createFunctions</span><span class="p">()</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="nx">functions</span> <span class="o">=</span> <span class="p">[];</span>
+
+  <span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="mi">3</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">functions</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span>
+      <span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">index</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+          <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">index</span><span class="p">);</span>
+        <span class="p">};</span>
+      <span class="p">})(</span><span class="nx">i</span><span class="p">)</span>
+    <span class="p">);</span> <span class="c1">// IIFE creates new scope with 'index'</span>
+  <span class="p">}</span>
+
+  <span class="k">return</span> <span class="nx">functions</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<h2 id="closure-use-cases">Closure Use Cases</h2>
+
+<h3 id="1-module-pattern">1. Module Pattern</h3>
+
+<p>Create private variables and methods:</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+</pre></td><td class="rouge-code"><pre><span class="kd">const</span> <span class="nx">Calculator</span> <span class="o">=</span> <span class="p">(</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+  <span class="c1">// Private variables</span>
+  <span class="kd">let</span> <span class="nx">history</span> <span class="o">=</span> <span class="p">[];</span>
+  <span class="kd">let</span> <span class="nx">currentValue</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+
+  <span class="c1">// Private methods</span>
+  <span class="kd">function</span> <span class="nx">addToHistory</span><span class="p">(</span><span class="nx">operation</span><span class="p">,</span> <span class="nx">value</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">history</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="s2">`</span><span class="p">${</span><span class="nx">operation</span><span class="p">}</span><span class="s2">: </span><span class="p">${</span><span class="nx">value</span><span class="p">}</span><span class="s2">`</span><span class="p">);</span>
+  <span class="p">}</span>
+
+  <span class="kd">function</span> <span class="nx">validateNumber</span><span class="p">(</span><span class="nx">num</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="k">typeof</span> <span class="nx">num</span> <span class="o">!==</span> <span class="dl">"</span><span class="s2">number</span><span class="dl">"</span> <span class="o">||</span> <span class="nb">isNaN</span><span class="p">(</span><span class="nx">num</span><span class="p">))</span> <span class="p">{</span>
+      <span class="k">throw</span> <span class="k">new</span> <span class="nb">Error</span><span class="p">(</span><span class="dl">"</span><span class="s2">Invalid number</span><span class="dl">"</span><span class="p">);</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+
+  <span class="c1">// Public API</span>
+  <span class="k">return</span> <span class="p">{</span>
+    <span class="nx">add</span><span class="p">(</span><span class="nx">num</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">validateNumber</span><span class="p">(</span><span class="nx">num</span><span class="p">);</span>
+      <span class="nx">currentValue</span> <span class="o">+=</span> <span class="nx">num</span><span class="p">;</span>
+      <span class="nx">addToHistory</span><span class="p">(</span><span class="dl">"</span><span class="s2">ADD</span><span class="dl">"</span><span class="p">,</span> <span class="nx">num</span><span class="p">);</span>
+      <span class="k">return</span> <span class="k">this</span><span class="p">;</span> <span class="c1">// Method chaining</span>
+    <span class="p">},</span>
+
+    <span class="nx">subtract</span><span class="p">(</span><span class="nx">num</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">validateNumber</span><span class="p">(</span><span class="nx">num</span><span class="p">);</span>
+      <span class="nx">currentValue</span> <span class="o">-=</span> <span class="nx">num</span><span class="p">;</span>
+      <span class="nx">addToHistory</span><span class="p">(</span><span class="dl">"</span><span class="s2">SUBTRACT</span><span class="dl">"</span><span class="p">,</span> <span class="nx">num</span><span class="p">);</span>
+      <span class="k">return</span> <span class="k">this</span><span class="p">;</span>
+    <span class="p">},</span>
+
+    <span class="nx">getValue</span><span class="p">()</span> <span class="p">{</span>
+      <span class="k">return</span> <span class="nx">currentValue</span><span class="p">;</span>
+    <span class="p">},</span>
+
+    <span class="nx">getHistory</span><span class="p">()</span> <span class="p">{</span>
+      <span class="k">return</span> <span class="p">[...</span><span class="nx">history</span><span class="p">];</span> <span class="c1">// Return copy, not reference</span>
+    <span class="p">},</span>
+
+    <span class="nx">clear</span><span class="p">()</span> <span class="p">{</span>
+      <span class="nx">currentValue</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+      <span class="nx">history</span> <span class="o">=</span> <span class="p">[];</span>
+      <span class="k">return</span> <span class="k">this</span><span class="p">;</span>
+    <span class="p">},</span>
+  <span class="p">};</span>
+<span class="p">})();</span>
+
+<span class="c1">// Usage</span>
+<span class="nx">Calculator</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="mi">10</span><span class="p">).</span><span class="nx">subtract</span><span class="p">(</span><span class="mi">3</span><span class="p">).</span><span class="nx">add</span><span class="p">(</span><span class="mi">5</span><span class="p">);</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">Calculator</span><span class="p">.</span><span class="nx">getValue</span><span class="p">());</span> <span class="c1">// 12</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">Calculator</span><span class="p">.</span><span class="nx">getHistory</span><span class="p">());</span> <span class="c1">// ['ADD: 10', 'SUBTRACT: 3', 'ADD: 5']</span>
+
+<span class="c1">// Private variables are not accessible</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">Calculator</span><span class="p">.</span><span class="nx">history</span><span class="p">);</span> <span class="c1">// undefined</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<h3 id="2-factory-functions">2. Factory Functions</h3>
+
+<p>Create objects with private state:</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+</pre></td><td class="rouge-code"><pre><span class="kd">function</span> <span class="nx">createBankAccount</span><span class="p">(</span><span class="nx">initialBalance</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kd">let</span> <span class="nx">balance</span> <span class="o">=</span> <span class="nx">initialBalance</span><span class="p">;</span>
+  <span class="kd">let</span> <span class="nx">transactionHistory</span> <span class="o">=</span> <span class="p">[];</span>
+
+  <span class="kd">function</span> <span class="nx">recordTransaction</span><span class="p">(</span><span class="nx">type</span><span class="p">,</span> <span class="nx">amount</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">transactionHistory</span><span class="p">.</span><span class="nx">push</span><span class="p">({</span>
+      <span class="nx">type</span><span class="p">,</span>
+      <span class="nx">amount</span><span class="p">,</span>
+      <span class="na">timestamp</span><span class="p">:</span> <span class="k">new</span> <span class="nb">Date</span><span class="p">(),</span>
+      <span class="na">balanceAfter</span><span class="p">:</span> <span class="nx">balance</span><span class="p">,</span>
+    <span class="p">});</span>
+  <span class="p">}</span>
+
+  <span class="k">return</span> <span class="p">{</span>
+    <span class="nx">deposit</span><span class="p">(</span><span class="nx">amount</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">if</span> <span class="p">(</span><span class="nx">amount</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">throw</span> <span class="k">new</span> <span class="nb">Error</span><span class="p">(</span><span class="dl">"</span><span class="s2">Deposit amount must be positive</span><span class="dl">"</span><span class="p">);</span>
+      <span class="p">}</span>
+      <span class="nx">balance</span> <span class="o">+=</span> <span class="nx">amount</span><span class="p">;</span>
+      <span class="nx">recordTransaction</span><span class="p">(</span><span class="dl">"</span><span class="s2">DEPOSIT</span><span class="dl">"</span><span class="p">,</span> <span class="nx">amount</span><span class="p">);</span>
+      <span class="k">return</span> <span class="nx">balance</span><span class="p">;</span>
+    <span class="p">},</span>
+
+    <span class="nx">withdraw</span><span class="p">(</span><span class="nx">amount</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">if</span> <span class="p">(</span><span class="nx">amount</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">throw</span> <span class="k">new</span> <span class="nb">Error</span><span class="p">(</span><span class="dl">"</span><span class="s2">Withdrawal amount must be positive</span><span class="dl">"</span><span class="p">);</span>
+      <span class="p">}</span>
+      <span class="k">if</span> <span class="p">(</span><span class="nx">amount</span> <span class="o">&gt;</span> <span class="nx">balance</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">throw</span> <span class="k">new</span> <span class="nb">Error</span><span class="p">(</span><span class="dl">"</span><span class="s2">Insufficient funds</span><span class="dl">"</span><span class="p">);</span>
+      <span class="p">}</span>
+      <span class="nx">balance</span> <span class="o">-=</span> <span class="nx">amount</span><span class="p">;</span>
+      <span class="nx">recordTransaction</span><span class="p">(</span><span class="dl">"</span><span class="s2">WITHDRAWAL</span><span class="dl">"</span><span class="p">,</span> <span class="nx">amount</span><span class="p">);</span>
+      <span class="k">return</span> <span class="nx">balance</span><span class="p">;</span>
+    <span class="p">},</span>
+
+    <span class="nx">getBalance</span><span class="p">()</span> <span class="p">{</span>
+      <span class="k">return</span> <span class="nx">balance</span><span class="p">;</span>
+    <span class="p">},</span>
+
+    <span class="nx">getTransactionHistory</span><span class="p">()</span> <span class="p">{</span>
+      <span class="k">return</span> <span class="nx">transactionHistory</span><span class="p">.</span><span class="nx">map</span><span class="p">((</span><span class="nx">t</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">({</span> <span class="p">...</span><span class="nx">t</span> <span class="p">}));</span> <span class="c1">// Deep copy</span>
+    <span class="p">},</span>
+  <span class="p">};</span>
+<span class="p">}</span>
+
+<span class="kd">const</span> <span class="nx">account1</span> <span class="o">=</span> <span class="nx">createBankAccount</span><span class="p">(</span><span class="mi">100</span><span class="p">);</span>
+<span class="kd">const</span> <span class="nx">account2</span> <span class="o">=</span> <span class="nx">createBankAccount</span><span class="p">(</span><span class="mi">50</span><span class="p">);</span>
+
+<span class="nx">account1</span><span class="p">.</span><span class="nx">deposit</span><span class="p">(</span><span class="mi">25</span><span class="p">);</span>
+<span class="nx">account2</span><span class="p">.</span><span class="nx">withdraw</span><span class="p">(</span><span class="mi">10</span><span class="p">);</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">account1</span><span class="p">.</span><span class="nx">getBalance</span><span class="p">());</span> <span class="c1">// 125</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">account2</span><span class="p">.</span><span class="nx">getBalance</span><span class="p">());</span> <span class="c1">// 40</span>
+
+<span class="c1">// Each account has its own private state</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">account1</span><span class="p">.</span><span class="nx">balance</span><span class="p">);</span> <span class="c1">// undefined (private)</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<h3 id="3-event-handlers-with-state">3. Event Handlers with State</h3>
+
+<p>Maintain state in event handlers:</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+</pre></td><td class="rouge-code"><pre><span class="kd">function</span> <span class="nx">createButtonWithCounter</span><span class="p">(</span><span class="nx">buttonId</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kd">let</span> <span class="nx">clickCount</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+  <span class="kd">let</span> <span class="nx">lastClickTime</span> <span class="o">=</span> <span class="kc">null</span><span class="p">;</span>
+
+  <span class="kd">const</span> <span class="nx">button</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="nx">buttonId</span><span class="p">);</span>
+
+  <span class="nx">button</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="dl">"</span><span class="s2">click</span><span class="dl">"</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">event</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">clickCount</span><span class="o">++</span><span class="p">;</span>
+    <span class="kd">const</span> <span class="nx">now</span> <span class="o">=</span> <span class="nb">Date</span><span class="p">.</span><span class="nx">now</span><span class="p">();</span>
+    <span class="kd">const</span> <span class="nx">timeSinceLastClick</span> <span class="o">=</span> <span class="nx">lastClickTime</span> <span class="p">?</span> <span class="nx">now</span> <span class="o">-</span> <span class="nx">lastClickTime</span> <span class="p">:</span> <span class="mi">0</span><span class="p">;</span>
+
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">`Button clicked </span><span class="p">${</span><span class="nx">clickCount</span><span class="p">}</span><span class="s2"> times`</span><span class="p">);</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="nx">timeSinceLastClick</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">`Time since last click: </span><span class="p">${</span><span class="nx">timeSinceLastClick</span><span class="p">}</span><span class="s2">ms`</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="nx">lastClickTime</span> <span class="o">=</span> <span class="nx">now</span><span class="p">;</span>
+
+    <span class="c1">// Update button text with click count</span>
+    <span class="nx">button</span><span class="p">.</span><span class="nx">textContent</span> <span class="o">=</span> <span class="s2">`Clicked </span><span class="p">${</span><span class="nx">clickCount</span><span class="p">}</span><span class="s2"> times`</span><span class="p">;</span>
+  <span class="p">});</span>
+
+  <span class="k">return</span> <span class="p">{</span>
+    <span class="na">getClickCount</span><span class="p">:</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="nx">clickCount</span><span class="p">,</span>
+    <span class="na">reset</span><span class="p">:</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+      <span class="nx">clickCount</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+      <span class="nx">lastClickTime</span> <span class="o">=</span> <span class="kc">null</span><span class="p">;</span>
+      <span class="nx">button</span><span class="p">.</span><span class="nx">textContent</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">Click me</span><span class="dl">"</span><span class="p">;</span>
+    <span class="p">},</span>
+  <span class="p">};</span>
+<span class="p">}</span>
+
+<span class="kd">const</span> <span class="nx">buttonCounter</span> <span class="o">=</span> <span class="nx">createButtonWithCounter</span><span class="p">(</span><span class="dl">"</span><span class="s2">myButton</span><span class="dl">"</span><span class="p">);</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<h3 id="4-memoization-caching">4. Memoization (Caching)</h3>
+
+<p>Cache expensive function results:</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+</pre></td><td class="rouge-code"><pre><span class="kd">function</span> <span class="nx">memoize</span><span class="p">(</span><span class="nx">fn</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="nx">cache</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Map</span><span class="p">();</span>
+
+  <span class="k">return</span> <span class="kd">function</span> <span class="p">(...</span><span class="nx">args</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="nx">key</span> <span class="o">=</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">args</span><span class="p">);</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="nx">cache</span><span class="p">.</span><span class="nx">has</span><span class="p">(</span><span class="nx">key</span><span class="p">))</span> <span class="p">{</span>
+      <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">Cache hit!</span><span class="dl">"</span><span class="p">);</span>
+      <span class="k">return</span> <span class="nx">cache</span><span class="p">.</span><span class="kd">get</span><span class="p">(</span><span class="nx">key</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">Computing result...</span><span class="dl">"</span><span class="p">);</span>
+    <span class="kd">const</span> <span class="nx">result</span> <span class="o">=</span> <span class="nx">fn</span><span class="p">.</span><span class="nx">apply</span><span class="p">(</span><span class="k">this</span><span class="p">,</span> <span class="nx">args</span><span class="p">);</span>
+    <span class="nx">cache</span><span class="p">.</span><span class="kd">set</span><span class="p">(</span><span class="nx">key</span><span class="p">,</span> <span class="nx">result</span><span class="p">);</span>
+    <span class="k">return</span> <span class="nx">result</span><span class="p">;</span>
+  <span class="p">};</span>
+<span class="p">}</span>
+
+<span class="c1">// Expensive function</span>
+<span class="kd">function</span> <span class="nx">fibonacci</span><span class="p">(</span><span class="nx">n</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nx">n</span> <span class="o">&lt;=</span> <span class="mi">1</span><span class="p">)</span> <span class="k">return</span> <span class="nx">n</span><span class="p">;</span>
+  <span class="k">return</span> <span class="nx">fibonacci</span><span class="p">(</span><span class="nx">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="nx">fibonacci</span><span class="p">(</span><span class="nx">n</span> <span class="o">-</span> <span class="mi">2</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kd">const</span> <span class="nx">memoizedFibonacci</span> <span class="o">=</span> <span class="nx">memoize</span><span class="p">(</span><span class="nx">fibonacci</span><span class="p">);</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">memoizedFibonacci</span><span class="p">(</span><span class="mi">10</span><span class="p">));</span> <span class="c1">// Computing result... 55</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">memoizedFibonacci</span><span class="p">(</span><span class="mi">10</span><span class="p">));</span> <span class="c1">// Cache hit! 55</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">memoizedFibonacci</span><span class="p">(</span><span class="mi">11</span><span class="p">));</span> <span class="c1">// Computing result... 89</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<h3 id="5-partial-application--currying">5. Partial Application &amp; Currying</h3>
+
+<p>Create specialized functions:</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+</pre></td><td class="rouge-code"><pre><span class="c1">// Partial Application</span>
+<span class="kd">function</span> <span class="nx">multiply</span><span class="p">(</span><span class="nx">a</span><span class="p">,</span> <span class="nx">b</span><span class="p">,</span> <span class="nx">c</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="nx">a</span> <span class="o">*</span> <span class="nx">b</span> <span class="o">*</span> <span class="nx">c</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kd">function</span> <span class="nx">partial</span><span class="p">(</span><span class="nx">fn</span><span class="p">,</span> <span class="p">...</span><span class="nx">fixedArgs</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="kd">function</span> <span class="p">(...</span><span class="nx">remainingArgs</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">fn</span><span class="p">(...</span><span class="nx">fixedArgs</span><span class="p">,</span> <span class="p">...</span><span class="nx">remainingArgs</span><span class="p">);</span>
+  <span class="p">};</span>
+<span class="p">}</span>
+
+<span class="kd">const</span> <span class="nx">multiplyByTwo</span> <span class="o">=</span> <span class="nx">partial</span><span class="p">(</span><span class="nx">multiply</span><span class="p">,</span> <span class="mi">2</span><span class="p">);</span>
+<span class="kd">const</span> <span class="nx">multiplyByTwoAndThree</span> <span class="o">=</span> <span class="nx">partial</span><span class="p">(</span><span class="nx">multiply</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">);</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">multiplyByTwo</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">));</span> <span class="c1">// 2 * 3 * 4 = 24</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">multiplyByTwoAndThree</span><span class="p">(</span><span class="mi">5</span><span class="p">));</span> <span class="c1">// 2 * 3 * 5 = 30</span>
+
+<span class="c1">// Currying</span>
+<span class="kd">function</span> <span class="nx">curry</span><span class="p">(</span><span class="nx">fn</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="kd">function</span> <span class="nx">curried</span><span class="p">(...</span><span class="nx">args</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">args</span><span class="p">.</span><span class="nx">length</span> <span class="o">&gt;=</span> <span class="nx">fn</span><span class="p">.</span><span class="nx">length</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">return</span> <span class="nx">fn</span><span class="p">.</span><span class="nx">apply</span><span class="p">(</span><span class="k">this</span><span class="p">,</span> <span class="nx">args</span><span class="p">);</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+      <span class="k">return</span> <span class="kd">function</span> <span class="p">(...</span><span class="nx">nextArgs</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="nx">curried</span><span class="p">.</span><span class="nx">apply</span><span class="p">(</span><span class="k">this</span><span class="p">,</span> <span class="nx">args</span><span class="p">.</span><span class="nx">concat</span><span class="p">(</span><span class="nx">nextArgs</span><span class="p">));</span>
+      <span class="p">};</span>
+    <span class="p">}</span>
+  <span class="p">};</span>
+<span class="p">}</span>
+
+<span class="kd">const</span> <span class="nx">curriedMultiply</span> <span class="o">=</span> <span class="nx">curry</span><span class="p">(</span><span class="nx">multiply</span><span class="p">);</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">curriedMultiply</span><span class="p">(</span><span class="mi">2</span><span class="p">)(</span><span class="mi">3</span><span class="p">)(</span><span class="mi">4</span><span class="p">));</span> <span class="c1">// 24</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">curriedMultiply</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)(</span><span class="mi">4</span><span class="p">));</span> <span class="c1">// 24</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">curriedMultiply</span><span class="p">(</span><span class="mi">2</span><span class="p">)(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">));</span> <span class="c1">// 24</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<h2 id="memory-management">Memory Management</h2>
+
+<h3 id="closure-memory-considerations">Closure Memory Considerations</h3>
+
+<p>Closures can lead to memory leaks if not handled properly:</p>
+
+<p><strong>Problem: Accidental Object Retention</strong></p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+</pre></td><td class="rouge-code"><pre><span class="kd">function</span> <span class="nx">attachListeners</span><span class="p">()</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="nx">largeObject</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Array</span><span class="p">(</span><span class="mi">1000000</span><span class="p">).</span><span class="nx">fill</span><span class="p">(</span><span class="dl">"</span><span class="s2">data</span><span class="dl">"</span><span class="p">);</span>
+
+  <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="dl">"</span><span class="s2">button</span><span class="dl">"</span><span class="p">).</span><span class="nx">addEventListener</span><span class="p">(</span><span class="dl">"</span><span class="s2">click</span><span class="dl">"</span><span class="p">,</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+    <span class="c1">// This closure keeps largeObject in memory</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">Button clicked</span><span class="dl">"</span><span class="p">);</span>
+  <span class="p">});</span>
+<span class="p">}</span>
+
+<span class="nx">attachListeners</span><span class="p">();</span>
+<span class="c1">// largeObject remains in memory even though it's not used!</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p><strong>Solution: Explicit Cleanup</strong></p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+</pre></td><td class="rouge-code"><pre><span class="kd">function</span> <span class="nx">attachListeners</span><span class="p">()</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="nx">largeObject</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Array</span><span class="p">(</span><span class="mi">1000000</span><span class="p">).</span><span class="nx">fill</span><span class="p">(</span><span class="dl">"</span><span class="s2">data</span><span class="dl">"</span><span class="p">);</span>
+
+  <span class="kd">function</span> <span class="nx">clickHandler</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">Button clicked</span><span class="dl">"</span><span class="p">);</span>
+    <span class="c1">// Don't reference largeObject here</span>
+  <span class="p">}</span>
+
+  <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="dl">"</span><span class="s2">button</span><span class="dl">"</span><span class="p">).</span><span class="nx">addEventListener</span><span class="p">(</span><span class="dl">"</span><span class="s2">click</span><span class="dl">"</span><span class="p">,</span> <span class="nx">clickHandler</span><span class="p">);</span>
+
+  <span class="c1">// Cleanup function</span>
+  <span class="k">return</span> <span class="kd">function</span> <span class="nx">cleanup</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nb">document</span>
+      <span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="dl">"</span><span class="s2">button</span><span class="dl">"</span><span class="p">)</span>
+      <span class="p">.</span><span class="nx">removeEventListener</span><span class="p">(</span><span class="dl">"</span><span class="s2">click</span><span class="dl">"</span><span class="p">,</span> <span class="nx">clickHandler</span><span class="p">);</span>
+    <span class="c1">// largeObject will be garbage collected</span>
+  <span class="p">};</span>
+<span class="p">}</span>
+
+<span class="kd">const</span> <span class="nx">cleanup</span> <span class="o">=</span> <span class="nx">attachListeners</span><span class="p">();</span>
+<span class="c1">// Later...</span>
+<span class="nx">cleanup</span><span class="p">();</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<h3 id="memory-leak-prevention">Memory Leak Prevention</h3>
+
+<p><strong>1. Avoid Unnecessary Variable Capture</strong></p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+</pre></td><td class="rouge-code"><pre><span class="c1">// BAD: Captures unnecessary variables</span>
+<span class="kd">function</span> <span class="nx">createHandler</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="nx">largeArray</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Array</span><span class="p">(</span><span class="mi">1000000</span><span class="p">);</span>
+  <span class="kd">const</span> <span class="nx">someOtherStuff</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="cm">/* ... */</span>
+  <span class="p">};</span>
+
+  <span class="k">return</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span> <span class="c1">// Only needs 'data', but captures everything</span>
+  <span class="p">};</span>
+<span class="p">}</span>
+
+<span class="c1">// GOOD: Only capture what you need</span>
+<span class="kd">function</span> <span class="nx">createHandler</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="nx">largeArray</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Array</span><span class="p">(</span><span class="mi">1000000</span><span class="p">);</span>
+  <span class="kd">const</span> <span class="nx">someOtherStuff</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="cm">/* ... */</span>
+  <span class="p">};</span>
+
+  <span class="c1">// Extract only what you need</span>
+  <span class="kd">const</span> <span class="nx">neededData</span> <span class="o">=</span> <span class="nx">data</span><span class="p">;</span>
+
+  <span class="k">return</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">neededData</span><span class="p">);</span>
+  <span class="p">};</span>
+<span class="p">}</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p><strong>2. Break Circular References</strong></p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+</pre></td><td class="rouge-code"><pre><span class="kd">function</span> <span class="nx">setupComponent</span><span class="p">()</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="nx">element</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="dl">"</span><span class="s2">component</span><span class="dl">"</span><span class="p">);</span>
+
+  <span class="nx">element</span><span class="p">.</span><span class="nx">onclick</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+    <span class="c1">// Circular reference: element -&gt; function -&gt; element</span>
+    <span class="nx">element</span><span class="p">.</span><span class="nx">style</span><span class="p">.</span><span class="nx">color</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">red</span><span class="dl">"</span><span class="p">;</span>
+  <span class="p">};</span>
+
+  <span class="c1">// Break the cycle</span>
+  <span class="k">return</span> <span class="kd">function</span> <span class="nx">cleanup</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">element</span><span class="p">.</span><span class="nx">onclick</span> <span class="o">=</span> <span class="kc">null</span><span class="p">;</span>
+  <span class="p">};</span>
+<span class="p">}</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<h2 id="visual-diagrams">Visual Diagrams</h2>
+
+<h3 id="closure-memory-structure">Closure Memory Structure</h3>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+</pre></td><td class="rouge-code"><pre>┌─────────────────────────────────────────────────────────────┐
+│                    JAVASCRIPT MEMORY                        │
+│                                                             │
+│  ┌─────────────────────────────────────────────────────┐    │
+│  │                  CALL STACK                         │    │
+│  │                                                     │    │
+│  │  ┌─────────────────────────────────────────────┐    │    │
+│  │  │        Global Execution Context             │    │    │
+│  │  │                                             │    │    │
+│  │  │  Variables: { counter: [Function] }         │    │    │
+│  │  └─────────────────────────────────────────────┘    │    │
+│  └─────────────────────────────────────────────────────┘    │
+│                                                             │
+│  ┌─────────────────────────────────────────────────────┐    │
+│  │                    HEAP MEMORY                      │    │
+│  │                                                     │    │
+│  │  ┌─────────────────────────────────────────────┐    │    │
+│  │  │           Closure Object                    │    │    │
+│  │  │                                             │    │    │
+│  │  │  Lexical Environment:                       │    │    │
+│  │  │  ┌─────────────────────────────────────┐    │    │    │
+│  │  │  │  Variables: { count: 0 }            │    │    │    │
+│  │  │  └─────────────────────────────────────┘    │    │    │
+│  │  │                                             │    │    │
+│  │  │  Function Code:                             │    │    │
+│  │  │  ┌─────────────────────────────────────┐    │    │    │
+│  │  │  │  function() {                       │    │    │    │
+│  │  │  │    count++;                         │    │    │    │
+│  │  │  │    return count;                    │    │    │    │
+│  │  │  │  }                                  │    │    │    │
+│  │  │  └─────────────────────────────────────┘    │    │    │
+│  │  └─────────────────────────────────────────────┘    │    │
+│  └─────────────────────────────────────────────────────┘    │
+│                                                             │
+│  ┌─────────────────────────────────────────────────────┐    │
+│  │               REFERENCE CHAIN                       │    │
+│  │                                                     │    │
+│  │  counter variable ──────────→ Closure Object        │    │
+│  │                                    │                │    │
+│  │                                    ▼                │    │
+│  │                           Lexical Environment       │    │
+│  │                                    │                │    │
+│  │                                    ▼                │    │
+│  │                              { count: 0 }           │    │
+│  └─────────────────────────────────────────────────────┘    │
+└─────────────────────────────────────────────────────────────┘
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<h3 id="scope-chain-resolution">Scope Chain Resolution</h3>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+</pre></td><td class="rouge-code"><pre>Function Call: innerFunction()
+
+Step 1: Look in Local Scope
+┌─────────────────────────────────┐
+│   innerFunction Scope           │
+│                                 │
+│   Looking for: variableName     │
+│   Found: [ ] Yes [ ] No         │
+│                                 │
+└─────────────────────────────────┘
+                │
+                ▼ (if not found)
+Step 2: Look in Outer Function Scope
+┌─────────────────────────────────┐
+│   outerFunction Scope           │
+│                                 │
+│   Looking for: variableName     │
+│   Found: [ ] Yes [ ] No         │
+│                                 │
+└─────────────────────────────────┘
+                │
+                ▼ (if not found)
+Step 3: Look in Global Scope
+┌─────────────────────────────────┐
+│   Global Scope                  │
+│                                 │
+│   Looking for: variableName     │
+│   Found: [ ] Yes [ ] No         │
+│                                 │
+└─────────────────────────────────┘
+                │
+                ▼ (if not found)
+        ReferenceError!
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<h2 id="performance-considerations">Performance Considerations</h2>
+
+<h3 id="closure-performance-impact">Closure Performance Impact</h3>
+
+<p><strong>1. Memory Usage</strong></p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+</pre></td><td class="rouge-code"><pre><span class="c1">// Each closure instance maintains its own scope</span>
+<span class="kd">function</span> <span class="nx">createCounter</span><span class="p">()</span> <span class="p">{</span>
+  <span class="kd">let</span> <span class="nx">count</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+  <span class="kd">const</span> <span class="nx">largeArray</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Array</span><span class="p">(</span><span class="mi">1000000</span><span class="p">);</span> <span class="c1">// Each instance has this!</span>
+
+  <span class="k">return</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="o">++</span><span class="nx">count</span><span class="p">;</span>
+  <span class="p">};</span>
+<span class="p">}</span>
+
+<span class="c1">// Creates 1000 closures, each with its own largeArray</span>
+<span class="kd">const</span> <span class="nx">counters</span> <span class="o">=</span> <span class="nb">Array</span><span class="p">.</span><span class="k">from</span><span class="p">({</span> <span class="na">length</span><span class="p">:</span> <span class="mi">1000</span> <span class="p">},</span> <span class="nx">createCounter</span><span class="p">);</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p><strong>2. Garbage Collection</strong></p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+</pre></td><td class="rouge-code"><pre><span class="c1">// Closure prevents garbage collection</span>
+<span class="kd">let</span> <span class="nx">globalRef</span><span class="p">;</span>
+
+<span class="kd">function</span> <span class="nx">createClosure</span><span class="p">()</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="nx">largeData</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Array</span><span class="p">(</span><span class="mi">1000000</span><span class="p">).</span><span class="nx">fill</span><span class="p">(</span><span class="dl">"</span><span class="s2">data</span><span class="dl">"</span><span class="p">);</span>
+
+  <span class="nx">globalRef</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">largeData</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="c1">// Keeps largeData alive</span>
+  <span class="p">};</span>
+<span class="p">}</span>
+
+<span class="nx">createClosure</span><span class="p">();</span>
+<span class="c1">// largeData cannot be garbage collected while globalRef exists</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p><strong>3. Performance Optimization</strong></p>
+
+<p><strong>Bad: Recreating closures in render</strong></p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+</pre></td><td class="rouge-code"><pre><span class="kd">function</span> <span class="nx">MyComponent</span><span class="p">({</span> <span class="nx">items</span> <span class="p">})</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="nx">items</span><span class="p">.</span><span class="nx">map</span><span class="p">((</span><span class="nx">item</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">(</span>
+    <span class="o">&lt;</span><span class="nx">button</span>
+      <span class="nx">key</span><span class="o">=</span><span class="p">{</span><span class="nx">item</span><span class="p">.</span><span class="nx">id</span><span class="p">}</span>
+      <span class="nx">onClick</span><span class="o">=</span><span class="p">{()</span> <span class="o">=&gt;</span> <span class="nx">handleClick</span><span class="p">(</span><span class="nx">item</span><span class="p">.</span><span class="nx">id</span><span class="p">)}</span> <span class="c1">// New closure each render!</span>
+    <span class="o">&gt;</span>
+      <span class="p">{</span><span class="nx">item</span><span class="p">.</span><span class="nx">name</span><span class="p">}</span>
+    <span class="o">&lt;</span><span class="sr">/button</span><span class="err">&gt;
+</span>  <span class="p">));</span>
+<span class="p">}</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p><strong>Good: Memoized or stable references</strong></p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+</pre></td><td class="rouge-code"><pre><span class="kd">function</span> <span class="nx">MyComponent</span><span class="p">({</span> <span class="nx">items</span> <span class="p">})</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="nx">handleClick</span> <span class="o">=</span> <span class="nx">useCallback</span><span class="p">((</span><span class="nx">id</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="c1">// Handle click</span>
+  <span class="p">},</span> <span class="p">[]);</span>
+
+  <span class="k">return</span> <span class="nx">items</span><span class="p">.</span><span class="nx">map</span><span class="p">((</span><span class="nx">item</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">(</span>
+    <span class="o">&lt;</span><span class="nx">button</span> <span class="nx">key</span><span class="o">=</span><span class="p">{</span><span class="nx">item</span><span class="p">.</span><span class="nx">id</span><span class="p">}</span> <span class="nx">onClick</span><span class="o">=</span><span class="p">{()</span> <span class="o">=&gt;</span> <span class="nx">handleClick</span><span class="p">(</span><span class="nx">item</span><span class="p">.</span><span class="nx">id</span><span class="p">)}</span><span class="o">&gt;</span>
+      <span class="p">{</span><span class="nx">item</span><span class="p">.</span><span class="nx">name</span><span class="p">}</span>
+    <span class="o">&lt;</span><span class="sr">/button</span><span class="err">&gt;
+</span>  <span class="p">));</span>
+<span class="p">}</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<h2 id="interview-questions--answers">Interview Questions &amp; Answers</h2>
+
+<h3 id="q1-what-will-this-code-output-and-why">Q1: What will this code output and why?</h3>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+</pre></td><td class="rouge-code"><pre><span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="mi">3</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">setTimeout</span><span class="p">(</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">i</span><span class="p">);</span>
+  <span class="p">},</span> <span class="mi">100</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p><strong>Answer</strong>: It will output <code class="language-plaintext highlighter-rouge">3</code> three times.</p>
+
+<p><strong>Explanation</strong>:</p>
+
+<ul>
+  <li>The <code class="language-plaintext highlighter-rouge">setTimeout</code> callbacks are executed after the loop completes</li>
+  <li>All three closures capture a reference to the same variable <code class="language-plaintext highlighter-rouge">i</code></li>
+  <li>When the callbacks execute, <code class="language-plaintext highlighter-rouge">i</code> has the value 3 (the final value after the loop)</li>
+</ul>
+
+<p><strong>Solutions</strong>:</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+</pre></td><td class="rouge-code"><pre><span class="c1">// Solution 1: Use let (block scope)</span>
+<span class="k">for</span> <span class="p">(</span><span class="kd">let</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="mi">3</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">setTimeout</span><span class="p">(</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">i</span><span class="p">);</span> <span class="c1">// 0, 1, 2</span>
+  <span class="p">},</span> <span class="mi">100</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="c1">// Solution 2: IIFE</span>
+<span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="mi">3</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+  <span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">j</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">setTimeout</span><span class="p">(</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+      <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">j</span><span class="p">);</span> <span class="c1">// 0, 1, 2</span>
+    <span class="p">},</span> <span class="mi">100</span><span class="p">);</span>
+  <span class="p">})(</span><span class="nx">i</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="c1">// Solution 3: bind</span>
+<span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="mi">3</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">setTimeout</span><span class="p">(</span>
+    <span class="kd">function</span> <span class="p">(</span><span class="nx">j</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">j</span><span class="p">);</span> <span class="c1">// 0, 1, 2</span>
+    <span class="p">}.</span><span class="nx">bind</span><span class="p">(</span><span class="kc">null</span><span class="p">,</span> <span class="nx">i</span><span class="p">),</span>
+    <span class="mi">100</span>
+  <span class="p">);</span>
+<span class="p">}</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<h3 id="q2-explain-how-this-module-pattern-works">Q2: Explain how this module pattern works:</h3>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+</pre></td><td class="rouge-code"><pre><span class="kd">const</span> <span class="nx">Module</span> <span class="o">=</span> <span class="p">(</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+  <span class="kd">let</span> <span class="nx">privateVar</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+
+  <span class="kd">function</span> <span class="nx">privateFunction</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">Private function called</span><span class="dl">"</span><span class="p">);</span>
+  <span class="p">}</span>
+
+  <span class="k">return</span> <span class="p">{</span>
+    <span class="nx">publicMethod</span><span class="p">()</span> <span class="p">{</span>
+      <span class="nx">privateVar</span><span class="o">++</span><span class="p">;</span>
+      <span class="nx">privateFunction</span><span class="p">();</span>
+      <span class="k">return</span> <span class="nx">privateVar</span><span class="p">;</span>
+    <span class="p">},</span>
+
+    <span class="nx">getPrivateVar</span><span class="p">()</span> <span class="p">{</span>
+      <span class="k">return</span> <span class="nx">privateVar</span><span class="p">;</span>
+    <span class="p">},</span>
+  <span class="p">};</span>
+<span class="p">})();</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p><strong>Answer</strong>:
+This is the <strong>Module Pattern</strong> using an IIFE (Immediately Invoked Function Expression):</p>
+
+<ol>
+  <li><strong>IIFE</strong>: Creates a private scope immediately</li>
+  <li><strong>Private variables</strong>: <code class="language-plaintext highlighter-rouge">privateVar</code> and <code class="language-plaintext highlighter-rouge">privateFunction</code> are enclosed in the function scope</li>
+  <li><strong>Public API</strong>: The returned object exposes only the methods we want to be public</li>
+  <li><strong>Closure</strong>: The returned methods maintain access to the private variables</li>
+  <li><strong>Encapsulation</strong>: Private variables cannot be accessed directly from outside</li>
+</ol>
+
+<p><strong>Usage</strong>:</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+</pre></td><td class="rouge-code"><pre><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">Module</span><span class="p">.</span><span class="nx">publicMethod</span><span class="p">());</span> <span class="c1">// 1</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">Module</span><span class="p">.</span><span class="nx">getPrivateVar</span><span class="p">());</span> <span class="c1">// 1</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">Module</span><span class="p">.</span><span class="nx">privateVar</span><span class="p">);</span> <span class="c1">// undefined (private)</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<h3 id="q3-whats-the-difference-between-these-two-approaches">Q3: What’s the difference between these two approaches?</h3>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+</pre></td><td class="rouge-code"><pre><span class="c1">// Approach 1</span>
+<span class="kd">function</span> <span class="nx">createMultiplier</span><span class="p">(</span><span class="nx">x</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">y</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">x</span> <span class="o">*</span> <span class="nx">y</span><span class="p">;</span>
+  <span class="p">};</span>
+<span class="p">}</span>
+
+<span class="c1">// Approach 2</span>
+<span class="kd">function</span> <span class="nx">multiply</span><span class="p">(</span><span class="nx">x</span><span class="p">,</span> <span class="nx">y</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="nx">x</span> <span class="o">*</span> <span class="nx">y</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p><strong>Answer</strong>:</p>
+
+<p><strong>Approach 1 (Closure)</strong>:</p>
+
+<ul>
+  <li>Creates a <strong>specialized function</strong> with <code class="language-plaintext highlighter-rouge">x</code> “baked in”</li>
+  <li>Each call to <code class="language-plaintext highlighter-rouge">createMultiplier</code> creates a new closure</li>
+  <li>Useful for <strong>partial application</strong> and <strong>function specialization</strong></li>
+  <li>More memory usage (maintains closure scope)</li>
+</ul>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+</pre></td><td class="rouge-code"><pre><span class="kd">const</span> <span class="nx">double</span> <span class="o">=</span> <span class="nx">createMultiplier</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
+<span class="kd">const</span> <span class="nx">triple</span> <span class="o">=</span> <span class="nx">createMultiplier</span><span class="p">(</span><span class="mi">3</span><span class="p">);</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">double</span><span class="p">(</span><span class="mi">5</span><span class="p">));</span> <span class="c1">// 10</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">triple</span><span class="p">(</span><span class="mi">5</span><span class="p">));</span> <span class="c1">// 15</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p><strong>Approach 2 (Regular function)</strong>:</p>
+
+<ul>
+  <li>Direct multiplication without closure</li>
+  <li>More <strong>memory efficient</strong></li>
+  <li>Requires both parameters each time</li>
+  <li>No function specialization</li>
+</ul>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre></td><td class="rouge-code"><pre><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">multiply</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">));</span> <span class="c1">// 10</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">multiply</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">));</span> <span class="c1">// 15</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<h3 id="q4-how-do-you-create-private-methods-in-javascript">Q4: How do you create private methods in JavaScript?</h3>
+
+<p><strong>Answer</strong>:</p>
+
+<p><strong>1. Module Pattern with IIFE</strong>:</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+</pre></td><td class="rouge-code"><pre><span class="kd">const</span> <span class="nx">MyModule</span> <span class="o">=</span> <span class="p">(</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+  <span class="c1">// Private variables and methods</span>
+  <span class="kd">let</span> <span class="nx">privateCounter</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+
+  <span class="kd">function</span> <span class="nx">privateMethod</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">This is private</span><span class="dl">"</span><span class="p">);</span>
+  <span class="p">}</span>
+
+  <span class="kd">function</span> <span class="nx">incrementCounter</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">privateCounter</span><span class="o">++</span><span class="p">;</span>
+    <span class="nx">privateMethod</span><span class="p">();</span>
+  <span class="p">}</span>
+
+  <span class="c1">// Public API</span>
+  <span class="k">return</span> <span class="p">{</span>
+    <span class="na">increment</span><span class="p">:</span> <span class="nx">incrementCounter</span><span class="p">,</span>
+    <span class="nx">getCount</span><span class="p">()</span> <span class="p">{</span>
+      <span class="k">return</span> <span class="nx">privateCounter</span><span class="p">;</span>
+    <span class="p">},</span>
+  <span class="p">};</span>
+<span class="p">})();</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p><strong>2. Factory Function</strong>:</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+</pre></td><td class="rouge-code"><pre><span class="kd">function</span> <span class="nx">createObject</span><span class="p">()</span> <span class="p">{</span>
+  <span class="kd">let</span> <span class="nx">privateVar</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">secret</span><span class="dl">"</span><span class="p">;</span>
+
+  <span class="kd">function</span> <span class="nx">privateMethod</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="s2">`Accessing </span><span class="p">${</span><span class="nx">privateVar</span><span class="p">}</span><span class="s2">`</span><span class="p">;</span>
+  <span class="p">}</span>
+
+  <span class="k">return</span> <span class="p">{</span>
+    <span class="nx">publicMethod</span><span class="p">()</span> <span class="p">{</span>
+      <span class="k">return</span> <span class="nx">privateMethod</span><span class="p">();</span>
+    <span class="p">},</span>
+  <span class="p">};</span>
+<span class="p">}</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p><strong>3. WeakMap Pattern</strong>:</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+</pre></td><td class="rouge-code"><pre><span class="kd">const</span> <span class="nx">privateData</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">WeakMap</span><span class="p">();</span>
+
+<span class="kd">class</span> <span class="nx">MyClass</span> <span class="p">{</span>
+  <span class="kd">constructor</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">privateData</span><span class="p">.</span><span class="kd">set</span><span class="p">(</span><span class="k">this</span><span class="p">,</span> <span class="p">{</span>
+      <span class="na">secret</span><span class="p">:</span> <span class="dl">"</span><span class="s2">private value</span><span class="dl">"</span><span class="p">,</span>
+      <span class="nx">privateMethod</span><span class="p">()</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="dl">"</span><span class="s2">This is private</span><span class="dl">"</span><span class="p">;</span>
+      <span class="p">},</span>
+    <span class="p">});</span>
+  <span class="p">}</span>
+
+  <span class="nx">publicMethod</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="nx">data</span> <span class="o">=</span> <span class="nx">privateData</span><span class="p">.</span><span class="kd">get</span><span class="p">(</span><span class="k">this</span><span class="p">);</span>
+    <span class="k">return</span> <span class="nx">data</span><span class="p">.</span><span class="nx">privateMethod</span><span class="p">();</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p><strong>4. Private Fields (ES2022)</strong>:</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+</pre></td><td class="rouge-code"><pre><span class="kd">class</span> <span class="nx">MyClass</span> <span class="p">{</span>
+  <span class="err">#</span><span class="nx">privateField</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">secret</span><span class="dl">"</span><span class="p">;</span>
+
+  <span class="err">#</span><span class="nx">privateMethod</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="dl">"</span><span class="s2">This is private</span><span class="dl">"</span><span class="p">;</span>
+  <span class="p">}</span>
+
+  <span class="nx">publicMethod</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="err">#</span><span class="nx">privateMethod</span><span class="p">();</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<h3 id="q5-explain-memory-leaks-with-closures-and-how-to-prevent-them">Q5: Explain memory leaks with closures and how to prevent them.</h3>
+
+<p><strong>Answer</strong>:</p>
+
+<p><strong>Common Memory Leak Scenarios</strong>:</p>
+
+<p><strong>1. Event Listeners with Closures</strong>:</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+</pre></td><td class="rouge-code"><pre><span class="c1">// PROBLEM: Memory leak</span>
+<span class="kd">function</span> <span class="nx">setupComponent</span><span class="p">()</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="nx">largeData</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Array</span><span class="p">(</span><span class="mi">1000000</span><span class="p">);</span>
+
+  <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="dl">"</span><span class="s2">button</span><span class="dl">"</span><span class="p">).</span><span class="nx">onclick</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">Clicked</span><span class="dl">"</span><span class="p">);</span> <span class="c1">// Keeps largeData in memory</span>
+  <span class="p">};</span>
+<span class="p">}</span>
+
+<span class="c1">// SOLUTION: Explicit cleanup</span>
+<span class="kd">function</span> <span class="nx">setupComponent</span><span class="p">()</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="nx">largeData</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Array</span><span class="p">(</span><span class="mi">1000000</span><span class="p">);</span>
+
+  <span class="kd">function</span> <span class="nx">clickHandler</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">Clicked</span><span class="dl">"</span><span class="p">);</span>
+    <span class="c1">// Don't reference largeData</span>
+  <span class="p">}</span>
+
+  <span class="kd">const</span> <span class="nx">button</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="dl">"</span><span class="s2">button</span><span class="dl">"</span><span class="p">);</span>
+  <span class="nx">button</span><span class="p">.</span><span class="nx">onclick</span> <span class="o">=</span> <span class="nx">clickHandler</span><span class="p">;</span>
+
+  <span class="k">return</span> <span class="kd">function</span> <span class="nx">cleanup</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">button</span><span class="p">.</span><span class="nx">onclick</span> <span class="o">=</span> <span class="kc">null</span><span class="p">;</span>
+    <span class="c1">// Now largeData can be garbage collected</span>
+  <span class="p">};</span>
+<span class="p">}</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p><strong>2. Circular References</strong>:</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+</pre></td><td class="rouge-code"><pre><span class="c1">// PROBLEM: Circular reference</span>
+<span class="kd">function</span> <span class="nx">createNode</span><span class="p">()</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="nx">node</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="na">parent</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span>
+    <span class="na">children</span><span class="p">:</span> <span class="p">[],</span>
+    <span class="na">cleanup</span><span class="p">:</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+      <span class="c1">// This creates a circular reference</span>
+      <span class="k">this</span><span class="p">.</span><span class="nx">parent</span> <span class="o">=</span> <span class="kc">null</span><span class="p">;</span>
+      <span class="k">this</span><span class="p">.</span><span class="nx">children</span> <span class="o">=</span> <span class="p">[];</span>
+    <span class="p">},</span>
+  <span class="p">};</span>
+
+  <span class="k">return</span> <span class="nx">node</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c1">// SOLUTION: WeakMap or explicit cleanup</span>
+<span class="kd">const</span> <span class="nx">nodeCleanup</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">WeakMap</span><span class="p">();</span>
+
+<span class="kd">function</span> <span class="nx">createNode</span><span class="p">()</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="nx">node</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="na">parent</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span>
+    <span class="na">children</span><span class="p">:</span> <span class="p">[],</span>
+  <span class="p">};</span>
+
+  <span class="nx">nodeCleanup</span><span class="p">.</span><span class="kd">set</span><span class="p">(</span><span class="nx">node</span><span class="p">,</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+    <span class="nx">node</span><span class="p">.</span><span class="nx">parent</span> <span class="o">=</span> <span class="kc">null</span><span class="p">;</span>
+    <span class="nx">node</span><span class="p">.</span><span class="nx">children</span> <span class="o">=</span> <span class="p">[];</span>
+  <span class="p">});</span>
+
+  <span class="k">return</span> <span class="nx">node</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p><strong>Prevention Strategies</strong>:</p>
+
+<ol>
+  <li><strong>Remove event listeners</strong> when no longer needed</li>
+  <li><strong>Avoid capturing unnecessary variables</strong> in closures</li>
+  <li><strong>Use WeakMap</strong> for private data</li>
+  <li><strong>Set references to null</strong> when done</li>
+  <li><strong>Use tools</strong> like Chrome DevTools Memory tab to detect leaks</li>
+</ol>
+
+<p>This comprehensive guide covers closures and scope from fundamental concepts to advanced patterns, providing the deep understanding needed for senior frontend engineering interviews.</p>
+
+<h1 id="additional-advanced-interview-qa-and-visuals">Additional Advanced Interview Q&amp;A and Visuals</h1>
+
+<h2 id="q-how-can-closures-cause-memory-leaks-in-javascript-applications">Q: How can closures cause memory leaks in JavaScript applications?</h2>
+
+<p><strong>Answer (English):</strong></p>
+
+<ul>
+  <li>Closures keep references to variables in their scope chain</li>
+  <li>If a closure references large data or DOM nodes, and is attached to a global or long-lived object (e.g., event handler), the data cannot be garbage collected</li>
+  <li>Always clean up event handlers and avoid unnecessary references in closures</li>
+</ul>
+
+<p><strong>Answer (Vietnamese):</strong></p>
+
+<ul>
+  <li>Closure giữ tham chiếu tới biến trong scope chain</li>
+  <li>Nếu closure tham chiếu dữ liệu lớn hoặc DOM node, và được gán cho global hoặc object sống lâu (ví dụ event handler), dữ liệu sẽ không được giải phóng bộ nhớ</li>
+  <li>Luôn cleanup event handler và tránh giữ tham chiếu không cần thiết trong closure</li>
+</ul>
+
+<hr />
+
+<h2 id="diagram-closure-memory-leak">Diagram: Closure Memory Leak</h2>
+
+<pre><code class="language-mermaid">flowchart TD
+  A[Create Closure] --&gt; B[References Large Data]
+  B --&gt; C[Assign to Global/Event Handler]
+  C --&gt; D[Large Data Not GC'd]
+  D --&gt; E[Memory Leak]
+</code></pre>
+
+<hr />
+
+<h2 id="q-how-would-you-use-closures-to-implement-a-private-counter-with-increment-and-reset-methods">Q: How would you use closures to implement a private counter with increment and reset methods?</h2>
+
+<p><strong>Answer (English):</strong></p>
+
+<ul>
+  <li>Use a factory function that returns an object with methods</li>
+  <li>The counter variable is private in the closure</li>
+</ul>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+</pre></td><td class="rouge-code"><pre><span class="kd">function</span> <span class="nx">createCounter</span><span class="p">()</span> <span class="p">{</span>
+  <span class="kd">let</span> <span class="nx">count</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+  <span class="k">return</span> <span class="p">{</span>
+    <span class="nx">increment</span><span class="p">()</span> <span class="p">{</span>
+      <span class="k">return</span> <span class="o">++</span><span class="nx">count</span><span class="p">;</span>
+    <span class="p">},</span>
+    <span class="nx">reset</span><span class="p">()</span> <span class="p">{</span>
+      <span class="nx">count</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+      <span class="k">return</span> <span class="nx">count</span><span class="p">;</span>
+    <span class="p">},</span>
+  <span class="p">};</span>
+<span class="p">}</span>
+<span class="kd">const</span> <span class="nx">counter</span> <span class="o">=</span> <span class="nx">createCounter</span><span class="p">();</span>
+<span class="nx">counter</span><span class="p">.</span><span class="nx">increment</span><span class="p">();</span> <span class="c1">// 1</span>
+<span class="nx">counter</span><span class="p">.</span><span class="nx">reset</span><span class="p">();</span> <span class="c1">// 0</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p><strong>Answer (Vietnamese):</strong></p>
+
+<ul>
+  <li>Dùng factory function trả về object chứa các method</li>
+  <li>Biến counter là private trong closure</li>
+</ul>
+
+<hr />
+
+        </div>
+    </article>
+</div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Study Resources</h3>
+                    <p>Comprehensive collection of frontend interview questions, coding challenges, and system design problems.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Progress Tracking</h3>
+                    <p>Monitor your learning journey with detailed progress indicators and completion status.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Big Tech Ready</h3>
+                    <p>Curated content specifically designed for interviews at Google, Meta, Amazon, Apple, and Netflix.</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Frontend Interview Hub. Built for aspiring frontend engineers.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="/assets/js/main.js"></script>
+</body>
+</html>

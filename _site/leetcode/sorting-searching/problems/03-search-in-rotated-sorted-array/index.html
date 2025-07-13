@@ -1,0 +1,1085 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search in Rotated Sorted Array | Frontend Interview Preparation Guide</title>
+    <meta name="description" content="Comprehensive frontend interview materials for Big Tech companies">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="/assets/css/main.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <header>
+        <nav class="container">
+            <div class="logo">Frontend Interview Hub</div>
+            <ul class="nav-links">
+                <li><a href="/">Home</a></li>
+                <li><a href="#progress">Progress</a></li>
+                <li><a href="#knowledge">Knowledge</a></li>
+                <li><a href="https://github.com/nee/interview">GitHub</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <div class="content-container">
+    
+        <nav class="breadcrumb">
+            <ol>
+                <li><a href="/">Home</a></li>
+                
+                
+                
+                    
+                
+                    
+                        
+                        
+                            <li><a href="/leetcode/">Leetcode</a></li>
+                        
+                    
+                
+                    
+                        
+                        
+                            <li><a href="/leetcode/sorting-searching/">Sorting searching</a></li>
+                        
+                    
+                
+                    
+                        
+                        
+                            <li><a href="/leetcode/sorting-searching/problems/">Problems</a></li>
+                        
+                    
+                
+                    
+                        
+                        
+                            <li class="active">Search in rotated sorted array</li>
+                        
+                    
+                
+            </ol>
+        </nav>
+    
+    
+    <article class="content">
+        
+            <header class="content-header">
+                <h1 class="content-title">Search in Rotated Sorted Array</h1>
+                
+                
+                    <div class="content-meta">
+                        <span class="difficulty difficulty-easy">Easy</span>
+                        
+                            <span class="category">Sorting/Searching</span>
+                        
+                        
+                            <div class="tags">
+                                
+                                    <span class="tag">Sorting/Searching</span>
+                                
+                                    <span class="tag">Binary Search</span>
+                                
+                                    <span class="tag">Sorting</span>
+                                
+                            </div>
+                        
+                    </div>
+                
+            </header>
+        
+        
+        <div class="content-body">
+            <h1 id="search-in-rotated-sorted-array">Search in Rotated Sorted Array</h1>
+
+<p><strong>LeetCode Problem # * 33. Search in Rotated Sorted Array</strong></p>
+
+<h2 id="problem-description">Problem Description</h2>
+
+<p>LeetCode problem solution with multiple approaches and explanations.</p>
+
+<h2 id="solutions">Solutions</h2>
+
+<p>/**</p>
+<ul>
+  <li>
+    <ol>
+      <li>Search in Rotated Sorted Array</li>
+    </ol>
+  </li>
+  <li></li>
+  <li>There is an integer array nums sorted in ascending order (with distinct values).</li>
+  <li>Prior to being passed to your function, nums is possibly rotated at some pivot index k</li>
+  <li>(1 &lt;= k &lt; nums.length) such that the resulting array is [nums[k], nums[k+1], …, nums[n-1], nums[0], nums[1], …, nums[k-1]] (0-indexed).</li>
+  <li>For example, [0,1,2,4,5,6,7] might be rotated at pivot index 3 and become [4,5,6,7,0,1,2].</li>
+  <li></li>
+  <li>Given the array nums after the possible rotation and an integer target, return the index of target if it is in nums, or -1 if it is not in nums.</li>
+  <li>You must write an algorithm with O(log n) runtime complexity.</li>
+  <li></li>
+  <li>Example 1:</li>
+  <li>Input: nums = [4,5,6,7,0,1,2], target = 0</li>
+  <li>Output: 4</li>
+  <li></li>
+  <li>Example 2:</li>
+  <li>Input: nums = [4,5,6,7,0,1,2], target = 3</li>
+  <li>Output: -1</li>
+  <li></li>
+  <li>Example 3:</li>
+  <li>Input: nums = [1], target = 0</li>
+  <li>Output: -1</li>
+  <li></li>
+  <li>Constraints:</li>
+  <li>
+    <ul>
+      <li>1 &lt;= nums.length &lt;= 5000</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>-10^4 &lt;= nums[i] &lt;= 10^4</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>All values of nums are unique.</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>nums is an ascending array that is possibly rotated.</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>-10^4 &lt;= target &lt;= 10^4
+ */</li>
+    </ul>
+  </li>
+</ul>
+
+<p>// Solution 1: Single Binary Search
+// Time: O(log n), Space: O(1)
+export function search1(nums: number[], target: number): number {
+    let left = 0;
+    let right = nums.length - 1;</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+</pre></td><td class="rouge-code"><pre>while (left &lt;= right) {
+    const mid = Math.floor((left + right) / 2);
+    
+    if (nums[mid] === target) {
+        return mid;
+    }
+    
+    // Determine which half is sorted
+    if (nums[left] &lt;= nums[mid]) {
+        // Left half is sorted
+        if (nums[left] &lt;= target &amp;&amp; target &lt; nums[mid]) {
+            right = mid - 1;
+        } else {
+            left = mid + 1;
+        }
+    } else {
+        // Right half is sorted
+        if (nums[mid] &lt; target &amp;&amp; target &lt;= nums[right]) {
+            left = mid + 1;
+        } else {
+            right = mid - 1;
+        }
+    }
+}
+
+return -1; }
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>// Solution 2: Find Pivot + Binary Search
+// Time: O(log n), Space: O(1)
+export function search2(nums: number[], target: number): number {
+    const n = nums.length;</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+</pre></td><td class="rouge-code"><pre>// Find the pivot point (minimum element index)
+function findPivot(): number {
+    let left = 0;
+    let right = n - 1;
+    
+    while (left &lt; right) {
+        const mid = Math.floor((left + right) / 2);
+        
+        if (nums[mid] &gt; nums[right]) {
+            left = mid + 1;
+        } else {
+            right = mid;
+        }
+    }
+    
+    return left;
+}
+
+// Standard binary search
+function binarySearch(left: number, right: number): number {
+    while (left &lt;= right) {
+        const mid = Math.floor((left + right) / 2);
+        
+        if (nums[mid] === target) {
+            return mid;
+        } else if (nums[mid] &lt; target) {
+            left = mid + 1;
+        } else {
+            right = mid - 1;
+        }
+    }
+    
+    return -1;
+}
+
+const pivot = findPivot();
+
+// Search in the appropriate half
+if (target &gt;= nums[pivot] &amp;&amp; target &lt;= nums[n - 1]) {
+    return binarySearch(pivot, n - 1);
+} else {
+    return binarySearch(0, pivot - 1);
+} }
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>// Solution 3: Modified Binary Search with Detailed Logic
+// Time: O(log n), Space: O(1)
+export function search3(nums: number[], target: number): number {
+    let left = 0;
+    let right = nums.length - 1;</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+</pre></td><td class="rouge-code"><pre>while (left &lt;= right) {
+    const mid = Math.floor((left + right) / 2);
+    
+    if (nums[mid] === target) {
+        return mid;
+    }
+    
+    // Check if left half is sorted
+    if (nums[left] &lt; nums[mid]) {
+        // Left half is definitely sorted
+        if (nums[left] &lt;= target &amp;&amp; target &lt; nums[mid]) {
+            right = mid - 1;
+        } else {
+            left = mid + 1;
+        }
+    } else if (nums[left] &gt; nums[mid]) {
+        // Right half is definitely sorted
+        if (nums[mid] &lt; target &amp;&amp; target &lt;= nums[right]) {
+            left = mid + 1;
+        } else {
+            right = mid - 1;
+        }
+    } else {
+        // nums[left] == nums[mid], move left pointer
+        // This handles edge case where left == mid
+        left++;
+    }
+}
+
+return -1; }
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>// Solution 4: Recursive Binary Search
+// Time: O(log n), Space: O(log n)
+export function search4(nums: number[], target: number): number {
+    function searchHelper(left: number, right: number): number {
+        if (left &gt; right) return -1;</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+</pre></td><td class="rouge-code"><pre>    const mid = Math.floor((left + right) / 2);
+    
+    if (nums[mid] === target) {
+        return mid;
+    }
+    
+    // Left half is sorted
+    if (nums[left] &lt;= nums[mid]) {
+        if (nums[left] &lt;= target &amp;&amp; target &lt; nums[mid]) {
+            return searchHelper(left, mid - 1);
+        } else {
+            return searchHelper(mid + 1, right);
+        }
+    } else {
+        // Right half is sorted
+        if (nums[mid] &lt; target &amp;&amp; target &lt;= nums[right]) {
+            return searchHelper(mid + 1, right);
+        } else {
+            return searchHelper(left, mid - 1);
+        }
+    }
+}
+
+return searchHelper(0, nums.length - 1); }
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>// Solution 5: Linear Scan (for comparison)
+// Time: O(n), Space: O(1)
+export function search5(nums: number[], target: number): number {
+    for (let i = 0; i &lt; nums.length; i++) {
+        if (nums[i] === target) {
+            return i;
+        }
+    }
+    return -1;
+}</p>
+
+<p>// Solution 6: Binary Search with Rotation Offset
+// Time: O(log n), Space: O(1)
+export function search6(nums: number[], target: number): number {
+    const n = nums.length;
+    let left = 0;
+    let right = n - 1;</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+</pre></td><td class="rouge-code"><pre>// Find rotation offset
+while (left &lt; right) {
+    const mid = Math.floor((left + right) / 2);
+    if (nums[mid] &gt; nums[right]) {
+        left = mid + 1;
+    } else {
+        right = mid;
+    }
+}
+
+const offset = left;
+left = 0;
+right = n - 1;
+
+// Binary search with offset
+while (left &lt;= right) {
+    const mid = Math.floor((left + right) / 2);
+    const realMid = (mid + offset) % n;
+    
+    if (nums[realMid] === target) {
+        return realMid;
+    } else if (nums[realMid] &lt; target) {
+        left = mid + 1;
+    } else {
+        right = mid - 1;
+    }
+}
+
+return -1; }
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>// Test cases
+export function testSearch() {
+    console.log(“Testing Search in Rotated Sorted Array:”);</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+</pre></td><td class="rouge-code"><pre>const testCases = [
+    {
+        nums: [4, 5, 6, 7, 0, 1, 2],
+        target: 0,
+        expected: 4
+    },
+    {
+        nums: [4, 5, 6, 7, 0, 1, 2],
+        target: 3,
+        expected: -1
+    },
+    {
+        nums: [1],
+        target: 0,
+        expected: -1
+    },
+    {
+        nums: [1],
+        target: 1,
+        expected: 0
+    },
+    {
+        nums: [1, 3],
+        target: 3,
+        expected: 1
+    },
+    {
+        nums: [3, 1],
+        target: 1,
+        expected: 1
+    },
+    {
+        nums: [5, 1, 3],
+        target: 3,
+        expected: 2
+    },
+    {
+        nums: [4, 5, 6, 7, 8, 1, 2, 3],
+        target: 8,
+        expected: 4
+    },
+    {
+        nums: [1, 2, 3, 4, 5],
+        target: 3,
+        expected: 2
+    }
+];
+
+const solutions = [
+    { name: "Single Binary Search", fn: search1 },
+    { name: "Find Pivot + Binary Search", fn: search2 },
+    { name: "Modified Binary Search", fn: search3 },
+    { name: "Recursive Binary Search", fn: search4 },
+    { name: "Linear Scan", fn: search5 },
+    { name: "Rotation Offset", fn: search6 }
+];
+
+solutions.forEach(solution =&gt; {
+    console.log(`\n${solution.name}:`);
+    testCases.forEach((test, i) =&gt; {
+        const result = solution.fn([...test.nums], test.target);
+        const passed = result === test.expected;
+        console.log(`  Test ${i + 1}: ${passed ? 'PASS' : 'FAIL'}`);
+        if (!passed) {
+            console.log(`    Input: nums=${JSON.stringify(test.nums)}, target=${test.target}`);
+            console.log(`    Expected: ${test.expected}`);
+            console.log(`    Got: ${result}`);
+        }
+    });
+}); }
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>/**</p>
+<ul>
+  <li>Key Insights:</li>
+  <li></li>
+  <li>
+    <ol>
+      <li><strong>Rotated Array Properties</strong>:</li>
+    </ol>
+  </li>
+  <li>
+    <ul>
+      <li>Originally sorted, then rotated at some pivot</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>At most one “break point” where order changes</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>At least one half is always properly sorted</li>
+    </ul>
+  </li>
+  <li></li>
+  <li>
+    <ol>
+      <li><strong>Binary Search Adaptation</strong>:</li>
+    </ol>
+  </li>
+  <li>
+    <ul>
+      <li>Determine which half is sorted</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Check if target lies in sorted half</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Search appropriate half based on target location</li>
+    </ul>
+  </li>
+  <li></li>
+  <li>
+    <ol>
+      <li><strong>Key Decision Logic</strong>:</li>
+    </ol>
+  </li>
+  <li>
+    <ul>
+      <li>If nums[left] &lt;= nums[mid]: left half is sorted</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>If nums[mid] &lt;= nums[right]: right half is sorted</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Use target range to decide which half to search</li>
+    </ul>
+  </li>
+  <li></li>
+  <li>
+    <ol>
+      <li><strong>Time Complexity</strong>: O(log n)</li>
+    </ol>
+  </li>
+  <li>
+    <ul>
+      <li>Each iteration eliminates half the search space</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Same as standard binary search</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Maintains logarithmic efficiency</li>
+    </ul>
+  </li>
+  <li></li>
+  <li>
+    <ol>
+      <li><strong>Space Complexity</strong>: O(1)</li>
+    </ol>
+  </li>
+  <li>
+    <ul>
+      <li>Iterative approach uses constant space</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Recursive approach uses O(log n) stack space</li>
+    </ul>
+  </li>
+  <li></li>
+  <li>
+    <ol>
+      <li><strong>Edge Cases Handling</strong>:</li>
+    </ol>
+  </li>
+  <li>
+    <ul>
+      <li>Single element array</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>No rotation (already sorted)</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Target at rotation point</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Target not in array</li>
+    </ul>
+  </li>
+  <li></li>
+  <li>
+    <ol>
+      <li><strong>Alternative Approaches</strong>:</li>
+    </ol>
+  </li>
+  <li>
+    <ul>
+      <li>Find pivot first, then binary search</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Use rotation offset for virtual indexing</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Linear scan (O(n) but simpler)</li>
+    </ul>
+  </li>
+  <li></li>
+  <li>
+    <ol>
+      <li><strong>Interview Strategy</strong>:</li>
+    </ol>
+  </li>
+  <li>
+    <ul>
+      <li>Start with understanding rotation properties</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Adapt standard binary search logic</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Handle edge cases carefully</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Test with various rotation scenarios</li>
+    </ul>
+  </li>
+  <li></li>
+  <li>
+    <ol>
+      <li><strong>Common Mistakes</strong>:</li>
+    </ol>
+  </li>
+  <li>
+    <ul>
+      <li>Incorrect condition for determining sorted half</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Wrong target range checking</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Not handling equal elements properly</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Off-by-one errors in boundaries</li>
+    </ul>
+  </li>
+  <li></li>
+  <li>
+    <ol>
+      <li><strong>Comparison Logic</strong>:</li>
+    </ol>
+  </li>
+  <li>
+    <ul>
+      <li>nums[left] &lt;= nums[mid]: left sorted (including equal case)</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Use strict inequalities for target range</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Handle boundary conditions carefully</li>
+    </ul>
+  </li>
+  <li></li>
+  <li>
+    <ol>
+      <li><strong>Optimization Techniques</strong>:</li>
+    </ol>
+  </li>
+  <li>
+    <ul>
+      <li>Early termination when target found</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Minimize comparisons in each iteration</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Handle special cases upfront</li>
+    </ul>
+  </li>
+  <li></li>
+  <li>
+    <ol>
+      <li><strong>Big Tech Variations</strong>:</li>
+    </ol>
+  </li>
+  <li>
+    <ul>
+      <li>Google: Search with duplicates allowed</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Meta: Find minimum in rotated array</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Amazon: Search in 2D rotated matrix</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Microsoft: Multiple rotation points</li>
+    </ul>
+  </li>
+  <li></li>
+  <li>
+    <ol>
+      <li><strong>Follow-up Questions</strong>:</li>
+    </ol>
+  </li>
+  <li>
+    <ul>
+      <li>Handle duplicate elements</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Find all occurrences of target</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Search in rotated sorted array II</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Find rotation point index</li>
+    </ul>
+  </li>
+  <li></li>
+  <li>
+    <ol>
+      <li><strong>Real-world Applications</strong>:</li>
+    </ol>
+  </li>
+  <li>
+    <ul>
+      <li>Circular buffer searches</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Time-based data analysis</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Log file searching</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Cyclic data structures</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Cache management systems</li>
+    </ul>
+  </li>
+  <li></li>
+  <li>
+    <ol>
+      <li><strong>Pattern Recognition</strong>:</li>
+    </ol>
+  </li>
+  <li>
+    <ul>
+      <li>Modified binary search pattern</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Divide and conquer approach</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Conditional search space reduction</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Sorted array with single discontinuity</li>
+    </ul>
+  </li>
+  <li></li>
+  <li>
+    <ol>
+      <li><strong>Testing Strategy</strong>:</li>
+    </ol>
+  </li>
+  <li>
+    <ul>
+      <li>Test with different rotation points</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Verify with no rotation case</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Check boundary elements</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Validate with target not found
+ */</li>
+    </ul>
+  </li>
+</ul>
+
+
+        </div>
+    </article>
+</div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Study Resources</h3>
+                    <p>Comprehensive collection of frontend interview questions, coding challenges, and system design problems.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Progress Tracking</h3>
+                    <p>Monitor your learning journey with detailed progress indicators and completion status.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Big Tech Ready</h3>
+                    <p>Curated content specifically designed for interviews at Google, Meta, Amazon, Apple, and Netflix.</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Frontend Interview Hub. Built for aspiring frontend engineers.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="/assets/js/main.js"></script>
+</body>
+</html>

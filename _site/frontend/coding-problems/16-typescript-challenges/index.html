@@ -1,0 +1,1823 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TypeScript Coding Challenges | Frontend Interview Preparation Guide</title>
+    <meta name="description" content="Comprehensive frontend interview materials for Big Tech companies">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="/assets/css/main.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <header>
+        <nav class="container">
+            <div class="logo">Frontend Interview Hub</div>
+            <ul class="nav-links">
+                <li><a href="/">Home</a></li>
+                <li><a href="#progress">Progress</a></li>
+                <li><a href="#knowledge">Knowledge</a></li>
+                <li><a href="https://github.com/nee/interview">GitHub</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <div class="content-container">
+    
+        <nav class="breadcrumb">
+            <ol>
+                <li><a href="/">Home</a></li>
+                
+                
+                
+                    
+                
+                    
+                        
+                        
+                            <li><a href="/frontend/">Frontend</a></li>
+                        
+                    
+                
+                    
+                        
+                        
+                            <li><a href="/frontend/coding-problems/">Coding problems</a></li>
+                        
+                    
+                
+                    
+                        
+                        
+                            <li class="active">Typescript coding challenges</li>
+                        
+                    
+                
+            </ol>
+        </nav>
+    
+    
+    <article class="content">
+        
+            <header class="content-header">
+                <h1 class="content-title">TypeScript Coding Challenges</h1>
+                
+                
+                    <div class="content-meta">
+                        <span class="difficulty difficulty-hard">Hard</span>
+                        
+                            <span class="category">Coding Problems</span>
+                        
+                        
+                            <div class="tags">
+                                
+                                    <span class="tag">typescript</span>
+                                
+                                    <span class="tag">type-system</span>
+                                
+                                    <span class="tag">generics</span>
+                                
+                                    <span class="tag">utility-types</span>
+                                
+                                    <span class="tag">advanced-patterns</span>
+                                
+                            </div>
+                        
+                    </div>
+                
+            </header>
+        
+        
+        <div class="content-body">
+            <h1 id="typescript-coding-challenges">TypeScript Coding Challenges</h1>
+
+<h2 id="problem-1-advanced-type-utilities">Problem 1: Advanced Type Utilities</h2>
+
+<p>Create a comprehensive set of TypeScript utility types that can be used in real-world applications.</p>
+
+<h3 id="requirements">Requirements:</h3>
+<ol>
+  <li><strong>DeepReadonly</strong>: Make all properties deeply readonly</li>
+  <li><strong>DeepPartial</strong>: Make all properties deeply optional</li>
+  <li><strong>RequiredKeys</strong>: Extract keys that are required</li>
+  <li><strong>OptionalKeys</strong>: Extract keys that are optional</li>
+  <li><strong>PickByType</strong>: Pick properties by their type</li>
+  <li><strong>OmitByType</strong>: Omit properties by their type</li>
+</ol>
+
+<h3 id="solution">Solution:</h3>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155
+156
+157
+158
+159
+160
+161
+162
+163
+164
+165
+166
+167
+168
+169
+170
+171
+172
+173
+174
+175
+176
+</pre></td><td class="rouge-code"><pre><span class="c1">// DeepReadonly - makes all properties deeply readonly</span>
+<span class="kd">type</span> <span class="nx">DeepReadonly</span><span class="o">&lt;</span><span class="nx">T</span><span class="o">&gt;</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="k">readonly</span> <span class="p">[</span><span class="nx">P</span> <span class="k">in</span> <span class="kr">keyof</span> <span class="nx">T</span><span class="p">]:</span> <span class="nx">T</span><span class="p">[</span><span class="nx">P</span><span class="p">]</span> <span class="kd">extends</span> <span class="nx">object</span>
+    <span class="p">?</span> <span class="nx">T</span><span class="p">[</span><span class="nx">P</span><span class="p">]</span> <span class="kd">extends</span> <span class="nb">Function</span>
+      <span class="p">?</span> <span class="nx">T</span><span class="p">[</span><span class="nx">P</span><span class="p">]</span>
+      <span class="p">:</span> <span class="nx">DeepReadonly</span><span class="o">&lt;</span><span class="nx">T</span><span class="p">[</span><span class="nx">P</span><span class="p">]</span><span class="o">&gt;</span>
+    <span class="p">:</span> <span class="nx">T</span><span class="p">[</span><span class="nx">P</span><span class="p">];</span>
+<span class="p">};</span>
+
+<span class="c1">// DeepPartial - makes all properties deeply optional</span>
+<span class="kd">type</span> <span class="nx">DeepPartial</span><span class="o">&lt;</span><span class="nx">T</span><span class="o">&gt;</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="p">[</span><span class="nx">P</span> <span class="k">in</span> <span class="kr">keyof</span> <span class="nx">T</span><span class="p">]?:</span> <span class="nx">T</span><span class="p">[</span><span class="nx">P</span><span class="p">]</span> <span class="kd">extends</span> <span class="nx">object</span>
+    <span class="p">?</span> <span class="nx">T</span><span class="p">[</span><span class="nx">P</span><span class="p">]</span> <span class="kd">extends</span> <span class="nb">Function</span>
+      <span class="p">?</span> <span class="nx">T</span><span class="p">[</span><span class="nx">P</span><span class="p">]</span>
+      <span class="p">:</span> <span class="nx">DeepPartial</span><span class="o">&lt;</span><span class="nx">T</span><span class="p">[</span><span class="nx">P</span><span class="p">]</span><span class="o">&gt;</span>
+    <span class="p">:</span> <span class="nx">T</span><span class="p">[</span><span class="nx">P</span><span class="p">];</span>
+<span class="p">};</span>
+
+<span class="c1">// RequiredKeys - extract keys that are required</span>
+<span class="kd">type</span> <span class="nx">RequiredKeys</span><span class="o">&lt;</span><span class="nx">T</span><span class="o">&gt;</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="p">[</span><span class="nx">K</span> <span class="k">in</span> <span class="kr">keyof</span> <span class="nx">T</span><span class="p">]</span><span class="o">-</span><span class="p">?:</span> <span class="p">{}</span> <span class="kd">extends</span> <span class="nb">Pick</span><span class="o">&lt;</span><span class="nx">T</span><span class="p">,</span> <span class="nx">K</span><span class="o">&gt;</span> <span class="p">?</span> <span class="nx">never</span> <span class="p">:</span> <span class="nx">K</span><span class="p">;</span>
+<span class="p">}[</span><span class="kr">keyof</span> <span class="nx">T</span><span class="p">];</span>
+
+<span class="c1">// OptionalKeys - extract keys that are optional</span>
+<span class="kd">type</span> <span class="nx">OptionalKeys</span><span class="o">&lt;</span><span class="nx">T</span><span class="o">&gt;</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="p">[</span><span class="nx">K</span> <span class="k">in</span> <span class="kr">keyof</span> <span class="nx">T</span><span class="p">]</span><span class="o">-</span><span class="p">?:</span> <span class="p">{}</span> <span class="kd">extends</span> <span class="nb">Pick</span><span class="o">&lt;</span><span class="nx">T</span><span class="p">,</span> <span class="nx">K</span><span class="o">&gt;</span> <span class="p">?</span> <span class="nx">K</span> <span class="p">:</span> <span class="nx">never</span><span class="p">;</span>
+<span class="p">}[</span><span class="kr">keyof</span> <span class="nx">T</span><span class="p">];</span>
+
+<span class="c1">// PickByType - pick properties by their type</span>
+<span class="kd">type</span> <span class="nx">PickByType</span><span class="o">&lt;</span><span class="nx">T</span><span class="p">,</span> <span class="nx">U</span><span class="o">&gt;</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="p">[</span><span class="nx">P</span> <span class="k">in</span> <span class="kr">keyof</span> <span class="nx">T</span> <span class="k">as</span> <span class="nx">T</span><span class="p">[</span><span class="nx">P</span><span class="p">]</span> <span class="kd">extends</span> <span class="nx">U</span> <span class="p">?</span> <span class="nx">P</span> <span class="p">:</span> <span class="nx">never</span><span class="p">]:</span> <span class="nx">T</span><span class="p">[</span><span class="nx">P</span><span class="p">];</span>
+<span class="p">};</span>
+
+<span class="c1">// OmitByType - omit properties by their type</span>
+<span class="kd">type</span> <span class="nx">OmitByType</span><span class="o">&lt;</span><span class="nx">T</span><span class="p">,</span> <span class="nx">U</span><span class="o">&gt;</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="p">[</span><span class="nx">P</span> <span class="k">in</span> <span class="kr">keyof</span> <span class="nx">T</span> <span class="k">as</span> <span class="nx">T</span><span class="p">[</span><span class="nx">P</span><span class="p">]</span> <span class="kd">extends</span> <span class="nx">U</span> <span class="p">?</span> <span class="nx">never</span> <span class="p">:</span> <span class="nx">P</span><span class="p">]:</span> <span class="nx">T</span><span class="p">[</span><span class="nx">P</span><span class="p">];</span>
+<span class="p">};</span>
+
+<span class="c1">// NonNullable utility for deep objects</span>
+<span class="kd">type</span> <span class="nx">DeepNonNullable</span><span class="o">&lt;</span><span class="nx">T</span><span class="o">&gt;</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="p">[</span><span class="nx">P</span> <span class="k">in</span> <span class="kr">keyof</span> <span class="nx">T</span><span class="p">]</span><span class="o">-</span><span class="p">?:</span> <span class="nx">T</span><span class="p">[</span><span class="nx">P</span><span class="p">]</span> <span class="kd">extends</span> <span class="nx">object</span>
+    <span class="p">?</span> <span class="nx">DeepNonNullable</span><span class="o">&lt;</span><span class="nx">T</span><span class="p">[</span><span class="nx">P</span><span class="p">]</span><span class="o">&gt;</span>
+    <span class="p">:</span> <span class="nx">NonNullable</span><span class="o">&lt;</span><span class="nx">T</span><span class="p">[</span><span class="nx">P</span><span class="p">]</span><span class="o">&gt;</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="c1">// Function parameter types</span>
+<span class="kd">type</span> <span class="nx">FunctionParams</span><span class="o">&lt;</span><span class="nx">T</span> <span class="kd">extends</span> <span class="p">(...</span><span class="nx">args</span><span class="p">:</span> <span class="kr">any</span><span class="p">[])</span> <span class="o">=&gt;</span> <span class="kr">any</span><span class="o">&gt;</span> <span class="o">=</span> <span class="nx">T</span> <span class="kd">extends</span> <span class="p">(</span>
+  <span class="p">...</span><span class="nx">args</span><span class="p">:</span> <span class="nx">infer</span> <span class="nx">P</span>
+<span class="p">)</span> <span class="o">=&gt;</span> <span class="kr">any</span>
+  <span class="p">?</span> <span class="nx">P</span>
+  <span class="p">:</span> <span class="nx">never</span><span class="p">;</span>
+
+<span class="c1">// Promise unwrapping</span>
+<span class="kd">type</span> <span class="nx">Awaited</span><span class="o">&lt;</span><span class="nx">T</span><span class="o">&gt;</span> <span class="o">=</span> <span class="nx">T</span> <span class="kd">extends</span> <span class="nb">Promise</span><span class="o">&lt;</span><span class="nx">infer</span> <span class="nx">U</span><span class="o">&gt;</span> <span class="p">?</span> <span class="nx">Awaited</span><span class="o">&lt;</span><span class="nx">U</span><span class="o">&gt;</span> <span class="p">:</span> <span class="nx">T</span><span class="p">;</span>
+
+<span class="c1">// Example usage and tests</span>
+<span class="kr">interface</span> <span class="nx">User</span> <span class="p">{</span>
+  <span class="nl">id</span><span class="p">:</span> <span class="kr">number</span><span class="p">;</span>
+  <span class="nl">name</span><span class="p">:</span> <span class="kr">string</span><span class="p">;</span>
+  <span class="nl">email</span><span class="p">?:</span> <span class="kr">string</span><span class="p">;</span>
+  <span class="nl">profile</span><span class="p">:</span> <span class="p">{</span>
+    <span class="na">bio</span><span class="p">:</span> <span class="kr">string</span><span class="p">;</span>
+    <span class="nl">avatar</span><span class="p">?:</span> <span class="kr">string</span><span class="p">;</span>
+    <span class="nl">settings</span><span class="p">:</span> <span class="p">{</span>
+      <span class="na">theme</span><span class="p">:</span> <span class="dl">'</span><span class="s1">light</span><span class="dl">'</span> <span class="o">|</span> <span class="dl">'</span><span class="s1">dark</span><span class="dl">'</span><span class="p">;</span>
+      <span class="nl">notifications</span><span class="p">:</span> <span class="nx">boolean</span><span class="p">;</span>
+    <span class="p">};</span>
+  <span class="p">};</span>
+  <span class="nl">roles</span><span class="p">:</span> <span class="kr">string</span><span class="p">[];</span>
+  <span class="nl">createdAt</span><span class="p">:</span> <span class="nb">Date</span><span class="p">;</span>
+  <span class="nl">updateProfile</span><span class="p">:</span> <span class="p">(</span><span class="nx">data</span><span class="p">:</span> <span class="nb">Partial</span><span class="o">&lt;</span><span class="nx">User</span><span class="p">[</span><span class="dl">'</span><span class="s1">profile</span><span class="dl">'</span><span class="p">]</span><span class="o">&gt;</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="k">void</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c1">// Test the utility types</span>
+<span class="kd">type</span> <span class="nx">ReadonlyUser</span> <span class="o">=</span> <span class="nx">DeepReadonly</span><span class="o">&lt;</span><span class="nx">User</span><span class="o">&gt;</span><span class="p">;</span>
+<span class="kd">type</span> <span class="nx">PartialUser</span> <span class="o">=</span> <span class="nx">DeepPartial</span><span class="o">&lt;</span><span class="nx">User</span><span class="o">&gt;</span><span class="p">;</span>
+<span class="kd">type</span> <span class="nx">RequiredUserKeys</span> <span class="o">=</span> <span class="nx">RequiredKeys</span><span class="o">&lt;</span><span class="nx">User</span><span class="o">&gt;</span><span class="p">;</span> <span class="c1">// 'id' | 'name' | 'profile' | 'roles' | 'createdAt' | 'updateProfile'</span>
+<span class="kd">type</span> <span class="nx">OptionalUserKeys</span> <span class="o">=</span> <span class="nx">OptionalKeys</span><span class="o">&lt;</span><span class="nx">User</span><span class="o">&gt;</span><span class="p">;</span> <span class="c1">// 'email'</span>
+<span class="kd">type</span> <span class="nx">StringProps</span> <span class="o">=</span> <span class="nx">PickByType</span><span class="o">&lt;</span><span class="nx">User</span><span class="p">,</span> <span class="kr">string</span><span class="o">&gt;</span><span class="p">;</span> <span class="c1">// { name: string }</span>
+<span class="kd">type</span> <span class="nx">NonStringProps</span> <span class="o">=</span> <span class="nx">OmitByType</span><span class="o">&lt;</span><span class="nx">User</span><span class="p">,</span> <span class="kr">string</span><span class="o">&gt;</span><span class="p">;</span> <span class="c1">// Omits string properties</span>
+
+<span class="c1">// Advanced conditional type</span>
+<span class="kd">type</span> <span class="nx">IsArray</span><span class="o">&lt;</span><span class="nx">T</span><span class="o">&gt;</span> <span class="o">=</span> <span class="nx">T</span> <span class="kd">extends</span> <span class="k">readonly</span> <span class="nx">unknown</span><span class="p">[]</span> <span class="p">?</span> <span class="kc">true</span> <span class="p">:</span> <span class="kc">false</span><span class="p">;</span>
+
+<span class="c1">// Tuple to Union</span>
+<span class="kd">type</span> <span class="nx">TupleToUnion</span><span class="o">&lt;</span><span class="nx">T</span> <span class="kd">extends</span> <span class="k">readonly</span> <span class="nx">unknown</span><span class="p">[]</span><span class="o">&gt;</span> <span class="o">=</span> <span class="nx">T</span><span class="p">[</span><span class="kr">number</span><span class="p">];</span>
+
+<span class="c1">// Union to Intersection</span>
+<span class="kd">type</span> <span class="nx">UnionToIntersection</span><span class="o">&lt;</span><span class="nx">U</span><span class="o">&gt;</span> <span class="o">=</span> <span class="p">(</span><span class="nx">U</span> <span class="kd">extends</span> <span class="kr">any</span> <span class="p">?</span> <span class="p">(</span><span class="nx">k</span><span class="p">:</span> <span class="nx">U</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="k">void</span> <span class="p">:</span> <span class="nx">never</span><span class="p">)</span> <span class="kd">extends</span> <span class="p">(</span>
+  <span class="nx">k</span><span class="p">:</span> <span class="nx">infer</span> <span class="nx">I</span>
+<span class="p">)</span> <span class="o">=&gt;</span> <span class="k">void</span>
+  <span class="p">?</span> <span class="nx">I</span>
+  <span class="p">:</span> <span class="nx">never</span><span class="p">;</span>
+
+<span class="c1">// Test cases</span>
+<span class="kd">function</span> <span class="nx">testUtilityTypes</span><span class="p">()</span> <span class="p">{</span>
+  <span class="c1">// DeepReadonly test</span>
+  <span class="kd">const</span> <span class="nx">readonlyUser</span><span class="p">:</span> <span class="nx">ReadonlyUser</span> <span class="o">=</span> <span class="p">{}</span> <span class="k">as</span> <span class="nx">ReadonlyUser</span><span class="p">;</span>
+  <span class="c1">// readonlyUser.profile.settings.theme = 'dark'; // Error: Cannot assign to readonly property</span>
+  
+  <span class="c1">// DeepPartial test</span>
+  <span class="kd">const</span> <span class="nx">partialUser</span><span class="p">:</span> <span class="nx">PartialUser</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="na">name</span><span class="p">:</span> <span class="dl">'</span><span class="s1">John</span><span class="dl">'</span><span class="p">,</span>
+    <span class="na">profile</span><span class="p">:</span> <span class="p">{</span>
+      <span class="na">settings</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">theme</span><span class="p">:</span> <span class="dl">'</span><span class="s1">light</span><span class="dl">'</span>
+        <span class="c1">// notifications is optional</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+  <span class="p">};</span>
+  
+  <span class="c1">// PickByType test</span>
+  <span class="kd">const</span> <span class="nx">stringOnlyProps</span><span class="p">:</span> <span class="nx">StringProps</span> <span class="o">=</span> <span class="p">{</span> <span class="na">name</span><span class="p">:</span> <span class="dl">'</span><span class="s1">John</span><span class="dl">'</span> <span class="p">};</span>
+  
+  <span class="c1">// Type assertions to verify correctness</span>
+  <span class="kd">const</span> <span class="nx">requiredKeys</span><span class="p">:</span> <span class="nx">RequiredUserKeys</span><span class="p">[]</span> <span class="o">=</span> <span class="p">[</span><span class="dl">'</span><span class="s1">id</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">name</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">profile</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">roles</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">createdAt</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">updateProfile</span><span class="dl">'</span><span class="p">];</span>
+  <span class="kd">const</span> <span class="nx">optionalKeys</span><span class="p">:</span> <span class="nx">OptionalUserKeys</span><span class="p">[]</span> <span class="o">=</span> <span class="p">[</span><span class="dl">'</span><span class="s1">email</span><span class="dl">'</span><span class="p">];</span>
+<span class="p">}</span>
+
+<span class="c1">// Advanced example: API Response Type Builder</span>
+<span class="kd">type</span> <span class="nx">ApiResponse</span><span class="o">&lt;</span><span class="nx">T</span><span class="o">&gt;</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="na">data</span><span class="p">:</span> <span class="nx">T</span><span class="p">;</span>
+  <span class="nl">status</span><span class="p">:</span> <span class="kr">number</span><span class="p">;</span>
+  <span class="nl">message</span><span class="p">:</span> <span class="kr">string</span><span class="p">;</span>
+  <span class="nl">timestamp</span><span class="p">:</span> <span class="nb">Date</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="kd">type</span> <span class="nx">PaginatedResponse</span><span class="o">&lt;</span><span class="nx">T</span><span class="o">&gt;</span> <span class="o">=</span> <span class="nx">ApiResponse</span><span class="o">&lt;</span><span class="nx">T</span><span class="o">&gt;</span> <span class="o">&amp;</span> <span class="p">{</span>
+  <span class="na">pagination</span><span class="p">:</span> <span class="p">{</span>
+    <span class="na">page</span><span class="p">:</span> <span class="kr">number</span><span class="p">;</span>
+    <span class="nl">limit</span><span class="p">:</span> <span class="kr">number</span><span class="p">;</span>
+    <span class="nl">total</span><span class="p">:</span> <span class="kr">number</span><span class="p">;</span>
+    <span class="nl">hasNext</span><span class="p">:</span> <span class="nx">boolean</span><span class="p">;</span>
+    <span class="nl">hasPrev</span><span class="p">:</span> <span class="nx">boolean</span><span class="p">;</span>
+  <span class="p">};</span>
+<span class="p">};</span>
+
+<span class="c1">// Generic API client with typed responses</span>
+<span class="kd">class</span> <span class="nx">ApiClient</span> <span class="p">{</span>
+  <span class="k">async</span> <span class="kd">get</span><span class="o">&lt;</span><span class="nx">T</span><span class="o">&gt;</span><span class="p">(</span><span class="nx">url</span><span class="p">:</span> <span class="kr">string</span><span class="p">):</span> <span class="nb">Promise</span><span class="o">&lt;</span><span class="nx">ApiResponse</span><span class="o">&lt;</span><span class="nx">T</span><span class="o">&gt;&gt;</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="nx">response</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">fetch</span><span class="p">(</span><span class="nx">url</span><span class="p">);</span>
+    <span class="k">return</span> <span class="nx">response</span><span class="p">.</span><span class="nx">json</span><span class="p">();</span>
+  <span class="p">}</span>
+  
+  <span class="k">async</span> <span class="nx">getPaginated</span><span class="o">&lt;</span><span class="nx">T</span><span class="o">&gt;</span><span class="p">(</span><span class="nx">url</span><span class="p">:</span> <span class="kr">string</span><span class="p">,</span> <span class="nx">page</span><span class="p">:</span> <span class="kr">number</span> <span class="o">=</span> <span class="mi">1</span><span class="p">):</span> <span class="nb">Promise</span><span class="o">&lt;</span><span class="nx">PaginatedResponse</span><span class="o">&lt;</span><span class="nx">T</span><span class="p">[]</span><span class="o">&gt;&gt;</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="nx">response</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">fetch</span><span class="p">(</span><span class="s2">`</span><span class="p">${</span><span class="nx">url</span><span class="p">}</span><span class="s2">?page=</span><span class="p">${</span><span class="nx">page</span><span class="p">}</span><span class="s2">`</span><span class="p">);</span>
+    <span class="k">return</span> <span class="nx">response</span><span class="p">.</span><span class="nx">json</span><span class="p">();</span>
+  <span class="p">}</span>
+  
+  <span class="k">async</span> <span class="nx">post</span><span class="o">&lt;</span><span class="nx">TRequest</span><span class="p">,</span> <span class="nx">TResponse</span><span class="o">&gt;</span><span class="p">(</span>
+    <span class="nx">url</span><span class="p">:</span> <span class="kr">string</span><span class="p">,</span> 
+    <span class="nx">data</span><span class="p">:</span> <span class="nx">TRequest</span>
+  <span class="p">):</span> <span class="nb">Promise</span><span class="o">&lt;</span><span class="nx">ApiResponse</span><span class="o">&lt;</span><span class="nx">TResponse</span><span class="o">&gt;&gt;</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="nx">response</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">fetch</span><span class="p">(</span><span class="nx">url</span><span class="p">,</span> <span class="p">{</span>
+      <span class="na">method</span><span class="p">:</span> <span class="dl">'</span><span class="s1">POST</span><span class="dl">'</span><span class="p">,</span>
+      <span class="na">headers</span><span class="p">:</span> <span class="p">{</span> <span class="dl">'</span><span class="s1">Content-Type</span><span class="dl">'</span><span class="p">:</span> <span class="dl">'</span><span class="s1">application/json</span><span class="dl">'</span> <span class="p">},</span>
+      <span class="na">body</span><span class="p">:</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span>
+    <span class="p">});</span>
+    <span class="k">return</span> <span class="nx">response</span><span class="p">.</span><span class="nx">json</span><span class="p">();</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// Usage with proper typing</span>
+<span class="kd">const</span> <span class="nx">api</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">ApiClient</span><span class="p">();</span>
+
+<span class="k">async</span> <span class="kd">function</span> <span class="nx">fetchUsers</span><span class="p">()</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="nx">response</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">api</span><span class="p">.</span><span class="nx">getPaginated</span><span class="o">&lt;</span><span class="nx">User</span><span class="o">&gt;</span><span class="p">(</span><span class="dl">'</span><span class="s1">/api/users</span><span class="dl">'</span><span class="p">);</span>
+  <span class="c1">// response.data is typed as User[]</span>
+  <span class="c1">// response.pagination is properly typed</span>
+  
+  <span class="kd">const</span> <span class="nx">createResponse</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">api</span><span class="p">.</span><span class="nx">post</span><span class="o">&lt;</span><span class="nb">Partial</span><span class="o">&lt;</span><span class="nx">User</span><span class="o">&gt;</span><span class="p">,</span> <span class="nx">User</span><span class="o">&gt;</span><span class="p">(</span>
+    <span class="dl">'</span><span class="s1">/api/users</span><span class="dl">'</span><span class="p">,</span>
+    <span class="p">{</span> <span class="na">name</span><span class="p">:</span> <span class="dl">'</span><span class="s1">John</span><span class="dl">'</span><span class="p">,</span> <span class="na">email</span><span class="p">:</span> <span class="dl">'</span><span class="s1">john@example.com</span><span class="dl">'</span> <span class="p">}</span>
+  <span class="p">);</span>
+  <span class="c1">// createResponse.data is typed as User</span>
+<span class="p">}</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<h2 id="problem-2-type-safe-event-system">Problem 2: Type-Safe Event System</h2>
+
+<p>Build a type-safe event emitter system that ensures event names and payload types are correctly matched.</p>
+
+<h3 id="requirements-1">Requirements:</h3>
+<ol>
+  <li><strong>Type-safe event names</strong>: Only registered events can be emitted/listened to</li>
+  <li><strong>Payload type safety</strong>: Event payloads must match defined types</li>
+  <li><strong>Method chaining</strong>: Support for method chaining</li>
+  <li><strong>Unsubscribe functionality</strong>: Ability to remove listeners</li>
+  <li><strong>Once listeners</strong>: Support for one-time event listeners</li>
+</ol>
+
+<h3 id="solution-1">Solution:</h3>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155
+156
+157
+158
+159
+160
+161
+162
+163
+164
+165
+166
+167
+168
+169
+170
+171
+172
+173
+174
+175
+176
+177
+178
+179
+180
+181
+182
+183
+184
+185
+186
+187
+188
+189
+190
+191
+192
+193
+194
+195
+196
+197
+198
+199
+200
+201
+202
+203
+204
+205
+206
+207
+208
+209
+210
+211
+212
+213
+214
+215
+216
+217
+218
+219
+220
+</pre></td><td class="rouge-code"><pre><span class="c1">// Event map interface - defines available events and their payload types</span>
+<span class="kr">interface</span> <span class="nx">EventMap</span> <span class="p">{</span>
+  <span class="p">[</span><span class="nx">eventName</span><span class="p">:</span> <span class="kr">string</span><span class="p">]:</span> <span class="kr">any</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c1">// Listener function type</span>
+<span class="kd">type</span> <span class="nx">Listener</span><span class="o">&lt;</span><span class="nx">T</span><span class="o">&gt;</span> <span class="o">=</span> <span class="p">(</span><span class="nx">payload</span><span class="p">:</span> <span class="nx">T</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="k">void</span><span class="p">;</span>
+
+<span class="c1">// Internal listener storage</span>
+<span class="kr">interface</span> <span class="nx">ListenerData</span><span class="o">&lt;</span><span class="nx">T</span><span class="o">&gt;</span> <span class="p">{</span>
+  <span class="na">listener</span><span class="p">:</span> <span class="nx">Listener</span><span class="o">&lt;</span><span class="nx">T</span><span class="o">&gt;</span><span class="p">;</span>
+  <span class="nl">once</span><span class="p">:</span> <span class="nx">boolean</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kd">class</span> <span class="nx">TypedEventEmitter</span><span class="o">&lt;</span><span class="nx">TEventMap</span> <span class="kd">extends</span> <span class="nx">EventMap</span><span class="o">&gt;</span> <span class="p">{</span>
+  <span class="k">private</span> <span class="nx">listeners</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Map</span><span class="o">&lt;</span><span class="kr">keyof</span> <span class="nx">TEventMap</span><span class="p">,</span> <span class="nb">Set</span><span class="o">&lt;</span><span class="nx">ListenerData</span><span class="o">&lt;</span><span class="kr">any</span><span class="o">&gt;&gt;&gt;</span><span class="p">();</span>
+  
+  <span class="c1">// Add event listener</span>
+  <span class="nx">on</span><span class="o">&lt;</span><span class="nx">K</span> <span class="kd">extends</span> <span class="kr">keyof</span> <span class="nx">TEventMap</span><span class="o">&gt;</span><span class="p">(</span>
+    <span class="na">event</span><span class="p">:</span> <span class="nx">K</span><span class="p">,</span>
+    <span class="na">listener</span><span class="p">:</span> <span class="nx">Listener</span><span class="o">&lt;</span><span class="nx">TEventMap</span><span class="p">[</span><span class="nx">K</span><span class="p">]</span><span class="o">&gt;</span>
+  <span class="p">):</span> <span class="k">this</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">addListener</span><span class="p">(</span><span class="nx">event</span><span class="p">,</span> <span class="nx">listener</span><span class="p">,</span> <span class="kc">false</span><span class="p">);</span>
+  <span class="p">}</span>
+  
+  <span class="c1">// Add one-time event listener</span>
+  <span class="nx">once</span><span class="o">&lt;</span><span class="nx">K</span> <span class="kd">extends</span> <span class="kr">keyof</span> <span class="nx">TEventMap</span><span class="o">&gt;</span><span class="p">(</span>
+    <span class="na">event</span><span class="p">:</span> <span class="nx">K</span><span class="p">,</span>
+    <span class="na">listener</span><span class="p">:</span> <span class="nx">Listener</span><span class="o">&lt;</span><span class="nx">TEventMap</span><span class="p">[</span><span class="nx">K</span><span class="p">]</span><span class="o">&gt;</span>
+  <span class="p">):</span> <span class="k">this</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">addListener</span><span class="p">(</span><span class="nx">event</span><span class="p">,</span> <span class="nx">listener</span><span class="p">,</span> <span class="kc">true</span><span class="p">);</span>
+  <span class="p">}</span>
+  
+  <span class="c1">// Remove event listener</span>
+  <span class="nx">off</span><span class="o">&lt;</span><span class="nx">K</span> <span class="kd">extends</span> <span class="kr">keyof</span> <span class="nx">TEventMap</span><span class="o">&gt;</span><span class="p">(</span>
+    <span class="na">event</span><span class="p">:</span> <span class="nx">K</span><span class="p">,</span>
+    <span class="na">listener</span><span class="p">:</span> <span class="nx">Listener</span><span class="o">&lt;</span><span class="nx">TEventMap</span><span class="p">[</span><span class="nx">K</span><span class="p">]</span><span class="o">&gt;</span>
+  <span class="p">):</span> <span class="k">this</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="nx">eventListeners</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">listeners</span><span class="p">.</span><span class="kd">get</span><span class="p">(</span><span class="nx">event</span><span class="p">);</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">eventListeners</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">eventListeners</span><span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="nx">listenerData</span> <span class="o">=&gt;</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nx">listenerData</span><span class="p">.</span><span class="nx">listener</span> <span class="o">===</span> <span class="nx">listener</span><span class="p">)</span> <span class="p">{</span>
+          <span class="nx">eventListeners</span><span class="p">.</span><span class="k">delete</span><span class="p">(</span><span class="nx">listenerData</span><span class="p">);</span>
+        <span class="p">}</span>
+      <span class="p">});</span>
+      
+      <span class="k">if</span> <span class="p">(</span><span class="nx">eventListeners</span><span class="p">.</span><span class="nx">size</span> <span class="o">===</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">listeners</span><span class="p">.</span><span class="k">delete</span><span class="p">(</span><span class="nx">event</span><span class="p">);</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="k">this</span><span class="p">;</span>
+  <span class="p">}</span>
+  
+  <span class="c1">// Emit event</span>
+  <span class="nx">emit</span><span class="o">&lt;</span><span class="nx">K</span> <span class="kd">extends</span> <span class="kr">keyof</span> <span class="nx">TEventMap</span><span class="o">&gt;</span><span class="p">(</span>
+    <span class="na">event</span><span class="p">:</span> <span class="nx">K</span><span class="p">,</span>
+    <span class="na">payload</span><span class="p">:</span> <span class="nx">TEventMap</span><span class="p">[</span><span class="nx">K</span><span class="p">]</span>
+  <span class="p">):</span> <span class="nx">boolean</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="nx">eventListeners</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">listeners</span><span class="p">.</span><span class="kd">get</span><span class="p">(</span><span class="nx">event</span><span class="p">);</span>
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">eventListeners</span> <span class="o">||</span> <span class="nx">eventListeners</span><span class="p">.</span><span class="nx">size</span> <span class="o">===</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">return</span> <span class="kc">false</span><span class="p">;</span>
+    <span class="p">}</span>
+    
+    <span class="kd">const</span> <span class="na">listenersToRemove</span><span class="p">:</span> <span class="nx">ListenerData</span><span class="o">&lt;</span><span class="nx">TEventMap</span><span class="p">[</span><span class="nx">K</span><span class="p">]</span><span class="o">&gt;</span><span class="p">[]</span> <span class="o">=</span> <span class="p">[];</span>
+    
+    <span class="nx">eventListeners</span><span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="nx">listenerData</span> <span class="o">=&gt;</span> <span class="p">{</span>
+      <span class="nx">listenerData</span><span class="p">.</span><span class="nx">listener</span><span class="p">(</span><span class="nx">payload</span><span class="p">);</span>
+      
+      <span class="k">if</span> <span class="p">(</span><span class="nx">listenerData</span><span class="p">.</span><span class="nx">once</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">listenersToRemove</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">listenerData</span><span class="p">);</span>
+      <span class="p">}</span>
+    <span class="p">});</span>
+    
+    <span class="c1">// Remove one-time listeners</span>
+    <span class="nx">listenersToRemove</span><span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="nx">listenerData</span> <span class="o">=&gt;</span> <span class="p">{</span>
+      <span class="nx">eventListeners</span><span class="p">.</span><span class="k">delete</span><span class="p">(</span><span class="nx">listenerData</span><span class="p">);</span>
+    <span class="p">});</span>
+    
+    <span class="k">if</span> <span class="p">(</span><span class="nx">eventListeners</span><span class="p">.</span><span class="nx">size</span> <span class="o">===</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">this</span><span class="p">.</span><span class="nx">listeners</span><span class="p">.</span><span class="k">delete</span><span class="p">(</span><span class="nx">event</span><span class="p">);</span>
+    <span class="p">}</span>
+    
+    <span class="k">return</span> <span class="kc">true</span><span class="p">;</span>
+  <span class="p">}</span>
+  
+  <span class="c1">// Remove all listeners for an event</span>
+  <span class="nx">removeAllListeners</span><span class="o">&lt;</span><span class="nx">K</span> <span class="kd">extends</span> <span class="kr">keyof</span> <span class="nx">TEventMap</span><span class="o">&gt;</span><span class="p">(</span><span class="nx">event</span><span class="p">?:</span> <span class="nx">K</span><span class="p">):</span> <span class="k">this</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">event</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">this</span><span class="p">.</span><span class="nx">listeners</span><span class="p">.</span><span class="k">delete</span><span class="p">(</span><span class="nx">event</span><span class="p">);</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+      <span class="k">this</span><span class="p">.</span><span class="nx">listeners</span><span class="p">.</span><span class="nx">clear</span><span class="p">();</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="k">this</span><span class="p">;</span>
+  <span class="p">}</span>
+  
+  <span class="c1">// Get listener count for an event</span>
+  <span class="nx">listenerCount</span><span class="o">&lt;</span><span class="nx">K</span> <span class="kd">extends</span> <span class="kr">keyof</span> <span class="nx">TEventMap</span><span class="o">&gt;</span><span class="p">(</span><span class="na">event</span><span class="p">:</span> <span class="nx">K</span><span class="p">):</span> <span class="kr">number</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="nx">eventListeners</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">listeners</span><span class="p">.</span><span class="kd">get</span><span class="p">(</span><span class="nx">event</span><span class="p">);</span>
+    <span class="k">return</span> <span class="nx">eventListeners</span> <span class="p">?</span> <span class="nx">eventListeners</span><span class="p">.</span><span class="nx">size</span> <span class="p">:</span> <span class="mi">0</span><span class="p">;</span>
+  <span class="p">}</span>
+  
+  <span class="c1">// Get all event names that have listeners</span>
+  <span class="nx">eventNames</span><span class="p">():</span> <span class="p">(</span><span class="kr">keyof</span> <span class="nx">TEventMap</span><span class="p">)[]</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nb">Array</span><span class="p">.</span><span class="k">from</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">listeners</span><span class="p">.</span><span class="nx">keys</span><span class="p">());</span>
+  <span class="p">}</span>
+  
+  <span class="k">private</span> <span class="nx">addListener</span><span class="o">&lt;</span><span class="nx">K</span> <span class="kd">extends</span> <span class="kr">keyof</span> <span class="nx">TEventMap</span><span class="o">&gt;</span><span class="p">(</span>
+    <span class="na">event</span><span class="p">:</span> <span class="nx">K</span><span class="p">,</span>
+    <span class="na">listener</span><span class="p">:</span> <span class="nx">Listener</span><span class="o">&lt;</span><span class="nx">TEventMap</span><span class="p">[</span><span class="nx">K</span><span class="p">]</span><span class="o">&gt;</span><span class="p">,</span>
+    <span class="na">once</span><span class="p">:</span> <span class="nx">boolean</span>
+  <span class="p">):</span> <span class="k">this</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="k">this</span><span class="p">.</span><span class="nx">listeners</span><span class="p">.</span><span class="nx">has</span><span class="p">(</span><span class="nx">event</span><span class="p">))</span> <span class="p">{</span>
+      <span class="k">this</span><span class="p">.</span><span class="nx">listeners</span><span class="p">.</span><span class="kd">set</span><span class="p">(</span><span class="nx">event</span><span class="p">,</span> <span class="k">new</span> <span class="nb">Set</span><span class="p">());</span>
+    <span class="p">}</span>
+    
+    <span class="kd">const</span> <span class="nx">eventListeners</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">listeners</span><span class="p">.</span><span class="kd">get</span><span class="p">(</span><span class="nx">event</span><span class="p">)</span><span class="o">!</span><span class="p">;</span>
+    <span class="nx">eventListeners</span><span class="p">.</span><span class="nx">add</span><span class="p">({</span> <span class="nx">listener</span><span class="p">,</span> <span class="nx">once</span> <span class="p">});</span>
+    
+    <span class="k">return</span> <span class="k">this</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// Example usage</span>
+<span class="kr">interface</span> <span class="nx">AppEvents</span> <span class="p">{</span>
+  <span class="dl">'</span><span class="s1">user:login</span><span class="dl">'</span><span class="p">:</span> <span class="p">{</span> <span class="nl">userId</span><span class="p">:</span> <span class="kr">string</span><span class="p">;</span> <span class="nl">username</span><span class="p">:</span> <span class="kr">string</span><span class="p">;</span> <span class="nl">timestamp</span><span class="p">:</span> <span class="nb">Date</span> <span class="p">};</span>
+  <span class="dl">'</span><span class="s1">user:logout</span><span class="dl">'</span><span class="p">:</span> <span class="p">{</span> <span class="nl">userId</span><span class="p">:</span> <span class="kr">string</span><span class="p">;</span> <span class="nl">timestamp</span><span class="p">:</span> <span class="nb">Date</span> <span class="p">};</span>
+  <span class="dl">'</span><span class="s1">post:created</span><span class="dl">'</span><span class="p">:</span> <span class="p">{</span> <span class="nl">postId</span><span class="p">:</span> <span class="kr">string</span><span class="p">;</span> <span class="nl">authorId</span><span class="p">:</span> <span class="kr">string</span><span class="p">;</span> <span class="nl">title</span><span class="p">:</span> <span class="kr">string</span> <span class="p">};</span>
+  <span class="dl">'</span><span class="s1">post:updated</span><span class="dl">'</span><span class="p">:</span> <span class="p">{</span> <span class="nl">postId</span><span class="p">:</span> <span class="kr">string</span><span class="p">;</span> <span class="nl">changes</span><span class="p">:</span> <span class="nb">Record</span><span class="o">&lt;</span><span class="kr">string</span><span class="p">,</span> <span class="kr">any</span><span class="o">&gt;</span> <span class="p">};</span>
+  <span class="dl">'</span><span class="s1">error</span><span class="dl">'</span><span class="p">:</span> <span class="p">{</span> <span class="nl">message</span><span class="p">:</span> <span class="kr">string</span><span class="p">;</span> <span class="nl">code</span><span class="p">:</span> <span class="kr">number</span><span class="p">;</span> <span class="nl">stack</span><span class="p">?:</span> <span class="kr">string</span> <span class="p">};</span>
+  <span class="dl">'</span><span class="s1">notification</span><span class="dl">'</span><span class="p">:</span> <span class="p">{</span> <span class="nl">type</span><span class="p">:</span> <span class="dl">'</span><span class="s1">info</span><span class="dl">'</span> <span class="o">|</span> <span class="dl">'</span><span class="s1">warning</span><span class="dl">'</span> <span class="o">|</span> <span class="dl">'</span><span class="s1">error</span><span class="dl">'</span><span class="p">;</span> <span class="nl">message</span><span class="p">:</span> <span class="kr">string</span> <span class="p">};</span>
+<span class="p">}</span>
+
+<span class="kd">const</span> <span class="nx">eventEmitter</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">TypedEventEmitter</span><span class="o">&lt;</span><span class="nx">AppEvents</span><span class="o">&gt;</span><span class="p">();</span>
+
+<span class="c1">// Type-safe event listeners</span>
+<span class="nx">eventEmitter</span>
+  <span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="dl">'</span><span class="s1">user:login</span><span class="dl">'</span><span class="p">,</span> <span class="p">(</span><span class="nx">data</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="c1">// data is typed as { userId: string; username: string; timestamp: Date }</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">`User </span><span class="p">${</span><span class="nx">data</span><span class="p">.</span><span class="nx">username</span><span class="p">}</span><span class="s2"> logged in at </span><span class="p">${</span><span class="nx">data</span><span class="p">.</span><span class="nx">timestamp</span><span class="p">}</span><span class="s2">`</span><span class="p">);</span>
+  <span class="p">})</span>
+  <span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="dl">'</span><span class="s1">post:created</span><span class="dl">'</span><span class="p">,</span> <span class="p">(</span><span class="nx">data</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="c1">// data is typed as { postId: string; authorId: string; title: string }</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">`New post created: </span><span class="p">${</span><span class="nx">data</span><span class="p">.</span><span class="nx">title</span><span class="p">}</span><span class="s2">`</span><span class="p">);</span>
+  <span class="p">})</span>
+  <span class="p">.</span><span class="nx">once</span><span class="p">(</span><span class="dl">'</span><span class="s1">error</span><span class="dl">'</span><span class="p">,</span> <span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="c1">// data is typed as { message: string; code: number; stack?: string }</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="s2">`Error </span><span class="p">${</span><span class="nx">error</span><span class="p">.</span><span class="nx">code</span><span class="p">}</span><span class="s2">: </span><span class="p">${</span><span class="nx">error</span><span class="p">.</span><span class="nx">message</span><span class="p">}</span><span class="s2">`</span><span class="p">);</span>
+  <span class="p">});</span>
+
+<span class="c1">// Type-safe event emission</span>
+<span class="nx">eventEmitter</span><span class="p">.</span><span class="nx">emit</span><span class="p">(</span><span class="dl">'</span><span class="s1">user:login</span><span class="dl">'</span><span class="p">,</span> <span class="p">{</span>
+  <span class="na">userId</span><span class="p">:</span> <span class="dl">'</span><span class="s1">123</span><span class="dl">'</span><span class="p">,</span>
+  <span class="na">username</span><span class="p">:</span> <span class="dl">'</span><span class="s1">john_doe</span><span class="dl">'</span><span class="p">,</span>
+  <span class="na">timestamp</span><span class="p">:</span> <span class="k">new</span> <span class="nb">Date</span><span class="p">()</span>
+<span class="p">});</span>
+
+<span class="c1">// This would cause a TypeScript error:</span>
+<span class="c1">// eventEmitter.emit('user:login', { userId: 123 }); // Error: missing properties</span>
+
+<span class="c1">// Advanced: Event emitter with middleware</span>
+<span class="kd">type</span> <span class="nx">EventMiddleware</span><span class="o">&lt;</span><span class="nx">TEventMap</span> <span class="kd">extends</span> <span class="nx">EventMap</span><span class="o">&gt;</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="o">&lt;</span><span class="nx">K</span> <span class="kd">extends</span> <span class="kr">keyof</span> <span class="nx">TEventMap</span><span class="o">&gt;</span><span class="p">(</span>
+    <span class="na">event</span><span class="p">:</span> <span class="nx">K</span><span class="p">,</span>
+    <span class="na">payload</span><span class="p">:</span> <span class="nx">TEventMap</span><span class="p">[</span><span class="nx">K</span><span class="p">],</span>
+    <span class="na">next</span><span class="p">:</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="k">void</span>
+  <span class="p">):</span> <span class="k">void</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="kd">class</span> <span class="nx">AdvancedEventEmitter</span><span class="o">&lt;</span><span class="nx">TEventMap</span> <span class="kd">extends</span> <span class="nx">EventMap</span><span class="o">&gt;</span> <span class="kd">extends</span> <span class="nx">TypedEventEmitter</span><span class="o">&lt;</span><span class="nx">TEventMap</span><span class="o">&gt;</span> <span class="p">{</span>
+  <span class="k">private</span> <span class="na">middleware</span><span class="p">:</span> <span class="nx">EventMiddleware</span><span class="o">&lt;</span><span class="nx">TEventMap</span><span class="o">&gt;</span><span class="p">[]</span> <span class="o">=</span> <span class="p">[];</span>
+  
+  <span class="nx">use</span><span class="p">(</span><span class="na">middleware</span><span class="p">:</span> <span class="nx">EventMiddleware</span><span class="o">&lt;</span><span class="nx">TEventMap</span><span class="o">&gt;</span><span class="p">):</span> <span class="k">this</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">middleware</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">middleware</span><span class="p">);</span>
+    <span class="k">return</span> <span class="k">this</span><span class="p">;</span>
+  <span class="p">}</span>
+  
+  <span class="nx">emit</span><span class="o">&lt;</span><span class="nx">K</span> <span class="kd">extends</span> <span class="kr">keyof</span> <span class="nx">TEventMap</span><span class="o">&gt;</span><span class="p">(</span>
+    <span class="na">event</span><span class="p">:</span> <span class="nx">K</span><span class="p">,</span>
+    <span class="na">payload</span><span class="p">:</span> <span class="nx">TEventMap</span><span class="p">[</span><span class="nx">K</span><span class="p">]</span>
+  <span class="p">):</span> <span class="nx">boolean</span> <span class="p">{</span>
+    <span class="kd">let</span> <span class="nx">index</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    
+    <span class="kd">const</span> <span class="nx">runMiddleware</span> <span class="o">=</span> <span class="p">():</span> <span class="k">void</span> <span class="o">=&gt;</span> <span class="p">{</span>
+      <span class="k">if</span> <span class="p">(</span><span class="nx">index</span> <span class="o">&gt;=</span> <span class="k">this</span><span class="p">.</span><span class="nx">middleware</span><span class="p">.</span><span class="nx">length</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">super</span><span class="p">.</span><span class="nx">emit</span><span class="p">(</span><span class="nx">event</span><span class="p">,</span> <span class="nx">payload</span><span class="p">);</span>
+        <span class="k">return</span><span class="p">;</span>
+      <span class="p">}</span>
+      
+      <span class="kd">const</span> <span class="nx">middleware</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">middleware</span><span class="p">[</span><span class="nx">index</span><span class="o">++</span><span class="p">];</span>
+      <span class="nx">middleware</span><span class="p">(</span><span class="nx">event</span><span class="p">,</span> <span class="nx">payload</span><span class="p">,</span> <span class="nx">runMiddleware</span><span class="p">);</span>
+    <span class="p">};</span>
+    
+    <span class="nx">runMiddleware</span><span class="p">();</span>
+    <span class="k">return</span> <span class="kc">true</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// Usage with middleware</span>
+<span class="kd">const</span> <span class="nx">advancedEmitter</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">AdvancedEventEmitter</span><span class="o">&lt;</span><span class="nx">AppEvents</span><span class="o">&gt;</span><span class="p">();</span>
+
+<span class="c1">// Logging middleware</span>
+<span class="nx">advancedEmitter</span><span class="p">.</span><span class="nx">use</span><span class="p">((</span><span class="nx">event</span><span class="p">,</span> <span class="nx">payload</span><span class="p">,</span> <span class="nx">next</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">`Event: </span><span class="p">${</span><span class="nb">String</span><span class="p">(</span><span class="nx">event</span><span class="p">)}</span><span class="s2">`</span><span class="p">,</span> <span class="nx">payload</span><span class="p">);</span>
+  <span class="nx">next</span><span class="p">();</span>
+<span class="p">});</span>
+
+<span class="c1">// Validation middleware</span>
+<span class="nx">advancedEmitter</span><span class="p">.</span><span class="nx">use</span><span class="p">((</span><span class="nx">event</span><span class="p">,</span> <span class="nx">payload</span><span class="p">,</span> <span class="nx">next</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nx">event</span> <span class="o">===</span> <span class="dl">'</span><span class="s1">error</span><span class="dl">'</span> <span class="o">&amp;&amp;</span> <span class="o">!</span><span class="nx">payload</span><span class="p">.</span><span class="nx">message</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">warn</span><span class="p">(</span><span class="dl">'</span><span class="s1">Error event must have a message</span><span class="dl">'</span><span class="p">);</span>
+    <span class="k">return</span><span class="p">;</span>
+  <span class="p">}</span>
+  <span class="nx">next</span><span class="p">();</span>
+<span class="p">});</span>
+
+<span class="nx">advancedEmitter</span><span class="p">.</span><span class="nx">emit</span><span class="p">(</span><span class="dl">'</span><span class="s1">user:login</span><span class="dl">'</span><span class="p">,</span> <span class="p">{</span>
+  <span class="na">userId</span><span class="p">:</span> <span class="dl">'</span><span class="s1">123</span><span class="dl">'</span><span class="p">,</span>
+  <span class="na">username</span><span class="p">:</span> <span class="dl">'</span><span class="s1">john_doe</span><span class="dl">'</span><span class="p">,</span>
+  <span class="na">timestamp</span><span class="p">:</span> <span class="k">new</span> <span class="nb">Date</span><span class="p">()</span>
+<span class="p">});</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<h2 id="problem-3-generic-form-builder">Problem 3: Generic Form Builder</h2>
+
+<p>Create a type-safe form builder that generates forms based on schema definitions with validation.</p>
+
+<h3 id="requirements-2">Requirements:</h3>
+<ol>
+  <li><strong>Type-safe schema</strong>: Form schema should define field types and validation</li>
+  <li><strong>Dynamic form generation</strong>: Generate form fields based on schema</li>
+  <li><strong>Validation</strong>: Built-in and custom validation with error messages</li>
+  <li><strong>Type-safe values</strong>: Form values should be correctly typed</li>
+  <li><strong>Conditional fields</strong>: Support for conditional field display</li>
+</ol>
+
+<h3 id="solution-2">Solution:</h3>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155
+156
+157
+158
+159
+160
+161
+162
+163
+164
+165
+166
+167
+168
+169
+170
+171
+172
+173
+174
+175
+176
+177
+178
+179
+180
+181
+182
+183
+184
+185
+186
+187
+188
+189
+190
+191
+192
+193
+194
+195
+196
+197
+198
+199
+200
+201
+202
+203
+204
+205
+206
+207
+208
+209
+210
+211
+212
+213
+214
+215
+216
+217
+218
+219
+220
+221
+222
+223
+224
+225
+226
+227
+228
+229
+230
+231
+232
+233
+234
+235
+236
+237
+238
+239
+240
+241
+242
+243
+244
+245
+246
+247
+248
+249
+250
+251
+252
+253
+254
+255
+256
+257
+258
+259
+260
+261
+262
+263
+264
+265
+266
+267
+268
+269
+270
+271
+272
+273
+274
+275
+276
+277
+278
+279
+280
+281
+282
+283
+284
+285
+286
+287
+288
+289
+290
+291
+292
+293
+294
+295
+296
+297
+298
+299
+300
+301
+302
+303
+304
+305
+306
+307
+308
+309
+310
+311
+312
+313
+314
+315
+316
+317
+318
+319
+320
+321
+322
+323
+324
+325
+326
+327
+328
+329
+330
+331
+332
+333
+334
+335
+336
+337
+338
+339
+340
+341
+342
+343
+344
+345
+346
+347
+348
+349
+350
+351
+352
+353
+354
+355
+356
+357
+358
+359
+360
+361
+362
+363
+364
+365
+366
+367
+368
+369
+370
+371
+372
+373
+374
+375
+376
+377
+378
+379
+380
+381
+382
+383
+384
+385
+386
+387
+388
+389
+390
+391
+392
+393
+394
+395
+396
+397
+398
+399
+400
+401
+402
+403
+404
+405
+406
+407
+408
+409
+410
+411
+412
+413
+414
+415
+416
+417
+418
+419
+420
+421
+422
+</pre></td><td class="rouge-code"><pre><span class="c1">// Base field types</span>
+<span class="kd">type</span> <span class="nx">FieldType</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">text</span><span class="dl">'</span> <span class="o">|</span> <span class="dl">'</span><span class="s1">email</span><span class="dl">'</span> <span class="o">|</span> <span class="dl">'</span><span class="s1">password</span><span class="dl">'</span> <span class="o">|</span> <span class="dl">'</span><span class="s1">number</span><span class="dl">'</span> <span class="o">|</span> <span class="dl">'</span><span class="s1">select</span><span class="dl">'</span> <span class="o">|</span> <span class="dl">'</span><span class="s1">checkbox</span><span class="dl">'</span> <span class="o">|</span> <span class="dl">'</span><span class="s1">date</span><span class="dl">'</span><span class="p">;</span>
+
+<span class="c1">// Validation rules</span>
+<span class="kr">interface</span> <span class="nx">ValidationRule</span><span class="o">&lt;</span><span class="nx">T</span> <span class="o">=</span> <span class="kr">any</span><span class="o">&gt;</span> <span class="p">{</span>
+  <span class="na">rule</span><span class="p">:</span> <span class="p">(</span><span class="na">value</span><span class="p">:</span> <span class="nx">T</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">boolean</span><span class="p">;</span>
+  <span class="nl">message</span><span class="p">:</span> <span class="kr">string</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c1">// Field configuration</span>
+<span class="kr">interface</span> <span class="nx">BaseFieldConfig</span> <span class="p">{</span>
+  <span class="nl">type</span><span class="p">:</span> <span class="nx">FieldType</span><span class="p">;</span>
+  <span class="nl">label</span><span class="p">:</span> <span class="kr">string</span><span class="p">;</span>
+  <span class="nl">placeholder</span><span class="p">?:</span> <span class="kr">string</span><span class="p">;</span>
+  <span class="nl">required</span><span class="p">?:</span> <span class="nx">boolean</span><span class="p">;</span>
+  <span class="nl">disabled</span><span class="p">?:</span> <span class="nx">boolean</span><span class="p">;</span>
+  <span class="nl">validation</span><span class="p">?:</span> <span class="nx">ValidationRule</span><span class="o">&lt;</span><span class="kr">any</span><span class="o">&gt;</span><span class="p">[];</span>
+  <span class="nl">dependsOn</span><span class="p">?:</span> <span class="kr">string</span><span class="p">;</span>
+  <span class="nl">condition</span><span class="p">?:</span> <span class="p">(</span><span class="nx">values</span><span class="p">:</span> <span class="nb">Record</span><span class="o">&lt;</span><span class="kr">string</span><span class="p">,</span> <span class="kr">any</span><span class="o">&gt;</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">boolean</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kr">interface</span> <span class="nx">TextFieldConfig</span> <span class="kd">extends</span> <span class="nx">BaseFieldConfig</span> <span class="p">{</span>
+  <span class="nl">type</span><span class="p">:</span> <span class="dl">'</span><span class="s1">text</span><span class="dl">'</span> <span class="o">|</span> <span class="dl">'</span><span class="s1">email</span><span class="dl">'</span> <span class="o">|</span> <span class="dl">'</span><span class="s1">password</span><span class="dl">'</span><span class="p">;</span>
+  <span class="nl">minLength</span><span class="p">?:</span> <span class="kr">number</span><span class="p">;</span>
+  <span class="nl">maxLength</span><span class="p">?:</span> <span class="kr">number</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kr">interface</span> <span class="nx">NumberFieldConfig</span> <span class="kd">extends</span> <span class="nx">BaseFieldConfig</span> <span class="p">{</span>
+  <span class="nl">type</span><span class="p">:</span> <span class="dl">'</span><span class="s1">number</span><span class="dl">'</span><span class="p">;</span>
+  <span class="nl">min</span><span class="p">?:</span> <span class="kr">number</span><span class="p">;</span>
+  <span class="nl">max</span><span class="p">?:</span> <span class="kr">number</span><span class="p">;</span>
+  <span class="nl">step</span><span class="p">?:</span> <span class="kr">number</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kr">interface</span> <span class="nx">SelectFieldConfig</span> <span class="kd">extends</span> <span class="nx">BaseFieldConfig</span> <span class="p">{</span>
+  <span class="nl">type</span><span class="p">:</span> <span class="dl">'</span><span class="s1">select</span><span class="dl">'</span><span class="p">;</span>
+  <span class="nl">options</span><span class="p">:</span> <span class="p">{</span> <span class="na">value</span><span class="p">:</span> <span class="kr">string</span> <span class="o">|</span> <span class="kr">number</span><span class="p">;</span> <span class="nl">label</span><span class="p">:</span> <span class="kr">string</span> <span class="p">}[];</span>
+  <span class="nl">multiple</span><span class="p">?:</span> <span class="nx">boolean</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kr">interface</span> <span class="nx">CheckboxFieldConfig</span> <span class="kd">extends</span> <span class="nx">BaseFieldConfig</span> <span class="p">{</span>
+  <span class="nl">type</span><span class="p">:</span> <span class="dl">'</span><span class="s1">checkbox</span><span class="dl">'</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kr">interface</span> <span class="nx">DateFieldConfig</span> <span class="kd">extends</span> <span class="nx">BaseFieldConfig</span> <span class="p">{</span>
+  <span class="nl">type</span><span class="p">:</span> <span class="dl">'</span><span class="s1">date</span><span class="dl">'</span><span class="p">;</span>
+  <span class="nl">min</span><span class="p">?:</span> <span class="kr">string</span><span class="p">;</span>
+  <span class="nl">max</span><span class="p">?:</span> <span class="kr">string</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kd">type</span> <span class="nx">FieldConfig</span> <span class="o">=</span> 
+  <span class="o">|</span> <span class="nx">TextFieldConfig</span> 
+  <span class="o">|</span> <span class="nx">NumberFieldConfig</span> 
+  <span class="o">|</span> <span class="nx">SelectFieldConfig</span> 
+  <span class="o">|</span> <span class="nx">CheckboxFieldConfig</span> 
+  <span class="o">|</span> <span class="nx">DateFieldConfig</span><span class="p">;</span>
+
+<span class="c1">// Form schema</span>
+<span class="kd">type</span> <span class="nx">FormSchema</span> <span class="o">=</span> <span class="nb">Record</span><span class="o">&lt;</span><span class="kr">string</span><span class="p">,</span> <span class="nx">FieldConfig</span><span class="o">&gt;</span><span class="p">;</span>
+
+<span class="c1">// Infer value types from schema</span>
+<span class="kd">type</span> <span class="nx">InferFormValues</span><span class="o">&lt;</span><span class="nx">T</span> <span class="kd">extends</span> <span class="nx">FormSchema</span><span class="o">&gt;</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="p">[</span><span class="nx">K</span> <span class="k">in</span> <span class="kr">keyof</span> <span class="nx">T</span><span class="p">]:</span> <span class="nx">T</span><span class="p">[</span><span class="nx">K</span><span class="p">]</span> <span class="kd">extends</span> <span class="p">{</span> <span class="na">type</span><span class="p">:</span> <span class="dl">'</span><span class="s1">text</span><span class="dl">'</span> <span class="o">|</span> <span class="dl">'</span><span class="s1">email</span><span class="dl">'</span> <span class="o">|</span> <span class="dl">'</span><span class="s1">password</span><span class="dl">'</span> <span class="p">}</span>
+    <span class="p">?</span> <span class="kr">string</span>
+    <span class="p">:</span> <span class="nx">T</span><span class="p">[</span><span class="nx">K</span><span class="p">]</span> <span class="kd">extends</span> <span class="p">{</span> <span class="na">type</span><span class="p">:</span> <span class="dl">'</span><span class="s1">number</span><span class="dl">'</span> <span class="p">}</span>
+    <span class="p">?</span> <span class="kr">number</span>
+    <span class="p">:</span> <span class="nx">T</span><span class="p">[</span><span class="nx">K</span><span class="p">]</span> <span class="kd">extends</span> <span class="p">{</span> <span class="na">type</span><span class="p">:</span> <span class="dl">'</span><span class="s1">select</span><span class="dl">'</span><span class="p">;</span> <span class="nl">multiple</span><span class="p">:</span> <span class="kc">true</span> <span class="p">}</span>
+    <span class="p">?</span> <span class="p">(</span><span class="kr">string</span> <span class="o">|</span> <span class="kr">number</span><span class="p">)[]</span>
+    <span class="p">:</span> <span class="nx">T</span><span class="p">[</span><span class="nx">K</span><span class="p">]</span> <span class="kd">extends</span> <span class="p">{</span> <span class="na">type</span><span class="p">:</span> <span class="dl">'</span><span class="s1">select</span><span class="dl">'</span> <span class="p">}</span>
+    <span class="p">?</span> <span class="kr">string</span> <span class="o">|</span> <span class="kr">number</span>
+    <span class="p">:</span> <span class="nx">T</span><span class="p">[</span><span class="nx">K</span><span class="p">]</span> <span class="kd">extends</span> <span class="p">{</span> <span class="na">type</span><span class="p">:</span> <span class="dl">'</span><span class="s1">checkbox</span><span class="dl">'</span> <span class="p">}</span>
+    <span class="p">?</span> <span class="nx">boolean</span>
+    <span class="p">:</span> <span class="nx">T</span><span class="p">[</span><span class="nx">K</span><span class="p">]</span> <span class="kd">extends</span> <span class="p">{</span> <span class="na">type</span><span class="p">:</span> <span class="dl">'</span><span class="s1">date</span><span class="dl">'</span> <span class="p">}</span>
+    <span class="p">?</span> <span class="nb">Date</span>
+    <span class="p">:</span> <span class="kr">any</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="c1">// Form validation result</span>
+<span class="kr">interface</span> <span class="nx">ValidationResult</span> <span class="p">{</span>
+  <span class="nl">isValid</span><span class="p">:</span> <span class="nx">boolean</span><span class="p">;</span>
+  <span class="nl">errors</span><span class="p">:</span> <span class="nb">Record</span><span class="o">&lt;</span><span class="kr">string</span><span class="p">,</span> <span class="kr">string</span><span class="p">[]</span><span class="o">&gt;</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c1">// Form builder class</span>
+<span class="kd">class</span> <span class="nx">FormBuilder</span><span class="o">&lt;</span><span class="nx">TSchema</span> <span class="kd">extends</span> <span class="nx">FormSchema</span><span class="o">&gt;</span> <span class="p">{</span>
+  <span class="k">private</span> <span class="na">schema</span><span class="p">:</span> <span class="nx">TSchema</span><span class="p">;</span>
+  <span class="k">private</span> <span class="na">values</span><span class="p">:</span> <span class="nb">Partial</span><span class="o">&lt;</span><span class="nx">InferFormValues</span><span class="o">&lt;</span><span class="nx">TSchema</span><span class="o">&gt;&gt;</span> <span class="o">=</span> <span class="p">{};</span>
+  <span class="k">private</span> <span class="na">errors</span><span class="p">:</span> <span class="nb">Record</span><span class="o">&lt;</span><span class="kr">string</span><span class="p">,</span> <span class="kr">string</span><span class="p">[]</span><span class="o">&gt;</span> <span class="o">=</span> <span class="p">{};</span>
+  <span class="k">private</span> <span class="na">touched</span><span class="p">:</span> <span class="nb">Record</span><span class="o">&lt;</span><span class="kr">string</span><span class="p">,</span> <span class="nx">boolean</span><span class="o">&gt;</span> <span class="o">=</span> <span class="p">{};</span>
+
+  <span class="kd">constructor</span><span class="p">(</span><span class="na">schema</span><span class="p">:</span> <span class="nx">TSchema</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">schema</span> <span class="o">=</span> <span class="nx">schema</span><span class="p">;</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">initializeValues</span><span class="p">();</span>
+  <span class="p">}</span>
+
+  <span class="k">private</span> <span class="nx">initializeValues</span><span class="p">():</span> <span class="k">void</span> <span class="p">{</span>
+    <span class="nb">Object</span><span class="p">.</span><span class="nx">keys</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">schema</span><span class="p">).</span><span class="nx">forEach</span><span class="p">(</span><span class="nx">key</span> <span class="o">=&gt;</span> <span class="p">{</span>
+      <span class="kd">const</span> <span class="nx">field</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">schema</span><span class="p">[</span><span class="nx">key</span><span class="p">];</span>
+      
+      <span class="k">switch</span> <span class="p">(</span><span class="nx">field</span><span class="p">.</span><span class="kd">type</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">case</span> <span class="dl">'</span><span class="s1">checkbox</span><span class="dl">'</span><span class="p">:</span>
+          <span class="k">this</span><span class="p">.</span><span class="nx">values</span><span class="p">[</span><span class="nx">key</span> <span class="k">as</span> <span class="kr">keyof</span> <span class="nx">InferFormValues</span><span class="o">&lt;</span><span class="nx">TSchema</span><span class="o">&gt;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">false</span> <span class="k">as</span> <span class="kr">any</span><span class="p">;</span>
+          <span class="k">break</span><span class="p">;</span>
+        <span class="k">case</span> <span class="dl">'</span><span class="s1">select</span><span class="dl">'</span><span class="p">:</span>
+          <span class="k">if</span> <span class="p">((</span><span class="nx">field</span> <span class="k">as</span> <span class="nx">SelectFieldConfig</span><span class="p">).</span><span class="nx">multiple</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">this</span><span class="p">.</span><span class="nx">values</span><span class="p">[</span><span class="nx">key</span> <span class="k">as</span> <span class="kr">keyof</span> <span class="nx">InferFormValues</span><span class="o">&lt;</span><span class="nx">TSchema</span><span class="o">&gt;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span> <span class="k">as</span> <span class="kr">any</span><span class="p">;</span>
+          <span class="p">}</span>
+          <span class="k">break</span><span class="p">;</span>
+        <span class="nl">default</span><span class="p">:</span>
+          <span class="k">this</span><span class="p">.</span><span class="nx">values</span><span class="p">[</span><span class="nx">key</span> <span class="k">as</span> <span class="kr">keyof</span> <span class="nx">InferFormValues</span><span class="o">&lt;</span><span class="nx">TSchema</span><span class="o">&gt;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">undefined</span> <span class="k">as</span> <span class="kr">any</span><span class="p">;</span>
+      <span class="p">}</span>
+    <span class="p">});</span>
+  <span class="p">}</span>
+
+  <span class="c1">// Set field value</span>
+  <span class="nx">setValue</span><span class="o">&lt;</span><span class="nx">K</span> <span class="kd">extends</span> <span class="kr">keyof</span> <span class="nx">InferFormValues</span><span class="o">&lt;</span><span class="nx">TSchema</span><span class="o">&gt;&gt;</span><span class="p">(</span>
+    <span class="na">field</span><span class="p">:</span> <span class="nx">K</span><span class="p">,</span>
+    <span class="na">value</span><span class="p">:</span> <span class="nx">InferFormValues</span><span class="o">&lt;</span><span class="nx">TSchema</span><span class="o">&gt;</span><span class="p">[</span><span class="nx">K</span><span class="p">]</span>
+  <span class="p">):</span> <span class="k">this</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">values</span><span class="p">[</span><span class="nx">field</span><span class="p">]</span> <span class="o">=</span> <span class="nx">value</span><span class="p">;</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">touched</span><span class="p">[</span><span class="nx">field</span> <span class="k">as</span> <span class="kr">string</span><span class="p">]</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">validateField</span><span class="p">(</span><span class="nx">field</span> <span class="k">as</span> <span class="kr">string</span><span class="p">);</span>
+    <span class="k">return</span> <span class="k">this</span><span class="p">;</span>
+  <span class="p">}</span>
+
+  <span class="c1">// Get field value</span>
+  <span class="nx">getValue</span><span class="o">&lt;</span><span class="nx">K</span> <span class="kd">extends</span> <span class="kr">keyof</span> <span class="nx">InferFormValues</span><span class="o">&lt;</span><span class="nx">TSchema</span><span class="o">&gt;&gt;</span><span class="p">(</span>
+    <span class="na">field</span><span class="p">:</span> <span class="nx">K</span>
+  <span class="p">):</span> <span class="nx">InferFormValues</span><span class="o">&lt;</span><span class="nx">TSchema</span><span class="o">&gt;</span><span class="p">[</span><span class="nx">K</span><span class="p">]</span> <span class="o">|</span> <span class="kc">undefined</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">values</span><span class="p">[</span><span class="nx">field</span><span class="p">];</span>
+  <span class="p">}</span>
+
+  <span class="c1">// Get all values</span>
+  <span class="nx">getValues</span><span class="p">():</span> <span class="nb">Partial</span><span class="o">&lt;</span><span class="nx">InferFormValues</span><span class="o">&lt;</span><span class="nx">TSchema</span><span class="o">&gt;&gt;</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="p">{</span> <span class="p">...</span><span class="k">this</span><span class="p">.</span><span class="nx">values</span> <span class="p">};</span>
+  <span class="p">}</span>
+
+  <span class="c1">// Validate single field</span>
+  <span class="k">private</span> <span class="nx">validateField</span><span class="p">(</span><span class="na">fieldName</span><span class="p">:</span> <span class="kr">string</span><span class="p">):</span> <span class="k">void</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="nx">field</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">schema</span><span class="p">[</span><span class="nx">fieldName</span><span class="p">];</span>
+    <span class="kd">const</span> <span class="nx">value</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">values</span><span class="p">[</span><span class="nx">fieldName</span> <span class="k">as</span> <span class="kr">keyof</span> <span class="nx">InferFormValues</span><span class="o">&lt;</span><span class="nx">TSchema</span><span class="o">&gt;</span><span class="p">];</span>
+    <span class="kd">const</span> <span class="na">fieldErrors</span><span class="p">:</span> <span class="kr">string</span><span class="p">[]</span> <span class="o">=</span> <span class="p">[];</span>
+
+    <span class="c1">// Required validation</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">field</span><span class="p">.</span><span class="nx">required</span> <span class="o">&amp;&amp;</span> <span class="p">(</span><span class="nx">value</span> <span class="o">===</span> <span class="kc">undefined</span> <span class="o">||</span> <span class="nx">value</span> <span class="o">===</span> <span class="kc">null</span> <span class="o">||</span> <span class="nx">value</span> <span class="o">===</span> <span class="dl">''</span><span class="p">))</span> <span class="p">{</span>
+      <span class="nx">fieldErrors</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="s2">`</span><span class="p">${</span><span class="nx">field</span><span class="p">.</span><span class="nx">label</span><span class="p">}</span><span class="s2"> is required`</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="c1">// Type-specific validation</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">value</span> <span class="o">!==</span> <span class="kc">undefined</span> <span class="o">&amp;&amp;</span> <span class="nx">value</span> <span class="o">!==</span> <span class="kc">null</span> <span class="o">&amp;&amp;</span> <span class="nx">value</span> <span class="o">!==</span> <span class="dl">''</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">switch</span> <span class="p">(</span><span class="nx">field</span><span class="p">.</span><span class="kd">type</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">case</span> <span class="dl">'</span><span class="s1">text</span><span class="dl">'</span><span class="p">:</span>
+        <span class="k">case</span> <span class="dl">'</span><span class="s1">email</span><span class="dl">'</span><span class="p">:</span>
+        <span class="k">case</span> <span class="dl">'</span><span class="s1">password</span><span class="dl">'</span><span class="p">:</span>
+          <span class="kd">const</span> <span class="nx">textField</span> <span class="o">=</span> <span class="nx">field</span> <span class="k">as</span> <span class="nx">TextFieldConfig</span><span class="p">;</span>
+          <span class="kd">const</span> <span class="nx">textValue</span> <span class="o">=</span> <span class="nx">value</span> <span class="k">as</span> <span class="kr">string</span><span class="p">;</span>
+          
+          <span class="k">if</span> <span class="p">(</span><span class="nx">textField</span><span class="p">.</span><span class="nx">minLength</span> <span class="o">&amp;&amp;</span> <span class="nx">textValue</span><span class="p">.</span><span class="nx">length</span> <span class="o">&lt;</span> <span class="nx">textField</span><span class="p">.</span><span class="nx">minLength</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nx">fieldErrors</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="s2">`</span><span class="p">${</span><span class="nx">field</span><span class="p">.</span><span class="nx">label</span><span class="p">}</span><span class="s2"> must be at least </span><span class="p">${</span><span class="nx">textField</span><span class="p">.</span><span class="nx">minLength</span><span class="p">}</span><span class="s2"> characters`</span><span class="p">);</span>
+          <span class="p">}</span>
+          
+          <span class="k">if</span> <span class="p">(</span><span class="nx">textField</span><span class="p">.</span><span class="nx">maxLength</span> <span class="o">&amp;&amp;</span> <span class="nx">textValue</span><span class="p">.</span><span class="nx">length</span> <span class="o">&gt;</span> <span class="nx">textField</span><span class="p">.</span><span class="nx">maxLength</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nx">fieldErrors</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="s2">`</span><span class="p">${</span><span class="nx">field</span><span class="p">.</span><span class="nx">label</span><span class="p">}</span><span class="s2"> must be no more than </span><span class="p">${</span><span class="nx">textField</span><span class="p">.</span><span class="nx">maxLength</span><span class="p">}</span><span class="s2"> characters`</span><span class="p">);</span>
+          <span class="p">}</span>
+          
+          <span class="k">if</span> <span class="p">(</span><span class="nx">field</span><span class="p">.</span><span class="kd">type</span> <span class="o">===</span> <span class="dl">'</span><span class="s1">email</span><span class="dl">'</span><span class="p">)</span> <span class="p">{</span>
+            <span class="kd">const</span> <span class="nx">emailRegex</span> <span class="o">=</span> <span class="sr">/^</span><span class="se">[^\s</span><span class="sr">@</span><span class="se">]</span><span class="sr">+@</span><span class="se">[^\s</span><span class="sr">@</span><span class="se">]</span><span class="sr">+</span><span class="se">\.[^\s</span><span class="sr">@</span><span class="se">]</span><span class="sr">+$/</span><span class="p">;</span>
+            <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">emailRegex</span><span class="p">.</span><span class="nx">test</span><span class="p">(</span><span class="nx">textValue</span><span class="p">))</span> <span class="p">{</span>
+              <span class="nx">fieldErrors</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="s2">`</span><span class="p">${</span><span class="nx">field</span><span class="p">.</span><span class="nx">label</span><span class="p">}</span><span class="s2"> must be a valid email address`</span><span class="p">);</span>
+            <span class="p">}</span>
+          <span class="p">}</span>
+          <span class="k">break</span><span class="p">;</span>
+
+        <span class="k">case</span> <span class="dl">'</span><span class="s1">number</span><span class="dl">'</span><span class="p">:</span>
+          <span class="kd">const</span> <span class="nx">numberField</span> <span class="o">=</span> <span class="nx">field</span> <span class="k">as</span> <span class="nx">NumberFieldConfig</span><span class="p">;</span>
+          <span class="kd">const</span> <span class="nx">numberValue</span> <span class="o">=</span> <span class="nx">value</span> <span class="k">as</span> <span class="kr">number</span><span class="p">;</span>
+          
+          <span class="k">if</span> <span class="p">(</span><span class="nx">numberField</span><span class="p">.</span><span class="nx">min</span> <span class="o">!==</span> <span class="kc">undefined</span> <span class="o">&amp;&amp;</span> <span class="nx">numberValue</span> <span class="o">&lt;</span> <span class="nx">numberField</span><span class="p">.</span><span class="nx">min</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nx">fieldErrors</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="s2">`</span><span class="p">${</span><span class="nx">field</span><span class="p">.</span><span class="nx">label</span><span class="p">}</span><span class="s2"> must be at least </span><span class="p">${</span><span class="nx">numberField</span><span class="p">.</span><span class="nx">min</span><span class="p">}</span><span class="s2">`</span><span class="p">);</span>
+          <span class="p">}</span>
+          
+          <span class="k">if</span> <span class="p">(</span><span class="nx">numberField</span><span class="p">.</span><span class="nx">max</span> <span class="o">!==</span> <span class="kc">undefined</span> <span class="o">&amp;&amp;</span> <span class="nx">numberValue</span> <span class="o">&gt;</span> <span class="nx">numberField</span><span class="p">.</span><span class="nx">max</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nx">fieldErrors</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="s2">`</span><span class="p">${</span><span class="nx">field</span><span class="p">.</span><span class="nx">label</span><span class="p">}</span><span class="s2"> must be no more than </span><span class="p">${</span><span class="nx">numberField</span><span class="p">.</span><span class="nx">max</span><span class="p">}</span><span class="s2">`</span><span class="p">);</span>
+          <span class="p">}</span>
+          <span class="k">break</span><span class="p">;</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="c1">// Custom validation rules</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">field</span><span class="p">.</span><span class="nx">validation</span> <span class="o">&amp;&amp;</span> <span class="nx">value</span> <span class="o">!==</span> <span class="kc">undefined</span> <span class="o">&amp;&amp;</span> <span class="nx">value</span> <span class="o">!==</span> <span class="kc">null</span> <span class="o">&amp;&amp;</span> <span class="nx">value</span> <span class="o">!==</span> <span class="dl">''</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">field</span><span class="p">.</span><span class="nx">validation</span><span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="nx">rule</span> <span class="o">=&gt;</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">rule</span><span class="p">.</span><span class="nx">rule</span><span class="p">(</span><span class="nx">value</span><span class="p">))</span> <span class="p">{</span>
+          <span class="nx">fieldErrors</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">rule</span><span class="p">.</span><span class="nx">message</span><span class="p">);</span>
+        <span class="p">}</span>
+      <span class="p">});</span>
+    <span class="p">}</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="nx">fieldErrors</span><span class="p">.</span><span class="nx">length</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">this</span><span class="p">.</span><span class="nx">errors</span><span class="p">[</span><span class="nx">fieldName</span><span class="p">]</span> <span class="o">=</span> <span class="nx">fieldErrors</span><span class="p">;</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+      <span class="k">delete</span> <span class="k">this</span><span class="p">.</span><span class="nx">errors</span><span class="p">[</span><span class="nx">fieldName</span><span class="p">];</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+
+  <span class="c1">// Validate entire form</span>
+  <span class="nx">validate</span><span class="p">():</span> <span class="nx">ValidationResult</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="nx">visibleFields</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">getVisibleFields</span><span class="p">();</span>
+    
+    <span class="nx">visibleFields</span><span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="nx">fieldName</span> <span class="o">=&gt;</span> <span class="p">{</span>
+      <span class="k">this</span><span class="p">.</span><span class="nx">validateField</span><span class="p">(</span><span class="nx">fieldName</span><span class="p">);</span>
+    <span class="p">});</span>
+
+    <span class="k">return</span> <span class="p">{</span>
+      <span class="na">isValid</span><span class="p">:</span> <span class="nb">Object</span><span class="p">.</span><span class="nx">keys</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">errors</span><span class="p">).</span><span class="nx">length</span> <span class="o">===</span> <span class="mi">0</span><span class="p">,</span>
+      <span class="na">errors</span><span class="p">:</span> <span class="p">{</span> <span class="p">...</span><span class="k">this</span><span class="p">.</span><span class="nx">errors</span> <span class="p">}</span>
+    <span class="p">};</span>
+  <span class="p">}</span>
+
+  <span class="c1">// Get visible fields based on conditions</span>
+  <span class="k">private</span> <span class="nx">getVisibleFields</span><span class="p">():</span> <span class="kr">string</span><span class="p">[]</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nb">Object</span><span class="p">.</span><span class="nx">keys</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">schema</span><span class="p">).</span><span class="nx">filter</span><span class="p">(</span><span class="nx">fieldName</span> <span class="o">=&gt;</span> <span class="p">{</span>
+      <span class="kd">const</span> <span class="nx">field</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">schema</span><span class="p">[</span><span class="nx">fieldName</span><span class="p">];</span>
+      
+      <span class="k">if</span> <span class="p">(</span><span class="nx">field</span><span class="p">.</span><span class="nx">condition</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="nx">field</span><span class="p">.</span><span class="nx">condition</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">values</span><span class="p">);</span>
+      <span class="p">}</span>
+      
+      <span class="k">if</span> <span class="p">(</span><span class="nx">field</span><span class="p">.</span><span class="nx">dependsOn</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kd">const</span> <span class="nx">dependentValue</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">values</span><span class="p">[</span><span class="nx">field</span><span class="p">.</span><span class="nx">dependsOn</span> <span class="k">as</span> <span class="kr">keyof</span> <span class="nx">InferFormValues</span><span class="o">&lt;</span><span class="nx">TSchema</span><span class="o">&gt;</span><span class="p">];</span>
+        <span class="k">return</span> <span class="o">!!</span><span class="nx">dependentValue</span><span class="p">;</span>
+      <span class="p">}</span>
+      
+      <span class="k">return</span> <span class="kc">true</span><span class="p">;</span>
+    <span class="p">});</span>
+  <span class="p">}</span>
+
+  <span class="c1">// Get field errors</span>
+  <span class="nx">getFieldErrors</span><span class="p">(</span><span class="na">fieldName</span><span class="p">:</span> <span class="kr">string</span><span class="p">):</span> <span class="kr">string</span><span class="p">[]</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">errors</span><span class="p">[</span><span class="nx">fieldName</span><span class="p">]</span> <span class="o">||</span> <span class="p">[];</span>
+  <span class="p">}</span>
+
+  <span class="c1">// Check if field has errors</span>
+  <span class="nx">hasFieldError</span><span class="p">(</span><span class="na">fieldName</span><span class="p">:</span> <span class="kr">string</span><span class="p">):</span> <span class="nx">boolean</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="o">!!</span><span class="k">this</span><span class="p">.</span><span class="nx">errors</span><span class="p">[</span><span class="nx">fieldName</span><span class="p">]</span> <span class="o">&amp;&amp;</span> <span class="k">this</span><span class="p">.</span><span class="nx">errors</span><span class="p">[</span><span class="nx">fieldName</span><span class="p">].</span><span class="nx">length</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">;</span>
+  <span class="p">}</span>
+
+  <span class="c1">// Check if field is touched</span>
+  <span class="nx">isFieldTouched</span><span class="p">(</span><span class="na">fieldName</span><span class="p">:</span> <span class="kr">string</span><span class="p">):</span> <span class="nx">boolean</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="o">!!</span><span class="k">this</span><span class="p">.</span><span class="nx">touched</span><span class="p">[</span><span class="nx">fieldName</span><span class="p">];</span>
+  <span class="p">}</span>
+
+  <span class="c1">// Reset form</span>
+  <span class="nx">reset</span><span class="p">():</span> <span class="k">this</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">initializeValues</span><span class="p">();</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">errors</span> <span class="o">=</span> <span class="p">{};</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">touched</span> <span class="o">=</span> <span class="p">{};</span>
+    <span class="k">return</span> <span class="k">this</span><span class="p">;</span>
+  <span class="p">}</span>
+
+  <span class="c1">// Generate form HTML (for demonstration)</span>
+  <span class="nx">generateHTML</span><span class="p">():</span> <span class="kr">string</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="nx">visibleFields</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">getVisibleFields</span><span class="p">();</span>
+    
+    <span class="k">return</span> <span class="nx">visibleFields</span><span class="p">.</span><span class="nx">map</span><span class="p">(</span><span class="nx">fieldName</span> <span class="o">=&gt;</span> <span class="p">{</span>
+      <span class="kd">const</span> <span class="nx">field</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">schema</span><span class="p">[</span><span class="nx">fieldName</span><span class="p">];</span>
+      <span class="kd">const</span> <span class="nx">value</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">values</span><span class="p">[</span><span class="nx">fieldName</span> <span class="k">as</span> <span class="kr">keyof</span> <span class="nx">InferFormValues</span><span class="o">&lt;</span><span class="nx">TSchema</span><span class="o">&gt;</span><span class="p">];</span>
+      <span class="kd">const</span> <span class="nx">errors</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">getFieldErrors</span><span class="p">(</span><span class="nx">fieldName</span><span class="p">);</span>
+      <span class="kd">const</span> <span class="nx">hasError</span> <span class="o">=</span> <span class="nx">errors</span><span class="p">.</span><span class="nx">length</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">;</span>
+      
+      <span class="kd">let</span> <span class="nx">input</span> <span class="o">=</span> <span class="dl">''</span><span class="p">;</span>
+      
+      <span class="k">switch</span> <span class="p">(</span><span class="nx">field</span><span class="p">.</span><span class="kd">type</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">case</span> <span class="dl">'</span><span class="s1">text</span><span class="dl">'</span><span class="p">:</span>
+        <span class="k">case</span> <span class="dl">'</span><span class="s1">email</span><span class="dl">'</span><span class="p">:</span>
+        <span class="k">case</span> <span class="dl">'</span><span class="s1">password</span><span class="dl">'</span><span class="p">:</span>
+        <span class="k">case</span> <span class="dl">'</span><span class="s1">number</span><span class="dl">'</span><span class="p">:</span>
+        <span class="k">case</span> <span class="dl">'</span><span class="s1">date</span><span class="dl">'</span><span class="p">:</span>
+          <span class="nx">input</span> <span class="o">=</span> <span class="s2">`&lt;input 
+            type="</span><span class="p">${</span><span class="nx">field</span><span class="p">.</span><span class="kd">type</span><span class="p">}</span><span class="s2">" 
+            id="</span><span class="p">${</span><span class="nx">fieldName</span><span class="p">}</span><span class="s2">" 
+            name="</span><span class="p">${</span><span class="nx">fieldName</span><span class="p">}</span><span class="s2">"
+            placeholder="</span><span class="p">${</span><span class="nx">field</span><span class="p">.</span><span class="nx">placeholder</span> <span class="o">||</span> <span class="dl">''</span><span class="p">}</span><span class="s2">"
+            value="</span><span class="p">${</span><span class="nx">value</span> <span class="o">||</span> <span class="dl">''</span><span class="p">}</span><span class="s2">"
+            </span><span class="p">${</span><span class="nx">field</span><span class="p">.</span><span class="nx">required</span> <span class="p">?</span> <span class="dl">'</span><span class="s1">required</span><span class="dl">'</span> <span class="p">:</span> <span class="dl">''</span><span class="p">}</span><span class="s2">
+            </span><span class="p">${</span><span class="nx">field</span><span class="p">.</span><span class="nx">disabled</span> <span class="p">?</span> <span class="dl">'</span><span class="s1">disabled</span><span class="dl">'</span> <span class="p">:</span> <span class="dl">''</span><span class="p">}</span><span class="s2">
+            class="</span><span class="p">${</span><span class="nx">hasError</span> <span class="p">?</span> <span class="dl">'</span><span class="s1">error</span><span class="dl">'</span> <span class="p">:</span> <span class="dl">''</span><span class="p">}</span><span class="s2">"
+          /&gt;`</span><span class="p">;</span>
+          <span class="k">break</span><span class="p">;</span>
+          
+        <span class="k">case</span> <span class="dl">'</span><span class="s1">select</span><span class="dl">'</span><span class="p">:</span>
+          <span class="kd">const</span> <span class="nx">selectField</span> <span class="o">=</span> <span class="nx">field</span> <span class="k">as</span> <span class="nx">SelectFieldConfig</span><span class="p">;</span>
+          <span class="kd">const</span> <span class="nx">options</span> <span class="o">=</span> <span class="nx">selectField</span><span class="p">.</span><span class="nx">options</span><span class="p">.</span><span class="nx">map</span><span class="p">(</span><span class="nx">option</span> <span class="o">=&gt;</span> 
+            <span class="s2">`&lt;option value="</span><span class="p">${</span><span class="nx">option</span><span class="p">.</span><span class="nx">value</span><span class="p">}</span><span class="s2">" </span><span class="p">${</span><span class="nx">value</span> <span class="o">===</span> <span class="nx">option</span><span class="p">.</span><span class="nx">value</span> <span class="p">?</span> <span class="dl">'</span><span class="s1">selected</span><span class="dl">'</span> <span class="p">:</span> <span class="dl">''</span><span class="p">}</span><span class="s2">&gt;
+              </span><span class="p">${</span><span class="nx">option</span><span class="p">.</span><span class="nx">label</span><span class="p">}</span><span class="s2">
+            &lt;/option&gt;`</span>
+          <span class="p">).</span><span class="nx">join</span><span class="p">(</span><span class="dl">''</span><span class="p">);</span>
+          
+          <span class="nx">input</span> <span class="o">=</span> <span class="s2">`&lt;select 
+            id="</span><span class="p">${</span><span class="nx">fieldName</span><span class="p">}</span><span class="s2">" 
+            name="</span><span class="p">${</span><span class="nx">fieldName</span><span class="p">}</span><span class="s2">"
+            </span><span class="p">${</span><span class="nx">selectField</span><span class="p">.</span><span class="nx">multiple</span> <span class="p">?</span> <span class="dl">'</span><span class="s1">multiple</span><span class="dl">'</span> <span class="p">:</span> <span class="dl">''</span><span class="p">}</span><span class="s2">
+            </span><span class="p">${</span><span class="nx">field</span><span class="p">.</span><span class="nx">required</span> <span class="p">?</span> <span class="dl">'</span><span class="s1">required</span><span class="dl">'</span> <span class="p">:</span> <span class="dl">''</span><span class="p">}</span><span class="s2">
+            </span><span class="p">${</span><span class="nx">field</span><span class="p">.</span><span class="nx">disabled</span> <span class="p">?</span> <span class="dl">'</span><span class="s1">disabled</span><span class="dl">'</span> <span class="p">:</span> <span class="dl">''</span><span class="p">}</span><span class="s2">
+            class="</span><span class="p">${</span><span class="nx">hasError</span> <span class="p">?</span> <span class="dl">'</span><span class="s1">error</span><span class="dl">'</span> <span class="p">:</span> <span class="dl">''</span><span class="p">}</span><span class="s2">"
+          &gt;</span><span class="p">${</span><span class="nx">options</span><span class="p">}</span><span class="s2">&lt;/select&gt;`</span><span class="p">;</span>
+          <span class="k">break</span><span class="p">;</span>
+          
+        <span class="k">case</span> <span class="dl">'</span><span class="s1">checkbox</span><span class="dl">'</span><span class="p">:</span>
+          <span class="nx">input</span> <span class="o">=</span> <span class="s2">`&lt;input 
+            type="checkbox" 
+            id="</span><span class="p">${</span><span class="nx">fieldName</span><span class="p">}</span><span class="s2">" 
+            name="</span><span class="p">${</span><span class="nx">fieldName</span><span class="p">}</span><span class="s2">"
+            </span><span class="p">${</span><span class="nx">value</span> <span class="p">?</span> <span class="dl">'</span><span class="s1">checked</span><span class="dl">'</span> <span class="p">:</span> <span class="dl">''</span><span class="p">}</span><span class="s2">
+            </span><span class="p">${</span><span class="nx">field</span><span class="p">.</span><span class="nx">required</span> <span class="p">?</span> <span class="dl">'</span><span class="s1">required</span><span class="dl">'</span> <span class="p">:</span> <span class="dl">''</span><span class="p">}</span><span class="s2">
+            </span><span class="p">${</span><span class="nx">field</span><span class="p">.</span><span class="nx">disabled</span> <span class="p">?</span> <span class="dl">'</span><span class="s1">disabled</span><span class="dl">'</span> <span class="p">:</span> <span class="dl">''</span><span class="p">}</span><span class="s2">
+            class="</span><span class="p">${</span><span class="nx">hasError</span> <span class="p">?</span> <span class="dl">'</span><span class="s1">error</span><span class="dl">'</span> <span class="p">:</span> <span class="dl">''</span><span class="p">}</span><span class="s2">"
+          /&gt;`</span><span class="p">;</span>
+          <span class="k">break</span><span class="p">;</span>
+      <span class="p">}</span>
+      
+      <span class="kd">const</span> <span class="nx">errorHTML</span> <span class="o">=</span> <span class="nx">errors</span><span class="p">.</span><span class="nx">length</span> <span class="o">&gt;</span> <span class="mi">0</span> 
+        <span class="p">?</span> <span class="s2">`&lt;div class="error-messages"&gt;</span><span class="p">${</span><span class="nx">errors</span><span class="p">.</span><span class="nx">map</span><span class="p">(</span><span class="nx">error</span> <span class="o">=&gt;</span> <span class="s2">`&lt;span class="error"&gt;</span><span class="p">${</span><span class="nx">error</span><span class="p">}</span><span class="s2">&lt;/span&gt;`</span><span class="p">).</span><span class="nx">join</span><span class="p">(</span><span class="dl">''</span><span class="p">)}</span><span class="s2">&lt;/div&gt;`</span>
+        <span class="p">:</span> <span class="dl">''</span><span class="p">;</span>
+      
+      <span class="k">return</span> <span class="s2">`
+        &lt;div class="form-field </span><span class="p">${</span><span class="nx">hasError</span> <span class="p">?</span> <span class="dl">'</span><span class="s1">has-error</span><span class="dl">'</span> <span class="p">:</span> <span class="dl">''</span><span class="p">}</span><span class="s2">"&gt;
+          &lt;label for="</span><span class="p">${</span><span class="nx">fieldName</span><span class="p">}</span><span class="s2">"&gt;</span><span class="p">${</span><span class="nx">field</span><span class="p">.</span><span class="nx">label</span><span class="p">}${</span><span class="nx">field</span><span class="p">.</span><span class="nx">required</span> <span class="p">?</span> <span class="dl">'</span><span class="s1"> *</span><span class="dl">'</span> <span class="p">:</span> <span class="dl">''</span><span class="p">}</span><span class="s2">&lt;/label&gt;
+          </span><span class="p">${</span><span class="nx">input</span><span class="p">}</span><span class="s2">
+          </span><span class="p">${</span><span class="nx">errorHTML</span><span class="p">}</span><span class="s2">
+        &lt;/div&gt;
+      `</span><span class="p">;</span>
+    <span class="p">}).</span><span class="nx">join</span><span class="p">(</span><span class="dl">''</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// Example usage</span>
+<span class="kd">const</span> <span class="nx">userFormSchema</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="na">firstName</span><span class="p">:</span> <span class="p">{</span>
+    <span class="na">type</span><span class="p">:</span> <span class="dl">'</span><span class="s1">text</span><span class="dl">'</span> <span class="k">as</span> <span class="kd">const</span><span class="p">,</span>
+    <span class="na">label</span><span class="p">:</span> <span class="dl">'</span><span class="s1">First Name</span><span class="dl">'</span><span class="p">,</span>
+    <span class="na">placeholder</span><span class="p">:</span> <span class="dl">'</span><span class="s1">Enter your first name</span><span class="dl">'</span><span class="p">,</span>
+    <span class="na">required</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="na">minLength</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+    <span class="na">maxLength</span><span class="p">:</span> <span class="mi">50</span>
+  <span class="p">},</span>
+  <span class="na">lastName</span><span class="p">:</span> <span class="p">{</span>
+    <span class="na">type</span><span class="p">:</span> <span class="dl">'</span><span class="s1">text</span><span class="dl">'</span> <span class="k">as</span> <span class="kd">const</span><span class="p">,</span>
+    <span class="na">label</span><span class="p">:</span> <span class="dl">'</span><span class="s1">Last Name</span><span class="dl">'</span><span class="p">,</span>
+    <span class="na">placeholder</span><span class="p">:</span> <span class="dl">'</span><span class="s1">Enter your last name</span><span class="dl">'</span><span class="p">,</span>
+    <span class="na">required</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="na">minLength</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+    <span class="na">maxLength</span><span class="p">:</span> <span class="mi">50</span>
+  <span class="p">},</span>
+  <span class="na">email</span><span class="p">:</span> <span class="p">{</span>
+    <span class="na">type</span><span class="p">:</span> <span class="dl">'</span><span class="s1">email</span><span class="dl">'</span> <span class="k">as</span> <span class="kd">const</span><span class="p">,</span>
+    <span class="na">label</span><span class="p">:</span> <span class="dl">'</span><span class="s1">Email Address</span><span class="dl">'</span><span class="p">,</span>
+    <span class="na">placeholder</span><span class="p">:</span> <span class="dl">'</span><span class="s1">Enter your email</span><span class="dl">'</span><span class="p">,</span>
+    <span class="na">required</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="na">validation</span><span class="p">:</span> <span class="p">[</span>
+      <span class="p">{</span>
+        <span class="na">rule</span><span class="p">:</span> <span class="p">(</span><span class="na">value</span><span class="p">:</span> <span class="kr">string</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="o">!</span><span class="nx">value</span><span class="p">.</span><span class="nx">includes</span><span class="p">(</span><span class="dl">'</span><span class="s1">+</span><span class="dl">'</span><span class="p">),</span>
+        <span class="na">message</span><span class="p">:</span> <span class="dl">'</span><span class="s1">Email cannot contain + symbol</span><span class="dl">'</span>
+      <span class="p">}</span>
+    <span class="p">]</span>
+  <span class="p">},</span>
+  <span class="na">age</span><span class="p">:</span> <span class="p">{</span>
+    <span class="na">type</span><span class="p">:</span> <span class="dl">'</span><span class="s1">number</span><span class="dl">'</span> <span class="k">as</span> <span class="kd">const</span><span class="p">,</span>
+    <span class="na">label</span><span class="p">:</span> <span class="dl">'</span><span class="s1">Age</span><span class="dl">'</span><span class="p">,</span>
+    <span class="na">required</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="na">min</span><span class="p">:</span> <span class="mi">18</span><span class="p">,</span>
+    <span class="na">max</span><span class="p">:</span> <span class="mi">120</span>
+  <span class="p">},</span>
+  <span class="na">country</span><span class="p">:</span> <span class="p">{</span>
+    <span class="na">type</span><span class="p">:</span> <span class="dl">'</span><span class="s1">select</span><span class="dl">'</span> <span class="k">as</span> <span class="kd">const</span><span class="p">,</span>
+    <span class="na">label</span><span class="p">:</span> <span class="dl">'</span><span class="s1">Country</span><span class="dl">'</span><span class="p">,</span>
+    <span class="na">required</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="na">options</span><span class="p">:</span> <span class="p">[</span>
+      <span class="p">{</span> <span class="na">value</span><span class="p">:</span> <span class="dl">'</span><span class="s1">us</span><span class="dl">'</span><span class="p">,</span> <span class="na">label</span><span class="p">:</span> <span class="dl">'</span><span class="s1">United States</span><span class="dl">'</span> <span class="p">},</span>
+      <span class="p">{</span> <span class="na">value</span><span class="p">:</span> <span class="dl">'</span><span class="s1">ca</span><span class="dl">'</span><span class="p">,</span> <span class="na">label</span><span class="p">:</span> <span class="dl">'</span><span class="s1">Canada</span><span class="dl">'</span> <span class="p">},</span>
+      <span class="p">{</span> <span class="na">value</span><span class="p">:</span> <span class="dl">'</span><span class="s1">uk</span><span class="dl">'</span><span class="p">,</span> <span class="na">label</span><span class="p">:</span> <span class="dl">'</span><span class="s1">United Kingdom</span><span class="dl">'</span> <span class="p">}</span>
+    <span class="p">]</span>
+  <span class="p">},</span>
+  <span class="na">state</span><span class="p">:</span> <span class="p">{</span>
+    <span class="na">type</span><span class="p">:</span> <span class="dl">'</span><span class="s1">select</span><span class="dl">'</span> <span class="k">as</span> <span class="kd">const</span><span class="p">,</span>
+    <span class="na">label</span><span class="p">:</span> <span class="dl">'</span><span class="s1">State</span><span class="dl">'</span><span class="p">,</span>
+    <span class="na">dependsOn</span><span class="p">:</span> <span class="dl">'</span><span class="s1">country</span><span class="dl">'</span><span class="p">,</span>
+    <span class="na">condition</span><span class="p">:</span> <span class="p">(</span><span class="nx">values</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">values</span><span class="p">.</span><span class="nx">country</span> <span class="o">===</span> <span class="dl">'</span><span class="s1">us</span><span class="dl">'</span><span class="p">,</span>
+    <span class="na">options</span><span class="p">:</span> <span class="p">[</span>
+      <span class="p">{</span> <span class="na">value</span><span class="p">:</span> <span class="dl">'</span><span class="s1">ca</span><span class="dl">'</span><span class="p">,</span> <span class="na">label</span><span class="p">:</span> <span class="dl">'</span><span class="s1">California</span><span class="dl">'</span> <span class="p">},</span>
+      <span class="p">{</span> <span class="na">value</span><span class="p">:</span> <span class="dl">'</span><span class="s1">ny</span><span class="dl">'</span><span class="p">,</span> <span class="na">label</span><span class="p">:</span> <span class="dl">'</span><span class="s1">New York</span><span class="dl">'</span> <span class="p">},</span>
+      <span class="p">{</span> <span class="na">value</span><span class="p">:</span> <span class="dl">'</span><span class="s1">tx</span><span class="dl">'</span><span class="p">,</span> <span class="na">label</span><span class="p">:</span> <span class="dl">'</span><span class="s1">Texas</span><span class="dl">'</span> <span class="p">}</span>
+    <span class="p">]</span>
+  <span class="p">},</span>
+  <span class="na">newsletter</span><span class="p">:</span> <span class="p">{</span>
+    <span class="na">type</span><span class="p">:</span> <span class="dl">'</span><span class="s1">checkbox</span><span class="dl">'</span> <span class="k">as</span> <span class="kd">const</span><span class="p">,</span>
+    <span class="na">label</span><span class="p">:</span> <span class="dl">'</span><span class="s1">Subscribe to newsletter</span><span class="dl">'</span>
+  <span class="p">}</span>
+<span class="p">}</span> <span class="k">as</span> <span class="kd">const</span><span class="p">;</span>
+
+<span class="kd">const</span> <span class="nx">form</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">FormBuilder</span><span class="p">(</span><span class="nx">userFormSchema</span><span class="p">);</span>
+
+<span class="c1">// Type-safe form manipulation</span>
+<span class="nx">form</span>
+  <span class="p">.</span><span class="nx">setValue</span><span class="p">(</span><span class="dl">'</span><span class="s1">firstName</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">John</span><span class="dl">'</span><span class="p">)</span> <span class="c1">// Typed as string</span>
+  <span class="p">.</span><span class="nx">setValue</span><span class="p">(</span><span class="dl">'</span><span class="s1">age</span><span class="dl">'</span><span class="p">,</span> <span class="mi">25</span><span class="p">)</span> <span class="c1">// Typed as number</span>
+  <span class="p">.</span><span class="nx">setValue</span><span class="p">(</span><span class="dl">'</span><span class="s1">newsletter</span><span class="dl">'</span><span class="p">,</span> <span class="kc">true</span><span class="p">)</span> <span class="c1">// Typed as boolean</span>
+  <span class="p">.</span><span class="nx">setValue</span><span class="p">(</span><span class="dl">'</span><span class="s1">country</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">us</span><span class="dl">'</span><span class="p">);</span> <span class="c1">// Typed as string | number</span>
+
+<span class="c1">// Get typed values</span>
+<span class="kd">const</span> <span class="nx">values</span> <span class="o">=</span> <span class="nx">form</span><span class="p">.</span><span class="nx">getValues</span><span class="p">();</span>
+<span class="c1">// values.firstName is typed as string | undefined</span>
+<span class="c1">// values.age is typed as number | undefined</span>
+<span class="c1">// values.newsletter is typed as boolean | undefined</span>
+
+<span class="c1">// Validate and get results</span>
+<span class="kd">const</span> <span class="nx">validation</span> <span class="o">=</span> <span class="nx">form</span><span class="p">.</span><span class="nx">validate</span><span class="p">();</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">Is valid:</span><span class="dl">'</span><span class="p">,</span> <span class="nx">validation</span><span class="p">.</span><span class="nx">isValid</span><span class="p">);</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">Errors:</span><span class="dl">'</span><span class="p">,</span> <span class="nx">validation</span><span class="p">.</span><span class="nx">errors</span><span class="p">);</span>
+
+<span class="c1">// Generate HTML</span>
+<span class="kd">const</span> <span class="nx">formHTML</span> <span class="o">=</span> <span class="nx">form</span><span class="p">.</span><span class="nx">generateHTML</span><span class="p">();</span>
+<span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="dl">'</span><span class="s1">form-container</span><span class="dl">'</span><span class="p">)</span><span class="o">!</span><span class="p">.</span><span class="nx">innerHTML</span> <span class="o">=</span> <span class="nx">formHTML</span><span class="p">;</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>These TypeScript challenges demonstrate advanced type system usage, generic programming, and real-world application patterns that are commonly tested in senior frontend interviews at Big Tech companies.</p>
+
+        </div>
+    </article>
+</div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Study Resources</h3>
+                    <p>Comprehensive collection of frontend interview questions, coding challenges, and system design problems.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Progress Tracking</h3>
+                    <p>Monitor your learning journey with detailed progress indicators and completion status.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Big Tech Ready</h3>
+                    <p>Curated content specifically designed for interviews at Google, Meta, Amazon, Apple, and Netflix.</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Frontend Interview Hub. Built for aspiring frontend engineers.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="/assets/js/main.js"></script>
+</body>
+</html>

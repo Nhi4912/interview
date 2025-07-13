@@ -1,0 +1,721 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Single Number | Frontend Interview Preparation Guide</title>
+    <meta name="description" content="Comprehensive frontend interview materials for Big Tech companies">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="/assets/css/main.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <header>
+        <nav class="container">
+            <div class="logo">Frontend Interview Hub</div>
+            <ul class="nav-links">
+                <li><a href="/">Home</a></li>
+                <li><a href="#progress">Progress</a></li>
+                <li><a href="#knowledge">Knowledge</a></li>
+                <li><a href="https://github.com/nee/interview">GitHub</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <div class="content-container">
+    
+        <nav class="breadcrumb">
+            <ol>
+                <li><a href="/">Home</a></li>
+                
+                
+                
+                    
+                
+                    
+                        
+                        
+                            <li><a href="/leetcode/">Leetcode</a></li>
+                        
+                    
+                
+                    
+                        
+                        
+                            <li><a href="/leetcode/array/">Array</a></li>
+                        
+                    
+                
+                    
+                        
+                        
+                            <li><a href="/leetcode/array/problems/">Problems</a></li>
+                        
+                    
+                
+                    
+                        
+                        
+                            <li class="active">Single number</li>
+                        
+                    
+                
+            </ol>
+        </nav>
+    
+    
+    <article class="content">
+        
+            <header class="content-header">
+                <h1 class="content-title">Single Number</h1>
+                
+                
+                    <div class="content-meta">
+                        <span class="difficulty difficulty-easy">Easy</span>
+                        
+                            <span class="category">Array</span>
+                        
+                        
+                            <div class="tags">
+                                
+                                    <span class="tag">Array</span>
+                                
+                                    <span class="tag">Hash Table</span>
+                                
+                                    <span class="tag">Sorting</span>
+                                
+                            </div>
+                        
+                    </div>
+                
+            </header>
+        
+        
+        <div class="content-body">
+            <h1 id="single-number">Single Number</h1>
+
+<p><strong>LeetCode Problem # * 136. Single Number</strong></p>
+
+<h2 id="problem-description">Problem Description</h2>
+
+<ul>
+  <li>Given a non-empty array of integers nums, every element appears twice except for one.  * Find that single one.  *  * You must implement a solution with a linear runtime complexity and use only constant extra space.  *</li>
+</ul>
+
+<h2 id="solutions">Solutions</h2>
+
+<p>/**</p>
+<ul>
+  <li>
+    <ol>
+      <li>Single Number
+ *</li>
+    </ol>
+  </li>
+  <li>Problem:</li>
+  <li>Given a non-empty array of integers nums, every element appears twice except for one.</li>
+  <li>Find that single one.
+ *</li>
+  <li>You must implement a solution with a linear runtime complexity and use only constant extra space.
+ *</li>
+  <li>Example:</li>
+  <li>Input: nums = [2,2,1]</li>
+  <li>Output: 1
+ *</li>
+  <li>Input: nums = [4,1,2,1,2]</li>
+  <li>Output: 4
+ *</li>
+  <li>Input: nums = [1]</li>
+  <li>Output: 1
+ *</li>
+  <li>LeetCode: https://leetcode.com/problems/single-number/
+ */</li>
+</ul>
+
+<p>/**</p>
+<ul>
+  <li>Solution 1: XOR Operation (Optimal)
+ *</li>
+  <li>Approach:</li>
+  <li>
+    <ul>
+      <li>Use XOR operation: a ^ a = 0, a ^ 0 = a</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>XOR all numbers, duplicates cancel out</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Result is the single number
+ *</li>
+    </ul>
+  </li>
+  <li>Time Complexity: O(n)</li>
+  <li>Space Complexity: O(1)
+ */
+function singleNumber(nums: number[]): number {
+  let result = 0;</li>
+</ul>
+
+<p>for (const num of nums) {
+    result ^= num;
+  }</p>
+
+<p>return result;
+}</p>
+
+<p>/**</p>
+<ul>
+  <li>Solution 2: Using Set
+ *</li>
+  <li>Approach:</li>
+  <li>
+    <ul>
+      <li>Add numbers to set, remove if already present</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Remaining number is the single one
+ *</li>
+    </ul>
+  </li>
+  <li>Time Complexity: O(n)</li>
+  <li>Space Complexity: O(n)
+ */
+function singleNumberSet(nums: number[]): number {
+  const seen = new Set<number>();</number></li>
+</ul>
+
+<p>for (const num of nums) {
+    if (seen.has(num)) {
+      seen.delete(num);
+    } else {
+      seen.add(num);
+    }
+  }</p>
+
+<p>return Array.from(seen)[0];
+}</p>
+
+<p>/**</p>
+<ul>
+  <li>Solution 3: Using Map (Frequency counting)
+ *</li>
+  <li>Approach:</li>
+  <li>
+    <ul>
+      <li>Count frequency of each number</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Find number with frequency 1
+ *</li>
+    </ul>
+  </li>
+  <li>Time Complexity: O(n)</li>
+  <li>Space Complexity: O(n)
+ */
+function singleNumberMap(nums: number[]): number {
+  const frequency = new Map&lt;number, number&gt;();</li>
+</ul>
+
+<p>for (const num of nums) {
+    frequency.set(num, (frequency.get(num) || 0) + 1);
+  }</p>
+
+<p>for (const [num, count] of frequency) {
+    if (count === 1) {
+      return num;
+    }
+  }</p>
+
+<p>return -1; // Should not reach here
+}</p>
+
+<p>/**</p>
+<ul>
+  <li>Solution 4: Using Array Methods (Functional)
+ *</li>
+  <li>Approach:</li>
+  <li>
+    <ul>
+      <li>Use filter to find number that appears only once
+ *</li>
+    </ul>
+  </li>
+  <li>Time Complexity: O(n²) - includes() is O(n)</li>
+  <li>Space Complexity: O(1)
+ */
+function singleNumberFunctional(nums: number[]): number {
+  return nums.find((num) =&gt; nums.indexOf(num) === nums.lastIndexOf(num))!;
+}</li>
+</ul>
+
+<p>/**</p>
+<ul>
+  <li>Solution 5: Using Sort
+ *</li>
+  <li>Approach:</li>
+  <li>
+    <ul>
+      <li>Sort array and check adjacent elements</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Single number will not have a pair
+ *</li>
+    </ul>
+  </li>
+  <li>Time Complexity: O(n log n)</li>
+  <li>Space Complexity: O(1) - assuming in-place sort
+ */
+function singleNumberSort(nums: number[]): number {
+  nums.sort((a, b) =&gt; a - b);</li>
+</ul>
+
+<p>for (let i = 0; i &lt; nums.length; i += 2) {
+    if (i === nums.length - 1 || nums[i] !== nums[i + 1]) {
+      return nums[i];
+    }
+  }</p>
+
+<p>return -1; // Should not reach here
+}</p>
+
+<p>/**</p>
+<ul>
+  <li>Solution 6: Using Object (Hash table)
+ *</li>
+  <li>Approach:</li>
+  <li>
+    <ul>
+      <li>Use object to track frequency</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Find key with value 1
+ *</li>
+    </ul>
+  </li>
+  <li>Time Complexity: O(n)</li>
+  <li>Space Complexity: O(n)
+ */
+function singleNumberObject(nums: number[]): number {
+  const frequency: { [key: number]: number } = {};</li>
+</ul>
+
+<p>for (const num of nums) {
+    frequency[num] = (frequency[num] || 0) + 1;
+  }</p>
+
+<p>for (const num in frequency) {
+    if (frequency[num] === 1) {
+      return parseInt(num);
+    }
+  }</p>
+
+<p>return -1; // Should not reach here
+}</p>
+
+<p>/**</p>
+<ul>
+  <li>Solution 7: Using Math (Sum approach)
+ *</li>
+  <li>Approach:</li>
+  <li>
+    <ul>
+      <li>Calculate sum of all unique numbers * 2</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Subtract sum of all numbers</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Result is the single number
+ *</li>
+    </ul>
+  </li>
+  <li>Time Complexity: O(n)</li>
+  <li>Space Complexity: O(n)
+ */
+function singleNumberMath(nums: number[]): number {
+  const uniqueSum = Array.from(new Set(nums)).reduce(
+ (sum, num) =&gt; sum + num,
+ 0
+  );
+  const totalSum = nums.reduce((sum, num) =&gt; sum + num, 0);</li>
+</ul>
+
+<p>return 2 * uniqueSum - totalSum;
+}</p>
+
+<p>/**</p>
+<ul>
+  <li>Solution 8: Using Bit Manipulation with Loop
+ *</li>
+  <li>Approach:</li>
+  <li>
+    <ul>
+      <li>Check each bit position</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Count 1s at each position</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>If count is odd, that bit is set in result
+ *</li>
+    </ul>
+  </li>
+  <li>Time Complexity: O(32 * n) = O(n)</li>
+  <li>Space Complexity: O(1)
+ */
+function singleNumberBitwise(nums: number[]): number {
+  let result = 0;</li>
+</ul>
+
+<p>for (let i = 0; i &lt; 32; i++) {
+    let count = 0;</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+</pre></td><td class="rouge-code"><pre>for (const num of nums) {
+  if ((num &gt;&gt; i) &amp; 1) {
+    count++;
+  }
+}
+
+if (count % 2 === 1) {
+  result |= 1 &lt;&lt; i;
+}   }
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>return result;
+}</p>
+
+<p>// Test cases
+function testSingleNumber() {
+  console.log(“=== Testing Single Number ===\n”);</p>
+
+<p>const testCases = [
+    {
+      input: [2, 2, 1],
+      expected: 1,
+      description: “Basic case”,
+    },
+    {
+      input: [4, 1, 2, 1, 2],
+      expected: 4,
+      description: “Single number in middle”,
+    },
+    {
+      input: [1],
+      expected: 1,
+      description: “Single element”,
+    },
+    {
+      input: [1, 1, 2, 2, 3],
+      expected: 3,
+      description: “Single number at end”,
+    },
+    {
+      input: [1, 2, 2, 1, 3],
+      expected: 3,
+      description: “Single number in middle”,
+    },
+    {
+      input: [0, 1, 0, 1, 99],
+      expected: 99,
+      description: “Large single number”,
+    },
+    {
+      input: [-1, -1, -2],
+      expected: -2,
+      description: “Negative numbers”,
+    },
+  ];</p>
+
+<p>testCases.forEach((testCase, index) =&gt; {
+    console.log(<code class="language-plaintext highlighter-rouge">Test Case ${index + 1}: ${testCase.description}</code>);
+    console.log(<code class="language-plaintext highlighter-rouge">Input: [${testCase.input.join(", ")}]</code>);
+    console.log(<code class="language-plaintext highlighter-rouge">Expected: ${testCase.expected}\n</code>);</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+</pre></td><td class="rouge-code"><pre>// Test Solution 1 (XOR)
+const result1 = singleNumber(testCase.input);
+console.log(
+  `Solution 1 (XOR): ${result1} ${
+    result1 === testCase.expected ? "✅" : "❌"
+  }`
+);
+
+// Test Solution 2 (Set)
+const result2 = singleNumberSet(testCase.input);
+console.log(
+  `Solution 2 (Set): ${result2} ${
+    result2 === testCase.expected ? "✅" : "❌"
+  }`
+);
+
+// Test Solution 3 (Map)
+const result3 = singleNumberMap(testCase.input);
+console.log(
+  `Solution 3 (Map): ${result3} ${
+    result3 === testCase.expected ? "✅" : "❌"
+  }`
+);
+
+// Test Solution 4 (Functional)
+const result4 = singleNumberFunctional(testCase.input);
+console.log(
+  `Solution 4 (Functional): ${result4} ${
+    result4 === testCase.expected ? "✅" : "❌"
+  }`
+);
+
+// Test Solution 5 (Sort)
+const result5 = singleNumberSort([...testCase.input]);
+console.log(
+  `Solution 5 (Sort): ${result5} ${
+    result5 === testCase.expected ? "✅" : "❌"
+  }`
+);
+
+// Test Solution 6 (Object)
+const result6 = singleNumberObject(testCase.input);
+console.log(
+  `Solution 6 (Object): ${result6} ${
+    result6 === testCase.expected ? "✅" : "❌"
+  }`
+);
+
+// Test Solution 7 (Math)
+const result7 = singleNumberMath(testCase.input);
+console.log(
+  `Solution 7 (Math): ${result7} ${
+    result7 === testCase.expected ? "✅" : "❌"
+  }`
+);
+
+// Test Solution 8 (Bitwise)
+const result8 = singleNumberBitwise(testCase.input);
+console.log(
+  `Solution 8 (Bitwise): ${result8} ${
+    result8 === testCase.expected ? "✅" : "❌"
+  }`
+);
+
+console.log("\n---\n");   }); }
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>// Performance comparison
+function performanceComparison() {
+  console.log(“=== Performance Comparison ===\n”);</p>
+
+<p>const testCases = [
+    { name: “XOR”, func: singleNumber },
+    { name: “Set”, func: singleNumberSet },
+    { name: “Map”, func: singleNumberMap },
+    { name: “Functional”, func: singleNumberFunctional },
+    { name: “Sort”, func: singleNumberSort },
+    { name: “Object”, func: singleNumberObject },
+    { name: “Math”, func: singleNumberMath },
+    { name: “Bitwise”, func: singleNumberBitwise },
+  ];</p>
+
+<p>// Create test arrays
+  const smallArray = Array.from({ length: 1000 }, (<em>, i) =&gt; Math.floor(i / 2));
+  const largeArray = Array.from({ length: 100000 }, (</em>, i) =&gt;
+    Math.floor(i / 2)
+  );</p>
+
+<p>const arrays = [
+    { name: “Small (1000)”, array: smallArray },
+    { name: “Large (100000)”, array: largeArray },
+  ];</p>
+
+<p>arrays.forEach(({ name, array }) =&gt; {
+    console.log(<code class="language-plaintext highlighter-rouge">${name}:</code>);</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+</pre></td><td class="rouge-code"><pre>testCases.forEach(({ name: funcName, func }) =&gt; {
+  const start = performance.now();
+  const result = func([...array]);
+  const end = performance.now();
+
+  console.log(`  ${funcName}: ${(end - start).toFixed(2)}ms (${result})`);
+});
+
+console.log("");   }); }
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>// XOR properties demonstration
+function xorPropertiesDemo() {
+  console.log(“=== XOR Properties Demonstration ===\n”);</p>
+
+<p>const a = 5;
+  const b = 3;</p>
+
+<p>console.log(<code class="language-plaintext highlighter-rouge">a = ${a}, b = ${b}</code>);
+  console.log(<code class="language-plaintext highlighter-rouge">a ^ a = ${a ^ a} (should be 0)</code>);
+  console.log(<code class="language-plaintext highlighter-rouge">a ^ 0 = ${a ^ 0} (should be ${a})</code>);
+  console.log(<code class="language-plaintext highlighter-rouge">a ^ b ^ a = ${a ^ b ^ a} (should be ${b})</code>);
+  console.log(<code class="language-plaintext highlighter-rouge">a ^ b ^ b = ${a ^ b ^ b} (should be ${a})</code>);</p>
+
+<p>console.log(“\nThis is why XOR works for finding single number:”);
+  console.log(“- Duplicates cancel out: a ^ a = 0”);
+  console.log(“- Single number remains: 0 ^ single = single”);
+}</p>
+
+<p>// Uncomment the following lines to run tests
+// testSingleNumber();
+// performanceComparison();
+// xorPropertiesDemo();</p>
+
+<p>export {
+  singleNumber,
+  singleNumberSet,
+  singleNumberMap,
+  singleNumberFunctional,
+  singleNumberSort,
+  singleNumberObject,
+  singleNumberMath,
+  singleNumberBitwise,
+  testSingleNumber,
+  performanceComparison,
+  xorPropertiesDemo,
+};</p>
+
+
+        </div>
+    </article>
+</div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Study Resources</h3>
+                    <p>Comprehensive collection of frontend interview questions, coding challenges, and system design problems.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Progress Tracking</h3>
+                    <p>Monitor your learning journey with detailed progress indicators and completion status.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Big Tech Ready</h3>
+                    <p>Curated content specifically designed for interviews at Google, Meta, Amazon, Apple, and Netflix.</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Frontend Interview Hub. Built for aspiring frontend engineers.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="/assets/js/main.js"></script>
+</body>
+</html>

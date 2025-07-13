@@ -1,0 +1,911 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Min Stack | Frontend Interview Preparation Guide</title>
+    <meta name="description" content="Comprehensive frontend interview materials for Big Tech companies">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="/assets/css/main.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <header>
+        <nav class="container">
+            <div class="logo">Frontend Interview Hub</div>
+            <ul class="nav-links">
+                <li><a href="/">Home</a></li>
+                <li><a href="#progress">Progress</a></li>
+                <li><a href="#knowledge">Knowledge</a></li>
+                <li><a href="https://github.com/nee/interview">GitHub</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <div class="content-container">
+    
+        <nav class="breadcrumb">
+            <ol>
+                <li><a href="/">Home</a></li>
+                
+                
+                
+                    
+                
+                    
+                        
+                        
+                            <li><a href="/leetcode/">Leetcode</a></li>
+                        
+                    
+                
+                    
+                        
+                        
+                            <li><a href="/leetcode/design/">Design</a></li>
+                        
+                    
+                
+                    
+                        
+                        
+                            <li><a href="/leetcode/design/problems/">Problems</a></li>
+                        
+                    
+                
+                    
+                        
+                        
+                            <li class="active">Min stack</li>
+                        
+                    
+                
+            </ol>
+        </nav>
+    
+    
+    <article class="content">
+        
+            <header class="content-header">
+                <h1 class="content-title">Min Stack</h1>
+                
+                
+                    <div class="content-meta">
+                        <span class="difficulty difficulty-easy">Easy</span>
+                        
+                            <span class="category">Design</span>
+                        
+                        
+                            <div class="tags">
+                                
+                                    <span class="tag">Design</span>
+                                
+                            </div>
+                        
+                    </div>
+                
+            </header>
+        
+        
+        <div class="content-body">
+            <h1 id="min-stack">Min Stack</h1>
+
+<p><strong>LeetCode Problem # * 155. Min Stack</strong></p>
+
+<h2 id="problem-description">Problem Description</h2>
+
+<ul>
+  <li>Design a stack that supports push, pop, top, and retrieving the minimum element in constant time.  *  * Implement the MinStack class:  * - MinStack() initializes the stack object.  * - void push(int val) pushes the element val onto the stack.</li>
+</ul>
+
+<h2 id="solutions">Solutions</h2>
+
+<p>/**</p>
+<ul>
+  <li>
+    <ol>
+      <li>Min Stack
+ *</li>
+    </ol>
+  </li>
+  <li>Problem:</li>
+  <li>Design a stack that supports push, pop, top, and retrieving the minimum element in constant time.
+ *</li>
+  <li>Implement the MinStack class:</li>
+  <li>
+    <ul>
+      <li>MinStack() initializes the stack object.</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>void push(int val) pushes the element val onto the stack.</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>void pop() removes the element on the top of the stack.</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>int top() gets the top element of the stack.</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>int getMin() retrieves the minimum element in the stack.
+ *</li>
+    </ul>
+  </li>
+  <li>Example:</li>
+  <li>Input: [“MinStack”,”push”,”push”,”push”,”getMin”,”pop”,”top”,”getMin”]</li>
+  <li>[[],[-2],[0],[-3],[],[],[],[]]</li>
+  <li>Output: [null,null,null,null,-3,null,0,-2]
+ *</li>
+  <li>LeetCode: https://leetcode.com/problems/min-stack/
+ */</li>
+</ul>
+
+<p>/**</p>
+<ul>
+  <li>Solution 1: Two Stacks Approach (Optimal)
+ *</li>
+  <li>Approach:</li>
+  <li>
+    <ul>
+      <li>Use two stacks: one for all elements, one for minimum elements</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>When pushing, also push to min stack if it’s smaller than current min</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>When popping, also pop from min stack if it’s the current min
+ *</li>
+    </ul>
+  </li>
+  <li>Time Complexity: O(1) for all operations</li>
+  <li>Space Complexity: O(n) - worst case when all elements are in decreasing order
+ */
+class MinStack {
+  private stack: number[] = [];
+  private minStack: number[] = [];</li>
+</ul>
+
+<p>push(val: number): void {
+    this.stack.push(val);</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+</pre></td><td class="rouge-code"><pre>// Push to min stack if it's empty or val is smaller/equal to current min
+if (
+  this.minStack.length === 0 ||
+  val &lt;= this.minStack[this.minStack.length - 1]
+) {
+  this.minStack.push(val);
+}   }
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>pop(): void {
+    const popped = this.stack.pop();</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+</pre></td><td class="rouge-code"><pre>// Pop from min stack if the popped element is the current minimum
+if (popped === this.minStack[this.minStack.length - 1]) {
+  this.minStack.pop();
+}   }
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>top(): number {
+    return this.stack[this.stack.length - 1];
+  }</p>
+
+<p>getMin(): number {
+    return this.minStack[this.minStack.length - 1];
+  }
+}</p>
+
+<p>/**</p>
+<ul>
+  <li>Solution 2: Single Stack with Pairs
+ *</li>
+  <li>Approach:</li>
+  <li>
+    <ul>
+      <li>Store pairs of (value, current_min) in a single stack</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Each element knows the minimum value when it was pushed
+ *</li>
+    </ul>
+  </li>
+  <li>Time Complexity: O(1) for all operations</li>
+  <li>Space Complexity: O(n) - stores pairs instead of single values
+ */
+class MinStackPairs {
+  private stack: Array&lt;{ val: number; min: number }&gt; = [];</li>
+</ul>
+
+<p>push(val: number): void {
+    const currentMin =
+      this.stack.length &gt; 0 ? this.stack[this.stack.length - 1].min : val;
+    this.stack.push({
+      val,
+      min: Math.min(val, currentMin),
+    });
+  }</p>
+
+<p>pop(): void {
+    this.stack.pop();
+  }</p>
+
+<p>top(): number {
+    return this.stack[this.stack.length - 1].val;
+  }</p>
+
+<p>getMin(): number {
+    return this.stack[this.stack.length - 1].min;
+  }
+}</p>
+
+<p>/**</p>
+<ul>
+  <li>Solution 3: Single Stack with Mathematical Trick
+ *</li>
+  <li>Approach:</li>
+  <li>
+    <ul>
+      <li>Use a single stack and mathematical trick to store min information</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>When pushing a new min, push 2*val - old_min to stack</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>When popping, if top &lt; min, then min = 2*min - top
+ *</li>
+    </ul>
+  </li>
+  <li>Time Complexity: O(1) for all operations</li>
+  <li>Space Complexity: O(n) - but more space efficient than pairs
+ */
+class MinStackMath {
+  private stack: number[] = [];
+  private min: number = Infinity;</li>
+</ul>
+
+<p>push(val: number): void {
+    if (val &lt;= this.min) {
+      this.stack.push(2 * val - this.min);
+      this.min = val;
+    } else {
+      this.stack.push(val);
+    }
+  }</p>
+
+<p>pop(): void {
+    const popped = this.stack.pop()!;</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+</pre></td><td class="rouge-code"><pre>if (popped &lt;= this.min) {
+  this.min = 2 * this.min - popped;
+}   }
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>top(): number {
+    const top = this.stack[this.stack.length - 1];
+    return top &lt;= this.min ? this.min : top;
+  }</p>
+
+<p>getMin(): number {
+    return this.min;
+  }
+}</p>
+
+<p>/**</p>
+<ul>
+  <li>Solution 4: Using Built-in Math.min (Simple but inefficient)
+ *</li>
+  <li>Approach:</li>
+  <li>
+    <ul>
+      <li>Use a single stack and calculate min on demand</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Simple implementation but getMin is O(n)
+ *</li>
+    </ul>
+  </li>
+  <li>Time Complexity: O(1) for push, pop, top; O(n) for getMin</li>
+  <li>Space Complexity: O(n)
+ */
+class MinStackSimple {
+  private stack: number[] = [];</li>
+</ul>
+
+<p>push(val: number): void {
+    this.stack.push(val);
+  }</p>
+
+<p>pop(): void {
+    this.stack.pop();
+  }</p>
+
+<p>top(): number {
+    return this.stack[this.stack.length - 1];
+  }</p>
+
+<p>getMin(): number {
+    return Math.min(…this.stack);
+  }
+}</p>
+
+<p>/**</p>
+<ul>
+  <li>Solution 5: Using Priority Queue (Overkill but educational)
+ *</li>
+  <li>Approach:</li>
+  <li>
+    <ul>
+      <li>Use a heap/priority queue to track minimum</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>More complex but shows different data structure usage
+ *</li>
+    </ul>
+  </li>
+  <li>Time Complexity: O(1) for push, top; O(log n) for pop, getMin</li>
+  <li>Space Complexity: O(n)
+ */
+class MinStackPriorityQueue {
+  private stack: number[] = [];
+  private minHeap: number[] = [];</li>
+</ul>
+
+<p>private heapifyUp(): void {
+    let index = this.minHeap.length - 1;
+    while (index &gt; 0) {
+      const parentIndex = Math.floor((index - 1) / 2);
+      if (this.minHeap[parentIndex] &lt;= this.minHeap[index]) break;</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+</pre></td><td class="rouge-code"><pre>  [this.minHeap[parentIndex], this.minHeap[index]] = [
+    this.minHeap[index],
+    this.minHeap[parentIndex],
+  ];
+  index = parentIndex;
+}   }
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>private heapifyDown(): void {
+    let index = 0;
+    while (true) {
+      let smallest = index;
+      const leftChild = 2 * index + 1;
+      const rightChild = 2 * index + 2;</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+</pre></td><td class="rouge-code"><pre>  if (
+    leftChild &lt; this.minHeap.length &amp;&amp;
+    this.minHeap[leftChild] &lt; this.minHeap[smallest]
+  ) {
+    smallest = leftChild;
+  }
+
+  if (
+    rightChild &lt; this.minHeap.length &amp;&amp;
+    this.minHeap[rightChild] &lt; this.minHeap[smallest]
+  ) {
+    smallest = rightChild;
+  }
+
+  if (smallest === index) break;
+
+  [this.minHeap[index], this.minHeap[smallest]] = [
+    this.minHeap[smallest],
+    this.minHeap[index],
+  ];
+  index = smallest;
+}   }
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>push(val: number): void {
+    this.stack.push(val);
+    this.minHeap.push(val);
+    this.heapifyUp();
+  }</p>
+
+<p>pop(): void {
+    const popped = this.stack.pop()!;</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+</pre></td><td class="rouge-code"><pre>// Remove from heap (simplified - in practice would need more complex removal)
+const heapIndex = this.minHeap.indexOf(popped);
+if (heapIndex !== -1) {
+  this.minHeap.splice(heapIndex, 1);
+  // Rebuild heap (simplified approach)
+  this.minHeap.sort((a, b) =&gt; a - b);
+}   }
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>top(): number {
+    return this.stack[this.stack.length - 1];
+  }</p>
+
+<p>getMin(): number {
+    return this.minHeap[0];
+  }
+}</p>
+
+<p>// Test cases
+function testMinStack() {
+  console.log(“=== Testing Min Stack ===\n”);</p>
+
+<p>const testCases = [
+    {
+      operations: [“push”, “push”, “push”, “getMin”, “pop”, “top”, “getMin”],
+      values: [-2, 0, -3, null, null, null, null],
+      expected: [null, null, null, -3, null, 0, -2],
+      description: “Basic operations”,
+    },
+    {
+      operations: [“push”, “push”, “getMin”, “push”, “getMin”, “pop”, “getMin”],
+      values: [1, 2, null, 0, null, null, null],
+      expected: [null, null, 1, null, 0, null, 1],
+      description: “Multiple minimums”,
+    },
+    {
+      operations: [“push”, “push”, “push”, “push”, “getMin”, “pop”, “getMin”],
+      values: [5, 3, 4, 2, null, null, null],
+      expected: [null, null, null, null, 2, null, 3],
+      description: “Decreasing sequence”,
+    },
+  ];</p>
+
+<p>testCases.forEach((testCase, index) =&gt; {
+    console.log(<code class="language-plaintext highlighter-rouge">Test Case ${index + 1}: ${testCase.description}</code>);
+    console.log(<code class="language-plaintext highlighter-rouge">Operations: [${testCase.operations.join(", ")}]</code>);
+    console.log(<code class="language-plaintext highlighter-rouge">Values: [${testCase.values.join(", ")}]</code>);
+    console.log(<code class="language-plaintext highlighter-rouge">Expected: [${testCase.expected.join(", ")}]\n</code>);</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+</pre></td><td class="rouge-code"><pre>// Test Solution 1 (Two Stacks)
+const minStack1 = new MinStack();
+const results1: (number | null)[] = [];
+
+for (let i = 0; i &lt; testCase.operations.length; i++) {
+  const operation = testCase.operations[i];
+  const value = testCase.values[i];
+
+  switch (operation) {
+    case "push":
+      minStack1.push(value!);
+      results1.push(null);
+      break;
+    case "pop":
+      minStack1.pop();
+      results1.push(null);
+      break;
+    case "top":
+      results1.push(minStack1.top());
+      break;
+    case "getMin":
+      results1.push(minStack1.getMin());
+      break;
+  }
+}
+
+console.log(
+  `Solution 1 (Two Stacks): [${results1.join(", ")}] ${
+    JSON.stringify(results1) === JSON.stringify(testCase.expected)
+      ? "✅"
+      : "❌"
+  }`
+);
+
+// Test Solution 2 (Pairs)
+const minStack2 = new MinStackPairs();
+const results2: (number | null)[] = [];
+
+for (let i = 0; i &lt; testCase.operations.length; i++) {
+  const operation = testCase.operations[i];
+  const value = testCase.values[i];
+
+  switch (operation) {
+    case "push":
+      minStack2.push(value!);
+      results2.push(null);
+      break;
+    case "pop":
+      minStack2.pop();
+      results2.push(null);
+      break;
+    case "top":
+      results2.push(minStack2.top());
+      break;
+    case "getMin":
+      results2.push(minStack2.getMin());
+      break;
+  }
+}
+
+console.log(
+  `Solution 2 (Pairs): [${results2.join(", ")}] ${
+    JSON.stringify(results2) === JSON.stringify(testCase.expected)
+      ? "✅"
+      : "❌"
+  }`
+);
+
+// Test Solution 3 (Math)
+const minStack3 = new MinStackMath();
+const results3: (number | null)[] = [];
+
+for (let i = 0; i &lt; testCase.operations.length; i++) {
+  const operation = testCase.operations[i];
+  const value = testCase.values[i];
+
+  switch (operation) {
+    case "push":
+      minStack3.push(value!);
+      results3.push(null);
+      break;
+    case "pop":
+      minStack3.pop();
+      results3.push(null);
+      break;
+    case "top":
+      results3.push(minStack3.top());
+      break;
+    case "getMin":
+      results3.push(minStack3.getMin());
+      break;
+  }
+}
+
+console.log(
+  `Solution 3 (Math): [${results3.join(", ")}] ${
+    JSON.stringify(results3) === JSON.stringify(testCase.expected)
+      ? "✅"
+      : "❌"
+  }`
+);
+
+console.log("\n---\n");   }); }
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>// Performance comparison
+function performanceComparison() {
+  console.log(“=== Performance Comparison ===\n”);</p>
+
+<p>const operations = 100000;</p>
+
+<p>const testCases = [
+    { name: “Two Stacks”, class: MinStack },
+    { name: “Pairs”, class: MinStackPairs },
+    { name: “Math”, class: MinStackMath },
+    { name: “Simple”, class: MinStackSimple },
+    { name: “Priority Queue”, class: MinStackPriorityQueue },
+  ];</p>
+
+<p>testCases.forEach(({ name, class: MinStackClass }) =&gt; {
+    const stack = new MinStackClass();
+    const start = performance.now();</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+</pre></td><td class="rouge-code"><pre>// Push operations
+for (let i = 0; i &lt; operations; i++) {
+  stack.push(Math.floor(Math.random() * 1000));
+}
+
+// Get min operations
+for (let i = 0; i &lt; 1000; i++) {
+  stack.getMin();
+}
+
+// Pop operations
+for (let i = 0; i &lt; operations; i++) {
+  stack.pop();
+}
+
+const end = performance.now();
+
+console.log(`${name}:`);
+console.log(`  Time: ${(end - start).toFixed(2)}ms`);
+console.log(`  Operations: ${operations * 2 + 1000}`);
+console.log(
+  `  Memory: ${name === "Simple" ? "O(n) for getMin" : "O(n)"}\n`
+);   }); }
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>// Memory usage analysis
+function memoryAnalysis() {
+  console.log(“=== Memory Usage Analysis ===\n”);</p>
+
+<p>const sizes = [1000, 10000, 100000];</p>
+
+<p>sizes.forEach((size) =&gt; {
+    console.log(<code class="language-plaintext highlighter-rouge">Testing with ${size} elements:</code>);</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+</pre></td><td class="rouge-code"><pre>// Test Two Stacks
+const stack1 = new MinStack();
+for (let i = 0; i &lt; size; i++) {
+  stack1.push(Math.floor(Math.random() * 1000));
+}
+console.log(`  Two Stacks: ~${size * 2} elements stored`);
+
+// Test Pairs
+const stack2 = new MinStackPairs();
+for (let i = 0; i &lt; size; i++) {
+  stack2.push(Math.floor(Math.random() * 1000));
+}
+console.log(`  Pairs: ~${size * 2} elements stored`);
+
+// Test Math
+const stack3 = new MinStackMath();
+for (let i = 0; i &lt; size; i++) {
+  stack3.push(Math.floor(Math.random() * 1000));
+}
+console.log(`  Math: ~${size} elements stored`);
+
+console.log("");   }); }
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>// Uncomment the following lines to run tests
+// testMinStack();
+// performanceComparison();
+// memoryAnalysis();</p>
+
+<p>export {
+  MinStack,
+  MinStackPairs,
+  MinStackMath,
+  MinStackSimple,
+  MinStackPriorityQueue,
+  testMinStack,
+  performanceComparison,
+  memoryAnalysis,
+};</p>
+
+
+        </div>
+    </article>
+</div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Study Resources</h3>
+                    <p>Comprehensive collection of frontend interview questions, coding challenges, and system design problems.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Progress Tracking</h3>
+                    <p>Monitor your learning journey with detailed progress indicators and completion status.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Big Tech Ready</h3>
+                    <p>Curated content specifically designed for interviews at Google, Meta, Amazon, Apple, and Netflix.</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Frontend Interview Hub. Built for aspiring frontend engineers.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="/assets/js/main.js"></script>
+</body>
+</html>

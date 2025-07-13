@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jump Game | Frontend Interview Preparation Guide</title>
+    <meta name="description" content="Comprehensive frontend interview materials for Big Tech companies">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="/assets/css/main.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <header>
+        <nav class="container">
+            <div class="logo">Frontend Interview Hub</div>
+            <ul class="nav-links">
+                <li><a href="/">Home</a></li>
+                <li><a href="#progress">Progress</a></li>
+                <li><a href="#knowledge">Knowledge</a></li>
+                <li><a href="https://github.com/nee/interview">GitHub</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <div class="content-container">
+    
+        <nav class="breadcrumb">
+            <ol>
+                <li><a href="/">Home</a></li>
+                
+                
+                
+                    
+                
+                    
+                        
+                        
+                            <li><a href="/leetcode/">Leetcode</a></li>
+                        
+                    
+                
+                    
+                        
+                        
+                            <li><a href="/leetcode/dp/">Dp</a></li>
+                        
+                    
+                
+                    
+                        
+                        
+                            <li><a href="/leetcode/dp/problems/">Problems</a></li>
+                        
+                    
+                
+                    
+                        
+                        
+                            <li class="active">Jump game</li>
+                        
+                    
+                
+            </ol>
+        </nav>
+    
+    
+    <article class="content">
+        
+            <header class="content-header">
+                <h1 class="content-title">Jump Game</h1>
+                
+                
+                    <div class="content-meta">
+                        <span class="difficulty difficulty-hard">Hard</span>
+                        
+                            <span class="category">Dynamic Programming</span>
+                        
+                        
+                            <div class="tags">
+                                
+                                    <span class="tag">Dynamic Programming</span>
+                                
+                                    <span class="tag">Hash Table</span>
+                                
+                                    <span class="tag">Greedy</span>
+                                
+                            </div>
+                        
+                    </div>
+                
+            </header>
+        
+        
+        <div class="content-body">
+            <h1 id="jump-game">Jump Game</h1>
+
+<h2 id="problem-description">Problem Description</h2>
+
+<ul>
+  <li>
+    <ul>
+      <li>You are given an integer array nums. You are initially positioned at the array’s first  * index, and each element in the array represents your maximum jump length at that position.  *  * Return true if you can reach the last index, or false otherwise.</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="solutions">Solutions</h2>
+
+<p>/**</p>
+<ul>
+  <li>Jump Game
+ *</li>
+  <li>Problem: https://leetcode.com/problems/jump-game/
+ *</li>
+  <li>You are given an integer array nums. You are initially positioned at the array’s first</li>
+  <li>index, and each element in the array represents your maximum jump length at that position.
+ *</li>
+  <li>Return true if you can reach the last index, or false otherwise.
+ *</li>
+  <li>Example 1:</li>
+  <li>Input: nums = [2,3,1,1,4]</li>
+  <li>Output: true</li>
+  <li>Explanation: Jump 1 step from index 0 to 1, then 3 steps to the last index.
+ *</li>
+  <li>Example 2:</li>
+  <li>Input: nums = [3,2,1,0,4]</li>
+  <li>Output: false</li>
+  <li>Explanation: You will always arrive at index 3 no matter what. Its maximum jump length</li>
+  <li>is 0, which makes it impossible to reach the last index.
+ *</li>
+  <li>Constraints:</li>
+  <li>
+    <ul>
+      <li>1 &lt;= nums.length &lt;= 10^4</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>0 &lt;= nums[i] &lt;= 10^5
+ *</li>
+    </ul>
+  </li>
+  <li>Solution Approach:</li>
+  <li>
+    <ol>
+      <li>Greedy approach - track the maximum reachable position</li>
+    </ol>
+  </li>
+  <li>
+    <ol>
+      <li>At each position, update the maximum reachable position</li>
+    </ol>
+  </li>
+  <li>
+    <ol>
+      <li>If current position is beyond maximum reachable, return false</li>
+    </ol>
+  </li>
+  <li>
+    <ol>
+      <li>If maximum reachable position &gt;= last index, return true
+ *</li>
+    </ol>
+  </li>
+  <li>Time Complexity: O(n) where n is the length of nums array</li>
+  <li>Space Complexity: O(1) as we only use a constant amount of extra space
+ */</li>
+</ul>
+
+<p>/**</p>
+<ul>
+  <li>Jump Game - Greedy Solution
+ *</li>
+  <li>Giải pháp tham lam cho bài toán Trò chơi nhảy
+ *</li>
+  <li>@param nums - Mảng độ dài nhảy tối đa tại mỗi vị trí</li>
+  <li>@returns true nếu có thể đến được vị trí cuối cùng
+ */
+function canJump(nums: number[]): boolean {
+  if (nums.length &lt;= 1) return true;</li>
+</ul>
+
+<p>let maxReachable = 0; // Vị trí xa nhất có thể đến được</p>
+
+<p>for (let i = 0; i &lt; nums.length; i++) {
+    // Nếu vị trí hiện tại vượt quá vị trí có thể đến được
+    if (i &gt; maxReachable) {
+      return false;
+    }</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+</pre></td><td class="rouge-code"><pre>// Cập nhật vị trí xa nhất có thể đến được
+maxReachable = Math.max(maxReachable, i + nums[i]);
+
+// Nếu đã có thể đến được vị trí cuối cùng
+if (maxReachable &gt;= nums.length - 1) {
+  return true;
+}   }
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>return maxReachable &gt;= nums.length - 1;
+}</p>
+
+<p>/**</p>
+<ul>
+  <li>Alternative Solution: Dynamic Programming (Bottom-up)
+ *</li>
+  <li>Giải pháp thay thế: Quy hoạch động (từ dưới lên)
+ *</li>
+  <li>@param nums - Mảng độ dài nhảy tối đa tại mỗi vị trí</li>
+  <li>@returns true nếu có thể đến được vị trí cuối cùng
+ */
+function canJumpDP(nums: number[]): boolean {
+  if (nums.length &lt;= 1) return true;</li>
+</ul>
+
+<p>const dp = new Array(nums.length).fill(false);
+  dp[nums.length - 1] = true; // Vị trí cuối cùng luôn có thể đến được</p>
+
+<p>for (let i = nums.length - 2; i &gt;= 0; i–) {
+    const maxJump = nums[i];</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+</pre></td><td class="rouge-code"><pre>// Kiểm tra xem có thể nhảy đến vị trí nào từ vị trí hiện tại
+for (let j = 1; j &lt;= maxJump &amp;&amp; i + j &lt; nums.length; j++) {
+  if (dp[i + j]) {
+    dp[i] = true;
+    break;
+  }
+}   }
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>return dp[0];
+}</p>
+
+<p>/**</p>
+<ul>
+  <li>Recursive Solution with Memoization
+ *</li>
+  <li>Giải pháp đệ quy với ghi nhớ
+ *</li>
+  <li>@param nums - Mảng độ dài nhảy tối đa tại mỗi vị trí</li>
+  <li>@returns true nếu có thể đến được vị trí cuối cùng
+ */
+function canJumpRecursive(nums: number[]): boolean {
+  const memo = new Map&lt;number, boolean&gt;();</li>
+</ul>
+
+<p>function canJumpHelper(position: number): boolean {
+    // Base case: đã đến vị trí cuối cùng
+    if (position &gt;= nums.length - 1) {
+      return true;
+    }</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+</pre></td><td class="rouge-code"><pre>// Kiểm tra memo
+if (memo.has(position)) {
+  return memo.get(position)!;
+}
+
+const maxJump = nums[position];
+
+// Thử tất cả các bước nhảy có thể
+for (let jump = 1; jump &lt;= maxJump; jump++) {
+  if (canJumpHelper(position + jump)) {
+    memo.set(position, true);
+    return true;
+  }
+}
+
+memo.set(position, false);
+return false;   }
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>return canJumpHelper(0);
+}</p>
+
+<p>/**</p>
+<ul>
+  <li>Solution with Path Tracking
+ *</li>
+  <li>Giải pháp với theo dõi đường đi
+ *</li>
+  <li>@param nums - Mảng độ dài nhảy tối đa tại mỗi vị trí</li>
+  <li>@returns Object chứa kết quả và đường đi (nếu có)
+ */
+function canJumpWithPath(nums: number[]): {
+  canReach: boolean;
+  path: number[];
+} {
+  if (nums.length &lt;= 1) {
+ return { canReach: true, path: [0] };
+  }</li>
+</ul>
+
+<p>const dp = new Array(nums.length).fill(false);
+  const path = new Array(nums.length).fill(-1);</p>
+
+<p>dp[nums.length - 1] = true;</p>
+
+<p>for (let i = nums.length - 2; i &gt;= 0; i–) {
+    const maxJump = nums[i];</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+</pre></td><td class="rouge-code"><pre>for (let j = 1; j &lt;= maxJump &amp;&amp; i + j &lt; nums.length; j++) {
+  if (dp[i + j]) {
+    dp[i] = true;
+    path[i] = i + j;
+    break;
+  }
+}   }
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>// Tạo đường đi nếu có thể đến được
+  const resultPath: number[] = [];
+  if (dp[0]) {
+    let current = 0;
+    while (current !== -1) {
+      resultPath.push(current);
+      current = path[current];
+    }
+  }</p>
+
+<p>return { canReach: dp[0], path: resultPath };
+}</p>
+
+<p>// Test cases / Các trường hợp kiểm thử
+function runTests() {
+  console.log(“=== Jump Game Tests ===”);
+  console.log(“=== Kiểm thử bài toán Trò chơi nhảy ===\n”);</p>
+
+<p>const testCases = [
+    {
+      name: “Example 1: Can reach end”,
+      input: [2, 3, 1, 1, 4],
+      expected: true,
+      description:
+        “Jump 1 step from index 0 to 1, then 3 steps to the last index”,
+    },
+    {
+      name: “Example 2: Cannot reach end”,
+      input: [3, 2, 1, 0, 4],
+      expected: false,
+      description: “Will always arrive at index 3, which has jump length 0”,
+    },
+    {
+      name: “Single element”,
+      input: [0],
+      expected: true,
+      description: “Already at the last index”,
+    },
+    {
+      name: “Two elements - can jump”,
+      input: [1, 0],
+      expected: true,
+      description: “Can jump 1 step to reach the end”,
+    },
+    {
+      name: “Two elements - cannot jump”,
+      input: [0, 1],
+      expected: false,
+      description: “Cannot jump from first position”,
+    },
+    {
+      name: “All zeros except last”,
+      input: [0, 0, 0, 1],
+      expected: false,
+      description: “Cannot move from any position”,
+    },
+    {
+      name: “Large jumps”,
+      input: [5, 0, 0, 0, 0],
+      expected: true,
+      description: “Can jump directly to the end”,
+    },
+    {
+      name: “Alternating jumps”,
+      input: [1, 0, 1, 0, 1],
+      expected: true,
+      description: “Can reach the end by jumping every other position”,
+    },
+    {
+      name: “Zero in middle”,
+      input: [2, 0, 0],
+      expected: true,
+      description: “Can jump over the zero”,
+    },
+  ];</p>
+
+<p>let passedTests = 0;
+  const totalTests = testCases.length;</p>
+
+<p>for (const testCase of testCases) {
+    console.log(<code class="language-plaintext highlighter-rouge">Test: ${testCase.name}</code>);
+    console.log(<code class="language-plaintext highlighter-rouge">Input: [${testCase.input.join(", ")}]</code>);
+    console.log(<code class="language-plaintext highlighter-rouge">Expected: ${testCase.expected}</code>);
+    console.log(<code class="language-plaintext highlighter-rouge">Description: ${testCase.description}</code>);</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+</pre></td><td class="rouge-code"><pre>const result = canJump(testCase.input);
+const passed = result === testCase.expected;
+
+console.log(`Result: ${result}`);
+console.log(`Status: ${passed ? "✅ PASSED" : "❌ FAILED"}`);
+
+if (passed) {
+  passedTests++;
+} else {
+  console.log(`Expected: ${testCase.expected}, Got: ${result}`);
+}
+
+console.log("---");   }
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>console.log(<code class="language-plaintext highlighter-rouge">\nTest Summary: ${passedTests}/${totalTests} tests passed</code>);
+  console.log(
+    <code class="language-plaintext highlighter-rouge">Tóm tắt kiểm thử: ${passedTests}/${totalTests} bài kiểm thử đã qua</code>
+  );</p>
+
+<p>// Test with path tracking
+  console.log(“\n=== Testing with Path Tracking ===”);
+  console.log(“=== Kiểm thử với theo dõi đường đi ===\n”);</p>
+
+<p>const testArray = [2, 3, 1, 1, 4];
+  const resultWithPath = canJumpWithPath(testArray);</p>
+
+<p>console.log(<code class="language-plaintext highlighter-rouge">Array: [${testArray.join(", ")}]</code>);
+  console.log(<code class="language-plaintext highlighter-rouge">Can Reach: ${resultWithPath.canReach}</code>);
+  if (resultWithPath.canReach) {
+    console.log(<code class="language-plaintext highlighter-rouge">Path: [${resultWithPath.path.join(" -&gt; ")}]</code>);
+    console.log(
+      <code class="language-plaintext highlighter-rouge">Jumps: [${resultWithPath.path
+        .slice(1)
+        .map((pos, i) =&gt; pos - resultWithPath.path[i])
+        .join(", ")}]</code>
+    );
+  }</p>
+
+<p>// Performance comparison
+  console.log(“\n=== Performance Comparison ===”);
+  console.log(“=== So sánh hiệu suất ===\n”);</p>
+
+<p>const largeInput = Array.from({ length: 1000 }, () =&gt;
+    Math.floor(Math.random() * 10)
+  );</p>
+
+<p>console.log(“Testing with large input (1,000 elements)…”);
+  console.log(“Kiểm thử với dữ liệu lớn (1,000 phần tử)…”);</p>
+
+<p>const start1 = performance.now();
+  const result1 = canJump(largeInput);
+  const time1 = performance.now() - start1;</p>
+
+<p>const start2 = performance.now();
+  const result2 = canJumpDP(largeInput);
+  const time2 = performance.now() - start2;</p>
+
+<p>const start3 = performance.now();
+  const result3 = canJumpRecursive(largeInput);
+  const time3 = performance.now() - start3;</p>
+
+<p>console.log(<code class="language-plaintext highlighter-rouge">Greedy: ${time1.toFixed(4)}ms</code>);
+  console.log(<code class="language-plaintext highlighter-rouge">DP: ${time2.toFixed(4)}ms</code>);
+  console.log(<code class="language-plaintext highlighter-rouge">Recursive: ${time3.toFixed(4)}ms</code>);
+  console.log(
+    <code class="language-plaintext highlighter-rouge">Results match: ${
+      result1 === result2 &amp;&amp; result2 === result3 ? "✅ Yes" : "❌ No"
+    }</code>
+  );
+}</p>
+
+<p>// Run tests if this file is executed directly
+if (require.main === module) {
+  runTests();
+}</p>
+
+<p>export { canJump, canJumpDP, canJumpRecursive, canJumpWithPath };</p>
+
+
+        </div>
+    </article>
+</div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Study Resources</h3>
+                    <p>Comprehensive collection of frontend interview questions, coding challenges, and system design problems.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Progress Tracking</h3>
+                    <p>Monitor your learning journey with detailed progress indicators and completion status.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Big Tech Ready</h3>
+                    <p>Curated content specifically designed for interviews at Google, Meta, Amazon, Apple, and Netflix.</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Frontend Interview Hub. Built for aspiring frontend engineers.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="/assets/js/main.js"></script>
+</body>
+</html>

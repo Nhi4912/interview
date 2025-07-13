@@ -1,0 +1,894 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Design Hit Counter | Frontend Interview Preparation Guide</title>
+    <meta name="description" content="Comprehensive frontend interview materials for Big Tech companies">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="/assets/css/main.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <header>
+        <nav class="container">
+            <div class="logo">Frontend Interview Hub</div>
+            <ul class="nav-links">
+                <li><a href="/">Home</a></li>
+                <li><a href="#progress">Progress</a></li>
+                <li><a href="#knowledge">Knowledge</a></li>
+                <li><a href="https://github.com/nee/interview">GitHub</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <div class="content-container">
+    
+        <nav class="breadcrumb">
+            <ol>
+                <li><a href="/">Home</a></li>
+                
+                
+                
+                    
+                
+                    
+                        
+                        
+                            <li><a href="/leetcode/">Leetcode</a></li>
+                        
+                    
+                
+                    
+                        
+                        
+                            <li><a href="/leetcode/others/">Others</a></li>
+                        
+                    
+                
+                    
+                        
+                        
+                            <li><a href="/leetcode/others/problems/">Problems</a></li>
+                        
+                    
+                
+                    
+                        
+                        
+                            <li class="active">Design hit counter</li>
+                        
+                    
+                
+            </ol>
+        </nav>
+    
+    
+    <article class="content">
+        
+            <header class="content-header">
+                <h1 class="content-title">Design Hit Counter</h1>
+                
+                
+                    <div class="content-meta">
+                        <span class="difficulty difficulty-easy">Easy</span>
+                        
+                            <span class="category">Others</span>
+                        
+                        
+                            <div class="tags">
+                                
+                                    <span class="tag">Others</span>
+                                
+                                    <span class="tag">Hash Table</span>
+                                
+                            </div>
+                        
+                    </div>
+                
+            </header>
+        
+        
+        <div class="content-body">
+            <h1 id="design-hit-counter">Design Hit Counter</h1>
+
+<h2 id="problem-description">Problem Description</h2>
+
+<ul>
+  <li>
+    <ul>
+      <li>Design a hit counter which counts the number of hits received in the past 5 minutes  * (i.e., the past 300 seconds).  *  * Your system should accept a timestamp parameter (in seconds granularity), and you</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="solutions">Solutions</h2>
+
+<p>/**</p>
+<ul>
+  <li>Design Hit Counter
+ *</li>
+  <li>Problem: https://leetcode.com/problems/design-hit-counter/
+ *</li>
+  <li>Design a hit counter which counts the number of hits received in the past 5 minutes</li>
+  <li>(i.e., the past 300 seconds).
+ *</li>
+  <li>Your system should accept a timestamp parameter (in seconds granularity), and you</li>
+  <li>may assume that calls are being made to the system in chronological order (i.e.,</li>
+  <li>timestamp is monotonically increasing). You may also assume that the earliest</li>
+  <li>timestamp starts at 1.
+ *</li>
+  <li>Implement the HitCounter class:</li>
+  <li>
+    <ul>
+      <li>HitCounter() Initializes the object of the hit counter system.</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>void hit(int timestamp) Records a hit that happened at timestamp (in seconds).</li>
+    </ul>
+  </li>
+  <li>Several hits may happen at the same timestamp.</li>
+  <li>
+    <ul>
+      <li>int getHits(int timestamp) Returns the number of hits in the past 5 minutes</li>
+    </ul>
+  </li>
+  <li>from timestamp (i.e., the past 300 seconds).
+ *</li>
+  <li>Example 1:</li>
+  <li>Input:</li>
+  <li>[“HitCounter”, “hit”, “hit”, “hit”, “getHits”, “hit”, “getHits”, “getHits”]</li>
+  <li>[[], [1], [2], [3], [4], [300], [300], [301]]</li>
+  <li>Output: [null, null, null, null, 3, null, 4, 3]
+ *</li>
+  <li>Explanation:</li>
+  <li>HitCounter hitCounter = new HitCounter();</li>
+  <li>hitCounter.hit(1);       // hit at timestamp 1.</li>
+  <li>hitCounter.hit(2);       // hit at timestamp 2.</li>
+  <li>hitCounter.hit(3);       // hit at timestamp 3.</li>
+  <li>hitCounter.getHits(4);   // get hits at timestamp 4, return 3.</li>
+  <li>hitCounter.getHits(300); // get hits at timestamp 300, return 4.</li>
+  <li>hitCounter.getHits(301); // get hits at timestamp 301, return 3.
+ *</li>
+  <li>Constraints:</li>
+  <li>
+    <ul>
+      <li>1 &lt;= timestamp &lt;= 2 * 10^9</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>All the calls are being made to the system in chronological order (i.e., timestamp is monotonically increasing).</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>At most 300 calls will be made to hit and getHits.
+ *</li>
+    </ul>
+  </li>
+  <li>Follow up: What if the number of hits per second could be very large? Does your design scale?
+ *</li>
+  <li>Solution Approaches:</li>
+  <li>
+    <ol>
+      <li>Array-based approach with sliding window</li>
+    </ol>
+  </li>
+  <li>
+    <ol>
+      <li>Queue-based approach</li>
+    </ol>
+  </li>
+  <li>
+    <ol>
+      <li>HashMap-based approach for sparse data</li>
+    </ol>
+  </li>
+  <li>
+    <ol>
+      <li>With statistics and monitoring</li>
+    </ol>
+  </li>
+  <li>
+    <ol>
+      <li>Scalable approach for high-frequency hits
+ *</li>
+    </ol>
+  </li>
+  <li>Time Complexity: O(1) for hit, O(300) for getHits in worst case</li>
+  <li>Space Complexity: O(300) for the sliding window
+ */</li>
+</ul>
+
+<p>/**</p>
+<ul>
+  <li>HitCounter - Array-based Implementation
+ *</li>
+  <li>HitCounter - Triển khai dựa trên Array
+ *</li>
+  <li>This approach uses an array to store hits for each second in the sliding window
+ */
+class HitCounter {
+  private hits: number[];
+  private times: number[];
+  private windowSize: number;</li>
+</ul>
+
+<p>constructor() {
+    this.hits = new Array(300).fill(0);
+    this.times = new Array(300).fill(0);
+    this.windowSize = 300;
+  }</p>
+
+<p>/**</p>
+<ul>
+  <li>Record a hit at the given timestamp</li>
+  <li>Ghi lại một hit tại timestamp đã cho
+   */
+  hit(timestamp: number): void {
+    const index = timestamp % this.windowSize;</li>
+</ul>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+</pre></td><td class="rouge-code"><pre>if (this.times[index] !== timestamp) {
+  this.hits[index] = 1;
+  this.times[index] = timestamp;
+} else {
+  this.hits[index]++;
+}   }
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>/**</p>
+<ul>
+  <li>Get the number of hits in the past 5 minutes</li>
+  <li>Lấy số lượng hits trong 5 phút qua
+   */
+  getHits(timestamp: number): number {
+    let totalHits = 0;</li>
+</ul>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+</pre></td><td class="rouge-code"><pre>for (let i = 0; i &lt; this.windowSize; i++) {
+  if (timestamp - this.times[i] &lt; this.windowSize) {
+    totalHits += this.hits[i];
+  }
+}
+
+return totalHits;   }
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>/**</p>
+<ul>
+  <li>Get current statistics</li>
+  <li>Lấy thống kê hiện tại
+   */
+  getStats(timestamp: number): {
+    totalHits: number;
+    activeSeconds: number;
+    averageHitsPerSecond: number;
+  } {
+    let totalHits = 0;
+    let activeSeconds = 0;</li>
+</ul>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+</pre></td><td class="rouge-code"><pre>for (let i = 0; i &lt; this.windowSize; i++) {
+  if (timestamp - this.times[i] &lt; this.windowSize) {
+    totalHits += this.hits[i];
+    if (this.hits[i] &gt; 0) {
+      activeSeconds++;
+    }
+  }
+}
+
+const averageHitsPerSecond =
+  activeSeconds &gt; 0 ? totalHits / activeSeconds : 0;
+
+return {
+  totalHits,
+  activeSeconds,
+  averageHitsPerSecond,
+};   } }
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>/**</p>
+<ul>
+  <li>Alternative Implementation: Queue-based Approach
+ *</li>
+  <li>Triển khai thay thế: Phương pháp dựa trên Queue
+ */
+class HitCounterQueue {
+  private queue: number[];
+  private windowSize: number;</li>
+</ul>
+
+<p>constructor() {
+    this.queue = [];
+    this.windowSize = 300;
+  }</p>
+
+<p>hit(timestamp: number): void {
+    this.queue.push(timestamp);
+  }</p>
+
+<p>getHits(timestamp: number): number {
+    // Remove timestamps outside the window
+    while (
+      this.queue.length &gt; 0 &amp;&amp;
+      timestamp - this.queue[0] &gt;= this.windowSize
+    ) {
+      this.queue.shift();
+    }</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre>return this.queue.length;   }
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>/**</p>
+<ul>
+  <li>Get hits for a specific time range</li>
+  <li>Lấy hits cho một khoảng thời gian cụ thể
+   */
+  getHitsInRange(startTime: number, endTime: number): number {
+    return this.queue.filter(
+ (timestamp) =&gt; timestamp &gt;= startTime &amp;&amp; timestamp &lt;= endTime
+    ).length;
+  }</li>
+</ul>
+
+<p>/**</p>
+<ul>
+  <li>Get peak hits in the window</li>
+  <li>Lấy số hits cao nhất trong cửa sổ
+   */
+  getPeakHits(timestamp: number): number {
+    const windowStart = timestamp - this.windowSize + 1;
+    const hitsInWindow = this.queue.filter(
+ (t) =&gt; t &gt;= windowStart &amp;&amp; t &lt;= timestamp
+    );</li>
+</ul>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+</pre></td><td class="rouge-code"><pre>if (hitsInWindow.length === 0) return 0;
+
+// Count hits per second and find the maximum
+const hitsPerSecond = new Map&lt;number, number&gt;();
+for (const hit of hitsInWindow) {
+  hitsPerSecond.set(hit, (hitsPerSecond.get(hit) || 0) + 1);
+}
+
+return Math.max(...hitsPerSecond.values());   } }
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>/**</p>
+<ul>
+  <li>Implementation with HashMap for Sparse Data
+ *</li>
+  <li>Triển khai với HashMap cho dữ liệu thưa
+ */
+class HitCounterHashMap {
+  private hits: Map&lt;number, number&gt;;
+  private windowSize: number;</li>
+</ul>
+
+<p>constructor() {
+    this.hits = new Map();
+    this.windowSize = 300;
+  }</p>
+
+<p>hit(timestamp: number): void {
+    this.hits.set(timestamp, (this.hits.get(timestamp) || 0) + 1);
+  }</p>
+
+<p>getHits(timestamp: number): number {
+    let totalHits = 0;
+    const windowStart = timestamp - this.windowSize + 1;</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+</pre></td><td class="rouge-code"><pre>// Clean up old entries and count hits
+for (const [time, count] of this.hits.entries()) {
+  if (time &gt;= windowStart &amp;&amp; time &lt;= timestamp) {
+    totalHits += count;
+  } else if (time &lt; windowStart) {
+    this.hits.delete(time);
+  }
+}
+
+return totalHits;   }
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>/**</p>
+<ul>
+  <li>Get detailed hit distribution</li>
+  <li>Lấy phân bố hits chi tiết
+   */
+  getHitDistribution(timestamp: number): Map&lt;number, number&gt; {
+    const distribution = new Map&lt;number, number&gt;();
+    const windowStart = timestamp - this.windowSize + 1;</li>
+</ul>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+</pre></td><td class="rouge-code"><pre>for (const [time, count] of this.hits.entries()) {
+  if (time &gt;= windowStart &amp;&amp; time &lt;= timestamp) {
+    distribution.set(time, count);
+  }
+}
+
+return distribution;   } }
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>/**</p>
+<ul>
+  <li>Implementation with Statistics and Monitoring
+ *</li>
+  <li>Triển khai với thống kê và giám sát
+ */
+class HitCounterWithStats extends HitCounter {
+  private totalHitsRecorded: number;
+  private getHitsCalls: number;
+  private operationHistory: Array&lt;{
+ operation: string;
+ timestamp: number;
+ result?: number;
+  }&gt;;</li>
+</ul>
+
+<p>constructor() {
+    super();
+    this.totalHitsRecorded = 0;
+    this.getHitsCalls = 0;
+    this.operationHistory = [];
+  }</p>
+
+<p>hit(timestamp: number): void {
+    super.hit(timestamp);
+    this.totalHitsRecorded++;</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+</pre></td><td class="rouge-code"><pre>this.operationHistory.push({
+  operation: "hit",
+  timestamp,
+});   }
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>getHits(timestamp: number): number {
+    const result = super.getHits(timestamp);
+    this.getHitsCalls++;</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+</pre></td><td class="rouge-code"><pre>this.operationHistory.push({
+  operation: "getHits",
+  timestamp,
+  result,
+});
+
+return result;   }
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>/**</p>
+<ul>
+  <li>Get performance statistics</li>
+  <li>Lấy thống kê hiệu suất
+   */
+  getPerformanceStats(): {
+    totalHitsRecorded: number;
+    getHitsCalls: number;
+    averageHitsPerCall: number;
+    recentActivity: Array&lt;{
+ operation: string;
+ timestamp: number;
+ result?: number;
+    }&gt;;
+  } {
+    const averageHitsPerCall =
+ this.getHitsCalls &gt; 0 ? this.totalHitsRecorded / this.getHitsCalls : 0;</li>
+</ul>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+</pre></td><td class="rouge-code"><pre>return {
+  totalHitsRecorded: this.totalHitsRecorded,
+  getHitsCalls: this.getHitsCalls,
+  averageHitsPerCall,
+  recentActivity: this.operationHistory.slice(-10), // Last 10 operations
+};   }
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>/**</p>
+<ul>
+  <li>Get hit rate over time</li>
+  <li>Lấy tỷ lệ hits theo thời gian
+   */
+  getHitRate(timestamp: number, windowSize: number = 60): number {
+    const windowStart = timestamp - windowSize + 1;
+    let hitsInWindow = 0;</li>
+</ul>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+</pre></td><td class="rouge-code"><pre>for (let i = 0; i &lt; 300; i++) {
+  if (
+    timestamp - this.times[i] &lt; windowSize &amp;&amp;
+    this.times[i] &gt;= windowStart
+  ) {
+    hitsInWindow += this.hits[i];
+  }
+}
+
+return hitsInWindow / windowSize; // hits per second   } }
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>/**</p>
+<ul>
+  <li>Scalable Implementation for High-Frequency Hits
+ *</li>
+  <li>Triển khai có thể mở rộng cho hits tần số cao
+ */
+class ScalableHitCounter {
+  private buckets: Map&lt;number, number&gt;;
+  private bucketSize: number;
+  private windowSize: number;</li>
+</ul>
+
+<p>constructor(bucketSize: number = 1) {
+    this.buckets = new Map();
+    this.bucketSize = bucketSize; // Size of each bucket in seconds
+    this.windowSize = 300;
+  }</p>
+
+<p>hit(timestamp: number): void {
+    const bucket = Math.floor(timestamp / this.bucketSize);
+    this.buckets.set(bucket, (this.buckets.get(bucket) || 0) + 1);
+  }</p>
+
+<p>getHits(timestamp: number): number {
+    let totalHits = 0;
+    const currentBucket = Math.floor(timestamp / this.bucketSize);
+    const startBucket = Math.floor(
+      (timestamp - this.windowSize + 1) / this.bucketSize
+    );</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+</pre></td><td class="rouge-code"><pre>// Clean up old buckets and count hits
+for (const [bucket, count] of this.buckets.entries()) {
+  if (bucket &gt;= startBucket &amp;&amp; bucket &lt;= currentBucket) {
+    totalHits += count;
+  } else if (bucket &lt; startBucket) {
+    this.buckets.delete(bucket);
+  }
+}
+
+return totalHits;   }
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>/**</p>
+<ul>
+  <li>Get bucket statistics</li>
+  <li>Lấy thống kê bucket
+   */
+  getBucketStats(timestamp: number): {
+    totalBuckets: number;
+    activeBuckets: number;
+    averageHitsPerBucket: number;
+    maxHitsInBucket: number;
+  } {
+    const currentBucket = Math.floor(timestamp / this.bucketSize);
+    const startBucket = Math.floor(
+ (timestamp - this.windowSize + 1) / this.bucketSize
+    );</li>
+</ul>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+</pre></td><td class="rouge-code"><pre>let totalHits = 0;
+let activeBuckets = 0;
+let maxHits = 0;
+
+for (const [bucket, count] of this.buckets.entries()) {
+  if (bucket &gt;= startBucket &amp;&amp; bucket &lt;= currentBucket) {
+    totalHits += count;
+    activeBuckets++;
+    maxHits = Math.max(maxHits, count);
+  }
+}
+
+return {
+  totalBuckets: this.buckets.size,
+  activeBuckets,
+  averageHitsPerBucket: activeBuckets &gt; 0 ? totalHits / activeBuckets : 0,
+  maxHitsInBucket: maxHits,
+};   } }
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>/**</p>
+<ul>
+  <li>Performance Comparison Function
+ *</li>
+  <li>Hàm so sánh hiệu suất các phương pháp
+ */
+function compareHitCounterImplementations(
+  operations: Array&lt;{ type: “hit” | “getHits”; timestamp: number }&gt;
+): void {
+  console.log(
+ “Hit Counter Implementation Performance Comparison / So sánh hiệu suất triển khai Hit Counter”
+  );
+  console.log(“=”.repeat(90));</li>
+</ul>
+
+<p>const implementations = [
+    { name: “Array-based”, counter: new HitCounter() },
+    { name: “Queue-based”, counter: new HitCounterQueue() },
+    { name: “HashMap”, counter: new HitCounterHashMap() },
+    { name: “Scalable”, counter: new ScalableHitCounter(5) }, // 5-second buckets
+  ];</p>
+
+<p>for (const impl of implementations) {
+    console.log(<code class="language-plaintext highlighter-rouge">\nTesting ${impl.name}:</code>);</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+</pre></td><td class="rouge-code"><pre>const start = performance.now();
+
+for (const op of operations) {
+  switch (op.type) {
+    case "hit":
+      impl.counter.hit(op.timestamp);
+      break;
+    case "getHits":
+      impl.counter.getHits(op.timestamp);
+      break;
+  }
+}
+
+const end = performance.now();
+console.log(`  Time: ${(end - start).toFixed(4)}ms`);   } }
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>/**</p>
+<ul>
+  <li>Test Cases
+ *</li>
+  <li>Các trường hợp kiểm thử
+ */
+function runTests(): void {
+  console.log(“Hit Counter Tests / Kiểm thử Hit Counter”);
+  console.log(“=”.repeat(50));</li>
+</ul>
+
+<p>// Test 1: Basic operations
+  console.log(“\nTest 1: Basic operations / Các thao tác cơ bản”);
+  const counter1 = new HitCounter();
+  counter1.hit(1);
+  counter1.hit(2);
+  counter1.hit(3);
+  console.log(<code class="language-plaintext highlighter-rouge">getHits(4): ${counter1.getHits(4)}</code>); // Expected: 3
+  counter1.hit(300);
+  console.log(<code class="language-plaintext highlighter-rouge">getHits(300): ${counter1.getHits(300)}</code>); // Expected: 4
+  console.log(<code class="language-plaintext highlighter-rouge">getHits(301): ${counter1.getHits(301)}</code>); // Expected: 3</p>
+
+<p>// Test 2: Statistics tracking
+  console.log(“\nTest 2: Statistics tracking / Theo dõi thống kê”);
+  const statCounter = new HitCounterWithStats();</p>
+
+<p>for (let i = 1; i &lt;= 100; i++) {
+    statCounter.hit(i);
+  }</p>
+
+<p>for (let i = 50; i &lt;= 150; i += 10) {
+    statCounter.getHits(i);
+  }</p>
+
+<p>const stats = statCounter.getPerformanceStats();
+  console.log(<code class="language-plaintext highlighter-rouge">Total hits recorded: ${stats.totalHitsRecorded}</code>);
+  console.log(<code class="language-plaintext highlighter-rouge">Get hits calls: ${stats.getHitsCalls}</code>);
+  console.log(<code class="language-plaintext highlighter-rouge">Average hits per call: ${stats.averageHitsPerCall.toFixed(2)}</code>);</p>
+
+<p>// Test 3: Queue-based counter
+  console.log(“\nTest 3: Queue-based counter / Counter dựa trên Queue”);
+  const queueCounter = new HitCounterQueue();</p>
+
+<p>for (let i = 1; i &lt;= 10; i++) {
+    queueCounter.hit(i);
+  }</p>
+
+<p>console.log(<code class="language-plaintext highlighter-rouge">getHits(10): ${queueCounter.getHits(10)}</code>);
+  console.log(<code class="language-plaintext highlighter-rouge">getHits(310): ${queueCounter.getHits(310)}</code>); // Should be 0
+  console.log(<code class="language-plaintext highlighter-rouge">Peak hits: ${queueCounter.getPeakHits(10)}</code>);</p>
+
+<p>// Test 4: Scalable counter
+  console.log(“\nTest 4: Scalable counter / Counter có thể mở rộng”);
+  const scalableCounter = new ScalableHitCounter(10); // 10-second buckets</p>
+
+<p>for (let i = 1; i &lt;= 100; i++) {
+    scalableCounter.hit(i);
+  }</p>
+
+<p>const bucketStats = scalableCounter.getBucketStats(100);
+  console.log(<code class="language-plaintext highlighter-rouge">Total buckets: ${bucketStats.totalBuckets}</code>);
+  console.log(<code class="language-plaintext highlighter-rouge">Active buckets: ${bucketStats.activeBuckets}</code>);
+  console.log(
+    <code class="language-plaintext highlighter-rouge">Average hits per bucket: ${bucketStats.averageHitsPerBucket.toFixed(2)}</code>
+  );
+  console.log(<code class="language-plaintext highlighter-rouge">Max hits in bucket: ${bucketStats.maxHitsInBucket}</code>);</p>
+
+<p>// Test 5: Performance comparison
+  console.log(“\nTest 5: Performance comparison / So sánh hiệu suất”);
+  const testOperations = [
+    { type: “hit” as const, timestamp: 1 },
+    { type: “hit” as const, timestamp: 2 },
+    { type: “hit” as const, timestamp: 3 },
+    { type: “getHits” as const, timestamp: 4 },
+    { type: “hit” as const, timestamp: 300 },
+    { type: “getHits” as const, timestamp: 300 },
+    { type: “getHits” as const, timestamp: 301 },
+  ];</p>
+
+<p>compareHitCounterImplementations(testOperations);
+}</p>
+
+<p>// Uncomment to run tests
+// runTests();</p>
+
+<p>export {
+  HitCounter,
+  HitCounterQueue,
+  HitCounterHashMap,
+  HitCounterWithStats,
+  ScalableHitCounter,
+  compareHitCounterImplementations,
+  runTests,
+};</p>
+
+
+        </div>
+    </article>
+</div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Study Resources</h3>
+                    <p>Comprehensive collection of frontend interview questions, coding challenges, and system design problems.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Progress Tracking</h3>
+                    <p>Monitor your learning journey with detailed progress indicators and completion status.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Big Tech Ready</h3>
+                    <p>Curated content specifically designed for interviews at Google, Meta, Amazon, Apple, and Netflix.</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Frontend Interview Hub. Built for aspiring frontend engineers.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="/assets/js/main.js"></script>
+</body>
+</html>

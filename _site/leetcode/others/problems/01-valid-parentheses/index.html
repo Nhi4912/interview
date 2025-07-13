@@ -1,0 +1,802 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Valid Parenthese | Frontend Interview Preparation Guide</title>
+    <meta name="description" content="Comprehensive frontend interview materials for Big Tech companies">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="/assets/css/main.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <header>
+        <nav class="container">
+            <div class="logo">Frontend Interview Hub</div>
+            <ul class="nav-links">
+                <li><a href="/">Home</a></li>
+                <li><a href="#progress">Progress</a></li>
+                <li><a href="#knowledge">Knowledge</a></li>
+                <li><a href="https://github.com/nee/interview">GitHub</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <div class="content-container">
+    
+        <nav class="breadcrumb">
+            <ol>
+                <li><a href="/">Home</a></li>
+                
+                
+                
+                    
+                
+                    
+                        
+                        
+                            <li><a href="/leetcode/">Leetcode</a></li>
+                        
+                    
+                
+                    
+                        
+                        
+                            <li><a href="/leetcode/others/">Others</a></li>
+                        
+                    
+                
+                    
+                        
+                        
+                            <li><a href="/leetcode/others/problems/">Problems</a></li>
+                        
+                    
+                
+                    
+                        
+                        
+                            <li class="active">Valid parenthese</li>
+                        
+                    
+                
+            </ol>
+        </nav>
+    
+    
+    <article class="content">
+        
+            <header class="content-header">
+                <h1 class="content-title">Valid Parenthese</h1>
+                
+                
+                    <div class="content-meta">
+                        <span class="difficulty difficulty-easy">Easy</span>
+                        
+                            <span class="category">Others</span>
+                        
+                        
+                            <div class="tags">
+                                
+                                    <span class="tag">Others</span>
+                                
+                                    <span class="tag">Hash Table</span>
+                                
+                            </div>
+                        
+                    </div>
+                
+            </header>
+        
+        
+        <div class="content-body">
+            <h1 id="valid-parenthese">Valid Parenthese</h1>
+
+<p><strong>LeetCode Problem # * 20. Valid Parentheses</strong></p>
+
+<h2 id="problem-description">Problem Description</h2>
+
+<ul>
+  <li>Given a string s containing just the characters ‘(‘, ‘)’, ‘{‘, ‘}’, ‘[’ and ‘]’,  * determine if the input string is valid.  *  * An input string is valid if:  * - Open brackets must be closed by the same type of brackets.</li>
+</ul>
+
+<h2 id="solutions">Solutions</h2>
+
+<p>/**</p>
+<ul>
+  <li>
+    <ol>
+      <li>Valid Parentheses
+ *</li>
+    </ol>
+  </li>
+  <li>Problem:</li>
+  <li>Given a string s containing just the characters ‘(‘, ‘)’, ‘{‘, ‘}’, ‘[’ and ‘]’,</li>
+  <li>determine if the input string is valid.
+ *</li>
+  <li>An input string is valid if:</li>
+  <li>
+    <ul>
+      <li>Open brackets must be closed by the same type of brackets.</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Open brackets must be closed in the correct order.</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Every close bracket has a corresponding open bracket of the same type.
+ *</li>
+    </ul>
+  </li>
+  <li>Example:</li>
+  <li>Input: s = “()”</li>
+  <li>Output: true
+ *</li>
+  <li>Input: s = “()[]{}”</li>
+  <li>Output: true
+ *</li>
+  <li>Input: s = “(]”</li>
+  <li>Output: false
+ *</li>
+  <li>LeetCode: https://leetcode.com/problems/valid-parentheses/
+ */</li>
+</ul>
+
+<p>/**</p>
+<ul>
+  <li>Solution 1: Stack (Optimal)
+ *</li>
+  <li>Approach:</li>
+  <li>
+    <ul>
+      <li>Use stack to keep track of opening brackets</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>When encountering closing bracket, check if it matches top of stack</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Stack should be empty at the end
+ *</li>
+    </ul>
+  </li>
+  <li>Time Complexity: O(n)</li>
+  <li>Space Complexity: O(n)
+ */
+function isValid(s: string): boolean {
+  const stack: string[] = [];
+  const brackets: { [key: string]: string } = {
+ “)”: “(“,
+ “}”: “{“,
+ “]”: “[”,
+  };</li>
+</ul>
+
+<p>for (const char of s) {
+    if (char === “(“ || char === “{“ || char === “[”) {
+      stack.push(char);
+    } else {
+      if (stack.length === 0 || stack.pop() !== brackets[char]) {
+        return false;
+      }
+    }
+  }</p>
+
+<p>return stack.length === 0;
+}</p>
+
+<p>/**</p>
+<ul>
+  <li>Solution 2: Stack with Switch Statement
+ *</li>
+  <li>Approach:</li>
+  <li>
+    <ul>
+      <li>Same logic as Solution 1 but using switch statement</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>More explicit handling of each bracket type
+ *</li>
+    </ul>
+  </li>
+  <li>Time Complexity: O(n)</li>
+  <li>Space Complexity: O(n)
+ */
+function isValidSwitch(s: string): boolean {
+  const stack: string[] = [];</li>
+</ul>
+
+<p>for (const char of s) {
+    switch (char) {
+      case “(“:
+      case “{“:
+      case “[”:
+        stack.push(char);
+        break;
+      case “)”:
+        if (stack.length === 0 || stack.pop() !== “(“) return false;
+        break;
+      case “}”:
+        if (stack.length === 0 || stack.pop() !== “{“) return false;
+        break;
+      case “]”:
+        if (stack.length === 0 || stack.pop() !== “[”) return false;
+        break;
+    }
+  }</p>
+
+<p>return stack.length === 0;
+}</p>
+
+<p>/**</p>
+<ul>
+  <li>Solution 3: Using Array Methods (Functional)
+ *</li>
+  <li>Approach:</li>
+  <li>
+    <ul>
+      <li>Use reduce to process string functionally</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>More declarative approach
+ *</li>
+    </ul>
+  </li>
+  <li>Time Complexity: O(n)</li>
+  <li>Space Complexity: O(n)
+ */
+function isValidFunctional(s: string): boolean {
+  const brackets: { [key: string]: string } = {
+ “)”: “(“,
+ “}”: “{“,
+ “]”: “[”,
+  };</li>
+</ul>
+
+<p>const result = s.split(“”).reduce((stack: string[], char: string) =&gt; {
+    if (char === “(“ || char === “{“ || char === “[”) {
+      stack.push(char);
+    } else {
+      if (stack.length === 0 || stack[stack.length - 1] !== brackets[char]) {
+        return [“INVALID”]; // Mark as invalid
+      }
+      stack.pop();
+    }
+    return stack;
+  }, []);</p>
+
+<p>return result.length === 0 &amp;&amp; !result.includes(“INVALID”);
+}</p>
+
+<p>/**</p>
+<ul>
+  <li>Solution 4: Using Map (More Extensible)
+ *</li>
+  <li>Approach:</li>
+  <li>
+    <ul>
+      <li>Use Map for bracket pairs</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Easier to extend for more bracket types
+ *</li>
+    </ul>
+  </li>
+  <li>Time Complexity: O(n)</li>
+  <li>Space Complexity: O(n)
+ */
+function isValidMap(s: string): boolean {
+  const stack: string[] = [];
+  const brackets = new Map&lt;string, string&gt;([
+ [”)”, “(“],
+ [”}”, “{“],
+ [”]”, “[”],
+  ]);</li>
+</ul>
+
+<p>for (const char of s) {
+    if (!brackets.has(char)) {
+      // Opening bracket
+      stack.push(char);
+    } else {
+      // Closing bracket
+      if (stack.length === 0 || stack.pop() !== brackets.get(char)) {
+        return false;
+      }
+    }
+  }</p>
+
+<p>return stack.length === 0;
+}</p>
+
+<p>/**</p>
+<ul>
+  <li>Solution 5: Using ASCII Values (Optimized)
+ *</li>
+  <li>Approach:</li>
+  <li>
+    <ul>
+      <li>Use ASCII values to determine bracket pairs</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Avoids object/map lookups
+ *</li>
+    </ul>
+  </li>
+  <li>Time Complexity: O(n)</li>
+  <li>Space Complexity: O(n)
+ */
+function isValidASCII(s: string): boolean {
+  const stack: number[] = [];</li>
+</ul>
+
+<p>for (const char of s) {
+    const code = char.charCodeAt(0);</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+</pre></td><td class="rouge-code"><pre>if (code === 40 || code === 91 || code === 123) {
+  // (, [, {
+  stack.push(code);
+} else {
+  if (stack.length === 0) return false;
+
+  const top = stack.pop()!;
+  const diff = code - top;
+
+  // Check if brackets match: () = 1, [] = 2, {} = 2
+  if (diff !== 1 &amp;&amp; diff !== 2) {
+    return false;
+  }
+}   }
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>return stack.length === 0;
+}</p>
+
+<p>/**</p>
+<ul>
+  <li>Solution 6: Recursive Approach (Educational)
+ *</li>
+  <li>Approach:</li>
+  <li>
+    <ul>
+      <li>Use recursion to validate parentheses</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Shows recursive thinking
+ *</li>
+    </ul>
+  </li>
+  <li>Time Complexity: O(n)</li>
+  <li>
+    <p>Space Complexity: O(n) - recursion stack
+ */
+function isValidRecursive(s: string): boolean {
+  function validate(index: number, stack: string[]): [boolean, number] {
+ if (index &gt;= s.length) {
+   return [stack.length === 0, index];
+ }</p>
+
+    <p>const char = s[index];</p>
+
+    <p>if (char === “(“ || char === “{“ || char === “[”) {
+   stack.push(char);
+   return validate(index + 1, stack);
+ } else {
+   if (stack.length === 0) return [false, index];</p>
+
+    <p>const top = stack.pop()!;
+   const expected = char === “)” ? “(“ : char === “}” ? “{“ : “[”;</p>
+
+    <p>if (top !== expected) return [false, index];
+   return validate(index + 1, stack);
+ }
+  }</p>
+  </li>
+</ul>
+
+<p>const [isValid, _] = validate(0, []);
+  return isValid;
+}</p>
+
+<p>/**</p>
+<ul>
+  <li>Solution 7: Using Regular Expressions (Not Recommended)
+ *</li>
+  <li>Approach:</li>
+  <li>
+    <ul>
+      <li>Use regex to remove valid pairs repeatedly</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Educational but inefficient
+ *</li>
+    </ul>
+  </li>
+  <li>Time Complexity: O(n²) - regex operations</li>
+  <li>Space Complexity: O(n)
+ */
+function isValidRegex(s: string): boolean {
+  let prev = s;
+  let current = s;</li>
+</ul>
+
+<p>do {
+    prev = current;
+    current = current.replace(/()|[]|{}/g, “”);
+  } while (prev !== current);</p>
+
+<p>return current.length === 0;
+}</p>
+
+<p>/**</p>
+<ul>
+  <li>Solution 8: Using Generator (Memory Efficient)
+ *</li>
+  <li>Approach:</li>
+  <li>
+    <ul>
+      <li>Use generator to process brackets one by one</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Memory efficient for large strings
+ *</li>
+    </ul>
+  </li>
+  <li>Time Complexity: O(n)</li>
+  <li>Space Complexity: O(n)
+ <em>/
+function</em> bracketValidator(s: string): Generator<boolean> {
+  const stack: string[] = [];
+  const brackets: { [key: string]: string } = {
+ ")": "(",
+ "}": "{",
+ "]": "[",
+  };</boolean></li>
+</ul>
+
+<p>for (const char of s) {
+    if (char === “(“ || char === “{“ || char === “[”) {
+      stack.push(char);
+    } else {
+      if (stack.length === 0 || stack.pop() !== brackets[char]) {
+        yield false;
+        return;
+      }
+    }
+    yield stack.length === 0;
+  }</p>
+
+<p>yield stack.length === 0;
+}</p>
+
+<p>function isValidGenerator(s: string): boolean {
+  const generator = bracketValidator(s);
+  let result = false;</p>
+
+<p>for (const valid of generator) {
+    result = valid;
+  }</p>
+
+<p>return result;
+}</p>
+
+<p>// Test cases
+function testValidParentheses() {
+  console.log(“=== Testing Valid Parentheses ===\n”);</p>
+
+<p>const testCases = [
+    {
+      input: “()”,
+      expected: true,
+      description: “Simple parentheses”,
+    },
+    {
+      input: “()[]{}”,
+      expected: true,
+      description: “Multiple bracket types”,
+    },
+    {
+      input: “(]”,
+      expected: false,
+      description: “Mismatched brackets”,
+    },
+    {
+      input: “([)]”,
+      expected: false,
+      description: “Wrong order”,
+    },
+    {
+      input: “{[]}”,
+      expected: true,
+      description: “Nested brackets”,
+    },
+    {
+      input: “”,
+      expected: true,
+      description: “Empty string”,
+    },
+    {
+      input: “(((“,
+      expected: false,
+      description: “Only opening brackets”,
+    },
+    {
+      input: “)))”,
+      expected: false,
+      description: “Only closing brackets”,
+    },
+    {
+      input: “({[]})”,
+      expected: true,
+      description: “Complex nested”,
+    },
+    {
+      input: “([{}])”,
+      expected: true,
+      description: “Mixed nested”,
+    },
+  ];</p>
+
+<p>testCases.forEach((testCase, index) =&gt; {
+    console.log(<code class="language-plaintext highlighter-rouge">Test Case ${index + 1}: ${testCase.description}</code>);
+    console.log(<code class="language-plaintext highlighter-rouge">Input: "${testCase.input}"</code>);
+    console.log(<code class="language-plaintext highlighter-rouge">Expected: ${testCase.expected}\n</code>);</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+</pre></td><td class="rouge-code"><pre>// Test Solution 1 (Stack)
+const result1 = isValid(testCase.input);
+console.log(
+  `Solution 1 (Stack): ${result1} ${
+    result1 === testCase.expected ? "✅" : "❌"
+  }`
+);
+
+// Test Solution 2 (Switch)
+const result2 = isValidSwitch(testCase.input);
+console.log(
+  `Solution 2 (Switch): ${result2} ${
+    result2 === testCase.expected ? "✅" : "❌"
+  }`
+);
+
+// Test Solution 3 (Functional)
+const result3 = isValidFunctional(testCase.input);
+console.log(
+  `Solution 3 (Functional): ${result3} ${
+    result3 === testCase.expected ? "✅" : "❌"
+  }`
+);
+
+// Test Solution 4 (Map)
+const result4 = isValidMap(testCase.input);
+console.log(
+  `Solution 4 (Map): ${result4} ${
+    result4 === testCase.expected ? "✅" : "❌"
+  }`
+);
+
+// Test Solution 5 (ASCII)
+const result5 = isValidASCII(testCase.input);
+console.log(
+  `Solution 5 (ASCII): ${result5} ${
+    result5 === testCase.expected ? "✅" : "❌"
+  }`
+);
+
+// Test Solution 6 (Recursive)
+const result6 = isValidRecursive(testCase.input);
+console.log(
+  `Solution 6 (Recursive): ${result6} ${
+    result6 === testCase.expected ? "✅" : "❌"
+  }`
+);
+
+// Test Solution 7 (Regex)
+const result7 = isValidRegex(testCase.input);
+console.log(
+  `Solution 7 (Regex): ${result7} ${
+    result7 === testCase.expected ? "✅" : "❌"
+  }`
+);
+
+// Test Solution 8 (Generator)
+const result8 = isValidGenerator(testCase.input);
+console.log(
+  `Solution 8 (Generator): ${result8} ${
+    result8 === testCase.expected ? "✅" : "❌"
+  }`
+);
+
+console.log("\n---\n");   }); }
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>// Performance comparison
+function performanceComparison() {
+  console.log(“=== Performance Comparison ===\n”);</p>
+
+<p>const testCases = [
+    { name: “Stack”, func: isValid },
+    { name: “Switch”, func: isValidSwitch },
+    { name: “Functional”, func: isValidFunctional },
+    { name: “Map”, func: isValidMap },
+    { name: “ASCII”, func: isValidASCII },
+    { name: “Recursive”, func: isValidRecursive },
+    { name: “Regex”, func: isValidRegex },
+    { name: “Generator”, func: isValidGenerator },
+  ];</p>
+
+<p>// Create test string with many brackets
+  const testString = “({[]})”.repeat(10000);</p>
+
+<p>testCases.forEach(({ name, func }) =&gt; {
+    const start = performance.now();
+    const result = func(testString);
+    const end = performance.now();</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+</pre></td><td class="rouge-code"><pre>console.log(`${name}:`);
+console.log(`  Time: ${(end - start).toFixed(2)}ms`);
+console.log(`  Result: ${result}`);
+console.log(`  Memory: O(n)\n`);   }); }
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>// Uncomment the following lines to run tests
+// testValidParentheses();
+// performanceComparison();</p>
+
+<p>export {
+  isValid,
+  isValidSwitch,
+  isValidFunctional,
+  isValidMap,
+  isValidASCII,
+  isValidRecursive,
+  isValidRegex,
+  isValidGenerator,
+  bracketValidator,
+  testValidParentheses,
+  performanceComparison,
+};</p>
+
+
+        </div>
+    </article>
+</div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Study Resources</h3>
+                    <p>Comprehensive collection of frontend interview questions, coding challenges, and system design problems.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Progress Tracking</h3>
+                    <p>Monitor your learning journey with detailed progress indicators and completion status.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Big Tech Ready</h3>
+                    <p>Curated content specifically designed for interviews at Google, Meta, Amazon, Apple, and Netflix.</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Frontend Interview Hub. Built for aspiring frontend engineers.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="/assets/js/main.js"></script>
+</body>
+</html>

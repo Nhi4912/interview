@@ -1,0 +1,666 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contains Duplicate | Frontend Interview Preparation Guide</title>
+    <meta name="description" content="Comprehensive frontend interview materials for Big Tech companies">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="/assets/css/main.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <header>
+        <nav class="container">
+            <div class="logo">Frontend Interview Hub</div>
+            <ul class="nav-links">
+                <li><a href="/">Home</a></li>
+                <li><a href="#progress">Progress</a></li>
+                <li><a href="#knowledge">Knowledge</a></li>
+                <li><a href="https://github.com/nee/interview">GitHub</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <div class="content-container">
+    
+        <nav class="breadcrumb">
+            <ol>
+                <li><a href="/">Home</a></li>
+                
+                
+                
+                    
+                
+                    
+                        
+                        
+                            <li><a href="/leetcode/">Leetcode</a></li>
+                        
+                    
+                
+                    
+                        
+                        
+                            <li><a href="/leetcode/array/">Array</a></li>
+                        
+                    
+                
+                    
+                        
+                        
+                            <li><a href="/leetcode/array/problems/">Problems</a></li>
+                        
+                    
+                
+                    
+                        
+                        
+                            <li class="active">Contains duplicate</li>
+                        
+                    
+                
+            </ol>
+        </nav>
+    
+    
+    <article class="content">
+        
+            <header class="content-header">
+                <h1 class="content-title">Contains Duplicate</h1>
+                
+                
+                    <div class="content-meta">
+                        <span class="difficulty difficulty-hard">Hard</span>
+                        
+                            <span class="category">Array</span>
+                        
+                        
+                            <div class="tags">
+                                
+                                    <span class="tag">Array</span>
+                                
+                                    <span class="tag">Hash Table</span>
+                                
+                                    <span class="tag">Sorting</span>
+                                
+                            </div>
+                        
+                    </div>
+                
+            </header>
+        
+        
+        <div class="content-body">
+            <h1 id="contains-duplicate">Contains Duplicate</h1>
+
+<h2 id="problem-description">Problem Description</h2>
+
+<ul>
+  <li>
+    <ul>
+      <li>Given an integer array nums, return true if any value appears at least twice  * in the array, and return false if every element is distinct.  *  * Input: nums = [1,2,3,1]</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="solutions">Solutions</h2>
+
+<p>/**</p>
+<ul>
+  <li>Contains Duplicate
+ *</li>
+  <li>Problem: https://leetcode.com/problems/contains-duplicate/
+ *</li>
+  <li>Given an integer array nums, return true if any value appears at least twice</li>
+  <li>in the array, and return false if every element is distinct.
+ *</li>
+  <li>Example 1:</li>
+  <li>Input: nums = [1,2,3,1]</li>
+  <li>Output: true
+ *</li>
+  <li>Example 2:</li>
+  <li>Input: nums = [1,2,3,4]</li>
+  <li>Output: false
+ *</li>
+  <li>Example 3:</li>
+  <li>Input: nums = [1,1,1,3,3,4,3,2,4,2]</li>
+  <li>Output: true
+ *</li>
+  <li>Constraints:</li>
+  <li>
+    <ul>
+      <li>1 &lt;= nums.length &lt;= 10^5</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>-10^9 &lt;= nums[i] &lt;= 10^9
+ *</li>
+    </ul>
+  </li>
+  <li>Solution Approaches:</li>
+  <li>
+    <ol>
+      <li>Using Set/HashSet</li>
+    </ol>
+  </li>
+  <li>
+    <ol>
+      <li>Using Map/HashMap</li>
+    </ol>
+  </li>
+  <li>
+    <ol>
+      <li>Sorting approach</li>
+    </ol>
+  </li>
+  <li>
+    <ol>
+      <li>Brute force (not recommended for large arrays)</li>
+    </ol>
+  </li>
+  <li>
+    <ol>
+      <li>Using Array methods
+ *</li>
+    </ol>
+  </li>
+  <li>Time Complexity: O(n) for Set/Map approach, O(n log n) for sorting</li>
+  <li>Space Complexity: O(n) for Set/Map approach, O(1) for sorting (in-place)
+ */</li>
+</ul>
+
+<p>/**</p>
+<ul>
+  <li>Contains Duplicate - Set Solution
+ *</li>
+  <li>Giải pháp sử dụng Set cho bài toán Kiểm tra phần tử trùng lặp
+ *</li>
+  <li>@param nums - Array of integers</li>
+  <li>@returns True if array contains duplicates, false otherwise
+ */
+function containsDuplicate(nums: number[]): boolean {
+  const seen = new Set<number>();</number></li>
+</ul>
+
+<p>for (const num of nums) {
+    if (seen.has(num)) {
+      return true;
+    }
+    seen.add(num);
+  }</p>
+
+<p>return false;
+}</p>
+
+<p>/**</p>
+<ul>
+  <li>Alternative Solution: Map Approach
+ *</li>
+  <li>Giải pháp thay thế: Sử dụng Map
+ *</li>
+  <li>@param nums - Array of integers</li>
+  <li>@returns True if array contains duplicates, false otherwise
+ */
+function containsDuplicateMap(nums: number[]): boolean {
+  const frequencyMap = new Map&lt;number, number&gt;();</li>
+</ul>
+
+<p>for (const num of nums) {
+    const count = frequencyMap.get(num) || 0;
+    if (count &gt; 0) {
+      return true;
+    }
+    frequencyMap.set(num, count + 1);
+  }</p>
+
+<p>return false;
+}</p>
+
+<p>/**</p>
+<ul>
+  <li>Solution: Sorting Approach
+ *</li>
+  <li>Giải pháp: Phương pháp sắp xếp
+ *</li>
+  <li>@param nums - Array of integers</li>
+  <li>@returns True if array contains duplicates, false otherwise
+ */
+function containsDuplicateSorting(nums: number[]): boolean {
+  // Create a copy to avoid modifying the original array
+  const sortedNums = […nums].sort((a, b) =&gt; a - b);</li>
+</ul>
+
+<p>for (let i = 1; i &lt; sortedNums.length; i++) {
+    if (sortedNums[i] === sortedNums[i - 1]) {
+      return true;
+    }
+  }</p>
+
+<p>return false;
+}</p>
+
+<p>/**</p>
+<ul>
+  <li>Solution: Brute Force Approach (Not recommended for large arrays)
+ *</li>
+  <li>Giải pháp: Vét cạn (Không khuyến nghị cho mảng lớn)
+ *</li>
+  <li>@param nums - Array of integers</li>
+  <li>@returns True if array contains duplicates, false otherwise
+ */
+function containsDuplicateBruteForce(nums: number[]): boolean {
+  for (let i = 0; i &lt; nums.length; i++) {
+ for (let j = i + 1; j &lt; nums.length; j++) {
+   if (nums[i] === nums[j]) {
+     return true;
+   }
+ }
+  }
+  return false;
+}</li>
+</ul>
+
+<p>/**</p>
+<ul>
+  <li>Solution: Using Array methods
+ *</li>
+  <li>Giải pháp: Sử dụng các phương thức của Array
+ *</li>
+  <li>@param nums - Array of integers</li>
+  <li>@returns True if array contains duplicates, false otherwise
+ */
+function containsDuplicateArrayMethods(nums: number[]): boolean {
+  return new Set(nums).size !== nums.length;
+}</li>
+</ul>
+
+<p>/**</p>
+<ul>
+  <li>Solution with Frequency Count
+ *</li>
+  <li>Giải pháp với đếm tần suất xuất hiện
+ *</li>
+  <li>@param nums - Array of integers</li>
+  <li>@returns Object with result and frequency map
+ */
+function containsDuplicateWithFrequency(nums: number[]): {
+  hasDuplicates: boolean;
+  frequencyMap: Map&lt;number, number&gt;;
+  duplicates: number[];
+} {
+  const frequencyMap = new Map&lt;number, number&gt;();
+  const duplicates: number[] = [];</li>
+</ul>
+
+<p>for (const num of nums) {
+    const count = frequencyMap.get(num) || 0;
+    frequencyMap.set(num, count + 1);</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+</pre></td><td class="rouge-code"><pre>if (count === 1) {
+  duplicates.push(num);
+}   }
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>return {
+    hasDuplicates: duplicates.length &gt; 0,
+    frequencyMap,
+    duplicates: […new Set(duplicates)], // Remove duplicates from duplicates array
+  };
+}</p>
+
+<p>/**</p>
+<ul>
+  <li>Solution with Performance Tracking
+ *</li>
+  <li>Giải pháp với theo dõi hiệu suất
+ *</li>
+  <li>@param nums - Array of integers</li>
+  <li>@returns Object with result and performance metrics
+ */
+function containsDuplicateWithPerformance(nums: number[]): {
+  result: boolean;
+  performance: {
+ setTime: number;
+ mapTime: number;
+ sortingTime: number;
+ arrayMethodsTime: number;
+  };
+} {
+  const start1 = performance.now();
+  const result1 = containsDuplicate(nums);
+  const setTime = performance.now() - start1;</li>
+</ul>
+
+<p>const start2 = performance.now();
+  const result2 = containsDuplicateMap(nums);
+  const mapTime = performance.now() - start2;</p>
+
+<p>const start3 = performance.now();
+  const result3 = containsDuplicateSorting(nums);
+  const sortingTime = performance.now() - start3;</p>
+
+<p>const start4 = performance.now();
+  const result4 = containsDuplicateArrayMethods(nums);
+  const arrayMethodsTime = performance.now() - start4;</p>
+
+<p>// All results should be the same
+  const result = result1;</p>
+
+<p>return {
+    result,
+    performance: {
+      setTime,
+      mapTime,
+      sortingTime,
+      arrayMethodsTime,
+    },
+  };
+}</p>
+
+<p>/**</p>
+<ul>
+  <li>Solution for Finding All Duplicates
+ *</li>
+  <li>Giải pháp tìm tất cả các phần tử trùng lặp
+ *</li>
+  <li>@param nums - Array of integers</li>
+  <li>@returns Array of all duplicate elements
+ */
+function findAllDuplicates(nums: number[]): number[] {
+  const frequencyMap = new Map&lt;number, number&gt;();
+  const duplicates: number[] = [];</li>
+</ul>
+
+<p>for (const num of nums) {
+    const count = frequencyMap.get(num) || 0;
+    frequencyMap.set(num, count + 1);</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+</pre></td><td class="rouge-code"><pre>if (count === 1) {
+  duplicates.push(num);
+}   }
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>return duplicates;
+}</p>
+
+<p>/**</p>
+<ul>
+  <li>Solution for Finding First Duplicate
+ *</li>
+  <li>Giải pháp tìm phần tử trùng lặp đầu tiên
+ *</li>
+  <li>@param nums - Array of integers</li>
+  <li>@returns First duplicate element or -1 if no duplicates
+ */
+function findFirstDuplicate(nums: number[]): number {
+  const seen = new Set<number>();</number></li>
+</ul>
+
+<p>for (const num of nums) {
+    if (seen.has(num)) {
+      return num;
+    }
+    seen.add(num);
+  }</p>
+
+<p>return -1;
+}</p>
+
+<p>/**</p>
+<ul>
+  <li>Solution with Memory Optimization (for very large arrays)
+ *</li>
+  <li>Giải pháp tối ưu bộ nhớ (cho mảng rất lớn)
+ *</li>
+  <li>@param nums - Array of integers</li>
+  <li>@returns True if array contains duplicates, false otherwise
+ */
+function containsDuplicateMemoryOptimized(nums: number[]): boolean {
+  // For very large arrays, we can use a more memory-efficient approach
+  // by processing in chunks or using bit manipulation for small integers</li>
+</ul>
+
+<p>if (nums.length &lt;= 1) return false;</p>
+
+<p>// If all numbers are small integers (0-1000), we can use a boolean array
+  const min = Math.min(…nums);
+  const max = Math.max(…nums);</p>
+
+<p>if (max - min &lt; 10000) {
+    const seen = new Array(max - min + 1).fill(false);</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+</pre></td><td class="rouge-code"><pre>for (const num of nums) {
+  const index = num - min;
+  if (seen[index]) {
+    return true;
+  }
+  seen[index] = true;
+}
+return false;   }
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>// Fall back to Set for large ranges
+  return containsDuplicate(nums);
+}</p>
+
+<p>/**</p>
+<ul>
+  <li>Performance Comparison Function
+ *</li>
+  <li>Hàm so sánh hiệu suất các phương pháp
+ */
+function comparePerformance(nums: number[]): void {
+  console.log(<code class="language-plaintext highlighter-rouge">Array length: ${nums.length}</code>);
+  console.log(“=”.repeat(50));</li>
+</ul>
+
+<p>const start1 = performance.now();
+  const result1 = containsDuplicate(nums);
+  const time1 = performance.now() - start1;</p>
+
+<p>const start2 = performance.now();
+  const result2 = containsDuplicateMap(nums);
+  const time2 = performance.now() - start2;</p>
+
+<p>const start3 = performance.now();
+  const result3 = containsDuplicateSorting(nums);
+  const time3 = performance.now() - start3;</p>
+
+<p>const start4 = performance.now();
+  const result4 = containsDuplicateArrayMethods(nums);
+  const time4 = performance.now() - start4;</p>
+
+<p>const start5 = performance.now();
+  const result5 = containsDuplicateMemoryOptimized(nums);
+  const time5 = performance.now() - start5;</p>
+
+<p>console.log(<code class="language-plaintext highlighter-rouge">Result: ${result1}</code>);
+  console.log(<code class="language-plaintext highlighter-rouge">Set approach: ${time1.toFixed(4)}ms</code>);
+  console.log(<code class="language-plaintext highlighter-rouge">Map approach: ${time2.toFixed(4)}ms</code>);
+  console.log(<code class="language-plaintext highlighter-rouge">Sorting approach: ${time3.toFixed(4)}ms</code>);
+  console.log(<code class="language-plaintext highlighter-rouge">Array methods: ${time4.toFixed(4)}ms</code>);
+  console.log(<code class="language-plaintext highlighter-rouge">Memory optimized: ${time5.toFixed(4)}ms</code>);</p>
+
+<p>// Only run brute force for small arrays
+  if (nums.length &lt;= 1000) {
+    const start6 = performance.now();
+    const result6 = containsDuplicateBruteForce(nums);
+    const time6 = performance.now() - start6;
+    console.log(<code class="language-plaintext highlighter-rouge">Brute force: ${time6.toFixed(4)}ms</code>);
+  }
+}</p>
+
+<p>/**</p>
+<ul>
+  <li>Test Cases
+ *</li>
+  <li>Các trường hợp kiểm thử
+ */
+function runTests(): void {
+  console.log(“Contains Duplicate Tests / Kiểm thử phần tử trùng lặp”);
+  console.log(“=”.repeat(50));</li>
+</ul>
+
+<p>const testCases = [
+    { input: [1, 2, 3, 1], expected: true },
+    { input: [1, 2, 3, 4], expected: false },
+    { input: [1, 1, 1, 3, 3, 4, 3, 2, 4, 2], expected: true },
+    { input: [1], expected: false },
+    { input: [], expected: false },
+    { input: [1, 1], expected: true },
+    { input: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], expected: false },
+    { input: [1, 2, 3, 4, 5, 6, 7, 8, 9, 1], expected: true },
+    { input: [0, 0, 0, 0], expected: true },
+    { input: [-1, -1, 0, 1], expected: true },
+  ];</p>
+
+<p>let passed = 0;
+  let failed = 0;</p>
+
+<p>for (const testCase of testCases) {
+    const result1 = containsDuplicate(testCase.input);
+    const result2 = containsDuplicateMap(testCase.input);
+    const result3 = containsDuplicateSorting(testCase.input);
+    const result4 = containsDuplicateArrayMethods(testCase.input);
+    const result5 = containsDuplicateMemoryOptimized(testCase.input);</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+</pre></td><td class="rouge-code"><pre>const allCorrect =
+  result1 === testCase.expected &amp;&amp;
+  result2 === testCase.expected &amp;&amp;
+  result3 === testCase.expected &amp;&amp;
+  result4 === testCase.expected &amp;&amp;
+  result5 === testCase.expected;
+
+if (allCorrect) {
+  console.log(`✅ [${testCase.input.join(", ")}] = ${result1}`);
+  passed++;
+} else {
+  console.log(
+    `❌ [${testCase.input.join(", ")}]: expected ${
+      testCase.expected
+    }, got ${result1}`
+  );
+  failed++;
+}   }
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>console.log(<code class="language-plaintext highlighter-rouge">\nTest Results / Kết quả kiểm thử:</code>);
+  console.log(<code class="language-plaintext highlighter-rouge">Passed: ${passed}</code>);
+  console.log(<code class="language-plaintext highlighter-rouge">Failed: ${failed}</code>);
+  console.log(<code class="language-plaintext highlighter-rouge">Total: ${testCases.length}</code>);</p>
+
+<p>// Test frequency analysis
+  console.log(“\nFrequency Analysis Example / Ví dụ phân tích tần suất:”);
+  const frequencyResult = containsDuplicateWithFrequency([
+    1, 2, 3, 1, 4, 2, 5, 1,
+  ]);
+  console.log(<code class="language-plaintext highlighter-rouge">Input: [1, 2, 3, 1, 4, 2, 5, 1]</code>);
+  console.log(<code class="language-plaintext highlighter-rouge">Has duplicates: ${frequencyResult.hasDuplicates}</code>);
+  console.log(<code class="language-plaintext highlighter-rouge">Duplicates: [${frequencyResult.duplicates.join(", ")}]</code>);
+  console.log(“Frequency map:”);
+  frequencyResult.frequencyMap.forEach((count, num) =&gt; {
+    console.log(<code class="language-plaintext highlighter-rouge">  ${num}: ${count} times</code>);
+  });</p>
+
+<p>// Test performance
+  console.log(“\nPerformance Test / Kiểm thử hiệu suất:”);
+  const largeArray = Array.from({ length: 10000 }, (_, i) =&gt; i);
+  const largeArrayWithDuplicates = […largeArray, 5000]; // Add a duplicate
+  comparePerformance(largeArray);
+  console.log(“\nWith duplicates:”);
+  comparePerformance(largeArrayWithDuplicates);
+}</p>
+
+<p>// Uncomment to run tests
+// runTests();</p>
+
+<p>export {
+  containsDuplicate,
+  containsDuplicateMap,
+  containsDuplicateSorting,
+  containsDuplicateBruteForce,
+  containsDuplicateArrayMethods,
+  containsDuplicateWithFrequency,
+  containsDuplicateWithPerformance,
+  findAllDuplicates,
+  findFirstDuplicate,
+  containsDuplicateMemoryOptimized,
+  comparePerformance,
+  runTests,
+};</p>
+
+
+        </div>
+    </article>
+</div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Study Resources</h3>
+                    <p>Comprehensive collection of frontend interview questions, coding challenges, and system design problems.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Progress Tracking</h3>
+                    <p>Monitor your learning journey with detailed progress indicators and completion status.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Big Tech Ready</h3>
+                    <p>Curated content specifically designed for interviews at Google, Meta, Amazon, Apple, and Netflix.</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Frontend Interview Hub. Built for aspiring frontend engineers.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="/assets/js/main.js"></script>
+</body>
+</html>

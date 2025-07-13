@@ -1,0 +1,1163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Median of Two Sorted Array | Frontend Interview Preparation Guide</title>
+    <meta name="description" content="Comprehensive frontend interview materials for Big Tech companies">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="/assets/css/main.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <header>
+        <nav class="container">
+            <div class="logo">Frontend Interview Hub</div>
+            <ul class="nav-links">
+                <li><a href="/">Home</a></li>
+                <li><a href="#progress">Progress</a></li>
+                <li><a href="#knowledge">Knowledge</a></li>
+                <li><a href="https://github.com/nee/interview">GitHub</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <div class="content-container">
+    
+        <nav class="breadcrumb">
+            <ol>
+                <li><a href="/">Home</a></li>
+                
+                
+                
+                    
+                
+                    
+                        
+                        
+                            <li><a href="/leetcode/">Leetcode</a></li>
+                        
+                    
+                
+                    
+                        
+                        
+                            <li><a href="/leetcode/sorting-searching/">Sorting searching</a></li>
+                        
+                    
+                
+                    
+                        
+                        
+                            <li><a href="/leetcode/sorting-searching/problems/">Problems</a></li>
+                        
+                    
+                
+                    
+                        
+                        
+                            <li class="active">Median of two sorted array</li>
+                        
+                    
+                
+            </ol>
+        </nav>
+    
+    
+    <article class="content">
+        
+            <header class="content-header">
+                <h1 class="content-title">Median of Two Sorted Array</h1>
+                
+                
+                    <div class="content-meta">
+                        <span class="difficulty difficulty-hard">Hard</span>
+                        
+                            <span class="category">Sorting/Searching</span>
+                        
+                        
+                            <div class="tags">
+                                
+                                    <span class="tag">Sorting/Searching</span>
+                                
+                                    <span class="tag">Binary Search</span>
+                                
+                                    <span class="tag">Sorting</span>
+                                
+                            </div>
+                        
+                    </div>
+                
+            </header>
+        
+        
+        <div class="content-body">
+            <h1 id="median-of-two-sorted-array">Median of Two Sorted Array</h1>
+
+<p><strong>LeetCode Problem # * 4. Median of Two Sorted Arrays</strong></p>
+
+<h2 id="problem-description">Problem Description</h2>
+
+<p>LeetCode problem solution with multiple approaches and explanations.</p>
+
+<h2 id="solutions">Solutions</h2>
+
+<p>/**</p>
+<ul>
+  <li>
+    <ol>
+      <li>Median of Two Sorted Arrays</li>
+    </ol>
+  </li>
+  <li></li>
+  <li>Given two sorted arrays nums1 and nums2 of size m and n respectively,</li>
+  <li>return the median of the two sorted arrays.</li>
+  <li></li>
+  <li>The overall run time complexity should be O(log (m+n)).</li>
+  <li></li>
+  <li>Example 1:</li>
+  <li>Input: nums1 = [1,3], nums2 = [2]</li>
+  <li>Output: 2.00000</li>
+  <li>Explanation: merged array = [1,2,3] and median is 2.</li>
+  <li></li>
+  <li>Example 2:</li>
+  <li>Input: nums1 = [1,2], nums2 = [3,4]</li>
+  <li>Output: 2.50000</li>
+  <li>Explanation: merged array = [1,2,3,4] and median is (2 + 3) / 2 = 2.5.</li>
+  <li></li>
+  <li>Constraints:</li>
+  <li>
+    <ul>
+      <li>nums1.length == m</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>nums2.length == n</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>0 &lt;= m &lt;= 1000</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>0 &lt;= n &lt;= 1000</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>1 &lt;= m + n &lt;= 2000</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>-10^6 &lt;= nums1[i], nums2[i] &lt;= 10^6
+ */</li>
+    </ul>
+  </li>
+</ul>
+
+<p>// Solution 1: Binary Search on Smaller Array
+// Time: O(log(min(m,n))), Space: O(1)
+export function findMedianSortedArrays1(nums1: number[], nums2: number[]): number {
+    // Ensure nums1 is the smaller array
+    if (nums1.length &gt; nums2.length) {
+        return findMedianSortedArrays1(nums2, nums1);
+    }</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+</pre></td><td class="rouge-code"><pre>const m = nums1.length;
+const n = nums2.length;
+const total = m + n;
+const half = Math.floor(total / 2);
+
+let left = 0;
+let right = m;
+
+while (left &lt;= right) {
+    const partitionX = Math.floor((left + right) / 2);
+    const partitionY = half - partitionX;
+    
+    // Get boundary elements
+    const maxLeftX = partitionX === 0 ? -Infinity : nums1[partitionX - 1];
+    const minRightX = partitionX === m ? Infinity : nums1[partitionX];
+    
+    const maxLeftY = partitionY === 0 ? -Infinity : nums2[partitionY - 1];
+    const minRightY = partitionY === n ? Infinity : nums2[partitionY];
+    
+    // Check if we found the correct partition
+    if (maxLeftX &lt;= minRightY &amp;&amp; maxLeftY &lt;= minRightX) {
+        // Found the median
+        if (total % 2 === 0) {
+            return (Math.max(maxLeftX, maxLeftY) + Math.min(minRightX, minRightY)) / 2;
+        } else {
+            return Math.min(minRightX, minRightY);
+        }
+    } else if (maxLeftX &gt; minRightY) {
+        // Too many elements from nums1, move left
+        right = partitionX - 1;
+    } else {
+        // Too few elements from nums1, move right
+        left = partitionX + 1;
+    }
+}
+
+throw new Error("Input arrays are not sorted"); }
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>// Solution 2: Merge and Find Median
+// Time: O(m+n), Space: O(1)
+export function findMedianSortedArrays2(nums1: number[], nums2: number[]): number {
+    const total = nums1.length + nums2.length;
+    const isEven = total % 2 === 0;
+    const medianIndex = Math.floor(total / 2);</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+</pre></td><td class="rouge-code"><pre>let i = 0, j = 0;
+let current = 0, previous = 0;
+
+// Merge arrays until we reach median position
+for (let k = 0; k &lt;= medianIndex; k++) {
+    previous = current;
+    
+    if (i &gt;= nums1.length) {
+        current = nums2[j++];
+    } else if (j &gt;= nums2.length) {
+        current = nums1[i++];
+    } else if (nums1[i] &lt;= nums2[j]) {
+        current = nums1[i++];
+    } else {
+        current = nums2[j++];
+    }
+}
+
+return isEven ? (previous + current) / 2 : current; }
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>// Solution 3: Recursive Binary Search
+// Time: O(log(m+n)), Space: O(log(m+n))
+export function findMedianSortedArrays3(nums1: number[], nums2: number[]): number {
+    const total = nums1.length + nums2.length;
+    const isEven = total % 2 === 0;</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+</pre></td><td class="rouge-code"><pre>if (isEven) {
+    const left = findKthElement(nums1, 0, nums2, 0, Math.floor(total / 2));
+    const right = findKthElement(nums1, 0, nums2, 0, Math.floor(total / 2) + 1);
+    return (left + right) / 2;
+} else {
+    return findKthElement(nums1, 0, nums2, 0, Math.floor(total / 2) + 1);
+} }
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>function findKthElement(nums1: number[], start1: number, nums2: number[], start2: number, k: number): number {
+    // Ensure nums1 is the smaller remaining array
+    if (nums1.length - start1 &gt; nums2.length - start2) {
+        return findKthElement(nums2, start2, nums1, start1, k);
+    }</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+</pre></td><td class="rouge-code"><pre>// Base cases
+if (start1 &gt;= nums1.length) {
+    return nums2[start2 + k - 1];
+}
+
+if (k === 1) {
+    return Math.min(nums1[start1], nums2[start2]);
+}
+
+// Binary search approach
+const midK = Math.floor(k / 2);
+const i = Math.min(start1 + midK - 1, nums1.length - 1);
+const j = start2 + midK - 1;
+
+if (nums1[i] &lt;= nums2[j]) {
+    return findKthElement(nums1, i + 1, nums2, start2, k - (i - start1 + 1));
+} else {
+    return findKthElement(nums1, start1, nums2, j + 1, k - midK);
+} }
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>// Solution 4: Weighted Binary Search
+// Time: O(log(m+n)), Space: O(1)
+export function findMedianSortedArrays4(nums1: number[], nums2: number[]): number {
+    const m = nums1.length;
+    const n = nums2.length;</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+</pre></td><td class="rouge-code"><pre>// Ensure nums1 is smaller
+if (m &gt; n) {
+    return findMedianSortedArrays4(nums2, nums1);
+}
+
+const total = m + n;
+const half = Math.floor((total + 1) / 2);
+
+let left = 0;
+let right = m;
+
+while (left &lt;= right) {
+    const cut1 = Math.floor((left + right) / 2);
+    const cut2 = half - cut1;
+    
+    const left1 = cut1 === 0 ? Number.NEGATIVE_INFINITY : nums1[cut1 - 1];
+    const left2 = cut2 === 0 ? Number.NEGATIVE_INFINITY : nums2[cut2 - 1];
+    
+    const right1 = cut1 === m ? Number.POSITIVE_INFINITY : nums1[cut1];
+    const right2 = cut2 === n ? Number.POSITIVE_INFINITY : nums2[cut2];
+    
+    if (left1 &lt;= right2 &amp;&amp; left2 &lt;= right1) {
+        if (total % 2 === 0) {
+            return (Math.max(left1, left2) + Math.min(right1, right2)) / 2;
+        } else {
+            return Math.max(left1, left2);
+        }
+    } else if (left1 &gt; right2) {
+        right = cut1 - 1;
+    } else {
+        left = cut1 + 1;
+    }
+}
+
+return -1; }
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>// Solution 5: Ternary Search Approach
+// Time: O(log(m+n)), Space: O(1)
+export function findMedianSortedArrays5(nums1: number[], nums2: number[]): number {
+    const m = nums1.length;
+    const n = nums2.length;
+    const total = m + n;</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+</pre></td><td class="rouge-code"><pre>function getKthElement(k: number): number {
+    let start1 = 0, start2 = 0;
+    
+    while (k &gt; 1) {
+        if (start1 &gt;= m) {
+            return nums2[start2 + k - 1];
+        }
+        if (start2 &gt;= n) {
+            return nums1[start1 + k - 1];
+        }
+        
+        const mid = Math.floor(k / 2);
+        const idx1 = Math.min(start1 + mid - 1, m - 1);
+        const idx2 = Math.min(start2 + mid - 1, n - 1);
+        
+        if (nums1[idx1] &lt;= nums2[idx2]) {
+            k -= (idx1 - start1 + 1);
+            start1 = idx1 + 1;
+        } else {
+            k -= (idx2 - start2 + 1);
+            start2 = idx2 + 1;
+        }
+    }
+    
+    if (start1 &gt;= m) return nums2[start2];
+    if (start2 &gt;= n) return nums1[start1];
+    return Math.min(nums1[start1], nums2[start2]);
+}
+
+if (total % 2 === 1) {
+    return getKthElement(Math.floor(total / 2) + 1);
+} else {
+    const left = getKthElement(Math.floor(total / 2));
+    const right = getKthElement(Math.floor(total / 2) + 1);
+    return (left + right) / 2;
+} }
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>// Solution 6: Complete Merge for Comparison
+// Time: O(m+n), Space: O(m+n)
+export function findMedianSortedArrays6(nums1: number[], nums2: number[]): number {
+    const merged: number[] = [];
+    let i = 0, j = 0;</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+</pre></td><td class="rouge-code"><pre>// Merge the two arrays
+while (i &lt; nums1.length &amp;&amp; j &lt; nums2.length) {
+    if (nums1[i] &lt;= nums2[j]) {
+        merged.push(nums1[i++]);
+    } else {
+        merged.push(nums2[j++]);
+    }
+}
+
+// Add remaining elements
+while (i &lt; nums1.length) {
+    merged.push(nums1[i++]);
+}
+
+while (j &lt; nums2.length) {
+    merged.push(nums2[j++]);
+}
+
+// Find median
+const n = merged.length;
+if (n % 2 === 0) {
+    return (merged[n / 2 - 1] + merged[n / 2]) / 2;
+} else {
+    return merged[Math.floor(n / 2)];
+} }
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>// Test cases
+export function testFindMedianSortedArrays() {
+    console.log(“Testing Median of Two Sorted Arrays:”);</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+</pre></td><td class="rouge-code"><pre>const testCases = [
+    {
+        nums1: [1, 3],
+        nums2: [2],
+        expected: 2.0
+    },
+    {
+        nums1: [1, 2],
+        nums2: [3, 4],
+        expected: 2.5
+    },
+    {
+        nums1: [0, 0],
+        nums2: [0, 0],
+        expected: 0.0
+    },
+    {
+        nums1: [],
+        nums2: [1],
+        expected: 1.0
+    },
+    {
+        nums1: [2],
+        nums2: [],
+        expected: 2.0
+    },
+    {
+        nums1: [1, 3, 5],
+        nums2: [2, 4, 6],
+        expected: 3.5
+    },
+    {
+        nums1: [1, 2, 3, 4, 5],
+        nums2: [6, 7, 8, 9, 10],
+        expected: 5.5
+    },
+    {
+        nums1: [1, 2, 3],
+        nums2: [4, 5, 6, 7],
+        expected: 4.0
+    }
+];
+
+const solutions = [
+    { name: "Binary Search on Smaller Array", fn: findMedianSortedArrays1 },
+    { name: "Merge and Find Median", fn: findMedianSortedArrays2 },
+    { name: "Recursive Binary Search", fn: findMedianSortedArrays3 },
+    { name: "Weighted Binary Search", fn: findMedianSortedArrays4 },
+    { name: "Ternary Search", fn: findMedianSortedArrays5 },
+    { name: "Complete Merge", fn: findMedianSortedArrays6 }
+];
+
+solutions.forEach(solution =&gt; {
+    console.log(`\n${solution.name}:`);
+    testCases.forEach((test, i) =&gt; {
+        const result = solution.fn([...test.nums1], [...test.nums2]);
+        const passed = Math.abs(result - test.expected) &lt; 1e-5;
+        console.log(`  Test ${i + 1}: ${passed ? 'PASS' : 'FAIL'}`);
+        if (!passed) {
+            console.log(`    nums1: ${JSON.stringify(test.nums1)}`);
+            console.log(`    nums2: ${JSON.stringify(test.nums2)}`);
+            console.log(`    Expected: ${test.expected}`);
+            console.log(`    Got: ${result}`);
+        }
+    });
+}); }
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>/**</p>
+<ul>
+  <li>Key Insights:</li>
+  <li></li>
+  <li>
+    <ol>
+      <li><strong>Problem Understanding</strong>:</li>
+    </ol>
+  </li>
+  <li>
+    <ul>
+      <li>Find median of two sorted arrays in O(log(min(m,n))) time</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Median divides sorted data into two equal halves</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>For even length: average of two middle elements</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>For odd length: middle element</li>
+    </ul>
+  </li>
+  <li></li>
+  <li>
+    <ol>
+      <li><strong>Binary Search Strategy</strong>:</li>
+    </ol>
+  </li>
+  <li>
+    <ul>
+      <li>Search for correct partition point</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Left partition has (m+n+1)/2 elements</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Right partition has remaining elements</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Valid partition: all left &lt;= all right</li>
+    </ul>
+  </li>
+  <li></li>
+  <li>
+    <ol>
+      <li><strong>Partition Conditions</strong>:</li>
+    </ol>
+  </li>
+  <li>
+    <ul>
+      <li>maxLeftX &lt;= minRightY (X’s left &lt;= Y’s right)</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>maxLeftY &lt;= minRightX (Y’s left &lt;= X’s right)</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>If valid: median found</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>If not: adjust partition boundaries</li>
+    </ul>
+  </li>
+  <li></li>
+  <li>
+    <ol>
+      <li><strong>Key Optimization</strong>:</li>
+    </ol>
+  </li>
+  <li>
+    <ul>
+      <li>Always search on smaller array</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Reduces time complexity to O(log(min(m,n)))</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Partition on smaller array, derive other partition</li>
+    </ul>
+  </li>
+  <li></li>
+  <li>
+    <ol>
+      <li><strong>Edge Cases</strong>:</li>
+    </ol>
+  </li>
+  <li>
+    <ul>
+      <li>Empty arrays (one or both)</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Single element arrays</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Arrays of very different sizes</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>All elements in one array smaller than other</li>
+    </ul>
+  </li>
+  <li></li>
+  <li>
+    <ol>
+      <li><strong>Time Complexity</strong>: O(log(min(m,n)))</li>
+    </ol>
+  </li>
+  <li>
+    <ul>
+      <li>Binary search on smaller array</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Each iteration halves search space</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Much better than O(m+n) merge approach</li>
+    </ul>
+  </li>
+  <li></li>
+  <li>
+    <ol>
+      <li><strong>Space Complexity</strong>: O(1)</li>
+    </ol>
+  </li>
+  <li>
+    <ul>
+      <li>Only uses constant extra space</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>No need to merge arrays</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Optimal space usage</li>
+    </ul>
+  </li>
+  <li></li>
+  <li>
+    <ol>
+      <li><strong>Alternative Approaches</strong>:</li>
+    </ol>
+  </li>
+  <li>
+    <ul>
+      <li>Merge arrays: O(m+n) time, O(m+n) space</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Kth element search: O(log(m+n)) time</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Weighted binary search variants</li>
+    </ul>
+  </li>
+  <li></li>
+  <li>
+    <ol>
+      <li><strong>Interview Strategy</strong>:</li>
+    </ol>
+  </li>
+  <li>
+    <ul>
+      <li>Start with understanding median concept</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Explain partition-based approach</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Handle edge cases systematically</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Optimize for smaller array search</li>
+    </ul>
+  </li>
+  <li></li>
+  <li>
+    <ol>
+      <li><strong>Implementation Details</strong>:</li>
+    </ol>
+  </li>
+  <li>
+    <ul>
+      <li>Use infinity for boundary conditions</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Careful with integer overflow</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Handle odd/even length properly</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Validate partition correctness</li>
+    </ul>
+  </li>
+  <li></li>
+  <li>
+    <ol>
+      <li><strong>Common Mistakes</strong>:</li>
+    </ol>
+  </li>
+  <li>
+    <ul>
+      <li>Incorrect partition size calculation</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Wrong boundary condition handling</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Not optimizing for smaller array</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Integer overflow in median calculation</li>
+    </ul>
+  </li>
+  <li></li>
+  <li>
+    <ol>
+      <li><strong>Big Tech Variations</strong>:</li>
+    </ol>
+  </li>
+  <li>
+    <ul>
+      <li>Google: k-way merge for median</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Meta: Streaming median updates</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Amazon: Median in circular arrays</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Microsoft: Weighted median calculation</li>
+    </ul>
+  </li>
+  <li></li>
+  <li>
+    <ol>
+      <li><strong>Follow-up Questions</strong>:</li>
+    </ol>
+  </li>
+  <li>
+    <ul>
+      <li>What if arrays are not sorted?</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Find median of k sorted arrays</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Streaming median with updates</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Median in 2D matrix</li>
+    </ul>
+  </li>
+  <li></li>
+  <li>
+    <ol>
+      <li><strong>Real-world Applications</strong>:</li>
+    </ol>
+  </li>
+  <li>
+    <ul>
+      <li>Database query optimization</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Statistical analysis systems</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Data preprocessing pipelines</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Performance monitoring tools</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Quality control systems</li>
+    </ul>
+  </li>
+  <li></li>
+  <li>
+    <ol>
+      <li><strong>Pattern Recognition</strong>:</li>
+    </ol>
+  </li>
+  <li>
+    <ul>
+      <li>Binary search on solution space</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Partition-based problem solving</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Optimal substructure utilization</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Cross-array boundary management</li>
+    </ul>
+  </li>
+  <li></li>
+  <li>
+    <ol>
+      <li><strong>Optimization Techniques</strong>:</li>
+    </ol>
+  </li>
+  <li>
+    <ul>
+      <li>Always search smaller array</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Early termination conditions</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Efficient boundary management</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Minimize comparison operations
+ */</li>
+    </ul>
+  </li>
+</ul>
+
+
+        </div>
+    </article>
+</div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Study Resources</h3>
+                    <p>Comprehensive collection of frontend interview questions, coding challenges, and system design problems.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Progress Tracking</h3>
+                    <p>Monitor your learning journey with detailed progress indicators and completion status.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Big Tech Ready</h3>
+                    <p>Curated content specifically designed for interviews at Google, Meta, Amazon, Apple, and Netflix.</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Frontend Interview Hub. Built for aspiring frontend engineers.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="/assets/js/main.js"></script>
+</body>
+</html>

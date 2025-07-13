@@ -1,0 +1,869 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Valid Anagram | Frontend Interview Preparation Guide</title>
+    <meta name="description" content="Comprehensive frontend interview materials for Big Tech companies">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="/assets/css/main.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <header>
+        <nav class="container">
+            <div class="logo">Frontend Interview Hub</div>
+            <ul class="nav-links">
+                <li><a href="/">Home</a></li>
+                <li><a href="#progress">Progress</a></li>
+                <li><a href="#knowledge">Knowledge</a></li>
+                <li><a href="https://github.com/nee/interview">GitHub</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <div class="content-container">
+    
+        <nav class="breadcrumb">
+            <ol>
+                <li><a href="/">Home</a></li>
+                
+                
+                
+                    
+                
+                    
+                        
+                        
+                            <li><a href="/leetcode/">Leetcode</a></li>
+                        
+                    
+                
+                    
+                        
+                        
+                            <li><a href="/leetcode/string/">String</a></li>
+                        
+                    
+                
+                    
+                        
+                        
+                            <li><a href="/leetcode/string/problems/">Problems</a></li>
+                        
+                    
+                
+                    
+                        
+                        
+                            <li class="active">Valid anagram</li>
+                        
+                    
+                
+            </ol>
+        </nav>
+    
+    
+    <article class="content">
+        
+            <header class="content-header">
+                <h1 class="content-title">Valid Anagram</h1>
+                
+                
+                    <div class="content-meta">
+                        <span class="difficulty difficulty-easy">Easy</span>
+                        
+                            <span class="category">String</span>
+                        
+                        
+                            <div class="tags">
+                                
+                                    <span class="tag">String</span>
+                                
+                                    <span class="tag">Hash Table</span>
+                                
+                                    <span class="tag">Sorting</span>
+                                
+                            </div>
+                        
+                    </div>
+                
+            </header>
+        
+        
+        <div class="content-body">
+            <h1 id="valid-anagram">Valid Anagram</h1>
+
+<p><strong>LeetCode Problem # * 242. Valid Anagram</strong></p>
+
+<h2 id="problem-description">Problem Description</h2>
+
+<ul>
+  <li>Given two strings s and t, return true if t is an anagram of s, and false otherwise.  *  * An Anagram is a word or phrase formed by rearranging the letters of a different word  * or phrase, typically using all the original letters exactly once.  *</li>
+</ul>
+
+<h2 id="solutions">Solutions</h2>
+
+<p>/**</p>
+<ul>
+  <li>
+    <ol>
+      <li>Valid Anagram
+ *</li>
+    </ol>
+  </li>
+  <li>Problem:</li>
+  <li>Given two strings s and t, return true if t is an anagram of s, and false otherwise.
+ *</li>
+  <li>An Anagram is a word or phrase formed by rearranging the letters of a different word</li>
+  <li>or phrase, typically using all the original letters exactly once.
+ *</li>
+  <li>Example:</li>
+  <li>Input: s = “anagram”, t = “nagaram”</li>
+  <li>Output: true
+ *</li>
+  <li>Input: s = “rat”, t = “car”</li>
+  <li>Output: false
+ *</li>
+  <li>LeetCode: https://leetcode.com/problems/valid-anagram/
+ */</li>
+</ul>
+
+<p>/**</p>
+<ul>
+  <li>Solution 1: Hash Map (Optimal)
+ *</li>
+  <li>Approach:</li>
+  <li>
+    <ul>
+      <li>Use hash map to count frequency of characters in both strings</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Compare character frequencies
+ *</li>
+    </ul>
+  </li>
+  <li>Time Complexity: O(n)</li>
+  <li>Space Complexity: O(1) - fixed size alphabet
+ */
+function isAnagram(s: string, t: string): boolean {
+  if (s.length !== t.length) return false;</li>
+</ul>
+
+<p>const frequency = new Map&lt;string, number&gt;();</p>
+
+<p>// Count characters in s
+  for (const char of s) {
+    frequency.set(char, (frequency.get(char) || 0) + 1);
+  }</p>
+
+<p>// Decrement counts for characters in t
+  for (const char of t) {
+    const count = frequency.get(char);
+    if (!count) return false;
+    frequency.set(char, count - 1);
+  }</p>
+
+<p>return true;
+}</p>
+
+<p>/**</p>
+<ul>
+  <li>Solution 2: Array (Fixed size)
+ *</li>
+  <li>Approach:</li>
+  <li>
+    <ul>
+      <li>Use array of size 26 for lowercase letters</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>More efficient for ASCII characters
+ *</li>
+    </ul>
+  </li>
+  <li>Time Complexity: O(n)</li>
+  <li>Space Complexity: O(1)
+ */
+function isAnagramArray(s: string, t: string): boolean {
+  if (s.length !== t.length) return false;</li>
+</ul>
+
+<p>const frequency = new Array(26).fill(0);</p>
+
+<p>// Count characters in s
+  for (const char of s) {
+    frequency[char.charCodeAt(0) - “a”.charCodeAt(0)]++;
+  }</p>
+
+<p>// Decrement counts for characters in t
+  for (const char of t) {
+    const index = char.charCodeAt(0) - “a”.charCodeAt(0);
+    frequency[index]–;
+    if (frequency[index] &lt; 0) return false;
+  }</p>
+
+<p>return true;
+}</p>
+
+<p>/**</p>
+<ul>
+  <li>Solution 3: Sort and Compare
+ *</li>
+  <li>Approach:</li>
+  <li>
+    <ul>
+      <li>Sort both strings and compare</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Simple but less efficient
+ *</li>
+    </ul>
+  </li>
+  <li>Time Complexity: O(n log n)</li>
+  <li>Space Complexity: O(n)
+ */
+function isAnagramSort(s: string, t: string): boolean {
+  if (s.length !== t.length) return false;</li>
+</ul>
+
+<p>const sortedS = s.split(“”).sort().join(“”);
+  const sortedT = t.split(“”).sort().join(“”);</p>
+
+<p>return sortedS === sortedT;
+}</p>
+
+<p>/**</p>
+<ul>
+  <li>Solution 4: Using Object (Hash table)
+ *</li>
+  <li>Approach:</li>
+  <li>
+    <ul>
+      <li>Use plain object as hash table</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Simple implementation
+ *</li>
+    </ul>
+  </li>
+  <li>Time Complexity: O(n)</li>
+  <li>Space Complexity: O(1)
+ */
+function isAnagramObject(s: string, t: string): boolean {
+  if (s.length !== t.length) return false;</li>
+</ul>
+
+<p>const frequency: { [key: string]: number } = {};</p>
+
+<p>// Count characters in s
+  for (const char of s) {
+    frequency[char] = (frequency[char] || 0) + 1;
+  }</p>
+
+<p>// Decrement counts for characters in t
+  for (const char of t) {
+    if (!frequency[char]) return false;
+    frequency[char]–;
+  }</p>
+
+<p>return true;
+}</p>
+
+<p>/**</p>
+<ul>
+  <li>Solution 5: Using Set (Incorrect but educational)
+ *</li>
+  <li>Approach:</li>
+  <li>
+    <ul>
+      <li>This approach is INCORRECT for anagram detection</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Shows common mistake of using Set for frequency problems
+ *</li>
+    </ul>
+  </li>
+  <li>Time Complexity: O(n)</li>
+  <li>Space Complexity: O(1)
+ */
+function isAnagramSet(s: string, t: string): boolean {
+  if (s.length !== t.length) return false;</li>
+</ul>
+
+<p>const setS = new Set(s);
+  const setT = new Set(t);</p>
+
+<p>return setS.size === setT.size &amp;&amp; […setS].every((char) =&gt; setT.has(char));
+}</p>
+
+<p>/**</p>
+<ul>
+  <li>Solution 6: Using Reduce (Functional)
+ *</li>
+  <li>Approach:</li>
+  <li>
+    <ul>
+      <li>Use functional programming approach</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>More declarative style
+ *</li>
+    </ul>
+  </li>
+  <li>Time Complexity: O(n)</li>
+  <li>Space Complexity: O(1)
+ */
+function isAnagramFunctional(s: string, t: string): boolean {
+  if (s.length !== t.length) return false;</li>
+</ul>
+
+<p>const frequencyS = s
+    .split(“”)
+    .reduce((acc: { [key: string]: number }, char: string) =&gt; {
+      acc[char] = (acc[char] || 0) + 1;
+      return acc;
+    }, {});</p>
+
+<p>const frequencyT = t
+    .split(“”)
+    .reduce((acc: { [key: string]: number }, char: string) =&gt; {
+      acc[char] = (acc[char] || 0) + 1;
+      return acc;
+    }, {});</p>
+
+<p>return JSON.stringify(frequencyS) === JSON.stringify(frequencyT);
+}</p>
+
+<p>/**</p>
+<ul>
+  <li>Solution 7: Using Counter Class (Object-oriented)
+ *</li>
+  <li>Approach:</li>
+  <li>
+    <ul>
+      <li>Create a Counter class to handle frequency counting</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>More structured approach
+ *</li>
+    </ul>
+  </li>
+  <li>Time Complexity: O(n)</li>
+  <li>Space Complexity: O(1)
+ */
+class Counter {
+  private counts: Map&lt;string, number&gt; = new Map();</li>
+</ul>
+
+<p>constructor(items: string) {
+    for (const item of items) {
+      this.add(item);
+    }
+  }</p>
+
+<p>add(item: string): void {
+    this.counts.set(item, (this.counts.get(item) || 0) + 1);
+  }</p>
+
+<p>equals(other: Counter): boolean {
+    if (this.counts.size !== other.counts.size) return false;</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+</pre></td><td class="rouge-code"><pre>for (const [key, value] of this.counts) {
+  if (other.counts.get(key) !== value) return false;
+}
+
+return true;   } }
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>function isAnagramCounter(s: string, t: string): boolean {
+  if (s.length !== t.length) return false;</p>
+
+<p>const counterS = new Counter(s);
+  const counterT = new Counter(t);</p>
+
+<p>return counterS.equals(counterT);
+}</p>
+
+<p>/**</p>
+<ul>
+  <li>Solution 8: Using Generator (Memory efficient)
+ *</li>
+  <li>Approach:</li>
+  <li>
+    <ul>
+      <li>Use generator to yield characters</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Memory efficient for large strings
+ *</li>
+    </ul>
+  </li>
+  <li>Time Complexity: O(n)</li>
+  <li>Space Complexity: O(1)
+ <em>/
+function</em> characterGenerator(str: string): Generator<string> {
+  for (const char of str) {
+ yield char;
+  }
+}</string></li>
+</ul>
+
+<p>function isAnagramGenerator(s: string, t: string): boolean {
+  if (s.length !== t.length) return false;</p>
+
+<p>const frequency = new Map&lt;string, number&gt;();</p>
+
+<p>// Count characters in s
+  for (const char of characterGenerator(s)) {
+    frequency.set(char, (frequency.get(char) || 0) + 1);
+  }</p>
+
+<p>// Decrement counts for characters in t
+  for (const char of characterGenerator(t)) {
+    const count = frequency.get(char);
+    if (!count) return false;
+    frequency.set(char, count - 1);
+  }</p>
+
+<p>return true;
+}</p>
+
+<p>/**</p>
+<ul>
+  <li>Solution 9: Using Bit Manipulation (Limited use case)
+ *</li>
+  <li>Approach:</li>
+  <li>
+    <ul>
+      <li>Use bit operations for ASCII characters</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Limited to small strings due to integer size
+ *</li>
+    </ul>
+  </li>
+  <li>Time Complexity: O(n)</li>
+  <li>Space Complexity: O(1)
+ */
+function isAnagramBitwise(s: string, t: string): boolean {
+  if (s.length !== t.length) return false;
+  if (s.length &gt; 32) {
+ // Fallback to standard approach for large strings
+ return isAnagram(s, t);
+  }</li>
+</ul>
+
+<p>let sBits = 0;
+  let tBits = 0;</p>
+
+<p>for (const char of s) {
+    const bit = 1 « (char.charCodeAt(0) - “a”.charCodeAt(0));
+    sBits |= bit;
+  }</p>
+
+<p>for (const char of t) {
+    const bit = 1 « (char.charCodeAt(0) - “a”.charCodeAt(0));
+    tBits |= bit;
+  }</p>
+
+<p>return sBits === tBits;
+}</p>
+
+<p>// Test cases
+function testValidAnagram() {
+  console.log(“=== Testing Valid Anagram ===\n”);</p>
+
+<p>const testCases = [
+    {
+      s: “anagram”,
+      t: “nagaram”,
+      expected: true,
+      description: “Valid anagram”,
+    },
+    {
+      s: “rat”,
+      t: “car”,
+      expected: false,
+      description: “Not an anagram”,
+    },
+    {
+      s: “”,
+      t: “”,
+      expected: true,
+      description: “Empty strings”,
+    },
+    {
+      s: “a”,
+      t: “a”,
+      expected: true,
+      description: “Single character”,
+    },
+    {
+      s: “ab”,
+      t: “ba”,
+      expected: true,
+      description: “Two characters”,
+    },
+    {
+      s: “abc”,
+      t: “cba”,
+      expected: true,
+      description: “Three characters”,
+    },
+    {
+      s: “hello”,
+      t: “world”,
+      expected: false,
+      description: “Different lengths”,
+    },
+    {
+      s: “silent”,
+      t: “listen”,
+      expected: true,
+      description: “Common anagram pair”,
+    },
+  ];</p>
+
+<p>testCases.forEach((testCase, index) =&gt; {
+    console.log(<code class="language-plaintext highlighter-rouge">Test Case ${index + 1}: ${testCase.description}</code>);
+    console.log(<code class="language-plaintext highlighter-rouge">Input: s = "${testCase.s}", t = "${testCase.t}"</code>);
+    console.log(<code class="language-plaintext highlighter-rouge">Expected: ${testCase.expected}\n</code>);</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+</pre></td><td class="rouge-code"><pre>// Test Solution 1 (Hash Map)
+const result1 = isAnagram(testCase.s, testCase.t);
+console.log(
+  `Solution 1 (Hash Map): ${result1} ${
+    result1 === testCase.expected ? "✅" : "❌"
+  }`
+);
+
+// Test Solution 2 (Array)
+const result2 = isAnagramArray(testCase.s, testCase.t);
+console.log(
+  `Solution 2 (Array): ${result2} ${
+    result2 === testCase.expected ? "✅" : "❌"
+  }`
+);
+
+// Test Solution 3 (Sort)
+const result3 = isAnagramSort(testCase.s, testCase.t);
+console.log(
+  `Solution 3 (Sort): ${result3} ${
+    result3 === testCase.expected ? "✅" : "❌"
+  }`
+);
+
+// Test Solution 4 (Object)
+const result4 = isAnagramObject(testCase.s, testCase.t);
+console.log(
+  `Solution 4 (Object): ${result4} ${
+    result4 === testCase.expected ? "✅" : "❌"
+  }`
+);
+
+// Test Solution 5 (Set) - Note: This is incorrect for frequency problems
+const result5 = isAnagramSet(testCase.s, testCase.t);
+console.log(
+  `Solution 5 (Set): ${result5} ${
+    result5 === testCase.expected ? "✅" : "❌"
+  } (Note: Incorrect for frequency)`
+);
+
+// Test Solution 6 (Functional)
+const result6 = isAnagramFunctional(testCase.s, testCase.t);
+console.log(
+  `Solution 6 (Functional): ${result6} ${
+    result6 === testCase.expected ? "✅" : "❌"
+  }`
+);
+
+// Test Solution 7 (Counter)
+const result7 = isAnagramCounter(testCase.s, testCase.t);
+console.log(
+  `Solution 7 (Counter): ${result7} ${
+    result7 === testCase.expected ? "✅" : "❌"
+  }`
+);
+
+// Test Solution 8 (Generator)
+const result8 = isAnagramGenerator(testCase.s, testCase.t);
+console.log(
+  `Solution 8 (Generator): ${result8} ${
+    result8 === testCase.expected ? "✅" : "❌"
+  }`
+);
+
+// Test Solution 9 (Bitwise)
+const result9 = isAnagramBitwise(testCase.s, testCase.t);
+console.log(
+  `Solution 9 (Bitwise): ${result9} ${
+    result9 === testCase.expected ? "✅" : "❌"
+  }`
+);
+
+console.log("\n---\n");   }); }
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>// Performance comparison
+function performanceComparison() {
+  console.log(“=== Performance Comparison ===\n”);</p>
+
+<p>const testCases = [
+    { name: “Hash Map”, func: isAnagram },
+    { name: “Array”, func: isAnagramArray },
+    { name: “Sort”, func: isAnagramSort },
+    { name: “Object”, func: isAnagramObject },
+    { name: “Set”, func: isAnagramSet },
+    { name: “Functional”, func: isAnagramFunctional },
+    { name: “Counter”, func: isAnagramCounter },
+    { name: “Generator”, func: isAnagramGenerator },
+    { name: “Bitwise”, func: isAnagramBitwise },
+  ];</p>
+
+<p>// Create test strings
+  const smallS = “anagram”;
+  const smallT = “nagaram”;
+  const largeS = “a”.repeat(1000) + “b”.repeat(1000);
+  const largeT = “b”.repeat(1000) + “a”.repeat(1000);</p>
+
+<p>const stringPairs = [
+    { name: “Small”, s: smallS, t: smallT },
+    { name: “Large”, s: largeS, t: largeT },
+  ];</p>
+
+<p>stringPairs.forEach(({ name, s, t }) =&gt; {
+    console.log(<code class="language-plaintext highlighter-rouge">${name} Strings:</code>);</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+</pre></td><td class="rouge-code"><pre>testCases.forEach(({ name: funcName, func }) =&gt; {
+  const start = performance.now();
+  const result = func(s, t);
+  const end = performance.now();
+
+  console.log(`  ${funcName}: ${(end - start).toFixed(2)}ms (${result})`);
+});
+
+console.log("");   }); }
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>// Anagram analysis
+function anagramAnalysis() {
+  console.log(“=== Anagram Analysis ===\n”);</p>
+
+<p>const testPairs = [
+    { s: “anagram”, t: “nagaram” },
+    { s: “silent”, t: “listen” },
+    { s: “hello”, t: “world” },
+    { s: “abc”, t: “cba” },
+  ];</p>
+
+<p>testPairs.forEach(({ s, t }, index) =&gt; {
+    console.log(<code class="language-plaintext highlighter-rouge">Pair ${index + 1}: "${s}" vs "${t}"</code>);</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+</pre></td><td class="rouge-code"><pre>const frequencyS = new Map&lt;string, number&gt;();
+const frequencyT = new Map&lt;string, number&gt;();
+
+// Count frequencies
+for (const char of s) {
+  frequencyS.set(char, (frequencyS.get(char) || 0) + 1);
+}
+
+for (const char of t) {
+  frequencyT.set(char, (frequencyT.get(char) || 0) + 1);
+}
+
+console.log("Character frequencies:");
+console.log(`  S: ${JSON.stringify(Object.fromEntries(frequencyS))}`);
+console.log(`  T: ${JSON.stringify(Object.fromEntries(frequencyT))}`);
+
+const isAnagramResult = isAnagram(s, t);
+console.log(`  Is anagram: ${isAnagramResult}`);
+console.log("");   }); }
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>// Uncomment the following lines to run tests
+// testValidAnagram();
+// performanceComparison();
+// anagramAnalysis();</p>
+
+<p>export {
+  isAnagram,
+  isAnagramArray,
+  isAnagramSort,
+  isAnagramObject,
+  isAnagramSet,
+  isAnagramFunctional,
+  isAnagramCounter,
+  isAnagramGenerator,
+  isAnagramBitwise,
+  Counter,
+  characterGenerator,
+  testValidAnagram,
+  performanceComparison,
+  anagramAnalysis,
+};</p>
+
+
+        </div>
+    </article>
+</div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Study Resources</h3>
+                    <p>Comprehensive collection of frontend interview questions, coding challenges, and system design problems.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Progress Tracking</h3>
+                    <p>Monitor your learning journey with detailed progress indicators and completion status.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Big Tech Ready</h3>
+                    <p>Curated content specifically designed for interviews at Google, Meta, Amazon, Apple, and Netflix.</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Frontend Interview Hub. Built for aspiring frontend engineers.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="/assets/js/main.js"></script>
+</body>
+</html>

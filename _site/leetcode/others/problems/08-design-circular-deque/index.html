@@ -1,0 +1,1281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Design Circular Deque | Frontend Interview Preparation Guide</title>
+    <meta name="description" content="Comprehensive frontend interview materials for Big Tech companies">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="/assets/css/main.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <header>
+        <nav class="container">
+            <div class="logo">Frontend Interview Hub</div>
+            <ul class="nav-links">
+                <li><a href="/">Home</a></li>
+                <li><a href="#progress">Progress</a></li>
+                <li><a href="#knowledge">Knowledge</a></li>
+                <li><a href="https://github.com/nee/interview">GitHub</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <div class="content-container">
+    
+        <nav class="breadcrumb">
+            <ol>
+                <li><a href="/">Home</a></li>
+                
+                
+                
+                    
+                
+                    
+                        
+                        
+                            <li><a href="/leetcode/">Leetcode</a></li>
+                        
+                    
+                
+                    
+                        
+                        
+                            <li><a href="/leetcode/others/">Others</a></li>
+                        
+                    
+                
+                    
+                        
+                        
+                            <li><a href="/leetcode/others/problems/">Problems</a></li>
+                        
+                    
+                
+                    
+                        
+                        
+                            <li class="active">Design circular deque</li>
+                        
+                    
+                
+            </ol>
+        </nav>
+    
+    
+    <article class="content">
+        
+            <header class="content-header">
+                <h1 class="content-title">Design Circular Deque</h1>
+                
+                
+                    <div class="content-meta">
+                        <span class="difficulty difficulty-easy">Easy</span>
+                        
+                            <span class="category">Others</span>
+                        
+                        
+                            <div class="tags">
+                                
+                                    <span class="tag">Others</span>
+                                
+                            </div>
+                        
+                    </div>
+                
+            </header>
+        
+        
+        <div class="content-body">
+            <h1 id="design-circular-deque">Design Circular Deque</h1>
+
+<h2 id="problem-description">Problem Description</h2>
+
+<ul>
+  <li>
+    <ul>
+      <li>Design your implementation of the circular double-ended queue (deque).  * Your implementation should support the following operations:  *  * - MyCircularDeque(k): Constructor, set the size of the deque to be k.</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="solutions">Solutions</h2>
+
+<p>/**</p>
+<ul>
+  <li>Design Circular Deque
+ *</li>
+  <li>Problem: https://leetcode.com/problems/design-circular-deque/
+ *</li>
+  <li>Design your implementation of the circular double-ended queue (deque).</li>
+  <li>Your implementation should support the following operations:
+ *</li>
+  <li>
+    <ul>
+      <li>MyCircularDeque(k): Constructor, set the size of the deque to be k.</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>insertFront(): Adds an item at the front of Deque. Return true if the operation is successful.</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>insertLast(): Adds an item at the rear of Deque. Return true if the operation is successful.</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>deleteFront(): Deletes an item from the front of Deque. Return true if the operation is successful.</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>deleteLast(): Deletes an item from the rear of Deque. Return true if the operation is successful.</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>getFront(): Gets the front item from the Deque. If the deque is empty, return -1.</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>getRear(): Gets the last item from the Deque. If the deque is empty, return -1.</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>isEmpty(): Checks whether Deque is empty or not.</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>isFull(): Checks whether Deque is full or not.
+ *</li>
+    </ul>
+  </li>
+  <li>Example 1:</li>
+  <li>Input:</li>
+  <li>[“MyCircularDeque”, “insertLast”, “insertLast”, “insertFront”, “insertFront”, “getRear”, “isFull”, “deleteLast”, “insertFront”, “getFront”]</li>
+  <li>[[3], [1], [2], [3], [4], [], [], [], [4], []]</li>
+  <li>Output: [null, true, true, true, false, 2, true, true, true, 4]
+ *</li>
+  <li>Explanation:</li>
+  <li>MyCircularDeque circularDeque = new MyCircularDeque(3); // set the size to be 3</li>
+  <li>circularDeque.insertLast(1);			// return True</li>
+  <li>circularDeque.insertLast(2);			// return True</li>
+  <li>circularDeque.insertFront(3);			// return True</li>
+  <li>circularDeque.insertFront(4);			// return False, the queue is full</li>
+  <li>circularDeque.getRear();  			// return 2</li>
+  <li>circularDeque.isFull();				// return True</li>
+  <li>circularDeque.deleteLast();			// return True</li>
+  <li>circularDeque.insertFront(4);			// return True</li>
+  <li>circularDeque.getFront();				// return 4
+ *</li>
+  <li>Constraints:</li>
+  <li>
+    <ul>
+      <li>1 &lt;= k &lt;= 1000</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>0 &lt;= value &lt;= 1000</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>At most 2000 calls will be made to insertFront, insertLast, deleteFront, deleteLast, getFront, getRear, isEmpty, isFull.
+ *</li>
+    </ul>
+  </li>
+  <li>Solution Approaches:</li>
+  <li>
+    <ol>
+      <li>Array-based implementation with front and rear pointers</li>
+    </ol>
+  </li>
+  <li>
+    <ol>
+      <li>Array-based implementation with size tracking</li>
+    </ol>
+  </li>
+  <li>
+    <ol>
+      <li>Linked list implementation</li>
+    </ol>
+  </li>
+  <li>
+    <ol>
+      <li>With additional features and monitoring
+ *</li>
+    </ol>
+  </li>
+  <li>Time Complexity: O(1) for all operations</li>
+  <li>Space Complexity: O(k) where k is the capacity
+ */</li>
+</ul>
+
+<p>/**</p>
+<ul>
+  <li>MyCircularDeque - Array-based Implementation
+ *</li>
+  <li>MyCircularDeque - Triển khai dựa trên Array
+ *</li>
+  <li>This approach uses an array with front and rear pointers to implement a circular deque
+ */
+class MyCircularDeque {
+  private deque: number[];
+  private front: number;
+  private rear: number;
+  private capacity: number;
+  private size: number;</li>
+</ul>
+
+<p>constructor(k: number) {
+    this.deque = new Array(k);
+    this.front = 0;
+    this.rear = 0;
+    this.capacity = k;
+    this.size = 0;
+  }</p>
+
+<p>/**</p>
+<ul>
+  <li>Insert an item at the front of Deque</li>
+  <li>Chèn một phần tử vào đầu Deque
+   */
+  insertFront(value: number): boolean {
+    if (this.isFull()) {
+ return false;
+    }</li>
+</ul>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+</pre></td><td class="rouge-code"><pre>if (this.isEmpty()) {
+  this.front = 0;
+  this.rear = 0;
+} else {
+  this.front = (this.front - 1 + this.capacity) % this.capacity;
+}
+
+this.deque[this.front] = value;
+this.size++;
+
+return true;   }
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>/**</p>
+<ul>
+  <li>Insert an item at the rear of Deque</li>
+  <li>Chèn một phần tử vào cuối Deque
+   */
+  insertLast(value: number): boolean {
+    if (this.isFull()) {
+ return false;
+    }</li>
+</ul>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+</pre></td><td class="rouge-code"><pre>if (this.isEmpty()) {
+  this.front = 0;
+  this.rear = 0;
+} else {
+  this.rear = (this.rear + 1) % this.capacity;
+}
+
+this.deque[this.rear] = value;
+this.size++;
+
+return true;   }
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>/**</p>
+<ul>
+  <li>Delete an item from the front of Deque</li>
+  <li>Xóa một phần tử từ đầu Deque
+   */
+  deleteFront(): boolean {
+    if (this.isEmpty()) {
+ return false;
+    }</li>
+</ul>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+</pre></td><td class="rouge-code"><pre>if (this.size === 1) {
+  this.front = 0;
+  this.rear = 0;
+} else {
+  this.front = (this.front + 1) % this.capacity;
+}
+
+this.size--;
+return true;   }
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>/**</p>
+<ul>
+  <li>Delete an item from the rear of Deque</li>
+  <li>Xóa một phần tử từ cuối Deque
+   */
+  deleteLast(): boolean {
+    if (this.isEmpty()) {
+ return false;
+    }</li>
+</ul>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+</pre></td><td class="rouge-code"><pre>if (this.size === 1) {
+  this.front = 0;
+  this.rear = 0;
+} else {
+  this.rear = (this.rear - 1 + this.capacity) % this.capacity;
+}
+
+this.size--;
+return true;   }
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>/**</p>
+<ul>
+  <li>Get the front item from the Deque</li>
+  <li>Lấy phần tử đầu tiên từ Deque
+   */
+  getFront(): number {
+    if (this.isEmpty()) {
+ return -1;
+    }</li>
+</ul>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre>return this.deque[this.front];   }
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>/**</p>
+<ul>
+  <li>Get the last item from the Deque</li>
+  <li>Lấy phần tử cuối cùng từ Deque
+   */
+  getRear(): number {
+    if (this.isEmpty()) {
+ return -1;
+    }</li>
+</ul>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre>return this.deque[this.rear];   }
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>/**</p>
+<ul>
+  <li>Check if the deque is empty</li>
+  <li>Kiểm tra xem deque có rỗng không
+   */
+  isEmpty(): boolean {
+    return this.size === 0;
+  }</li>
+</ul>
+
+<p>/**</p>
+<ul>
+  <li>Check if the deque is full</li>
+  <li>Kiểm tra xem deque có đầy không
+   */
+  isFull(): boolean {
+    return this.size === this.capacity;
+  }</li>
+</ul>
+
+<p>/**</p>
+<ul>
+  <li>Get current size of the deque</li>
+  <li>Lấy kích thước hiện tại của deque
+   */
+  getSize(): number {
+    return this.size;
+  }</li>
+</ul>
+
+<p>/**</p>
+<ul>
+  <li>Get the capacity of the deque</li>
+  <li>Lấy dung lượng của deque
+   */
+  getCapacity(): number {
+    return this.capacity;
+  }</li>
+</ul>
+
+<p>/**</p>
+<ul>
+  <li>Get the internal state for debugging</li>
+  <li>Lấy trạng thái nội bộ để debug
+   */
+  getState(): { deque: number[]; front: number; rear: number; size: number } {
+    return {
+ deque: […this.deque],
+ front: this.front,
+ rear: this.rear,
+ size: this.size,
+    };
+  }
+}</li>
+</ul>
+
+<p>/**</p>
+<ul>
+  <li>Alternative Implementation: Array-based with Size Tracking Only
+ *</li>
+  <li>Triển khai thay thế: Dựa trên Array chỉ với theo dõi kích thước
+ */
+class MyCircularDequeSizeOnly {
+  private deque: number[];
+  private front: number;
+  private size: number;
+  private capacity: number;</li>
+</ul>
+
+<p>constructor(k: number) {
+    this.deque = new Array(k);
+    this.front = 0;
+    this.size = 0;
+    this.capacity = k;
+  }</p>
+
+<p>insertFront(value: number): boolean {
+    if (this.isFull()) {
+      return false;
+    }</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+</pre></td><td class="rouge-code"><pre>this.front = (this.front - 1 + this.capacity) % this.capacity;
+this.deque[this.front] = value;
+this.size++;
+
+return true;   }
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>insertLast(value: number): boolean {
+    if (this.isFull()) {
+      return false;
+    }</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+</pre></td><td class="rouge-code"><pre>const rear = (this.front + this.size) % this.capacity;
+this.deque[rear] = value;
+this.size++;
+
+return true;   }
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>deleteFront(): boolean {
+    if (this.isEmpty()) {
+      return false;
+    }</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+</pre></td><td class="rouge-code"><pre>this.front = (this.front + 1) % this.capacity;
+this.size--;
+
+return true;   }
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>deleteLast(): boolean {
+    if (this.isEmpty()) {
+      return false;
+    }</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre></td><td class="rouge-code"><pre>this.size--;
+return true;   }
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>getFront(): number {
+    if (this.isEmpty()) {
+      return -1;
+    }</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre>return this.deque[this.front];   }
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>getRear(): number {
+    if (this.isEmpty()) {
+      return -1;
+    }</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre></td><td class="rouge-code"><pre>const rear = (this.front + this.size - 1) % this.capacity;
+return this.deque[rear];   }
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>isEmpty(): boolean {
+    return this.size === 0;
+  }</p>
+
+<p>isFull(): boolean {
+    return this.size === this.capacity;
+  }</p>
+
+<p>getSize(): number {
+    return this.size;
+  }
+}</p>
+
+<p>/**</p>
+<ul>
+  <li>Linked List Implementation
+ *</li>
+  <li>Triển khai Linked List
+ */
+class DequeNode {
+  value: number;
+  prev: DequeNode | null;
+  next: DequeNode | null;</li>
+</ul>
+
+<p>constructor(value: number) {
+    this.value = value;
+    this.prev = null;
+    this.next = null;
+  }
+}</p>
+
+<p>class MyCircularDequeLinkedList {
+  private head: DequeNode | null;
+  private tail: DequeNode | null;
+  private size: number;
+  private capacity: number;</p>
+
+<p>constructor(k: number) {
+    this.head = null;
+    this.tail = null;
+    this.size = 0;
+    this.capacity = k;
+  }</p>
+
+<p>insertFront(value: number): boolean {
+    if (this.isFull()) {
+      return false;
+    }</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+</pre></td><td class="rouge-code"><pre>const newNode = new DequeNode(value);
+
+if (this.isEmpty()) {
+  this.head = newNode;
+  this.tail = newNode;
+} else {
+  newNode.next = this.head;
+  this.head!.prev = newNode;
+  this.head = newNode;
+}
+
+this.size++;
+return true;   }
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>insertLast(value: number): boolean {
+    if (this.isFull()) {
+      return false;
+    }</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+</pre></td><td class="rouge-code"><pre>const newNode = new DequeNode(value);
+
+if (this.isEmpty()) {
+  this.head = newNode;
+  this.tail = newNode;
+} else {
+  newNode.prev = this.tail;
+  this.tail!.next = newNode;
+  this.tail = newNode;
+}
+
+this.size++;
+return true;   }
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>deleteFront(): boolean {
+    if (this.isEmpty()) {
+      return false;
+    }</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+</pre></td><td class="rouge-code"><pre>if (this.size === 1) {
+  this.head = null;
+  this.tail = null;
+} else {
+  this.head = this.head!.next;
+  this.head!.prev = null;
+}
+
+this.size--;
+return true;   }
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>deleteLast(): boolean {
+    if (this.isEmpty()) {
+      return false;
+    }</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+</pre></td><td class="rouge-code"><pre>if (this.size === 1) {
+  this.head = null;
+  this.tail = null;
+} else {
+  this.tail = this.tail!.prev;
+  this.tail!.next = null;
+}
+
+this.size--;
+return true;   }
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>getFront(): number {
+    if (this.isEmpty()) {
+      return -1;
+    }</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre>return this.head!.value;   }
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>getRear(): number {
+    if (this.isEmpty()) {
+      return -1;
+    }</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre>return this.tail!.value;   }
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>isEmpty(): boolean {
+    return this.size === 0;
+  }</p>
+
+<p>isFull(): boolean {
+    return this.size === this.capacity;
+  }</p>
+
+<p>getSize(): number {
+    return this.size;
+  }
+}</p>
+
+<p>/**</p>
+<ul>
+  <li>Implementation with Statistics and Monitoring
+ *</li>
+  <li>Triển khai với thống kê và giám sát
+ */
+class MyCircularDequeWithStats extends MyCircularDeque {
+  private insertFrontCount: number;
+  private insertLastCount: number;
+  private deleteFrontCount: number;
+  private deleteLastCount: number;
+  private operationHistory: Array&lt;{
+ operation: string;
+ value?: number;
+ timestamp: number;
+ success: boolean;
+  }&gt;;</li>
+</ul>
+
+<p>constructor(k: number) {
+    super(k);
+    this.insertFrontCount = 0;
+    this.insertLastCount = 0;
+    this.deleteFrontCount = 0;
+    this.deleteLastCount = 0;
+    this.operationHistory = [];
+  }</p>
+
+<p>insertFront(value: number): boolean {
+    const success = super.insertFront(value);</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+</pre></td><td class="rouge-code"><pre>this.insertFrontCount++;
+
+this.operationHistory.push({
+  operation: "insertFront",
+  value,
+  timestamp: Date.now(),
+  success,
+});
+
+return success;   }
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>insertLast(value: number): boolean {
+    const success = super.insertLast(value);</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+</pre></td><td class="rouge-code"><pre>this.insertLastCount++;
+
+this.operationHistory.push({
+  operation: "insertLast",
+  value,
+  timestamp: Date.now(),
+  success,
+});
+
+return success;   }
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>deleteFront(): boolean {
+    const success = super.deleteFront();</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+</pre></td><td class="rouge-code"><pre>this.deleteFrontCount++;
+
+this.operationHistory.push({
+  operation: "deleteFront",
+  timestamp: Date.now(),
+  success,
+});
+
+return success;   }
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>deleteLast(): boolean {
+    const success = super.deleteLast();</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+</pre></td><td class="rouge-code"><pre>this.deleteLastCount++;
+
+this.operationHistory.push({
+  operation: "deleteLast",
+  timestamp: Date.now(),
+  success,
+});
+
+return success;   }
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>/**</p>
+<ul>
+  <li>Get deque statistics</li>
+  <li>Lấy thống kê deque
+   */
+  getStats(): {
+    insertFrontCount: number;
+    insertLastCount: number;
+    deleteFrontCount: number;
+    deleteLastCount: number;
+    totalOperations: number;
+    currentUtilization: number;
+  } {
+    const totalOperations =
+ this.insertFrontCount +
+ this.insertLastCount +
+ this.deleteFrontCount +
+ this.deleteLastCount;
+    const utilization = (this.getSize() / this.getCapacity()) * 100;</li>
+</ul>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+</pre></td><td class="rouge-code"><pre>return {
+  insertFrontCount: this.insertFrontCount,
+  insertLastCount: this.insertLastCount,
+  deleteFrontCount: this.deleteFrontCount,
+  deleteLastCount: this.deleteLastCount,
+  totalOperations,
+  currentUtilization: utilization,
+};   }
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>/**</p>
+<ul>
+  <li>Get recent operation history</li>
+  <li>Lấy lịch sử thao tác gần đây
+   */
+  getRecentHistory(
+    count: number = 10
+  ): Array&lt;{
+    operation: string;
+    value?: number;
+    timestamp: number;
+    success: boolean;
+  }&gt; {
+    return this.operationHistory.slice(-count);
+  }</li>
+</ul>
+
+<p>/**</p>
+<ul>
+  <li>Clear operation history</li>
+  <li>Xóa lịch sử thao tác
+   */
+  clearHistory(): void {
+    this.operationHistory = [];
+  }
+}</li>
+</ul>
+
+<p>/**</p>
+<ul>
+  <li>Implementation with Priority Features
+ *</li>
+  <li>Triển khai với tính năng ưu tiên
+ */
+class MyCircularDequeWithPriority extends MyCircularDeque {
+  private priorities: number[];</li>
+</ul>
+
+<p>constructor(k: number) {
+    super(k);
+    this.priorities = new Array(k);
+  }</p>
+
+<p>/**</p>
+<ul>
+  <li>Insert with priority at front</li>
+  <li>Chèn với độ ưu tiên ở đầu
+   */
+  insertFrontWithPriority(value: number, priority: number): boolean {
+    if (this.isFull()) {
+ return false;
+    }</li>
+</ul>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+</pre></td><td class="rouge-code"><pre>// Find position to insert based on priority
+let insertIndex = this.front;
+for (let i = 0; i &lt; this.getSize(); i++) {
+  const currentIndex = (this.front + i) % this.getCapacity();
+  if (priority &gt; this.priorities[currentIndex]) {
+    insertIndex = currentIndex;
+    break;
+  }
+}
+
+// Shift elements to make space
+for (let i = this.getSize(); i &gt; 0; i--) {
+  const currentIndex = (this.front + i - 1) % this.getCapacity();
+  const nextIndex = (this.front + i) % this.getCapacity();
+  this.deque[nextIndex] = this.deque[currentIndex];
+  this.priorities[nextIndex] = this.priorities[currentIndex];
+}
+
+// Insert at the correct position
+this.deque[insertIndex] = value;
+this.priorities[insertIndex] = priority;
+
+return true;   }
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>/**</p>
+<ul>
+  <li>Get element with highest priority</li>
+  <li>Lấy phần tử có độ ưu tiên cao nhất
+   */
+  getHighestPriority(): number {
+    if (this.isEmpty()) {
+ return -1;
+    }</li>
+</ul>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+</pre></td><td class="rouge-code"><pre>let maxPriority = -1;
+let maxPriorityIndex = this.front;
+
+for (let i = 0; i &lt; this.getSize(); i++) {
+  const currentIndex = (this.front + i) % this.getCapacity();
+  if (this.priorities[currentIndex] &gt; maxPriority) {
+    maxPriority = this.priorities[currentIndex];
+    maxPriorityIndex = currentIndex;
+  }
+}
+
+return this.deque[maxPriorityIndex];   } }
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>/**</p>
+<ul>
+  <li>Performance Comparison Function
+ *</li>
+  <li>Hàm so sánh hiệu suất các phương pháp
+ */
+function compareCircularDequeImplementations(
+  operations: Array&lt;{
+ type:
+   | “insertFront”
+   | “insertLast”
+   | “deleteFront”
+   | “deleteLast”
+   | “getFront”
+   | “getRear”;
+ value?: number;
+  }&gt;
+): void {
+  console.log(
+ “Circular Deque Implementation Performance Comparison / So sánh hiệu suất triển khai Circular Deque”
+  );
+  console.log(“=”.repeat(90));</li>
+</ul>
+
+<p>const implementations = [
+    { name: “Array with Pointers”, deque: new MyCircularDeque(100) },
+    { name: “Array Size Only”, deque: new MyCircularDequeSizeOnly(100) },
+    { name: “Linked List”, deque: new MyCircularDequeLinkedList(100) },
+  ];</p>
+
+<p>for (const impl of implementations) {
+    console.log(<code class="language-plaintext highlighter-rouge">\nTesting ${impl.name}:</code>);</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+</pre></td><td class="rouge-code"><pre>const start = performance.now();
+
+for (const op of operations) {
+  switch (op.type) {
+    case "insertFront":
+      impl.deque.insertFront(op.value!);
+      break;
+    case "insertLast":
+      impl.deque.insertLast(op.value!);
+      break;
+    case "deleteFront":
+      impl.deque.deleteFront();
+      break;
+    case "deleteLast":
+      impl.deque.deleteLast();
+      break;
+    case "getFront":
+      impl.deque.getFront();
+      break;
+    case "getRear":
+      impl.deque.getRear();
+      break;
+  }
+}
+
+const end = performance.now();
+console.log(`  Time: ${(end - start).toFixed(4)}ms`);
+console.log(`  Final size: ${impl.deque.getSize()}`);   } }
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>/**</p>
+<ul>
+  <li>Test Cases
+ *</li>
+  <li>Các trường hợp kiểm thử
+ */
+function runTests(): void {
+  console.log(“Circular Deque Tests / Kiểm thử Circular Deque”);
+  console.log(“=”.repeat(50));</li>
+</ul>
+
+<p>// Test 1: Basic operations
+  console.log(“\nTest 1: Basic operations / Các thao tác cơ bản”);
+  const deque1 = new MyCircularDeque(3);
+  console.log(<code class="language-plaintext highlighter-rouge">insertLast(1): ${deque1.insertLast(1)}</code>); // Expected: true
+  console.log(<code class="language-plaintext highlighter-rouge">insertLast(2): ${deque1.insertLast(2)}</code>); // Expected: true
+  console.log(<code class="language-plaintext highlighter-rouge">insertFront(3): ${deque1.insertFront(3)}</code>); // Expected: true
+  console.log(<code class="language-plaintext highlighter-rouge">insertFront(4): ${deque1.insertFront(4)}</code>); // Expected: false
+  console.log(<code class="language-plaintext highlighter-rouge">getRear(): ${deque1.getRear()}</code>); // Expected: 2
+  console.log(<code class="language-plaintext highlighter-rouge">isFull(): ${deque1.isFull()}</code>); // Expected: true
+  console.log(<code class="language-plaintext highlighter-rouge">deleteLast(): ${deque1.deleteLast()}</code>); // Expected: true
+  console.log(<code class="language-plaintext highlighter-rouge">insertFront(4): ${deque1.insertFront(4)}</code>); // Expected: true
+  console.log(<code class="language-plaintext highlighter-rouge">getFront(): ${deque1.getFront()}</code>); // Expected: 4</p>
+
+<p>// Test 2: Statistics tracking
+  console.log(“\nTest 2: Statistics tracking / Theo dõi thống kê”);
+  const statDeque = new MyCircularDequeWithStats(5);</p>
+
+<p>statDeque.insertFront(1);
+  statDeque.insertLast(2);
+  statDeque.insertFront(3);
+  statDeque.deleteFront();
+  statDeque.deleteLast();</p>
+
+<p>const stats = statDeque.getStats();
+  console.log(<code class="language-plaintext highlighter-rouge">Insert front count: ${stats.insertFrontCount}</code>);
+  console.log(<code class="language-plaintext highlighter-rouge">Insert last count: ${stats.insertLastCount}</code>);
+  console.log(<code class="language-plaintext highlighter-rouge">Delete front count: ${stats.deleteFrontCount}</code>);
+  console.log(<code class="language-plaintext highlighter-rouge">Delete last count: ${stats.deleteLastCount}</code>);
+  console.log(<code class="language-plaintext highlighter-rouge">Total operations: ${stats.totalOperations}</code>);
+  console.log(<code class="language-plaintext highlighter-rouge">Utilization: ${stats.currentUtilization.toFixed(2)}%</code>);</p>
+
+<p>// Test 3: State inspection
+  console.log(“\nTest 3: State inspection / Kiểm tra trạng thái”);
+  const stateDeque = new MyCircularDeque(4);
+  stateDeque.insertFront(1);
+  stateDeque.insertLast(2);</p>
+
+<p>console.log(“Current state:”);
+  console.log(stateDeque.getState());</p>
+
+<p>stateDeque.deleteFront();</p>
+
+<p>console.log(“After deleteFront:”);
+  console.log(stateDeque.getState());</p>
+
+<p>// Test 4: Performance comparison
+  console.log(“\nTest 4: Performance comparison / So sánh hiệu suất”);
+  const testOperations = [
+    { type: “insertFront” as const, value: 1 },
+    { type: “insertLast” as const, value: 2 },
+    { type: “insertFront” as const, value: 3 },
+    { type: “getFront” as const },
+    { type: “getRear” as const },
+    { type: “deleteFront” as const },
+    { type: “deleteLast” as const },
+    { type: “insertLast” as const, value: 4 },
+    { type: “getFront” as const },
+    { type: “getRear” as const },
+  ];</p>
+
+<p>compareCircularDequeImplementations(testOperations);
+}</p>
+
+<p>// Uncomment to run tests
+// runTests();</p>
+
+<p>export {
+  MyCircularDeque,
+  MyCircularDequeSizeOnly,
+  MyCircularDequeLinkedList,
+  MyCircularDequeWithStats,
+  MyCircularDequeWithPriority,
+  DequeNode,
+  compareCircularDequeImplementations,
+  runTests,
+};</p>
+
+
+        </div>
+    </article>
+</div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Study Resources</h3>
+                    <p>Comprehensive collection of frontend interview questions, coding challenges, and system design problems.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Progress Tracking</h3>
+                    <p>Monitor your learning journey with detailed progress indicators and completion status.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Big Tech Ready</h3>
+                    <p>Curated content specifically designed for interviews at Google, Meta, Amazon, Apple, and Netflix.</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Frontend Interview Hub. Built for aspiring frontend engineers.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="/assets/js/main.js"></script>
+</body>
+</html>

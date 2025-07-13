@@ -1,0 +1,804 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kth Smallest Element in a BST | Frontend Interview Preparation Guide</title>
+    <meta name="description" content="Comprehensive frontend interview materials for Big Tech companies">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="/assets/css/main.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <header>
+        <nav class="container">
+            <div class="logo">Frontend Interview Hub</div>
+            <ul class="nav-links">
+                <li><a href="/">Home</a></li>
+                <li><a href="#progress">Progress</a></li>
+                <li><a href="#knowledge">Knowledge</a></li>
+                <li><a href="https://github.com/nee/interview">GitHub</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <div class="content-container">
+    
+        <nav class="breadcrumb">
+            <ol>
+                <li><a href="/">Home</a></li>
+                
+                
+                
+                    
+                
+                    
+                        
+                        
+                            <li><a href="/leetcode/">Leetcode</a></li>
+                        
+                    
+                
+                    
+                        
+                        
+                            <li><a href="/leetcode/tree-graph/">Tree graph</a></li>
+                        
+                    
+                
+                    
+                        
+                        
+                            <li><a href="/leetcode/tree-graph/problems/">Problems</a></li>
+                        
+                    
+                
+                    
+                        
+                        
+                            <li class="active">Kth smallest element in a bst</li>
+                        
+                    
+                
+            </ol>
+        </nav>
+    
+    
+    <article class="content">
+        
+            <header class="content-header">
+                <h1 class="content-title">Kth Smallest Element in a BST</h1>
+                
+                
+                    <div class="content-meta">
+                        <span class="difficulty difficulty-easy">Easy</span>
+                        
+                            <span class="category">Tree/Graph</span>
+                        
+                        
+                            <div class="tags">
+                                
+                                    <span class="tag">Tree/Graph</span>
+                                
+                                    <span class="tag">Binary Search</span>
+                                
+                            </div>
+                        
+                    </div>
+                
+            </header>
+        
+        
+        <div class="content-body">
+            <h1 id="kth-smallest-element-in-a-bst">Kth Smallest Element in a BST</h1>
+
+<h2 id="problem-description">Problem Description</h2>
+
+<ul>
+  <li>return the kth smallest value (1-indexed) of all the values of the nodes in the tree.  *  *  * Companies: Amazon, Google, Microsoft  *</li>
+</ul>
+
+<h2 id="solutions">Solutions</h2>
+
+<p>/**</p>
+<ul>
+  <li>Kth Smallest Element in a BST
+ *</li>
+  <li>Problem: Given the root of a binary search tree and an integer k,</li>
+  <li>return the kth smallest value (1-indexed) of all the values of the nodes in the tree.
+ *</li>
+  <li>LeetCode: https://leetcode.com/problems/kth-smallest-element-in-a-bst/
+ *</li>
+  <li>Companies: Amazon, Google, Microsoft
+ *</li>
+  <li>Difficulty: Medium
+ *</li>
+  <li>Key Concepts: BST properties, inorder traversal, iterative DFS
+ */</li>
+</ul>
+
+<p>/**</p>
+<ul>
+  <li>Definition for a binary tree node.
+ */
+class TreeNode {
+  val: number;
+  left: TreeNode | null;
+  right: TreeNode | null;</li>
+</ul>
+
+<p>constructor(
+    val: number = 0,
+    left: TreeNode | null = null,
+    right: TreeNode | null = null
+  ) {
+    this.val = val;
+    this.left = left;
+    this.right = right;
+  }
+}</p>
+
+<p>/**</p>
+<ul>
+  <li>Solution 1: Inorder Traversal with Stack (Iterative)
+ *</li>
+  <li>Time Complexity: O(h + k) - Where h is the height of the tree</li>
+  <li>Space Complexity: O(h) - Stack space
+ *</li>
+  <li>Approach:</li>
+  <li>
+    <ol>
+      <li>Use iterative inorder traversal with stack</li>
+    </ol>
+  </li>
+  <li>
+    <ol>
+      <li>Keep track of visited nodes count</li>
+    </ol>
+  </li>
+  <li>
+    <ol>
+      <li>Return the kth element when count reaches k
+ *</li>
+    </ol>
+  </li>
+  <li>Thuật toán:</li>
+  <li>
+    <ol>
+      <li>Sử dụng duyệt inorder với stack</li>
+    </ol>
+  </li>
+  <li>
+    <ol>
+      <li>Theo dõi số lượng nút đã thăm</li>
+    </ol>
+  </li>
+  <li>
+    <ol>
+      <li>Trả về phần tử thứ k khi đếm đạt k
+ */
+function kthSmallest(root: TreeNode | null, k: number): number {
+  if (!root) return -1;</li>
+    </ol>
+  </li>
+</ul>
+
+<p>const stack: TreeNode[] = [];
+  let current = root;
+  let count = 0;</p>
+
+<p>while (current || stack.length &gt; 0) {
+    // Go to the leftmost node
+    while (current) {
+      stack.push(current);
+      current = current.left;
+    }</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+</pre></td><td class="rouge-code"><pre>// Process current node
+current = stack.pop()!;
+count++;
+
+if (count === k) {
+  return current.val;
+}
+
+// Move to right subtree
+current = current.right;   }
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>return -1; // k is larger than number of nodes
+}</p>
+
+<p>/**</p>
+<ul>
+  <li>Solution 2: Recursive Inorder Traversal
+ *</li>
+  <li>Time Complexity: O(n) - Visit all nodes in worst case</li>
+  <li>Space Complexity: O(h) - Recursion stack
+ *</li>
+  <li>Approach:</li>
+  <li>
+    <ol>
+      <li>Use recursive inorder traversal</li>
+    </ol>
+  </li>
+  <li>
+    <ol>
+      <li>Keep track of count and result</li>
+    </ol>
+  </li>
+  <li>
+    <ol>
+      <li>Early termination when kth element is found
+ *</li>
+    </ol>
+  </li>
+  <li>Thuật toán:</li>
+  <li>
+    <ol>
+      <li>Sử dụng duyệt inorder đệ quy</li>
+    </ol>
+  </li>
+  <li>
+    <ol>
+      <li>Theo dõi đếm và kết quả</li>
+    </ol>
+  </li>
+  <li>
+    <ol>
+      <li>Dừng sớm khi tìm thấy phần tử thứ k
+ */
+function kthSmallestRecursive(root: TreeNode | null, k: number): number {
+  let count = 0;
+  let result = -1;</li>
+    </ol>
+  </li>
+</ul>
+
+<table>
+  <tbody>
+    <tr>
+      <td>function inorder(node: TreeNode</td>
+      <td>null): void {</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>if (!node</td>
+      <td> </td>
+      <td>count &gt;= k) return;</td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+</pre></td><td class="rouge-code"><pre>inorder(node.left);
+
+count++;
+if (count === k) {
+  result = node.val;
+  return;
+}
+
+inorder(node.right);   }
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>inorder(root);
+  return result;
+}</p>
+
+<p>/**</p>
+<ul>
+  <li>Solution 3: Morris Traversal (O(1) Space)
+ *</li>
+  <li>Time Complexity: O(n) - Each edge is traversed at most 3 times</li>
+  <li>Space Complexity: O(1) - Only using a few pointers
+ *</li>
+  <li>Approach:</li>
+  <li>
+    <ol>
+      <li>Use Morris traversal to avoid stack/recursion</li>
+    </ol>
+  </li>
+  <li>
+    <ol>
+      <li>Create temporary links to predecessor</li>
+    </ol>
+  </li>
+  <li>
+    <ol>
+      <li>Restore tree structure after processing
+ *</li>
+    </ol>
+  </li>
+  <li>Thuật toán:</li>
+  <li>
+    <ol>
+      <li>Sử dụng Morris traversal để tránh stack/đệ quy</li>
+    </ol>
+  </li>
+  <li>
+    <ol>
+      <li>Tạo liên kết tạm thời đến nút tiền nhiệm</li>
+    </ol>
+  </li>
+  <li>
+    <ol>
+      <li>Khôi phục cấu trúc cây sau khi xử lý
+ */
+function kthSmallestMorris(root: TreeNode | null, k: number): number {
+  if (!root) return -1;</li>
+    </ol>
+  </li>
+</ul>
+
+<p>let current = root;
+  let count = 0;</p>
+
+<p>while (current) {
+    if (!current.left) {
+      // Process current node
+      count++;
+      if (count === k) {
+        return current.val;
+      }
+      current = current.right;
+    } else {
+      // Find inorder predecessor
+      let predecessor = current.left;
+      while (predecessor.right &amp;&amp; predecessor.right !== current) {
+        predecessor = predecessor.right;
+      }</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+</pre></td><td class="rouge-code"><pre>  if (!predecessor.right) {
+    // Create temporary link
+    predecessor.right = current;
+    current = current.left;
+  } else {
+    // Remove temporary link and process current node
+    predecessor.right = null;
+    count++;
+    if (count === k) {
+      return current.val;
+    }
+    current = current.right;
+  }
+}   }
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>return -1;
+}</p>
+
+<p>/**</p>
+<ul>
+  <li>Solution 4: Binary Search on Tree Structure
+ *</li>
+  <li>Time Complexity: O(n) - Count nodes in each subtree</li>
+  <li>Space Complexity: O(h) - Recursion stack
+ *</li>
+  <li>Approach:</li>
+  <li>
+    <ol>
+      <li>Count nodes in left subtree</li>
+    </ol>
+  </li>
+  <li>
+    <ol>
+      <li>If count &gt;= k, search in left subtree</li>
+    </ol>
+  </li>
+  <li>
+    <ol>
+      <li>If count + 1 == k, current node is the answer</li>
+    </ol>
+  </li>
+  <li>
+    <ol>
+      <li>Otherwise, search in right subtree with k - count - 1
+ *</li>
+    </ol>
+  </li>
+  <li>Thuật toán:</li>
+  <li>
+    <ol>
+      <li>Đếm nút trong cây con trái</li>
+    </ol>
+  </li>
+  <li>
+    <ol>
+      <li>Nếu đếm &gt;= k, tìm trong cây con trái</li>
+    </ol>
+  </li>
+  <li>
+    <ol>
+      <li>Nếu đếm + 1 == k, nút hiện tại là đáp án</li>
+    </ol>
+  </li>
+  <li>
+    <ol>
+      <li>Ngược lại, tìm trong cây con phải với k - đếm - 1
+ */
+function kthSmallestBinarySearch(root: TreeNode | null, k: number): number {
+  function countNodes(node: TreeNode | null): number {
+ if (!node) return 0;
+ return 1 + countNodes(node.left) + countNodes(node.right);
+  }</li>
+    </ol>
+  </li>
+</ul>
+
+<p>function findKth(node: TreeNode | null, k: number): number {
+    if (!node) return -1;</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+</pre></td><td class="rouge-code"><pre>const leftCount = countNodes(node.left);
+
+if (leftCount &gt;= k) {
+  return findKth(node.left, k);
+} else if (leftCount + 1 === k) {
+  return node.val;
+} else {
+  return findKth(node.right, k - leftCount - 1);
+}   }
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>return findKth(root, k);
+}</p>
+
+<p>/**</p>
+<ul>
+  <li>Solution 5: Augmented Tree Node (For repeated queries)
+ *</li>
+  <li>Time Complexity: O(h) - Height of the tree</li>
+  <li>Space Complexity: O(n) - Additional storage for node counts
+ *</li>
+  <li>Approach:</li>
+  <li>
+    <ol>
+      <li>Augment each node with count of nodes in its subtree</li>
+    </ol>
+  </li>
+  <li>
+    <ol>
+      <li>Use this information to navigate to kth smallest</li>
+    </ol>
+  </li>
+  <li>
+    <ol>
+      <li>Efficient for multiple queries on the same tree
+ *</li>
+    </ol>
+  </li>
+  <li>Thuật toán:</li>
+  <li>
+    <ol>
+      <li>Bổ sung mỗi nút với số lượng nút trong cây con</li>
+    </ol>
+  </li>
+  <li>
+    <ol>
+      <li>Sử dụng thông tin này để điều hướng đến phần tử nhỏ thứ k</li>
+    </ol>
+  </li>
+  <li>
+    <ol>
+      <li>Hiệu quả cho nhiều truy vấn trên cùng một cây
+ */
+class AugmentedTreeNode {
+  val: number;
+  left: AugmentedTreeNode | null;
+  right: AugmentedTreeNode | null;
+  count: number; // Number of nodes in subtree rooted at this node</li>
+    </ol>
+  </li>
+</ul>
+
+<p>constructor(
+    val: number = 0,
+    left: AugmentedTreeNode | null = null,
+    right: AugmentedTreeNode | null = null
+  ) {
+    this.val = val;
+    this.left = left;
+    this.right = right;
+    this.count = 1;
+  }
+}</p>
+
+<p>function buildAugmentedTree(root: TreeNode | null): AugmentedTreeNode | null {
+  if (!root) return null;</p>
+
+<p>const augmentedRoot = new AugmentedTreeNode(root.val);
+  augmentedRoot.left = buildAugmentedTree(root.left);
+  augmentedRoot.right = buildAugmentedTree(root.right);</p>
+
+<p>// Calculate count
+  augmentedRoot.count =
+    1 + (augmentedRoot.left?.count || 0) + (augmentedRoot.right?.count || 0);</p>
+
+<p>return augmentedRoot;
+}</p>
+
+<p>function kthSmallestAugmented(
+  root: AugmentedTreeNode | null,
+  k: number
+): number {
+  if (!root) return -1;</p>
+
+<table>
+  <tbody>
+    <tr>
+      <td>const leftCount = root.left?.count</td>
+      <td> </td>
+      <td>0;</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>if (leftCount &gt;= k) {
+    return kthSmallestAugmented(root.left, k);
+  } else if (leftCount + 1 === k) {
+    return root.val;
+  } else {
+    return kthSmallestAugmented(root.right, k - leftCount - 1);
+  }
+}</p>
+
+<p>/**</p>
+<ul>
+  <li>Utility function to create BST from array
+ */
+function createBST(values: number[]): TreeNode | null {
+  if (values.length === 0) return null;</li>
+</ul>
+
+<p>const root = new TreeNode(values[0]);</p>
+
+<p>for (let i = 1; i &lt; values.length; i++) {
+    insertBST(root, values[i]);
+  }</p>
+
+<p>return root;
+}</p>
+
+<p>function insertBST(root: TreeNode, val: number): void {
+  if (val &lt; root.val) {
+    if (root.left) {
+      insertBST(root.left, val);
+    } else {
+      root.left = new TreeNode(val);
+    }
+  } else {
+    if (root.right) {
+      insertBST(root.right, val);
+    } else {
+      root.right = new TreeNode(val);
+    }
+  }
+}</p>
+
+<p>/**</p>
+<ul>
+  <li>Utility function to print tree in inorder (sorted order)
+ */
+function printInorder(root: TreeNode | null): number[] {
+  const result: number[] = [];</li>
+</ul>
+
+<p>function inorder(node: TreeNode | null): void {
+    if (!node) return;
+    inorder(node.left);
+    result.push(node.val);
+    inorder(node.right);
+  }</p>
+
+<p>inorder(root);
+  return result;
+}</p>
+
+<p>// Test cases
+function runTests(): void {
+  console.log(“=== Testing Kth Smallest Element in a BST ===\n”);</p>
+
+<p>// Test Case 1: Simple BST
+  console.log(“Test Case 1: Simple BST”);
+  const values1 = [3, 1, 4, null, 2];
+  const tree1 = createBST([3, 1, 4, 2]);
+  const k1 = 1;</p>
+
+<p>console.log(“BST values (inorder):”, printInorder(tree1));
+  console.log(<code class="language-plaintext highlighter-rouge">Finding ${k1}th smallest element</code>);</p>
+
+<p>console.log(“Iterative approach:”, kthSmallest(tree1, k1));
+  console.log(“Recursive approach:”, kthSmallestRecursive(tree1, k1));
+  console.log(“Morris approach:”, kthSmallestMorris(tree1, k1));
+  console.log(“Binary search approach:”, kthSmallestBinarySearch(tree1, k1));
+  console.log();</p>
+
+<p>// Test Case 2: Larger BST
+  console.log(“Test Case 2: Larger BST”);
+  const tree2 = createBST([5, 3, 6, 2, 4, null, null, 1]);
+  const k2 = 3;</p>
+
+<p>console.log(“BST values (inorder):”, printInorder(tree2));
+  console.log(<code class="language-plaintext highlighter-rouge">Finding ${k2}th smallest element</code>);</p>
+
+<p>console.log(“Iterative approach:”, kthSmallest(tree2, k2));
+  console.log(“Recursive approach:”, kthSmallestRecursive(tree2, k2));
+  console.log(“Morris approach:”, kthSmallestMorris(tree2, k2));
+  console.log(“Binary search approach:”, kthSmallestBinarySearch(tree2, k2));
+  console.log();</p>
+
+<p>// Test Case 3: Single node
+  console.log(“Test Case 3: Single node”);
+  const tree3 = createBST([1]);
+  const k3 = 1;</p>
+
+<p>console.log(“BST values (inorder):”, printInorder(tree3));
+  console.log(<code class="language-plaintext highlighter-rouge">Finding ${k3}th smallest element</code>);</p>
+
+<p>console.log(“Iterative approach:”, kthSmallest(tree3, k3));
+  console.log(“Recursive approach:”, kthSmallestRecursive(tree3, k3));
+  console.log(“Morris approach:”, kthSmallestMorris(tree3, k3));
+  console.log(“Binary search approach:”, kthSmallestBinarySearch(tree3, k3));
+  console.log();</p>
+
+<p>// Test Case 4: Left-skewed BST
+  console.log(“Test Case 4: Left-skewed BST”);
+  const tree4 = createBST([3, 2, 1]);
+  const k4 = 2;</p>
+
+<p>console.log(“BST values (inorder):”, printInorder(tree4));
+  console.log(<code class="language-plaintext highlighter-rouge">Finding ${k4}th smallest element</code>);</p>
+
+<p>console.log(“Iterative approach:”, kthSmallest(tree4, k4));
+  console.log(“Recursive approach:”, kthSmallestRecursive(tree4, k4));
+  console.log(“Morris approach:”, kthSmallestMorris(tree4, k4));
+  console.log(“Binary search approach:”, kthSmallestBinarySearch(tree4, k4));
+  console.log();</p>
+
+<p>// Test Case 5: Right-skewed BST
+  console.log(“Test Case 5: Right-skewed BST”);
+  const tree5 = createBST([1, 2, 3]);
+  const k5 = 3;</p>
+
+<p>console.log(“BST values (inorder):”, printInorder(tree5));
+  console.log(<code class="language-plaintext highlighter-rouge">Finding ${k5}th smallest element</code>);</p>
+
+<p>console.log(“Iterative approach:”, kthSmallest(tree5, k5));
+  console.log(“Recursive approach:”, kthSmallestRecursive(tree5, k5));
+  console.log(“Morris approach:”, kthSmallestMorris(tree5, k5));
+  console.log(“Binary search approach:”, kthSmallestBinarySearch(tree5, k5));
+  console.log();</p>
+
+<p>// Performance comparison
+  console.log(“=== Performance Comparison ===”);</p>
+
+<p>// Create a large BST
+  const largeValues = Array.from({ length: 10000 }, (_, i) =&gt; i + 1);
+  const largeTree = createBST(largeValues);
+  const kLarge = 5000;</p>
+
+<p>console.time(“Iterative Approach”);
+  kthSmallest(largeTree, kLarge);
+  console.timeEnd(“Iterative Approach”);</p>
+
+<p>const largeTree2 = createBST(largeValues);
+  console.time(“Recursive Approach”);
+  kthSmallestRecursive(largeTree2, kLarge);
+  console.timeEnd(“Recursive Approach”);</p>
+
+<p>const largeTree3 = createBST(largeValues);
+  console.time(“Morris Approach”);
+  kthSmallestMorris(largeTree3, kLarge);
+  console.timeEnd(“Morris Approach”);</p>
+
+<p>const largeTree4 = createBST(largeValues);
+  console.time(“Binary Search Approach”);
+  kthSmallestBinarySearch(largeTree4, kLarge);
+  console.timeEnd(“Binary Search Approach”);</p>
+
+<p>// Test augmented tree for multiple queries
+  console.log(“\n=== Augmented Tree for Multiple Queries ===”);
+  const augmentedTree = buildAugmentedTree(largeTree);</p>
+
+<p>console.time(“Augmented Tree (first query)”);
+  kthSmallestAugmented(augmentedTree, kLarge);
+  console.timeEnd(“Augmented Tree (first query)”);</p>
+
+<p>console.time(“Augmented Tree (second query)”);
+  kthSmallestAugmented(augmentedTree, kLarge + 100);
+  console.timeEnd(“Augmented Tree (second query)”);
+}</p>
+
+<p>// Run tests
+runTests();</p>
+
+<p>export {
+  kthSmallest,
+  kthSmallestRecursive,
+  kthSmallestMorris,
+  kthSmallestBinarySearch,
+  TreeNode,
+};</p>
+
+
+        </div>
+    </article>
+</div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Study Resources</h3>
+                    <p>Comprehensive collection of frontend interview questions, coding challenges, and system design problems.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Progress Tracking</h3>
+                    <p>Monitor your learning journey with detailed progress indicators and completion status.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Big Tech Ready</h3>
+                    <p>Curated content specifically designed for interviews at Google, Meta, Amazon, Apple, and Netflix.</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Frontend Interview Hub. Built for aspiring frontend engineers.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="/assets/js/main.js"></script>
+</body>
+</html>

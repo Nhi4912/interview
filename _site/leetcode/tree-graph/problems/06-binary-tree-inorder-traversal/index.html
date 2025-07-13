@@ -1,0 +1,1073 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Binary Tree Inorder Traversal | Frontend Interview Preparation Guide</title>
+    <meta name="description" content="Comprehensive frontend interview materials for Big Tech companies">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="/assets/css/main.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <header>
+        <nav class="container">
+            <div class="logo">Frontend Interview Hub</div>
+            <ul class="nav-links">
+                <li><a href="/">Home</a></li>
+                <li><a href="#progress">Progress</a></li>
+                <li><a href="#knowledge">Knowledge</a></li>
+                <li><a href="https://github.com/nee/interview">GitHub</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <div class="content-container">
+    
+        <nav class="breadcrumb">
+            <ol>
+                <li><a href="/">Home</a></li>
+                
+                
+                
+                    
+                
+                    
+                        
+                        
+                            <li><a href="/leetcode/">Leetcode</a></li>
+                        
+                    
+                
+                    
+                        
+                        
+                            <li><a href="/leetcode/tree-graph/">Tree graph</a></li>
+                        
+                    
+                
+                    
+                        
+                        
+                            <li><a href="/leetcode/tree-graph/problems/">Problems</a></li>
+                        
+                    
+                
+                    
+                        
+                        
+                            <li class="active">Binary tree inorder traversal</li>
+                        
+                    
+                
+            </ol>
+        </nav>
+    
+    
+    <article class="content">
+        
+            <header class="content-header">
+                <h1 class="content-title">Binary Tree Inorder Traversal</h1>
+                
+                
+                    <div class="content-meta">
+                        <span class="difficulty difficulty-easy">Easy</span>
+                        
+                            <span class="category">Tree/Graph</span>
+                        
+                        
+                            <div class="tags">
+                                
+                                    <span class="tag">Tree/Graph</span>
+                                
+                                    <span class="tag">Sorting</span>
+                                
+                            </div>
+                        
+                    </div>
+                
+            </header>
+        
+        
+        <div class="content-body">
+            <h1 id="binary-tree-inorder-traversal">Binary Tree Inorder Traversal</h1>
+
+<p><strong>LeetCode Problem # * 94. Binary Tree Inorder Traversal</strong></p>
+
+<h2 id="problem-description">Problem Description</h2>
+
+<ul>
+  <li>Given the root of a binary tree, return the inorder traversal of its nodes’ values.  *  * Input: root = [1,null,2,3]  * Output: [1,3,2]  *</li>
+</ul>
+
+<h2 id="solutions">Solutions</h2>
+
+<p>/**</p>
+<ul>
+  <li>
+    <ol>
+      <li>Binary Tree Inorder Traversal
+ *</li>
+    </ol>
+  </li>
+  <li>Problem:</li>
+  <li>Given the root of a binary tree, return the inorder traversal of its nodes’ values.
+ *</li>
+  <li>Example:</li>
+  <li>Input: root = [1,null,2,3]</li>
+  <li>Output: [1,3,2]
+ *</li>
+  <li>Input: root = []</li>
+  <li>Output: []
+ *</li>
+  <li>Input: root = [1]</li>
+  <li>Output: [1]
+ *</li>
+  <li>LeetCode: https://leetcode.com/problems/binary-tree-inorder-traversal/
+ */</li>
+</ul>
+
+<p>// Definition for a binary tree node
+class TreeNode {
+  val: number;
+  left: TreeNode | null;
+  right: TreeNode | null;
+  constructor(val?: number, left?: TreeNode | null, right?: TreeNode | null) {
+    this.val = val === undefined ? 0 : val;
+    this.left = left === undefined ? null : left;
+    this.right = right === undefined ? null : right;
+  }
+}</p>
+
+<p>/**</p>
+<ul>
+  <li>Solution 1: Recursive DFS (Optimal)
+ *</li>
+  <li>Approach:</li>
+  <li>
+    <ul>
+      <li>Visit left subtree, then root, then right subtree</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Natural recursive implementation
+ *</li>
+    </ul>
+  </li>
+  <li>Time Complexity: O(n)</li>
+  <li>Space Complexity: O(h) - height of tree
+ */
+function inorderTraversal(root: TreeNode | null): number[] {
+  const result: number[] = [];</li>
+</ul>
+
+<p>function inorder(node: TreeNode | null): void {
+    if (!node) return;</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+</pre></td><td class="rouge-code"><pre>inorder(node.left);
+result.push(node.val);
+inorder(node.right);   }
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>inorder(root);
+  return result;
+}</p>
+
+<p>/**</p>
+<ul>
+  <li>Solution 2: Iterative with Stack
+ *</li>
+  <li>Approach:</li>
+  <li>
+    <ul>
+      <li>Use stack to simulate recursion</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Push all left nodes, then process root, then right
+ *</li>
+    </ul>
+  </li>
+  <li>Time Complexity: O(n)</li>
+  <li>Space Complexity: O(n)
+ */
+function inorderTraversalIterative(root: TreeNode | null): number[] {
+  const result: number[] = [];
+  const stack: TreeNode[] = [];
+  let current = root;</li>
+</ul>
+
+<p>while (current || stack.length &gt; 0) {
+    // Push all left nodes
+    while (current) {
+      stack.push(current);
+      current = current.left;
+    }</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+</pre></td><td class="rouge-code"><pre>// Process current node
+current = stack.pop()!;
+result.push(current.val);
+
+// Move to right subtree
+current = current.right;   }
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>return result;
+}</p>
+
+<p>/**</p>
+<ul>
+  <li>Solution 3: Using Morris Traversal
+ *</li>
+  <li>Approach:</li>
+  <li>
+    <ul>
+      <li>Use threaded binary tree concept</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>O(1) space complexity
+ *</li>
+    </ul>
+  </li>
+  <li>Time Complexity: O(n)</li>
+  <li>Space Complexity: O(1)
+ */
+function inorderTraversalMorris(root: TreeNode | null): number[] {
+  const result: number[] = [];
+  let current = root;</li>
+</ul>
+
+<p>while (current) {
+    if (!current.left) {
+      result.push(current.val);
+      current = current.right;
+    } else {
+      // Find inorder predecessor
+      let predecessor = current.left;
+      while (predecessor.right &amp;&amp; predecessor.right !== current) {
+        predecessor = predecessor.right;
+      }</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+</pre></td><td class="rouge-code"><pre>  if (!predecessor.right) {
+    predecessor.right = current;
+    current = current.left;
+  } else {
+    predecessor.right = null;
+    result.push(current.val);
+    current = current.right;
+  }
+}   }
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>return result;
+}</p>
+
+<p>/**</p>
+<ul>
+  <li>Solution 4: Using Class (Object-oriented)
+ *</li>
+  <li>Approach:</li>
+  <li>
+    <ul>
+      <li>Create an InorderTraverser class</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Encapsulate the traversal logic
+ *</li>
+    </ul>
+  </li>
+  <li>Time Complexity: O(n)</li>
+  <li>Space Complexity: O(h)
+ */
+class InorderTraverser {
+  private root: TreeNode | null;</li>
+</ul>
+
+<p>constructor(root: TreeNode | null) {
+    this.root = root;
+  }</p>
+
+<p>traverse(): number[] {
+    const result: number[] = [];
+    this.inorder(this.root, result);
+    return result;
+  }</p>
+
+<p>private inorder(node: TreeNode | null, result: number[]): void {
+    if (!node) return;</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+</pre></td><td class="rouge-code"><pre>this.inorder(node.left, result);
+result.push(node.val);
+this.inorder(node.right, result);   }
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>getRoot(): TreeNode | null {
+    return this.root;
+  }
+}</p>
+
+<p>function inorderTraversalClass(root: TreeNode | null): number[] {
+  const traverser = new InorderTraverser(root);
+  return traverser.traverse();
+}</p>
+
+<p>/**</p>
+<ul>
+  <li>Solution 5: Using Generator
+ *</li>
+  <li>Approach:</li>
+  <li>
+    <ul>
+      <li>Use generator to yield values</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Memory efficient for large trees
+ *</li>
+    </ul>
+  </li>
+  <li>Time Complexity: O(n)</li>
+  <li>Space Complexity: O(h)
+ <em>/
+function</em> inorderTraversalGenerator(root: TreeNode | null): Generator<number> {
+  if (!root) return;</number></li>
+</ul>
+
+<p>// Yield left subtree
+  yield* inorderTraversalGenerator(root.left);</p>
+
+<p>// Yield current node
+  yield root.val;</p>
+
+<p>// Yield right subtree
+  yield* inorderTraversalGenerator(root.right);
+}</p>
+
+<p>function inorderTraversalWithGenerator(root: TreeNode | null): number[] {
+  return Array.from(inorderTraversalGenerator(root));
+}</p>
+
+<p>/**</p>
+<ul>
+  <li>Solution 6: Using Functional Approach
+ *</li>
+  <li>Approach:</li>
+  <li>
+    <ul>
+      <li>Use functional programming concepts</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>More declarative style
+ *</li>
+    </ul>
+  </li>
+  <li>Time Complexity: O(n)</li>
+  <li>Space Complexity: O(n)
+ */
+function inorderTraversalFunctional(root: TreeNode | null): number[] {
+  if (!root) return [];</li>
+</ul>
+
+<p>return [
+    …inorderTraversalFunctional(root.left),
+    root.val,
+    …inorderTraversalFunctional(root.right),
+  ];
+}</p>
+
+<p>/**</p>
+<ul>
+  <li>Solution 7: Using Array Methods
+ *</li>
+  <li>Approach:</li>
+  <li>
+    <ul>
+      <li>Use array methods like concat</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>More functional style
+ *</li>
+    </ul>
+  </li>
+  <li>Time Complexity: O(n)</li>
+  <li>Space Complexity: O(n)
+ */
+function inorderTraversalArrayMethods(root: TreeNode | null): number[] {
+  if (!root) return [];</li>
+</ul>
+
+<p>const left = inorderTraversalArrayMethods(root.left);
+  const right = inorderTraversalArrayMethods(root.right);</p>
+
+<p>return left.concat([root.val], right);
+}</p>
+
+<p>/**</p>
+<ul>
+  <li>Solution 8: Using Two Stacks
+ *</li>
+  <li>Approach:</li>
+  <li>
+    <ul>
+      <li>Use two stacks for explicit control</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>More explicit stack management
+ *</li>
+    </ul>
+  </li>
+  <li>Time Complexity: O(n)</li>
+  <li>Space Complexity: O(n)
+ */
+function inorderTraversalTwoStacks(root: TreeNode | null): number[] {
+  const result: number[] = [];
+  const stack1: TreeNode[] = [];
+  const stack2: TreeNode[] = [];</li>
+</ul>
+
+<p>if (root) stack1.push(root);</p>
+
+<p>while (stack1.length &gt; 0) {
+    const node = stack1.pop()!;
+    stack2.push(node);</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre></td><td class="rouge-code"><pre>if (node.left) stack1.push(node.left);
+if (node.right) stack1.push(node.right);   }
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>while (stack2.length &gt; 0) {
+    const node = stack2.pop()!;
+    result.unshift(node.val);
+  }</p>
+
+<p>return result;
+}</p>
+
+<p>/**</p>
+<ul>
+  <li>Solution 9: Using Queue
+ *</li>
+  <li>Approach:</li>
+  <li>
+    <ul>
+      <li>Use queue for level-order traversal first</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Then sort to get inorder
+ *</li>
+    </ul>
+  </li>
+  <li>Time Complexity: O(n log n)</li>
+  <li>Space Complexity: O(n)
+ */
+function inorderTraversalQueue(root: TreeNode | null): number[] {
+  if (!root) return [];</li>
+</ul>
+
+<p>const queue: TreeNode[] = [root];
+  const values: number[] = [];</p>
+
+<p>while (queue.length &gt; 0) {
+    const node = queue.shift()!;
+    values.push(node.val);</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre></td><td class="rouge-code"><pre>if (node.left) queue.push(node.left);
+if (node.right) queue.push(node.right);   }
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>// Sort to simulate inorder (not efficient)
+  return values.sort((a, b) =&gt; a - b);
+}</p>
+
+<p>/**</p>
+<ul>
+  <li>Solution 10: Using Recursion with Helper
+ *</li>
+  <li>Approach:</li>
+  <li>
+    <ul>
+      <li>Use helper function with accumulator</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>More explicit parameter passing
+ *</li>
+    </ul>
+  </li>
+  <li>Time Complexity: O(n)</li>
+  <li>
+    <p>Space Complexity: O(h)
+ */
+function inorderTraversalHelper(root: TreeNode | null): number[] {
+  function inorder(node: TreeNode | null, acc: number[]): number[] {
+ if (!node) return acc;</p>
+
+    <p>inorder(node.left, acc);
+ acc.push(node.val);
+ inorder(node.right, acc);</p>
+
+    <p>return acc;
+  }</p>
+  </li>
+</ul>
+
+<p>return inorder(root, []);
+}</p>
+
+<p>/**</p>
+<ul>
+  <li>Solution 11: Using Iterative with State Machine
+ *</li>
+  <li>Approach:</li>
+  <li>
+    <ul>
+      <li>Use state machine to track traversal state</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>More explicit state management
+ *</li>
+    </ul>
+  </li>
+  <li>Time Complexity: O(n)</li>
+  <li>Space Complexity: O(n)
+ */
+function inorderTraversalStateMachine(root: TreeNode | null): number[] {
+  const result: number[] = [];
+  const stack: { node: TreeNode; state: “left” | “root” | “right” }[] = [];</li>
+</ul>
+
+<p>if (root) {
+    stack.push({ node: root, state: “left” });
+  }</p>
+
+<p>while (stack.length &gt; 0) {
+    const current = stack[stack.length - 1];</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+</pre></td><td class="rouge-code"><pre>switch (current.state) {
+  case "left":
+    current.state = "root";
+    if (current.node.left) {
+      stack.push({ node: current.node.left, state: "left" });
+    }
+    break;
+
+  case "root":
+    result.push(current.node.val);
+    current.state = "right";
+    break;
+
+  case "right":
+    stack.pop();
+    if (current.node.right) {
+      stack.push({ node: current.node.right, state: "left" });
+    }
+    break;
+}   }
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>return result;
+}</p>
+
+<p>// Helper function to create a binary tree from array
+function createBinaryTree(values: (number | null)[]): TreeNode | null {
+  if (values.length === 0 || values[0] === null) return null;</p>
+
+<p>const root = new TreeNode(values[0]!);
+  const queue: (TreeNode | null)[] = [root];
+  let i = 1;</p>
+
+<p>while (queue.length &gt; 0 &amp;&amp; i &lt; values.length) {
+    const node = queue.shift()!;</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+</pre></td><td class="rouge-code"><pre>if (node &amp;&amp; i &lt; values.length) {
+  if (values[i] !== null) {
+    node.left = new TreeNode(values[i]!);
+    queue.push(node.left);
+  }
+  i++;
+}
+
+if (node &amp;&amp; i &lt; values.length) {
+  if (values[i] !== null) {
+    node.right = new TreeNode(values[i]!);
+    queue.push(node.right);
+  }
+  i++;
+}   }
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>return root;
+}</p>
+
+<p>// Test cases
+function testInorderTraversal() {
+  console.log(“=== Testing Binary Tree Inorder Traversal ===\n”);</p>
+
+<p>const testCases = [
+    {
+      input: [1, null, 2, 3],
+      expected: [1, 3, 2],
+      description: “Basic case”,
+    },
+    {
+      input: [],
+      expected: [],
+      description: “Empty tree”,
+    },
+    {
+      input: [1],
+      expected: [1],
+      description: “Single node”,
+    },
+    {
+      input: [1, 2, 3, 4, 5],
+      expected: [4, 2, 5, 1, 3],
+      description: “Complete binary tree”,
+    },
+    {
+      input: [1, 2, 3, null, null, 4, 5],
+      expected: [2, 1, 4, 3, 5],
+      description: “Complex tree”,
+    },
+  ];</p>
+
+<p>testCases.forEach((testCase, index) =&gt; {
+    console.log(<code class="language-plaintext highlighter-rouge">Test Case ${index + 1}: ${testCase.description}</code>);
+    console.log(<code class="language-plaintext highlighter-rouge">Input: [${testCase.input.join(", ")}]</code>);
+    console.log(<code class="language-plaintext highlighter-rouge">Expected: [${testCase.expected.join(", ")}]\n</code>);</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+</pre></td><td class="rouge-code"><pre>const root = createBinaryTree(testCase.input);
+
+// Test Solution 1 (Recursive)
+const result1 = inorderTraversal(root);
+console.log(
+  `Solution 1 (Recursive): [${result1.join(", ")}] ${
+    JSON.stringify(result1) === JSON.stringify(testCase.expected)
+      ? "✅"
+      : "❌"
+  }`
+);
+
+// Test Solution 2 (Iterative)
+const result2 = inorderTraversalIterative(root);
+console.log(
+  `Solution 2 (Iterative): [${result2.join(", ")}] ${
+    JSON.stringify(result2) === JSON.stringify(testCase.expected)
+      ? "✅"
+      : "❌"
+  }`
+);
+
+// Test Solution 3 (Morris)
+const result3 = inorderTraversalMorris(root);
+console.log(
+  `Solution 3 (Morris): [${result3.join(", ")}] ${
+    JSON.stringify(result3) === JSON.stringify(testCase.expected)
+      ? "✅"
+      : "❌"
+  }`
+);
+
+// Test Solution 4 (Class)
+const result4 = inorderTraversalClass(root);
+console.log(
+  `Solution 4 (Class): [${result4.join(", ")}] ${
+    JSON.stringify(result4) === JSON.stringify(testCase.expected)
+      ? "✅"
+      : "❌"
+  }`
+);
+
+// Test Solution 5 (Generator)
+const result5 = inorderTraversalWithGenerator(root);
+console.log(
+  `Solution 5 (Generator): [${result5.join(", ")}] ${
+    JSON.stringify(result5) === JSON.stringify(testCase.expected)
+      ? "✅"
+      : "❌"
+  }`
+);
+
+// Test Solution 6 (Functional)
+const result6 = inorderTraversalFunctional(root);
+console.log(
+  `Solution 6 (Functional): [${result6.join(", ")}] ${
+    JSON.stringify(result6) === JSON.stringify(testCase.expected)
+      ? "✅"
+      : "❌"
+  }`
+);
+
+// Test Solution 7 (Array Methods)
+const result7 = inorderTraversalArrayMethods(root);
+console.log(
+  `Solution 7 (Array Methods): [${result7.join(", ")}] ${
+    JSON.stringify(result7) === JSON.stringify(testCase.expected)
+      ? "✅"
+      : "❌"
+  }`
+);
+
+// Test Solution 8 (Two Stacks)
+const result8 = inorderTraversalTwoStacks(root);
+console.log(
+  `Solution 8 (Two Stacks): [${result8.join(", ")}] ${
+    JSON.stringify(result8) === JSON.stringify(testCase.expected)
+      ? "✅"
+      : "❌"
+  }`
+);
+
+// Test Solution 9 (Queue) - Note: This is not efficient for inorder
+const result9 = inorderTraversalQueue(root);
+console.log(
+  `Solution 9 (Queue): [${result9.join(", ")}] ${
+    JSON.stringify(result9) === JSON.stringify(testCase.expected)
+      ? "✅"
+      : "❌"
+  }`
+);
+
+// Test Solution 10 (Helper)
+const result10 = inorderTraversalHelper(root);
+console.log(
+  `Solution 10 (Helper): [${result10.join(", ")}] ${
+    JSON.stringify(result10) === JSON.stringify(testCase.expected)
+      ? "✅"
+      : "❌"
+  }`
+);
+
+// Test Solution 11 (State Machine)
+const result11 = inorderTraversalStateMachine(root);
+console.log(
+  `Solution 11 (State Machine): [${result11.join(", ")}] ${
+    JSON.stringify(result11) === JSON.stringify(testCase.expected)
+      ? "✅"
+      : "❌"
+  }`
+);
+
+console.log("\n---\n");   }); }
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>// Performance comparison
+function performanceComparison() {
+  console.log(“=== Performance Comparison ===\n”);</p>
+
+<p>const testCases = [
+    { name: “Recursive”, func: inorderTraversal },
+    { name: “Iterative”, func: inorderTraversalIterative },
+    { name: “Morris”, func: inorderTraversalMorris },
+    { name: “Class”, func: inorderTraversalClass },
+    { name: “Generator”, func: inorderTraversalWithGenerator },
+    { name: “Functional”, func: inorderTraversalFunctional },
+    { name: “Array Methods”, func: inorderTraversalArrayMethods },
+    { name: “Two Stacks”, func: inorderTraversalTwoStacks },
+    { name: “Queue”, func: inorderTraversalQueue },
+    { name: “Helper”, func: inorderTraversalHelper },
+    { name: “State Machine”, func: inorderTraversalStateMachine },
+  ];</p>
+
+<p>// Create test cases
+  const smallCase = createBinaryTree([1, 2, 3, 4, 5]);
+  const mediumCase = createBinaryTree(
+    Array.from({ length: 100 }, (<em>, i) =&gt; i + 1)
+  );
+  const largeCase = createBinaryTree(
+    Array.from({ length: 1000 }, (</em>, i) =&gt; i + 1)
+  );</p>
+
+<p>const cases = [
+    { name: “Small”, case: smallCase },
+    { name: “Medium”, case: mediumCase },
+    { name: “Large”, case: largeCase },
+  ];</p>
+
+<p>cases.forEach(({ name, case: testCase }) =&gt; {
+    console.log(<code class="language-plaintext highlighter-rouge">${name} Case:</code>);</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+</pre></td><td class="rouge-code"><pre>testCases.forEach(({ name: funcName, func }) =&gt; {
+  const start = performance.now();
+  const result = func(testCase);
+  const end = performance.now();
+
+  console.log(
+    `  ${funcName}: ${(end - start).toFixed(2)}ms (length: ${
+      result.length
+    })`
+  );
+});
+
+console.log("");   }); }
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>// Uncomment the following lines to run tests
+// testInorderTraversal();
+// performanceComparison();</p>
+
+<p>export {
+  inorderTraversal,
+  inorderTraversalIterative,
+  inorderTraversalMorris,
+  inorderTraversalClass,
+  inorderTraversalWithGenerator,
+  inorderTraversalFunctional,
+  inorderTraversalArrayMethods,
+  inorderTraversalTwoStacks,
+  inorderTraversalQueue,
+  inorderTraversalHelper,
+  inorderTraversalStateMachine,
+  InorderTraverser,
+  inorderTraversalGenerator,
+  TreeNode,
+  createBinaryTree,
+  testInorderTraversal,
+  performanceComparison,
+};</p>
+
+
+        </div>
+    </article>
+</div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Study Resources</h3>
+                    <p>Comprehensive collection of frontend interview questions, coding challenges, and system design problems.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Progress Tracking</h3>
+                    <p>Monitor your learning journey with detailed progress indicators and completion status.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Big Tech Ready</h3>
+                    <p>Curated content specifically designed for interviews at Google, Meta, Amazon, Apple, and Netflix.</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Frontend Interview Hub. Built for aspiring frontend engineers.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="/assets/js/main.js"></script>
+</body>
+</html>

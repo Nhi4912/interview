@@ -1,0 +1,921 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Valid Palindrome | Frontend Interview Preparation Guide</title>
+    <meta name="description" content="Comprehensive frontend interview materials for Big Tech companies">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="/assets/css/main.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <header>
+        <nav class="container">
+            <div class="logo">Frontend Interview Hub</div>
+            <ul class="nav-links">
+                <li><a href="/">Home</a></li>
+                <li><a href="#progress">Progress</a></li>
+                <li><a href="#knowledge">Knowledge</a></li>
+                <li><a href="https://github.com/nee/interview">GitHub</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <div class="content-container">
+    
+        <nav class="breadcrumb">
+            <ol>
+                <li><a href="/">Home</a></li>
+                
+                
+                
+                    
+                
+                    
+                        
+                        
+                            <li><a href="/leetcode/">Leetcode</a></li>
+                        
+                    
+                
+                    
+                        
+                        
+                            <li><a href="/leetcode/string/">String</a></li>
+                        
+                    
+                
+                    
+                        
+                        
+                            <li><a href="/leetcode/string/problems/">Problems</a></li>
+                        
+                    
+                
+                    
+                        
+                        
+                            <li class="active">Valid palindrome</li>
+                        
+                    
+                
+            </ol>
+        </nav>
+    
+    
+    <article class="content">
+        
+            <header class="content-header">
+                <h1 class="content-title">Valid Palindrome</h1>
+                
+                
+                    <div class="content-meta">
+                        <span class="difficulty difficulty-easy">Easy</span>
+                        
+                            <span class="category">String</span>
+                        
+                        
+                            <div class="tags">
+                                
+                                    <span class="tag">String</span>
+                                
+                                    <span class="tag">Two Pointers</span>
+                                
+                            </div>
+                        
+                    </div>
+                
+            </header>
+        
+        
+        <div class="content-body">
+            <h1 id="valid-palindrome">Valid Palindrome</h1>
+
+<p><strong>LeetCode Problem # * 125. Valid Palindrome</strong></p>
+
+<h2 id="problem-description">Problem Description</h2>
+
+<ul>
+  <li>A phrase is a palindrome if, after converting all uppercase letters into lowercase  * letters and removing all non-alphanumeric characters, it reads the same forward  * and backward. Alphanumeric characters include letters and numbers.  *  * Given a string s, return true if it is a palindrome, or false otherwise.</li>
+</ul>
+
+<h2 id="solutions">Solutions</h2>
+
+<p>/**</p>
+<ul>
+  <li>
+    <ol>
+      <li>Valid Palindrome
+ *</li>
+    </ol>
+  </li>
+  <li>Problem:</li>
+  <li>A phrase is a palindrome if, after converting all uppercase letters into lowercase</li>
+  <li>letters and removing all non-alphanumeric characters, it reads the same forward</li>
+  <li>and backward. Alphanumeric characters include letters and numbers.
+ *</li>
+  <li>Given a string s, return true if it is a palindrome, or false otherwise.
+ *</li>
+  <li>Example:</li>
+  <li>Input: s = “A man, a plan, a canal: Panama”</li>
+  <li>Output: true
+ *</li>
+  <li>Input: s = “race a car”</li>
+  <li>Output: false
+ *</li>
+  <li>Input: s = “ “</li>
+  <li>Output: true
+ *</li>
+  <li>LeetCode: https://leetcode.com/problems/valid-palindrome/
+ */</li>
+</ul>
+
+<p>/**</p>
+<ul>
+  <li>Solution 1: Two Pointers (Optimal)
+ *</li>
+  <li>Approach:</li>
+  <li>
+    <ul>
+      <li>Use two pointers from start and end</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Skip non-alphanumeric characters</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Compare characters (case-insensitive)
+ *</li>
+    </ul>
+  </li>
+  <li>Time Complexity: O(n)</li>
+  <li>Space Complexity: O(1)
+ */
+function isPalindrome(s: string): boolean {
+  let left = 0;
+  let right = s.length - 1;</li>
+</ul>
+
+<p>while (left &lt; right) {
+    // Skip non-alphanumeric characters from left
+    while (left &lt; right &amp;&amp; !isAlphanumeric(s[left])) {
+      left++;
+    }</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+</pre></td><td class="rouge-code"><pre>// Skip non-alphanumeric characters from right
+while (left &lt; right &amp;&amp; !isAlphanumeric(s[right])) {
+  right--;
+}
+
+// Compare characters (case-insensitive)
+if (toLowerCase(s[left]) !== toLowerCase(s[right])) {
+  return false;
+}
+
+left++;
+right--;   }
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>return true;
+}</p>
+
+<p>/**</p>
+<ul>
+  <li>Solution 2: Filter and Compare
+ *</li>
+  <li>Approach:</li>
+  <li>
+    <ul>
+      <li>Filter out non-alphanumeric characters</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Convert to lowercase</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Compare with reversed string
+ *</li>
+    </ul>
+  </li>
+  <li>Time Complexity: O(n)</li>
+  <li>Space Complexity: O(n)
+ */
+function isPalindromeFilter(s: string): boolean {
+  const filtered = s
+ .split(“”)
+ .filter((char) =&gt; isAlphanumeric(char))
+ .join(“”)
+ .toLowerCase();</li>
+</ul>
+
+<p>return filtered === filtered.split(“”).reverse().join(“”);
+}</p>
+
+<p>/**</p>
+<ul>
+  <li>Solution 3: Using Regular Expression
+ *</li>
+  <li>Approach:</li>
+  <li>
+    <ul>
+      <li>Use regex to remove non-alphanumeric characters</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Convert to lowercase and compare
+ *</li>
+    </ul>
+  </li>
+  <li>Time Complexity: O(n)</li>
+  <li>Space Complexity: O(n)
+ */
+function isPalindromeRegex(s: string): boolean {
+  const cleaned = s.replace(/[^a-zA-Z0-9]/g, “”).toLowerCase();
+  return cleaned === cleaned.split(“”).reverse().join(“”);
+}</li>
+</ul>
+
+<p>/**</p>
+<ul>
+  <li>Solution 4: Recursive Approach
+ *</li>
+  <li>Approach:</li>
+  <li>
+    <ul>
+      <li>Use recursion to check palindrome</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Base case: empty string or single character
+ *</li>
+    </ul>
+  </li>
+  <li>Time Complexity: O(n)</li>
+  <li>Space Complexity: O(n) - recursion stack
+ */
+function isPalindromeRecursive(s: string): boolean {
+  const cleaned = s.replace(/[^a-zA-Z0-9]/g, “”).toLowerCase();</li>
+</ul>
+
+<p>function checkPalindrome(str: string): boolean {
+    if (str.length &lt;= 1) return true;</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+</pre></td><td class="rouge-code"><pre>if (str[0] !== str[str.length - 1]) return false;
+
+return checkPalindrome(str.slice(1, -1));   }
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>return checkPalindrome(cleaned);
+}</p>
+
+<p>/**</p>
+<ul>
+  <li>Solution 5: Using Stack
+ *</li>
+  <li>Approach:</li>
+  <li>
+    <ul>
+      <li>Push first half to stack</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Compare with second half
+ *</li>
+    </ul>
+  </li>
+  <li>Time Complexity: O(n)</li>
+  <li>Space Complexity: O(n)
+ */
+function isPalindromeStack(s: string): boolean {
+  const cleaned = s.replace(/[^a-zA-Z0-9]/g, “”).toLowerCase();
+  const stack: string[] = [];
+  const mid = Math.floor(cleaned.length / 2);</li>
+</ul>
+
+<p>// Push first half to stack
+  for (let i = 0; i &lt; mid; i++) {
+    stack.push(cleaned[i]);
+  }</p>
+
+<p>// Compare with second half
+  const start = cleaned.length % 2 === 0 ? mid : mid + 1;
+  for (let i = start; i &lt; cleaned.length; i++) {
+    if (stack.pop() !== cleaned[i]) {
+      return false;
+    }
+  }</p>
+
+<p>return true;
+}</p>
+
+<p>/**</p>
+<ul>
+  <li>Solution 6: Using Array Methods (Functional)
+ *</li>
+  <li>Approach:</li>
+  <li>
+    <ul>
+      <li>Use functional programming approach</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>More declarative style
+ *</li>
+    </ul>
+  </li>
+  <li>Time Complexity: O(n)</li>
+  <li>Space Complexity: O(n)
+ */
+function isPalindromeFunctional(s: string): boolean {
+  const cleaned = s
+ .toLowerCase()
+ .split(“”)
+ .filter((char) =&gt; /[a-z0-9]/.test(char));</li>
+</ul>
+
+<p>return cleaned.join(“”) === cleaned.reverse().join(“”);
+}</p>
+
+<p>/**</p>
+<ul>
+  <li>Solution 7: Using Generator (Memory efficient)
+ *</li>
+  <li>Approach:</li>
+  <li>
+    <ul>
+      <li>Use generator to yield characters</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Memory efficient for large strings
+ *</li>
+    </ul>
+  </li>
+  <li>Time Complexity: O(n)</li>
+  <li>Space Complexity: O(n)
+ <em>/
+function</em> alphanumericGenerator(s: string): Generator<string> {
+  for (const char of s) {
+ if (isAlphanumeric(char)) {
+   yield toLowerCase(char);
+ }
+  }
+}</string></li>
+</ul>
+
+<p>function isPalindromeGenerator(s: string): boolean {
+  const chars = Array.from(alphanumericGenerator(s));
+  return chars.join(“”) === chars.reverse().join(“”);
+}</p>
+
+<p>/**</p>
+<ul>
+  <li>Solution 8: Using Class (Object-oriented)
+ *</li>
+  <li>Approach:</li>
+  <li>
+    <ul>
+      <li>Create a PalindromeChecker class</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Encapsulate validation logic
+ *</li>
+    </ul>
+  </li>
+  <li>Time Complexity: O(n)</li>
+  <li>Space Complexity: O(1)
+ */
+class PalindromeChecker {
+  private s: string;</li>
+</ul>
+
+<p>constructor(s: string) {
+    this.s = s;
+  }</p>
+
+<p>isValid(): boolean {
+    let left = 0;
+    let right = this.s.length - 1;</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+</pre></td><td class="rouge-code"><pre>while (left &lt; right) {
+  while (left &lt; right &amp;&amp; !this.isAlphanumeric(this.s[left])) {
+    left++;
+  }
+
+  while (left &lt; right &amp;&amp; !this.isAlphanumeric(this.s[right])) {
+    right--;
+  }
+
+  if (this.toLowerCase(this.s[left]) !== this.toLowerCase(this.s[right])) {
+    return false;
+  }
+
+  left++;
+  right--;
+}
+
+return true;   }
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>private isAlphanumeric(char: string): boolean {
+    return /[a-zA-Z0-9]/.test(char);
+  }</p>
+
+<p>private toLowerCase(char: string): string {
+    return char.toLowerCase();
+  }
+}</p>
+
+<p>function isPalindromeClass(s: string): boolean {
+  const checker = new PalindromeChecker(s);
+  return checker.isValid();
+}</p>
+
+<p>/**</p>
+<ul>
+  <li>Solution 9: Using Bit Manipulation (Limited use case)
+ *</li>
+  <li>Approach:</li>
+  <li>
+    <ul>
+      <li>Use bit operations for ASCII characters</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Limited to small strings due to integer size
+ *</li>
+    </ul>
+  </li>
+  <li>Time Complexity: O(n)</li>
+  <li>Space Complexity: O(1)
+ */
+function isPalindromeBitwise(s: string): boolean {
+  if (s.length &gt; 64) {
+ // Fallback to standard approach for large strings
+ return isPalindrome(s);
+  }</li>
+</ul>
+
+<p>let leftBits = 0;
+  let rightBits = 0;
+  let leftCount = 0;
+  let rightCount = 0;</p>
+
+<p>const mid = Math.floor(s.length / 2);</p>
+
+<p>// Process left half
+  for (let i = 0; i &lt; mid; i++) {
+    if (isAlphanumeric(s[i])) {
+      const char = toLowerCase(s[i]);
+      leftBits |= 1 « (char.charCodeAt(0) - “a”.charCodeAt(0));
+      leftCount++;
+    }
+  }</p>
+
+<p>// Process right half
+  const start = s.length % 2 === 0 ? mid : mid + 1;
+  for (let i = start; i &lt; s.length; i++) {
+    if (isAlphanumeric(s[i])) {
+      const char = toLowerCase(s[i]);
+      rightBits |= 1 « (char.charCodeAt(0) - “a”.charCodeAt(0));
+      rightCount++;
+    }
+  }</p>
+
+<p>return leftBits === rightBits &amp;&amp; leftCount === rightCount;
+}</p>
+
+<p>// Helper functions
+function isAlphanumeric(char: string): boolean {
+  return /[a-zA-Z0-9]/.test(char);
+}</p>
+
+<p>function toLowerCase(char: string): string {
+  return char.toLowerCase();
+}</p>
+
+<p>// Test cases
+function testValidPalindrome() {
+  console.log(“=== Testing Valid Palindrome ===\n”);</p>
+
+<p>const testCases = [
+    {
+      input: “A man, a plan, a canal: Panama”,
+      expected: true,
+      description: “Complex palindrome with punctuation”,
+    },
+    {
+      input: “race a car”,
+      expected: false,
+      description: “Not a palindrome”,
+    },
+    {
+      input: “ “,
+      expected: true,
+      description: “Single space”,
+    },
+    {
+      input: “”,
+      expected: true,
+      description: “Empty string”,
+    },
+    {
+      input: “racecar”,
+      expected: true,
+      description: “Simple palindrome”,
+    },
+    {
+      input: “12321”,
+      expected: true,
+      description: “Numeric palindrome”,
+    },
+    {
+      input: “A1b2C3c2b1a”,
+      expected: true,
+      description: “Alphanumeric palindrome”,
+    },
+    {
+      input: “hello world”,
+      expected: false,
+      description: “Regular text”,
+    },
+    {
+      input: “.,”,
+      expected: true,
+      description: “Only punctuation”,
+    },
+  ];</p>
+
+<p>testCases.forEach((testCase, index) =&gt; {
+    console.log(<code class="language-plaintext highlighter-rouge">Test Case ${index + 1}: ${testCase.description}</code>);
+    console.log(<code class="language-plaintext highlighter-rouge">Input: "${testCase.input}"</code>);
+    console.log(<code class="language-plaintext highlighter-rouge">Expected: ${testCase.expected}\n</code>);</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+</pre></td><td class="rouge-code"><pre>// Test Solution 1 (Two Pointers)
+const result1 = isPalindrome(testCase.input);
+console.log(
+  `Solution 1 (Two Pointers): ${result1} ${
+    result1 === testCase.expected ? "✅" : "❌"
+  }`
+);
+
+// Test Solution 2 (Filter)
+const result2 = isPalindromeFilter(testCase.input);
+console.log(
+  `Solution 2 (Filter): ${result2} ${
+    result2 === testCase.expected ? "✅" : "❌"
+  }`
+);
+
+// Test Solution 3 (Regex)
+const result3 = isPalindromeRegex(testCase.input);
+console.log(
+  `Solution 3 (Regex): ${result3} ${
+    result3 === testCase.expected ? "✅" : "❌"
+  }`
+);
+
+// Test Solution 4 (Recursive)
+const result4 = isPalindromeRecursive(testCase.input);
+console.log(
+  `Solution 4 (Recursive): ${result4} ${
+    result4 === testCase.expected ? "✅" : "❌"
+  }`
+);
+
+// Test Solution 5 (Stack)
+const result5 = isPalindromeStack(testCase.input);
+console.log(
+  `Solution 5 (Stack): ${result5} ${
+    result5 === testCase.expected ? "✅" : "❌"
+  }`
+);
+
+// Test Solution 6 (Functional)
+const result6 = isPalindromeFunctional(testCase.input);
+console.log(
+  `Solution 6 (Functional): ${result6} ${
+    result6 === testCase.expected ? "✅" : "❌"
+  }`
+);
+
+// Test Solution 7 (Generator)
+const result7 = isPalindromeGenerator(testCase.input);
+console.log(
+  `Solution 7 (Generator): ${result7} ${
+    result7 === testCase.expected ? "✅" : "❌"
+  }`
+);
+
+// Test Solution 8 (Class)
+const result8 = isPalindromeClass(testCase.input);
+console.log(
+  `Solution 8 (Class): ${result8} ${
+    result8 === testCase.expected ? "✅" : "❌"
+  }`
+);
+
+// Test Solution 9 (Bitwise)
+const result9 = isPalindromeBitwise(testCase.input);
+console.log(
+  `Solution 9 (Bitwise): ${result9} ${
+    result9 === testCase.expected ? "✅" : "❌"
+  }`
+);
+
+console.log("\n---\n");   }); }
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>// Performance comparison
+function performanceComparison() {
+  console.log(“=== Performance Comparison ===\n”);</p>
+
+<p>const testCases = [
+    { name: “Two Pointers”, func: isPalindrome },
+    { name: “Filter”, func: isPalindromeFilter },
+    { name: “Regex”, func: isPalindromeRegex },
+    { name: “Recursive”, func: isPalindromeRecursive },
+    { name: “Stack”, func: isPalindromeStack },
+    { name: “Functional”, func: isPalindromeFunctional },
+    { name: “Generator”, func: isPalindromeGenerator },
+    { name: “Class”, func: isPalindromeClass },
+    { name: “Bitwise”, func: isPalindromeBitwise },
+  ];</p>
+
+<p>// Create test strings
+  const shortString = “A man, a plan, a canal: Panama”;
+  const longString = “A man, a plan, a canal: Panama”.repeat(1000);
+  const nonPalindrome = “This is not a palindrome at all”;</p>
+
+<p>const strings = [
+    { name: “Short”, string: shortString },
+    { name: “Long”, string: longString },
+    { name: “Non-Palindrome”, string: nonPalindrome },
+  ];</p>
+
+<p>strings.forEach(({ name, string }) =&gt; {
+    console.log(<code class="language-plaintext highlighter-rouge">${name} String:</code>);</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+</pre></td><td class="rouge-code"><pre>testCases.forEach(({ name: funcName, func }) =&gt; {
+  const start = performance.now();
+  const result = func(string);
+  const end = performance.now();
+
+  console.log(`  ${funcName}: ${(end - start).toFixed(2)}ms (${result})`);
+});
+
+console.log("");   }); }
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>// Character analysis
+function characterAnalysis() {
+  console.log(“=== Character Analysis ===\n”);</p>
+
+<p>const testStrings = [
+    “A man, a plan, a canal: Panama”,
+    “race a car”,
+    “12321”,
+    “.,!@#$%”,
+    “aA1bB2cC3”,
+  ];</p>
+
+<p>testStrings.forEach((str, index) =&gt; {
+    console.log(<code class="language-plaintext highlighter-rouge">String ${index + 1}: "${str}"</code>);</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+</pre></td><td class="rouge-code"><pre>const alphanumeric = str.split("").filter((char) =&gt; isAlphanumeric(char));
+const nonAlphanumeric = str
+  .split("")
+  .filter((char) =&gt; !isAlphanumeric(char));
+
+console.log(
+  `  Alphanumeric: [${alphanumeric.join(", ")}] (${alphanumeric.length})`
+);
+console.log(
+  `  Non-alphanumeric: [${nonAlphanumeric.join(", ")}] (${
+    nonAlphanumeric.length
+  })`
+);
+
+const cleaned = str.replace(/[^a-zA-Z0-9]/g, "").toLowerCase();
+console.log(`  Cleaned: "${cleaned}"`);
+
+const isPalindromeResult = isPalindrome(str);
+console.log(`  Is palindrome: ${isPalindromeResult}`);
+console.log("");   }); }
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>// Uncomment the following lines to run tests
+// testValidPalindrome();
+// performanceComparison();
+// characterAnalysis();</p>
+
+<p>export {
+  isPalindrome,
+  isPalindromeFilter,
+  isPalindromeRegex,
+  isPalindromeRecursive,
+  isPalindromeStack,
+  isPalindromeFunctional,
+  isPalindromeGenerator,
+  isPalindromeClass,
+  isPalindromeBitwise,
+  PalindromeChecker,
+  alphanumericGenerator,
+  isAlphanumeric,
+  toLowerCase,
+  testValidPalindrome,
+  performanceComparison,
+  characterAnalysis,
+};</p>
+
+
+        </div>
+    </article>
+</div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Study Resources</h3>
+                    <p>Comprehensive collection of frontend interview questions, coding challenges, and system design problems.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Progress Tracking</h3>
+                    <p>Monitor your learning journey with detailed progress indicators and completion status.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Big Tech Ready</h3>
+                    <p>Curated content specifically designed for interviews at Google, Meta, Amazon, Apple, and Netflix.</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Frontend Interview Hub. Built for aspiring frontend engineers.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="/assets/js/main.js"></script>
+</body>
+</html>

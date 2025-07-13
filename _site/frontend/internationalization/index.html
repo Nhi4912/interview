@@ -1,0 +1,2354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Internationalization (i18n) Interview Preparation | Frontend Interview Preparation Guide</title>
+    <meta name="description" content="Comprehensive frontend interview materials for Big Tech companies">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="/assets/css/main.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <header>
+        <nav class="container">
+            <div class="logo">Frontend Interview Hub</div>
+            <ul class="nav-links">
+                <li><a href="/">Home</a></li>
+                <li><a href="#progress">Progress</a></li>
+                <li><a href="#knowledge">Knowledge</a></li>
+                <li><a href="https://github.com/nee/interview">GitHub</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <div class="content-container">
+    
+        <nav class="breadcrumb">
+            <ol>
+                <li><a href="/">Home</a></li>
+                
+                
+                
+                    
+                
+                    
+                        
+                        
+                            <li><a href="/frontend/">Frontend</a></li>
+                        
+                    
+                
+                    
+                        
+                        
+                            <li class="active">Internationalization (i18n) interview preparation</li>
+                        
+                    
+                
+            </ol>
+        </nav>
+    
+    
+    <article class="content">
+        
+            <header class="content-header">
+                <h1 class="content-title">Internationalization (i18n) Interview Preparation</h1>
+                
+                
+            </header>
+        
+        
+        <div class="content-body">
+            <h1 id="internationalization-i18n-interview-preparation">Internationalization (i18n) Interview Preparation</h1>
+
+<h2 id="core-concepts">Core Concepts</h2>
+
+<h3 id="internationalization-fundamentals">Internationalization Fundamentals</h3>
+
+<ul>
+  <li><strong>i18n (Internationalization)</strong>: Making applications ready for multiple languages</li>
+  <li><strong>l10n (Localization)</strong>: Adapting content for specific regions/cultures</li>
+  <li><strong>RTL (Right-to-Left)</strong>: Support for languages like Arabic, Hebrew, Persian</li>
+  <li><strong>Cultural Adaptation</strong>: Date formats, number formats, currency, units</li>
+  <li><strong>Text Direction</strong>: Handling bidirectional text and mixed content</li>
+</ul>
+
+<h3 id="key-components">Key Components</h3>
+
+<ul>
+  <li><strong>Translation Management</strong>: Text extraction, translation, and management</li>
+  <li><strong>Formatting</strong>: Dates, numbers, currency, pluralization</li>
+  <li><strong>Layout Adaptation</strong>: RTL layouts, text overflow, font handling</li>
+  <li><strong>Cultural Considerations</strong>: Colors, symbols, imagery, taboos</li>
+  <li><strong>Performance</strong>: Lazy loading of translations, bundle optimization</li>
+</ul>
+
+<h2 id="advanced-topics">Advanced Topics</h2>
+
+<h3 id="modern-i18n-features">Modern i18n Features</h3>
+
+<ul>
+  <li><strong>ICU MessageFormat</strong>: Advanced pluralization and gender rules</li>
+  <li><strong>Dynamic Locale Switching</strong>: Runtime language changes</li>
+  <li><strong>Fallback Chains</strong>: Graceful degradation for missing translations</li>
+  <li><strong>Context-Aware Translations</strong>: Gender, number, and context-specific text</li>
+  <li><strong>Translation Memory</strong>: Reuse and consistency across projects</li>
+</ul>
+
+<h3 id="technical-implementation">Technical Implementation</h3>
+
+<ul>
+  <li><strong>Bundle Splitting</strong>: Code splitting by locale</li>
+  <li><strong>Server-Side Rendering</strong>: SEO-friendly internationalized content</li>
+  <li><strong>API Localization</strong>: Backend support for multiple languages</li>
+  <li><strong>Database Localization</strong>: Storing and retrieving localized content</li>
+  <li><strong>Caching Strategies</strong>: Locale-specific caching</li>
+</ul>
+
+<h2 id="common-interview-questions--answers">Common Interview Questions &amp; Answers</h2>
+
+<h3 id="i18n-questions">i18n Questions</h3>
+
+<p><strong>Q: What’s the difference between i18n and l10n?</strong>
+A:</p>
+
+<ul>
+  <li><strong>i18n (Internationalization)</strong>: Making software ready for multiple languages/regions</li>
+  <li><strong>l10n (Localization)</strong>: Adapting content for specific locales</li>
+</ul>
+
+<p><strong>i18n Example:</strong></p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+</pre></td><td class="rouge-code"><pre><span class="c1">// Making code locale-aware</span>
+<span class="kd">const</span> <span class="nx">dateFormatter</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Intl</span><span class="p">.</span><span class="nx">DateTimeFormat</span><span class="p">(</span><span class="nx">locale</span><span class="p">,</span> <span class="p">{</span>
+  <span class="na">year</span><span class="p">:</span> <span class="dl">"</span><span class="s2">numeric</span><span class="dl">"</span><span class="p">,</span>
+  <span class="na">month</span><span class="p">:</span> <span class="dl">"</span><span class="s2">long</span><span class="dl">"</span><span class="p">,</span>
+  <span class="na">day</span><span class="p">:</span> <span class="dl">"</span><span class="s2">numeric</span><span class="dl">"</span><span class="p">,</span>
+<span class="p">});</span>
+
+<span class="kd">const</span> <span class="nx">numberFormatter</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Intl</span><span class="p">.</span><span class="nx">NumberFormat</span><span class="p">(</span><span class="nx">locale</span><span class="p">,</span> <span class="p">{</span>
+  <span class="na">style</span><span class="p">:</span> <span class="dl">"</span><span class="s2">currency</span><span class="dl">"</span><span class="p">,</span>
+  <span class="na">currency</span><span class="p">:</span> <span class="nx">currencyCode</span><span class="p">,</span>
+<span class="p">});</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p><strong>l10n Example:</strong></p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+</pre></td><td class="rouge-code"><pre><span class="c1">// Adapting content for specific locale</span>
+<span class="kd">const</span> <span class="nx">translations</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="dl">"</span><span class="s2">en-US</span><span class="dl">"</span><span class="p">:</span> <span class="p">{</span>
+    <span class="na">greeting</span><span class="p">:</span> <span class="dl">"</span><span class="s2">Hello</span><span class="dl">"</span><span class="p">,</span>
+    <span class="na">dateFormat</span><span class="p">:</span> <span class="dl">"</span><span class="s2">MM/DD/YYYY</span><span class="dl">"</span><span class="p">,</span>
+    <span class="na">currency</span><span class="p">:</span> <span class="dl">"</span><span class="s2">USD</span><span class="dl">"</span><span class="p">,</span>
+  <span class="p">},</span>
+  <span class="dl">"</span><span class="s2">ar-SA</span><span class="dl">"</span><span class="p">:</span> <span class="p">{</span>
+    <span class="na">greeting</span><span class="p">:</span> <span class="dl">"</span><span class="s2">مرحبا</span><span class="dl">"</span><span class="p">,</span>
+    <span class="na">dateFormat</span><span class="p">:</span> <span class="dl">"</span><span class="s2">DD/MM/YYYY</span><span class="dl">"</span><span class="p">,</span>
+    <span class="na">currency</span><span class="p">:</span> <span class="dl">"</span><span class="s2">SAR</span><span class="dl">"</span><span class="p">,</span>
+  <span class="p">},</span>
+<span class="p">};</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p><strong>Q: How do you implement RTL support in a React application?</strong>
+A: Comprehensive RTL implementation:</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+</pre></td><td class="rouge-code"><pre><span class="c1">// RTL support utilities</span>
+<span class="kd">class</span> <span class="nx">RTLSupport</span> <span class="p">{</span>
+  <span class="kd">constructor</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">rtlLanguages</span> <span class="o">=</span> <span class="p">[</span><span class="dl">"</span><span class="s2">ar</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">he</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">fa</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">ur</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">ps</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">sd</span><span class="dl">"</span><span class="p">];</span>
+  <span class="p">}</span>
+
+  <span class="nx">isRTL</span><span class="p">(</span><span class="nx">locale</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">rtlLanguages</span><span class="p">.</span><span class="nx">includes</span><span class="p">(</span><span class="nx">locale</span><span class="p">.</span><span class="nx">split</span><span class="p">(</span><span class="dl">"</span><span class="s2">-</span><span class="dl">"</span><span class="p">)[</span><span class="mi">0</span><span class="p">]);</span>
+  <span class="p">}</span>
+
+  <span class="nx">setDocumentDirection</span><span class="p">(</span><span class="nx">locale</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="nx">direction</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">isRTL</span><span class="p">(</span><span class="nx">locale</span><span class="p">)</span> <span class="p">?</span> <span class="dl">"</span><span class="s2">rtl</span><span class="dl">"</span> <span class="p">:</span> <span class="dl">"</span><span class="s2">ltr</span><span class="dl">"</span><span class="p">;</span>
+    <span class="nb">document</span><span class="p">.</span><span class="nx">documentElement</span><span class="p">.</span><span class="nx">dir</span> <span class="o">=</span> <span class="nx">direction</span><span class="p">;</span>
+    <span class="nb">document</span><span class="p">.</span><span class="nx">documentElement</span><span class="p">.</span><span class="nx">lang</span> <span class="o">=</span> <span class="nx">locale</span><span class="p">;</span>
+  <span class="p">}</span>
+
+  <span class="nx">getTextAlign</span><span class="p">(</span><span class="nx">locale</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">isRTL</span><span class="p">(</span><span class="nx">locale</span><span class="p">)</span> <span class="p">?</span> <span class="dl">"</span><span class="s2">right</span><span class="dl">"</span> <span class="p">:</span> <span class="dl">"</span><span class="s2">left</span><span class="dl">"</span><span class="p">;</span>
+  <span class="p">}</span>
+
+  <span class="nx">getFlexDirection</span><span class="p">(</span><span class="nx">locale</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">isRTL</span><span class="p">(</span><span class="nx">locale</span><span class="p">)</span> <span class="p">?</span> <span class="dl">"</span><span class="s2">row-reverse</span><span class="dl">"</span> <span class="p">:</span> <span class="dl">"</span><span class="s2">row</span><span class="dl">"</span><span class="p">;</span>
+  <span class="p">}</span>
+
+  <span class="nx">getMargin</span><span class="p">(</span><span class="nx">locale</span><span class="p">,</span> <span class="nx">side</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">isRTL</span><span class="p">(</span><span class="nx">locale</span><span class="p">))</span> <span class="p">{</span>
+      <span class="k">return</span> <span class="nx">side</span> <span class="o">===</span> <span class="dl">"</span><span class="s2">left</span><span class="dl">"</span> <span class="p">?</span> <span class="dl">"</span><span class="s2">marginRight</span><span class="dl">"</span> <span class="p">:</span> <span class="dl">"</span><span class="s2">marginLeft</span><span class="dl">"</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="nx">side</span> <span class="o">===</span> <span class="dl">"</span><span class="s2">left</span><span class="dl">"</span> <span class="p">?</span> <span class="dl">"</span><span class="s2">marginLeft</span><span class="dl">"</span> <span class="p">:</span> <span class="dl">"</span><span class="s2">marginRight</span><span class="dl">"</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// React component with RTL support</span>
+<span class="kd">function</span> <span class="nx">InternationalizedComponent</span><span class="p">({</span> <span class="nx">locale</span><span class="p">,</span> <span class="nx">children</span> <span class="p">})</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="nx">rtlSupport</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">RTLSupport</span><span class="p">();</span>
+  <span class="kd">const</span> <span class="nx">isRTL</span> <span class="o">=</span> <span class="nx">rtlSupport</span><span class="p">.</span><span class="nx">isRTL</span><span class="p">(</span><span class="nx">locale</span><span class="p">);</span>
+
+  <span class="nx">useEffect</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="nx">rtlSupport</span><span class="p">.</span><span class="nx">setDocumentDirection</span><span class="p">(</span><span class="nx">locale</span><span class="p">);</span>
+  <span class="p">},</span> <span class="p">[</span><span class="nx">locale</span><span class="p">]);</span>
+
+  <span class="k">return</span> <span class="p">(</span>
+    <span class="o">&lt;</span><span class="nx">div</span>
+      <span class="nx">className</span><span class="o">=</span><span class="p">{</span><span class="s2">`app </span><span class="p">${</span><span class="nx">isRTL</span> <span class="p">?</span> <span class="dl">"</span><span class="s2">rtl</span><span class="dl">"</span> <span class="p">:</span> <span class="dl">"</span><span class="s2">ltr</span><span class="dl">"</span><span class="p">}</span><span class="s2">`</span><span class="p">}</span>
+      <span class="nx">style</span><span class="o">=</span><span class="p">{{</span>
+        <span class="na">direction</span><span class="p">:</span> <span class="nx">isRTL</span> <span class="p">?</span> <span class="dl">"</span><span class="s2">rtl</span><span class="dl">"</span> <span class="p">:</span> <span class="dl">"</span><span class="s2">ltr</span><span class="dl">"</span><span class="p">,</span>
+        <span class="na">textAlign</span><span class="p">:</span> <span class="nx">rtlSupport</span><span class="p">.</span><span class="nx">getTextAlign</span><span class="p">(</span><span class="nx">locale</span><span class="p">),</span>
+      <span class="p">}}</span>
+    <span class="o">&gt;</span>
+      <span class="p">{</span><span class="nx">children</span><span class="p">}</span>
+    <span class="o">&lt;</span><span class="sr">/div</span><span class="err">&gt;
+</span>  <span class="p">);</span>
+<span class="p">}</span>
+
+<span class="c1">// CSS for RTL support</span>
+<span class="kd">const</span> <span class="nx">rtlStyles</span> <span class="o">=</span> <span class="s2">`
+  .rtl {
+    direction: rtl;
+    text-align: right;
+  }
+
+  .rtl .flex-row {
+    flex-direction: row-reverse;
+  }
+
+  .rtl .margin-left {
+    margin-right: 0;
+    margin-left: auto;
+  }
+
+  .rtl .padding-left {
+    padding-right: 0;
+    padding-left: auto;
+  }
+
+  .rtl .border-left {
+    border-right: none;
+    border-left: 1px solid;
+  }
+
+  .rtl .float-left {
+    float: right;
+  }
+
+  .rtl .text-left {
+    text-align: right;
+  }
+`</span><span class="p">;</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p><strong>Q: How do you handle pluralization in different languages?</strong>
+A: Advanced pluralization with ICU MessageFormat:</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+</pre></td><td class="rouge-code"><pre><span class="kd">class</span> <span class="nx">PluralizationManager</span> <span class="p">{</span>
+  <span class="kd">constructor</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">pluralRules</span> <span class="o">=</span> <span class="p">{</span>
+      <span class="na">en</span><span class="p">:</span> <span class="p">(</span><span class="nx">n</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">(</span><span class="nx">n</span> <span class="o">===</span> <span class="mi">1</span> <span class="p">?</span> <span class="dl">"</span><span class="s2">one</span><span class="dl">"</span> <span class="p">:</span> <span class="dl">"</span><span class="s2">other</span><span class="dl">"</span><span class="p">),</span>
+      <span class="na">ar</span><span class="p">:</span> <span class="p">(</span><span class="nx">n</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nx">n</span> <span class="o">===</span> <span class="mi">0</span><span class="p">)</span> <span class="k">return</span> <span class="dl">"</span><span class="s2">zero</span><span class="dl">"</span><span class="p">;</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nx">n</span> <span class="o">===</span> <span class="mi">1</span><span class="p">)</span> <span class="k">return</span> <span class="dl">"</span><span class="s2">one</span><span class="dl">"</span><span class="p">;</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nx">n</span> <span class="o">===</span> <span class="mi">2</span><span class="p">)</span> <span class="k">return</span> <span class="dl">"</span><span class="s2">two</span><span class="dl">"</span><span class="p">;</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nx">n</span> <span class="o">%</span> <span class="mi">100</span> <span class="o">&gt;=</span> <span class="mi">3</span> <span class="o">&amp;&amp;</span> <span class="nx">n</span> <span class="o">%</span> <span class="mi">100</span> <span class="o">&lt;=</span> <span class="mi">10</span><span class="p">)</span> <span class="k">return</span> <span class="dl">"</span><span class="s2">few</span><span class="dl">"</span><span class="p">;</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nx">n</span> <span class="o">%</span> <span class="mi">100</span> <span class="o">&gt;=</span> <span class="mi">11</span><span class="p">)</span> <span class="k">return</span> <span class="dl">"</span><span class="s2">many</span><span class="dl">"</span><span class="p">;</span>
+        <span class="k">return</span> <span class="dl">"</span><span class="s2">other</span><span class="dl">"</span><span class="p">;</span>
+      <span class="p">},</span>
+      <span class="na">ru</span><span class="p">:</span> <span class="p">(</span><span class="nx">n</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+        <span class="kd">const</span> <span class="nx">mod10</span> <span class="o">=</span> <span class="nx">n</span> <span class="o">%</span> <span class="mi">10</span><span class="p">;</span>
+        <span class="kd">const</span> <span class="nx">mod100</span> <span class="o">=</span> <span class="nx">n</span> <span class="o">%</span> <span class="mi">100</span><span class="p">;</span>
+
+        <span class="k">if</span> <span class="p">(</span><span class="nx">mod10</span> <span class="o">===</span> <span class="mi">1</span> <span class="o">&amp;&amp;</span> <span class="nx">mod100</span> <span class="o">!==</span> <span class="mi">11</span><span class="p">)</span> <span class="k">return</span> <span class="dl">"</span><span class="s2">one</span><span class="dl">"</span><span class="p">;</span>
+        <span class="k">if</span> <span class="p">([</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">].</span><span class="nx">includes</span><span class="p">(</span><span class="nx">mod10</span><span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="o">!</span><span class="p">[</span><span class="mi">12</span><span class="p">,</span> <span class="mi">13</span><span class="p">,</span> <span class="mi">14</span><span class="p">].</span><span class="nx">includes</span><span class="p">(</span><span class="nx">mod100</span><span class="p">))</span>
+          <span class="k">return</span> <span class="dl">"</span><span class="s2">few</span><span class="dl">"</span><span class="p">;</span>
+        <span class="k">if</span> <span class="p">(</span>
+          <span class="nx">mod10</span> <span class="o">===</span> <span class="mi">0</span> <span class="o">||</span>
+          <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">].</span><span class="nx">includes</span><span class="p">(</span><span class="nx">mod10</span><span class="p">)</span> <span class="o">||</span>
+          <span class="p">[</span><span class="mi">11</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">13</span><span class="p">,</span> <span class="mi">14</span><span class="p">].</span><span class="nx">includes</span><span class="p">(</span><span class="nx">mod100</span><span class="p">)</span>
+        <span class="p">)</span>
+          <span class="k">return</span> <span class="dl">"</span><span class="s2">many</span><span class="dl">"</span><span class="p">;</span>
+        <span class="k">return</span> <span class="dl">"</span><span class="s2">other</span><span class="dl">"</span><span class="p">;</span>
+      <span class="p">},</span>
+    <span class="p">};</span>
+  <span class="p">}</span>
+
+  <span class="nx">getPluralForm</span><span class="p">(</span><span class="nx">locale</span><span class="p">,</span> <span class="nx">count</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="nx">language</span> <span class="o">=</span> <span class="nx">locale</span><span class="p">.</span><span class="nx">split</span><span class="p">(</span><span class="dl">"</span><span class="s2">-</span><span class="dl">"</span><span class="p">)[</span><span class="mi">0</span><span class="p">];</span>
+    <span class="kd">const</span> <span class="nx">rule</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">pluralRules</span><span class="p">[</span><span class="nx">language</span><span class="p">]</span> <span class="o">||</span> <span class="k">this</span><span class="p">.</span><span class="nx">pluralRules</span><span class="p">.</span><span class="nx">en</span><span class="p">;</span>
+    <span class="k">return</span> <span class="nx">rule</span><span class="p">(</span><span class="nx">count</span><span class="p">);</span>
+  <span class="p">}</span>
+
+  <span class="nx">formatMessage</span><span class="p">(</span><span class="nx">template</span><span class="p">,</span> <span class="nx">values</span><span class="p">,</span> <span class="nx">locale</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">template</span><span class="p">.</span><span class="nx">replace</span><span class="p">(</span><span class="sr">/</span><span class="se">\{(\w</span><span class="sr">+</span><span class="se">)\}</span><span class="sr">/g</span><span class="p">,</span> <span class="p">(</span><span class="nx">match</span><span class="p">,</span> <span class="nx">key</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+      <span class="k">if</span> <span class="p">(</span><span class="nx">key</span> <span class="o">===</span> <span class="dl">"</span><span class="s2">count</span><span class="dl">"</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kd">const</span> <span class="nx">count</span> <span class="o">=</span> <span class="nx">values</span><span class="p">[</span><span class="nx">key</span><span class="p">];</span>
+        <span class="kd">const</span> <span class="nx">pluralForm</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">getPluralForm</span><span class="p">(</span><span class="nx">locale</span><span class="p">,</span> <span class="nx">count</span><span class="p">);</span>
+        <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">getPluralizedText</span><span class="p">(</span><span class="nx">values</span><span class="p">[</span><span class="s2">`</span><span class="p">${</span><span class="nx">key</span><span class="p">}</span><span class="s2">_</span><span class="p">${</span><span class="nx">pluralForm</span><span class="p">}</span><span class="s2">`</span><span class="p">],</span> <span class="nx">count</span><span class="p">);</span>
+      <span class="p">}</span>
+      <span class="k">return</span> <span class="nx">values</span><span class="p">[</span><span class="nx">key</span><span class="p">]</span> <span class="o">||</span> <span class="nx">match</span><span class="p">;</span>
+    <span class="p">});</span>
+  <span class="p">}</span>
+
+  <span class="nx">getPluralizedText</span><span class="p">(</span><span class="nx">text</span><span class="p">,</span> <span class="nx">count</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">text</span><span class="p">.</span><span class="nx">replace</span><span class="p">(</span><span class="dl">"</span><span class="s2">{count}</span><span class="dl">"</span><span class="p">,</span> <span class="nx">count</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// Usage examples</span>
+<span class="kd">const</span> <span class="nx">pluralManager</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">PluralizationManager</span><span class="p">();</span>
+
+<span class="kd">const</span> <span class="nx">messages</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="na">en</span><span class="p">:</span> <span class="p">{</span>
+    <span class="na">items</span><span class="p">:</span> <span class="p">{</span>
+      <span class="na">one</span><span class="p">:</span> <span class="dl">"</span><span class="s2">{count} item</span><span class="dl">"</span><span class="p">,</span>
+      <span class="na">other</span><span class="p">:</span> <span class="dl">"</span><span class="s2">{count} items</span><span class="dl">"</span><span class="p">,</span>
+    <span class="p">},</span>
+    <span class="na">people</span><span class="p">:</span> <span class="p">{</span>
+      <span class="na">one</span><span class="p">:</span> <span class="dl">"</span><span class="s2">{count} person</span><span class="dl">"</span><span class="p">,</span>
+      <span class="na">other</span><span class="p">:</span> <span class="dl">"</span><span class="s2">{count} people</span><span class="dl">"</span><span class="p">,</span>
+    <span class="p">},</span>
+  <span class="p">},</span>
+  <span class="na">ar</span><span class="p">:</span> <span class="p">{</span>
+    <span class="na">items</span><span class="p">:</span> <span class="p">{</span>
+      <span class="na">zero</span><span class="p">:</span> <span class="dl">"</span><span class="s2">لا توجد عناصر</span><span class="dl">"</span><span class="p">,</span>
+      <span class="na">one</span><span class="p">:</span> <span class="dl">"</span><span class="s2">عنصر واحد</span><span class="dl">"</span><span class="p">,</span>
+      <span class="na">two</span><span class="p">:</span> <span class="dl">"</span><span class="s2">عنصران</span><span class="dl">"</span><span class="p">,</span>
+      <span class="na">few</span><span class="p">:</span> <span class="dl">"</span><span class="s2">{count} عناصر</span><span class="dl">"</span><span class="p">,</span>
+      <span class="na">many</span><span class="p">:</span> <span class="dl">"</span><span class="s2">{count} عنصراً</span><span class="dl">"</span><span class="p">,</span>
+      <span class="na">other</span><span class="p">:</span> <span class="dl">"</span><span class="s2">{count} عنصر</span><span class="dl">"</span><span class="p">,</span>
+    <span class="p">},</span>
+  <span class="p">},</span>
+  <span class="na">ru</span><span class="p">:</span> <span class="p">{</span>
+    <span class="na">items</span><span class="p">:</span> <span class="p">{</span>
+      <span class="na">one</span><span class="p">:</span> <span class="dl">"</span><span class="s2">{count} элемент</span><span class="dl">"</span><span class="p">,</span>
+      <span class="na">few</span><span class="p">:</span> <span class="dl">"</span><span class="s2">{count} элемента</span><span class="dl">"</span><span class="p">,</span>
+      <span class="na">many</span><span class="p">:</span> <span class="dl">"</span><span class="s2">{count} элементов</span><span class="dl">"</span><span class="p">,</span>
+      <span class="na">other</span><span class="p">:</span> <span class="dl">"</span><span class="s2">{count} элементов</span><span class="dl">"</span><span class="p">,</span>
+    <span class="p">},</span>
+  <span class="p">},</span>
+<span class="p">};</span>
+
+<span class="c1">// Format messages</span>
+<span class="kd">function</span> <span class="nx">formatPluralMessage</span><span class="p">(</span><span class="nx">key</span><span class="p">,</span> <span class="nx">count</span><span class="p">,</span> <span class="nx">locale</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="nx">template</span> <span class="o">=</span> <span class="nx">messages</span><span class="p">[</span><span class="nx">locale</span><span class="p">][</span><span class="nx">key</span><span class="p">];</span>
+  <span class="kd">const</span> <span class="nx">values</span> <span class="o">=</span> <span class="p">{</span> <span class="nx">count</span> <span class="p">};</span>
+
+  <span class="c1">// Add plural forms to values</span>
+  <span class="nb">Object</span><span class="p">.</span><span class="nx">keys</span><span class="p">(</span><span class="nx">template</span><span class="p">).</span><span class="nx">forEach</span><span class="p">((</span><span class="nx">form</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="nx">values</span><span class="p">[</span><span class="s2">`count_</span><span class="p">${</span><span class="nx">form</span><span class="p">}</span><span class="s2">`</span><span class="p">]</span> <span class="o">=</span> <span class="nx">template</span><span class="p">[</span><span class="nx">form</span><span class="p">];</span>
+  <span class="p">});</span>
+
+  <span class="k">return</span> <span class="nx">pluralManager</span><span class="p">.</span><span class="nx">formatMessage</span><span class="p">(</span>
+    <span class="s2">`{count_</span><span class="p">${</span><span class="nx">pluralManager</span><span class="p">.</span><span class="nx">getPluralForm</span><span class="p">(</span><span class="nx">locale</span><span class="p">,</span> <span class="nx">count</span><span class="p">)}</span><span class="s2">}`</span><span class="p">,</span>
+    <span class="nx">values</span><span class="p">,</span>
+    <span class="nx">locale</span>
+  <span class="p">);</span>
+<span class="p">}</span>
+
+<span class="c1">// Examples</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">formatPluralMessage</span><span class="p">(</span><span class="dl">"</span><span class="s2">items</span><span class="dl">"</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="dl">"</span><span class="s2">en</span><span class="dl">"</span><span class="p">));</span> <span class="c1">// "1 item"</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">formatPluralMessage</span><span class="p">(</span><span class="dl">"</span><span class="s2">items</span><span class="dl">"</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="dl">"</span><span class="s2">en</span><span class="dl">"</span><span class="p">));</span> <span class="c1">// "5 items"</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">formatPluralMessage</span><span class="p">(</span><span class="dl">"</span><span class="s2">items</span><span class="dl">"</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="dl">"</span><span class="s2">ar</span><span class="dl">"</span><span class="p">));</span> <span class="c1">// "لا توجد عناصر"</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">formatPluralMessage</span><span class="p">(</span><span class="dl">"</span><span class="s2">items</span><span class="dl">"</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="dl">"</span><span class="s2">ar</span><span class="dl">"</span><span class="p">));</span> <span class="c1">// "عنصر واحد"</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">formatPluralMessage</span><span class="p">(</span><span class="dl">"</span><span class="s2">items</span><span class="dl">"</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="dl">"</span><span class="s2">ar</span><span class="dl">"</span><span class="p">));</span> <span class="c1">// "عنصران"</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<h2 id="advanced-interview-questions">Advanced Interview Questions</h2>
+
+<p><strong>Q: How would you implement a complete i18n system for a React application?</strong>
+A: Comprehensive i18n system implementation:</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155
+156
+157
+158
+159
+160
+161
+162
+163
+164
+165
+166
+167
+168
+169
+170
+171
+172
+173
+174
+175
+176
+177
+178
+179
+180
+181
+182
+183
+184
+185
+186
+187
+188
+189
+190
+191
+192
+193
+194
+195
+196
+197
+198
+199
+200
+201
+202
+203
+204
+205
+206
+207
+208
+209
+</pre></td><td class="rouge-code"><pre><span class="c1">// i18n configuration and utilities</span>
+<span class="kd">class</span> <span class="nx">I18nManager</span> <span class="p">{</span>
+  <span class="kd">constructor</span><span class="p">(</span><span class="nx">config</span> <span class="o">=</span> <span class="p">{})</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">defaultLocale</span> <span class="o">=</span> <span class="nx">config</span><span class="p">.</span><span class="nx">defaultLocale</span> <span class="o">||</span> <span class="dl">"</span><span class="s2">en</span><span class="dl">"</span><span class="p">;</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">supportedLocales</span> <span class="o">=</span> <span class="nx">config</span><span class="p">.</span><span class="nx">supportedLocales</span> <span class="o">||</span> <span class="p">[</span><span class="dl">"</span><span class="s2">en</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">es</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">fr</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">ar</span><span class="dl">"</span><span class="p">];</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">currentLocale</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">defaultLocale</span><span class="p">;</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">translations</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Map</span><span class="p">();</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">formatters</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Map</span><span class="p">();</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">listeners</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Set</span><span class="p">();</span>
+
+    <span class="k">this</span><span class="p">.</span><span class="nx">initializeFormatters</span><span class="p">();</span>
+  <span class="p">}</span>
+
+  <span class="nx">initializeFormatters</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">supportedLocales</span><span class="p">.</span><span class="nx">forEach</span><span class="p">((</span><span class="nx">locale</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+      <span class="k">this</span><span class="p">.</span><span class="nx">formatters</span><span class="p">.</span><span class="kd">set</span><span class="p">(</span><span class="nx">locale</span><span class="p">,</span> <span class="p">{</span>
+        <span class="na">date</span><span class="p">:</span> <span class="k">new</span> <span class="nx">Intl</span><span class="p">.</span><span class="nx">DateTimeFormat</span><span class="p">(</span><span class="nx">locale</span><span class="p">,</span> <span class="p">{</span>
+          <span class="na">year</span><span class="p">:</span> <span class="dl">"</span><span class="s2">numeric</span><span class="dl">"</span><span class="p">,</span>
+          <span class="na">month</span><span class="p">:</span> <span class="dl">"</span><span class="s2">long</span><span class="dl">"</span><span class="p">,</span>
+          <span class="na">day</span><span class="p">:</span> <span class="dl">"</span><span class="s2">numeric</span><span class="dl">"</span><span class="p">,</span>
+        <span class="p">}),</span>
+        <span class="na">number</span><span class="p">:</span> <span class="k">new</span> <span class="nx">Intl</span><span class="p">.</span><span class="nx">NumberFormat</span><span class="p">(</span><span class="nx">locale</span><span class="p">),</span>
+        <span class="na">currency</span><span class="p">:</span> <span class="k">new</span> <span class="nx">Intl</span><span class="p">.</span><span class="nx">NumberFormat</span><span class="p">(</span><span class="nx">locale</span><span class="p">,</span> <span class="p">{</span>
+          <span class="na">style</span><span class="p">:</span> <span class="dl">"</span><span class="s2">currency</span><span class="dl">"</span><span class="p">,</span>
+          <span class="na">currency</span><span class="p">:</span> <span class="k">this</span><span class="p">.</span><span class="nx">getCurrencyForLocale</span><span class="p">(</span><span class="nx">locale</span><span class="p">),</span>
+        <span class="p">}),</span>
+        <span class="na">relativeTime</span><span class="p">:</span> <span class="k">new</span> <span class="nx">Intl</span><span class="p">.</span><span class="nx">RelativeTimeFormat</span><span class="p">(</span><span class="nx">locale</span><span class="p">,</span> <span class="p">{</span>
+          <span class="na">numeric</span><span class="p">:</span> <span class="dl">"</span><span class="s2">auto</span><span class="dl">"</span><span class="p">,</span>
+        <span class="p">}),</span>
+      <span class="p">});</span>
+    <span class="p">});</span>
+  <span class="p">}</span>
+
+  <span class="nx">getCurrencyForLocale</span><span class="p">(</span><span class="nx">locale</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="nx">currencyMap</span> <span class="o">=</span> <span class="p">{</span>
+      <span class="na">en</span><span class="p">:</span> <span class="dl">"</span><span class="s2">USD</span><span class="dl">"</span><span class="p">,</span>
+      <span class="na">es</span><span class="p">:</span> <span class="dl">"</span><span class="s2">EUR</span><span class="dl">"</span><span class="p">,</span>
+      <span class="na">fr</span><span class="p">:</span> <span class="dl">"</span><span class="s2">EUR</span><span class="dl">"</span><span class="p">,</span>
+      <span class="na">ar</span><span class="p">:</span> <span class="dl">"</span><span class="s2">SAR</span><span class="dl">"</span><span class="p">,</span>
+      <span class="na">ja</span><span class="p">:</span> <span class="dl">"</span><span class="s2">JPY</span><span class="dl">"</span><span class="p">,</span>
+      <span class="na">zh</span><span class="p">:</span> <span class="dl">"</span><span class="s2">CNY</span><span class="dl">"</span><span class="p">,</span>
+    <span class="p">};</span>
+    <span class="k">return</span> <span class="nx">currencyMap</span><span class="p">[</span><span class="nx">locale</span><span class="p">]</span> <span class="o">||</span> <span class="dl">"</span><span class="s2">USD</span><span class="dl">"</span><span class="p">;</span>
+  <span class="p">}</span>
+
+  <span class="k">async</span> <span class="nx">loadTranslations</span><span class="p">(</span><span class="nx">locale</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">translations</span><span class="p">.</span><span class="nx">has</span><span class="p">(</span><span class="nx">locale</span><span class="p">))</span> <span class="p">{</span>
+      <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">translations</span><span class="p">.</span><span class="kd">get</span><span class="p">(</span><span class="nx">locale</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="k">try</span> <span class="p">{</span>
+      <span class="c1">// Dynamic import for code splitting</span>
+      <span class="kd">const</span> <span class="nx">translations</span> <span class="o">=</span> <span class="k">await</span> <span class="k">import</span><span class="p">(</span><span class="s2">`./locales/</span><span class="p">${</span><span class="nx">locale</span><span class="p">}</span><span class="s2">.js`</span><span class="p">);</span>
+      <span class="k">this</span><span class="p">.</span><span class="nx">translations</span><span class="p">.</span><span class="kd">set</span><span class="p">(</span><span class="nx">locale</span><span class="p">,</span> <span class="nx">translations</span><span class="p">.</span><span class="k">default</span><span class="p">);</span>
+      <span class="k">return</span> <span class="nx">translations</span><span class="p">.</span><span class="k">default</span><span class="p">;</span>
+    <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">console</span><span class="p">.</span><span class="nx">warn</span><span class="p">(</span><span class="s2">`Failed to load translations for </span><span class="p">${</span><span class="nx">locale</span><span class="p">}</span><span class="s2">:`</span><span class="p">,</span> <span class="nx">error</span><span class="p">);</span>
+      <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">translations</span><span class="p">.</span><span class="kd">get</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">defaultLocale</span><span class="p">)</span> <span class="o">||</span> <span class="p">{};</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+
+  <span class="nx">setLocale</span><span class="p">(</span><span class="nx">locale</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="k">this</span><span class="p">.</span><span class="nx">supportedLocales</span><span class="p">.</span><span class="nx">includes</span><span class="p">(</span><span class="nx">locale</span><span class="p">))</span> <span class="p">{</span>
+      <span class="nx">console</span><span class="p">.</span><span class="nx">warn</span><span class="p">(</span><span class="s2">`Locale </span><span class="p">${</span><span class="nx">locale</span><span class="p">}</span><span class="s2"> is not supported`</span><span class="p">);</span>
+      <span class="k">return</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">this</span><span class="p">.</span><span class="nx">currentLocale</span> <span class="o">=</span> <span class="nx">locale</span><span class="p">;</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">setDocumentAttributes</span><span class="p">(</span><span class="nx">locale</span><span class="p">);</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">notifyListeners</span><span class="p">();</span>
+  <span class="p">}</span>
+
+  <span class="nx">setDocumentAttributes</span><span class="p">(</span><span class="nx">locale</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nb">document</span><span class="p">.</span><span class="nx">documentElement</span><span class="p">.</span><span class="nx">lang</span> <span class="o">=</span> <span class="nx">locale</span><span class="p">;</span>
+    <span class="nb">document</span><span class="p">.</span><span class="nx">documentElement</span><span class="p">.</span><span class="nx">dir</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">isRTL</span><span class="p">(</span><span class="nx">locale</span><span class="p">)</span> <span class="p">?</span> <span class="dl">"</span><span class="s2">rtl</span><span class="dl">"</span> <span class="p">:</span> <span class="dl">"</span><span class="s2">ltr</span><span class="dl">"</span><span class="p">;</span>
+  <span class="p">}</span>
+
+  <span class="nx">isRTL</span><span class="p">(</span><span class="nx">locale</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="p">[</span><span class="dl">"</span><span class="s2">ar</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">he</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">fa</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">ur</span><span class="dl">"</span><span class="p">].</span><span class="nx">includes</span><span class="p">(</span><span class="nx">locale</span><span class="p">);</span>
+  <span class="p">}</span>
+
+  <span class="nx">t</span><span class="p">(</span><span class="nx">key</span><span class="p">,</span> <span class="nx">params</span> <span class="o">=</span> <span class="p">{})</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="nx">translations</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">translations</span><span class="p">.</span><span class="kd">get</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">currentLocale</span><span class="p">)</span> <span class="o">||</span> <span class="p">{};</span>
+    <span class="kd">let</span> <span class="nx">text</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">getNestedValue</span><span class="p">(</span><span class="nx">translations</span><span class="p">,</span> <span class="nx">key</span><span class="p">)</span> <span class="o">||</span> <span class="nx">key</span><span class="p">;</span>
+
+    <span class="c1">// Replace parameters</span>
+    <span class="nb">Object</span><span class="p">.</span><span class="nx">keys</span><span class="p">(</span><span class="nx">params</span><span class="p">).</span><span class="nx">forEach</span><span class="p">((</span><span class="nx">param</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+      <span class="nx">text</span> <span class="o">=</span> <span class="nx">text</span><span class="p">.</span><span class="nx">replace</span><span class="p">(</span><span class="k">new</span> <span class="nb">RegExp</span><span class="p">(</span><span class="s2">`{</span><span class="p">${</span><span class="nx">param</span><span class="p">}</span><span class="s2">}`</span><span class="p">,</span> <span class="dl">"</span><span class="s2">g</span><span class="dl">"</span><span class="p">),</span> <span class="nx">params</span><span class="p">[</span><span class="nx">param</span><span class="p">]);</span>
+    <span class="p">});</span>
+
+    <span class="k">return</span> <span class="nx">text</span><span class="p">;</span>
+  <span class="p">}</span>
+
+  <span class="nx">getNestedValue</span><span class="p">(</span><span class="nx">obj</span><span class="p">,</span> <span class="nx">path</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">path</span><span class="p">.</span><span class="nx">split</span><span class="p">(</span><span class="dl">"</span><span class="s2">.</span><span class="dl">"</span><span class="p">).</span><span class="nx">reduce</span><span class="p">((</span><span class="nx">current</span><span class="p">,</span> <span class="nx">key</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+      <span class="k">return</span> <span class="nx">current</span> <span class="o">&amp;&amp;</span> <span class="nx">current</span><span class="p">[</span><span class="nx">key</span><span class="p">]</span> <span class="o">!==</span> <span class="kc">undefined</span> <span class="p">?</span> <span class="nx">current</span><span class="p">[</span><span class="nx">key</span><span class="p">]</span> <span class="p">:</span> <span class="kc">null</span><span class="p">;</span>
+    <span class="p">},</span> <span class="nx">obj</span><span class="p">);</span>
+  <span class="p">}</span>
+
+  <span class="nx">formatDate</span><span class="p">(</span><span class="nx">date</span><span class="p">,</span> <span class="nx">options</span> <span class="o">=</span> <span class="p">{})</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="nx">formatter</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">formatters</span><span class="p">.</span><span class="kd">get</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">currentLocale</span><span class="p">).</span><span class="nx">date</span><span class="p">;</span>
+    <span class="k">return</span> <span class="nx">formatter</span><span class="p">.</span><span class="nx">format</span><span class="p">(</span><span class="nx">date</span><span class="p">);</span>
+  <span class="p">}</span>
+
+  <span class="nx">formatNumber</span><span class="p">(</span><span class="nx">number</span><span class="p">,</span> <span class="nx">options</span> <span class="o">=</span> <span class="p">{})</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="nx">formatter</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">formatters</span><span class="p">.</span><span class="kd">get</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">currentLocale</span><span class="p">).</span><span class="nx">number</span><span class="p">;</span>
+    <span class="k">return</span> <span class="nx">formatter</span><span class="p">.</span><span class="nx">format</span><span class="p">(</span><span class="nx">number</span><span class="p">);</span>
+  <span class="p">}</span>
+
+  <span class="nx">formatCurrency</span><span class="p">(</span><span class="nx">amount</span><span class="p">,</span> <span class="nx">currency</span> <span class="o">=</span> <span class="kc">null</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="nx">formatter</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">formatters</span><span class="p">.</span><span class="kd">get</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">currentLocale</span><span class="p">).</span><span class="nx">currency</span><span class="p">;</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">currency</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">return</span> <span class="k">new</span> <span class="nx">Intl</span><span class="p">.</span><span class="nx">NumberFormat</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">currentLocale</span><span class="p">,</span> <span class="p">{</span>
+        <span class="na">style</span><span class="p">:</span> <span class="dl">"</span><span class="s2">currency</span><span class="dl">"</span><span class="p">,</span>
+        <span class="nx">currency</span><span class="p">,</span>
+      <span class="p">}).</span><span class="nx">format</span><span class="p">(</span><span class="nx">amount</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="nx">formatter</span><span class="p">.</span><span class="nx">format</span><span class="p">(</span><span class="nx">amount</span><span class="p">);</span>
+  <span class="p">}</span>
+
+  <span class="nx">formatRelativeTime</span><span class="p">(</span><span class="nx">value</span><span class="p">,</span> <span class="nx">unit</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="nx">formatter</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">formatters</span><span class="p">.</span><span class="kd">get</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">currentLocale</span><span class="p">).</span><span class="nx">relativeTime</span><span class="p">;</span>
+    <span class="k">return</span> <span class="nx">formatter</span><span class="p">.</span><span class="nx">format</span><span class="p">(</span><span class="nx">value</span><span class="p">,</span> <span class="nx">unit</span><span class="p">);</span>
+  <span class="p">}</span>
+
+  <span class="nx">subscribe</span><span class="p">(</span><span class="nx">listener</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">listeners</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="nx">listener</span><span class="p">);</span>
+    <span class="k">return</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="k">this</span><span class="p">.</span><span class="nx">listeners</span><span class="p">.</span><span class="k">delete</span><span class="p">(</span><span class="nx">listener</span><span class="p">);</span>
+  <span class="p">}</span>
+
+  <span class="nx">notifyListeners</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">listeners</span><span class="p">.</span><span class="nx">forEach</span><span class="p">((</span><span class="nx">listener</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">listener</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">currentLocale</span><span class="p">));</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// React hooks for i18n</span>
+<span class="kd">function</span> <span class="nx">useI18n</span><span class="p">()</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="p">[</span><span class="nx">locale</span><span class="p">,</span> <span class="nx">setLocale</span><span class="p">]</span> <span class="o">=</span> <span class="nx">useState</span><span class="p">(</span><span class="nx">i18n</span><span class="p">.</span><span class="nx">currentLocale</span><span class="p">);</span>
+  <span class="kd">const</span> <span class="p">[</span><span class="nx">translations</span><span class="p">,</span> <span class="nx">setTranslations</span><span class="p">]</span> <span class="o">=</span> <span class="nx">useState</span><span class="p">({});</span>
+
+  <span class="nx">useEffect</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="nx">unsubscribe</span> <span class="o">=</span> <span class="nx">i18n</span><span class="p">.</span><span class="nx">subscribe</span><span class="p">(</span><span class="k">async</span> <span class="p">(</span><span class="nx">newLocale</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+      <span class="nx">setLocale</span><span class="p">(</span><span class="nx">newLocale</span><span class="p">);</span>
+      <span class="kd">const</span> <span class="nx">newTranslations</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">i18n</span><span class="p">.</span><span class="nx">loadTranslations</span><span class="p">(</span><span class="nx">newLocale</span><span class="p">);</span>
+      <span class="nx">setTranslations</span><span class="p">(</span><span class="nx">newTranslations</span><span class="p">);</span>
+    <span class="p">});</span>
+
+    <span class="c1">// Load initial translations</span>
+    <span class="nx">i18n</span><span class="p">.</span><span class="nx">loadTranslations</span><span class="p">(</span><span class="nx">locale</span><span class="p">).</span><span class="nx">then</span><span class="p">(</span><span class="nx">setTranslations</span><span class="p">);</span>
+
+    <span class="k">return</span> <span class="nx">unsubscribe</span><span class="p">;</span>
+  <span class="p">},</span> <span class="p">[]);</span>
+
+  <span class="kd">const</span> <span class="nx">t</span> <span class="o">=</span> <span class="nx">useCallback</span><span class="p">((</span><span class="nx">key</span><span class="p">,</span> <span class="nx">params</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">i18n</span><span class="p">.</span><span class="nx">t</span><span class="p">(</span><span class="nx">key</span><span class="p">,</span> <span class="nx">params</span><span class="p">),</span> <span class="p">[</span><span class="nx">locale</span><span class="p">]);</span>
+  <span class="kd">const</span> <span class="nx">formatDate</span> <span class="o">=</span> <span class="nx">useCallback</span><span class="p">(</span>
+    <span class="p">(</span><span class="nx">date</span><span class="p">,</span> <span class="nx">options</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">i18n</span><span class="p">.</span><span class="nx">formatDate</span><span class="p">(</span><span class="nx">date</span><span class="p">,</span> <span class="nx">options</span><span class="p">),</span>
+    <span class="p">[</span><span class="nx">locale</span><span class="p">]</span>
+  <span class="p">);</span>
+  <span class="kd">const</span> <span class="nx">formatNumber</span> <span class="o">=</span> <span class="nx">useCallback</span><span class="p">(</span>
+    <span class="p">(</span><span class="nx">number</span><span class="p">,</span> <span class="nx">options</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">i18n</span><span class="p">.</span><span class="nx">formatNumber</span><span class="p">(</span><span class="nx">number</span><span class="p">,</span> <span class="nx">options</span><span class="p">),</span>
+    <span class="p">[</span><span class="nx">locale</span><span class="p">]</span>
+  <span class="p">);</span>
+  <span class="kd">const</span> <span class="nx">formatCurrency</span> <span class="o">=</span> <span class="nx">useCallback</span><span class="p">(</span>
+    <span class="p">(</span><span class="nx">amount</span><span class="p">,</span> <span class="nx">currency</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">i18n</span><span class="p">.</span><span class="nx">formatCurrency</span><span class="p">(</span><span class="nx">amount</span><span class="p">,</span> <span class="nx">currency</span><span class="p">),</span>
+    <span class="p">[</span><span class="nx">locale</span><span class="p">]</span>
+  <span class="p">);</span>
+
+  <span class="k">return</span> <span class="p">{</span>
+    <span class="nx">locale</span><span class="p">,</span>
+    <span class="na">setLocale</span><span class="p">:</span> <span class="nx">i18n</span><span class="p">.</span><span class="nx">setLocale</span><span class="p">.</span><span class="nx">bind</span><span class="p">(</span><span class="nx">i18n</span><span class="p">),</span>
+    <span class="nx">t</span><span class="p">,</span>
+    <span class="nx">formatDate</span><span class="p">,</span>
+    <span class="nx">formatNumber</span><span class="p">,</span>
+    <span class="nx">formatCurrency</span><span class="p">,</span>
+    <span class="na">isRTL</span><span class="p">:</span> <span class="nx">i18n</span><span class="p">.</span><span class="nx">isRTL</span><span class="p">(</span><span class="nx">locale</span><span class="p">),</span>
+  <span class="p">};</span>
+<span class="p">}</span>
+
+<span class="c1">// Translation component</span>
+<span class="kd">function</span> <span class="nx">Trans</span><span class="p">({</span> <span class="nx">i18nKey</span><span class="p">,</span> <span class="nx">params</span><span class="p">,</span> <span class="nx">children</span> <span class="p">})</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="p">{</span> <span class="nx">t</span> <span class="p">}</span> <span class="o">=</span> <span class="nx">useI18n</span><span class="p">();</span>
+
+  <span class="k">if</span> <span class="p">(</span><span class="nx">children</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="o">&lt;</span><span class="nx">span</span> <span class="nx">dangerouslySetInnerHTML</span><span class="o">=</span><span class="p">{{</span> <span class="na">__html</span><span class="p">:</span> <span class="nx">t</span><span class="p">(</span><span class="nx">i18nKey</span><span class="p">,</span> <span class="nx">params</span><span class="p">)</span> <span class="p">}}</span> <span class="sr">/&gt;</span><span class="err">;
+</span>  <span class="p">}</span>
+
+  <span class="k">return</span> <span class="nx">t</span><span class="p">(</span><span class="nx">i18nKey</span><span class="p">,</span> <span class="nx">params</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="c1">// Usage in components</span>
+<span class="kd">function</span> <span class="nx">ProductCard</span><span class="p">({</span> <span class="nx">product</span> <span class="p">})</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="p">{</span> <span class="nx">t</span><span class="p">,</span> <span class="nx">formatCurrency</span><span class="p">,</span> <span class="nx">formatDate</span><span class="p">,</span> <span class="nx">isRTL</span> <span class="p">}</span> <span class="o">=</span> <span class="nx">useI18n</span><span class="p">();</span>
+
+  <span class="k">return</span> <span class="p">(</span>
+    <span class="o">&lt;</span><span class="nx">div</span> <span class="nx">className</span><span class="o">=</span><span class="p">{</span><span class="s2">`product-card </span><span class="p">${</span><span class="nx">isRTL</span> <span class="p">?</span> <span class="dl">"</span><span class="s2">rtl</span><span class="dl">"</span> <span class="p">:</span> <span class="dl">"</span><span class="s2">ltr</span><span class="dl">"</span><span class="p">}</span><span class="s2">`</span><span class="p">}</span><span class="o">&gt;</span>
+      <span class="o">&lt;</span><span class="nx">h3</span><span class="o">&gt;</span><span class="p">{</span><span class="nx">product</span><span class="p">.</span><span class="nx">name</span><span class="p">}</span><span class="o">&lt;</span><span class="sr">/h3</span><span class="err">&gt;
+</span>      <span class="o">&lt;</span><span class="nx">p</span> <span class="nx">className</span><span class="o">=</span><span class="dl">"</span><span class="s2">price</span><span class="dl">"</span><span class="o">&gt;</span><span class="p">{</span><span class="nx">formatCurrency</span><span class="p">(</span><span class="nx">product</span><span class="p">.</span><span class="nx">price</span><span class="p">)}</span><span class="o">&lt;</span><span class="sr">/p</span><span class="err">&gt;
+</span>      <span class="o">&lt;</span><span class="nx">p</span> <span class="nx">className</span><span class="o">=</span><span class="dl">"</span><span class="s2">date</span><span class="dl">"</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="nx">Trans</span>
+          <span class="nx">i18nKey</span><span class="o">=</span><span class="dl">"</span><span class="s2">product.addedOn</span><span class="dl">"</span>
+          <span class="nx">params</span><span class="o">=</span><span class="p">{{</span> <span class="na">date</span><span class="p">:</span> <span class="nx">formatDate</span><span class="p">(</span><span class="nx">product</span><span class="p">.</span><span class="nx">addedDate</span><span class="p">)</span> <span class="p">}}</span>
+        <span class="sr">/</span><span class="err">&gt;
+</span>      <span class="o">&lt;</span><span class="sr">/p</span><span class="err">&gt;
+</span>      <span class="o">&lt;</span><span class="nx">button</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="nx">Trans</span> <span class="nx">i18nKey</span><span class="o">=</span><span class="dl">"</span><span class="s2">product.addToCart</span><span class="dl">"</span> <span class="o">/&gt;</span>
+      <span class="o">&lt;</span><span class="sr">/button</span><span class="err">&gt;
+</span>    <span class="o">&lt;</span><span class="sr">/div</span><span class="err">&gt;
+</span>  <span class="p">);</span>
+<span class="p">}</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p><strong>Q: How do you handle dynamic content and user-generated text in multiple languages?</strong>
+A: Advanced dynamic content handling:</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155
+156
+157
+158
+159
+160
+161
+162
+163
+164
+165
+166
+167
+168
+169
+170
+171
+172
+173
+174
+175
+176
+177
+178
+179
+180
+181
+182
+183
+184
+185
+186
+187
+188
+189
+190
+191
+192
+193
+194
+195
+</pre></td><td class="rouge-code"><pre><span class="kd">class</span> <span class="nx">DynamicContentManager</span> <span class="p">{</span>
+  <span class="kd">constructor</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">contentCache</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Map</span><span class="p">();</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">translationMemory</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Map</span><span class="p">();</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">userContent</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Map</span><span class="p">();</span>
+  <span class="p">}</span>
+
+  <span class="c1">// Handle user-generated content with language detection</span>
+  <span class="k">async</span> <span class="nx">processUserContent</span><span class="p">(</span><span class="nx">content</span><span class="p">,</span> <span class="nx">userId</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="nx">detectedLanguage</span> <span class="o">=</span> <span class="k">await</span> <span class="k">this</span><span class="p">.</span><span class="nx">detectLanguage</span><span class="p">(</span><span class="nx">content</span><span class="p">);</span>
+    <span class="kd">const</span> <span class="nx">processedContent</span> <span class="o">=</span> <span class="k">await</span> <span class="k">this</span><span class="p">.</span><span class="nx">processContent</span><span class="p">(</span>
+      <span class="nx">content</span><span class="p">,</span>
+      <span class="nx">detectedLanguage</span>
+    <span class="p">);</span>
+
+    <span class="k">this</span><span class="p">.</span><span class="nx">userContent</span><span class="p">.</span><span class="kd">set</span><span class="p">(</span><span class="nx">userId</span><span class="p">,</span> <span class="p">{</span>
+      <span class="na">content</span><span class="p">:</span> <span class="nx">processedContent</span><span class="p">,</span>
+      <span class="na">language</span><span class="p">:</span> <span class="nx">detectedLanguage</span><span class="p">,</span>
+      <span class="na">timestamp</span><span class="p">:</span> <span class="nb">Date</span><span class="p">.</span><span class="nx">now</span><span class="p">(),</span>
+    <span class="p">});</span>
+
+    <span class="k">return</span> <span class="nx">processedContent</span><span class="p">;</span>
+  <span class="p">}</span>
+
+  <span class="k">async</span> <span class="nx">detectLanguage</span><span class="p">(</span><span class="nx">text</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// Use a language detection library or API</span>
+    <span class="kd">const</span> <span class="nx">response</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">fetch</span><span class="p">(</span><span class="dl">"</span><span class="s2">/api/detect-language</span><span class="dl">"</span><span class="p">,</span> <span class="p">{</span>
+      <span class="na">method</span><span class="p">:</span> <span class="dl">"</span><span class="s2">POST</span><span class="dl">"</span><span class="p">,</span>
+      <span class="na">headers</span><span class="p">:</span> <span class="p">{</span> <span class="dl">"</span><span class="s2">Content-Type</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">application/json</span><span class="dl">"</span> <span class="p">},</span>
+      <span class="na">body</span><span class="p">:</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">({</span> <span class="nx">text</span> <span class="p">}),</span>
+    <span class="p">});</span>
+
+    <span class="kd">const</span> <span class="p">{</span> <span class="nx">language</span><span class="p">,</span> <span class="nx">confidence</span> <span class="p">}</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">response</span><span class="p">.</span><span class="nx">json</span><span class="p">();</span>
+    <span class="k">return</span> <span class="nx">confidence</span> <span class="o">&gt;</span> <span class="mf">0.8</span> <span class="p">?</span> <span class="nx">language</span> <span class="p">:</span> <span class="dl">"</span><span class="s2">en</span><span class="dl">"</span><span class="p">;</span>
+  <span class="p">}</span>
+
+  <span class="k">async</span> <span class="nx">processContent</span><span class="p">(</span><span class="nx">content</span><span class="p">,</span> <span class="nx">sourceLanguage</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// Handle mixed language content</span>
+    <span class="kd">const</span> <span class="nx">segments</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">segmentContent</span><span class="p">(</span><span class="nx">content</span><span class="p">);</span>
+    <span class="kd">const</span> <span class="nx">processedSegments</span> <span class="o">=</span> <span class="p">[];</span>
+
+    <span class="k">for</span> <span class="p">(</span><span class="kd">const</span> <span class="nx">segment</span> <span class="k">of</span> <span class="nx">segments</span><span class="p">)</span> <span class="p">{</span>
+      <span class="kd">const</span> <span class="nx">segmentLanguage</span> <span class="o">=</span> <span class="k">await</span> <span class="k">this</span><span class="p">.</span><span class="nx">detectLanguage</span><span class="p">(</span><span class="nx">segment</span><span class="p">.</span><span class="nx">text</span><span class="p">);</span>
+
+      <span class="k">if</span> <span class="p">(</span><span class="nx">segmentLanguage</span> <span class="o">!==</span> <span class="nx">sourceLanguage</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// Translate segment to source language</span>
+        <span class="kd">const</span> <span class="nx">translated</span> <span class="o">=</span> <span class="k">await</span> <span class="k">this</span><span class="p">.</span><span class="nx">translateText</span><span class="p">(</span>
+          <span class="nx">segment</span><span class="p">.</span><span class="nx">text</span><span class="p">,</span>
+          <span class="nx">segmentLanguage</span><span class="p">,</span>
+          <span class="nx">sourceLanguage</span>
+        <span class="p">);</span>
+        <span class="nx">processedSegments</span><span class="p">.</span><span class="nx">push</span><span class="p">({</span>
+          <span class="p">...</span><span class="nx">segment</span><span class="p">,</span>
+          <span class="na">text</span><span class="p">:</span> <span class="nx">translated</span><span class="p">,</span>
+          <span class="na">originalText</span><span class="p">:</span> <span class="nx">segment</span><span class="p">.</span><span class="nx">text</span><span class="p">,</span>
+          <span class="na">originalLanguage</span><span class="p">:</span> <span class="nx">segmentLanguage</span><span class="p">,</span>
+        <span class="p">});</span>
+      <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="nx">processedSegments</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">segment</span><span class="p">);</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">reconstructContent</span><span class="p">(</span><span class="nx">processedSegments</span><span class="p">);</span>
+  <span class="p">}</span>
+
+  <span class="nx">segmentContent</span><span class="p">(</span><span class="nx">content</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// Split content into segments (sentences, paragraphs, etc.)</span>
+    <span class="kd">const</span> <span class="nx">segments</span> <span class="o">=</span> <span class="p">[];</span>
+    <span class="kd">const</span> <span class="nx">sentences</span> <span class="o">=</span> <span class="nx">content</span><span class="p">.</span><span class="nx">split</span><span class="p">(</span><span class="sr">/</span><span class="se">[</span><span class="sr">.!?</span><span class="se">]</span><span class="sr">+/</span><span class="p">).</span><span class="nx">filter</span><span class="p">((</span><span class="nx">s</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">s</span><span class="p">.</span><span class="nx">trim</span><span class="p">());</span>
+
+    <span class="nx">sentences</span><span class="p">.</span><span class="nx">forEach</span><span class="p">((</span><span class="nx">sentence</span><span class="p">,</span> <span class="nx">index</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+      <span class="nx">segments</span><span class="p">.</span><span class="nx">push</span><span class="p">({</span>
+        <span class="na">id</span><span class="p">:</span> <span class="nx">index</span><span class="p">,</span>
+        <span class="na">text</span><span class="p">:</span> <span class="nx">sentence</span><span class="p">.</span><span class="nx">trim</span><span class="p">(),</span>
+        <span class="na">type</span><span class="p">:</span> <span class="dl">"</span><span class="s2">sentence</span><span class="dl">"</span><span class="p">,</span>
+      <span class="p">});</span>
+    <span class="p">});</span>
+
+    <span class="k">return</span> <span class="nx">segments</span><span class="p">;</span>
+  <span class="p">}</span>
+
+  <span class="k">async</span> <span class="nx">translateText</span><span class="p">(</span><span class="nx">text</span><span class="p">,</span> <span class="nx">fromLanguage</span><span class="p">,</span> <span class="nx">toLanguage</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="nx">cacheKey</span> <span class="o">=</span> <span class="s2">`</span><span class="p">${</span><span class="nx">text</span><span class="p">}</span><span class="s2">_</span><span class="p">${</span><span class="nx">fromLanguage</span><span class="p">}</span><span class="s2">_</span><span class="p">${</span><span class="nx">toLanguage</span><span class="p">}</span><span class="s2">`</span><span class="p">;</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">translationMemory</span><span class="p">.</span><span class="nx">has</span><span class="p">(</span><span class="nx">cacheKey</span><span class="p">))</span> <span class="p">{</span>
+      <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">translationMemory</span><span class="p">.</span><span class="kd">get</span><span class="p">(</span><span class="nx">cacheKey</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="k">try</span> <span class="p">{</span>
+      <span class="kd">const</span> <span class="nx">response</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">fetch</span><span class="p">(</span><span class="dl">"</span><span class="s2">/api/translate</span><span class="dl">"</span><span class="p">,</span> <span class="p">{</span>
+        <span class="na">method</span><span class="p">:</span> <span class="dl">"</span><span class="s2">POST</span><span class="dl">"</span><span class="p">,</span>
+        <span class="na">headers</span><span class="p">:</span> <span class="p">{</span> <span class="dl">"</span><span class="s2">Content-Type</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">application/json</span><span class="dl">"</span> <span class="p">},</span>
+        <span class="na">body</span><span class="p">:</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">({</span> <span class="nx">text</span><span class="p">,</span> <span class="na">from</span><span class="p">:</span> <span class="nx">fromLanguage</span><span class="p">,</span> <span class="na">to</span><span class="p">:</span> <span class="nx">toLanguage</span> <span class="p">}),</span>
+      <span class="p">});</span>
+
+      <span class="kd">const</span> <span class="p">{</span> <span class="nx">translation</span> <span class="p">}</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">response</span><span class="p">.</span><span class="nx">json</span><span class="p">();</span>
+      <span class="k">this</span><span class="p">.</span><span class="nx">translationMemory</span><span class="p">.</span><span class="kd">set</span><span class="p">(</span><span class="nx">cacheKey</span><span class="p">,</span> <span class="nx">translation</span><span class="p">);</span>
+
+      <span class="k">return</span> <span class="nx">translation</span><span class="p">;</span>
+    <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="dl">"</span><span class="s2">Translation failed:</span><span class="dl">"</span><span class="p">,</span> <span class="nx">error</span><span class="p">);</span>
+      <span class="k">return</span> <span class="nx">text</span><span class="p">;</span> <span class="c1">// Return original text if translation fails</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+
+  <span class="nx">reconstructContent</span><span class="p">(</span><span class="nx">segments</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">segments</span><span class="p">.</span><span class="nx">map</span><span class="p">((</span><span class="nx">segment</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">segment</span><span class="p">.</span><span class="nx">text</span><span class="p">).</span><span class="nx">join</span><span class="p">(</span><span class="dl">"</span><span class="s2">. </span><span class="dl">"</span><span class="p">)</span> <span class="o">+</span> <span class="dl">"</span><span class="s2">.</span><span class="dl">"</span><span class="p">;</span>
+  <span class="p">}</span>
+
+  <span class="c1">// Handle bidirectional text</span>
+  <span class="nx">processBidirectionalText</span><span class="p">(</span><span class="nx">text</span><span class="p">,</span> <span class="nx">baseDirection</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">ltr</span><span class="dl">"</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="nx">segments</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">splitBidirectionalText</span><span class="p">(</span><span class="nx">text</span><span class="p">);</span>
+    <span class="kd">const</span> <span class="nx">processedSegments</span> <span class="o">=</span> <span class="p">[];</span>
+
+    <span class="nx">segments</span><span class="p">.</span><span class="nx">forEach</span><span class="p">((</span><span class="nx">segment</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+      <span class="kd">const</span> <span class="nx">direction</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">getTextDirection</span><span class="p">(</span><span class="nx">segment</span><span class="p">);</span>
+
+      <span class="k">if</span> <span class="p">(</span><span class="nx">direction</span> <span class="o">!==</span> <span class="nx">baseDirection</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">processedSegments</span><span class="p">.</span><span class="nx">push</span><span class="p">({</span>
+          <span class="na">text</span><span class="p">:</span> <span class="nx">segment</span><span class="p">,</span>
+          <span class="nx">direction</span><span class="p">,</span>
+          <span class="na">needsEmbedding</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+        <span class="p">});</span>
+      <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="nx">processedSegments</span><span class="p">.</span><span class="nx">push</span><span class="p">({</span>
+          <span class="na">text</span><span class="p">:</span> <span class="nx">segment</span><span class="p">,</span>
+          <span class="nx">direction</span><span class="p">,</span>
+          <span class="na">needsEmbedding</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+        <span class="p">});</span>
+      <span class="p">}</span>
+    <span class="p">});</span>
+
+    <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">renderBidirectionalText</span><span class="p">(</span><span class="nx">processedSegments</span><span class="p">,</span> <span class="nx">baseDirection</span><span class="p">);</span>
+  <span class="p">}</span>
+
+  <span class="nx">splitBidirectionalText</span><span class="p">(</span><span class="nx">text</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// Split text into segments based on language/script</span>
+    <span class="kd">const</span> <span class="nx">rtlRegex</span> <span class="o">=</span>
+      <span class="sr">/</span><span class="se">[\u</span><span class="sr">0590-</span><span class="se">\u</span><span class="sr">05FF</span><span class="se">\u</span><span class="sr">0600-</span><span class="se">\u</span><span class="sr">06FF</span><span class="se">\u</span><span class="sr">0750-</span><span class="se">\u</span><span class="sr">077F</span><span class="se">\u</span><span class="sr">08A0-</span><span class="se">\u</span><span class="sr">08FF</span><span class="se">\u</span><span class="sr">FB50-</span><span class="se">\u</span><span class="sr">FDFF</span><span class="se">\u</span><span class="sr">FE70-</span><span class="se">\u</span><span class="sr">FEFF</span><span class="se">]</span><span class="sr">/</span><span class="p">;</span>
+    <span class="kd">const</span> <span class="nx">segments</span> <span class="o">=</span> <span class="p">[];</span>
+    <span class="kd">let</span> <span class="nx">currentSegment</span> <span class="o">=</span> <span class="dl">""</span><span class="p">;</span>
+    <span class="kd">let</span> <span class="nx">currentDirection</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">ltr</span><span class="dl">"</span><span class="p">;</span>
+
+    <span class="k">for</span> <span class="p">(</span><span class="kd">let</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">text</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+      <span class="kd">const</span> <span class="nx">char</span> <span class="o">=</span> <span class="nx">text</span><span class="p">[</span><span class="nx">i</span><span class="p">];</span>
+      <span class="kd">const</span> <span class="nx">isRTL</span> <span class="o">=</span> <span class="nx">rtlRegex</span><span class="p">.</span><span class="nx">test</span><span class="p">(</span><span class="nx">char</span><span class="p">);</span>
+      <span class="kd">const</span> <span class="nx">charDirection</span> <span class="o">=</span> <span class="nx">isRTL</span> <span class="p">?</span> <span class="dl">"</span><span class="s2">rtl</span><span class="dl">"</span> <span class="p">:</span> <span class="dl">"</span><span class="s2">ltr</span><span class="dl">"</span><span class="p">;</span>
+
+      <span class="k">if</span> <span class="p">(</span><span class="nx">charDirection</span> <span class="o">!==</span> <span class="nx">currentDirection</span> <span class="o">&amp;&amp;</span> <span class="nx">currentSegment</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">segments</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">currentSegment</span><span class="p">);</span>
+        <span class="nx">currentSegment</span> <span class="o">=</span> <span class="dl">""</span><span class="p">;</span>
+        <span class="nx">currentDirection</span> <span class="o">=</span> <span class="nx">charDirection</span><span class="p">;</span>
+      <span class="p">}</span>
+
+      <span class="nx">currentSegment</span> <span class="o">+=</span> <span class="nx">char</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="nx">currentSegment</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">segments</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">currentSegment</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="k">return</span> <span class="nx">segments</span><span class="p">;</span>
+  <span class="p">}</span>
+
+  <span class="nx">getTextDirection</span><span class="p">(</span><span class="nx">text</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="nx">rtlRegex</span> <span class="o">=</span>
+      <span class="sr">/</span><span class="se">[\u</span><span class="sr">0590-</span><span class="se">\u</span><span class="sr">05FF</span><span class="se">\u</span><span class="sr">0600-</span><span class="se">\u</span><span class="sr">06FF</span><span class="se">\u</span><span class="sr">0750-</span><span class="se">\u</span><span class="sr">077F</span><span class="se">\u</span><span class="sr">08A0-</span><span class="se">\u</span><span class="sr">08FF</span><span class="se">\u</span><span class="sr">FB50-</span><span class="se">\u</span><span class="sr">FDFF</span><span class="se">\u</span><span class="sr">FE70-</span><span class="se">\u</span><span class="sr">FEFF</span><span class="se">]</span><span class="sr">/</span><span class="p">;</span>
+    <span class="k">return</span> <span class="nx">rtlRegex</span><span class="p">.</span><span class="nx">test</span><span class="p">(</span><span class="nx">text</span><span class="p">)</span> <span class="p">?</span> <span class="dl">"</span><span class="s2">rtl</span><span class="dl">"</span> <span class="p">:</span> <span class="dl">"</span><span class="s2">ltr</span><span class="dl">"</span><span class="p">;</span>
+  <span class="p">}</span>
+
+  <span class="nx">renderBidirectionalText</span><span class="p">(</span><span class="nx">segments</span><span class="p">,</span> <span class="nx">baseDirection</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">segments</span>
+      <span class="p">.</span><span class="nx">map</span><span class="p">((</span><span class="nx">segment</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nx">segment</span><span class="p">.</span><span class="nx">needsEmbedding</span><span class="p">)</span> <span class="p">{</span>
+          <span class="k">return</span> <span class="s2">`&lt;span dir="</span><span class="p">${</span><span class="nx">segment</span><span class="p">.</span><span class="nx">direction</span><span class="p">}</span><span class="s2">"&gt;</span><span class="p">${</span><span class="nx">segment</span><span class="p">.</span><span class="nx">text</span><span class="p">}</span><span class="s2">&lt;/span&gt;`</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="k">return</span> <span class="nx">segment</span><span class="p">.</span><span class="nx">text</span><span class="p">;</span>
+      <span class="p">})</span>
+      <span class="p">.</span><span class="nx">join</span><span class="p">(</span><span class="dl">""</span><span class="p">);</span>
+  <span class="p">}</span>
+
+  <span class="c1">// Cache management</span>
+  <span class="nx">clearCache</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">contentCache</span><span class="p">.</span><span class="nx">clear</span><span class="p">();</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">translationMemory</span><span class="p">.</span><span class="nx">clear</span><span class="p">();</span>
+  <span class="p">}</span>
+
+  <span class="nx">getCacheStats</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="p">{</span>
+      <span class="na">contentCacheSize</span><span class="p">:</span> <span class="k">this</span><span class="p">.</span><span class="nx">contentCache</span><span class="p">.</span><span class="nx">size</span><span class="p">,</span>
+      <span class="na">translationMemorySize</span><span class="p">:</span> <span class="k">this</span><span class="p">.</span><span class="nx">translationMemory</span><span class="p">.</span><span class="nx">size</span><span class="p">,</span>
+      <span class="na">userContentSize</span><span class="p">:</span> <span class="k">this</span><span class="p">.</span><span class="nx">userContent</span><span class="p">.</span><span class="nx">size</span><span class="p">,</span>
+    <span class="p">};</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<h2 id="practical-problems--solutions">Practical Problems &amp; Solutions</h2>
+
+<h3 id="problem-1-implement-locale-specific-number-and-date-formatting">Problem 1: Implement Locale-Specific Number and Date Formatting</h3>
+
+<p><strong>Challenge</strong>: Create a comprehensive formatting system for different locales.</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155
+156
+</pre></td><td class="rouge-code"><pre><span class="kd">class</span> <span class="nx">LocaleFormatter</span> <span class="p">{</span>
+  <span class="kd">constructor</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">formatters</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Map</span><span class="p">();</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">initializeFormatters</span><span class="p">();</span>
+  <span class="p">}</span>
+
+  <span class="nx">initializeFormatters</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="nx">locales</span> <span class="o">=</span> <span class="p">[</span>
+      <span class="dl">"</span><span class="s2">en-US</span><span class="dl">"</span><span class="p">,</span>
+      <span class="dl">"</span><span class="s2">en-GB</span><span class="dl">"</span><span class="p">,</span>
+      <span class="dl">"</span><span class="s2">es-ES</span><span class="dl">"</span><span class="p">,</span>
+      <span class="dl">"</span><span class="s2">fr-FR</span><span class="dl">"</span><span class="p">,</span>
+      <span class="dl">"</span><span class="s2">de-DE</span><span class="dl">"</span><span class="p">,</span>
+      <span class="dl">"</span><span class="s2">ja-JP</span><span class="dl">"</span><span class="p">,</span>
+      <span class="dl">"</span><span class="s2">zh-CN</span><span class="dl">"</span><span class="p">,</span>
+      <span class="dl">"</span><span class="s2">ar-SA</span><span class="dl">"</span><span class="p">,</span>
+    <span class="p">];</span>
+
+    <span class="nx">locales</span><span class="p">.</span><span class="nx">forEach</span><span class="p">((</span><span class="nx">locale</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+      <span class="k">this</span><span class="p">.</span><span class="nx">formatters</span><span class="p">.</span><span class="kd">set</span><span class="p">(</span><span class="nx">locale</span><span class="p">,</span> <span class="p">{</span>
+        <span class="na">number</span><span class="p">:</span> <span class="k">new</span> <span class="nx">Intl</span><span class="p">.</span><span class="nx">NumberFormat</span><span class="p">(</span><span class="nx">locale</span><span class="p">),</span>
+        <span class="na">currency</span><span class="p">:</span> <span class="k">new</span> <span class="nx">Intl</span><span class="p">.</span><span class="nx">NumberFormat</span><span class="p">(</span><span class="nx">locale</span><span class="p">,</span> <span class="p">{</span> <span class="na">style</span><span class="p">:</span> <span class="dl">"</span><span class="s2">currency</span><span class="dl">"</span> <span class="p">}),</span>
+        <span class="na">date</span><span class="p">:</span> <span class="k">new</span> <span class="nx">Intl</span><span class="p">.</span><span class="nx">DateTimeFormat</span><span class="p">(</span><span class="nx">locale</span><span class="p">,</span> <span class="p">{</span>
+          <span class="na">year</span><span class="p">:</span> <span class="dl">"</span><span class="s2">numeric</span><span class="dl">"</span><span class="p">,</span>
+          <span class="na">month</span><span class="p">:</span> <span class="dl">"</span><span class="s2">long</span><span class="dl">"</span><span class="p">,</span>
+          <span class="na">day</span><span class="p">:</span> <span class="dl">"</span><span class="s2">numeric</span><span class="dl">"</span><span class="p">,</span>
+        <span class="p">}),</span>
+        <span class="na">time</span><span class="p">:</span> <span class="k">new</span> <span class="nx">Intl</span><span class="p">.</span><span class="nx">DateTimeFormat</span><span class="p">(</span><span class="nx">locale</span><span class="p">,</span> <span class="p">{</span>
+          <span class="na">hour</span><span class="p">:</span> <span class="dl">"</span><span class="s2">2-digit</span><span class="dl">"</span><span class="p">,</span>
+          <span class="na">minute</span><span class="p">:</span> <span class="dl">"</span><span class="s2">2-digit</span><span class="dl">"</span><span class="p">,</span>
+        <span class="p">}),</span>
+        <span class="na">relative</span><span class="p">:</span> <span class="k">new</span> <span class="nx">Intl</span><span class="p">.</span><span class="nx">RelativeTimeFormat</span><span class="p">(</span><span class="nx">locale</span><span class="p">,</span> <span class="p">{</span> <span class="na">numeric</span><span class="p">:</span> <span class="dl">"</span><span class="s2">auto</span><span class="dl">"</span> <span class="p">}),</span>
+      <span class="p">});</span>
+    <span class="p">});</span>
+  <span class="p">}</span>
+
+  <span class="nx">formatNumber</span><span class="p">(</span><span class="nx">number</span><span class="p">,</span> <span class="nx">locale</span><span class="p">,</span> <span class="nx">options</span> <span class="o">=</span> <span class="p">{})</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="nx">formatter</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">formatters</span><span class="p">.</span><span class="kd">get</span><span class="p">(</span><span class="nx">locale</span><span class="p">)?.</span><span class="nx">number</span><span class="p">;</span>
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">formatter</span><span class="p">)</span> <span class="k">return</span> <span class="nx">number</span><span class="p">.</span><span class="nx">toString</span><span class="p">();</span>
+
+    <span class="k">if</span> <span class="p">(</span>
+      <span class="nx">options</span><span class="p">.</span><span class="nx">minimumFractionDigits</span> <span class="o">!==</span> <span class="kc">undefined</span> <span class="o">||</span>
+      <span class="nx">options</span><span class="p">.</span><span class="nx">maximumFractionDigits</span> <span class="o">!==</span> <span class="kc">undefined</span>
+    <span class="p">)</span> <span class="p">{</span>
+      <span class="k">return</span> <span class="k">new</span> <span class="nx">Intl</span><span class="p">.</span><span class="nx">NumberFormat</span><span class="p">(</span><span class="nx">locale</span><span class="p">,</span> <span class="nx">options</span><span class="p">).</span><span class="nx">format</span><span class="p">(</span><span class="nx">number</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="k">return</span> <span class="nx">formatter</span><span class="p">.</span><span class="nx">format</span><span class="p">(</span><span class="nx">number</span><span class="p">);</span>
+  <span class="p">}</span>
+
+  <span class="nx">formatCurrency</span><span class="p">(</span><span class="nx">amount</span><span class="p">,</span> <span class="nx">locale</span><span class="p">,</span> <span class="nx">currency</span> <span class="o">=</span> <span class="kc">null</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">currency</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">return</span> <span class="k">new</span> <span class="nx">Intl</span><span class="p">.</span><span class="nx">NumberFormat</span><span class="p">(</span><span class="nx">locale</span><span class="p">,</span> <span class="p">{</span>
+        <span class="na">style</span><span class="p">:</span> <span class="dl">"</span><span class="s2">currency</span><span class="dl">"</span><span class="p">,</span>
+        <span class="nx">currency</span><span class="p">,</span>
+      <span class="p">}).</span><span class="nx">format</span><span class="p">(</span><span class="nx">amount</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="kd">const</span> <span class="nx">formatter</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">formatters</span><span class="p">.</span><span class="kd">get</span><span class="p">(</span><span class="nx">locale</span><span class="p">)?.</span><span class="nx">currency</span><span class="p">;</span>
+    <span class="k">return</span> <span class="nx">formatter</span> <span class="p">?</span> <span class="nx">formatter</span><span class="p">.</span><span class="nx">format</span><span class="p">(</span><span class="nx">amount</span><span class="p">)</span> <span class="p">:</span> <span class="nx">amount</span><span class="p">.</span><span class="nx">toString</span><span class="p">();</span>
+  <span class="p">}</span>
+
+  <span class="nx">formatDate</span><span class="p">(</span><span class="nx">date</span><span class="p">,</span> <span class="nx">locale</span><span class="p">,</span> <span class="nx">options</span> <span class="o">=</span> <span class="p">{})</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="nx">formatter</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">formatters</span><span class="p">.</span><span class="kd">get</span><span class="p">(</span><span class="nx">locale</span><span class="p">)?.</span><span class="nx">date</span><span class="p">;</span>
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">formatter</span><span class="p">)</span> <span class="k">return</span> <span class="nx">date</span><span class="p">.</span><span class="nx">toLocaleDateString</span><span class="p">();</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="nx">options</span><span class="p">.</span><span class="nx">format</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">return</span> <span class="k">new</span> <span class="nx">Intl</span><span class="p">.</span><span class="nx">DateTimeFormat</span><span class="p">(</span><span class="nx">locale</span><span class="p">,</span> <span class="nx">options</span><span class="p">).</span><span class="nx">format</span><span class="p">(</span><span class="nx">date</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="k">return</span> <span class="nx">formatter</span><span class="p">.</span><span class="nx">format</span><span class="p">(</span><span class="nx">date</span><span class="p">);</span>
+  <span class="p">}</span>
+
+  <span class="nx">formatRelativeTime</span><span class="p">(</span><span class="nx">value</span><span class="p">,</span> <span class="nx">unit</span><span class="p">,</span> <span class="nx">locale</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="nx">formatter</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">formatters</span><span class="p">.</span><span class="kd">get</span><span class="p">(</span><span class="nx">locale</span><span class="p">)?.</span><span class="nx">relative</span><span class="p">;</span>
+    <span class="k">return</span> <span class="nx">formatter</span> <span class="p">?</span> <span class="nx">formatter</span><span class="p">.</span><span class="nx">format</span><span class="p">(</span><span class="nx">value</span><span class="p">,</span> <span class="nx">unit</span><span class="p">)</span> <span class="p">:</span> <span class="s2">`</span><span class="p">${</span><span class="nx">value</span><span class="p">}</span><span class="s2"> </span><span class="p">${</span><span class="nx">unit</span><span class="p">}</span><span class="s2">`</span><span class="p">;</span>
+  <span class="p">}</span>
+
+  <span class="nx">getLocaleInfo</span><span class="p">(</span><span class="nx">locale</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="nx">formatter</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">formatters</span><span class="p">.</span><span class="kd">get</span><span class="p">(</span><span class="nx">locale</span><span class="p">);</span>
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">formatter</span><span class="p">)</span> <span class="k">return</span> <span class="kc">null</span><span class="p">;</span>
+
+    <span class="c1">// Test formatting to determine locale characteristics</span>
+    <span class="kd">const</span> <span class="nx">testNumber</span> <span class="o">=</span> <span class="mf">1234.56</span><span class="p">;</span>
+    <span class="kd">const</span> <span class="nx">testDate</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Date</span><span class="p">();</span>
+
+    <span class="k">return</span> <span class="p">{</span>
+      <span class="nx">locale</span><span class="p">,</span>
+      <span class="na">numberFormat</span><span class="p">:</span> <span class="nx">formatter</span><span class="p">.</span><span class="nx">number</span><span class="p">.</span><span class="nx">format</span><span class="p">(</span><span class="nx">testNumber</span><span class="p">),</span>
+      <span class="na">dateFormat</span><span class="p">:</span> <span class="nx">formatter</span><span class="p">.</span><span class="nx">date</span><span class="p">.</span><span class="nx">format</span><span class="p">(</span><span class="nx">testDate</span><span class="p">),</span>
+      <span class="na">currencyFormat</span><span class="p">:</span> <span class="nx">formatter</span><span class="p">.</span><span class="nx">currency</span><span class="p">.</span><span class="nx">format</span><span class="p">(</span><span class="nx">testNumber</span><span class="p">),</span>
+      <span class="na">isRTL</span><span class="p">:</span> <span class="k">this</span><span class="p">.</span><span class="nx">isRTL</span><span class="p">(</span><span class="nx">locale</span><span class="p">),</span>
+    <span class="p">};</span>
+  <span class="p">}</span>
+
+  <span class="nx">isRTL</span><span class="p">(</span><span class="nx">locale</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="p">[</span><span class="dl">"</span><span class="s2">ar</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">he</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">fa</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">ur</span><span class="dl">"</span><span class="p">].</span><span class="nx">includes</span><span class="p">(</span><span class="nx">locale</span><span class="p">.</span><span class="nx">split</span><span class="p">(</span><span class="dl">"</span><span class="s2">-</span><span class="dl">"</span><span class="p">)[</span><span class="mi">0</span><span class="p">]);</span>
+  <span class="p">}</span>
+
+  <span class="c1">// Custom formatting for specific use cases</span>
+  <span class="nx">formatPhoneNumber</span><span class="p">(</span><span class="nx">phone</span><span class="p">,</span> <span class="nx">locale</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="nx">phoneFormats</span> <span class="o">=</span> <span class="p">{</span>
+      <span class="dl">"</span><span class="s2">en-US</span><span class="dl">"</span><span class="p">:</span> <span class="p">(</span><span class="nx">phone</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+        <span class="kd">const</span> <span class="nx">cleaned</span> <span class="o">=</span> <span class="nx">phone</span><span class="p">.</span><span class="nx">replace</span><span class="p">(</span><span class="sr">/</span><span class="se">\D</span><span class="sr">/g</span><span class="p">,</span> <span class="dl">""</span><span class="p">);</span>
+        <span class="kd">const</span> <span class="nx">match</span> <span class="o">=</span> <span class="nx">cleaned</span><span class="p">.</span><span class="nx">match</span><span class="p">(</span><span class="sr">/^</span><span class="se">(\d{3})(\d{3})(\d{4})</span><span class="sr">$/</span><span class="p">);</span>
+        <span class="k">return</span> <span class="nx">match</span> <span class="p">?</span> <span class="s2">`(</span><span class="p">${</span><span class="nx">match</span><span class="p">[</span><span class="mi">1</span><span class="p">]}</span><span class="s2">) </span><span class="p">${</span><span class="nx">match</span><span class="p">[</span><span class="mi">2</span><span class="p">]}</span><span class="s2">-</span><span class="p">${</span><span class="nx">match</span><span class="p">[</span><span class="mi">3</span><span class="p">]}</span><span class="s2">`</span> <span class="p">:</span> <span class="nx">phone</span><span class="p">;</span>
+      <span class="p">},</span>
+      <span class="dl">"</span><span class="s2">en-GB</span><span class="dl">"</span><span class="p">:</span> <span class="p">(</span><span class="nx">phone</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+        <span class="kd">const</span> <span class="nx">cleaned</span> <span class="o">=</span> <span class="nx">phone</span><span class="p">.</span><span class="nx">replace</span><span class="p">(</span><span class="sr">/</span><span class="se">\D</span><span class="sr">/g</span><span class="p">,</span> <span class="dl">""</span><span class="p">);</span>
+        <span class="kd">const</span> <span class="nx">match</span> <span class="o">=</span> <span class="nx">cleaned</span><span class="p">.</span><span class="nx">match</span><span class="p">(</span><span class="sr">/^</span><span class="se">(\d{5})(\d{6})</span><span class="sr">$/</span><span class="p">);</span>
+        <span class="k">return</span> <span class="nx">match</span> <span class="p">?</span> <span class="s2">`</span><span class="p">${</span><span class="nx">match</span><span class="p">[</span><span class="mi">1</span><span class="p">]}</span><span class="s2"> </span><span class="p">${</span><span class="nx">match</span><span class="p">[</span><span class="mi">2</span><span class="p">]}</span><span class="s2">`</span> <span class="p">:</span> <span class="nx">phone</span><span class="p">;</span>
+      <span class="p">},</span>
+      <span class="dl">"</span><span class="s2">es-ES</span><span class="dl">"</span><span class="p">:</span> <span class="p">(</span><span class="nx">phone</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+        <span class="kd">const</span> <span class="nx">cleaned</span> <span class="o">=</span> <span class="nx">phone</span><span class="p">.</span><span class="nx">replace</span><span class="p">(</span><span class="sr">/</span><span class="se">\D</span><span class="sr">/g</span><span class="p">,</span> <span class="dl">""</span><span class="p">);</span>
+        <span class="kd">const</span> <span class="nx">match</span> <span class="o">=</span> <span class="nx">cleaned</span><span class="p">.</span><span class="nx">match</span><span class="p">(</span><span class="sr">/^</span><span class="se">(\d{3})(\d{3})(\d{3})</span><span class="sr">$/</span><span class="p">);</span>
+        <span class="k">return</span> <span class="nx">match</span> <span class="p">?</span> <span class="s2">`</span><span class="p">${</span><span class="nx">match</span><span class="p">[</span><span class="mi">1</span><span class="p">]}</span><span class="s2"> </span><span class="p">${</span><span class="nx">match</span><span class="p">[</span><span class="mi">2</span><span class="p">]}</span><span class="s2"> </span><span class="p">${</span><span class="nx">match</span><span class="p">[</span><span class="mi">3</span><span class="p">]}</span><span class="s2">`</span> <span class="p">:</span> <span class="nx">phone</span><span class="p">;</span>
+      <span class="p">},</span>
+    <span class="p">};</span>
+
+    <span class="kd">const</span> <span class="nx">formatter</span> <span class="o">=</span> <span class="nx">phoneFormats</span><span class="p">[</span><span class="nx">locale</span><span class="p">]</span> <span class="o">||</span> <span class="nx">phoneFormats</span><span class="p">[</span><span class="dl">"</span><span class="s2">en-US</span><span class="dl">"</span><span class="p">];</span>
+    <span class="k">return</span> <span class="nx">formatter</span><span class="p">(</span><span class="nx">phone</span><span class="p">);</span>
+  <span class="p">}</span>
+
+  <span class="nx">formatAddress</span><span class="p">(</span><span class="nx">address</span><span class="p">,</span> <span class="nx">locale</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="nx">addressFormats</span> <span class="o">=</span> <span class="p">{</span>
+      <span class="dl">"</span><span class="s2">en-US</span><span class="dl">"</span><span class="p">:</span> <span class="p">(</span><span class="nx">addr</span><span class="p">)</span> <span class="o">=&gt;</span>
+        <span class="s2">`</span><span class="p">${</span><span class="nx">addr</span><span class="p">.</span><span class="nx">street</span><span class="p">}</span><span class="s2">, </span><span class="p">${</span><span class="nx">addr</span><span class="p">.</span><span class="nx">city</span><span class="p">}</span><span class="s2">, </span><span class="p">${</span><span class="nx">addr</span><span class="p">.</span><span class="nx">state</span><span class="p">}</span><span class="s2"> </span><span class="p">${</span><span class="nx">addr</span><span class="p">.</span><span class="nx">zip</span><span class="p">}</span><span class="s2">`</span><span class="p">,</span>
+      <span class="dl">"</span><span class="s2">en-GB</span><span class="dl">"</span><span class="p">:</span> <span class="p">(</span><span class="nx">addr</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="s2">`</span><span class="p">${</span><span class="nx">addr</span><span class="p">.</span><span class="nx">street</span><span class="p">}</span><span class="s2">, </span><span class="p">${</span><span class="nx">addr</span><span class="p">.</span><span class="nx">city</span><span class="p">}</span><span class="s2">, </span><span class="p">${</span><span class="nx">addr</span><span class="p">.</span><span class="nx">postcode</span><span class="p">}</span><span class="s2">`</span><span class="p">,</span>
+      <span class="dl">"</span><span class="s2">ja-JP</span><span class="dl">"</span><span class="p">:</span> <span class="p">(</span><span class="nx">addr</span><span class="p">)</span> <span class="o">=&gt;</span>
+        <span class="s2">`〒</span><span class="p">${</span><span class="nx">addr</span><span class="p">.</span><span class="nx">postcode</span><span class="p">}</span><span class="s2"> </span><span class="p">${</span><span class="nx">addr</span><span class="p">.</span><span class="nx">prefecture</span><span class="p">}${</span><span class="nx">addr</span><span class="p">.</span><span class="nx">city</span><span class="p">}${</span><span class="nx">addr</span><span class="p">.</span><span class="nx">street</span><span class="p">}</span><span class="s2">`</span><span class="p">,</span>
+      <span class="dl">"</span><span class="s2">ar-SA</span><span class="dl">"</span><span class="p">:</span> <span class="p">(</span><span class="nx">addr</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="s2">`</span><span class="p">${</span><span class="nx">addr</span><span class="p">.</span><span class="nx">street</span><span class="p">}</span><span class="s2">، </span><span class="p">${</span><span class="nx">addr</span><span class="p">.</span><span class="nx">city</span><span class="p">}</span><span class="s2">، </span><span class="p">${</span><span class="nx">addr</span><span class="p">.</span><span class="nx">postcode</span><span class="p">}</span><span class="s2">`</span><span class="p">,</span>
+    <span class="p">};</span>
+
+    <span class="kd">const</span> <span class="nx">formatter</span> <span class="o">=</span> <span class="nx">addressFormats</span><span class="p">[</span><span class="nx">locale</span><span class="p">]</span> <span class="o">||</span> <span class="nx">addressFormats</span><span class="p">[</span><span class="dl">"</span><span class="s2">en-US</span><span class="dl">"</span><span class="p">];</span>
+    <span class="k">return</span> <span class="nx">formatter</span><span class="p">(</span><span class="nx">address</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// Usage</span>
+<span class="kd">const</span> <span class="nx">formatter</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">LocaleFormatter</span><span class="p">();</span>
+
+<span class="c1">// Number formatting</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">formatter</span><span class="p">.</span><span class="nx">formatNumber</span><span class="p">(</span><span class="mf">1234.56</span><span class="p">,</span> <span class="dl">"</span><span class="s2">en-US</span><span class="dl">"</span><span class="p">));</span> <span class="c1">// "1,234.56"</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">formatter</span><span class="p">.</span><span class="nx">formatNumber</span><span class="p">(</span><span class="mf">1234.56</span><span class="p">,</span> <span class="dl">"</span><span class="s2">de-DE</span><span class="dl">"</span><span class="p">));</span> <span class="c1">// "1.234,56"</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">formatter</span><span class="p">.</span><span class="nx">formatNumber</span><span class="p">(</span><span class="mf">1234.56</span><span class="p">,</span> <span class="dl">"</span><span class="s2">ja-JP</span><span class="dl">"</span><span class="p">));</span> <span class="c1">// "1,234.56"</span>
+
+<span class="c1">// Currency formatting</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">formatter</span><span class="p">.</span><span class="nx">formatCurrency</span><span class="p">(</span><span class="mf">1234.56</span><span class="p">,</span> <span class="dl">"</span><span class="s2">en-US</span><span class="dl">"</span><span class="p">));</span> <span class="c1">// "$1,234.56"</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">formatter</span><span class="p">.</span><span class="nx">formatCurrency</span><span class="p">(</span><span class="mf">1234.56</span><span class="p">,</span> <span class="dl">"</span><span class="s2">de-DE</span><span class="dl">"</span><span class="p">));</span> <span class="c1">// "1.234,56 €"</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">formatter</span><span class="p">.</span><span class="nx">formatCurrency</span><span class="p">(</span><span class="mf">1234.56</span><span class="p">,</span> <span class="dl">"</span><span class="s2">ja-JP</span><span class="dl">"</span><span class="p">));</span> <span class="c1">// "¥1,235"</span>
+
+<span class="c1">// Date formatting</span>
+<span class="kd">const</span> <span class="nx">date</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Date</span><span class="p">(</span><span class="dl">"</span><span class="s2">2023-12-25</span><span class="dl">"</span><span class="p">);</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">formatter</span><span class="p">.</span><span class="nx">formatDate</span><span class="p">(</span><span class="nx">date</span><span class="p">,</span> <span class="dl">"</span><span class="s2">en-US</span><span class="dl">"</span><span class="p">));</span> <span class="c1">// "December 25, 2023"</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">formatter</span><span class="p">.</span><span class="nx">formatDate</span><span class="p">(</span><span class="nx">date</span><span class="p">,</span> <span class="dl">"</span><span class="s2">es-ES</span><span class="dl">"</span><span class="p">));</span> <span class="c1">// "25 de diciembre de 2023"</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">formatter</span><span class="p">.</span><span class="nx">formatDate</span><span class="p">(</span><span class="nx">date</span><span class="p">,</span> <span class="dl">"</span><span class="s2">ja-JP</span><span class="dl">"</span><span class="p">));</span> <span class="c1">// "2023年12月25日"</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<h3 id="problem-2-create-a-dynamic-language-switcher">Problem 2: Create a Dynamic Language Switcher</h3>
+
+<p><strong>Challenge</strong>: Build a language switcher that handles locale changes and maintains user preferences.</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155
+156
+157
+158
+159
+160
+161
+162
+163
+164
+165
+166
+167
+168
+169
+170
+171
+172
+173
+174
+175
+176
+177
+178
+</pre></td><td class="rouge-code"><pre><span class="kd">class</span> <span class="nx">LanguageSwitcher</span> <span class="p">{</span>
+  <span class="kd">constructor</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">currentLocale</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">getStoredLocale</span><span class="p">()</span> <span class="o">||</span> <span class="dl">"</span><span class="s2">en</span><span class="dl">"</span><span class="p">;</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">supportedLocales</span> <span class="o">=</span> <span class="p">[</span>
+      <span class="p">{</span> <span class="na">code</span><span class="p">:</span> <span class="dl">"</span><span class="s2">en</span><span class="dl">"</span><span class="p">,</span> <span class="na">name</span><span class="p">:</span> <span class="dl">"</span><span class="s2">English</span><span class="dl">"</span><span class="p">,</span> <span class="na">flag</span><span class="p">:</span> <span class="dl">"</span><span class="s2">🇺🇸</span><span class="dl">"</span> <span class="p">},</span>
+      <span class="p">{</span> <span class="na">code</span><span class="p">:</span> <span class="dl">"</span><span class="s2">es</span><span class="dl">"</span><span class="p">,</span> <span class="na">name</span><span class="p">:</span> <span class="dl">"</span><span class="s2">Español</span><span class="dl">"</span><span class="p">,</span> <span class="na">flag</span><span class="p">:</span> <span class="dl">"</span><span class="s2">🇪🇸</span><span class="dl">"</span> <span class="p">},</span>
+      <span class="p">{</span> <span class="na">code</span><span class="p">:</span> <span class="dl">"</span><span class="s2">fr</span><span class="dl">"</span><span class="p">,</span> <span class="na">name</span><span class="p">:</span> <span class="dl">"</span><span class="s2">Français</span><span class="dl">"</span><span class="p">,</span> <span class="na">flag</span><span class="p">:</span> <span class="dl">"</span><span class="s2">🇫🇷</span><span class="dl">"</span> <span class="p">},</span>
+      <span class="p">{</span> <span class="na">code</span><span class="p">:</span> <span class="dl">"</span><span class="s2">de</span><span class="dl">"</span><span class="p">,</span> <span class="na">name</span><span class="p">:</span> <span class="dl">"</span><span class="s2">Deutsch</span><span class="dl">"</span><span class="p">,</span> <span class="na">flag</span><span class="p">:</span> <span class="dl">"</span><span class="s2">🇩🇪</span><span class="dl">"</span> <span class="p">},</span>
+      <span class="p">{</span> <span class="na">code</span><span class="p">:</span> <span class="dl">"</span><span class="s2">ja</span><span class="dl">"</span><span class="p">,</span> <span class="na">name</span><span class="p">:</span> <span class="dl">"</span><span class="s2">日本語</span><span class="dl">"</span><span class="p">,</span> <span class="na">flag</span><span class="p">:</span> <span class="dl">"</span><span class="s2">🇯🇵</span><span class="dl">"</span> <span class="p">},</span>
+      <span class="p">{</span> <span class="na">code</span><span class="p">:</span> <span class="dl">"</span><span class="s2">zh</span><span class="dl">"</span><span class="p">,</span> <span class="na">name</span><span class="p">:</span> <span class="dl">"</span><span class="s2">中文</span><span class="dl">"</span><span class="p">,</span> <span class="na">flag</span><span class="p">:</span> <span class="dl">"</span><span class="s2">🇨🇳</span><span class="dl">"</span> <span class="p">},</span>
+      <span class="p">{</span> <span class="na">code</span><span class="p">:</span> <span class="dl">"</span><span class="s2">ar</span><span class="dl">"</span><span class="p">,</span> <span class="na">name</span><span class="p">:</span> <span class="dl">"</span><span class="s2">العربية</span><span class="dl">"</span><span class="p">,</span> <span class="na">flag</span><span class="p">:</span> <span class="dl">"</span><span class="s2">🇸🇦</span><span class="dl">"</span> <span class="p">},</span>
+    <span class="p">];</span>
+
+    <span class="k">this</span><span class="p">.</span><span class="nx">listeners</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Set</span><span class="p">();</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">initializeSwitcher</span><span class="p">();</span>
+  <span class="p">}</span>
+
+  <span class="nx">getStoredLocale</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="p">(</span>
+      <span class="nx">localStorage</span><span class="p">.</span><span class="nx">getItem</span><span class="p">(</span><span class="dl">"</span><span class="s2">preferred-locale</span><span class="dl">"</span><span class="p">)</span> <span class="o">||</span>
+      <span class="nb">navigator</span><span class="p">.</span><span class="nx">language</span><span class="p">.</span><span class="nx">split</span><span class="p">(</span><span class="dl">"</span><span class="s2">-</span><span class="dl">"</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span> <span class="o">||</span>
+      <span class="dl">"</span><span class="s2">en</span><span class="dl">"</span>
+    <span class="p">);</span>
+  <span class="p">}</span>
+
+  <span class="nx">setLocale</span><span class="p">(</span><span class="nx">locale</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="k">this</span><span class="p">.</span><span class="nx">supportedLocales</span><span class="p">.</span><span class="nx">find</span><span class="p">((</span><span class="nx">l</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">l</span><span class="p">.</span><span class="nx">code</span> <span class="o">===</span> <span class="nx">locale</span><span class="p">))</span> <span class="p">{</span>
+      <span class="nx">console</span><span class="p">.</span><span class="nx">warn</span><span class="p">(</span><span class="s2">`Locale </span><span class="p">${</span><span class="nx">locale</span><span class="p">}</span><span class="s2"> is not supported`</span><span class="p">);</span>
+      <span class="k">return</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">this</span><span class="p">.</span><span class="nx">currentLocale</span> <span class="o">=</span> <span class="nx">locale</span><span class="p">;</span>
+    <span class="nx">localStorage</span><span class="p">.</span><span class="nx">setItem</span><span class="p">(</span><span class="dl">"</span><span class="s2">preferred-locale</span><span class="dl">"</span><span class="p">,</span> <span class="nx">locale</span><span class="p">);</span>
+
+    <span class="c1">// Update document attributes</span>
+    <span class="nb">document</span><span class="p">.</span><span class="nx">documentElement</span><span class="p">.</span><span class="nx">lang</span> <span class="o">=</span> <span class="nx">locale</span><span class="p">;</span>
+    <span class="nb">document</span><span class="p">.</span><span class="nx">documentElement</span><span class="p">.</span><span class="nx">dir</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">isRTL</span><span class="p">(</span><span class="nx">locale</span><span class="p">)</span> <span class="p">?</span> <span class="dl">"</span><span class="s2">rtl</span><span class="dl">"</span> <span class="p">:</span> <span class="dl">"</span><span class="s2">ltr</span><span class="dl">"</span><span class="p">;</span>
+
+    <span class="c1">// Notify listeners</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">notifyListeners</span><span class="p">();</span>
+
+    <span class="c1">// Reload translations</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">loadTranslations</span><span class="p">(</span><span class="nx">locale</span><span class="p">);</span>
+  <span class="p">}</span>
+
+  <span class="nx">isRTL</span><span class="p">(</span><span class="nx">locale</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="p">[</span><span class="dl">"</span><span class="s2">ar</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">he</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">fa</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">ur</span><span class="dl">"</span><span class="p">].</span><span class="nx">includes</span><span class="p">(</span><span class="nx">locale</span><span class="p">);</span>
+  <span class="p">}</span>
+
+  <span class="k">async</span> <span class="nx">loadTranslations</span><span class="p">(</span><span class="nx">locale</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">try</span> <span class="p">{</span>
+      <span class="c1">// Dynamic import for code splitting</span>
+      <span class="kd">const</span> <span class="nx">translations</span> <span class="o">=</span> <span class="k">await</span> <span class="k">import</span><span class="p">(</span><span class="s2">`./locales/</span><span class="p">${</span><span class="nx">locale</span><span class="p">}</span><span class="s2">.js`</span><span class="p">);</span>
+
+      <span class="c1">// Update i18n instance</span>
+      <span class="k">if</span> <span class="p">(</span><span class="nb">window</span><span class="p">.</span><span class="nx">i18n</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nb">window</span><span class="p">.</span><span class="nx">i18n</span><span class="p">.</span><span class="nx">setLocale</span><span class="p">(</span><span class="nx">locale</span><span class="p">);</span>
+        <span class="nb">window</span><span class="p">.</span><span class="nx">i18n</span><span class="p">.</span><span class="nx">translations</span><span class="p">.</span><span class="kd">set</span><span class="p">(</span><span class="nx">locale</span><span class="p">,</span> <span class="nx">translations</span><span class="p">.</span><span class="k">default</span><span class="p">);</span>
+      <span class="p">}</span>
+
+      <span class="c1">// Trigger re-render</span>
+      <span class="k">this</span><span class="p">.</span><span class="nx">notifyListeners</span><span class="p">();</span>
+    <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="s2">`Failed to load translations for </span><span class="p">${</span><span class="nx">locale</span><span class="p">}</span><span class="s2">:`</span><span class="p">,</span> <span class="nx">error</span><span class="p">);</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+
+  <span class="nx">subscribe</span><span class="p">(</span><span class="nx">listener</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">listeners</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="nx">listener</span><span class="p">);</span>
+    <span class="k">return</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="k">this</span><span class="p">.</span><span class="nx">listeners</span><span class="p">.</span><span class="k">delete</span><span class="p">(</span><span class="nx">listener</span><span class="p">);</span>
+  <span class="p">}</span>
+
+  <span class="nx">notifyListeners</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">listeners</span><span class="p">.</span><span class="nx">forEach</span><span class="p">((</span><span class="nx">listener</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">listener</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">currentLocale</span><span class="p">));</span>
+  <span class="p">}</span>
+
+  <span class="nx">initializeSwitcher</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">setLocale</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">currentLocale</span><span class="p">);</span>
+  <span class="p">}</span>
+
+  <span class="nx">getCurrentLocale</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">currentLocale</span><span class="p">;</span>
+  <span class="p">}</span>
+
+  <span class="nx">getSupportedLocales</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">supportedLocales</span><span class="p">;</span>
+  <span class="p">}</span>
+
+  <span class="c1">// React component for language switcher</span>
+  <span class="nx">renderSwitcher</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="s2">`
+      &lt;div class="language-switcher"&gt;
+        &lt;button class="current-locale" aria-haspopup="true" aria-expanded="false"&gt;
+          </span><span class="p">${</span>
+            <span class="k">this</span><span class="p">.</span><span class="nx">supportedLocales</span><span class="p">.</span><span class="nx">find</span><span class="p">((</span><span class="nx">l</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">l</span><span class="p">.</span><span class="nx">code</span> <span class="o">===</span> <span class="k">this</span><span class="p">.</span><span class="nx">currentLocale</span><span class="p">)</span>
+              <span class="p">?.</span><span class="nx">flag</span>
+          <span class="p">}</span><span class="s2">
+          </span><span class="p">${</span>
+            <span class="k">this</span><span class="p">.</span><span class="nx">supportedLocales</span><span class="p">.</span><span class="nx">find</span><span class="p">((</span><span class="nx">l</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">l</span><span class="p">.</span><span class="nx">code</span> <span class="o">===</span> <span class="k">this</span><span class="p">.</span><span class="nx">currentLocale</span><span class="p">)</span>
+              <span class="p">?.</span><span class="nx">name</span>
+          <span class="p">}</span><span class="s2">
+        &lt;/button&gt;
+        &lt;ul class="locale-dropdown" role="menu"&gt;
+          </span><span class="p">${</span><span class="k">this</span><span class="p">.</span><span class="nx">supportedLocales</span>
+            <span class="p">.</span><span class="nx">map</span><span class="p">(</span>
+              <span class="p">(</span><span class="nx">locale</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="s2">`
+            &lt;li role="none"&gt;
+              &lt;button 
+                role="menuitem" 
+                class="locale-option </span><span class="p">${</span>
+                  <span class="nx">locale</span><span class="p">.</span><span class="nx">code</span> <span class="o">===</span> <span class="k">this</span><span class="p">.</span><span class="nx">currentLocale</span> <span class="p">?</span> <span class="dl">"</span><span class="s2">active</span><span class="dl">"</span> <span class="p">:</span> <span class="dl">""</span>
+                <span class="p">}</span><span class="s2">"
+                data-locale="</span><span class="p">${</span><span class="nx">locale</span><span class="p">.</span><span class="nx">code</span><span class="p">}</span><span class="s2">"
+              &gt;
+                </span><span class="p">${</span><span class="nx">locale</span><span class="p">.</span><span class="nx">flag</span><span class="p">}</span><span class="s2"> </span><span class="p">${</span><span class="nx">locale</span><span class="p">.</span><span class="nx">name</span><span class="p">}</span><span class="s2">
+              &lt;/button&gt;
+            &lt;/li&gt;
+          `</span>
+            <span class="p">)</span>
+            <span class="p">.</span><span class="nx">join</span><span class="p">(</span><span class="dl">""</span><span class="p">)}</span><span class="s2">
+        &lt;/ul&gt;
+      &lt;/div&gt;
+    `</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// React component</span>
+<span class="kd">function</span> <span class="nx">LanguageSwitcherComponent</span><span class="p">()</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="p">[</span><span class="nx">currentLocale</span><span class="p">,</span> <span class="nx">setCurrentLocale</span><span class="p">]</span> <span class="o">=</span> <span class="nx">useState</span><span class="p">(</span>
+    <span class="nx">switcher</span><span class="p">.</span><span class="nx">getCurrentLocale</span><span class="p">()</span>
+  <span class="p">);</span>
+  <span class="kd">const</span> <span class="p">[</span><span class="nx">isOpen</span><span class="p">,</span> <span class="nx">setIsOpen</span><span class="p">]</span> <span class="o">=</span> <span class="nx">useState</span><span class="p">(</span><span class="kc">false</span><span class="p">);</span>
+
+  <span class="nx">useEffect</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="nx">unsubscribe</span> <span class="o">=</span> <span class="nx">switcher</span><span class="p">.</span><span class="nx">subscribe</span><span class="p">(</span><span class="nx">setCurrentLocale</span><span class="p">);</span>
+    <span class="k">return</span> <span class="nx">unsubscribe</span><span class="p">;</span>
+  <span class="p">},</span> <span class="p">[]);</span>
+
+  <span class="kd">const</span> <span class="nx">handleLocaleChange</span> <span class="o">=</span> <span class="p">(</span><span class="nx">locale</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="nx">switcher</span><span class="p">.</span><span class="nx">setLocale</span><span class="p">(</span><span class="nx">locale</span><span class="p">);</span>
+    <span class="nx">setIsOpen</span><span class="p">(</span><span class="kc">false</span><span class="p">);</span>
+  <span class="p">};</span>
+
+  <span class="kd">const</span> <span class="nx">currentLocaleInfo</span> <span class="o">=</span> <span class="nx">switcher</span><span class="p">.</span><span class="nx">supportedLocales</span><span class="p">.</span><span class="nx">find</span><span class="p">(</span>
+    <span class="p">(</span><span class="nx">l</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">l</span><span class="p">.</span><span class="nx">code</span> <span class="o">===</span> <span class="nx">currentLocale</span>
+  <span class="p">);</span>
+
+  <span class="k">return</span> <span class="p">(</span>
+    <span class="o">&lt;</span><span class="nx">div</span> <span class="nx">className</span><span class="o">=</span><span class="dl">"</span><span class="s2">language-switcher</span><span class="dl">"</span><span class="o">&gt;</span>
+      <span class="o">&lt;</span><span class="nx">button</span>
+        <span class="nx">className</span><span class="o">=</span><span class="dl">"</span><span class="s2">current-locale</span><span class="dl">"</span>
+        <span class="nx">onClick</span><span class="o">=</span><span class="p">{()</span> <span class="o">=&gt;</span> <span class="nx">setIsOpen</span><span class="p">(</span><span class="o">!</span><span class="nx">isOpen</span><span class="p">)}</span>
+        <span class="nx">aria</span><span class="o">-</span><span class="nx">haspopup</span><span class="o">=</span><span class="dl">"</span><span class="s2">true</span><span class="dl">"</span>
+        <span class="nx">aria</span><span class="o">-</span><span class="nx">expanded</span><span class="o">=</span><span class="p">{</span><span class="nx">isOpen</span><span class="p">}</span>
+      <span class="o">&gt;</span>
+        <span class="p">{</span><span class="nx">currentLocaleInfo</span><span class="p">?.</span><span class="nx">flag</span><span class="p">}</span> <span class="p">{</span><span class="nx">currentLocaleInfo</span><span class="p">?.</span><span class="nx">name</span><span class="p">}</span>
+      <span class="o">&lt;</span><span class="sr">/button</span><span class="err">&gt;
+</span>
+      <span class="p">{</span><span class="nx">isOpen</span> <span class="o">&amp;&amp;</span> <span class="p">(</span>
+        <span class="o">&lt;</span><span class="nx">ul</span> <span class="nx">className</span><span class="o">=</span><span class="dl">"</span><span class="s2">locale-dropdown</span><span class="dl">"</span> <span class="nx">role</span><span class="o">=</span><span class="dl">"</span><span class="s2">menu</span><span class="dl">"</span><span class="o">&gt;</span>
+          <span class="p">{</span><span class="nx">switcher</span><span class="p">.</span><span class="nx">supportedLocales</span><span class="p">.</span><span class="nx">map</span><span class="p">((</span><span class="nx">locale</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">(</span>
+            <span class="o">&lt;</span><span class="nx">li</span> <span class="nx">key</span><span class="o">=</span><span class="p">{</span><span class="nx">locale</span><span class="p">.</span><span class="nx">code</span><span class="p">}</span> <span class="nx">role</span><span class="o">=</span><span class="dl">"</span><span class="s2">none</span><span class="dl">"</span><span class="o">&gt;</span>
+              <span class="o">&lt;</span><span class="nx">button</span>
+                <span class="nx">role</span><span class="o">=</span><span class="dl">"</span><span class="s2">menuitem</span><span class="dl">"</span>
+                <span class="nx">className</span><span class="o">=</span><span class="p">{</span><span class="s2">`locale-option </span><span class="p">${</span>
+                  <span class="nx">locale</span><span class="p">.</span><span class="nx">code</span> <span class="o">===</span> <span class="nx">currentLocale</span> <span class="p">?</span> <span class="dl">"</span><span class="s2">active</span><span class="dl">"</span> <span class="p">:</span> <span class="dl">""</span>
+                <span class="p">}</span><span class="s2">`</span><span class="p">}</span>
+                <span class="nx">onClick</span><span class="o">=</span><span class="p">{()</span> <span class="o">=&gt;</span> <span class="nx">handleLocaleChange</span><span class="p">(</span><span class="nx">locale</span><span class="p">.</span><span class="nx">code</span><span class="p">)}</span>
+              <span class="o">&gt;</span>
+                <span class="p">{</span><span class="nx">locale</span><span class="p">.</span><span class="nx">flag</span><span class="p">}</span> <span class="p">{</span><span class="nx">locale</span><span class="p">.</span><span class="nx">name</span><span class="p">}</span>
+              <span class="o">&lt;</span><span class="sr">/button</span><span class="err">&gt;
+</span>            <span class="o">&lt;</span><span class="sr">/li</span><span class="err">&gt;
+</span>          <span class="p">))}</span>
+        <span class="o">&lt;</span><span class="sr">/ul</span><span class="err">&gt;
+</span>      <span class="p">)}</span>
+    <span class="o">&lt;</span><span class="sr">/div</span><span class="err">&gt;
+</span>  <span class="p">);</span>
+<span class="p">}</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<h2 id="i18n-best-practices">i18n Best Practices</h2>
+
+<h3 id="translation-management">Translation Management</h3>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+</pre></td><td class="rouge-code"><pre><span class="c1">// Translation structure</span>
+<span class="kd">const</span> <span class="nx">translations</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="na">en</span><span class="p">:</span> <span class="p">{</span>
+    <span class="na">common</span><span class="p">:</span> <span class="p">{</span>
+      <span class="na">save</span><span class="p">:</span> <span class="dl">"</span><span class="s2">Save</span><span class="dl">"</span><span class="p">,</span>
+      <span class="na">cancel</span><span class="p">:</span> <span class="dl">"</span><span class="s2">Cancel</span><span class="dl">"</span><span class="p">,</span>
+      <span class="na">delete</span><span class="p">:</span> <span class="dl">"</span><span class="s2">Delete</span><span class="dl">"</span><span class="p">,</span>
+      <span class="na">edit</span><span class="p">:</span> <span class="dl">"</span><span class="s2">Edit</span><span class="dl">"</span><span class="p">,</span>
+    <span class="p">},</span>
+    <span class="na">errors</span><span class="p">:</span> <span class="p">{</span>
+      <span class="na">required</span><span class="p">:</span> <span class="dl">"</span><span class="s2">This field is required</span><span class="dl">"</span><span class="p">,</span>
+      <span class="na">invalid</span><span class="p">:</span> <span class="dl">"</span><span class="s2">Invalid value</span><span class="dl">"</span><span class="p">,</span>
+      <span class="na">network</span><span class="p">:</span> <span class="dl">"</span><span class="s2">Network error occurred</span><span class="dl">"</span><span class="p">,</span>
+    <span class="p">},</span>
+    <span class="na">messages</span><span class="p">:</span> <span class="p">{</span>
+      <span class="na">saved</span><span class="p">:</span> <span class="dl">"</span><span class="s2">Changes saved successfully</span><span class="dl">"</span><span class="p">,</span>
+      <span class="na">deleted</span><span class="p">:</span> <span class="dl">"</span><span class="s2">Item deleted successfully</span><span class="dl">"</span><span class="p">,</span>
+    <span class="p">},</span>
+  <span class="p">},</span>
+  <span class="na">es</span><span class="p">:</span> <span class="p">{</span>
+    <span class="na">common</span><span class="p">:</span> <span class="p">{</span>
+      <span class="na">save</span><span class="p">:</span> <span class="dl">"</span><span class="s2">Guardar</span><span class="dl">"</span><span class="p">,</span>
+      <span class="na">cancel</span><span class="p">:</span> <span class="dl">"</span><span class="s2">Cancelar</span><span class="dl">"</span><span class="p">,</span>
+      <span class="na">delete</span><span class="p">:</span> <span class="dl">"</span><span class="s2">Eliminar</span><span class="dl">"</span><span class="p">,</span>
+      <span class="na">edit</span><span class="p">:</span> <span class="dl">"</span><span class="s2">Editar</span><span class="dl">"</span><span class="p">,</span>
+    <span class="p">},</span>
+    <span class="na">errors</span><span class="p">:</span> <span class="p">{</span>
+      <span class="na">required</span><span class="p">:</span> <span class="dl">"</span><span class="s2">Este campo es obligatorio</span><span class="dl">"</span><span class="p">,</span>
+      <span class="na">invalid</span><span class="p">:</span> <span class="dl">"</span><span class="s2">Valor inválido</span><span class="dl">"</span><span class="p">,</span>
+      <span class="na">network</span><span class="p">:</span> <span class="dl">"</span><span class="s2">Error de red</span><span class="dl">"</span><span class="p">,</span>
+    <span class="p">},</span>
+    <span class="na">messages</span><span class="p">:</span> <span class="p">{</span>
+      <span class="na">saved</span><span class="p">:</span> <span class="dl">"</span><span class="s2">Cambios guardados exitosamente</span><span class="dl">"</span><span class="p">,</span>
+      <span class="na">deleted</span><span class="p">:</span> <span class="dl">"</span><span class="s2">Elemento eliminado exitosamente</span><span class="dl">"</span><span class="p">,</span>
+    <span class="p">},</span>
+  <span class="p">},</span>
+<span class="p">};</span>
+
+<span class="c1">// Translation key management</span>
+<span class="kd">const</span> <span class="nx">TranslationKeys</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="na">COMMON</span><span class="p">:</span> <span class="p">{</span>
+    <span class="na">SAVE</span><span class="p">:</span> <span class="dl">"</span><span class="s2">common.save</span><span class="dl">"</span><span class="p">,</span>
+    <span class="na">CANCEL</span><span class="p">:</span> <span class="dl">"</span><span class="s2">common.cancel</span><span class="dl">"</span><span class="p">,</span>
+    <span class="na">DELETE</span><span class="p">:</span> <span class="dl">"</span><span class="s2">common.delete</span><span class="dl">"</span><span class="p">,</span>
+    <span class="na">EDIT</span><span class="p">:</span> <span class="dl">"</span><span class="s2">common.edit</span><span class="dl">"</span><span class="p">,</span>
+  <span class="p">},</span>
+  <span class="na">ERRORS</span><span class="p">:</span> <span class="p">{</span>
+    <span class="na">REQUIRED</span><span class="p">:</span> <span class="dl">"</span><span class="s2">errors.required</span><span class="dl">"</span><span class="p">,</span>
+    <span class="na">INVALID</span><span class="p">:</span> <span class="dl">"</span><span class="s2">errors.invalid</span><span class="dl">"</span><span class="p">,</span>
+    <span class="na">NETWORK</span><span class="p">:</span> <span class="dl">"</span><span class="s2">errors.network</span><span class="dl">"</span><span class="p">,</span>
+  <span class="p">},</span>
+  <span class="na">MESSAGES</span><span class="p">:</span> <span class="p">{</span>
+    <span class="na">SAVED</span><span class="p">:</span> <span class="dl">"</span><span class="s2">messages.saved</span><span class="dl">"</span><span class="p">,</span>
+    <span class="na">DELETED</span><span class="p">:</span> <span class="dl">"</span><span class="s2">messages.deleted</span><span class="dl">"</span><span class="p">,</span>
+  <span class="p">},</span>
+<span class="p">};</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<h3 id="performance-optimization">Performance Optimization</h3>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+</pre></td><td class="rouge-code"><pre><span class="c1">// Lazy loading translations</span>
+<span class="kd">class</span> <span class="nx">TranslationLoader</span> <span class="p">{</span>
+  <span class="kd">constructor</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">loadedLocales</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Set</span><span class="p">();</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">loadingPromises</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Map</span><span class="p">();</span>
+  <span class="p">}</span>
+
+  <span class="k">async</span> <span class="nx">loadLocale</span><span class="p">(</span><span class="nx">locale</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">loadedLocales</span><span class="p">.</span><span class="nx">has</span><span class="p">(</span><span class="nx">locale</span><span class="p">))</span> <span class="p">{</span>
+      <span class="k">return</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">loadingPromises</span><span class="p">.</span><span class="nx">has</span><span class="p">(</span><span class="nx">locale</span><span class="p">))</span> <span class="p">{</span>
+      <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">loadingPromises</span><span class="p">.</span><span class="kd">get</span><span class="p">(</span><span class="nx">locale</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="kd">const</span> <span class="nx">loadPromise</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">loadLocaleFile</span><span class="p">(</span><span class="nx">locale</span><span class="p">);</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">loadingPromises</span><span class="p">.</span><span class="kd">set</span><span class="p">(</span><span class="nx">locale</span><span class="p">,</span> <span class="nx">loadPromise</span><span class="p">);</span>
+
+    <span class="k">try</span> <span class="p">{</span>
+      <span class="k">await</span> <span class="nx">loadPromise</span><span class="p">;</span>
+      <span class="k">this</span><span class="p">.</span><span class="nx">loadedLocales</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="nx">locale</span><span class="p">);</span>
+    <span class="p">}</span> <span class="k">finally</span> <span class="p">{</span>
+      <span class="k">this</span><span class="p">.</span><span class="nx">loadingPromises</span><span class="p">.</span><span class="k">delete</span><span class="p">(</span><span class="nx">locale</span><span class="p">);</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+
+  <span class="k">async</span> <span class="nx">loadLocaleFile</span><span class="p">(</span><span class="nx">locale</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="nx">response</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">fetch</span><span class="p">(</span><span class="s2">`/locales/</span><span class="p">${</span><span class="nx">locale</span><span class="p">}</span><span class="s2">.json`</span><span class="p">);</span>
+    <span class="kd">const</span> <span class="nx">translations</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">response</span><span class="p">.</span><span class="nx">json</span><span class="p">();</span>
+
+    <span class="c1">// Store translations</span>
+    <span class="nb">window</span><span class="p">.</span><span class="nx">i18n</span><span class="p">.</span><span class="nx">translations</span><span class="p">.</span><span class="kd">set</span><span class="p">(</span><span class="nx">locale</span><span class="p">,</span> <span class="nx">translations</span><span class="p">);</span>
+  <span class="p">}</span>
+
+  <span class="nx">preloadLocales</span><span class="p">(</span><span class="nx">locales</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nb">Promise</span><span class="p">.</span><span class="nx">all</span><span class="p">(</span><span class="nx">locales</span><span class="p">.</span><span class="nx">map</span><span class="p">((</span><span class="nx">locale</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="k">this</span><span class="p">.</span><span class="nx">loadLocale</span><span class="p">(</span><span class="nx">locale</span><span class="p">)));</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<h2 id="resources">Resources</h2>
+
+<h3 id="documentation">Documentation</h3>
+
+<ul>
+  <li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl">MDN Internationalization</a></li>
+  <li><a href="https://formatjs.io/docs/intl-messageformat/">ICU MessageFormat</a></li>
+  <li><a href="https://formatjs.io/docs/react-intl/">React Intl</a></li>
+  <li><a href="https://www.i18next.com/">i18next</a></li>
+</ul>
+
+<h3 id="tools">Tools</h3>
+
+<ul>
+  <li><a href="https://formatjs.io/">FormatJS</a> - Internationalization library</li>
+  <li><a href="https://www.i18next.com/">i18next</a> - Internationalization framework</li>
+  <li><a href="https://lingui.js.org/">Lingui</a> - Internationalization library</li>
+  <li><a href="https://formatjs.io/docs/react-intl/">React Intl</a> - React internationalization</li>
+</ul>
+
+<h3 id="practice-platforms">Practice Platforms</h3>
+
+<ul>
+  <li><a href="https://github.com/i18next/i18next-http-backend">i18n Testing</a> - Backend for i18next</li>
+  <li><a href="https://formatjs.io/docs/intl-messageformat/">ICU MessageFormat Examples</a></li>
+  <li><a href="https://rtlcss.com/">RTL Testing</a> - RTL CSS testing</li>
+</ul>
+
+<hr />
+
+<p><em>This guide covers essential internationalization concepts for frontend interviews, including practical problems and advanced techniques commonly asked at Big Tech companies.</em></p>
+
+        </div>
+    </article>
+</div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Study Resources</h3>
+                    <p>Comprehensive collection of frontend interview questions, coding challenges, and system design problems.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Progress Tracking</h3>
+                    <p>Monitor your learning journey with detailed progress indicators and completion status.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Big Tech Ready</h3>
+                    <p>Curated content specifically designed for interviews at Google, Meta, Amazon, Apple, and Netflix.</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Frontend Interview Hub. Built for aspiring frontend engineers.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="/assets/js/main.js"></script>
+</body>
+</html>

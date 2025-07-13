@@ -1,0 +1,1159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sliding Window Maximum | Frontend Interview Preparation Guide</title>
+    <meta name="description" content="Comprehensive frontend interview materials for Big Tech companies">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="/assets/css/main.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <header>
+        <nav class="container">
+            <div class="logo">Frontend Interview Hub</div>
+            <ul class="nav-links">
+                <li><a href="/">Home</a></li>
+                <li><a href="#progress">Progress</a></li>
+                <li><a href="#knowledge">Knowledge</a></li>
+                <li><a href="https://github.com/nee/interview">GitHub</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <div class="content-container">
+    
+        <nav class="breadcrumb">
+            <ol>
+                <li><a href="/">Home</a></li>
+                
+                
+                
+                    
+                
+                    
+                        
+                        
+                            <li><a href="/leetcode/">Leetcode</a></li>
+                        
+                    
+                
+                    
+                        
+                        
+                            <li><a href="/leetcode/string/">String</a></li>
+                        
+                    
+                
+                    
+                        
+                        
+                            <li><a href="/leetcode/string/problems/">Problems</a></li>
+                        
+                    
+                
+                    
+                        
+                        
+                            <li class="active">Sliding window maximum</li>
+                        
+                    
+                
+            </ol>
+        </nav>
+    
+    
+    <article class="content">
+        
+            <header class="content-header">
+                <h1 class="content-title">Sliding Window Maximum</h1>
+                
+                
+                    <div class="content-meta">
+                        <span class="difficulty difficulty-hard">Hard</span>
+                        
+                            <span class="category">String</span>
+                        
+                        
+                            <div class="tags">
+                                
+                                    <span class="tag">String</span>
+                                
+                                    <span class="tag">Sliding Window</span>
+                                
+                            </div>
+                        
+                    </div>
+                
+            </header>
+        
+        
+        <div class="content-body">
+            <h1 id="sliding-window-maximum">Sliding Window Maximum</h1>
+
+<p><strong>LeetCode Problem # * 239. Sliding Window Maximum</strong></p>
+
+<h2 id="problem-description">Problem Description</h2>
+
+<p>LeetCode problem solution with multiple approaches and explanations.</p>
+
+<h2 id="solutions">Solutions</h2>
+
+<p>/**</p>
+<ul>
+  <li>
+    <ol>
+      <li>Sliding Window Maximum</li>
+    </ol>
+  </li>
+  <li></li>
+  <li>You are given an array of integers nums, there is a sliding window of size k which is moving</li>
+  <li>from the very left of the array to the very right. You can only see the k numbers in the window.</li>
+  <li>Each time the sliding window moves right by one position.</li>
+  <li></li>
+  <li>Return the max sliding window.</li>
+  <li></li>
+  <li>Example 1:</li>
+  <li>Input: nums = [1,3,-1,-3,5,3,6,7], k = 3</li>
+  <li>Output: [3,3,5,5,6,7]</li>
+  <li>Explanation:</li>
+  <li>Window position                Max</li>
+  <li>
+    <hr />
+  </li>
+  <li>[1  3  -1] -3  5  3  6  7       3</li>
+  <li>1 [3  -1  -3] 5  3  6  7       3</li>
+  <li>1  3 [-1  -3  5] 3  6  7       5</li>
+  <li>1  3  -1 [-3  5  3] 6  7       5</li>
+  <li>1  3  -1  -3 [5  3  6] 7       6</li>
+  <li>1  3  -1  -3  5 [3  6  7]      7</li>
+  <li></li>
+  <li>Example 2:</li>
+  <li>Input: nums = [1], k = 1</li>
+  <li>Output: [1]</li>
+  <li></li>
+  <li>Constraints:</li>
+  <li>
+    <ul>
+      <li>1 &lt;= nums.length &lt;= 10^5</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>-10^4 &lt;= nums[i] &lt;= 10^4</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>1 &lt;= k &lt;= nums.length
+ */</li>
+    </ul>
+  </li>
+</ul>
+
+<p>// Solution 1: Brute Force (Check each window)
+// Time: O(n*k), Space: O(1)
+export function maxSlidingWindow1(nums: number[], k: number): number[] {
+    const result: number[] = [];</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+</pre></td><td class="rouge-code"><pre>for (let i = 0; i &lt;= nums.length - k; i++) {
+    let maxVal = nums[i];
+    for (let j = i + 1; j &lt; i + k; j++) {
+        maxVal = Math.max(maxVal, nums[j]);
+    }
+    result.push(maxVal);
+}
+
+return result; }
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>// Solution 2: Deque (Double-ended queue) - Optimal
+// Time: O(n), Space: O(k)
+export function maxSlidingWindow2(nums: number[], k: number): number[] {
+    const result: number[] = [];
+    const deque: number[] = []; // Store indices</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+</pre></td><td class="rouge-code"><pre>for (let i = 0; i &lt; nums.length; i++) {
+    // Remove indices that are out of current window
+    while (deque.length &gt; 0 &amp;&amp; deque[0] &lt;= i - k) {
+        deque.shift();
+    }
+    
+    // Remove indices of elements smaller than current element
+    while (deque.length &gt; 0 &amp;&amp; nums[deque[deque.length - 1]] &lt;= nums[i]) {
+        deque.pop();
+    }
+    
+    // Add current index
+    deque.push(i);
+    
+    // Add maximum to result when window is complete
+    if (i &gt;= k - 1) {
+        result.push(nums[deque[0]]);
+    }
+}
+
+return result; }
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>// Solution 3: Segment Tree
+// Time: O(n log k), Space: O(k)
+export function maxSlidingWindow3(nums: number[], k: number): number[] {
+    class SegmentTree {
+        tree: number[];
+        n: number;</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+</pre></td><td class="rouge-code"><pre>    constructor(size: number) {
+        this.n = size;
+        this.tree = new Array(4 * size).fill(-Infinity);
+    }
+    
+    update(node: number, start: number, end: number, idx: number, val: number): void {
+        if (start === end) {
+            this.tree[node] = val;
+        } else {
+            const mid = Math.floor((start + end) / 2);
+            if (idx &lt;= mid) {
+                this.update(2 * node, start, mid, idx, val);
+            } else {
+                this.update(2 * node + 1, mid + 1, end, idx, val);
+            }
+            this.tree[node] = Math.max(this.tree[2 * node], this.tree[2 * node + 1]);
+        }
+    }
+    
+    query(node: number, start: number, end: number, l: number, r: number): number {
+        if (r &lt; start || end &lt; l) return -Infinity;
+        if (l &lt;= start &amp;&amp; end &lt;= r) return this.tree[node];
+        
+        const mid = Math.floor((start + end) / 2);
+        const leftMax = this.query(2 * node, start, mid, l, r);
+        const rightMax = this.query(2 * node + 1, mid + 1, end, l, r);
+        return Math.max(leftMax, rightMax);
+    }
+    
+    updateValue(idx: number, val: number): void {
+        this.update(1, 0, this.n - 1, idx, val);
+    }
+    
+    rangeMax(l: number, r: number): number {
+        return this.query(1, 0, this.n - 1, l, r);
+    }
+}
+
+const result: number[] = [];
+const segTree = new SegmentTree(k);
+
+// Initialize first window
+for (let i = 0; i &lt; k; i++) {
+    segTree.updateValue(i, nums[i]);
+}
+result.push(segTree.rangeMax(0, k - 1));
+
+// Slide the window
+for (let i = k; i &lt; nums.length; i++) {
+    const removeIdx = (i - k) % k;
+    segTree.updateValue(removeIdx, nums[i]);
+    result.push(segTree.rangeMax(0, k - 1));
+}
+
+return result; }
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>// Solution 4: Heap (Priority Queue)
+// Time: O(n log k), Space: O(k)
+export function maxSlidingWindow4(nums: number[], k: number): number[] {
+    class MaxHeap {
+        heap: [number, number][]; // [value, index]</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+</pre></td><td class="rouge-code"><pre>    constructor() {
+        this.heap = [];
+    }
+    
+    push(val: number, idx: number): void {
+        this.heap.push([val, idx]);
+        this.heapifyUp(this.heap.length - 1);
+    }
+    
+    pop(): [number, number] | undefined {
+        if (this.heap.length === 0) return undefined;
+        
+        const max = this.heap[0];
+        const last = this.heap.pop()!;
+        
+        if (this.heap.length &gt; 0) {
+            this.heap[0] = last;
+            this.heapifyDown(0);
+        }
+        
+        return max;
+    }
+    
+    peek(): [number, number] | undefined {
+        return this.heap.length &gt; 0 ? this.heap[0] : undefined;
+    }
+    
+    private heapifyUp(idx: number): void {
+        while (idx &gt; 0) {
+            const parentIdx = Math.floor((idx - 1) / 2);
+            if (this.heap[parentIdx][0] &gt;= this.heap[idx][0]) break;
+            
+            [this.heap[parentIdx], this.heap[idx]] = [this.heap[idx], this.heap[parentIdx]];
+            idx = parentIdx;
+        }
+    }
+    
+    private heapifyDown(idx: number): void {
+        while (true) {
+            let maxIdx = idx;
+            const leftChild = 2 * idx + 1;
+            const rightChild = 2 * idx + 2;
+            
+            if (leftChild &lt; this.heap.length &amp;&amp; this.heap[leftChild][0] &gt; this.heap[maxIdx][0]) {
+                maxIdx = leftChild;
+            }
+            
+            if (rightChild &lt; this.heap.length &amp;&amp; this.heap[rightChild][0] &gt; this.heap[maxIdx][0]) {
+                maxIdx = rightChild;
+            }
+            
+            if (maxIdx === idx) break;
+            
+            [this.heap[idx], this.heap[maxIdx]] = [this.heap[maxIdx], this.heap[idx]];
+            idx = maxIdx;
+        }
+    }
+}
+
+const result: number[] = [];
+const heap = new MaxHeap();
+
+for (let i = 0; i &lt; nums.length; i++) {
+    heap.push(nums[i], i);
+    
+    // Remove elements outside current window
+    while (heap.peek() &amp;&amp; heap.peek()![1] &lt;= i - k) {
+        heap.pop();
+    }
+    
+    // Add maximum to result when window is complete
+    if (i &gt;= k - 1) {
+        result.push(heap.peek()![0]);
+    }
+}
+
+return result; }
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>// Solution 5: Divide and Conquer with Sparse Table
+// Time: O(n log n), Space: O(n log n)
+export function maxSlidingWindow5(nums: number[], k: number): number[] {
+    const n = nums.length;
+    const logN = Math.floor(Math.log2(n)) + 1;</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+</pre></td><td class="rouge-code"><pre>// Build sparse table
+const st = Array(n).fill(null).map(() =&gt; Array(logN).fill(0));
+
+// Initialize for length 1
+for (let i = 0; i &lt; n; i++) {
+    st[i][0] = nums[i];
+}
+
+// Build sparse table
+for (let j = 1; j &lt; logN; j++) {
+    for (let i = 0; i + (1 &lt;&lt; j) &lt;= n; i++) {
+        st[i][j] = Math.max(st[i][j - 1], st[i + (1 &lt;&lt; (j - 1))][j - 1]);
+    }
+}
+
+function rangeMax(l: number, r: number): number {
+    const length = r - l + 1;
+    const k = Math.floor(Math.log2(length));
+    return Math.max(st[l][k], st[r - (1 &lt;&lt; k) + 1][k]);
+}
+
+const result: number[] = [];
+for (let i = 0; i &lt;= n - k; i++) {
+    result.push(rangeMax(i, i + k - 1));
+}
+
+return result; }
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>// Solution 6: Two Stacks Approach
+// Time: O(n), Space: O(k)
+export function maxSlidingWindow6(nums: number[], k: number): number[] {
+    const result: number[] = [];
+    const maxStack: number[] = [];
+    const minStack: number[] = [];</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+</pre></td><td class="rouge-code"><pre>let left = 0;
+let right = 0;
+
+function pushRight(): void {
+    const val = nums[right];
+    while (maxStack.length &gt; 0 &amp;&amp; maxStack[maxStack.length - 1] &lt; val) {
+        maxStack.pop();
+    }
+    maxStack.push(val);
+    right++;
+}
+
+function popLeft(): void {
+    const val = nums[left];
+    if (maxStack.length &gt; 0 &amp;&amp; maxStack[0] === val) {
+        maxStack.shift();
+    }
+    left++;
+}
+
+function getMax(): number {
+    return maxStack.length &gt; 0 ? maxStack[0] : -Infinity;
+}
+
+// Initialize first window
+while (right &lt; k) {
+    pushRight();
+}
+result.push(getMax());
+
+// Slide window
+while (right &lt; nums.length) {
+    pushRight();
+    popLeft();
+    result.push(getMax());
+}
+
+return result; }
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>// Test cases
+export function testMaxSlidingWindow() {
+    console.log(“Testing Sliding Window Maximum:”);</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+</pre></td><td class="rouge-code"><pre>const testCases = [
+    {
+        nums: [1, 3, -1, -3, 5, 3, 6, 7],
+        k: 3,
+        expected: [3, 3, 5, 5, 6, 7]
+    },
+    {
+        nums: [1],
+        k: 1,
+        expected: [1]
+    },
+    {
+        nums: [1, -1],
+        k: 1,
+        expected: [1, -1]
+    },
+    {
+        nums: [9, 11],
+        k: 2,
+        expected: [11]
+    },
+    {
+        nums: [4, -2, -1, 3, 1, 2],
+        k: 2,
+        expected: [4, -1, 3, 3, 2]
+    }
+];
+
+const solutions = [
+    { name: "Brute Force", fn: maxSlidingWindow1 },
+    { name: "Deque (Optimal)", fn: maxSlidingWindow2 },
+    { name: "Segment Tree", fn: maxSlidingWindow3 },
+    { name: "Heap", fn: maxSlidingWindow4 },
+    { name: "Sparse Table", fn: maxSlidingWindow5 },
+    { name: "Two Stacks", fn: maxSlidingWindow6 }
+];
+
+solutions.forEach(solution =&gt; {
+    console.log(`\n${solution.name}:`);
+    testCases.forEach((test, i) =&gt; {
+        const result = solution.fn([...test.nums], test.k);
+        const passed = JSON.stringify(result) === JSON.stringify(test.expected);
+        console.log(`  Test ${i + 1}: ${passed ? 'PASS' : 'FAIL'}`);
+        if (!passed) {
+            console.log(`    Input: nums=${JSON.stringify(test.nums)}, k=${test.k}`);
+            console.log(`    Expected: ${JSON.stringify(test.expected)}`);
+            console.log(`    Got: ${JSON.stringify(result)}`);
+        }
+    });
+}); }
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>/**</p>
+<ul>
+  <li>Key Insights:</li>
+  <li></li>
+  <li>
+    <ol>
+      <li><strong>Problem Pattern</strong>:</li>
+    </ol>
+  </li>
+  <li>
+    <ul>
+      <li>Classic sliding window with range maximum query</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Need to efficiently track maximum in moving window</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Window size is fixed, slides one position at a time</li>
+    </ul>
+  </li>
+  <li></li>
+  <li>
+    <ol>
+      <li><strong>Deque Solution (Optimal)</strong>:</li>
+    </ol>
+  </li>
+  <li>
+    <ul>
+      <li>Maintain decreasing order of elements in deque</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Store indices, not values (for window boundary checking)</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Front of deque always contains maximum of current window</li>
+    </ul>
+  </li>
+  <li></li>
+  <li>
+    <ol>
+      <li><strong>Deque Invariants</strong>:</li>
+    </ol>
+  </li>
+  <li>
+    <ul>
+      <li>Indices are in increasing order</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Values are in decreasing order</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Remove indices outside current window from front</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Remove smaller elements from back before adding new element</li>
+    </ul>
+  </li>
+  <li></li>
+  <li>
+    <ol>
+      <li><strong>Time Complexity Analysis</strong>:</li>
+    </ol>
+  </li>
+  <li>
+    <ul>
+      <li>Brute Force: O(n*k) - check each window</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Deque: O(n) - each element added/removed once</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Heap: O(n log k) - heap operations</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Segment Tree: O(n log k) - range queries</li>
+    </ul>
+  </li>
+  <li></li>
+  <li>
+    <ol>
+      <li><strong>Space Complexity</strong>:</li>
+    </ol>
+  </li>
+  <li>
+    <ul>
+      <li>Deque: O(k) - at most k elements</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Heap: O(k) - window size elements</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Segment Tree: O(k) - tree structure</li>
+    </ul>
+  </li>
+  <li></li>
+  <li>
+    <ol>
+      <li><strong>Why Deque Works</strong>:</li>
+    </ol>
+  </li>
+  <li>
+    <ul>
+      <li>Smaller elements can never be maximum while larger element exists</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Remove obsolete elements to maintain useful candidates</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Amortized O(1) per element due to single add/remove</li>
+    </ul>
+  </li>
+  <li></li>
+  <li>
+    <ol>
+      <li><strong>Interview Strategy</strong>:</li>
+    </ol>
+  </li>
+  <li>
+    <ul>
+      <li>Start with brute force explanation</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Identify inefficiency (recalculating max)</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Introduce deque for efficient tracking</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Explain deque invariants clearly</li>
+    </ul>
+  </li>
+  <li></li>
+  <li>
+    <ol>
+      <li><strong>Edge Cases</strong>:</li>
+    </ol>
+  </li>
+  <li>
+    <ul>
+      <li>k = 1 (each element is its own window)</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>k = n (entire array is one window)</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>All elements equal</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Strictly increasing/decreasing arrays</li>
+    </ul>
+  </li>
+  <li></li>
+  <li>
+    <ol>
+      <li><strong>Common Mistakes</strong>:</li>
+    </ol>
+  </li>
+  <li>
+    <ul>
+      <li>Storing values instead of indices in deque</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Not removing out-of-window elements</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Incorrect deque maintenance order</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Off-by-one errors in window boundaries</li>
+    </ul>
+  </li>
+  <li></li>
+  <li>
+    <ol>
+      <li><strong>Alternative Data Structures</strong>:</li>
+    </ol>
+  </li>
+  <li>
+    <ul>
+      <li>Heap: Good but O(log k) operations</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Segment Tree: Overkill for this problem</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Sparse Table: Precomputation heavy</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Balanced BST: Complex implementation</li>
+    </ul>
+  </li>
+  <li></li>
+  <li>
+    <ol>
+      <li><strong>Big Tech Variations</strong>:</li>
+    </ol>
+  </li>
+  <li>
+    <ul>
+      <li>Google: Sliding window minimum</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Meta: Moving average/median</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Amazon: K-th largest in sliding window</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Microsoft: Sliding window with different metrics</li>
+    </ul>
+  </li>
+  <li></li>
+  <li>
+    <ol>
+      <li><strong>Follow-up Questions</strong>:</li>
+    </ol>
+  </li>
+  <li>
+    <ul>
+      <li>Find minimum in sliding window</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>K largest elements in sliding window</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Sliding window median</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Variable window size problems</li>
+    </ul>
+  </li>
+  <li></li>
+  <li>
+    <ol>
+      <li><strong>Real-world Applications</strong>:</li>
+    </ol>
+  </li>
+  <li>
+    <ul>
+      <li>Stock price analysis (moving maximum)</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Network monitoring (peak traffic)</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Signal processing (peak detection)</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Game development (high score tracking)</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>System monitoring (resource usage peaks)</li>
+    </ul>
+  </li>
+  <li></li>
+  <li>
+    <ol>
+      <li><strong>Optimization Tips</strong>:</li>
+    </ol>
+  </li>
+  <li>
+    <ul>
+      <li>Use deque instead of custom queue</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Store indices for boundary checking</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Maintain invariants consistently</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Consider amortized analysis for complexity
+ */</li>
+    </ul>
+  </li>
+</ul>
+
+
+        </div>
+    </article>
+</div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Study Resources</h3>
+                    <p>Comprehensive collection of frontend interview questions, coding challenges, and system design problems.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Progress Tracking</h3>
+                    <p>Monitor your learning journey with detailed progress indicators and completion status.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Big Tech Ready</h3>
+                    <p>Curated content specifically designed for interviews at Google, Meta, Amazon, Apple, and Netflix.</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Frontend Interview Hub. Built for aspiring frontend engineers.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="/assets/js/main.js"></script>
+</body>
+</html>

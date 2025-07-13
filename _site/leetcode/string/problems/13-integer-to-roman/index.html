@@ -1,0 +1,1121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Integer to Roman | Frontend Interview Preparation Guide</title>
+    <meta name="description" content="Comprehensive frontend interview materials for Big Tech companies">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="/assets/css/main.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <header>
+        <nav class="container">
+            <div class="logo">Frontend Interview Hub</div>
+            <ul class="nav-links">
+                <li><a href="/">Home</a></li>
+                <li><a href="#progress">Progress</a></li>
+                <li><a href="#knowledge">Knowledge</a></li>
+                <li><a href="https://github.com/nee/interview">GitHub</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <div class="content-container">
+    
+        <nav class="breadcrumb">
+            <ol>
+                <li><a href="/">Home</a></li>
+                
+                
+                
+                    
+                
+                    
+                        
+                        
+                            <li><a href="/leetcode/">Leetcode</a></li>
+                        
+                    
+                
+                    
+                        
+                        
+                            <li><a href="/leetcode/string/">String</a></li>
+                        
+                    
+                
+                    
+                        
+                        
+                            <li><a href="/leetcode/string/problems/">Problems</a></li>
+                        
+                    
+                
+                    
+                        
+                        
+                            <li class="active">Integer to roman</li>
+                        
+                    
+                
+            </ol>
+        </nav>
+    
+    
+    <article class="content">
+        
+            <header class="content-header">
+                <h1 class="content-title">Integer to Roman</h1>
+                
+                
+                    <div class="content-meta">
+                        <span class="difficulty difficulty-easy">Easy</span>
+                        
+                            <span class="category">String</span>
+                        
+                        
+                            <div class="tags">
+                                
+                                    <span class="tag">String</span>
+                                
+                                    <span class="tag">Hash Table</span>
+                                
+                                    <span class="tag">Greedy</span>
+                                
+                            </div>
+                        
+                    </div>
+                
+            </header>
+        
+        
+        <div class="content-body">
+            <h1 id="integer-to-roman">Integer to Roman</h1>
+
+<p><strong>LeetCode Problem # * 12. Integer to Roman</strong></p>
+
+<h2 id="problem-description">Problem Description</h2>
+
+<ul>
+  <li>Roman numerals are represented by seven different symbols: I, V, X, L, C, D and M.  *  * Symbol       Value  * I             1  * V             5</li>
+</ul>
+
+<h2 id="solutions">Solutions</h2>
+
+<p>/**</p>
+<ul>
+  <li>
+    <ol>
+      <li>Integer to Roman
+ *</li>
+    </ol>
+  </li>
+  <li>Problem:</li>
+  <li>Roman numerals are represented by seven different symbols: I, V, X, L, C, D and M.
+ *</li>
+  <li>Symbol       Value</li>
+  <li>I             1</li>
+  <li>V             5</li>
+  <li>X             10</li>
+  <li>L             50</li>
+  <li>C             100</li>
+  <li>D             500</li>
+  <li>M             1000
+ *</li>
+  <li>For example, 2 is written as II in Roman numeral, just two one’s added together.</li>
+  <li>12 is written as XII, which is simply X + II. The number 27 is written as XXVII,</li>
+  <li>which is XX + V + II.
+ *</li>
+  <li>Roman numerals are usually written largest to smallest from left to right. However,</li>
+  <li>the numeral for four is not IIII. Instead, the number four is written as IV. Because</li>
+  <li>the one is before the five we subtract it making four. The same principle applies to</li>
+  <li>the number nine, which is written as IX. There are six instances where subtraction is used:
+ *</li>
+  <li>I can be placed before V (5) and X (10) to make 4 and 9.</li>
+  <li>X can be placed before L (50) and C (100) to make 40 and 90.</li>
+  <li>C can be placed before D (500) and M (1000) to make 400 and 900.
+ *</li>
+  <li>Given an integer, convert it to a roman numeral.
+ *</li>
+  <li>Example:</li>
+  <li>Input: num = 3</li>
+  <li>Output: “III”
+ *</li>
+  <li>Input: num = 58</li>
+  <li>Output: “LVIII”
+ *</li>
+  <li>Input: num = 1994</li>
+  <li>Output: “MCMXCIV”
+ *</li>
+  <li>LeetCode: https://leetcode.com/problems/integer-to-roman/
+ */</li>
+</ul>
+
+<p>/**</p>
+<ul>
+  <li>Solution 1: Greedy Algorithm (Optimal)
+ *</li>
+  <li>Approach:</li>
+  <li>
+    <ul>
+      <li>Use predefined values and symbols in descending order</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Greedily subtract largest possible value
+ *</li>
+    </ul>
+  </li>
+  <li>Time Complexity: O(1) - fixed number of iterations</li>
+  <li>Space Complexity: O(1)
+ */
+function intToRoman(num: number): string {
+  const values = [1000, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1];
+  const symbols = [
+ “M”,
+ “CM”,
+ “D”,
+ “CD”,
+ “C”,
+ “XC”,
+ “L”,
+ “XL”,
+ “X”,
+ “IX”,
+ “V”,
+ “IV”,
+ “I”,
+  ];</li>
+</ul>
+
+<p>let result = “”;
+  let remaining = num;</p>
+
+<p>for (let i = 0; i &lt; values.length &amp;&amp; remaining &gt; 0; i++) {
+    while (remaining &gt;= values[i]) {
+      result += symbols[i];
+      remaining -= values[i];
+    }
+  }</p>
+
+<p>return result;
+}</p>
+
+<p>/**</p>
+<ul>
+  <li>Solution 2: Using Map
+ *</li>
+  <li>Approach:</li>
+  <li>
+    <ul>
+      <li>Use Map to store value-symbol pairs</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Same greedy logic
+ *</li>
+    </ul>
+  </li>
+  <li>Time Complexity: O(1)</li>
+  <li>Space Complexity: O(1)
+ */
+function intToRomanMap(num: number): string {
+  const romanMap = new Map&lt;number, string&gt;([
+ [1000, “M”],
+ [900, “CM”],
+ [500, “D”],
+ [400, “CD”],
+ [100, “C”],
+ [90, “XC”],
+ [50, “L”],
+ [40, “XL”],
+ [10, “X”],
+ [9, “IX”],
+ [5, “V”],
+ [4, “IV”],
+ [1, “I”],
+  ]);</li>
+</ul>
+
+<p>let result = “”;
+  let remaining = num;</p>
+
+<p>for (const [value, symbol] of romanMap) {
+    while (remaining &gt;= value) {
+      result += symbol;
+      remaining -= value;
+    }
+  }</p>
+
+<p>return result;
+}</p>
+
+<p>/**</p>
+<ul>
+  <li>Solution 3: Using Object
+ *</li>
+  <li>Approach:</li>
+  <li>
+    <ul>
+      <li>Use object for value-symbol mapping</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>More familiar for JavaScript developers
+ *</li>
+    </ul>
+  </li>
+  <li>Time Complexity: O(1)</li>
+  <li>Space Complexity: O(1)
+ */
+function intToRomanObject(num: number): string {
+  const romanValues: { [key: number]: string } = {
+ 1000: “M”,
+ 900: “CM”,
+ 500: “D”,
+ 400: “CD”,
+ 100: “C”,
+ 90: “XC”,
+ 50: “L”,
+ 40: “XL”,
+ 10: “X”,
+ 9: “IX”,
+ 5: “V”,
+ 4: “IV”,
+ 1: “I”,
+  };</li>
+</ul>
+
+<p>let result = “”;
+  let remaining = num;</p>
+
+<p>const values = Object.keys(romanValues)
+    .map(Number)
+    .sort((a, b) =&gt; b - a);</p>
+
+<p>for (const value of values) {
+    while (remaining &gt;= value) {
+      result += romanValues[value];
+      remaining -= value;
+    }
+  }</p>
+
+<p>return result;
+}</p>
+
+<p>/**</p>
+<ul>
+  <li>Solution 4: Using Switch Statement
+ *</li>
+  <li>Approach:</li>
+  <li>
+    <ul>
+      <li>Use switch statement for value lookup</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>More explicit and readable
+ *</li>
+    </ul>
+  </li>
+  <li>Time Complexity: O(1)</li>
+  <li>Space Complexity: O(1)
+ */
+function intToRomanSwitch(num: number): string {
+  function getSymbol(value: number): string {
+ switch (value) {
+   case 1000:
+     return “M”;
+   case 900:
+     return “CM”;
+   case 500:
+     return “D”;
+   case 400:
+     return “CD”;
+   case 100:
+     return “C”;
+   case 90:
+     return “XC”;
+   case 50:
+     return “L”;
+   case 40:
+     return “XL”;
+   case 10:
+     return “X”;
+   case 9:
+     return “IX”;
+   case 5:
+     return “V”;
+   case 4:
+     return “IV”;
+   case 1:
+     return “I”;
+   default:
+     return “”;
+ }
+  }</li>
+</ul>
+
+<p>const values = [1000, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1];
+  let result = “”;
+  let remaining = num;</p>
+
+<p>for (const value of values) {
+    while (remaining &gt;= value) {
+      result += getSymbol(value);
+      remaining -= value;
+    }
+  }</p>
+
+<p>return result;
+}</p>
+
+<p>/**</p>
+<ul>
+  <li>Solution 5: Using Class (Object-oriented)
+ *</li>
+  <li>Approach:</li>
+  <li>
+    <ul>
+      <li>Create a RomanConverter class</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Encapsulate the conversion logic
+ *</li>
+    </ul>
+  </li>
+  <li>Time Complexity: O(1)</li>
+  <li>Space Complexity: O(1)
+ */
+class IntegerToRomanConverter {
+  private values: number[];
+  private symbols: string[];</li>
+</ul>
+
+<p>constructor() {
+    this.values = [1000, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1];
+    this.symbols = [
+      “M”,
+      “CM”,
+      “D”,
+      “CD”,
+      “C”,
+      “XC”,
+      “L”,
+      “XL”,
+      “X”,
+      “IX”,
+      “V”,
+      “IV”,
+      “I”,
+    ];
+  }</p>
+
+<p>convert(num: number): string {
+    let result = “”;
+    let remaining = num;</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+</pre></td><td class="rouge-code"><pre>for (let i = 0; i &lt; this.values.length &amp;&amp; remaining &gt; 0; i++) {
+  while (remaining &gt;= this.values[i]) {
+    result += this.symbols[i];
+    remaining -= this.values[i];
+  }
+}
+
+return result;   }
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>getValues(): number[] {
+    return […this.values];
+  }</p>
+
+<p>getSymbols(): string[] {
+    return […this.symbols];
+  }
+}</p>
+
+<p>function intToRomanClass(num: number): string {
+  const converter = new IntegerToRomanConverter();
+  return converter.convert(num);
+}</p>
+
+<p>/**</p>
+<ul>
+  <li>Solution 6: Using Functional Approach
+ *</li>
+  <li>Approach:</li>
+  <li>
+    <ul>
+      <li>Use functional programming concepts</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>More declarative style
+ *</li>
+    </ul>
+  </li>
+  <li>Time Complexity: O(1)</li>
+  <li>Space Complexity: O(1)
+ */
+function intToRomanFunctional(num: number): string {
+  const romanPairs = [
+ [1000, “M”],
+ [900, “CM”],
+ [500, “D”],
+ [400, “CD”],
+ [100, “C”],
+ [90, “XC”],
+ [50, “L”],
+ [40, “XL”],
+ [10, “X”],
+ [9, “IX”],
+ [5, “V”],
+ [4, “IV”],
+ [1, “I”],
+  ] as const;</li>
+</ul>
+
+<p>function convert(remaining: number, pairs: typeof romanPairs): string {
+    if (remaining === 0 || pairs.length === 0) return “”;</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+</pre></td><td class="rouge-code"><pre>const [value, symbol] = pairs[0];
+
+if (remaining &gt;= value) {
+  return symbol + convert(remaining - value, pairs);
+} else {
+  return convert(remaining, pairs.slice(1));
+}   }
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>return convert(num, romanPairs);
+}</p>
+
+<p>/**</p>
+<ul>
+  <li>Solution 7: Using Generator
+ *</li>
+  <li>Approach:</li>
+  <li>
+    <ul>
+      <li>Use generator to yield symbols</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Memory efficient for large numbers
+ *</li>
+    </ul>
+  </li>
+  <li>Time Complexity: O(1)</li>
+  <li>Space Complexity: O(1)
+ <em>/
+function</em> intToRomanGenerator(num: number): Generator<string> {
+  const values = [1000, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1];
+  const symbols = [
+ "M",
+ "CM",
+ "D",
+ "CD",
+ "C",
+ "XC",
+ "L",
+ "XL",
+ "X",
+ "IX",
+ "V",
+ "IV",
+ "I",
+  ];</string></li>
+</ul>
+
+<p>let remaining = num;</p>
+
+<p>for (let i = 0; i &lt; values.length &amp;&amp; remaining &gt; 0; i++) {
+    while (remaining &gt;= values[i]) {
+      yield symbols[i];
+      remaining -= values[i];
+    }
+  }
+}</p>
+
+<p>function intToRomanWithGenerator(num: number): string {
+  return Array.from(intToRomanGenerator(num)).join(“”);
+}</p>
+
+<p>/**</p>
+<ul>
+  <li>Solution 8: Using Recursion
+ *</li>
+  <li>Approach:</li>
+  <li>
+    <ul>
+      <li>Use recursion to build the result</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Base case: num === 0
+ *</li>
+    </ul>
+  </li>
+  <li>Time Complexity: O(1)</li>
+  <li>Space Complexity: O(1) - but recursion stack
+ */
+function intToRomanRecursive(num: number): string {
+  const values = [1000, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1];
+  const symbols = [
+ “M”,
+ “CM”,
+ “D”,
+ “CD”,
+ “C”,
+ “XC”,
+ “L”,
+ “XL”,
+ “X”,
+ “IX”,
+ “V”,
+ “IV”,
+ “I”,
+  ];</li>
+</ul>
+
+<p>function convert(remaining: number, index: number = 0): string {
+    if (remaining === 0 || index &gt;= values.length) return “”;</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+</pre></td><td class="rouge-code"><pre>if (remaining &gt;= values[index]) {
+  return symbols[index] + convert(remaining - values[index], index);
+} else {
+  return convert(remaining, index + 1);
+}   }
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>return convert(num);
+}</p>
+
+<p>/**</p>
+<ul>
+  <li>Solution 9: Using Array Methods
+ *</li>
+  <li>Approach:</li>
+  <li>
+    <ul>
+      <li>Use array methods like reduce</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>More functional style
+ *</li>
+    </ul>
+  </li>
+  <li>Time Complexity: O(1)</li>
+  <li>Space Complexity: O(1)
+ */
+function intToRomanArrayMethods(num: number): string {
+  const pairs = [
+ [1000, “M”],
+ [900, “CM”],
+ [500, “D”],
+ [400, “CD”],
+ [100, “C”],
+ [90, “XC”],
+ [50, “L”],
+ [40, “XL”],
+ [10, “X”],
+ [9, “IX”],
+ [5, “V”],
+ [4, “IV”],
+ [1, “I”],
+  ];</li>
+</ul>
+
+<p>return pairs.reduce((result, [value, symbol]) =&gt; {
+    while (num &gt;= value) {
+      result += symbol;
+      num -= value;
+    }
+    return result;
+  }, “”);
+}</p>
+
+<p>/**</p>
+<ul>
+  <li>Solution 10: Using Bit Manipulation (for fun)
+ *</li>
+  <li>Approach:</li>
+  <li>
+    <ul>
+      <li>Use bit manipulation for value storage</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>More compact representation
+ *</li>
+    </ul>
+  </li>
+  <li>Time Complexity: O(1)</li>
+  <li>Space Complexity: O(1)
+ */
+function intToRomanBitManipulation(num: number): string {
+  // Using bit manipulation to store values and symbols
+  const valueSymbolPairs = [
+ [1000, “M”],
+ [900, “CM”],
+ [500, “D”],
+ [400, “CD”],
+ [100, “C”],
+ [90, “XC”],
+ [50, “L”],
+ [40, “XL”],
+ [10, “X”],
+ [9, “IX”],
+ [5, “V”],
+ [4, “IV”],
+ [1, “I”],
+  ];</li>
+</ul>
+
+<p>let result = “”;
+  let remaining = num;</p>
+
+<p>for (const [value, symbol] of valueSymbolPairs) {
+    // Use bit shifting for division (just for demonstration)
+    const count = Math.floor(remaining / value);
+    if (count &gt; 0) {
+      result += symbol.repeat(count);
+      remaining -= value * count;
+    }
+  }</p>
+
+<p>return result;
+}</p>
+
+<p>/**</p>
+<ul>
+  <li>Solution 11: Using String Building
+ *</li>
+  <li>Approach:</li>
+  <li>
+    <ul>
+      <li>Build string character by character</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>More explicit string manipulation
+ *</li>
+    </ul>
+  </li>
+  <li>Time Complexity: O(1)</li>
+  <li>Space Complexity: O(1)
+ */
+function intToRomanStringBuilding(num: number): string {
+  const values = [1000, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1];
+  const symbols = [
+ “M”,
+ “CM”,
+ “D”,
+ “CD”,
+ “C”,
+ “XC”,
+ “L”,
+ “XL”,
+ “X”,
+ “IX”,
+ “V”,
+ “IV”,
+ “I”,
+  ];</li>
+</ul>
+
+<p>const result: string[] = [];
+  let remaining = num;</p>
+
+<p>for (let i = 0; i &lt; values.length &amp;&amp; remaining &gt; 0; i++) {
+    while (remaining &gt;= values[i]) {
+      result.push(symbols[i]);
+      remaining -= values[i];
+    }
+  }</p>
+
+<p>return result.join(“”);
+}</p>
+
+<p>// Test cases
+function testIntToRoman() {
+  console.log(“=== Testing Integer to Roman ===\n”);</p>
+
+<p>const testCases = [
+    {
+      input: 3,
+      expected: “III”,
+      description: “Basic case”,
+    },
+    {
+      input: 58,
+      expected: “LVIII”,
+      description: “Medium case”,
+    },
+    {
+      input: 1994,
+      expected: “MCMXCIV”,
+      description: “Complex case with subtractions”,
+    },
+    {
+      input: 9,
+      expected: “IX”,
+      description: “Subtraction case”,
+    },
+    {
+      input: 40,
+      expected: “XL”,
+      description: “Another subtraction case”,
+    },
+    {
+      input: 3999,
+      expected: “MMMCMXCIX”,
+      description: “Maximum valid Roman numeral”,
+    },
+    {
+      input: 1,
+      expected: “I”,
+      description: “Single digit”,
+    },
+    {
+      input: 2000,
+      expected: “MM”,
+      description: “Simple addition”,
+    },
+  ];</p>
+
+<p>testCases.forEach((testCase, index) =&gt; {
+    console.log(<code class="language-plaintext highlighter-rouge">Test Case ${index + 1}: ${testCase.description}</code>);
+    console.log(<code class="language-plaintext highlighter-rouge">Input: ${testCase.input}</code>);
+    console.log(<code class="language-plaintext highlighter-rouge">Expected: "${testCase.expected}"\n</code>);</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+</pre></td><td class="rouge-code"><pre>// Test Solution 1 (Greedy)
+const result1 = intToRoman(testCase.input);
+console.log(
+  `Solution 1 (Greedy): "${result1}" ${
+    result1 === testCase.expected ? "✅" : "❌"
+  }`
+);
+
+// Test Solution 2 (Map)
+const result2 = intToRomanMap(testCase.input);
+console.log(
+  `Solution 2 (Map): "${result2}" ${
+    result2 === testCase.expected ? "✅" : "❌"
+  }`
+);
+
+// Test Solution 3 (Object)
+const result3 = intToRomanObject(testCase.input);
+console.log(
+  `Solution 3 (Object): "${result3}" ${
+    result3 === testCase.expected ? "✅" : "❌"
+  }`
+);
+
+// Test Solution 4 (Switch)
+const result4 = intToRomanSwitch(testCase.input);
+console.log(
+  `Solution 4 (Switch): "${result4}" ${
+    result4 === testCase.expected ? "✅" : "❌"
+  }`
+);
+
+// Test Solution 5 (Class)
+const result5 = intToRomanClass(testCase.input);
+console.log(
+  `Solution 5 (Class): "${result5}" ${
+    result5 === testCase.expected ? "✅" : "❌"
+  }`
+);
+
+// Test Solution 6 (Functional)
+const result6 = intToRomanFunctional(testCase.input);
+console.log(
+  `Solution 6 (Functional): "${result6}" ${
+    result6 === testCase.expected ? "✅" : "❌"
+  }`
+);
+
+// Test Solution 7 (Generator)
+const result7 = intToRomanWithGenerator(testCase.input);
+console.log(
+  `Solution 7 (Generator): "${result7}" ${
+    result7 === testCase.expected ? "✅" : "❌"
+  }`
+);
+
+// Test Solution 8 (Recursive)
+const result8 = intToRomanRecursive(testCase.input);
+console.log(
+  `Solution 8 (Recursive): "${result8}" ${
+    result8 === testCase.expected ? "✅" : "❌"
+  }`
+);
+
+// Test Solution 9 (Array Methods)
+const result9 = intToRomanArrayMethods(testCase.input);
+console.log(
+  `Solution 9 (Array Methods): "${result9}" ${
+    result9 === testCase.expected ? "✅" : "❌"
+  }`
+);
+
+// Test Solution 10 (Bit Manipulation)
+const result10 = intToRomanBitManipulation(testCase.input);
+console.log(
+  `Solution 10 (Bit Manipulation): "${result10}" ${
+    result10 === testCase.expected ? "✅" : "❌"
+  }`
+);
+
+// Test Solution 11 (String Building)
+const result11 = intToRomanStringBuilding(testCase.input);
+console.log(
+  `Solution 11 (String Building): "${result11}" ${
+    result11 === testCase.expected ? "✅" : "❌"
+  }`
+);
+
+console.log("\n---\n");   }); }
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>// Performance comparison
+function performanceComparison() {
+  console.log(“=== Performance Comparison ===\n”);</p>
+
+<p>const testCases = [
+    { name: “Greedy”, func: intToRoman },
+    { name: “Map”, func: intToRomanMap },
+    { name: “Object”, func: intToRomanObject },
+    { name: “Switch”, func: intToRomanSwitch },
+    { name: “Class”, func: intToRomanClass },
+    { name: “Functional”, func: intToRomanFunctional },
+    { name: “Generator”, func: intToRomanWithGenerator },
+    { name: “Recursive”, func: intToRomanRecursive },
+    { name: “Array Methods”, func: intToRomanArrayMethods },
+    { name: “Bit Manipulation”, func: intToRomanBitManipulation },
+    { name: “String Building”, func: intToRomanStringBuilding },
+  ];</p>
+
+<p>// Create test cases
+  const smallCase = 3;
+  const mediumCase = 1994;
+  const largeCase = 3999;</p>
+
+<p>const cases = [
+    { name: “Small”, case: smallCase },
+    { name: “Medium”, case: mediumCase },
+    { name: “Large”, case: largeCase },
+  ];</p>
+
+<p>cases.forEach(({ name, case: testCase }) =&gt; {
+    console.log(<code class="language-plaintext highlighter-rouge">${name} Case:</code>);</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+</pre></td><td class="rouge-code"><pre>testCases.forEach(({ name: funcName, func }) =&gt; {
+  const start = performance.now();
+  const result = func(testCase);
+  const end = performance.now();
+
+  console.log(`  ${funcName}: ${(end - start).toFixed(2)}ms ("${result}")`);
+});
+
+console.log("");   }); }
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>// Uncomment the following lines to run tests
+// testIntToRoman();
+// performanceComparison();</p>
+
+<p>export {
+  intToRoman,
+  intToRomanMap,
+  intToRomanObject,
+  intToRomanSwitch,
+  intToRomanClass,
+  intToRomanFunctional,
+  intToRomanWithGenerator,
+  intToRomanRecursive,
+  intToRomanArrayMethods,
+  intToRomanBitManipulation,
+  intToRomanStringBuilding,
+  IntegerToRomanConverter,
+  intToRomanGenerator,
+  testIntToRoman,
+  performanceComparison,
+};</p>
+
+
+        </div>
+    </article>
+</div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Study Resources</h3>
+                    <p>Comprehensive collection of frontend interview questions, coding challenges, and system design problems.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Progress Tracking</h3>
+                    <p>Monitor your learning journey with detailed progress indicators and completion status.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Big Tech Ready</h3>
+                    <p>Curated content specifically designed for interviews at Google, Meta, Amazon, Apple, and Netflix.</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Frontend Interview Hub. Built for aspiring frontend engineers.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="/assets/js/main.js"></script>
+</body>
+</html>

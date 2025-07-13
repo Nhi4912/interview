@@ -1,0 +1,771 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Binary Tree Zigzag Level Order Traversal | Frontend Interview Preparation Guide</title>
+    <meta name="description" content="Comprehensive frontend interview materials for Big Tech companies">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="/assets/css/main.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <header>
+        <nav class="container">
+            <div class="logo">Frontend Interview Hub</div>
+            <ul class="nav-links">
+                <li><a href="/">Home</a></li>
+                <li><a href="#progress">Progress</a></li>
+                <li><a href="#knowledge">Knowledge</a></li>
+                <li><a href="https://github.com/nee/interview">GitHub</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <div class="content-container">
+    
+        <nav class="breadcrumb">
+            <ol>
+                <li><a href="/">Home</a></li>
+                
+                
+                
+                    
+                
+                    
+                        
+                        
+                            <li><a href="/leetcode/">Leetcode</a></li>
+                        
+                    
+                
+                    
+                        
+                        
+                            <li><a href="/leetcode/tree-graph/">Tree graph</a></li>
+                        
+                    
+                
+                    
+                        
+                        
+                            <li><a href="/leetcode/tree-graph/problems/">Problems</a></li>
+                        
+                    
+                
+                    
+                        
+                        
+                            <li class="active">Binary tree zigzag level order traversal</li>
+                        
+                    
+                
+            </ol>
+        </nav>
+    
+    
+    <article class="content">
+        
+            <header class="content-header">
+                <h1 class="content-title">Binary Tree Zigzag Level Order Traversal</h1>
+                
+                
+                    <div class="content-meta">
+                        <span class="difficulty difficulty-hard">Hard</span>
+                        
+                            <span class="category">Tree/Graph</span>
+                        
+                        
+                            <div class="tags">
+                                
+                                    <span class="tag">Tree/Graph</span>
+                                
+                            </div>
+                        
+                    </div>
+                
+            </header>
+        
+        
+        <div class="content-body">
+            <h1 id="binary-tree-zigzag-level-order-traversal">Binary Tree Zigzag Level Order Traversal</h1>
+
+<h2 id="problem-description">Problem Description</h2>
+
+<ul>
+  <li>
+    <ul>
+      <li>Given the root of a binary tree, return the zigzag level order traversal of its nodes’ values.  * (i.e., from left to right, then right to left for the next level and alternate between).  *  * Input: root = [3,9,20,null,null,15,7]</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="solutions">Solutions</h2>
+
+<p>/**</p>
+<ul>
+  <li>Binary Tree Zigzag Level Order Traversal
+ *</li>
+  <li>Problem: https://leetcode.com/problems/binary-tree-zigzag-level-order-traversal/
+ *</li>
+  <li>Given the root of a binary tree, return the zigzag level order traversal of its nodes’ values.</li>
+  <li>(i.e., from left to right, then right to left for the next level and alternate between).
+ *</li>
+  <li>Example 1:</li>
+  <li>Input: root = [3,9,20,null,null,15,7]</li>
+  <li>Output: [[3],[20,9],[15,7]]
+ *</li>
+  <li>Example 2:</li>
+  <li>Input: root = [1]</li>
+  <li>Output: [[1]]
+ *</li>
+  <li>Example 3:</li>
+  <li>Input: root = []</li>
+  <li>Output: []
+ *</li>
+  <li>Constraints:</li>
+  <li>
+    <ul>
+      <li>The number of nodes in the tree is in the range [0, 2000].</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>-100 &lt;= Node.val &lt;= 100
+ *</li>
+    </ul>
+  </li>
+  <li>Solution Approach:</li>
+  <li>
+    <ol>
+      <li>Use BFS with level tracking</li>
+    </ol>
+  </li>
+  <li>
+    <ol>
+      <li>Reverse alternate levels</li>
+    </ol>
+  </li>
+  <li>
+    <ol>
+      <li>Use deque for efficient operations</li>
+    </ol>
+  </li>
+  <li>
+    <ol>
+      <li>Track level number to determine direction
+ *</li>
+    </ol>
+  </li>
+  <li>Time Complexity: O(n) where n is the number of nodes</li>
+  <li>Space Complexity: O(n) for storing the result
+ */</li>
+</ul>
+
+<p>/**</p>
+<ul>
+  <li>TreeNode class definition
+ *</li>
+  <li>Định nghĩa lớp TreeNode
+ */
+class TreeNode {
+  val: number;
+  left: TreeNode | null;
+  right: TreeNode | null;</li>
+</ul>
+
+<p>constructor(
+    val: number = 0,
+    left: TreeNode | null = null,
+    right: TreeNode | null = null
+  ) {
+    this.val = val;
+    this.left = left;
+    this.right = right;
+  }
+}</p>
+
+<p>/**</p>
+<ul>
+  <li>Zigzag Level Order Traversal - BFS Solution
+ *</li>
+  <li>Giải pháp BFS cho bài toán Duyệt cây theo mức zigzag
+ *</li>
+  <li>@param root - Root of the binary tree</li>
+  <li>@returns Array of arrays representing zigzag level order traversal
+ */
+function zigzagLevelOrder(root: TreeNode | null): number[][] {
+  if (!root) return [];</li>
+</ul>
+
+<p>const result: number[][] = [];
+  const queue: { node: TreeNode; level: number }[] = [{ node: root, level: 0 }];</p>
+
+<p>while (queue.length &gt; 0) {
+    const { node, level } = queue.shift()!;</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+</pre></td><td class="rouge-code"><pre>// Initialize level array if needed
+if (result.length &lt;= level) {
+  result.push([]);
+}
+
+// Add node to current level
+result[level].push(node.val);
+
+// Add children to queue
+if (node.left) {
+  queue.push({ node: node.left, level: level + 1 });
+}
+if (node.right) {
+  queue.push({ node: node.right, level: level + 1 });
+}   }
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>// Reverse odd levels for zigzag effect
+  for (let i = 1; i &lt; result.length; i += 2) {
+    result[i].reverse();
+  }</p>
+
+<p>return result;
+}</p>
+
+<p>/**</p>
+<ul>
+  <li>Alternative Solution: Using Two Stacks
+ *</li>
+  <li>Giải pháp thay thế: Sử dụng hai stack
+ *</li>
+  <li>@param root - Root of the binary tree</li>
+  <li>@returns Array of arrays representing zigzag level order traversal
+ */
+function zigzagLevelOrderTwoStacks(root: TreeNode | null): number[][] {
+  if (!root) return [];</li>
+</ul>
+
+<p>const result: number[][] = [];
+  const currentLevel: TreeNode[] = [root];
+  const nextLevel: TreeNode[] = [];
+  let leftToRight = true;</p>
+
+<p>while (currentLevel.length &gt; 0) {
+    const levelResult: number[] = [];</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+</pre></td><td class="rouge-code"><pre>while (currentLevel.length &gt; 0) {
+  const node = currentLevel.pop()!;
+  levelResult.push(node.val);
+
+  if (leftToRight) {
+    if (node.left) nextLevel.push(node.left);
+    if (node.right) nextLevel.push(node.right);
+  } else {
+    if (node.right) nextLevel.push(node.right);
+    if (node.left) nextLevel.push(node.left);
+  }
+}
+
+result.push(levelResult);
+
+// Swap stacks and direction
+[currentLevel, nextLevel] = [nextLevel, currentLevel];
+leftToRight = !leftToRight;   }
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>return result;
+}</p>
+
+<p>/**</p>
+<ul>
+  <li>Solution with Level Information
+ *</li>
+  <li>Giải pháp với thông tin mức
+ *</li>
+  <li>@param root - Root of the binary tree</li>
+  <li>@returns Object containing zigzag traversal and level information
+ */
+function zigzagLevelOrderWithInfo(root: TreeNode | null): {
+  traversal: number[][];
+  levelInfo: Array&lt;{ level: number; direction: string; nodeCount: number }&gt;;
+} {
+  if (!root) return { traversal: [], levelInfo: [] };</li>
+</ul>
+
+<p>const traversal: number[][] = [];
+  const levelInfo: Array&lt;{
+    level: number;
+    direction: string;
+    nodeCount: number;
+  }&gt; = [];
+  const queue: { node: TreeNode; level: number }[] = [{ node: root, level: 0 }];</p>
+
+<p>while (queue.length &gt; 0) {
+    const { node, level } = queue.shift()!;</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+</pre></td><td class="rouge-code"><pre>if (traversal.length &lt;= level) {
+  traversal.push([]);
+  levelInfo.push({
+    level,
+    direction: level % 2 === 0 ? "left-to-right" : "right-to-left",
+    nodeCount: 0,
+  });
+}
+
+traversal[level].push(node.val);
+levelInfo[level].nodeCount++;
+
+if (node.left) {
+  queue.push({ node: node.left, level: level + 1 });
+}
+if (node.right) {
+  queue.push({ node: node.right, level: level + 1 });
+}   }
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>// Reverse odd levels
+  for (let i = 1; i &lt; traversal.length; i += 2) {
+    traversal[i].reverse();
+  }</p>
+
+<p>return { traversal, levelInfo };
+}</p>
+
+<p>/**</p>
+<ul>
+  <li>Recursive Solution with Level Tracking
+ *</li>
+  <li>Giải pháp đệ quy với theo dõi mức
+ *</li>
+  <li>@param root - Root of the binary tree</li>
+  <li>@returns Array of arrays representing zigzag level order traversal
+ */
+function zigzagLevelOrderRecursive(root: TreeNode | null): number[][] {
+  const result: number[][] = [];</li>
+</ul>
+
+<p>function dfs(node: TreeNode | null, level: number): void {
+    if (!node) return;</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+</pre></td><td class="rouge-code"><pre>if (result.length &lt;= level) {
+  result.push([]);
+}
+
+// Add node to current level
+result[level].push(node.val);
+
+// Recursive calls
+dfs(node.left, level + 1);
+dfs(node.right, level + 1);   }
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>dfs(root, 0);</p>
+
+<p>// Reverse odd levels
+  for (let i = 1; i &lt; result.length; i += 2) {
+    result[i].reverse();
+  }</p>
+
+<p>return result;
+}</p>
+
+<p>/**</p>
+<ul>
+  <li>Solution with Visualization
+ *</li>
+  <li>Giải pháp với hiển thị
+ *</li>
+  <li>@param root - Root of the binary tree</li>
+  <li>@returns Object containing traversal and visualization
+ */
+function zigzagLevelOrderWithVisualization(root: TreeNode | null): {
+  traversal: number[][];
+  visualization: string;
+} {
+  const { traversal, levelInfo } = zigzagLevelOrderWithInfo(root);</li>
+</ul>
+
+<p>let visualization = “Zigzag Level Order Traversal:\n”;
+  visualization += “Duyệt cây theo mức zigzag:\n\n”;</p>
+
+<p>for (let i = 0; i &lt; traversal.length; i++) {
+    const level = traversal[i];
+    const info = levelInfo[i];</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+</pre></td><td class="rouge-code"><pre>visualization += `Level ${i} (${info.direction}): [${level.join(", ")}]\n`;
+visualization += `Mức ${i} (${info.direction}): [${level.join(", ")}]\n`;
+visualization += `Node count: ${info.nodeCount}\n`;
+visualization += `Số nút: ${info.nodeCount}\n\n`;   }
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>return { traversal, visualization };
+}</p>
+
+<p>/**</p>
+<ul>
+  <li>Utility function to create a binary tree from array
+ *</li>
+  <li>Hàm tiện ích để tạo cây nhị phân từ mảng
+ *</li>
+  <li>@param arr - Array representation of the tree</li>
+  <li>@returns Root of the created tree
+ */
+function createTreeFromArray(arr: (number | null)[]): TreeNode | null {
+  if (arr.length === 0 || arr[0] === null) return null;</li>
+</ul>
+
+<p>const root = new TreeNode(arr[0]!);
+  const queue: TreeNode[] = [root];
+  let i = 1;</p>
+
+<p>while (queue.length &gt; 0 &amp;&amp; i &lt; arr.length) {
+    const node = queue.shift()!;</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+</pre></td><td class="rouge-code"><pre>// Left child
+if (i &lt; arr.length &amp;&amp; arr[i] !== null) {
+  node.left = new TreeNode(arr[i]!);
+  queue.push(node.left);
+}
+i++;
+
+// Right child
+if (i &lt; arr.length &amp;&amp; arr[i] !== null) {
+  node.right = new TreeNode(arr[i]!);
+  queue.push(node.right);
+}
+i++;   }
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>return root;
+}</p>
+
+<p>// Test cases / Các trường hợp kiểm thử
+function runTests() {
+  console.log(“=== Binary Tree Zigzag Level Order Traversal Tests ===”);
+  console.log(“=== Kiểm thử bài toán Duyệt cây theo mức zigzag ===\n”);</p>
+
+<p>const testCases = [
+    {
+      name: “Example 1: Standard tree”,
+      input: [3, 9, 20, null, null, 15, 7],
+      expected: [[3], [20, 9], [15, 7]],
+      description: “Standard binary tree with 3 levels”,
+    },
+    {
+      name: “Example 2: Single node”,
+      input: [1],
+      expected: [[1]],
+      description: “Tree with single node”,
+    },
+    {
+      name: “Example 3: Empty tree”,
+      input: [],
+      expected: [],
+      description: “Empty tree”,
+    },
+    {
+      name: “Left-skewed tree”,
+      input: [1, 2, null, 3, null, 4],
+      expected: [[1], [2], [3], [4]],
+      description: “Tree skewed to the left”,
+    },
+    {
+      name: “Right-skewed tree”,
+      input: [1, null, 2, null, 3, null, 4],
+      expected: [[1], [2], [3], [4]],
+      description: “Tree skewed to the right”,
+    },
+    {
+      name: “Complete binary tree”,
+      input: [1, 2, 3, 4, 5, 6, 7],
+      expected: [[1], [3, 2], [4, 5, 6, 7]],
+      description: “Complete binary tree”,
+    },
+    {
+      name: “Unbalanced tree”,
+      input: [1, 2, 3, 4, null, null, 5],
+      expected: [[1], [3, 2], [4, 5]],
+      description: “Unbalanced tree”,
+    },
+  ];</p>
+
+<p>for (const testCase of testCases) {
+    console.log(<code class="language-plaintext highlighter-rouge">Test: ${testCase.name}</code>);
+    console.log(<code class="language-plaintext highlighter-rouge">Input: [${testCase.input.join(", ")}]</code>);
+    console.log(<code class="language-plaintext highlighter-rouge">Expected: ${JSON.stringify(testCase.expected)}</code>);
+    console.log(<code class="language-plaintext highlighter-rouge">Description: ${testCase.description}</code>);</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+</pre></td><td class="rouge-code"><pre>const root = createTreeFromArray(testCase.input);
+
+// Test BFS solution
+const result1 = zigzagLevelOrder(root);
+const passed1 =
+  JSON.stringify(result1) === JSON.stringify(testCase.expected);
+
+console.log(`BFS Result: ${JSON.stringify(result1)}`);
+console.log(`BFS Status: ${passed1 ? "✅ PASSED" : "❌ FAILED"}`);
+
+// Test Two Stacks solution
+const result2 = zigzagLevelOrderTwoStacks(root);
+const passed2 =
+  JSON.stringify(result2) === JSON.stringify(testCase.expected);
+
+console.log(`Two Stacks Result: ${JSON.stringify(result2)}`);
+console.log(`Two Stacks Status: ${passed2 ? "✅ PASSED" : "❌ FAILED"}`);
+
+// Test Recursive solution
+const result3 = zigzagLevelOrderRecursive(root);
+const passed3 =
+  JSON.stringify(result3) === JSON.stringify(testCase.expected);
+
+console.log(`Recursive Result: ${JSON.stringify(result3)}`);
+console.log(`Recursive Status: ${passed3 ? "✅ PASSED" : "❌ FAILED"}`);
+
+const allPassed = passed1 &amp;&amp; passed2 &amp;&amp; passed3;
+console.log(`All implementations match: ${allPassed ? "✅ Yes" : "❌ No"}`);
+
+console.log("---");   }
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>// Test with visualization
+  console.log(“\n=== Testing with Visualization ===”);
+  console.log(“=== Kiểm thử với hiển thị ===\n”);</p>
+
+<p>const testTree = createTreeFromArray([3, 9, 20, null, null, 15, 7]);
+  const { traversal, visualization } =
+    zigzagLevelOrderWithVisualization(testTree);</p>
+
+<p>console.log(visualization);</p>
+
+<p>// Test with level information
+  console.log(“\n=== Testing with Level Information ===”);
+  console.log(“=== Kiểm thử với thông tin mức ===\n”);</p>
+
+<p>const { traversal: traversal2, levelInfo } =
+    zigzagLevelOrderWithInfo(testTree);</p>
+
+<p>console.log(“Level Information:”);
+  console.log(“Thông tin mức:”);
+  for (const info of levelInfo) {
+    console.log(
+      `  Level ${info.level}: ${info.direction}, ${info.nodeCount} nodes`
+    );
+  }</p>
+
+<p>// Performance comparison
+  console.log(“\n=== Performance Comparison ===”);
+  console.log(“=== So sánh hiệu suất ===\n”);</p>
+
+<p>// Create a large tree
+  const largeTreeArray: (number | null)[] = [];
+  for (let i = 0; i &lt; 1000; i++) {
+    largeTreeArray.push(i);
+  }</p>
+
+<p>const largeTree = createTreeFromArray(largeTreeArray);</p>
+
+<p>console.log(“Testing with large tree (1000 nodes)…”);
+  console.log(“Kiểm thử với cây lớn (1000 nút)…”);</p>
+
+<p>const start1 = performance.now();
+  const result1 = zigzagLevelOrder(largeTree);
+  const time1 = performance.now() - start1;</p>
+
+<p>const start2 = performance.now();
+  const result2 = zigzagLevelOrderTwoStacks(largeTree);
+  const time2 = performance.now() - start2;</p>
+
+<p>const start3 = performance.now();
+  const result3 = zigzagLevelOrderRecursive(largeTree);
+  const time3 = performance.now() - start3;</p>
+
+<p>console.log(<code class="language-plaintext highlighter-rouge">BFS: ${time1.toFixed(4)}ms, Levels: ${result1.length}</code>);
+  console.log(<code class="language-plaintext highlighter-rouge">Two Stacks: ${time2.toFixed(4)}ms, Levels: ${result2.length}</code>);
+  console.log(<code class="language-plaintext highlighter-rouge">Recursive: ${time3.toFixed(4)}ms, Levels: ${result3.length}</code>);</p>
+
+<p>const resultsMatch =
+    JSON.stringify(result1) === JSON.stringify(result2) &amp;&amp;
+    JSON.stringify(result2) === JSON.stringify(result3);
+  console.log(<code class="language-plaintext highlighter-rouge">Results match: ${resultsMatch ? "✅ Yes" : "❌ No"}</code>);</p>
+
+<p>// Test edge cases
+  console.log(“\n=== Edge Cases Testing ===”);
+  console.log(“=== Kiểm thử trường hợp đặc biệt ===\n”);</p>
+
+<p>const edgeCases = [
+    { name: “Null root”, tree: null },
+    { name: “Single node”, tree: new TreeNode(42) },
+    { name: “Two nodes”, tree: new TreeNode(1, new TreeNode(2)) },
+    {
+      name: “Three nodes”,
+      tree: new TreeNode(1, new TreeNode(2), new TreeNode(3)),
+    },
+  ];</p>
+
+<p>for (const edgeCase of edgeCases) {
+    const result = zigzagLevelOrder(edgeCase.tree);
+    console.log(<code class="language-plaintext highlighter-rouge">${edgeCase.name}: ${JSON.stringify(result)}</code>);
+  }
+}</p>
+
+<p>// Run tests if this file is executed directly
+if (require.main === module) {
+  runTests();
+}</p>
+
+<p>export {
+  TreeNode,
+  zigzagLevelOrder,
+  zigzagLevelOrderTwoStacks,
+  zigzagLevelOrderWithInfo,
+  zigzagLevelOrderRecursive,
+  zigzagLevelOrderWithVisualization,
+  createTreeFromArray,
+};</p>
+
+
+        </div>
+    </article>
+</div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Study Resources</h3>
+                    <p>Comprehensive collection of frontend interview questions, coding challenges, and system design problems.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Progress Tracking</h3>
+                    <p>Monitor your learning journey with detailed progress indicators and completion status.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Big Tech Ready</h3>
+                    <p>Curated content specifically designed for interviews at Google, Meta, Amazon, Apple, and Netflix.</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Frontend Interview Hub. Built for aspiring frontend engineers.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="/assets/js/main.js"></script>
+</body>
+</html>

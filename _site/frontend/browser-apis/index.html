@@ -1,0 +1,2460 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Browser APIs &amp; Modern Web Platform | Frontend Interview Preparation Guide</title>
+    <meta name="description" content="Comprehensive frontend interview materials for Big Tech companies">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="/assets/css/main.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <header>
+        <nav class="container">
+            <div class="logo">Frontend Interview Hub</div>
+            <ul class="nav-links">
+                <li><a href="/">Home</a></li>
+                <li><a href="#progress">Progress</a></li>
+                <li><a href="#knowledge">Knowledge</a></li>
+                <li><a href="https://github.com/nee/interview">GitHub</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <div class="content-container">
+    
+        <nav class="breadcrumb">
+            <ol>
+                <li><a href="/">Home</a></li>
+                
+                
+                
+                    
+                
+                    
+                        
+                        
+                            <li><a href="/frontend/">Frontend</a></li>
+                        
+                    
+                
+                    
+                        
+                        
+                            <li class="active">Browser apis &amp; modern web platform</li>
+                        
+                    
+                
+            </ol>
+        </nav>
+    
+    
+    <article class="content">
+        
+            <header class="content-header">
+                <h1 class="content-title">Browser APIs &amp; Modern Web Platform</h1>
+                
+                
+            </header>
+        
+        
+        <div class="content-body">
+            <h1 id="browser-apis--modern-web-platform">Browser APIs &amp; Modern Web Platform</h1>
+
+<h2 id="table-of-contents">Table of Contents</h2>
+
+<ul>
+  <li><a href="#web-workers">Web Workers</a></li>
+  <li><a href="#service-workers">Service Workers</a></li>
+  <li><a href="#progressive-web-apps-pwa">Progressive Web Apps (PWA)</a></li>
+  <li><a href="#web-storage-apis">Web Storage APIs</a></li>
+  <li><a href="#geolocation-api">Geolocation API</a></li>
+  <li><a href="#camera--media-apis">Camera &amp; Media APIs</a></li>
+  <li><a href="#notification-api">Notification API</a></li>
+  <li><a href="#websockets--real-time-communication">WebSockets &amp; Real-time Communication</a></li>
+  <li><a href="#intersection-observer">Intersection Observer</a></li>
+  <li><a href="#resize-observer">Resize Observer</a></li>
+  <li><a href="#mutation-observer">Mutation Observer</a></li>
+  <li><a href="#webassembly-wasm">WebAssembly (WASM)</a></li>
+  <li><a href="#file-system-access-api">File System Access API</a></li>
+  <li><a href="#web-authentication-api">Web Authentication API</a></li>
+  <li><a href="#performance-apis">Performance APIs</a></li>
+  <li><a href="#interview-questions">Interview Questions</a></li>
+</ul>
+
+<h2 id="web-workers">Web Workers</h2>
+
+<p>Web Workers allow you to run JavaScript in the background, separate from the main UI thread.</p>
+
+<h3 id="basic-web-worker">Basic Web Worker</h3>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+</pre></td><td class="rouge-code"><pre><span class="c1">// main.js</span>
+<span class="kd">const</span> <span class="nx">worker</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Worker</span><span class="p">(</span><span class="dl">'</span><span class="s1">worker.js</span><span class="dl">'</span><span class="p">);</span>
+
+<span class="c1">// Send data to worker</span>
+<span class="nx">worker</span><span class="p">.</span><span class="nx">postMessage</span><span class="p">({</span> <span class="na">command</span><span class="p">:</span> <span class="dl">'</span><span class="s1">start</span><span class="dl">'</span><span class="p">,</span> <span class="na">data</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span> <span class="p">});</span>
+
+<span class="c1">// Receive data from worker</span>
+<span class="nx">worker</span><span class="p">.</span><span class="nx">onmessage</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">Result from worker:</span><span class="dl">'</span><span class="p">,</span> <span class="nx">e</span><span class="p">.</span><span class="nx">data</span><span class="p">);</span>
+<span class="p">};</span>
+
+<span class="c1">// Handle errors</span>
+<span class="nx">worker</span><span class="p">.</span><span class="nx">onerror</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="dl">'</span><span class="s1">Worker error:</span><span class="dl">'</span><span class="p">,</span> <span class="nx">error</span><span class="p">);</span>
+<span class="p">};</span>
+
+<span class="c1">// Terminate worker when done</span>
+<span class="nx">worker</span><span class="p">.</span><span class="nx">terminate</span><span class="p">();</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+</pre></td><td class="rouge-code"><pre><span class="c1">// worker.js</span>
+<span class="nb">self</span><span class="p">.</span><span class="nx">onmessage</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="p">{</span> <span class="nx">command</span><span class="p">,</span> <span class="nx">data</span> <span class="p">}</span> <span class="o">=</span> <span class="nx">e</span><span class="p">.</span><span class="nx">data</span><span class="p">;</span>
+  
+  <span class="k">if</span> <span class="p">(</span><span class="nx">command</span> <span class="o">===</span> <span class="dl">'</span><span class="s1">start</span><span class="dl">'</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// Perform expensive computation</span>
+    <span class="kd">const</span> <span class="nx">result</span> <span class="o">=</span> <span class="nx">performHeavyCalculation</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span>
+    
+    <span class="c1">// Send result back to main thread</span>
+    <span class="nb">self</span><span class="p">.</span><span class="nx">postMessage</span><span class="p">(</span><span class="nx">result</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">};</span>
+
+<span class="kd">function</span> <span class="nx">performHeavyCalculation</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
+  <span class="c1">// Simulate expensive operation</span>
+  <span class="kd">let</span> <span class="nx">result</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+  <span class="k">for</span> <span class="p">(</span><span class="kd">let</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="mi">1000000</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">result</span> <span class="o">+=</span> <span class="nx">data</span><span class="p">.</span><span class="nx">reduce</span><span class="p">((</span><span class="nx">sum</span><span class="p">,</span> <span class="nx">num</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">sum</span> <span class="o">+</span> <span class="nx">num</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+  <span class="p">}</span>
+  <span class="k">return</span> <span class="nx">result</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<h3 id="advanced-web-worker-with-shared-array-buffer">Advanced Web Worker with Shared Array Buffer</h3>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+</pre></td><td class="rouge-code"><pre><span class="c1">// main.js</span>
+<span class="kd">class</span> <span class="nx">WorkerPool</span> <span class="p">{</span>
+  <span class="kd">constructor</span><span class="p">(</span><span class="nx">workerScript</span><span class="p">,</span> <span class="nx">poolSize</span> <span class="o">=</span> <span class="mi">4</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">workers</span> <span class="o">=</span> <span class="p">[];</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">taskQueue</span> <span class="o">=</span> <span class="p">[];</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">activeTasks</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Map</span><span class="p">();</span>
+    
+    <span class="k">for</span> <span class="p">(</span><span class="kd">let</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">poolSize</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">this</span><span class="p">.</span><span class="nx">createWorker</span><span class="p">(</span><span class="nx">workerScript</span><span class="p">,</span> <span class="nx">i</span><span class="p">);</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+  
+  <span class="nx">createWorker</span><span class="p">(</span><span class="nx">script</span><span class="p">,</span> <span class="nx">id</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="nx">worker</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Worker</span><span class="p">(</span><span class="nx">script</span><span class="p">);</span>
+    <span class="nx">worker</span><span class="p">.</span><span class="nx">id</span> <span class="o">=</span> <span class="nx">id</span><span class="p">;</span>
+    <span class="nx">worker</span><span class="p">.</span><span class="nx">busy</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span>
+    
+    <span class="nx">worker</span><span class="p">.</span><span class="nx">onmessage</span> <span class="o">=</span> <span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+      <span class="kd">const</span> <span class="p">{</span> <span class="nx">taskId</span><span class="p">,</span> <span class="nx">result</span><span class="p">,</span> <span class="nx">error</span> <span class="p">}</span> <span class="o">=</span> <span class="nx">e</span><span class="p">.</span><span class="nx">data</span><span class="p">;</span>
+      <span class="kd">const</span> <span class="nx">task</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">activeTasks</span><span class="p">.</span><span class="kd">get</span><span class="p">(</span><span class="nx">taskId</span><span class="p">);</span>
+      
+      <span class="k">if</span> <span class="p">(</span><span class="nx">task</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
+          <span class="nx">task</span><span class="p">.</span><span class="nx">reject</span><span class="p">(</span><span class="k">new</span> <span class="nb">Error</span><span class="p">(</span><span class="nx">error</span><span class="p">));</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+          <span class="nx">task</span><span class="p">.</span><span class="nx">resolve</span><span class="p">(</span><span class="nx">result</span><span class="p">);</span>
+        <span class="p">}</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">activeTasks</span><span class="p">.</span><span class="k">delete</span><span class="p">(</span><span class="nx">taskId</span><span class="p">);</span>
+      <span class="p">}</span>
+      
+      <span class="nx">worker</span><span class="p">.</span><span class="nx">busy</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span>
+      <span class="k">this</span><span class="p">.</span><span class="nx">processQueue</span><span class="p">();</span>
+    <span class="p">};</span>
+    
+    <span class="nx">worker</span><span class="p">.</span><span class="nx">onerror</span> <span class="o">=</span> <span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+      <span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="s2">`Worker </span><span class="p">${</span><span class="nx">id</span><span class="p">}</span><span class="s2"> error:`</span><span class="p">,</span> <span class="nx">error</span><span class="p">);</span>
+    <span class="p">};</span>
+    
+    <span class="k">this</span><span class="p">.</span><span class="nx">workers</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">worker</span><span class="p">);</span>
+  <span class="p">}</span>
+  
+  <span class="nx">execute</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="k">new</span> <span class="nb">Promise</span><span class="p">((</span><span class="nx">resolve</span><span class="p">,</span> <span class="nx">reject</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+      <span class="kd">const</span> <span class="nx">taskId</span> <span class="o">=</span> <span class="nb">Date</span><span class="p">.</span><span class="nx">now</span><span class="p">()</span> <span class="o">+</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">random</span><span class="p">();</span>
+      <span class="kd">const</span> <span class="nx">task</span> <span class="o">=</span> <span class="p">{</span> <span class="nx">taskId</span><span class="p">,</span> <span class="nx">data</span><span class="p">,</span> <span class="nx">resolve</span><span class="p">,</span> <span class="nx">reject</span> <span class="p">};</span>
+      
+      <span class="k">this</span><span class="p">.</span><span class="nx">taskQueue</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">task</span><span class="p">);</span>
+      <span class="k">this</span><span class="p">.</span><span class="nx">processQueue</span><span class="p">();</span>
+    <span class="p">});</span>
+  <span class="p">}</span>
+  
+  <span class="nx">processQueue</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">taskQueue</span><span class="p">.</span><span class="nx">length</span> <span class="o">===</span> <span class="mi">0</span><span class="p">)</span> <span class="k">return</span><span class="p">;</span>
+    
+    <span class="kd">const</span> <span class="nx">availableWorker</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">workers</span><span class="p">.</span><span class="nx">find</span><span class="p">(</span><span class="nx">w</span> <span class="o">=&gt;</span> <span class="o">!</span><span class="nx">w</span><span class="p">.</span><span class="nx">busy</span><span class="p">);</span>
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">availableWorker</span><span class="p">)</span> <span class="k">return</span><span class="p">;</span>
+    
+    <span class="kd">const</span> <span class="nx">task</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">taskQueue</span><span class="p">.</span><span class="nx">shift</span><span class="p">();</span>
+    <span class="nx">availableWorker</span><span class="p">.</span><span class="nx">busy</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">activeTasks</span><span class="p">.</span><span class="kd">set</span><span class="p">(</span><span class="nx">task</span><span class="p">.</span><span class="nx">taskId</span><span class="p">,</span> <span class="nx">task</span><span class="p">);</span>
+    
+    <span class="nx">availableWorker</span><span class="p">.</span><span class="nx">postMessage</span><span class="p">({</span>
+      <span class="na">taskId</span><span class="p">:</span> <span class="nx">task</span><span class="p">.</span><span class="nx">taskId</span><span class="p">,</span>
+      <span class="na">data</span><span class="p">:</span> <span class="nx">task</span><span class="p">.</span><span class="nx">data</span>
+    <span class="p">});</span>
+  <span class="p">}</span>
+  
+  <span class="nx">terminate</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">workers</span><span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="nx">worker</span> <span class="o">=&gt;</span> <span class="nx">worker</span><span class="p">.</span><span class="nx">terminate</span><span class="p">());</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">workers</span> <span class="o">=</span> <span class="p">[];</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">activeTasks</span><span class="p">.</span><span class="nx">clear</span><span class="p">();</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">taskQueue</span> <span class="o">=</span> <span class="p">[];</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// Usage</span>
+<span class="kd">const</span> <span class="nx">pool</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">WorkerPool</span><span class="p">(</span><span class="dl">'</span><span class="s1">calculation-worker.js</span><span class="dl">'</span><span class="p">,</span> <span class="mi">4</span><span class="p">);</span>
+
+<span class="k">async</span> <span class="kd">function</span> <span class="nx">processLargeDataset</span><span class="p">(</span><span class="nx">dataset</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="nx">chunks</span> <span class="o">=</span> <span class="nx">chunkArray</span><span class="p">(</span><span class="nx">dataset</span><span class="p">,</span> <span class="mi">1000</span><span class="p">);</span>
+  <span class="kd">const</span> <span class="nx">promises</span> <span class="o">=</span> <span class="nx">chunks</span><span class="p">.</span><span class="nx">map</span><span class="p">(</span><span class="nx">chunk</span> <span class="o">=&gt;</span> <span class="nx">pool</span><span class="p">.</span><span class="nx">execute</span><span class="p">(</span><span class="nx">chunk</span><span class="p">));</span>
+  
+  <span class="k">try</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="nx">results</span> <span class="o">=</span> <span class="k">await</span> <span class="nb">Promise</span><span class="p">.</span><span class="nx">all</span><span class="p">(</span><span class="nx">promises</span><span class="p">);</span>
+    <span class="k">return</span> <span class="nx">results</span><span class="p">.</span><span class="nx">flat</span><span class="p">();</span>
+  <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="dl">'</span><span class="s1">Processing failed:</span><span class="dl">'</span><span class="p">,</span> <span class="nx">error</span><span class="p">);</span>
+    <span class="k">throw</span> <span class="nx">error</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<h2 id="service-workers">Service Workers</h2>
+
+<p>Service Workers act as a proxy between your web app and the network, enabling offline functionality and background sync.</p>
+
+<h3 id="basic-service-worker">Basic Service Worker</h3>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+</pre></td><td class="rouge-code"><pre><span class="c1">// main.js</span>
+<span class="k">if</span> <span class="p">(</span><span class="dl">'</span><span class="s1">serviceWorker</span><span class="dl">'</span> <span class="k">in</span> <span class="nb">navigator</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nb">navigator</span><span class="p">.</span><span class="nx">serviceWorker</span><span class="p">.</span><span class="nx">register</span><span class="p">(</span><span class="dl">'</span><span class="s1">/sw.js</span><span class="dl">'</span><span class="p">)</span>
+    <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">registration</span> <span class="o">=&gt;</span> <span class="p">{</span>
+      <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">SW registered:</span><span class="dl">'</span><span class="p">,</span> <span class="nx">registration</span><span class="p">);</span>
+    <span class="p">})</span>
+    <span class="p">.</span><span class="k">catch</span><span class="p">(</span><span class="nx">error</span> <span class="o">=&gt;</span> <span class="p">{</span>
+      <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">SW registration failed:</span><span class="dl">'</span><span class="p">,</span> <span class="nx">error</span><span class="p">);</span>
+    <span class="p">});</span>
+<span class="p">}</span>
+
+<span class="c1">// Listen for SW updates</span>
+<span class="nb">navigator</span><span class="p">.</span><span class="nx">serviceWorker</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="dl">'</span><span class="s1">controllerchange</span><span class="dl">'</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="nb">window</span><span class="p">.</span><span class="nx">location</span><span class="p">.</span><span class="nx">reload</span><span class="p">();</span>
+<span class="p">});</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+</pre></td><td class="rouge-code"><pre><span class="c1">// sw.js</span>
+<span class="kd">const</span> <span class="nx">CACHE_NAME</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">my-app-v1</span><span class="dl">'</span><span class="p">;</span>
+<span class="kd">const</span> <span class="nx">urlsToCache</span> <span class="o">=</span> <span class="p">[</span>
+  <span class="dl">'</span><span class="s1">/</span><span class="dl">'</span><span class="p">,</span>
+  <span class="dl">'</span><span class="s1">/static/js/bundle.js</span><span class="dl">'</span><span class="p">,</span>
+  <span class="dl">'</span><span class="s1">/static/css/main.css</span><span class="dl">'</span><span class="p">,</span>
+  <span class="dl">'</span><span class="s1">/manifest.json</span><span class="dl">'</span>
+<span class="p">];</span>
+
+<span class="c1">// Install event - cache resources</span>
+<span class="nb">self</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="dl">'</span><span class="s1">install</span><span class="dl">'</span><span class="p">,</span> <span class="p">(</span><span class="nx">event</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="nx">event</span><span class="p">.</span><span class="nx">waitUntil</span><span class="p">(</span>
+    <span class="nx">caches</span><span class="p">.</span><span class="nx">open</span><span class="p">(</span><span class="nx">CACHE_NAME</span><span class="p">)</span>
+      <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">cache</span> <span class="o">=&gt;</span> <span class="nx">cache</span><span class="p">.</span><span class="nx">addAll</span><span class="p">(</span><span class="nx">urlsToCache</span><span class="p">))</span>
+  <span class="p">);</span>
+<span class="p">});</span>
+
+<span class="c1">// Activate event - clean up old caches</span>
+<span class="nb">self</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="dl">'</span><span class="s1">activate</span><span class="dl">'</span><span class="p">,</span> <span class="p">(</span><span class="nx">event</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="nx">event</span><span class="p">.</span><span class="nx">waitUntil</span><span class="p">(</span>
+    <span class="nx">caches</span><span class="p">.</span><span class="nx">keys</span><span class="p">().</span><span class="nx">then</span><span class="p">(</span><span class="nx">cacheNames</span> <span class="o">=&gt;</span> <span class="p">{</span>
+      <span class="k">return</span> <span class="nb">Promise</span><span class="p">.</span><span class="nx">all</span><span class="p">(</span>
+        <span class="nx">cacheNames</span><span class="p">.</span><span class="nx">map</span><span class="p">(</span><span class="nx">cacheName</span> <span class="o">=&gt;</span> <span class="p">{</span>
+          <span class="k">if</span> <span class="p">(</span><span class="nx">cacheName</span> <span class="o">!==</span> <span class="nx">CACHE_NAME</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="nx">caches</span><span class="p">.</span><span class="k">delete</span><span class="p">(</span><span class="nx">cacheName</span><span class="p">);</span>
+          <span class="p">}</span>
+        <span class="p">})</span>
+      <span class="p">);</span>
+    <span class="p">})</span>
+  <span class="p">);</span>
+<span class="p">});</span>
+
+<span class="c1">// Fetch event - serve from cache or network</span>
+<span class="nb">self</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="dl">'</span><span class="s1">fetch</span><span class="dl">'</span><span class="p">,</span> <span class="p">(</span><span class="nx">event</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="nx">event</span><span class="p">.</span><span class="nx">respondWith</span><span class="p">(</span>
+    <span class="nx">caches</span><span class="p">.</span><span class="nx">match</span><span class="p">(</span><span class="nx">event</span><span class="p">.</span><span class="nx">request</span><span class="p">)</span>
+      <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">response</span> <span class="o">=&gt;</span> <span class="p">{</span>
+        <span class="c1">// Return cached version or fetch from network</span>
+        <span class="k">return</span> <span class="nx">response</span> <span class="o">||</span> <span class="nx">fetch</span><span class="p">(</span><span class="nx">event</span><span class="p">.</span><span class="nx">request</span><span class="p">);</span>
+      <span class="p">})</span>
+  <span class="p">);</span>
+<span class="p">});</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<h3 id="advanced-service-worker-with-strategies">Advanced Service Worker with Strategies</h3>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+</pre></td><td class="rouge-code"><pre><span class="c1">// sw.js</span>
+<span class="kd">class</span> <span class="nx">CacheStrategy</span> <span class="p">{</span>
+  <span class="kd">static</span> <span class="nx">cacheFirst</span><span class="p">(</span><span class="nx">request</span><span class="p">,</span> <span class="nx">cacheName</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">caches</span><span class="p">.</span><span class="nx">open</span><span class="p">(</span><span class="nx">cacheName</span><span class="p">).</span><span class="nx">then</span><span class="p">(</span><span class="nx">cache</span> <span class="o">=&gt;</span> <span class="p">{</span>
+      <span class="k">return</span> <span class="nx">cache</span><span class="p">.</span><span class="nx">match</span><span class="p">(</span><span class="nx">request</span><span class="p">).</span><span class="nx">then</span><span class="p">(</span><span class="nx">cachedResponse</span> <span class="o">=&gt;</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nx">cachedResponse</span><span class="p">)</span> <span class="p">{</span>
+          <span class="k">return</span> <span class="nx">cachedResponse</span><span class="p">;</span>
+        <span class="p">}</span>
+        
+        <span class="k">return</span> <span class="nx">fetch</span><span class="p">(</span><span class="nx">request</span><span class="p">).</span><span class="nx">then</span><span class="p">(</span><span class="nx">networkResponse</span> <span class="o">=&gt;</span> <span class="p">{</span>
+          <span class="nx">cache</span><span class="p">.</span><span class="nx">put</span><span class="p">(</span><span class="nx">request</span><span class="p">,</span> <span class="nx">networkResponse</span><span class="p">.</span><span class="nx">clone</span><span class="p">());</span>
+          <span class="k">return</span> <span class="nx">networkResponse</span><span class="p">;</span>
+        <span class="p">});</span>
+      <span class="p">});</span>
+    <span class="p">});</span>
+  <span class="p">}</span>
+  
+  <span class="kd">static</span> <span class="nx">networkFirst</span><span class="p">(</span><span class="nx">request</span><span class="p">,</span> <span class="nx">cacheName</span><span class="p">,</span> <span class="nx">timeout</span> <span class="o">=</span> <span class="mi">3000</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="k">new</span> <span class="nb">Promise</span><span class="p">((</span><span class="nx">resolve</span><span class="p">,</span> <span class="nx">reject</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+      <span class="kd">const</span> <span class="nx">timeoutId</span> <span class="o">=</span> <span class="nx">setTimeout</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+        <span class="c1">// Fallback to cache if network is slow</span>
+        <span class="nx">caches</span><span class="p">.</span><span class="nx">match</span><span class="p">(</span><span class="nx">request</span><span class="p">).</span><span class="nx">then</span><span class="p">(</span><span class="nx">cachedResponse</span> <span class="o">=&gt;</span> <span class="p">{</span>
+          <span class="k">if</span> <span class="p">(</span><span class="nx">cachedResponse</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nx">resolve</span><span class="p">(</span><span class="nx">cachedResponse</span><span class="p">);</span>
+          <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+            <span class="nx">reject</span><span class="p">(</span><span class="k">new</span> <span class="nb">Error</span><span class="p">(</span><span class="dl">'</span><span class="s1">Network timeout and no cache</span><span class="dl">'</span><span class="p">));</span>
+          <span class="p">}</span>
+        <span class="p">});</span>
+      <span class="p">},</span> <span class="nx">timeout</span><span class="p">);</span>
+      
+      <span class="nx">fetch</span><span class="p">(</span><span class="nx">request</span><span class="p">).</span><span class="nx">then</span><span class="p">(</span><span class="nx">networkResponse</span> <span class="o">=&gt;</span> <span class="p">{</span>
+        <span class="nx">clearTimeout</span><span class="p">(</span><span class="nx">timeoutId</span><span class="p">);</span>
+        
+        <span class="k">if</span> <span class="p">(</span><span class="nx">networkResponse</span><span class="p">.</span><span class="nx">ok</span><span class="p">)</span> <span class="p">{</span>
+          <span class="nx">caches</span><span class="p">.</span><span class="nx">open</span><span class="p">(</span><span class="nx">cacheName</span><span class="p">).</span><span class="nx">then</span><span class="p">(</span><span class="nx">cache</span> <span class="o">=&gt;</span> <span class="p">{</span>
+            <span class="nx">cache</span><span class="p">.</span><span class="nx">put</span><span class="p">(</span><span class="nx">request</span><span class="p">,</span> <span class="nx">networkResponse</span><span class="p">.</span><span class="nx">clone</span><span class="p">());</span>
+          <span class="p">});</span>
+        <span class="p">}</span>
+        
+        <span class="nx">resolve</span><span class="p">(</span><span class="nx">networkResponse</span><span class="p">);</span>
+      <span class="p">}).</span><span class="k">catch</span><span class="p">(</span><span class="nx">error</span> <span class="o">=&gt;</span> <span class="p">{</span>
+        <span class="nx">clearTimeout</span><span class="p">(</span><span class="nx">timeoutId</span><span class="p">);</span>
+        
+        <span class="nx">caches</span><span class="p">.</span><span class="nx">match</span><span class="p">(</span><span class="nx">request</span><span class="p">).</span><span class="nx">then</span><span class="p">(</span><span class="nx">cachedResponse</span> <span class="o">=&gt;</span> <span class="p">{</span>
+          <span class="k">if</span> <span class="p">(</span><span class="nx">cachedResponse</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nx">resolve</span><span class="p">(</span><span class="nx">cachedResponse</span><span class="p">);</span>
+          <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+            <span class="nx">reject</span><span class="p">(</span><span class="nx">error</span><span class="p">);</span>
+          <span class="p">}</span>
+        <span class="p">});</span>
+      <span class="p">});</span>
+    <span class="p">});</span>
+  <span class="p">}</span>
+  
+  <span class="kd">static</span> <span class="nx">staleWhileRevalidate</span><span class="p">(</span><span class="nx">request</span><span class="p">,</span> <span class="nx">cacheName</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">caches</span><span class="p">.</span><span class="nx">open</span><span class="p">(</span><span class="nx">cacheName</span><span class="p">).</span><span class="nx">then</span><span class="p">(</span><span class="nx">cache</span> <span class="o">=&gt;</span> <span class="p">{</span>
+      <span class="k">return</span> <span class="nx">cache</span><span class="p">.</span><span class="nx">match</span><span class="p">(</span><span class="nx">request</span><span class="p">).</span><span class="nx">then</span><span class="p">(</span><span class="nx">cachedResponse</span> <span class="o">=&gt;</span> <span class="p">{</span>
+        <span class="kd">const</span> <span class="nx">fetchPromise</span> <span class="o">=</span> <span class="nx">fetch</span><span class="p">(</span><span class="nx">request</span><span class="p">).</span><span class="nx">then</span><span class="p">(</span><span class="nx">networkResponse</span> <span class="o">=&gt;</span> <span class="p">{</span>
+          <span class="nx">cache</span><span class="p">.</span><span class="nx">put</span><span class="p">(</span><span class="nx">request</span><span class="p">,</span> <span class="nx">networkResponse</span><span class="p">.</span><span class="nx">clone</span><span class="p">());</span>
+          <span class="k">return</span> <span class="nx">networkResponse</span><span class="p">;</span>
+        <span class="p">});</span>
+        
+        <span class="k">return</span> <span class="nx">cachedResponse</span> <span class="o">||</span> <span class="nx">fetchPromise</span><span class="p">;</span>
+      <span class="p">});</span>
+    <span class="p">});</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// Background sync</span>
+<span class="nb">self</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="dl">'</span><span class="s1">sync</span><span class="dl">'</span><span class="p">,</span> <span class="p">(</span><span class="nx">event</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nx">event</span><span class="p">.</span><span class="nx">tag</span> <span class="o">===</span> <span class="dl">'</span><span class="s1">background-sync</span><span class="dl">'</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">event</span><span class="p">.</span><span class="nx">waitUntil</span><span class="p">(</span><span class="nx">syncData</span><span class="p">());</span>
+  <span class="p">}</span>
+<span class="p">});</span>
+
+<span class="k">async</span> <span class="kd">function</span> <span class="nx">syncData</span><span class="p">()</span> <span class="p">{</span>
+  <span class="k">try</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="nx">pendingRequests</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">getPendingRequests</span><span class="p">();</span>
+    
+    <span class="k">for</span> <span class="p">(</span><span class="kd">const</span> <span class="nx">request</span> <span class="k">of</span> <span class="nx">pendingRequests</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">await</span> <span class="nx">fetch</span><span class="p">(</span><span class="nx">request</span><span class="p">.</span><span class="nx">url</span><span class="p">,</span> <span class="nx">request</span><span class="p">.</span><span class="nx">options</span><span class="p">);</span>
+      <span class="k">await</span> <span class="nx">removePendingRequest</span><span class="p">(</span><span class="nx">request</span><span class="p">.</span><span class="nx">id</span><span class="p">);</span>
+    <span class="p">}</span>
+  <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="dl">'</span><span class="s1">Background sync failed:</span><span class="dl">'</span><span class="p">,</span> <span class="nx">error</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<h2 id="progressive-web-apps-pwa">Progressive Web Apps (PWA)</h2>
+
+<h3 id="web-app-manifest">Web App Manifest</h3>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+</pre></td><td class="rouge-code"><pre><span class="p">{</span><span class="w">
+  </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"My Progressive Web App"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"short_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MyPWA"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"A sample progressive web application"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"start_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"display"</span><span class="p">:</span><span class="w"> </span><span class="s2">"standalone"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"background_color"</span><span class="p">:</span><span class="w"> </span><span class="s2">"#ffffff"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"theme_color"</span><span class="p">:</span><span class="w"> </span><span class="s2">"#000000"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"orientation"</span><span class="p">:</span><span class="w"> </span><span class="s2">"portrait-primary"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"icons"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"src"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/icons/icon-72x72.png"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"sizes"</span><span class="p">:</span><span class="w"> </span><span class="s2">"72x72"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"image/png"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"purpose"</span><span class="p">:</span><span class="w"> </span><span class="s2">"maskable any"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"src"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/icons/icon-192x192.png"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"sizes"</span><span class="p">:</span><span class="w"> </span><span class="s2">"192x192"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"image/png"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"purpose"</span><span class="p">:</span><span class="w"> </span><span class="s2">"maskable any"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"src"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/icons/icon-512x512.png"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"sizes"</span><span class="p">:</span><span class="w"> </span><span class="s2">"512x512"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"image/png"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"purpose"</span><span class="p">:</span><span class="w"> </span><span class="s2">"maskable any"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nl">"categories"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"productivity"</span><span class="p">,</span><span class="w"> </span><span class="s2">"utilities"</span><span class="p">],</span><span class="w">
+  </span><span class="nl">"screenshots"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"src"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/screenshots/desktop.png"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"sizes"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1920x1080"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"image/png"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"form_factor"</span><span class="p">:</span><span class="w"> </span><span class="s2">"wide"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"src"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/screenshots/mobile.png"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"sizes"</span><span class="p">:</span><span class="w"> </span><span class="s2">"750x1334"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"image/png"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"form_factor"</span><span class="p">:</span><span class="w"> </span><span class="s2">"narrow"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></pre></td></tr></tbody></table></code></pre></div></div>
+
+<h3 id="pwa-installation">PWA Installation</h3>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+</pre></td><td class="rouge-code"><pre><span class="c1">// PWA install prompt</span>
+<span class="kd">let</span> <span class="nx">deferredPrompt</span><span class="p">;</span>
+
+<span class="nb">window</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="dl">'</span><span class="s1">beforeinstallprompt</span><span class="dl">'</span><span class="p">,</span> <span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="c1">// Prevent the mini-infobar from appearing</span>
+  <span class="nx">e</span><span class="p">.</span><span class="nx">preventDefault</span><span class="p">();</span>
+  
+  <span class="c1">// Store the event so it can be triggered later</span>
+  <span class="nx">deferredPrompt</span> <span class="o">=</span> <span class="nx">e</span><span class="p">;</span>
+  
+  <span class="c1">// Show custom install button</span>
+  <span class="nx">showInstallButton</span><span class="p">();</span>
+<span class="p">});</span>
+
+<span class="kd">function</span> <span class="nx">showInstallButton</span><span class="p">()</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="nx">installBtn</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="dl">'</span><span class="s1">install-btn</span><span class="dl">'</span><span class="p">);</span>
+  <span class="nx">installBtn</span><span class="p">.</span><span class="nx">style</span><span class="p">.</span><span class="nx">display</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">block</span><span class="dl">'</span><span class="p">;</span>
+  
+  <span class="nx">installBtn</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="dl">'</span><span class="s1">click</span><span class="dl">'</span><span class="p">,</span> <span class="k">async</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">deferredPrompt</span><span class="p">)</span> <span class="p">{</span>
+      <span class="c1">// Show the install prompt</span>
+      <span class="nx">deferredPrompt</span><span class="p">.</span><span class="nx">prompt</span><span class="p">();</span>
+      
+      <span class="c1">// Wait for the user's response</span>
+      <span class="kd">const</span> <span class="p">{</span> <span class="nx">outcome</span> <span class="p">}</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">deferredPrompt</span><span class="p">.</span><span class="nx">userChoice</span><span class="p">;</span>
+      
+      <span class="k">if</span> <span class="p">(</span><span class="nx">outcome</span> <span class="o">===</span> <span class="dl">'</span><span class="s1">accepted</span><span class="dl">'</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">User accepted the install prompt</span><span class="dl">'</span><span class="p">);</span>
+      <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">User dismissed the install prompt</span><span class="dl">'</span><span class="p">);</span>
+      <span class="p">}</span>
+      
+      <span class="nx">deferredPrompt</span> <span class="o">=</span> <span class="kc">null</span><span class="p">;</span>
+      <span class="nx">installBtn</span><span class="p">.</span><span class="nx">style</span><span class="p">.</span><span class="nx">display</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">none</span><span class="dl">'</span><span class="p">;</span>
+    <span class="p">}</span>
+  <span class="p">});</span>
+<span class="p">}</span>
+
+<span class="c1">// Listen for app installation</span>
+<span class="nb">window</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="dl">'</span><span class="s1">appinstalled</span><span class="dl">'</span><span class="p">,</span> <span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">PWA was installed</span><span class="dl">'</span><span class="p">);</span>
+  <span class="nx">hideInstallButton</span><span class="p">();</span>
+<span class="p">});</span>
+
+<span class="c1">// Check if app is running in standalone mode</span>
+<span class="kd">function</span> <span class="nx">isStandalone</span><span class="p">()</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="nb">window</span><span class="p">.</span><span class="nx">matchMedia</span><span class="p">(</span><span class="dl">'</span><span class="s1">(display-mode: standalone)</span><span class="dl">'</span><span class="p">).</span><span class="nx">matches</span> <span class="o">||</span>
+         <span class="nb">window</span><span class="p">.</span><span class="nb">navigator</span><span class="p">.</span><span class="nx">standalone</span> <span class="o">===</span> <span class="kc">true</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<h2 id="web-storage-apis">Web Storage APIs</h2>
+
+<h3 id="indexeddb">IndexedDB</h3>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155
+</pre></td><td class="rouge-code"><pre><span class="kd">class</span> <span class="nx">IndexedDBManager</span> <span class="p">{</span>
+  <span class="kd">constructor</span><span class="p">(</span><span class="nx">dbName</span><span class="p">,</span> <span class="nx">version</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">dbName</span> <span class="o">=</span> <span class="nx">dbName</span><span class="p">;</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">version</span> <span class="o">=</span> <span class="nx">version</span><span class="p">;</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">db</span> <span class="o">=</span> <span class="kc">null</span><span class="p">;</span>
+  <span class="p">}</span>
+  
+  <span class="k">async</span> <span class="nx">open</span><span class="p">(</span><span class="nx">stores</span> <span class="o">=</span> <span class="p">[])</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="k">new</span> <span class="nb">Promise</span><span class="p">((</span><span class="nx">resolve</span><span class="p">,</span> <span class="nx">reject</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+      <span class="kd">const</span> <span class="nx">request</span> <span class="o">=</span> <span class="nx">indexedDB</span><span class="p">.</span><span class="nx">open</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">dbName</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">version</span><span class="p">);</span>
+      
+      <span class="nx">request</span><span class="p">.</span><span class="nx">onerror</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="nx">reject</span><span class="p">(</span><span class="nx">request</span><span class="p">.</span><span class="nx">error</span><span class="p">);</span>
+      <span class="nx">request</span><span class="p">.</span><span class="nx">onsuccess</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">db</span> <span class="o">=</span> <span class="nx">request</span><span class="p">.</span><span class="nx">result</span><span class="p">;</span>
+        <span class="nx">resolve</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">db</span><span class="p">);</span>
+      <span class="p">};</span>
+      
+      <span class="nx">request</span><span class="p">.</span><span class="nx">onupgradeneeded</span> <span class="o">=</span> <span class="p">(</span><span class="nx">event</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+        <span class="kd">const</span> <span class="nx">db</span> <span class="o">=</span> <span class="nx">event</span><span class="p">.</span><span class="nx">target</span><span class="p">.</span><span class="nx">result</span><span class="p">;</span>
+        
+        <span class="nx">stores</span><span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="nx">store</span> <span class="o">=&gt;</span> <span class="p">{</span>
+          <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">db</span><span class="p">.</span><span class="nx">objectStoreNames</span><span class="p">.</span><span class="nx">contains</span><span class="p">(</span><span class="nx">store</span><span class="p">.</span><span class="nx">name</span><span class="p">))</span> <span class="p">{</span>
+            <span class="kd">const</span> <span class="nx">objectStore</span> <span class="o">=</span> <span class="nx">db</span><span class="p">.</span><span class="nx">createObjectStore</span><span class="p">(</span><span class="nx">store</span><span class="p">.</span><span class="nx">name</span><span class="p">,</span> <span class="p">{</span>
+              <span class="na">keyPath</span><span class="p">:</span> <span class="nx">store</span><span class="p">.</span><span class="nx">keyPath</span> <span class="o">||</span> <span class="dl">'</span><span class="s1">id</span><span class="dl">'</span><span class="p">,</span>
+              <span class="na">autoIncrement</span><span class="p">:</span> <span class="nx">store</span><span class="p">.</span><span class="nx">autoIncrement</span> <span class="o">||</span> <span class="kc">false</span>
+            <span class="p">});</span>
+            
+            <span class="c1">// Create indexes</span>
+            <span class="k">if</span> <span class="p">(</span><span class="nx">store</span><span class="p">.</span><span class="nx">indexes</span><span class="p">)</span> <span class="p">{</span>
+              <span class="nx">store</span><span class="p">.</span><span class="nx">indexes</span><span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="nx">index</span> <span class="o">=&gt;</span> <span class="p">{</span>
+                <span class="nx">objectStore</span><span class="p">.</span><span class="nx">createIndex</span><span class="p">(</span><span class="nx">index</span><span class="p">.</span><span class="nx">name</span><span class="p">,</span> <span class="nx">index</span><span class="p">.</span><span class="nx">keyPath</span><span class="p">,</span> <span class="p">{</span>
+                  <span class="na">unique</span><span class="p">:</span> <span class="nx">index</span><span class="p">.</span><span class="nx">unique</span> <span class="o">||</span> <span class="kc">false</span>
+                <span class="p">});</span>
+              <span class="p">});</span>
+            <span class="p">}</span>
+          <span class="p">}</span>
+        <span class="p">});</span>
+      <span class="p">};</span>
+    <span class="p">});</span>
+  <span class="p">}</span>
+  
+  <span class="k">async</span> <span class="nx">add</span><span class="p">(</span><span class="nx">storeName</span><span class="p">,</span> <span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="nx">transaction</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">db</span><span class="p">.</span><span class="nx">transaction</span><span class="p">([</span><span class="nx">storeName</span><span class="p">],</span> <span class="dl">'</span><span class="s1">readwrite</span><span class="dl">'</span><span class="p">);</span>
+    <span class="kd">const</span> <span class="nx">store</span> <span class="o">=</span> <span class="nx">transaction</span><span class="p">.</span><span class="nx">objectStore</span><span class="p">(</span><span class="nx">storeName</span><span class="p">);</span>
+    
+    <span class="k">return</span> <span class="k">new</span> <span class="nb">Promise</span><span class="p">((</span><span class="nx">resolve</span><span class="p">,</span> <span class="nx">reject</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+      <span class="kd">const</span> <span class="nx">request</span> <span class="o">=</span> <span class="nx">store</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span>
+      <span class="nx">request</span><span class="p">.</span><span class="nx">onsuccess</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="nx">resolve</span><span class="p">(</span><span class="nx">request</span><span class="p">.</span><span class="nx">result</span><span class="p">);</span>
+      <span class="nx">request</span><span class="p">.</span><span class="nx">onerror</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="nx">reject</span><span class="p">(</span><span class="nx">request</span><span class="p">.</span><span class="nx">error</span><span class="p">);</span>
+    <span class="p">});</span>
+  <span class="p">}</span>
+  
+  <span class="k">async</span> <span class="kd">get</span><span class="p">(</span><span class="nx">storeName</span><span class="p">,</span> <span class="nx">key</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="nx">transaction</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">db</span><span class="p">.</span><span class="nx">transaction</span><span class="p">([</span><span class="nx">storeName</span><span class="p">],</span> <span class="dl">'</span><span class="s1">readonly</span><span class="dl">'</span><span class="p">);</span>
+    <span class="kd">const</span> <span class="nx">store</span> <span class="o">=</span> <span class="nx">transaction</span><span class="p">.</span><span class="nx">objectStore</span><span class="p">(</span><span class="nx">storeName</span><span class="p">);</span>
+    
+    <span class="k">return</span> <span class="k">new</span> <span class="nb">Promise</span><span class="p">((</span><span class="nx">resolve</span><span class="p">,</span> <span class="nx">reject</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+      <span class="kd">const</span> <span class="nx">request</span> <span class="o">=</span> <span class="nx">store</span><span class="p">.</span><span class="kd">get</span><span class="p">(</span><span class="nx">key</span><span class="p">);</span>
+      <span class="nx">request</span><span class="p">.</span><span class="nx">onsuccess</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="nx">resolve</span><span class="p">(</span><span class="nx">request</span><span class="p">.</span><span class="nx">result</span><span class="p">);</span>
+      <span class="nx">request</span><span class="p">.</span><span class="nx">onerror</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="nx">reject</span><span class="p">(</span><span class="nx">request</span><span class="p">.</span><span class="nx">error</span><span class="p">);</span>
+    <span class="p">});</span>
+  <span class="p">}</span>
+  
+  <span class="k">async</span> <span class="nx">getAll</span><span class="p">(</span><span class="nx">storeName</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="nx">transaction</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">db</span><span class="p">.</span><span class="nx">transaction</span><span class="p">([</span><span class="nx">storeName</span><span class="p">],</span> <span class="dl">'</span><span class="s1">readonly</span><span class="dl">'</span><span class="p">);</span>
+    <span class="kd">const</span> <span class="nx">store</span> <span class="o">=</span> <span class="nx">transaction</span><span class="p">.</span><span class="nx">objectStore</span><span class="p">(</span><span class="nx">storeName</span><span class="p">);</span>
+    
+    <span class="k">return</span> <span class="k">new</span> <span class="nb">Promise</span><span class="p">((</span><span class="nx">resolve</span><span class="p">,</span> <span class="nx">reject</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+      <span class="kd">const</span> <span class="nx">request</span> <span class="o">=</span> <span class="nx">store</span><span class="p">.</span><span class="nx">getAll</span><span class="p">();</span>
+      <span class="nx">request</span><span class="p">.</span><span class="nx">onsuccess</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="nx">resolve</span><span class="p">(</span><span class="nx">request</span><span class="p">.</span><span class="nx">result</span><span class="p">);</span>
+      <span class="nx">request</span><span class="p">.</span><span class="nx">onerror</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="nx">reject</span><span class="p">(</span><span class="nx">request</span><span class="p">.</span><span class="nx">error</span><span class="p">);</span>
+    <span class="p">});</span>
+  <span class="p">}</span>
+  
+  <span class="k">async</span> <span class="nx">update</span><span class="p">(</span><span class="nx">storeName</span><span class="p">,</span> <span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="nx">transaction</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">db</span><span class="p">.</span><span class="nx">transaction</span><span class="p">([</span><span class="nx">storeName</span><span class="p">],</span> <span class="dl">'</span><span class="s1">readwrite</span><span class="dl">'</span><span class="p">);</span>
+    <span class="kd">const</span> <span class="nx">store</span> <span class="o">=</span> <span class="nx">transaction</span><span class="p">.</span><span class="nx">objectStore</span><span class="p">(</span><span class="nx">storeName</span><span class="p">);</span>
+    
+    <span class="k">return</span> <span class="k">new</span> <span class="nb">Promise</span><span class="p">((</span><span class="nx">resolve</span><span class="p">,</span> <span class="nx">reject</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+      <span class="kd">const</span> <span class="nx">request</span> <span class="o">=</span> <span class="nx">store</span><span class="p">.</span><span class="nx">put</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span>
+      <span class="nx">request</span><span class="p">.</span><span class="nx">onsuccess</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="nx">resolve</span><span class="p">(</span><span class="nx">request</span><span class="p">.</span><span class="nx">result</span><span class="p">);</span>
+      <span class="nx">request</span><span class="p">.</span><span class="nx">onerror</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="nx">reject</span><span class="p">(</span><span class="nx">request</span><span class="p">.</span><span class="nx">error</span><span class="p">);</span>
+    <span class="p">});</span>
+  <span class="p">}</span>
+  
+  <span class="k">async</span> <span class="k">delete</span><span class="p">(</span><span class="nx">storeName</span><span class="p">,</span> <span class="nx">key</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="nx">transaction</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">db</span><span class="p">.</span><span class="nx">transaction</span><span class="p">([</span><span class="nx">storeName</span><span class="p">],</span> <span class="dl">'</span><span class="s1">readwrite</span><span class="dl">'</span><span class="p">);</span>
+    <span class="kd">const</span> <span class="nx">store</span> <span class="o">=</span> <span class="nx">transaction</span><span class="p">.</span><span class="nx">objectStore</span><span class="p">(</span><span class="nx">storeName</span><span class="p">);</span>
+    
+    <span class="k">return</span> <span class="k">new</span> <span class="nb">Promise</span><span class="p">((</span><span class="nx">resolve</span><span class="p">,</span> <span class="nx">reject</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+      <span class="kd">const</span> <span class="nx">request</span> <span class="o">=</span> <span class="nx">store</span><span class="p">.</span><span class="k">delete</span><span class="p">(</span><span class="nx">key</span><span class="p">);</span>
+      <span class="nx">request</span><span class="p">.</span><span class="nx">onsuccess</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="nx">resolve</span><span class="p">();</span>
+      <span class="nx">request</span><span class="p">.</span><span class="nx">onerror</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="nx">reject</span><span class="p">(</span><span class="nx">request</span><span class="p">.</span><span class="nx">error</span><span class="p">);</span>
+    <span class="p">});</span>
+  <span class="p">}</span>
+  
+  <span class="k">async</span> <span class="nx">query</span><span class="p">(</span><span class="nx">storeName</span><span class="p">,</span> <span class="nx">indexName</span><span class="p">,</span> <span class="nx">keyRange</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="nx">transaction</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">db</span><span class="p">.</span><span class="nx">transaction</span><span class="p">([</span><span class="nx">storeName</span><span class="p">],</span> <span class="dl">'</span><span class="s1">readonly</span><span class="dl">'</span><span class="p">);</span>
+    <span class="kd">const</span> <span class="nx">store</span> <span class="o">=</span> <span class="nx">transaction</span><span class="p">.</span><span class="nx">objectStore</span><span class="p">(</span><span class="nx">storeName</span><span class="p">);</span>
+    <span class="kd">const</span> <span class="nx">index</span> <span class="o">=</span> <span class="nx">store</span><span class="p">.</span><span class="nx">index</span><span class="p">(</span><span class="nx">indexName</span><span class="p">);</span>
+    
+    <span class="k">return</span> <span class="k">new</span> <span class="nb">Promise</span><span class="p">((</span><span class="nx">resolve</span><span class="p">,</span> <span class="nx">reject</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+      <span class="kd">const</span> <span class="nx">request</span> <span class="o">=</span> <span class="nx">index</span><span class="p">.</span><span class="nx">getAll</span><span class="p">(</span><span class="nx">keyRange</span><span class="p">);</span>
+      <span class="nx">request</span><span class="p">.</span><span class="nx">onsuccess</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="nx">resolve</span><span class="p">(</span><span class="nx">request</span><span class="p">.</span><span class="nx">result</span><span class="p">);</span>
+      <span class="nx">request</span><span class="p">.</span><span class="nx">onerror</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="nx">reject</span><span class="p">(</span><span class="nx">request</span><span class="p">.</span><span class="nx">error</span><span class="p">);</span>
+    <span class="p">});</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// Usage</span>
+<span class="kd">const</span> <span class="nx">dbManager</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">IndexedDBManager</span><span class="p">(</span><span class="dl">'</span><span class="s1">MyAppDB</span><span class="dl">'</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
+
+<span class="kd">const</span> <span class="nx">stores</span> <span class="o">=</span> <span class="p">[</span>
+  <span class="p">{</span>
+    <span class="na">name</span><span class="p">:</span> <span class="dl">'</span><span class="s1">users</span><span class="dl">'</span><span class="p">,</span>
+    <span class="na">keyPath</span><span class="p">:</span> <span class="dl">'</span><span class="s1">id</span><span class="dl">'</span><span class="p">,</span>
+    <span class="na">autoIncrement</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="na">indexes</span><span class="p">:</span> <span class="p">[</span>
+      <span class="p">{</span> <span class="na">name</span><span class="p">:</span> <span class="dl">'</span><span class="s1">email</span><span class="dl">'</span><span class="p">,</span> <span class="na">keyPath</span><span class="p">:</span> <span class="dl">'</span><span class="s1">email</span><span class="dl">'</span><span class="p">,</span> <span class="na">unique</span><span class="p">:</span> <span class="kc">true</span> <span class="p">},</span>
+      <span class="p">{</span> <span class="na">name</span><span class="p">:</span> <span class="dl">'</span><span class="s1">name</span><span class="dl">'</span><span class="p">,</span> <span class="na">keyPath</span><span class="p">:</span> <span class="dl">'</span><span class="s1">name</span><span class="dl">'</span><span class="p">,</span> <span class="na">unique</span><span class="p">:</span> <span class="kc">false</span> <span class="p">}</span>
+    <span class="p">]</span>
+  <span class="p">},</span>
+  <span class="p">{</span>
+    <span class="na">name</span><span class="p">:</span> <span class="dl">'</span><span class="s1">posts</span><span class="dl">'</span><span class="p">,</span>
+    <span class="na">keyPath</span><span class="p">:</span> <span class="dl">'</span><span class="s1">id</span><span class="dl">'</span><span class="p">,</span>
+    <span class="na">autoIncrement</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="na">indexes</span><span class="p">:</span> <span class="p">[</span>
+      <span class="p">{</span> <span class="na">name</span><span class="p">:</span> <span class="dl">'</span><span class="s1">userId</span><span class="dl">'</span><span class="p">,</span> <span class="na">keyPath</span><span class="p">:</span> <span class="dl">'</span><span class="s1">userId</span><span class="dl">'</span><span class="p">,</span> <span class="na">unique</span><span class="p">:</span> <span class="kc">false</span> <span class="p">},</span>
+      <span class="p">{</span> <span class="na">name</span><span class="p">:</span> <span class="dl">'</span><span class="s1">createdAt</span><span class="dl">'</span><span class="p">,</span> <span class="na">keyPath</span><span class="p">:</span> <span class="dl">'</span><span class="s1">createdAt</span><span class="dl">'</span><span class="p">,</span> <span class="na">unique</span><span class="p">:</span> <span class="kc">false</span> <span class="p">}</span>
+    <span class="p">]</span>
+  <span class="p">}</span>
+<span class="p">];</span>
+
+<span class="k">async</span> <span class="kd">function</span> <span class="nx">initDB</span><span class="p">()</span> <span class="p">{</span>
+  <span class="k">await</span> <span class="nx">dbManager</span><span class="p">.</span><span class="nx">open</span><span class="p">(</span><span class="nx">stores</span><span class="p">);</span>
+  
+  <span class="c1">// Add user</span>
+  <span class="k">await</span> <span class="nx">dbManager</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="dl">'</span><span class="s1">users</span><span class="dl">'</span><span class="p">,</span> <span class="p">{</span>
+    <span class="na">name</span><span class="p">:</span> <span class="dl">'</span><span class="s1">John Doe</span><span class="dl">'</span><span class="p">,</span>
+    <span class="na">email</span><span class="p">:</span> <span class="dl">'</span><span class="s1">john@example.com</span><span class="dl">'</span><span class="p">,</span>
+    <span class="na">age</span><span class="p">:</span> <span class="mi">30</span>
+  <span class="p">});</span>
+  
+  <span class="c1">// Get user</span>
+  <span class="kd">const</span> <span class="nx">user</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">dbManager</span><span class="p">.</span><span class="kd">get</span><span class="p">(</span><span class="dl">'</span><span class="s1">users</span><span class="dl">'</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">User:</span><span class="dl">'</span><span class="p">,</span> <span class="nx">user</span><span class="p">);</span>
+  
+  <span class="c1">// Query by email</span>
+  <span class="kd">const</span> <span class="nx">usersByEmail</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">dbManager</span><span class="p">.</span><span class="nx">query</span><span class="p">(</span>
+    <span class="dl">'</span><span class="s1">users</span><span class="dl">'</span><span class="p">,</span> 
+    <span class="dl">'</span><span class="s1">email</span><span class="dl">'</span><span class="p">,</span> 
+    <span class="nx">IDBKeyRange</span><span class="p">.</span><span class="nx">only</span><span class="p">(</span><span class="dl">'</span><span class="s1">john@example.com</span><span class="dl">'</span><span class="p">)</span>
+  <span class="p">);</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">Users by email:</span><span class="dl">'</span><span class="p">,</span> <span class="nx">usersByEmail</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<h3 id="cache-api">Cache API</h3>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+</pre></td><td class="rouge-code"><pre><span class="kd">class</span> <span class="nx">CacheManager</span> <span class="p">{</span>
+  <span class="kd">constructor</span><span class="p">(</span><span class="nx">cacheName</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">cacheName</span> <span class="o">=</span> <span class="nx">cacheName</span><span class="p">;</span>
+  <span class="p">}</span>
+  
+  <span class="k">async</span> <span class="nx">add</span><span class="p">(</span><span class="nx">request</span><span class="p">,</span> <span class="nx">response</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="nx">cache</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">caches</span><span class="p">.</span><span class="nx">open</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">cacheName</span><span class="p">);</span>
+    <span class="k">return</span> <span class="nx">cache</span><span class="p">.</span><span class="nx">put</span><span class="p">(</span><span class="nx">request</span><span class="p">,</span> <span class="nx">response</span><span class="p">);</span>
+  <span class="p">}</span>
+  
+  <span class="k">async</span> <span class="kd">get</span><span class="p">(</span><span class="nx">request</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="nx">cache</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">caches</span><span class="p">.</span><span class="nx">open</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">cacheName</span><span class="p">);</span>
+    <span class="k">return</span> <span class="nx">cache</span><span class="p">.</span><span class="nx">match</span><span class="p">(</span><span class="nx">request</span><span class="p">);</span>
+  <span class="p">}</span>
+  
+  <span class="k">async</span> <span class="k">delete</span><span class="p">(</span><span class="nx">request</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="nx">cache</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">caches</span><span class="p">.</span><span class="nx">open</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">cacheName</span><span class="p">);</span>
+    <span class="k">return</span> <span class="nx">cache</span><span class="p">.</span><span class="k">delete</span><span class="p">(</span><span class="nx">request</span><span class="p">);</span>
+  <span class="p">}</span>
+  
+  <span class="k">async</span> <span class="nx">clear</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">caches</span><span class="p">.</span><span class="k">delete</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">cacheName</span><span class="p">);</span>
+  <span class="p">}</span>
+  
+  <span class="k">async</span> <span class="nx">addAll</span><span class="p">(</span><span class="nx">requests</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="nx">cache</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">caches</span><span class="p">.</span><span class="nx">open</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">cacheName</span><span class="p">);</span>
+    <span class="k">return</span> <span class="nx">cache</span><span class="p">.</span><span class="nx">addAll</span><span class="p">(</span><span class="nx">requests</span><span class="p">);</span>
+  <span class="p">}</span>
+  
+  <span class="k">async</span> <span class="nx">keys</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="nx">cache</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">caches</span><span class="p">.</span><span class="nx">open</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">cacheName</span><span class="p">);</span>
+    <span class="k">return</span> <span class="nx">cache</span><span class="p">.</span><span class="nx">keys</span><span class="p">();</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// Advanced caching with expiration</span>
+<span class="kd">class</span> <span class="nx">ExpiringCache</span> <span class="kd">extends</span> <span class="nx">CacheManager</span> <span class="p">{</span>
+  <span class="kd">constructor</span><span class="p">(</span><span class="nx">cacheName</span><span class="p">,</span> <span class="nx">defaultTTL</span> <span class="o">=</span> <span class="mi">3600000</span><span class="p">)</span> <span class="p">{</span> <span class="c1">// 1 hour default</span>
+    <span class="k">super</span><span class="p">(</span><span class="nx">cacheName</span><span class="p">);</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">defaultTTL</span> <span class="o">=</span> <span class="nx">defaultTTL</span><span class="p">;</span>
+  <span class="p">}</span>
+  
+  <span class="k">async</span> <span class="nx">add</span><span class="p">(</span><span class="nx">request</span><span class="p">,</span> <span class="nx">response</span><span class="p">,</span> <span class="nx">ttl</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">defaultTTL</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="nx">cache</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">caches</span><span class="p">.</span><span class="nx">open</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">cacheName</span><span class="p">);</span>
+    <span class="kd">const</span> <span class="nx">expirationTime</span> <span class="o">=</span> <span class="nb">Date</span><span class="p">.</span><span class="nx">now</span><span class="p">()</span> <span class="o">+</span> <span class="nx">ttl</span><span class="p">;</span>
+    
+    <span class="c1">// Clone response to add expiration header</span>
+    <span class="kd">const</span> <span class="nx">responseToCache</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Response</span><span class="p">(</span><span class="nx">response</span><span class="p">.</span><span class="nx">body</span><span class="p">,</span> <span class="p">{</span>
+      <span class="na">status</span><span class="p">:</span> <span class="nx">response</span><span class="p">.</span><span class="nx">status</span><span class="p">,</span>
+      <span class="na">statusText</span><span class="p">:</span> <span class="nx">response</span><span class="p">.</span><span class="nx">statusText</span><span class="p">,</span>
+      <span class="na">headers</span><span class="p">:</span> <span class="p">{</span>
+        <span class="p">...</span><span class="nb">Object</span><span class="p">.</span><span class="nx">fromEntries</span><span class="p">(</span><span class="nx">response</span><span class="p">.</span><span class="nx">headers</span><span class="p">.</span><span class="nx">entries</span><span class="p">()),</span>
+        <span class="dl">'</span><span class="s1">cache-expiration</span><span class="dl">'</span><span class="p">:</span> <span class="nx">expirationTime</span><span class="p">.</span><span class="nx">toString</span><span class="p">()</span>
+      <span class="p">}</span>
+    <span class="p">});</span>
+    
+    <span class="k">return</span> <span class="nx">cache</span><span class="p">.</span><span class="nx">put</span><span class="p">(</span><span class="nx">request</span><span class="p">,</span> <span class="nx">responseToCache</span><span class="p">);</span>
+  <span class="p">}</span>
+  
+  <span class="k">async</span> <span class="kd">get</span><span class="p">(</span><span class="nx">request</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="nx">cache</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">caches</span><span class="p">.</span><span class="nx">open</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">cacheName</span><span class="p">);</span>
+    <span class="kd">const</span> <span class="nx">response</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">cache</span><span class="p">.</span><span class="nx">match</span><span class="p">(</span><span class="nx">request</span><span class="p">);</span>
+    
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">response</span><span class="p">)</span> <span class="k">return</span> <span class="kc">null</span><span class="p">;</span>
+    
+    <span class="kd">const</span> <span class="nx">expirationTime</span> <span class="o">=</span> <span class="nx">response</span><span class="p">.</span><span class="nx">headers</span><span class="p">.</span><span class="kd">get</span><span class="p">(</span><span class="dl">'</span><span class="s1">cache-expiration</span><span class="dl">'</span><span class="p">);</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">expirationTime</span> <span class="o">&amp;&amp;</span> <span class="nb">Date</span><span class="p">.</span><span class="nx">now</span><span class="p">()</span> <span class="o">&gt;</span> <span class="nb">parseInt</span><span class="p">(</span><span class="nx">expirationTime</span><span class="p">))</span> <span class="p">{</span>
+      <span class="c1">// Cache expired, remove it</span>
+      <span class="k">await</span> <span class="nx">cache</span><span class="p">.</span><span class="k">delete</span><span class="p">(</span><span class="nx">request</span><span class="p">);</span>
+      <span class="k">return</span> <span class="kc">null</span><span class="p">;</span>
+    <span class="p">}</span>
+    
+    <span class="k">return</span> <span class="nx">response</span><span class="p">;</span>
+  <span class="p">}</span>
+  
+  <span class="k">async</span> <span class="nx">cleanup</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="nx">cache</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">caches</span><span class="p">.</span><span class="nx">open</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">cacheName</span><span class="p">);</span>
+    <span class="kd">const</span> <span class="nx">requests</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">cache</span><span class="p">.</span><span class="nx">keys</span><span class="p">();</span>
+    
+    <span class="k">for</span> <span class="p">(</span><span class="kd">const</span> <span class="nx">request</span> <span class="k">of</span> <span class="nx">requests</span><span class="p">)</span> <span class="p">{</span>
+      <span class="kd">const</span> <span class="nx">response</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">cache</span><span class="p">.</span><span class="nx">match</span><span class="p">(</span><span class="nx">request</span><span class="p">);</span>
+      <span class="kd">const</span> <span class="nx">expirationTime</span> <span class="o">=</span> <span class="nx">response</span><span class="p">.</span><span class="nx">headers</span><span class="p">.</span><span class="kd">get</span><span class="p">(</span><span class="dl">'</span><span class="s1">cache-expiration</span><span class="dl">'</span><span class="p">);</span>
+      
+      <span class="k">if</span> <span class="p">(</span><span class="nx">expirationTime</span> <span class="o">&amp;&amp;</span> <span class="nb">Date</span><span class="p">.</span><span class="nx">now</span><span class="p">()</span> <span class="o">&gt;</span> <span class="nb">parseInt</span><span class="p">(</span><span class="nx">expirationTime</span><span class="p">))</span> <span class="p">{</span>
+        <span class="k">await</span> <span class="nx">cache</span><span class="p">.</span><span class="k">delete</span><span class="p">(</span><span class="nx">request</span><span class="p">);</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<h2 id="geolocation-api">Geolocation API</h2>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+</pre></td><td class="rouge-code"><pre><span class="kd">class</span> <span class="nx">GeolocationManager</span> <span class="p">{</span>
+  <span class="kd">constructor</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">watchId</span> <span class="o">=</span> <span class="kc">null</span><span class="p">;</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">currentPosition</span> <span class="o">=</span> <span class="kc">null</span><span class="p">;</span>
+  <span class="p">}</span>
+  
+  <span class="k">async</span> <span class="nx">getCurrentPosition</span><span class="p">(</span><span class="nx">options</span> <span class="o">=</span> <span class="p">{})</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="nx">defaultOptions</span> <span class="o">=</span> <span class="p">{</span>
+      <span class="na">enableHighAccuracy</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+      <span class="na">timeout</span><span class="p">:</span> <span class="mi">10000</span><span class="p">,</span>
+      <span class="na">maximumAge</span><span class="p">:</span> <span class="mi">300000</span> <span class="c1">// 5 minutes</span>
+    <span class="p">};</span>
+    
+    <span class="kd">const</span> <span class="nx">finalOptions</span> <span class="o">=</span> <span class="p">{</span> <span class="p">...</span><span class="nx">defaultOptions</span><span class="p">,</span> <span class="p">...</span><span class="nx">options</span> <span class="p">};</span>
+    
+    <span class="k">return</span> <span class="k">new</span> <span class="nb">Promise</span><span class="p">((</span><span class="nx">resolve</span><span class="p">,</span> <span class="nx">reject</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+      <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nb">navigator</span><span class="p">.</span><span class="nx">geolocation</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">reject</span><span class="p">(</span><span class="k">new</span> <span class="nb">Error</span><span class="p">(</span><span class="dl">'</span><span class="s1">Geolocation is not supported</span><span class="dl">'</span><span class="p">));</span>
+        <span class="k">return</span><span class="p">;</span>
+      <span class="p">}</span>
+      
+      <span class="nb">navigator</span><span class="p">.</span><span class="nx">geolocation</span><span class="p">.</span><span class="nx">getCurrentPosition</span><span class="p">(</span>
+        <span class="p">(</span><span class="nx">position</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+          <span class="k">this</span><span class="p">.</span><span class="nx">currentPosition</span> <span class="o">=</span> <span class="nx">position</span><span class="p">;</span>
+          <span class="nx">resolve</span><span class="p">(</span><span class="nx">position</span><span class="p">);</span>
+        <span class="p">},</span>
+        <span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+          <span class="nx">reject</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">formatError</span><span class="p">(</span><span class="nx">error</span><span class="p">));</span>
+        <span class="p">},</span>
+        <span class="nx">finalOptions</span>
+      <span class="p">);</span>
+    <span class="p">});</span>
+  <span class="p">}</span>
+  
+  <span class="nx">startWatching</span><span class="p">(</span><span class="nx">callback</span><span class="p">,</span> <span class="nx">errorCallback</span><span class="p">,</span> <span class="nx">options</span> <span class="o">=</span> <span class="p">{})</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nb">navigator</span><span class="p">.</span><span class="nx">geolocation</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">errorCallback</span><span class="p">(</span><span class="k">new</span> <span class="nb">Error</span><span class="p">(</span><span class="dl">'</span><span class="s1">Geolocation is not supported</span><span class="dl">'</span><span class="p">));</span>
+      <span class="k">return</span><span class="p">;</span>
+    <span class="p">}</span>
+    
+    <span class="kd">const</span> <span class="nx">defaultOptions</span> <span class="o">=</span> <span class="p">{</span>
+      <span class="na">enableHighAccuracy</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+      <span class="na">timeout</span><span class="p">:</span> <span class="mi">30000</span><span class="p">,</span>
+      <span class="na">maximumAge</span><span class="p">:</span> <span class="mi">60000</span> <span class="c1">// 1 minute</span>
+    <span class="p">};</span>
+    
+    <span class="kd">const</span> <span class="nx">finalOptions</span> <span class="o">=</span> <span class="p">{</span> <span class="p">...</span><span class="nx">defaultOptions</span><span class="p">,</span> <span class="p">...</span><span class="nx">options</span> <span class="p">};</span>
+    
+    <span class="k">this</span><span class="p">.</span><span class="nx">watchId</span> <span class="o">=</span> <span class="nb">navigator</span><span class="p">.</span><span class="nx">geolocation</span><span class="p">.</span><span class="nx">watchPosition</span><span class="p">(</span>
+      <span class="p">(</span><span class="nx">position</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">currentPosition</span> <span class="o">=</span> <span class="nx">position</span><span class="p">;</span>
+        <span class="nx">callback</span><span class="p">(</span><span class="nx">position</span><span class="p">);</span>
+      <span class="p">},</span>
+      <span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+        <span class="nx">errorCallback</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">formatError</span><span class="p">(</span><span class="nx">error</span><span class="p">));</span>
+      <span class="p">},</span>
+      <span class="nx">finalOptions</span>
+    <span class="p">);</span>
+    
+    <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">watchId</span><span class="p">;</span>
+  <span class="p">}</span>
+  
+  <span class="nx">stopWatching</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">watchId</span> <span class="o">!==</span> <span class="kc">null</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nb">navigator</span><span class="p">.</span><span class="nx">geolocation</span><span class="p">.</span><span class="nx">clearWatch</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">watchId</span><span class="p">);</span>
+      <span class="k">this</span><span class="p">.</span><span class="nx">watchId</span> <span class="o">=</span> <span class="kc">null</span><span class="p">;</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+  
+  <span class="nx">formatError</span><span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="nx">errorMessages</span> <span class="o">=</span> <span class="p">{</span>
+      <span class="mi">1</span><span class="p">:</span> <span class="dl">'</span><span class="s1">Permission denied by user</span><span class="dl">'</span><span class="p">,</span>
+      <span class="mi">2</span><span class="p">:</span> <span class="dl">'</span><span class="s1">Position unavailable</span><span class="dl">'</span><span class="p">,</span>
+      <span class="mi">3</span><span class="p">:</span> <span class="dl">'</span><span class="s1">Request timeout</span><span class="dl">'</span>
+    <span class="p">};</span>
+    
+    <span class="k">return</span> <span class="k">new</span> <span class="nb">Error</span><span class="p">(</span><span class="nx">errorMessages</span><span class="p">[</span><span class="nx">error</span><span class="p">.</span><span class="nx">code</span><span class="p">]</span> <span class="o">||</span> <span class="dl">'</span><span class="s1">Unknown geolocation error</span><span class="dl">'</span><span class="p">);</span>
+  <span class="p">}</span>
+  
+  <span class="nx">calculateDistance</span><span class="p">(</span><span class="nx">lat1</span><span class="p">,</span> <span class="nx">lon1</span><span class="p">,</span> <span class="nx">lat2</span><span class="p">,</span> <span class="nx">lon2</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="nx">R</span> <span class="o">=</span> <span class="mi">6371</span><span class="p">;</span> <span class="c1">// Earth's radius in kilometers</span>
+    <span class="kd">const</span> <span class="nx">dLat</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">toRadians</span><span class="p">(</span><span class="nx">lat2</span> <span class="o">-</span> <span class="nx">lat1</span><span class="p">);</span>
+    <span class="kd">const</span> <span class="nx">dLon</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">toRadians</span><span class="p">(</span><span class="nx">lon2</span> <span class="o">-</span> <span class="nx">lon1</span><span class="p">);</span>
+    
+    <span class="kd">const</span> <span class="nx">a</span> <span class="o">=</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">sin</span><span class="p">(</span><span class="nx">dLat</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span> <span class="o">*</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">sin</span><span class="p">(</span><span class="nx">dLat</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span> <span class="o">+</span>
+              <span class="nb">Math</span><span class="p">.</span><span class="nx">cos</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">toRadians</span><span class="p">(</span><span class="nx">lat1</span><span class="p">))</span> <span class="o">*</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">cos</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">toRadians</span><span class="p">(</span><span class="nx">lat2</span><span class="p">))</span> <span class="o">*</span>
+              <span class="nb">Math</span><span class="p">.</span><span class="nx">sin</span><span class="p">(</span><span class="nx">dLon</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span> <span class="o">*</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">sin</span><span class="p">(</span><span class="nx">dLon</span> <span class="o">/</span> <span class="mi">2</span><span class="p">);</span>
+    
+    <span class="kd">const</span> <span class="nx">c</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">atan2</span><span class="p">(</span><span class="nb">Math</span><span class="p">.</span><span class="nx">sqrt</span><span class="p">(</span><span class="nx">a</span><span class="p">),</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">sqrt</span><span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="nx">a</span><span class="p">));</span>
+    <span class="k">return</span> <span class="nx">R</span> <span class="o">*</span> <span class="nx">c</span><span class="p">;</span> <span class="c1">// Distance in kilometers</span>
+  <span class="p">}</span>
+  
+  <span class="nx">toRadians</span><span class="p">(</span><span class="nx">degrees</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">degrees</span> <span class="o">*</span> <span class="p">(</span><span class="nb">Math</span><span class="p">.</span><span class="nx">PI</span> <span class="o">/</span> <span class="mi">180</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// Usage</span>
+<span class="kd">const</span> <span class="nx">geoManager</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">GeolocationManager</span><span class="p">();</span>
+
+<span class="k">async</span> <span class="kd">function</span> <span class="nx">trackUserLocation</span><span class="p">()</span> <span class="p">{</span>
+  <span class="k">try</span> <span class="p">{</span>
+    <span class="c1">// Get current position</span>
+    <span class="kd">const</span> <span class="nx">position</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">geoManager</span><span class="p">.</span><span class="nx">getCurrentPosition</span><span class="p">({</span>
+      <span class="na">enableHighAccuracy</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+      <span class="na">timeout</span><span class="p">:</span> <span class="mi">15000</span>
+    <span class="p">});</span>
+    
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">Current position:</span><span class="dl">'</span><span class="p">,</span> <span class="p">{</span>
+      <span class="na">latitude</span><span class="p">:</span> <span class="nx">position</span><span class="p">.</span><span class="nx">coords</span><span class="p">.</span><span class="nx">latitude</span><span class="p">,</span>
+      <span class="na">longitude</span><span class="p">:</span> <span class="nx">position</span><span class="p">.</span><span class="nx">coords</span><span class="p">.</span><span class="nx">longitude</span><span class="p">,</span>
+      <span class="na">accuracy</span><span class="p">:</span> <span class="nx">position</span><span class="p">.</span><span class="nx">coords</span><span class="p">.</span><span class="nx">accuracy</span>
+    <span class="p">});</span>
+    
+    <span class="c1">// Start watching for position changes</span>
+    <span class="nx">geoManager</span><span class="p">.</span><span class="nx">startWatching</span><span class="p">(</span>
+      <span class="p">(</span><span class="nx">position</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">Position updated:</span><span class="dl">'</span><span class="p">,</span> <span class="nx">position</span><span class="p">.</span><span class="nx">coords</span><span class="p">);</span>
+        <span class="nx">updateMapLocation</span><span class="p">(</span><span class="nx">position</span><span class="p">.</span><span class="nx">coords</span><span class="p">);</span>
+      <span class="p">},</span>
+      <span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="dl">'</span><span class="s1">Geolocation error:</span><span class="dl">'</span><span class="p">,</span> <span class="nx">error</span><span class="p">.</span><span class="nx">message</span><span class="p">);</span>
+      <span class="p">},</span>
+      <span class="p">{</span>
+        <span class="na">enableHighAccuracy</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+        <span class="na">timeout</span><span class="p">:</span> <span class="mi">30000</span><span class="p">,</span>
+        <span class="na">maximumAge</span><span class="p">:</span> <span class="mi">60000</span>
+      <span class="p">}</span>
+    <span class="p">);</span>
+    
+  <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="dl">'</span><span class="s1">Failed to get location:</span><span class="dl">'</span><span class="p">,</span> <span class="nx">error</span><span class="p">.</span><span class="nx">message</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<h2 id="camera--media-apis">Camera &amp; Media APIs</h2>
+
+<h3 id="getusermedia-for-camera-access">getUserMedia for Camera Access</h3>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155
+156
+157
+158
+159
+160
+161
+162
+163
+164
+165
+166
+167
+168
+169
+170
+171
+172
+173
+174
+175
+176
+</pre></td><td class="rouge-code"><pre><span class="kd">class</span> <span class="nx">CameraManager</span> <span class="p">{</span>
+  <span class="kd">constructor</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">stream</span> <span class="o">=</span> <span class="kc">null</span><span class="p">;</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">mediaRecorder</span> <span class="o">=</span> <span class="kc">null</span><span class="p">;</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">recordedChunks</span> <span class="o">=</span> <span class="p">[];</span>
+  <span class="p">}</span>
+  
+  <span class="k">async</span> <span class="nx">getDevices</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">try</span> <span class="p">{</span>
+      <span class="kd">const</span> <span class="nx">devices</span> <span class="o">=</span> <span class="k">await</span> <span class="nb">navigator</span><span class="p">.</span><span class="nx">mediaDevices</span><span class="p">.</span><span class="nx">enumerateDevices</span><span class="p">();</span>
+      <span class="k">return</span> <span class="p">{</span>
+        <span class="na">videoInputs</span><span class="p">:</span> <span class="nx">devices</span><span class="p">.</span><span class="nx">filter</span><span class="p">(</span><span class="nx">device</span> <span class="o">=&gt;</span> <span class="nx">device</span><span class="p">.</span><span class="nx">kind</span> <span class="o">===</span> <span class="dl">'</span><span class="s1">videoinput</span><span class="dl">'</span><span class="p">),</span>
+        <span class="na">audioInputs</span><span class="p">:</span> <span class="nx">devices</span><span class="p">.</span><span class="nx">filter</span><span class="p">(</span><span class="nx">device</span> <span class="o">=&gt;</span> <span class="nx">device</span><span class="p">.</span><span class="nx">kind</span> <span class="o">===</span> <span class="dl">'</span><span class="s1">audioinput</span><span class="dl">'</span><span class="p">)</span>
+      <span class="p">};</span>
+    <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">throw</span> <span class="k">new</span> <span class="nb">Error</span><span class="p">(</span><span class="s2">`Failed to enumerate devices: </span><span class="p">${</span><span class="nx">error</span><span class="p">.</span><span class="nx">message</span><span class="p">}</span><span class="s2">`</span><span class="p">);</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+  
+  <span class="k">async</span> <span class="nx">startCamera</span><span class="p">(</span><span class="nx">constraints</span> <span class="o">=</span> <span class="p">{})</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="nx">defaultConstraints</span> <span class="o">=</span> <span class="p">{</span>
+      <span class="na">video</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">width</span><span class="p">:</span> <span class="p">{</span> <span class="na">ideal</span><span class="p">:</span> <span class="mi">1920</span> <span class="p">},</span>
+        <span class="na">height</span><span class="p">:</span> <span class="p">{</span> <span class="na">ideal</span><span class="p">:</span> <span class="mi">1080</span> <span class="p">},</span>
+        <span class="na">frameRate</span><span class="p">:</span> <span class="p">{</span> <span class="na">ideal</span><span class="p">:</span> <span class="mi">30</span> <span class="p">}</span>
+      <span class="p">},</span>
+      <span class="na">audio</span><span class="p">:</span> <span class="kc">true</span>
+    <span class="p">};</span>
+    
+    <span class="kd">const</span> <span class="nx">finalConstraints</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">mergeConstraints</span><span class="p">(</span><span class="nx">defaultConstraints</span><span class="p">,</span> <span class="nx">constraints</span><span class="p">);</span>
+    
+    <span class="k">try</span> <span class="p">{</span>
+      <span class="k">this</span><span class="p">.</span><span class="nx">stream</span> <span class="o">=</span> <span class="k">await</span> <span class="nb">navigator</span><span class="p">.</span><span class="nx">mediaDevices</span><span class="p">.</span><span class="nx">getUserMedia</span><span class="p">(</span><span class="nx">finalConstraints</span><span class="p">);</span>
+      <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">stream</span><span class="p">;</span>
+    <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">throw</span> <span class="k">new</span> <span class="nb">Error</span><span class="p">(</span><span class="s2">`Failed to access camera: </span><span class="p">${</span><span class="nx">error</span><span class="p">.</span><span class="nx">message</span><span class="p">}</span><span class="s2">`</span><span class="p">);</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+  
+  <span class="k">async</span> <span class="nx">startScreenCapture</span><span class="p">(</span><span class="nx">constraints</span> <span class="o">=</span> <span class="p">{})</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="nx">defaultConstraints</span> <span class="o">=</span> <span class="p">{</span>
+      <span class="na">video</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">mediaSource</span><span class="p">:</span> <span class="dl">'</span><span class="s1">screen</span><span class="dl">'</span>
+      <span class="p">},</span>
+      <span class="na">audio</span><span class="p">:</span> <span class="kc">true</span>
+    <span class="p">};</span>
+    
+    <span class="kd">const</span> <span class="nx">finalConstraints</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">mergeConstraints</span><span class="p">(</span><span class="nx">defaultConstraints</span><span class="p">,</span> <span class="nx">constraints</span><span class="p">);</span>
+    
+    <span class="k">try</span> <span class="p">{</span>
+      <span class="k">this</span><span class="p">.</span><span class="nx">stream</span> <span class="o">=</span> <span class="k">await</span> <span class="nb">navigator</span><span class="p">.</span><span class="nx">mediaDevices</span><span class="p">.</span><span class="nx">getDisplayMedia</span><span class="p">(</span><span class="nx">finalConstraints</span><span class="p">);</span>
+      <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">stream</span><span class="p">;</span>
+    <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">throw</span> <span class="k">new</span> <span class="nb">Error</span><span class="p">(</span><span class="s2">`Failed to capture screen: </span><span class="p">${</span><span class="nx">error</span><span class="p">.</span><span class="nx">message</span><span class="p">}</span><span class="s2">`</span><span class="p">);</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+  
+  <span class="nx">stopStream</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">stream</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">this</span><span class="p">.</span><span class="nx">stream</span><span class="p">.</span><span class="nx">getTracks</span><span class="p">().</span><span class="nx">forEach</span><span class="p">(</span><span class="nx">track</span> <span class="o">=&gt;</span> <span class="nx">track</span><span class="p">.</span><span class="nx">stop</span><span class="p">());</span>
+      <span class="k">this</span><span class="p">.</span><span class="nx">stream</span> <span class="o">=</span> <span class="kc">null</span><span class="p">;</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+  
+  <span class="k">async</span> <span class="nx">startRecording</span><span class="p">(</span><span class="nx">options</span> <span class="o">=</span> <span class="p">{})</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="k">this</span><span class="p">.</span><span class="nx">stream</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">throw</span> <span class="k">new</span> <span class="nb">Error</span><span class="p">(</span><span class="dl">'</span><span class="s1">No active stream to record</span><span class="dl">'</span><span class="p">);</span>
+    <span class="p">}</span>
+    
+    <span class="kd">const</span> <span class="nx">defaultOptions</span> <span class="o">=</span> <span class="p">{</span>
+      <span class="na">mimeType</span><span class="p">:</span> <span class="dl">'</span><span class="s1">video/webm; codecs=vp9</span><span class="dl">'</span><span class="p">,</span>
+      <span class="na">videoBitsPerSecond</span><span class="p">:</span> <span class="mi">2500000</span>
+    <span class="p">};</span>
+    
+    <span class="kd">const</span> <span class="nx">finalOptions</span> <span class="o">=</span> <span class="p">{</span> <span class="p">...</span><span class="nx">defaultOptions</span><span class="p">,</span> <span class="p">...</span><span class="nx">options</span> <span class="p">};</span>
+    
+    <span class="k">this</span><span class="p">.</span><span class="nx">recordedChunks</span> <span class="o">=</span> <span class="p">[];</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">mediaRecorder</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">MediaRecorder</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">stream</span><span class="p">,</span> <span class="nx">finalOptions</span><span class="p">);</span>
+    
+    <span class="k">this</span><span class="p">.</span><span class="nx">mediaRecorder</span><span class="p">.</span><span class="nx">ondataavailable</span> <span class="o">=</span> <span class="p">(</span><span class="nx">event</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+      <span class="k">if</span> <span class="p">(</span><span class="nx">event</span><span class="p">.</span><span class="nx">data</span><span class="p">.</span><span class="nx">size</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">recordedChunks</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">event</span><span class="p">.</span><span class="nx">data</span><span class="p">);</span>
+      <span class="p">}</span>
+    <span class="p">};</span>
+    
+    <span class="k">this</span><span class="p">.</span><span class="nx">mediaRecorder</span><span class="p">.</span><span class="nx">start</span><span class="p">();</span>
+    
+    <span class="k">return</span> <span class="k">new</span> <span class="nb">Promise</span><span class="p">((</span><span class="nx">resolve</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+      <span class="k">this</span><span class="p">.</span><span class="nx">mediaRecorder</span><span class="p">.</span><span class="nx">onstop</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+        <span class="kd">const</span> <span class="nx">blob</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Blob</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">recordedChunks</span><span class="p">,</span> <span class="p">{</span> <span class="na">type</span><span class="p">:</span> <span class="dl">'</span><span class="s1">video/webm</span><span class="dl">'</span> <span class="p">});</span>
+        <span class="nx">resolve</span><span class="p">(</span><span class="nx">blob</span><span class="p">);</span>
+      <span class="p">};</span>
+    <span class="p">});</span>
+  <span class="p">}</span>
+  
+  <span class="nx">stopRecording</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">mediaRecorder</span> <span class="o">&amp;&amp;</span> <span class="k">this</span><span class="p">.</span><span class="nx">mediaRecorder</span><span class="p">.</span><span class="nx">state</span> <span class="o">!==</span> <span class="dl">'</span><span class="s1">inactive</span><span class="dl">'</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">this</span><span class="p">.</span><span class="nx">mediaRecorder</span><span class="p">.</span><span class="nx">stop</span><span class="p">();</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+  
+  <span class="nx">capturePhoto</span><span class="p">(</span><span class="nx">videoElement</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="nx">canvas</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="dl">'</span><span class="s1">canvas</span><span class="dl">'</span><span class="p">);</span>
+    <span class="kd">const</span> <span class="nx">context</span> <span class="o">=</span> <span class="nx">canvas</span><span class="p">.</span><span class="nx">getContext</span><span class="p">(</span><span class="dl">'</span><span class="s1">2d</span><span class="dl">'</span><span class="p">);</span>
+    
+    <span class="nx">canvas</span><span class="p">.</span><span class="nx">width</span> <span class="o">=</span> <span class="nx">videoElement</span><span class="p">.</span><span class="nx">videoWidth</span><span class="p">;</span>
+    <span class="nx">canvas</span><span class="p">.</span><span class="nx">height</span> <span class="o">=</span> <span class="nx">videoElement</span><span class="p">.</span><span class="nx">videoHeight</span><span class="p">;</span>
+    
+    <span class="nx">context</span><span class="p">.</span><span class="nx">drawImage</span><span class="p">(</span><span class="nx">videoElement</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+    
+    <span class="k">return</span> <span class="k">new</span> <span class="nb">Promise</span><span class="p">((</span><span class="nx">resolve</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+      <span class="nx">canvas</span><span class="p">.</span><span class="nx">toBlob</span><span class="p">((</span><span class="nx">blob</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+        <span class="nx">resolve</span><span class="p">(</span><span class="nx">blob</span><span class="p">);</span>
+      <span class="p">},</span> <span class="dl">'</span><span class="s1">image/jpeg</span><span class="dl">'</span><span class="p">,</span> <span class="mf">0.9</span><span class="p">);</span>
+    <span class="p">});</span>
+  <span class="p">}</span>
+  
+  <span class="nx">mergeConstraints</span><span class="p">(</span><span class="nx">defaults</span><span class="p">,</span> <span class="nx">custom</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="nx">result</span> <span class="o">=</span> <span class="p">{</span> <span class="p">...</span><span class="nx">defaults</span> <span class="p">};</span>
+    
+    <span class="k">if</span> <span class="p">(</span><span class="nx">custom</span><span class="p">.</span><span class="nx">video</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">result</span><span class="p">.</span><span class="nx">video</span> <span class="o">=</span> <span class="p">{</span> <span class="p">...</span><span class="nx">defaults</span><span class="p">.</span><span class="nx">video</span><span class="p">,</span> <span class="p">...</span><span class="nx">custom</span><span class="p">.</span><span class="nx">video</span> <span class="p">};</span>
+    <span class="p">}</span>
+    
+    <span class="k">if</span> <span class="p">(</span><span class="nx">custom</span><span class="p">.</span><span class="nx">audio</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">result</span><span class="p">.</span><span class="nx">audio</span> <span class="o">=</span> <span class="k">typeof</span> <span class="nx">custom</span><span class="p">.</span><span class="nx">audio</span> <span class="o">===</span> <span class="dl">'</span><span class="s1">object</span><span class="dl">'</span> 
+        <span class="p">?</span> <span class="p">{</span> <span class="p">...</span><span class="nx">defaults</span><span class="p">.</span><span class="nx">audio</span><span class="p">,</span> <span class="p">...</span><span class="nx">custom</span><span class="p">.</span><span class="nx">audio</span> <span class="p">}</span>
+        <span class="p">:</span> <span class="nx">custom</span><span class="p">.</span><span class="nx">audio</span><span class="p">;</span>
+    <span class="p">}</span>
+    
+    <span class="k">return</span> <span class="nx">result</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// Usage</span>
+<span class="kd">const</span> <span class="nx">cameraManager</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">CameraManager</span><span class="p">();</span>
+
+<span class="k">async</span> <span class="kd">function</span> <span class="nx">initCamera</span><span class="p">()</span> <span class="p">{</span>
+  <span class="k">try</span> <span class="p">{</span>
+    <span class="c1">// Get available devices</span>
+    <span class="kd">const</span> <span class="nx">devices</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">cameraManager</span><span class="p">.</span><span class="nx">getDevices</span><span class="p">();</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">Available cameras:</span><span class="dl">'</span><span class="p">,</span> <span class="nx">devices</span><span class="p">.</span><span class="nx">videoInputs</span><span class="p">);</span>
+    
+    <span class="c1">// Start camera</span>
+    <span class="kd">const</span> <span class="nx">stream</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">cameraManager</span><span class="p">.</span><span class="nx">startCamera</span><span class="p">({</span>
+      <span class="na">video</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">deviceId</span><span class="p">:</span> <span class="nx">devices</span><span class="p">.</span><span class="nx">videoInputs</span><span class="p">[</span><span class="mi">0</span><span class="p">]?.</span><span class="nx">deviceId</span><span class="p">,</span>
+        <span class="na">width</span><span class="p">:</span> <span class="p">{</span> <span class="na">ideal</span><span class="p">:</span> <span class="mi">1280</span> <span class="p">},</span>
+        <span class="na">height</span><span class="p">:</span> <span class="p">{</span> <span class="na">ideal</span><span class="p">:</span> <span class="mi">720</span> <span class="p">}</span>
+      <span class="p">}</span>
+    <span class="p">});</span>
+    
+    <span class="c1">// Display in video element</span>
+    <span class="kd">const</span> <span class="nx">videoElement</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="dl">'</span><span class="s1">camera-preview</span><span class="dl">'</span><span class="p">);</span>
+    <span class="nx">videoElement</span><span class="p">.</span><span class="nx">srcObject</span> <span class="o">=</span> <span class="nx">stream</span><span class="p">;</span>
+    
+    <span class="c1">// Start recording</span>
+    <span class="kd">const</span> <span class="nx">recordingPromise</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">cameraManager</span><span class="p">.</span><span class="nx">startRecording</span><span class="p">();</span>
+    
+    <span class="c1">// Stop recording after 10 seconds</span>
+    <span class="nx">setTimeout</span><span class="p">(</span><span class="k">async</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+      <span class="nx">cameraManager</span><span class="p">.</span><span class="nx">stopRecording</span><span class="p">();</span>
+      <span class="kd">const</span> <span class="nx">videoBlob</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">recordingPromise</span><span class="p">;</span>
+      
+      <span class="c1">// Download the recorded video</span>
+      <span class="kd">const</span> <span class="nx">url</span> <span class="o">=</span> <span class="nx">URL</span><span class="p">.</span><span class="nx">createObjectURL</span><span class="p">(</span><span class="nx">videoBlob</span><span class="p">);</span>
+      <span class="kd">const</span> <span class="nx">a</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="dl">'</span><span class="s1">a</span><span class="dl">'</span><span class="p">);</span>
+      <span class="nx">a</span><span class="p">.</span><span class="nx">href</span> <span class="o">=</span> <span class="nx">url</span><span class="p">;</span>
+      <span class="nx">a</span><span class="p">.</span><span class="nx">download</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">recorded-video.webm</span><span class="dl">'</span><span class="p">;</span>
+      <span class="nx">a</span><span class="p">.</span><span class="nx">click</span><span class="p">();</span>
+    <span class="p">},</span> <span class="mi">10000</span><span class="p">);</span>
+    
+  <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="dl">'</span><span class="s1">Camera initialization failed:</span><span class="dl">'</span><span class="p">,</span> <span class="nx">error</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<h2 id="intersection-observer">Intersection Observer</h2>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+</pre></td><td class="rouge-code"><pre><span class="kd">class</span> <span class="nx">IntersectionObserverManager</span> <span class="p">{</span>
+  <span class="kd">constructor</span><span class="p">(</span><span class="nx">callback</span><span class="p">,</span> <span class="nx">options</span> <span class="o">=</span> <span class="p">{})</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="nx">defaultOptions</span> <span class="o">=</span> <span class="p">{</span>
+      <span class="na">root</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span> <span class="c1">// viewport</span>
+      <span class="na">rootMargin</span><span class="p">:</span> <span class="dl">'</span><span class="s1">0px</span><span class="dl">'</span><span class="p">,</span>
+      <span class="na">threshold</span><span class="p">:</span> <span class="mf">0.1</span>
+    <span class="p">};</span>
+    
+    <span class="k">this</span><span class="p">.</span><span class="nx">options</span> <span class="o">=</span> <span class="p">{</span> <span class="p">...</span><span class="nx">defaultOptions</span><span class="p">,</span> <span class="p">...</span><span class="nx">options</span> <span class="p">};</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">observer</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">IntersectionObserver</span><span class="p">(</span><span class="nx">callback</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">options</span><span class="p">);</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">observedElements</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Set</span><span class="p">();</span>
+  <span class="p">}</span>
+  
+  <span class="nx">observe</span><span class="p">(</span><span class="nx">element</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">observer</span><span class="p">.</span><span class="nx">observe</span><span class="p">(</span><span class="nx">element</span><span class="p">);</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">observedElements</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="nx">element</span><span class="p">);</span>
+  <span class="p">}</span>
+  
+  <span class="nx">unobserve</span><span class="p">(</span><span class="nx">element</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">observer</span><span class="p">.</span><span class="nx">unobserve</span><span class="p">(</span><span class="nx">element</span><span class="p">);</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">observedElements</span><span class="p">.</span><span class="k">delete</span><span class="p">(</span><span class="nx">element</span><span class="p">);</span>
+  <span class="p">}</span>
+  
+  <span class="nx">disconnect</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">observer</span><span class="p">.</span><span class="nx">disconnect</span><span class="p">();</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">observedElements</span><span class="p">.</span><span class="nx">clear</span><span class="p">();</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// Lazy loading images</span>
+<span class="kd">class</span> <span class="nx">LazyImageLoader</span> <span class="p">{</span>
+  <span class="kd">constructor</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">observer</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">IntersectionObserverManager</span><span class="p">(</span>
+      <span class="k">this</span><span class="p">.</span><span class="nx">handleIntersection</span><span class="p">.</span><span class="nx">bind</span><span class="p">(</span><span class="k">this</span><span class="p">),</span>
+      <span class="p">{</span>
+        <span class="na">rootMargin</span><span class="p">:</span> <span class="dl">'</span><span class="s1">50px 0px</span><span class="dl">'</span><span class="p">,</span> <span class="c1">// Load 50px before entering viewport</span>
+        <span class="na">threshold</span><span class="p">:</span> <span class="mi">0</span>
+      <span class="p">}</span>
+    <span class="p">);</span>
+  <span class="p">}</span>
+  
+  <span class="nx">handleIntersection</span><span class="p">(</span><span class="nx">entries</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">entries</span><span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="nx">entry</span> <span class="o">=&gt;</span> <span class="p">{</span>
+      <span class="k">if</span> <span class="p">(</span><span class="nx">entry</span><span class="p">.</span><span class="nx">isIntersecting</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kd">const</span> <span class="nx">img</span> <span class="o">=</span> <span class="nx">entry</span><span class="p">.</span><span class="nx">target</span><span class="p">;</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">loadImage</span><span class="p">(</span><span class="nx">img</span><span class="p">);</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">observer</span><span class="p">.</span><span class="nx">unobserve</span><span class="p">(</span><span class="nx">img</span><span class="p">);</span>
+      <span class="p">}</span>
+    <span class="p">});</span>
+  <span class="p">}</span>
+  
+  <span class="nx">loadImage</span><span class="p">(</span><span class="nx">img</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="nx">src</span> <span class="o">=</span> <span class="nx">img</span><span class="p">.</span><span class="nx">dataset</span><span class="p">.</span><span class="nx">src</span><span class="p">;</span>
+    <span class="kd">const</span> <span class="nx">srcset</span> <span class="o">=</span> <span class="nx">img</span><span class="p">.</span><span class="nx">dataset</span><span class="p">.</span><span class="nx">srcset</span><span class="p">;</span>
+    
+    <span class="k">if</span> <span class="p">(</span><span class="nx">src</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">img</span><span class="p">.</span><span class="nx">src</span> <span class="o">=</span> <span class="nx">src</span><span class="p">;</span>
+    <span class="p">}</span>
+    
+    <span class="k">if</span> <span class="p">(</span><span class="nx">srcset</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">img</span><span class="p">.</span><span class="nx">srcset</span> <span class="o">=</span> <span class="nx">srcset</span><span class="p">;</span>
+    <span class="p">}</span>
+    
+    <span class="nx">img</span><span class="p">.</span><span class="nx">classList</span><span class="p">.</span><span class="nx">remove</span><span class="p">(</span><span class="dl">'</span><span class="s1">lazy</span><span class="dl">'</span><span class="p">);</span>
+    <span class="nx">img</span><span class="p">.</span><span class="nx">classList</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="dl">'</span><span class="s1">loaded</span><span class="dl">'</span><span class="p">);</span>
+    
+    <span class="nx">img</span><span class="p">.</span><span class="nx">onload</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+      <span class="nx">img</span><span class="p">.</span><span class="nx">classList</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="dl">'</span><span class="s1">fade-in</span><span class="dl">'</span><span class="p">);</span>
+    <span class="p">};</span>
+  <span class="p">}</span>
+  
+  <span class="nx">observeImages</span><span class="p">(</span><span class="nx">selector</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">img[data-src]</span><span class="dl">'</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="nx">images</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">querySelectorAll</span><span class="p">(</span><span class="nx">selector</span><span class="p">);</span>
+    <span class="nx">images</span><span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="nx">img</span> <span class="o">=&gt;</span> <span class="k">this</span><span class="p">.</span><span class="nx">observer</span><span class="p">.</span><span class="nx">observe</span><span class="p">(</span><span class="nx">img</span><span class="p">));</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// Infinite scroll</span>
+<span class="kd">class</span> <span class="nx">InfiniteScroll</span> <span class="p">{</span>
+  <span class="kd">constructor</span><span class="p">(</span><span class="nx">callback</span><span class="p">,</span> <span class="nx">options</span> <span class="o">=</span> <span class="p">{})</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">callback</span> <span class="o">=</span> <span class="nx">callback</span><span class="p">;</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">loading</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">hasMore</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
+    
+    <span class="k">this</span><span class="p">.</span><span class="nx">sentinel</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="dl">'</span><span class="s1">div</span><span class="dl">'</span><span class="p">);</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">sentinel</span><span class="p">.</span><span class="nx">className</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">intersection-sentinel</span><span class="dl">'</span><span class="p">;</span>
+    
+    <span class="k">this</span><span class="p">.</span><span class="nx">observer</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">IntersectionObserverManager</span><span class="p">(</span>
+      <span class="k">this</span><span class="p">.</span><span class="nx">handleIntersection</span><span class="p">.</span><span class="nx">bind</span><span class="p">(</span><span class="k">this</span><span class="p">),</span>
+      <span class="p">{</span>
+        <span class="na">rootMargin</span><span class="p">:</span> <span class="dl">'</span><span class="s1">100px 0px</span><span class="dl">'</span><span class="p">,</span>
+        <span class="na">threshold</span><span class="p">:</span> <span class="mi">0</span>
+      <span class="p">}</span>
+    <span class="p">);</span>
+  <span class="p">}</span>
+  
+  <span class="nx">handleIntersection</span><span class="p">(</span><span class="nx">entries</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">entries</span><span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="nx">entry</span> <span class="o">=&gt;</span> <span class="p">{</span>
+      <span class="k">if</span> <span class="p">(</span><span class="nx">entry</span><span class="p">.</span><span class="nx">isIntersecting</span> <span class="o">&amp;&amp;</span> <span class="o">!</span><span class="k">this</span><span class="p">.</span><span class="nx">loading</span> <span class="o">&amp;&amp;</span> <span class="k">this</span><span class="p">.</span><span class="nx">hasMore</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">loading</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">callback</span><span class="p">().</span><span class="nx">then</span><span class="p">((</span><span class="nx">hasMore</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+          <span class="k">this</span><span class="p">.</span><span class="nx">loading</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span>
+          <span class="k">this</span><span class="p">.</span><span class="nx">hasMore</span> <span class="o">=</span> <span class="nx">hasMore</span><span class="p">;</span>
+          
+          <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">hasMore</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">this</span><span class="p">.</span><span class="nx">destroy</span><span class="p">();</span>
+          <span class="p">}</span>
+        <span class="p">});</span>
+      <span class="p">}</span>
+    <span class="p">});</span>
+  <span class="p">}</span>
+  
+  <span class="nx">init</span><span class="p">(</span><span class="nx">container</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">container</span><span class="p">.</span><span class="nx">appendChild</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">sentinel</span><span class="p">);</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">observer</span><span class="p">.</span><span class="nx">observe</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">sentinel</span><span class="p">);</span>
+  <span class="p">}</span>
+  
+  <span class="nx">destroy</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">observer</span><span class="p">.</span><span class="nx">disconnect</span><span class="p">();</span>
+    <span class="k">if</span> <span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">sentinel</span><span class="p">.</span><span class="nx">parentNode</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">this</span><span class="p">.</span><span class="nx">sentinel</span><span class="p">.</span><span class="nx">parentNode</span><span class="p">.</span><span class="nx">removeChild</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">sentinel</span><span class="p">);</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// Usage</span>
+<span class="kd">const</span> <span class="nx">lazyLoader</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">LazyImageLoader</span><span class="p">();</span>
+<span class="nx">lazyLoader</span><span class="p">.</span><span class="nx">observeImages</span><span class="p">();</span>
+
+<span class="kd">const</span> <span class="nx">infiniteScroll</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">InfiniteScroll</span><span class="p">(</span><span class="k">async</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="nx">response</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">fetch</span><span class="p">(</span><span class="s2">`/api/items?page=</span><span class="p">${</span><span class="nx">currentPage</span><span class="o">++</span><span class="p">}</span><span class="s2">`</span><span class="p">);</span>
+  <span class="kd">const</span> <span class="nx">items</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">response</span><span class="p">.</span><span class="nx">json</span><span class="p">();</span>
+  
+  <span class="nx">appendItemsToDOM</span><span class="p">(</span><span class="nx">items</span><span class="p">);</span>
+  
+  <span class="k">return</span> <span class="nx">items</span><span class="p">.</span><span class="nx">length</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">;</span> <span class="c1">// Has more items</span>
+<span class="p">});</span>
+
+<span class="nx">infiniteScroll</span><span class="p">.</span><span class="nx">init</span><span class="p">(</span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="dl">'</span><span class="s1">items-container</span><span class="dl">'</span><span class="p">));</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<h2 id="interview-questions">Interview Questions</h2>
+
+<h3 id="1-what-are-web-workers-and-when-would-you-use-them">1. What are Web Workers and when would you use them?</h3>
+
+<p><strong>Answer:</strong>
+Web Workers are a way to run JavaScript in the background, separate from the main UI thread. They enable parallel processing without blocking the UI.</p>
+
+<p><strong>Use cases:</strong></p>
+<ul>
+  <li>Heavy computations (image processing, data analysis)</li>
+  <li>Background data sync</li>
+  <li>Real-time data processing</li>
+  <li>Cryptographic operations</li>
+</ul>
+
+<p><strong>Benefits:</strong></p>
+<ul>
+  <li>Non-blocking UI operations</li>
+  <li>True parallelism</li>
+  <li>Isolated execution context</li>
+  <li>Better performance for CPU-intensive tasks</li>
+</ul>
+
+<h3 id="2-explain-the-difference-between-service-workers-and-web-workers">2. Explain the difference between Service Workers and Web Workers.</h3>
+
+<p><strong>Answer:</strong></p>
+<ul>
+  <li><strong>Web Workers</strong>: General-purpose background scripts for computations</li>
+  <li><strong>Service Workers</strong>: Specialized workers that act as a proxy between your app and the network</li>
+</ul>
+
+<p><strong>Service Worker features:</strong></p>
+<ul>
+  <li>Intercept network requests</li>
+  <li>Cache management</li>
+  <li>Push notifications</li>
+  <li>Background sync</li>
+  <li>Offline functionality</li>
+</ul>
+
+<h3 id="3-how-do-you-implement-offline-functionality-in-a-web-app">3. How do you implement offline functionality in a web app?</h3>
+
+<p><strong>Answer:</strong></p>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+</pre></td><td class="rouge-code"><pre><span class="c1">// Service Worker for caching</span>
+<span class="nb">self</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="dl">'</span><span class="s1">fetch</span><span class="dl">'</span><span class="p">,</span> <span class="p">(</span><span class="nx">event</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nx">event</span><span class="p">.</span><span class="nx">request</span><span class="p">.</span><span class="nx">method</span> <span class="o">===</span> <span class="dl">'</span><span class="s1">GET</span><span class="dl">'</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">event</span><span class="p">.</span><span class="nx">respondWith</span><span class="p">(</span>
+      <span class="nx">caches</span><span class="p">.</span><span class="nx">match</span><span class="p">(</span><span class="nx">event</span><span class="p">.</span><span class="nx">request</span><span class="p">).</span><span class="nx">then</span><span class="p">(</span><span class="nx">response</span> <span class="o">=&gt;</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="nx">response</span> <span class="o">||</span> <span class="nx">fetch</span><span class="p">(</span><span class="nx">event</span><span class="p">.</span><span class="nx">request</span><span class="p">).</span><span class="k">catch</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+          <span class="c1">// Return offline fallback</span>
+          <span class="k">return</span> <span class="nx">caches</span><span class="p">.</span><span class="nx">match</span><span class="p">(</span><span class="dl">'</span><span class="s1">/offline.html</span><span class="dl">'</span><span class="p">);</span>
+        <span class="p">});</span>
+      <span class="p">})</span>
+    <span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">});</span>
+
+<span class="c1">// Background sync for failed requests</span>
+<span class="nb">self</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="dl">'</span><span class="s1">sync</span><span class="dl">'</span><span class="p">,</span> <span class="p">(</span><span class="nx">event</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nx">event</span><span class="p">.</span><span class="nx">tag</span> <span class="o">===</span> <span class="dl">'</span><span class="s1">background-sync</span><span class="dl">'</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">event</span><span class="p">.</span><span class="nx">waitUntil</span><span class="p">(</span><span class="nx">syncPendingRequests</span><span class="p">());</span>
+  <span class="p">}</span>
+<span class="p">});</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<h3 id="4-what-is-the-intersection-observer-api-and-its-benefits">4. What is the Intersection Observer API and its benefits?</h3>
+
+<p><strong>Answer:</strong>
+Intersection Observer provides an efficient way to observe changes in the intersection of a target element with an ancestor element or viewport.</p>
+
+<p><strong>Benefits:</strong></p>
+<ul>
+  <li>Better performance than scroll events</li>
+  <li>Automatic cleanup</li>
+  <li>Configurable thresholds and margins</li>
+  <li>Passive observation</li>
+</ul>
+
+<p><strong>Use cases:</strong></p>
+<ul>
+  <li>Lazy loading</li>
+  <li>Infinite scroll</li>
+  <li>Analytics tracking</li>
+  <li>Animation triggers</li>
+</ul>
+
+<h3 id="5-how-do-you-handle-camera-and-media-access-in-web-applications">5. How do you handle camera and media access in web applications?</h3>
+
+<p><strong>Answer:</strong></p>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+</pre></td><td class="rouge-code"><pre><span class="c1">// Request camera access</span>
+<span class="kd">const</span> <span class="nx">stream</span> <span class="o">=</span> <span class="k">await</span> <span class="nb">navigator</span><span class="p">.</span><span class="nx">mediaDevices</span><span class="p">.</span><span class="nx">getUserMedia</span><span class="p">({</span>
+  <span class="na">video</span><span class="p">:</span> <span class="p">{</span> <span class="na">width</span><span class="p">:</span> <span class="mi">1280</span><span class="p">,</span> <span class="na">height</span><span class="p">:</span> <span class="mi">720</span> <span class="p">},</span>
+  <span class="na">audio</span><span class="p">:</span> <span class="kc">true</span>
+<span class="p">});</span>
+
+<span class="c1">// Handle permissions</span>
+<span class="nb">navigator</span><span class="p">.</span><span class="nx">permissions</span><span class="p">.</span><span class="nx">query</span><span class="p">({</span> <span class="na">name</span><span class="p">:</span> <span class="dl">'</span><span class="s1">camera</span><span class="dl">'</span> <span class="p">}).</span><span class="nx">then</span><span class="p">(</span><span class="nx">result</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nx">result</span><span class="p">.</span><span class="nx">state</span> <span class="o">===</span> <span class="dl">'</span><span class="s1">granted</span><span class="dl">'</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// Access granted</span>
+  <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nx">result</span><span class="p">.</span><span class="nx">state</span> <span class="o">===</span> <span class="dl">'</span><span class="s1">prompt</span><span class="dl">'</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// Will prompt user</span>
+  <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+    <span class="c1">// Access denied</span>
+  <span class="p">}</span>
+<span class="p">});</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p><strong>Security considerations:</strong></p>
+<ul>
+  <li>HTTPS required</li>
+  <li>User permission required</li>
+  <li>Clear user indication when recording</li>
+  <li>Proper cleanup of resources</li>
+</ul>
+
+<p>This comprehensive guide covers the essential browser APIs and modern web platform features needed for advanced frontend development and interviews.</p>
+
+        </div>
+    </article>
+</div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Study Resources</h3>
+                    <p>Comprehensive collection of frontend interview questions, coding challenges, and system design problems.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Progress Tracking</h3>
+                    <p>Monitor your learning journey with detailed progress indicators and completion status.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Big Tech Ready</h3>
+                    <p>Curated content specifically designed for interviews at Google, Meta, Amazon, Apple, and Netflix.</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Frontend Interview Hub. Built for aspiring frontend engineers.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="/assets/js/main.js"></script>
+</body>
+</html>

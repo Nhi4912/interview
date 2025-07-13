@@ -1,0 +1,1247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Restore IP Addresse | Frontend Interview Preparation Guide</title>
+    <meta name="description" content="Comprehensive frontend interview materials for Big Tech companies">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="/assets/css/main.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <header>
+        <nav class="container">
+            <div class="logo">Frontend Interview Hub</div>
+            <ul class="nav-links">
+                <li><a href="/">Home</a></li>
+                <li><a href="#progress">Progress</a></li>
+                <li><a href="#knowledge">Knowledge</a></li>
+                <li><a href="https://github.com/nee/interview">GitHub</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <div class="content-container">
+    
+        <nav class="breadcrumb">
+            <ol>
+                <li><a href="/">Home</a></li>
+                
+                
+                
+                    
+                
+                    
+                        
+                        
+                            <li><a href="/leetcode/">Leetcode</a></li>
+                        
+                    
+                
+                    
+                        
+                        
+                            <li><a href="/leetcode/backtracking/">Backtracking</a></li>
+                        
+                    
+                
+                    
+                        
+                        
+                            <li><a href="/leetcode/backtracking/problems/">Problems</a></li>
+                        
+                    
+                
+                    
+                        
+                        
+                            <li class="active">Restore ip addresse</li>
+                        
+                    
+                
+            </ol>
+        </nav>
+    
+    
+    <article class="content">
+        
+            <header class="content-header">
+                <h1 class="content-title">Restore IP Addresse</h1>
+                
+                
+                    <div class="content-meta">
+                        <span class="difficulty difficulty-easy">Easy</span>
+                        
+                            <span class="category">Backtracking</span>
+                        
+                        
+                            <div class="tags">
+                                
+                                    <span class="tag">Backtracking</span>
+                                
+                                    <span class="tag">Hash Table</span>
+                                
+                            </div>
+                        
+                    </div>
+                
+            </header>
+        
+        
+        <div class="content-body">
+            <h1 id="restore-ip-addresse">Restore IP Addresse</h1>
+
+<p><strong>LeetCode Problem # * 93. Restore IP Addresses</strong></p>
+
+<h2 id="problem-description">Problem Description</h2>
+
+<p>LeetCode problem solution with multiple approaches and explanations.</p>
+
+<h2 id="solutions">Solutions</h2>
+
+<p>/**</p>
+<ul>
+  <li>
+    <ol>
+      <li>Restore IP Addresses</li>
+    </ol>
+  </li>
+  <li></li>
+  <li>A valid IP address consists of exactly four integers separated by single dots.</li>
+  <li>Each integer is between 0 and 255 (inclusive) and cannot have leading zeros.</li>
+  <li></li>
+  <li>For example, “0.1.2.201” and “192.168.1.1” are valid IP addresses, but “0.011.255.245”,</li>
+  <li>“192.168.1.312” and “192.168@1.1” are invalid IP addresses.</li>
+  <li></li>
+  <li>Given a string s containing only digits, return all possible valid IP addresses</li>
+  <li>that can be formed by inserting dots into s. You are not allowed to reorder or remove any digits in s.</li>
+  <li>You may return the valid IP addresses in any order.</li>
+  <li></li>
+  <li>Example 1:</li>
+  <li>Input: s = “25525511135”</li>
+  <li>Output: [“255.255.11.135”,”255.255.111.35”]</li>
+  <li></li>
+  <li>Example 2:</li>
+  <li>Input: s = “0000”</li>
+  <li>Output: [“0.0.0.0”]</li>
+  <li></li>
+  <li>Example 3:</li>
+  <li>Input: s = “101023”</li>
+  <li>Output: [“1.0.10.23”,”1.0.102.3”,”10.1.0.23”,”10.10.2.3”,”101.0.2.3”]</li>
+  <li></li>
+  <li>Constraints:</li>
+  <li>
+    <ul>
+      <li>1 &lt;= s.length &lt;= 20</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>s consists of digits only.
+ */</li>
+    </ul>
+  </li>
+</ul>
+
+<p>// Solution 1: Backtracking with Validation
+// Time: O(3^4), Space: O(1)
+export function restoreIpAddresses1(s: string): string[] {
+    const result: string[] = [];</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+</pre></td><td class="rouge-code"><pre>function isValidSegment(segment: string): boolean {
+    // Check length
+    if (segment.length === 0 || segment.length &gt; 3) return false;
+    
+    // Check leading zeros
+    if (segment.length &gt; 1 &amp;&amp; segment[0] === '0') return false;
+    
+    // Check range
+    const num = parseInt(segment);
+    return num &gt;= 0 &amp;&amp; num &lt;= 255;
+}
+
+function backtrack(index: number, parts: string[], currentParts: number): void {
+    // Base case: we have 4 parts and used all characters
+    if (currentParts === 4 &amp;&amp; index === s.length) {
+        result.push(parts.join('.'));
+        return;
+    }
+    
+    // Pruning: too many parts or not enough characters left
+    if (currentParts === 4 || index === s.length) return;
+    
+    // Try different segment lengths (1, 2, 3)
+    for (let len = 1; len &lt;= 3; len++) {
+        if (index + len &gt; s.length) break;
+        
+        const segment = s.substring(index, index + len);
+        
+        if (isValidSegment(segment)) {
+            parts.push(segment);
+            backtrack(index + len, parts, currentParts + 1);
+            parts.pop();
+        }
+    }
+}
+
+backtrack(0, [], 0);
+return result; }
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>// Solution 2: Iterative with Three Nested Loops
+// Time: O(1), Space: O(1)
+export function restoreIpAddresses2(s: string): string[] {
+    const result: string[] = [];
+    const n = s.length;</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+</pre></td><td class="rouge-code"><pre>// Check if length is valid for IP address
+if (n &lt; 4 || n &gt; 12) return result;
+
+function isValidSegment(segment: string): boolean {
+    if (segment.length === 0 || segment.length &gt; 3) return false;
+    if (segment.length &gt; 1 &amp;&amp; segment[0] === '0') return false;
+    const num = parseInt(segment);
+    return num &gt;= 0 &amp;&amp; num &lt;= 255;
+}
+
+// Try all possible positions for the three dots
+for (let i = 1; i &lt;= 3 &amp;&amp; i &lt; n; i++) {
+    for (let j = i + 1; j &lt;= i + 3 &amp;&amp; j &lt; n; j++) {
+        for (let k = j + 1; k &lt;= j + 3 &amp;&amp; k &lt; n; k++) {
+            const part1 = s.substring(0, i);
+            const part2 = s.substring(i, j);
+            const part3 = s.substring(j, k);
+            const part4 = s.substring(k);
+            
+            if (isValidSegment(part1) &amp;&amp; isValidSegment(part2) &amp;&amp; 
+                isValidSegment(part3) &amp;&amp; isValidSegment(part4)) {
+                result.push(`${part1}.${part2}.${part3}.${part4}`);
+            }
+        }
+    }
+}
+
+return result; }
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>// Solution 3: DFS with Early Termination
+// Time: O(3^4), Space: O(1)
+export function restoreIpAddresses3(s: string): string[] {
+    const result: string[] = [];
+    const n = s.length;</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+</pre></td><td class="rouge-code"><pre>// Early termination for invalid lengths
+if (n &lt; 4 || n &gt; 12) return result;
+
+function dfs(index: number, path: string[], remaining: number): void {
+    // Pruning: not enough digits left or too many digits left
+    const digitsLeft = n - index;
+    if (digitsLeft &lt; remaining || digitsLeft &gt; remaining * 3) {
+        return;
+    }
+    
+    if (remaining === 0) {
+        if (index === n) {
+            result.push(path.join('.'));
+        }
+        return;
+    }
+    
+    // Try segments of length 1, 2, 3
+    for (let len = 1; len &lt;= Math.min(3, digitsLeft); len++) {
+        const segment = s.substring(index, index + len);
+        
+        // Validate segment
+        if (isValid(segment)) {
+            path.push(segment);
+            dfs(index + len, path, remaining - 1);
+            path.pop();
+        }
+    }
+}
+
+function isValid(segment: string): boolean {
+    if (segment.length &gt; 1 &amp;&amp; segment[0] === '0') return false;
+    const num = parseInt(segment);
+    return num &gt;= 0 &amp;&amp; num &lt;= 255;
+}
+
+dfs(0, [], 4);
+return result; }
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>// Solution 4: Bit Manipulation Approach
+// Time: O(1), Space: O(1)
+export function restoreIpAddresses4(s: string): string[] {
+    const result: string[] = [];
+    const n = s.length;</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+</pre></td><td class="rouge-code"><pre>if (n &lt; 4 || n &gt; 12) return result;
+
+function isValidSegment(segment: string): boolean {
+    if (segment.length === 0 || segment.length &gt; 3) return false;
+    if (segment.length &gt; 1 &amp;&amp; segment[0] === '0') return false;
+    const num = parseInt(segment);
+    return num &gt;= 0 &amp;&amp; num &lt;= 255;
+}
+
+// Use bit manipulation to represent all possible combinations
+// Each bit represents whether to place a dot at that position
+for (let mask = 0; mask &lt; (1 &lt;&lt; (n - 1)); mask++) {
+    const dots: number[] = [];
+    
+    // Extract dot positions from bitmask
+    for (let i = 0; i &lt; n - 1; i++) {
+        if (mask &amp; (1 &lt;&lt; i)) {
+            dots.push(i + 1); // Position after character i
+        }
+    }
+    
+    // We need exactly 3 dots for 4 segments
+    if (dots.length !== 3) continue;
+    
+    // Extract segments
+    const segments: string[] = [];
+    let start = 0;
+    
+    for (const dotPos of dots) {
+        segments.push(s.substring(start, dotPos));
+        start = dotPos;
+    }
+    segments.push(s.substring(start)); // Last segment
+    
+    // Validate all segments
+    if (segments.every(isValidSegment)) {
+        result.push(segments.join('.'));
+    }
+}
+
+return result; }
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>// Solution 5: Dynamic Programming Approach
+// Time: O(n^3), Space: O(n^2)
+export function restoreIpAddresses5(s: string): string[] {
+    const n = s.length;
+    if (n &lt; 4 || n &gt; 12) return [];</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+</pre></td><td class="rouge-code"><pre>// dp[i][j] = true if s[0...i-1] can form j valid IP segments
+const dp: boolean[][] = Array(n + 1).fill(null).map(() =&gt; Array(5).fill(false));
+const parent: number[][][] = Array(n + 1).fill(null).map(() =&gt; 
+    Array(5).fill(null).map(() =&gt; [])
+);
+
+dp[0][0] = true;
+
+function isValidSegment(start: number, end: number): boolean {
+    if (start &gt; end || end - start + 1 &gt; 3) return false;
+    if (start &lt; end &amp;&amp; s[start] === '0') return false;
+    
+    let num = 0;
+    for (let i = start; i &lt;= end; i++) {
+        num = num * 10 + (s.charCodeAt(i) - 48);
+        if (num &gt; 255) return false;
+    }
+    return true;
+}
+
+// Fill DP table
+for (let i = 1; i &lt;= n; i++) {
+    for (let j = 1; j &lt;= Math.min(i, 4); j++) {
+        for (let k = Math.max(0, i - 3); k &lt; i; k++) {
+            if (dp[k][j - 1] &amp;&amp; isValidSegment(k, i - 1)) {
+                dp[i][j] = true;
+                parent[i][j].push(k);
+            }
+        }
+    }
+}
+
+const result: string[] = [];
+
+// Reconstruct all valid IP addresses
+function reconstruct(pos: number, segments: number, path: string[]): void {
+    if (segments === 0 &amp;&amp; pos === 0) {
+        result.push(path.reverse().join('.'));
+        path.reverse(); // Restore original order
+        return;
+    }
+    
+    if (segments === 0 || pos === 0) return;
+    
+    for (const prevPos of parent[pos][segments]) {
+        const segment = s.substring(prevPos, pos);
+        path.push(segment);
+        reconstruct(prevPos, segments - 1, path);
+        path.pop();
+    }
+}
+
+if (dp[n][4]) {
+    reconstruct(n, 4, []);
+}
+
+return result; }
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>// Solution 6: Recursive with Memoization
+// Time: O(3^4), Space: O(3^4)
+export function restoreIpAddresses6(s: string): string[] {
+    const memo = new Map&lt;string, string[]&gt;();</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+</pre></td><td class="rouge-code"><pre>function solve(index: number, remaining: number): string[] {
+    const key = `${index},${remaining}`;
+    if (memo.has(key)) {
+        return memo.get(key)!;
+    }
+    
+    const result: string[] = [];
+    
+    // Base case
+    if (remaining === 0) {
+        if (index === s.length) {
+            result.push('');
+        }
+        memo.set(key, result);
+        return result;
+    }
+    
+    // Early termination
+    const digitsLeft = s.length - index;
+    if (digitsLeft &lt; remaining || digitsLeft &gt; remaining * 3) {
+        memo.set(key, result);
+        return result;
+    }
+    
+    // Try all possible segment lengths
+    for (let len = 1; len &lt;= Math.min(3, digitsLeft); len++) {
+        const segment = s.substring(index, index + len);
+        
+        if (isValidSegment(segment)) {
+            const subResults = solve(index + len, remaining - 1);
+            
+            for (const subResult of subResults) {
+                if (subResult === '') {
+                    result.push(segment);
+                } else {
+                    result.push(segment + '.' + subResult);
+                }
+            }
+        }
+    }
+    
+    memo.set(key, result);
+    return result;
+}
+
+function isValidSegment(segment: string): boolean {
+    if (segment.length &gt; 1 &amp;&amp; segment[0] === '0') return false;
+    const num = parseInt(segment);
+    return num &gt;= 0 &amp;&amp; num &lt;= 255;
+}
+
+return solve(0, 4); }
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>// Test cases
+export function testRestoreIpAddresses() {
+    console.log(“Testing Restore IP Addresses:”);</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+</pre></td><td class="rouge-code"><pre>const testCases = [
+    {
+        input: "25525511135",
+        expected: ["255.255.11.135", "255.255.111.35"]
+    },
+    {
+        input: "0000",
+        expected: ["0.0.0.0"]
+    },
+    {
+        input: "101023",
+        expected: ["1.0.10.23", "1.0.102.3", "10.1.0.23", "10.10.2.3", "101.0.2.3"]
+    },
+    {
+        input: "1111",
+        expected: ["1.1.1.1"]
+    },
+    {
+        input: "010010",
+        expected: ["0.10.0.10", "0.100.1.0"]
+    },
+    {
+        input: "1023",
+        expected: ["1.0.2.3"]
+    },
+    {
+        input: "123",
+        expected: []
+    }
+];
+
+const solutions = [
+    { name: "Backtracking", fn: restoreIpAddresses1 },
+    { name: "Three Nested Loops", fn: restoreIpAddresses2 },
+    { name: "DFS Early Termination", fn: restoreIpAddresses3 },
+    { name: "Bit Manipulation", fn: restoreIpAddresses4 },
+    { name: "Dynamic Programming", fn: restoreIpAddresses5 },
+    { name: "Memoization", fn: restoreIpAddresses6 }
+];
+
+function normalizeResult(result: string[]): string[] {
+    return result.sort();
+}
+
+solutions.forEach(solution =&gt; {
+    console.log(`\n${solution.name}:`);
+    testCases.forEach((test, i) =&gt; {
+        const result = normalizeResult(solution.fn(test.input));
+        const expected = normalizeResult([...test.expected]);
+        
+        const passed = JSON.stringify(result) === JSON.stringify(expected);
+        console.log(`  Test ${i + 1}: ${passed ? 'PASS' : 'FAIL'}`);
+        if (!passed) {
+            console.log(`    Input: "${test.input}"`);
+            console.log(`    Expected: ${JSON.stringify(expected)}`);
+            console.log(`    Got: ${JSON.stringify(result)}`);
+        }
+    });
+}); }
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>/**</p>
+<ul>
+  <li>Key Insights:</li>
+  <li></li>
+  <li>
+    <ol>
+      <li><strong>IP Address Structure</strong>:</li>
+    </ol>
+  </li>
+  <li>
+    <ul>
+      <li>Exactly 4 segments separated by dots</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Each segment: 0-255, no leading zeros (except “0”)</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Need to place exactly 3 dots in string</li>
+    </ul>
+  </li>
+  <li></li>
+  <li>
+    <ol>
+      <li><strong>Constraint Analysis</strong>:</li>
+    </ol>
+  </li>
+  <li>
+    <ul>
+      <li>String length: 4-12 characters for valid IP</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Each segment: 1-3 characters</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>No leading zeros except single “0”</li>
+    </ul>
+  </li>
+  <li></li>
+  <li>
+    <ol>
+      <li><strong>Backtracking Strategy</strong>:</li>
+    </ol>
+  </li>
+  <li>
+    <ul>
+      <li>Try all possible segment lengths (1, 2, 3)</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Validate each segment before continuing</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Need exactly 4 segments to form valid IP</li>
+    </ul>
+  </li>
+  <li></li>
+  <li>
+    <ol>
+      <li><strong>Validation Rules</strong>:</li>
+    </ol>
+  </li>
+  <li>
+    <ul>
+      <li>Segment length: 1-3 digits</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>No leading zeros (except “0”)</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Numeric value: 0-255</li>
+    </ul>
+  </li>
+  <li></li>
+  <li>
+    <ol>
+      <li><strong>Time Complexity</strong>: O(3^4) = O(81)</li>
+    </ol>
+  </li>
+  <li>
+    <ul>
+      <li>At most 3 choices for each of 4 segments</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Constant time complexity due to fixed constraints</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Very efficient for this specific problem</li>
+    </ul>
+  </li>
+  <li></li>
+  <li>
+    <ol>
+      <li><strong>Space Complexity</strong>: O(1)</li>
+    </ol>
+  </li>
+  <li>
+    <ul>
+      <li>Recursion depth limited to 4</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>No additional data structures needed</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Result space depends on number of valid IPs</li>
+    </ul>
+  </li>
+  <li></li>
+  <li>
+    <ol>
+      <li><strong>Early Termination Optimizations</strong>:</li>
+    </ol>
+  </li>
+  <li>
+    <ul>
+      <li>Check remaining digits vs remaining segments</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Invalid string length check upfront</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Prune impossible branches early</li>
+    </ul>
+  </li>
+  <li></li>
+  <li>
+    <ol>
+      <li><strong>Interview Strategy</strong>:</li>
+    </ol>
+  </li>
+  <li>
+    <ul>
+      <li>Start with backtracking approach</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Explain IP address validation rules</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Add early termination optimizations</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Discuss iterative alternative</li>
+    </ul>
+  </li>
+  <li></li>
+  <li>
+    <ol>
+      <li><strong>Edge Cases</strong>:</li>
+    </ol>
+  </li>
+  <li>
+    <ul>
+      <li>All zeros: “0000” → [“0.0.0.0”]</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Leading zeros: “010010” special handling</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Too short: “123” → []</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Too long: exceeds 12 characters</li>
+    </ul>
+  </li>
+  <li></li>
+  <li>
+    <ol>
+      <li><strong>Common Mistakes</strong>:</li>
+    </ol>
+  </li>
+  <li>
+    <ul>
+      <li>Forgetting leading zero constraint</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Not validating segment range (0-255)</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Incorrect string length validation</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Off-by-one errors in segment extraction</li>
+    </ul>
+  </li>
+  <li></li>
+  <li>
+    <ol>
+      <li><strong>Alternative Approaches</strong>:</li>
+    </ol>
+  </li>
+  <li>
+    <ul>
+      <li>Three nested loops (simpler but less elegant)</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Bit manipulation for dot placement</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Dynamic programming (overkill for this problem)</li>
+    </ul>
+  </li>
+  <li></li>
+  <li>
+    <ol>
+      <li><strong>Optimization Techniques</strong>:</li>
+    </ol>
+  </li>
+  <li>
+    <ul>
+      <li>Early length validation</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Pruning with remaining digit analysis</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Avoiding unnecessary string operations</li>
+    </ul>
+  </li>
+  <li></li>
+  <li>
+    <ol>
+      <li><strong>Big Tech Variations</strong>:</li>
+    </ol>
+  </li>
+  <li>
+    <ul>
+      <li>Google: IPv6 address restoration</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Meta: Custom IP format validation</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Amazon: Network address parsing</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Microsoft: URL validation extensions</li>
+    </ul>
+  </li>
+  <li></li>
+  <li>
+    <ol>
+      <li><strong>Follow-up Questions</strong>:</li>
+    </ol>
+  </li>
+  <li>
+    <ul>
+      <li>Handle IPv6 addresses</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Count total valid IP addresses</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Find lexicographically smallest IP</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Validate existing IP addresses</li>
+    </ul>
+  </li>
+  <li></li>
+  <li>
+    <ol>
+      <li><strong>Real-world Applications</strong>:</li>
+    </ol>
+  </li>
+  <li>
+    <ul>
+      <li>Network configuration tools</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>IP address parsing in routers</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Network security validation</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Log file analysis tools</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Network monitoring systems</li>
+    </ul>
+  </li>
+  <li></li>
+  <li>
+    <ol>
+      <li><strong>Pattern Recognition</strong>:</li>
+    </ol>
+  </li>
+  <li>
+    <ul>
+      <li>Constrained backtracking problem</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>String segmentation with validation</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Fixed number of segments pattern</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Early termination optimization
+ */</li>
+    </ul>
+  </li>
+</ul>
+
+
+        </div>
+    </article>
+</div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Study Resources</h3>
+                    <p>Comprehensive collection of frontend interview questions, coding challenges, and system design problems.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Progress Tracking</h3>
+                    <p>Monitor your learning journey with detailed progress indicators and completion status.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Big Tech Ready</h3>
+                    <p>Curated content specifically designed for interviews at Google, Meta, Amazon, Apple, and Netflix.</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Frontend Interview Hub. Built for aspiring frontend engineers.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="/assets/js/main.js"></script>
+</body>
+</html>

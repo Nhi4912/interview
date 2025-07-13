@@ -1,0 +1,1103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Remove Duplicates from Sorted Array II | Frontend Interview Preparation Guide</title>
+    <meta name="description" content="Comprehensive frontend interview materials for Big Tech companies">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="/assets/css/main.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <header>
+        <nav class="container">
+            <div class="logo">Frontend Interview Hub</div>
+            <ul class="nav-links">
+                <li><a href="/">Home</a></li>
+                <li><a href="#progress">Progress</a></li>
+                <li><a href="#knowledge">Knowledge</a></li>
+                <li><a href="https://github.com/nee/interview">GitHub</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <div class="content-container">
+    
+        <nav class="breadcrumb">
+            <ol>
+                <li><a href="/">Home</a></li>
+                
+                
+                
+                    
+                
+                    
+                        
+                        
+                            <li><a href="/leetcode/">Leetcode</a></li>
+                        
+                    
+                
+                    
+                        
+                        
+                            <li><a href="/leetcode/array/">Array</a></li>
+                        
+                    
+                
+                    
+                        
+                        
+                            <li><a href="/leetcode/array/problems/">Problems</a></li>
+                        
+                    
+                
+                    
+                        
+                        
+                            <li class="active">Remove duplicates from sorted array ii</li>
+                        
+                    
+                
+            </ol>
+        </nav>
+    
+    
+    <article class="content">
+        
+            <header class="content-header">
+                <h1 class="content-title">Remove Duplicates from Sorted Array II</h1>
+                
+                
+                    <div class="content-meta">
+                        <span class="difficulty difficulty-hard">Hard</span>
+                        
+                            <span class="category">Array</span>
+                        
+                        
+                            <div class="tags">
+                                
+                                    <span class="tag">Array</span>
+                                
+                                    <span class="tag">Two Pointers</span>
+                                
+                                    <span class="tag">Sliding Window</span>
+                                
+                                    <span class="tag">Sorting</span>
+                                
+                            </div>
+                        
+                    </div>
+                
+            </header>
+        
+        
+        <div class="content-body">
+            <h1 id="remove-duplicates-from-sorted-array-ii">Remove Duplicates from Sorted Array II</h1>
+
+<p><strong>LeetCode Problem # * 80. Remove Duplicates from Sorted Array II</strong></p>
+
+<h2 id="problem-description">Problem Description</h2>
+
+<p>LeetCode problem solution with multiple approaches and explanations.</p>
+
+<h2 id="solutions">Solutions</h2>
+
+<p>/**</p>
+<ul>
+  <li>
+    <ol>
+      <li>Remove Duplicates from Sorted Array II</li>
+    </ol>
+  </li>
+  <li></li>
+  <li>Given an integer array nums sorted in non-decreasing order, remove some duplicates</li>
+  <li>in-place such that each unique element appears at most twice. The relative order</li>
+  <li>of the elements should be kept the same.</li>
+  <li></li>
+  <li>Since it is impossible to change the length of the array in some languages, you must</li>
+  <li>instead have the result be placed in the first part of the array nums. More formally,</li>
+  <li>if there are k elements after removing the duplicates, then the first k elements of</li>
+  <li>nums should hold the final result. It does not matter what you leave beyond the first k elements.</li>
+  <li></li>
+  <li>Return k after placing the final result in the first k slots of nums.</li>
+  <li></li>
+  <li>Do not allocate extra space for another array. You must do this by modifying the</li>
+  <li>input array in-place with O(1) extra memory.</li>
+  <li></li>
+  <li>Example 1:</li>
+  <li>Input: nums = [1,1,1,2,2,3]</li>
+  <li>Output: 5, nums = [1,1,2,2,3,_]</li>
+  <li>Explanation: Your function should return k = 5, with the first five elements of nums being 1, 1, 2, 2, and 3 respectively.</li>
+  <li>It does not matter what you leave beyond the returned k (hence they are underscores).</li>
+  <li></li>
+  <li>Example 2:</li>
+  <li>Input: nums = [0,0,1,1,1,1,2,3,3]</li>
+  <li>Output: 7, nums = [0,0,1,1,2,3,3,<em>,</em>]</li>
+  <li></li>
+  <li>Constraints:</li>
+  <li>
+    <ul>
+      <li>1 &lt;= nums.length &lt;= 3 * 10^4</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>-10^4 &lt;= nums[i] &lt;= 10^4</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>nums is sorted in non-decreasing order.
+ */</li>
+    </ul>
+  </li>
+</ul>
+
+<p>// Solution 1: Two Pointers (Optimal)
+// Time: O(n), Space: O(1)
+export function removeDuplicates1(nums: number[]): number {
+    if (nums.length &lt;= 2) return nums.length;</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+</pre></td><td class="rouge-code"><pre>let writeIndex = 2; // Start from index 2 since first two elements are always valid
+
+for (let readIndex = 2; readIndex &lt; nums.length; readIndex++) {
+    // Current element can be included if it's different from element two positions back
+    if (nums[readIndex] !== nums[writeIndex - 2]) {
+        nums[writeIndex] = nums[readIndex];
+        writeIndex++;
+    }
+}
+
+return writeIndex; }
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>// Solution 2: Count-based Approach
+// Time: O(n), Space: O(1)
+export function removeDuplicates2(nums: number[]): number {
+    if (nums.length &lt;= 2) return nums.length;</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+</pre></td><td class="rouge-code"><pre>let writeIndex = 0;
+let count = 1;
+
+for (let i = 1; i &lt; nums.length; i++) {
+    if (nums[i] === nums[i - 1]) {
+        count++;
+    } else {
+        count = 1;
+    }
+    
+    if (count &lt;= 2) {
+        writeIndex++;
+        nums[writeIndex] = nums[i];
+    }
+}
+
+return writeIndex + 1; }
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>// Solution 3: Three Pointers with Explicit Tracking
+// Time: O(n), Space: O(1)
+export function removeDuplicates3(nums: number[]): number {
+    if (nums.length &lt;= 2) return nums.length;</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+</pre></td><td class="rouge-code"><pre>let slow = 0; // Position to write next valid element
+let fast = 0; // Current reading position
+let count = 0; // Count of current element
+
+while (fast &lt; nums.length) {
+    if (fast === 0 || nums[fast] !== nums[fast - 1]) {
+        count = 1;
+    } else {
+        count++;
+    }
+    
+    if (count &lt;= 2) {
+        nums[slow] = nums[fast];
+        slow++;
+    }
+    
+    fast++;
+}
+
+return slow; }
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>// Solution 4: Generalized k-Duplicates Solution
+// Time: O(n), Space: O(1)
+export function removeDuplicates4(nums: number[], k: number = 2): number {
+    if (nums.length &lt;= k) return nums.length;</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+</pre></td><td class="rouge-code"><pre>let writeIndex = k;
+
+for (let readIndex = k; readIndex &lt; nums.length; readIndex++) {
+    if (nums[readIndex] !== nums[writeIndex - k]) {
+        nums[writeIndex] = nums[readIndex];
+        writeIndex++;
+    }
+}
+
+return writeIndex; }
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>// Solution 5: State Machine Approach
+// Time: O(n), Space: O(1)
+export function removeDuplicates5(nums: number[]): number {
+    if (nums.length &lt;= 2) return nums.length;</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+</pre></td><td class="rouge-code"><pre>let writeIndex = 0;
+let state = 0; // 0: first occurrence, 1: second occurrence, 2: third+ occurrence
+
+for (let i = 0; i &lt; nums.length; i++) {
+    if (i === 0 || nums[i] !== nums[i - 1]) {
+        // New element, reset state
+        state = 0;
+        nums[writeIndex++] = nums[i];
+    } else if (state === 0) {
+        // Second occurrence of current element
+        state = 1;
+        nums[writeIndex++] = nums[i];
+    } else {
+        // Third+ occurrence, skip
+        state = 2;
+    }
+}
+
+return writeIndex; }
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>// Solution 6: Sliding Window Approach
+// Time: O(n), Space: O(1)
+export function removeDuplicates6(nums: number[]): number {
+    if (nums.length &lt;= 2) return nums.length;</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+</pre></td><td class="rouge-code"><pre>let writeIndex = 0;
+
+for (let i = 0; i &lt; nums.length; i++) {
+    // Always include first element
+    if (writeIndex &lt; 2 || nums[i] !== nums[writeIndex - 2]) {
+        nums[writeIndex] = nums[i];
+        writeIndex++;
+    }
+}
+
+return writeIndex; }
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>// Solution 7: Reverse Iteration Approach
+// Time: O(n), Space: O(1)
+export function removeDuplicates7(nums: number[]): number {
+    if (nums.length &lt;= 2) return nums.length;</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+</pre></td><td class="rouge-code"><pre>let removeCount = 0;
+let consecutiveCount = 1;
+
+// Iterate from right to left to avoid shifting issues
+for (let i = nums.length - 2; i &gt;= 0; i--) {
+    if (nums[i] === nums[i + 1]) {
+        consecutiveCount++;
+        if (consecutiveCount &gt; 2) {
+            // Remove this element by shifting left
+            for (let j = i; j &lt; nums.length - 1 - removeCount; j++) {
+                nums[j] = nums[j + 1];
+            }
+            removeCount++;
+        }
+    } else {
+        consecutiveCount = 1;
+    }
+}
+
+return nums.length - removeCount; }
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>// Test cases
+export function testRemoveDuplicatesII() {
+    console.log(“Testing Remove Duplicates from Sorted Array II:”);</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+</pre></td><td class="rouge-code"><pre>const testCases = [
+    {
+        nums: [1, 1, 1, 2, 2, 3],
+        expected: 5,
+        expectedArray: [1, 1, 2, 2, 3]
+    },
+    {
+        nums: [0, 0, 1, 1, 1, 1, 2, 3, 3],
+        expected: 7,
+        expectedArray: [0, 0, 1, 1, 2, 3, 3]
+    },
+    {
+        nums: [1, 2, 3],
+        expected: 3,
+        expectedArray: [1, 2, 3]
+    },
+    {
+        nums: [1, 1],
+        expected: 2,
+        expectedArray: [1, 1]
+    },
+    {
+        nums: [1, 1, 1],
+        expected: 2,
+        expectedArray: [1, 1]
+    },
+    {
+        nums: [1, 1, 1, 1, 1, 1],
+        expected: 2,
+        expectedArray: [1, 1]
+    },
+    {
+        nums: [1, 2, 2, 2, 3, 3, 3, 3, 4],
+        expected: 6,
+        expectedArray: [1, 2, 2, 3, 3, 4]
+    }
+];
+
+const solutions = [
+    { name: "Two Pointers (Optimal)", fn: removeDuplicates1 },
+    { name: "Count-based Approach", fn: removeDuplicates2 },
+    { name: "Three Pointers", fn: removeDuplicates3 },
+    { name: "Generalized k-Duplicates", fn: (nums: number[]) =&gt; removeDuplicates4(nums, 2) },
+    { name: "State Machine", fn: removeDuplicates5 },
+    { name: "Sliding Window", fn: removeDuplicates6 },
+    { name: "Reverse Iteration", fn: removeDuplicates7 }
+];
+
+function arraysEqual(a: number[], b: number[], length: number): boolean {
+    for (let i = 0; i &lt; length; i++) {
+        if (a[i] !== b[i]) return false;
+    }
+    return true;
+}
+
+solutions.forEach(solution =&gt; {
+    console.log(`\n${solution.name}:`);
+    testCases.forEach((test, i) =&gt; {
+        const nums = [...test.nums];
+        const result = solution.fn(nums);
+        const arrayPassed = arraysEqual(nums, test.expectedArray, test.expected);
+        const lengthPassed = result === test.expected;
+        const passed = arrayPassed &amp;&amp; lengthPassed;
+        
+        console.log(`  Test ${i + 1}: ${passed ? 'PASS' : 'FAIL'}`);
+        if (!passed) {
+            console.log(`    Input: ${JSON.stringify(test.nums)}`);
+            console.log(`    Expected length: ${test.expected}`);
+            console.log(`    Got length: ${result}`);
+            console.log(`    Expected array: ${JSON.stringify(test.expectedArray)}`);
+            console.log(`    Got array: ${JSON.stringify(nums.slice(0, result))}`);
+        }
+    });
+}); }
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>/**</p>
+<ul>
+  <li>Key Insights:</li>
+  <li></li>
+  <li>
+    <ol>
+      <li><strong>Problem Understanding</strong>:</li>
+    </ol>
+  </li>
+  <li>
+    <ul>
+      <li>Allow at most 2 occurrences of each element</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Modify array in-place with O(1) space</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Return length of modified array</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Order must be preserved</li>
+    </ul>
+  </li>
+  <li></li>
+  <li>
+    <ol>
+      <li><strong>Two Pointers Strategy</strong>:</li>
+    </ol>
+  </li>
+  <li>
+    <ul>
+      <li>Read pointer: iterates through array</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Write pointer: position for next valid element</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Key insight: element valid if different from writeIndex-2</li>
+    </ul>
+  </li>
+  <li></li>
+  <li>
+    <ol>
+      <li><strong>Core Logic</strong>:</li>
+    </ol>
+  </li>
+  <li>
+    <ul>
+      <li>First two elements always valid (at most 2 duplicates)</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>For position i ≥ 2: include if nums[i] ≠ nums[writeIndex-2]</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>This ensures at most 2 consecutive duplicates</li>
+    </ul>
+  </li>
+  <li></li>
+  <li>
+    <ol>
+      <li><strong>Generalization</strong>:</li>
+    </ol>
+  </li>
+  <li>
+    <ul>
+      <li>For at most k duplicates: check nums[i] ≠ nums[writeIndex-k]</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Same pattern works for any k value</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Elegant mathematical property</li>
+    </ul>
+  </li>
+  <li></li>
+  <li>
+    <ol>
+      <li><strong>Time Complexity</strong>: O(n)</li>
+    </ol>
+  </li>
+  <li>
+    <ul>
+      <li>Single pass through array</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Constant work per element</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Optimal for this problem</li>
+    </ul>
+  </li>
+  <li></li>
+  <li>
+    <ol>
+      <li><strong>Space Complexity</strong>: O(1)</li>
+    </ol>
+  </li>
+  <li>
+    <ul>
+      <li>Only uses constant extra variables</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>In-place modification requirement</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>No additional data structures</li>
+    </ul>
+  </li>
+  <li></li>
+  <li>
+    <ol>
+      <li><strong>Edge Cases</strong>:</li>
+    </ol>
+  </li>
+  <li>
+    <ul>
+      <li>Array length ≤ 2 (return as-is)</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>All elements same</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>No duplicates</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Already valid array</li>
+    </ul>
+  </li>
+  <li></li>
+  <li>
+    <ol>
+      <li><strong>Interview Strategy</strong>:</li>
+    </ol>
+  </li>
+  <li>
+    <ul>
+      <li>Start with count-based approach</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Optimize to two-pointers method</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Explain the key insight about writeIndex-2</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Discuss generalization to k duplicates</li>
+    </ul>
+  </li>
+  <li></li>
+  <li>
+    <ol>
+      <li><strong>Key Insight Explanation</strong>:</li>
+    </ol>
+  </li>
+  <li>
+    <ul>
+      <li>If nums[i] ≠ nums[writeIndex-2], then:</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Either nums[i] is different element (always valid)</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Or nums[i] is same but appears ≤ 2 times in valid portion</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>This maintains the “at most 2” invariant</li>
+    </ul>
+  </li>
+  <li></li>
+  <li>
+    <ol>
+      <li><strong>Alternative Approaches</strong>:</li>
+    </ol>
+  </li>
+  <li>
+    <ul>
+      <li>Count occurrences explicitly</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>State machine for tracking duplicates</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Reverse iteration (more complex)</li>
+    </ul>
+  </li>
+  <li></li>
+  <li>
+    <ol>
+      <li><strong>Optimization Techniques</strong>:</li>
+    </ol>
+  </li>
+  <li>
+    <ul>
+      <li>Start writeIndex at 2 (first two always valid)</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Avoid unnecessary comparisons</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Early termination for short arrays</li>
+    </ul>
+  </li>
+  <li></li>
+  <li>
+    <ol>
+      <li><strong>Common Mistakes</strong>:</li>
+    </ol>
+  </li>
+  <li>
+    <ul>
+      <li>Not handling first two elements correctly</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Wrong index calculations</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Forgetting to increment writeIndex</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Incorrect boundary conditions</li>
+    </ul>
+  </li>
+  <li></li>
+  <li>
+    <ol>
+      <li><strong>Pattern Recognition</strong>:</li>
+    </ol>
+  </li>
+  <li>
+    <ul>
+      <li>Two pointers for in-place modification</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Sliding window for duplicate checking</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Invariant maintenance in array processing</li>
+    </ul>
+  </li>
+  <li></li>
+  <li>
+    <ol>
+      <li><strong>Big Tech Variations</strong>:</li>
+    </ol>
+  </li>
+  <li>
+    <ul>
+      <li>Google: Remove duplicates with k occurrences</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Meta: Remove duplicates in unsorted array</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Amazon: Remove specific patterns</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Microsoft: Keep exactly k duplicates</li>
+    </ul>
+  </li>
+  <li></li>
+  <li>
+    <ol>
+      <li><strong>Follow-up Questions</strong>:</li>
+    </ol>
+  </li>
+  <li>
+    <ul>
+      <li>Generalize to k duplicates allowed</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Handle unsorted arrays</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Remove all duplicates (keep none)</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Count removed elements</li>
+    </ul>
+  </li>
+  <li></li>
+  <li>
+    <ol>
+      <li><strong>Real-world Applications</strong>:</li>
+    </ol>
+  </li>
+  <li>
+    <ul>
+      <li>Data deduplication systems</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Log file processing</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Database query optimization</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Memory management</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Stream processing</li>
+    </ul>
+  </li>
+  <li></li>
+  <li>
+    <ol>
+      <li><strong>Implementation Tips</strong>:</li>
+    </ol>
+  </li>
+  <li>
+    <ul>
+      <li>Handle edge cases first</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Use meaningful variable names</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Test with boundary conditions</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Consider generalization</li>
+    </ul>
+  </li>
+  <li></li>
+  <li>
+    <ol>
+      <li><strong>Mathematical Property</strong>:</li>
+    </ol>
+  </li>
+  <li>
+    <ul>
+      <li>Invariant: nums[0..writeIndex-1] has at most 2 duplicates</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>nums[writeIndex-2] is key comparison point</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Maintains sorted order naturally</li>
+    </ul>
+  </li>
+  <li></li>
+  <li>
+    <ol>
+      <li><strong>Performance Considerations</strong>:</li>
+    </ol>
+  </li>
+  <li>
+    <ul>
+      <li>Cache-friendly sequential access</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Minimal conditional branches</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>No additional memory allocation</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Optimal algorithmic complexity</li>
+    </ul>
+  </li>
+  <li></li>
+  <li>
+    <ol>
+      <li><strong>Testing Strategy</strong>:</li>
+    </ol>
+  </li>
+  <li>
+    <ul>
+      <li>Test with all same elements</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Test with no duplicates</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Test with mixed patterns</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Test edge cases (small arrays)
+ */</li>
+    </ul>
+  </li>
+</ul>
+
+
+        </div>
+    </article>
+</div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Study Resources</h3>
+                    <p>Comprehensive collection of frontend interview questions, coding challenges, and system design problems.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Progress Tracking</h3>
+                    <p>Monitor your learning journey with detailed progress indicators and completion status.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Big Tech Ready</h3>
+                    <p>Curated content specifically designed for interviews at Google, Meta, Amazon, Apple, and Netflix.</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Frontend Interview Hub. Built for aspiring frontend engineers.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="/assets/js/main.js"></script>
+</body>
+</html>

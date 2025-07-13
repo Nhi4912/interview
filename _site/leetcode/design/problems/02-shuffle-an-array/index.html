@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shuffle an Array | Frontend Interview Preparation Guide</title>
+    <meta name="description" content="Comprehensive frontend interview materials for Big Tech companies">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="/assets/css/main.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <header>
+        <nav class="container">
+            <div class="logo">Frontend Interview Hub</div>
+            <ul class="nav-links">
+                <li><a href="/">Home</a></li>
+                <li><a href="#progress">Progress</a></li>
+                <li><a href="#knowledge">Knowledge</a></li>
+                <li><a href="https://github.com/nee/interview">GitHub</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <div class="content-container">
+    
+        <nav class="breadcrumb">
+            <ol>
+                <li><a href="/">Home</a></li>
+                
+                
+                
+                    
+                
+                    
+                        
+                        
+                            <li><a href="/leetcode/">Leetcode</a></li>
+                        
+                    
+                
+                    
+                        
+                        
+                            <li><a href="/leetcode/design/">Design</a></li>
+                        
+                    
+                
+                    
+                        
+                        
+                            <li><a href="/leetcode/design/problems/">Problems</a></li>
+                        
+                    
+                
+                    
+                        
+                        
+                            <li class="active">Shuffle an array</li>
+                        
+                    
+                
+            </ol>
+        </nav>
+    
+    
+    <article class="content">
+        
+            <header class="content-header">
+                <h1 class="content-title">Shuffle an Array</h1>
+                
+                
+                    <div class="content-meta">
+                        <span class="difficulty difficulty-easy">Easy</span>
+                        
+                            <span class="category">Design</span>
+                        
+                        
+                            <div class="tags">
+                                
+                                    <span class="tag">Design</span>
+                                
+                                    <span class="tag">Hash Table</span>
+                                
+                            </div>
+                        
+                    </div>
+                
+            </header>
+        
+        
+        <div class="content-body">
+            <h1 id="shuffle-an-array">Shuffle an Array</h1>
+
+<h2 id="problem-description">Problem Description</h2>
+
+<ul>
+  <li>
+    <ul>
+      <li>Given an integer array nums, design an algorithm to randomly shuffle the array.  * All permutations of the array should be equally likely as a result of the shuffling.  *  * Implement the Solution class:</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="solutions">Solutions</h2>
+
+<p>/**</p>
+<ul>
+  <li>Shuffle an Array
+ *</li>
+  <li>Problem: https://leetcode.com/problems/shuffle-an-array/
+ *</li>
+  <li>Given an integer array nums, design an algorithm to randomly shuffle the array.</li>
+  <li>All permutations of the array should be equally likely as a result of the shuffling.
+ *</li>
+  <li>Implement the Solution class:</li>
+  <li>
+    <ul>
+      <li>Solution(int[] nums) Initializes the object with the integer array nums.</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>int[] reset() Resets the array to its original configuration and returns it.</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>int[] shuffle() Returns a random shuffling of the array.
+ *</li>
+    </ul>
+  </li>
+  <li>Example:</li>
+  <li>Input: [“Solution”, “shuffle”, “reset”, “shuffle”]</li>
+  <li>[[[1, 2, 3]], [], [], []]</li>
+  <li>Output: [null, [3, 1, 2], [1, 2, 3], [1, 3, 2]]
+ *</li>
+  <li>Explanation:</li>
+  <li>Solution solution = new Solution([1, 2, 3]);</li>
+  <li>solution.shuffle();    // Shuffle the array [1,2,3] and return its result. Any permutation of [1,2,3] must be equally likely to be returned. Example: return [3, 1, 2]</li>
+  <li>solution.reset();      // Resets the array back to its original configuration [1,2,3]. Return [1, 2, 3]</li>
+  <li>solution.shuffle();    // Returns the random shuffling of array [1,2,3]. Example: return [1, 3, 2]
+ *</li>
+  <li>Constraints:</li>
+  <li>
+    <ul>
+      <li>1 &lt;= nums.length &lt;= 200</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>-10^6 &lt;= nums[i] &lt;= 10^6</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>All the elements of nums are unique.</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>At most 5 * 10^4 calls will be made to reset and shuffle.
+ *</li>
+    </ul>
+  </li>
+  <li>Solution Approach:</li>
+  <li>
+    <ol>
+      <li>Store original array for reset functionality</li>
+    </ol>
+  </li>
+  <li>
+    <ol>
+      <li>Use Fisher-Yates shuffle algorithm for unbiased shuffling</li>
+    </ol>
+  </li>
+  <li>
+    <ol>
+      <li>Work on a copy of the array to avoid modifying original</li>
+    </ol>
+  </li>
+  <li>
+    <ol>
+      <li>Ensure each permutation has equal probability
+ *</li>
+    </ol>
+  </li>
+  <li>Time Complexity: O(n) for shuffle, O(1) for reset</li>
+  <li>Space Complexity: O(n) to store original array
+ */</li>
+</ul>
+
+<p>/**</p>
+<ul>
+  <li>Solution class for Shuffle an Array
+ *</li>
+  <li>Lớp giải pháp cho bài toán Xáo trộn mảng
+ */
+class Solution {
+  private original: number[];
+  private current: number[];</li>
+</ul>
+
+<p>constructor(nums: number[]) {
+    this.original = […nums];
+    this.current = […nums];
+  }</p>
+
+<p>/**</p>
+<ul>
+  <li>Reset the array to its original configuration
+   *</li>
+  <li>Đặt lại mảng về cấu hình ban đầu
+   *</li>
+  <li>@returns Mảng ban đầu
+   */
+  reset(): number[] {
+    this.current = […this.original];
+    return this.current;
+  }</li>
+</ul>
+
+<p>/**</p>
+<ul>
+  <li>Shuffle the array using Fisher-Yates algorithm
+   *</li>
+  <li>Xáo trộn mảng sử dụng thuật toán Fisher-Yates
+   *</li>
+  <li>@returns Mảng đã được xáo trộn
+   */
+  shuffle(): number[] {
+    // Reset to original before shuffling
+    this.current = […this.original];</li>
+</ul>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+</pre></td><td class="rouge-code"><pre>// Fisher-Yates shuffle algorithm
+for (let i = this.current.length - 1; i &gt; 0; i--) {
+  // Generate random index from 0 to i (inclusive)
+  const j = Math.floor(Math.random() * (i + 1));
+
+  // Swap elements at positions i and j
+  [this.current[i], this.current[j]] = [this.current[j], this.current[i]];
+}
+
+return this.current;   } }
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>/**</p>
+<ul>
+  <li>Alternative Implementation: Using Array methods
+ *</li>
+  <li>Giải pháp thay thế: Sử dụng các phương thức mảng
+ */
+class SolutionAlternative {
+  private original: number[];</li>
+</ul>
+
+<p>constructor(nums: number[]) {
+    this.original = […nums];
+  }</p>
+
+<p>reset(): number[] {
+    return […this.original];
+  }</p>
+
+<p>shuffle(): number[] {
+    // Create a copy and shuffle using sort with random comparison
+    return […this.original].sort(() =&gt; Math.random() - 0.5);
+  }
+}</p>
+
+<p>/**</p>
+<ul>
+  <li>Implementation with Statistics Tracking
+ *</li>
+  <li>Giải pháp với theo dõi thống kê
+ */
+class SolutionWithStats {
+  private original: number[];
+  private shuffleCount: number = 0;
+  private permutationCounts: Map&lt;string, number&gt; = new Map();</li>
+</ul>
+
+<p>constructor(nums: number[]) {
+    this.original = […nums];
+  }</p>
+
+<p>reset(): number[] {
+    return […this.original];
+  }</p>
+
+<p>shuffle(): number[] {
+    this.shuffleCount++;</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+</pre></td><td class="rouge-code"><pre>const shuffled = [...this.original];
+
+// Fisher-Yates shuffle
+for (let i = shuffled.length - 1; i &gt; 0; i--) {
+  const j = Math.floor(Math.random() * (i + 1));
+  [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+}
+
+// Track permutation statistics
+const permutation = shuffled.join(",");
+this.permutationCounts.set(
+  permutation,
+  (this.permutationCounts.get(permutation) || 0) + 1
+);
+
+return shuffled;   }
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>getStats(): {
+    shuffleCount: number;
+    uniquePermutations: number;
+    distribution: Map&lt;string, number&gt;;
+  } {
+    return {
+      shuffleCount: this.shuffleCount,
+      uniquePermutations: this.permutationCounts.size,
+      distribution: new Map(this.permutationCounts),
+    };
+  }
+}</p>
+
+<p>/**</p>
+<ul>
+  <li>Test Fisher-Yates Algorithm Implementation
+ *</li>
+  <li>Kiểm thử thuật toán Fisher-Yates
+ */
+function testFisherYates() {
+  console.log(“=== Fisher-Yates Algorithm Test ===”);
+  console.log(“=== Kiểm thử thuật toán Fisher-Yates ===\n”);</li>
+</ul>
+
+<p>const original = [1, 2, 3, 4, 5];
+  const iterations = 10000;
+  const permutationCounts = new Map&lt;string, number&gt;();</p>
+
+<p>console.log(<code class="language-plaintext highlighter-rouge">Original array: [${original.join(", ")}]</code>);
+  console.log(<code class="language-plaintext highlighter-rouge">Testing ${iterations} shuffles...</code>);
+  console.log(<code class="language-plaintext highlighter-rouge">Kiểm thử ${iterations} lần xáo trộn...\n</code>);</p>
+
+<p>for (let i = 0; i &lt; iterations; i++) {
+    const shuffled = […original];</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+</pre></td><td class="rouge-code"><pre>// Fisher-Yates shuffle
+for (let j = shuffled.length - 1; j &gt; 0; j--) {
+  const k = Math.floor(Math.random() * (j + 1));
+  [shuffled[j], shuffled[k]] = [shuffled[k], shuffled[j]];
+}
+
+const permutation = shuffled.join(",");
+permutationCounts.set(
+  permutation,
+  (permutationCounts.get(permutation) || 0) + 1
+);   }
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>console.log(<code class="language-plaintext highlighter-rouge">Unique permutations found: ${permutationCounts.size}</code>);
+  console.log(<code class="language-plaintext highlighter-rouge">Expected permutations: ${factorial(original.length)}</code>);
+  console.log(<code class="language-plaintext highlighter-rouge">Số hoán vị duy nhất tìm thấy: ${permutationCounts.size}</code>);
+  console.log(<code class="language-plaintext highlighter-rouge">Số hoán vị mong đợi: ${factorial(original.length)}\n</code>);</p>
+
+<p>// Show distribution
+  console.log(“Permutation distribution (first 10):”);
+  console.log(“Phân bố hoán vị (10 đầu tiên):”);
+  let count = 0;
+  for (const [permutation, frequency] of permutationCounts) {
+    if (count &gt;= 10) break;
+    const percentage = ((frequency / iterations) * 100).toFixed(2);
+    console.log(<code class="language-plaintext highlighter-rouge">  [${permutation}]: ${frequency} times (${percentage}%)</code>);
+    count++;
+  }
+}</p>
+
+<p>function factorial(n: number): number {
+  if (n &lt;= 1) return 1;
+  return n * factorial(n - 1);
+}</p>
+
+<p>// Test cases / Các trường hợp kiểm thử
+function runTests() {
+  console.log(“=== Shuffle Array Tests ===”);
+  console.log(“=== Kiểm thử bài toán Xáo trộn mảng ===\n”);</p>
+
+<p>const testCases = [
+    {
+      name: “Example case”,
+      input: [1, 2, 3],
+      description: “Basic 3-element array”,
+    },
+    {
+      name: “Single element”,
+      input: [5],
+      description: “Array with single element”,
+    },
+    {
+      name: “Two elements”,
+      input: [10, 20],
+      description: “Array with two elements”,
+    },
+    {
+      name: “Large array”,
+      input: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+      description: “Array with 10 elements”,
+    },
+    {
+      name: “Negative numbers”,
+      input: [-3, -2, -1, 0, 1, 2, 3],
+      description: “Array with negative and positive numbers”,
+    },
+  ];</p>
+
+<p>for (const testCase of testCases) {
+    console.log(<code class="language-plaintext highlighter-rouge">Test: ${testCase.name}</code>);
+    console.log(<code class="language-plaintext highlighter-rouge">Input: [${testCase.input.join(", ")}]</code>);
+    console.log(<code class="language-plaintext highlighter-rouge">Description: ${testCase.description}</code>);</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+</pre></td><td class="rouge-code"><pre>const solution = new Solution(testCase.input);
+
+// Test reset
+const resetResult = solution.reset();
+console.log(`Reset: [${resetResult.join(", ")}]`);
+
+// Test shuffle multiple times
+console.log("Shuffle results:");
+console.log("Kết quả xáo trộn:");
+for (let i = 0; i &lt; 5; i++) {
+  const shuffleResult = solution.shuffle();
+  console.log(`  ${i + 1}. [${shuffleResult.join(", ")}]`);
+}
+
+// Test reset again
+const resetAgain = solution.reset();
+console.log(`Reset again: [${resetAgain.join(", ")}]`);
+
+console.log("---");   }
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>// Test with statistics
+  console.log(“\n=== Testing with Statistics ===”);
+  console.log(“=== Kiểm thử với thống kê ===\n”);</p>
+
+<p>const statsSolution = new SolutionWithStats([1, 2, 3]);</p>
+
+<p>console.log(“Performing 1000 shuffles…”);
+  console.log(“Thực hiện 1000 lần xáo trộn…”);</p>
+
+<p>for (let i = 0; i &lt; 1000; i++) {
+    statsSolution.shuffle();
+  }</p>
+
+<p>const stats = statsSolution.getStats();
+  console.log(<code class="language-plaintext highlighter-rouge">Total shuffles: ${stats.shuffleCount}</code>);
+  console.log(<code class="language-plaintext highlighter-rouge">Unique permutations: ${stats.uniquePermutations}</code>);
+  console.log(<code class="language-plaintext highlighter-rouge">Expected permutations: ${factorial(3)}</code>);</p>
+
+<p>console.log(“\nPermutation distribution:”);
+  console.log(“Phân bố hoán vị:”);
+  for (const [permutation, count] of stats.distribution) {
+    const percentage = ((count / stats.shuffleCount) * 100).toFixed(2);
+    console.log(<code class="language-plaintext highlighter-rouge">  [${permutation}]: ${count} times (${percentage}%)</code>);
+  }</p>
+
+<p>// Test Fisher-Yates algorithm
+  console.log(“\n”);
+  testFisherYates();
+}</p>
+
+<p>// Run tests if this file is executed directly
+if (require.main === module) {
+  runTests();
+}</p>
+
+<p>export { Solution, SolutionAlternative, SolutionWithStats, testFisherYates };</p>
+
+
+        </div>
+    </article>
+</div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Study Resources</h3>
+                    <p>Comprehensive collection of frontend interview questions, coding challenges, and system design problems.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Progress Tracking</h3>
+                    <p>Monitor your learning journey with detailed progress indicators and completion status.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Big Tech Ready</h3>
+                    <p>Curated content specifically designed for interviews at Google, Meta, Amazon, Apple, and Netflix.</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Frontend Interview Hub. Built for aspiring frontend engineers.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="/assets/js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,973 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Valid Palindrome II | Frontend Interview Preparation Guide</title>
+    <meta name="description" content="Comprehensive frontend interview materials for Big Tech companies">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="/assets/css/main.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <header>
+        <nav class="container">
+            <div class="logo">Frontend Interview Hub</div>
+            <ul class="nav-links">
+                <li><a href="/">Home</a></li>
+                <li><a href="#progress">Progress</a></li>
+                <li><a href="#knowledge">Knowledge</a></li>
+                <li><a href="https://github.com/nee/interview">GitHub</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <div class="content-container">
+    
+        <nav class="breadcrumb">
+            <ol>
+                <li><a href="/">Home</a></li>
+                
+                
+                
+                    
+                
+                    
+                        
+                        
+                            <li><a href="/leetcode/">Leetcode</a></li>
+                        
+                    
+                
+                    
+                        
+                        
+                            <li><a href="/leetcode/string/">String</a></li>
+                        
+                    
+                
+                    
+                        
+                        
+                            <li><a href="/leetcode/string/problems/">Problems</a></li>
+                        
+                    
+                
+                    
+                        
+                        
+                            <li class="active">Valid palindrome ii</li>
+                        
+                    
+                
+            </ol>
+        </nav>
+    
+    
+    <article class="content">
+        
+            <header class="content-header">
+                <h1 class="content-title">Valid Palindrome II</h1>
+                
+                
+                    <div class="content-meta">
+                        <span class="difficulty difficulty-easy">Easy</span>
+                        
+                            <span class="category">String</span>
+                        
+                        
+                            <div class="tags">
+                                
+                                    <span class="tag">String</span>
+                                
+                                    <span class="tag">Two Pointers</span>
+                                
+                                    <span class="tag">Hash Table</span>
+                                
+                                    <span class="tag">Greedy</span>
+                                
+                            </div>
+                        
+                    </div>
+                
+            </header>
+        
+        
+        <div class="content-body">
+            <h1 id="valid-palindrome-ii">Valid Palindrome II</h1>
+
+<p><strong>LeetCode Problem # * 680. Valid Palindrome II</strong></p>
+
+<h2 id="problem-description">Problem Description</h2>
+
+<p>LeetCode problem solution with multiple approaches and explanations.</p>
+
+<h2 id="solutions">Solutions</h2>
+
+<p>/**</p>
+<ul>
+  <li>
+    <ol>
+      <li>Valid Palindrome II</li>
+    </ol>
+  </li>
+  <li></li>
+  <li>Given a string s, return true if the s can be palindrome after deleting at most one character from it.</li>
+  <li></li>
+  <li>Example 1:</li>
+  <li>Input: s = “aba”</li>
+  <li>Output: true</li>
+  <li></li>
+  <li>Example 2:</li>
+  <li>Input: s = “abca”</li>
+  <li>Output: true</li>
+  <li>Explanation: You could delete the character ‘c’.</li>
+  <li></li>
+  <li>Example 3:</li>
+  <li>Input: s = “abc”</li>
+  <li>Output: false</li>
+  <li></li>
+  <li>Constraints:</li>
+  <li>
+    <ul>
+      <li>1 &lt;= s.length &lt;= 10^5</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>s consists of lowercase English letters.
+ */</li>
+    </ul>
+  </li>
+</ul>
+
+<p>// Solution 1: Two Pointers with Helper Function
+// Time: O(n), Space: O(1)
+export function validPalindrome1(s: string): boolean {
+    function isPalindrome(str: string, left: number, right: number): boolean {
+        while (left &lt; right) {
+            if (str[left] !== str[right]) {
+                return false;
+            }
+            left++;
+            right–;
+        }
+        return true;
+    }</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+</pre></td><td class="rouge-code"><pre>let left = 0;
+let right = s.length - 1;
+
+while (left &lt; right) {
+    if (s[left] !== s[right]) {
+        // Try deleting left character or right character
+        return isPalindrome(s, left + 1, right) || isPalindrome(s, left, right - 1);
+    }
+    left++;
+    right--;
+}
+
+return true; }
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>// Solution 2: Recursive Approach with Memoization
+// Time: O(n), Space: O(n)
+export function validPalindrome2(s: string): boolean {
+    const memo = new Map&lt;string, boolean&gt;();</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+</pre></td><td class="rouge-code"><pre>function canBeValidPalindrome(left: number, right: number, deletions: number): boolean {
+    if (deletions &gt; 1) return false;
+    if (left &gt;= right) return true;
+    
+    const key = `${left},${right},${deletions}`;
+    if (memo.has(key)) {
+        return memo.get(key)!;
+    }
+    
+    let result = false;
+    
+    if (s[left] === s[right]) {
+        result = canBeValidPalindrome(left + 1, right - 1, deletions);
+    } else {
+        // Try deleting left character
+        result = canBeValidPalindrome(left + 1, right, deletions + 1) ||
+                // Try deleting right character
+                canBeValidPalindrome(left, right - 1, deletions + 1);
+    }
+    
+    memo.set(key, result);
+    return result;
+}
+
+return canBeValidPalindrome(0, s.length - 1, 0); }
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>// Solution 3: Iterative with Early Termination
+// Time: O(n), Space: O(1)
+export function validPalindrome3(s: string): boolean {
+    function checkPalindrome(left: number, right: number, allowDelete: boolean): boolean {
+        while (left &lt; right) {
+            if (s[left] !== s[right]) {
+                if (!allowDelete) return false;</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+</pre></td><td class="rouge-code"><pre>            // Try both options and return true if either works
+            return checkPalindrome(left + 1, right, false) || 
+                   checkPalindrome(left, right - 1, false);
+        }
+        left++;
+        right--;
+    }
+    return true;
+}
+
+return checkPalindrome(0, s.length - 1, true); }
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>// Solution 4: Greedy Approach
+// Time: O(n), Space: O(1)
+export function validPalindrome4(s: string): boolean {
+    let left = 0;
+    let right = s.length - 1;</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+</pre></td><td class="rouge-code"><pre>// Find first mismatch
+while (left &lt; right &amp;&amp; s[left] === s[right]) {
+    left++;
+    right--;
+}
+
+// If no mismatch found, it's already a palindrome
+if (left &gt;= right) return true;
+
+// Helper function to check if substring is palindrome
+function isPalindrome(l: number, r: number): boolean {
+    while (l &lt; r) {
+        if (s[l] !== s[r]) return false;
+        l++;
+        r--;
+    }
+    return true;
+}
+
+// Try removing either the left or right character
+return isPalindrome(left + 1, right) || isPalindrome(left, right - 1); }
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>// Solution 5: Dynamic Programming
+// Time: O(n²), Space: O(n²)
+export function validPalindrome5(s: string): boolean {
+    const n = s.length;
+    // dp[i][j][k] = can substring s[i..j] be palindrome with at most k deletions
+    const dp = Array(n).fill(null).map(() =&gt; 
+        Array(n).fill(null).map(() =&gt; Array(2).fill(false))
+    );</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+</pre></td><td class="rouge-code"><pre>// Base cases: single characters are palindromes
+for (let i = 0; i &lt; n; i++) {
+    dp[i][i][0] = true;
+    dp[i][i][1] = true;
+}
+
+// Fill for all lengths
+for (let len = 2; len &lt;= n; len++) {
+    for (let i = 0; i &lt;= n - len; i++) {
+        const j = i + len - 1;
+        
+        if (s[i] === s[j]) {
+            // Characters match
+            if (len === 2) {
+                dp[i][j][0] = true;
+                dp[i][j][1] = true;
+            } else {
+                dp[i][j][0] = dp[i + 1][j - 1][0];
+                dp[i][j][1] = dp[i + 1][j - 1][1];
+            }
+        } else {
+            // Characters don't match
+            dp[i][j][0] = false;
+            if (len &gt; 2) {
+                dp[i][j][1] = dp[i + 1][j][0] || dp[i][j - 1][0];
+            } else {
+                dp[i][j][1] = true; // Can delete one character
+            }
+        }
+    }
+}
+
+return dp[0][n - 1][1]; }
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>// Solution 6: Optimized Two-Pass
+// Time: O(n), Space: O(1)
+export function validPalindrome6(s: string): boolean {
+    function findMismatch(left: number, right: number): [number, number] | null {
+        while (left &lt; right) {
+            if (s[left] !== s[right]) {
+                return [left, right];
+            }
+            left++;
+            right–;
+        }
+        return null;
+    }</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+</pre></td><td class="rouge-code"><pre>function isPalindromeRange(left: number, right: number): boolean {
+    while (left &lt; right) {
+        if (s[left] !== s[right]) return false;
+        left++;
+        right--;
+    }
+    return true;
+}
+
+const mismatch = findMismatch(0, s.length - 1);
+
+if (!mismatch) return true; // Already a palindrome
+
+const [left, right] = mismatch;
+
+// Try deleting left character
+if (isPalindromeRange(left + 1, right)) return true;
+
+// Try deleting right character
+if (isPalindromeRange(left, right - 1)) return true;
+
+return false; }
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>// Test cases
+export function testValidPalindrome() {
+    console.log(“Testing Valid Palindrome II:”);</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+</pre></td><td class="rouge-code"><pre>const testCases = [
+    {
+        input: "aba",
+        expected: true
+    },
+    {
+        input: "abca",
+        expected: true
+    },
+    {
+        input: "abc",
+        expected: false
+    },
+    {
+        input: "raceacar",
+        expected: true
+    },
+    {
+        input: "race",
+        expected: false
+    },
+    {
+        input: "abcddcba",
+        expected: true
+    },
+    {
+        input: "abcdef",
+        expected: false
+    },
+    {
+        input: "a",
+        expected: true
+    },
+    {
+        input: "ab",
+        expected: true
+    },
+    {
+        input: "deeee",
+        expected: true
+    }
+];
+
+const solutions = [
+    { name: "Two Pointers", fn: validPalindrome1 },
+    { name: "Recursive + Memo", fn: validPalindrome2 },
+    { name: "Iterative Early Term", fn: validPalindrome3 },
+    { name: "Greedy", fn: validPalindrome4 },
+    { name: "Dynamic Programming", fn: validPalindrome5 },
+    { name: "Two-Pass Optimized", fn: validPalindrome6 }
+];
+
+solutions.forEach(solution =&gt; {
+    console.log(`\n${solution.name}:`);
+    testCases.forEach((test, i) =&gt; {
+        const result = solution.fn(test.input);
+        const passed = result === test.expected;
+        console.log(`  Test ${i + 1}: ${passed ? 'PASS' : 'FAIL'}`);
+        if (!passed) {
+            console.log(`    Input: "${test.input}"`);
+            console.log(`    Expected: ${test.expected}`);
+            console.log(`    Got: ${result}`);
+        }
+    });
+}); }
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>/**</p>
+<ul>
+  <li>Key Insights:</li>
+  <li></li>
+  <li>
+    <ol>
+      <li><strong>Problem Understanding</strong>:</li>
+    </ol>
+  </li>
+  <li>
+    <ul>
+      <li>Can delete AT MOST one character</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Must check if resulting string is palindrome</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Original string might already be palindrome</li>
+    </ul>
+  </li>
+  <li></li>
+  <li>
+    <ol>
+      <li><strong>Two Pointers Strategy</strong>:</li>
+    </ol>
+  </li>
+  <li>
+    <ul>
+      <li>Start from both ends</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>When mismatch found, try deleting either character</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Continue palindrome check from remaining substring</li>
+    </ul>
+  </li>
+  <li></li>
+  <li>
+    <ol>
+      <li><strong>Key Optimization</strong>:</li>
+    </ol>
+  </li>
+  <li>
+    <ul>
+      <li>Only need to check deletion when first mismatch occurs</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Don’t need to generate actual substrings</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Can check validity with indices only</li>
+    </ul>
+  </li>
+  <li></li>
+  <li>
+    <ol>
+      <li><strong>Time Complexity</strong>: O(n)</li>
+    </ol>
+  </li>
+  <li>
+    <ul>
+      <li>Single pass to find mismatch: O(n)</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>At most two palindrome checks: O(n)</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Total: O(n)</li>
+    </ul>
+  </li>
+  <li></li>
+  <li>
+    <ol>
+      <li><strong>Space Complexity</strong>: O(1)</li>
+    </ol>
+  </li>
+  <li>
+    <ul>
+      <li>Only using pointers and variables</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>No additional data structures needed</li>
+    </ul>
+  </li>
+  <li></li>
+  <li>
+    <ol>
+      <li><strong>Edge Cases</strong>:</li>
+    </ol>
+  </li>
+  <li>
+    <ul>
+      <li>Single character (always valid)</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Two characters (always valid)</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Already palindrome (no deletion needed)</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>No valid deletion possible</li>
+    </ul>
+  </li>
+  <li></li>
+  <li>
+    <ol>
+      <li><strong>Interview Strategy</strong>:</li>
+    </ol>
+  </li>
+  <li>
+    <ul>
+      <li>Start with basic palindrome check</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Extend to handle one deletion</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Optimize to avoid unnecessary work</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Handle edge cases carefully</li>
+    </ul>
+  </li>
+  <li></li>
+  <li>
+    <ol>
+      <li><strong>Common Mistakes</strong>:</li>
+    </ol>
+  </li>
+  <li>
+    <ul>
+      <li>Checking all possible deletions (O(n²))</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Not handling edge cases properly</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Creating unnecessary substrings</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Incorrect index management</li>
+    </ul>
+  </li>
+  <li></li>
+  <li>
+    <ol>
+      <li><strong>Why Greedy Works</strong>:</li>
+    </ol>
+  </li>
+  <li>
+    <ul>
+      <li>First mismatch determines deletion candidates</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Only two choices: delete left or right character</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>If neither works, no solution exists</li>
+    </ul>
+  </li>
+  <li></li>
+  <li>
+    <ol>
+      <li><strong>Alternative Approaches</strong>:</li>
+    </ol>
+  </li>
+  <li>
+    <ul>
+      <li>DP: O(n²) time and space (overkill)</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Recursion: Cleaner code but may have stack overhead</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Brute force: Check all n possible deletions (inefficient)</li>
+    </ul>
+  </li>
+  <li></li>
+  <li>
+    <ol>
+      <li><strong>Big Tech Variations</strong>:</li>
+    </ol>
+  </li>
+  <li>
+    <ul>
+      <li>Google: Valid palindrome with k deletions</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Meta: Minimum deletions to make palindrome</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Amazon: Palindrome with character substitutions</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Microsoft: Case-insensitive palindrome validation</li>
+    </ul>
+  </li>
+  <li></li>
+  <li>
+    <ol>
+      <li><strong>Follow-up Questions</strong>:</li>
+    </ol>
+  </li>
+  <li>
+    <ul>
+      <li>Extend to k deletions</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Return the actual palindrome string</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Handle Unicode/special characters</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Find minimum deletions needed</li>
+    </ul>
+  </li>
+  <li></li>
+  <li>
+    <ol>
+      <li><strong>Real-world Applications</strong>:</li>
+    </ol>
+  </li>
+  <li>
+    <ul>
+      <li>Text processing and validation</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>DNA sequence analysis</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Data deduplication</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>String similarity measures</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Auto-correction systems</li>
+    </ul>
+  </li>
+  <li></li>
+  <li>
+    <ol>
+      <li><strong>Pattern Recognition</strong>:</li>
+    </ol>
+  </li>
+  <li>
+    <ul>
+      <li>Two pointers for palindrome problems</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Greedy choice when limited operations allowed</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Early termination for optimization</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Index-based processing to avoid string creation
+ */</li>
+    </ul>
+  </li>
+</ul>
+
+
+        </div>
+    </article>
+</div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Study Resources</h3>
+                    <p>Comprehensive collection of frontend interview questions, coding challenges, and system design problems.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Progress Tracking</h3>
+                    <p>Monitor your learning journey with detailed progress indicators and completion status.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Big Tech Ready</h3>
+                    <p>Curated content specifically designed for interviews at Google, Meta, Amazon, Apple, and Netflix.</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Frontend Interview Hub. Built for aspiring frontend engineers.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="/assets/js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,1064 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple State Management System | Frontend Interview Preparation Guide</title>
+    <meta name="description" content="Comprehensive frontend interview materials for Big Tech companies">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="/assets/css/main.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <header>
+        <nav class="container">
+            <div class="logo">Frontend Interview Hub</div>
+            <ul class="nav-links">
+                <li><a href="/">Home</a></li>
+                <li><a href="#progress">Progress</a></li>
+                <li><a href="#knowledge">Knowledge</a></li>
+                <li><a href="https://github.com/nee/interview">GitHub</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <div class="content-container">
+    
+        <nav class="breadcrumb">
+            <ol>
+                <li><a href="/">Home</a></li>
+                
+                
+                
+                    
+                
+                    
+                        
+                        
+                            <li><a href="/frontend/">Frontend</a></li>
+                        
+                    
+                
+                    
+                        
+                        
+                            <li><a href="/frontend/coding-problems/">Coding problems</a></li>
+                        
+                    
+                
+                    
+                        
+                        
+                            <li class="active">Simple state management system</li>
+                        
+                    
+                
+            </ol>
+        </nav>
+    
+    
+    <article class="content">
+        
+            <header class="content-header">
+                <h1 class="content-title">Simple State Management System</h1>
+                
+                
+                    <div class="content-meta">
+                        <span class="difficulty difficulty-hard">Hard</span>
+                        
+                            <span class="category">Coding Problems</span>
+                        
+                        
+                            <div class="tags">
+                                
+                                    <span class="tag">javascript</span>
+                                
+                                    <span class="tag">react</span>
+                                
+                                    <span class="tag">state-management</span>
+                                
+                                    <span class="tag">redux</span>
+                                
+                                    <span class="tag">middleware</span>
+                                
+                                    <span class="tag">architecture</span>
+                                
+                            </div>
+                        
+                    </div>
+                
+            </header>
+        
+        
+        <div class="content-body">
+            <h1 id="problem-5-simple-state-management-system">Problem 5: Simple State Management System</h1>
+
+<h2 id="problem-description">Problem Description</h2>
+
+<p>Implement a simple state management system similar to Redux but lightweight.</p>
+
+<h2 id="requirements">Requirements</h2>
+
+<ul>
+  <li>Centralized state store</li>
+  <li>Action dispatching</li>
+  <li>Reducer pattern</li>
+  <li>State subscriptions</li>
+  <li>Middleware support</li>
+</ul>
+
+<h2 id="solution">Solution</h2>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+</pre></td><td class="rouge-code"><pre><span class="kd">class</span> <span class="nx">SimpleStore</span> <span class="p">{</span>
+  <span class="kd">constructor</span><span class="p">(</span><span class="nx">reducer</span><span class="p">,</span> <span class="nx">initialState</span> <span class="o">=</span> <span class="p">{})</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">reducer</span> <span class="o">=</span> <span class="nx">reducer</span><span class="p">;</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">state</span> <span class="o">=</span> <span class="nx">initialState</span><span class="p">;</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">subscribers</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Set</span><span class="p">();</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">middlewares</span> <span class="o">=</span> <span class="p">[];</span>
+
+    <span class="k">this</span><span class="p">.</span><span class="nx">dispatch</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">dispatch</span><span class="p">.</span><span class="nx">bind</span><span class="p">(</span><span class="k">this</span><span class="p">);</span>
+  <span class="p">}</span>
+
+  <span class="nx">getState</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">state</span><span class="p">;</span>
+  <span class="p">}</span>
+
+  <span class="nx">dispatch</span><span class="p">(</span><span class="nx">action</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="k">typeof</span> <span class="nx">action</span> <span class="o">===</span> <span class="dl">"</span><span class="s2">function</span><span class="dl">"</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">return</span> <span class="nx">action</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">dispatch</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">getState</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="c1">// Apply middlewares</span>
+    <span class="kd">let</span> <span class="nx">processedAction</span> <span class="o">=</span> <span class="nx">action</span><span class="p">;</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kd">const</span> <span class="nx">middleware</span> <span class="k">of</span> <span class="k">this</span><span class="p">.</span><span class="nx">middlewares</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">processedAction</span> <span class="o">=</span> <span class="nx">middleware</span><span class="p">(</span><span class="k">this</span><span class="p">)(</span><span class="nx">processedAction</span><span class="p">);</span>
+      <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">processedAction</span><span class="p">)</span> <span class="k">return</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="c1">// Update state</span>
+    <span class="kd">const</span> <span class="nx">previousState</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">state</span><span class="p">;</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">state</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">reducer</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">state</span><span class="p">,</span> <span class="nx">processedAction</span><span class="p">);</span>
+
+    <span class="c1">// Notify subscribers</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">subscribers</span><span class="p">.</span><span class="nx">forEach</span><span class="p">((</span><span class="nx">subscriber</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+      <span class="nx">subscriber</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">state</span><span class="p">,</span> <span class="nx">previousState</span><span class="p">,</span> <span class="nx">processedAction</span><span class="p">);</span>
+    <span class="p">});</span>
+
+    <span class="k">return</span> <span class="nx">processedAction</span><span class="p">;</span>
+  <span class="p">}</span>
+
+  <span class="nx">subscribe</span><span class="p">(</span><span class="nx">subscriber</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">subscribers</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="nx">subscriber</span><span class="p">);</span>
+    <span class="k">return</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+      <span class="k">this</span><span class="p">.</span><span class="nx">subscribers</span><span class="p">.</span><span class="k">delete</span><span class="p">(</span><span class="nx">subscriber</span><span class="p">);</span>
+    <span class="p">};</span>
+  <span class="p">}</span>
+
+  <span class="nx">useMiddleware</span><span class="p">(</span><span class="nx">middleware</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">middlewares</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">middleware</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// Example reducer</span>
+<span class="kd">const</span> <span class="nx">todoReducer</span> <span class="o">=</span> <span class="p">(</span><span class="nx">state</span> <span class="o">=</span> <span class="p">{</span> <span class="na">todos</span><span class="p">:</span> <span class="p">[],</span> <span class="na">filter</span><span class="p">:</span> <span class="dl">"</span><span class="s2">all</span><span class="dl">"</span> <span class="p">},</span> <span class="nx">action</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="k">switch</span> <span class="p">(</span><span class="nx">action</span><span class="p">.</span><span class="nx">type</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">case</span> <span class="dl">"</span><span class="s2">ADD_TODO</span><span class="dl">"</span><span class="p">:</span>
+      <span class="k">return</span> <span class="p">{</span>
+        <span class="p">...</span><span class="nx">state</span><span class="p">,</span>
+        <span class="na">todos</span><span class="p">:</span> <span class="p">[</span>
+          <span class="p">...</span><span class="nx">state</span><span class="p">.</span><span class="nx">todos</span><span class="p">,</span>
+          <span class="p">{</span>
+            <span class="na">id</span><span class="p">:</span> <span class="nb">Date</span><span class="p">.</span><span class="nx">now</span><span class="p">(),</span>
+            <span class="na">text</span><span class="p">:</span> <span class="nx">action</span><span class="p">.</span><span class="nx">payload</span><span class="p">,</span>
+            <span class="na">completed</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+          <span class="p">},</span>
+        <span class="p">],</span>
+      <span class="p">};</span>
+
+    <span class="k">case</span> <span class="dl">"</span><span class="s2">TOGGLE_TODO</span><span class="dl">"</span><span class="p">:</span>
+      <span class="k">return</span> <span class="p">{</span>
+        <span class="p">...</span><span class="nx">state</span><span class="p">,</span>
+        <span class="na">todos</span><span class="p">:</span> <span class="nx">state</span><span class="p">.</span><span class="nx">todos</span><span class="p">.</span><span class="nx">map</span><span class="p">((</span><span class="nx">todo</span><span class="p">)</span> <span class="o">=&gt;</span>
+          <span class="nx">todo</span><span class="p">.</span><span class="nx">id</span> <span class="o">===</span> <span class="nx">action</span><span class="p">.</span><span class="nx">payload</span>
+            <span class="p">?</span> <span class="p">{</span> <span class="p">...</span><span class="nx">todo</span><span class="p">,</span> <span class="na">completed</span><span class="p">:</span> <span class="o">!</span><span class="nx">todo</span><span class="p">.</span><span class="nx">completed</span> <span class="p">}</span>
+            <span class="p">:</span> <span class="nx">todo</span>
+        <span class="p">),</span>
+      <span class="p">};</span>
+
+    <span class="k">case</span> <span class="dl">"</span><span class="s2">DELETE_TODO</span><span class="dl">"</span><span class="p">:</span>
+      <span class="k">return</span> <span class="p">{</span>
+        <span class="p">...</span><span class="nx">state</span><span class="p">,</span>
+        <span class="na">todos</span><span class="p">:</span> <span class="nx">state</span><span class="p">.</span><span class="nx">todos</span><span class="p">.</span><span class="nx">filter</span><span class="p">((</span><span class="nx">todo</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">todo</span><span class="p">.</span><span class="nx">id</span> <span class="o">!==</span> <span class="nx">action</span><span class="p">.</span><span class="nx">payload</span><span class="p">),</span>
+      <span class="p">};</span>
+
+    <span class="k">case</span> <span class="dl">"</span><span class="s2">SET_FILTER</span><span class="dl">"</span><span class="p">:</span>
+      <span class="k">return</span> <span class="p">{</span>
+        <span class="p">...</span><span class="nx">state</span><span class="p">,</span>
+        <span class="na">filter</span><span class="p">:</span> <span class="nx">action</span><span class="p">.</span><span class="nx">payload</span><span class="p">,</span>
+      <span class="p">};</span>
+
+    <span class="nl">default</span><span class="p">:</span>
+      <span class="k">return</span> <span class="nx">state</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="p">};</span>
+
+<span class="c1">// Action creators</span>
+<span class="kd">const</span> <span class="nx">addTodo</span> <span class="o">=</span> <span class="p">(</span><span class="nx">text</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">({</span>
+  <span class="na">type</span><span class="p">:</span> <span class="dl">"</span><span class="s2">ADD_TODO</span><span class="dl">"</span><span class="p">,</span>
+  <span class="na">payload</span><span class="p">:</span> <span class="nx">text</span><span class="p">,</span>
+<span class="p">});</span>
+
+<span class="kd">const</span> <span class="nx">toggleTodo</span> <span class="o">=</span> <span class="p">(</span><span class="nx">id</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">({</span>
+  <span class="na">type</span><span class="p">:</span> <span class="dl">"</span><span class="s2">TOGGLE_TODO</span><span class="dl">"</span><span class="p">,</span>
+  <span class="na">payload</span><span class="p">:</span> <span class="nx">id</span><span class="p">,</span>
+<span class="p">});</span>
+
+<span class="kd">const</span> <span class="nx">deleteTodo</span> <span class="o">=</span> <span class="p">(</span><span class="nx">id</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">({</span>
+  <span class="na">type</span><span class="p">:</span> <span class="dl">"</span><span class="s2">DELETE_TODO</span><span class="dl">"</span><span class="p">,</span>
+  <span class="na">payload</span><span class="p">:</span> <span class="nx">id</span><span class="p">,</span>
+<span class="p">});</span>
+
+<span class="kd">const</span> <span class="nx">setFilter</span> <span class="o">=</span> <span class="p">(</span><span class="nx">filter</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">({</span>
+  <span class="na">type</span><span class="p">:</span> <span class="dl">"</span><span class="s2">SET_FILTER</span><span class="dl">"</span><span class="p">,</span>
+  <span class="na">payload</span><span class="p">:</span> <span class="nx">filter</span><span class="p">,</span>
+<span class="p">});</span>
+
+<span class="c1">// Middleware examples</span>
+<span class="kd">const</span> <span class="nx">loggerMiddleware</span> <span class="o">=</span> <span class="p">(</span><span class="nx">store</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">(</span><span class="nx">action</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">Previous State:</span><span class="dl">"</span><span class="p">,</span> <span class="nx">store</span><span class="p">.</span><span class="nx">getState</span><span class="p">());</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">Action:</span><span class="dl">"</span><span class="p">,</span> <span class="nx">action</span><span class="p">);</span>
+  <span class="kd">const</span> <span class="nx">result</span> <span class="o">=</span> <span class="nx">action</span><span class="p">;</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">Next State:</span><span class="dl">"</span><span class="p">,</span> <span class="nx">store</span><span class="p">.</span><span class="nx">getState</span><span class="p">());</span>
+  <span class="k">return</span> <span class="nx">result</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="kd">const</span> <span class="nx">thunkMiddleware</span> <span class="o">=</span> <span class="p">(</span><span class="nx">store</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">(</span><span class="nx">action</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="k">typeof</span> <span class="nx">action</span> <span class="o">===</span> <span class="dl">"</span><span class="s2">function</span><span class="dl">"</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">action</span><span class="p">(</span><span class="nx">store</span><span class="p">.</span><span class="nx">dispatch</span><span class="p">,</span> <span class="nx">store</span><span class="p">.</span><span class="nx">getState</span><span class="p">);</span>
+  <span class="p">}</span>
+  <span class="k">return</span> <span class="nx">action</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="c1">// Usage</span>
+<span class="kd">const</span> <span class="nx">store</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">SimpleStore</span><span class="p">(</span><span class="nx">todoReducer</span><span class="p">,</span> <span class="p">{</span>
+  <span class="na">todos</span><span class="p">:</span> <span class="p">[],</span>
+  <span class="na">filter</span><span class="p">:</span> <span class="dl">"</span><span class="s2">all</span><span class="dl">"</span><span class="p">,</span>
+<span class="p">});</span>
+
+<span class="nx">store</span><span class="p">.</span><span class="nx">useMiddleware</span><span class="p">(</span><span class="nx">loggerMiddleware</span><span class="p">);</span>
+<span class="nx">store</span><span class="p">.</span><span class="nx">useMiddleware</span><span class="p">(</span><span class="nx">thunkMiddleware</span><span class="p">);</span>
+
+<span class="kd">const</span> <span class="nx">unsubscribe</span> <span class="o">=</span> <span class="nx">store</span><span class="p">.</span><span class="nx">subscribe</span><span class="p">((</span><span class="nx">state</span><span class="p">,</span> <span class="nx">previousState</span><span class="p">,</span> <span class="nx">action</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">State changed:</span><span class="dl">"</span><span class="p">,</span> <span class="nx">action</span><span class="p">.</span><span class="nx">type</span><span class="p">);</span>
+  <span class="nx">renderApp</span><span class="p">(</span><span class="nx">state</span><span class="p">);</span>
+<span class="p">});</span>
+
+<span class="c1">// Dispatch actions</span>
+<span class="nx">store</span><span class="p">.</span><span class="nx">dispatch</span><span class="p">(</span><span class="nx">addTodo</span><span class="p">(</span><span class="dl">"</span><span class="s2">Learn Redux</span><span class="dl">"</span><span class="p">));</span>
+<span class="nx">store</span><span class="p">.</span><span class="nx">dispatch</span><span class="p">(</span><span class="nx">addTodo</span><span class="p">(</span><span class="dl">"</span><span class="s2">Build an app</span><span class="dl">"</span><span class="p">));</span>
+<span class="nx">store</span><span class="p">.</span><span class="nx">dispatch</span><span class="p">(</span><span class="nx">toggleTodo</span><span class="p">(</span><span class="mi">1</span><span class="p">));</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<h2 id="react-integration">React Integration</h2>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+</pre></td><td class="rouge-code"><pre><span class="k">import</span> <span class="p">{</span> <span class="nx">useState</span><span class="p">,</span> <span class="nx">useEffect</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">react</span><span class="dl">"</span><span class="p">;</span>
+
+<span class="kd">const</span> <span class="nx">useStore</span> <span class="o">=</span> <span class="p">(</span><span class="nx">store</span><span class="p">,</span> <span class="nx">selector</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="p">[</span><span class="nx">state</span><span class="p">,</span> <span class="nx">setState</span><span class="p">]</span> <span class="o">=</span> <span class="nx">useState</span><span class="p">(</span><span class="nx">selector</span><span class="p">(</span><span class="nx">store</span><span class="p">.</span><span class="nx">getState</span><span class="p">()));</span>
+
+  <span class="nx">useEffect</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="nx">unsubscribe</span> <span class="o">=</span> <span class="nx">store</span><span class="p">.</span><span class="nx">subscribe</span><span class="p">((</span><span class="nx">newState</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+      <span class="kd">const</span> <span class="nx">newSelectedState</span> <span class="o">=</span> <span class="nx">selector</span><span class="p">(</span><span class="nx">newState</span><span class="p">);</span>
+      <span class="nx">setState</span><span class="p">(</span><span class="nx">newSelectedState</span><span class="p">);</span>
+    <span class="p">});</span>
+
+    <span class="k">return</span> <span class="nx">unsubscribe</span><span class="p">;</span>
+  <span class="p">},</span> <span class="p">[</span><span class="nx">store</span><span class="p">,</span> <span class="nx">selector</span><span class="p">]);</span>
+
+  <span class="k">return</span> <span class="p">[</span><span class="nx">state</span><span class="p">,</span> <span class="nx">store</span><span class="p">.</span><span class="nx">dispatch</span><span class="p">];</span>
+<span class="p">};</span>
+
+<span class="kd">const</span> <span class="nx">TodoApp</span> <span class="o">=</span> <span class="p">({</span> <span class="nx">store</span> <span class="p">})</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="p">[</span><span class="nx">state</span><span class="p">,</span> <span class="nx">dispatch</span><span class="p">]</span> <span class="o">=</span> <span class="nx">useStore</span><span class="p">(</span><span class="nx">store</span><span class="p">,</span> <span class="p">(</span><span class="nx">state</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">state</span><span class="p">);</span>
+  <span class="kd">const</span> <span class="p">[</span><span class="nx">inputValue</span><span class="p">,</span> <span class="nx">setInputValue</span><span class="p">]</span> <span class="o">=</span> <span class="nx">useState</span><span class="p">(</span><span class="dl">""</span><span class="p">);</span>
+
+  <span class="kd">const</span> <span class="nx">handleAddTodo</span> <span class="o">=</span> <span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="nx">e</span><span class="p">.</span><span class="nx">preventDefault</span><span class="p">();</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">inputValue</span><span class="p">.</span><span class="nx">trim</span><span class="p">())</span> <span class="p">{</span>
+      <span class="nx">dispatch</span><span class="p">(</span><span class="nx">addTodo</span><span class="p">(</span><span class="nx">inputValue</span><span class="p">.</span><span class="nx">trim</span><span class="p">()));</span>
+      <span class="nx">setInputValue</span><span class="p">(</span><span class="dl">""</span><span class="p">);</span>
+    <span class="p">}</span>
+  <span class="p">};</span>
+
+  <span class="kd">const</span> <span class="nx">filteredTodos</span> <span class="o">=</span> <span class="nx">state</span><span class="p">.</span><span class="nx">todos</span><span class="p">.</span><span class="nx">filter</span><span class="p">((</span><span class="nx">todo</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">state</span><span class="p">.</span><span class="nx">filter</span> <span class="o">===</span> <span class="dl">"</span><span class="s2">active</span><span class="dl">"</span><span class="p">)</span> <span class="k">return</span> <span class="o">!</span><span class="nx">todo</span><span class="p">.</span><span class="nx">completed</span><span class="p">;</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">state</span><span class="p">.</span><span class="nx">filter</span> <span class="o">===</span> <span class="dl">"</span><span class="s2">completed</span><span class="dl">"</span><span class="p">)</span> <span class="k">return</span> <span class="nx">todo</span><span class="p">.</span><span class="nx">completed</span><span class="p">;</span>
+    <span class="k">return</span> <span class="kc">true</span><span class="p">;</span>
+  <span class="p">});</span>
+
+  <span class="k">return</span> <span class="p">(</span>
+    <span class="o">&lt;</span><span class="nx">div</span> <span class="nx">className</span><span class="o">=</span><span class="dl">"</span><span class="s2">todo-app</span><span class="dl">"</span><span class="o">&gt;</span>
+      <span class="o">&lt;</span><span class="nx">h1</span><span class="o">&gt;</span><span class="nx">Todo</span> <span class="nx">App</span><span class="o">&lt;</span><span class="sr">/h1</span><span class="err">&gt;
+</span>
+      <span class="o">&lt;</span><span class="nx">form</span> <span class="nx">onSubmit</span><span class="o">=</span><span class="p">{</span><span class="nx">handleAddTodo</span><span class="p">}</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="nx">input</span>
+          <span class="nx">type</span><span class="o">=</span><span class="dl">"</span><span class="s2">text</span><span class="dl">"</span>
+          <span class="nx">value</span><span class="o">=</span><span class="p">{</span><span class="nx">inputValue</span><span class="p">}</span>
+          <span class="nx">onChange</span><span class="o">=</span><span class="p">{(</span><span class="nx">e</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">setInputValue</span><span class="p">(</span><span class="nx">e</span><span class="p">.</span><span class="nx">target</span><span class="p">.</span><span class="nx">value</span><span class="p">)}</span>
+          <span class="nx">placeholder</span><span class="o">=</span><span class="dl">"</span><span class="s2">Add a new todo...</span><span class="dl">"</span>
+        <span class="o">/&gt;</span>
+        <span class="o">&lt;</span><span class="nx">button</span> <span class="nx">type</span><span class="o">=</span><span class="dl">"</span><span class="s2">submit</span><span class="dl">"</span><span class="o">&gt;</span><span class="nx">Add</span><span class="o">&lt;</span><span class="sr">/button</span><span class="err">&gt;
+</span>      <span class="o">&lt;</span><span class="sr">/form</span><span class="err">&gt;
+</span>
+      <span class="o">&lt;</span><span class="nx">div</span> <span class="nx">className</span><span class="o">=</span><span class="dl">"</span><span class="s2">filters</span><span class="dl">"</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="nx">button</span>
+          <span class="nx">className</span><span class="o">=</span><span class="p">{</span><span class="nx">state</span><span class="p">.</span><span class="nx">filter</span> <span class="o">===</span> <span class="dl">"</span><span class="s2">all</span><span class="dl">"</span> <span class="p">?</span> <span class="dl">"</span><span class="s2">active</span><span class="dl">"</span> <span class="p">:</span> <span class="dl">""</span><span class="p">}</span>
+          <span class="nx">onClick</span><span class="o">=</span><span class="p">{()</span> <span class="o">=&gt;</span> <span class="nx">dispatch</span><span class="p">(</span><span class="nx">setFilter</span><span class="p">(</span><span class="dl">"</span><span class="s2">all</span><span class="dl">"</span><span class="p">))}</span>
+        <span class="o">&gt;</span>
+          <span class="nx">All</span>
+        <span class="o">&lt;</span><span class="sr">/button</span><span class="err">&gt;
+</span>        <span class="o">&lt;</span><span class="nx">button</span>
+          <span class="nx">className</span><span class="o">=</span><span class="p">{</span><span class="nx">state</span><span class="p">.</span><span class="nx">filter</span> <span class="o">===</span> <span class="dl">"</span><span class="s2">active</span><span class="dl">"</span> <span class="p">?</span> <span class="dl">"</span><span class="s2">active</span><span class="dl">"</span> <span class="p">:</span> <span class="dl">""</span><span class="p">}</span>
+          <span class="nx">onClick</span><span class="o">=</span><span class="p">{()</span> <span class="o">=&gt;</span> <span class="nx">dispatch</span><span class="p">(</span><span class="nx">setFilter</span><span class="p">(</span><span class="dl">"</span><span class="s2">active</span><span class="dl">"</span><span class="p">))}</span>
+        <span class="o">&gt;</span>
+          <span class="nx">Active</span>
+        <span class="o">&lt;</span><span class="sr">/button</span><span class="err">&gt;
+</span>        <span class="o">&lt;</span><span class="nx">button</span>
+          <span class="nx">className</span><span class="o">=</span><span class="p">{</span><span class="nx">state</span><span class="p">.</span><span class="nx">filter</span> <span class="o">===</span> <span class="dl">"</span><span class="s2">completed</span><span class="dl">"</span> <span class="p">?</span> <span class="dl">"</span><span class="s2">active</span><span class="dl">"</span> <span class="p">:</span> <span class="dl">""</span><span class="p">}</span>
+          <span class="nx">onClick</span><span class="o">=</span><span class="p">{()</span> <span class="o">=&gt;</span> <span class="nx">dispatch</span><span class="p">(</span><span class="nx">setFilter</span><span class="p">(</span><span class="dl">"</span><span class="s2">completed</span><span class="dl">"</span><span class="p">))}</span>
+        <span class="o">&gt;</span>
+          <span class="nx">Completed</span>
+        <span class="o">&lt;</span><span class="sr">/button</span><span class="err">&gt;
+</span>      <span class="o">&lt;</span><span class="sr">/div</span><span class="err">&gt;
+</span>
+      <span class="o">&lt;</span><span class="nx">ul</span> <span class="nx">className</span><span class="o">=</span><span class="dl">"</span><span class="s2">todo-list</span><span class="dl">"</span><span class="o">&gt;</span>
+        <span class="p">{</span><span class="nx">filteredTodos</span><span class="p">.</span><span class="nx">map</span><span class="p">((</span><span class="nx">todo</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">(</span>
+          <span class="o">&lt;</span><span class="nx">li</span> <span class="nx">key</span><span class="o">=</span><span class="p">{</span><span class="nx">todo</span><span class="p">.</span><span class="nx">id</span><span class="p">}</span> <span class="nx">className</span><span class="o">=</span><span class="p">{</span><span class="nx">todo</span><span class="p">.</span><span class="nx">completed</span> <span class="p">?</span> <span class="dl">"</span><span class="s2">completed</span><span class="dl">"</span> <span class="p">:</span> <span class="dl">""</span><span class="p">}</span><span class="o">&gt;</span>
+            <span class="o">&lt;</span><span class="nx">input</span>
+              <span class="nx">type</span><span class="o">=</span><span class="dl">"</span><span class="s2">checkbox</span><span class="dl">"</span>
+              <span class="nx">checked</span><span class="o">=</span><span class="p">{</span><span class="nx">todo</span><span class="p">.</span><span class="nx">completed</span><span class="p">}</span>
+              <span class="nx">onChange</span><span class="o">=</span><span class="p">{()</span> <span class="o">=&gt;</span> <span class="nx">dispatch</span><span class="p">(</span><span class="nx">toggleTodo</span><span class="p">(</span><span class="nx">todo</span><span class="p">.</span><span class="nx">id</span><span class="p">))}</span>
+            <span class="sr">/</span><span class="err">&gt;
+</span>            <span class="o">&lt;</span><span class="nx">span</span><span class="o">&gt;</span><span class="p">{</span><span class="nx">todo</span><span class="p">.</span><span class="nx">text</span><span class="p">}</span><span class="o">&lt;</span><span class="sr">/span</span><span class="err">&gt;
+</span>            <span class="o">&lt;</span><span class="nx">button</span> <span class="nx">onClick</span><span class="o">=</span><span class="p">{()</span> <span class="o">=&gt;</span> <span class="nx">dispatch</span><span class="p">(</span><span class="nx">deleteTodo</span><span class="p">(</span><span class="nx">todo</span><span class="p">.</span><span class="nx">id</span><span class="p">))}</span><span class="o">&gt;</span>
+              <span class="nx">Delete</span>
+            <span class="o">&lt;</span><span class="sr">/button</span><span class="err">&gt;
+</span>          <span class="o">&lt;</span><span class="sr">/li</span><span class="err">&gt;
+</span>        <span class="p">))}</span>
+      <span class="o">&lt;</span><span class="sr">/ul</span><span class="err">&gt;
+</span>    <span class="o">&lt;</span><span class="sr">/div</span><span class="err">&gt;
+</span>  <span class="p">);</span>
+<span class="p">};</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<h2 id="css-styling">CSS Styling</h2>
+
+<div class="language-css highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+</pre></td><td class="rouge-code"><pre><span class="nc">.todo-app</span> <span class="p">{</span>
+  <span class="nl">max-width</span><span class="p">:</span> <span class="m">600px</span><span class="p">;</span>
+  <span class="nl">margin</span><span class="p">:</span> <span class="m">0</span> <span class="nb">auto</span><span class="p">;</span>
+  <span class="nl">padding</span><span class="p">:</span> <span class="m">20px</span><span class="p">;</span>
+  <span class="nl">font-family</span><span class="p">:</span> <span class="n">Arial</span><span class="p">,</span> <span class="nb">sans-serif</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="nc">.todo-app</span> <span class="nt">h1</span> <span class="p">{</span>
+  <span class="nl">text-align</span><span class="p">:</span> <span class="nb">center</span><span class="p">;</span>
+  <span class="nl">color</span><span class="p">:</span> <span class="m">#333</span><span class="p">;</span>
+  <span class="nl">margin-bottom</span><span class="p">:</span> <span class="m">30px</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="nc">.todo-app</span> <span class="nt">form</span> <span class="p">{</span>
+  <span class="nl">display</span><span class="p">:</span> <span class="n">flex</span><span class="p">;</span>
+  <span class="py">gap</span><span class="p">:</span> <span class="m">10px</span><span class="p">;</span>
+  <span class="nl">margin-bottom</span><span class="p">:</span> <span class="m">20px</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="nc">.todo-app</span> <span class="nt">input</span><span class="o">[</span><span class="nt">type</span><span class="o">=</span><span class="s1">"text"</span><span class="o">]</span> <span class="p">{</span>
+  <span class="nl">flex</span><span class="p">:</span> <span class="m">1</span><span class="p">;</span>
+  <span class="nl">padding</span><span class="p">:</span> <span class="m">12px</span><span class="p">;</span>
+  <span class="nl">border</span><span class="p">:</span> <span class="m">2px</span> <span class="nb">solid</span> <span class="m">#ddd</span><span class="p">;</span>
+  <span class="nl">border-radius</span><span class="p">:</span> <span class="m">6px</span><span class="p">;</span>
+  <span class="nl">font-size</span><span class="p">:</span> <span class="m">16px</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="nc">.todo-app</span> <span class="nt">button</span> <span class="p">{</span>
+  <span class="nl">padding</span><span class="p">:</span> <span class="m">12px</span> <span class="m">20px</span><span class="p">;</span>
+  <span class="nl">background</span><span class="p">:</span> <span class="m">#007bff</span><span class="p">;</span>
+  <span class="nl">color</span><span class="p">:</span> <span class="no">white</span><span class="p">;</span>
+  <span class="nl">border</span><span class="p">:</span> <span class="nb">none</span><span class="p">;</span>
+  <span class="nl">border-radius</span><span class="p">:</span> <span class="m">6px</span><span class="p">;</span>
+  <span class="nl">cursor</span><span class="p">:</span> <span class="nb">pointer</span><span class="p">;</span>
+  <span class="nl">font-size</span><span class="p">:</span> <span class="m">16px</span><span class="p">;</span>
+  <span class="nl">transition</span><span class="p">:</span> <span class="n">background-color</span> <span class="m">0.3s</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="nc">.todo-app</span> <span class="nt">button</span><span class="nd">:hover</span> <span class="p">{</span>
+  <span class="nl">background</span><span class="p">:</span> <span class="m">#0056b3</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="nc">.filters</span> <span class="p">{</span>
+  <span class="nl">display</span><span class="p">:</span> <span class="n">flex</span><span class="p">;</span>
+  <span class="py">gap</span><span class="p">:</span> <span class="m">10px</span><span class="p">;</span>
+  <span class="nl">margin-bottom</span><span class="p">:</span> <span class="m">20px</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="nc">.filters</span> <span class="nt">button</span> <span class="p">{</span>
+  <span class="nl">padding</span><span class="p">:</span> <span class="m">8px</span> <span class="m">16px</span><span class="p">;</span>
+  <span class="nl">background</span><span class="p">:</span> <span class="no">white</span><span class="p">;</span>
+  <span class="nl">color</span><span class="p">:</span> <span class="m">#333</span><span class="p">;</span>
+  <span class="nl">border</span><span class="p">:</span> <span class="m">1px</span> <span class="nb">solid</span> <span class="m">#ddd</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="nc">.filters</span> <span class="nt">button</span><span class="nc">.active</span> <span class="p">{</span>
+  <span class="nl">background</span><span class="p">:</span> <span class="m">#007bff</span><span class="p">;</span>
+  <span class="nl">color</span><span class="p">:</span> <span class="no">white</span><span class="p">;</span>
+  <span class="nl">border-color</span><span class="p">:</span> <span class="m">#007bff</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="nc">.todo-list</span> <span class="p">{</span>
+  <span class="nl">list-style</span><span class="p">:</span> <span class="nb">none</span><span class="p">;</span>
+  <span class="nl">padding</span><span class="p">:</span> <span class="m">0</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="nc">.todo-list</span> <span class="nt">li</span> <span class="p">{</span>
+  <span class="nl">display</span><span class="p">:</span> <span class="n">flex</span><span class="p">;</span>
+  <span class="nl">align-items</span><span class="p">:</span> <span class="nb">center</span><span class="p">;</span>
+  <span class="py">gap</span><span class="p">:</span> <span class="m">10px</span><span class="p">;</span>
+  <span class="nl">padding</span><span class="p">:</span> <span class="m">12px</span><span class="p">;</span>
+  <span class="nl">border-bottom</span><span class="p">:</span> <span class="m">1px</span> <span class="nb">solid</span> <span class="m">#eee</span><span class="p">;</span>
+  <span class="nl">background</span><span class="p">:</span> <span class="no">white</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="nc">.todo-list</span> <span class="nt">li</span><span class="nc">.completed</span> <span class="nt">span</span> <span class="p">{</span>
+  <span class="nl">text-decoration</span><span class="p">:</span> <span class="nb">line-through</span><span class="p">;</span>
+  <span class="nl">color</span><span class="p">:</span> <span class="m">#888</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="nc">.todo-list</span> <span class="nt">button</span> <span class="p">{</span>
+  <span class="nl">padding</span><span class="p">:</span> <span class="m">6px</span> <span class="m">12px</span><span class="p">;</span>
+  <span class="nl">background</span><span class="p">:</span> <span class="m">#dc3545</span><span class="p">;</span>
+  <span class="nl">font-size</span><span class="p">:</span> <span class="m">14px</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="nc">.todo-list</span> <span class="nt">button</span><span class="nd">:hover</span> <span class="p">{</span>
+  <span class="nl">background</span><span class="p">:</span> <span class="m">#c82333</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<h2 id="key-features">Key Features</h2>
+
+<ol>
+  <li><strong>Centralized State</strong>: Single source of truth</li>
+  <li><strong>Predictable Updates</strong>: State changes through actions</li>
+  <li><strong>Middleware Support</strong>: Extensible with custom middleware</li>
+  <li><strong>React Integration</strong>: Custom hook for React</li>
+  <li><strong>Subscription System</strong>: Efficient state change notifications</li>
+  <li><strong>Action Creators</strong>: Reusable action functions</li>
+  <li><strong>Immutable Updates</strong>: Always return new state objects</li>
+  <li><strong>Debugging</strong>: Built-in logging middleware</li>
+</ol>
+
+<hr />
+
+<h1 id="react-interview-deep-dive-questions-diagrams-and-explanations">React Interview Deep Dive: Questions, Diagrams, and Explanations</h1>
+
+<h2 id="1-what-is-the-virtual-dom-and-how-does-react-use-it">1. What is the Virtual DOM and how does React use it?</h2>
+
+<p><strong>Answer:</strong></p>
+
+<ul>
+  <li>The Virtual DOM is a lightweight JS representation of the real DOM.</li>
+  <li>React updates the Virtual DOM first, then efficiently updates the real DOM using a diffing algorithm (reconciliation).</li>
+</ul>
+
+<p><strong>Diagram:</strong></p>
+
+<pre><code class="language-mermaid">flowchart LR
+  A[Component State Change] --&gt; B[Virtual DOM Update]
+  B --&gt; C[Diffing Algorithm]
+  C --&gt; D[Minimal Real DOM Updates]
+</code></pre>
+
+<hr />
+
+<h2 id="2-explain-reacts-reconciliation-process">2. Explain React’s Reconciliation Process</h2>
+
+<p><strong>Answer:</strong></p>
+
+<ul>
+  <li>When state/props change, React creates a new Virtual DOM tree.</li>
+  <li>It compares (diffs) the new tree with the previous one.</li>
+  <li>Only the changed nodes are updated in the real DOM.</li>
+</ul>
+
+<p><strong>Diagram:</strong></p>
+
+<pre><code class="language-mermaid">sequenceDiagram
+  participant User
+  participant React
+  participant DOM
+  User-&gt;&gt;React: setState()
+  React-&gt;&gt;React: Create new Virtual DOM
+  React-&gt;&gt;React: Diff with old Virtual DOM
+  React-&gt;&gt;DOM: Update only changed nodes
+</code></pre>
+
+<hr />
+
+<h2 id="3-what-are-react-hooks-name-and-explain-the-most-common-ones">3. What are React Hooks? Name and explain the most common ones.</h2>
+
+<p><strong>Answer:</strong></p>
+
+<ul>
+  <li>Hooks let you use state and lifecycle features in function components.</li>
+  <li>Common hooks:
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">useState</code>: Local state</li>
+      <li><code class="language-plaintext highlighter-rouge">useEffect</code>: Side effects (data fetching, subscriptions)</li>
+      <li><code class="language-plaintext highlighter-rouge">useContext</code>: Access context</li>
+      <li><code class="language-plaintext highlighter-rouge">useReducer</code>: Complex state logic</li>
+      <li><code class="language-plaintext highlighter-rouge">useRef</code>: Mutable refs, DOM access</li>
+      <li><code class="language-plaintext highlighter-rouge">useMemo</code>/<code class="language-plaintext highlighter-rouge">useCallback</code>: Memoization</li>
+    </ul>
+  </li>
+</ul>
+
+<hr />
+
+<h2 id="4-how-does-context-api-work-when-should-you-use-it">4. How does Context API work? When should you use it?</h2>
+
+<p><strong>Answer:</strong></p>
+
+<ul>
+  <li>Context provides a way to pass data through the component tree without props drilling.</li>
+  <li>Use for global data (theme, user, locale) but avoid for high-frequency updates (use state management instead).</li>
+</ul>
+
+<p><strong>Diagram:</strong></p>
+
+<pre><code class="language-mermaid">flowchart TD
+  A[Provider] --&gt; B[Child 1]
+  A --&gt; C[Child 2]
+  C --&gt; D[Grandchild]
+</code></pre>
+
+<hr />
+
+<h2 id="5-what-is-a-higher-order-component-hoc">5. What is a Higher-Order Component (HOC)?</h2>
+
+<p><strong>Answer:</strong></p>
+
+<ul>
+  <li>A function that takes a component and returns a new component with enhanced behavior.</li>
+  <li>Used for code reuse (e.g., authentication, logging, theming).</li>
+</ul>
+
+<p><strong>Example:</strong></p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+</pre></td><td class="rouge-code"><pre><span class="kd">function</span> <span class="nx">withLogger</span><span class="p">(</span><span class="nx">WrappedComponent</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">props</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">useEffect</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+      <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">Mounted</span><span class="dl">"</span><span class="p">);</span>
+    <span class="p">},</span> <span class="p">[]);</span>
+    <span class="k">return</span> <span class="o">&lt;</span><span class="nx">WrappedComponent</span> <span class="p">{...</span><span class="nx">props</span><span class="p">}</span> <span class="sr">/&gt;</span><span class="err">;
+</span>  <span class="p">};</span>
+<span class="p">}</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<hr />
+
+<h2 id="6-explain-reacts-key-prop-and-why-its-important">6. Explain React’s key prop and why it’s important.</h2>
+
+<p><strong>Answer:</strong></p>
+
+<ul>
+  <li>The <code class="language-plaintext highlighter-rouge">key</code> prop helps React identify which items have changed, are added, or are removed in a list.</li>
+  <li>Keys should be unique and stable (not array index).</li>
+</ul>
+
+<hr />
+
+<h2 id="7-what-is-code-splitting-and-how-do-you-implement-it-in-react">7. What is code splitting and how do you implement it in React?</h2>
+
+<p><strong>Answer:</strong></p>
+
+<ul>
+  <li>Code splitting breaks your app into smaller bundles for faster load times.</li>
+  <li>Use <code class="language-plaintext highlighter-rouge">React.lazy</code> and <code class="language-plaintext highlighter-rouge">Suspense</code> for dynamic imports.</li>
+</ul>
+
+<p><strong>Example:</strong></p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre><span class="kd">const</span> <span class="nx">LazyComponent</span> <span class="o">=</span> <span class="nx">React</span><span class="p">.</span><span class="nx">lazy</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="k">import</span><span class="p">(</span><span class="dl">"</span><span class="s2">./LazyComponent</span><span class="dl">"</span><span class="p">));</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<hr />
+
+<h2 id="8-how-do-you-optimize-performance-in-react-apps">8. How do you optimize performance in React apps?</h2>
+
+<p><strong>Answer:</strong></p>
+
+<ul>
+  <li>Use memoization (<code class="language-plaintext highlighter-rouge">React.memo</code>, <code class="language-plaintext highlighter-rouge">useMemo</code>, <code class="language-plaintext highlighter-rouge">useCallback</code>)</li>
+  <li>Avoid unnecessary re-renders</li>
+  <li>Use virtualization for large lists</li>
+  <li>Code splitting and lazy loading</li>
+  <li>Minimize state in high-frequency components</li>
+</ul>
+
+<hr />
+
+<h2 id="9-what-is-an-error-boundary-how-do-you-use-it">9. What is an Error Boundary? How do you use it?</h2>
+
+<p><strong>Answer:</strong></p>
+
+<ul>
+  <li>A React component that catches JS errors in its child tree and displays a fallback UI.</li>
+  <li>Implement with a class component using <code class="language-plaintext highlighter-rouge">componentDidCatch</code> and <code class="language-plaintext highlighter-rouge">getDerivedStateFromError</code>.</li>
+</ul>
+
+<hr />
+
+<h2 id="10-how-does-react-handle-events-how-is-it-different-from-the-dom">10. How does React handle events? How is it different from the DOM?</h2>
+
+<p><strong>Answer:</strong></p>
+
+<ul>
+  <li>React uses a synthetic event system for cross-browser compatibility.</li>
+  <li>Events are wrapped and pooled for performance.</li>
+  <li>Event handlers are camelCase (<code class="language-plaintext highlighter-rouge">onClick</code>), not lowercase (<code class="language-plaintext highlighter-rouge">onclick</code>).</li>
+</ul>
+
+<hr />
+
+<h2 id="11-what-is-the-difference-between-controlled-and-uncontrolled-components">11. What is the difference between controlled and uncontrolled components?</h2>
+
+<p><strong>Answer:</strong></p>
+
+<ul>
+  <li>Controlled: Form data managed by React state.</li>
+  <li>Uncontrolled: Form data managed by the DOM (useRef).</li>
+</ul>
+
+<hr />
+
+<h2 id="12-how-do-you-test-react-components">12. How do you test React components?</h2>
+
+<p><strong>Answer:</strong></p>
+
+<ul>
+  <li>Use Jest and React Testing Library.</li>
+  <li>Test rendering, user interactions, and output.</li>
+  <li>Mock APIs and context as needed.</li>
+</ul>
+
+<hr />
+
+<h2 id="13-how-do-you-handle-side-effects-in-react">13. How do you handle side effects in React?</h2>
+
+<p><strong>Answer:</strong></p>
+
+<ul>
+  <li>Use <code class="language-plaintext highlighter-rouge">useEffect</code> for data fetching, subscriptions, manual DOM changes.</li>
+  <li>Clean up effects to avoid memory leaks.</li>
+</ul>
+
+<hr />
+
+<h2 id="14-what-is-prop-drilling-and-how-do-you-avoid-it">14. What is prop drilling and how do you avoid it?</h2>
+
+<p><strong>Answer:</strong></p>
+
+<ul>
+  <li>Prop drilling: Passing props through many layers.</li>
+  <li>Avoid with Context API or state management libraries.</li>
+</ul>
+
+<hr />
+
+<h2 id="15-explain-reacts-rendering-lifecycle-function-and-class-components">15. Explain React’s rendering lifecycle (function and class components).</h2>
+
+<p><strong>Answer:</strong></p>
+
+<ul>
+  <li>Function: Render -&gt; commit -&gt; effects (<code class="language-plaintext highlighter-rouge">useEffect</code> runs after paint)</li>
+  <li>Class: constructor -&gt; render -&gt; componentDidMount -&gt; updates -&gt; componentWillUnmount</li>
+</ul>
+
+<hr />
+
+<p><em>Use these questions, diagrams, and explanations to prepare for all levels of React interviews. Practice drawing diagrams and explaining concepts out loud!</em></p>
+
+        </div>
+    </article>
+</div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Study Resources</h3>
+                    <p>Comprehensive collection of frontend interview questions, coding challenges, and system design problems.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Progress Tracking</h3>
+                    <p>Monitor your learning journey with detailed progress indicators and completion status.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Big Tech Ready</h3>
+                    <p>Curated content specifically designed for interviews at Google, Meta, Amazon, Apple, and Netflix.</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Frontend Interview Hub. Built for aspiring frontend engineers.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="/assets/js/main.js"></script>
+</body>
+</html>

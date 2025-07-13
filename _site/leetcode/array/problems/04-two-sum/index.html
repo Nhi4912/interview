@@ -1,0 +1,706 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Two Sum | Frontend Interview Preparation Guide</title>
+    <meta name="description" content="Comprehensive frontend interview materials for Big Tech companies">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="/assets/css/main.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <header>
+        <nav class="container">
+            <div class="logo">Frontend Interview Hub</div>
+            <ul class="nav-links">
+                <li><a href="/">Home</a></li>
+                <li><a href="#progress">Progress</a></li>
+                <li><a href="#knowledge">Knowledge</a></li>
+                <li><a href="https://github.com/nee/interview">GitHub</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <div class="content-container">
+    
+        <nav class="breadcrumb">
+            <ol>
+                <li><a href="/">Home</a></li>
+                
+                
+                
+                    
+                
+                    
+                        
+                        
+                            <li><a href="/leetcode/">Leetcode</a></li>
+                        
+                    
+                
+                    
+                        
+                        
+                            <li><a href="/leetcode/array/">Array</a></li>
+                        
+                    
+                
+                    
+                        
+                        
+                            <li><a href="/leetcode/array/problems/">Problems</a></li>
+                        
+                    
+                
+                    
+                        
+                        
+                            <li class="active">Two sum</li>
+                        
+                    
+                
+            </ol>
+        </nav>
+    
+    
+    <article class="content">
+        
+            <header class="content-header">
+                <h1 class="content-title">Two Sum</h1>
+                
+                
+                    <div class="content-meta">
+                        <span class="difficulty difficulty-easy">Easy</span>
+                        
+                            <span class="category">Array</span>
+                        
+                        
+                            <div class="tags">
+                                
+                                    <span class="tag">Array</span>
+                                
+                                    <span class="tag">Two Pointers</span>
+                                
+                                    <span class="tag">Hash Table</span>
+                                
+                                    <span class="tag">Sorting</span>
+                                
+                            </div>
+                        
+                    </div>
+                
+            </header>
+        
+        
+        <div class="content-body">
+            <h1 id="two-sum">Two Sum</h1>
+
+<p><strong>LeetCode Problem # * 1. Two Sum</strong></p>
+
+<h2 id="problem-description">Problem Description</h2>
+
+<ul>
+  <li>Given an array of integers nums and an integer target, return indices of the two numbers  * such that they add up to target. You may assume that each input would have exactly one  * solution, and you may not use the same element twice.  *  * You can return the answer in any order.</li>
+</ul>
+
+<h2 id="solutions">Solutions</h2>
+
+<p>/**</p>
+<ul>
+  <li>
+    <ol>
+      <li>Two Sum
+ *</li>
+    </ol>
+  </li>
+  <li>Problem:</li>
+  <li>Given an array of integers nums and an integer target, return indices of the two numbers</li>
+  <li>such that they add up to target. You may assume that each input would have exactly one</li>
+  <li>solution, and you may not use the same element twice.
+ *</li>
+  <li>You can return the answer in any order.
+ *</li>
+  <li>Example:</li>
+  <li>Input: nums = [2,7,11,15], target = 9</li>
+  <li>Output: [0,1]</li>
+  <li>Explanation: Because nums[0] + nums[1] == 9, we return [0, 1].
+ *</li>
+  <li>Input: nums = [3,2,4], target = 6</li>
+  <li>Output: [1,2]
+ *</li>
+  <li>LeetCode: https://leetcode.com/problems/two-sum/
+ */</li>
+</ul>
+
+<p>/**</p>
+<ul>
+  <li>Solution 1: Hash Map (Optimal)
+ *</li>
+  <li>Approach:</li>
+  <li>
+    <ul>
+      <li>Use a hash map to store complements (target - current number)</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>For each number, check if its complement exists in the map</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>If found, return the indices
+ *</li>
+    </ul>
+  </li>
+  <li>Time Complexity: O(n) - single pass through the array</li>
+  <li>Space Complexity: O(n) - hash map storage
+ */
+function twoSum(nums: number[], target: number): number[] {
+  const map = new Map&lt;number, number&gt;();</li>
+</ul>
+
+<p>for (let i = 0; i &lt; nums.length; i++) {
+    const complement = target - nums[i];</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+</pre></td><td class="rouge-code"><pre>if (map.has(complement)) {
+  return [map.get(complement)!, i];
+}
+
+map.set(nums[i], i);   }
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>return []; // No solution found
+}</p>
+
+<p>/**</p>
+<ul>
+  <li>Solution 2: Brute Force (For comparison)
+ *</li>
+  <li>Approach:</li>
+  <li>
+    <ul>
+      <li>Check every pair of numbers</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Return indices when sum equals target
+ *</li>
+    </ul>
+  </li>
+  <li>Time Complexity: O(n²) - nested loops</li>
+  <li>Space Complexity: O(1) - constant extra space
+ */
+function twoSumBruteForce(nums: number[], target: number): number[] {
+  for (let i = 0; i &lt; nums.length; i++) {
+ for (let j = i + 1; j &lt; nums.length; j++) {
+   if (nums[i] + nums[j] === target) {
+     return [i, j];
+   }
+ }
+  }</li>
+</ul>
+
+<p>return []; // No solution found
+}</p>
+
+<p>/**</p>
+<ul>
+  <li>Solution 3: Two Pointers (Requires sorted array)
+ *</li>
+  <li>Approach:</li>
+  <li>
+    <ul>
+      <li>Sort the array with original indices</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Use two pointers from start and end</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Move pointers based on sum comparison
+ *</li>
+    </ul>
+  </li>
+  <li>Time Complexity: O(n log n) - sorting dominates</li>
+  <li>Space Complexity: O(n) - need to store original indices
+ */
+function twoSumTwoPointers(nums: number[], target: number): number[] {
+  // Create array with original indices
+  const indexedNums = nums.map((num, index) =&gt; ({ num, index }));</li>
+</ul>
+
+<p>// Sort by values
+  indexedNums.sort((a, b) =&gt; a.num - b.num);</p>
+
+<p>let left = 0;
+  let right = indexedNums.length - 1;</p>
+
+<p>while (left &lt; right) {
+    const sum = indexedNums[left].num + indexedNums[right].num;</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+</pre></td><td class="rouge-code"><pre>if (sum === target) {
+  return [indexedNums[left].index, indexedNums[right].index];
+} else if (sum &lt; target) {
+  left++;
+} else {
+  right--;
+}   }
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>return []; // No solution found
+}</p>
+
+<p>/**</p>
+<ul>
+  <li>Solution 4: Using Object (Alternative to Map)
+ *</li>
+  <li>Approach:</li>
+  <li>
+    <ul>
+      <li>Similar to hash map but using plain object</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Slightly different syntax but same logic
+ *</li>
+    </ul>
+  </li>
+  <li>Time Complexity: O(n)</li>
+  <li>Space Complexity: O(n)
+ */
+function twoSumObject(nums: number[], target: number): number[] {
+  const seen: { [key: number]: number } = {};</li>
+</ul>
+
+<p>for (let i = 0; i &lt; nums.length; i++) {
+    const complement = target - nums[i];</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+</pre></td><td class="rouge-code"><pre>if (complement in seen) {
+  return [seen[complement], i];
+}
+
+seen[nums[i]] = i;   }
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>return []; // No solution found
+}</p>
+
+<p>/**</p>
+<ul>
+  <li>Solution 5: Using Set (If we only need to check existence, not indices)
+ *</li>
+  <li>Approach:</li>
+  <li>
+    <ul>
+      <li>Use Set to store seen numbers</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Check if complement exists</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Note: This version returns boolean, not indices
+ *</li>
+    </ul>
+  </li>
+  <li>Time Complexity: O(n)</li>
+  <li>Space Complexity: O(n)
+ */
+function twoSumExists(nums: number[], target: number): boolean {
+  const seen = new Set<number>();</number></li>
+</ul>
+
+<p>for (const num of nums) {
+    const complement = target - num;</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+</pre></td><td class="rouge-code"><pre>if (seen.has(complement)) {
+  return true;
+}
+
+seen.add(num);   }
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>return false;
+}</p>
+
+<p>/**</p>
+<ul>
+  <li>Solution 6: Recursive Approach (For educational purposes)
+ *</li>
+  <li>Approach:</li>
+  <li>
+    <ul>
+      <li>Use recursion to find pairs</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Not efficient but shows recursive thinking
+ *</li>
+    </ul>
+  </li>
+  <li>Time Complexity: O(n²)</li>
+  <li>
+    <p>Space Complexity: O(n) - recursion stack
+ */
+function twoSumRecursive(nums: number[], target: number): number[] {
+  function findPair(index: number, current: number): number[] {
+ if (index &gt;= nums.length) return [];</p>
+
+    <p>// Check if current number forms a pair with any previous number
+ for (let i = 0; i &lt; index; i++) {
+   if (nums[i] + nums[index] === target) {
+     return [i, index];
+   }
+ }</p>
+
+    <p>// Recursively check next number
+ return findPair(index + 1, nums[index + 1]);
+  }</p>
+  </li>
+</ul>
+
+<p>return findPair(1, nums[0]);
+}</p>
+
+<p>// Test cases
+function testTwoSum() {
+  console.log(“=== Testing Two Sum ===\n”);</p>
+
+<p>const testCases = [
+    {
+      nums: [2, 7, 11, 15],
+      target: 9,
+      expected: [0, 1],
+      description: “Basic case”,
+    },
+    {
+      nums: [3, 2, 4],
+      target: 6,
+      expected: [1, 2],
+      description: “Target in middle”,
+    },
+    {
+      nums: [3, 3],
+      target: 6,
+      expected: [0, 1],
+      description: “Same numbers”,
+    },
+    {
+      nums: [1, 5, 8, 10, 13],
+      target: 18,
+      expected: [2, 4],
+      description: “Larger numbers”,
+    },
+    {
+      nums: [-1, -2, -3, -4, -5],
+      target: -8,
+      expected: [2, 4],
+      description: “Negative numbers”,
+    },
+    {
+      nums: [0, 4, 3, 0],
+      target: 0,
+      expected: [0, 3],
+      description: “Zero target”,
+    },
+  ];</p>
+
+<p>testCases.forEach((testCase, index) =&gt; {
+    console.log(<code class="language-plaintext highlighter-rouge">Test Case ${index + 1}: ${testCase.description}</code>);
+    console.log(
+      <code class="language-plaintext highlighter-rouge">Input: nums = [${testCase.nums}], target = ${testCase.target}</code>
+    );
+    console.log(<code class="language-plaintext highlighter-rouge">Expected: [${testCase.expected}]\n</code>);</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+</pre></td><td class="rouge-code"><pre>// Test Solution 1 (Hash Map)
+const result1 = twoSum([...testCase.nums], testCase.target);
+console.log(
+  `Solution 1 (Hash Map): [${result1}] ${
+    JSON.stringify(result1.sort()) ===
+    JSON.stringify(testCase.expected.sort())
+      ? "✅"
+      : "❌"
+  }`
+);
+
+// Test Solution 2 (Brute Force)
+const result2 = twoSumBruteForce([...testCase.nums], testCase.target);
+console.log(
+  `Solution 2 (Brute Force): [${result2}] ${
+    JSON.stringify(result2.sort()) ===
+    JSON.stringify(testCase.expected.sort())
+      ? "✅"
+      : "❌"
+  }`
+);
+
+// Test Solution 3 (Two Pointers)
+const result3 = twoSumTwoPointers([...testCase.nums], testCase.target);
+console.log(
+  `Solution 3 (Two Pointers): [${result3}] ${
+    JSON.stringify(result3.sort()) ===
+    JSON.stringify(testCase.expected.sort())
+      ? "✅"
+      : "❌"
+  }`
+);
+
+// Test Solution 4 (Object)
+const result4 = twoSumObject([...testCase.nums], testCase.target);
+console.log(
+  `Solution 4 (Object): [${result4}] ${
+    JSON.stringify(result4.sort()) ===
+    JSON.stringify(testCase.expected.sort())
+      ? "✅"
+      : "❌"
+  }`
+);
+
+// Test Solution 5 (Exists)
+const result5 = twoSumExists([...testCase.nums], testCase.target);
+console.log(
+  `Solution 5 (Exists): ${result5} ${result5 === true ? "✅" : "❌"}`
+);
+
+// Test Solution 6 (Recursive)
+const result6 = twoSumRecursive([...testCase.nums], testCase.target);
+console.log(
+  `Solution 6 (Recursive): [${result6}] ${
+    JSON.stringify(result6.sort()) ===
+    JSON.stringify(testCase.expected.sort())
+      ? "✅"
+      : "❌"
+  }`
+);
+
+console.log("\n---\n");   }); }
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>// Performance comparison
+function performanceComparison() {
+  console.log(“=== Performance Comparison ===\n”);</p>
+
+<p>// Create large array
+  const largeNums = Array.from({ length: 100000 }, (_, i) =&gt; i);
+  const target = 199998; // Sum of two large numbers</p>
+
+<p>const testCases = [
+    { name: “Hash Map”, func: twoSum },
+    { name: “Brute Force”, func: twoSumBruteForce },
+    { name: “Two Pointers”, func: twoSumTwoPointers },
+    { name: “Object”, func: twoSumObject },
+  ];</p>
+
+<p>testCases.forEach(({ name, func }) =&gt; {
+    const testNums = […largeNums];
+    const start = performance.now();
+    const result = func(testNums, target);
+    const end = performance.now();</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+</pre></td><td class="rouge-code"><pre>console.log(`${name}:`);
+console.log(`  Time: ${(end - start).toFixed(2)}ms`);
+console.log(`  Result: [${result}]`);
+console.log(`  Memory: ${name === "Brute Force" ? "O(1)" : "O(n)"}\n`);   }); }
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>// Edge cases test
+function testEdgeCases() {
+  console.log(“=== Edge Cases Test ===\n”);</p>
+
+<p>const edgeCases = [
+    {
+      nums: [],
+      target: 0,
+      description: “Empty array”,
+    },
+    {
+      nums: [1],
+      target: 2,
+      description: “Single element”,
+    },
+    {
+      nums: [1, 2, 3, 4, 5],
+      target: 100,
+      description: “No solution”,
+    },
+    {
+      nums: [0, 0, 0, 0],
+      target: 0,
+      description: “All zeros”,
+    },
+  ];</p>
+
+<p>edgeCases.forEach((testCase, index) =&gt; {
+    console.log(<code class="language-plaintext highlighter-rouge">Edge Case ${index + 1}: ${testCase.description}</code>);
+    console.log(
+      <code class="language-plaintext highlighter-rouge">Input: nums = [${testCase.nums}], target = ${testCase.target}</code>
+    );</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+</pre></td><td class="rouge-code"><pre>const result = twoSum([...testCase.nums], testCase.target);
+console.log(`Result: [${result}]`);
+console.log(
+  `Valid: ${result.length === 0 || result.length === 2 ? "✅" : "❌"}\n`
+);   }); }
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>// Run tests
+if (require.main === module) {
+  testTwoSum();
+  performanceComparison();
+  testEdgeCases();
+}</p>
+
+<p>export {
+  twoSum,
+  twoSumBruteForce,
+  twoSumTwoPointers,
+  twoSumObject,
+  twoSumExists,
+  twoSumRecursive,
+};</p>
+
+
+        </div>
+    </article>
+</div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Study Resources</h3>
+                    <p>Comprehensive collection of frontend interview questions, coding challenges, and system design problems.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Progress Tracking</h3>
+                    <p>Monitor your learning journey with detailed progress indicators and completion status.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Big Tech Ready</h3>
+                    <p>Curated content specifically designed for interviews at Google, Meta, Amazon, Apple, and Netflix.</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Frontend Interview Hub. Built for aspiring frontend engineers.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="/assets/js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,861 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Longest Common Subsequence | Frontend Interview Preparation Guide</title>
+    <meta name="description" content="Comprehensive frontend interview materials for Big Tech companies">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="/assets/css/main.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <header>
+        <nav class="container">
+            <div class="logo">Frontend Interview Hub</div>
+            <ul class="nav-links">
+                <li><a href="/">Home</a></li>
+                <li><a href="#progress">Progress</a></li>
+                <li><a href="#knowledge">Knowledge</a></li>
+                <li><a href="https://github.com/nee/interview">GitHub</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <div class="content-container">
+    
+        <nav class="breadcrumb">
+            <ol>
+                <li><a href="/">Home</a></li>
+                
+                
+                
+                    
+                
+                    
+                        
+                        
+                            <li><a href="/leetcode/">Leetcode</a></li>
+                        
+                    
+                
+                    
+                        
+                        
+                            <li><a href="/leetcode/dp/">Dp</a></li>
+                        
+                    
+                
+                    
+                        
+                        
+                            <li><a href="/leetcode/dp/problems/">Problems</a></li>
+                        
+                    
+                
+                    
+                        
+                        
+                            <li class="active">Longest common subsequence</li>
+                        
+                    
+                
+            </ol>
+        </nav>
+    
+    
+    <article class="content">
+        
+            <header class="content-header">
+                <h1 class="content-title">Longest Common Subsequence</h1>
+                
+                
+                    <div class="content-meta">
+                        <span class="difficulty difficulty-easy">Easy</span>
+                        
+                            <span class="category">Dynamic Programming</span>
+                        
+                        
+                            <div class="tags">
+                                
+                                    <span class="tag">Dynamic Programming</span>
+                                
+                                    <span class="tag">Hash Table</span>
+                                
+                            </div>
+                        
+                    </div>
+                
+            </header>
+        
+        
+        <div class="content-body">
+            <h1 id="longest-common-subsequence">Longest Common Subsequence</h1>
+
+<p><strong>LeetCode Problem # * 1143. Longest Common Subsequence</strong></p>
+
+<h2 id="problem-description">Problem Description</h2>
+
+<p>LeetCode problem solution with multiple approaches and explanations.</p>
+
+<h2 id="solutions">Solutions</h2>
+
+<p>/**</p>
+<ul>
+  <li>
+    <ol>
+      <li>Longest Common Subsequence</li>
+    </ol>
+  </li>
+  <li></li>
+  <li>Given two strings text1 and text2, return the length of their longest common subsequence.</li>
+  <li>If there is no common subsequence, return 0.</li>
+  <li></li>
+  <li>A subsequence of a string is a new string generated from the original string with some characters</li>
+  <li>(can be none) deleted without changing the relative order of the remaining characters.</li>
+  <li></li>
+  <li>For example, “ace” is a subsequence of “abcde”.</li>
+  <li>A common subsequence of two strings is a subsequence that is common to both strings.</li>
+  <li></li>
+  <li>Example 1:</li>
+  <li>Input: text1 = “abcde”, text2 = “ace”</li>
+  <li>Output: 3</li>
+  <li>Explanation: The longest common subsequence is “ace” and its length is 3.</li>
+  <li></li>
+  <li>Example 2:</li>
+  <li>Input: text1 = “abc”, text2 = “abc”</li>
+  <li>Output: 3</li>
+  <li>Explanation: The longest common subsequence is “abc” and its length is 3.</li>
+  <li></li>
+  <li>Example 3:</li>
+  <li>Input: text1 = “abc”, text2 = “def”</li>
+  <li>Output: 0</li>
+  <li>Explanation: There is no such common subsequence, so the result is 0.</li>
+  <li></li>
+  <li>Constraints:</li>
+  <li>
+    <ul>
+      <li>1 &lt;= text1.length, text2.length &lt;= 1000</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>text1 and text2 consist of only lowercase English characters.
+ */</li>
+    </ul>
+  </li>
+</ul>
+
+<p>// Solution 1: Dynamic Programming (2D Array)
+// Time: O(m×n), Space: O(m×n)
+export function longestCommonSubsequence1(text1: string, text2: string): number {
+    const m = text1.length;
+    const n = text2.length;</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+</pre></td><td class="rouge-code"><pre>// dp[i][j] = LCS length of text1[0...i-1] and text2[0...j-1]
+const dp = Array(m + 1).fill(null).map(() =&gt; Array(n + 1).fill(0));
+
+for (let i = 1; i &lt;= m; i++) {
+    for (let j = 1; j &lt;= n; j++) {
+        if (text1[i - 1] === text2[j - 1]) {
+            // Characters match, extend LCS
+            dp[i][j] = dp[i - 1][j - 1] + 1;
+        } else {
+            // Characters don't match, take maximum
+            dp[i][j] = Math.max(dp[i - 1][j], dp[i][j - 1]);
+        }
+    }
+}
+
+return dp[m][n]; }
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>// Solution 2: Space-Optimized DP (1D Array)
+// Time: O(m×n), Space: O(min(m,n))
+export function longestCommonSubsequence2(text1: string, text2: string): number {
+    // Ensure text1 is the shorter string for space optimization
+    if (text1.length &gt; text2.length) {
+        [text1, text2] = [text2, text1];
+    }</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+</pre></td><td class="rouge-code"><pre>const m = text1.length;
+const n = text2.length;
+
+let prev = new Array(m + 1).fill(0);
+let curr = new Array(m + 1).fill(0);
+
+for (let j = 1; j &lt;= n; j++) {
+    for (let i = 1; i &lt;= m; i++) {
+        if (text1[i - 1] === text2[j - 1]) {
+            curr[i] = prev[i - 1] + 1;
+        } else {
+            curr[i] = Math.max(prev[i], curr[i - 1]);
+        }
+    }
+    [prev, curr] = [curr, prev];
+}
+
+return prev[m]; }
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>// Solution 3: Memoization (Top-Down)
+// Time: O(m×n), Space: O(m×n)
+export function longestCommonSubsequence3(text1: string, text2: string): number {
+    const memo = new Map&lt;string, number&gt;();</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+</pre></td><td class="rouge-code"><pre>function dfs(i: number, j: number): number {
+    if (i &gt;= text1.length || j &gt;= text2.length) {
+        return 0;
+    }
+    
+    const key = `${i},${j}`;
+    if (memo.has(key)) {
+        return memo.get(key)!;
+    }
+    
+    let result;
+    if (text1[i] === text2[j]) {
+        result = 1 + dfs(i + 1, j + 1);
+    } else {
+        result = Math.max(dfs(i + 1, j), dfs(i, j + 1));
+    }
+    
+    memo.set(key, result);
+    return result;
+}
+
+return dfs(0, 0); }
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>// Solution 4: Recursive (Brute Force)
+// Time: O(2^(m+n)), Space: O(m+n)
+export function longestCommonSubsequence4(text1: string, text2: string): number {
+    function helper(i: number, j: number): number {
+        if (i &gt;= text1.length || j &gt;= text2.length) {
+            return 0;
+        }</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+</pre></td><td class="rouge-code"><pre>    if (text1[i] === text2[j]) {
+        return 1 + helper(i + 1, j + 1);
+    } else {
+        return Math.max(helper(i + 1, j), helper(i, j + 1));
+    }
+}
+
+return helper(0, 0); }
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>// Solution 5: DP with Path Reconstruction
+// Time: O(m×n), Space: O(m×n)
+export function longestCommonSubsequence5(text1: string, text2: string): number {
+    const m = text1.length;
+    const n = text2.length;</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+</pre></td><td class="rouge-code"><pre>const dp = Array(m + 1).fill(null).map(() =&gt; Array(n + 1).fill(0));
+
+// Fill DP table
+for (let i = 1; i &lt;= m; i++) {
+    for (let j = 1; j &lt;= n; j++) {
+        if (text1[i - 1] === text2[j - 1]) {
+            dp[i][j] = dp[i - 1][j - 1] + 1;
+        } else {
+            dp[i][j] = Math.max(dp[i - 1][j], dp[i][j - 1]);
+        }
+    }
+}
+
+// Reconstruct LCS (optional for length-only problem)
+function reconstructLCS(): string {
+    let lcs = "";
+    let i = m, j = n;
+    
+    while (i &gt; 0 &amp;&amp; j &gt; 0) {
+        if (text1[i - 1] === text2[j - 1]) {
+            lcs = text1[i - 1] + lcs;
+            i--;
+            j--;
+        } else if (dp[i - 1][j] &gt; dp[i][j - 1]) {
+            i--;
+        } else {
+            j--;
+        }
+    }
+    
+    return lcs;
+}
+
+// For debugging - uncomment to see actual LCS
+// console.log("LCS:", reconstructLCS());
+
+return dp[m][n]; }
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>// Solution 6: Iterative with Two Variables
+// Time: O(m×n), Space: O(n)
+export function longestCommonSubsequence6(text1: string, text2: string): number {
+    const m = text1.length;
+    const n = text2.length;</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+</pre></td><td class="rouge-code"><pre>let dp = new Array(n + 1).fill(0);
+
+for (let i = 1; i &lt;= m; i++) {
+    let prev = 0;
+    for (let j = 1; j &lt;= n; j++) {
+        let temp = dp[j];
+        if (text1[i - 1] === text2[j - 1]) {
+            dp[j] = prev + 1;
+        } else {
+            dp[j] = Math.max(dp[j], dp[j - 1]);
+        }
+        prev = temp;
+    }
+}
+
+return dp[n]; }
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>// Test cases
+export function testLongestCommonSubsequence() {
+    console.log(“Testing Longest Common Subsequence:”);</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+</pre></td><td class="rouge-code"><pre>const testCases = [
+    {
+        text1: "abcde",
+        text2: "ace",
+        expected: 3
+    },
+    {
+        text1: "abc",
+        text2: "abc",
+        expected: 3
+    },
+    {
+        text1: "abc",
+        text2: "def",
+        expected: 0
+    },
+    {
+        text1: "bl",
+        text2: "yby",
+        expected: 1
+    },
+    {
+        text1: "bsbininm",
+        text2: "jmjkbkjkv",
+        expected: 1
+    },
+    {
+        text1: "ezupkr",
+        text2: "ubmrapg",
+        expected: 2
+    }
+];
+
+const solutions = [
+    { name: "2D DP", fn: longestCommonSubsequence1 },
+    { name: "Space Optimized", fn: longestCommonSubsequence2 },
+    { name: "Memoization", fn: longestCommonSubsequence3 },
+    { name: "Recursive", fn: longestCommonSubsequence4 },
+    { name: "DP with Reconstruction", fn: longestCommonSubsequence5 },
+    { name: "Iterative Optimized", fn: longestCommonSubsequence6 }
+];
+
+solutions.forEach(solution =&gt; {
+    console.log(`\n${solution.name}:`);
+    testCases.forEach((test, i) =&gt; {
+        const result = solution.fn(test.text1, test.text2);
+        const passed = result === test.expected;
+        console.log(`  Test ${i + 1}: ${passed ? 'PASS' : 'FAIL'}`);
+        if (!passed) {
+            console.log(`    Expected: ${test.expected}`);
+            console.log(`    Got: ${result}`);
+        }
+    });
+}); }
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>/**</p>
+<ul>
+  <li>Key Insights:</li>
+  <li></li>
+  <li>
+    <ol>
+      <li><strong>DP State Definition</strong>:</li>
+    </ol>
+  </li>
+  <li>
+    <ul>
+      <li>dp[i][j] = LCS length of text1[0…i-1] and text2[0…j-1]</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Base case: dp[0][j] = dp[i][0] = 0 (empty string)</li>
+    </ul>
+  </li>
+  <li></li>
+  <li>
+    <ol>
+      <li><strong>Recurrence Relation</strong>:</li>
+    </ol>
+  </li>
+  <li>
+    <ul>
+      <li>If text1[i-1] == text2[j-1]: dp[i][j] = dp[i-1][j-1] + 1</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Else: dp[i][j] = max(dp[i-1][j], dp[i][j-1])</li>
+    </ul>
+  </li>
+  <li></li>
+  <li>
+    <ol>
+      <li><strong>Space Optimization</strong>:</li>
+    </ol>
+  </li>
+  <li>
+    <ul>
+      <li>2D → 1D: Only need previous row</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Further optimize to O(min(m,n)) by choosing shorter string</li>
+    </ul>
+  </li>
+  <li></li>
+  <li>
+    <ol>
+      <li><strong>Time Complexity</strong>: O(m×n)</li>
+    </ol>
+  </li>
+  <li>
+    <ul>
+      <li>Must check all character pairs</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Cannot optimize further for worst case</li>
+    </ul>
+  </li>
+  <li></li>
+  <li>
+    <ol>
+      <li><strong>Space Complexity</strong>:</li>
+    </ol>
+  </li>
+  <li>
+    <ul>
+      <li>Basic DP: O(m×n)</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Optimized: O(min(m,n))</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Memoization: O(m×n) for recursion stack + cache</li>
+    </ul>
+  </li>
+  <li></li>
+  <li>
+    <ol>
+      <li><strong>Algorithm Intuition</strong>:</li>
+    </ol>
+  </li>
+  <li>
+    <ul>
+      <li>Build solution incrementally</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Character match: extend current LCS</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>No match: take best from excluding either character</li>
+    </ul>
+  </li>
+  <li></li>
+  <li>
+    <ol>
+      <li><strong>Interview Strategy</strong>:</li>
+    </ol>
+  </li>
+  <li>
+    <ul>
+      <li>Start with recursive solution</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Identify overlapping subproblems</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Apply memoization</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Convert to bottom-up DP</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Optimize space if needed</li>
+    </ul>
+  </li>
+  <li></li>
+  <li>
+    <ol>
+      <li><strong>Path Reconstruction</strong>:</li>
+    </ol>
+  </li>
+  <li>
+    <ul>
+      <li>Trace back through DP table</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Follow decisions that led to optimal solution</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Build LCS string character by character</li>
+    </ul>
+  </li>
+  <li></li>
+  <li>
+    <ol>
+      <li><strong>Edge Cases</strong>:</li>
+    </ol>
+  </li>
+  <li>
+    <ul>
+      <li>Empty strings</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>No common characters</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Identical strings</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Single character strings</li>
+    </ul>
+  </li>
+  <li></li>
+  <li>
+    <ol>
+      <li><strong>Related Problems</strong>:</li>
+    </ol>
+  </li>
+  <li>
+    <ul>
+      <li>Edit Distance (Levenshtein)</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Longest Common Substring</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Longest Palindromic Subsequence</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Shortest Common Supersequence</li>
+    </ul>
+  </li>
+  <li></li>
+  <li>
+    <ol>
+      <li><strong>Big Tech Variations</strong>:</li>
+    </ol>
+  </li>
+  <li>
+    <ul>
+      <li>Google: Multiple strings LCS</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Meta: LCS with wildcards</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Amazon: LCS with costs</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Microsoft: LCS counting all possible</li>
+    </ul>
+  </li>
+  <li></li>
+  <li>
+    <ol>
+      <li><strong>Follow-up Questions</strong>:</li>
+    </ol>
+  </li>
+  <li>
+    <ul>
+      <li>Return actual LCS string</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Count number of LCS</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Find all possible LCS</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Handle case-insensitive comparison</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Optimize for very long strings
+ */</li>
+    </ul>
+  </li>
+</ul>
+
+
+        </div>
+    </article>
+</div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Study Resources</h3>
+                    <p>Comprehensive collection of frontend interview questions, coding challenges, and system design problems.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Progress Tracking</h3>
+                    <p>Monitor your learning journey with detailed progress indicators and completion status.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Big Tech Ready</h3>
+                    <p>Curated content specifically designed for interviews at Google, Meta, Amazon, Apple, and Netflix.</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Frontend Interview Hub. Built for aspiring frontend engineers.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="/assets/js/main.js"></script>
+</body>
+</html>

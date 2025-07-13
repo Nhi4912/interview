@@ -1,0 +1,1937 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>State Management for Frontend Interviews | Frontend Interview Preparation Guide</title>
+    <meta name="description" content="Comprehensive frontend interview materials for Big Tech companies">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="/assets/css/main.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <header>
+        <nav class="container">
+            <div class="logo">Frontend Interview Hub</div>
+            <ul class="nav-links">
+                <li><a href="/">Home</a></li>
+                <li><a href="#progress">Progress</a></li>
+                <li><a href="#knowledge">Knowledge</a></li>
+                <li><a href="https://github.com/nee/interview">GitHub</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <div class="content-container">
+    
+        <nav class="breadcrumb">
+            <ol>
+                <li><a href="/">Home</a></li>
+                
+                
+                
+                    
+                
+                    
+                        
+                        
+                            <li><a href="/frontend/">Frontend</a></li>
+                        
+                    
+                
+                    
+                        
+                        
+                            <li><a href="/frontend/system-design/">System design</a></li>
+                        
+                    
+                
+                    
+                        
+                        
+                            <li class="active">State management for frontend interviews</li>
+                        
+                    
+                
+            </ol>
+        </nav>
+    
+    
+    <article class="content">
+        
+            <header class="content-header">
+                <h1 class="content-title">State Management for Frontend Interviews</h1>
+                
+                
+            </header>
+        
+        
+        <div class="content-body">
+            <h1 id="state-management-for-frontend-interviews">State Management for Frontend Interviews</h1>
+
+<p><strong>Quản lý trạng thái cho phỏng vấn Frontend</strong></p>
+
+<h2 id="1-why-state-management">1. Why State Management?</h2>
+
+<ul>
+  <li><strong>Local state:</strong> useState, useReducer, component state.</li>
+  <li><strong>Global state:</strong> Shared across app (user, theme, cart).</li>
+  <li><strong>Server state:</strong> Data from API, cache, sync.</li>
+</ul>
+
+<h2 id="2-tools--libraries">2. Tools &amp; Libraries</h2>
+
+<ul>
+  <li><strong>Redux:</strong> Predictable, single source, middleware (thunk, saga), devtools.</li>
+  <li><strong>Context API:</strong> Lightweight, for small/medium apps, avoid prop drilling.</li>
+  <li><strong>MobX:</strong> Observable, reactive, less boilerplate.</li>
+  <li><strong>Zustand:</strong> Minimal, hooks-based, scalable.</li>
+  <li><strong>Recoil:</strong> Atom/selectors, async, React integration.</li>
+  <li><strong>Jotai, XState, Akita:</strong> Other options.</li>
+</ul>
+
+<h2 id="3-patterns">3. Patterns</h2>
+
+<ul>
+  <li><strong>Lifting state up:</strong> Move state to common ancestor.</li>
+  <li><strong>Derived state:</strong> Compute from other state, avoid duplication.</li>
+  <li><strong>Selector functions:</strong> Memoize, reselect.</li>
+  <li><strong>Normalized state:</strong> Store by ID, avoid deep nesting.</li>
+</ul>
+
+<h2 id="4-best-practices">4. Best Practices</h2>
+
+<ul>
+  <li><strong>Keep state minimal:</strong> Only what you need.</li>
+  <li><strong>Avoid prop drilling:</strong> Use context or global store.</li>
+  <li><strong>Immutable updates:</strong> Spread/rest, immer.</li>
+  <li><strong>Testing:</strong> Mock store, test reducers/selectors.</li>
+  <li><strong>Performance:</strong> Avoid unnecessary re-renders, use memoization.</li>
+</ul>
+
+<h2 id="5-interview-questions">5. Interview Questions</h2>
+
+<ul>
+  <li>When to use Redux vs Context?</li>
+  <li>How to handle async state (API calls)?</li>
+  <li>How to avoid prop drilling?</li>
+  <li>How to test state logic?</li>
+</ul>
+
+<h2 id="6-resources">6. Resources</h2>
+
+<ul>
+  <li><a href="https://redux.js.org/">Redux Docs</a></li>
+  <li><a href="https://mobx.js.org/">MobX Docs</a></li>
+  <li><a href="https://docs.pmnd.rs/zustand/getting-started/introduction">Zustand</a></li>
+  <li><a href="https://recoiljs.org/">Recoil</a></li>
+</ul>
+
+<h1 id="state-management-interview-preparation">State Management Interview Preparation</h1>
+
+<h2 id="core-concepts">Core Concepts</h2>
+
+<h3 id="state-management-fundamentals">State Management Fundamentals</h3>
+
+<ul>
+  <li><strong>Local State</strong>: Component-level state (useState, useReducer)</li>
+  <li><strong>Global State</strong>: Application-wide state shared across components</li>
+  <li><strong>Server State</strong>: Data fetched from APIs and cached</li>
+  <li><strong>Form State</strong>: User input and form validation state</li>
+  <li><strong>UI State</strong>: Loading, error, modal, navigation states</li>
+</ul>
+
+<h3 id="state-management-patterns">State Management Patterns</h3>
+
+<ul>
+  <li><strong>Flux Architecture</strong>: Unidirectional data flow</li>
+  <li><strong>Redux Pattern</strong>: Predictable state container</li>
+  <li><strong>Context API</strong>: React’s built-in state sharing</li>
+  <li><strong>Atomic State</strong>: Small, focused state pieces</li>
+  <li><strong>Event Sourcing</strong>: State as sequence of events</li>
+</ul>
+
+<h2 id="advanced-topics">Advanced Topics</h2>
+
+<h3 id="modern-state-management">Modern State Management</h3>
+
+<ul>
+  <li><strong>Redux Toolkit</strong>: Simplified Redux with RTK Query</li>
+  <li><strong>Zustand</strong>: Lightweight state management</li>
+  <li><strong>Jotai</strong>: Atomic state management</li>
+  <li><strong>Recoil</strong>: Facebook’s experimental state management</li>
+  <li><strong>XState</strong>: State machines and statecharts</li>
+</ul>
+
+<h3 id="state-synchronization">State Synchronization</h3>
+
+<ul>
+  <li><strong>Optimistic Updates</strong>: Update UI before server confirmation</li>
+  <li><strong>Pessimistic Updates</strong>: Wait for server response</li>
+  <li><strong>Real-time Sync</strong>: WebSocket state synchronization</li>
+  <li><strong>Offline Support</strong>: Local state with sync when online</li>
+  <li><strong>Conflict Resolution</strong>: Handling concurrent updates</li>
+</ul>
+
+<h2 id="common-interview-questions--answers">Common Interview Questions &amp; Answers</h2>
+
+<h3 id="state-management-questions">State Management Questions</h3>
+
+<p><strong>Q: When would you use Redux vs Context API vs local state?</strong>
+A:</p>
+
+<ul>
+  <li><strong>Local State</strong>: Component-specific data, form inputs, UI toggles</li>
+  <li><strong>Context API</strong>: Theme, authentication, user preferences, simple global state</li>
+  <li><strong>Redux</strong>: Complex application state, multiple data sources, debugging needs</li>
+</ul>
+
+<p><strong>Q: Explain the Redux flow and its three principles.</strong>
+A: Redux follows unidirectional data flow:</p>
+
+<ol>
+  <li><strong>Store</strong>: Single source of truth</li>
+  <li><strong>Actions</strong>: Plain objects describing what happened</li>
+  <li><strong>Reducers</strong>: Pure functions that update state</li>
+</ol>
+
+<p><strong>Three Principles</strong>:</p>
+
+<ul>
+  <li>Single source of truth</li>
+  <li>State is read-only</li>
+  <li>Changes made with pure functions</li>
+</ul>
+
+<p><strong>Q: What are the benefits and drawbacks of Redux?</strong>
+A:
+<strong>Benefits</strong>:</p>
+
+<ul>
+  <li>Predictable state updates</li>
+  <li>Great debugging with DevTools</li>
+  <li>Middleware ecosystem</li>
+  <li>Time-travel debugging</li>
+</ul>
+
+<p><strong>Drawbacks</strong>:</p>
+
+<ul>
+  <li>Boilerplate code</li>
+  <li>Learning curve</li>
+  <li>Overkill for simple apps</li>
+  <li>Performance overhead</li>
+</ul>
+
+<h3 id="advanced-questions">Advanced Questions</h3>
+
+<p><strong>Q: How would you implement optimistic updates in a state management system?</strong>
+A: Optimistic updates modify UI immediately, then sync with server:</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+</pre></td><td class="rouge-code"><pre><span class="c1">// Redux Toolkit example</span>
+<span class="kd">const</span> <span class="nx">userSlice</span> <span class="o">=</span> <span class="nx">createSlice</span><span class="p">({</span>
+  <span class="na">name</span><span class="p">:</span> <span class="dl">"</span><span class="s2">user</span><span class="dl">"</span><span class="p">,</span>
+  <span class="na">initialState</span><span class="p">:</span> <span class="p">{</span> <span class="na">users</span><span class="p">:</span> <span class="p">[],</span> <span class="na">loading</span><span class="p">:</span> <span class="kc">false</span> <span class="p">},</span>
+  <span class="na">reducers</span><span class="p">:</span> <span class="p">{</span>
+    <span class="na">addUserOptimistic</span><span class="p">:</span> <span class="p">(</span><span class="nx">state</span><span class="p">,</span> <span class="nx">action</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+      <span class="nx">state</span><span class="p">.</span><span class="nx">users</span><span class="p">.</span><span class="nx">push</span><span class="p">({</span> <span class="p">...</span><span class="nx">action</span><span class="p">.</span><span class="nx">payload</span><span class="p">,</span> <span class="na">id</span><span class="p">:</span> <span class="dl">"</span><span class="s2">temp-</span><span class="dl">"</span> <span class="o">+</span> <span class="nb">Date</span><span class="p">.</span><span class="nx">now</span><span class="p">()</span> <span class="p">});</span>
+    <span class="p">},</span>
+    <span class="na">addUserSuccess</span><span class="p">:</span> <span class="p">(</span><span class="nx">state</span><span class="p">,</span> <span class="nx">action</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+      <span class="kd">const</span> <span class="nx">index</span> <span class="o">=</span> <span class="nx">state</span><span class="p">.</span><span class="nx">users</span><span class="p">.</span><span class="nx">findIndex</span><span class="p">((</span><span class="nx">u</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">u</span><span class="p">.</span><span class="nx">id</span><span class="p">.</span><span class="nx">startsWith</span><span class="p">(</span><span class="dl">"</span><span class="s2">temp-</span><span class="dl">"</span><span class="p">));</span>
+      <span class="k">if</span> <span class="p">(</span><span class="nx">index</span> <span class="o">!==</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">state</span><span class="p">.</span><span class="nx">users</span><span class="p">[</span><span class="nx">index</span><span class="p">]</span> <span class="o">=</span> <span class="nx">action</span><span class="p">.</span><span class="nx">payload</span><span class="p">;</span>
+      <span class="p">}</span>
+    <span class="p">},</span>
+    <span class="na">addUserFailure</span><span class="p">:</span> <span class="p">(</span><span class="nx">state</span><span class="p">,</span> <span class="nx">action</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+      <span class="nx">state</span><span class="p">.</span><span class="nx">users</span> <span class="o">=</span> <span class="nx">state</span><span class="p">.</span><span class="nx">users</span><span class="p">.</span><span class="nx">filter</span><span class="p">((</span><span class="nx">u</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="o">!</span><span class="nx">u</span><span class="p">.</span><span class="nx">id</span><span class="p">.</span><span class="nx">startsWith</span><span class="p">(</span><span class="dl">"</span><span class="s2">temp-</span><span class="dl">"</span><span class="p">));</span>
+    <span class="p">},</span>
+  <span class="p">},</span>
+<span class="p">});</span>
+
+<span class="c1">// Usage</span>
+<span class="kd">const</span> <span class="nx">addUser</span> <span class="o">=</span> <span class="p">(</span><span class="nx">userData</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="k">async</span> <span class="p">(</span><span class="nx">dispatch</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="c1">// Optimistic update</span>
+  <span class="nx">dispatch</span><span class="p">(</span><span class="nx">addUserOptimistic</span><span class="p">(</span><span class="nx">userData</span><span class="p">));</span>
+
+  <span class="k">try</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="nx">response</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">api</span><span class="p">.</span><span class="nx">createUser</span><span class="p">(</span><span class="nx">userData</span><span class="p">);</span>
+    <span class="nx">dispatch</span><span class="p">(</span><span class="nx">addUserSuccess</span><span class="p">(</span><span class="nx">response</span><span class="p">.</span><span class="nx">data</span><span class="p">));</span>
+  <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">dispatch</span><span class="p">(</span><span class="nx">addUserFailure</span><span class="p">(</span><span class="nx">error</span><span class="p">));</span>
+  <span class="p">}</span>
+<span class="p">};</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p><strong>Q: How would you implement real-time state synchronization?</strong>
+A: Using WebSockets with state management:</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+</pre></td><td class="rouge-code"><pre><span class="kd">class</span> <span class="nx">RealTimeStateManager</span> <span class="p">{</span>
+  <span class="kd">constructor</span><span class="p">(</span><span class="nx">store</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">store</span> <span class="o">=</span> <span class="nx">store</span><span class="p">;</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">socket</span> <span class="o">=</span> <span class="kc">null</span><span class="p">;</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">reconnectAttempts</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">maxReconnectAttempts</span> <span class="o">=</span> <span class="mi">5</span><span class="p">;</span>
+  <span class="p">}</span>
+
+  <span class="nx">connect</span><span class="p">(</span><span class="nx">url</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">socket</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">WebSocket</span><span class="p">(</span><span class="nx">url</span><span class="p">);</span>
+
+    <span class="k">this</span><span class="p">.</span><span class="nx">socket</span><span class="p">.</span><span class="nx">onopen</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+      <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">WebSocket connected</span><span class="dl">"</span><span class="p">);</span>
+      <span class="k">this</span><span class="p">.</span><span class="nx">reconnectAttempts</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="p">};</span>
+
+    <span class="k">this</span><span class="p">.</span><span class="nx">socket</span><span class="p">.</span><span class="nx">onmessage</span> <span class="o">=</span> <span class="p">(</span><span class="nx">event</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+      <span class="kd">const</span> <span class="nx">data</span> <span class="o">=</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span><span class="nx">event</span><span class="p">.</span><span class="nx">data</span><span class="p">);</span>
+      <span class="k">this</span><span class="p">.</span><span class="nx">handleMessage</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span>
+    <span class="p">};</span>
+
+    <span class="k">this</span><span class="p">.</span><span class="nx">socket</span><span class="p">.</span><span class="nx">onclose</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+      <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">WebSocket disconnected</span><span class="dl">"</span><span class="p">);</span>
+      <span class="k">this</span><span class="p">.</span><span class="nx">scheduleReconnect</span><span class="p">();</span>
+    <span class="p">};</span>
+  <span class="p">}</span>
+
+  <span class="nx">handleMessage</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">switch</span> <span class="p">(</span><span class="nx">data</span><span class="p">.</span><span class="nx">type</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">case</span> <span class="dl">"</span><span class="s2">USER_UPDATED</span><span class="dl">"</span><span class="p">:</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">store</span><span class="p">.</span><span class="nx">dispatch</span><span class="p">(</span><span class="nx">updateUser</span><span class="p">(</span><span class="nx">data</span><span class="p">.</span><span class="nx">payload</span><span class="p">));</span>
+        <span class="k">break</span><span class="p">;</span>
+      <span class="k">case</span> <span class="dl">"</span><span class="s2">MESSAGE_RECEIVED</span><span class="dl">"</span><span class="p">:</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">store</span><span class="p">.</span><span class="nx">dispatch</span><span class="p">(</span><span class="nx">addMessage</span><span class="p">(</span><span class="nx">data</span><span class="p">.</span><span class="nx">payload</span><span class="p">));</span>
+        <span class="k">break</span><span class="p">;</span>
+      <span class="k">case</span> <span class="dl">"</span><span class="s2">STATUS_CHANGED</span><span class="dl">"</span><span class="p">:</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">store</span><span class="p">.</span><span class="nx">dispatch</span><span class="p">(</span><span class="nx">updateUserStatus</span><span class="p">(</span><span class="nx">data</span><span class="p">.</span><span class="nx">payload</span><span class="p">));</span>
+        <span class="k">break</span><span class="p">;</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+
+  <span class="nx">sendMessage</span><span class="p">(</span><span class="nx">type</span><span class="p">,</span> <span class="nx">payload</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">socket</span><span class="p">?.</span><span class="nx">readyState</span> <span class="o">===</span> <span class="nx">WebSocket</span><span class="p">.</span><span class="nx">OPEN</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">this</span><span class="p">.</span><span class="nx">socket</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">({</span> <span class="nx">type</span><span class="p">,</span> <span class="nx">payload</span> <span class="p">}));</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+
+  <span class="nx">scheduleReconnect</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">reconnectAttempts</span> <span class="o">&lt;</span> <span class="k">this</span><span class="p">.</span><span class="nx">maxReconnectAttempts</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">this</span><span class="p">.</span><span class="nx">reconnectAttempts</span><span class="o">++</span><span class="p">;</span>
+      <span class="kd">const</span> <span class="nx">delay</span> <span class="o">=</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">pow</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">reconnectAttempts</span><span class="p">)</span> <span class="o">*</span> <span class="mi">1000</span><span class="p">;</span>
+
+      <span class="nx">setTimeout</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">connect</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">socket</span><span class="p">.</span><span class="nx">url</span><span class="p">);</span>
+      <span class="p">},</span> <span class="nx">delay</span><span class="p">);</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// Usage</span>
+<span class="kd">const</span> <span class="nx">realTimeManager</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">RealTimeStateManager</span><span class="p">(</span><span class="nx">store</span><span class="p">);</span>
+<span class="nx">realTimeManager</span><span class="p">.</span><span class="nx">connect</span><span class="p">(</span><span class="dl">"</span><span class="s2">wss://api.example.com/ws</span><span class="dl">"</span><span class="p">);</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<h2 id="practical-problems--solutions">Practical Problems &amp; Solutions</h2>
+
+<h3 id="problem-1-implement-a-custom-state-management-library">Problem 1: Implement a Custom State Management Library</h3>
+
+<p><strong>Challenge</strong>: Create a lightweight state management library similar to Zustand.</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+</pre></td><td class="rouge-code"><pre><span class="kd">class</span> <span class="nx">SimpleStore</span> <span class="p">{</span>
+  <span class="kd">constructor</span><span class="p">(</span><span class="nx">initialState</span> <span class="o">=</span> <span class="p">{})</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">state</span> <span class="o">=</span> <span class="nx">initialState</span><span class="p">;</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">listeners</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Set</span><span class="p">();</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">middleware</span> <span class="o">=</span> <span class="p">[];</span>
+  <span class="p">}</span>
+
+  <span class="nx">getState</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">state</span><span class="p">;</span>
+  <span class="p">}</span>
+
+  <span class="nx">setState</span><span class="p">(</span><span class="nx">partial</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="nx">prevState</span> <span class="o">=</span> <span class="p">{</span> <span class="p">...</span><span class="k">this</span><span class="p">.</span><span class="nx">state</span> <span class="p">};</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">state</span> <span class="o">=</span> <span class="p">{</span> <span class="p">...</span><span class="k">this</span><span class="p">.</span><span class="nx">state</span><span class="p">,</span> <span class="p">...</span><span class="nx">partial</span> <span class="p">};</span>
+
+    <span class="c1">// Run middleware</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">middleware</span><span class="p">.</span><span class="nx">forEach</span><span class="p">((</span><span class="nx">middleware</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+      <span class="nx">middleware</span><span class="p">(</span><span class="nx">prevState</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">state</span><span class="p">);</span>
+    <span class="p">});</span>
+
+    <span class="c1">// Notify listeners</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">listeners</span><span class="p">.</span><span class="nx">forEach</span><span class="p">((</span><span class="nx">listener</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">listener</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">state</span><span class="p">,</span> <span class="nx">prevState</span><span class="p">));</span>
+  <span class="p">}</span>
+
+  <span class="nx">subscribe</span><span class="p">(</span><span class="nx">listener</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">listeners</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="nx">listener</span><span class="p">);</span>
+
+    <span class="k">return</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+      <span class="k">this</span><span class="p">.</span><span class="nx">listeners</span><span class="p">.</span><span class="k">delete</span><span class="p">(</span><span class="nx">listener</span><span class="p">);</span>
+    <span class="p">};</span>
+  <span class="p">}</span>
+
+  <span class="nx">useMiddleware</span><span class="p">(</span><span class="nx">middleware</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">middleware</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">middleware</span><span class="p">);</span>
+  <span class="p">}</span>
+
+  <span class="c1">// Action creators</span>
+  <span class="nx">createAction</span><span class="p">(</span><span class="nx">type</span><span class="p">,</span> <span class="nx">payload</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="p">{</span> <span class="nx">type</span><span class="p">,</span> <span class="nx">payload</span><span class="p">,</span> <span class="na">timestamp</span><span class="p">:</span> <span class="nb">Date</span><span class="p">.</span><span class="nx">now</span><span class="p">()</span> <span class="p">};</span>
+  <span class="p">}</span>
+
+  <span class="nx">dispatch</span><span class="p">(</span><span class="nx">action</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// Log action for debugging</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">Action:</span><span class="dl">"</span><span class="p">,</span> <span class="nx">action</span><span class="p">);</span>
+
+    <span class="c1">// Update state based on action</span>
+    <span class="k">switch</span> <span class="p">(</span><span class="nx">action</span><span class="p">.</span><span class="nx">type</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">case</span> <span class="dl">"</span><span class="s2">INCREMENT</span><span class="dl">"</span><span class="p">:</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">setState</span><span class="p">({</span> <span class="na">count</span><span class="p">:</span> <span class="k">this</span><span class="p">.</span><span class="nx">state</span><span class="p">.</span><span class="nx">count</span> <span class="o">+</span> <span class="mi">1</span> <span class="p">});</span>
+        <span class="k">break</span><span class="p">;</span>
+      <span class="k">case</span> <span class="dl">"</span><span class="s2">SET_USER</span><span class="dl">"</span><span class="p">:</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">setState</span><span class="p">({</span> <span class="na">user</span><span class="p">:</span> <span class="nx">action</span><span class="p">.</span><span class="nx">payload</span> <span class="p">});</span>
+        <span class="k">break</span><span class="p">;</span>
+      <span class="k">case</span> <span class="dl">"</span><span class="s2">ADD_TODO</span><span class="dl">"</span><span class="p">:</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">setState</span><span class="p">({</span>
+          <span class="na">todos</span><span class="p">:</span> <span class="p">[...</span><span class="k">this</span><span class="p">.</span><span class="nx">state</span><span class="p">.</span><span class="nx">todos</span><span class="p">,</span> <span class="nx">action</span><span class="p">.</span><span class="nx">payload</span><span class="p">],</span>
+        <span class="p">});</span>
+        <span class="k">break</span><span class="p">;</span>
+      <span class="nl">default</span><span class="p">:</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">warn</span><span class="p">(</span><span class="dl">"</span><span class="s2">Unknown action type:</span><span class="dl">"</span><span class="p">,</span> <span class="nx">action</span><span class="p">.</span><span class="nx">type</span><span class="p">);</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// React hook for using the store</span>
+<span class="kd">function</span> <span class="nx">useStore</span><span class="p">(</span><span class="nx">store</span><span class="p">,</span> <span class="nx">selector</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="p">[</span><span class="nx">state</span><span class="p">,</span> <span class="nx">setState</span><span class="p">]</span> <span class="o">=</span> <span class="nx">React</span><span class="p">.</span><span class="nx">useState</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="nx">selector</span><span class="p">(</span><span class="nx">store</span><span class="p">.</span><span class="nx">getState</span><span class="p">()));</span>
+
+  <span class="nx">React</span><span class="p">.</span><span class="nx">useEffect</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="nx">unsubscribe</span> <span class="o">=</span> <span class="nx">store</span><span class="p">.</span><span class="nx">subscribe</span><span class="p">((</span><span class="nx">newState</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+      <span class="kd">const</span> <span class="nx">newSelectedState</span> <span class="o">=</span> <span class="nx">selector</span><span class="p">(</span><span class="nx">newState</span><span class="p">);</span>
+      <span class="nx">setState</span><span class="p">(</span><span class="nx">newSelectedState</span><span class="p">);</span>
+    <span class="p">});</span>
+
+    <span class="k">return</span> <span class="nx">unsubscribe</span><span class="p">;</span>
+  <span class="p">},</span> <span class="p">[</span><span class="nx">store</span><span class="p">,</span> <span class="nx">selector</span><span class="p">]);</span>
+
+  <span class="k">return</span> <span class="nx">state</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c1">// Usage</span>
+<span class="kd">const</span> <span class="nx">store</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">SimpleStore</span><span class="p">({</span>
+  <span class="na">count</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+  <span class="na">user</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span>
+  <span class="na">todos</span><span class="p">:</span> <span class="p">[],</span>
+<span class="p">});</span>
+
+<span class="c1">// Add logging middleware</span>
+<span class="nx">store</span><span class="p">.</span><span class="nx">useMiddleware</span><span class="p">((</span><span class="nx">prevState</span><span class="p">,</span> <span class="nx">newState</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">State changed:</span><span class="dl">"</span><span class="p">,</span> <span class="p">{</span> <span class="nx">prevState</span><span class="p">,</span> <span class="nx">newState</span> <span class="p">});</span>
+<span class="p">});</span>
+
+<span class="c1">// React component</span>
+<span class="kd">function</span> <span class="nx">Counter</span><span class="p">()</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="nx">count</span> <span class="o">=</span> <span class="nx">useStore</span><span class="p">(</span><span class="nx">store</span><span class="p">,</span> <span class="p">(</span><span class="nx">state</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">state</span><span class="p">.</span><span class="nx">count</span><span class="p">);</span>
+
+  <span class="k">return</span> <span class="p">(</span>
+    <span class="o">&lt;</span><span class="nx">div</span><span class="o">&gt;</span>
+      <span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span><span class="nx">Count</span><span class="p">:</span> <span class="p">{</span><span class="nx">count</span><span class="p">}</span><span class="o">&lt;</span><span class="sr">/p</span><span class="err">&gt;
+</span>      <span class="o">&lt;</span><span class="nx">button</span> <span class="nx">onClick</span><span class="o">=</span><span class="p">{()</span> <span class="o">=&gt;</span> <span class="nx">store</span><span class="p">.</span><span class="nx">dispatch</span><span class="p">({</span> <span class="na">type</span><span class="p">:</span> <span class="dl">"</span><span class="s2">INCREMENT</span><span class="dl">"</span> <span class="p">})}</span><span class="o">&gt;</span>
+        <span class="nx">Increment</span>
+      <span class="o">&lt;</span><span class="sr">/button</span><span class="err">&gt;
+</span>    <span class="o">&lt;</span><span class="sr">/div</span><span class="err">&gt;
+</span>  <span class="p">);</span>
+<span class="p">}</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<h3 id="problem-2-create-a-form-state-manager">Problem 2: Create a Form State Manager</h3>
+
+<p><strong>Challenge</strong>: Build a comprehensive form state management system with validation and error handling.</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155
+156
+157
+158
+159
+160
+161
+162
+163
+164
+165
+166
+167
+168
+169
+170
+171
+172
+173
+174
+175
+176
+177
+178
+179
+180
+181
+182
+183
+184
+185
+186
+187
+188
+189
+190
+191
+192
+193
+194
+195
+196
+197
+198
+199
+200
+201
+202
+203
+204
+205
+206
+207
+208
+209
+210
+211
+212
+213
+214
+215
+216
+217
+218
+219
+220
+221
+222
+223
+224
+</pre></td><td class="rouge-code"><pre><span class="kd">class</span> <span class="nx">FormStateManager</span> <span class="p">{</span>
+  <span class="kd">constructor</span><span class="p">(</span><span class="nx">initialValues</span> <span class="o">=</span> <span class="p">{},</span> <span class="nx">validationSchema</span> <span class="o">=</span> <span class="p">{})</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">initialValues</span> <span class="o">=</span> <span class="nx">initialValues</span><span class="p">;</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">validationSchema</span> <span class="o">=</span> <span class="nx">validationSchema</span><span class="p">;</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">state</span> <span class="o">=</span> <span class="p">{</span>
+      <span class="na">values</span><span class="p">:</span> <span class="p">{</span> <span class="p">...</span><span class="nx">initialValues</span> <span class="p">},</span>
+      <span class="na">errors</span><span class="p">:</span> <span class="p">{},</span>
+      <span class="na">touched</span><span class="p">:</span> <span class="p">{},</span>
+      <span class="na">isValid</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+      <span class="na">isDirty</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+      <span class="na">isSubmitting</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+    <span class="p">};</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">listeners</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Set</span><span class="p">();</span>
+  <span class="p">}</span>
+
+  <span class="nx">getFieldValue</span><span class="p">(</span><span class="nx">name</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">state</span><span class="p">.</span><span class="nx">values</span><span class="p">[</span><span class="nx">name</span><span class="p">];</span>
+  <span class="p">}</span>
+
+  <span class="nx">setFieldValue</span><span class="p">(</span><span class="nx">name</span><span class="p">,</span> <span class="nx">value</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="nx">newValues</span> <span class="o">=</span> <span class="p">{</span> <span class="p">...</span><span class="k">this</span><span class="p">.</span><span class="nx">state</span><span class="p">.</span><span class="nx">values</span><span class="p">,</span> <span class="p">[</span><span class="nx">name</span><span class="p">]:</span> <span class="nx">value</span> <span class="p">};</span>
+    <span class="kd">const</span> <span class="nx">newErrors</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">validateField</span><span class="p">(</span><span class="nx">name</span><span class="p">,</span> <span class="nx">value</span><span class="p">);</span>
+    <span class="kd">const</span> <span class="nx">newTouched</span> <span class="o">=</span> <span class="p">{</span> <span class="p">...</span><span class="k">this</span><span class="p">.</span><span class="nx">state</span><span class="p">.</span><span class="nx">touched</span><span class="p">,</span> <span class="p">[</span><span class="nx">name</span><span class="p">]:</span> <span class="kc">true</span> <span class="p">};</span>
+
+    <span class="k">this</span><span class="p">.</span><span class="nx">setState</span><span class="p">({</span>
+      <span class="na">values</span><span class="p">:</span> <span class="nx">newValues</span><span class="p">,</span>
+      <span class="na">errors</span><span class="p">:</span> <span class="p">{</span> <span class="p">...</span><span class="k">this</span><span class="p">.</span><span class="nx">state</span><span class="p">.</span><span class="nx">errors</span><span class="p">,</span> <span class="p">[</span><span class="nx">name</span><span class="p">]:</span> <span class="nx">newErrors</span><span class="p">[</span><span class="nx">name</span><span class="p">]</span> <span class="p">},</span>
+      <span class="na">touched</span><span class="p">:</span> <span class="nx">newTouched</span><span class="p">,</span>
+      <span class="na">isDirty</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+      <span class="na">isValid</span><span class="p">:</span> <span class="k">this</span><span class="p">.</span><span class="nx">validateForm</span><span class="p">(</span><span class="nx">newValues</span><span class="p">),</span>
+    <span class="p">});</span>
+  <span class="p">}</span>
+
+  <span class="nx">setFieldError</span><span class="p">(</span><span class="nx">name</span><span class="p">,</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">setState</span><span class="p">({</span>
+      <span class="na">errors</span><span class="p">:</span> <span class="p">{</span> <span class="p">...</span><span class="k">this</span><span class="p">.</span><span class="nx">state</span><span class="p">.</span><span class="nx">errors</span><span class="p">,</span> <span class="p">[</span><span class="nx">name</span><span class="p">]:</span> <span class="nx">error</span> <span class="p">},</span>
+      <span class="na">isValid</span><span class="p">:</span> <span class="k">this</span><span class="p">.</span><span class="nx">validateForm</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">state</span><span class="p">.</span><span class="nx">values</span><span class="p">),</span>
+    <span class="p">});</span>
+  <span class="p">}</span>
+
+  <span class="nx">validateField</span><span class="p">(</span><span class="nx">name</span><span class="p">,</span> <span class="nx">value</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="nx">fieldSchema</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">validationSchema</span><span class="p">[</span><span class="nx">name</span><span class="p">];</span>
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">fieldSchema</span><span class="p">)</span> <span class="k">return</span> <span class="p">{};</span>
+
+    <span class="kd">const</span> <span class="nx">errors</span> <span class="o">=</span> <span class="p">{};</span>
+
+    <span class="c1">// Required validation</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">fieldSchema</span><span class="p">.</span><span class="nx">required</span> <span class="o">&amp;&amp;</span> <span class="p">(</span><span class="o">!</span><span class="nx">value</span> <span class="o">||</span> <span class="nx">value</span><span class="p">.</span><span class="nx">trim</span><span class="p">()</span> <span class="o">===</span> <span class="dl">""</span><span class="p">))</span> <span class="p">{</span>
+      <span class="nx">errors</span><span class="p">[</span><span class="nx">name</span><span class="p">]</span> <span class="o">=</span> <span class="nx">fieldSchema</span><span class="p">.</span><span class="nx">required</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="c1">// Pattern validation</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">fieldSchema</span><span class="p">.</span><span class="nx">pattern</span> <span class="o">&amp;&amp;</span> <span class="nx">value</span> <span class="o">&amp;&amp;</span> <span class="o">!</span><span class="nx">fieldSchema</span><span class="p">.</span><span class="nx">pattern</span><span class="p">.</span><span class="nx">test</span><span class="p">(</span><span class="nx">value</span><span class="p">))</span> <span class="p">{</span>
+      <span class="nx">errors</span><span class="p">[</span><span class="nx">name</span><span class="p">]</span> <span class="o">=</span> <span class="nx">fieldSchema</span><span class="p">.</span><span class="nx">patternMessage</span> <span class="o">||</span> <span class="dl">"</span><span class="s2">Invalid format</span><span class="dl">"</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="c1">// Custom validation</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">fieldSchema</span><span class="p">.</span><span class="nx">validate</span><span class="p">)</span> <span class="p">{</span>
+      <span class="kd">const</span> <span class="nx">customError</span> <span class="o">=</span> <span class="nx">fieldSchema</span><span class="p">.</span><span class="nx">validate</span><span class="p">(</span><span class="nx">value</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">state</span><span class="p">.</span><span class="nx">values</span><span class="p">);</span>
+      <span class="k">if</span> <span class="p">(</span><span class="nx">customError</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">errors</span><span class="p">[</span><span class="nx">name</span><span class="p">]</span> <span class="o">=</span> <span class="nx">customError</span><span class="p">;</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="k">return</span> <span class="nx">errors</span><span class="p">;</span>
+  <span class="p">}</span>
+
+  <span class="nx">validateForm</span><span class="p">(</span><span class="nx">values</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="nx">errors</span> <span class="o">=</span> <span class="p">{};</span>
+
+    <span class="nb">Object</span><span class="p">.</span><span class="nx">keys</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">validationSchema</span><span class="p">).</span><span class="nx">forEach</span><span class="p">((</span><span class="nx">fieldName</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+      <span class="kd">const</span> <span class="nx">fieldErrors</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">validateField</span><span class="p">(</span><span class="nx">fieldName</span><span class="p">,</span> <span class="nx">values</span><span class="p">[</span><span class="nx">fieldName</span><span class="p">]);</span>
+      <span class="nb">Object</span><span class="p">.</span><span class="nx">assign</span><span class="p">(</span><span class="nx">errors</span><span class="p">,</span> <span class="nx">fieldErrors</span><span class="p">);</span>
+    <span class="p">});</span>
+
+    <span class="k">return</span> <span class="nb">Object</span><span class="p">.</span><span class="nx">keys</span><span class="p">(</span><span class="nx">errors</span><span class="p">).</span><span class="nx">length</span> <span class="o">===</span> <span class="mi">0</span><span class="p">;</span>
+  <span class="p">}</span>
+
+  <span class="nx">handleSubmit</span><span class="p">(</span><span class="nx">onSubmit</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="k">async</span> <span class="p">(</span><span class="nx">event</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+      <span class="nx">event</span><span class="p">?.</span><span class="nx">preventDefault</span><span class="p">();</span>
+
+      <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="k">this</span><span class="p">.</span><span class="nx">state</span><span class="p">.</span><span class="nx">isValid</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// Mark all fields as touched to show errors</span>
+        <span class="kd">const</span> <span class="nx">touched</span> <span class="o">=</span> <span class="p">{};</span>
+        <span class="nb">Object</span><span class="p">.</span><span class="nx">keys</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">validationSchema</span><span class="p">).</span><span class="nx">forEach</span><span class="p">((</span><span class="nx">key</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+          <span class="nx">touched</span><span class="p">[</span><span class="nx">key</span><span class="p">]</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
+        <span class="p">});</span>
+
+        <span class="k">this</span><span class="p">.</span><span class="nx">setState</span><span class="p">({</span> <span class="nx">touched</span> <span class="p">});</span>
+        <span class="k">return</span><span class="p">;</span>
+      <span class="p">}</span>
+
+      <span class="k">this</span><span class="p">.</span><span class="nx">setState</span><span class="p">({</span> <span class="na">isSubmitting</span><span class="p">:</span> <span class="kc">true</span> <span class="p">});</span>
+
+      <span class="k">try</span> <span class="p">{</span>
+        <span class="k">await</span> <span class="nx">onSubmit</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">state</span><span class="p">.</span><span class="nx">values</span><span class="p">);</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">setState</span><span class="p">({</span> <span class="na">isSubmitting</span><span class="p">:</span> <span class="kc">false</span> <span class="p">});</span>
+      <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">setState</span><span class="p">({</span>
+          <span class="na">isSubmitting</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+          <span class="na">errors</span><span class="p">:</span> <span class="p">{</span> <span class="na">submit</span><span class="p">:</span> <span class="nx">error</span><span class="p">.</span><span class="nx">message</span> <span class="p">},</span>
+        <span class="p">});</span>
+      <span class="p">}</span>
+    <span class="p">};</span>
+  <span class="p">}</span>
+
+  <span class="nx">reset</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">setState</span><span class="p">({</span>
+      <span class="na">values</span><span class="p">:</span> <span class="p">{</span> <span class="p">...</span><span class="k">this</span><span class="p">.</span><span class="nx">initialValues</span> <span class="p">},</span>
+      <span class="na">errors</span><span class="p">:</span> <span class="p">{},</span>
+      <span class="na">touched</span><span class="p">:</span> <span class="p">{},</span>
+      <span class="na">isValid</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+      <span class="na">isDirty</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+      <span class="na">isSubmitting</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+    <span class="p">});</span>
+  <span class="p">}</span>
+
+  <span class="nx">setState</span><span class="p">(</span><span class="nx">partial</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">state</span> <span class="o">=</span> <span class="p">{</span> <span class="p">...</span><span class="k">this</span><span class="p">.</span><span class="nx">state</span><span class="p">,</span> <span class="p">...</span><span class="nx">partial</span> <span class="p">};</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">listeners</span><span class="p">.</span><span class="nx">forEach</span><span class="p">((</span><span class="nx">listener</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">listener</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">state</span><span class="p">));</span>
+  <span class="p">}</span>
+
+  <span class="nx">subscribe</span><span class="p">(</span><span class="nx">listener</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">listeners</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="nx">listener</span><span class="p">);</span>
+    <span class="k">return</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="k">this</span><span class="p">.</span><span class="nx">listeners</span><span class="p">.</span><span class="k">delete</span><span class="p">(</span><span class="nx">listener</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// React hook for form state</span>
+<span class="kd">function</span> <span class="nx">useFormState</span><span class="p">(</span><span class="nx">formManager</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="p">[</span><span class="nx">state</span><span class="p">,</span> <span class="nx">setState</span><span class="p">]</span> <span class="o">=</span> <span class="nx">React</span><span class="p">.</span><span class="nx">useState</span><span class="p">(</span><span class="nx">formManager</span><span class="p">.</span><span class="nx">state</span><span class="p">);</span>
+
+  <span class="nx">React</span><span class="p">.</span><span class="nx">useEffect</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">formManager</span><span class="p">.</span><span class="nx">subscribe</span><span class="p">(</span><span class="nx">setState</span><span class="p">);</span>
+  <span class="p">},</span> <span class="p">[</span><span class="nx">formManager</span><span class="p">]);</span>
+
+  <span class="k">return</span> <span class="p">{</span>
+    <span class="p">...</span><span class="nx">state</span><span class="p">,</span>
+    <span class="na">setFieldValue</span><span class="p">:</span> <span class="nx">formManager</span><span class="p">.</span><span class="nx">setFieldValue</span><span class="p">.</span><span class="nx">bind</span><span class="p">(</span><span class="nx">formManager</span><span class="p">),</span>
+    <span class="na">setFieldError</span><span class="p">:</span> <span class="nx">formManager</span><span class="p">.</span><span class="nx">setFieldError</span><span class="p">.</span><span class="nx">bind</span><span class="p">(</span><span class="nx">formManager</span><span class="p">),</span>
+    <span class="na">handleSubmit</span><span class="p">:</span> <span class="nx">formManager</span><span class="p">.</span><span class="nx">handleSubmit</span><span class="p">.</span><span class="nx">bind</span><span class="p">(</span><span class="nx">formManager</span><span class="p">),</span>
+    <span class="na">reset</span><span class="p">:</span> <span class="nx">formManager</span><span class="p">.</span><span class="nx">reset</span><span class="p">.</span><span class="nx">bind</span><span class="p">(</span><span class="nx">formManager</span><span class="p">),</span>
+  <span class="p">};</span>
+<span class="p">}</span>
+
+<span class="c1">// Usage</span>
+<span class="kd">const</span> <span class="nx">validationSchema</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="na">email</span><span class="p">:</span> <span class="p">{</span>
+    <span class="na">required</span><span class="p">:</span> <span class="dl">"</span><span class="s2">Email is required</span><span class="dl">"</span><span class="p">,</span>
+    <span class="na">pattern</span><span class="p">:</span> <span class="sr">/^</span><span class="se">[^\s</span><span class="sr">@</span><span class="se">]</span><span class="sr">+@</span><span class="se">[^\s</span><span class="sr">@</span><span class="se">]</span><span class="sr">+</span><span class="se">\.[^\s</span><span class="sr">@</span><span class="se">]</span><span class="sr">+$/</span><span class="p">,</span>
+    <span class="na">patternMessage</span><span class="p">:</span> <span class="dl">"</span><span class="s2">Invalid email format</span><span class="dl">"</span><span class="p">,</span>
+  <span class="p">},</span>
+  <span class="na">password</span><span class="p">:</span> <span class="p">{</span>
+    <span class="na">required</span><span class="p">:</span> <span class="dl">"</span><span class="s2">Password is required</span><span class="dl">"</span><span class="p">,</span>
+    <span class="na">validate</span><span class="p">:</span> <span class="p">(</span><span class="nx">value</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+      <span class="k">if</span> <span class="p">(</span><span class="nx">value</span><span class="p">.</span><span class="nx">length</span> <span class="o">&lt;</span> <span class="mi">8</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="dl">"</span><span class="s2">Password must be at least 8 characters</span><span class="dl">"</span><span class="p">;</span>
+      <span class="p">}</span>
+      <span class="k">return</span> <span class="kc">null</span><span class="p">;</span>
+    <span class="p">},</span>
+  <span class="p">},</span>
+<span class="p">};</span>
+
+<span class="kd">const</span> <span class="nx">formManager</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">FormStateManager</span><span class="p">(</span>
+  <span class="p">{</span> <span class="na">email</span><span class="p">:</span> <span class="dl">""</span><span class="p">,</span> <span class="na">password</span><span class="p">:</span> <span class="dl">""</span> <span class="p">},</span>
+  <span class="nx">validationSchema</span>
+<span class="p">);</span>
+
+<span class="kd">function</span> <span class="nx">LoginForm</span><span class="p">()</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="p">{</span>
+    <span class="nx">values</span><span class="p">,</span>
+    <span class="nx">errors</span><span class="p">,</span>
+    <span class="nx">touched</span><span class="p">,</span>
+    <span class="nx">isValid</span><span class="p">,</span>
+    <span class="nx">isSubmitting</span><span class="p">,</span>
+    <span class="nx">setFieldValue</span><span class="p">,</span>
+    <span class="nx">handleSubmit</span><span class="p">,</span>
+  <span class="p">}</span> <span class="o">=</span> <span class="nx">useFormState</span><span class="p">(</span><span class="nx">formManager</span><span class="p">);</span>
+
+  <span class="kd">const</span> <span class="nx">onSubmit</span> <span class="o">=</span> <span class="k">async</span> <span class="p">(</span><span class="nx">values</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="nx">response</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">fetch</span><span class="p">(</span><span class="dl">"</span><span class="s2">/api/login</span><span class="dl">"</span><span class="p">,</span> <span class="p">{</span>
+      <span class="na">method</span><span class="p">:</span> <span class="dl">"</span><span class="s2">POST</span><span class="dl">"</span><span class="p">,</span>
+      <span class="na">headers</span><span class="p">:</span> <span class="p">{</span> <span class="dl">"</span><span class="s2">Content-Type</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">application/json</span><span class="dl">"</span> <span class="p">},</span>
+      <span class="na">body</span><span class="p">:</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">values</span><span class="p">),</span>
+    <span class="p">});</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">response</span><span class="p">.</span><span class="nx">ok</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">throw</span> <span class="k">new</span> <span class="nb">Error</span><span class="p">(</span><span class="dl">"</span><span class="s2">Login failed</span><span class="dl">"</span><span class="p">);</span>
+    <span class="p">}</span>
+  <span class="p">};</span>
+
+  <span class="k">return</span> <span class="p">(</span>
+    <span class="o">&lt;</span><span class="nx">form</span> <span class="nx">onSubmit</span><span class="o">=</span><span class="p">{</span><span class="nx">handleSubmit</span><span class="p">(</span><span class="nx">onSubmit</span><span class="p">)}</span><span class="o">&gt;</span>
+      <span class="o">&lt;</span><span class="nx">div</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="nx">input</span>
+          <span class="nx">type</span><span class="o">=</span><span class="dl">"</span><span class="s2">email</span><span class="dl">"</span>
+          <span class="nx">value</span><span class="o">=</span><span class="p">{</span><span class="nx">values</span><span class="p">.</span><span class="nx">email</span><span class="p">}</span>
+          <span class="nx">onChange</span><span class="o">=</span><span class="p">{(</span><span class="nx">e</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">setFieldValue</span><span class="p">(</span><span class="dl">"</span><span class="s2">email</span><span class="dl">"</span><span class="p">,</span> <span class="nx">e</span><span class="p">.</span><span class="nx">target</span><span class="p">.</span><span class="nx">value</span><span class="p">)}</span>
+          <span class="nx">placeholder</span><span class="o">=</span><span class="dl">"</span><span class="s2">Email</span><span class="dl">"</span>
+        <span class="o">/&gt;</span>
+        <span class="p">{</span><span class="nx">touched</span><span class="p">.</span><span class="nx">email</span> <span class="o">&amp;&amp;</span> <span class="nx">errors</span><span class="p">.</span><span class="nx">email</span> <span class="o">&amp;&amp;</span> <span class="p">(</span>
+          <span class="o">&lt;</span><span class="nx">span</span> <span class="nx">className</span><span class="o">=</span><span class="dl">"</span><span class="s2">error</span><span class="dl">"</span><span class="o">&gt;</span><span class="p">{</span><span class="nx">errors</span><span class="p">.</span><span class="nx">email</span><span class="p">}</span><span class="o">&lt;</span><span class="sr">/span</span><span class="err">&gt;
+</span>        <span class="p">)}</span>
+      <span class="o">&lt;</span><span class="sr">/div</span><span class="err">&gt;
+</span>
+      <span class="o">&lt;</span><span class="nx">div</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="nx">input</span>
+          <span class="nx">type</span><span class="o">=</span><span class="dl">"</span><span class="s2">password</span><span class="dl">"</span>
+          <span class="nx">value</span><span class="o">=</span><span class="p">{</span><span class="nx">values</span><span class="p">.</span><span class="nx">password</span><span class="p">}</span>
+          <span class="nx">onChange</span><span class="o">=</span><span class="p">{(</span><span class="nx">e</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">setFieldValue</span><span class="p">(</span><span class="dl">"</span><span class="s2">password</span><span class="dl">"</span><span class="p">,</span> <span class="nx">e</span><span class="p">.</span><span class="nx">target</span><span class="p">.</span><span class="nx">value</span><span class="p">)}</span>
+          <span class="nx">placeholder</span><span class="o">=</span><span class="dl">"</span><span class="s2">Password</span><span class="dl">"</span>
+        <span class="o">/&gt;</span>
+        <span class="p">{</span><span class="nx">touched</span><span class="p">.</span><span class="nx">password</span> <span class="o">&amp;&amp;</span> <span class="nx">errors</span><span class="p">.</span><span class="nx">password</span> <span class="o">&amp;&amp;</span> <span class="p">(</span>
+          <span class="o">&lt;</span><span class="nx">span</span> <span class="nx">className</span><span class="o">=</span><span class="dl">"</span><span class="s2">error</span><span class="dl">"</span><span class="o">&gt;</span><span class="p">{</span><span class="nx">errors</span><span class="p">.</span><span class="nx">password</span><span class="p">}</span><span class="o">&lt;</span><span class="sr">/span</span><span class="err">&gt;
+</span>        <span class="p">)}</span>
+      <span class="o">&lt;</span><span class="sr">/div</span><span class="err">&gt;
+</span>
+      <span class="o">&lt;</span><span class="nx">button</span> <span class="nx">type</span><span class="o">=</span><span class="dl">"</span><span class="s2">submit</span><span class="dl">"</span> <span class="nx">disabled</span><span class="o">=</span><span class="p">{</span><span class="o">!</span><span class="nx">isValid</span> <span class="o">||</span> <span class="nx">isSubmitting</span><span class="p">}</span><span class="o">&gt;</span>
+        <span class="p">{</span><span class="nx">isSubmitting</span> <span class="p">?</span> <span class="dl">"</span><span class="s2">Logging in...</span><span class="dl">"</span> <span class="p">:</span> <span class="dl">"</span><span class="s2">Login</span><span class="dl">"</span><span class="p">}</span>
+      <span class="o">&lt;</span><span class="sr">/button</span><span class="err">&gt;
+</span>    <span class="o">&lt;</span><span class="sr">/form</span><span class="err">&gt;
+</span>  <span class="p">);</span>
+<span class="p">}</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<h3 id="problem-3-implement-redux-with-middleware">Problem 3: Implement Redux with Middleware</h3>
+
+<p><strong>Challenge</strong>: Create a Redux-like state management system with middleware support.</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155
+156
+157
+158
+159
+160
+161
+162
+163
+164
+165
+166
+167
+168
+169
+170
+171
+172
+173
+174
+</pre></td><td class="rouge-code"><pre><span class="c1">// Action types</span>
+<span class="kd">const</span> <span class="nx">ActionTypes</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="na">INIT</span><span class="p">:</span> <span class="dl">"</span><span class="s2">@@redux/INIT</span><span class="dl">"</span><span class="p">,</span>
+<span class="p">};</span>
+
+<span class="c1">// Create store</span>
+<span class="kd">function</span> <span class="nx">createStore</span><span class="p">(</span><span class="nx">reducer</span><span class="p">,</span> <span class="nx">initialState</span><span class="p">,</span> <span class="nx">enhancer</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="k">typeof</span> <span class="nx">enhancer</span> <span class="o">===</span> <span class="dl">"</span><span class="s2">function</span><span class="dl">"</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">enhancer</span><span class="p">(</span><span class="nx">createStore</span><span class="p">)(</span><span class="nx">reducer</span><span class="p">,</span> <span class="nx">initialState</span><span class="p">);</span>
+  <span class="p">}</span>
+
+  <span class="kd">let</span> <span class="nx">state</span> <span class="o">=</span> <span class="nx">initialState</span><span class="p">;</span>
+  <span class="kd">let</span> <span class="nx">listeners</span> <span class="o">=</span> <span class="p">[];</span>
+  <span class="kd">let</span> <span class="nx">isDispatching</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span>
+
+  <span class="kd">function</span> <span class="nx">getState</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">isDispatching</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">throw</span> <span class="k">new</span> <span class="nb">Error</span><span class="p">(</span><span class="dl">"</span><span class="s2">Cannot call getState while dispatching</span><span class="dl">"</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="nx">state</span><span class="p">;</span>
+  <span class="p">}</span>
+
+  <span class="kd">function</span> <span class="nx">subscribe</span><span class="p">(</span><span class="nx">listener</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="k">typeof</span> <span class="nx">listener</span> <span class="o">!==</span> <span class="dl">"</span><span class="s2">function</span><span class="dl">"</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">throw</span> <span class="k">new</span> <span class="nb">Error</span><span class="p">(</span><span class="dl">"</span><span class="s2">Listener must be a function</span><span class="dl">"</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="kd">let</span> <span class="nx">isSubscribed</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
+    <span class="nx">listeners</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">listener</span><span class="p">);</span>
+
+    <span class="k">return</span> <span class="kd">function</span> <span class="nx">unsubscribe</span><span class="p">()</span> <span class="p">{</span>
+      <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">isSubscribed</span><span class="p">)</span> <span class="k">return</span><span class="p">;</span>
+
+      <span class="nx">isSubscribed</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span>
+      <span class="kd">const</span> <span class="nx">index</span> <span class="o">=</span> <span class="nx">listeners</span><span class="p">.</span><span class="nx">indexOf</span><span class="p">(</span><span class="nx">listener</span><span class="p">);</span>
+      <span class="nx">listeners</span><span class="p">.</span><span class="nx">splice</span><span class="p">(</span><span class="nx">index</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
+    <span class="p">};</span>
+  <span class="p">}</span>
+
+  <span class="kd">function</span> <span class="nx">dispatch</span><span class="p">(</span><span class="nx">action</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">action</span> <span class="o">||</span> <span class="k">typeof</span> <span class="nx">action</span><span class="p">.</span><span class="nx">type</span> <span class="o">===</span> <span class="dl">"</span><span class="s2">undefined</span><span class="dl">"</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">throw</span> <span class="k">new</span> <span class="nb">Error</span><span class="p">(</span><span class="dl">"</span><span class="s2">Actions must have a type property</span><span class="dl">"</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="nx">isDispatching</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">throw</span> <span class="k">new</span> <span class="nb">Error</span><span class="p">(</span><span class="dl">"</span><span class="s2">Reducers may not dispatch actions</span><span class="dl">"</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="k">try</span> <span class="p">{</span>
+      <span class="nx">isDispatching</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
+      <span class="nx">state</span> <span class="o">=</span> <span class="nx">reducer</span><span class="p">(</span><span class="nx">state</span><span class="p">,</span> <span class="nx">action</span><span class="p">);</span>
+    <span class="p">}</span> <span class="k">finally</span> <span class="p">{</span>
+      <span class="nx">isDispatching</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="nx">listeners</span><span class="p">.</span><span class="nx">forEach</span><span class="p">((</span><span class="nx">listener</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">listener</span><span class="p">());</span>
+    <span class="k">return</span> <span class="nx">action</span><span class="p">;</span>
+  <span class="p">}</span>
+
+  <span class="c1">// Initialize store</span>
+  <span class="nx">dispatch</span><span class="p">({</span> <span class="na">type</span><span class="p">:</span> <span class="nx">ActionTypes</span><span class="p">.</span><span class="nx">INIT</span> <span class="p">});</span>
+
+  <span class="k">return</span> <span class="p">{</span>
+    <span class="nx">getState</span><span class="p">,</span>
+    <span class="nx">subscribe</span><span class="p">,</span>
+    <span class="nx">dispatch</span><span class="p">,</span>
+  <span class="p">};</span>
+<span class="p">}</span>
+
+<span class="c1">// Apply middleware</span>
+<span class="kd">function</span> <span class="nx">applyMiddleware</span><span class="p">(...</span><span class="nx">middlewares</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="p">(</span><span class="nx">createStore</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">(</span><span class="nx">reducer</span><span class="p">,</span> <span class="nx">initialState</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="nx">store</span> <span class="o">=</span> <span class="nx">createStore</span><span class="p">(</span><span class="nx">reducer</span><span class="p">,</span> <span class="nx">initialState</span><span class="p">);</span>
+    <span class="kd">let</span> <span class="nx">dispatch</span> <span class="o">=</span> <span class="nx">store</span><span class="p">.</span><span class="nx">dispatch</span><span class="p">;</span>
+
+    <span class="kd">const</span> <span class="nx">middlewareAPI</span> <span class="o">=</span> <span class="p">{</span>
+      <span class="na">getState</span><span class="p">:</span> <span class="nx">store</span><span class="p">.</span><span class="nx">getState</span><span class="p">,</span>
+      <span class="na">dispatch</span><span class="p">:</span> <span class="p">(</span><span class="nx">action</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">dispatch</span><span class="p">(</span><span class="nx">action</span><span class="p">),</span>
+    <span class="p">};</span>
+
+    <span class="kd">const</span> <span class="nx">chain</span> <span class="o">=</span> <span class="nx">middlewares</span><span class="p">.</span><span class="nx">map</span><span class="p">((</span><span class="nx">middleware</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">middleware</span><span class="p">(</span><span class="nx">middlewareAPI</span><span class="p">));</span>
+    <span class="nx">dispatch</span> <span class="o">=</span> <span class="nx">compose</span><span class="p">(...</span><span class="nx">chain</span><span class="p">)(</span><span class="nx">store</span><span class="p">.</span><span class="nx">dispatch</span><span class="p">);</span>
+
+    <span class="k">return</span> <span class="p">{</span>
+      <span class="p">...</span><span class="nx">store</span><span class="p">,</span>
+      <span class="nx">dispatch</span><span class="p">,</span>
+    <span class="p">};</span>
+  <span class="p">};</span>
+<span class="p">}</span>
+
+<span class="c1">// Compose functions</span>
+<span class="kd">function</span> <span class="nx">compose</span><span class="p">(...</span><span class="nx">funcs</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nx">funcs</span><span class="p">.</span><span class="nx">length</span> <span class="o">===</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="p">(</span><span class="nx">arg</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">arg</span><span class="p">;</span>
+  <span class="p">}</span>
+
+  <span class="k">if</span> <span class="p">(</span><span class="nx">funcs</span><span class="p">.</span><span class="nx">length</span> <span class="o">===</span> <span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">funcs</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span>
+  <span class="p">}</span>
+
+  <span class="k">return</span> <span class="nx">funcs</span><span class="p">.</span><span class="nx">reduce</span><span class="p">(</span>
+    <span class="p">(</span><span class="nx">a</span><span class="p">,</span> <span class="nx">b</span><span class="p">)</span> <span class="o">=&gt;</span>
+      <span class="p">(...</span><span class="nx">args</span><span class="p">)</span> <span class="o">=&gt;</span>
+        <span class="nx">a</span><span class="p">(</span><span class="nx">b</span><span class="p">(...</span><span class="nx">args</span><span class="p">))</span>
+  <span class="p">);</span>
+<span class="p">}</span>
+
+<span class="c1">// Logger middleware</span>
+<span class="kd">function</span> <span class="nx">logger</span><span class="p">(</span><span class="nx">middlewareAPI</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="p">(</span><span class="nx">next</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">(</span><span class="nx">action</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">group</span><span class="p">(</span><span class="nx">action</span><span class="p">.</span><span class="nx">type</span><span class="p">);</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">Previous State:</span><span class="dl">"</span><span class="p">,</span> <span class="nx">middlewareAPI</span><span class="p">.</span><span class="nx">getState</span><span class="p">());</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">Action:</span><span class="dl">"</span><span class="p">,</span> <span class="nx">action</span><span class="p">);</span>
+
+    <span class="kd">const</span> <span class="nx">result</span> <span class="o">=</span> <span class="nx">next</span><span class="p">(</span><span class="nx">action</span><span class="p">);</span>
+
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">Next State:</span><span class="dl">"</span><span class="p">,</span> <span class="nx">middlewareAPI</span><span class="p">.</span><span class="nx">getState</span><span class="p">());</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">groupEnd</span><span class="p">();</span>
+
+    <span class="k">return</span> <span class="nx">result</span><span class="p">;</span>
+  <span class="p">};</span>
+<span class="p">}</span>
+
+<span class="c1">// Thunk middleware</span>
+<span class="kd">function</span> <span class="nx">thunk</span><span class="p">(</span><span class="nx">middlewareAPI</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="p">(</span><span class="nx">next</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">(</span><span class="nx">action</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="k">typeof</span> <span class="nx">action</span> <span class="o">===</span> <span class="dl">"</span><span class="s2">function</span><span class="dl">"</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">return</span> <span class="nx">action</span><span class="p">(</span><span class="nx">middlewareAPI</span><span class="p">.</span><span class="nx">dispatch</span><span class="p">,</span> <span class="nx">middlewareAPI</span><span class="p">.</span><span class="nx">getState</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="nx">next</span><span class="p">(</span><span class="nx">action</span><span class="p">);</span>
+  <span class="p">};</span>
+<span class="p">}</span>
+
+<span class="c1">// Example reducer</span>
+<span class="kd">function</span> <span class="nx">counterReducer</span><span class="p">(</span><span class="nx">state</span> <span class="o">=</span> <span class="p">{</span> <span class="na">count</span><span class="p">:</span> <span class="mi">0</span> <span class="p">},</span> <span class="nx">action</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">switch</span> <span class="p">(</span><span class="nx">action</span><span class="p">.</span><span class="nx">type</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">case</span> <span class="dl">"</span><span class="s2">INCREMENT</span><span class="dl">"</span><span class="p">:</span>
+      <span class="k">return</span> <span class="p">{</span> <span class="p">...</span><span class="nx">state</span><span class="p">,</span> <span class="na">count</span><span class="p">:</span> <span class="nx">state</span><span class="p">.</span><span class="nx">count</span> <span class="o">+</span> <span class="mi">1</span> <span class="p">};</span>
+    <span class="k">case</span> <span class="dl">"</span><span class="s2">DECREMENT</span><span class="dl">"</span><span class="p">:</span>
+      <span class="k">return</span> <span class="p">{</span> <span class="p">...</span><span class="nx">state</span><span class="p">,</span> <span class="na">count</span><span class="p">:</span> <span class="nx">state</span><span class="p">.</span><span class="nx">count</span> <span class="o">-</span> <span class="mi">1</span> <span class="p">};</span>
+    <span class="k">case</span> <span class="dl">"</span><span class="s2">SET_COUNT</span><span class="dl">"</span><span class="p">:</span>
+      <span class="k">return</span> <span class="p">{</span> <span class="p">...</span><span class="nx">state</span><span class="p">,</span> <span class="na">count</span><span class="p">:</span> <span class="nx">action</span><span class="p">.</span><span class="nx">payload</span> <span class="p">};</span>
+    <span class="nl">default</span><span class="p">:</span>
+      <span class="k">return</span> <span class="nx">state</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// Action creators</span>
+<span class="kd">const</span> <span class="nx">increment</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">({</span> <span class="na">type</span><span class="p">:</span> <span class="dl">"</span><span class="s2">INCREMENT</span><span class="dl">"</span> <span class="p">});</span>
+<span class="kd">const</span> <span class="nx">decrement</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">({</span> <span class="na">type</span><span class="p">:</span> <span class="dl">"</span><span class="s2">DECREMENT</span><span class="dl">"</span> <span class="p">});</span>
+<span class="kd">const</span> <span class="nx">setCount</span> <span class="o">=</span> <span class="p">(</span><span class="nx">count</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">({</span> <span class="na">type</span><span class="p">:</span> <span class="dl">"</span><span class="s2">SET_COUNT</span><span class="dl">"</span><span class="p">,</span> <span class="na">payload</span><span class="p">:</span> <span class="nx">count</span> <span class="p">});</span>
+
+<span class="c1">// Async action creator</span>
+<span class="kd">const</span> <span class="nx">incrementAsync</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">(</span><span class="nx">dispatch</span><span class="p">,</span> <span class="nx">getState</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="nx">setTimeout</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="nx">dispatch</span><span class="p">(</span><span class="nx">increment</span><span class="p">());</span>
+  <span class="p">},</span> <span class="mi">1000</span><span class="p">);</span>
+<span class="p">};</span>
+
+<span class="c1">// Create store with middleware</span>
+<span class="kd">const</span> <span class="nx">store</span> <span class="o">=</span> <span class="nx">createStore</span><span class="p">(</span>
+  <span class="nx">counterReducer</span><span class="p">,</span>
+  <span class="p">{</span> <span class="na">count</span><span class="p">:</span> <span class="mi">0</span> <span class="p">},</span>
+  <span class="nx">applyMiddleware</span><span class="p">(</span><span class="nx">logger</span><span class="p">,</span> <span class="nx">thunk</span><span class="p">)</span>
+<span class="p">);</span>
+
+<span class="c1">// Usage</span>
+<span class="nx">store</span><span class="p">.</span><span class="nx">subscribe</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">State:</span><span class="dl">"</span><span class="p">,</span> <span class="nx">store</span><span class="p">.</span><span class="nx">getState</span><span class="p">());</span>
+<span class="p">});</span>
+
+<span class="nx">store</span><span class="p">.</span><span class="nx">dispatch</span><span class="p">(</span><span class="nx">increment</span><span class="p">());</span> <span class="c1">// 1</span>
+<span class="nx">store</span><span class="p">.</span><span class="nx">dispatch</span><span class="p">(</span><span class="nx">incrementAsync</span><span class="p">());</span> <span class="c1">// 2 (after 1 second)</span>
+<span class="nx">store</span><span class="p">.</span><span class="nx">dispatch</span><span class="p">(</span><span class="nx">setCount</span><span class="p">(</span><span class="mi">10</span><span class="p">));</span> <span class="c1">// 10</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<h3 id="problem-4-create-a-state-persistence-system">Problem 4: Create a State Persistence System</h3>
+
+<p><strong>Challenge</strong>: Implement a system to persist and rehydrate state across browser sessions.</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155
+156
+157
+158
+159
+160
+161
+162
+163
+164
+165
+166
+167
+168
+169
+170
+171
+172
+173
+174
+175
+176
+177
+178
+179
+180
+181
+182
+183
+184
+185
+186
+187
+188
+</pre></td><td class="rouge-code"><pre><span class="kd">class</span> <span class="nx">StatePersistence</span> <span class="p">{</span>
+  <span class="kd">constructor</span><span class="p">(</span><span class="nx">storage</span> <span class="o">=</span> <span class="nx">localStorage</span><span class="p">,</span> <span class="nx">key</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">app-state</span><span class="dl">"</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">storage</span> <span class="o">=</span> <span class="nx">storage</span><span class="p">;</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">key</span> <span class="o">=</span> <span class="nx">key</span><span class="p">;</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">subscribers</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Set</span><span class="p">();</span>
+  <span class="p">}</span>
+
+  <span class="nx">save</span><span class="p">(</span><span class="nx">state</span><span class="p">,</span> <span class="nx">options</span> <span class="o">=</span> <span class="p">{})</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="p">{</span>
+      <span class="nx">includeKeys</span> <span class="o">=</span> <span class="kc">null</span><span class="p">,</span>
+      <span class="nx">excludeKeys</span> <span class="o">=</span> <span class="kc">null</span><span class="p">,</span>
+      <span class="nx">transform</span> <span class="o">=</span> <span class="kc">null</span><span class="p">,</span>
+    <span class="p">}</span> <span class="o">=</span> <span class="nx">options</span><span class="p">;</span>
+
+    <span class="kd">let</span> <span class="nx">stateToSave</span> <span class="o">=</span> <span class="nx">state</span><span class="p">;</span>
+
+    <span class="c1">// Filter keys</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">includeKeys</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">stateToSave</span> <span class="o">=</span> <span class="nb">Object</span><span class="p">.</span><span class="nx">keys</span><span class="p">(</span><span class="nx">state</span><span class="p">)</span>
+        <span class="p">.</span><span class="nx">filter</span><span class="p">((</span><span class="nx">key</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">includeKeys</span><span class="p">.</span><span class="nx">includes</span><span class="p">(</span><span class="nx">key</span><span class="p">))</span>
+        <span class="p">.</span><span class="nx">reduce</span><span class="p">((</span><span class="nx">obj</span><span class="p">,</span> <span class="nx">key</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+          <span class="nx">obj</span><span class="p">[</span><span class="nx">key</span><span class="p">]</span> <span class="o">=</span> <span class="nx">state</span><span class="p">[</span><span class="nx">key</span><span class="p">];</span>
+          <span class="k">return</span> <span class="nx">obj</span><span class="p">;</span>
+        <span class="p">},</span> <span class="p">{});</span>
+    <span class="p">}</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="nx">excludeKeys</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">stateToSave</span> <span class="o">=</span> <span class="nb">Object</span><span class="p">.</span><span class="nx">keys</span><span class="p">(</span><span class="nx">state</span><span class="p">)</span>
+        <span class="p">.</span><span class="nx">filter</span><span class="p">((</span><span class="nx">key</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="o">!</span><span class="nx">excludeKeys</span><span class="p">.</span><span class="nx">includes</span><span class="p">(</span><span class="nx">key</span><span class="p">))</span>
+        <span class="p">.</span><span class="nx">reduce</span><span class="p">((</span><span class="nx">obj</span><span class="p">,</span> <span class="nx">key</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+          <span class="nx">obj</span><span class="p">[</span><span class="nx">key</span><span class="p">]</span> <span class="o">=</span> <span class="nx">state</span><span class="p">[</span><span class="nx">key</span><span class="p">];</span>
+          <span class="k">return</span> <span class="nx">obj</span><span class="p">;</span>
+        <span class="p">},</span> <span class="p">{});</span>
+    <span class="p">}</span>
+
+    <span class="c1">// Transform state</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">transform</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">stateToSave</span> <span class="o">=</span> <span class="nx">transform</span><span class="p">(</span><span class="nx">stateToSave</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="k">try</span> <span class="p">{</span>
+      <span class="kd">const</span> <span class="nx">serialized</span> <span class="o">=</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">stateToSave</span><span class="p">);</span>
+      <span class="k">this</span><span class="p">.</span><span class="nx">storage</span><span class="p">.</span><span class="nx">setItem</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">key</span><span class="p">,</span> <span class="nx">serialized</span><span class="p">);</span>
+      <span class="k">this</span><span class="p">.</span><span class="nx">notifySubscribers</span><span class="p">(</span><span class="dl">"</span><span class="s2">saved</span><span class="dl">"</span><span class="p">,</span> <span class="nx">stateToSave</span><span class="p">);</span>
+    <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="dl">"</span><span class="s2">Failed to save state:</span><span class="dl">"</span><span class="p">,</span> <span class="nx">error</span><span class="p">);</span>
+      <span class="k">this</span><span class="p">.</span><span class="nx">notifySubscribers</span><span class="p">(</span><span class="dl">"</span><span class="s2">error</span><span class="dl">"</span><span class="p">,</span> <span class="nx">error</span><span class="p">);</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+
+  <span class="nx">load</span><span class="p">(</span><span class="nx">options</span> <span class="o">=</span> <span class="p">{})</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="p">{</span> <span class="nx">transform</span> <span class="o">=</span> <span class="kc">null</span><span class="p">,</span> <span class="nx">defaultValue</span> <span class="o">=</span> <span class="p">{}</span> <span class="p">}</span> <span class="o">=</span> <span class="nx">options</span><span class="p">;</span>
+
+    <span class="k">try</span> <span class="p">{</span>
+      <span class="kd">const</span> <span class="nx">serialized</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">storage</span><span class="p">.</span><span class="nx">getItem</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">key</span><span class="p">);</span>
+      <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">serialized</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="nx">defaultValue</span><span class="p">;</span>
+      <span class="p">}</span>
+
+      <span class="kd">let</span> <span class="nx">state</span> <span class="o">=</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span><span class="nx">serialized</span><span class="p">);</span>
+
+      <span class="c1">// Transform state</span>
+      <span class="k">if</span> <span class="p">(</span><span class="nx">transform</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">state</span> <span class="o">=</span> <span class="nx">transform</span><span class="p">(</span><span class="nx">state</span><span class="p">);</span>
+      <span class="p">}</span>
+
+      <span class="k">this</span><span class="p">.</span><span class="nx">notifySubscribers</span><span class="p">(</span><span class="dl">"</span><span class="s2">loaded</span><span class="dl">"</span><span class="p">,</span> <span class="nx">state</span><span class="p">);</span>
+      <span class="k">return</span> <span class="nx">state</span><span class="p">;</span>
+    <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="dl">"</span><span class="s2">Failed to load state:</span><span class="dl">"</span><span class="p">,</span> <span class="nx">error</span><span class="p">);</span>
+      <span class="k">this</span><span class="p">.</span><span class="nx">notifySubscribers</span><span class="p">(</span><span class="dl">"</span><span class="s2">error</span><span class="dl">"</span><span class="p">,</span> <span class="nx">error</span><span class="p">);</span>
+      <span class="k">return</span> <span class="nx">defaultValue</span><span class="p">;</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+
+  <span class="nx">clear</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">try</span> <span class="p">{</span>
+      <span class="k">this</span><span class="p">.</span><span class="nx">storage</span><span class="p">.</span><span class="nx">removeItem</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">key</span><span class="p">);</span>
+      <span class="k">this</span><span class="p">.</span><span class="nx">notifySubscribers</span><span class="p">(</span><span class="dl">"</span><span class="s2">cleared</span><span class="dl">"</span><span class="p">);</span>
+    <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="dl">"</span><span class="s2">Failed to clear state:</span><span class="dl">"</span><span class="p">,</span> <span class="nx">error</span><span class="p">);</span>
+      <span class="k">this</span><span class="p">.</span><span class="nx">notifySubscribers</span><span class="p">(</span><span class="dl">"</span><span class="s2">error</span><span class="dl">"</span><span class="p">,</span> <span class="nx">error</span><span class="p">);</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+
+  <span class="nx">subscribe</span><span class="p">(</span><span class="nx">callback</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">subscribers</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="nx">callback</span><span class="p">);</span>
+    <span class="k">return</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="k">this</span><span class="p">.</span><span class="nx">subscribers</span><span class="p">.</span><span class="k">delete</span><span class="p">(</span><span class="nx">callback</span><span class="p">);</span>
+  <span class="p">}</span>
+
+  <span class="nx">notifySubscribers</span><span class="p">(</span><span class="nx">event</span><span class="p">,</span> <span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">subscribers</span><span class="p">.</span><span class="nx">forEach</span><span class="p">((</span><span class="nx">callback</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+      <span class="k">try</span> <span class="p">{</span>
+        <span class="nx">callback</span><span class="p">(</span><span class="nx">event</span><span class="p">,</span> <span class="nx">data</span><span class="p">);</span>
+      <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="dl">"</span><span class="s2">Subscriber error:</span><span class="dl">"</span><span class="p">,</span> <span class="nx">error</span><span class="p">);</span>
+      <span class="p">}</span>
+    <span class="p">});</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// Enhanced store with persistence</span>
+<span class="kd">function</span> <span class="nx">createPersistentStore</span><span class="p">(</span><span class="nx">reducer</span><span class="p">,</span> <span class="nx">initialState</span><span class="p">,</span> <span class="nx">options</span> <span class="o">=</span> <span class="p">{})</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="p">{</span>
+    <span class="nx">storage</span> <span class="o">=</span> <span class="nx">localStorage</span><span class="p">,</span>
+    <span class="nx">key</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">app-state</span><span class="dl">"</span><span class="p">,</span>
+    <span class="nx">includeKeys</span> <span class="o">=</span> <span class="kc">null</span><span class="p">,</span>
+    <span class="nx">excludeKeys</span> <span class="o">=</span> <span class="kc">null</span><span class="p">,</span>
+    <span class="nx">transform</span> <span class="o">=</span> <span class="kc">null</span><span class="p">,</span>
+  <span class="p">}</span> <span class="o">=</span> <span class="nx">options</span><span class="p">;</span>
+
+  <span class="kd">const</span> <span class="nx">persistence</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">StatePersistence</span><span class="p">(</span><span class="nx">storage</span><span class="p">,</span> <span class="nx">key</span><span class="p">);</span>
+
+  <span class="c1">// Load initial state from storage</span>
+  <span class="kd">const</span> <span class="nx">savedState</span> <span class="o">=</span> <span class="nx">persistence</span><span class="p">.</span><span class="nx">load</span><span class="p">({</span>
+    <span class="nx">transform</span><span class="p">,</span>
+    <span class="na">defaultValue</span><span class="p">:</span> <span class="nx">initialState</span><span class="p">,</span>
+  <span class="p">});</span>
+  <span class="kd">const</span> <span class="nx">store</span> <span class="o">=</span> <span class="nx">createStore</span><span class="p">(</span><span class="nx">reducer</span><span class="p">,</span> <span class="nx">savedState</span><span class="p">);</span>
+
+  <span class="c1">// Subscribe to state changes and save</span>
+  <span class="nx">store</span><span class="p">.</span><span class="nx">subscribe</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="nx">currentState</span> <span class="o">=</span> <span class="nx">store</span><span class="p">.</span><span class="nx">getState</span><span class="p">();</span>
+    <span class="nx">persistence</span><span class="p">.</span><span class="nx">save</span><span class="p">(</span><span class="nx">currentState</span><span class="p">,</span> <span class="p">{</span> <span class="nx">includeKeys</span><span class="p">,</span> <span class="nx">excludeKeys</span><span class="p">,</span> <span class="nx">transform</span> <span class="p">});</span>
+  <span class="p">});</span>
+
+  <span class="c1">// Add persistence methods to store</span>
+  <span class="nx">store</span><span class="p">.</span><span class="nx">persist</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="na">clear</span><span class="p">:</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="nx">persistence</span><span class="p">.</span><span class="nx">clear</span><span class="p">(),</span>
+    <span class="na">on</span><span class="p">:</span> <span class="p">(</span><span class="nx">event</span><span class="p">,</span> <span class="nx">callback</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">persistence</span><span class="p">.</span><span class="nx">subscribe</span><span class="p">(</span><span class="nx">callback</span><span class="p">),</span>
+  <span class="p">};</span>
+
+  <span class="k">return</span> <span class="nx">store</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c1">// Usage</span>
+<span class="kd">const</span> <span class="nx">counterReducer</span> <span class="o">=</span> <span class="p">(</span><span class="nx">state</span> <span class="o">=</span> <span class="p">{</span> <span class="na">count</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="na">lastUpdated</span><span class="p">:</span> <span class="kc">null</span> <span class="p">},</span> <span class="nx">action</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="k">switch</span> <span class="p">(</span><span class="nx">action</span><span class="p">.</span><span class="nx">type</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">case</span> <span class="dl">"</span><span class="s2">INCREMENT</span><span class="dl">"</span><span class="p">:</span>
+      <span class="k">return</span> <span class="p">{</span>
+        <span class="p">...</span><span class="nx">state</span><span class="p">,</span>
+        <span class="na">count</span><span class="p">:</span> <span class="nx">state</span><span class="p">.</span><span class="nx">count</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span>
+        <span class="na">lastUpdated</span><span class="p">:</span> <span class="k">new</span> <span class="nb">Date</span><span class="p">().</span><span class="nx">toISOString</span><span class="p">(),</span>
+      <span class="p">};</span>
+    <span class="k">case</span> <span class="dl">"</span><span class="s2">DECREMENT</span><span class="dl">"</span><span class="p">:</span>
+      <span class="k">return</span> <span class="p">{</span>
+        <span class="p">...</span><span class="nx">state</span><span class="p">,</span>
+        <span class="na">count</span><span class="p">:</span> <span class="nx">state</span><span class="p">.</span><span class="nx">count</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span>
+        <span class="na">lastUpdated</span><span class="p">:</span> <span class="k">new</span> <span class="nb">Date</span><span class="p">().</span><span class="nx">toISOString</span><span class="p">(),</span>
+      <span class="p">};</span>
+    <span class="nl">default</span><span class="p">:</span>
+      <span class="k">return</span> <span class="nx">state</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="p">};</span>
+
+<span class="c1">// Create persistent store</span>
+<span class="kd">const</span> <span class="nx">store</span> <span class="o">=</span> <span class="nx">createPersistentStore</span><span class="p">(</span>
+  <span class="nx">counterReducer</span><span class="p">,</span>
+  <span class="p">{</span> <span class="na">count</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="na">lastUpdated</span><span class="p">:</span> <span class="kc">null</span> <span class="p">},</span>
+  <span class="p">{</span>
+    <span class="na">key</span><span class="p">:</span> <span class="dl">"</span><span class="s2">counter-state</span><span class="dl">"</span><span class="p">,</span>
+    <span class="na">includeKeys</span><span class="p">:</span> <span class="p">[</span><span class="dl">"</span><span class="s2">count</span><span class="dl">"</span><span class="p">],</span> <span class="c1">// Only persist count</span>
+    <span class="na">transform</span><span class="p">:</span> <span class="p">(</span><span class="nx">state</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">({</span>
+      <span class="p">...</span><span class="nx">state</span><span class="p">,</span>
+      <span class="na">version</span><span class="p">:</span> <span class="dl">"</span><span class="s2">1.0</span><span class="dl">"</span><span class="p">,</span> <span class="c1">// Add version for migration</span>
+    <span class="p">}),</span>
+  <span class="p">}</span>
+<span class="p">);</span>
+
+<span class="c1">// Listen to persistence events</span>
+<span class="nx">store</span><span class="p">.</span><span class="nx">persist</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="dl">"</span><span class="s2">saved</span><span class="dl">"</span><span class="p">,</span> <span class="p">(</span><span class="nx">state</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">State saved:</span><span class="dl">"</span><span class="p">,</span> <span class="nx">state</span><span class="p">);</span>
+<span class="p">});</span>
+
+<span class="nx">store</span><span class="p">.</span><span class="nx">persist</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="dl">"</span><span class="s2">loaded</span><span class="dl">"</span><span class="p">,</span> <span class="p">(</span><span class="nx">state</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">State loaded:</span><span class="dl">"</span><span class="p">,</span> <span class="nx">state</span><span class="p">);</span>
+<span class="p">});</span>
+
+<span class="nx">store</span><span class="p">.</span><span class="nx">persist</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="dl">"</span><span class="s2">error</span><span class="dl">"</span><span class="p">,</span> <span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="dl">"</span><span class="s2">Persistence error:</span><span class="dl">"</span><span class="p">,</span> <span class="nx">error</span><span class="p">);</span>
+<span class="p">});</span>
+
+<span class="c1">// Use the store</span>
+<span class="nx">store</span><span class="p">.</span><span class="nx">dispatch</span><span class="p">({</span> <span class="na">type</span><span class="p">:</span> <span class="dl">"</span><span class="s2">INCREMENT</span><span class="dl">"</span> <span class="p">});</span>
+<span class="c1">// State will be automatically saved to localStorage</span>
+
+<span class="c1">// Clear persisted state</span>
+<span class="c1">// store.persist.clear();</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<h2 id="best-practices">Best Practices</h2>
+
+<h3 id="state-structure">State Structure</h3>
+
+<ul>
+  <li>Normalize complex data structures</li>
+  <li>Keep state flat and avoid nesting</li>
+  <li>Separate UI state from business logic</li>
+  <li>Use selectors for derived state</li>
+  <li>Implement proper error boundaries</li>
+</ul>
+
+<h3 id="performance-optimization">Performance Optimization</h3>
+
+<ul>
+  <li>Use React.memo for expensive components</li>
+  <li>Implement proper memoization with useMemo/useCallback</li>
+  <li>Avoid unnecessary re-renders</li>
+  <li>Use React DevTools Profiler</li>
+  <li>Implement code splitting for large state</li>
+</ul>
+
+<h3 id="testing">Testing</h3>
+
+<ul>
+  <li>Test reducers as pure functions</li>
+  <li>Mock external dependencies</li>
+  <li>Test async actions with proper setup/teardown</li>
+  <li>Use snapshot testing for UI components</li>
+  <li>Implement integration tests for state flows</li>
+</ul>
+
+<h2 id="resources">Resources</h2>
+
+<h3 id="documentation">Documentation</h3>
+
+<ul>
+  <li><a href="https://redux.js.org/">Redux Documentation</a></li>
+  <li><a href="https://redux-toolkit.js.org/">Redux Toolkit</a></li>
+  <li><a href="https://reactjs.org/docs/context.html">React Context API</a></li>
+  <li><a href="https://github.com/pmndrs/zustand">Zustand</a></li>
+</ul>
+
+<h3 id="tools">Tools</h3>
+
+<ul>
+  <li><a href="https://github.com/reduxjs/redux-devtools">Redux DevTools</a></li>
+  <li><a href="https://reactjs.org/blog/2019/08/15/new-react-devtools.html">React DevTools</a></li>
+  <li><a href="https://immerjs.github.io/immer/">Immer</a> - Immutable updates</li>
+  <li><a href="https://github.com/reduxjs/reselect">Reselect</a> - Memoized selectors</li>
+</ul>
+
+<h3 id="practice-platforms">Practice Platforms</h3>
+
+<ul>
+  <li><a href="https://redux-toolkit.js.org/introduction/quick-start">Redux Toolkit Examples</a></li>
+  <li><a href="https://kentcdodds.com/blog/application-state-management-with-react">React State Management Patterns</a></li>
+  <li><a href="https://redux.js.org/style-guide/">State Management Best Practices</a></li>
+</ul>
+
+<hr />
+
+<p><em>This guide covers essential state management concepts for frontend interviews, including practical problems and advanced techniques commonly asked at Big Tech companies.</em></p>
+
+        </div>
+    </article>
+</div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Study Resources</h3>
+                    <p>Comprehensive collection of frontend interview questions, coding challenges, and system design problems.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Progress Tracking</h3>
+                    <p>Monitor your learning journey with detailed progress indicators and completion status.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Big Tech Ready</h3>
+                    <p>Curated content specifically designed for interviews at Google, Meta, Amazon, Apple, and Netflix.</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Frontend Interview Hub. Built for aspiring frontend engineers.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="/assets/js/main.js"></script>
+</body>
+</html>

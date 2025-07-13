@@ -1,0 +1,1191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Binary Tree Maximum Path Sum | Frontend Interview Preparation Guide</title>
+    <meta name="description" content="Comprehensive frontend interview materials for Big Tech companies">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="/assets/css/main.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <header>
+        <nav class="container">
+            <div class="logo">Frontend Interview Hub</div>
+            <ul class="nav-links">
+                <li><a href="/">Home</a></li>
+                <li><a href="#progress">Progress</a></li>
+                <li><a href="#knowledge">Knowledge</a></li>
+                <li><a href="https://github.com/nee/interview">GitHub</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <div class="content-container">
+    
+        <nav class="breadcrumb">
+            <ol>
+                <li><a href="/">Home</a></li>
+                
+                
+                
+                    
+                
+                    
+                        
+                        
+                            <li><a href="/leetcode/">Leetcode</a></li>
+                        
+                    
+                
+                    
+                        
+                        
+                            <li><a href="/leetcode/tree-graph/">Tree graph</a></li>
+                        
+                    
+                
+                    
+                        
+                        
+                            <li><a href="/leetcode/tree-graph/problems/">Problems</a></li>
+                        
+                    
+                
+                    
+                        
+                        
+                            <li class="active">Binary tree maximum path sum</li>
+                        
+                    
+                
+            </ol>
+        </nav>
+    
+    
+    <article class="content">
+        
+            <header class="content-header">
+                <h1 class="content-title">Binary Tree Maximum Path Sum</h1>
+                
+                
+                    <div class="content-meta">
+                        <span class="difficulty difficulty-hard">Hard</span>
+                        
+                            <span class="category">Tree/Graph</span>
+                        
+                        
+                            <div class="tags">
+                                
+                                    <span class="tag">Tree/Graph</span>
+                                
+                                    <span class="tag">Hash Table</span>
+                                
+                            </div>
+                        
+                    </div>
+                
+            </header>
+        
+        
+        <div class="content-body">
+            <h1 id="binary-tree-maximum-path-sum">Binary Tree Maximum Path Sum</h1>
+
+<p><strong>LeetCode Problem # * 124. Binary Tree Maximum Path Sum</strong></p>
+
+<h2 id="problem-description">Problem Description</h2>
+
+<p>LeetCode problem solution with multiple approaches and explanations.</p>
+
+<h2 id="solutions">Solutions</h2>
+
+<p>/**</p>
+<ul>
+  <li>
+    <ol>
+      <li>Binary Tree Maximum Path Sum</li>
+    </ol>
+  </li>
+  <li></li>
+  <li>A path in a binary tree is a sequence of nodes where each pair of adjacent nodes in the sequence</li>
+  <li>has an edge connecting them. A node can only appear in the sequence at most once.</li>
+  <li>Note that the path does not need to pass through the root.</li>
+  <li></li>
+  <li>The path sum of a path is the sum of the node’s values in the path.</li>
+  <li>Given the root of a binary tree, return the maximum path sum of any non-empty path.</li>
+  <li></li>
+  <li>Example 1:</li>
+  <li>Input: root = [1,2,3]</li>
+  <li>Output: 6</li>
+  <li>Explanation: The optimal path is 2 -&gt; 1 -&gt; 3 with path sum = 2 + 1 + 3 = 6.</li>
+  <li></li>
+  <li>Example 2:</li>
+  <li>Input: root = [-10,9,20,null,null,15,7]</li>
+  <li>Output: 42</li>
+  <li>Explanation: The optimal path is 15 -&gt; 20 -&gt; 7 with path sum = 15 + 20 + 7 = 42.</li>
+  <li></li>
+  <li>Constraints:</li>
+  <li>
+    <ul>
+      <li>The number of nodes in the tree is in the range [1, 3 * 10^4].</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>-1000 &lt;= Node.val &lt;= 1000
+ */</li>
+    </ul>
+  </li>
+</ul>
+
+<p>// Definition for a binary tree node
+class TreeNode {
+    val: number;
+    left: TreeNode | null;
+    right: TreeNode | null;</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+</pre></td><td class="rouge-code"><pre>constructor(val?: number, left?: TreeNode | null, right?: TreeNode | null) {
+    this.val = (val === undefined ? 0 : val);
+    this.left = (left === undefined ? null : left);
+    this.right = (right === undefined ? null : right);
+} }
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>// Solution 1: Recursive DFS with Global Maximum
+// Time: O(n), Space: O(h)
+export function maxPathSum1(root: TreeNode | null): number {
+    if (!root) return 0;</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+</pre></td><td class="rouge-code"><pre>let maxSum = -Infinity;
+
+function maxPathFromNode(node: TreeNode | null): number {
+    if (!node) return 0;
+    
+    // Get maximum path sum from left and right subtrees
+    // Use Math.max(0, ...) to ignore negative paths
+    const leftMax = Math.max(0, maxPathFromNode(node.left));
+    const rightMax = Math.max(0, maxPathFromNode(node.right));
+    
+    // Maximum path sum passing through current node
+    const currentPathSum = node.val + leftMax + rightMax;
+    
+    // Update global maximum
+    maxSum = Math.max(maxSum, currentPathSum);
+    
+    // Return maximum path sum extending from current node
+    // (can only choose one branch to extend upward)
+    return node.val + Math.max(leftMax, rightMax);
+}
+
+maxPathFromNode(root);
+return maxSum; }
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>// Solution 2: DFS with Return Object
+// Time: O(n), Space: O(h)
+export function maxPathSum2(root: TreeNode | null): number {
+    if (!root) return 0;</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+</pre></td><td class="rouge-code"><pre>interface PathInfo {
+    maxPath: number;      // Maximum path sum extending from node
+    maxPathSum: number;   // Maximum path sum in subtree
+}
+
+function dfs(node: TreeNode | null): PathInfo {
+    if (!node) {
+        return { maxPath: 0, maxPathSum: -Infinity };
+    }
+    
+    const left = dfs(node.left);
+    const right = dfs(node.right);
+    
+    // Maximum path extending from current node
+    const maxPath = node.val + Math.max(0, left.maxPath, right.maxPath);
+    
+    // Maximum path sum through current node
+    const pathThroughNode = node.val + Math.max(0, left.maxPath) + Math.max(0, right.maxPath);
+    
+    // Maximum path sum in current subtree
+    const maxPathSum = Math.max(pathThroughNode, left.maxPathSum, right.maxPathSum);
+    
+    return { maxPath, maxPathSum };
+}
+
+return dfs(root).maxPathSum; }
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>// Solution 3: Iterative with Stack
+// Time: O(n), Space: O(n)
+export function maxPathSum3(root: TreeNode | null): number {
+    if (!root) return 0;</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+</pre></td><td class="rouge-code"><pre>const stack: TreeNode[] = [];
+const visited = new Set&lt;TreeNode&gt;();
+const pathSums = new Map&lt;TreeNode, number&gt;();
+let maxSum = -Infinity;
+
+stack.push(root);
+
+while (stack.length &gt; 0) {
+    const node = stack[stack.length - 1];
+    
+    if (visited.has(node)) {
+        // Process node (post-order)
+        stack.pop();
+        
+        const leftPath = node.left ? Math.max(0, pathSums.get(node.left)!) : 0;
+        const rightPath = node.right ? Math.max(0, pathSums.get(node.right)!) : 0;
+        
+        // Path sum through current node
+        const currentPathSum = node.val + leftPath + rightPath;
+        maxSum = Math.max(maxSum, currentPathSum);
+        
+        // Path sum extending from current node
+        pathSums.set(node, node.val + Math.max(leftPath, rightPath));
+    } else {
+        // First visit - add children to stack
+        visited.add(node);
+        
+        if (node.right) stack.push(node.right);
+        if (node.left) stack.push(node.left);
+    }
+}
+
+return maxSum; }
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>// Solution 4: Morris Traversal (Advanced)
+// Time: O(n), Space: O(1)
+export function maxPathSum4(root: TreeNode | null): number {
+    if (!root) return 0;</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+</pre></td><td class="rouge-code"><pre>// This is complex for Morris traversal due to the need for post-order processing
+// We'll use a modified approach with threading
+let maxSum = -Infinity;
+const pathSums = new Map&lt;TreeNode, number&gt;();
+
+function getPathSum(node: TreeNode | null): number {
+    if (!node) return 0;
+    return pathSums.get(node) || 0;
+}
+
+function processNode(node: TreeNode): void {
+    const leftPath = Math.max(0, getPathSum(node.left));
+    const rightPath = Math.max(0, getPathSum(node.right));
+    
+    // Path through current node
+    const currentPathSum = node.val + leftPath + rightPath;
+    maxSum = Math.max(maxSum, currentPathSum);
+    
+    // Path extending from current node
+    pathSums.set(node, node.val + Math.max(leftPath, rightPath));
+}
+
+// Modified post-order Morris traversal
+let current = root;
+
+while (current) {
+    if (!current.left) {
+        // Process single node
+        if (!current.right) {
+            processNode(current);
+        }
+        current = current.right;
+    } else {
+        // Find inorder predecessor
+        let predecessor = current.left;
+        while (predecessor.right &amp;&amp; predecessor.right !== current) {
+            predecessor = predecessor.right;
+        }
+        
+        if (!predecessor.right) {
+            // Make threading
+            predecessor.right = current;
+            current = current.left;
+        } else {
+            // Remove threading and process
+            predecessor.right = null;
+            processNode(current);
+            current = current.right;
+        }
+    }
+}
+
+return maxSum; }
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>// Solution 5: Bottom-Up with Explicit Stack
+// Time: O(n), Space: O(n)
+export function maxPathSum5(root: TreeNode | null): number {
+    if (!root) return 0;</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+</pre></td><td class="rouge-code"><pre>const stack: TreeNode[] = [root];
+const postOrder: TreeNode[] = [];
+
+// Get post-order traversal
+while (stack.length &gt; 0) {
+    const node = stack.pop()!;
+    postOrder.push(node);
+    
+    if (node.left) stack.push(node.left);
+    if (node.right) stack.push(node.right);
+}
+
+postOrder.reverse();
+
+let maxSum = -Infinity;
+const maxPathFromNode = new Map&lt;TreeNode, number&gt;();
+
+// Process in post-order
+for (const node of postOrder) {
+    const leftPath = node.left ? Math.max(0, maxPathFromNode.get(node.left)!) : 0;
+    const rightPath = node.right ? Math.max(0, maxPathFromNode.get(node.right)!) : 0;
+    
+    // Path through current node
+    const pathThroughNode = node.val + leftPath + rightPath;
+    maxSum = Math.max(maxSum, pathThroughNode);
+    
+    // Path extending from current node
+    maxPathFromNode.set(node, node.val + Math.max(leftPath, rightPath));
+}
+
+return maxSum; }
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>// Solution 6: Divide and Conquer
+// Time: O(n), Space: O(h)
+export function maxPathSum6(root: TreeNode | null): number {
+    interface Result {
+        maxPath: number;        // Max path extending from root
+        maxPathSum: number;     // Max path sum in subtree
+        includeRoot: number;    // Max path including root
+    }</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+</pre></td><td class="rouge-code"><pre>function solve(node: TreeNode | null): Result {
+    if (!node) {
+        return {
+            maxPath: 0,
+            maxPathSum: -Infinity,
+            includeRoot: 0
+        };
+    }
+    
+    const left = solve(node.left);
+    const right = solve(node.right);
+    
+    // Max path extending from current node
+    const maxPath = node.val + Math.max(0, left.maxPath, right.maxPath);
+    
+    // Max path including current node (can use both children)
+    const includeRoot = node.val + Math.max(0, left.maxPath) + Math.max(0, right.maxPath);
+    
+    // Max path sum in current subtree
+    const maxPathSum = Math.max(
+        includeRoot,
+        left.maxPathSum,
+        right.maxPathSum,
+        left.includeRoot,
+        right.includeRoot
+    );
+    
+    return { maxPath, maxPathSum, includeRoot };
+}
+
+return solve(root).maxPathSum; }
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>// Helper functions for testing
+function createTree(values: (number | null)[]): TreeNode | null {
+    if (values.length === 0 || values[0] === null) return null;</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+</pre></td><td class="rouge-code"><pre>const root = new TreeNode(values[0]);
+const queue: TreeNode[] = [root];
+let i = 1;
+
+while (queue.length &gt; 0 &amp;&amp; i &lt; values.length) {
+    const node = queue.shift()!;
+    
+    if (i &lt; values.length &amp;&amp; values[i] !== null) {
+        node.left = new TreeNode(values[i]!);
+        queue.push(node.left);
+    }
+    i++;
+    
+    if (i &lt; values.length &amp;&amp; values[i] !== null) {
+        node.right = new TreeNode(values[i]!);
+        queue.push(node.right);
+    }
+    i++;
+}
+
+return root; }
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>// Test cases
+export function testMaxPathSum() {
+    console.log(“Testing Binary Tree Maximum Path Sum:”);</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+</pre></td><td class="rouge-code"><pre>const testCases = [
+    {
+        tree: [1, 2, 3],
+        expected: 6
+    },
+    {
+        tree: [-10, 9, 20, null, null, 15, 7],
+        expected: 42
+    },
+    {
+        tree: [1, -2, 3],
+        expected: 4
+    },
+    {
+        tree: [-3],
+        expected: -3
+    },
+    {
+        tree: [2, -1],
+        expected: 2
+    },
+    {
+        tree: [5, 4, 8, 11, null, 13, 4, 7, 2, null, null, null, 1],
+        expected: 48
+    },
+    {
+        tree: [-1, -2, -3],
+        expected: -1
+    }
+];
+
+const solutions = [
+    { name: "Recursive DFS Global Max", fn: maxPathSum1 },
+    { name: "DFS Return Object", fn: maxPathSum2 },
+    { name: "Iterative Stack", fn: maxPathSum3 },
+    { name: "Morris Traversal", fn: maxPathSum4 },
+    { name: "Bottom-Up Stack", fn: maxPathSum5 },
+    { name: "Divide and Conquer", fn: maxPathSum6 }
+];
+
+solutions.forEach(solution =&gt; {
+    console.log(`\n${solution.name}:`);
+    testCases.forEach((test, i) =&gt; {
+        const root = createTree(test.tree);
+        const result = solution.fn(root);
+        const passed = result === test.expected;
+        console.log(`  Test ${i + 1}: ${passed ? 'PASS' : 'FAIL'}`);
+        if (!passed) {
+            console.log(`    Tree: ${JSON.stringify(test.tree)}`);
+            console.log(`    Expected: ${test.expected}`);
+            console.log(`    Got: ${result}`);
+        }
+    });
+}); }
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>/**</p>
+<ul>
+  <li>Key Insights:</li>
+  <li></li>
+  <li>
+    <ol>
+      <li><strong>Path Definition</strong>:</li>
+    </ol>
+  </li>
+  <li>
+    <ul>
+      <li>Sequence of connected nodes (parent-child relationship)</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Each node appears at most once</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Path doesn’t need to include root</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Can be single node, straight line, or “bent” through a node</li>
+    </ul>
+  </li>
+  <li></li>
+  <li>
+    <ol>
+      <li><strong>Key Insight</strong>:</li>
+    </ol>
+  </li>
+  <li>
+    <ul>
+      <li>For each node, consider two scenarios:</li>
+    </ul>
+  </li>
+  <li>a) Maximum path extending from node (to parent)</li>
+  <li>b) Maximum path passing through node (connecting subtrees)</li>
+  <li>
+    <ul>
+      <li>Global maximum is updated when considering scenario (b)</li>
+    </ul>
+  </li>
+  <li></li>
+  <li>
+    <ol>
+      <li><strong>Recursive Strategy</strong>:</li>
+    </ol>
+  </li>
+  <li>
+    <ul>
+      <li>Each node returns max path sum extending upward</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Considers path through current node for global maximum</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Uses post-order traversal (children before parent)</li>
+    </ul>
+  </li>
+  <li></li>
+  <li>
+    <ol>
+      <li><strong>Negative Value Handling</strong>:</li>
+    </ol>
+  </li>
+  <li>
+    <ul>
+      <li>Use Math.max(0, pathSum) to ignore negative contributions</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>A node might not include its children if they’re negative</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Single negative node can be the maximum path</li>
+    </ul>
+  </li>
+  <li></li>
+  <li>
+    <ol>
+      <li><strong>Time Complexity</strong>: O(n)</li>
+    </ol>
+  </li>
+  <li>
+    <ul>
+      <li>Visit each node exactly once</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Constant work per node</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Linear in number of nodes</li>
+    </ul>
+  </li>
+  <li></li>
+  <li>
+    <ol>
+      <li><strong>Space Complexity</strong>: O(h)</li>
+    </ol>
+  </li>
+  <li>
+    <ul>
+      <li>Recursion stack depth equals tree height</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>O(log n) for balanced tree, O(n) for skewed tree</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Iterative versions may use O(n) space</li>
+    </ul>
+  </li>
+  <li></li>
+  <li>
+    <ol>
+      <li><strong>Two Types of Paths</strong>:</li>
+    </ol>
+  </li>
+  <li>
+    <ul>
+      <li>Extending path: goes from node toward root</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Through path: connects two subtrees via current node</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Only extending paths can be part of larger paths</li>
+    </ul>
+  </li>
+  <li></li>
+  <li>
+    <ol>
+      <li><strong>Interview Strategy</strong>:</li>
+    </ol>
+  </li>
+  <li>
+    <ul>
+      <li>Start with recursive DFS approach</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Explain the two path types clearly</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Handle negative values correctly</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Consider edge cases (single node, all negative)</li>
+    </ul>
+  </li>
+  <li></li>
+  <li>
+    <ol>
+      <li><strong>Edge Cases</strong>:</li>
+    </ol>
+  </li>
+  <li>
+    <ul>
+      <li>Single node tree</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>All negative values</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Skewed tree (linear)</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Empty subtrees</li>
+    </ul>
+  </li>
+  <li></li>
+  <li>
+    <ol>
+      <li><strong>Common Mistakes</strong>:</li>
+    </ol>
+  </li>
+  <li>
+    <ul>
+      <li>Not distinguishing extending vs through paths</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Incorrect handling of negative values</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Forgetting to update global maximum</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Wrong base case for null nodes</li>
+    </ul>
+  </li>
+  <li></li>
+  <li>
+    <ol>
+      <li><strong>Optimization Considerations</strong>:</li>
+    </ol>
+  </li>
+  <li>
+    <ul>
+      <li>Early termination not easily applicable</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Space optimization with iterative approaches</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Avoiding repeated calculations</li>
+    </ul>
+  </li>
+  <li></li>
+  <li>
+    <ol>
+      <li><strong>Big Tech Variations</strong>:</li>
+    </ol>
+  </li>
+  <li>
+    <ul>
+      <li>Google: Path with maximum product</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Meta: Path with specific constraints</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Amazon: K longest paths in tree</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Microsoft: Path sum with node deletion cost</li>
+    </ul>
+  </li>
+  <li></li>
+  <li>
+    <ol>
+      <li><strong>Follow-up Questions</strong>:</li>
+    </ol>
+  </li>
+  <li>
+    <ul>
+      <li>Return the actual path, not just sum</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Find all paths with maximum sum</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Path with exactly k nodes</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Path sum closest to target value</li>
+    </ul>
+  </li>
+  <li></li>
+  <li>
+    <ol>
+      <li><strong>Real-world Applications</strong>:</li>
+    </ol>
+  </li>
+  <li>
+    <ul>
+      <li>Financial portfolio optimization</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Network routing with costs</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Game theory path optimization</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Resource allocation in hierarchies</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Signal processing on tree structures</li>
+    </ul>
+  </li>
+  <li></li>
+  <li>
+    <ol>
+      <li><strong>Pattern Recognition</strong>:</li>
+    </ol>
+  </li>
+  <li>
+    <ul>
+      <li>Tree DP pattern (bottom-up information gathering)</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Global vs local optimization</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Post-order traversal for dependent calculations</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Choice between extending vs terminating paths</li>
+    </ul>
+  </li>
+  <li></li>
+  <li>
+    <ol>
+      <li><strong>Implementation Tips</strong>:</li>
+    </ol>
+  </li>
+  <li>
+    <ul>
+      <li>Clear separation of extending vs through paths</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Proper handling of null nodes</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Global variable for maximum tracking</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Consider both children when computing through path
+ */</li>
+    </ul>
+  </li>
+</ul>
+
+
+        </div>
+    </article>
+</div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Study Resources</h3>
+                    <p>Comprehensive collection of frontend interview questions, coding challenges, and system design problems.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Progress Tracking</h3>
+                    <p>Monitor your learning journey with detailed progress indicators and completion status.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Big Tech Ready</h3>
+                    <p>Curated content specifically designed for interviews at Google, Meta, Amazon, Apple, and Netflix.</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Frontend Interview Hub. Built for aspiring frontend engineers.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="/assets/js/main.js"></script>
+</body>
+</html>

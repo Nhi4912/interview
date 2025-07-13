@@ -1,0 +1,1171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lowest Common Ancestor of a Binary Tree | Frontend Interview Preparation Guide</title>
+    <meta name="description" content="Comprehensive frontend interview materials for Big Tech companies">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="/assets/css/main.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <header>
+        <nav class="container">
+            <div class="logo">Frontend Interview Hub</div>
+            <ul class="nav-links">
+                <li><a href="/">Home</a></li>
+                <li><a href="#progress">Progress</a></li>
+                <li><a href="#knowledge">Knowledge</a></li>
+                <li><a href="https://github.com/nee/interview">GitHub</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <div class="content-container">
+    
+        <nav class="breadcrumb">
+            <ol>
+                <li><a href="/">Home</a></li>
+                
+                
+                
+                    
+                
+                    
+                        
+                        
+                            <li><a href="/leetcode/">Leetcode</a></li>
+                        
+                    
+                
+                    
+                        
+                        
+                            <li><a href="/leetcode/tree-graph/">Tree graph</a></li>
+                        
+                    
+                
+                    
+                        
+                        
+                            <li><a href="/leetcode/tree-graph/problems/">Problems</a></li>
+                        
+                    
+                
+                    
+                        
+                        
+                            <li class="active">Lowest common ancestor of a binary tree</li>
+                        
+                    
+                
+            </ol>
+        </nav>
+    
+    
+    <article class="content">
+        
+            <header class="content-header">
+                <h1 class="content-title">Lowest Common Ancestor of a Binary Tree</h1>
+                
+                
+                    <div class="content-meta">
+                        <span class="difficulty difficulty-hard">Hard</span>
+                        
+                            <span class="category">Tree/Graph</span>
+                        
+                        
+                            <div class="tags">
+                                
+                                    <span class="tag">Tree/Graph</span>
+                                
+                                    <span class="tag">Hash Table</span>
+                                
+                            </div>
+                        
+                    </div>
+                
+            </header>
+        
+        
+        <div class="content-body">
+            <h1 id="lowest-common-ancestor-of-a-binary-tree">Lowest Common Ancestor of a Binary Tree</h1>
+
+<p><strong>LeetCode Problem # * 236. Lowest Common Ancestor of a Binary Tree</strong></p>
+
+<h2 id="problem-description">Problem Description</h2>
+
+<p>LeetCode problem solution with multiple approaches and explanations.</p>
+
+<h2 id="solutions">Solutions</h2>
+
+<p>/**</p>
+<ul>
+  <li>
+    <ol>
+      <li>Lowest Common Ancestor of a Binary Tree</li>
+    </ol>
+  </li>
+  <li></li>
+  <li>Given a binary tree, find the lowest common ancestor (LCA) of two given nodes in the tree.</li>
+  <li></li>
+  <li>According to the definition of LCA on Wikipedia: “The lowest common ancestor is defined</li>
+  <li>between two nodes p and q as the lowest node in T that has both p and q as descendants</li>
+  <li>(where we allow a node to be a descendant of itself).”</li>
+  <li></li>
+  <li>Example 1:</li>
+  <li>Input: root = [3,5,1,6,2,0,8,null,null,7,4], p = 5, q = 1</li>
+  <li>Output: 3</li>
+  <li>Explanation: The LCA of nodes 5 and 1 is 3.</li>
+  <li></li>
+  <li>Example 2:</li>
+  <li>Input: root = [3,5,1,6,2,0,8,null,null,7,4], p = 5, q = 4</li>
+  <li>Output: 5</li>
+  <li>Explanation: The LCA of nodes 5 and 4 is 5, since a node can be a descendant of itself.</li>
+  <li></li>
+  <li>Example 3:</li>
+  <li>Input: root = [1,2], p = 1, q = 2</li>
+  <li>Output: 1</li>
+  <li></li>
+  <li>Constraints:</li>
+  <li>
+    <ul>
+      <li>The number of nodes in the tree is in the range [2, 10^5].</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>-10^9 &lt;= Node.val &lt;= 10^9</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>All Node.val are unique.</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>p != q</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>p and q will exist in the tree.
+ */</li>
+    </ul>
+  </li>
+</ul>
+
+<p>// Definition for a binary tree node
+class TreeNode {
+    val: number;
+    left: TreeNode | null;
+    right: TreeNode | null;</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+</pre></td><td class="rouge-code"><pre>constructor(val?: number, left?: TreeNode | null, right?: TreeNode | null) {
+    this.val = (val === undefined ? 0 : val);
+    this.left = (left === undefined ? null : left);
+    this.right = (right === undefined ? null : right);
+} }
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>// Solution 1: Recursive DFS (Most Common)
+// Time: O(n), Space: O(h) where h is height
+export function lowestCommonAncestor1(root: TreeNode | null, p: TreeNode | null, q: TreeNode | null): TreeNode | null {
+    if (!root || !p || !q) return null;</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+</pre></td><td class="rouge-code"><pre>function dfs(node: TreeNode | null): TreeNode | null {
+    if (!node) return null;
+    
+    // If current node is p or q, return it
+    if (node === p || node === q) return node;
+    
+    // Search in left and right subtrees
+    const left = dfs(node.left);
+    const right = dfs(node.right);
+    
+    // If both left and right return non-null, current node is LCA
+    if (left &amp;&amp; right) return node;
+    
+    // Return the non-null child (or null if both are null)
+    return left || right;
+}
+
+return dfs(root); }
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>// Solution 2: Parent Tracking with HashMap
+// Time: O(n), Space: O(n)
+export function lowestCommonAncestor2(root: TreeNode | null, p: TreeNode | null, q: TreeNode | null): TreeNode | null {
+    if (!root || !p || !q) return null;</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+</pre></td><td class="rouge-code"><pre>const parentMap = new Map&lt;TreeNode, TreeNode | null&gt;();
+const queue: TreeNode[] = [root];
+parentMap.set(root, null);
+
+// Build parent mapping using BFS
+while (queue.length &gt; 0 &amp;&amp; (!parentMap.has(p) || !parentMap.has(q))) {
+    const node = queue.shift()!;
+    
+    if (node.left) {
+        parentMap.set(node.left, node);
+        queue.push(node.left);
+    }
+    
+    if (node.right) {
+        parentMap.set(node.right, node);
+        queue.push(node.right);
+    }
+}
+
+// Get all ancestors of p
+const ancestors = new Set&lt;TreeNode&gt;();
+let current: TreeNode | null = p;
+
+while (current) {
+    ancestors.add(current);
+    current = parentMap.get(current)!;
+}
+
+// Find first common ancestor starting from q
+current = q;
+while (current) {
+    if (ancestors.has(current)) {
+        return current;
+    }
+    current = parentMap.get(current)!;
+}
+
+return null; }
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>// Solution 3: Path Tracking
+// Time: O(n), Space: O(h)
+export function lowestCommonAncestor3(root: TreeNode | null, p: TreeNode | null, q: TreeNode | null): TreeNode | null {
+    if (!root || !p || !q) return null;</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+</pre></td><td class="rouge-code"><pre>function findPath(node: TreeNode | null, target: TreeNode, path: TreeNode[]): boolean {
+    if (!node) return false;
+    
+    path.push(node);
+    
+    if (node === target) return true;
+    
+    if (findPath(node.left, target, path) || findPath(node.right, target, path)) {
+        return true;
+    }
+    
+    path.pop();
+    return false;
+}
+
+const pathToP: TreeNode[] = [];
+const pathToQ: TreeNode[] = [];
+
+findPath(root, p, pathToP);
+findPath(root, q, pathToQ);
+
+// Find last common node in both paths
+let lca: TreeNode | null = null;
+const minLength = Math.min(pathToP.length, pathToQ.length);
+
+for (let i = 0; i &lt; minLength; i++) {
+    if (pathToP[i] === pathToQ[i]) {
+        lca = pathToP[i];
+    } else {
+        break;
+    }
+}
+
+return lca; }
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>// Solution 4: Iterative with Stack
+// Time: O(n), Space: O(n)
+export function lowestCommonAncestor4(root: TreeNode | null, p: TreeNode | null, q: TreeNode | null): TreeNode | null {
+    if (!root || !p || !q) return null;</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+</pre></td><td class="rouge-code"><pre>const stack: TreeNode[] = [root];
+const parentMap = new Map&lt;TreeNode, TreeNode | null&gt;();
+parentMap.set(root, null);
+
+// Build parent mapping using DFS
+while (!parentMap.has(p) || !parentMap.has(q)) {
+    const node = stack.pop()!;
+    
+    if (node.left) {
+        parentMap.set(node.left, node);
+        stack.push(node.left);
+    }
+    
+    if (node.right) {
+        parentMap.set(node.right, node);
+        stack.push(node.right);
+    }
+}
+
+// Get ancestors of p
+const ancestors = new Set&lt;TreeNode&gt;();
+let current: TreeNode | null = p;
+
+while (current) {
+    ancestors.add(current);
+    current = parentMap.get(current)!;
+}
+
+// Find LCA by traversing ancestors of q
+current = q;
+while (current &amp;&amp; !ancestors.has(current)) {
+    current = parentMap.get(current)!;
+}
+
+return current; }
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>// Solution 5: Optimized Single Pass
+// Time: O(n), Space: O(h)
+export function lowestCommonAncestor5(root: TreeNode | null, p: TreeNode | null, q: TreeNode | null): TreeNode | null {
+    let result: TreeNode | null = null;</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+</pre></td><td class="rouge-code"><pre>function dfs(node: TreeNode | null): boolean {
+    if (!node) return false;
+    
+    // Check if current node is p or q
+    const mid = (node === p || node === q) ? 1 : 0;
+    
+    // Check left and right subtrees
+    const left = dfs(node.left) ? 1 : 0;
+    const right = dfs(node.right) ? 1 : 0;
+    
+    // If any two of the flags are set, we found LCA
+    if (mid + left + right &gt;= 2) {
+        result = node;
+    }
+    
+    // Return true if any of the flags is set
+    return (mid + left + right) &gt; 0;
+}
+
+dfs(root);
+return result; }
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>// Solution 6: Level Order with Parent Tracking
+// Time: O(n), Space: O(n)
+export function lowestCommonAncestor6(root: TreeNode | null, p: TreeNode | null, q: TreeNode | null): TreeNode | null {
+    if (!root || !p || !q) return null;</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+</pre></td><td class="rouge-code"><pre>const queue: [TreeNode, TreeNode | null][] = [[root, null]];
+const parentMap = new Map&lt;TreeNode, TreeNode | null&gt;();
+
+// Level-order traversal with parent tracking
+while (queue.length &gt; 0) {
+    const [node, parent] = queue.shift()!;
+    parentMap.set(node, parent);
+    
+    if (node.left) {
+        queue.push([node.left, node]);
+    }
+    
+    if (node.right) {
+        queue.push([node.right, node]);
+    }
+    
+    // Early termination when both nodes are found
+    if (parentMap.has(p) &amp;&amp; parentMap.has(q)) {
+        break;
+    }
+}
+
+// Build path from p to root
+const pathFromP = new Set&lt;TreeNode&gt;();
+let current: TreeNode | null = p;
+
+while (current) {
+    pathFromP.add(current);
+    current = parentMap.get(current)!;
+}
+
+// Find first intersection from q to root
+current = q;
+while (current &amp;&amp; !pathFromP.has(current)) {
+    current = parentMap.get(current)!;
+}
+
+return current; }
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>// Helper functions for testing
+function createTree(values: (number | null)[]): TreeNode | null {
+    if (values.length === 0 || values[0] === null) return null;</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+</pre></td><td class="rouge-code"><pre>const root = new TreeNode(values[0]);
+const queue: TreeNode[] = [root];
+let i = 1;
+
+while (queue.length &gt; 0 &amp;&amp; i &lt; values.length) {
+    const node = queue.shift()!;
+    
+    if (i &lt; values.length &amp;&amp; values[i] !== null) {
+        node.left = new TreeNode(values[i]!);
+        queue.push(node.left);
+    }
+    i++;
+    
+    if (i &lt; values.length &amp;&amp; values[i] !== null) {
+        node.right = new TreeNode(values[i]!);
+        queue.push(node.right);
+    }
+    i++;
+}
+
+return root; }
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>function findNode(root: TreeNode | null, val: number): TreeNode | null {
+    if (!root) return null;
+    if (root.val === val) return root;</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre>return findNode(root.left, val) || findNode(root.right, val); }
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>// Test cases
+export function testLowestCommonAncestor() {
+    console.log(“Testing Lowest Common Ancestor of Binary Tree:”);</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+</pre></td><td class="rouge-code"><pre>const testCases = [
+    {
+        tree: [3, 5, 1, 6, 2, 0, 8, null, null, 7, 4],
+        p: 5,
+        q: 1,
+        expected: 3
+    },
+    {
+        tree: [3, 5, 1, 6, 2, 0, 8, null, null, 7, 4],
+        p: 5,
+        q: 4,
+        expected: 5
+    },
+    {
+        tree: [1, 2],
+        p: 1,
+        q: 2,
+        expected: 1
+    },
+    {
+        tree: [1, 2, 3],
+        p: 2,
+        q: 3,
+        expected: 1
+    },
+    {
+        tree: [1, 2, 3, 4, 5],
+        p: 4,
+        q: 5,
+        expected: 2
+    }
+];
+
+const solutions = [
+    { name: "Recursive DFS", fn: lowestCommonAncestor1 },
+    { name: "Parent Tracking HashMap", fn: lowestCommonAncestor2 },
+    { name: "Path Tracking", fn: lowestCommonAncestor3 },
+    { name: "Iterative Stack", fn: lowestCommonAncestor4 },
+    { name: "Optimized Single Pass", fn: lowestCommonAncestor5 },
+    { name: "Level Order Parent Track", fn: lowestCommonAncestor6 }
+];
+
+solutions.forEach(solution =&gt; {
+    console.log(`\n${solution.name}:`);
+    testCases.forEach((test, i) =&gt; {
+        const root = createTree(test.tree);
+        const p = findNode(root, test.p);
+        const q = findNode(root, test.q);
+        const result = solution.fn(root, p, q);
+        
+        const passed = result?.val === test.expected;
+        console.log(`  Test ${i + 1}: ${passed ? 'PASS' : 'FAIL'}`);
+        if (!passed) {
+            console.log(`    Tree: ${JSON.stringify(test.tree)}`);
+            console.log(`    p: ${test.p}, q: ${test.q}`);
+            console.log(`    Expected: ${test.expected}`);
+            console.log(`    Got: ${result?.val || 'null'}`);
+        }
+    });
+}); }
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>/**</p>
+<ul>
+  <li>Key Insights:</li>
+  <li></li>
+  <li>
+    <ol>
+      <li><strong>LCA Definition</strong>:</li>
+    </ol>
+  </li>
+  <li>
+    <ul>
+      <li>Lowest node that has both p and q as descendants</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>A node can be a descendant of itself</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Unique solution guaranteed for any two nodes</li>
+    </ul>
+  </li>
+  <li></li>
+  <li>
+    <ol>
+      <li><strong>Recursive Approach</strong>:</li>
+    </ol>
+  </li>
+  <li>
+    <ul>
+      <li>Base case: null node or found target node</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>If both subtrees return non-null, current node is LCA</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Otherwise, return the non-null subtree result</li>
+    </ul>
+  </li>
+  <li></li>
+  <li>
+    <ol>
+      <li><strong>Key Insight</strong>:</li>
+    </ol>
+  </li>
+  <li>
+    <ul>
+      <li>LCA is the first node where paths to p and q diverge</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Or one of p/q if one is ancestor of the other</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Can be found in single tree traversal</li>
+    </ul>
+  </li>
+  <li></li>
+  <li>
+    <ol>
+      <li><strong>Time Complexity</strong>: O(n)</li>
+    </ol>
+  </li>
+  <li>
+    <ul>
+      <li>Must potentially visit all nodes</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Each node visited at most once</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Cannot be optimized further in general case</li>
+    </ul>
+  </li>
+  <li></li>
+  <li>
+    <ol>
+      <li><strong>Space Complexity</strong>:</li>
+    </ol>
+  </li>
+  <li>
+    <ul>
+      <li>Recursive: O(h) for recursion stack</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Parent tracking: O(n) for parent map</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Path tracking: O(h) for path storage</li>
+    </ul>
+  </li>
+  <li></li>
+  <li>
+    <ol>
+      <li><strong>Algorithm Variations</strong>:</li>
+    </ol>
+  </li>
+  <li>
+    <ul>
+      <li>Recursive DFS: Most elegant and common</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Parent tracking: Good for multiple LCA queries</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Path tracking: Intuitive but less efficient</li>
+    </ul>
+  </li>
+  <li></li>
+  <li>
+    <ol>
+      <li><strong>Interview Strategy</strong>:</li>
+    </ol>
+  </li>
+  <li>
+    <ul>
+      <li>Start with recursive DFS approach</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Explain the logic clearly</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Handle edge cases</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Discuss alternative approaches</li>
+    </ul>
+  </li>
+  <li></li>
+  <li>
+    <ol>
+      <li><strong>Edge Cases</strong>:</li>
+    </ol>
+  </li>
+  <li>
+    <ul>
+      <li>One node is ancestor of another</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Root is one of the target nodes</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Nodes at different depths</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Minimal tree (just two nodes)</li>
+    </ul>
+  </li>
+  <li></li>
+  <li>
+    <ol>
+      <li><strong>Common Mistakes</strong>:</li>
+    </ol>
+  </li>
+  <li>
+    <ul>
+      <li>Not handling case where node is ancestor of itself</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Incorrect base case handling</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Wrong interpretation of return values</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Not considering null nodes properly</li>
+    </ul>
+  </li>
+  <li></li>
+  <li>
+    <ol>
+      <li><strong>Optimization Considerations</strong>:</li>
+    </ol>
+  </li>
+  <li>
+    <ul>
+      <li>Single pass vs multiple passes</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Early termination strategies</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Memory usage vs computation time</li>
+    </ul>
+  </li>
+  <li></li>
+  <li>
+    <ol>
+      <li><strong>Follow-up Variations</strong>:</li>
+    </ol>
+  </li>
+  <li>
+    <ul>
+      <li>LCA in BST (can use ordering property)</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>LCA of multiple nodes</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>LCA with parent pointers</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Range LCA queries</li>
+    </ul>
+  </li>
+  <li></li>
+  <li>
+    <ol>
+      <li><strong>Big Tech Variations</strong>:</li>
+    </ol>
+  </li>
+  <li>
+    <ul>
+      <li>Google: LCA in graph with cycles</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Meta: LCA with weighted edges</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Amazon: LCA in forest of trees</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Microsoft: LCA with node deletion</li>
+    </ul>
+  </li>
+  <li></li>
+  <li>
+    <ol>
+      <li><strong>Real-world Applications</strong>:</li>
+    </ol>
+  </li>
+  <li>
+    <ul>
+      <li>File system hierarchy navigation</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Organizational structure queries</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Taxonomy and classification systems</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Network routing algorithms</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Version control systems (git merge base)</li>
+    </ul>
+  </li>
+  <li></li>
+  <li>
+    <ol>
+      <li><strong>Pattern Recognition</strong>:</li>
+    </ol>
+  </li>
+  <li>
+    <ul>
+      <li>Tree traversal with information bubbling up</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Divide and conquer on tree structure</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Path tracking and intersection finding</li>
+    </ul>
+  </li>
+  <li></li>
+  <li>
+    <ol>
+      <li><strong>Implementation Tips</strong>:</li>
+    </ol>
+  </li>
+  <li>
+    <ul>
+      <li>Clear base cases for recursion</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Proper handling of null returns</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Efficient parent tracking if needed</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Consider iterative approaches for large trees
+ */</li>
+    </ul>
+  </li>
+</ul>
+
+
+        </div>
+    </article>
+</div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Study Resources</h3>
+                    <p>Comprehensive collection of frontend interview questions, coding challenges, and system design problems.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Progress Tracking</h3>
+                    <p>Monitor your learning journey with detailed progress indicators and completion status.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Big Tech Ready</h3>
+                    <p>Curated content specifically designed for interviews at Google, Meta, Amazon, Apple, and Netflix.</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Frontend Interview Hub. Built for aspiring frontend engineers.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="/assets/js/main.js"></script>
+</body>
+</html>

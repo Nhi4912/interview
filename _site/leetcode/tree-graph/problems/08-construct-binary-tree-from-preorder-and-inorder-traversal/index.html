@@ -1,0 +1,645 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Construct Binary Tree from Preorder and Inorder Traversal | Frontend Interview Preparation Guide</title>
+    <meta name="description" content="Comprehensive frontend interview materials for Big Tech companies">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="/assets/css/main.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <header>
+        <nav class="container">
+            <div class="logo">Frontend Interview Hub</div>
+            <ul class="nav-links">
+                <li><a href="/">Home</a></li>
+                <li><a href="#progress">Progress</a></li>
+                <li><a href="#knowledge">Knowledge</a></li>
+                <li><a href="https://github.com/nee/interview">GitHub</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <div class="content-container">
+    
+        <nav class="breadcrumb">
+            <ol>
+                <li><a href="/">Home</a></li>
+                
+                
+                
+                    
+                
+                    
+                        
+                        
+                            <li><a href="/leetcode/">Leetcode</a></li>
+                        
+                    
+                
+                    
+                        
+                        
+                            <li><a href="/leetcode/tree-graph/">Tree graph</a></li>
+                        
+                    
+                
+                    
+                        
+                        
+                            <li><a href="/leetcode/tree-graph/problems/">Problems</a></li>
+                        
+                    
+                
+                    
+                        
+                        
+                            <li class="active">Construct binary tree from preorder and inorder traversal</li>
+                        
+                    
+                
+            </ol>
+        </nav>
+    
+    
+    <article class="content">
+        
+            <header class="content-header">
+                <h1 class="content-title">Construct Binary Tree from Preorder and Inorder Traversal</h1>
+                
+                
+                    <div class="content-meta">
+                        <span class="difficulty difficulty-easy">Easy</span>
+                        
+                            <span class="category">Tree/Graph</span>
+                        
+                        
+                            <div class="tags">
+                                
+                                    <span class="tag">Tree/Graph</span>
+                                
+                                    <span class="tag">Hash Table</span>
+                                
+                            </div>
+                        
+                    </div>
+                
+            </header>
+        
+        
+        <div class="content-body">
+            <h1 id="construct-binary-tree-from-preorder-and-inorder-traversal">Construct Binary Tree from Preorder and Inorder Traversal</h1>
+
+<h2 id="problem-description">Problem Description</h2>
+
+<ul>
+  <li>of a binary tree and inorder is the inorder traversal of the same tree, construct and return the binary tree.  *  *  * Companies: Amazon, Google, Microsoft, Facebook  *</li>
+</ul>
+
+<h2 id="solutions">Solutions</h2>
+
+<p>/**</p>
+<ul>
+  <li>Construct Binary Tree from Preorder and Inorder Traversal
+ *</li>
+  <li>Problem: Given two integer arrays preorder and inorder where preorder is the preorder traversal</li>
+  <li>of a binary tree and inorder is the inorder traversal of the same tree, construct and return the binary tree.
+ *</li>
+  <li>LeetCode: https://leetcode.com/problems/construct-binary-tree-from-preorder-and-inorder-traversal/
+ *</li>
+  <li>Companies: Amazon, Google, Microsoft, Facebook
+ *</li>
+  <li>Difficulty: Medium
+ *</li>
+  <li>Key Concepts: Tree reconstruction, hash map, divide and conquer
+ */</li>
+</ul>
+
+<p>/**</p>
+<ul>
+  <li>Definition for a binary tree node.
+ */
+class TreeNode {
+  val: number;
+  left: TreeNode | null;
+  right: TreeNode | null;</li>
+</ul>
+
+<p>constructor(
+    val: number = 0,
+    left: TreeNode | null = null,
+    right: TreeNode | null = null
+  ) {
+    this.val = val;
+    this.left = left;
+    this.right = right;
+  }
+}</p>
+
+<p>/**</p>
+<ul>
+  <li>Solution 1: Hash Map Approach (Optimal)
+ *</li>
+  <li>Time Complexity: O(n) - Each node is visited once</li>
+  <li>Space Complexity: O(n) - Hash map storage + recursion stack
+ *</li>
+  <li>Approach:</li>
+  <li>
+    <ol>
+      <li>Use hash map to store inorder indices for O(1) lookup</li>
+    </ol>
+  </li>
+  <li>
+    <ol>
+      <li>Use preorder to determine root nodes</li>
+    </ol>
+  </li>
+  <li>
+    <ol>
+      <li>Use inorder to determine left/right subtree boundaries</li>
+    </ol>
+  </li>
+  <li>
+    <ol>
+      <li>Recursively build left and right subtrees
+ *</li>
+    </ol>
+  </li>
+  <li>Thuật toán:</li>
+  <li>
+    <ol>
+      <li>Sử dụng hash map để lưu chỉ số inorder cho việc tìm kiếm O(1)</li>
+    </ol>
+  </li>
+  <li>
+    <ol>
+      <li>Sử dụng preorder để xác định các nút gốc</li>
+    </ol>
+  </li>
+  <li>
+    <ol>
+      <li>Sử dụng inorder để xác định ranh giới cây con trái/phải</li>
+    </ol>
+  </li>
+  <li>
+    <ol>
+      <li>Đệ quy xây dựng cây con trái và phải
+ */
+function buildTree(preorder: number[], inorder: number[]): TreeNode | null {
+  // Create hash map for O(1) inorder index lookup
+  const inorderMap = new Map&lt;number, number&gt;();
+  for (let i = 0; i &lt; inorder.length; i++) {
+ inorderMap.set(inorder[i], i);
+  }</li>
+    </ol>
+  </li>
+</ul>
+
+<p>let preorderIndex = 0;</p>
+
+<p>function buildTreeHelper(left: number, right: number): TreeNode | null {
+    // Base case: no elements to construct
+    if (left &gt; right) return null;</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+</pre></td><td class="rouge-code"><pre>// Get current root from preorder
+const rootVal = preorder[preorderIndex++];
+const root = new TreeNode(rootVal);
+
+// Find root position in inorder
+const inorderIndex = inorderMap.get(rootVal)!;
+
+// Recursively build left and right subtrees
+root.left = buildTreeHelper(left, inorderIndex - 1);
+root.right = buildTreeHelper(inorderIndex + 1, right);
+
+return root;   }
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>return buildTreeHelper(0, inorder.length - 1);
+}</p>
+
+<p>/**</p>
+<ul>
+  <li>Solution 2: Array Slice Approach (Less Efficient)
+ *</li>
+  <li>Time Complexity: O(n²) - Array slicing takes O(n) each time</li>
+  <li>Space Complexity: O(n) - Recursion stack + new arrays
+ *</li>
+  <li>Approach:</li>
+  <li>
+    <ol>
+      <li>Find root from preorder (first element)</li>
+    </ol>
+  </li>
+  <li>
+    <ol>
+      <li>Find root position in inorder</li>
+    </ol>
+  </li>
+  <li>
+    <ol>
+      <li>Split arrays into left and right subtrees</li>
+    </ol>
+  </li>
+  <li>
+    <ol>
+      <li>Recursively build subtrees
+ *</li>
+    </ol>
+  </li>
+  <li>Thuật toán:</li>
+  <li>
+    <ol>
+      <li>Tìm gốc từ preorder (phần tử đầu tiên)</li>
+    </ol>
+  </li>
+  <li>
+    <ol>
+      <li>Tìm vị trí gốc trong inorder</li>
+    </ol>
+  </li>
+  <li>
+    <ol>
+      <li>Chia mảng thành cây con trái và phải</li>
+    </ol>
+  </li>
+  <li>
+    <ol>
+      <li>Đệ quy xây dựng các cây con
+ */
+function buildTreeArraySlice(
+  preorder: number[],
+  inorder: number[]
+): TreeNode | null {
+  if (preorder.length === 0 || inorder.length === 0) return null;</li>
+    </ol>
+  </li>
+</ul>
+
+<p>const rootVal = preorder[0];
+  const root = new TreeNode(rootVal);</p>
+
+<p>// Find root index in inorder
+  const rootIndex = inorder.indexOf(rootVal);</p>
+
+<p>// Build left subtree
+  const leftInorder = inorder.slice(0, rootIndex);
+  const leftPreorder = preorder.slice(1, 1 + leftInorder.length);
+  root.left = buildTreeArraySlice(leftPreorder, leftInorder);</p>
+
+<p>// Build right subtree
+  const rightInorder = inorder.slice(rootIndex + 1);
+  const rightPreorder = preorder.slice(1 + leftInorder.length);
+  root.right = buildTreeArraySlice(rightPreorder, rightInorder);</p>
+
+<p>return root;
+}</p>
+
+<p>/**</p>
+<ul>
+  <li>Solution 3: Iterative Approach using Stack
+ *</li>
+  <li>Time Complexity: O(n)</li>
+  <li>Space Complexity: O(n)
+ *</li>
+  <li>Approach:</li>
+  <li>
+    <ol>
+      <li>Use stack to keep track of nodes</li>
+    </ol>
+  </li>
+  <li>
+    <ol>
+      <li>Use preorder to create nodes</li>
+    </ol>
+  </li>
+  <li>
+    <ol>
+      <li>Use inorder to determine when to pop from stack
+ *</li>
+    </ol>
+  </li>
+  <li>Thuật toán:</li>
+  <li>
+    <ol>
+      <li>Sử dụng stack để theo dõi các nút</li>
+    </ol>
+  </li>
+  <li>
+    <ol>
+      <li>Sử dụng preorder để tạo các nút</li>
+    </ol>
+  </li>
+  <li>
+    <ol>
+      <li>Sử dụng inorder để xác định khi nào pop từ stack
+ */
+function buildTreeIterative(
+  preorder: number[],
+  inorder: number[]
+): TreeNode | null {
+  if (preorder.length === 0) return null;</li>
+    </ol>
+  </li>
+</ul>
+
+<p>const root = new TreeNode(preorder[0]);
+  const stack: TreeNode[] = [root];
+  let inorderIndex = 0;</p>
+
+<p>for (let i = 1; i &lt; preorder.length; i++) {
+    const currentVal = preorder[i];
+    let node = stack[stack.length - 1];</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+</pre></td><td class="rouge-code"><pre>// If current node is not the inorder successor of top of stack
+if (node.val !== inorder[inorderIndex]) {
+  node.left = new TreeNode(currentVal);
+  stack.push(node.left);
+} else {
+  // Pop nodes from stack until we find the right place
+  while (
+    stack.length &gt; 0 &amp;&amp;
+    stack[stack.length - 1].val === inorder[inorderIndex]
+  ) {
+    node = stack.pop()!;
+    inorderIndex++;
+  }
+  node.right = new TreeNode(currentVal);
+  stack.push(node.right);
+}   }
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>return root;
+}</p>
+
+<p>/**</p>
+<ul>
+  <li>Utility function to print tree in level order (for testing)
+ */
+function printTreeLevelOrder(root: TreeNode | null): void {
+  if (!root) {
+ console.log(“Empty tree”);
+ return;
+  }</li>
+</ul>
+
+<table>
+  <tbody>
+    <tr>
+      <td>const queue: (TreeNode</td>
+      <td>null)[] = [root];</td>
+    </tr>
+    <tr>
+      <td>const result: (number</td>
+      <td>null)[] = [];</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>while (queue.length &gt; 0) {
+    const node = queue.shift();
+    if (node) {
+      result.push(node.val);
+      queue.push(node.left);
+      queue.push(node.right);
+    } else {
+      result.push(null);
+    }
+  }</p>
+
+<p>// Remove trailing nulls
+  while (result.length &gt; 0 &amp;&amp; result[result.length - 1] === null) {
+    result.pop();
+  }</p>
+
+<p>console.log(“Level order:”, result);
+}</p>
+
+<p>/**</p>
+<ul>
+  <li>Utility function to get inorder traversal (for verification)
+ */
+function getInorderTraversal(root: TreeNode | null): number[] {
+  const result: number[] = [];</li>
+</ul>
+
+<p>function inorder(node: TreeNode | null): void {
+    if (!node) return;
+    inorder(node.left);
+    result.push(node.val);
+    inorder(node.right);
+  }</p>
+
+<p>inorder(root);
+  return result;
+}</p>
+
+<p>/**</p>
+<ul>
+  <li>Utility function to get preorder traversal (for verification)
+ */
+function getPreorderTraversal(root: TreeNode | null): number[] {
+  const result: number[] = [];</li>
+</ul>
+
+<p>function preorder(node: TreeNode | null): void {
+    if (!node) return;
+    result.push(node.val);
+    preorder(node.left);
+    preorder(node.right);
+  }</p>
+
+<p>preorder(root);
+  return result;
+}</p>
+
+<p>// Test cases
+function runTests(): void {
+  console.log(
+    “=== Testing Construct Binary Tree from Preorder and Inorder Traversal ===\n”
+  );</p>
+
+<p>// Test Case 1: Simple tree
+  console.log(“Test Case 1: Simple tree”);
+  const preorder1 = [3, 9, 20, 15, 7];
+  const inorder1 = [9, 3, 15, 20, 7];</p>
+
+<p>const tree1 = buildTree(preorder1, inorder1);
+  console.log(“Preorder input:”, preorder1);
+  console.log(“Inorder input:”, inorder1);
+  console.log(“Generated preorder:”, getPreorderTraversal(tree1));
+  console.log(“Generated inorder:”, getInorderTraversal(tree1));
+  console.log(
+    “Match:”,
+    JSON.stringify(getPreorderTraversal(tree1)) === JSON.stringify(preorder1) &amp;&amp;
+      JSON.stringify(getInorderTraversal(tree1)) === JSON.stringify(inorder1)
+  );
+  printTreeLevelOrder(tree1);
+  console.log();</p>
+
+<p>// Test Case 2: Single node
+  console.log(“Test Case 2: Single node”);
+  const preorder2 = [1];
+  const inorder2 = [1];</p>
+
+<p>const tree2 = buildTree(preorder2, inorder2);
+  console.log(“Preorder input:”, preorder2);
+  console.log(“Inorder input:”, inorder2);
+  console.log(“Generated preorder:”, getPreorderTraversal(tree2));
+  console.log(“Generated inorder:”, getInorderTraversal(tree2));
+  console.log(
+    “Match:”,
+    JSON.stringify(getPreorderTraversal(tree2)) === JSON.stringify(preorder2) &amp;&amp;
+      JSON.stringify(getInorderTraversal(tree2)) === JSON.stringify(inorder2)
+  );
+  printTreeLevelOrder(tree2);
+  console.log();</p>
+
+<p>// Test Case 3: Left-skewed tree
+  console.log(“Test Case 3: Left-skewed tree”);
+  const preorder3 = [1, 2, 3];
+  const inorder3 = [3, 2, 1];</p>
+
+<p>const tree3 = buildTree(preorder3, inorder3);
+  console.log(“Preorder input:”, preorder3);
+  console.log(“Inorder input:”, inorder3);
+  console.log(“Generated preorder:”, getPreorderTraversal(tree3));
+  console.log(“Generated inorder:”, getInorderTraversal(tree3));
+  console.log(
+    “Match:”,
+    JSON.stringify(getPreorderTraversal(tree3)) === JSON.stringify(preorder3) &amp;&amp;
+      JSON.stringify(getInorderTraversal(tree3)) === JSON.stringify(inorder3)
+  );
+  printTreeLevelOrder(tree3);
+  console.log();</p>
+
+<p>// Test Case 4: Right-skewed tree
+  console.log(“Test Case 4: Right-skewed tree”);
+  const preorder4 = [1, 2, 3];
+  const inorder4 = [1, 2, 3];</p>
+
+<p>const tree4 = buildTree(preorder4, inorder4);
+  console.log(“Preorder input:”, preorder4);
+  console.log(“Inorder input:”, inorder4);
+  console.log(“Generated preorder:”, getPreorderTraversal(tree4));
+  console.log(“Generated inorder:”, getInorderTraversal(tree4));
+  console.log(
+    “Match:”,
+    JSON.stringify(getPreorderTraversal(tree4)) === JSON.stringify(preorder4) &amp;&amp;
+      JSON.stringify(getInorderTraversal(tree4)) === JSON.stringify(inorder4)
+  );
+  printTreeLevelOrder(tree4);
+  console.log();</p>
+
+<p>// Test Case 5: Complex tree
+  console.log(“Test Case 5: Complex tree”);
+  const preorder5 = [1, 2, 4, 5, 3, 6];
+  const inorder5 = [4, 2, 5, 1, 6, 3];</p>
+
+<p>const tree5 = buildTree(preorder5, inorder5);
+  console.log(“Preorder input:”, preorder5);
+  console.log(“Inorder input:”, inorder5);
+  console.log(“Generated preorder:”, getPreorderTraversal(tree5));
+  console.log(“Generated inorder:”, getInorderTraversal(tree5));
+  console.log(
+    “Match:”,
+    JSON.stringify(getPreorderTraversal(tree5)) === JSON.stringify(preorder5) &amp;&amp;
+      JSON.stringify(getInorderTraversal(tree5)) === JSON.stringify(inorder5)
+  );
+  printTreeLevelOrder(tree5);
+  console.log();</p>
+
+<p>// Performance comparison
+  console.log(“=== Performance Comparison ===”);
+  const largePreorder = Array.from({ length: 1000 }, (_, i) =&gt; i);
+  const largeInorder = […largePreorder].sort((a, b) =&gt; a - b);</p>
+
+<p>console.time(“Hash Map Approach”);
+  buildTree(largePreorder, largeInorder);
+  console.timeEnd(“Hash Map Approach”);</p>
+
+<p>console.time(“Array Slice Approach”);
+  buildTreeArraySlice(largePreorder, largeInorder);
+  console.timeEnd(“Array Slice Approach”);</p>
+
+<p>console.time(“Iterative Approach”);
+  buildTreeIterative(largePreorder, largeInorder);
+  console.timeEnd(“Iterative Approach”);
+}</p>
+
+<p>// Run tests
+runTests();</p>
+
+<p>export { buildTree, buildTreeArraySlice, buildTreeIterative, TreeNode };</p>
+
+
+        </div>
+    </article>
+</div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Study Resources</h3>
+                    <p>Comprehensive collection of frontend interview questions, coding challenges, and system design problems.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Progress Tracking</h3>
+                    <p>Monitor your learning journey with detailed progress indicators and completion status.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Big Tech Ready</h3>
+                    <p>Curated content specifically designed for interviews at Google, Meta, Amazon, Apple, and Netflix.</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Frontend Interview Hub. Built for aspiring frontend engineers.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="/assets/js/main.js"></script>
+</body>
+</html>

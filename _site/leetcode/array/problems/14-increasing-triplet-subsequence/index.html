@@ -1,0 +1,1006 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Increasing Triplet Subsequence | Frontend Interview Preparation Guide</title>
+    <meta name="description" content="Comprehensive frontend interview materials for Big Tech companies">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="/assets/css/main.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <header>
+        <nav class="container">
+            <div class="logo">Frontend Interview Hub</div>
+            <ul class="nav-links">
+                <li><a href="/">Home</a></li>
+                <li><a href="#progress">Progress</a></li>
+                <li><a href="#knowledge">Knowledge</a></li>
+                <li><a href="https://github.com/nee/interview">GitHub</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <div class="content-container">
+    
+        <nav class="breadcrumb">
+            <ol>
+                <li><a href="/">Home</a></li>
+                
+                
+                
+                    
+                
+                    
+                        
+                        
+                            <li><a href="/leetcode/">Leetcode</a></li>
+                        
+                    
+                
+                    
+                        
+                        
+                            <li><a href="/leetcode/array/">Array</a></li>
+                        
+                    
+                
+                    
+                        
+                        
+                            <li><a href="/leetcode/array/problems/">Problems</a></li>
+                        
+                    
+                
+                    
+                        
+                        
+                            <li class="active">Increasing triplet subsequence</li>
+                        
+                    
+                
+            </ol>
+        </nav>
+    
+    
+    <article class="content">
+        
+            <header class="content-header">
+                <h1 class="content-title">Increasing Triplet Subsequence</h1>
+                
+                
+                    <div class="content-meta">
+                        <span class="difficulty difficulty-easy">Easy</span>
+                        
+                            <span class="category">Array</span>
+                        
+                        
+                            <div class="tags">
+                                
+                                    <span class="tag">Array</span>
+                                
+                                    <span class="tag">Two Pointers</span>
+                                
+                                    <span class="tag">Hash Table</span>
+                                
+                            </div>
+                        
+                    </div>
+                
+            </header>
+        
+        
+        <div class="content-body">
+            <h1 id="increasing-triplet-subsequence">Increasing Triplet Subsequence</h1>
+
+<p><strong>LeetCode Problem # * 334. Increasing Triplet Subsequence</strong></p>
+
+<h2 id="problem-description">Problem Description</h2>
+
+<ul>
+  <li>Given an integer array nums, return true if there exists a triple of indices  * (i, j, k) such that i &lt; j &lt; k and nums[i] &lt; nums[j] &lt; nums[k]. If no such  * indices exists, return false.  *  * Input: nums = [1,2,3,4,5]</li>
+</ul>
+
+<h2 id="solutions">Solutions</h2>
+
+<p>/**</p>
+<ul>
+  <li>
+    <ol>
+      <li>Increasing Triplet Subsequence
+ *</li>
+    </ol>
+  </li>
+  <li>Problem:</li>
+  <li>Given an integer array nums, return true if there exists a triple of indices</li>
+  <li>(i, j, k) such that i &lt; j &lt; k and nums[i] &lt; nums[j] &lt; nums[k]. If no such</li>
+  <li>indices exists, return false.
+ *</li>
+  <li>Example:</li>
+  <li>Input: nums = [1,2,3,4,5]</li>
+  <li>Output: true
+ *</li>
+  <li>Input: nums = [5,4,3,2,1]</li>
+  <li>Output: false
+ *</li>
+  <li>Input: nums = [2,1,5,0,4,6]</li>
+  <li>Output: true
+ *</li>
+  <li>LeetCode: https://leetcode.com/problems/increasing-triplet-subsequence/
+ */</li>
+</ul>
+
+<p>/**</p>
+<ul>
+  <li>Solution 1: Two Pointers (Optimal)
+ *</li>
+  <li>Approach:</li>
+  <li>
+    <ul>
+      <li>Keep track of two minimum values</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>If we find a value greater than both, we have a triplet
+ *</li>
+    </ul>
+  </li>
+  <li>Time Complexity: O(n)</li>
+  <li>Space Complexity: O(1)
+ */
+function increasingTriplet(nums: number[]): boolean {
+  let first = Infinity;
+  let second = Infinity;</li>
+</ul>
+
+<p>for (const num of nums) {
+    if (num &lt;= first) {
+      first = num;
+    } else if (num &lt;= second) {
+      second = num;
+    } else {
+      return true;
+    }
+  }</p>
+
+<p>return false;
+}</p>
+
+<p>/**</p>
+<ul>
+  <li>Solution 2: Using Array
+ *</li>
+  <li>Approach:</li>
+  <li>
+    <ul>
+      <li>Use array to store minimum values</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Similar to Solution 1 but with array
+ *</li>
+    </ul>
+  </li>
+  <li>Time Complexity: O(n)</li>
+  <li>Space Complexity: O(1)
+ */
+function increasingTripletArray(nums: number[]): boolean {
+  const minValues = [Infinity, Infinity];</li>
+</ul>
+
+<p>for (const num of nums) {
+    if (num &lt;= minValues[0]) {
+      minValues[0] = num;
+    } else if (num &lt;= minValues[1]) {
+      minValues[1] = num;
+    } else {
+      return true;
+    }
+  }</p>
+
+<p>return false;
+}</p>
+
+<p>/**</p>
+<ul>
+  <li>Solution 3: Using Object
+ *</li>
+  <li>Approach:</li>
+  <li>
+    <ul>
+      <li>Use object to store minimum values</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>More explicit naming
+ *</li>
+    </ul>
+  </li>
+  <li>Time Complexity: O(n)</li>
+  <li>Space Complexity: O(1)
+ */
+function increasingTripletObject(nums: number[]): boolean {
+  const mins = {
+ first: Infinity,
+ second: Infinity,
+  };</li>
+</ul>
+
+<p>for (const num of nums) {
+    if (num &lt;= mins.first) {
+      mins.first = num;
+    } else if (num &lt;= mins.second) {
+      mins.second = num;
+    } else {
+      return true;
+    }
+  }</p>
+
+<p>return false;
+}</p>
+
+<p>/**</p>
+<ul>
+  <li>Solution 4: Brute Force (Educational)
+ *</li>
+  <li>Approach:</li>
+  <li>
+    <ul>
+      <li>Check all possible triplets</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Simple but inefficient
+ *</li>
+    </ul>
+  </li>
+  <li>Time Complexity: O(n³)</li>
+  <li>Space Complexity: O(1)
+ */
+function increasingTripletBruteForce(nums: number[]): boolean {
+  const n = nums.length;</li>
+</ul>
+
+<p>for (let i = 0; i &lt; n - 2; i++) {
+    for (let j = i + 1; j &lt; n - 1; j++) {
+      for (let k = j + 1; k &lt; n; k++) {
+        if (nums[i] &lt; nums[j] &amp;&amp; nums[j] &lt; nums[k]) {
+          return true;
+        }
+      }
+    }
+  }</p>
+
+<p>return false;
+}</p>
+
+<p>/**</p>
+<ul>
+  <li>Solution 5: Using Stack
+ *</li>
+  <li>Approach:</li>
+  <li>
+    <ul>
+      <li>Use stack to maintain increasing sequence</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Pop elements that are too large
+ *</li>
+    </ul>
+  </li>
+  <li>Time Complexity: O(n)</li>
+  <li>Space Complexity: O(n)
+ */
+function increasingTripletStack(nums: number[]): boolean {
+  const stack: number[] = [];</li>
+</ul>
+
+<p>for (const num of nums) {
+    while (stack.length &gt; 0 &amp;&amp; stack[stack.length - 1] &gt;= num) {
+      stack.pop();
+    }</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+</pre></td><td class="rouge-code"><pre>stack.push(num);
+
+if (stack.length &gt;= 3) {
+  return true;
+}   }
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>return false;
+}</p>
+
+<p>/**</p>
+<ul>
+  <li>Solution 6: Using Map
+ *</li>
+  <li>Approach:</li>
+  <li>
+    <ul>
+      <li>Use Map to track minimum values</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>More flexible than array approach
+ *</li>
+    </ul>
+  </li>
+  <li>Time Complexity: O(n)</li>
+  <li>Space Complexity: O(1)
+ */
+function increasingTripletMap(nums: number[]): boolean {
+  const mins = new Map&lt;string, number&gt;([
+ [“first”, Infinity],
+ [“second”, Infinity],
+  ]);</li>
+</ul>
+
+<p>for (const num of nums) {
+    if (num &lt;= mins.get(“first”)!) {
+      mins.set(“first”, num);
+    } else if (num &lt;= mins.get(“second”)!) {
+      mins.set(“second”, num);
+    } else {
+      return true;
+    }
+  }</p>
+
+<p>return false;
+}</p>
+
+<p>/**</p>
+<ul>
+  <li>Solution 7: Functional Approach
+ *</li>
+  <li>Approach:</li>
+  <li>
+    <ul>
+      <li>Use functional programming concepts</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>More declarative style
+ *</li>
+    </ul>
+  </li>
+  <li>Time Complexity: O(n)</li>
+  <li>Space Complexity: O(1)
+ */
+function increasingTripletFunctional(nums: number[]): boolean {
+  return nums.reduce(
+ (acc, num) =&gt; {
+   if (num &lt;= acc.first) {
+     acc.first = num;
+   } else if (num &lt;= acc.second) {
+     acc.second = num;
+   } else {
+     acc.found = true;
+   }
+   return acc;
+ },
+ { first: Infinity, second: Infinity, found: false }
+  ).found;
+}</li>
+</ul>
+
+<p>/**</p>
+<ul>
+  <li>Solution 8: Using Generator (Memory efficient)
+ *</li>
+  <li>Approach:</li>
+  <li>
+    <ul>
+      <li>Use generator to yield numbers</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Memory efficient for large arrays
+ *</li>
+    </ul>
+  </li>
+  <li>Time Complexity: O(n)</li>
+  <li>Space Complexity: O(1)
+ <em>/
+function</em> numberGenerator(nums: number[]): Generator<number> {
+  for (const num of nums) {
+ yield num;
+  }
+}</number></li>
+</ul>
+
+<p>function increasingTripletGenerator(nums: number[]): boolean {
+  let first = Infinity;
+  let second = Infinity;</p>
+
+<p>for (const num of numberGenerator(nums)) {
+    if (num &lt;= first) {
+      first = num;
+    } else if (num &lt;= second) {
+      second = num;
+    } else {
+      return true;
+    }
+  }</p>
+
+<p>return false;
+}</p>
+
+<p>/**</p>
+<ul>
+  <li>Solution 9: Using Class (Object-oriented)
+ *</li>
+  <li>Approach:</li>
+  <li>
+    <ul>
+      <li>Create a TripletFinder class</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Encapsulate finding logic
+ *</li>
+    </ul>
+  </li>
+  <li>Time Complexity: O(n)</li>
+  <li>Space Complexity: O(1)
+ */
+class TripletFinder {
+  private first: number;
+  private second: number;</li>
+</ul>
+
+<p>constructor() {
+    this.first = Infinity;
+    this.second = Infinity;
+  }</p>
+
+<p>hasIncreasingTriplet(nums: number[]): boolean {
+    for (const num of nums) {
+      if (num &lt;= this.first) {
+        this.first = num;
+      } else if (num &lt;= this.second) {
+        this.second = num;
+      } else {
+        return true;
+      }
+    }</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre>return false;   }
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>reset(): void {
+    this.first = Infinity;
+    this.second = Infinity;
+  }
+}</p>
+
+<p>function increasingTripletClass(nums: number[]): boolean {
+  const finder = new TripletFinder();
+  return finder.hasIncreasingTriplet(nums);
+}</p>
+
+<p>/**</p>
+<ul>
+  <li>Solution 10: Using Bit Manipulation (Limited use case)
+ *</li>
+  <li>Approach:</li>
+  <li>
+    <ul>
+      <li>Use bit operations for small arrays</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Limited to small arrays due to integer size
+ *</li>
+    </ul>
+  </li>
+  <li>Time Complexity: O(n)</li>
+  <li>Space Complexity: O(1)
+ */
+function increasingTripletBitwise(nums: number[]): boolean {
+  if (nums.length &gt; 32) {
+ // Fallback to standard approach for large arrays
+ return increasingTriplet(nums);
+  }</li>
+</ul>
+
+<p>let first = Infinity;
+  let second = Infinity;</p>
+
+<p>for (const num of nums) {
+    if (num &lt;= first) {
+      first = num;
+    } else if (num &lt;= second) {
+      second = num;
+    } else {
+      return true;
+    }
+  }</p>
+
+<p>return false;
+}</p>
+
+<p>/**</p>
+<ul>
+  <li>Solution 11: Using Recursive Approach
+ *</li>
+  <li>Approach:</li>
+  <li>
+    <ul>
+      <li>Use recursion to find increasing subsequence</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Base case: when we have 3 numbers
+ *</li>
+    </ul>
+  </li>
+  <li>Time Complexity: O(n³)</li>
+  <li>
+    <p>Space Complexity: O(n) - recursion stack
+ */
+function increasingTripletRecursive(nums: number[]): boolean {
+  function findTriplet(
+ index: number,
+ count: number,
+ minValue: number
+  ): boolean {
+ if (count === 3) return true;
+ if (index &gt;= nums.length) return false;</p>
+
+    <p>if (nums[index] &gt; minValue) {
+   if (findTriplet(index + 1, count + 1, nums[index])) {
+     return true;
+   }
+ }</p>
+
+    <p>return findTriplet(index + 1, count, minValue);
+  }</p>
+  </li>
+</ul>
+
+<p>return findTriplet(0, 0, -Infinity);
+}</p>
+
+<p>// Test cases
+function testIncreasingTriplet() {
+  console.log(“=== Testing Increasing Triplet Subsequence ===\n”);</p>
+
+<p>const testCases = [
+    {
+      input: [1, 2, 3, 4, 5],
+      expected: true,
+      description: “Strictly increasing array”,
+    },
+    {
+      input: [5, 4, 3, 2, 1],
+      expected: false,
+      description: “Strictly decreasing array”,
+    },
+    {
+      input: [2, 1, 5, 0, 4, 6],
+      expected: true,
+      description: “Array with increasing triplet”,
+    },
+    {
+      input: [1, 1, 1, 1, 1],
+      expected: false,
+      description: “Array with all same values”,
+    },
+    {
+      input: [1, 2],
+      expected: false,
+      description: “Array with less than 3 elements”,
+    },
+    {
+      input: [],
+      expected: false,
+      description: “Empty array”,
+    },
+    {
+      input: [1, 2, 1, 2, 1, 2],
+      expected: false,
+      description: “Array with alternating values”,
+    },
+    {
+      input: [20, 100, 10, 12, 5, 13],
+      expected: true,
+      description: “Complex case with increasing triplet”,
+    },
+  ];</p>
+
+<p>testCases.forEach((testCase, index) =&gt; {
+    console.log(<code class="language-plaintext highlighter-rouge">Test Case ${index + 1}: ${testCase.description}</code>);
+    console.log(<code class="language-plaintext highlighter-rouge">Input: [${testCase.input.join(", ")}]</code>);
+    console.log(<code class="language-plaintext highlighter-rouge">Expected: ${testCase.expected}\n</code>);</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+</pre></td><td class="rouge-code"><pre>// Test Solution 1 (Two Pointers)
+const result1 = increasingTriplet([...testCase.input]);
+console.log(
+  `Solution 1 (Two Pointers): ${result1} ${
+    result1 === testCase.expected ? "✅" : "❌"
+  }`
+);
+
+// Test Solution 2 (Array)
+const result2 = increasingTripletArray([...testCase.input]);
+console.log(
+  `Solution 2 (Array): ${result2} ${
+    result2 === testCase.expected ? "✅" : "❌"
+  }`
+);
+
+// Test Solution 3 (Object)
+const result3 = increasingTripletObject([...testCase.input]);
+console.log(
+  `Solution 3 (Object): ${result3} ${
+    result3 === testCase.expected ? "✅" : "❌"
+  }`
+);
+
+// Test Solution 4 (Brute Force)
+const result4 = increasingTripletBruteForce([...testCase.input]);
+console.log(
+  `Solution 4 (Brute Force): ${result4} ${
+    result4 === testCase.expected ? "✅" : "❌"
+  }`
+);
+
+// Test Solution 5 (Stack)
+const result5 = increasingTripletStack([...testCase.input]);
+console.log(
+  `Solution 5 (Stack): ${result5} ${
+    result5 === testCase.expected ? "✅" : "❌"
+  }`
+);
+
+// Test Solution 6 (Map)
+const result6 = increasingTripletMap([...testCase.input]);
+console.log(
+  `Solution 6 (Map): ${result6} ${
+    result6 === testCase.expected ? "✅" : "❌"
+  }`
+);
+
+// Test Solution 7 (Functional)
+const result7 = increasingTripletFunctional([...testCase.input]);
+console.log(
+  `Solution 7 (Functional): ${result7} ${
+    result7 === testCase.expected ? "✅" : "❌"
+  }`
+);
+
+// Test Solution 8 (Generator)
+const result8 = increasingTripletGenerator([...testCase.input]);
+console.log(
+  `Solution 8 (Generator): ${result8} ${
+    result8 === testCase.expected ? "✅" : "❌"
+  }`
+);
+
+// Test Solution 9 (Class)
+const result9 = increasingTripletClass([...testCase.input]);
+console.log(
+  `Solution 9 (Class): ${result9} ${
+    result9 === testCase.expected ? "✅" : "❌"
+  }`
+);
+
+// Test Solution 10 (Bitwise)
+const result10 = increasingTripletBitwise([...testCase.input]);
+console.log(
+  `Solution 10 (Bitwise): ${result10} ${
+    result10 === testCase.expected ? "✅" : "❌"
+  }`
+);
+
+// Test Solution 11 (Recursive)
+const result11 = increasingTripletRecursive([...testCase.input]);
+console.log(
+  `Solution 11 (Recursive): ${result11} ${
+    result11 === testCase.expected ? "✅" : "❌"
+  }`
+);
+
+console.log("\n---\n");   }); }
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>// Performance comparison
+function performanceComparison() {
+  console.log(“=== Performance Comparison ===\n”);</p>
+
+<p>const testCases = [
+    { name: “Two Pointers”, func: increasingTriplet },
+    { name: “Array”, func: increasingTripletArray },
+    { name: “Object”, func: increasingTripletObject },
+    { name: “Brute Force”, func: increasingTripletBruteForce },
+    { name: “Stack”, func: increasingTripletStack },
+    { name: “Map”, func: increasingTripletMap },
+    { name: “Functional”, func: increasingTripletFunctional },
+    { name: “Generator”, func: increasingTripletGenerator },
+    { name: “Class”, func: increasingTripletClass },
+    { name: “Bitwise”, func: increasingTripletBitwise },
+    { name: “Recursive”, func: increasingTripletRecursive },
+  ];</p>
+
+<p>// Create test arrays
+  const smallArray = [1, 2, 3, 4, 5];
+  const mediumArray = Array.from({ length: 100 }, (<em>, i) =&gt; i);
+  const largeArray = Array.from({ length: 1000 }, (</em>, i) =&gt; i);
+  const decreasingArray = Array.from({ length: 100 }, (_, i) =&gt; 100 - i);</p>
+
+<p>const arrays = [
+    { name: “Small”, array: smallArray },
+    { name: “Medium”, array: mediumArray },
+    { name: “Large”, array: largeArray },
+    { name: “Decreasing”, array: decreasingArray },
+  ];</p>
+
+<p>arrays.forEach(({ name, array }) =&gt; {
+    console.log(<code class="language-plaintext highlighter-rouge">${name} Array:</code>);</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+</pre></td><td class="rouge-code"><pre>testCases.forEach(({ name: funcName, func }) =&gt; {
+  const start = performance.now();
+  const result = func([...array]);
+  const end = performance.now();
+
+  console.log(`  ${funcName}: ${(end - start).toFixed(2)}ms (${result})`);
+});
+
+console.log("");   }); }
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>// Subsequence analysis
+function subsequenceAnalysis() {
+  console.log(“=== Subsequence Analysis ===\n”);</p>
+
+<p>const testArrays = [
+    [1, 2, 3, 4, 5],
+    [5, 4, 3, 2, 1],
+    [2, 1, 5, 0, 4, 6],
+    [1, 1, 1, 1, 1],
+    [20, 100, 10, 12, 5, 13],
+  ];</p>
+
+<p>testArrays.forEach((arr, index) =&gt; {
+    console.log(<code class="language-plaintext highlighter-rouge">Array ${index + 1}: [${arr.join(", ")}]</code>);</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+</pre></td><td class="rouge-code"><pre>let first = Infinity;
+let second = Infinity;
+const steps: string[] = [];
+
+for (let i = 0; i &lt; arr.length; i++) {
+  const num = arr[i];
+  if (num &lt;= first) {
+    first = num;
+    steps.push(
+      `Step ${i + 1}: first = ${first}, second = ${
+        second === Infinity ? "∞" : second
+      }`
+    );
+  } else if (num &lt;= second) {
+    second = num;
+    steps.push(`Step ${i + 1}: first = ${first}, second = ${second}`);
+  } else {
+    steps.push(
+      `Step ${i + 1}: Found triplet! ${first} &lt; ${second} &lt; ${num}`
+    );
+    break;
+  }
+}
+
+steps.forEach((step) =&gt; console.log(`  ${step}`));
+
+const result = increasingTriplet(arr);
+console.log(`  Result: ${result}\n`);   }); }
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>// Uncomment the following lines to run tests
+// testIncreasingTriplet();
+// performanceComparison();
+// subsequenceAnalysis();</p>
+
+<p>export {
+  increasingTriplet,
+  increasingTripletArray,
+  increasingTripletObject,
+  increasingTripletBruteForce,
+  increasingTripletStack,
+  increasingTripletMap,
+  increasingTripletFunctional,
+  increasingTripletGenerator,
+  increasingTripletClass,
+  increasingTripletBitwise,
+  increasingTripletRecursive,
+  TripletFinder,
+  numberGenerator,
+  testIncreasingTriplet,
+  performanceComparison,
+  subsequenceAnalysis,
+};</p>
+
+
+        </div>
+    </article>
+</div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Study Resources</h3>
+                    <p>Comprehensive collection of frontend interview questions, coding challenges, and system design problems.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Progress Tracking</h3>
+                    <p>Monitor your learning journey with detailed progress indicators and completion status.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Big Tech Ready</h3>
+                    <p>Curated content specifically designed for interviews at Google, Meta, Amazon, Apple, and Netflix.</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Frontend Interview Hub. Built for aspiring frontend engineers.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="/assets/js/main.js"></script>
+</body>
+</html>

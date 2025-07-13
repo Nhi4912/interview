@@ -1,0 +1,1134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Intersection of Two Linked List | Frontend Interview Preparation Guide</title>
+    <meta name="description" content="Comprehensive frontend interview materials for Big Tech companies">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="/assets/css/main.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <header>
+        <nav class="container">
+            <div class="logo">Frontend Interview Hub</div>
+            <ul class="nav-links">
+                <li><a href="/">Home</a></li>
+                <li><a href="#progress">Progress</a></li>
+                <li><a href="#knowledge">Knowledge</a></li>
+                <li><a href="https://github.com/nee/interview">GitHub</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <div class="content-container">
+    
+        <nav class="breadcrumb">
+            <ol>
+                <li><a href="/">Home</a></li>
+                
+                
+                
+                    
+                
+                    
+                        
+                        
+                            <li><a href="/leetcode/">Leetcode</a></li>
+                        
+                    
+                
+                    
+                        
+                        
+                            <li><a href="/leetcode/linked-list/">Linked list</a></li>
+                        
+                    
+                
+                    
+                        
+                        
+                            <li><a href="/leetcode/linked-list/problems/">Problems</a></li>
+                        
+                    
+                
+                    
+                        
+                        
+                            <li class="active">Intersection of two linked list</li>
+                        
+                    
+                
+            </ol>
+        </nav>
+    
+    
+    <article class="content">
+        
+            <header class="content-header">
+                <h1 class="content-title">Intersection of Two Linked List</h1>
+                
+                
+                    <div class="content-meta">
+                        <span class="difficulty difficulty-easy">Easy</span>
+                        
+                            <span class="category">Linked List</span>
+                        
+                        
+                            <div class="tags">
+                                
+                                    <span class="tag">Linked List</span>
+                                
+                                    <span class="tag">Two Pointers</span>
+                                
+                                    <span class="tag">Hash Table</span>
+                                
+                            </div>
+                        
+                    </div>
+                
+            </header>
+        
+        
+        <div class="content-body">
+            <h1 id="intersection-of-two-linked-list">Intersection of Two Linked List</h1>
+
+<p><strong>LeetCode Problem # * 160. Intersection of Two Linked Lists</strong></p>
+
+<h2 id="problem-description">Problem Description</h2>
+
+<ul>
+  <li>Given the heads of two singly linked-lists headA and headB, return the node at which  * the two lists intersect. If the two linked lists have no intersection at all, return null.  *  * The test cases are generated such that there are no cycles anywhere in the entire linked structure.  *</li>
+</ul>
+
+<h2 id="solutions">Solutions</h2>
+
+<p>/**</p>
+<ul>
+  <li>
+    <ol>
+      <li>Intersection of Two Linked Lists
+ *</li>
+    </ol>
+  </li>
+  <li>Problem:</li>
+  <li>Given the heads of two singly linked-lists headA and headB, return the node at which</li>
+  <li>the two lists intersect. If the two linked lists have no intersection at all, return null.
+ *</li>
+  <li>The test cases are generated such that there are no cycles anywhere in the entire linked structure.
+ *</li>
+  <li>Note that the linked lists must retain their original structure after the function returns.
+ *</li>
+  <li>Example:</li>
+  <li>Input: intersectVal = 8, listA = [4,1,8,4,5], listB = [5,6,1,8,4,5], skipA = 2, skipB = 3</li>
+  <li>Output: Intersected at ‘8’</li>
+  <li>Explanation: The intersected node’s value is 8 (note that this must not be 0 if the two lists intersect).</li>
+  <li>From the head of A, it reads as [4,1,8,4,5]. From the head of B, it reads as [5,6,1,8,4,5].</li>
+  <li>There are 2 nodes before the intersected node in A; There are 3 nodes before the intersected node in B.
+ *</li>
+  <li>Input: intersectVal = 2, listA = [1,9,1,2,4], listB = [3,2,4], skipA = 3, skipB = 1</li>
+  <li>Output: Intersected at ‘2’
+ *</li>
+  <li>Input: intersectVal = 0, listA = [2,6,4], listB = [1,5], skipA = 3, skipB = 2</li>
+  <li>Output: null
+ *</li>
+  <li>LeetCode: https://leetcode.com/problems/intersection-of-two-linked-lists/
+ */</li>
+</ul>
+
+<p>// Definition for singly-linked list
+class ListNode {
+  val: number;
+  next: ListNode | null;
+  constructor(val?: number, next?: ListNode | null) {
+    this.val = val === undefined ? 0 : val;
+    this.next = next === undefined ? null : next;
+  }
+}</p>
+
+<p>/**</p>
+<ul>
+  <li>Solution 1: Two Pointers (Optimal)
+ *</li>
+  <li>Approach:</li>
+  <li>
+    <ul>
+      <li>Use two pointers starting from headA and headB</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>When one pointer reaches end, move it to the other list’s head</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>They will meet at intersection point or both become null
+ *</li>
+    </ul>
+  </li>
+  <li>Time Complexity: O(m + n)</li>
+  <li>Space Complexity: O(1)
+ */
+function getIntersectionNode(
+  headA: ListNode | null,
+  headB: ListNode | null
+): ListNode | null {
+  if (!headA || !headB) return null;</li>
+</ul>
+
+<p>let pointerA = headA;
+  let pointerB = headB;</p>
+
+<p>while (pointerA !== pointerB) {
+    pointerA = pointerA ? pointerA.next : headB;
+    pointerB = pointerB ? pointerB.next : headA;
+  }</p>
+
+<p>return pointerA;
+}</p>
+
+<p>/**</p>
+<ul>
+  <li>Solution 2: Using Set
+ *</li>
+  <li>Approach:</li>
+  <li>
+    <ul>
+      <li>Traverse first list and store all nodes in a Set</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Traverse second list and check if node exists in Set
+ *</li>
+    </ul>
+  </li>
+  <li>Time Complexity: O(m + n)</li>
+  <li>Space Complexity: O(m) or O(n)
+ */
+function getIntersectionNodeSet(
+  headA: ListNode | null,
+  headB: ListNode | null
+): ListNode | null {
+  const visited = new Set<ListNode>();
+  let current = headA;</ListNode></li>
+</ul>
+
+<p>while (current) {
+    visited.add(current);
+    current = current.next;
+  }</p>
+
+<p>current = headB;
+  while (current) {
+    if (visited.has(current)) {
+      return current;
+    }
+    current = current.next;
+  }</p>
+
+<p>return null;
+}</p>
+
+<p>/**</p>
+<ul>
+  <li>Solution 3: Using Length Difference
+ *</li>
+  <li>Approach:</li>
+  <li>
+    <ul>
+      <li>Calculate lengths of both lists</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Move pointer of longer list by difference</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Then move both pointers together
+ *</li>
+    </ul>
+  </li>
+  <li>Time Complexity: O(m + n)</li>
+  <li>Space Complexity: O(1)
+ */
+function getIntersectionNodeLength(
+  headA: ListNode | null,
+  headB: ListNode | null
+): ListNode | null {
+  function getLength(head: ListNode | null): number {
+ let length = 0;
+ let current = head;
+ while (current) {
+   length++;
+   current = current.next;
+ }
+ return length;
+  }</li>
+</ul>
+
+<p>const lenA = getLength(headA);
+  const lenB = getLength(headB);</p>
+
+<p>let currentA = headA;
+  let currentB = headB;</p>
+
+<p>// Move pointer of longer list by difference
+  if (lenA &gt; lenB) {
+    for (let i = 0; i &lt; lenA - lenB; i++) {
+      currentA = currentA!.next;
+    }
+  } else {
+    for (let i = 0; i &lt; lenB - lenA; i++) {
+      currentB = currentB!.next;
+    }
+  }</p>
+
+<p>// Move both pointers together
+  while (currentA &amp;&amp; currentB) {
+    if (currentA === currentB) {
+      return currentA;
+    }
+    currentA = currentA.next;
+    currentB = currentB.next;
+  }</p>
+
+<p>return null;
+}</p>
+
+<p>/**</p>
+<ul>
+  <li>Solution 4: Using Hash Map
+ *</li>
+  <li>Approach:</li>
+  <li>
+    <ul>
+      <li>Use Map to store nodes with additional information</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>More explicit tracking of node positions
+ *</li>
+    </ul>
+  </li>
+  <li>Time Complexity: O(m + n)</li>
+  <li>Space Complexity: O(m) or O(n)
+ */
+function getIntersectionNodeMap(
+  headA: ListNode | null,
+  headB: ListNode | null
+): ListNode | null {
+  const visited = new Map&lt;ListNode, number&gt;();
+  let current = headA;
+  let position = 0;</li>
+</ul>
+
+<p>while (current) {
+    visited.set(current, position);
+    current = current.next;
+    position++;
+  }</p>
+
+<p>current = headB;
+  position = 0;
+  while (current) {
+    if (visited.has(current)) {
+      return current;
+    }
+    current = current.next;
+    position++;
+  }</p>
+
+<p>return null;
+}</p>
+
+<p>/**</p>
+<ul>
+  <li>Solution 5: Using Array
+ *</li>
+  <li>Approach:</li>
+  <li>
+    <ul>
+      <li>Convert lists to arrays</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Find common suffix
+ *</li>
+    </ul>
+  </li>
+  <li>Time Complexity: O(m + n)</li>
+  <li>Space Complexity: O(m + n)
+ */
+function getIntersectionNodeArray(
+  headA: ListNode | null,
+  headB: ListNode | null
+): ListNode | null {
+  function listToArray(head: ListNode | null): ListNode[] {
+ const arr: ListNode[] = [];
+ let current = head;
+ while (current) {
+   arr.push(current);
+   current = current.next;
+ }
+ return arr;
+  }</li>
+</ul>
+
+<p>const arrA = listToArray(headA);
+  const arrB = listToArray(headB);</p>
+
+<p>let i = arrA.length - 1;
+  let j = arrB.length - 1;</p>
+
+<p>while (i &gt;= 0 &amp;&amp; j &gt;= 0 &amp;&amp; arrA[i] === arrB[j]) {
+    i–;
+    j–;
+  }</p>
+
+<p>return i &lt; arrA.length - 1 ? arrA[i + 1] : null;
+}</p>
+
+<p>/**</p>
+<ul>
+  <li>Solution 6: Using Class (Object-oriented)
+ *</li>
+  <li>Approach:</li>
+  <li>
+    <ul>
+      <li>Create an IntersectionFinder class</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Encapsulate the intersection logic
+ *</li>
+    </ul>
+  </li>
+  <li>Time Complexity: O(m + n)</li>
+  <li>Space Complexity: O(1)
+ */
+class IntersectionFinder {
+  private headA: ListNode | null;
+  private headB: ListNode | null;</li>
+</ul>
+
+<p>constructor(headA: ListNode | null, headB: ListNode | null) {
+    this.headA = headA;
+    this.headB = headB;
+  }</p>
+
+<table>
+  <tbody>
+    <tr>
+      <td>find(): ListNode</td>
+      <td>null {</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>if (!this.headA</td>
+      <td> </td>
+      <td>!this.headB) return null;</td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+</pre></td><td class="rouge-code"><pre>let pointerA = this.headA;
+let pointerB = this.headB;
+
+while (pointerA !== pointerB) {
+  pointerA = pointerA ? pointerA.next : this.headB;
+  pointerB = pointerB ? pointerB.next : this.headA;
+}
+
+return pointerA;   }
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>getLists(): { headA: ListNode | null; headB: ListNode | null } {
+    return { headA: this.headA, headB: this.headB };
+  }
+}</p>
+
+<p>function getIntersectionNodeClass(
+  headA: ListNode | null,
+  headB: ListNode | null
+): ListNode | null {
+  const finder = new IntersectionFinder(headA, headB);
+  return finder.find();
+}</p>
+
+<p>/**</p>
+<ul>
+  <li>Solution 7: Using Generator
+ *</li>
+  <li>Approach:</li>
+  <li>
+    <ul>
+      <li>Use generator to yield nodes from both lists</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Memory efficient for large lists
+ *</li>
+    </ul>
+  </li>
+  <li>Time Complexity: O(m + n)</li>
+  <li>Space Complexity: O(1)
+ <em>/
+function</em> getIntersectionNodeGenerator(
+  headA: ListNode | null,
+  headB: ListNode | null
+): Generator<ListNode> {
+  let currentA = headA;
+  let currentB = headB;</ListNode></li>
+</ul>
+
+<p>while (currentA || currentB) {
+    if (currentA) {
+      yield currentA;
+      currentA = currentA.next;
+    }
+    if (currentB) {
+      yield currentB;
+      currentB = currentB.next;
+    }
+  }
+}</p>
+
+<p>function getIntersectionNodeWithGenerator(
+  headA: ListNode | null,
+  headB: ListNode | null
+): ListNode | null {
+  const visited = new Set<ListNode>();</ListNode></p>
+
+<p>for (const node of getIntersectionNodeGenerator(headA, headB)) {
+    if (visited.has(node)) {
+      return node;
+    }
+    visited.add(node);
+  }</p>
+
+<p>return null;
+}</p>
+
+<p>/**</p>
+<ul>
+  <li>Solution 8: Using Functional Approach
+ *</li>
+  <li>Approach:</li>
+  <li>
+    <ul>
+      <li>Use functional programming concepts</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>More declarative style
+ *</li>
+    </ul>
+  </li>
+  <li>Time Complexity: O(m + n)</li>
+  <li>
+    <p>Space Complexity: O(m) or O(n)
+ */
+function getIntersectionNodeFunctional(
+  headA: ListNode | null,
+  headB: ListNode | null
+): ListNode | null {
+  function traverseAndCheck(
+ head: ListNode | null,
+ visited: Set<ListNode>
+  ): ListNode | null {
+ if (!head) return null;</ListNode></p>
+
+    <p>if (visited.has(head)) {
+   return head;
+ }</p>
+
+    <p>visited.add(head);
+ return traverseAndCheck(head.next, visited);
+  }</p>
+  </li>
+</ul>
+
+<p>const visited = new Set<ListNode>();</ListNode></p>
+
+<p>// First traverse list A
+  let current = headA;
+  while (current) {
+    visited.add(current);
+    current = current.next;
+  }</p>
+
+<p>// Then check list B
+  return traverseAndCheck(headB, visited);
+}</p>
+
+<p>/**</p>
+<ul>
+  <li>Solution 9: Using Two Passes with Length
+ *</li>
+  <li>Approach:</li>
+  <li>
+    <ul>
+      <li>First pass: calculate lengths</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Second pass: find intersection
+ *</li>
+    </ul>
+  </li>
+  <li>Time Complexity: O(m + n)</li>
+  <li>Space Complexity: O(1)
+ */
+function getIntersectionNodeTwoPasses(
+  headA: ListNode | null,
+  headB: ListNode | null
+): ListNode | null {
+  function getLength(head: ListNode | null): number {
+ let length = 0;
+ let current = head;
+ while (current) {
+   length++;
+   current = current.next;
+ }
+ return length;
+  }</li>
+</ul>
+
+<p>const lenA = getLength(headA);
+  const lenB = getLength(headB);</p>
+
+<p>let currentA = headA;
+  let currentB = headB;</p>
+
+<p>// Align pointers
+  if (lenA &gt; lenB) {
+    for (let i = 0; i &lt; lenA - lenB; i++) {
+      currentA = currentA!.next;
+    }
+  } else if (lenB &gt; lenA) {
+    for (let i = 0; i &lt; lenB - lenA; i++) {
+      currentB = currentB!.next;
+    }
+  }</p>
+
+<p>// Find intersection
+  while (currentA &amp;&amp; currentB) {
+    if (currentA === currentB) {
+      return currentA;
+    }
+    currentA = currentA.next;
+    currentB = currentB.next;
+  }</p>
+
+<p>return null;
+}</p>
+
+<p>/**</p>
+<ul>
+  <li>Solution 10: Using Reverse Traversal
+ *</li>
+  <li>Approach:</li>
+  <li>
+    <ul>
+      <li>Reverse both lists</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Find common prefix</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Reverse back
+ *</li>
+    </ul>
+  </li>
+  <li>Time Complexity: O(m + n)</li>
+  <li>
+    <p>Space Complexity: O(1)
+ */
+function getIntersectionNodeReverse(
+  headA: ListNode | null,
+  headB: ListNode | null
+): ListNode | null {
+  function reverseList(head: ListNode | null): ListNode | null {
+ let prev = null;
+ let current = head;</p>
+
+    <p>while (current) {
+   const next = current.next;
+   current.next = prev;
+   prev = current;
+   current = next;
+ }</p>
+
+    <p>return prev;
+  }</p>
+  </li>
+</ul>
+
+<p>// Reverse both lists
+  const reversedA = reverseList(headA);
+  const reversedB = reverseList(headB);</p>
+
+<p>// Find common prefix
+  let intersection = null;
+  let currentA = reversedA;
+  let currentB = reversedB;</p>
+
+<p>while (currentA &amp;&amp; currentB &amp;&amp; currentA === currentB) {
+    intersection = currentA;
+    currentA = currentA.next;
+    currentB = currentB.next;
+  }</p>
+
+<p>// Reverse back
+  reverseList(reversedA);
+  reverseList(reversedB);</p>
+
+<p>return intersection;
+}</p>
+
+<p>// Helper function to create a linked list from array
+function createLinkedList(values: number[]): ListNode | null {
+  if (values.length === 0) return null;</p>
+
+<p>const head = new ListNode(values[0]);
+  let current = head;</p>
+
+<p>for (let i = 1; i &lt; values.length; i++) {
+    current.next = new ListNode(values[i]);
+    current = current.next;
+  }</p>
+
+<p>return head;
+}</p>
+
+<p>// Helper function to create intersecting lists
+function createIntersectingLists(
+  listA: number[],
+  listB: number[],
+  intersection: number[]
+): {
+  headA: ListNode | null;
+  headB: ListNode | null;
+  intersectionNode: ListNode | null;
+} {
+  // Create intersection part
+  const intersectionList = createLinkedList(intersection);</p>
+
+<p>// Create list A
+  const headA = createLinkedList(listA);
+  let currentA = headA;
+  while (currentA &amp;&amp; currentA.next) {
+    currentA = currentA.next;
+  }
+  if (currentA) {
+    currentA.next = intersectionList;
+  }</p>
+
+<p>// Create list B
+  const headB = createLinkedList(listB);
+  let currentB = headB;
+  while (currentB &amp;&amp; currentB.next) {
+    currentB = currentB.next;
+  }
+  if (currentB) {
+    currentB.next = intersectionList;
+  }</p>
+
+<p>return { headA, headB, intersectionNode: intersectionList };
+}</p>
+
+<p>// Helper function to convert linked list to array
+function listToArray(head: ListNode | null): number[] {
+  const arr: number[] = [];
+  let current = head;</p>
+
+<p>while (current) {
+    arr.push(current.val);
+    current = current.next;
+  }</p>
+
+<p>return arr;
+}</p>
+
+<p>// Test cases
+function testGetIntersectionNode() {
+  console.log(“=== Testing Intersection of Two Linked Lists ===\n”);</p>
+
+<p>const testCases = [
+    {
+      listA: [4, 1],
+      listB: [5, 6, 1],
+      intersection: [8, 4, 5],
+      description: “Basic intersection”,
+    },
+    {
+      listA: [1, 9, 1],
+      listB: [3],
+      intersection: [2, 4],
+      description: “Intersection at end”,
+    },
+    {
+      listA: [2, 6, 4],
+      listB: [1, 5],
+      intersection: [],
+      description: “No intersection”,
+    },
+    {
+      listA: [1],
+      listB: [2],
+      intersection: [3, 4, 5],
+      description: “Single node lists”,
+    },
+    {
+      listA: [],
+      listB: [1, 2, 3],
+      intersection: [],
+      description: “Empty list A”,
+    },
+  ];</p>
+
+<p>testCases.forEach((testCase, index) =&gt; {
+    console.log(<code class="language-plaintext highlighter-rouge">Test Case ${index + 1}: ${testCase.description}</code>);
+    console.log(<code class="language-plaintext highlighter-rouge">List A: [${testCase.listA.join(", ")}]</code>);
+    console.log(<code class="language-plaintext highlighter-rouge">List B: [${testCase.listB.join(", ")}]</code>);
+    console.log(<code class="language-plaintext highlighter-rouge">Intersection: [${testCase.intersection.join(", ")}]\n</code>);</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+</pre></td><td class="rouge-code"><pre>const { headA, headB, intersectionNode } = createIntersectingLists(
+  testCase.listA,
+  testCase.listB,
+  testCase.intersection
+);
+
+const expectedValue = intersectionNode ? intersectionNode.val : null;
+
+// Test Solution 1 (Two Pointers)
+const result1 = getIntersectionNode(headA, headB);
+const value1 = result1 ? result1.val : null;
+console.log(
+  `Solution 1 (Two Pointers): ${value1} ${
+    value1 === expectedValue ? "✅" : "❌"
+  }`
+);
+
+// Test Solution 2 (Set)
+const result2 = getIntersectionNodeSet(headA, headB);
+const value2 = result2 ? result2.val : null;
+console.log(
+  `Solution 2 (Set): ${value2} ${value2 === expectedValue ? "✅" : "❌"}`
+);
+
+// Test Solution 3 (Length Difference)
+const result3 = getIntersectionNodeLength(headA, headB);
+const value3 = result3 ? result3.val : null;
+console.log(
+  `Solution 3 (Length Difference): ${value3} ${
+    value3 === expectedValue ? "✅" : "❌"
+  }`
+);
+
+// Test Solution 4 (Map)
+const result4 = getIntersectionNodeMap(headA, headB);
+const value4 = result4 ? result4.val : null;
+console.log(
+  `Solution 4 (Map): ${value4} ${value4 === expectedValue ? "✅" : "❌"}`
+);
+
+// Test Solution 5 (Array)
+const result5 = getIntersectionNodeArray(headA, headB);
+const value5 = result5 ? result5.val : null;
+console.log(
+  `Solution 5 (Array): ${value5} ${value5 === expectedValue ? "✅" : "❌"}`
+);
+
+// Test Solution 6 (Class)
+const result6 = getIntersectionNodeClass(headA, headB);
+const value6 = result6 ? result6.val : null;
+console.log(
+  `Solution 6 (Class): ${value6} ${value6 === expectedValue ? "✅" : "❌"}`
+);
+
+// Test Solution 7 (Generator)
+const result7 = getIntersectionNodeWithGenerator(headA, headB);
+const value7 = result7 ? result7.val : null;
+console.log(
+  `Solution 7 (Generator): ${value7} ${
+    value7 === expectedValue ? "✅" : "❌"
+  }`
+);
+
+// Test Solution 8 (Functional)
+const result8 = getIntersectionNodeFunctional(headA, headB);
+const value8 = result8 ? result8.val : null;
+console.log(
+  `Solution 8 (Functional): ${value8} ${
+    value8 === expectedValue ? "✅" : "❌"
+  }`
+);
+
+// Test Solution 9 (Two Passes)
+const result9 = getIntersectionNodeTwoPasses(headA, headB);
+const value9 = result9 ? result9.val : null;
+console.log(
+  `Solution 9 (Two Passes): ${value9} ${
+    value9 === expectedValue ? "✅" : "❌"
+  }`
+);
+
+// Test Solution 10 (Reverse)
+const result10 = getIntersectionNodeReverse(headA, headB);
+const value10 = result10 ? result10.val : null;
+console.log(
+  `Solution 10 (Reverse): ${value10} ${
+    value10 === expectedValue ? "✅" : "❌"
+  }`
+);
+
+console.log("\n---\n");   }); }
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>// Performance comparison
+function performanceComparison() {
+  console.log(“=== Performance Comparison ===\n”);</p>
+
+<p>const testCases = [
+    { name: “Two Pointers”, func: getIntersectionNode },
+    { name: “Set”, func: getIntersectionNodeSet },
+    { name: “Length Difference”, func: getIntersectionNodeLength },
+    { name: “Map”, func: getIntersectionNodeMap },
+    { name: “Array”, func: getIntersectionNodeArray },
+    { name: “Class”, func: getIntersectionNodeClass },
+    { name: “Generator”, func: getIntersectionNodeWithGenerator },
+    { name: “Functional”, func: getIntersectionNodeFunctional },
+    { name: “Two Passes”, func: getIntersectionNodeTwoPasses },
+    { name: “Reverse”, func: getIntersectionNodeReverse },
+  ];</p>
+
+<p>// Create test cases
+  const smallCase = createIntersectingLists([1, 2], [3, 4], [5, 6, 7]);
+  const mediumCase = createIntersectingLists(
+    Array.from({ length: 50 }, (<em>, i) =&gt; i),
+    Array.from({ length: 30 }, (</em>, i) =&gt; i + 100),
+    Array.from({ length: 20 }, (<em>, i) =&gt; i + 200)
+  );
+  const largeCase = createIntersectingLists(
+    Array.from({ length: 500 }, (</em>, i) =&gt; i),
+    Array.from({ length: 300 }, (<em>, i) =&gt; i + 1000),
+    Array.from({ length: 200 }, (</em>, i) =&gt; i + 2000)
+  );</p>
+
+<p>const cases = [
+    { name: “Small”, case: smallCase },
+    { name: “Medium”, case: mediumCase },
+    { name: “Large”, case: largeCase },
+  ];</p>
+
+<p>cases.forEach(({ name, case: testCase }) =&gt; {
+    console.log(<code class="language-plaintext highlighter-rouge">${name} Case:</code>);</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+</pre></td><td class="rouge-code"><pre>testCases.forEach(({ name: funcName, func }) =&gt; {
+  const start = performance.now();
+  const result = func(testCase.headA, testCase.headB);
+  const end = performance.now();
+
+  const resultValue = result ? result.val : null;
+  console.log(
+    `  ${funcName}: ${(end - start).toFixed(2)}ms (value: ${resultValue})`
+  );
+});
+
+console.log("");   }); }
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>// Uncomment the following lines to run tests
+// testGetIntersectionNode();
+// performanceComparison();</p>
+
+<p>export {
+  getIntersectionNode,
+  getIntersectionNodeSet,
+  getIntersectionNodeLength,
+  getIntersectionNodeMap,
+  getIntersectionNodeArray,
+  getIntersectionNodeClass,
+  getIntersectionNodeWithGenerator,
+  getIntersectionNodeFunctional,
+  getIntersectionNodeTwoPasses,
+  getIntersectionNodeReverse,
+  IntersectionFinder,
+  getIntersectionNodeGenerator,
+  ListNode,
+  createLinkedList,
+  createIntersectingLists,
+  listToArray,
+  testGetIntersectionNode,
+  performanceComparison,
+};</p>
+
+
+        </div>
+    </article>
+</div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Study Resources</h3>
+                    <p>Comprehensive collection of frontend interview questions, coding challenges, and system design problems.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Progress Tracking</h3>
+                    <p>Monitor your learning journey with detailed progress indicators and completion status.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Big Tech Ready</h3>
+                    <p>Curated content specifically designed for interviews at Google, Meta, Amazon, Apple, and Netflix.</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Frontend Interview Hub. Built for aspiring frontend engineers.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="/assets/js/main.js"></script>
+</body>
+</html>

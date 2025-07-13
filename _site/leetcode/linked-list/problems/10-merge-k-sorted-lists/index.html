@@ -1,0 +1,1251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Merge k Sorted List | Frontend Interview Preparation Guide</title>
+    <meta name="description" content="Comprehensive frontend interview materials for Big Tech companies">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="/assets/css/main.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <header>
+        <nav class="container">
+            <div class="logo">Frontend Interview Hub</div>
+            <ul class="nav-links">
+                <li><a href="/">Home</a></li>
+                <li><a href="#progress">Progress</a></li>
+                <li><a href="#knowledge">Knowledge</a></li>
+                <li><a href="https://github.com/nee/interview">GitHub</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <div class="content-container">
+    
+        <nav class="breadcrumb">
+            <ol>
+                <li><a href="/">Home</a></li>
+                
+                
+                
+                    
+                
+                    
+                        
+                        
+                            <li><a href="/leetcode/">Leetcode</a></li>
+                        
+                    
+                
+                    
+                        
+                        
+                            <li><a href="/leetcode/linked-list/">Linked list</a></li>
+                        
+                    
+                
+                    
+                        
+                        
+                            <li><a href="/leetcode/linked-list/problems/">Problems</a></li>
+                        
+                    
+                
+                    
+                        
+                        
+                            <li class="active">Merge k sorted list</li>
+                        
+                    
+                
+            </ol>
+        </nav>
+    
+    
+    <article class="content">
+        
+            <header class="content-header">
+                <h1 class="content-title">Merge k Sorted List</h1>
+                
+                
+                    <div class="content-meta">
+                        <span class="difficulty difficulty-hard">Hard</span>
+                        
+                            <span class="category">Linked List</span>
+                        
+                        
+                            <div class="tags">
+                                
+                                    <span class="tag">Linked List</span>
+                                
+                                    <span class="tag">Hash Table</span>
+                                
+                                    <span class="tag">Sorting</span>
+                                
+                            </div>
+                        
+                    </div>
+                
+            </header>
+        
+        
+        <div class="content-body">
+            <h1 id="merge-k-sorted-list">Merge k Sorted List</h1>
+
+<p><strong>LeetCode Problem # * 23. Merge k Sorted Lists</strong></p>
+
+<h2 id="problem-description">Problem Description</h2>
+
+<p>LeetCode problem solution with multiple approaches and explanations.</p>
+
+<h2 id="solutions">Solutions</h2>
+
+<p>/**</p>
+<ul>
+  <li>
+    <ol>
+      <li>Merge k Sorted Lists</li>
+    </ol>
+  </li>
+  <li></li>
+  <li>You are given an array of k linked-lists lists, each linked-list is sorted in ascending order.</li>
+  <li>Merge all the linked-lists into one sorted linked-list and return it.</li>
+  <li></li>
+  <li>Example 1:</li>
+  <li>Input: lists = [[1,4,5],[1,3,4],[2,6]]</li>
+  <li>Output: [1,1,2,3,4,4,5,6]</li>
+  <li>Explanation: The linked-lists are:</li>
+  <li>[</li>
+  <li>1-&gt;4-&gt;5,</li>
+  <li>1-&gt;3-&gt;4,</li>
+  <li>2-&gt;6</li>
+  <li>]</li>
+  <li>merging them into one sorted list:</li>
+  <li>1-&gt;1-&gt;2-&gt;3-&gt;4-&gt;4-&gt;5-&gt;6</li>
+  <li></li>
+  <li>Example 2:</li>
+  <li>Input: lists = []</li>
+  <li>Output: []</li>
+  <li></li>
+  <li>Example 3:</li>
+  <li>Input: lists = [[]]</li>
+  <li>Output: []</li>
+  <li></li>
+  <li>Constraints:</li>
+  <li>
+    <ul>
+      <li>k == lists.length</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>0 &lt;= k &lt;= 10^4</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>0 &lt;= lists[i].length &lt;= 500</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>-10^4 &lt;= lists[i][j] &lt;= 10^4</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>lists[i] is sorted in ascending order.</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>The sum of lists[i].length will not exceed 10^4.
+ */</li>
+    </ul>
+  </li>
+</ul>
+
+<p>// Definition for singly-linked list
+class ListNode {
+    val: number;
+    next: ListNode | null;</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+</pre></td><td class="rouge-code"><pre>constructor(val?: number, next?: ListNode | null) {
+    this.val = (val === undefined ? 0 : val);
+    this.next = (next === undefined ? null : next);
+} }
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>// Solution 1: Brute Force (Collect all values and sort)
+// Time: O(N log N), Space: O(N)
+export function mergeKLists1(lists: Array&lt;ListNode | null&gt;): ListNode | null {
+    const values: number[] = [];</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+</pre></td><td class="rouge-code"><pre>// Collect all values
+for (const head of lists) {
+    let current = head;
+    while (current) {
+        values.push(current.val);
+        current = current.next;
+    }
+}
+
+// Sort values
+values.sort((a, b) =&gt; a - b);
+
+// Build result list
+const dummy = new ListNode(0);
+let current = dummy;
+
+for (const val of values) {
+    current.next = new ListNode(val);
+    current = current.next;
+}
+
+return dummy.next; }
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>// Solution 2: Compare One by One
+// Time: O(k×N), Space: O(1)
+export function mergeKLists2(lists: Array&lt;ListNode | null&gt;): ListNode | null {
+    if (lists.length === 0) return null;</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+</pre></td><td class="rouge-code"><pre>const dummy = new ListNode(0);
+let current = dummy;
+
+while (true) {
+    let minIndex = -1;
+    let minValue = Infinity;
+    
+    // Find the list with minimum head value
+    for (let i = 0; i &lt; lists.length; i++) {
+        if (lists[i] &amp;&amp; lists[i]!.val &lt; minValue) {
+            minValue = lists[i]!.val;
+            minIndex = i;
+        }
+    }
+    
+    // No more nodes to process
+    if (minIndex === -1) break;
+    
+    // Add the minimum node to result
+    current.next = lists[minIndex];
+    current = current.next!;
+    lists[minIndex] = lists[minIndex]!.next;
+}
+
+return dummy.next; }
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>// Solution 3: Divide and Conquer
+// Time: O(N log k), Space: O(log k)
+export function mergeKLists3(lists: Array&lt;ListNode | null&gt;): ListNode | null {
+    if (lists.length === 0) return null;</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+</pre></td><td class="rouge-code"><pre>while (lists.length &gt; 1) {
+    const mergedLists: Array&lt;ListNode | null&gt; = [];
+    
+    // Merge pairs of lists
+    for (let i = 0; i &lt; lists.length; i += 2) {
+        const list1 = lists[i];
+        const list2 = i + 1 &lt; lists.length ? lists[i + 1] : null;
+        mergedLists.push(mergeTwoLists(list1, list2));
+    }
+    
+    lists = mergedLists;
+}
+
+return lists[0];
+
+function mergeTwoLists(l1: ListNode | null, l2: ListNode | null): ListNode | null {
+    const dummy = new ListNode(0);
+    let current = dummy;
+    
+    while (l1 &amp;&amp; l2) {
+        if (l1.val &lt;= l2.val) {
+            current.next = l1;
+            l1 = l1.next;
+        } else {
+            current.next = l2;
+            l2 = l2.next;
+        }
+        current = current.next;
+    }
+    
+    // Attach remaining nodes
+    current.next = l1 || l2;
+    
+    return dummy.next;
+} }
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>// Solution 4: Priority Queue (Min Heap)
+// Time: O(N log k), Space: O(k)
+export function mergeKLists4(lists: Array&lt;ListNode | null&gt;): ListNode | null {
+    class MinHeap {
+        heap: ListNode[] = [];</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+</pre></td><td class="rouge-code"><pre>    push(node: ListNode): void {
+        this.heap.push(node);
+        this.heapifyUp(this.heap.length - 1);
+    }
+    
+    pop(): ListNode | undefined {
+        if (this.heap.length === 0) return undefined;
+        
+        const min = this.heap[0];
+        const last = this.heap.pop()!;
+        
+        if (this.heap.length &gt; 0) {
+            this.heap[0] = last;
+            this.heapifyDown(0);
+        }
+        
+        return min;
+    }
+    
+    isEmpty(): boolean {
+        return this.heap.length === 0;
+    }
+    
+    private heapifyUp(idx: number): void {
+        while (idx &gt; 0) {
+            const parentIdx = Math.floor((idx - 1) / 2);
+            if (this.heap[parentIdx].val &lt;= this.heap[idx].val) break;
+            
+            [this.heap[parentIdx], this.heap[idx]] = [this.heap[idx], this.heap[parentIdx]];
+            idx = parentIdx;
+        }
+    }
+    
+    private heapifyDown(idx: number): void {
+        while (true) {
+            let minIdx = idx;
+            const leftChild = 2 * idx + 1;
+            const rightChild = 2 * idx + 2;
+            
+            if (leftChild &lt; this.heap.length &amp;&amp; this.heap[leftChild].val &lt; this.heap[minIdx].val) {
+                minIdx = leftChild;
+            }
+            
+            if (rightChild &lt; this.heap.length &amp;&amp; this.heap[rightChild].val &lt; this.heap[minIdx].val) {
+                minIdx = rightChild;
+            }
+            
+            if (minIdx === idx) break;
+            
+            [this.heap[idx], this.heap[minIdx]] = [this.heap[minIdx], this.heap[idx]];
+            idx = minIdx;
+        }
+    }
+}
+
+const heap = new MinHeap();
+
+// Add first node of each list to heap
+for (const head of lists) {
+    if (head) {
+        heap.push(head);
+    }
+}
+
+const dummy = new ListNode(0);
+let current = dummy;
+
+// Process nodes from heap
+while (!heap.isEmpty()) {
+    const node = heap.pop()!;
+    current.next = node;
+    current = current.next;
+    
+    // Add next node from same list
+    if (node.next) {
+        heap.push(node.next);
+    }
+}
+
+return dummy.next; }
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>// Solution 5: Iterative Pairwise Merging
+// Time: O(N log k), Space: O(1)
+export function mergeKLists5(lists: Array&lt;ListNode | null&gt;): ListNode | null {
+    if (lists.length === 0) return null;</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+</pre></td><td class="rouge-code"><pre>let interval = 1;
+
+while (interval &lt; lists.length) {
+    for (let i = 0; i &lt; lists.length - interval; i += interval * 2) {
+        lists[i] = mergeTwoLists(lists[i], lists[i + interval]);
+    }
+    interval *= 2;
+}
+
+return lists[0];
+
+function mergeTwoLists(l1: ListNode | null, l2: ListNode | null): ListNode | null {
+    const dummy = new ListNode(0);
+    let current = dummy;
+    
+    while (l1 &amp;&amp; l2) {
+        if (l1.val &lt;= l2.val) {
+            current.next = l1;
+            l1 = l1.next;
+        } else {
+            current.next = l2;
+            l2 = l2.next;
+        }
+        current = current.next;
+    }
+    
+    current.next = l1 || l2;
+    return dummy.next;
+} }
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>// Solution 6: Recursive Divide and Conquer
+// Time: O(N log k), Space: O(log k)
+export function mergeKLists6(lists: Array&lt;ListNode | null&gt;): ListNode | null {
+    if (lists.length === 0) return null;</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+</pre></td><td class="rouge-code"><pre>return mergeHelper(lists, 0, lists.length - 1);
+
+function mergeHelper(lists: Array&lt;ListNode | null&gt;, start: number, end: number): ListNode | null {
+    if (start === end) return lists[start];
+    if (start &gt; end) return null;
+    
+    const mid = Math.floor((start + end) / 2);
+    const left = mergeHelper(lists, start, mid);
+    const right = mergeHelper(lists, mid + 1, end);
+    
+    return mergeTwoLists(left, right);
+}
+
+function mergeTwoLists(l1: ListNode | null, l2: ListNode | null): ListNode | null {
+    if (!l1) return l2;
+    if (!l2) return l1;
+    
+    if (l1.val &lt;= l2.val) {
+        l1.next = mergeTwoLists(l1.next, l2);
+        return l1;
+    } else {
+        l2.next = mergeTwoLists(l1, l2.next);
+        return l2;
+    }
+} }
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>// Helper functions for testing
+function createList(values: number[]): ListNode | null {
+    if (values.length === 0) return null;</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+</pre></td><td class="rouge-code"><pre>const dummy = new ListNode(0);
+let current = dummy;
+
+for (const val of values) {
+    current.next = new ListNode(val);
+    current = current.next;
+}
+
+return dummy.next; }
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>function listToArray(head: ListNode | null): number[] {
+    const result: number[] = [];
+    let current = head;</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+</pre></td><td class="rouge-code"><pre>while (current) {
+    result.push(current.val);
+    current = current.next;
+}
+
+return result; }
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>// Test cases
+export function testMergeKLists() {
+    console.log(“Testing Merge k Sorted Lists:”);</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+</pre></td><td class="rouge-code"><pre>const testCases = [
+    {
+        input: [[1, 4, 5], [1, 3, 4], [2, 6]],
+        expected: [1, 1, 2, 3, 4, 4, 5, 6]
+    },
+    {
+        input: [],
+        expected: []
+    },
+    {
+        input: [[]],
+        expected: []
+    },
+    {
+        input: [[1], [2], [3]],
+        expected: [1, 2, 3]
+    },
+    {
+        input: [[1, 2, 3], [4, 5, 6], [7, 8, 9]],
+        expected: [1, 2, 3, 4, 5, 6, 7, 8, 9]
+    },
+    {
+        input: [[-1, 1], [-2, 2], [-3, 3]],
+        expected: [-3, -2, -1, 1, 2, 3]
+    }
+];
+
+const solutions = [
+    { name: "Brute Force", fn: mergeKLists1 },
+    { name: "Compare One by One", fn: mergeKLists2 },
+    { name: "Divide and Conquer", fn: mergeKLists3 },
+    { name: "Priority Queue", fn: mergeKLists4 },
+    { name: "Iterative Pairwise", fn: mergeKLists5 },
+    { name: "Recursive D&amp;C", fn: mergeKLists6 }
+];
+
+solutions.forEach(solution =&gt; {
+    console.log(`\n${solution.name}:`);
+    testCases.forEach((test, i) =&gt; {
+        // Convert input arrays to linked lists
+        const lists = test.input.map(arr =&gt; createList(arr));
+        const result = solution.fn(lists);
+        const resultArray = listToArray(result);
+        
+        const passed = JSON.stringify(resultArray) === JSON.stringify(test.expected);
+        console.log(`  Test ${i + 1}: ${passed ? 'PASS' : 'FAIL'}`);
+        if (!passed) {
+            console.log(`    Input: ${JSON.stringify(test.input)}`);
+            console.log(`    Expected: ${JSON.stringify(test.expected)}`);
+            console.log(`    Got: ${JSON.stringify(resultArray)}`);
+        }
+    });
+}); }
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>/**</p>
+<ul>
+  <li>Key Insights:</li>
+  <li></li>
+  <li>
+    <ol>
+      <li><strong>Problem Analysis</strong>:</li>
+    </ol>
+  </li>
+  <li>
+    <ul>
+      <li>Merge k sorted linked lists into one sorted list</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Each individual list is already sorted</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Need to maintain overall sorted order</li>
+    </ul>
+  </li>
+  <li></li>
+  <li>
+    <ol>
+      <li><strong>Approach Comparison</strong>:</li>
+    </ol>
+  </li>
+  <li>
+    <ul>
+      <li>Brute Force: Collect all, sort, rebuild - O(N log N)</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>One by One: Compare heads repeatedly - O(k×N)</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Divide &amp; Conquer: Binary merge approach - O(N log k)</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Priority Queue: Always pick minimum - O(N log k)</li>
+    </ul>
+  </li>
+  <li></li>
+  <li>
+    <ol>
+      <li><strong>Optimal Complexity</strong>: O(N log k)</li>
+    </ol>
+  </li>
+  <li>
+    <ul>
+      <li>N = total number of nodes across all lists</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>k = number of lists</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Achieved by divide &amp; conquer or priority queue</li>
+    </ul>
+  </li>
+  <li></li>
+  <li>
+    <ol>
+      <li><strong>Divide and Conquer Strategy</strong>:</li>
+    </ol>
+  </li>
+  <li>
+    <ul>
+      <li>Pair up lists and merge them</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Reduce k lists to k/2, then k/4, etc.</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Log k levels of merging</li>
+    </ul>
+  </li>
+  <li></li>
+  <li>
+    <ol>
+      <li><strong>Priority Queue Benefits</strong>:</li>
+    </ol>
+  </li>
+  <li>
+    <ul>
+      <li>Always process minimum element next</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Maintains O(log k) insertion/deletion</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Natural fit for the problem structure</li>
+    </ul>
+  </li>
+  <li></li>
+  <li>
+    <ol>
+      <li><strong>Space Complexity Considerations</strong>:</li>
+    </ol>
+  </li>
+  <li>
+    <ul>
+      <li>Brute Force: O(N) for collecting values</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Priority Queue: O(k) for heap storage</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Divide &amp; Conquer: O(log k) for recursion stack</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Iterative: O(1) space complexity</li>
+    </ul>
+  </li>
+  <li></li>
+  <li>
+    <ol>
+      <li><strong>Interview Strategy</strong>:</li>
+    </ol>
+  </li>
+  <li>
+    <ul>
+      <li>Start with brute force explanation</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Progress to one-by-one comparison</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Introduce divide and conquer optimization</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Discuss priority queue as alternative</li>
+    </ul>
+  </li>
+  <li></li>
+  <li>
+    <ol>
+      <li><strong>Edge Cases</strong>:</li>
+    </ol>
+  </li>
+  <li>
+    <ul>
+      <li>Empty input array</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Array with empty lists</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Single list</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Lists of different lengths</li>
+    </ul>
+  </li>
+  <li></li>
+  <li>
+    <ol>
+      <li><strong>Implementation Details</strong>:</li>
+    </ol>
+  </li>
+  <li>
+    <ul>
+      <li>Dummy node for easier list building</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Proper handling of remaining nodes</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Careful index management in divide &amp; conquer</li>
+    </ul>
+  </li>
+  <li></li>
+  <li>
+    <ol>
+      <li><strong>Common Mistakes</strong>:</li>
+    </ol>
+  </li>
+  <li>
+    <ul>
+      <li>Not handling null lists properly</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Incorrect merge logic for two lists</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Off-by-one errors in divide &amp; conquer</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Memory leaks in recursive solutions</li>
+    </ul>
+  </li>
+  <li></li>
+  <li>
+    <ol>
+      <li><strong>Optimization Techniques</strong>:</li>
+    </ol>
+  </li>
+  <li>
+    <ul>
+      <li>In-place merging to save space</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Iterative vs recursive implementations</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Priority queue vs manual comparison</li>
+    </ul>
+  </li>
+  <li></li>
+  <li>
+    <ol>
+      <li><strong>Big Tech Variations</strong>:</li>
+    </ol>
+  </li>
+  <li>
+    <ul>
+      <li>Google: Merge with custom comparators</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Meta: External sorting for large datasets</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Amazon: Distributed merge scenarios</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Microsoft: Memory-constrained merging</li>
+    </ul>
+  </li>
+  <li></li>
+  <li>
+    <ol>
+      <li><strong>Follow-up Questions</strong>:</li>
+    </ol>
+  </li>
+  <li>
+    <ul>
+      <li>Handle very large k (external memory)</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Merge in reverse order</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Find kth smallest across all lists</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Streaming merge with unknown list lengths</li>
+    </ul>
+  </li>
+  <li></li>
+  <li>
+    <ol>
+      <li><strong>Real-world Applications</strong>:</li>
+    </ol>
+  </li>
+  <li>
+    <ul>
+      <li>Database query result merging</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Log file aggregation</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Distributed system data consolidation</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>External sorting algorithms</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Multi-way merge in MapReduce</li>
+    </ul>
+  </li>
+  <li></li>
+  <li>
+    <ol>
+      <li><strong>Pattern Recognition</strong>:</li>
+    </ol>
+  </li>
+  <li>
+    <ul>
+      <li>Classic divide and conquer problem</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Priority queue for multiple streams</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Two-pointer technique for merging</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Reduction problem (k → 1)</li>
+    </ul>
+  </li>
+  <li></li>
+  <li>
+    <ol>
+      <li><strong>Performance Considerations</strong>:</li>
+    </ol>
+  </li>
+  <li>
+    <ul>
+      <li>Cache locality in array access</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Memory allocation patterns</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Function call overhead</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Early termination opportunities
+ */</li>
+    </ul>
+  </li>
+</ul>
+
+
+        </div>
+    </article>
+</div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Study Resources</h3>
+                    <p>Comprehensive collection of frontend interview questions, coding challenges, and system design problems.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Progress Tracking</h3>
+                    <p>Monitor your learning journey with detailed progress indicators and completion status.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Big Tech Ready</h3>
+                    <p>Curated content specifically designed for interviews at Google, Meta, Amazon, Apple, and Netflix.</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Frontend Interview Hub. Built for aspiring frontend engineers.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="/assets/js/main.js"></script>
+</body>
+</html>

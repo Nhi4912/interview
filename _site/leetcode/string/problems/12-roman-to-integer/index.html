@@ -1,0 +1,743 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Roman to Integer | Frontend Interview Preparation Guide</title>
+    <meta name="description" content="Comprehensive frontend interview materials for Big Tech companies">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="/assets/css/main.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <header>
+        <nav class="container">
+            <div class="logo">Frontend Interview Hub</div>
+            <ul class="nav-links">
+                <li><a href="/">Home</a></li>
+                <li><a href="#progress">Progress</a></li>
+                <li><a href="#knowledge">Knowledge</a></li>
+                <li><a href="https://github.com/nee/interview">GitHub</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <div class="content-container">
+    
+        <nav class="breadcrumb">
+            <ol>
+                <li><a href="/">Home</a></li>
+                
+                
+                
+                    
+                
+                    
+                        
+                        
+                            <li><a href="/leetcode/">Leetcode</a></li>
+                        
+                    
+                
+                    
+                        
+                        
+                            <li><a href="/leetcode/string/">String</a></li>
+                        
+                    
+                
+                    
+                        
+                        
+                            <li><a href="/leetcode/string/problems/">Problems</a></li>
+                        
+                    
+                
+                    
+                        
+                        
+                            <li class="active">Roman to integer</li>
+                        
+                    
+                
+            </ol>
+        </nav>
+    
+    
+    <article class="content">
+        
+            <header class="content-header">
+                <h1 class="content-title">Roman to Integer</h1>
+                
+                
+                    <div class="content-meta">
+                        <span class="difficulty difficulty-hard">Hard</span>
+                        
+                            <span class="category">String</span>
+                        
+                        
+                            <div class="tags">
+                                
+                                    <span class="tag">String</span>
+                                
+                                    <span class="tag">Hash Table</span>
+                                
+                            </div>
+                        
+                    </div>
+                
+            </header>
+        
+        
+        <div class="content-body">
+            <h1 id="roman-to-integer">Roman to Integer</h1>
+
+<h2 id="problem-description">Problem Description</h2>
+
+<ul>
+  <li>
+    <ul>
+      <li>Roman numerals are represented by seven different symbols: I, V, X, L, C, D and M.  *  * Symbol       Value  * I             1</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="solutions">Solutions</h2>
+
+<p>/**</p>
+<ul>
+  <li>Roman to Integer
+ *</li>
+  <li>Problem: https://leetcode.com/problems/roman-to-integer/
+ *</li>
+  <li>Roman numerals are represented by seven different symbols: I, V, X, L, C, D and M.
+ *</li>
+  <li>Symbol       Value</li>
+  <li>I             1</li>
+  <li>V             5</li>
+  <li>X             10</li>
+  <li>L             50</li>
+  <li>C             100</li>
+  <li>D             500</li>
+  <li>M             1000
+ *</li>
+  <li>For example, 2 is written as II in Roman numeral, just two one’s added together.</li>
+  <li>12 is written as XII, which is simply X + II. The number 27 is written as XXVII,</li>
+  <li>which is XX + V + II.
+ *</li>
+  <li>Roman numerals are usually written largest to smallest from left to right.</li>
+  <li>However, the numeral for four is not IIII. Instead, the number four is written as IV.</li>
+  <li>Because the one is before the five we subtract it making four. The same principle</li>
+  <li>applies to the number nine, which is written as IX. There are six instances where</li>
+  <li>subtraction is used:
+ *</li>
+  <li>I can be placed before V (5) and X (10) to make 4 and 9.</li>
+  <li>X can be placed before L (50) and C (100) to make 40 and 90.</li>
+  <li>C can be placed before D (500) and M (1000) to make 400 and 900.
+ *</li>
+  <li>Given a roman numeral, convert it to an integer.
+ *</li>
+  <li>Example 1:</li>
+  <li>Input: s = “III”</li>
+  <li>Output: 3</li>
+  <li>Explanation: III = 3.
+ *</li>
+  <li>Example 2:</li>
+  <li>Input: s = “LVIII”</li>
+  <li>Output: 58</li>
+  <li>Explanation: L = 50, V = 5, III = 3.
+ *</li>
+  <li>Example 3:</li>
+  <li>Input: s = “MCMXCIV”</li>
+  <li>Output: 1994</li>
+  <li>Explanation: M = 1000, CM = 900, XC = 90 and IV = 4.
+ *</li>
+  <li>Constraints:</li>
+  <li>
+    <ul>
+      <li>1 &lt;= s.length &lt;= 15</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>s contains only the characters (‘I’, ‘V’, ‘X’, ‘L’, ‘C’, ‘D’, ‘M’).</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>It is guaranteed that s is a valid roman numeral in the range [1, 3999].
+ *</li>
+    </ul>
+  </li>
+  <li>Solution Approaches:</li>
+  <li>
+    <ol>
+      <li>Left-to-Right with subtraction rule</li>
+    </ol>
+  </li>
+  <li>
+    <ol>
+      <li>Right-to-Left approach</li>
+    </ol>
+  </li>
+  <li>
+    <ol>
+      <li>Using a mapping with special cases</li>
+    </ol>
+  </li>
+  <li>
+    <ol>
+      <li>Recursive approach
+ *</li>
+    </ol>
+  </li>
+  <li>Time Complexity: O(n) where n is the length of the string</li>
+  <li>Space Complexity: O(1) for constant space usage
+ */</li>
+</ul>
+
+<p>/**</p>
+<ul>
+  <li>Roman to Integer - Left-to-Right Solution
+ *</li>
+  <li>Giải pháp chuyển đổi số La Mã sang số nguyên - Từ trái sang phải
+ *</li>
+  <li>@param s - Roman numeral string</li>
+  <li>@returns Integer value
+ */
+function romanToInt(s: string): number {
+  const romanValues: { [key: string]: number } = {
+ I: 1,
+ V: 5,
+ X: 10,
+ L: 50,
+ C: 100,
+ D: 500,
+ M: 1000,
+  };</li>
+</ul>
+
+<p>let result = 0;
+  let prevValue = 0;</p>
+
+<p>// Process from left to right
+  for (let i = 0; i &lt; s.length; i++) {
+    const currentValue = romanValues[s[i]];</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+</pre></td><td class="rouge-code"><pre>// If current value is greater than previous, subtract previous
+if (currentValue &gt; prevValue) {
+  result += currentValue - 2 * prevValue;
+} else {
+  result += currentValue;
+}
+
+prevValue = currentValue;   }
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>return result;
+}</p>
+
+<p>/**</p>
+<ul>
+  <li>Alternative Solution: Right-to-Left Approach
+ *</li>
+  <li>Giải pháp thay thế: Phương pháp từ phải sang trái
+ *</li>
+  <li>@param s - Roman numeral string</li>
+  <li>@returns Integer value
+ */
+function romanToIntRightToLeft(s: string): number {
+  const romanValues: { [key: string]: number } = {
+ I: 1,
+ V: 5,
+ X: 10,
+ L: 50,
+ C: 100,
+ D: 500,
+ M: 1000,
+  };</li>
+</ul>
+
+<p>let result = 0;
+  let maxValue = 0;</p>
+
+<p>// Process from right to left
+  for (let i = s.length - 1; i &gt;= 0; i–) {
+    const currentValue = romanValues[s[i]];</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+</pre></td><td class="rouge-code"><pre>if (currentValue &gt;= maxValue) {
+  result += currentValue;
+  maxValue = currentValue;
+} else {
+  result -= currentValue;
+}   }
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>return result;
+}</p>
+
+<p>/**</p>
+<ul>
+  <li>Solution with Special Cases Mapping
+ *</li>
+  <li>Giải pháp với bảng ánh xạ các trường hợp đặc biệt
+ *</li>
+  <li>@param s - Roman numeral string</li>
+  <li>@returns Integer value
+ */
+function romanToIntWithSpecialCases(s: string): number {
+  const specialCases: { [key: string]: number } = {
+ IV: 4,
+ IX: 9,
+ XL: 40,
+ XC: 90,
+ CD: 400,
+ CM: 900,
+  };</li>
+</ul>
+
+<p>const romanValues: { [key: string]: number } = {
+    I: 1,
+    V: 5,
+    X: 10,
+    L: 50,
+    C: 100,
+    D: 500,
+    M: 1000,
+  };</p>
+
+<p>let result = 0;
+  let i = 0;</p>
+
+<p>while (i &lt; s.length) {
+    // Check for special cases (two characters)
+    if (i &lt; s.length - 1) {
+      const twoChar = s.substring(i, i + 2);
+      if (specialCases[twoChar]) {
+        result += specialCases[twoChar];
+        i += 2;
+        continue;
+      }
+    }</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+</pre></td><td class="rouge-code"><pre>// Single character
+result += romanValues[s[i]];
+i++;   }
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>return result;
+}</p>
+
+<p>/**</p>
+<ul>
+  <li>Recursive Solution
+ *</li>
+  <li>Giải pháp đệ quy
+ *</li>
+  <li>@param s - Roman numeral string</li>
+  <li>@returns Integer value
+ */
+function romanToIntRecursive(s: string): number {
+  const romanValues: { [key: string]: number } = {
+ I: 1,
+ V: 5,
+ X: 10,
+ L: 50,
+ C: 100,
+ D: 500,
+ M: 1000,
+  };</li>
+</ul>
+
+<p>function helper(index: number): number {
+    if (index &gt;= s.length) return 0;</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+</pre></td><td class="rouge-code"><pre>const currentValue = romanValues[s[index]];
+
+// Check if next character forms a special case
+if (index &lt; s.length - 1) {
+  const nextValue = romanValues[s[index + 1]];
+  if (currentValue &lt; nextValue) {
+    return nextValue - currentValue + helper(index + 2);
+  }
+}
+
+return currentValue + helper(index + 1);   }
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>return helper(0);
+}</p>
+
+<p>/**</p>
+<ul>
+  <li>Solution with Validation
+ *</li>
+  <li>Giải pháp với kiểm tra tính hợp lệ
+ *</li>
+  <li>@param s - Roman numeral string</li>
+  <li>@returns Integer value with validation
+ */
+function romanToIntWithValidation(s: string): {
+  result: number;
+  isValid: boolean;
+} {
+  // Validation rules
+  const validPatterns = [
+ /^M{0,4}(CM|CD|D?C{0,3})(XC|XL|L?X{0,3})(IX|IV|V?I{0,3})$/,
+  ];</li>
+</ul>
+
+<p>const isValid = validPatterns.some((pattern) =&gt; pattern.test(s));</p>
+
+<p>if (!isValid) {
+    return { result: 0, isValid: false };
+  }</p>
+
+<p>return { result: romanToInt(s), isValid: true };
+}</p>
+
+<p>/**</p>
+<ul>
+  <li>Solution with Detailed Breakdown
+ *</li>
+  <li>Giải pháp với phân tích chi tiết
+ *</li>
+  <li>@param s - Roman numeral string</li>
+  <li>@returns Object with result and breakdown
+ */
+function romanToIntWithBreakdown(s: string): {
+  result: number;
+  breakdown: Array&lt;{ roman: string; value: number; explanation: string }&gt;;
+} {
+  const breakdown: Array&lt;{
+ roman: string;
+ value: number;
+ explanation: string;
+  }&gt; = [];
+  let result = 0;
+  let i = 0;</li>
+</ul>
+
+<p>const romanValues: { [key: string]: number } = {
+    I: 1,
+    V: 5,
+    X: 10,
+    L: 50,
+    C: 100,
+    D: 500,
+    M: 1000,
+  };</p>
+
+<p>while (i &lt; s.length) {
+    const currentChar = s[i];
+    const currentValue = romanValues[currentChar];</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+</pre></td><td class="rouge-code"><pre>// Check for subtraction cases
+if (i &lt; s.length - 1) {
+  const nextChar = s[i + 1];
+  const nextValue = romanValues[nextChar];
+
+  if (currentValue &lt; nextValue) {
+    const combinedValue = nextValue - currentValue;
+    breakdown.push({
+      roman: currentChar + nextChar,
+      value: combinedValue,
+      explanation: `${nextValue} - ${currentValue} = ${combinedValue}`,
+    });
+    result += combinedValue;
+    i += 2;
+    continue;
+  }
+}
+
+// Regular case
+breakdown.push({
+  roman: currentChar,
+  value: currentValue,
+  explanation: `Direct value: ${currentValue}`,
+});
+result += currentValue;
+i++;   }
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>return { result, breakdown };
+}</p>
+
+<p>/**</p>
+<ul>
+  <li>Performance Comparison Function
+ *</li>
+  <li>Hàm so sánh hiệu suất các phương pháp
+ */
+function comparePerformance(s: string): void {
+  const testCases = [
+ “I”,
+ “III”,
+ “IV”,
+ “IX”,
+ “LVIII”,
+ “MCMXCIV”,
+ “MMMCMXCIX”, // 3999
+  ];</li>
+</ul>
+
+<p>console.log(“Performance Comparison / So sánh hiệu suất:”);
+  console.log(“=”.repeat(50));</p>
+
+<p>for (const testCase of testCases) {
+    console.log(<code class="language-plaintext highlighter-rouge">\nInput: ${testCase}</code>);</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+</pre></td><td class="rouge-code"><pre>const start1 = performance.now();
+const result1 = romanToInt(testCase);
+const time1 = performance.now() - start1;
+
+const start2 = performance.now();
+const result2 = romanToIntRightToLeft(testCase);
+const time2 = performance.now() - start2;
+
+const start3 = performance.now();
+const result3 = romanToIntWithSpecialCases(testCase);
+const time3 = performance.now() - start3;
+
+const start4 = performance.now();
+const result4 = romanToIntRecursive(testCase);
+const time4 = performance.now() - start4;
+
+console.log(`Result: ${result1}`);
+console.log(`Left-to-Right: ${time1.toFixed(4)}ms`);
+console.log(`Right-to-Left: ${time2.toFixed(4)}ms`);
+console.log(`Special Cases: ${time3.toFixed(4)}ms`);
+console.log(`Recursive: ${time4.toFixed(4)}ms`);   } }
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>/**</p>
+<ul>
+  <li>Test Cases
+ *</li>
+  <li>Các trường hợp kiểm thử
+ */
+function runTests(): void {
+  console.log(“Roman to Integer Tests / Kiểm thử chuyển đổi số La Mã”);
+  console.log(“=”.repeat(50));</li>
+</ul>
+
+<p>const testCases = [
+    { input: “I”, expected: 1 },
+    { input: “III”, expected: 3 },
+    { input: “IV”, expected: 4 },
+    { input: “V”, expected: 5 },
+    { input: “IX”, expected: 9 },
+    { input: “X”, expected: 10 },
+    { input: “XL”, expected: 40 },
+    { input: “L”, expected: 50 },
+    { input: “XC”, expected: 90 },
+    { input: “C”, expected: 100 },
+    { input: “CD”, expected: 400 },
+    { input: “D”, expected: 500 },
+    { input: “CM”, expected: 900 },
+    { input: “M”, expected: 1000 },
+    { input: “LVIII”, expected: 58 },
+    { input: “MCMXCIV”, expected: 1994 },
+    { input: “MMMCMXCIX”, expected: 3999 },
+  ];</p>
+
+<p>let passed = 0;
+  let failed = 0;</p>
+
+<p>for (const testCase of testCases) {
+    const result1 = romanToInt(testCase.input);
+    const result2 = romanToIntRightToLeft(testCase.input);
+    const result3 = romanToIntWithSpecialCases(testCase.input);
+    const result4 = romanToIntRecursive(testCase.input);</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+</pre></td><td class="rouge-code"><pre>const allCorrect =
+  result1 === testCase.expected &amp;&amp;
+  result2 === testCase.expected &amp;&amp;
+  result3 === testCase.expected &amp;&amp;
+  result4 === testCase.expected;
+
+if (allCorrect) {
+  console.log(`✅ ${testCase.input} = ${result1}`);
+  passed++;
+} else {
+  console.log(
+    `❌ ${testCase.input}: expected ${testCase.expected}, got ${result1}`
+  );
+  failed++;
+}   }
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>console.log(<code class="language-plaintext highlighter-rouge">\nTest Results / Kết quả kiểm thử:</code>);
+  console.log(<code class="language-plaintext highlighter-rouge">Passed: ${passed}</code>);
+  console.log(<code class="language-plaintext highlighter-rouge">Failed: ${failed}</code>);
+  console.log(<code class="language-plaintext highlighter-rouge">Total: ${testCases.length}</code>);</p>
+
+<p>// Test detailed breakdown
+  console.log(“\nDetailed Breakdown Example / Ví dụ phân tích chi tiết:”);
+  const breakdown = romanToIntWithBreakdown(“MCMXCIV”);
+  console.log(<code class="language-plaintext highlighter-rouge">Input: MCMXCIV</code>);
+  console.log(<code class="language-plaintext highlighter-rouge">Result: ${breakdown.result}</code>);
+  console.log(“Breakdown / Phân tích:”);
+  breakdown.breakdown.forEach((item, index) =&gt; {
+    console.log(
+      `  ${index + 1}. ${item.roman} = ${item.value} (${item.explanation})`
+    );
+  });</p>
+
+<p>// Test validation
+  console.log(“\nValidation Tests / Kiểm thử tính hợp lệ:”);
+  const validTest = romanToIntWithValidation(“MCMXCIV”);
+  const invalidTest = romanToIntWithValidation(“IIII”); // Invalid
+  console.log(<code class="language-plaintext highlighter-rouge">Valid input: ${validTest.isValid}, Result: ${validTest.result}</code>);
+  console.log(
+    <code class="language-plaintext highlighter-rouge">Invalid input: ${invalidTest.isValid}, Result: ${invalidTest.result}</code>
+  );
+}</p>
+
+<p>// Uncomment to run tests
+// runTests();
+// console.log(“\n” + “=”.repeat(50));
+// comparePerformance(“MCMXCIV”);</p>
+
+<p>export {
+  romanToInt,
+  romanToIntRightToLeft,
+  romanToIntWithSpecialCases,
+  romanToIntRecursive,
+  romanToIntWithValidation,
+  romanToIntWithBreakdown,
+  comparePerformance,
+  runTests,
+};</p>
+
+
+        </div>
+    </article>
+</div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Study Resources</h3>
+                    <p>Comprehensive collection of frontend interview questions, coding challenges, and system design problems.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Progress Tracking</h3>
+                    <p>Monitor your learning journey with detailed progress indicators and completion status.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Big Tech Ready</h3>
+                    <p>Curated content specifically designed for interviews at Google, Meta, Amazon, Apple, and Netflix.</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Frontend Interview Hub. Built for aspiring frontend engineers.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="/assets/js/main.js"></script>
+</body>
+</html>

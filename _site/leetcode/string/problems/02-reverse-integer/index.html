@@ -1,0 +1,785 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reverse Integer | Frontend Interview Preparation Guide</title>
+    <meta name="description" content="Comprehensive frontend interview materials for Big Tech companies">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="/assets/css/main.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <header>
+        <nav class="container">
+            <div class="logo">Frontend Interview Hub</div>
+            <ul class="nav-links">
+                <li><a href="/">Home</a></li>
+                <li><a href="#progress">Progress</a></li>
+                <li><a href="#knowledge">Knowledge</a></li>
+                <li><a href="https://github.com/nee/interview">GitHub</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <div class="content-container">
+    
+        <nav class="breadcrumb">
+            <ol>
+                <li><a href="/">Home</a></li>
+                
+                
+                
+                    
+                
+                    
+                        
+                        
+                            <li><a href="/leetcode/">Leetcode</a></li>
+                        
+                    
+                
+                    
+                        
+                        
+                            <li><a href="/leetcode/string/">String</a></li>
+                        
+                    
+                
+                    
+                        
+                        
+                            <li><a href="/leetcode/string/problems/">Problems</a></li>
+                        
+                    
+                
+                    
+                        
+                        
+                            <li class="active">Reverse integer</li>
+                        
+                    
+                
+            </ol>
+        </nav>
+    
+    
+    <article class="content">
+        
+            <header class="content-header">
+                <h1 class="content-title">Reverse Integer</h1>
+                
+                
+                    <div class="content-meta">
+                        <span class="difficulty difficulty-hard">Hard</span>
+                        
+                            <span class="category">String</span>
+                        
+                        
+                            <div class="tags">
+                                
+                                    <span class="tag">String</span>
+                                
+                            </div>
+                        
+                    </div>
+                
+            </header>
+        
+        
+        <div class="content-body">
+            <h1 id="reverse-integer">Reverse Integer</h1>
+
+<p><strong>LeetCode Problem # * 7. Reverse Integer</strong></p>
+
+<h2 id="problem-description">Problem Description</h2>
+
+<ul>
+  <li>Given a signed 32-bit integer x, return x with its digits reversed.  * If reversing x causes the value to go outside the signed 32-bit integer range [-2³¹, 2³¹ - 1],  * then return 0.  *  * Input: x = 123</li>
+</ul>
+
+<h2 id="solutions">Solutions</h2>
+
+<p>/**</p>
+<ul>
+  <li>
+    <ol>
+      <li>Reverse Integer
+ *</li>
+    </ol>
+  </li>
+  <li>Problem:</li>
+  <li>Given a signed 32-bit integer x, return x with its digits reversed.</li>
+  <li>If reversing x causes the value to go outside the signed 32-bit integer range [-2³¹, 2³¹ - 1],</li>
+  <li>then return 0.
+ *</li>
+  <li>Example:</li>
+  <li>Input: x = 123</li>
+  <li>Output: 321
+ *</li>
+  <li>Input: x = -123</li>
+  <li>Output: -321
+ *</li>
+  <li>Input: x = 120</li>
+  <li>Output: 21
+ *</li>
+  <li>LeetCode: https://leetcode.com/problems/reverse-integer/
+ */</li>
+</ul>
+
+<p>/**</p>
+<ul>
+  <li>Solution 1: Mathematical Approach (Optimal)
+ *</li>
+  <li>Approach:</li>
+  <li>
+    <ul>
+      <li>Extract digits using modulo and division</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Build reversed number digit by digit</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Check for overflow at each step
+ *</li>
+    </ul>
+  </li>
+  <li>Time Complexity: O(log n)</li>
+  <li>Space Complexity: O(1)
+ */
+function reverse(x: number): number {
+  let result = 0;
+  const isNegative = x &lt; 0;
+  let num = Math.abs(x);</li>
+</ul>
+
+<p>while (num &gt; 0) {
+    const digit = num % 10;</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+</pre></td><td class="rouge-code"><pre>// Check for overflow before multiplying
+if (result &gt; Math.floor((Math.pow(2, 31) - 1) / 10)) {
+  return 0;
+}
+
+result = result * 10 + digit;
+num = Math.floor(num / 10);   }
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>return isNegative ? -result : result;
+}</p>
+
+<p>/**</p>
+<ul>
+  <li>Solution 2: String Conversion
+ *</li>
+  <li>Approach:</li>
+  <li>
+    <ul>
+      <li>Convert to string, reverse, convert back</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Handle negative sign separately
+ *</li>
+    </ul>
+  </li>
+  <li>Time Complexity: O(log n)</li>
+  <li>Space Complexity: O(log n)
+ */
+function reverseString(x: number): number {
+  const isNegative = x &lt; 0;
+  const str = Math.abs(x).toString();
+  const reversedStr = str.split(“”).reverse().join(“”);</li>
+</ul>
+
+<p>const result = parseInt(reversedStr);</p>
+
+<p>// Check for overflow
+  if (result &gt; Math.pow(2, 31) - 1) {
+    return 0;
+  }</p>
+
+<p>return isNegative ? -result : result;
+}</p>
+
+<p>/**</p>
+<ul>
+  <li>Solution 3: Using Array Methods
+ *</li>
+  <li>Approach:</li>
+  <li>
+    <ul>
+      <li>Convert to array, reverse, join</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>More functional approach
+ *</li>
+    </ul>
+  </li>
+  <li>Time Complexity: O(log n)</li>
+  <li>Space Complexity: O(log n)
+ */
+function reverseArray(x: number): number {
+  const isNegative = x &lt; 0;
+  const digits = Math.abs(x).toString().split(“”);
+  const reversed = digits.reverse().join(“”);</li>
+</ul>
+
+<p>const result = parseInt(reversed);</p>
+
+<p>if (result &gt; Math.pow(2, 31) - 1) {
+    return 0;
+  }</p>
+
+<p>return isNegative ? -result : result;
+}</p>
+
+<p>/**</p>
+<ul>
+  <li>Solution 4: Bit Manipulation (Advanced)
+ *</li>
+  <li>Approach:</li>
+  <li>
+    <ul>
+      <li>Use bit operations to check overflow</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>More efficient overflow detection
+ *</li>
+    </ul>
+  </li>
+  <li>Time Complexity: O(log n)</li>
+  <li>Space Complexity: O(1)
+ */
+function reverseBitwise(x: number): number {
+  let result = 0;
+  const isNegative = x &lt; 0;
+  let num = Math.abs(x);</li>
+</ul>
+
+<p>while (num &gt; 0) {
+    const digit = num % 10;</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+</pre></td><td class="rouge-code"><pre>// Check overflow using bit manipulation
+if (result &gt; 0x7fffffff / 10) {
+  return 0;
+}
+
+result = result * 10 + digit;
+num = Math.floor(num / 10);   }
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>return isNegative ? -result : result;
+}</p>
+
+<p>/**</p>
+<ul>
+  <li>Solution 5: Using BigInt (Modern JavaScript)
+ *</li>
+  <li>Approach:</li>
+  <li>
+    <ul>
+      <li>Use BigInt to handle large numbers</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Convert back to number for result
+ *</li>
+    </ul>
+  </li>
+  <li>Time Complexity: O(log n)</li>
+  <li>Space Complexity: O(log n)
+ */
+function reverseBigInt(x: number): number {
+  const isNegative = x &lt; 0;
+  const str = Math.abs(x).toString();
+  const reversedStr = str.split(“”).reverse().join(“”);</li>
+</ul>
+
+<p>const bigResult = BigInt(reversedStr);</p>
+
+<p>// Check if result fits in 32-bit signed integer
+  if (bigResult &gt; BigInt(0x7fffffff)) {
+    return 0;
+  }</p>
+
+<p>const result = Number(bigResult);
+  return isNegative ? -result : result;
+}</p>
+
+<p>/**</p>
+<ul>
+  <li>Solution 6: Recursive Approach
+ *</li>
+  <li>Approach:</li>
+  <li>
+    <ul>
+      <li>Use recursion to reverse digits</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Pass accumulated result as parameter
+ *</li>
+    </ul>
+  </li>
+  <li>Time Complexity: O(log n)</li>
+  <li>Space Complexity: O(log n) - recursion stack
+ */
+function reverseRecursive(x: number): number {
+  const isNegative = x &lt; 0;
+  const num = Math.abs(x);</li>
+</ul>
+
+<p>function reverseHelper(n: number, acc: number): number {
+    if (n === 0) return acc;</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+</pre></td><td class="rouge-code"><pre>const digit = n % 10;
+
+// Check for overflow
+if (acc &gt; Math.floor((Math.pow(2, 31) - 1) / 10)) {
+  return 0;
+}
+
+return reverseHelper(Math.floor(n / 10), acc * 10 + digit);   }
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>const result = reverseHelper(num, 0);
+  return isNegative ? -result : result;
+}</p>
+
+<p>/**</p>
+<ul>
+  <li>Solution 7: Using Math.log10 (Mathematical)
+ *</li>
+  <li>Approach:</li>
+  <li>
+    <ul>
+      <li>Calculate number of digits using log</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Extract digits in reverse order
+ *</li>
+    </ul>
+  </li>
+  <li>Time Complexity: O(log n)</li>
+  <li>Space Complexity: O(1)
+ */
+function reverseLog(x: number): number {
+  if (x === 0) return 0;</li>
+</ul>
+
+<p>const isNegative = x &lt; 0;
+  let num = Math.abs(x);
+  const numDigits = Math.floor(Math.log10(num)) + 1;
+  let result = 0;</p>
+
+<p>for (let i = 0; i &lt; numDigits; i++) {
+    const digit = num % 10;</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+</pre></td><td class="rouge-code"><pre>if (result &gt; Math.floor((Math.pow(2, 31) - 1) / 10)) {
+  return 0;
+}
+
+result = result * 10 + digit;
+num = Math.floor(num / 10);   }
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>return isNegative ? -result : result;
+}</p>
+
+<p>/**</p>
+<ul>
+  <li>Solution 8: Using Generator (Educational)
+ *</li>
+  <li>Approach:</li>
+  <li>
+    <ul>
+      <li>Use generator to yield digits</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Build result from yielded digits
+ *</li>
+    </ul>
+  </li>
+  <li>Time Complexity: O(log n)</li>
+  <li>Space Complexity: O(log n)
+ <em>/
+function</em> digitGenerator(n: number): Generator<number> {
+  while (n &gt; 0) {
+ yield n % 10;
+ n = Math.floor(n / 10);
+  }
+}</number></li>
+</ul>
+
+<p>function reverseGenerator(x: number): number {
+  if (x === 0) return 0;</p>
+
+<p>const isNegative = x &lt; 0;
+  const num = Math.abs(x);
+  let result = 0;</p>
+
+<p>for (const digit of digitGenerator(num)) {
+    if (result &gt; Math.floor((Math.pow(2, 31) - 1) / 10)) {
+      return 0;
+    }
+    result = result * 10 + digit;
+  }</p>
+
+<p>return isNegative ? -result : result;
+}</p>
+
+<p>// Test cases
+function testReverseInteger() {
+  console.log(“=== Testing Reverse Integer ===\n”);</p>
+
+<p>const testCases = [
+    {
+      input: 123,
+      expected: 321,
+      description: “Positive number”,
+    },
+    {
+      input: -123,
+      expected: -321,
+      description: “Negative number”,
+    },
+    {
+      input: 120,
+      expected: 21,
+      description: “Ending with zero”,
+    },
+    {
+      input: 0,
+      expected: 0,
+      description: “Zero”,
+    },
+    {
+      input: 1,
+      expected: 1,
+      description: “Single digit”,
+    },
+    {
+      input: 1534236469,
+      expected: 0,
+      description: “Overflow case”,
+    },
+    {
+      input: -2147483648,
+      expected: 0,
+      description: “Min 32-bit integer”,
+    },
+    {
+      input: 2147483647,
+      expected: 0,
+      description: “Max 32-bit integer”,
+    },
+    {
+      input: 1000,
+      expected: 1,
+      description: “Multiple trailing zeros”,
+    },
+  ];</p>
+
+<p>testCases.forEach((testCase, index) =&gt; {
+    console.log(<code class="language-plaintext highlighter-rouge">Test Case ${index + 1}: ${testCase.description}</code>);
+    console.log(<code class="language-plaintext highlighter-rouge">Input: ${testCase.input}</code>);
+    console.log(<code class="language-plaintext highlighter-rouge">Expected: ${testCase.expected}\n</code>);</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+</pre></td><td class="rouge-code"><pre>// Test Solution 1 (Mathematical)
+const result1 = reverse(testCase.input);
+console.log(
+  `Solution 1 (Mathematical): ${result1} ${
+    result1 === testCase.expected ? "✅" : "❌"
+  }`
+);
+
+// Test Solution 2 (String)
+const result2 = reverseString(testCase.input);
+console.log(
+  `Solution 2 (String): ${result2} ${
+    result2 === testCase.expected ? "✅" : "❌"
+  }`
+);
+
+// Test Solution 3 (Array)
+const result3 = reverseArray(testCase.input);
+console.log(
+  `Solution 3 (Array): ${result3} ${
+    result3 === testCase.expected ? "✅" : "❌"
+  }`
+);
+
+// Test Solution 4 (Bitwise)
+const result4 = reverseBitwise(testCase.input);
+console.log(
+  `Solution 4 (Bitwise): ${result4} ${
+    result4 === testCase.expected ? "✅" : "❌"
+  }`
+);
+
+// Test Solution 5 (BigInt)
+const result5 = reverseBigInt(testCase.input);
+console.log(
+  `Solution 5 (BigInt): ${result5} ${
+    result5 === testCase.expected ? "✅" : "❌"
+  }`
+);
+
+// Test Solution 6 (Recursive)
+const result6 = reverseRecursive(testCase.input);
+console.log(
+  `Solution 6 (Recursive): ${result6} ${
+    result6 === testCase.expected ? "✅" : "❌"
+  }`
+);
+
+// Test Solution 7 (Log)
+const result7 = reverseLog(testCase.input);
+console.log(
+  `Solution 7 (Log): ${result7} ${
+    result7 === testCase.expected ? "✅" : "❌"
+  }`
+);
+
+// Test Solution 8 (Generator)
+const result8 = reverseGenerator(testCase.input);
+console.log(
+  `Solution 8 (Generator): ${result8} ${
+    result8 === testCase.expected ? "✅" : "❌"
+  }`
+);
+
+console.log("\n---\n");   }); }
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>// Performance comparison
+function performanceComparison() {
+  console.log(“=== Performance Comparison ===\n”);</p>
+
+<p>const testCases = [
+    { name: “Mathematical”, func: reverse },
+    { name: “String”, func: reverseString },
+    { name: “Array”, func: reverseArray },
+    { name: “Bitwise”, func: reverseBitwise },
+    { name: “BigInt”, func: reverseBigInt },
+    { name: “Recursive”, func: reverseRecursive },
+    { name: “Log”, func: reverseLog },
+    { name: “Generator”, func: reverseGenerator },
+  ];</p>
+
+<p>const numbers = [123, 12345, 123456789, 1534236469, -123, -12345];</p>
+
+<p>numbers.forEach((num) =&gt; {
+    console.log(<code class="language-plaintext highlighter-rouge">Testing with ${num}:</code>);</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+</pre></td><td class="rouge-code"><pre>testCases.forEach(({ name, func }) =&gt; {
+  const start = performance.now();
+  const result = func(num);
+  const end = performance.now();
+
+  console.log(`  ${name}: ${(end - start).toFixed(2)}ms (${result})`);
+});
+
+console.log("");   }); }
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>// Overflow demonstration
+function overflowDemo() {
+  console.log(“=== Overflow Demonstration ===\n”);</p>
+
+<p>console.log(“32-bit signed integer range:”);
+  console.log(<code class="language-plaintext highlighter-rouge">Min: ${-Math.pow(2, 31)}</code>);
+  console.log(<code class="language-plaintext highlighter-rouge">Max: ${Math.pow(2, 31) - 1}\n</code>);</p>
+
+<p>const testNumbers = [
+    1534236469, // Should overflow
+    2147483647, // Max 32-bit integer
+    -2147483648, // Min 32-bit integer
+    1234567890, // Should not overflow
+  ];</p>
+
+<p>testNumbers.forEach((num) =&gt; {
+    const reversed = reverse(num);
+    console.log(<code class="language-plaintext highlighter-rouge">${num} -&gt; ${reversed} ${reversed === 0 ? "(overflow)" : ""}</code>);
+  });
+}</p>
+
+<p>// Uncomment the following lines to run tests
+// testReverseInteger();
+// performanceComparison();
+// overflowDemo();</p>
+
+<p>export {
+  reverse,
+  reverseString,
+  reverseArray,
+  reverseBitwise,
+  reverseBigInt,
+  reverseRecursive,
+  reverseLog,
+  reverseGenerator,
+  digitGenerator,
+  testReverseInteger,
+  performanceComparison,
+  overflowDemo,
+};</p>
+
+
+        </div>
+    </article>
+</div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Study Resources</h3>
+                    <p>Comprehensive collection of frontend interview questions, coding challenges, and system design problems.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Progress Tracking</h3>
+                    <p>Monitor your learning journey with detailed progress indicators and completion status.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Big Tech Ready</h3>
+                    <p>Curated content specifically designed for interviews at Google, Meta, Amazon, Apple, and Netflix.</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Frontend Interview Hub. Built for aspiring frontend engineers.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="/assets/js/main.js"></script>
+</body>
+</html>

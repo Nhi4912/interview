@@ -1,0 +1,1076 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Group Anagram | Frontend Interview Preparation Guide</title>
+    <meta name="description" content="Comprehensive frontend interview materials for Big Tech companies">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="/assets/css/main.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <header>
+        <nav class="container">
+            <div class="logo">Frontend Interview Hub</div>
+            <ul class="nav-links">
+                <li><a href="/">Home</a></li>
+                <li><a href="#progress">Progress</a></li>
+                <li><a href="#knowledge">Knowledge</a></li>
+                <li><a href="https://github.com/nee/interview">GitHub</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <div class="content-container">
+    
+        <nav class="breadcrumb">
+            <ol>
+                <li><a href="/">Home</a></li>
+                
+                
+                
+                    
+                
+                    
+                        
+                        
+                            <li><a href="/leetcode/">Leetcode</a></li>
+                        
+                    
+                
+                    
+                        
+                        
+                            <li><a href="/leetcode/string/">String</a></li>
+                        
+                    
+                
+                    
+                        
+                        
+                            <li><a href="/leetcode/string/problems/">Problems</a></li>
+                        
+                    
+                
+                    
+                        
+                        
+                            <li class="active">Group anagram</li>
+                        
+                    
+                
+            </ol>
+        </nav>
+    
+    
+    <article class="content">
+        
+            <header class="content-header">
+                <h1 class="content-title">Group Anagram</h1>
+                
+                
+                    <div class="content-meta">
+                        <span class="difficulty difficulty-hard">Hard</span>
+                        
+                            <span class="category">String</span>
+                        
+                        
+                            <div class="tags">
+                                
+                                    <span class="tag">String</span>
+                                
+                                    <span class="tag">Hash Table</span>
+                                
+                                    <span class="tag">Sorting</span>
+                                
+                            </div>
+                        
+                    </div>
+                
+            </header>
+        
+        
+        <div class="content-body">
+            <h1 id="group-anagram">Group Anagram</h1>
+
+<p><strong>LeetCode Problem # * 49. Group Anagrams</strong></p>
+
+<h2 id="problem-description">Problem Description</h2>
+
+<ul>
+  <li>Given an array of strings strs, group the anagrams together. You can return  * the answer in any order.  *  * An Anagram is a word or phrase formed by rearranging the letters of a different  * word or phrase, typically using all the original letters exactly once.</li>
+</ul>
+
+<h2 id="solutions">Solutions</h2>
+
+<p>/**</p>
+<ul>
+  <li>
+    <ol>
+      <li>Group Anagrams
+ *</li>
+    </ol>
+  </li>
+  <li>Problem:</li>
+  <li>Given an array of strings strs, group the anagrams together. You can return</li>
+  <li>the answer in any order.
+ *</li>
+  <li>An Anagram is a word or phrase formed by rearranging the letters of a different</li>
+  <li>word or phrase, typically using all the original letters exactly once.
+ *</li>
+  <li>Example:</li>
+  <li>Input: strs = [“eat”,”tea”,”tan”,”ate”,”nat”,”bat”]</li>
+  <li>Output: [[“bat”],[“nat”,”tan”],[“ate”,”eat”,”tea”]]
+ *</li>
+  <li>Input: strs = [””]</li>
+  <li>Output: [[””]]
+ *</li>
+  <li>Input: strs = [“a”]</li>
+  <li>Output: [[“a”]]
+ *</li>
+  <li>LeetCode: https://leetcode.com/problems/group-anagrams/
+ */</li>
+</ul>
+
+<p>/**</p>
+<ul>
+  <li>Solution 1: Sort-based Grouping (Optimal)
+ *</li>
+  <li>Approach:</li>
+  <li>
+    <ul>
+      <li>Sort each string to get a canonical form</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Use sorted string as key in hash map</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Group strings with same sorted form
+ *</li>
+    </ul>
+  </li>
+  <li>Time Complexity: O(n * k * log k) where n is number of strings, k is max string length</li>
+  <li>Space Complexity: O(n * k)
+ */
+function groupAnagrams(strs: string[]): string[][] {
+  const groups = new Map&lt;string, string[]&gt;();</li>
+</ul>
+
+<p>for (const str of strs) {
+    const sorted = str.split(“”).sort().join(“”);
+    if (!groups.has(sorted)) {
+      groups.set(sorted, []);
+    }
+    groups.get(sorted)!.push(str);
+  }</p>
+
+<p>return Array.from(groups.values());
+}</p>
+
+<p>/**</p>
+<ul>
+  <li>Solution 2: Character Count-based Grouping
+ *</li>
+  <li>Approach:</li>
+  <li>
+    <ul>
+      <li>Count characters in each string</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Use character count array as key</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>More efficient for long strings
+ *</li>
+    </ul>
+  </li>
+  <li>Time Complexity: O(n * k) where n is number of strings, k is max string length</li>
+  <li>Space Complexity: O(n * k)
+ */
+function groupAnagramsCount(strs: string[]): string[][] {
+  const groups = new Map&lt;string, string[]&gt;();</li>
+</ul>
+
+<p>for (const str of strs) {
+    const count = new Array(26).fill(0);</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+</pre></td><td class="rouge-code"><pre>for (const char of str) {
+  count[char.charCodeAt(0) - "a".charCodeAt(0)]++;
+}
+
+const key = count.join("#");
+if (!groups.has(key)) {
+  groups.set(key, []);
+}
+groups.get(key)!.push(str);   }
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>return Array.from(groups.values());
+}</p>
+
+<p>/**</p>
+<ul>
+  <li>Solution 3: Using Object as Hash Map
+ *</li>
+  <li>Approach:</li>
+  <li>
+    <ul>
+      <li>Use JavaScript object as hash map</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>More familiar for JavaScript developers
+ *</li>
+    </ul>
+  </li>
+  <li>Time Complexity: O(n * k * log k)</li>
+  <li>Space Complexity: O(n * k)
+ */
+function groupAnagramsObject(strs: string[]): string[][] {
+  const groups: { [key: string]: string[] } = {};</li>
+</ul>
+
+<p>for (const str of strs) {
+    const sorted = str.split(“”).sort().join(“”);
+    if (!groups[sorted]) {
+      groups[sorted] = [];
+    }
+    groups[sorted].push(str);
+  }</p>
+
+<p>return Object.values(groups);
+}</p>
+
+<p>/**</p>
+<ul>
+  <li>Solution 4: Using Array Methods
+ *</li>
+  <li>Approach:</li>
+  <li>
+    <ul>
+      <li>Use array methods for grouping</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>More functional programming style
+ *</li>
+    </ul>
+  </li>
+  <li>Time Complexity: O(n * k * log k)</li>
+  <li>Space Complexity: O(n * k)
+ */
+function groupAnagramsArray(strs: string[]): string[][] {
+  return Object.values(
+ strs.reduce((groups: { [key: string]: string[] }, str) =&gt; {
+   const sorted = str.split(“”).sort().join(“”);
+   groups[sorted] = groups[sorted] || [];
+   groups[sorted].push(str);
+   return groups;
+ }, {})
+  );
+}</li>
+</ul>
+
+<p>/**</p>
+<ul>
+  <li>Solution 5: Using Set for Uniqueness
+ *</li>
+  <li>Approach:</li>
+  <li>
+    <ul>
+      <li>Use Set to track unique anagram groups</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>More explicit uniqueness handling
+ *</li>
+    </ul>
+  </li>
+  <li>Time Complexity: O(n * k * log k)</li>
+  <li>Space Complexity: O(n * k)
+ */
+function groupAnagramsSet(strs: string[]): string[][] {
+  const groups = new Map&lt;string, string[]&gt;();
+  const uniqueKeys = new Set<string>();</string></li>
+</ul>
+
+<p>for (const str of strs) {
+    const sorted = str.split(“”).sort().join(“”);
+    uniqueKeys.add(sorted);</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+</pre></td><td class="rouge-code"><pre>if (!groups.has(sorted)) {
+  groups.set(sorted, []);
+}
+groups.get(sorted)!.push(str);   }
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>return Array.from(uniqueKeys).map((key) =&gt; groups.get(key)!);
+}</p>
+
+<p>/**</p>
+<ul>
+  <li>Solution 6: Using Class (Object-oriented)
+ *</li>
+  <li>Approach:</li>
+  <li>
+    <ul>
+      <li>Create an AnagramGrouper class</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Encapsulate the grouping logic
+ *</li>
+    </ul>
+  </li>
+  <li>Time Complexity: O(n * k * log k)</li>
+  <li>Space Complexity: O(n * k)
+ */
+class AnagramGrouper {
+  private groups: Map&lt;string, string[]&gt;;</li>
+</ul>
+
+<p>constructor() {
+    this.groups = new Map();
+  }</p>
+
+<p>group(strs: string[]): string[][] {
+    this.groups.clear();</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+</pre></td><td class="rouge-code"><pre>for (const str of strs) {
+  this.addToGroup(str);
+}
+
+return Array.from(this.groups.values());   }
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>private addToGroup(str: string): void {
+    const key = this.getKey(str);
+    if (!this.groups.has(key)) {
+      this.groups.set(key, []);
+    }
+    this.groups.get(key)!.push(str);
+  }</p>
+
+<p>private getKey(str: string): string {
+    return str.split(“”).sort().join(“”);
+  }</p>
+
+<p>getGroups(): Map&lt;string, string[]&gt; {
+    return new Map(this.groups);
+  }
+}</p>
+
+<p>function groupAnagramsClass(strs: string[]): string[][] {
+  const grouper = new AnagramGrouper();
+  return grouper.group(strs);
+}</p>
+
+<p>/**</p>
+<ul>
+  <li>Solution 7: Using Generator (Memory efficient)
+ *</li>
+  <li>Approach:</li>
+  <li>
+    <ul>
+      <li>Use generator to yield groups</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Memory efficient for large datasets
+ *</li>
+    </ul>
+  </li>
+  <li>Time Complexity: O(n * k * log k)</li>
+  <li>Space Complexity: O(k) per group
+ <em>/
+function</em> groupAnagramsGenerator(strs: string[]): Generator&lt;string[]&gt; {
+  const groups = new Map&lt;string, string[]&gt;();</li>
+</ul>
+
+<p>for (const str of strs) {
+    const sorted = str.split(“”).sort().join(“”);
+    if (!groups.has(sorted)) {
+      groups.set(sorted, []);
+    }
+    groups.get(sorted)!.push(str);
+  }</p>
+
+<p>for (const group of groups.values()) {
+    yield group;
+  }
+}</p>
+
+<p>function groupAnagramsWithGenerator(strs: string[]): string[][] {
+  return Array.from(groupAnagramsGenerator(strs));
+}</p>
+
+<p>/**</p>
+<ul>
+  <li>Solution 8: Using Functional Approach
+ *</li>
+  <li>Approach:</li>
+  <li>
+    <ul>
+      <li>Use functional programming concepts</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>More declarative style
+ *</li>
+    </ul>
+  </li>
+  <li>Time Complexity: O(n * k * log k)</li>
+  <li>Space Complexity: O(n * k)
+ */
+function groupAnagramsFunctional(strs: string[]): string[][] {
+  const createKey = (str: string) =&gt; str.split(“”).sort().join(“”);</li>
+</ul>
+
+<p>return Object.values(
+    strs.reduce((acc, str) =&gt; {
+      const key = createKey(str);
+      return { …acc, [key]: […(acc[key] || []), str] };
+    }, {} as { [key: string]: string[] })
+  );
+}</p>
+
+<p>/**</p>
+<ul>
+  <li>Solution 9: Using Bit Manipulation (for small alphabets)
+ *</li>
+  <li>Approach:</li>
+  <li>
+    <ul>
+      <li>Use bit manipulation for character counting</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Efficient for small character sets
+ *</li>
+    </ul>
+  </li>
+  <li>Time Complexity: O(n * k)</li>
+  <li>Space Complexity: O(n * k)
+ */
+function groupAnagramsBitwise(strs: string[]): string[][] {
+  const groups = new Map&lt;string, string[]&gt;();</li>
+</ul>
+
+<p>for (const str of strs) {
+    let key = 0;
+    const charCount = new Array(26).fill(0);</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+</pre></td><td class="rouge-code"><pre>for (const char of str) {
+  charCount[char.charCodeAt(0) - "a".charCodeAt(0)]++;
+}
+
+// Create a unique key using bit manipulation
+for (let i = 0; i &lt; 26; i++) {
+  key = key * 31 + charCount[i];
+}
+
+const keyStr = key.toString();
+if (!groups.has(keyStr)) {
+  groups.set(keyStr, []);
+}
+groups.get(keyStr)!.push(str);   }
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>return Array.from(groups.values());
+}</p>
+
+<p>/**</p>
+<ul>
+  <li>Solution 10: Using Prime Number Multiplication
+ *</li>
+  <li>Approach:</li>
+  <li>
+    <ul>
+      <li>Assign prime numbers to each character</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Multiply primes to create unique key</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Avoid sorting overhead
+ *</li>
+    </ul>
+  </li>
+  <li>Time Complexity: O(n * k)</li>
+  <li>Space Complexity: O(n * k)
+ */
+function groupAnagramsPrime(strs: string[]): string[][] {
+  const groups = new Map&lt;string, string[]&gt;();</li>
+</ul>
+
+<p>// Assign prime numbers to each character
+  const primes = [
+    2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67, 71,
+    73, 79, 83, 89, 97, 101,
+  ];</p>
+
+<p>for (const str of strs) {
+    let key = 1;</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+</pre></td><td class="rouge-code"><pre>for (const char of str) {
+  const index = char.charCodeAt(0) - "a".charCodeAt(0);
+  key *= primes[index];
+}
+
+const keyStr = key.toString();
+if (!groups.has(keyStr)) {
+  groups.set(keyStr, []);
+}
+groups.get(keyStr)!.push(str);   }
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>return Array.from(groups.values());
+}</p>
+
+<p>/**</p>
+<ul>
+  <li>Solution 11: Using Frequency Array as Key
+ *</li>
+  <li>Approach:</li>
+  <li>
+    <ul>
+      <li>Use frequency array directly as key</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Convert array to string for Map key
+ *</li>
+    </ul>
+  </li>
+  <li>Time Complexity: O(n * k)</li>
+  <li>Space Complexity: O(n * k)
+ */
+function groupAnagramsFrequency(strs: string[]): string[][] {
+  const groups = new Map&lt;string, string[]&gt;();</li>
+</ul>
+
+<p>for (const str of strs) {
+    const freq = new Array(26).fill(0);</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+</pre></td><td class="rouge-code"><pre>for (const char of str) {
+  freq[char.charCodeAt(0) - "a".charCodeAt(0)]++;
+}
+
+const key = freq.join(",");
+if (!groups.has(key)) {
+  groups.set(key, []);
+}
+groups.get(key)!.push(str);   }
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>return Array.from(groups.values());
+}</p>
+
+<p>// Test cases
+function testGroupAnagrams() {
+  console.log(“=== Testing Group Anagrams ===\n”);</p>
+
+<p>const testCases = [
+    {
+      input: [“eat”, “tea”, “tan”, “ate”, “nat”, “bat”],
+      expected: [[“bat”], [“nat”, “tan”], [“ate”, “eat”, “tea”]],
+      description: “Multiple anagram groups”,
+    },
+    {
+      input: [””],
+      expected: [[””]],
+      description: “Empty string”,
+    },
+    {
+      input: [“a”],
+      expected: [[“a”]],
+      description: “Single character”,
+    },
+    {
+      input: [“abc”, “cba”, “bac”, “cab”, “acb”, “bca”],
+      expected: [[“abc”, “cba”, “bac”, “cab”, “acb”, “bca”]],
+      description: “All anagrams”,
+    },
+    {
+      input: [“abc”, “def”, “ghi”],
+      expected: [[“abc”], [“def”], [“ghi”]],
+      description: “No anagrams”,
+    },
+  ];</p>
+
+<p>testCases.forEach((testCase, index) =&gt; {
+    console.log(<code class="language-plaintext highlighter-rouge">Test Case ${index + 1}: ${testCase.description}</code>);
+    console.log(<code class="language-plaintext highlighter-rouge">Input: ${JSON.stringify(testCase.input)}</code>);
+    console.log(<code class="language-plaintext highlighter-rouge">Expected: ${JSON.stringify(testCase.expected)}\n</code>);</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+</pre></td><td class="rouge-code"><pre>// Test Solution 1 (Sort-based)
+const result1 = groupAnagrams([...testCase.input]);
+console.log(
+  `Solution 1 (Sort-based): ${JSON.stringify(result1)} ${
+    JSON.stringify(result1.sort()) ===
+    JSON.stringify(testCase.expected.sort())
+      ? "✅"
+      : "❌"
+  }`
+);
+
+// Test Solution 2 (Count-based)
+const result2 = groupAnagramsCount([...testCase.input]);
+console.log(
+  `Solution 2 (Count-based): ${JSON.stringify(result2)} ${
+    JSON.stringify(result2.sort()) ===
+    JSON.stringify(testCase.expected.sort())
+      ? "✅"
+      : "❌"
+  }`
+);
+
+// Test Solution 3 (Object)
+const result3 = groupAnagramsObject([...testCase.input]);
+console.log(
+  `Solution 3 (Object): ${JSON.stringify(result3)} ${
+    JSON.stringify(result3.sort()) ===
+    JSON.stringify(testCase.expected.sort())
+      ? "✅"
+      : "❌"
+  }`
+);
+
+// Test Solution 4 (Array Methods)
+const result4 = groupAnagramsArray([...testCase.input]);
+console.log(
+  `Solution 4 (Array Methods): ${JSON.stringify(result4)} ${
+    JSON.stringify(result4.sort()) ===
+    JSON.stringify(testCase.expected.sort())
+      ? "✅"
+      : "❌"
+  }`
+);
+
+// Test Solution 5 (Set)
+const result5 = groupAnagramsSet([...testCase.input]);
+console.log(
+  `Solution 5 (Set): ${JSON.stringify(result5)} ${
+    JSON.stringify(result5.sort()) ===
+    JSON.stringify(testCase.expected.sort())
+      ? "✅"
+      : "❌"
+  }`
+);
+
+// Test Solution 6 (Class)
+const result6 = groupAnagramsClass([...testCase.input]);
+console.log(
+  `Solution 6 (Class): ${JSON.stringify(result6)} ${
+    JSON.stringify(result6.sort()) ===
+    JSON.stringify(testCase.expected.sort())
+      ? "✅"
+      : "❌"
+  }`
+);
+
+// Test Solution 7 (Generator)
+const result7 = groupAnagramsWithGenerator([...testCase.input]);
+console.log(
+  `Solution 7 (Generator): ${JSON.stringify(result7)} ${
+    JSON.stringify(result7.sort()) ===
+    JSON.stringify(testCase.expected.sort())
+      ? "✅"
+      : "❌"
+  }`
+);
+
+// Test Solution 8 (Functional)
+const result8 = groupAnagramsFunctional([...testCase.input]);
+console.log(
+  `Solution 8 (Functional): ${JSON.stringify(result8)} ${
+    JSON.stringify(result8.sort()) ===
+    JSON.stringify(testCase.expected.sort())
+      ? "✅"
+      : "❌"
+  }`
+);
+
+// Test Solution 9 (Bitwise)
+const result9 = groupAnagramsBitwise([...testCase.input]);
+console.log(
+  `Solution 9 (Bitwise): ${JSON.stringify(result9)} ${
+    JSON.stringify(result9.sort()) ===
+    JSON.stringify(testCase.expected.sort())
+      ? "✅"
+      : "❌"
+  }`
+);
+
+// Test Solution 10 (Prime)
+const result10 = groupAnagramsPrime([...testCase.input]);
+console.log(
+  `Solution 10 (Prime): ${JSON.stringify(result10)} ${
+    JSON.stringify(result10.sort()) ===
+    JSON.stringify(testCase.expected.sort())
+      ? "✅"
+      : "❌"
+  }`
+);
+
+// Test Solution 11 (Frequency)
+const result11 = groupAnagramsFrequency([...testCase.input]);
+console.log(
+  `Solution 11 (Frequency): ${JSON.stringify(result11)} ${
+    JSON.stringify(result11.sort()) ===
+    JSON.stringify(testCase.expected.sort())
+      ? "✅"
+      : "❌"
+  }`
+);
+
+console.log("\n---\n");   }); }
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>// Performance comparison
+function performanceComparison() {
+  console.log(“=== Performance Comparison ===\n”);</p>
+
+<p>const testCases = [
+    { name: “Sort-based”, func: groupAnagrams },
+    { name: “Count-based”, func: groupAnagramsCount },
+    { name: “Object”, func: groupAnagramsObject },
+    { name: “Array Methods”, func: groupAnagramsArray },
+    { name: “Set”, func: groupAnagramsSet },
+    { name: “Class”, func: groupAnagramsClass },
+    { name: “Generator”, func: groupAnagramsWithGenerator },
+    { name: “Functional”, func: groupAnagramsFunctional },
+    { name: “Bitwise”, func: groupAnagramsBitwise },
+    { name: “Prime”, func: groupAnagramsPrime },
+    { name: “Frequency”, func: groupAnagramsFrequency },
+  ];</p>
+
+<p>// Create test cases
+  const smallCase = [“eat”, “tea”, “tan”, “ate”, “nat”, “bat”];
+  const mediumCase = [
+    “abc”,
+    “cba”,
+    “bac”,
+    “cab”,
+    “acb”,
+    “bca”,
+    “def”,
+    “fed”,
+    “ghi”,
+    “ihg”,
+  ];
+  const largeCase = Array.from({ length: 100 }, (_, i) =&gt; <code class="language-plaintext highlighter-rouge">word${i % 10}</code>);</p>
+
+<p>const cases = [
+    { name: “Small”, case: smallCase },
+    { name: “Medium”, case: mediumCase },
+    { name: “Large”, case: largeCase },
+  ];</p>
+
+<p>cases.forEach(({ name, case: testCase }) =&gt; {
+    console.log(<code class="language-plaintext highlighter-rouge">${name} Case:</code>);</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+</pre></td><td class="rouge-code"><pre>testCases.forEach(({ name: funcName, func }) =&gt; {
+  const start = performance.now();
+  const result = func([...testCase]);
+  const end = performance.now();
+
+  console.log(
+    `  ${funcName}: ${(end - start).toFixed(2)}ms (${result.length} groups)`
+  );
+});
+
+console.log("");   }); }
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>// Anagram analysis
+function anagramAnalysis() {
+  console.log(“=== Anagram Analysis ===\n”);</p>
+
+<p>const testCases = [
+    [“eat”, “tea”, “tan”, “ate”, “nat”, “bat”],
+    [“abc”, “cba”, “bac”, “cab”, “acb”, “bca”],
+    [””, “a”, “aa”, “aaa”],
+    [“listen”, “silent”, “enlist”, “tinsel”],
+  ];</p>
+
+<p>testCases.forEach((testCase, index) =&gt; {
+    console.log(<code class="language-plaintext highlighter-rouge">Test Case ${index + 1}:</code>);
+    console.log(<code class="language-plaintext highlighter-rouge">Input: ${JSON.stringify(testCase)}</code>);
+    const result = groupAnagrams(testCase);
+    console.log(<code class="language-plaintext highlighter-rouge">Groups: ${result.length}</code>);
+    console.log(<code class="language-plaintext highlighter-rouge">Result: ${JSON.stringify(result)}</code>);
+    console.log(“”);
+  });
+}</p>
+
+<p>// Uncomment the following lines to run tests
+// testGroupAnagrams();
+// performanceComparison();
+// anagramAnalysis();</p>
+
+<p>export {
+  groupAnagrams,
+  groupAnagramsCount,
+  groupAnagramsObject,
+  groupAnagramsArray,
+  groupAnagramsSet,
+  groupAnagramsClass,
+  groupAnagramsWithGenerator,
+  groupAnagramsFunctional,
+  groupAnagramsBitwise,
+  groupAnagramsPrime,
+  groupAnagramsFrequency,
+  AnagramGrouper,
+  groupAnagramsGenerator,
+  testGroupAnagrams,
+  performanceComparison,
+  anagramAnalysis,
+};</p>
+
+
+        </div>
+    </article>
+</div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Study Resources</h3>
+                    <p>Comprehensive collection of frontend interview questions, coding challenges, and system design problems.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Progress Tracking</h3>
+                    <p>Monitor your learning journey with detailed progress indicators and completion status.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Big Tech Ready</h3>
+                    <p>Curated content specifically designed for interviews at Google, Meta, Amazon, Apple, and Netflix.</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Frontend Interview Hub. Built for aspiring frontend engineers.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="/assets/js/main.js"></script>
+</body>
+</html>

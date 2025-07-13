@@ -1,0 +1,634 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sort Color | Frontend Interview Preparation Guide</title>
+    <meta name="description" content="Comprehensive frontend interview materials for Big Tech companies">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="/assets/css/main.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <header>
+        <nav class="container">
+            <div class="logo">Frontend Interview Hub</div>
+            <ul class="nav-links">
+                <li><a href="/">Home</a></li>
+                <li><a href="#progress">Progress</a></li>
+                <li><a href="#knowledge">Knowledge</a></li>
+                <li><a href="https://github.com/nee/interview">GitHub</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <div class="content-container">
+    
+        <nav class="breadcrumb">
+            <ol>
+                <li><a href="/">Home</a></li>
+                
+                
+                
+                    
+                
+                    
+                        
+                        
+                            <li><a href="/leetcode/">Leetcode</a></li>
+                        
+                    
+                
+                    
+                        
+                        
+                            <li><a href="/leetcode/sorting-searching/">Sorting searching</a></li>
+                        
+                    
+                
+                    
+                        
+                        
+                            <li><a href="/leetcode/sorting-searching/problems/">Problems</a></li>
+                        
+                    
+                
+                    
+                        
+                        
+                            <li class="active">Sort color</li>
+                        
+                    
+                
+            </ol>
+        </nav>
+    
+    
+    <article class="content">
+        
+            <header class="content-header">
+                <h1 class="content-title">Sort Color</h1>
+                
+                
+                    <div class="content-meta">
+                        <span class="difficulty difficulty-hard">Hard</span>
+                        
+                            <span class="category">Sorting/Searching</span>
+                        
+                        
+                            <div class="tags">
+                                
+                                    <span class="tag">Sorting/Searching</span>
+                                
+                                    <span class="tag">Hash Table</span>
+                                
+                                    <span class="tag">Sorting</span>
+                                
+                            </div>
+                        
+                    </div>
+                
+            </header>
+        
+        
+        <div class="content-body">
+            <h1 id="sort-color">Sort Color</h1>
+
+<h2 id="problem-description">Problem Description</h2>
+
+<ul>
+  <li>
+    <ul>
+      <li>Given an array nums with n objects colored red, white, or blue, sort them in-place  * so that objects of the same color are adjacent, with the colors in the order red,  * white, and blue.  *</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="solutions">Solutions</h2>
+
+<p>/**</p>
+<ul>
+  <li>Sort Colors
+ *</li>
+  <li>Problem: https://leetcode.com/problems/sort-colors/
+ *</li>
+  <li>Given an array nums with n objects colored red, white, or blue, sort them in-place</li>
+  <li>so that objects of the same color are adjacent, with the colors in the order red,</li>
+  <li>white, and blue.
+ *</li>
+  <li>We will use the integers 0, 1, and 2 to represent the color red, white, and blue, respectively.
+ *</li>
+  <li>You must solve this problem without using the library’s sort function.
+ *</li>
+  <li>Example 1:</li>
+  <li>Input: nums = [2,0,2,1,1,0]</li>
+  <li>Output: [0,0,1,1,2,2]
+ *</li>
+  <li>Example 2:</li>
+  <li>Input: nums = [2,2,2,2]</li>
+  <li>Output: [2,2,2,2]
+ *</li>
+  <li>Constraints:</li>
+  <li>
+    <ul>
+      <li>n == nums.length</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>1 &lt;= n &lt;= 300</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>nums[i] is 0, 1, or 2.
+ *</li>
+    </ul>
+  </li>
+  <li>Solution Approach:</li>
+  <li>
+    <ol>
+      <li>Dutch National Flag Algorithm (Three-way partitioning)</li>
+    </ol>
+  </li>
+  <li>
+    <ol>
+      <li>Use three pointers: low, mid, high</li>
+    </ol>
+  </li>
+  <li>
+    <ol>
+      <li>Maintain invariant: elements before low are 0, after high are 2</li>
+    </ol>
+  </li>
+  <li>
+    <ol>
+      <li>Process elements at mid pointer
+ *</li>
+    </ol>
+  </li>
+  <li>Time Complexity: O(n) where n is the length of nums array</li>
+  <li>Space Complexity: O(1) as we sort in-place
+ */</li>
+</ul>
+
+<p>/**</p>
+<ul>
+  <li>Sort Colors - Dutch National Flag Algorithm
+ *</li>
+  <li>Sắp xếp màu sắc - Thuật toán cờ quốc gia Hà Lan
+ *</li>
+  <li>@param nums - Mảng các số đại diện cho màu sắc (0=đỏ, 1=trắng, 2=xanh)
+ */
+function sortColors(nums: number[]): void {
+  let low = 0; // Con trỏ cho vùng màu đỏ (0)
+  let mid = 0; // Con trỏ hiện tại
+  let high = nums.length - 1; // Con trỏ cho vùng màu xanh (2)</li>
+</ul>
+
+<p>while (mid &lt;= high) {
+    if (nums[mid] === 0) {
+      // Hoán đổi với phần tử ở vị trí low
+      [nums[low], nums[mid]] = [nums[mid], nums[low]];
+      low++;
+      mid++;
+    } else if (nums[mid] === 1) {
+      // Giữ nguyên, di chuyển mid
+      mid++;
+    } else if (nums[mid] === 2) {
+      // Hoán đổi với phần tử ở vị trí high
+      [nums[mid], nums[high]] = [nums[high], nums[mid]];
+      high–;
+    }
+  }
+}</p>
+
+<p>/**</p>
+<ul>
+  <li>Alternative Solution: Counting Sort
+ *</li>
+  <li>Giải pháp thay thế: Sắp xếp đếm
+ *</li>
+  <li>@param nums - Mảng các số đại diện cho màu sắc
+ */
+function sortColorsCounting(nums: number[]): void {
+  const counts = [0, 0, 0]; // Đếm số lượng 0, 1, 2</li>
+</ul>
+
+<p>// Đếm số lượng mỗi màu
+  for (const num of nums) {
+    counts[num]++;
+  }</p>
+
+<p>// Điền lại mảng theo thứ tự
+  let index = 0;
+  for (let color = 0; color &lt;= 2; color++) {
+    for (let i = 0; i &lt; counts[color]; i++) {
+      nums[index++] = color;
+    }
+  }
+}</p>
+
+<p>/**</p>
+<ul>
+  <li>Solution with Two Passes
+ *</li>
+  <li>Giải pháp với hai lần duyệt
+ *</li>
+  <li>@param nums - Mảng các số đại diện cho màu sắc
+ */
+function sortColorsTwoPass(nums: number[]): void {
+  // Lần đầu: đưa tất cả số 0 về đầu
+  let insertPos = 0;
+  for (let i = 0; i &lt; nums.length; i++) {
+ if (nums[i] === 0) {
+   [nums[insertPos], nums[i]] = [nums[i], nums[insertPos]];
+   insertPos++;
+ }
+  }</li>
+</ul>
+
+<p>// Lần hai: đưa tất cả số 1 về sau số 0
+  for (let i = insertPos; i &lt; nums.length; i++) {
+    if (nums[i] === 1) {
+      [nums[insertPos], nums[i]] = [nums[i], nums[insertPos]];
+      insertPos++;
+    }
+  }
+  // Số 2 sẽ tự động ở cuối
+}</p>
+
+<p>/**</p>
+<ul>
+  <li>Solution with Visualization
+ *</li>
+  <li>Giải pháp với hiển thị quá trình
+ *</li>
+  <li>@param nums - Mảng các số đại diện cho màu sắc</li>
+  <li>@returns Mảng các bước thực hiện
+ */
+function sortColorsWithSteps(
+  nums: number[]
+): Array&lt;{ step: number; array: number[]; description: string }&gt; {
+  const steps: Array&lt;{ step: number; array: number[]; description: string }&gt; =
+ [];
+  const workingArray = […nums];</li>
+</ul>
+
+<p>let low = 0;
+  let mid = 0;
+  let high = workingArray.length - 1;
+  let step = 0;</p>
+
+<p>steps.push({
+    step: step++,
+    array: […workingArray],
+    description: “Initial state”,
+  });</p>
+
+<p>while (mid &lt;= high) {
+    if (workingArray[mid] === 0) {
+      [workingArray[low], workingArray[mid]] = [
+        workingArray[mid],
+        workingArray[low],
+      ];
+      steps.push({
+        step: step++,
+        array: […workingArray],
+        description: <code class="language-plaintext highlighter-rouge">Swapped 0 at position ${mid} with position ${low}</code>,
+      });
+      low++;
+      mid++;
+    } else if (workingArray[mid] === 1) {
+      steps.push({
+        step: step++,
+        array: […workingArray],
+        description: <code class="language-plaintext highlighter-rouge">Kept 1 at position ${mid}</code>,
+      });
+      mid++;
+    } else if (workingArray[mid] === 2) {
+      [workingArray[mid], workingArray[high]] = [
+        workingArray[high],
+        workingArray[mid],
+      ];
+      steps.push({
+        step: step++,
+        array: […workingArray],
+        description: <code class="language-plaintext highlighter-rouge">Swapped 2 at position ${mid} with position ${high}</code>,
+      });
+      high–;
+    }
+  }</p>
+
+<p>return steps;
+}</p>
+
+<p>/**</p>
+<ul>
+  <li>Solution with Color Names
+ *</li>
+  <li>Giải pháp với tên màu
+ *</li>
+  <li>@param nums - Mảng các số đại diện cho màu sắc</li>
+  <li>@returns Mảng tên màu đã sắp xếp
+ */
+function sortColorsWithNames(nums: number[]): string[] {
+  const colorMap = { 0: “Red”, 1: “White”, 2: “Blue” };
+  const sortedNums = […nums];</li>
+</ul>
+
+<p>sortColors(sortedNums);</p>
+
+<p>return sortedNums.map((num) =&gt; colorMap[num as keyof typeof colorMap]);
+}</p>
+
+<p>/**</p>
+<ul>
+  <li>Validation function
+ *</li>
+  <li>Hàm kiểm tra tính hợp lệ
+ *</li>
+  <li>@param nums - Mảng cần kiểm tra</li>
+  <li>@returns true nếu mảng đã được sắp xếp đúng
+ */
+function isSorted(nums: number[]): boolean {
+  for (let i = 1; i &lt; nums.length; i++) {
+ if (nums[i] &lt; nums[i - 1]) {
+   return false;
+ }
+  }
+  return true;
+}</li>
+</ul>
+
+<p>/**</p>
+<ul>
+  <li>Count colors function
+ *</li>
+  <li>Hàm đếm số lượng màu
+ *</li>
+  <li>@param nums - Mảng các số đại diện cho màu sắc</li>
+  <li>@returns Object chứa số lượng mỗi màu
+ */
+function countColors(nums: number[]): {
+  red: number;
+  white: number;
+  blue: number;
+} {
+  const counts = { red: 0, white: 0, blue: 0 };</li>
+</ul>
+
+<p>for (const num of nums) {
+    if (num === 0) counts.red++;
+    else if (num === 1) counts.white++;
+    else if (num === 2) counts.blue++;
+  }</p>
+
+<p>return counts;
+}</p>
+
+<p>// Test cases / Các trường hợp kiểm thử
+function runTests() {
+  console.log(“=== Sort Colors Tests ===”);
+  console.log(“=== Kiểm thử bài toán Sắp xếp màu sắc ===\n”);</p>
+
+<p>const testCases = [
+    {
+      name: “Example 1: Mixed colors”,
+      input: [2, 0, 2, 1, 1, 0],
+      expected: [0, 0, 1, 1, 2, 2],
+      description: “Mixed colors with all three types”,
+    },
+    {
+      name: “Example 2: All same color”,
+      input: [2, 2, 2, 2],
+      expected: [2, 2, 2, 2],
+      description: “All elements are blue”,
+    },
+    {
+      name: “Single element”,
+      input: [1],
+      expected: [1],
+      description: “Single white element”,
+    },
+    {
+      name: “Two elements”,
+      input: [2, 0],
+      expected: [0, 2],
+      description: “Blue and red elements”,
+    },
+    {
+      name: “Already sorted”,
+      input: [0, 0, 1, 1, 2, 2],
+      expected: [0, 0, 1, 1, 2, 2],
+      description: “Array already in correct order”,
+    },
+    {
+      name: “Reverse sorted”,
+      input: [2, 2, 1, 1, 0, 0],
+      expected: [0, 0, 1, 1, 2, 2],
+      description: “Array in reverse order”,
+    },
+    {
+      name: “Only red and white”,
+      input: [1, 0, 1, 0, 1],
+      expected: [0, 0, 1, 1, 1],
+      description: “Only red and white colors”,
+    },
+    {
+      name: “Only white and blue”,
+      input: [2, 1, 2, 1, 2],
+      expected: [1, 1, 2, 2, 2],
+      description: “Only white and blue colors”,
+    },
+  ];</p>
+
+<p>let passedTests = 0;
+  const totalTests = testCases.length;</p>
+
+<p>for (const testCase of testCases) {
+    console.log(<code class="language-plaintext highlighter-rouge">Test: ${testCase.name}</code>);
+    console.log(<code class="language-plaintext highlighter-rouge">Input: [${testCase.input.join(", ")}]</code>);
+    console.log(<code class="language-plaintext highlighter-rouge">Expected: [${testCase.expected.join(", ")}]</code>);
+    console.log(<code class="language-plaintext highlighter-rouge">Description: ${testCase.description}</code>);</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+</pre></td><td class="rouge-code"><pre>const nums = [...testCase.input];
+sortColors(nums);
+
+const passed = JSON.stringify(nums) === JSON.stringify(testCase.expected);
+
+console.log(`Result: [${nums.join(", ")}]`);
+console.log(`Status: ${passed ? "✅ PASSED" : "❌ FAILED"}`);
+
+if (passed) {
+  passedTests++;
+} else {
+  console.log(
+    `Expected: [${testCase.expected.join(", ")}], Got: [${nums.join(", ")}]`
+  );
+}
+
+console.log("---");   }
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>console.log(<code class="language-plaintext highlighter-rouge">\nTest Summary: ${passedTests}/${totalTests} tests passed</code>);
+  console.log(
+    <code class="language-plaintext highlighter-rouge">Tóm tắt kiểm thử: ${passedTests}/${totalTests} bài kiểm thử đã qua</code>
+  );</p>
+
+<p>// Test with visualization
+  console.log(“\n=== Testing with Visualization ===”);
+  console.log(“=== Kiểm thử với hiển thị quá trình ===\n”);</p>
+
+<p>const testArray = [2, 0, 2, 1, 1, 0];
+  const steps = sortColorsWithSteps(testArray);</p>
+
+<p>console.log(“Sorting steps:”);
+  console.log(“Các bước sắp xếp:”);
+  for (const step of steps) {
+    console.log(
+      <code class="language-plaintext highlighter-rouge">Step ${step.step}: [${step.array.join(", ")}] - ${step.description}</code>
+    );
+  }</p>
+
+<p>// Test with color names
+  console.log(“\n=== Testing with Color Names ===”);
+  console.log(“=== Kiểm thử với tên màu ===\n”);</p>
+
+<p>const colorArray = [2, 0, 2, 1, 1, 0];
+  const sortedColors = sortColorsWithNames(colorArray);</p>
+
+<p>console.log(<code class="language-plaintext highlighter-rouge">Original: [${colorArray.join(", ")}]</code>);
+  console.log(<code class="language-plaintext highlighter-rouge">Sorted: [${sortedColors.join(", ")}]</code>);</p>
+
+<p>// Performance comparison
+  console.log(“\n=== Performance Comparison ===”);
+  console.log(“=== So sánh hiệu suất ===\n”);</p>
+
+<p>const largeArray = Array.from({ length: 10000 }, () =&gt;
+    Math.floor(Math.random() * 3)
+  );</p>
+
+<p>console.log(“Testing with large array (10,000 elements)…”);
+  console.log(“Kiểm thử với mảng lớn (10,000 phần tử)…”);</p>
+
+<p>const start1 = performance.now();
+  const array1 = […largeArray];
+  sortColors(array1);
+  const time1 = performance.now() - start1;</p>
+
+<p>const start2 = performance.now();
+  const array2 = […largeArray];
+  sortColorsCounting(array2);
+  const time2 = performance.now() - start2;</p>
+
+<p>const start3 = performance.now();
+  const array3 = […largeArray];
+  sortColorsTwoPass(array3);
+  const time3 = performance.now() - start3;</p>
+
+<p>console.log(<code class="language-plaintext highlighter-rouge">Dutch National Flag: ${time1.toFixed(4)}ms</code>);
+  console.log(<code class="language-plaintext highlighter-rouge">Counting Sort: ${time2.toFixed(4)}ms</code>);
+  console.log(<code class="language-plaintext highlighter-rouge">Two Pass: ${time3.toFixed(4)}ms</code>);</p>
+
+<p>const resultsMatch =
+    JSON.stringify(array1) === JSON.stringify(array2) &amp;&amp;
+    JSON.stringify(array2) === JSON.stringify(array3);
+  console.log(<code class="language-plaintext highlighter-rouge">Results match: ${resultsMatch ? "✅ Yes" : "❌ No"}</code>);</p>
+
+<p>// Verify sorting
+  console.log(
+    <code class="language-plaintext highlighter-rouge">All arrays are sorted: ${
+      isSorted(array1) &amp;&amp; isSorted(array2) &amp;&amp; isSorted(array3)
+        ? "✅ Yes"
+        : "❌ No"
+    }</code>
+  );</p>
+
+<p>// Show color distribution
+  const originalCounts = countColors(largeArray);
+  const sortedCounts = countColors(array1);</p>
+
+<p>console.log(“\nColor distribution:”);
+  console.log(“Phân bố màu sắc:”);
+  console.log(
+    <code class="language-plaintext highlighter-rouge">Original - Red: ${originalCounts.red}, White: ${originalCounts.white}, Blue: ${originalCounts.blue}</code>
+  );
+  console.log(
+    <code class="language-plaintext highlighter-rouge">Sorted - Red: ${sortedCounts.red}, White: ${sortedCounts.white}, Blue: ${sortedCounts.blue}</code>
+  );
+}</p>
+
+<p>// Run tests if this file is executed directly
+if (require.main === module) {
+  runTests();
+}</p>
+
+<p>export {
+  sortColors,
+  sortColorsCounting,
+  sortColorsTwoPass,
+  sortColorsWithSteps,
+  sortColorsWithNames,
+  isSorted,
+  countColors,
+};</p>
+
+
+        </div>
+    </article>
+</div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Study Resources</h3>
+                    <p>Comprehensive collection of frontend interview questions, coding challenges, and system design problems.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Progress Tracking</h3>
+                    <p>Monitor your learning journey with detailed progress indicators and completion status.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Big Tech Ready</h3>
+                    <p>Curated content specifically designed for interviews at Google, Meta, Amazon, Apple, and Netflix.</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Frontend Interview Hub. Built for aspiring frontend engineers.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="/assets/js/main.js"></script>
+</body>
+</html>

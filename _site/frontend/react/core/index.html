@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>React Core: Definitions, Interview Questions &amp; Answers | Frontend Interview Preparation Guide</title>
+    <meta name="description" content="Comprehensive frontend interview materials for Big Tech companies">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="/assets/css/main.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <header>
+        <nav class="container">
+            <div class="logo">Frontend Interview Hub</div>
+            <ul class="nav-links">
+                <li><a href="/">Home</a></li>
+                <li><a href="#progress">Progress</a></li>
+                <li><a href="#knowledge">Knowledge</a></li>
+                <li><a href="https://github.com/nee/interview">GitHub</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <div class="content-container">
+    
+        <nav class="breadcrumb">
+            <ol>
+                <li><a href="/">Home</a></li>
+                
+                
+                
+                    
+                
+                    
+                        
+                        
+                            <li><a href="/frontend/">Frontend</a></li>
+                        
+                    
+                
+                    
+                        
+                        
+                            <li><a href="/frontend/react/">React</a></li>
+                        
+                    
+                
+                    
+                        
+                        
+                            <li class="active">React core: definitions, interview questions &amp; answers</li>
+                        
+                    
+                
+            </ol>
+        </nav>
+    
+    
+    <article class="content">
+        
+            <header class="content-header">
+                <h1 class="content-title">React Core: Definitions, Interview Questions &amp; Answers</h1>
+                
+                
+            </header>
+        
+        
+        <div class="content-body">
+            <h1 id="react-core-definitions-interview-questions--answers">React Core: Definitions, Interview Questions &amp; Answers</h1>
+
+<h2 id="table-of-contents">Table of Contents</h2>
+
+<ul>
+  <li><a href="#jsx">JSX</a></li>
+  <li><a href="#components">Components</a></li>
+  <li><a href="#props--state">Props &amp; State</a></li>
+  <li><a href="#hooks">Hooks</a></li>
+  <li><a href="#lifecycle">Lifecycle</a></li>
+  <li><a href="#context">Context</a></li>
+  <li><a href="#reconciliation--virtual-dom">Reconciliation &amp; Virtual DOM</a></li>
+  <li><a href="#key-prop">Key Prop</a></li>
+  <li><a href="#controlled-vs-uncontrolled">Controlled vs Uncontrolled</a></li>
+  <li><a href="#event-handling">Event Handling</a></li>
+  <li><a href="#performance-optimization">Performance Optimization</a></li>
+  <li><a href="#error-boundaries">Error Boundaries</a></li>
+  <li><a href="#code-splitting--lazy-loading">Code Splitting &amp; Lazy Loading</a></li>
+  <li><a href="#testing">Testing</a></li>
+  <li><a href="#custom-hooks">Custom Hooks</a></li>
+  <li><a href="#common-patterns">Common Patterns</a></li>
+  <li><a href="#practice-problems">Practice Problems</a></li>
+</ul>
+
+<hr />
+
+<h2 id="jsx">JSX</h2>
+
+<p><strong>Definition:</strong> JSX is a syntax extension for JavaScript that looks like HTML and is used to describe UI in React.</p>
+
+<p><strong>Key Points:</strong></p>
+
+<ul>
+  <li>Compiled to <code class="language-plaintext highlighter-rouge">React.createElement</code> calls by Babel.</li>
+  <li>Allows embedding JS expressions with <code class="language-plaintext highlighter-rouge">{}</code>.</li>
+  <li>Must return a single root element.</li>
+</ul>
+
+<hr />
+
+<h2 id="components">Components</h2>
+
+<p><strong>Definition:</strong> Reusable, self-contained building blocks of a React UI.</p>
+
+<p><strong>Types:</strong></p>
+
+<ul>
+  <li>Functional (with hooks)</li>
+  <li>Class (legacy)</li>
+  <li>Higher-order components (HOC)</li>
+  <li>Render props</li>
+</ul>
+
+<hr />
+
+<h2 id="props--state">Props &amp; State</h2>
+
+<p><strong>Props:</strong> Read-only data passed from parent to child.
+<strong>State:</strong> Local, mutable data managed by the component.</p>
+
+<p><strong>Key Points:</strong></p>
+
+<ul>
+  <li>Props are immutable, set by parent.</li>
+  <li>State is mutable, managed by the component.</li>
+  <li>Use <code class="language-plaintext highlighter-rouge">useState</code> or <code class="language-plaintext highlighter-rouge">this.setState</code> to update state.</li>
+</ul>
+
+<hr />
+
+<h2 id="hooks">Hooks</h2>
+
+<p><strong>Definition:</strong> Functions that let you use state and other React features in functional components.</p>
+
+<p><strong>Common Hooks:</strong></p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">useState</code>, <code class="language-plaintext highlighter-rouge">useEffect</code>, <code class="language-plaintext highlighter-rouge">useContext</code>, <code class="language-plaintext highlighter-rouge">useReducer</code>, <code class="language-plaintext highlighter-rouge">useRef</code>, <code class="language-plaintext highlighter-rouge">useMemo</code>, <code class="language-plaintext highlighter-rouge">useCallback</code>.</li>
+</ul>
+
+<p><strong>Rules:</strong></p>
+
+<ul>
+  <li>Only call hooks at the top level of a function component.</li>
+  <li>Only call hooks from React functions.</li>
+</ul>
+
+<hr />
+
+<h2 id="lifecycle">Lifecycle</h2>
+
+<p><strong>Definition:</strong> Phases a component goes through from creation to destruction.</p>
+
+<p><strong>Class:</strong> <code class="language-plaintext highlighter-rouge">componentDidMount</code>, <code class="language-plaintext highlighter-rouge">componentDidUpdate</code>, <code class="language-plaintext highlighter-rouge">componentWillUnmount</code>.
+<strong>Function:</strong> Use <code class="language-plaintext highlighter-rouge">useEffect</code> for all lifecycle needs.</p>
+
+<hr />
+
+<h2 id="context">Context</h2>
+
+<p><strong>Definition:</strong> Provides a way to pass data through the component tree without props drilling.</p>
+
+<p><strong>Usage:</strong></p>
+
+<ul>
+  <li>Create context with <code class="language-plaintext highlighter-rouge">React.createContext()</code></li>
+  <li>Provide value with <code class="language-plaintext highlighter-rouge">&lt;Provider&gt;</code></li>
+  <li>Consume with <code class="language-plaintext highlighter-rouge">useContext</code> or <code class="language-plaintext highlighter-rouge">Context.Consumer</code></li>
+</ul>
+
+<hr />
+
+<h2 id="reconciliation--virtual-dom">Reconciliation &amp; Virtual DOM</h2>
+
+<p><strong>Definition:</strong> React’s process for updating the DOM efficiently.</p>
+
+<p><strong>How it works:</strong></p>
+
+<ul>
+  <li>State/props change → new Virtual DOM tree</li>
+  <li>Diff with previous tree</li>
+  <li>Only changed nodes are updated in the real DOM</li>
+</ul>
+
+<p><strong>Diagram:</strong></p>
+
+<pre><code class="language-mermaid">flowchart LR
+  A[State/Props Change] --&gt; B[New Virtual DOM]
+  B --&gt; C[Diffing]
+  C --&gt; D[Update Real DOM]
+</code></pre>
+
+<hr />
+
+<h2 id="key-prop">Key Prop</h2>
+
+<p><strong>Definition:</strong> Unique identifier for list items to help React track changes.</p>
+
+<p><strong>Best Practice:</strong> Use stable, unique keys (not array index).</p>
+
+<hr />
+
+<h2 id="controlled-vs-uncontrolled">Controlled vs Uncontrolled</h2>
+
+<p><strong>Controlled:</strong> Form data managed by React state.
+<strong>Uncontrolled:</strong> Form data managed by the DOM (useRef).</p>
+
+<hr />
+
+<h2 id="event-handling">Event Handling</h2>
+
+<ul>
+  <li>React uses a synthetic event system for cross-browser compatibility.</li>
+  <li>Event handlers are camelCase (<code class="language-plaintext highlighter-rouge">onClick</code>).</li>
+</ul>
+
+<hr />
+
+<h2 id="performance-optimization">Performance Optimization</h2>
+
+<ul>
+  <li>Use <code class="language-plaintext highlighter-rouge">React.memo</code>, <code class="language-plaintext highlighter-rouge">useMemo</code>, <code class="language-plaintext highlighter-rouge">useCallback</code> to avoid unnecessary re-renders.</li>
+  <li>Virtualize large lists (<code class="language-plaintext highlighter-rouge">react-window</code>).</li>
+  <li>Code splitting and lazy loading.</li>
+</ul>
+
+<hr />
+
+<h2 id="error-boundaries">Error Boundaries</h2>
+
+<ul>
+  <li>Catch JS errors in child components and display fallback UI.</li>
+  <li>Implement with class components using <code class="language-plaintext highlighter-rouge">componentDidCatch</code> and <code class="language-plaintext highlighter-rouge">getDerivedStateFromError</code>.</li>
+</ul>
+
+<hr />
+
+<h2 id="code-splitting--lazy-loading">Code Splitting &amp; Lazy Loading</h2>
+
+<ul>
+  <li>Use <code class="language-plaintext highlighter-rouge">React.lazy</code> and <code class="language-plaintext highlighter-rouge">Suspense</code> for dynamic imports.</li>
+  <li>Improves initial load time.</li>
+</ul>
+
+<hr />
+
+<h2 id="testing">Testing</h2>
+
+<ul>
+  <li>Use Jest and React Testing Library.</li>
+  <li>Test rendering, user interactions, and output.</li>
+</ul>
+
+<hr />
+
+<h2 id="custom-hooks">Custom Hooks</h2>
+
+<ul>
+  <li>Encapsulate reusable logic (e.g., <code class="language-plaintext highlighter-rouge">useDebounce</code>, <code class="language-plaintext highlighter-rouge">useLocalStorage</code>).</li>
+  <li>Follow the same rules as built-in hooks.</li>
+</ul>
+
+<hr />
+
+<h2 id="common-patterns">Common Patterns</h2>
+
+<ul>
+  <li><strong>HOC:</strong> Function that takes a component and returns a new one.</li>
+  <li><strong>Render Props:</strong> Pass a function as a prop to control rendering.</li>
+  <li><strong>Compound Components:</strong> Components that work together via context.</li>
+</ul>
+
+<hr />
+
+<h2 id="practice-problems">Practice Problems</h2>
+
+<h3 id="1-create-a-reusable-modal-component">1. Create a reusable Modal component</h3>
+
+<h3 id="2-implement-a-drag-and-drop-list">2. Implement a drag-and-drop list</h3>
+
+<h3 id="3-build-a-form-with-validation">3. Build a form with validation</h3>
+
+<h3 id="4-implement-virtual-scrolling-for-a-large-list">4. Implement virtual scrolling for a large list</h3>
+
+<h3 id="5-write-a-custom-hook-for-localstorage">5. Write a custom hook for localStorage</h3>
+
+<h3 id="6-create-a-custom-hook-for-window-size">6. Create a custom hook for window size</h3>
+
+<h3 id="7-add-keyboard-shortcuts-with-a-custom-hook">7. Add keyboard shortcuts with a custom hook</h3>
+
+<h3 id="8-track-network-status-with-a-custom-hook">8. Track network status with a custom hook</h3>
+
+<hr />
+
+<p><em>This guide covers all base React concepts and key knowledge for interviews. Practice explaining, diagramming, and implementing each topic!</em></p>
+
+        </div>
+    </article>
+</div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Study Resources</h3>
+                    <p>Comprehensive collection of frontend interview questions, coding challenges, and system design problems.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Progress Tracking</h3>
+                    <p>Monitor your learning journey with detailed progress indicators and completion status.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Big Tech Ready</h3>
+                    <p>Curated content specifically designed for interviews at Google, Meta, Amazon, Apple, and Netflix.</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Frontend Interview Hub. Built for aspiring frontend engineers.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="/assets/js/main.js"></script>
+</body>
+</html>

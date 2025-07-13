@@ -1,0 +1,924 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Move Zeroe | Frontend Interview Preparation Guide</title>
+    <meta name="description" content="Comprehensive frontend interview materials for Big Tech companies">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="/assets/css/main.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <header>
+        <nav class="container">
+            <div class="logo">Frontend Interview Hub</div>
+            <ul class="nav-links">
+                <li><a href="/">Home</a></li>
+                <li><a href="#progress">Progress</a></li>
+                <li><a href="#knowledge">Knowledge</a></li>
+                <li><a href="https://github.com/nee/interview">GitHub</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <div class="content-container">
+    
+        <nav class="breadcrumb">
+            <ol>
+                <li><a href="/">Home</a></li>
+                
+                
+                
+                    
+                
+                    
+                        
+                        
+                            <li><a href="/leetcode/">Leetcode</a></li>
+                        
+                    
+                
+                    
+                        
+                        
+                            <li><a href="/leetcode/array/">Array</a></li>
+                        
+                    
+                
+                    
+                        
+                        
+                            <li><a href="/leetcode/array/problems/">Problems</a></li>
+                        
+                    
+                
+                    
+                        
+                        
+                            <li class="active">Move zeroe</li>
+                        
+                    
+                
+            </ol>
+        </nav>
+    
+    
+    <article class="content">
+        
+            <header class="content-header">
+                <h1 class="content-title">Move Zeroe</h1>
+                
+                
+                    <div class="content-meta">
+                        <span class="difficulty difficulty-easy">Easy</span>
+                        
+                            <span class="category">Array</span>
+                        
+                        
+                            <div class="tags">
+                                
+                                    <span class="tag">Array</span>
+                                
+                                    <span class="tag">Two Pointers</span>
+                                
+                            </div>
+                        
+                    </div>
+                
+            </header>
+        
+        
+        <div class="content-body">
+            <h1 id="move-zeroe">Move Zeroe</h1>
+
+<p><strong>LeetCode Problem # * 283. Move Zeroes</strong></p>
+
+<h2 id="problem-description">Problem Description</h2>
+
+<ul>
+  <li>Given an integer array nums, move all 0’s to the end of it while maintaining  * the relative order of the non-zero elements.  *  * Note that you must do this in-place without making a copy of the array.  *</li>
+</ul>
+
+<h2 id="solutions">Solutions</h2>
+
+<p>/**</p>
+<ul>
+  <li>
+    <ol>
+      <li>Move Zeroes
+ *</li>
+    </ol>
+  </li>
+  <li>Problem:</li>
+  <li>Given an integer array nums, move all 0’s to the end of it while maintaining</li>
+  <li>the relative order of the non-zero elements.
+ *</li>
+  <li>Note that you must do this in-place without making a copy of the array.
+ *</li>
+  <li>Example:</li>
+  <li>Input: nums = [0,1,0,3,12]</li>
+  <li>Output: [1,3,12,0,0]
+ *</li>
+  <li>Input: nums = [0]</li>
+  <li>Output: [0]
+ *</li>
+  <li>LeetCode: https://leetcode.com/problems/move-zeroes/
+ */</li>
+</ul>
+
+<p>/**</p>
+<ul>
+  <li>Solution 1: Two Pointers (Optimal)
+ *</li>
+  <li>Approach:</li>
+  <li>
+    <ul>
+      <li>Use two pointers: one for writing position, one for reading</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Move non-zero elements to front, fill remaining with zeros
+ *</li>
+    </ul>
+  </li>
+  <li>Time Complexity: O(n)</li>
+  <li>Space Complexity: O(1)
+ */
+function moveZeroes(nums: number[]): void {
+  let writeIndex = 0;</li>
+</ul>
+
+<p>// Move all non-zero elements to the front
+  for (let i = 0; i &lt; nums.length; i++) {
+    if (nums[i] !== 0) {
+      nums[writeIndex] = nums[i];
+      writeIndex++;
+    }
+  }</p>
+
+<p>// Fill remaining positions with zeros
+  for (let i = writeIndex; i &lt; nums.length; i++) {
+    nums[i] = 0;
+  }
+}</p>
+
+<p>/**</p>
+<ul>
+  <li>Solution 2: Swap Approach
+ *</li>
+  <li>Approach:</li>
+  <li>
+    <ul>
+      <li>Use two pointers and swap non-zero elements</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Maintain relative order by swapping
+ *</li>
+    </ul>
+  </li>
+  <li>Time Complexity: O(n)</li>
+  <li>Space Complexity: O(1)
+ */
+function moveZeroesSwap(nums: number[]): void {
+  let nonZeroIndex = 0;</li>
+</ul>
+
+<p>for (let i = 0; i &lt; nums.length; i++) {
+    if (nums[i] !== 0) {
+      // Swap current element with element at nonZeroIndex
+      [nums[nonZeroIndex], nums[i]] = [nums[i], nums[nonZeroIndex]];
+      nonZeroIndex++;
+    }
+  }
+}</p>
+
+<p>/**</p>
+<ul>
+  <li>Solution 3: Using Filter and Fill
+ *</li>
+  <li>Approach:</li>
+  <li>
+    <ul>
+      <li>Filter non-zero elements and fill remaining with zeros</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>More functional approach
+ *</li>
+    </ul>
+  </li>
+  <li>Time Complexity: O(n)</li>
+  <li>Space Complexity: O(1)
+ */
+function moveZeroesFilter(nums: number[]): void {
+  const nonZeros = nums.filter((num) =&gt; num !== 0);
+  const zeroCount = nums.length - nonZeros.length;</li>
+</ul>
+
+<p>// Copy non-zero elements back
+  for (let i = 0; i &lt; nonZeros.length; i++) {
+    nums[i] = nonZeros[i];
+  }</p>
+
+<p>// Fill with zeros
+  for (let i = nonZeros.length; i &lt; nums.length; i++) {
+    nums[i] = 0;
+  }
+}</p>
+
+<p>/**</p>
+<ul>
+  <li>Solution 4: Using Reduce (Functional)
+ *</li>
+  <li>Approach:</li>
+  <li>
+    <ul>
+      <li>Use reduce to collect non-zero elements</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Fill remaining positions with zeros
+ *</li>
+    </ul>
+  </li>
+  <li>Time Complexity: O(n)</li>
+  <li>Space Complexity: O(1)
+ */
+function moveZeroesReduce(nums: number[]): void {
+  const nonZeros = nums.reduce((acc: number[], num: number) =&gt; {
+ if (num !== 0) acc.push(num);
+ return acc;
+  }, []);</li>
+</ul>
+
+<p>// Copy non-zero elements back
+  for (let i = 0; i &lt; nonZeros.length; i++) {
+    nums[i] = nonZeros[i];
+  }</p>
+
+<p>// Fill with zeros
+  for (let i = nonZeros.length; i &lt; nums.length; i++) {
+    nums[i] = 0;
+  }
+}</p>
+
+<p>/**</p>
+<ul>
+  <li>Solution 5: Using Generator (Memory efficient)
+ *</li>
+  <li>Approach:</li>
+  <li>
+    <ul>
+      <li>Use generator to yield non-zero elements</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Memory efficient for large arrays
+ *</li>
+    </ul>
+  </li>
+  <li>Time Complexity: O(n)</li>
+  <li>Space Complexity: O(1)
+ <em>/
+function</em> nonZeroGenerator(nums: number[]): Generator<number> {
+  for (const num of nums) {
+ if (num !== 0) {
+   yield num;
+ }
+  }
+}</number></li>
+</ul>
+
+<p>function moveZeroesGenerator(nums: number[]): void {
+  const nonZeros = Array.from(nonZeroGenerator(nums));</p>
+
+<p>// Copy non-zero elements back
+  for (let i = 0; i &lt; nonZeros.length; i++) {
+    nums[i] = nonZeros[i];
+  }</p>
+
+<p>// Fill with zeros
+  for (let i = nonZeros.length; i &lt; nums.length; i++) {
+    nums[i] = 0;
+  }
+}</p>
+
+<p>/**</p>
+<ul>
+  <li>Solution 6: Using Array Methods (One-liner)
+ *</li>
+  <li>Approach:</li>
+  <li>
+    <ul>
+      <li>Use array methods to achieve the result</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Simple but less efficient
+ *</li>
+    </ul>
+  </li>
+  <li>Time Complexity: O(n)</li>
+  <li>Space Complexity: O(n)
+ */
+function moveZeroesArrayMethods(nums: number[]): void {
+  const nonZeros = nums.filter((num) =&gt; num !== 0);
+  const zeros = new Array(nums.length - nonZeros.length).fill(0);
+  const result = […nonZeros, …zeros];</li>
+</ul>
+
+<p>// Copy back to original array
+  for (let i = 0; i &lt; nums.length; i++) {
+    nums[i] = result[i];
+  }
+}</p>
+
+<p>/**</p>
+<ul>
+  <li>Solution 7: Using Queue (Educational)
+ *</li>
+  <li>Approach:</li>
+  <li>
+    <ul>
+      <li>Use queue to store non-zero elements</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Dequeue and fill array
+ *</li>
+    </ul>
+  </li>
+  <li>Time Complexity: O(n)</li>
+  <li>Space Complexity: O(n)
+ */
+function moveZeroesQueue(nums: number[]): void {
+  const queue: number[] = [];</li>
+</ul>
+
+<p>// Enqueue non-zero elements
+  for (const num of nums) {
+    if (num !== 0) {
+      queue.push(num);
+    }
+  }</p>
+
+<p>// Fill array with non-zero elements
+  for (let i = 0; i &lt; queue.length; i++) {
+    nums[i] = queue[i];
+  }</p>
+
+<p>// Fill remaining with zeros
+  for (let i = queue.length; i &lt; nums.length; i++) {
+    nums[i] = 0;
+  }
+}</p>
+
+<p>/**</p>
+<ul>
+  <li>Solution 8: Using Class (Object-oriented)
+ *</li>
+  <li>Approach:</li>
+  <li>
+    <ul>
+      <li>Create a ZeroMover class</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Encapsulate the logic
+ *</li>
+    </ul>
+  </li>
+  <li>Time Complexity: O(n)</li>
+  <li>Space Complexity: O(1)
+ */
+class ZeroMover {
+  private nums: number[];</li>
+</ul>
+
+<p>constructor(nums: number[]) {
+    this.nums = nums;
+  }</p>
+
+<p>moveZeroes(): void {
+    let writeIndex = 0;</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+</pre></td><td class="rouge-code"><pre>// Move all non-zero elements to the front
+for (let i = 0; i &lt; this.nums.length; i++) {
+  if (this.nums[i] !== 0) {
+    this.nums[writeIndex] = this.nums[i];
+    writeIndex++;
+  }
+}
+
+// Fill remaining positions with zeros
+for (let i = writeIndex; i &lt; this.nums.length; i++) {
+  this.nums[i] = 0;
+}   }
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>getArray(): number[] {
+    return […this.nums];
+  }
+}</p>
+
+<p>function moveZeroesClass(nums: number[]): void {
+  const mover = new ZeroMover(nums);
+  mover.moveZeroes();
+}</p>
+
+<p>/**</p>
+<ul>
+  <li>Solution 9: Using Bit Manipulation (Limited use case)
+ *</li>
+  <li>Approach:</li>
+  <li>
+    <ul>
+      <li>Use bit operations to track non-zero positions</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Limited to small arrays due to integer size
+ *</li>
+    </ul>
+  </li>
+  <li>Time Complexity: O(n)</li>
+  <li>Space Complexity: O(1)
+ */
+function moveZeroesBitwise(nums: number[]): void {
+  if (nums.length &gt; 32) {
+ // Fallback to standard approach for large arrays
+ moveZeroes(nums);
+ return;
+  }</li>
+</ul>
+
+<p>let nonZeroMask = 0;</p>
+
+<p>// Create mask of non-zero positions
+  for (let i = 0; i &lt; nums.length; i++) {
+    if (nums[i] !== 0) {
+      nonZeroMask |= 1 « i;
+    }
+  }</p>
+
+<p>// Reconstruct array
+  let writeIndex = 0;
+  for (let i = 0; i &lt; nums.length; i++) {
+    if (nonZeroMask &amp; (1 « i)) {
+      nums[writeIndex] = nums[i];
+      writeIndex++;
+    }
+  }</p>
+
+<p>// Fill with zeros
+  for (let i = writeIndex; i &lt; nums.length; i++) {
+    nums[i] = 0;
+  }
+}</p>
+
+<p>// Test cases
+function testMoveZeroes() {
+  console.log(“=== Testing Move Zeroes ===\n”);</p>
+
+<p>const testCases = [
+    {
+      input: [0, 1, 0, 3, 12],
+      expected: [1, 3, 12, 0, 0],
+      description: “Standard case with multiple zeros”,
+    },
+    {
+      input: [0],
+      expected: [0],
+      description: “Single zero”,
+    },
+    {
+      input: [1, 2, 3, 4, 5],
+      expected: [1, 2, 3, 4, 5],
+      description: “No zeros”,
+    },
+    {
+      input: [0, 0, 0, 0],
+      expected: [0, 0, 0, 0],
+      description: “All zeros”,
+    },
+    {
+      input: [1, 0, 0, 0, 2],
+      expected: [1, 2, 0, 0, 0],
+      description: “Zeros in middle”,
+    },
+    {
+      input: [0, 0, 1, 2, 3],
+      expected: [1, 2, 3, 0, 0],
+      description: “Zeros at beginning”,
+    },
+    {
+      input: [1, 2, 3, 0, 0],
+      expected: [1, 2, 3, 0, 0],
+      description: “Zeros at end”,
+    },
+    {
+      input: [],
+      expected: [],
+      description: “Empty array”,
+    },
+  ];</p>
+
+<p>testCases.forEach((testCase, index) =&gt; {
+    console.log(<code class="language-plaintext highlighter-rouge">Test Case ${index + 1}: ${testCase.description}</code>);
+    console.log(<code class="language-plaintext highlighter-rouge">Input: [${testCase.input.join(", ")}]</code>);
+    console.log(<code class="language-plaintext highlighter-rouge">Expected: [${testCase.expected.join(", ")}]\n</code>);</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+</pre></td><td class="rouge-code"><pre>// Test Solution 1 (Two Pointers)
+const nums1 = [...testCase.input];
+moveZeroes(nums1);
+console.log(
+  `Solution 1 (Two Pointers): [${nums1.join(", ")}] ${
+    JSON.stringify(nums1) === JSON.stringify(testCase.expected)
+      ? "✅"
+      : "❌"
+  }`
+);
+
+// Test Solution 2 (Swap)
+const nums2 = [...testCase.input];
+moveZeroesSwap(nums2);
+console.log(
+  `Solution 2 (Swap): [${nums2.join(", ")}] ${
+    JSON.stringify(nums2) === JSON.stringify(testCase.expected)
+      ? "✅"
+      : "❌"
+  }`
+);
+
+// Test Solution 3 (Filter)
+const nums3 = [...testCase.input];
+moveZeroesFilter(nums3);
+console.log(
+  `Solution 3 (Filter): [${nums3.join(", ")}] ${
+    JSON.stringify(nums3) === JSON.stringify(testCase.expected)
+      ? "✅"
+      : "❌"
+  }`
+);
+
+// Test Solution 4 (Reduce)
+const nums4 = [...testCase.input];
+moveZeroesReduce(nums4);
+console.log(
+  `Solution 4 (Reduce): [${nums4.join(", ")}] ${
+    JSON.stringify(nums4) === JSON.stringify(testCase.expected)
+      ? "✅"
+      : "❌"
+  }`
+);
+
+// Test Solution 5 (Generator)
+const nums5 = [...testCase.input];
+moveZeroesGenerator(nums5);
+console.log(
+  `Solution 5 (Generator): [${nums5.join(", ")}] ${
+    JSON.stringify(nums5) === JSON.stringify(testCase.expected)
+      ? "✅"
+      : "❌"
+  }`
+);
+
+// Test Solution 6 (Array Methods)
+const nums6 = [...testCase.input];
+moveZeroesArrayMethods(nums6);
+console.log(
+  `Solution 6 (Array Methods): [${nums6.join(", ")}] ${
+    JSON.stringify(nums6) === JSON.stringify(testCase.expected)
+      ? "✅"
+      : "❌"
+  }`
+);
+
+// Test Solution 7 (Queue)
+const nums7 = [...testCase.input];
+moveZeroesQueue(nums7);
+console.log(
+  `Solution 7 (Queue): [${nums7.join(", ")}] ${
+    JSON.stringify(nums7) === JSON.stringify(testCase.expected)
+      ? "✅"
+      : "❌"
+  }`
+);
+
+// Test Solution 8 (Class)
+const nums8 = [...testCase.input];
+moveZeroesClass(nums8);
+console.log(
+  `Solution 8 (Class): [${nums8.join(", ")}] ${
+    JSON.stringify(nums8) === JSON.stringify(testCase.expected)
+      ? "✅"
+      : "❌"
+  }`
+);
+
+// Test Solution 9 (Bitwise)
+const nums9 = [...testCase.input];
+moveZeroesBitwise(nums9);
+console.log(
+  `Solution 9 (Bitwise): [${nums9.join(", ")}] ${
+    JSON.stringify(nums9) === JSON.stringify(testCase.expected)
+      ? "✅"
+      : "❌"
+  }`
+);
+
+console.log("\n---\n");   }); }
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>// Performance comparison
+function performanceComparison() {
+  console.log(“=== Performance Comparison ===\n”);</p>
+
+<p>const testCases = [
+    { name: “Two Pointers”, func: moveZeroes },
+    { name: “Swap”, func: moveZeroesSwap },
+    { name: “Filter”, func: moveZeroesFilter },
+    { name: “Reduce”, func: moveZeroesReduce },
+    { name: “Generator”, func: moveZeroesGenerator },
+    { name: “Array Methods”, func: moveZeroesArrayMethods },
+    { name: “Queue”, func: moveZeroesQueue },
+    { name: “Class”, func: moveZeroesClass },
+    { name: “Bitwise”, func: moveZeroesBitwise },
+  ];</p>
+
+<p>// Create test arrays
+  const smallArray = [0, 1, 0, 3, 12];
+  const largeArray = Array.from({ length: 10000 }, (_, i) =&gt;
+    i % 3 === 0 ? 0 : i
+  );
+  const allZerosArray = new Array(1000).fill(0);</p>
+
+<p>const arrays = [
+    { name: “Small”, array: smallArray },
+    { name: “Large”, array: largeArray },
+    { name: “All Zeros”, array: allZerosArray },
+  ];</p>
+
+<p>arrays.forEach(({ name, array }) =&gt; {
+    console.log(<code class="language-plaintext highlighter-rouge">${name} Array:</code>);</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+</pre></td><td class="rouge-code"><pre>testCases.forEach(({ name: funcName, func }) =&gt; {
+  const testArray = [...array];
+  const start = performance.now();
+  func(testArray);
+  const end = performance.now();
+
+  console.log(`  ${funcName}: ${(end - start).toFixed(2)}ms`);
+});
+
+console.log("");   }); }
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>// Zero distribution analysis
+function zeroDistributionAnalysis() {
+  console.log(“=== Zero Distribution Analysis ===\n”);</p>
+
+<p>const testArrays = [
+    [0, 1, 0, 3, 12],
+    [1, 0, 0, 0, 2],
+    [0, 0, 1, 2, 3],
+    [1, 2, 3, 0, 0],
+    [0, 0, 0, 0],
+    [1, 2, 3, 4, 5],
+  ];</p>
+
+<p>testArrays.forEach((arr, index) =&gt; {
+    console.log(<code class="language-plaintext highlighter-rouge">Array ${index + 1}: [${arr.join(", ")}]</code>);</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+</pre></td><td class="rouge-code"><pre>const zeroCount = arr.filter((num) =&gt; num === 0).length;
+const nonZeroCount = arr.length - zeroCount;
+
+console.log(
+  `  Zeros: ${zeroCount} (${((zeroCount / arr.length) * 100).toFixed(1)}%)`
+);
+console.log(
+  `  Non-zeros: ${nonZeroCount} (${(
+    (nonZeroCount / arr.length) *
+    100
+  ).toFixed(1)}%)`
+);
+
+const result = [...arr];
+moveZeroes(result);
+console.log(`  Result: [${result.join(", ")}]`);
+console.log("");   }); }
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>// Uncomment the following lines to run tests
+// testMoveZeroes();
+// performanceComparison();
+// zeroDistributionAnalysis();</p>
+
+<p>export {
+  moveZeroes,
+  moveZeroesSwap,
+  moveZeroesFilter,
+  moveZeroesReduce,
+  moveZeroesGenerator,
+  moveZeroesArrayMethods,
+  moveZeroesQueue,
+  moveZeroesClass,
+  moveZeroesBitwise,
+  ZeroMover,
+  nonZeroGenerator,
+  testMoveZeroes,
+  performanceComparison,
+  zeroDistributionAnalysis,
+};</p>
+
+
+        </div>
+    </article>
+</div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Study Resources</h3>
+                    <p>Comprehensive collection of frontend interview questions, coding challenges, and system design problems.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Progress Tracking</h3>
+                    <p>Monitor your learning journey with detailed progress indicators and completion status.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Big Tech Ready</h3>
+                    <p>Curated content specifically designed for interviews at Google, Meta, Amazon, Apple, and Netflix.</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Frontend Interview Hub. Built for aspiring frontend engineers.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="/assets/js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,1853 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TypeScript for Frontend Interviews | Frontend Interview Preparation Guide</title>
+    <meta name="description" content="Comprehensive frontend interview materials for Big Tech companies">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="/assets/css/main.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <header>
+        <nav class="container">
+            <div class="logo">Frontend Interview Hub</div>
+            <ul class="nav-links">
+                <li><a href="/">Home</a></li>
+                <li><a href="#progress">Progress</a></li>
+                <li><a href="#knowledge">Knowledge</a></li>
+                <li><a href="https://github.com/nee/interview">GitHub</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <div class="content-container">
+    
+        <nav class="breadcrumb">
+            <ol>
+                <li><a href="/">Home</a></li>
+                
+                
+                
+                    
+                
+                    
+                        
+                        
+                            <li><a href="/frontend/">Frontend</a></li>
+                        
+                    
+                
+                    
+                        
+                        
+                            <li class="active">Typescript for frontend interviews</li>
+                        
+                    
+                
+            </ol>
+        </nav>
+    
+    
+    <article class="content">
+        
+            <header class="content-header">
+                <h1 class="content-title">TypeScript for Frontend Interviews</h1>
+                
+                
+            </header>
+        
+        
+        <div class="content-body">
+            <h1 id="typescript-for-frontend-interviews">TypeScript for Frontend Interviews</h1>
+
+<h2 id="table-of-contents">Table of Contents</h2>
+<ul>
+  <li><a href="#typescript-fundamentals">TypeScript Fundamentals</a></li>
+  <li><a href="#advanced-types">Advanced Types</a></li>
+  <li><a href="#react-with-typescript">React with TypeScript</a></li>
+  <li><a href="#interview-questions">Interview Questions</a></li>
+  <li><a href="#best-practices">Best Practices</a></li>
+  <li><a href="#common-patterns">Common Patterns</a></li>
+</ul>
+
+<h2 id="typescript-fundamentals">TypeScript Fundamentals</h2>
+
+<h3 id="why-typescript">Why TypeScript?</h3>
+<p>TypeScript is a superset of JavaScript that adds static type definitions. It’s essential for modern frontend development and frequently tested in interviews.</p>
+
+<p><strong>Key Benefits:</strong></p>
+<ul>
+  <li><strong>Static Type Checking</strong>: Catch errors at compile time</li>
+  <li><strong>Better IDE Support</strong>: Enhanced autocomplete, refactoring, and navigation</li>
+  <li><strong>Self-Documenting Code</strong>: Types serve as documentation</li>
+  <li><strong>Easier Refactoring</strong>: Compiler helps identify breaking changes</li>
+  <li><strong>Better Team Collaboration</strong>: Clear interfaces and contracts</li>
+</ul>
+
+<h3 id="basic-types">Basic Types</h3>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+</pre></td><td class="rouge-code"><pre><span class="c1">// Primitive types</span>
+<span class="kd">let</span> <span class="nx">name</span><span class="p">:</span> <span class="kr">string</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">John</span><span class="dl">"</span><span class="p">;</span>
+<span class="kd">let</span> <span class="nx">age</span><span class="p">:</span> <span class="kr">number</span> <span class="o">=</span> <span class="mi">25</span><span class="p">;</span>
+<span class="kd">let</span> <span class="nx">isActive</span><span class="p">:</span> <span class="nx">boolean</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
+<span class="kd">let</span> <span class="nx">nothing</span><span class="p">:</span> <span class="kc">null</span> <span class="o">=</span> <span class="kc">null</span><span class="p">;</span>
+<span class="kd">let</span> <span class="kc">undefined</span><span class="p">:</span> <span class="kc">undefined</span> <span class="o">=</span> <span class="kc">undefined</span><span class="p">;</span>
+
+<span class="c1">// Arrays</span>
+<span class="kd">let</span> <span class="nx">numbers</span><span class="p">:</span> <span class="kr">number</span><span class="p">[]</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">];</span>
+<span class="kd">let</span> <span class="nx">strings</span><span class="p">:</span> <span class="nb">Array</span><span class="o">&lt;</span><span class="kr">string</span><span class="o">&gt;</span> <span class="o">=</span> <span class="p">[</span><span class="dl">"</span><span class="s2">a</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">b</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">c</span><span class="dl">"</span><span class="p">];</span>
+
+<span class="c1">// Tuples</span>
+<span class="kd">let</span> <span class="nx">person</span><span class="p">:</span> <span class="p">[</span><span class="kr">string</span><span class="p">,</span> <span class="kr">number</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="dl">"</span><span class="s2">John</span><span class="dl">"</span><span class="p">,</span> <span class="mi">25</span><span class="p">];</span>
+
+<span class="c1">// Enums</span>
+<span class="kr">enum</span> <span class="nx">Color</span> <span class="p">{</span>
+  <span class="nx">Red</span><span class="p">,</span>
+  <span class="nx">Green</span><span class="p">,</span>
+  <span class="nx">Blue</span>
+<span class="p">}</span>
+<span class="kd">let</span> <span class="nx">c</span><span class="p">:</span> <span class="nx">Color</span> <span class="o">=</span> <span class="nx">Color</span><span class="p">.</span><span class="nx">Green</span><span class="p">;</span>
+
+<span class="c1">// Any (use sparingly)</span>
+<span class="kd">let</span> <span class="nx">anything</span><span class="p">:</span> <span class="kr">any</span> <span class="o">=</span> <span class="mi">42</span><span class="p">;</span>
+<span class="nx">anything</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">hello</span><span class="dl">"</span><span class="p">;</span>
+<span class="nx">anything</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
+
+<span class="c1">// Unknown (safer than any)</span>
+<span class="kd">let</span> <span class="nx">userInput</span><span class="p">:</span> <span class="nx">unknown</span><span class="p">;</span>
+<span class="k">if</span> <span class="p">(</span><span class="k">typeof</span> <span class="nx">userInput</span> <span class="o">===</span> <span class="dl">"</span><span class="s2">string</span><span class="dl">"</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">userInput</span><span class="p">.</span><span class="nx">toUpperCase</span><span class="p">());</span>
+<span class="p">}</span>
+
+<span class="c1">// Never (functions that never return)</span>
+<span class="kd">function</span> <span class="nx">throwError</span><span class="p">(</span><span class="nx">message</span><span class="p">:</span> <span class="kr">string</span><span class="p">):</span> <span class="nx">never</span> <span class="p">{</span>
+  <span class="k">throw</span> <span class="k">new</span> <span class="nb">Error</span><span class="p">(</span><span class="nx">message</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="c1">// Void (no return value)</span>
+<span class="kd">function</span> <span class="nx">logMessage</span><span class="p">(</span><span class="nx">message</span><span class="p">:</span> <span class="kr">string</span><span class="p">):</span> <span class="k">void</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">message</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<h3 id="objects-and-interfaces">Objects and Interfaces</h3>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+</pre></td><td class="rouge-code"><pre><span class="c1">// Object types</span>
+<span class="kd">let</span> <span class="nx">user</span><span class="p">:</span> <span class="p">{</span> <span class="nl">name</span><span class="p">:</span> <span class="kr">string</span><span class="p">;</span> <span class="nl">age</span><span class="p">:</span> <span class="kr">number</span> <span class="p">}</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="na">name</span><span class="p">:</span> <span class="dl">"</span><span class="s2">John</span><span class="dl">"</span><span class="p">,</span>
+  <span class="na">age</span><span class="p">:</span> <span class="mi">25</span>
+<span class="p">};</span>
+
+<span class="c1">// Interface definition</span>
+<span class="kr">interface</span> <span class="nx">User</span> <span class="p">{</span>
+  <span class="k">readonly</span> <span class="nx">id</span><span class="p">:</span> <span class="kr">number</span><span class="p">;</span>
+  <span class="nl">name</span><span class="p">:</span> <span class="kr">string</span><span class="p">;</span>
+  <span class="nl">email</span><span class="p">:</span> <span class="kr">string</span><span class="p">;</span>
+  <span class="nl">age</span><span class="p">?:</span> <span class="kr">number</span><span class="p">;</span> <span class="c1">// Optional property</span>
+<span class="p">}</span>
+
+<span class="c1">// Using interfaces</span>
+<span class="kd">const</span> <span class="nx">createUser</span> <span class="o">=</span> <span class="p">(</span><span class="nx">userData</span><span class="p">:</span> <span class="nx">User</span><span class="p">):</span> <span class="nx">User</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="p">{</span>
+    <span class="na">id</span><span class="p">:</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">random</span><span class="p">(),</span>
+    <span class="p">...</span><span class="nx">userData</span>
+  <span class="p">};</span>
+<span class="p">};</span>
+
+<span class="c1">// Extending interfaces</span>
+<span class="kr">interface</span> <span class="nx">AdminUser</span> <span class="kd">extends</span> <span class="nx">User</span> <span class="p">{</span>
+  <span class="nl">permissions</span><span class="p">:</span> <span class="kr">string</span><span class="p">[];</span>
+  <span class="nl">isAdmin</span><span class="p">:</span> <span class="nx">boolean</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c1">// Index signatures</span>
+<span class="kr">interface</span> <span class="nx">StringDictionary</span> <span class="p">{</span>
+  <span class="p">[</span><span class="nx">key</span><span class="p">:</span> <span class="kr">string</span><span class="p">]:</span> <span class="kr">string</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kd">const</span> <span class="nx">dictionary</span><span class="p">:</span> <span class="nx">StringDictionary</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="na">hello</span><span class="p">:</span> <span class="dl">"</span><span class="s2">world</span><span class="dl">"</span><span class="p">,</span>
+  <span class="na">foo</span><span class="p">:</span> <span class="dl">"</span><span class="s2">bar</span><span class="dl">"</span>
+<span class="p">};</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<h3 id="functions">Functions</h3>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+</pre></td><td class="rouge-code"><pre><span class="c1">// Function types</span>
+<span class="kd">type</span> <span class="nx">MathOperation</span> <span class="o">=</span> <span class="p">(</span><span class="nx">a</span><span class="p">:</span> <span class="kr">number</span><span class="p">,</span> <span class="nx">b</span><span class="p">:</span> <span class="kr">number</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="kr">number</span><span class="p">;</span>
+
+<span class="kd">const</span> <span class="nx">add</span><span class="p">:</span> <span class="nx">MathOperation</span> <span class="o">=</span> <span class="p">(</span><span class="nx">a</span><span class="p">,</span> <span class="nx">b</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">a</span> <span class="o">+</span> <span class="nx">b</span><span class="p">;</span>
+<span class="kd">const</span> <span class="nx">multiply</span><span class="p">:</span> <span class="nx">MathOperation</span> <span class="o">=</span> <span class="p">(</span><span class="nx">a</span><span class="p">,</span> <span class="nx">b</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">a</span> <span class="o">*</span> <span class="nx">b</span><span class="p">;</span>
+
+<span class="c1">// Function overloads</span>
+<span class="kd">function</span> <span class="nx">process</span><span class="p">(</span><span class="nx">input</span><span class="p">:</span> <span class="kr">string</span><span class="p">):</span> <span class="kr">string</span><span class="p">;</span>
+<span class="kd">function</span> <span class="nx">process</span><span class="p">(</span><span class="nx">input</span><span class="p">:</span> <span class="kr">number</span><span class="p">):</span> <span class="kr">number</span><span class="p">;</span>
+<span class="kd">function</span> <span class="nx">process</span><span class="p">(</span><span class="nx">input</span><span class="p">:</span> <span class="kr">string</span> <span class="o">|</span> <span class="kr">number</span><span class="p">):</span> <span class="kr">string</span> <span class="o">|</span> <span class="kr">number</span> <span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="k">typeof</span> <span class="nx">input</span> <span class="o">===</span> <span class="dl">"</span><span class="s2">string</span><span class="dl">"</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">input</span><span class="p">.</span><span class="nx">toUpperCase</span><span class="p">();</span>
+  <span class="p">}</span>
+  <span class="k">return</span> <span class="nx">input</span> <span class="o">*</span> <span class="mi">2</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c1">// Rest parameters</span>
+<span class="kd">function</span> <span class="nx">sum</span><span class="p">(...</span><span class="nx">numbers</span><span class="p">:</span> <span class="kr">number</span><span class="p">[]):</span> <span class="kr">number</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="nx">numbers</span><span class="p">.</span><span class="nx">reduce</span><span class="p">((</span><span class="nx">total</span><span class="p">,</span> <span class="nx">num</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">total</span> <span class="o">+</span> <span class="nx">num</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="c1">// Optional parameters</span>
+<span class="kd">function</span> <span class="nx">greet</span><span class="p">(</span><span class="nx">name</span><span class="p">:</span> <span class="kr">string</span><span class="p">,</span> <span class="nx">greeting</span><span class="p">?:</span> <span class="kr">string</span><span class="p">):</span> <span class="kr">string</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="s2">`</span><span class="p">${</span><span class="nx">greeting</span> <span class="o">||</span> <span class="dl">"</span><span class="s2">Hello</span><span class="dl">"</span><span class="p">}</span><span class="s2">, </span><span class="p">${</span><span class="nx">name</span><span class="p">}</span><span class="s2">!`</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c1">// Default parameters</span>
+<span class="kd">function</span> <span class="nx">createUser</span><span class="p">(</span><span class="nx">name</span><span class="p">:</span> <span class="kr">string</span><span class="p">,</span> <span class="nx">age</span><span class="p">:</span> <span class="kr">number</span> <span class="o">=</span> <span class="mi">18</span><span class="p">):</span> <span class="nx">User</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="p">{</span> <span class="na">id</span><span class="p">:</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">random</span><span class="p">(),</span> <span class="nx">name</span><span class="p">,</span> <span class="na">email</span><span class="p">:</span> <span class="s2">`</span><span class="p">${</span><span class="nx">name</span><span class="p">}</span><span class="s2">@example.com`</span><span class="p">,</span> <span class="nx">age</span> <span class="p">};</span>
+<span class="p">}</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<h2 id="advanced-types">Advanced Types</h2>
+
+<h3 id="union-and-intersection-types">Union and Intersection Types</h3>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+</pre></td><td class="rouge-code"><pre><span class="c1">// Union types</span>
+<span class="kd">type</span> <span class="nx">StringOrNumber</span> <span class="o">=</span> <span class="kr">string</span> <span class="o">|</span> <span class="kr">number</span><span class="p">;</span>
+<span class="kd">type</span> <span class="nx">Status</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">loading</span><span class="dl">"</span> <span class="o">|</span> <span class="dl">"</span><span class="s2">success</span><span class="dl">"</span> <span class="o">|</span> <span class="dl">"</span><span class="s2">error</span><span class="dl">"</span><span class="p">;</span>
+
+<span class="kd">function</span> <span class="nx">processId</span><span class="p">(</span><span class="nx">id</span><span class="p">:</span> <span class="nx">StringOrNumber</span><span class="p">):</span> <span class="k">void</span> <span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="k">typeof</span> <span class="nx">id</span> <span class="o">===</span> <span class="dl">"</span><span class="s2">string</span><span class="dl">"</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">id</span><span class="p">.</span><span class="nx">toUpperCase</span><span class="p">());</span>
+  <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">id</span><span class="p">.</span><span class="nx">toFixed</span><span class="p">(</span><span class="mi">2</span><span class="p">));</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// Intersection types</span>
+<span class="kr">interface</span> <span class="nx">Person</span> <span class="p">{</span>
+  <span class="nl">name</span><span class="p">:</span> <span class="kr">string</span><span class="p">;</span>
+  <span class="nl">age</span><span class="p">:</span> <span class="kr">number</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kr">interface</span> <span class="nx">Employee</span> <span class="p">{</span>
+  <span class="nl">employeeId</span><span class="p">:</span> <span class="kr">number</span><span class="p">;</span>
+  <span class="nl">department</span><span class="p">:</span> <span class="kr">string</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kd">type</span> <span class="nx">PersonEmployee</span> <span class="o">=</span> <span class="nx">Person</span> <span class="o">&amp;</span> <span class="nx">Employee</span><span class="p">;</span>
+
+<span class="kd">const</span> <span class="nx">emp</span><span class="p">:</span> <span class="nx">PersonEmployee</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="na">name</span><span class="p">:</span> <span class="dl">"</span><span class="s2">John</span><span class="dl">"</span><span class="p">,</span>
+  <span class="na">age</span><span class="p">:</span> <span class="mi">30</span><span class="p">,</span>
+  <span class="na">employeeId</span><span class="p">:</span> <span class="mi">123</span><span class="p">,</span>
+  <span class="na">department</span><span class="p">:</span> <span class="dl">"</span><span class="s2">Engineering</span><span class="dl">"</span>
+<span class="p">};</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<h3 id="generics">Generics</h3>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+</pre></td><td class="rouge-code"><pre><span class="c1">// Generic functions</span>
+<span class="kd">function</span> <span class="nx">identity</span><span class="o">&lt;</span><span class="nx">T</span><span class="o">&gt;</span><span class="p">(</span><span class="nx">arg</span><span class="p">:</span> <span class="nx">T</span><span class="p">):</span> <span class="nx">T</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="nx">arg</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kd">const</span> <span class="nx">stringResult</span> <span class="o">=</span> <span class="nx">identity</span><span class="o">&lt;</span><span class="kr">string</span><span class="o">&gt;</span><span class="p">(</span><span class="dl">"</span><span class="s2">hello</span><span class="dl">"</span><span class="p">);</span>
+<span class="kd">const</span> <span class="nx">numberResult</span> <span class="o">=</span> <span class="nx">identity</span><span class="o">&lt;</span><span class="kr">number</span><span class="o">&gt;</span><span class="p">(</span><span class="mi">42</span><span class="p">);</span>
+
+<span class="c1">// Generic interfaces</span>
+<span class="kr">interface</span> <span class="nx">ApiResponse</span><span class="o">&lt;</span><span class="nx">T</span><span class="o">&gt;</span> <span class="p">{</span>
+  <span class="na">data</span><span class="p">:</span> <span class="nx">T</span><span class="p">;</span>
+  <span class="nl">status</span><span class="p">:</span> <span class="kr">number</span><span class="p">;</span>
+  <span class="nl">message</span><span class="p">:</span> <span class="kr">string</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kr">interface</span> <span class="nx">User</span> <span class="p">{</span>
+  <span class="nl">id</span><span class="p">:</span> <span class="kr">number</span><span class="p">;</span>
+  <span class="nl">name</span><span class="p">:</span> <span class="kr">string</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kd">const</span> <span class="nx">userResponse</span><span class="p">:</span> <span class="nx">ApiResponse</span><span class="o">&lt;</span><span class="nx">User</span><span class="o">&gt;</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="na">data</span><span class="p">:</span> <span class="p">{</span> <span class="na">id</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="na">name</span><span class="p">:</span> <span class="dl">"</span><span class="s2">John</span><span class="dl">"</span> <span class="p">},</span>
+  <span class="na">status</span><span class="p">:</span> <span class="mi">200</span><span class="p">,</span>
+  <span class="na">message</span><span class="p">:</span> <span class="dl">"</span><span class="s2">Success</span><span class="dl">"</span>
+<span class="p">};</span>
+
+<span class="c1">// Generic classes</span>
+<span class="kd">class</span> <span class="nx">Repository</span><span class="o">&lt;</span><span class="nx">T</span><span class="o">&gt;</span> <span class="p">{</span>
+  <span class="k">private</span> <span class="na">items</span><span class="p">:</span> <span class="nx">T</span><span class="p">[]</span> <span class="o">=</span> <span class="p">[];</span>
+
+  <span class="nx">add</span><span class="p">(</span><span class="na">item</span><span class="p">:</span> <span class="nx">T</span><span class="p">):</span> <span class="k">void</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">items</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">item</span><span class="p">);</span>
+  <span class="p">}</span>
+
+  <span class="nx">findById</span><span class="p">(</span><span class="na">id</span><span class="p">:</span> <span class="kr">number</span><span class="p">):</span> <span class="nx">T</span> <span class="o">|</span> <span class="kc">undefined</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">items</span><span class="p">.</span><span class="nx">find</span><span class="p">((</span><span class="na">item</span><span class="p">:</span> <span class="kr">any</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">item</span><span class="p">.</span><span class="nx">id</span> <span class="o">===</span> <span class="nx">id</span><span class="p">);</span>
+  <span class="p">}</span>
+
+  <span class="nx">getAll</span><span class="p">():</span> <span class="nx">T</span><span class="p">[]</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="p">[...</span><span class="k">this</span><span class="p">.</span><span class="nx">items</span><span class="p">];</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// Generic constraints</span>
+<span class="kr">interface</span> <span class="nx">HasLength</span> <span class="p">{</span>
+  <span class="nl">length</span><span class="p">:</span> <span class="kr">number</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kd">function</span> <span class="nx">logLength</span><span class="o">&lt;</span><span class="nx">T</span> <span class="kd">extends</span> <span class="nx">HasLength</span><span class="o">&gt;</span><span class="p">(</span><span class="nx">arg</span><span class="p">:</span> <span class="nx">T</span><span class="p">):</span> <span class="nx">T</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">arg</span><span class="p">.</span><span class="nx">length</span><span class="p">);</span>
+  <span class="k">return</span> <span class="nx">arg</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c1">// Conditional types</span>
+<span class="kd">type</span> <span class="nx">NonNullable</span><span class="o">&lt;</span><span class="nx">T</span><span class="o">&gt;</span> <span class="o">=</span> <span class="nx">T</span> <span class="kd">extends</span> <span class="kc">null</span> <span class="o">|</span> <span class="kc">undefined</span> <span class="p">?</span> <span class="nx">never</span> <span class="p">:</span> <span class="nx">T</span><span class="p">;</span>
+
+<span class="c1">// Mapped types</span>
+<span class="kd">type</span> <span class="nb">Partial</span><span class="o">&lt;</span><span class="nx">T</span><span class="o">&gt;</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="p">[</span><span class="nx">P</span> <span class="k">in</span> <span class="kr">keyof</span> <span class="nx">T</span><span class="p">]?:</span> <span class="nx">T</span><span class="p">[</span><span class="nx">P</span><span class="p">];</span>
+<span class="p">};</span>
+
+<span class="kd">type</span> <span class="nx">Required</span><span class="o">&lt;</span><span class="nx">T</span><span class="o">&gt;</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="p">[</span><span class="nx">P</span> <span class="k">in</span> <span class="kr">keyof</span> <span class="nx">T</span><span class="p">]</span><span class="o">-</span><span class="p">?:</span> <span class="nx">T</span><span class="p">[</span><span class="nx">P</span><span class="p">];</span>
+<span class="p">};</span>
+
+<span class="kd">type</span> <span class="nb">Readonly</span><span class="o">&lt;</span><span class="nx">T</span><span class="o">&gt;</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="k">readonly</span> <span class="p">[</span><span class="nx">P</span> <span class="k">in</span> <span class="kr">keyof</span> <span class="nx">T</span><span class="p">]:</span> <span class="nx">T</span><span class="p">[</span><span class="nx">P</span><span class="p">];</span>
+<span class="p">};</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<h3 id="utility-types">Utility Types</h3>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+</pre></td><td class="rouge-code"><pre><span class="c1">// Built-in utility types</span>
+<span class="kr">interface</span> <span class="nx">User</span> <span class="p">{</span>
+  <span class="nl">id</span><span class="p">:</span> <span class="kr">number</span><span class="p">;</span>
+  <span class="nl">name</span><span class="p">:</span> <span class="kr">string</span><span class="p">;</span>
+  <span class="nl">email</span><span class="p">:</span> <span class="kr">string</span><span class="p">;</span>
+  <span class="nl">age</span><span class="p">:</span> <span class="kr">number</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c1">// Partial - makes all properties optional</span>
+<span class="kd">type</span> <span class="nx">PartialUser</span> <span class="o">=</span> <span class="nb">Partial</span><span class="o">&lt;</span><span class="nx">User</span><span class="o">&gt;</span><span class="p">;</span>
+
+<span class="c1">// Required - makes all properties required</span>
+<span class="kd">type</span> <span class="nx">RequiredUser</span> <span class="o">=</span> <span class="nx">Required</span><span class="o">&lt;</span><span class="nx">User</span><span class="o">&gt;</span><span class="p">;</span>
+
+<span class="c1">// Readonly - makes all properties readonly</span>
+<span class="kd">type</span> <span class="nx">ReadonlyUser</span> <span class="o">=</span> <span class="nb">Readonly</span><span class="o">&lt;</span><span class="nx">User</span><span class="o">&gt;</span><span class="p">;</span>
+
+<span class="c1">// Pick - selects specific properties</span>
+<span class="kd">type</span> <span class="nx">UserPreview</span> <span class="o">=</span> <span class="nb">Pick</span><span class="o">&lt;</span><span class="nx">User</span><span class="p">,</span> <span class="dl">"</span><span class="s2">id</span><span class="dl">"</span> <span class="o">|</span> <span class="dl">"</span><span class="s2">name</span><span class="dl">"</span><span class="o">&gt;</span><span class="p">;</span>
+
+<span class="c1">// Omit - excludes specific properties</span>
+<span class="kd">type</span> <span class="nx">UserWithoutId</span> <span class="o">=</span> <span class="nx">Omit</span><span class="o">&lt;</span><span class="nx">User</span><span class="p">,</span> <span class="dl">"</span><span class="s2">id</span><span class="dl">"</span><span class="o">&gt;</span><span class="p">;</span>
+
+<span class="c1">// Record - creates an object type with specific key and value types</span>
+<span class="kd">type</span> <span class="nx">UserRoles</span> <span class="o">=</span> <span class="nb">Record</span><span class="o">&lt;</span><span class="kr">string</span><span class="p">,</span> <span class="kr">string</span><span class="p">[]</span><span class="o">&gt;</span><span class="p">;</span>
+
+<span class="c1">// ReturnType - extracts return type of function</span>
+<span class="kd">function</span> <span class="nx">getUser</span><span class="p">():</span> <span class="nx">User</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="p">{</span> <span class="na">id</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="na">name</span><span class="p">:</span> <span class="dl">"</span><span class="s2">John</span><span class="dl">"</span><span class="p">,</span> <span class="na">email</span><span class="p">:</span> <span class="dl">"</span><span class="s2">john@example.com</span><span class="dl">"</span><span class="p">,</span> <span class="na">age</span><span class="p">:</span> <span class="mi">25</span> <span class="p">};</span>
+<span class="p">}</span>
+
+<span class="kd">type</span> <span class="nx">GetUserReturnType</span> <span class="o">=</span> <span class="nx">ReturnType</span><span class="o">&lt;</span><span class="k">typeof</span> <span class="nx">getUser</span><span class="o">&gt;</span><span class="p">;</span> <span class="c1">// User</span>
+
+<span class="c1">// Parameters - extracts parameter types</span>
+<span class="kd">function</span> <span class="nx">updateUser</span><span class="p">(</span><span class="nx">id</span><span class="p">:</span> <span class="kr">number</span><span class="p">,</span> <span class="nx">updates</span><span class="p">:</span> <span class="nb">Partial</span><span class="o">&lt;</span><span class="nx">User</span><span class="o">&gt;</span><span class="p">):</span> <span class="k">void</span> <span class="p">{}</span>
+
+<span class="kd">type</span> <span class="nx">UpdateUserParams</span> <span class="o">=</span> <span class="nx">Parameters</span><span class="o">&lt;</span><span class="k">typeof</span> <span class="nx">updateUser</span><span class="o">&gt;</span><span class="p">;</span> <span class="c1">// [number, Partial&lt;User&gt;]</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<h2 id="react-with-typescript">React with TypeScript</h2>
+
+<h3 id="component-types">Component Types</h3>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+</pre></td><td class="rouge-code"><pre><span class="k">import</span> <span class="nx">React</span><span class="p">,</span> <span class="p">{</span> <span class="nx">useState</span><span class="p">,</span> <span class="nx">useEffect</span><span class="p">,</span> <span class="nx">ReactNode</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">react</span><span class="dl">'</span><span class="p">;</span>
+
+<span class="c1">// Props interface</span>
+<span class="kr">interface</span> <span class="nx">ButtonProps</span> <span class="p">{</span>
+  <span class="nl">children</span><span class="p">:</span> <span class="nx">ReactNode</span><span class="p">;</span>
+  <span class="nl">onClick</span><span class="p">:</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="k">void</span><span class="p">;</span>
+  <span class="nl">variant</span><span class="p">?:</span> <span class="dl">'</span><span class="s1">primary</span><span class="dl">'</span> <span class="o">|</span> <span class="dl">'</span><span class="s1">secondary</span><span class="dl">'</span><span class="p">;</span>
+  <span class="nl">disabled</span><span class="p">?:</span> <span class="nx">boolean</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c1">// Function component</span>
+<span class="kd">const</span> <span class="nx">Button</span><span class="p">:</span> <span class="nx">React</span><span class="p">.</span><span class="nx">FC</span><span class="o">&lt;</span><span class="nx">ButtonProps</span><span class="o">&gt;</span> <span class="o">=</span> <span class="p">({</span> 
+  <span class="nx">children</span><span class="p">,</span> 
+  <span class="nx">onClick</span><span class="p">,</span> 
+  <span class="nx">variant</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">primary</span><span class="dl">'</span><span class="p">,</span> 
+  <span class="nx">disabled</span> <span class="o">=</span> <span class="kc">false</span> 
+<span class="p">})</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="p">(</span>
+    <span class="o">&lt;</span><span class="nx">button</span> 
+      <span class="nx">onClick</span><span class="o">=</span><span class="p">{</span><span class="nx">onClick</span><span class="p">}</span> 
+      <span class="nx">disabled</span><span class="o">=</span><span class="p">{</span><span class="nx">disabled</span><span class="p">}</span>
+      <span class="nx">className</span><span class="o">=</span><span class="p">{</span><span class="s2">`btn btn-</span><span class="p">${</span><span class="nx">variant</span><span class="p">}</span><span class="s2">`</span><span class="p">}</span>
+    <span class="o">&gt;</span>
+      <span class="p">{</span><span class="nx">children</span><span class="p">}</span>
+    <span class="o">&lt;</span><span class="sr">/button</span><span class="err">&gt;
+</span>  <span class="p">);</span>
+<span class="p">};</span>
+
+<span class="c1">// Generic component</span>
+<span class="kr">interface</span> <span class="nx">ListProps</span><span class="o">&lt;</span><span class="nx">T</span><span class="o">&gt;</span> <span class="p">{</span>
+  <span class="na">items</span><span class="p">:</span> <span class="nx">T</span><span class="p">[];</span>
+  <span class="nl">renderItem</span><span class="p">:</span> <span class="p">(</span><span class="na">item</span><span class="p">:</span> <span class="nx">T</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">ReactNode</span><span class="p">;</span>
+  <span class="nl">keyExtractor</span><span class="p">:</span> <span class="p">(</span><span class="na">item</span><span class="p">:</span> <span class="nx">T</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="kr">string</span> <span class="o">|</span> <span class="kr">number</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kd">function</span> <span class="nx">List</span><span class="o">&lt;</span><span class="nx">T</span><span class="o">&gt;</span><span class="p">({</span> <span class="nx">items</span><span class="p">,</span> <span class="nx">renderItem</span><span class="p">,</span> <span class="nx">keyExtractor</span> <span class="p">}:</span> <span class="nx">ListProps</span><span class="o">&lt;</span><span class="nx">T</span><span class="o">&gt;</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="p">(</span>
+    <span class="o">&lt;</span><span class="nx">ul</span><span class="o">&gt;</span>
+      <span class="p">{</span><span class="nx">items</span><span class="p">.</span><span class="nx">map</span><span class="p">(</span><span class="nx">item</span> <span class="o">=&gt;</span> <span class="p">(</span>
+        <span class="o">&lt;</span><span class="nx">li</span> <span class="nx">key</span><span class="o">=</span><span class="p">{</span><span class="nx">keyExtractor</span><span class="p">(</span><span class="nx">item</span><span class="p">)}</span><span class="o">&gt;</span>
+          <span class="p">{</span><span class="nx">renderItem</span><span class="p">(</span><span class="nx">item</span><span class="p">)}</span>
+        <span class="o">&lt;</span><span class="sr">/li</span><span class="err">&gt;
+</span>      <span class="p">))}</span>
+    <span class="o">&lt;</span><span class="sr">/ul</span><span class="err">&gt;
+</span>  <span class="p">);</span>
+<span class="p">}</span>
+
+<span class="c1">// Using the generic component</span>
+<span class="kr">interface</span> <span class="nx">User</span> <span class="p">{</span>
+  <span class="nl">id</span><span class="p">:</span> <span class="kr">number</span><span class="p">;</span>
+  <span class="nl">name</span><span class="p">:</span> <span class="kr">string</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kd">const</span> <span class="nx">UserList</span><span class="p">:</span> <span class="nx">React</span><span class="p">.</span><span class="nx">FC</span><span class="o">&lt;</span><span class="p">{</span> <span class="na">users</span><span class="p">:</span> <span class="nx">User</span><span class="p">[]</span> <span class="p">}</span><span class="o">&gt;</span> <span class="o">=</span> <span class="p">({</span> <span class="nx">users</span> <span class="p">})</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="p">(</span>
+    <span class="o">&lt;</span><span class="nx">List</span>
+      <span class="nx">items</span><span class="o">=</span><span class="p">{</span><span class="nx">users</span><span class="p">}</span>
+      <span class="nx">keyExtractor</span><span class="o">=</span><span class="p">{</span><span class="nx">user</span> <span class="o">=&gt;</span> <span class="nx">user</span><span class="p">.</span><span class="nx">id</span><span class="p">}</span>
+      <span class="nx">renderItem</span><span class="o">=</span><span class="p">{</span><span class="nx">user</span> <span class="o">=&gt;</span> <span class="o">&lt;</span><span class="nx">span</span><span class="o">&gt;</span><span class="p">{</span><span class="nx">user</span><span class="p">.</span><span class="nx">name</span><span class="p">}</span><span class="o">&lt;</span><span class="sr">/span&gt;</span><span class="err">}
+</span>    <span class="o">/&gt;</span>
+  <span class="p">);</span>
+<span class="p">};</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<h3 id="hooks-with-typescript">Hooks with TypeScript</h3>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+</pre></td><td class="rouge-code"><pre><span class="k">import</span> <span class="p">{</span> <span class="nx">useState</span><span class="p">,</span> <span class="nx">useEffect</span><span class="p">,</span> <span class="nx">useCallback</span><span class="p">,</span> <span class="nx">useMemo</span><span class="p">,</span> <span class="nx">useRef</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">react</span><span class="dl">'</span><span class="p">;</span>
+
+<span class="c1">// useState with explicit types</span>
+<span class="kd">const</span> <span class="p">[</span><span class="nx">count</span><span class="p">,</span> <span class="nx">setCount</span><span class="p">]</span> <span class="o">=</span> <span class="nx">useState</span><span class="o">&lt;</span><span class="kr">number</span><span class="o">&gt;</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+<span class="kd">const</span> <span class="p">[</span><span class="nx">user</span><span class="p">,</span> <span class="nx">setUser</span><span class="p">]</span> <span class="o">=</span> <span class="nx">useState</span><span class="o">&lt;</span><span class="nx">User</span> <span class="o">|</span> <span class="kc">null</span><span class="o">&gt;</span><span class="p">(</span><span class="kc">null</span><span class="p">);</span>
+<span class="kd">const</span> <span class="p">[</span><span class="nx">loading</span><span class="p">,</span> <span class="nx">setLoading</span><span class="p">]</span> <span class="o">=</span> <span class="nx">useState</span><span class="o">&lt;</span><span class="nx">boolean</span><span class="o">&gt;</span><span class="p">(</span><span class="kc">false</span><span class="p">);</span>
+
+<span class="c1">// useEffect with cleanup</span>
+<span class="nx">useEffect</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="nx">timer</span> <span class="o">=</span> <span class="nx">setTimeout</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="nx">setCount</span><span class="p">(</span><span class="nx">prev</span> <span class="o">=&gt;</span> <span class="nx">prev</span> <span class="o">+</span> <span class="mi">1</span><span class="p">);</span>
+  <span class="p">},</span> <span class="mi">1000</span><span class="p">);</span>
+
+  <span class="k">return</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="nx">clearTimeout</span><span class="p">(</span><span class="nx">timer</span><span class="p">);</span>
+<span class="p">},</span> <span class="p">[]);</span>
+
+<span class="c1">// useCallback with proper typing</span>
+<span class="kd">const</span> <span class="nx">handleClick</span> <span class="o">=</span> <span class="nx">useCallback</span><span class="p">((</span><span class="nx">id</span><span class="p">:</span> <span class="kr">number</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">Clicked:</span><span class="dl">'</span><span class="p">,</span> <span class="nx">id</span><span class="p">);</span>
+<span class="p">},</span> <span class="p">[]);</span>
+
+<span class="c1">// useMemo with type inference</span>
+<span class="kd">const</span> <span class="nx">expensiveValue</span> <span class="o">=</span> <span class="nx">useMemo</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="nx">items</span><span class="p">.</span><span class="nx">filter</span><span class="p">(</span><span class="nx">item</span> <span class="o">=&gt;</span> <span class="nx">item</span><span class="p">.</span><span class="nx">active</span><span class="p">).</span><span class="nx">length</span><span class="p">;</span>
+<span class="p">},</span> <span class="p">[</span><span class="nx">items</span><span class="p">]);</span>
+
+<span class="c1">// useRef with DOM elements</span>
+<span class="kd">const</span> <span class="nx">inputRef</span> <span class="o">=</span> <span class="nx">useRef</span><span class="o">&lt;</span><span class="nx">HTMLInputElement</span><span class="o">&gt;</span><span class="p">(</span><span class="kc">null</span><span class="p">);</span>
+
+<span class="kd">const</span> <span class="nx">focusInput</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="nx">inputRef</span><span class="p">.</span><span class="nx">current</span><span class="p">?.</span><span class="nx">focus</span><span class="p">();</span>
+<span class="p">};</span>
+
+<span class="c1">// Custom hook with TypeScript</span>
+<span class="kr">interface</span> <span class="nx">UseApiResult</span><span class="o">&lt;</span><span class="nx">T</span><span class="o">&gt;</span> <span class="p">{</span>
+  <span class="na">data</span><span class="p">:</span> <span class="nx">T</span> <span class="o">|</span> <span class="kc">null</span><span class="p">;</span>
+  <span class="nl">loading</span><span class="p">:</span> <span class="nx">boolean</span><span class="p">;</span>
+  <span class="nl">error</span><span class="p">:</span> <span class="kr">string</span> <span class="o">|</span> <span class="kc">null</span><span class="p">;</span>
+  <span class="nl">refetch</span><span class="p">:</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="k">void</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kd">function</span> <span class="nx">useApi</span><span class="o">&lt;</span><span class="nx">T</span><span class="o">&gt;</span><span class="p">(</span><span class="nx">url</span><span class="p">:</span> <span class="kr">string</span><span class="p">):</span> <span class="nx">UseApiResult</span><span class="o">&lt;</span><span class="nx">T</span><span class="o">&gt;</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="p">[</span><span class="nx">data</span><span class="p">,</span> <span class="nx">setData</span><span class="p">]</span> <span class="o">=</span> <span class="nx">useState</span><span class="o">&lt;</span><span class="nx">T</span> <span class="o">|</span> <span class="kc">null</span><span class="o">&gt;</span><span class="p">(</span><span class="kc">null</span><span class="p">);</span>
+  <span class="kd">const</span> <span class="p">[</span><span class="nx">loading</span><span class="p">,</span> <span class="nx">setLoading</span><span class="p">]</span> <span class="o">=</span> <span class="nx">useState</span><span class="o">&lt;</span><span class="nx">boolean</span><span class="o">&gt;</span><span class="p">(</span><span class="kc">true</span><span class="p">);</span>
+  <span class="kd">const</span> <span class="p">[</span><span class="nx">error</span><span class="p">,</span> <span class="nx">setError</span><span class="p">]</span> <span class="o">=</span> <span class="nx">useState</span><span class="o">&lt;</span><span class="kr">string</span> <span class="o">|</span> <span class="kc">null</span><span class="o">&gt;</span><span class="p">(</span><span class="kc">null</span><span class="p">);</span>
+
+  <span class="kd">const</span> <span class="nx">fetchData</span> <span class="o">=</span> <span class="nx">useCallback</span><span class="p">(</span><span class="k">async</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="k">try</span> <span class="p">{</span>
+      <span class="nx">setLoading</span><span class="p">(</span><span class="kc">true</span><span class="p">);</span>
+      <span class="nx">setError</span><span class="p">(</span><span class="kc">null</span><span class="p">);</span>
+      <span class="kd">const</span> <span class="nx">response</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">fetch</span><span class="p">(</span><span class="nx">url</span><span class="p">);</span>
+      
+      <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">response</span><span class="p">.</span><span class="nx">ok</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">throw</span> <span class="k">new</span> <span class="nb">Error</span><span class="p">(</span><span class="s2">`HTTP error! status: </span><span class="p">${</span><span class="nx">response</span><span class="p">.</span><span class="nx">status</span><span class="p">}</span><span class="s2">`</span><span class="p">);</span>
+      <span class="p">}</span>
+      
+      <span class="kd">const</span> <span class="nx">result</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">response</span><span class="p">.</span><span class="nx">json</span><span class="p">();</span>
+      <span class="nx">setData</span><span class="p">(</span><span class="nx">result</span><span class="p">);</span>
+    <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">setError</span><span class="p">(</span><span class="nx">err</span> <span class="k">instanceof</span> <span class="nb">Error</span> <span class="p">?</span> <span class="nx">err</span><span class="p">.</span><span class="nx">message</span> <span class="p">:</span> <span class="dl">'</span><span class="s1">An error occurred</span><span class="dl">'</span><span class="p">);</span>
+    <span class="p">}</span> <span class="k">finally</span> <span class="p">{</span>
+      <span class="nx">setLoading</span><span class="p">(</span><span class="kc">false</span><span class="p">);</span>
+    <span class="p">}</span>
+  <span class="p">},</span> <span class="p">[</span><span class="nx">url</span><span class="p">]);</span>
+
+  <span class="nx">useEffect</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="nx">fetchData</span><span class="p">();</span>
+  <span class="p">},</span> <span class="p">[</span><span class="nx">fetchData</span><span class="p">]);</span>
+
+  <span class="k">return</span> <span class="p">{</span> <span class="nx">data</span><span class="p">,</span> <span class="nx">loading</span><span class="p">,</span> <span class="nx">error</span><span class="p">,</span> <span class="na">refetch</span><span class="p">:</span> <span class="nx">fetchData</span> <span class="p">};</span>
+<span class="p">}</span>
+
+<span class="c1">// Using the custom hook</span>
+<span class="kr">interface</span> <span class="nx">ApiUser</span> <span class="p">{</span>
+  <span class="nl">id</span><span class="p">:</span> <span class="kr">number</span><span class="p">;</span>
+  <span class="nl">name</span><span class="p">:</span> <span class="kr">string</span><span class="p">;</span>
+  <span class="nl">email</span><span class="p">:</span> <span class="kr">string</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kd">const</span> <span class="nx">UserComponent</span><span class="p">:</span> <span class="nx">React</span><span class="p">.</span><span class="nx">FC</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="p">{</span> <span class="na">data</span><span class="p">:</span> <span class="nx">user</span><span class="p">,</span> <span class="nx">loading</span><span class="p">,</span> <span class="nx">error</span><span class="p">,</span> <span class="nx">refetch</span> <span class="p">}</span> <span class="o">=</span> <span class="nx">useApi</span><span class="o">&lt;</span><span class="nx">ApiUser</span><span class="o">&gt;</span><span class="p">(</span><span class="dl">'</span><span class="s1">/api/user/1</span><span class="dl">'</span><span class="p">);</span>
+
+  <span class="k">if</span> <span class="p">(</span><span class="nx">loading</span><span class="p">)</span> <span class="k">return</span> <span class="o">&lt;</span><span class="nx">div</span><span class="o">&gt;</span><span class="nx">Loading</span><span class="p">...</span><span class="o">&lt;</span><span class="sr">/div&gt;</span><span class="err">;
+</span>  <span class="k">if</span> <span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="k">return</span> <span class="o">&lt;</span><span class="nx">div</span><span class="o">&gt;</span><span class="na">Error</span><span class="p">:</span> <span class="p">{</span><span class="nx">error</span><span class="p">}</span><span class="o">&lt;</span><span class="sr">/div&gt;</span><span class="err">;
+</span>  <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">user</span><span class="p">)</span> <span class="k">return</span> <span class="o">&lt;</span><span class="nx">div</span><span class="o">&gt;</span><span class="nx">No</span> <span class="nx">user</span> <span class="nx">found</span><span class="o">&lt;</span><span class="sr">/div&gt;</span><span class="err">;
+</span>
+  <span class="k">return</span> <span class="p">(</span>
+    <span class="o">&lt;</span><span class="nx">div</span><span class="o">&gt;</span>
+      <span class="o">&lt;</span><span class="nx">h1</span><span class="o">&gt;</span><span class="p">{</span><span class="nx">user</span><span class="p">.</span><span class="nx">name</span><span class="p">}</span><span class="o">&lt;</span><span class="sr">/h1</span><span class="err">&gt;
+</span>      <span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span><span class="p">{</span><span class="nx">user</span><span class="p">.</span><span class="nx">email</span><span class="p">}</span><span class="o">&lt;</span><span class="sr">/p</span><span class="err">&gt;
+</span>      <span class="o">&lt;</span><span class="nx">button</span> <span class="nx">onClick</span><span class="o">=</span><span class="p">{</span><span class="nx">refetch</span><span class="p">}</span><span class="o">&gt;</span><span class="nx">Refresh</span><span class="o">&lt;</span><span class="sr">/button</span><span class="err">&gt;
+</span>    <span class="o">&lt;</span><span class="sr">/div</span><span class="err">&gt;
+</span>  <span class="p">);</span>
+<span class="p">};</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<h3 id="context-with-typescript">Context with TypeScript</h3>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+</pre></td><td class="rouge-code"><pre><span class="k">import</span> <span class="nx">React</span><span class="p">,</span> <span class="p">{</span> <span class="nx">createContext</span><span class="p">,</span> <span class="nx">useContext</span><span class="p">,</span> <span class="nx">useReducer</span><span class="p">,</span> <span class="nx">ReactNode</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">react</span><span class="dl">'</span><span class="p">;</span>
+
+<span class="c1">// State interface</span>
+<span class="kr">interface</span> <span class="nx">AppState</span> <span class="p">{</span>
+  <span class="nl">user</span><span class="p">:</span> <span class="nx">User</span> <span class="o">|</span> <span class="kc">null</span><span class="p">;</span>
+  <span class="nl">theme</span><span class="p">:</span> <span class="dl">'</span><span class="s1">light</span><span class="dl">'</span> <span class="o">|</span> <span class="dl">'</span><span class="s1">dark</span><span class="dl">'</span><span class="p">;</span>
+  <span class="nl">notifications</span><span class="p">:</span> <span class="nx">Notification</span><span class="p">[];</span>
+<span class="p">}</span>
+
+<span class="c1">// Actions</span>
+<span class="kd">type</span> <span class="nx">AppAction</span> <span class="o">=</span> 
+  <span class="o">|</span> <span class="p">{</span> <span class="na">type</span><span class="p">:</span> <span class="dl">'</span><span class="s1">SET_USER</span><span class="dl">'</span><span class="p">;</span> <span class="nl">payload</span><span class="p">:</span> <span class="nx">User</span> <span class="o">|</span> <span class="kc">null</span> <span class="p">}</span>
+  <span class="o">|</span> <span class="p">{</span> <span class="na">type</span><span class="p">:</span> <span class="dl">'</span><span class="s1">SET_THEME</span><span class="dl">'</span><span class="p">;</span> <span class="nl">payload</span><span class="p">:</span> <span class="dl">'</span><span class="s1">light</span><span class="dl">'</span> <span class="o">|</span> <span class="dl">'</span><span class="s1">dark</span><span class="dl">'</span> <span class="p">}</span>
+  <span class="o">|</span> <span class="p">{</span> <span class="na">type</span><span class="p">:</span> <span class="dl">'</span><span class="s1">ADD_NOTIFICATION</span><span class="dl">'</span><span class="p">;</span> <span class="nl">payload</span><span class="p">:</span> <span class="nx">Notification</span> <span class="p">}</span>
+  <span class="o">|</span> <span class="p">{</span> <span class="na">type</span><span class="p">:</span> <span class="dl">'</span><span class="s1">REMOVE_NOTIFICATION</span><span class="dl">'</span><span class="p">;</span> <span class="nl">payload</span><span class="p">:</span> <span class="kr">string</span> <span class="p">};</span>
+
+<span class="c1">// Context type</span>
+<span class="kr">interface</span> <span class="nx">AppContextType</span> <span class="p">{</span>
+  <span class="nl">state</span><span class="p">:</span> <span class="nx">AppState</span><span class="p">;</span>
+  <span class="nl">dispatch</span><span class="p">:</span> <span class="nx">React</span><span class="p">.</span><span class="nx">Dispatch</span><span class="o">&lt;</span><span class="nx">AppAction</span><span class="o">&gt;</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c1">// Create context</span>
+<span class="kd">const</span> <span class="nx">AppContext</span> <span class="o">=</span> <span class="nx">createContext</span><span class="o">&lt;</span><span class="nx">AppContextType</span> <span class="o">|</span> <span class="kc">undefined</span><span class="o">&gt;</span><span class="p">(</span><span class="kc">undefined</span><span class="p">);</span>
+
+<span class="c1">// Reducer</span>
+<span class="kd">const</span> <span class="nx">appReducer</span> <span class="o">=</span> <span class="p">(</span><span class="nx">state</span><span class="p">:</span> <span class="nx">AppState</span><span class="p">,</span> <span class="nx">action</span><span class="p">:</span> <span class="nx">AppAction</span><span class="p">):</span> <span class="nx">AppState</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="k">switch</span> <span class="p">(</span><span class="nx">action</span><span class="p">.</span><span class="kd">type</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">case</span> <span class="dl">'</span><span class="s1">SET_USER</span><span class="dl">'</span><span class="p">:</span>
+      <span class="k">return</span> <span class="p">{</span> <span class="p">...</span><span class="nx">state</span><span class="p">,</span> <span class="na">user</span><span class="p">:</span> <span class="nx">action</span><span class="p">.</span><span class="nx">payload</span> <span class="p">};</span>
+    <span class="k">case</span> <span class="dl">'</span><span class="s1">SET_THEME</span><span class="dl">'</span><span class="p">:</span>
+      <span class="k">return</span> <span class="p">{</span> <span class="p">...</span><span class="nx">state</span><span class="p">,</span> <span class="na">theme</span><span class="p">:</span> <span class="nx">action</span><span class="p">.</span><span class="nx">payload</span> <span class="p">};</span>
+    <span class="k">case</span> <span class="dl">'</span><span class="s1">ADD_NOTIFICATION</span><span class="dl">'</span><span class="p">:</span>
+      <span class="k">return</span> <span class="p">{</span> 
+        <span class="p">...</span><span class="nx">state</span><span class="p">,</span> 
+        <span class="na">notifications</span><span class="p">:</span> <span class="p">[...</span><span class="nx">state</span><span class="p">.</span><span class="nx">notifications</span><span class="p">,</span> <span class="nx">action</span><span class="p">.</span><span class="nx">payload</span><span class="p">]</span> 
+      <span class="p">};</span>
+    <span class="k">case</span> <span class="dl">'</span><span class="s1">REMOVE_NOTIFICATION</span><span class="dl">'</span><span class="p">:</span>
+      <span class="k">return</span> <span class="p">{</span>
+        <span class="p">...</span><span class="nx">state</span><span class="p">,</span>
+        <span class="na">notifications</span><span class="p">:</span> <span class="nx">state</span><span class="p">.</span><span class="nx">notifications</span><span class="p">.</span><span class="nx">filter</span><span class="p">(</span><span class="nx">n</span> <span class="o">=&gt;</span> <span class="nx">n</span><span class="p">.</span><span class="nx">id</span> <span class="o">!==</span> <span class="nx">action</span><span class="p">.</span><span class="nx">payload</span><span class="p">)</span>
+      <span class="p">};</span>
+    <span class="nl">default</span><span class="p">:</span>
+      <span class="k">return</span> <span class="nx">state</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="p">};</span>
+
+<span class="c1">// Provider component</span>
+<span class="kr">interface</span> <span class="nx">AppProviderProps</span> <span class="p">{</span>
+  <span class="nl">children</span><span class="p">:</span> <span class="nx">ReactNode</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="k">export</span> <span class="kd">const</span> <span class="nx">AppProvider</span><span class="p">:</span> <span class="nx">React</span><span class="p">.</span><span class="nx">FC</span><span class="o">&lt;</span><span class="nx">AppProviderProps</span><span class="o">&gt;</span> <span class="o">=</span> <span class="p">({</span> <span class="nx">children</span> <span class="p">})</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="p">[</span><span class="nx">state</span><span class="p">,</span> <span class="nx">dispatch</span><span class="p">]</span> <span class="o">=</span> <span class="nx">useReducer</span><span class="p">(</span><span class="nx">appReducer</span><span class="p">,</span> <span class="p">{</span>
+    <span class="na">user</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span>
+    <span class="na">theme</span><span class="p">:</span> <span class="dl">'</span><span class="s1">light</span><span class="dl">'</span><span class="p">,</span>
+    <span class="na">notifications</span><span class="p">:</span> <span class="p">[]</span>
+  <span class="p">});</span>
+
+  <span class="k">return</span> <span class="p">(</span>
+    <span class="o">&lt;</span><span class="nx">AppContext</span><span class="p">.</span><span class="nx">Provider</span> <span class="nx">value</span><span class="o">=</span><span class="p">{{</span> <span class="nx">state</span><span class="p">,</span> <span class="nx">dispatch</span> <span class="p">}}</span><span class="o">&gt;</span>
+      <span class="p">{</span><span class="nx">children</span><span class="p">}</span>
+    <span class="o">&lt;</span><span class="sr">/AppContext.Provider</span><span class="err">&gt;
+</span>  <span class="p">);</span>
+<span class="p">};</span>
+
+<span class="c1">// Custom hook</span>
+<span class="k">export</span> <span class="kd">const</span> <span class="nx">useAppContext</span> <span class="o">=</span> <span class="p">():</span> <span class="nx">AppContextType</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="nx">context</span> <span class="o">=</span> <span class="nx">useContext</span><span class="p">(</span><span class="nx">AppContext</span><span class="p">);</span>
+  <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">context</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">throw</span> <span class="k">new</span> <span class="nb">Error</span><span class="p">(</span><span class="dl">'</span><span class="s1">useAppContext must be used within an AppProvider</span><span class="dl">'</span><span class="p">);</span>
+  <span class="p">}</span>
+  <span class="k">return</span> <span class="nx">context</span><span class="p">;</span>
+<span class="p">};</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<h2 id="interview-questions">Interview Questions</h2>
+
+<h3 id="1-what-is-typescript-and-why-would-you-use-it">1. What is TypeScript and why would you use it?</h3>
+
+<p><strong>Answer:</strong>
+TypeScript is a statically typed superset of JavaScript that compiles to plain JavaScript. Key benefits include:</p>
+
+<ul>
+  <li><strong>Static Type Checking</strong>: Catches errors at compile time rather than runtime</li>
+  <li><strong>Better IDE Support</strong>: Enhanced autocomplete, refactoring, and navigation</li>
+  <li><strong>Self-Documenting Code</strong>: Types serve as documentation for APIs and functions</li>
+  <li><strong>Easier Refactoring</strong>: Compiler helps identify breaking changes across codebase</li>
+  <li><strong>Better Team Collaboration</strong>: Clear interfaces and contracts between team members</li>
+</ul>
+
+<h3 id="2-explain-the-difference-between-interface-and-type-in-typescript">2. Explain the difference between <code class="language-plaintext highlighter-rouge">interface</code> and <code class="language-plaintext highlighter-rouge">type</code> in TypeScript.</h3>
+
+<p><strong>Answer:</strong></p>
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+</pre></td><td class="rouge-code"><pre><span class="c1">// Interface - can be extended and merged</span>
+<span class="kr">interface</span> <span class="nx">User</span> <span class="p">{</span>
+  <span class="nl">name</span><span class="p">:</span> <span class="kr">string</span><span class="p">;</span>
+  <span class="nl">age</span><span class="p">:</span> <span class="kr">number</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kr">interface</span> <span class="nx">User</span> <span class="p">{</span>
+  <span class="nl">email</span><span class="p">:</span> <span class="kr">string</span><span class="p">;</span> <span class="c1">// Declaration merging</span>
+<span class="p">}</span>
+
+<span class="kr">interface</span> <span class="nx">AdminUser</span> <span class="kd">extends</span> <span class="nx">User</span> <span class="p">{</span>
+  <span class="nl">permissions</span><span class="p">:</span> <span class="kr">string</span><span class="p">[];</span>
+<span class="p">}</span>
+
+<span class="c1">// Type - more flexible, supports unions, intersections</span>
+<span class="kd">type</span> <span class="nx">Status</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">loading</span><span class="dl">'</span> <span class="o">|</span> <span class="dl">'</span><span class="s1">success</span><span class="dl">'</span> <span class="o">|</span> <span class="dl">'</span><span class="s1">error</span><span class="dl">'</span><span class="p">;</span>
+<span class="kd">type</span> <span class="nx">User</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="na">name</span><span class="p">:</span> <span class="kr">string</span><span class="p">;</span>
+  <span class="nl">age</span><span class="p">:</span> <span class="kr">number</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="kd">type</span> <span class="nx">AdminUser</span> <span class="o">=</span> <span class="nx">User</span> <span class="o">&amp;</span> <span class="p">{</span>
+  <span class="na">permissions</span><span class="p">:</span> <span class="kr">string</span><span class="p">[];</span>
+<span class="p">};</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p><strong>Key Differences:</strong></p>
+<ul>
+  <li><strong>Interfaces</strong> can be extended and merged, better for object shapes</li>
+  <li><strong>Types</strong> are more flexible, support unions, intersections, and primitives</li>
+  <li><strong>Interfaces</strong> are preferred for public APIs that might be extended</li>
+  <li><strong>Types</strong> are preferred for complex type compositions</li>
+</ul>
+
+<h3 id="3-what-are-generics-and-why-are-they-useful">3. What are generics and why are they useful?</h3>
+
+<p><strong>Answer:</strong>
+Generics allow you to write reusable code that works with multiple types while maintaining type safety.</p>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+</pre></td><td class="rouge-code"><pre><span class="c1">// Without generics - not reusable</span>
+<span class="kd">function</span> <span class="nx">identityString</span><span class="p">(</span><span class="nx">arg</span><span class="p">:</span> <span class="kr">string</span><span class="p">):</span> <span class="kr">string</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="nx">arg</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kd">function</span> <span class="nx">identityNumber</span><span class="p">(</span><span class="nx">arg</span><span class="p">:</span> <span class="kr">number</span><span class="p">):</span> <span class="kr">number</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="nx">arg</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c1">// With generics - reusable and type-safe</span>
+<span class="kd">function</span> <span class="nx">identity</span><span class="o">&lt;</span><span class="nx">T</span><span class="o">&gt;</span><span class="p">(</span><span class="nx">arg</span><span class="p">:</span> <span class="nx">T</span><span class="p">):</span> <span class="nx">T</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="nx">arg</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kd">const</span> <span class="nx">stringResult</span> <span class="o">=</span> <span class="nx">identity</span><span class="o">&lt;</span><span class="kr">string</span><span class="o">&gt;</span><span class="p">(</span><span class="dl">"</span><span class="s2">hello</span><span class="dl">"</span><span class="p">);</span> <span class="c1">// string</span>
+<span class="kd">const</span> <span class="nx">numberResult</span> <span class="o">=</span> <span class="nx">identity</span><span class="o">&lt;</span><span class="kr">number</span><span class="o">&gt;</span><span class="p">(</span><span class="mi">42</span><span class="p">);</span> <span class="c1">// number</span>
+
+<span class="c1">// Generic constraints</span>
+<span class="kr">interface</span> <span class="nx">Lengthwise</span> <span class="p">{</span>
+  <span class="nl">length</span><span class="p">:</span> <span class="kr">number</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kd">function</span> <span class="nx">logLength</span><span class="o">&lt;</span><span class="nx">T</span> <span class="kd">extends</span> <span class="nx">Lengthwise</span><span class="o">&gt;</span><span class="p">(</span><span class="nx">arg</span><span class="p">:</span> <span class="nx">T</span><span class="p">):</span> <span class="nx">T</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">arg</span><span class="p">.</span><span class="nx">length</span><span class="p">);</span> <span class="c1">// Now we know it has a length property</span>
+  <span class="k">return</span> <span class="nx">arg</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<h3 id="4-how-do-you-handle-asynchronous-operations-in-typescript">4. How do you handle asynchronous operations in TypeScript?</h3>
+
+<p><strong>Answer:</strong></p>
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+</pre></td><td class="rouge-code"><pre><span class="c1">// Promise types</span>
+<span class="k">async</span> <span class="kd">function</span> <span class="nx">fetchUser</span><span class="p">(</span><span class="nx">id</span><span class="p">:</span> <span class="kr">number</span><span class="p">):</span> <span class="nb">Promise</span><span class="o">&lt;</span><span class="nx">User</span><span class="o">&gt;</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="nx">response</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">fetch</span><span class="p">(</span><span class="s2">`/api/users/</span><span class="p">${</span><span class="nx">id</span><span class="p">}</span><span class="s2">`</span><span class="p">);</span>
+  
+  <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">response</span><span class="p">.</span><span class="nx">ok</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">throw</span> <span class="k">new</span> <span class="nb">Error</span><span class="p">(</span><span class="s2">`HTTP error! status: </span><span class="p">${</span><span class="nx">response</span><span class="p">.</span><span class="nx">status</span><span class="p">}</span><span class="s2">`</span><span class="p">);</span>
+  <span class="p">}</span>
+  
+  <span class="k">return</span> <span class="nx">response</span><span class="p">.</span><span class="nx">json</span><span class="p">();</span>
+<span class="p">}</span>
+
+<span class="c1">// Error handling with custom error types</span>
+<span class="kd">class</span> <span class="nx">ApiError</span> <span class="kd">extends</span> <span class="nb">Error</span> <span class="p">{</span>
+  <span class="kd">constructor</span><span class="p">(</span>
+    <span class="nx">message</span><span class="p">:</span> <span class="kr">string</span><span class="p">,</span>
+    <span class="k">public</span> <span class="nx">status</span><span class="p">:</span> <span class="kr">number</span><span class="p">,</span>
+    <span class="k">public</span> <span class="nx">code</span><span class="p">:</span> <span class="kr">string</span>
+  <span class="p">)</span> <span class="p">{</span>
+    <span class="k">super</span><span class="p">(</span><span class="nx">message</span><span class="p">);</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">name</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">ApiError</span><span class="dl">'</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="k">async</span> <span class="kd">function</span> <span class="nx">fetchUserWithErrorHandling</span><span class="p">(</span><span class="nx">id</span><span class="p">:</span> <span class="kr">number</span><span class="p">):</span> <span class="nb">Promise</span><span class="o">&lt;</span><span class="nx">User</span><span class="o">&gt;</span> <span class="p">{</span>
+  <span class="k">try</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="nx">response</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">fetch</span><span class="p">(</span><span class="s2">`/api/users/</span><span class="p">${</span><span class="nx">id</span><span class="p">}</span><span class="s2">`</span><span class="p">);</span>
+    
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">response</span><span class="p">.</span><span class="nx">ok</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">throw</span> <span class="k">new</span> <span class="nx">ApiError</span><span class="p">(</span>
+        <span class="s2">`Failed to fetch user`</span><span class="p">,</span>
+        <span class="nx">response</span><span class="p">.</span><span class="nx">status</span><span class="p">,</span>
+        <span class="dl">'</span><span class="s1">FETCH_ERROR</span><span class="dl">'</span>
+      <span class="p">);</span>
+    <span class="p">}</span>
+    
+    <span class="k">return</span> <span class="nx">response</span><span class="p">.</span><span class="nx">json</span><span class="p">();</span>
+  <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">error</span> <span class="k">instanceof</span> <span class="nx">ApiError</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="dl">'</span><span class="s1">API Error:</span><span class="dl">'</span><span class="p">,</span> <span class="nx">error</span><span class="p">.</span><span class="nx">message</span><span class="p">,</span> <span class="nx">error</span><span class="p">.</span><span class="nx">status</span><span class="p">);</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+      <span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="dl">'</span><span class="s1">Unknown error:</span><span class="dl">'</span><span class="p">,</span> <span class="nx">error</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="k">throw</span> <span class="nx">error</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<h3 id="5-what-are-utility-types-and-how-do-you-use-them">5. What are utility types and how do you use them?</h3>
+
+<p><strong>Answer:</strong>
+Utility types are built-in TypeScript types that help transform existing types.</p>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+</pre></td><td class="rouge-code"><pre><span class="kr">interface</span> <span class="nx">User</span> <span class="p">{</span>
+  <span class="nl">id</span><span class="p">:</span> <span class="kr">number</span><span class="p">;</span>
+  <span class="nl">name</span><span class="p">:</span> <span class="kr">string</span><span class="p">;</span>
+  <span class="nl">email</span><span class="p">:</span> <span class="kr">string</span><span class="p">;</span>
+  <span class="nl">age</span><span class="p">:</span> <span class="kr">number</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c1">// Partial - makes all properties optional</span>
+<span class="kd">type</span> <span class="nx">PartialUser</span> <span class="o">=</span> <span class="nb">Partial</span><span class="o">&lt;</span><span class="nx">User</span><span class="o">&gt;</span><span class="p">;</span>
+<span class="c1">// { id?: number; name?: string; email?: string; age?: number; }</span>
+
+<span class="c1">// Pick - selects specific properties</span>
+<span class="kd">type</span> <span class="nx">UserPreview</span> <span class="o">=</span> <span class="nb">Pick</span><span class="o">&lt;</span><span class="nx">User</span><span class="p">,</span> <span class="dl">'</span><span class="s1">id</span><span class="dl">'</span> <span class="o">|</span> <span class="dl">'</span><span class="s1">name</span><span class="dl">'</span><span class="o">&gt;</span><span class="p">;</span>
+<span class="c1">// { id: number; name: string; }</span>
+
+<span class="c1">// Omit - excludes specific properties</span>
+<span class="kd">type</span> <span class="nx">CreateUserRequest</span> <span class="o">=</span> <span class="nx">Omit</span><span class="o">&lt;</span><span class="nx">User</span><span class="p">,</span> <span class="dl">'</span><span class="s1">id</span><span class="dl">'</span><span class="o">&gt;</span><span class="p">;</span>
+<span class="c1">// { name: string; email: string; age: number; }</span>
+
+<span class="c1">// Record - creates object with specific key/value types</span>
+<span class="kd">type</span> <span class="nx">UserRoles</span> <span class="o">=</span> <span class="nb">Record</span><span class="o">&lt;</span><span class="kr">string</span><span class="p">,</span> <span class="kr">string</span><span class="p">[]</span><span class="o">&gt;</span><span class="p">;</span>
+<span class="c1">// { [key: string]: string[] }</span>
+
+<span class="c1">// ReturnType - extracts function return type</span>
+<span class="kd">function</span> <span class="nx">getUser</span><span class="p">():</span> <span class="nx">User</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="p">{</span> <span class="na">id</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="na">name</span><span class="p">:</span> <span class="dl">'</span><span class="s1">John</span><span class="dl">'</span><span class="p">,</span> <span class="na">email</span><span class="p">:</span> <span class="dl">'</span><span class="s1">john@example.com</span><span class="dl">'</span><span class="p">,</span> <span class="na">age</span><span class="p">:</span> <span class="mi">25</span> <span class="p">};</span>
+<span class="p">}</span>
+
+<span class="kd">type</span> <span class="nx">GetUserReturn</span> <span class="o">=</span> <span class="nx">ReturnType</span><span class="o">&lt;</span><span class="k">typeof</span> <span class="nx">getUser</span><span class="o">&gt;</span><span class="p">;</span> <span class="c1">// User</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<h2 id="best-practices">Best Practices</h2>
+
+<h3 id="1-type-definitions">1. Type Definitions</h3>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+</pre></td><td class="rouge-code"><pre><span class="c1">// ✅ Good - Use interfaces for object shapes</span>
+<span class="kr">interface</span> <span class="nx">User</span> <span class="p">{</span>
+  <span class="k">readonly</span> <span class="nx">id</span><span class="p">:</span> <span class="kr">number</span><span class="p">;</span>
+  <span class="nl">name</span><span class="p">:</span> <span class="kr">string</span><span class="p">;</span>
+  <span class="nl">email</span><span class="p">:</span> <span class="kr">string</span><span class="p">;</span>
+  <span class="nl">age</span><span class="p">?:</span> <span class="kr">number</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c1">// ✅ Good - Use types for unions and computed types</span>
+<span class="kd">type</span> <span class="nx">Status</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">loading</span><span class="dl">'</span> <span class="o">|</span> <span class="dl">'</span><span class="s1">success</span><span class="dl">'</span> <span class="o">|</span> <span class="dl">'</span><span class="s1">error</span><span class="dl">'</span><span class="p">;</span>
+<span class="kd">type</span> <span class="nx">UserKeys</span> <span class="o">=</span> <span class="kr">keyof</span> <span class="nx">User</span><span class="p">;</span>
+
+<span class="c1">// ❌ Avoid - Don't use any</span>
+<span class="kd">function</span> <span class="nx">process</span><span class="p">(</span><span class="nx">data</span><span class="p">:</span> <span class="kr">any</span><span class="p">):</span> <span class="kr">any</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="nx">data</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c1">// ✅ Good - Use unknown for unknown data</span>
+<span class="kd">function</span> <span class="nx">process</span><span class="p">(</span><span class="nx">data</span><span class="p">:</span> <span class="nx">unknown</span><span class="p">):</span> <span class="kr">string</span> <span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="k">typeof</span> <span class="nx">data</span> <span class="o">===</span> <span class="dl">'</span><span class="s1">string</span><span class="dl">'</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">data</span><span class="p">.</span><span class="nx">toUpperCase</span><span class="p">();</span>
+  <span class="p">}</span>
+  <span class="k">return</span> <span class="nb">String</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<h3 id="2-function-types">2. Function Types</h3>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+</pre></td><td class="rouge-code"><pre><span class="c1">// ✅ Good - Explicit return types for public APIs</span>
+<span class="kd">function</span> <span class="nx">calculateTotal</span><span class="p">(</span><span class="nx">items</span><span class="p">:</span> <span class="nx">Item</span><span class="p">[]):</span> <span class="kr">number</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="nx">items</span><span class="p">.</span><span class="nx">reduce</span><span class="p">((</span><span class="nx">sum</span><span class="p">,</span> <span class="nx">item</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">sum</span> <span class="o">+</span> <span class="nx">item</span><span class="p">.</span><span class="nx">price</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="c1">// ✅ Good - Use readonly for arrays that shouldn't be modified</span>
+<span class="kd">function</span> <span class="nx">processItems</span><span class="p">(</span><span class="nx">items</span><span class="p">:</span> <span class="k">readonly</span> <span class="nx">Item</span><span class="p">[]):</span> <span class="nx">Item</span><span class="p">[]</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="nx">items</span><span class="p">.</span><span class="nx">filter</span><span class="p">(</span><span class="nx">item</span> <span class="o">=&gt;</span> <span class="nx">item</span><span class="p">.</span><span class="nx">active</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="c1">// ✅ Good - Use function overloads for multiple signatures</span>
+<span class="kd">function</span> <span class="nx">format</span><span class="p">(</span><span class="nx">value</span><span class="p">:</span> <span class="kr">string</span><span class="p">):</span> <span class="kr">string</span><span class="p">;</span>
+<span class="kd">function</span> <span class="nx">format</span><span class="p">(</span><span class="nx">value</span><span class="p">:</span> <span class="kr">number</span><span class="p">):</span> <span class="kr">string</span><span class="p">;</span>
+<span class="kd">function</span> <span class="nx">format</span><span class="p">(</span><span class="nx">value</span><span class="p">:</span> <span class="nb">Date</span><span class="p">):</span> <span class="kr">string</span><span class="p">;</span>
+<span class="kd">function</span> <span class="nx">format</span><span class="p">(</span><span class="nx">value</span><span class="p">:</span> <span class="kr">string</span> <span class="o">|</span> <span class="kr">number</span> <span class="o">|</span> <span class="nb">Date</span><span class="p">):</span> <span class="kr">string</span> <span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nx">value</span> <span class="k">instanceof</span> <span class="nb">Date</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">value</span><span class="p">.</span><span class="nx">toISOString</span><span class="p">();</span>
+  <span class="p">}</span>
+  <span class="k">return</span> <span class="nb">String</span><span class="p">(</span><span class="nx">value</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<h3 id="3-error-handling">3. Error Handling</h3>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+</pre></td><td class="rouge-code"><pre><span class="c1">// ✅ Good - Custom error types</span>
+<span class="kd">class</span> <span class="nx">ValidationError</span> <span class="kd">extends</span> <span class="nb">Error</span> <span class="p">{</span>
+  <span class="kd">constructor</span><span class="p">(</span>
+    <span class="nx">message</span><span class="p">:</span> <span class="kr">string</span><span class="p">,</span>
+    <span class="k">public</span> <span class="nx">field</span><span class="p">:</span> <span class="kr">string</span><span class="p">,</span>
+    <span class="k">public</span> <span class="nx">code</span><span class="p">:</span> <span class="kr">string</span>
+  <span class="p">)</span> <span class="p">{</span>
+    <span class="k">super</span><span class="p">(</span><span class="nx">message</span><span class="p">);</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">name</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">ValidationError</span><span class="dl">'</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// ✅ Good - Result type pattern</span>
+<span class="kd">type</span> <span class="nx">Result</span><span class="o">&lt;</span><span class="nx">T</span><span class="p">,</span> <span class="nx">E</span> <span class="o">=</span> <span class="nb">Error</span><span class="o">&gt;</span> <span class="o">=</span> 
+  <span class="o">|</span> <span class="p">{</span> <span class="na">success</span><span class="p">:</span> <span class="kc">true</span><span class="p">;</span> <span class="nl">data</span><span class="p">:</span> <span class="nx">T</span> <span class="p">}</span>
+  <span class="o">|</span> <span class="p">{</span> <span class="na">success</span><span class="p">:</span> <span class="kc">false</span><span class="p">;</span> <span class="nl">error</span><span class="p">:</span> <span class="nx">E</span> <span class="p">};</span>
+
+<span class="k">async</span> <span class="kd">function</span> <span class="nx">safeApiCall</span><span class="o">&lt;</span><span class="nx">T</span><span class="o">&gt;</span><span class="p">(</span><span class="nx">url</span><span class="p">:</span> <span class="kr">string</span><span class="p">):</span> <span class="nb">Promise</span><span class="o">&lt;</span><span class="nx">Result</span><span class="o">&lt;</span><span class="nx">T</span><span class="o">&gt;&gt;</span> <span class="p">{</span>
+  <span class="k">try</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="nx">response</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">fetch</span><span class="p">(</span><span class="nx">url</span><span class="p">);</span>
+    <span class="kd">const</span> <span class="nx">data</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">response</span><span class="p">.</span><span class="nx">json</span><span class="p">();</span>
+    <span class="k">return</span> <span class="p">{</span> <span class="na">success</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span> <span class="nx">data</span> <span class="p">};</span>
+  <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="p">{</span> 
+      <span class="na">success</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span> 
+      <span class="na">error</span><span class="p">:</span> <span class="nx">error</span> <span class="k">instanceof</span> <span class="nb">Error</span> <span class="p">?</span> <span class="nx">error</span> <span class="p">:</span> <span class="k">new</span> <span class="nb">Error</span><span class="p">(</span><span class="nb">String</span><span class="p">(</span><span class="nx">error</span><span class="p">))</span>
+    <span class="p">};</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<h2 id="common-patterns">Common Patterns</h2>
+
+<h3 id="1-builder-pattern">1. Builder Pattern</h3>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+</pre></td><td class="rouge-code"><pre><span class="kd">class</span> <span class="nx">UserBuilder</span> <span class="p">{</span>
+  <span class="k">private</span> <span class="nx">user</span><span class="p">:</span> <span class="nb">Partial</span><span class="o">&lt;</span><span class="nx">User</span><span class="o">&gt;</span> <span class="o">=</span> <span class="p">{};</span>
+
+  <span class="nx">setName</span><span class="p">(</span><span class="nx">name</span><span class="p">:</span> <span class="kr">string</span><span class="p">):</span> <span class="k">this</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">user</span><span class="p">.</span><span class="nx">name</span> <span class="o">=</span> <span class="nx">name</span><span class="p">;</span>
+    <span class="k">return</span> <span class="k">this</span><span class="p">;</span>
+  <span class="p">}</span>
+
+  <span class="nx">setEmail</span><span class="p">(</span><span class="nx">email</span><span class="p">:</span> <span class="kr">string</span><span class="p">):</span> <span class="k">this</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">user</span><span class="p">.</span><span class="nx">email</span> <span class="o">=</span> <span class="nx">email</span><span class="p">;</span>
+    <span class="k">return</span> <span class="k">this</span><span class="p">;</span>
+  <span class="p">}</span>
+
+  <span class="nx">setAge</span><span class="p">(</span><span class="nx">age</span><span class="p">:</span> <span class="kr">number</span><span class="p">):</span> <span class="k">this</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">user</span><span class="p">.</span><span class="nx">age</span> <span class="o">=</span> <span class="nx">age</span><span class="p">;</span>
+    <span class="k">return</span> <span class="k">this</span><span class="p">;</span>
+  <span class="p">}</span>
+
+  <span class="nx">build</span><span class="p">():</span> <span class="nx">User</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="k">this</span><span class="p">.</span><span class="nx">user</span><span class="p">.</span><span class="nx">name</span> <span class="o">||</span> <span class="o">!</span><span class="k">this</span><span class="p">.</span><span class="nx">user</span><span class="p">.</span><span class="nx">email</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">throw</span> <span class="k">new</span> <span class="nb">Error</span><span class="p">(</span><span class="dl">'</span><span class="s1">Name and email are required</span><span class="dl">'</span><span class="p">);</span>
+    <span class="p">}</span>
+    
+    <span class="k">return</span> <span class="p">{</span>
+      <span class="na">id</span><span class="p">:</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">random</span><span class="p">(),</span>
+      <span class="na">name</span><span class="p">:</span> <span class="k">this</span><span class="p">.</span><span class="nx">user</span><span class="p">.</span><span class="nx">name</span><span class="p">,</span>
+      <span class="na">email</span><span class="p">:</span> <span class="k">this</span><span class="p">.</span><span class="nx">user</span><span class="p">.</span><span class="nx">email</span><span class="p">,</span>
+      <span class="na">age</span><span class="p">:</span> <span class="k">this</span><span class="p">.</span><span class="nx">user</span><span class="p">.</span><span class="nx">age</span> <span class="o">||</span> <span class="mi">18</span>
+    <span class="p">};</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// Usage</span>
+<span class="kd">const</span> <span class="nx">user</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">UserBuilder</span><span class="p">()</span>
+  <span class="p">.</span><span class="nx">setName</span><span class="p">(</span><span class="dl">'</span><span class="s1">John</span><span class="dl">'</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">setEmail</span><span class="p">(</span><span class="dl">'</span><span class="s1">john@example.com</span><span class="dl">'</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">setAge</span><span class="p">(</span><span class="mi">25</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">build</span><span class="p">();</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<h3 id="2-factory-pattern">2. Factory Pattern</h3>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+</pre></td><td class="rouge-code"><pre><span class="kr">interface</span> <span class="nx">Shape</span> <span class="p">{</span>
+  <span class="nx">area</span><span class="p">():</span> <span class="kr">number</span><span class="p">;</span>
+  <span class="nx">perimeter</span><span class="p">():</span> <span class="kr">number</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kd">class</span> <span class="nx">Circle</span> <span class="k">implements</span> <span class="nx">Shape</span> <span class="p">{</span>
+  <span class="kd">constructor</span><span class="p">(</span><span class="k">private</span> <span class="nx">radius</span><span class="p">:</span> <span class="kr">number</span><span class="p">)</span> <span class="p">{}</span>
+
+  <span class="nx">area</span><span class="p">():</span> <span class="kr">number</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">PI</span> <span class="o">*</span> <span class="k">this</span><span class="p">.</span><span class="nx">radius</span> <span class="o">**</span> <span class="mi">2</span><span class="p">;</span>
+  <span class="p">}</span>
+
+  <span class="nx">perimeter</span><span class="p">():</span> <span class="kr">number</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="mi">2</span> <span class="o">*</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">PI</span> <span class="o">*</span> <span class="k">this</span><span class="p">.</span><span class="nx">radius</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">class</span> <span class="nx">Rectangle</span> <span class="k">implements</span> <span class="nx">Shape</span> <span class="p">{</span>
+  <span class="kd">constructor</span><span class="p">(</span><span class="k">private</span> <span class="nx">width</span><span class="p">:</span> <span class="kr">number</span><span class="p">,</span> <span class="k">private</span> <span class="nx">height</span><span class="p">:</span> <span class="kr">number</span><span class="p">)</span> <span class="p">{}</span>
+
+  <span class="nx">area</span><span class="p">():</span> <span class="kr">number</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">width</span> <span class="o">*</span> <span class="k">this</span><span class="p">.</span><span class="nx">height</span><span class="p">;</span>
+  <span class="p">}</span>
+
+  <span class="nx">perimeter</span><span class="p">():</span> <span class="kr">number</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="mi">2</span> <span class="o">*</span> <span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">width</span> <span class="o">+</span> <span class="k">this</span><span class="p">.</span><span class="nx">height</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">type</span> <span class="nx">ShapeType</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">circle</span><span class="dl">'</span> <span class="o">|</span> <span class="dl">'</span><span class="s1">rectangle</span><span class="dl">'</span><span class="p">;</span>
+
+<span class="kr">interface</span> <span class="nx">ShapeConfig</span> <span class="p">{</span>
+  <span class="nl">type</span><span class="p">:</span> <span class="dl">'</span><span class="s1">circle</span><span class="dl">'</span><span class="p">;</span>
+  <span class="nl">radius</span><span class="p">:</span> <span class="kr">number</span><span class="p">;</span>
+<span class="p">}</span> <span class="o">|</span> <span class="p">{</span>
+  <span class="na">type</span><span class="p">:</span> <span class="dl">'</span><span class="s1">rectangle</span><span class="dl">'</span><span class="p">;</span>
+  <span class="nl">width</span><span class="p">:</span> <span class="kr">number</span><span class="p">;</span>
+  <span class="nl">height</span><span class="p">:</span> <span class="kr">number</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="kd">class</span> <span class="nx">ShapeFactory</span> <span class="p">{</span>
+  <span class="k">static</span> <span class="nx">createShape</span><span class="p">(</span><span class="nx">config</span><span class="p">:</span> <span class="nx">ShapeConfig</span><span class="p">):</span> <span class="nx">Shape</span> <span class="p">{</span>
+    <span class="k">switch</span> <span class="p">(</span><span class="nx">config</span><span class="p">.</span><span class="kd">type</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">case</span> <span class="dl">'</span><span class="s1">circle</span><span class="dl">'</span><span class="p">:</span>
+        <span class="k">return</span> <span class="k">new</span> <span class="nx">Circle</span><span class="p">(</span><span class="nx">config</span><span class="p">.</span><span class="nx">radius</span><span class="p">);</span>
+      <span class="k">case</span> <span class="dl">'</span><span class="s1">rectangle</span><span class="dl">'</span><span class="p">:</span>
+        <span class="k">return</span> <span class="k">new</span> <span class="nx">Rectangle</span><span class="p">(</span><span class="nx">config</span><span class="p">.</span><span class="nx">width</span><span class="p">,</span> <span class="nx">config</span><span class="p">.</span><span class="nx">height</span><span class="p">);</span>
+      <span class="nl">default</span><span class="p">:</span>
+        <span class="k">throw</span> <span class="k">new</span> <span class="nb">Error</span><span class="p">(</span><span class="dl">'</span><span class="s1">Unknown shape type</span><span class="dl">'</span><span class="p">);</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<h3 id="3-repository-pattern">3. Repository Pattern</h3>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+</pre></td><td class="rouge-code"><pre><span class="kr">interface</span> <span class="nx">Repository</span><span class="o">&lt;</span><span class="nx">T</span><span class="o">&gt;</span> <span class="p">{</span>
+  <span class="nx">findById</span><span class="p">(</span><span class="na">id</span><span class="p">:</span> <span class="kr">string</span><span class="p">):</span> <span class="nb">Promise</span><span class="o">&lt;</span><span class="nx">T</span> <span class="o">|</span> <span class="kc">null</span><span class="o">&gt;</span><span class="p">;</span>
+  <span class="nx">findAll</span><span class="p">():</span> <span class="nb">Promise</span><span class="o">&lt;</span><span class="nx">T</span><span class="p">[]</span><span class="o">&gt;</span><span class="p">;</span>
+  <span class="nx">create</span><span class="p">(</span><span class="na">item</span><span class="p">:</span> <span class="nx">Omit</span><span class="o">&lt;</span><span class="nx">T</span><span class="p">,</span> <span class="dl">'</span><span class="s1">id</span><span class="dl">'</span><span class="o">&gt;</span><span class="p">):</span> <span class="nb">Promise</span><span class="o">&lt;</span><span class="nx">T</span><span class="o">&gt;</span><span class="p">;</span>
+  <span class="nx">update</span><span class="p">(</span><span class="na">id</span><span class="p">:</span> <span class="kr">string</span><span class="p">,</span> <span class="na">item</span><span class="p">:</span> <span class="nb">Partial</span><span class="o">&lt;</span><span class="nx">T</span><span class="o">&gt;</span><span class="p">):</span> <span class="nb">Promise</span><span class="o">&lt;</span><span class="nx">T</span><span class="o">&gt;</span><span class="p">;</span>
+  <span class="k">delete</span><span class="p">(</span><span class="na">id</span><span class="p">:</span> <span class="kr">string</span><span class="p">):</span> <span class="nb">Promise</span><span class="o">&lt;</span><span class="k">void</span><span class="o">&gt;</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kd">class</span> <span class="nx">UserRepository</span> <span class="k">implements</span> <span class="nx">Repository</span><span class="o">&lt;</span><span class="nx">User</span><span class="o">&gt;</span> <span class="p">{</span>
+  <span class="kd">constructor</span><span class="p">(</span><span class="k">private</span> <span class="na">apiClient</span><span class="p">:</span> <span class="nx">ApiClient</span><span class="p">)</span> <span class="p">{}</span>
+
+  <span class="k">async</span> <span class="nx">findById</span><span class="p">(</span><span class="na">id</span><span class="p">:</span> <span class="kr">string</span><span class="p">):</span> <span class="nb">Promise</span><span class="o">&lt;</span><span class="nx">User</span> <span class="o">|</span> <span class="kc">null</span><span class="o">&gt;</span> <span class="p">{</span>
+    <span class="k">try</span> <span class="p">{</span>
+      <span class="kd">const</span> <span class="nx">response</span> <span class="o">=</span> <span class="k">await</span> <span class="k">this</span><span class="p">.</span><span class="nx">apiClient</span><span class="p">.</span><span class="kd">get</span><span class="p">(</span><span class="s2">`/users/</span><span class="p">${</span><span class="nx">id</span><span class="p">}</span><span class="s2">`</span><span class="p">);</span>
+      <span class="k">return</span> <span class="nx">response</span><span class="p">.</span><span class="nx">data</span><span class="p">;</span>
+    <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">if</span> <span class="p">(</span><span class="nx">error</span><span class="p">.</span><span class="nx">status</span> <span class="o">===</span> <span class="mi">404</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="kc">null</span><span class="p">;</span>
+      <span class="p">}</span>
+      <span class="k">throw</span> <span class="nx">error</span><span class="p">;</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+
+  <span class="k">async</span> <span class="nx">findAll</span><span class="p">():</span> <span class="nb">Promise</span><span class="o">&lt;</span><span class="nx">User</span><span class="p">[]</span><span class="o">&gt;</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="nx">response</span> <span class="o">=</span> <span class="k">await</span> <span class="k">this</span><span class="p">.</span><span class="nx">apiClient</span><span class="p">.</span><span class="kd">get</span><span class="p">(</span><span class="dl">'</span><span class="s1">/users</span><span class="dl">'</span><span class="p">);</span>
+    <span class="k">return</span> <span class="nx">response</span><span class="p">.</span><span class="nx">data</span><span class="p">;</span>
+  <span class="p">}</span>
+
+  <span class="k">async</span> <span class="nx">create</span><span class="p">(</span><span class="na">userData</span><span class="p">:</span> <span class="nx">Omit</span><span class="o">&lt;</span><span class="nx">User</span><span class="p">,</span> <span class="dl">'</span><span class="s1">id</span><span class="dl">'</span><span class="o">&gt;</span><span class="p">):</span> <span class="nb">Promise</span><span class="o">&lt;</span><span class="nx">User</span><span class="o">&gt;</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="nx">response</span> <span class="o">=</span> <span class="k">await</span> <span class="k">this</span><span class="p">.</span><span class="nx">apiClient</span><span class="p">.</span><span class="nx">post</span><span class="p">(</span><span class="dl">'</span><span class="s1">/users</span><span class="dl">'</span><span class="p">,</span> <span class="nx">userData</span><span class="p">);</span>
+    <span class="k">return</span> <span class="nx">response</span><span class="p">.</span><span class="nx">data</span><span class="p">;</span>
+  <span class="p">}</span>
+
+  <span class="k">async</span> <span class="nx">update</span><span class="p">(</span><span class="na">id</span><span class="p">:</span> <span class="kr">string</span><span class="p">,</span> <span class="na">userData</span><span class="p">:</span> <span class="nb">Partial</span><span class="o">&lt;</span><span class="nx">User</span><span class="o">&gt;</span><span class="p">):</span> <span class="nb">Promise</span><span class="o">&lt;</span><span class="nx">User</span><span class="o">&gt;</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="nx">response</span> <span class="o">=</span> <span class="k">await</span> <span class="k">this</span><span class="p">.</span><span class="nx">apiClient</span><span class="p">.</span><span class="nx">put</span><span class="p">(</span><span class="s2">`/users/</span><span class="p">${</span><span class="nx">id</span><span class="p">}</span><span class="s2">`</span><span class="p">,</span> <span class="nx">userData</span><span class="p">);</span>
+    <span class="k">return</span> <span class="nx">response</span><span class="p">.</span><span class="nx">data</span><span class="p">;</span>
+  <span class="p">}</span>
+
+  <span class="k">async</span> <span class="k">delete</span><span class="p">(</span><span class="na">id</span><span class="p">:</span> <span class="kr">string</span><span class="p">):</span> <span class="nb">Promise</span><span class="o">&lt;</span><span class="k">void</span><span class="o">&gt;</span> <span class="p">{</span>
+    <span class="k">await</span> <span class="k">this</span><span class="p">.</span><span class="nx">apiClient</span><span class="p">.</span><span class="k">delete</span><span class="p">(</span><span class="s2">`/users/</span><span class="p">${</span><span class="nx">id</span><span class="p">}</span><span class="s2">`</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>This comprehensive TypeScript guide covers all the essential concepts and patterns you’ll need for frontend interviews. The key is to understand not just the syntax, but when and why to use different TypeScript features to write more maintainable and type-safe code.</p>
+
+        </div>
+    </article>
+</div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Study Resources</h3>
+                    <p>Comprehensive collection of frontend interview questions, coding challenges, and system design problems.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Progress Tracking</h3>
+                    <p>Monitor your learning journey with detailed progress indicators and completion status.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Big Tech Ready</h3>
+                    <p>Curated content specifically designed for interviews at Google, Meta, Amazon, Apple, and Netflix.</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Frontend Interview Hub. Built for aspiring frontend engineers.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="/assets/js/main.js"></script>
+</body>
+</html>

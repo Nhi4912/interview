@@ -1,0 +1,882 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Palindrome Linked List | Frontend Interview Preparation Guide</title>
+    <meta name="description" content="Comprehensive frontend interview materials for Big Tech companies">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="/assets/css/main.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <header>
+        <nav class="container">
+            <div class="logo">Frontend Interview Hub</div>
+            <ul class="nav-links">
+                <li><a href="/">Home</a></li>
+                <li><a href="#progress">Progress</a></li>
+                <li><a href="#knowledge">Knowledge</a></li>
+                <li><a href="https://github.com/nee/interview">GitHub</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <div class="content-container">
+    
+        <nav class="breadcrumb">
+            <ol>
+                <li><a href="/">Home</a></li>
+                
+                
+                
+                    
+                
+                    
+                        
+                        
+                            <li><a href="/leetcode/">Leetcode</a></li>
+                        
+                    
+                
+                    
+                        
+                        
+                            <li><a href="/leetcode/linked-list/">Linked list</a></li>
+                        
+                    
+                
+                    
+                        
+                        
+                            <li><a href="/leetcode/linked-list/problems/">Problems</a></li>
+                        
+                    
+                
+                    
+                        
+                        
+                            <li class="active">Palindrome linked list</li>
+                        
+                    
+                
+            </ol>
+        </nav>
+    
+    
+    <article class="content">
+        
+            <header class="content-header">
+                <h1 class="content-title">Palindrome Linked List</h1>
+                
+                
+                    <div class="content-meta">
+                        <span class="difficulty difficulty-hard">Hard</span>
+                        
+                            <span class="category">Linked List</span>
+                        
+                        
+                            <div class="tags">
+                                
+                                    <span class="tag">Linked List</span>
+                                
+                                    <span class="tag">Two Pointers</span>
+                                
+                            </div>
+                        
+                    </div>
+                
+            </header>
+        
+        
+        <div class="content-body">
+            <h1 id="palindrome-linked-list">Palindrome Linked List</h1>
+
+<p><strong>LeetCode Problem # * 234. Palindrome Linked List</strong></p>
+
+<h2 id="problem-description">Problem Description</h2>
+
+<ul>
+  <li>Given the head of a singly linked list, return true if it is a palindrome or false otherwise.  *  * Input: head = [1,2,2,1]  * Output: true  *</li>
+</ul>
+
+<h2 id="solutions">Solutions</h2>
+
+<p>/**</p>
+<ul>
+  <li>
+    <ol>
+      <li>Palindrome Linked List
+ *</li>
+    </ol>
+  </li>
+  <li>Problem:</li>
+  <li>Given the head of a singly linked list, return true if it is a palindrome or false otherwise.
+ *</li>
+  <li>Example:</li>
+  <li>Input: head = [1,2,2,1]</li>
+  <li>Output: true
+ *</li>
+  <li>Input: head = [1,2]</li>
+  <li>Output: false
+ *</li>
+  <li>LeetCode: https://leetcode.com/problems/palindrome-linked-list/
+ */</li>
+</ul>
+
+<p>// ListNode class definition
+class ListNode {
+  val: number;
+  next: ListNode | null;</p>
+
+<p>constructor(val: number = 0, next: ListNode | null = null) {
+    this.val = val;
+    this.next = next;
+  }
+}</p>
+
+<p>/**</p>
+<ul>
+  <li>Solution 1: Reverse Second Half (Optimal)
+ *</li>
+  <li>Approach:</li>
+  <li>
+    <ul>
+      <li>Find middle of linked list using fast/slow pointers</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Reverse second half</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Compare first half with reversed second half
+ *</li>
+    </ul>
+  </li>
+  <li>Time Complexity: O(n)</li>
+  <li>Space Complexity: O(1)
+ */
+function isPalindrome(head: ListNode | null): boolean {
+  if (!head || !head.next) return true;</li>
+</ul>
+
+<p>// Find middle using fast/slow pointers
+  let slow = head;
+  let fast = head;</p>
+
+<p>while (fast.next &amp;&amp; fast.next.next) {
+    slow = slow.next!;
+    fast = fast.next.next;
+  }</p>
+
+<p>// Reverse second half
+  let secondHalf = reverseList(slow.next);
+  let firstHalf = head;</p>
+
+<p>// Compare first half with reversed second half
+  while (secondHalf) {
+    if (firstHalf.val !== secondHalf.val) {
+      return false;
+    }
+    firstHalf = firstHalf.next!;
+    secondHalf = secondHalf.next;
+  }</p>
+
+<p>return true;
+}</p>
+
+<p>/**</p>
+<ul>
+  <li>Solution 2: Using Array
+ *</li>
+  <li>Approach:</li>
+  <li>
+    <ul>
+      <li>Convert linked list to array</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Use two pointers to check palindrome
+ *</li>
+    </ul>
+  </li>
+  <li>Time Complexity: O(n)</li>
+  <li>Space Complexity: O(n)
+ */
+function isPalindromeArray(head: ListNode | null): boolean {
+  if (!head || !head.next) return true;</li>
+</ul>
+
+<p>const values: number[] = [];
+  let current = head;</p>
+
+<p>while (current) {
+    values.push(current.val);
+    current = current.next;
+  }</p>
+
+<p>// Check palindrome using two pointers
+  let left = 0;
+  let right = values.length - 1;</p>
+
+<p>while (left &lt; right) {
+    if (values[left] !== values[right]) {
+      return false;
+    }
+    left++;
+    right–;
+  }</p>
+
+<p>return true;
+}</p>
+
+<p>/**</p>
+<ul>
+  <li>Solution 3: Recursive Approach
+ *</li>
+  <li>Approach:</li>
+  <li>
+    <ul>
+      <li>Use recursion to reach end of list</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Compare with front pointer during backtracking
+ *</li>
+    </ul>
+  </li>
+  <li>Time Complexity: O(n)</li>
+  <li>Space Complexity: O(n) - recursion stack
+ */
+function isPalindromeRecursive(head: ListNode | null): boolean {
+  let frontPointer = head;</li>
+</ul>
+
+<p>function recursivelyCheck(currentNode: ListNode | null): boolean {
+    if (currentNode) {
+      if (!recursivelyCheck(currentNode.next)) {
+        return false;
+      }
+      if (currentNode.val !== frontPointer!.val) {
+        return false;
+      }
+      frontPointer = frontPointer!.next;
+    }
+    return true;
+  }</p>
+
+<p>return recursivelyCheck(head);
+}</p>
+
+<p>/**</p>
+<ul>
+  <li>Solution 4: Using Stack
+ *</li>
+  <li>Approach:</li>
+  <li>
+    <ul>
+      <li>Push all elements to stack</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Pop and compare with original list
+ *</li>
+    </ul>
+  </li>
+  <li>Time Complexity: O(n)</li>
+  <li>Space Complexity: O(n)
+ */
+function isPalindromeStack(head: ListNode | null): boolean {
+  if (!head || !head.next) return true;</li>
+</ul>
+
+<p>const stack: number[] = [];
+  let current = head;</p>
+
+<p>// Push all elements to stack
+  while (current) {
+    stack.push(current.val);
+    current = current.next;
+  }</p>
+
+<p>// Pop and compare
+  current = head;
+  while (current) {
+    if (current.val !== stack.pop()) {
+      return false;
+    }
+    current = current.next;
+  }</p>
+
+<p>return true;
+}</p>
+
+<p>/**</p>
+<ul>
+  <li>Solution 5: Using String Conversion
+ *</li>
+  <li>Approach:</li>
+  <li>
+    <ul>
+      <li>Convert linked list to string</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Check if string is palindrome
+ *</li>
+    </ul>
+  </li>
+  <li>Time Complexity: O(n)</li>
+  <li>Space Complexity: O(n)
+ */
+function isPalindromeString(head: ListNode | null): boolean {
+  if (!head || !head.next) return true;</li>
+</ul>
+
+<p>let str = “”;
+  let current = head;</p>
+
+<p>while (current) {
+    str += current.val;
+    current = current.next;
+  }</p>
+
+<p>// Check if string is palindrome
+  return str === str.split(“”).reverse().join(“”);
+}</p>
+
+<p>/**</p>
+<ul>
+  <li>Solution 6: Using Two Pointers with Reversal
+ *</li>
+  <li>Approach:</li>
+  <li>
+    <ul>
+      <li>Find middle and reverse first half</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Compare reversed first half with second half
+ *</li>
+    </ul>
+  </li>
+  <li>Time Complexity: O(n)</li>
+  <li>Space Complexity: O(1)
+ */
+function isPalindromeTwoPointers(head: ListNode | null): boolean {
+  if (!head || !head.next) return true;</li>
+</ul>
+
+<p>let prev: ListNode | null = null;
+  let slow = head;
+  let fast = head;</p>
+
+<p>// Find middle and reverse first half
+  while (fast.next &amp;&amp; fast.next.next) {
+    fast = fast.next.next;</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+</pre></td><td class="rouge-code"><pre>// Reverse slow pointer
+const next = slow.next!;
+slow.next = prev;
+prev = slow;
+slow = next;   }
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>// Handle odd/even length
+  let secondHalf = slow.next;
+  if (fast.next) {
+    // Even length
+    slow.next = prev;
+    prev = slow;
+  } else {
+    // Odd length
+    slow.next = prev;
+  }</p>
+
+<p>// Compare first half with second half
+  while (prev &amp;&amp; secondHalf) {
+    if (prev.val !== secondHalf.val) {
+      return false;
+    }
+    prev = prev.next;
+    secondHalf = secondHalf.next;
+  }</p>
+
+<p>return true;
+}</p>
+
+<p>/**</p>
+<ul>
+  <li>Solution 7: Using Generator (Memory efficient)
+ *</li>
+  <li>Approach:</li>
+  <li>
+    <ul>
+      <li>Use generator to yield values</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>Compare values in reverse order
+ *</li>
+    </ul>
+  </li>
+  <li>Time Complexity: O(n)</li>
+  <li>Space Complexity: O(n)
+ <em>/
+function</em> listGenerator(head: ListNode | null): Generator<number> {
+  let current = head;
+  while (current) {
+ yield current.val;
+ current = current.next;
+  }
+}</number></li>
+</ul>
+
+<table>
+  <tbody>
+    <tr>
+      <td>function isPalindromeGenerator(head: ListNode</td>
+      <td>null): boolean {</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>if (!head</td>
+      <td> </td>
+      <td>!head.next) return true;</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>const values = Array.from(listGenerator(head));
+  const reversed = values.slice().reverse();</p>
+
+<p>return JSON.stringify(values) === JSON.stringify(reversed);
+}</p>
+
+<p>/**</p>
+<ul>
+  <li>Solution 8: Using Class (Object-oriented)
+ *</li>
+  <li>Approach:</li>
+  <li>
+    <ul>
+      <li>Create a LinkedList class with palindrome checking</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>More structured approach
+ *</li>
+    </ul>
+  </li>
+  <li>Time Complexity: O(n)</li>
+  <li>Space Complexity: O(1)
+ */
+class LinkedList {
+  head: ListNode | null;</li>
+</ul>
+
+<p>constructor(head: ListNode | null = null) {
+    this.head = head;
+  }</p>
+
+<p>isPalindrome(): boolean {
+    return isPalindrome(this.head);
+  }</p>
+
+<p>toArray(): number[] {
+    const result: number[] = [];
+    let current = this.head;</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+</pre></td><td class="rouge-code"><pre>while (current) {
+  result.push(current.val);
+  current = current.next;
+}
+
+return result;   } }
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>function isPalindromeClass(head: ListNode | null): boolean {
+  const list = new LinkedList(head);
+  return list.isPalindrome();
+}</p>
+
+<p>// Helper functions
+function reverseList(head: ListNode | null): ListNode | null {
+  let prev: ListNode | null = null;
+  let current = head;</p>
+
+<p>while (current) {
+    const next = current.next;
+    current.next = prev;
+    prev = current;
+    current = next;
+  }</p>
+
+<p>return prev;
+}</p>
+
+<p>function createLinkedList(arr: number[]): ListNode | null {
+  if (arr.length === 0) return null;</p>
+
+<p>const head = new ListNode(arr[0]);
+  let current = head;</p>
+
+<p>for (let i = 1; i &lt; arr.length; i++) {
+    current.next = new ListNode(arr[i]);
+    current = current.next;
+  }</p>
+
+<p>return head;
+}</p>
+
+<p>function linkedListToArray(head: ListNode | null): number[] {
+  const result: number[] = [];
+  let current = head;</p>
+
+<p>while (current) {
+    result.push(current.val);
+    current = current.next;
+  }</p>
+
+<p>return result;
+}</p>
+
+<p>function printLinkedList(head: ListNode | null): string {
+  return <code class="language-plaintext highlighter-rouge">[${linkedListToArray(head).join(" -&gt; ")}]</code>;
+}</p>
+
+<p>// Test cases
+function testPalindromeLinkedList() {
+  console.log(“=== Testing Palindrome Linked List ===\n”);</p>
+
+<p>const testCases = [
+    {
+      input: [1, 2, 2, 1],
+      expected: true,
+      description: “Even length palindrome”,
+    },
+    {
+      input: [1, 2],
+      expected: false,
+      description: “Not a palindrome”,
+    },
+    {
+      input: [1, 2, 3, 2, 1],
+      expected: true,
+      description: “Odd length palindrome”,
+    },
+    {
+      input: [1],
+      expected: true,
+      description: “Single node”,
+    },
+    {
+      input: [],
+      expected: true,
+      description: “Empty list”,
+    },
+    {
+      input: [1, 1],
+      expected: true,
+      description: “Two same nodes”,
+    },
+    {
+      input: [1, 2, 3, 4, 5],
+      expected: false,
+      description: “Not a palindrome”,
+    },
+    {
+      input: [1, 2, 3, 3, 2, 1],
+      expected: true,
+      description: “Long palindrome”,
+    },
+  ];</p>
+
+<p>testCases.forEach((testCase, index) =&gt; {
+    console.log(<code class="language-plaintext highlighter-rouge">Test Case ${index + 1}: ${testCase.description}</code>);
+    console.log(<code class="language-plaintext highlighter-rouge">Input: ${printLinkedList(createLinkedList(testCase.input))}</code>);
+    console.log(<code class="language-plaintext highlighter-rouge">Expected: ${testCase.expected}\n</code>);</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+</pre></td><td class="rouge-code"><pre>const head = createLinkedList(testCase.input);
+
+// Test Solution 1 (Reverse Second Half)
+const result1 = isPalindrome(head);
+console.log(
+  `Solution 1 (Reverse Second Half): ${result1} ${
+    result1 === testCase.expected ? "✅" : "❌"
+  }`
+);
+
+// Test Solution 2 (Array)
+const head2 = createLinkedList(testCase.input);
+const result2 = isPalindromeArray(head2);
+console.log(
+  `Solution 2 (Array): ${result2} ${
+    result2 === testCase.expected ? "✅" : "❌"
+  }`
+);
+
+// Test Solution 3 (Recursive)
+const head3 = createLinkedList(testCase.input);
+const result3 = isPalindromeRecursive(head3);
+console.log(
+  `Solution 3 (Recursive): ${result3} ${
+    result3 === testCase.expected ? "✅" : "❌"
+  }`
+);
+
+// Test Solution 4 (Stack)
+const head4 = createLinkedList(testCase.input);
+const result4 = isPalindromeStack(head4);
+console.log(
+  `Solution 4 (Stack): ${result4} ${
+    result4 === testCase.expected ? "✅" : "❌"
+  }`
+);
+
+// Test Solution 5 (String)
+const head5 = createLinkedList(testCase.input);
+const result5 = isPalindromeString(head5);
+console.log(
+  `Solution 5 (String): ${result5} ${
+    result5 === testCase.expected ? "✅" : "❌"
+  }`
+);
+
+// Test Solution 6 (Two Pointers)
+const head6 = createLinkedList(testCase.input);
+const result6 = isPalindromeTwoPointers(head6);
+console.log(
+  `Solution 6 (Two Pointers): ${result6} ${
+    result6 === testCase.expected ? "✅" : "❌"
+  }`
+);
+
+// Test Solution 7 (Generator)
+const head7 = createLinkedList(testCase.input);
+const result7 = isPalindromeGenerator(head7);
+console.log(
+  `Solution 7 (Generator): ${result7} ${
+    result7 === testCase.expected ? "✅" : "❌"
+  }`
+);
+
+// Test Solution 8 (Class)
+const head8 = createLinkedList(testCase.input);
+const result8 = isPalindromeClass(head8);
+console.log(
+  `Solution 8 (Class): ${result8} ${
+    result8 === testCase.expected ? "✅" : "❌"
+  }`
+);
+
+console.log("\n---\n");   }); }
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>// Performance comparison
+function performanceComparison() {
+  console.log(“=== Performance Comparison ===\n”);</p>
+
+<p>const testCases = [
+    { name: “Reverse Second Half”, func: isPalindrome },
+    { name: “Array”, func: isPalindromeArray },
+    { name: “Recursive”, func: isPalindromeRecursive },
+    { name: “Stack”, func: isPalindromeStack },
+    { name: “String”, func: isPalindromeString },
+    { name: “Two Pointers”, func: isPalindromeTwoPointers },
+    { name: “Generator”, func: isPalindromeGenerator },
+    { name: “Class”, func: isPalindromeClass },
+  ];</p>
+
+<p>// Create test lists
+  const palindromeList = createLinkedList([1, 2, 3, 4, 5, 4, 3, 2, 1]);
+  const nonPalindromeList = createLinkedList([1, 2, 3, 4, 5, 6, 7, 8, 9]);</p>
+
+<p>const lists = [
+    { name: “Palindrome”, list: palindromeList },
+    { name: “Non-Palindrome”, list: nonPalindromeList },
+  ];</p>
+
+<p>lists.forEach(({ name, list }) =&gt; {
+    console.log(<code class="language-plaintext highlighter-rouge">${name} List:</code>);</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+</pre></td><td class="rouge-code"><pre>testCases.forEach(({ name: funcName, func }) =&gt; {
+  const start = performance.now();
+  const result = func(list);
+  const end = performance.now();
+
+  console.log(`  ${funcName}: ${(end - start).toFixed(2)}ms (${result})`);
+});
+
+console.log("");   }); }
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>// Uncomment the following lines to run tests
+// testPalindromeLinkedList();
+// performanceComparison();</p>
+
+<p>export {
+  ListNode,
+  isPalindrome,
+  isPalindromeArray,
+  isPalindromeRecursive,
+  isPalindromeStack,
+  isPalindromeString,
+  isPalindromeTwoPointers,
+  isPalindromeGenerator,
+  isPalindromeClass,
+  LinkedList,
+  listGenerator,
+  reverseList,
+  createLinkedList,
+  linkedListToArray,
+  printLinkedList,
+  testPalindromeLinkedList,
+  performanceComparison,
+};</p>
+
+
+        </div>
+    </article>
+</div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Study Resources</h3>
+                    <p>Comprehensive collection of frontend interview questions, coding challenges, and system design problems.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Progress Tracking</h3>
+                    <p>Monitor your learning journey with detailed progress indicators and completion status.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Big Tech Ready</h3>
+                    <p>Curated content specifically designed for interviews at Google, Meta, Amazon, Apple, and Netflix.</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Frontend Interview Hub. Built for aspiring frontend engineers.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="/assets/js/main.js"></script>
+</body>
+</html>

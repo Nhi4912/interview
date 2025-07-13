@@ -1,0 +1,2206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Accessibility Interview Preparation | Frontend Interview Preparation Guide</title>
+    <meta name="description" content="Comprehensive frontend interview materials for Big Tech companies">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="/assets/css/main.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <header>
+        <nav class="container">
+            <div class="logo">Frontend Interview Hub</div>
+            <ul class="nav-links">
+                <li><a href="/">Home</a></li>
+                <li><a href="#progress">Progress</a></li>
+                <li><a href="#knowledge">Knowledge</a></li>
+                <li><a href="https://github.com/nee/interview">GitHub</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <div class="content-container">
+    
+        <nav class="breadcrumb">
+            <ol>
+                <li><a href="/">Home</a></li>
+                
+                
+                
+                    
+                
+                    
+                        
+                        
+                            <li><a href="/frontend/">Frontend</a></li>
+                        
+                    
+                
+                    
+                        
+                        
+                            <li class="active">Accessibility interview preparation</li>
+                        
+                    
+                
+            </ol>
+        </nav>
+    
+    
+    <article class="content">
+        
+            <header class="content-header">
+                <h1 class="content-title">Accessibility Interview Preparation</h1>
+                
+                
+            </header>
+        
+        
+        <div class="content-body">
+            <h1 id="accessibility-interview-preparation">Accessibility Interview Preparation</h1>
+
+<h2 id="core-concepts">Core Concepts</h2>
+
+<h3 id="accessibility-fundamentals">Accessibility Fundamentals</h3>
+
+<ul>
+  <li><strong>WCAG 2.1 Guidelines</strong>: Web Content Accessibility Guidelines</li>
+  <li><strong>ARIA (Accessible Rich Internet Applications)</strong>: Attributes for screen readers</li>
+  <li><strong>Semantic HTML</strong>: Meaningful HTML structure for assistive technologies</li>
+  <li><strong>Keyboard Navigation</strong>: Full functionality without mouse</li>
+  <li><strong>Screen Reader Support</strong>: Text-to-speech compatibility</li>
+</ul>
+
+<h3 id="wcag-principles">WCAG Principles</h3>
+
+<ul>
+  <li><strong>Perceivable</strong>: Information must be presentable to users in ways they can perceive</li>
+  <li><strong>Operable</strong>: User interface components and navigation must be operable</li>
+  <li><strong>Understandable</strong>: Information and operation of user interface must be understandable</li>
+  <li><strong>Robust</strong>: Content must be robust enough to be interpreted by assistive technologies</li>
+</ul>
+
+<h2 id="advanced-topics">Advanced Topics</h2>
+
+<h3 id="modern-accessibility-features">Modern Accessibility Features</h3>
+
+<ul>
+  <li><strong>Focus Management</strong>: Programmatic focus control</li>
+  <li><strong>Live Regions</strong>: Dynamic content announcements</li>
+  <li><strong>Skip Links</strong>: Keyboard navigation shortcuts</li>
+  <li><strong>High Contrast Mode</strong>: Visual accessibility support</li>
+  <li><strong>Reduced Motion</strong>: Respect user motion preferences</li>
+</ul>
+
+<h3 id="accessibility-testing">Accessibility Testing</h3>
+
+<ul>
+  <li><strong>Automated Testing</strong>: Tools for accessibility validation</li>
+  <li><strong>Manual Testing</strong>: Human verification of accessibility</li>
+  <li><strong>Screen Reader Testing</strong>: Testing with assistive technologies</li>
+  <li><strong>Keyboard Testing</strong>: Full keyboard navigation verification</li>
+  <li><strong>Color Contrast Testing</strong>: Visual accessibility validation</li>
+</ul>
+
+<h2 id="common-interview-questions--answers">Common Interview Questions &amp; Answers</h2>
+
+<h3 id="accessibility-questions">Accessibility Questions</h3>
+
+<p><strong>Q: What are the main WCAG 2.1 guidelines and how do you implement them?</strong>
+A: WCAG 2.1 has three levels: A, AA, and AAA. Key guidelines include:</p>
+
+<p><strong>Level A (Basic):</strong></p>
+
+<ul>
+  <li>Non-text content has text alternatives</li>
+  <li>Keyboard accessible</li>
+  <li>No keyboard traps</li>
+  <li>Color is not the only way to convey information</li>
+</ul>
+
+<p><strong>Level AA (Standard):</strong></p>
+
+<ul>
+  <li>Sufficient color contrast (4.5:1 for normal text)</li>
+  <li>Resizable text up to 200%</li>
+  <li>Focus visible</li>
+  <li>Multiple ways to navigate</li>
+</ul>
+
+<p><strong>Implementation Examples:</strong></p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+</pre></td><td class="rouge-code"><pre><span class="c1">// 1. Semantic HTML structure</span>
+<span class="kd">function</span> <span class="nx">AccessibleNavigation</span><span class="p">()</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="p">(</span>
+    <span class="o">&lt;</span><span class="nx">nav</span> <span class="nx">aria</span><span class="o">-</span><span class="nx">label</span><span class="o">=</span><span class="dl">"</span><span class="s2">Main navigation</span><span class="dl">"</span><span class="o">&gt;</span>
+      <span class="o">&lt;</span><span class="nx">ul</span> <span class="nx">role</span><span class="o">=</span><span class="dl">"</span><span class="s2">menubar</span><span class="dl">"</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="nx">li</span> <span class="nx">role</span><span class="o">=</span><span class="dl">"</span><span class="s2">none</span><span class="dl">"</span><span class="o">&gt;</span>
+          <span class="o">&lt;</span><span class="nx">a</span> <span class="nx">href</span><span class="o">=</span><span class="dl">"</span><span class="s2">/home</span><span class="dl">"</span> <span class="nx">role</span><span class="o">=</span><span class="dl">"</span><span class="s2">menuitem</span><span class="dl">"</span> <span class="nx">aria</span><span class="o">-</span><span class="nx">current</span><span class="o">=</span><span class="dl">"</span><span class="s2">page</span><span class="dl">"</span><span class="o">&gt;</span>
+            <span class="nx">Home</span>
+          <span class="o">&lt;</span><span class="sr">/a</span><span class="err">&gt;
+</span>        <span class="o">&lt;</span><span class="sr">/li</span><span class="err">&gt;
+</span>        <span class="o">&lt;</span><span class="nx">li</span> <span class="nx">role</span><span class="o">=</span><span class="dl">"</span><span class="s2">none</span><span class="dl">"</span><span class="o">&gt;</span>
+          <span class="o">&lt;</span><span class="nx">a</span> <span class="nx">href</span><span class="o">=</span><span class="dl">"</span><span class="s2">/about</span><span class="dl">"</span> <span class="nx">role</span><span class="o">=</span><span class="dl">"</span><span class="s2">menuitem</span><span class="dl">"</span><span class="o">&gt;</span>
+            <span class="nx">About</span>
+          <span class="o">&lt;</span><span class="sr">/a</span><span class="err">&gt;
+</span>        <span class="o">&lt;</span><span class="sr">/li</span><span class="err">&gt;
+</span>      <span class="o">&lt;</span><span class="sr">/ul</span><span class="err">&gt;
+</span>    <span class="o">&lt;</span><span class="sr">/nav</span><span class="err">&gt;
+</span>  <span class="p">);</span>
+<span class="p">}</span>
+
+<span class="c1">// 2. Proper form labeling</span>
+<span class="kd">function</span> <span class="nx">AccessibleForm</span><span class="p">()</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="p">(</span>
+    <span class="o">&lt;</span><span class="nx">form</span><span class="o">&gt;</span>
+      <span class="o">&lt;</span><span class="nx">label</span> <span class="nx">htmlFor</span><span class="o">=</span><span class="dl">"</span><span class="s2">username</span><span class="dl">"</span><span class="o">&gt;</span><span class="nx">Username</span><span class="p">:</span><span class="o">&lt;</span><span class="sr">/label</span><span class="err">&gt;
+</span>      <span class="o">&lt;</span><span class="nx">input</span>
+        <span class="nx">id</span><span class="o">=</span><span class="dl">"</span><span class="s2">username</span><span class="dl">"</span>
+        <span class="nx">type</span><span class="o">=</span><span class="dl">"</span><span class="s2">text</span><span class="dl">"</span>
+        <span class="nx">aria</span><span class="o">-</span><span class="nx">describedby</span><span class="o">=</span><span class="dl">"</span><span class="s2">username-help</span><span class="dl">"</span>
+        <span class="nx">aria</span><span class="o">-</span><span class="nx">required</span><span class="o">=</span><span class="dl">"</span><span class="s2">true</span><span class="dl">"</span>
+      <span class="o">/&gt;</span>
+      <span class="o">&lt;</span><span class="nx">div</span> <span class="nx">id</span><span class="o">=</span><span class="dl">"</span><span class="s2">username-help</span><span class="dl">"</span><span class="o">&gt;</span><span class="nx">Enter</span> <span class="nx">your</span> <span class="nx">username</span><span class="o">&lt;</span><span class="sr">/div</span><span class="err">&gt;
+</span>
+      <span class="o">&lt;</span><span class="nx">label</span> <span class="nx">htmlFor</span><span class="o">=</span><span class="dl">"</span><span class="s2">password</span><span class="dl">"</span><span class="o">&gt;</span><span class="nx">Password</span><span class="p">:</span><span class="o">&lt;</span><span class="sr">/label</span><span class="err">&gt;
+</span>      <span class="o">&lt;</span><span class="nx">input</span>
+        <span class="nx">id</span><span class="o">=</span><span class="dl">"</span><span class="s2">password</span><span class="dl">"</span>
+        <span class="nx">type</span><span class="o">=</span><span class="dl">"</span><span class="s2">password</span><span class="dl">"</span>
+        <span class="nx">aria</span><span class="o">-</span><span class="nx">describedby</span><span class="o">=</span><span class="dl">"</span><span class="s2">password-requirements</span><span class="dl">"</span>
+        <span class="nx">aria</span><span class="o">-</span><span class="nx">required</span><span class="o">=</span><span class="dl">"</span><span class="s2">true</span><span class="dl">"</span>
+      <span class="o">/&gt;</span>
+      <span class="o">&lt;</span><span class="nx">div</span> <span class="nx">id</span><span class="o">=</span><span class="dl">"</span><span class="s2">password-requirements</span><span class="dl">"</span><span class="o">&gt;</span>
+        <span class="nx">Password</span> <span class="nx">must</span> <span class="nx">be</span> <span class="nx">at</span> <span class="nx">least</span> <span class="mi">8</span> <span class="nx">characters</span>
+      <span class="o">&lt;</span><span class="sr">/div</span><span class="err">&gt;
+</span>    <span class="o">&lt;</span><span class="sr">/form</span><span class="err">&gt;
+</span>  <span class="p">);</span>
+<span class="p">}</span>
+
+<span class="c1">// 3. ARIA live regions for dynamic content</span>
+<span class="kd">function</span> <span class="nx">LiveRegion</span><span class="p">()</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="p">[</span><span class="nx">message</span><span class="p">,</span> <span class="nx">setMessage</span><span class="p">]</span> <span class="o">=</span> <span class="nx">useState</span><span class="p">(</span><span class="dl">""</span><span class="p">);</span>
+
+  <span class="k">return</span> <span class="p">(</span>
+    <span class="o">&lt;</span><span class="nx">div</span><span class="o">&gt;</span>
+      <span class="o">&lt;</span><span class="nx">button</span> <span class="nx">onClick</span><span class="o">=</span><span class="p">{()</span> <span class="o">=&gt;</span> <span class="nx">setMessage</span><span class="p">(</span><span class="dl">"</span><span class="s2">Action completed!</span><span class="dl">"</span><span class="p">)}</span><span class="o">&gt;</span>
+        <span class="nx">Perform</span> <span class="nx">Action</span>
+      <span class="o">&lt;</span><span class="sr">/button</span><span class="err">&gt;
+</span>      <span class="o">&lt;</span><span class="nx">div</span> <span class="nx">aria</span><span class="o">-</span><span class="nx">live</span><span class="o">=</span><span class="dl">"</span><span class="s2">polite</span><span class="dl">"</span> <span class="nx">aria</span><span class="o">-</span><span class="nx">atomic</span><span class="o">=</span><span class="dl">"</span><span class="s2">true</span><span class="dl">"</span> <span class="nx">className</span><span class="o">=</span><span class="dl">"</span><span class="s2">sr-only</span><span class="dl">"</span><span class="o">&gt;</span>
+        <span class="p">{</span><span class="nx">message</span><span class="p">}</span>
+      <span class="o">&lt;</span><span class="sr">/div</span><span class="err">&gt;
+</span>    <span class="o">&lt;</span><span class="sr">/div</span><span class="err">&gt;
+</span>  <span class="p">);</span>
+<span class="p">}</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p><strong>Q: How do you implement keyboard navigation for custom components?</strong>
+A: Comprehensive keyboard navigation implementation:</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155
+156
+157
+158
+159
+160
+161
+162
+163
+164
+165
+166
+167
+168
+169
+170
+171
+172
+173
+174
+175
+176
+177
+178
+179
+180
+181
+182
+183
+184
+185
+186
+187
+188
+189
+190
+191
+192
+193
+194
+195
+196
+197
+198
+199
+200
+201
+202
+203
+204
+205
+206
+207
+208
+209
+210
+211
+212
+213
+214
+215
+216
+217
+218
+219
+220
+221
+222
+223
+224
+225
+226
+227
+228
+229
+230
+231
+232
+233
+234
+235
+236
+237
+238
+239
+240
+241
+242
+243
+244
+245
+246
+247
+248
+249
+250
+251
+252
+253
+</pre></td><td class="rouge-code"><pre><span class="kd">class</span> <span class="nx">KeyboardNavigation</span> <span class="p">{</span>
+  <span class="kd">constructor</span><span class="p">(</span><span class="nx">container</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">container</span> <span class="o">=</span> <span class="nx">container</span><span class="p">;</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">focusableElements</span> <span class="o">=</span> <span class="p">[];</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">currentIndex</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">setupKeyboardNavigation</span><span class="p">();</span>
+  <span class="p">}</span>
+
+  <span class="nx">setupKeyboardNavigation</span><span class="p">()</span> <span class="p">{</span>
+    <span class="c1">// Find all focusable elements</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">focusableElements</span> <span class="o">=</span> <span class="nb">Array</span><span class="p">.</span><span class="k">from</span><span class="p">(</span>
+      <span class="k">this</span><span class="p">.</span><span class="nx">container</span><span class="p">.</span><span class="nx">querySelectorAll</span><span class="p">(</span>
+        <span class="dl">'</span><span class="s1">button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])</span><span class="dl">'</span>
+      <span class="p">)</span>
+    <span class="p">);</span>
+
+    <span class="c1">// Add keyboard event listeners</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">container</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="dl">"</span><span class="s2">keydown</span><span class="dl">"</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">handleKeyDown</span><span class="p">.</span><span class="nx">bind</span><span class="p">(</span><span class="k">this</span><span class="p">));</span>
+
+    <span class="c1">// Add focus management</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">container</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="dl">"</span><span class="s2">focusin</span><span class="dl">"</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">handleFocusIn</span><span class="p">.</span><span class="nx">bind</span><span class="p">(</span><span class="k">this</span><span class="p">));</span>
+  <span class="p">}</span>
+
+  <span class="nx">handleKeyDown</span><span class="p">(</span><span class="nx">event</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">switch</span> <span class="p">(</span><span class="nx">event</span><span class="p">.</span><span class="nx">key</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">case</span> <span class="dl">"</span><span class="s2">ArrowDown</span><span class="dl">"</span><span class="p">:</span>
+      <span class="k">case</span> <span class="dl">"</span><span class="s2">ArrowRight</span><span class="dl">"</span><span class="p">:</span>
+        <span class="nx">event</span><span class="p">.</span><span class="nx">preventDefault</span><span class="p">();</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">moveFocus</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+        <span class="k">break</span><span class="p">;</span>
+
+      <span class="k">case</span> <span class="dl">"</span><span class="s2">ArrowUp</span><span class="dl">"</span><span class="p">:</span>
+      <span class="k">case</span> <span class="dl">"</span><span class="s2">ArrowLeft</span><span class="dl">"</span><span class="p">:</span>
+        <span class="nx">event</span><span class="p">.</span><span class="nx">preventDefault</span><span class="p">();</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">moveFocus</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">);</span>
+        <span class="k">break</span><span class="p">;</span>
+
+      <span class="k">case</span> <span class="dl">"</span><span class="s2">Home</span><span class="dl">"</span><span class="p">:</span>
+        <span class="nx">event</span><span class="p">.</span><span class="nx">preventDefault</span><span class="p">();</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">moveToFirst</span><span class="p">();</span>
+        <span class="k">break</span><span class="p">;</span>
+
+      <span class="k">case</span> <span class="dl">"</span><span class="s2">End</span><span class="dl">"</span><span class="p">:</span>
+        <span class="nx">event</span><span class="p">.</span><span class="nx">preventDefault</span><span class="p">();</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">moveToLast</span><span class="p">();</span>
+        <span class="k">break</span><span class="p">;</span>
+
+      <span class="k">case</span> <span class="dl">"</span><span class="s2">Enter</span><span class="dl">"</span><span class="p">:</span>
+      <span class="k">case</span> <span class="dl">"</span><span class="s2"> </span><span class="dl">"</span><span class="p">:</span>
+        <span class="nx">event</span><span class="p">.</span><span class="nx">preventDefault</span><span class="p">();</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">activateCurrent</span><span class="p">();</span>
+        <span class="k">break</span><span class="p">;</span>
+
+      <span class="k">case</span> <span class="dl">"</span><span class="s2">Escape</span><span class="dl">"</span><span class="p">:</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">handleEscape</span><span class="p">();</span>
+        <span class="k">break</span><span class="p">;</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+
+  <span class="nx">moveFocus</span><span class="p">(</span><span class="nx">direction</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="nx">newIndex</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">currentIndex</span> <span class="o">+</span> <span class="nx">direction</span><span class="p">;</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="nx">newIndex</span> <span class="o">&gt;=</span> <span class="mi">0</span> <span class="o">&amp;&amp;</span> <span class="nx">newIndex</span> <span class="o">&lt;</span> <span class="k">this</span><span class="p">.</span><span class="nx">focusableElements</span><span class="p">.</span><span class="nx">length</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">this</span><span class="p">.</span><span class="nx">currentIndex</span> <span class="o">=</span> <span class="nx">newIndex</span><span class="p">;</span>
+      <span class="k">this</span><span class="p">.</span><span class="nx">focusableElements</span><span class="p">[</span><span class="k">this</span><span class="p">.</span><span class="nx">currentIndex</span><span class="p">].</span><span class="nx">focus</span><span class="p">();</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+
+  <span class="nx">moveToFirst</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">currentIndex</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">focusableElements</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="nx">focus</span><span class="p">();</span>
+  <span class="p">}</span>
+
+  <span class="nx">moveToLast</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">currentIndex</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">focusableElements</span><span class="p">.</span><span class="nx">length</span> <span class="o">-</span> <span class="mi">1</span><span class="p">;</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">focusableElements</span><span class="p">[</span><span class="k">this</span><span class="p">.</span><span class="nx">currentIndex</span><span class="p">].</span><span class="nx">focus</span><span class="p">();</span>
+  <span class="p">}</span>
+
+  <span class="nx">activateCurrent</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="nx">currentElement</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">focusableElements</span><span class="p">[</span><span class="k">this</span><span class="p">.</span><span class="nx">currentIndex</span><span class="p">];</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="nx">currentElement</span><span class="p">.</span><span class="nx">tagName</span> <span class="o">===</span> <span class="dl">"</span><span class="s2">BUTTON</span><span class="dl">"</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">currentElement</span><span class="p">.</span><span class="nx">click</span><span class="p">();</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nx">currentElement</span><span class="p">.</span><span class="nx">tagName</span> <span class="o">===</span> <span class="dl">"</span><span class="s2">A</span><span class="dl">"</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">currentElement</span><span class="p">.</span><span class="nx">click</span><span class="p">();</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+
+  <span class="nx">handleFocusIn</span><span class="p">(</span><span class="nx">event</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="nx">index</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">focusableElements</span><span class="p">.</span><span class="nx">indexOf</span><span class="p">(</span><span class="nx">event</span><span class="p">.</span><span class="nx">target</span><span class="p">);</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">index</span> <span class="o">!==</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">this</span><span class="p">.</span><span class="nx">currentIndex</span> <span class="o">=</span> <span class="nx">index</span><span class="p">;</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+
+  <span class="nx">handleEscape</span><span class="p">()</span> <span class="p">{</span>
+    <span class="c1">// Close modal, dropdown, etc.</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">container</span><span class="p">.</span><span class="nx">dispatchEvent</span><span class="p">(</span><span class="k">new</span> <span class="nx">CustomEvent</span><span class="p">(</span><span class="dl">"</span><span class="s2">escape</span><span class="dl">"</span><span class="p">));</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// Custom dropdown with keyboard navigation</span>
+<span class="kd">class</span> <span class="nx">AccessibleDropdown</span> <span class="p">{</span>
+  <span class="kd">constructor</span><span class="p">(</span><span class="nx">trigger</span><span class="p">,</span> <span class="nx">menu</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">trigger</span> <span class="o">=</span> <span class="nx">trigger</span><span class="p">;</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">menu</span> <span class="o">=</span> <span class="nx">menu</span><span class="p">;</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">isOpen</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">menuItems</span> <span class="o">=</span> <span class="p">[];</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">currentIndex</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span>
+
+    <span class="k">this</span><span class="p">.</span><span class="nx">setupDropdown</span><span class="p">();</span>
+  <span class="p">}</span>
+
+  <span class="nx">setupDropdown</span><span class="p">()</span> <span class="p">{</span>
+    <span class="c1">// Set ARIA attributes</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">trigger</span><span class="p">.</span><span class="nx">setAttribute</span><span class="p">(</span><span class="dl">"</span><span class="s2">aria-haspopup</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">true</span><span class="dl">"</span><span class="p">);</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">trigger</span><span class="p">.</span><span class="nx">setAttribute</span><span class="p">(</span><span class="dl">"</span><span class="s2">aria-expanded</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">false</span><span class="dl">"</span><span class="p">);</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">menu</span><span class="p">.</span><span class="nx">setAttribute</span><span class="p">(</span><span class="dl">"</span><span class="s2">role</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">menu</span><span class="dl">"</span><span class="p">);</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">menu</span><span class="p">.</span><span class="nx">setAttribute</span><span class="p">(</span><span class="dl">"</span><span class="s2">aria-hidden</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">true</span><span class="dl">"</span><span class="p">);</span>
+
+    <span class="c1">// Get menu items</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">menuItems</span> <span class="o">=</span> <span class="nb">Array</span><span class="p">.</span><span class="k">from</span><span class="p">(</span>
+      <span class="k">this</span><span class="p">.</span><span class="nx">menu</span><span class="p">.</span><span class="nx">querySelectorAll</span><span class="p">(</span><span class="dl">'</span><span class="s1">[role="menuitem"]</span><span class="dl">'</span><span class="p">)</span>
+    <span class="p">);</span>
+
+    <span class="c1">// Add event listeners</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">trigger</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="dl">"</span><span class="s2">click</span><span class="dl">"</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">toggle</span><span class="p">.</span><span class="nx">bind</span><span class="p">(</span><span class="k">this</span><span class="p">));</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">trigger</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span>
+      <span class="dl">"</span><span class="s2">keydown</span><span class="dl">"</span><span class="p">,</span>
+      <span class="k">this</span><span class="p">.</span><span class="nx">handleTriggerKeyDown</span><span class="p">.</span><span class="nx">bind</span><span class="p">(</span><span class="k">this</span><span class="p">)</span>
+    <span class="p">);</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">menu</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="dl">"</span><span class="s2">keydown</span><span class="dl">"</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">handleMenuKeyDown</span><span class="p">.</span><span class="nx">bind</span><span class="p">(</span><span class="k">this</span><span class="p">));</span>
+
+    <span class="c1">// Close on outside click</span>
+    <span class="nb">document</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="dl">"</span><span class="s2">click</span><span class="dl">"</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">handleOutsideClick</span><span class="p">.</span><span class="nx">bind</span><span class="p">(</span><span class="k">this</span><span class="p">));</span>
+  <span class="p">}</span>
+
+  <span class="nx">toggle</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">isOpen</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">this</span><span class="p">.</span><span class="nx">close</span><span class="p">();</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+      <span class="k">this</span><span class="p">.</span><span class="nx">open</span><span class="p">();</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+
+  <span class="nx">open</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">isOpen</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">trigger</span><span class="p">.</span><span class="nx">setAttribute</span><span class="p">(</span><span class="dl">"</span><span class="s2">aria-expanded</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">true</span><span class="dl">"</span><span class="p">);</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">menu</span><span class="p">.</span><span class="nx">setAttribute</span><span class="p">(</span><span class="dl">"</span><span class="s2">aria-hidden</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">false</span><span class="dl">"</span><span class="p">);</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">menu</span><span class="p">.</span><span class="nx">style</span><span class="p">.</span><span class="nx">display</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">block</span><span class="dl">"</span><span class="p">;</span>
+
+    <span class="c1">// Focus first menu item</span>
+    <span class="k">if</span> <span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">menuItems</span><span class="p">.</span><span class="nx">length</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">this</span><span class="p">.</span><span class="nx">currentIndex</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+      <span class="k">this</span><span class="p">.</span><span class="nx">menuItems</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="nx">focus</span><span class="p">();</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+
+  <span class="nx">close</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">isOpen</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">trigger</span><span class="p">.</span><span class="nx">setAttribute</span><span class="p">(</span><span class="dl">"</span><span class="s2">aria-expanded</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">false</span><span class="dl">"</span><span class="p">);</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">menu</span><span class="p">.</span><span class="nx">setAttribute</span><span class="p">(</span><span class="dl">"</span><span class="s2">aria-hidden</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">true</span><span class="dl">"</span><span class="p">);</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">menu</span><span class="p">.</span><span class="nx">style</span><span class="p">.</span><span class="nx">display</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">none</span><span class="dl">"</span><span class="p">;</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">currentIndex</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span>
+
+    <span class="c1">// Return focus to trigger</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">trigger</span><span class="p">.</span><span class="nx">focus</span><span class="p">();</span>
+  <span class="p">}</span>
+
+  <span class="nx">handleTriggerKeyDown</span><span class="p">(</span><span class="nx">event</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">switch</span> <span class="p">(</span><span class="nx">event</span><span class="p">.</span><span class="nx">key</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">case</span> <span class="dl">"</span><span class="s2">Enter</span><span class="dl">"</span><span class="p">:</span>
+      <span class="k">case</span> <span class="dl">"</span><span class="s2"> </span><span class="dl">"</span><span class="p">:</span>
+        <span class="nx">event</span><span class="p">.</span><span class="nx">preventDefault</span><span class="p">();</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">toggle</span><span class="p">();</span>
+        <span class="k">break</span><span class="p">;</span>
+
+      <span class="k">case</span> <span class="dl">"</span><span class="s2">ArrowDown</span><span class="dl">"</span><span class="p">:</span>
+        <span class="nx">event</span><span class="p">.</span><span class="nx">preventDefault</span><span class="p">();</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">open</span><span class="p">();</span>
+        <span class="k">break</span><span class="p">;</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+
+  <span class="nx">handleMenuKeyDown</span><span class="p">(</span><span class="nx">event</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">switch</span> <span class="p">(</span><span class="nx">event</span><span class="p">.</span><span class="nx">key</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">case</span> <span class="dl">"</span><span class="s2">ArrowDown</span><span class="dl">"</span><span class="p">:</span>
+        <span class="nx">event</span><span class="p">.</span><span class="nx">preventDefault</span><span class="p">();</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">moveFocus</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+        <span class="k">break</span><span class="p">;</span>
+
+      <span class="k">case</span> <span class="dl">"</span><span class="s2">ArrowUp</span><span class="dl">"</span><span class="p">:</span>
+        <span class="nx">event</span><span class="p">.</span><span class="nx">preventDefault</span><span class="p">();</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">moveFocus</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">);</span>
+        <span class="k">break</span><span class="p">;</span>
+
+      <span class="k">case</span> <span class="dl">"</span><span class="s2">Home</span><span class="dl">"</span><span class="p">:</span>
+        <span class="nx">event</span><span class="p">.</span><span class="nx">preventDefault</span><span class="p">();</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">moveToFirst</span><span class="p">();</span>
+        <span class="k">break</span><span class="p">;</span>
+
+      <span class="k">case</span> <span class="dl">"</span><span class="s2">End</span><span class="dl">"</span><span class="p">:</span>
+        <span class="nx">event</span><span class="p">.</span><span class="nx">preventDefault</span><span class="p">();</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">moveToLast</span><span class="p">();</span>
+        <span class="k">break</span><span class="p">;</span>
+
+      <span class="k">case</span> <span class="dl">"</span><span class="s2">Escape</span><span class="dl">"</span><span class="p">:</span>
+        <span class="nx">event</span><span class="p">.</span><span class="nx">preventDefault</span><span class="p">();</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">close</span><span class="p">();</span>
+        <span class="k">break</span><span class="p">;</span>
+
+      <span class="k">case</span> <span class="dl">"</span><span class="s2">Enter</span><span class="dl">"</span><span class="p">:</span>
+        <span class="nx">event</span><span class="p">.</span><span class="nx">preventDefault</span><span class="p">();</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">activateCurrent</span><span class="p">();</span>
+        <span class="k">break</span><span class="p">;</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+
+  <span class="nx">moveFocus</span><span class="p">(</span><span class="nx">direction</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="nx">newIndex</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">currentIndex</span> <span class="o">+</span> <span class="nx">direction</span><span class="p">;</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="nx">newIndex</span> <span class="o">&gt;=</span> <span class="mi">0</span> <span class="o">&amp;&amp;</span> <span class="nx">newIndex</span> <span class="o">&lt;</span> <span class="k">this</span><span class="p">.</span><span class="nx">menuItems</span><span class="p">.</span><span class="nx">length</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">this</span><span class="p">.</span><span class="nx">currentIndex</span> <span class="o">=</span> <span class="nx">newIndex</span><span class="p">;</span>
+      <span class="k">this</span><span class="p">.</span><span class="nx">menuItems</span><span class="p">[</span><span class="k">this</span><span class="p">.</span><span class="nx">currentIndex</span><span class="p">].</span><span class="nx">focus</span><span class="p">();</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+
+  <span class="nx">moveToFirst</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">currentIndex</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">menuItems</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="nx">focus</span><span class="p">();</span>
+  <span class="p">}</span>
+
+  <span class="nx">moveToLast</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">currentIndex</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">menuItems</span><span class="p">.</span><span class="nx">length</span> <span class="o">-</span> <span class="mi">1</span><span class="p">;</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">menuItems</span><span class="p">[</span><span class="k">this</span><span class="p">.</span><span class="nx">currentIndex</span><span class="p">].</span><span class="nx">focus</span><span class="p">();</span>
+  <span class="p">}</span>
+
+  <span class="nx">activateCurrent</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">currentIndex</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">this</span><span class="p">.</span><span class="nx">menuItems</span><span class="p">[</span><span class="k">this</span><span class="p">.</span><span class="nx">currentIndex</span><span class="p">].</span><span class="nx">click</span><span class="p">();</span>
+      <span class="k">this</span><span class="p">.</span><span class="nx">close</span><span class="p">();</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+
+  <span class="nx">handleOutsideClick</span><span class="p">(</span><span class="nx">event</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span>
+      <span class="o">!</span><span class="k">this</span><span class="p">.</span><span class="nx">trigger</span><span class="p">.</span><span class="nx">contains</span><span class="p">(</span><span class="nx">event</span><span class="p">.</span><span class="nx">target</span><span class="p">)</span> <span class="o">&amp;&amp;</span>
+      <span class="o">!</span><span class="k">this</span><span class="p">.</span><span class="nx">menu</span><span class="p">.</span><span class="nx">contains</span><span class="p">(</span><span class="nx">event</span><span class="p">.</span><span class="nx">target</span><span class="p">)</span>
+    <span class="p">)</span> <span class="p">{</span>
+      <span class="k">this</span><span class="p">.</span><span class="nx">close</span><span class="p">();</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<h2 id="advanced-interview-questions">Advanced Interview Questions</h2>
+
+<p><strong>Q: How would you implement a fully accessible modal dialog?</strong>
+A: Complete accessible modal implementation:</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153
+</pre></td><td class="rouge-code"><pre><span class="kd">class</span> <span class="nx">AccessibleModal</span> <span class="p">{</span>
+  <span class="kd">constructor</span><span class="p">(</span><span class="nx">modal</span><span class="p">,</span> <span class="nx">trigger</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">modal</span> <span class="o">=</span> <span class="nx">modal</span><span class="p">;</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">trigger</span> <span class="o">=</span> <span class="nx">trigger</span><span class="p">;</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">previousFocus</span> <span class="o">=</span> <span class="kc">null</span><span class="p">;</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">focusableElements</span> <span class="o">=</span> <span class="p">[];</span>
+
+    <span class="k">this</span><span class="p">.</span><span class="nx">setupModal</span><span class="p">();</span>
+  <span class="p">}</span>
+
+  <span class="nx">setupModal</span><span class="p">()</span> <span class="p">{</span>
+    <span class="c1">// Set ARIA attributes</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">modal</span><span class="p">.</span><span class="nx">setAttribute</span><span class="p">(</span><span class="dl">"</span><span class="s2">role</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">dialog</span><span class="dl">"</span><span class="p">);</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">modal</span><span class="p">.</span><span class="nx">setAttribute</span><span class="p">(</span><span class="dl">"</span><span class="s2">aria-modal</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">true</span><span class="dl">"</span><span class="p">);</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">modal</span><span class="p">.</span><span class="nx">setAttribute</span><span class="p">(</span><span class="dl">"</span><span class="s2">aria-hidden</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">true</span><span class="dl">"</span><span class="p">);</span>
+
+    <span class="c1">// Add close button if not present</span>
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="k">this</span><span class="p">.</span><span class="nx">modal</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="dl">"</span><span class="s2">[data-modal-close]</span><span class="dl">"</span><span class="p">))</span> <span class="p">{</span>
+      <span class="k">this</span><span class="p">.</span><span class="nx">addCloseButton</span><span class="p">();</span>
+    <span class="p">}</span>
+
+    <span class="c1">// Get focusable elements</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">focusableElements</span> <span class="o">=</span> <span class="nb">Array</span><span class="p">.</span><span class="k">from</span><span class="p">(</span>
+      <span class="k">this</span><span class="p">.</span><span class="nx">modal</span><span class="p">.</span><span class="nx">querySelectorAll</span><span class="p">(</span>
+        <span class="dl">'</span><span class="s1">button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])</span><span class="dl">'</span>
+      <span class="p">)</span>
+    <span class="p">);</span>
+
+    <span class="c1">// Add event listeners</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">trigger</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="dl">"</span><span class="s2">click</span><span class="dl">"</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">open</span><span class="p">.</span><span class="nx">bind</span><span class="p">(</span><span class="k">this</span><span class="p">));</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">modal</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="dl">"</span><span class="s2">keydown</span><span class="dl">"</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">handleKeyDown</span><span class="p">.</span><span class="nx">bind</span><span class="p">(</span><span class="k">this</span><span class="p">));</span>
+
+    <span class="c1">// Close button events</span>
+    <span class="kd">const</span> <span class="nx">closeButtons</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">modal</span><span class="p">.</span><span class="nx">querySelectorAll</span><span class="p">(</span><span class="dl">"</span><span class="s2">[data-modal-close]</span><span class="dl">"</span><span class="p">);</span>
+    <span class="nx">closeButtons</span><span class="p">.</span><span class="nx">forEach</span><span class="p">((</span><span class="nx">button</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+      <span class="nx">button</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="dl">"</span><span class="s2">click</span><span class="dl">"</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">close</span><span class="p">.</span><span class="nx">bind</span><span class="p">(</span><span class="k">this</span><span class="p">));</span>
+    <span class="p">});</span>
+
+    <span class="c1">// Backdrop click</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">modal</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="dl">"</span><span class="s2">click</span><span class="dl">"</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">handleBackdropClick</span><span class="p">.</span><span class="nx">bind</span><span class="p">(</span><span class="k">this</span><span class="p">));</span>
+  <span class="p">}</span>
+
+  <span class="nx">open</span><span class="p">()</span> <span class="p">{</span>
+    <span class="c1">// Store current focus</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">previousFocus</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">activeElement</span><span class="p">;</span>
+
+    <span class="c1">// Show modal</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">modal</span><span class="p">.</span><span class="nx">style</span><span class="p">.</span><span class="nx">display</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">block</span><span class="dl">"</span><span class="p">;</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">modal</span><span class="p">.</span><span class="nx">setAttribute</span><span class="p">(</span><span class="dl">"</span><span class="s2">aria-hidden</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">false</span><span class="dl">"</span><span class="p">);</span>
+
+    <span class="c1">// Focus management</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">trapFocus</span><span class="p">();</span>
+
+    <span class="c1">// Announce to screen readers</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">announce</span><span class="p">(</span><span class="dl">"</span><span class="s2">Modal opened</span><span class="dl">"</span><span class="p">);</span>
+
+    <span class="c1">// Prevent body scroll</span>
+    <span class="nb">document</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">style</span><span class="p">.</span><span class="nx">overflow</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">hidden</span><span class="dl">"</span><span class="p">;</span>
+  <span class="p">}</span>
+
+  <span class="nx">close</span><span class="p">()</span> <span class="p">{</span>
+    <span class="c1">// Hide modal</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">modal</span><span class="p">.</span><span class="nx">style</span><span class="p">.</span><span class="nx">display</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">none</span><span class="dl">"</span><span class="p">;</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">modal</span><span class="p">.</span><span class="nx">setAttribute</span><span class="p">(</span><span class="dl">"</span><span class="s2">aria-hidden</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">true</span><span class="dl">"</span><span class="p">);</span>
+
+    <span class="c1">// Restore focus</span>
+    <span class="k">if</span> <span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">previousFocus</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">this</span><span class="p">.</span><span class="nx">previousFocus</span><span class="p">.</span><span class="nx">focus</span><span class="p">();</span>
+    <span class="p">}</span>
+
+    <span class="c1">// Announce to screen readers</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">announce</span><span class="p">(</span><span class="dl">"</span><span class="s2">Modal closed</span><span class="dl">"</span><span class="p">);</span>
+
+    <span class="c1">// Restore body scroll</span>
+    <span class="nb">document</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">style</span><span class="p">.</span><span class="nx">overflow</span> <span class="o">=</span> <span class="dl">""</span><span class="p">;</span>
+  <span class="p">}</span>
+
+  <span class="nx">trapFocus</span><span class="p">()</span> <span class="p">{</span>
+    <span class="c1">// Focus first focusable element</span>
+    <span class="k">if</span> <span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">focusableElements</span><span class="p">.</span><span class="nx">length</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">this</span><span class="p">.</span><span class="nx">focusableElements</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="nx">focus</span><span class="p">();</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+
+  <span class="nx">handleKeyDown</span><span class="p">(</span><span class="nx">event</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">switch</span> <span class="p">(</span><span class="nx">event</span><span class="p">.</span><span class="nx">key</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">case</span> <span class="dl">"</span><span class="s2">Escape</span><span class="dl">"</span><span class="p">:</span>
+        <span class="nx">event</span><span class="p">.</span><span class="nx">preventDefault</span><span class="p">();</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">close</span><span class="p">();</span>
+        <span class="k">break</span><span class="p">;</span>
+
+      <span class="k">case</span> <span class="dl">"</span><span class="s2">Tab</span><span class="dl">"</span><span class="p">:</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">handleTabKey</span><span class="p">(</span><span class="nx">event</span><span class="p">);</span>
+        <span class="k">break</span><span class="p">;</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+
+  <span class="nx">handleTabKey</span><span class="p">(</span><span class="nx">event</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="nx">firstElement</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">focusableElements</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span>
+    <span class="kd">const</span> <span class="nx">lastElement</span> <span class="o">=</span>
+      <span class="k">this</span><span class="p">.</span><span class="nx">focusableElements</span><span class="p">[</span><span class="k">this</span><span class="p">.</span><span class="nx">focusableElements</span><span class="p">.</span><span class="nx">length</span> <span class="o">-</span> <span class="mi">1</span><span class="p">];</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="nx">event</span><span class="p">.</span><span class="nx">shiftKey</span><span class="p">)</span> <span class="p">{</span>
+      <span class="c1">// Shift + Tab</span>
+      <span class="k">if</span> <span class="p">(</span><span class="nb">document</span><span class="p">.</span><span class="nx">activeElement</span> <span class="o">===</span> <span class="nx">firstElement</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">event</span><span class="p">.</span><span class="nx">preventDefault</span><span class="p">();</span>
+        <span class="nx">lastElement</span><span class="p">.</span><span class="nx">focus</span><span class="p">();</span>
+      <span class="p">}</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+      <span class="c1">// Tab</span>
+      <span class="k">if</span> <span class="p">(</span><span class="nb">document</span><span class="p">.</span><span class="nx">activeElement</span> <span class="o">===</span> <span class="nx">lastElement</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">event</span><span class="p">.</span><span class="nx">preventDefault</span><span class="p">();</span>
+        <span class="nx">firstElement</span><span class="p">.</span><span class="nx">focus</span><span class="p">();</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+
+  <span class="nx">handleBackdropClick</span><span class="p">(</span><span class="nx">event</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">event</span><span class="p">.</span><span class="nx">target</span> <span class="o">===</span> <span class="k">this</span><span class="p">.</span><span class="nx">modal</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">this</span><span class="p">.</span><span class="nx">close</span><span class="p">();</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+
+  <span class="nx">addCloseButton</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="nx">closeButton</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="dl">"</span><span class="s2">button</span><span class="dl">"</span><span class="p">);</span>
+    <span class="nx">closeButton</span><span class="p">.</span><span class="nx">setAttribute</span><span class="p">(</span><span class="dl">"</span><span class="s2">data-modal-close</span><span class="dl">"</span><span class="p">,</span> <span class="dl">""</span><span class="p">);</span>
+    <span class="nx">closeButton</span><span class="p">.</span><span class="nx">setAttribute</span><span class="p">(</span><span class="dl">"</span><span class="s2">aria-label</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">Close modal</span><span class="dl">"</span><span class="p">);</span>
+    <span class="nx">closeButton</span><span class="p">.</span><span class="nx">innerHTML</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">&amp;times;</span><span class="dl">"</span><span class="p">;</span>
+    <span class="nx">closeButton</span><span class="p">.</span><span class="nx">className</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">modal-close</span><span class="dl">"</span><span class="p">;</span>
+
+    <span class="k">this</span><span class="p">.</span><span class="nx">modal</span><span class="p">.</span><span class="nx">appendChild</span><span class="p">(</span><span class="nx">closeButton</span><span class="p">);</span>
+  <span class="p">}</span>
+
+  <span class="nx">announce</span><span class="p">(</span><span class="nx">message</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// Create live region for announcements</span>
+    <span class="kd">let</span> <span class="nx">liveRegion</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="dl">"</span><span class="s2">aria-live-region</span><span class="dl">"</span><span class="p">);</span>
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">liveRegion</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">liveRegion</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="dl">"</span><span class="s2">div</span><span class="dl">"</span><span class="p">);</span>
+      <span class="nx">liveRegion</span><span class="p">.</span><span class="nx">id</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">aria-live-region</span><span class="dl">"</span><span class="p">;</span>
+      <span class="nx">liveRegion</span><span class="p">.</span><span class="nx">setAttribute</span><span class="p">(</span><span class="dl">"</span><span class="s2">aria-live</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">polite</span><span class="dl">"</span><span class="p">);</span>
+      <span class="nx">liveRegion</span><span class="p">.</span><span class="nx">setAttribute</span><span class="p">(</span><span class="dl">"</span><span class="s2">aria-atomic</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">true</span><span class="dl">"</span><span class="p">);</span>
+      <span class="nx">liveRegion</span><span class="p">.</span><span class="nx">className</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">sr-only</span><span class="dl">"</span><span class="p">;</span>
+      <span class="nb">document</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">appendChild</span><span class="p">(</span><span class="nx">liveRegion</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="nx">liveRegion</span><span class="p">.</span><span class="nx">textContent</span> <span class="o">=</span> <span class="nx">message</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// Usage</span>
+<span class="kd">const</span> <span class="nx">modal</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="dl">"</span><span class="s2">my-modal</span><span class="dl">"</span><span class="p">);</span>
+<span class="kd">const</span> <span class="nx">trigger</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="dl">"</span><span class="s2">modal-trigger</span><span class="dl">"</span><span class="p">);</span>
+<span class="kd">const</span> <span class="nx">accessibleModal</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">AccessibleModal</span><span class="p">(</span><span class="nx">modal</span><span class="p">,</span> <span class="nx">trigger</span><span class="p">);</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p><strong>Q: How do you implement accessible data tables?</strong>
+A: Accessible table implementation with sorting and filtering:</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155
+156
+157
+158
+159
+160
+161
+162
+163
+164
+165
+166
+167
+168
+169
+170
+171
+172
+173
+174
+175
+176
+177
+178
+179
+180
+181
+182
+183
+184
+185
+186
+187
+188
+189
+190
+191
+192
+193
+194
+195
+196
+197
+198
+199
+200
+201
+202
+203
+204
+205
+206
+207
+208
+209
+210
+211
+212
+213
+214
+215
+216
+217
+218
+219
+220
+221
+222
+223
+224
+225
+226
+</pre></td><td class="rouge-code"><pre><span class="kd">class</span> <span class="nx">AccessibleDataTable</span> <span class="p">{</span>
+  <span class="kd">constructor</span><span class="p">(</span><span class="nx">table</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">table</span> <span class="o">=</span> <span class="nx">table</span><span class="p">;</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">data</span> <span class="o">=</span> <span class="p">[];</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">currentSort</span> <span class="o">=</span> <span class="p">{</span> <span class="na">column</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span> <span class="na">direction</span><span class="p">:</span> <span class="dl">"</span><span class="s2">asc</span><span class="dl">"</span> <span class="p">};</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">currentFilter</span> <span class="o">=</span> <span class="dl">""</span><span class="p">;</span>
+
+    <span class="k">this</span><span class="p">.</span><span class="nx">setupTable</span><span class="p">();</span>
+  <span class="p">}</span>
+
+  <span class="nx">setupTable</span><span class="p">()</span> <span class="p">{</span>
+    <span class="c1">// Set table attributes</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">table</span><span class="p">.</span><span class="nx">setAttribute</span><span class="p">(</span><span class="dl">"</span><span class="s2">role</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">table</span><span class="dl">"</span><span class="p">);</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">table</span><span class="p">.</span><span class="nx">setAttribute</span><span class="p">(</span><span class="dl">"</span><span class="s2">aria-label</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">Data table</span><span class="dl">"</span><span class="p">);</span>
+
+    <span class="c1">// Add sorting and filtering controls</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">addControls</span><span class="p">();</span>
+
+    <span class="c1">// Setup headers</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">setupHeaders</span><span class="p">();</span>
+
+    <span class="c1">// Add keyboard navigation</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">setupKeyboardNavigation</span><span class="p">();</span>
+  <span class="p">}</span>
+
+  <span class="nx">addControls</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="nx">controls</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="dl">"</span><span class="s2">div</span><span class="dl">"</span><span class="p">);</span>
+    <span class="nx">controls</span><span class="p">.</span><span class="nx">className</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">table-controls</span><span class="dl">"</span><span class="p">;</span>
+    <span class="nx">controls</span><span class="p">.</span><span class="nx">setAttribute</span><span class="p">(</span><span class="dl">"</span><span class="s2">role</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">toolbar</span><span class="dl">"</span><span class="p">);</span>
+    <span class="nx">controls</span><span class="p">.</span><span class="nx">setAttribute</span><span class="p">(</span><span class="dl">"</span><span class="s2">aria-label</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">Table controls</span><span class="dl">"</span><span class="p">);</span>
+
+    <span class="c1">// Search input</span>
+    <span class="kd">const</span> <span class="nx">searchInput</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="dl">"</span><span class="s2">input</span><span class="dl">"</span><span class="p">);</span>
+    <span class="nx">searchInput</span><span class="p">.</span><span class="nx">type</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">search</span><span class="dl">"</span><span class="p">;</span>
+    <span class="nx">searchInput</span><span class="p">.</span><span class="nx">setAttribute</span><span class="p">(</span><span class="dl">"</span><span class="s2">aria-label</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">Filter table data</span><span class="dl">"</span><span class="p">);</span>
+    <span class="nx">searchInput</span><span class="p">.</span><span class="nx">placeholder</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">Search...</span><span class="dl">"</span><span class="p">;</span>
+    <span class="nx">searchInput</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="dl">"</span><span class="s2">input</span><span class="dl">"</span><span class="p">,</span> <span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+      <span class="k">this</span><span class="p">.</span><span class="nx">filterData</span><span class="p">(</span><span class="nx">e</span><span class="p">.</span><span class="nx">target</span><span class="p">.</span><span class="nx">value</span><span class="p">);</span>
+    <span class="p">});</span>
+
+    <span class="nx">controls</span><span class="p">.</span><span class="nx">appendChild</span><span class="p">(</span><span class="nx">searchInput</span><span class="p">);</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">table</span><span class="p">.</span><span class="nx">parentNode</span><span class="p">.</span><span class="nx">insertBefore</span><span class="p">(</span><span class="nx">controls</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">table</span><span class="p">);</span>
+  <span class="p">}</span>
+
+  <span class="nx">setupHeaders</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="nx">headers</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">table</span><span class="p">.</span><span class="nx">querySelectorAll</span><span class="p">(</span><span class="dl">"</span><span class="s2">th</span><span class="dl">"</span><span class="p">);</span>
+
+    <span class="nx">headers</span><span class="p">.</span><span class="nx">forEach</span><span class="p">((</span><span class="nx">header</span><span class="p">,</span> <span class="nx">index</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+      <span class="c1">// Set header attributes</span>
+      <span class="nx">header</span><span class="p">.</span><span class="nx">setAttribute</span><span class="p">(</span><span class="dl">"</span><span class="s2">scope</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">col</span><span class="dl">"</span><span class="p">);</span>
+      <span class="nx">header</span><span class="p">.</span><span class="nx">setAttribute</span><span class="p">(</span><span class="dl">"</span><span class="s2">role</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">columnheader</span><span class="dl">"</span><span class="p">);</span>
+
+      <span class="c1">// Add sorting functionality</span>
+      <span class="k">if</span> <span class="p">(</span><span class="nx">header</span><span class="p">.</span><span class="nx">dataset</span><span class="p">.</span><span class="nx">sortable</span> <span class="o">!==</span> <span class="dl">"</span><span class="s2">false</span><span class="dl">"</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">header</span><span class="p">.</span><span class="nx">setAttribute</span><span class="p">(</span><span class="dl">"</span><span class="s2">tabindex</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">0</span><span class="dl">"</span><span class="p">);</span>
+        <span class="nx">header</span><span class="p">.</span><span class="nx">setAttribute</span><span class="p">(</span><span class="dl">"</span><span class="s2">aria-sort</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">none</span><span class="dl">"</span><span class="p">);</span>
+
+        <span class="nx">header</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="dl">"</span><span class="s2">click</span><span class="dl">"</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+          <span class="k">this</span><span class="p">.</span><span class="nx">sortByColumn</span><span class="p">(</span><span class="nx">index</span><span class="p">);</span>
+        <span class="p">});</span>
+
+        <span class="nx">header</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="dl">"</span><span class="s2">keydown</span><span class="dl">"</span><span class="p">,</span> <span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+          <span class="k">if</span> <span class="p">(</span><span class="nx">e</span><span class="p">.</span><span class="nx">key</span> <span class="o">===</span> <span class="dl">"</span><span class="s2">Enter</span><span class="dl">"</span> <span class="o">||</span> <span class="nx">e</span><span class="p">.</span><span class="nx">key</span> <span class="o">===</span> <span class="dl">"</span><span class="s2"> </span><span class="dl">"</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nx">e</span><span class="p">.</span><span class="nx">preventDefault</span><span class="p">();</span>
+            <span class="k">this</span><span class="p">.</span><span class="nx">sortByColumn</span><span class="p">(</span><span class="nx">index</span><span class="p">);</span>
+          <span class="p">}</span>
+        <span class="p">});</span>
+      <span class="p">}</span>
+    <span class="p">});</span>
+  <span class="p">}</span>
+
+  <span class="nx">setupKeyboardNavigation</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="nx">rows</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">table</span><span class="p">.</span><span class="nx">querySelectorAll</span><span class="p">(</span><span class="dl">"</span><span class="s2">tbody tr</span><span class="dl">"</span><span class="p">);</span>
+
+    <span class="nx">rows</span><span class="p">.</span><span class="nx">forEach</span><span class="p">((</span><span class="nx">row</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+      <span class="nx">row</span><span class="p">.</span><span class="nx">setAttribute</span><span class="p">(</span><span class="dl">"</span><span class="s2">role</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">row</span><span class="dl">"</span><span class="p">);</span>
+      <span class="nx">row</span><span class="p">.</span><span class="nx">setAttribute</span><span class="p">(</span><span class="dl">"</span><span class="s2">tabindex</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">0</span><span class="dl">"</span><span class="p">);</span>
+
+      <span class="kd">const</span> <span class="nx">cells</span> <span class="o">=</span> <span class="nx">row</span><span class="p">.</span><span class="nx">querySelectorAll</span><span class="p">(</span><span class="dl">"</span><span class="s2">td</span><span class="dl">"</span><span class="p">);</span>
+      <span class="nx">cells</span><span class="p">.</span><span class="nx">forEach</span><span class="p">((</span><span class="nx">cell</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+        <span class="nx">cell</span><span class="p">.</span><span class="nx">setAttribute</span><span class="p">(</span><span class="dl">"</span><span class="s2">role</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">cell</span><span class="dl">"</span><span class="p">);</span>
+      <span class="p">});</span>
+
+      <span class="c1">// Add keyboard navigation</span>
+      <span class="nx">row</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="dl">"</span><span class="s2">keydown</span><span class="dl">"</span><span class="p">,</span> <span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">handleRowKeyDown</span><span class="p">(</span><span class="nx">e</span><span class="p">,</span> <span class="nx">row</span><span class="p">);</span>
+      <span class="p">});</span>
+    <span class="p">});</span>
+  <span class="p">}</span>
+
+  <span class="nx">handleRowKeyDown</span><span class="p">(</span><span class="nx">event</span><span class="p">,</span> <span class="nx">row</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="nx">rows</span> <span class="o">=</span> <span class="nb">Array</span><span class="p">.</span><span class="k">from</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">table</span><span class="p">.</span><span class="nx">querySelectorAll</span><span class="p">(</span><span class="dl">"</span><span class="s2">tbody tr</span><span class="dl">"</span><span class="p">));</span>
+    <span class="kd">const</span> <span class="nx">currentIndex</span> <span class="o">=</span> <span class="nx">rows</span><span class="p">.</span><span class="nx">indexOf</span><span class="p">(</span><span class="nx">row</span><span class="p">);</span>
+
+    <span class="k">switch</span> <span class="p">(</span><span class="nx">event</span><span class="p">.</span><span class="nx">key</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">case</span> <span class="dl">"</span><span class="s2">ArrowDown</span><span class="dl">"</span><span class="p">:</span>
+        <span class="nx">event</span><span class="p">.</span><span class="nx">preventDefault</span><span class="p">();</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nx">currentIndex</span> <span class="o">&lt;</span> <span class="nx">rows</span><span class="p">.</span><span class="nx">length</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+          <span class="nx">rows</span><span class="p">[</span><span class="nx">currentIndex</span> <span class="o">+</span> <span class="mi">1</span><span class="p">].</span><span class="nx">focus</span><span class="p">();</span>
+        <span class="p">}</span>
+        <span class="k">break</span><span class="p">;</span>
+
+      <span class="k">case</span> <span class="dl">"</span><span class="s2">ArrowUp</span><span class="dl">"</span><span class="p">:</span>
+        <span class="nx">event</span><span class="p">.</span><span class="nx">preventDefault</span><span class="p">();</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nx">currentIndex</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+          <span class="nx">rows</span><span class="p">[</span><span class="nx">currentIndex</span> <span class="o">-</span> <span class="mi">1</span><span class="p">].</span><span class="nx">focus</span><span class="p">();</span>
+        <span class="p">}</span>
+        <span class="k">break</span><span class="p">;</span>
+
+      <span class="k">case</span> <span class="dl">"</span><span class="s2">Enter</span><span class="dl">"</span><span class="p">:</span>
+        <span class="nx">event</span><span class="p">.</span><span class="nx">preventDefault</span><span class="p">();</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">handleRowActivation</span><span class="p">(</span><span class="nx">row</span><span class="p">);</span>
+        <span class="k">break</span><span class="p">;</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+
+  <span class="nx">sortByColumn</span><span class="p">(</span><span class="nx">columnIndex</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="nx">headers</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">table</span><span class="p">.</span><span class="nx">querySelectorAll</span><span class="p">(</span><span class="dl">"</span><span class="s2">th</span><span class="dl">"</span><span class="p">);</span>
+    <span class="kd">const</span> <span class="nx">header</span> <span class="o">=</span> <span class="nx">headers</span><span class="p">[</span><span class="nx">columnIndex</span><span class="p">];</span>
+
+    <span class="c1">// Update sort direction</span>
+    <span class="k">if</span> <span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">currentSort</span><span class="p">.</span><span class="nx">column</span> <span class="o">===</span> <span class="nx">columnIndex</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">this</span><span class="p">.</span><span class="nx">currentSort</span><span class="p">.</span><span class="nx">direction</span> <span class="o">=</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">currentSort</span><span class="p">.</span><span class="nx">direction</span> <span class="o">===</span> <span class="dl">"</span><span class="s2">asc</span><span class="dl">"</span> <span class="p">?</span> <span class="dl">"</span><span class="s2">desc</span><span class="dl">"</span> <span class="p">:</span> <span class="dl">"</span><span class="s2">asc</span><span class="dl">"</span><span class="p">;</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+      <span class="k">this</span><span class="p">.</span><span class="nx">currentSort</span><span class="p">.</span><span class="nx">column</span> <span class="o">=</span> <span class="nx">columnIndex</span><span class="p">;</span>
+      <span class="k">this</span><span class="p">.</span><span class="nx">currentSort</span><span class="p">.</span><span class="nx">direction</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">asc</span><span class="dl">"</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="c1">// Update header attributes</span>
+    <span class="nx">headers</span><span class="p">.</span><span class="nx">forEach</span><span class="p">((</span><span class="nx">h</span><span class="p">,</span> <span class="nx">i</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+      <span class="k">if</span> <span class="p">(</span><span class="nx">i</span> <span class="o">===</span> <span class="nx">columnIndex</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">h</span><span class="p">.</span><span class="nx">setAttribute</span><span class="p">(</span><span class="dl">"</span><span class="s2">aria-sort</span><span class="dl">"</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">currentSort</span><span class="p">.</span><span class="nx">direction</span><span class="p">);</span>
+      <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="nx">h</span><span class="p">.</span><span class="nx">setAttribute</span><span class="p">(</span><span class="dl">"</span><span class="s2">aria-sort</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">none</span><span class="dl">"</span><span class="p">);</span>
+      <span class="p">}</span>
+    <span class="p">});</span>
+
+    <span class="c1">// Sort data</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">sortData</span><span class="p">();</span>
+
+    <span class="c1">// Announce sort change</span>
+    <span class="kd">const</span> <span class="nx">columnName</span> <span class="o">=</span> <span class="nx">header</span><span class="p">.</span><span class="nx">textContent</span><span class="p">;</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">announce</span><span class="p">(</span>
+      <span class="s2">`Table sorted by </span><span class="p">${</span><span class="nx">columnName</span><span class="p">}</span><span class="s2">, </span><span class="p">${</span><span class="k">this</span><span class="p">.</span><span class="nx">currentSort</span><span class="p">.</span><span class="nx">direction</span><span class="p">}</span><span class="s2">ending`</span>
+    <span class="p">);</span>
+  <span class="p">}</span>
+
+  <span class="nx">sortData</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="nx">tbody</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">table</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="dl">"</span><span class="s2">tbody</span><span class="dl">"</span><span class="p">);</span>
+    <span class="kd">const</span> <span class="nx">rows</span> <span class="o">=</span> <span class="nb">Array</span><span class="p">.</span><span class="k">from</span><span class="p">(</span><span class="nx">tbody</span><span class="p">.</span><span class="nx">querySelectorAll</span><span class="p">(</span><span class="dl">"</span><span class="s2">tr</span><span class="dl">"</span><span class="p">));</span>
+
+    <span class="nx">rows</span><span class="p">.</span><span class="nx">sort</span><span class="p">((</span><span class="nx">a</span><span class="p">,</span> <span class="nx">b</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+      <span class="kd">const</span> <span class="nx">aValue</span> <span class="o">=</span> <span class="nx">a</span><span class="p">.</span><span class="nx">cells</span><span class="p">[</span><span class="k">this</span><span class="p">.</span><span class="nx">currentSort</span><span class="p">.</span><span class="nx">column</span><span class="p">].</span><span class="nx">textContent</span><span class="p">;</span>
+      <span class="kd">const</span> <span class="nx">bValue</span> <span class="o">=</span> <span class="nx">b</span><span class="p">.</span><span class="nx">cells</span><span class="p">[</span><span class="k">this</span><span class="p">.</span><span class="nx">currentSort</span><span class="p">.</span><span class="nx">column</span><span class="p">].</span><span class="nx">textContent</span><span class="p">;</span>
+
+      <span class="k">if</span> <span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">currentSort</span><span class="p">.</span><span class="nx">direction</span> <span class="o">===</span> <span class="dl">"</span><span class="s2">asc</span><span class="dl">"</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="nx">aValue</span><span class="p">.</span><span class="nx">localeCompare</span><span class="p">(</span><span class="nx">bValue</span><span class="p">);</span>
+      <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="nx">bValue</span><span class="p">.</span><span class="nx">localeCompare</span><span class="p">(</span><span class="nx">aValue</span><span class="p">);</span>
+      <span class="p">}</span>
+    <span class="p">});</span>
+
+    <span class="c1">// Reorder DOM</span>
+    <span class="nx">rows</span><span class="p">.</span><span class="nx">forEach</span><span class="p">((</span><span class="nx">row</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">tbody</span><span class="p">.</span><span class="nx">appendChild</span><span class="p">(</span><span class="nx">row</span><span class="p">));</span>
+  <span class="p">}</span>
+
+  <span class="nx">filterData</span><span class="p">(</span><span class="nx">query</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">currentFilter</span> <span class="o">=</span> <span class="nx">query</span><span class="p">.</span><span class="nx">toLowerCase</span><span class="p">();</span>
+    <span class="kd">const</span> <span class="nx">rows</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">table</span><span class="p">.</span><span class="nx">querySelectorAll</span><span class="p">(</span><span class="dl">"</span><span class="s2">tbody tr</span><span class="dl">"</span><span class="p">);</span>
+    <span class="kd">let</span> <span class="nx">visibleCount</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+
+    <span class="nx">rows</span><span class="p">.</span><span class="nx">forEach</span><span class="p">((</span><span class="nx">row</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+      <span class="kd">const</span> <span class="nx">text</span> <span class="o">=</span> <span class="nx">row</span><span class="p">.</span><span class="nx">textContent</span><span class="p">.</span><span class="nx">toLowerCase</span><span class="p">();</span>
+      <span class="kd">const</span> <span class="nx">isVisible</span> <span class="o">=</span> <span class="nx">text</span><span class="p">.</span><span class="nx">includes</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">currentFilter</span><span class="p">);</span>
+
+      <span class="nx">row</span><span class="p">.</span><span class="nx">style</span><span class="p">.</span><span class="nx">display</span> <span class="o">=</span> <span class="nx">isVisible</span> <span class="p">?</span> <span class="dl">""</span> <span class="p">:</span> <span class="dl">"</span><span class="s2">none</span><span class="dl">"</span><span class="p">;</span>
+      <span class="nx">row</span><span class="p">.</span><span class="nx">setAttribute</span><span class="p">(</span><span class="dl">"</span><span class="s2">aria-hidden</span><span class="dl">"</span><span class="p">,</span> <span class="o">!</span><span class="nx">isVisible</span><span class="p">);</span>
+
+      <span class="k">if</span> <span class="p">(</span><span class="nx">isVisible</span><span class="p">)</span> <span class="nx">visibleCount</span><span class="o">++</span><span class="p">;</span>
+    <span class="p">});</span>
+
+    <span class="c1">// Update table summary</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">updateTableSummary</span><span class="p">(</span><span class="nx">visibleCount</span><span class="p">,</span> <span class="nx">rows</span><span class="p">.</span><span class="nx">length</span><span class="p">);</span>
+  <span class="p">}</span>
+
+  <span class="nx">updateTableSummary</span><span class="p">(</span><span class="nx">visible</span><span class="p">,</span> <span class="nx">total</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">let</span> <span class="nx">summary</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">table</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="dl">"</span><span class="s2">[data-table-summary]</span><span class="dl">"</span><span class="p">);</span>
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">summary</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">summary</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="dl">"</span><span class="s2">div</span><span class="dl">"</span><span class="p">);</span>
+      <span class="nx">summary</span><span class="p">.</span><span class="nx">setAttribute</span><span class="p">(</span><span class="dl">"</span><span class="s2">data-table-summary</span><span class="dl">"</span><span class="p">,</span> <span class="dl">""</span><span class="p">);</span>
+      <span class="nx">summary</span><span class="p">.</span><span class="nx">setAttribute</span><span class="p">(</span><span class="dl">"</span><span class="s2">aria-live</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">polite</span><span class="dl">"</span><span class="p">);</span>
+      <span class="k">this</span><span class="p">.</span><span class="nx">table</span><span class="p">.</span><span class="nx">parentNode</span><span class="p">.</span><span class="nx">insertBefore</span><span class="p">(</span><span class="nx">summary</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">table</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="nx">summary</span><span class="p">.</span><span class="nx">textContent</span> <span class="o">=</span> <span class="s2">`Showing </span><span class="p">${</span><span class="nx">visible</span><span class="p">}</span><span class="s2"> of </span><span class="p">${</span><span class="nx">total</span><span class="p">}</span><span class="s2"> rows`</span><span class="p">;</span>
+  <span class="p">}</span>
+
+  <span class="nx">handleRowActivation</span><span class="p">(</span><span class="nx">row</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// Handle row click/activation</span>
+    <span class="kd">const</span> <span class="nx">event</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">CustomEvent</span><span class="p">(</span><span class="dl">"</span><span class="s2">rowActivate</span><span class="dl">"</span><span class="p">,</span> <span class="p">{</span>
+      <span class="na">detail</span><span class="p">:</span> <span class="p">{</span> <span class="nx">row</span><span class="p">,</span> <span class="na">data</span><span class="p">:</span> <span class="k">this</span><span class="p">.</span><span class="nx">getRowData</span><span class="p">(</span><span class="nx">row</span><span class="p">)</span> <span class="p">},</span>
+    <span class="p">});</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">table</span><span class="p">.</span><span class="nx">dispatchEvent</span><span class="p">(</span><span class="nx">event</span><span class="p">);</span>
+  <span class="p">}</span>
+
+  <span class="nx">getRowData</span><span class="p">(</span><span class="nx">row</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="nx">cells</span> <span class="o">=</span> <span class="nx">row</span><span class="p">.</span><span class="nx">querySelectorAll</span><span class="p">(</span><span class="dl">"</span><span class="s2">td</span><span class="dl">"</span><span class="p">);</span>
+    <span class="k">return</span> <span class="nb">Array</span><span class="p">.</span><span class="k">from</span><span class="p">(</span><span class="nx">cells</span><span class="p">).</span><span class="nx">map</span><span class="p">((</span><span class="nx">cell</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">cell</span><span class="p">.</span><span class="nx">textContent</span><span class="p">);</span>
+  <span class="p">}</span>
+
+  <span class="nx">announce</span><span class="p">(</span><span class="nx">message</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// Create or use existing live region</span>
+    <span class="kd">let</span> <span class="nx">liveRegion</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="dl">"</span><span class="s2">table-live-region</span><span class="dl">"</span><span class="p">);</span>
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">liveRegion</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">liveRegion</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="dl">"</span><span class="s2">div</span><span class="dl">"</span><span class="p">);</span>
+      <span class="nx">liveRegion</span><span class="p">.</span><span class="nx">id</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">table-live-region</span><span class="dl">"</span><span class="p">;</span>
+      <span class="nx">liveRegion</span><span class="p">.</span><span class="nx">setAttribute</span><span class="p">(</span><span class="dl">"</span><span class="s2">aria-live</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">polite</span><span class="dl">"</span><span class="p">);</span>
+      <span class="nx">liveRegion</span><span class="p">.</span><span class="nx">setAttribute</span><span class="p">(</span><span class="dl">"</span><span class="s2">aria-atomic</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">true</span><span class="dl">"</span><span class="p">);</span>
+      <span class="nx">liveRegion</span><span class="p">.</span><span class="nx">className</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">sr-only</span><span class="dl">"</span><span class="p">;</span>
+      <span class="nb">document</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">appendChild</span><span class="p">(</span><span class="nx">liveRegion</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="nx">liveRegion</span><span class="p">.</span><span class="nx">textContent</span> <span class="o">=</span> <span class="nx">message</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<hr />
+
+<h1 id="deep-dive-accessibility-in-react-js-html-and-networking">Deep Dive: Accessibility in React, JS, HTML, and Networking</h1>
+
+<h2 id="react-accessibility-fundamentals">React Accessibility Fundamentals</h2>
+
+<ul>
+  <li><strong>Accessible Components</strong>: Use semantic elements (<code class="language-plaintext highlighter-rouge">&lt;button&gt;</code>, <code class="language-plaintext highlighter-rouge">&lt;nav&gt;</code>, <code class="language-plaintext highlighter-rouge">&lt;form&gt;</code>) and ARIA roles only when necessary.</li>
+  <li><strong>Focus Management</strong>: Use <code class="language-plaintext highlighter-rouge">useRef</code> and <code class="language-plaintext highlighter-rouge">useEffect</code> to manage focus for modals, dialogs, and dynamic content.</li>
+  <li><strong>Keyboard Navigation</strong>: Ensure all interactive elements are keyboard accessible (tab, arrow keys, Enter, Space).</li>
+  <li><strong>Error Announcements</strong>: Use ARIA live regions for form validation and dynamic updates.</li>
+</ul>
+
+<p><strong>Example: Accessible Modal in React</strong></p>
+
+<div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+</pre></td><td class="rouge-code"><pre><span class="k">import</span> <span class="p">{</span> <span class="nx">useRef</span><span class="p">,</span> <span class="nx">useEffect</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">react</span><span class="dl">"</span><span class="p">;</span>
+
+<span class="kd">function</span> <span class="nx">AccessibleModal</span><span class="p">({</span> <span class="nx">isOpen</span><span class="p">,</span> <span class="nx">onClose</span><span class="p">,</span> <span class="nx">children</span> <span class="p">})</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="nx">modalRef</span> <span class="o">=</span> <span class="nx">useRef</span><span class="p">();</span>
+
+  <span class="nx">useEffect</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">isOpen</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">modalRef</span><span class="p">.</span><span class="nx">current</span><span class="p">.</span><span class="nx">focus</span><span class="p">();</span>
+    <span class="p">}</span>
+  <span class="p">},</span> <span class="p">[</span><span class="nx">isOpen</span><span class="p">]);</span>
+
+  <span class="k">return</span> <span class="p">(</span>
+    <span class="p">&lt;</span><span class="nt">div</span>
+      <span class="na">ref</span><span class="p">=</span><span class="si">{</span><span class="nx">modalRef</span><span class="si">}</span>
+      <span class="na">role</span><span class="p">=</span><span class="s">"dialog"</span>
+      <span class="na">aria-modal</span><span class="p">=</span><span class="s">"true"</span>
+      <span class="na">tabIndex</span><span class="p">=</span><span class="s">"-1"</span>
+      <span class="na">style</span><span class="p">=</span><span class="si">{</span><span class="p">{</span> <span class="na">display</span><span class="p">:</span> <span class="nx">isOpen</span> <span class="p">?</span> <span class="dl">"</span><span class="s2">block</span><span class="dl">"</span> <span class="p">:</span> <span class="dl">"</span><span class="s2">none</span><span class="dl">"</span> <span class="p">}</span><span class="si">}</span>
+    <span class="p">&gt;</span>
+      <span class="p">&lt;</span><span class="nt">button</span> <span class="na">onClick</span><span class="p">=</span><span class="si">{</span><span class="nx">onClose</span><span class="si">}</span> <span class="na">aria-label</span><span class="p">=</span><span class="s">"Close modal"</span><span class="p">&gt;</span>
+        <span class="ni">&amp;times;</span>
+      <span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
+      <span class="si">{</span><span class="nx">children</span><span class="si">}</span>
+    <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+  <span class="p">);</span>
+<span class="p">}</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<hr />
+
+<h2 id="javascript-accessibility-patterns">JavaScript Accessibility Patterns</h2>
+
+<ul>
+  <li><strong>Event Delegation</strong>: Use event delegation for dynamic lists and menus to ensure keyboard and screen reader support.</li>
+  <li><strong>ARIA Attributes</strong>: Dynamically update ARIA attributes for stateful components (e.g., <code class="language-plaintext highlighter-rouge">aria-expanded</code>, <code class="language-plaintext highlighter-rouge">aria-selected</code>).</li>
+  <li><strong>Live Regions</strong>: Use ARIA live regions for notifications and status updates.</li>
+</ul>
+
+<p><strong>Example: Announcing Dynamic Updates</strong></p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+</pre></td><td class="rouge-code"><pre><span class="kd">function</span> <span class="nx">announce</span><span class="p">(</span><span class="nx">message</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kd">let</span> <span class="nx">liveRegion</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="dl">"</span><span class="s2">live-region</span><span class="dl">"</span><span class="p">);</span>
+  <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">liveRegion</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">liveRegion</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="dl">"</span><span class="s2">div</span><span class="dl">"</span><span class="p">);</span>
+    <span class="nx">liveRegion</span><span class="p">.</span><span class="nx">id</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">live-region</span><span class="dl">"</span><span class="p">;</span>
+    <span class="nx">liveRegion</span><span class="p">.</span><span class="nx">setAttribute</span><span class="p">(</span><span class="dl">"</span><span class="s2">aria-live</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">polite</span><span class="dl">"</span><span class="p">);</span>
+    <span class="nx">liveRegion</span><span class="p">.</span><span class="nx">className</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">sr-only</span><span class="dl">"</span><span class="p">;</span>
+    <span class="nb">document</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">appendChild</span><span class="p">(</span><span class="nx">liveRegion</span><span class="p">);</span>
+  <span class="p">}</span>
+  <span class="nx">liveRegion</span><span class="p">.</span><span class="nx">textContent</span> <span class="o">=</span> <span class="nx">message</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<hr />
+
+<h2 id="html-accessibility-best-practices">HTML Accessibility Best Practices</h2>
+
+<ul>
+  <li><strong>Landmarks</strong>: Use <code class="language-plaintext highlighter-rouge">&lt;header&gt;</code>, <code class="language-plaintext highlighter-rouge">&lt;nav&gt;</code>, <code class="language-plaintext highlighter-rouge">&lt;main&gt;</code>, <code class="language-plaintext highlighter-rouge">&lt;footer&gt;</code> for page structure.</li>
+  <li><strong>Form Labels</strong>: Always associate <code class="language-plaintext highlighter-rouge">&lt;label&gt;</code> with <code class="language-plaintext highlighter-rouge">&lt;input&gt;</code> using <code class="language-plaintext highlighter-rouge">for</code> and <code class="language-plaintext highlighter-rouge">id</code>.</li>
+  <li><strong>Table Accessibility</strong>: Use <code class="language-plaintext highlighter-rouge">&lt;th scope="col"&gt;</code> and <code class="language-plaintext highlighter-rouge">&lt;caption&gt;</code> for data tables.</li>
+</ul>
+
+<p><strong>Diagram: Semantic HTML Structure</strong></p>
+
+<pre><code class="language-mermaid">graph TD;
+  A[&lt;header&gt;] --&gt; B[&lt;nav&gt;];
+  A --&gt; C[&lt;main&gt;];
+  C --&gt; D[&lt;section&gt;];
+  C --&gt; E[&lt;article&gt;];
+  C --&gt; F[&lt;aside&gt;];
+  A --&gt; G[&lt;footer&gt;];
+</code></pre>
+
+<hr />
+
+<h2 id="networking--accessibility">Networking &amp; Accessibility</h2>
+
+<ul>
+  <li><strong>Error Handling</strong>: Show accessible error messages for failed network requests.</li>
+  <li><strong>Loading States</strong>: Use ARIA live regions to announce loading and completion.</li>
+  <li><strong>Progress Indicators</strong>: Use <code class="language-plaintext highlighter-rouge">role="progressbar"</code> and update <code class="language-plaintext highlighter-rouge">aria-valuenow</code>.</li>
+</ul>
+
+<p><strong>Example: Accessible Fetch with Error Announcement</strong></p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+</pre></td><td class="rouge-code"><pre><span class="k">async</span> <span class="kd">function</span> <span class="nx">fetchData</span><span class="p">(</span><span class="nx">url</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">try</span> <span class="p">{</span>
+    <span class="nx">announce</span><span class="p">(</span><span class="dl">"</span><span class="s2">Loading data...</span><span class="dl">"</span><span class="p">);</span>
+    <span class="kd">const</span> <span class="nx">response</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">fetch</span><span class="p">(</span><span class="nx">url</span><span class="p">);</span>
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">response</span><span class="p">.</span><span class="nx">ok</span><span class="p">)</span> <span class="k">throw</span> <span class="k">new</span> <span class="nb">Error</span><span class="p">(</span><span class="dl">"</span><span class="s2">Network error</span><span class="dl">"</span><span class="p">);</span>
+    <span class="nx">announce</span><span class="p">(</span><span class="dl">"</span><span class="s2">Data loaded successfully</span><span class="dl">"</span><span class="p">);</span>
+    <span class="k">return</span> <span class="k">await</span> <span class="nx">response</span><span class="p">.</span><span class="nx">json</span><span class="p">();</span>
+  <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">announce</span><span class="p">(</span><span class="dl">"</span><span class="s2">Error loading data: </span><span class="dl">"</span> <span class="o">+</span> <span class="nx">error</span><span class="p">.</span><span class="nx">message</span><span class="p">);</span>
+    <span class="k">throw</span> <span class="nx">error</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<hr />
+
+<h1 id="practice-problems--deep-dive-answers">Practice Problems &amp; Deep Dive Answers</h1>
+
+<h2 id="problem-1-accessible-custom-dropdown-react">Problem 1: Accessible Custom Dropdown (React)</h2>
+
+<p><strong>Challenge:</strong> Build a dropdown that is fully accessible (keyboard, ARIA, focus management).</p>
+
+<p><strong>Solution Outline:</strong></p>
+
+<ul>
+  <li>Use <code class="language-plaintext highlighter-rouge">role="button"</code> for the trigger, <code class="language-plaintext highlighter-rouge">aria-haspopup</code>, <code class="language-plaintext highlighter-rouge">aria-expanded</code>.</li>
+  <li>Use <code class="language-plaintext highlighter-rouge">role="menu"</code> and <code class="language-plaintext highlighter-rouge">role="menuitem"</code> for the dropdown and items.</li>
+  <li>Manage focus with refs and keyboard events.</li>
+</ul>
+
+<p><strong>Sample Implementation:</strong></p>
+
+<div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+</pre></td><td class="rouge-code"><pre><span class="kd">function</span> <span class="nx">AccessibleDropdown</span><span class="p">({</span> <span class="nx">options</span><span class="p">,</span> <span class="nx">onSelect</span> <span class="p">})</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="p">[</span><span class="nx">open</span><span class="p">,</span> <span class="nx">setOpen</span><span class="p">]</span> <span class="o">=</span> <span class="nx">useState</span><span class="p">(</span><span class="kc">false</span><span class="p">);</span>
+  <span class="kd">const</span> <span class="p">[</span><span class="nx">focused</span><span class="p">,</span> <span class="nx">setFocused</span><span class="p">]</span> <span class="o">=</span> <span class="nx">useState</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+  <span class="kd">const</span> <span class="nx">triggerRef</span> <span class="o">=</span> <span class="nx">useRef</span><span class="p">();</span>
+  <span class="kd">const</span> <span class="nx">menuRef</span> <span class="o">=</span> <span class="nx">useRef</span><span class="p">();</span>
+
+  <span class="nx">useEffect</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">open</span> <span class="o">&amp;&amp;</span> <span class="nx">menuRef</span><span class="p">.</span><span class="nx">current</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">menuRef</span><span class="p">.</span><span class="nx">current</span><span class="p">.</span><span class="nx">children</span><span class="p">[</span><span class="nx">focused</span><span class="p">]?.</span><span class="nx">focus</span><span class="p">();</span>
+    <span class="p">}</span>
+  <span class="p">},</span> <span class="p">[</span><span class="nx">open</span><span class="p">,</span> <span class="nx">focused</span><span class="p">]);</span>
+
+  <span class="k">return</span> <span class="p">(</span>
+    <span class="p">&lt;</span><span class="nt">div</span><span class="p">&gt;</span>
+      <span class="p">&lt;</span><span class="nt">button</span>
+        <span class="na">ref</span><span class="p">=</span><span class="si">{</span><span class="nx">triggerRef</span><span class="si">}</span>
+        <span class="na">aria-haspopup</span><span class="p">=</span><span class="s">"true"</span>
+        <span class="na">aria-expanded</span><span class="p">=</span><span class="si">{</span><span class="nx">open</span><span class="si">}</span>
+        <span class="na">onClick</span><span class="p">=</span><span class="si">{</span><span class="p">()</span> <span class="o">=&gt;</span> <span class="nx">setOpen</span><span class="p">((</span><span class="nx">v</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="o">!</span><span class="nx">v</span><span class="p">)</span><span class="si">}</span>
+        <span class="na">onKeyDown</span><span class="p">=</span><span class="si">{</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+          <span class="k">if</span> <span class="p">(</span><span class="nx">e</span><span class="p">.</span><span class="nx">key</span> <span class="o">===</span> <span class="dl">"</span><span class="s2">ArrowDown</span><span class="dl">"</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nx">setOpen</span><span class="p">(</span><span class="kc">true</span><span class="p">);</span>
+            <span class="nx">setFocused</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+          <span class="p">}</span>
+        <span class="p">}</span><span class="si">}</span>
+      <span class="p">&gt;</span>
+        Select option
+      <span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
+      <span class="si">{</span><span class="nx">open</span> <span class="o">&amp;&amp;</span> <span class="p">(</span>
+        <span class="p">&lt;</span><span class="nt">ul</span>
+          <span class="na">ref</span><span class="p">=</span><span class="si">{</span><span class="nx">menuRef</span><span class="si">}</span>
+          <span class="na">role</span><span class="p">=</span><span class="s">"menu"</span>
+          <span class="na">tabIndex</span><span class="p">=</span><span class="s">"-1"</span>
+          <span class="na">style</span><span class="p">=</span><span class="si">{</span><span class="p">{</span> <span class="na">border</span><span class="p">:</span> <span class="dl">"</span><span class="s2">1px solid #ccc</span><span class="dl">"</span><span class="p">,</span> <span class="na">padding</span><span class="p">:</span> <span class="mi">0</span> <span class="p">}</span><span class="si">}</span>
+        <span class="p">&gt;</span>
+          <span class="si">{</span><span class="nx">options</span><span class="p">.</span><span class="nx">map</span><span class="p">((</span><span class="nx">opt</span><span class="p">,</span> <span class="nx">i</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">(</span>
+            <span class="p">&lt;</span><span class="nt">li</span>
+              <span class="na">key</span><span class="p">=</span><span class="si">{</span><span class="nx">opt</span><span class="si">}</span>
+              <span class="na">role</span><span class="p">=</span><span class="s">"menuitem"</span>
+              <span class="na">tabIndex</span><span class="p">=</span><span class="si">{</span><span class="o">-</span><span class="mi">1</span><span class="si">}</span>
+              <span class="na">onClick</span><span class="p">=</span><span class="si">{</span><span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+                <span class="nx">onSelect</span><span class="p">(</span><span class="nx">opt</span><span class="p">);</span>
+                <span class="nx">setOpen</span><span class="p">(</span><span class="kc">false</span><span class="p">);</span>
+              <span class="p">}</span><span class="si">}</span>
+              <span class="na">onKeyDown</span><span class="p">=</span><span class="si">{</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+                <span class="k">if</span> <span class="p">(</span><span class="nx">e</span><span class="p">.</span><span class="nx">key</span> <span class="o">===</span> <span class="dl">"</span><span class="s2">ArrowDown</span><span class="dl">"</span><span class="p">)</span>
+                  <span class="nx">setFocused</span><span class="p">((</span><span class="nx">f</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">(</span><span class="nx">f</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">%</span> <span class="nx">options</span><span class="p">.</span><span class="nx">length</span><span class="p">);</span>
+                <span class="k">if</span> <span class="p">(</span><span class="nx">e</span><span class="p">.</span><span class="nx">key</span> <span class="o">===</span> <span class="dl">"</span><span class="s2">ArrowUp</span><span class="dl">"</span><span class="p">)</span>
+                  <span class="nx">setFocused</span><span class="p">((</span><span class="nx">f</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">(</span><span class="nx">f</span> <span class="o">-</span> <span class="mi">1</span> <span class="o">+</span> <span class="nx">options</span><span class="p">.</span><span class="nx">length</span><span class="p">)</span> <span class="o">%</span> <span class="nx">options</span><span class="p">.</span><span class="nx">length</span><span class="p">);</span>
+                <span class="k">if</span> <span class="p">(</span><span class="nx">e</span><span class="p">.</span><span class="nx">key</span> <span class="o">===</span> <span class="dl">"</span><span class="s2">Enter</span><span class="dl">"</span><span class="p">)</span> <span class="p">{</span>
+                  <span class="nx">onSelect</span><span class="p">(</span><span class="nx">opt</span><span class="p">);</span>
+                  <span class="nx">setOpen</span><span class="p">(</span><span class="kc">false</span><span class="p">);</span>
+                <span class="p">}</span>
+                <span class="k">if</span> <span class="p">(</span><span class="nx">e</span><span class="p">.</span><span class="nx">key</span> <span class="o">===</span> <span class="dl">"</span><span class="s2">Escape</span><span class="dl">"</span><span class="p">)</span> <span class="nx">setOpen</span><span class="p">(</span><span class="kc">false</span><span class="p">);</span>
+              <span class="p">}</span><span class="si">}</span>
+            <span class="p">&gt;</span>
+              <span class="si">{</span><span class="nx">opt</span><span class="si">}</span>
+            <span class="p">&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+          <span class="p">))</span><span class="si">}</span>
+        <span class="p">&lt;/</span><span class="nt">ul</span><span class="p">&gt;</span>
+      <span class="p">)</span><span class="si">}</span>
+    <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+  <span class="p">);</span>
+<span class="p">}</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<h2 id="problem-2-accessible-error-handling-in-forms">Problem 2: Accessible Error Handling in Forms</h2>
+
+<p><strong>Challenge:</strong> Announce errors and focus the first invalid field.</p>
+
+<p><strong>Solution:</strong></p>
+
+<ul>
+  <li>Use ARIA live regions for error messages.</li>
+  <li>Use <code class="language-plaintext highlighter-rouge">aria-invalid</code> and <code class="language-plaintext highlighter-rouge">aria-describedby</code> on invalid fields.</li>
+  <li>Focus the first invalid field on submit.</li>
+</ul>
+
+<p><strong>Sample Implementation:</strong></p>
+
+<div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+</pre></td><td class="rouge-code"><pre><span class="kd">function</span> <span class="nx">AccessibleForm</span><span class="p">()</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="p">[</span><span class="nx">errors</span><span class="p">,</span> <span class="nx">setErrors</span><span class="p">]</span> <span class="o">=</span> <span class="nx">useState</span><span class="p">({});</span>
+  <span class="kd">const</span> <span class="nx">liveRef</span> <span class="o">=</span> <span class="nx">useRef</span><span class="p">();</span>
+
+  <span class="kd">function</span> <span class="nx">handleSubmit</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">e</span><span class="p">.</span><span class="nx">preventDefault</span><span class="p">();</span>
+    <span class="kd">const</span> <span class="nx">form</span> <span class="o">=</span> <span class="nx">e</span><span class="p">.</span><span class="nx">target</span><span class="p">;</span>
+    <span class="kd">const</span> <span class="nx">username</span> <span class="o">=</span> <span class="nx">form</span><span class="p">.</span><span class="nx">username</span><span class="p">.</span><span class="nx">value</span><span class="p">.</span><span class="nx">trim</span><span class="p">();</span>
+    <span class="kd">const</span> <span class="nx">password</span> <span class="o">=</span> <span class="nx">form</span><span class="p">.</span><span class="nx">password</span><span class="p">.</span><span class="nx">value</span><span class="p">.</span><span class="nx">trim</span><span class="p">();</span>
+    <span class="kd">const</span> <span class="nx">newErrors</span> <span class="o">=</span> <span class="p">{};</span>
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">username</span><span class="p">)</span> <span class="nx">newErrors</span><span class="p">.</span><span class="nx">username</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">Username required</span><span class="dl">"</span><span class="p">;</span>
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">password</span><span class="p">)</span> <span class="nx">newErrors</span><span class="p">.</span><span class="nx">password</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">Password required</span><span class="dl">"</span><span class="p">;</span>
+    <span class="nx">setErrors</span><span class="p">(</span><span class="nx">newErrors</span><span class="p">);</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nb">Object</span><span class="p">.</span><span class="nx">keys</span><span class="p">(</span><span class="nx">newErrors</span><span class="p">).</span><span class="nx">length</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">liveRef</span><span class="p">.</span><span class="nx">current</span><span class="p">.</span><span class="nx">textContent</span> <span class="o">=</span> <span class="nb">Object</span><span class="p">.</span><span class="nx">values</span><span class="p">(</span><span class="nx">newErrors</span><span class="p">).</span><span class="nx">join</span><span class="p">(</span><span class="dl">"</span><span class="s2">. </span><span class="dl">"</span><span class="p">);</span>
+      <span class="kd">const</span> <span class="nx">firstError</span> <span class="o">=</span> <span class="nx">form</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="dl">'</span><span class="s1">[aria-invalid="true"]</span><span class="dl">'</span><span class="p">);</span>
+      <span class="k">if</span> <span class="p">(</span><span class="nx">firstError</span><span class="p">)</span> <span class="nx">firstError</span><span class="p">.</span><span class="nx">focus</span><span class="p">();</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+      <span class="nx">liveRef</span><span class="p">.</span><span class="nx">current</span><span class="p">.</span><span class="nx">textContent</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">Form submitted successfully!</span><span class="dl">"</span><span class="p">;</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+
+  <span class="k">return</span> <span class="p">(</span>
+    <span class="p">&lt;</span><span class="nt">form</span> <span class="na">onSubmit</span><span class="p">=</span><span class="si">{</span><span class="nx">handleSubmit</span><span class="si">}</span><span class="p">&gt;</span>
+      <span class="p">&lt;</span><span class="nt">label</span> <span class="na">htmlFor</span><span class="p">=</span><span class="s">"username"</span><span class="p">&gt;</span>Username:<span class="p">&lt;/</span><span class="nt">label</span><span class="p">&gt;</span>
+      <span class="p">&lt;</span><span class="nt">input</span>
+        <span class="na">id</span><span class="p">=</span><span class="s">"username"</span>
+        <span class="na">name</span><span class="p">=</span><span class="s">"username"</span>
+        <span class="na">aria-invalid</span><span class="p">=</span><span class="si">{</span><span class="o">!!</span><span class="nx">errors</span><span class="p">.</span><span class="nx">username</span><span class="si">}</span>
+        <span class="na">aria-describedby</span><span class="p">=</span><span class="si">{</span><span class="nx">errors</span><span class="p">.</span><span class="nx">username</span> <span class="p">?</span> <span class="dl">"</span><span class="s2">username-error</span><span class="dl">"</span> <span class="p">:</span> <span class="kc">undefined</span><span class="si">}</span>
+      <span class="p">/&gt;</span>
+      <span class="si">{</span><span class="nx">errors</span><span class="p">.</span><span class="nx">username</span> <span class="o">&amp;&amp;</span> <span class="p">(</span>
+        <span class="p">&lt;</span><span class="nt">div</span> <span class="na">id</span><span class="p">=</span><span class="s">"username-error"</span> <span class="na">role</span><span class="p">=</span><span class="s">"alert"</span><span class="p">&gt;</span>
+          <span class="si">{</span><span class="nx">errors</span><span class="p">.</span><span class="nx">username</span><span class="si">}</span>
+        <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+      <span class="p">)</span><span class="si">}</span>
+      <span class="p">&lt;</span><span class="nt">label</span> <span class="na">htmlFor</span><span class="p">=</span><span class="s">"password"</span><span class="p">&gt;</span>Password:<span class="p">&lt;/</span><span class="nt">label</span><span class="p">&gt;</span>
+      <span class="p">&lt;</span><span class="nt">input</span>
+        <span class="na">id</span><span class="p">=</span><span class="s">"password"</span>
+        <span class="na">name</span><span class="p">=</span><span class="s">"password"</span>
+        <span class="na">type</span><span class="p">=</span><span class="s">"password"</span>
+        <span class="na">aria-invalid</span><span class="p">=</span><span class="si">{</span><span class="o">!!</span><span class="nx">errors</span><span class="p">.</span><span class="nx">password</span><span class="si">}</span>
+        <span class="na">aria-describedby</span><span class="p">=</span><span class="si">{</span><span class="nx">errors</span><span class="p">.</span><span class="nx">password</span> <span class="p">?</span> <span class="dl">"</span><span class="s2">password-error</span><span class="dl">"</span> <span class="p">:</span> <span class="kc">undefined</span><span class="si">}</span>
+      <span class="p">/&gt;</span>
+      <span class="si">{</span><span class="nx">errors</span><span class="p">.</span><span class="nx">password</span> <span class="o">&amp;&amp;</span> <span class="p">(</span>
+        <span class="p">&lt;</span><span class="nt">div</span> <span class="na">id</span><span class="p">=</span><span class="s">"password-error"</span> <span class="na">role</span><span class="p">=</span><span class="s">"alert"</span><span class="p">&gt;</span>
+          <span class="si">{</span><span class="nx">errors</span><span class="p">.</span><span class="nx">password</span><span class="si">}</span>
+        <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+      <span class="p">)</span><span class="si">}</span>
+      <span class="p">&lt;</span><span class="nt">button</span> <span class="na">type</span><span class="p">=</span><span class="s">"submit"</span><span class="p">&gt;</span>Submit<span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
+      <span class="p">&lt;</span><span class="nt">div</span> <span class="na">ref</span><span class="p">=</span><span class="si">{</span><span class="nx">liveRef</span><span class="si">}</span> <span class="na">aria-live</span><span class="p">=</span><span class="s">"polite"</span> <span class="na">className</span><span class="p">=</span><span class="s">"sr-only"</span> <span class="p">/&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">form</span><span class="p">&gt;</span>
+  <span class="p">);</span>
+<span class="p">}</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<hr />
+
+<h1 id="deep-dive-javascript-react-html-and-networking-interview-problems">Deep Dive: JavaScript, React, HTML, and Networking Interview Problems</h1>
+
+<hr />
+
+<h2 id="javascript-core-interview-problems--diagrams">JavaScript: Core Interview Problems &amp; Diagrams</h2>
+
+<h3 id="problem-debounce-vs-throttle">Problem: Debounce vs Throttle</h3>
+
+<p><strong>Question:</strong> Explain debounce and throttle. Implement both in JavaScript. When would you use each?</p>
+
+<p><strong>Answer:</strong></p>
+
+<ul>
+  <li><strong>Debounce:</strong> Ensures a function is only called after a certain period of inactivity. Useful for search input, window resize.</li>
+  <li><strong>Throttle:</strong> Ensures a function is called at most once every X ms. Useful for scroll, mousemove events.</li>
+</ul>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+</pre></td><td class="rouge-code"><pre><span class="c1">// Debounce</span>
+<span class="kd">function</span> <span class="nx">debounce</span><span class="p">(</span><span class="nx">fn</span><span class="p">,</span> <span class="nx">delay</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kd">let</span> <span class="nx">timer</span><span class="p">;</span>
+  <span class="k">return</span> <span class="kd">function</span> <span class="p">(...</span><span class="nx">args</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">clearTimeout</span><span class="p">(</span><span class="nx">timer</span><span class="p">);</span>
+    <span class="nx">timer</span> <span class="o">=</span> <span class="nx">setTimeout</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="nx">fn</span><span class="p">.</span><span class="nx">apply</span><span class="p">(</span><span class="k">this</span><span class="p">,</span> <span class="nx">args</span><span class="p">),</span> <span class="nx">delay</span><span class="p">);</span>
+  <span class="p">};</span>
+<span class="p">}</span>
+
+<span class="c1">// Throttle</span>
+<span class="kd">function</span> <span class="nx">throttle</span><span class="p">(</span><span class="nx">fn</span><span class="p">,</span> <span class="nx">limit</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kd">let</span> <span class="nx">inThrottle</span><span class="p">;</span>
+  <span class="k">return</span> <span class="kd">function</span> <span class="p">(...</span><span class="nx">args</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">inThrottle</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">fn</span><span class="p">.</span><span class="nx">apply</span><span class="p">(</span><span class="k">this</span><span class="p">,</span> <span class="nx">args</span><span class="p">);</span>
+      <span class="nx">inThrottle</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
+      <span class="nx">setTimeout</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">(</span><span class="nx">inThrottle</span> <span class="o">=</span> <span class="kc">false</span><span class="p">),</span> <span class="nx">limit</span><span class="p">);</span>
+    <span class="p">}</span>
+  <span class="p">};</span>
+<span class="p">}</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p><strong>Diagram:</strong></p>
+
+<pre><code class="language-mermaid">gantt
+title Debounce vs Throttle Timeline
+section Debounce
+User Input :a1, 2025-07-05, 1d
+Wait :a2, after a1, 1d
+Function Fires :a3, after a2, 1d
+section Throttle
+User Input :b1, 2025-07-05, 1d
+Function Fires :b2, after b1, 1d
+Wait :b3, after b2, 1d
+Function Fires :b4, after b3, 1d
+</code></pre>
+
+<hr />
+
+<h2 id="react-key-interview-problem">React: Key Interview Problem</h2>
+
+<h3 id="problem-controlled-vs-uncontrolled-components">Problem: Controlled vs Uncontrolled Components</h3>
+
+<p><strong>Question:</strong> What is the difference between controlled and uncontrolled components in React? Give examples.</p>
+
+<p><strong>Answer:</strong></p>
+
+<ul>
+  <li><strong>Controlled:</strong> Form data is handled by React state. Example: <code class="language-plaintext highlighter-rouge">&lt;input value={value} onChange={setValue} /&gt;</code></li>
+  <li><strong>Uncontrolled:</strong> Form data is handled by the DOM. Example: <code class="language-plaintext highlighter-rouge">&lt;input ref={inputRef} /&gt;</code></li>
+</ul>
+
+<p><strong>Diagram:</strong></p>
+
+<pre><code class="language-mermaid">flowchart TD
+  A[User Input] --&gt;|onChange| B[React State]
+  B --&gt;|value| C[Input Value]
+  D[Uncontrolled: Input Value] --&gt; E[DOM]
+</code></pre>
+
+<hr />
+
+<h2 id="html-semantic-structure--accessibility">HTML: Semantic Structure &amp; Accessibility</h2>
+
+<h3 id="problem-accessible-navigation">Problem: Accessible Navigation</h3>
+
+<p><strong>Question:</strong> How do you create a navigation bar that is accessible to screen readers and keyboard users?</p>
+
+<p><strong>Answer:</strong></p>
+
+<ul>
+  <li>Use <code class="language-plaintext highlighter-rouge">&lt;nav aria-label="Main navigation"&gt;</code>.</li>
+  <li>Use <code class="language-plaintext highlighter-rouge">&lt;ul role="menubar"&gt;</code> and <code class="language-plaintext highlighter-rouge">&lt;li role="none"&gt;</code>.</li>
+  <li>Each link: <code class="language-plaintext highlighter-rouge">role="menuitem"</code>, <code class="language-plaintext highlighter-rouge">aria-current</code> for active.</li>
+</ul>
+
+<p><strong>Example:</strong></p>
+
+<div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+</pre></td><td class="rouge-code"><pre><span class="p">&lt;</span><span class="nt">nav</span> <span class="na">aria-label</span><span class="p">=</span><span class="s">"Main navigation"</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">ul</span> <span class="na">role</span><span class="p">=</span><span class="s">"menubar"</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">li</span> <span class="na">role</span><span class="p">=</span><span class="s">"none"</span><span class="p">&gt;</span>
+      <span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="p">=</span><span class="s">"/home"</span> <span class="na">role</span><span class="p">=</span><span class="s">"menuitem"</span> <span class="na">aria-current</span><span class="p">=</span><span class="s">"page"</span><span class="p">&gt;</span>
+        Home
+      <span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">li</span> <span class="na">role</span><span class="p">=</span><span class="s">"none"</span><span class="p">&gt;</span>
+      <span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="p">=</span><span class="s">"/about"</span> <span class="na">role</span><span class="p">=</span><span class="s">"menuitem"</span><span class="p">&gt;</span>
+        About
+      <span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+  <span class="p">&lt;/</span><span class="nt">ul</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">nav</span><span class="p">&gt;</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<hr />
+
+<h2 id="networking-cors-preflight-and-security">Networking: CORS, Preflight, and Security</h2>
+
+<h3 id="problem-explain-cors-and-preflight">Problem: Explain CORS and Preflight</h3>
+
+<p><strong>Question:</strong> What is CORS? What is a preflight request? How do you handle CORS in frontend apps?</p>
+
+<p><strong>Answer:</strong></p>
+
+<ul>
+  <li><strong>CORS (Cross-Origin Resource Sharing):</strong> A browser security feature that restricts cross-origin HTTP requests.</li>
+  <li><strong>Preflight:</strong> An OPTIONS request sent before certain requests (e.g., with custom headers or methods) to check if the server allows it.</li>
+  <li><strong>Handling:</strong> Set appropriate headers on the server (<code class="language-plaintext highlighter-rouge">Access-Control-Allow-Origin</code>, etc.). On frontend, handle errors and show user-friendly messages.</li>
+</ul>
+
+<p><strong>Diagram:</strong></p>
+
+<pre><code class="language-mermaid">sequenceDiagram
+  participant Browser
+  participant Server
+  Browser-&gt;&gt;Server: OPTIONS /api/data (preflight)
+  Server--&gt;&gt;Browser: 200 OK + CORS headers
+  Browser-&gt;&gt;Server: GET /api/data
+  Server--&gt;&gt;Browser: 200 OK + data
+</code></pre>
+
+<hr />
+
+<h1 id="more-practice--resources">More Practice &amp; Resources</h1>
+
+<ul>
+  <li><a href="https://frontendinterviewhandbook.com/">Frontend Interview Handbook</a></li>
+  <li><a href="https://react.dev/learn/accessibility">React Docs: Accessibility</a></li>
+  <li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/EventLoop">MDN: JavaScript Event Loop</a></li>
+  <li><a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS">What is CORS? (MDN)</a></li>
+</ul>
+
+<hr />
+
+<p><em>Use these deep dives, diagrams, and problems to master core frontend interview topics. Practice explaining and drawing diagrams in interviews!</em></p>
+
+        </div>
+    </article>
+</div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Study Resources</h3>
+                    <p>Comprehensive collection of frontend interview questions, coding challenges, and system design problems.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Progress Tracking</h3>
+                    <p>Monitor your learning journey with detailed progress indicators and completion status.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Big Tech Ready</h3>
+                    <p>Curated content specifically designed for interviews at Google, Meta, Amazon, Apple, and Netflix.</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Frontend Interview Hub. Built for aspiring frontend engineers.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="/assets/js/main.js"></script>
+</body>
+</html>

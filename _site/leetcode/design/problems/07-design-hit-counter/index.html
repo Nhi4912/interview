@@ -1,0 +1,808 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Design Hit Counter | Frontend Interview Preparation Guide</title>
+    <meta name="description" content="Comprehensive frontend interview materials for Big Tech companies">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="/assets/css/main.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <header>
+        <nav class="container">
+            <div class="logo">Frontend Interview Hub</div>
+            <ul class="nav-links">
+                <li><a href="/">Home</a></li>
+                <li><a href="#progress">Progress</a></li>
+                <li><a href="#knowledge">Knowledge</a></li>
+                <li><a href="https://github.com/nee/interview">GitHub</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <div class="content-container">
+    
+        <nav class="breadcrumb">
+            <ol>
+                <li><a href="/">Home</a></li>
+                
+                
+                
+                    
+                
+                    
+                        
+                        
+                            <li><a href="/leetcode/">Leetcode</a></li>
+                        
+                    
+                
+                    
+                        
+                        
+                            <li><a href="/leetcode/design/">Design</a></li>
+                        
+                    
+                
+                    
+                        
+                        
+                            <li><a href="/leetcode/design/problems/">Problems</a></li>
+                        
+                    
+                
+                    
+                        
+                        
+                            <li class="active">Design hit counter</li>
+                        
+                    
+                
+            </ol>
+        </nav>
+    
+    
+    <article class="content">
+        
+            <header class="content-header">
+                <h1 class="content-title">Design Hit Counter</h1>
+                
+                
+                    <div class="content-meta">
+                        <span class="difficulty difficulty-hard">Hard</span>
+                        
+                            <span class="category">Design</span>
+                        
+                        
+                            <div class="tags">
+                                
+                                    <span class="tag">Design</span>
+                                
+                                    <span class="tag">Hash Table</span>
+                                
+                                    <span class="tag">Sliding Window</span>
+                                
+                            </div>
+                        
+                    </div>
+                
+            </header>
+        
+        
+        <div class="content-body">
+            <h1 id="design-hit-counter">Design Hit Counter</h1>
+
+<h2 id="problem-description">Problem Description</h2>
+
+<ul>
+  <li>
+    <ul>
+      <li>Design a hit counter which counts the number of hits received in the past 5 minutes (i.e., the past 300 seconds).  *  * Your system should accept a timestamp parameter (in seconds granularity), and you may assume that calls are being made to the system in chronological order (i.e., timestamp is monotonically increasing). You may also assume that the earliest timestamp starts at 1.  *</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="solutions">Solutions</h2>
+
+<p>/**</p>
+<ul>
+  <li>Design Hit Counter
+ *</li>
+  <li>Problem: https://leetcode.com/problems/design-hit-counter/
+ *</li>
+  <li>Design a hit counter which counts the number of hits received in the past 5 minutes (i.e., the past 300 seconds).
+ *</li>
+  <li>Your system should accept a timestamp parameter (in seconds granularity), and you may assume that calls are being made to the system in chronological order (i.e., timestamp is monotonically increasing). You may also assume that the earliest timestamp starts at 1.
+ *</li>
+  <li>Implement the HitCounter class:</li>
+  <li>
+    <ul>
+      <li>HitCounter() Initializes the object of the hit counter system.</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>void hit(int timestamp) Records a hit that happened at timestamp (in seconds). Several hits may happen at the same timestamp.</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>int getHits(int timestamp) Returns the number of hits in the past 5 minutes from timestamp (i.e., the past 300 seconds).
+ *</li>
+    </ul>
+  </li>
+  <li>Example 1:</li>
+  <li>Input: [“HitCounter”, “hit”, “hit”, “hit”, “getHits”, “hit”, “getHits”, “getHits”]</li>
+  <li>[[], [1], [2], [3], [4], [300], [300], [301]]</li>
+  <li>Output: [null, null, null, null, 3, null, 4, 3]
+ *</li>
+  <li>Explanation:</li>
+  <li>HitCounter hitCounter = new HitCounter();</li>
+  <li>hitCounter.hit(1);       // hit at timestamp 1.</li>
+  <li>hitCounter.hit(2);       // hit at timestamp 2.</li>
+  <li>hitCounter.hit(3);       // hit at timestamp 3.</li>
+  <li>hitCounter.getHits(4);   // get hits at timestamp 4, return 3.</li>
+  <li>hitCounter.hit(300);     // hit at timestamp 300.</li>
+  <li>hitCounter.getHits(300); // get hits at timestamp 300, return 4.</li>
+  <li>hitCounter.getHits(301); // get hits at timestamp 301, return 3.
+ *</li>
+  <li>Constraints:</li>
+  <li>
+    <ul>
+      <li>1 &lt;= timestamp &lt;= 2 * 10^9</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>All the calls are being made to the system in chronological order (i.e., timestamp is monotonically increasing).</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>At most 300 calls will be made to hit and getHits.
+ *</li>
+    </ul>
+  </li>
+  <li>Solution Approach:</li>
+  <li>
+    <ol>
+      <li>Use a queue to store timestamps</li>
+    </ol>
+  </li>
+  <li>
+    <ol>
+      <li>Remove expired timestamps (older than 300 seconds) when getting hits</li>
+    </ol>
+  </li>
+  <li>
+    <ol>
+      <li>Alternative: Use circular buffer for better performance</li>
+    </ol>
+  </li>
+  <li>
+    <ol>
+      <li>Alternative: Use sliding window with buckets
+ *</li>
+    </ol>
+  </li>
+  <li>Time Complexity: O(1) average for hit, O(k) for getHits where k is expired hits</li>
+  <li>Space Complexity: O(n) where n is the number of hits in the window
+ */</li>
+</ul>
+
+<p>/**</p>
+<ul>
+  <li>HitCounter class using Queue
+ *</li>
+  <li>Lớp HitCounter sử dụng Queue
+ */
+class HitCounter {
+  private queue: number[];</li>
+</ul>
+
+<p>constructor() {
+    this.queue = [];
+  }</p>
+
+<p>/**</p>
+<ul>
+  <li>Record a hit at the given timestamp
+   *</li>
+  <li>Ghi lại một hit tại timestamp cho trước
+   *</li>
+  <li>@param timestamp - Timestamp in seconds
+   */
+  hit(timestamp: number): void {
+    this.queue.push(timestamp);
+  }</li>
+</ul>
+
+<p>/**</p>
+<ul>
+  <li>Get number of hits in the past 5 minutes
+   *</li>
+  <li>Lấy số lượng hits trong 5 phút qua
+   *</li>
+  <li>@param timestamp - Current timestamp</li>
+  <li>@returns Number of hits in the past 300 seconds
+   */
+  getHits(timestamp: number): number {
+    // Remove expired timestamps
+    while (this.queue.length &gt; 0 &amp;&amp; this.queue[0] &lt;= timestamp - 300) {
+ this.queue.shift();
+    }</li>
+</ul>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre>return this.queue.length;   }
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>/**</p>
+<ul>
+  <li>Get all hits in the window
+   *</li>
+  <li>Lấy tất cả hits trong cửa sổ
+   *</li>
+  <li>@param timestamp - Current timestamp</li>
+  <li>@returns Array of timestamps in the window
+   */
+  getHitsInWindow(timestamp: number): number[] {
+    // Remove expired timestamps
+    while (this.queue.length &gt; 0 &amp;&amp; this.queue[0] &lt;= timestamp - 300) {
+ this.queue.shift();
+    }</li>
+</ul>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre>return [...this.queue];   } }
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>/**</p>
+<ul>
+  <li>Alternative Implementation: Using Circular Buffer
+ *</li>
+  <li>Giải pháp thay thế: Sử dụng Circular Buffer
+ */
+class HitCounterCircular {
+  private timestamps: number[];
+  private hits: number[];
+  private total: number;
+  private lastTimestamp: number;</li>
+</ul>
+
+<p>constructor() {
+    this.timestamps = new Array(300).fill(0);
+    this.hits = new Array(300).fill(0);
+    this.total = 0;
+    this.lastTimestamp = 0;
+  }</p>
+
+<p>hit(timestamp: number): void {
+    this.update(timestamp);
+    const index = timestamp % 300;</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+</pre></td><td class="rouge-code"><pre>if (this.timestamps[index] === timestamp) {
+  this.hits[index]++;
+} else {
+  this.timestamps[index] = timestamp;
+  this.hits[index] = 1;
+}
+
+this.total++;   }
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>getHits(timestamp: number): number {
+    this.update(timestamp);
+    return this.total;
+  }</p>
+
+<p>private update(timestamp: number): void {
+    const diff = timestamp - this.lastTimestamp;</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+</pre></td><td class="rouge-code"><pre>if (diff &gt;= 300) {
+  // All previous hits are expired
+  this.timestamps.fill(0);
+  this.hits.fill(0);
+  this.total = 0;
+} else {
+  // Remove expired hits
+  for (let i = 0; i &lt; diff; i++) {
+    const index = (this.lastTimestamp - i) % 300;
+    if (this.timestamps[index] === this.lastTimestamp - i) {
+      this.total -= this.hits[index];
+      this.hits[index] = 0;
+    }
+  }
+}
+
+this.lastTimestamp = timestamp;   } }
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>/**</p>
+<ul>
+  <li>Implementation with Statistics
+ *</li>
+  <li>Giải pháp với thống kê
+ */
+class HitCounterWithStats extends HitCounter {
+  private hitCount: number;
+  private getHitsCount: number;
+  private totalHits: number;</li>
+</ul>
+
+<p>constructor() {
+    super();
+    this.hitCount = 0;
+    this.getHitsCount = 0;
+    this.totalHits = 0;
+  }</p>
+
+<p>hit(timestamp: number): void {
+    super.hit(timestamp);
+    this.hitCount++;
+    this.totalHits++;
+  }</p>
+
+<p>getHits(timestamp: number): number {
+    this.getHitsCount++;
+    return super.getHits(timestamp);
+  }</p>
+
+<p>/**</p>
+<ul>
+  <li>Get statistics about the hit counter
+   *</li>
+  <li>Lấy thống kê về hit counter
+   *</li>
+  <li>@returns Object containing statistics
+   */
+  getStats(): {
+    totalHits: number;
+    hitCalls: number;
+    getHitsCalls: number;
+    currentWindowSize: number;
+  } {
+    return {
+ totalHits: this.totalHits,
+ hitCalls: this.hitCount,
+ getHitsCalls: this.getHitsCount,
+ currentWindowSize: this.getHitsInWindow(Date.now() / 1000).length,
+    };
+  }</li>
+</ul>
+
+<p>/**</p>
+<ul>
+  <li>Get hit distribution in the current window
+   *</li>
+  <li>Lấy phân bố hits trong cửa sổ hiện tại
+   *</li>
+  <li>@param timestamp - Current timestamp</li>
+  <li>@returns Map of timestamp -&gt; hit count
+   */
+  getHitDistribution(timestamp: number): Map&lt;number, number&gt; {
+    const hits = this.getHitsInWindow(timestamp);
+    const distribution = new Map&lt;number, number&gt;();</li>
+</ul>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+</pre></td><td class="rouge-code"><pre>for (const hit of hits) {
+  distribution.set(hit, (distribution.get(hit) || 0) + 1);
+}
+
+return distribution;   } }
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>/**</p>
+<ul>
+  <li>Implementation with Sliding Window
+ *</li>
+  <li>Giải pháp với cửa sổ trượt
+ */
+class HitCounterSlidingWindow {
+  private window: number;
+  private hits: Map&lt;number, number&gt;;</li>
+</ul>
+
+<p>constructor(windowSize: number = 300) {
+    this.window = windowSize;
+    this.hits = new Map();
+  }</p>
+
+<p>hit(timestamp: number): void {
+    this.hits.set(timestamp, (this.hits.get(timestamp) || 0) + 1);
+  }</p>
+
+<p>getHits(timestamp: number): number {
+    let count = 0;
+    const startTime = timestamp - this.window + 1;</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+</pre></td><td class="rouge-code"><pre>// Remove expired entries and count hits
+for (const [time, hitCount] of this.hits.entries()) {
+  if (time &lt; startTime) {
+    this.hits.delete(time);
+  } else {
+    count += hitCount;
+  }
+}
+
+return count;   }
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>/**</p>
+<ul>
+  <li>Get hits in a specific time range
+   *</li>
+  <li>Lấy hits trong một khoảng thời gian cụ thể
+   *</li>
+  <li>@param start - Start timestamp</li>
+  <li>@param end - End timestamp</li>
+  <li>@returns Number of hits in the range
+   */
+  getHitsInRange(start: number, end: number): number {
+    let count = 0;</li>
+</ul>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+</pre></td><td class="rouge-code"><pre>for (const [time, hitCount] of this.hits.entries()) {
+  if (time &gt;= start &amp;&amp; time &lt;= end) {
+    count += hitCount;
+  }
+}
+
+return count;   } }
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>// Test cases / Các trường hợp kiểm thử
+function runTests() {
+  console.log(“=== Design Hit Counter Tests ===”);
+  console.log(“=== Kiểm thử bài toán Thiết kế Hit Counter ===\n”);</p>
+
+<p>const testCases = [
+    {
+      name: “Example 1: Standard case”,
+      operations: [
+        { type: “hit”, timestamp: 1 },
+        { type: “hit”, timestamp: 2 },
+        { type: “hit”, timestamp: 3 },
+        { type: “getHits”, timestamp: 4, expected: 3 },
+        { type: “hit”, timestamp: 300 },
+        { type: “getHits”, timestamp: 300, expected: 4 },
+        { type: “getHits”, timestamp: 301, expected: 3 },
+      ],
+      description: “Standard hit counter operations”,
+    },
+    {
+      name: “Empty window”,
+      operations: [
+        { type: “getHits”, timestamp: 100, expected: 0 },
+        { type: “hit”, timestamp: 100 },
+        { type: “getHits”, timestamp: 100, expected: 1 },
+        { type: “getHits”, timestamp: 400, expected: 0 },
+      ],
+      description: “Testing empty window and expiration”,
+    },
+    {
+      name: “Multiple hits at same timestamp”,
+      operations: [
+        { type: “hit”, timestamp: 1 },
+        { type: “hit”, timestamp: 1 },
+        { type: “hit”, timestamp: 1 },
+        { type: “getHits”, timestamp: 1, expected: 3 },
+        { type: “getHits”, timestamp: 301, expected: 0 },
+      ],
+      description: “Multiple hits at the same timestamp”,
+    },
+    {
+      name: “Large timestamps”,
+      operations: [
+        { type: “hit”, timestamp: 1000000 },
+        { type: “hit”, timestamp: 1000001 },
+        { type: “getHits”, timestamp: 1000300, expected: 0 },
+        { type: “getHits”, timestamp: 1000002, expected: 2 },
+      ],
+      description: “Testing with large timestamp values”,
+    },
+  ];</p>
+
+<p>for (const testCase of testCases) {
+    console.log(<code class="language-plaintext highlighter-rouge">Test: ${testCase.name}</code>);
+    console.log(<code class="language-plaintext highlighter-rouge">Description: ${testCase.description}</code>);</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+</pre></td><td class="rouge-code"><pre>const hitCounter = new HitCounterWithStats();
+let testPassed = true;
+
+for (let i = 0; i &lt; testCase.operations.length; i++) {
+  const operation = testCase.operations[i];
+  let result: any;
+
+  switch (operation.type) {
+    case "hit":
+      hitCounter.hit(operation.timestamp);
+      console.log(`  ${i + 1}. hit(${operation.timestamp})`);
+      break;
+    case "getHits":
+      result = hitCounter.getHits(operation.timestamp);
+      const passed = result === operation.expected;
+      console.log(
+        `  ${i + 1}. getHits(${operation.timestamp}) -&gt; ${result} ${
+          passed ? "✅" : "❌"
+        }`
+      );
+
+      if (!passed) {
+        testPassed = false;
+        console.log(`    Expected: ${operation.expected}, Got: ${result}`);
+      }
+      break;
+  }
+}
+
+console.log(`Test ${testPassed ? "PASSED" : "FAILED"}`);
+
+// Show statistics
+const stats = hitCounter.getStats();
+console.log(
+  `Stats: Total hits: ${stats.totalHits}, Hit calls: ${stats.hitCalls}, GetHits calls: ${stats.getHitsCalls}`
+);
+
+console.log("---");   }
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>// Test different implementations
+  console.log(“\n=== Implementation Comparison ===”);
+  console.log(“=== So sánh các giải pháp ===\n”);</p>
+
+<p>const testOperations = [
+    { type: “hit”, timestamp: 1 },
+    { type: “hit”, timestamp: 2 },
+    { type: “hit”, timestamp: 3 },
+    { type: “getHits”, timestamp: 4 },
+    { type: “hit”, timestamp: 300 },
+    { type: “getHits”, timestamp: 300 },
+    { type: “getHits”, timestamp: 301 },
+  ];</p>
+
+<p>const implementations = [
+    { name: “Queue”, class: HitCounter },
+    { name: “Circular Buffer”, class: HitCounterCircular },
+    { name: “Sliding Window”, class: HitCounterSlidingWindow },
+  ];</p>
+
+<p>for (const impl of implementations) {
+    console.log(<code class="language-plaintext highlighter-rouge">Testing ${impl.name} implementation:</code>);
+    const counter = new impl.class();</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+</pre></td><td class="rouge-code"><pre>for (const operation of testOperations) {
+  if (operation.type === "hit") {
+    counter.hit(operation.timestamp);
+  } else {
+    const result = counter.getHits(operation.timestamp);
+    console.log(`  getHits(${operation.timestamp}) -&gt; ${result}`);
+  }
+}
+console.log("");   }
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>// Performance comparison
+  console.log(“\n=== Performance Comparison ===”);
+  console.log(“=== So sánh hiệu suất ===\n”);</p>
+
+<p>const largeTestSize = 10000;</p>
+
+<p>console.log(<code class="language-plaintext highlighter-rouge">Testing with ${largeTestSize} operations...</code>);
+  console.log(<code class="language-plaintext highlighter-rouge">Kiểm thử với ${largeTestSize} thao tác...</code>);</p>
+
+<p>// Test Queue implementation
+  const start1 = performance.now();
+  const queueCounter = new HitCounter();
+  for (let i = 0; i &lt; largeTestSize; i++) {
+    if (i % 3 === 0) {
+      queueCounter.getHits(i);
+    } else {
+      queueCounter.hit(i);
+    }
+  }
+  const time1 = performance.now() - start1;</p>
+
+<p>// Test Circular Buffer implementation
+  const start2 = performance.now();
+  const circularCounter = new HitCounterCircular();
+  for (let i = 0; i &lt; largeTestSize; i++) {
+    if (i % 3 === 0) {
+      circularCounter.getHits(i);
+    } else {
+      circularCounter.hit(i);
+    }
+  }
+  const time2 = performance.now() - start2;</p>
+
+<p>// Test Sliding Window implementation
+  const start3 = performance.now();
+  const slidingCounter = new HitCounterSlidingWindow();
+  for (let i = 0; i &lt; largeTestSize; i++) {
+    if (i % 3 === 0) {
+      slidingCounter.getHits(i);
+    } else {
+      slidingCounter.hit(i);
+    }
+  }
+  const time3 = performance.now() - start3;</p>
+
+<p>console.log(<code class="language-plaintext highlighter-rouge">Queue: ${time1.toFixed(4)}ms</code>);
+  console.log(<code class="language-plaintext highlighter-rouge">Circular Buffer: ${time2.toFixed(4)}ms</code>);
+  console.log(<code class="language-plaintext highlighter-rouge">Sliding Window: ${time3.toFixed(4)}ms</code>);</p>
+
+<p>// Test hit distribution
+  console.log(“\n=== Hit Distribution Analysis ===”);
+  console.log(“=== Phân tích phân bố hits ===\n”);</p>
+
+<p>const statsCounter = new HitCounterWithStats();</p>
+
+<p>// Simulate some hits
+  for (let i = 1; i &lt;= 10; i++) {
+    statsCounter.hit(i);
+    if (i % 3 === 0) {
+      statsCounter.hit(i); // Double hits at multiples of 3
+    }
+  }</p>
+
+<p>const distribution = statsCounter.getHitDistribution(10);
+  console.log(“Hit distribution in window [1-10]:”);
+  for (const [timestamp, count] of distribution.entries()) {
+    console.log(<code class="language-plaintext highlighter-rouge">  Timestamp ${timestamp}: ${count} hits</code>);
+  }</p>
+
+<p>const stats = statsCounter.getStats();
+  console.log(
+    <code class="language-plaintext highlighter-rouge">\nOverall stats: ${stats.totalHits} total hits, ${stats.hitCalls} hit calls, ${stats.getHitsCalls} getHits calls</code>
+  );
+}</p>
+
+<p>// Run tests if this file is executed directly
+if (require.main === module) {
+  runTests();
+}</p>
+
+<p>export {
+  HitCounter,
+  HitCounterCircular,
+  HitCounterWithStats,
+  HitCounterSlidingWindow,
+};</p>
+
+
+        </div>
+    </article>
+</div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Study Resources</h3>
+                    <p>Comprehensive collection of frontend interview questions, coding challenges, and system design problems.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Progress Tracking</h3>
+                    <p>Monitor your learning journey with detailed progress indicators and completion status.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Big Tech Ready</h3>
+                    <p>Curated content specifically designed for interviews at Google, Meta, Amazon, Apple, and Netflix.</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Frontend Interview Hub. Built for aspiring frontend engineers.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="/assets/js/main.js"></script>
+</body>
+</html>
