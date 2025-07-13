@@ -112,16 +112,53 @@ class InterviewHub {
     // Interactive Cards
     initInteractiveCards() {
         const cards = document.querySelectorAll('.knowledge-card, .quick-start-card');
+        console.log('Found cards:', cards.length); // Debug log
         
-        cards.forEach(card => {
+        cards.forEach((card, index) => {
+            const href = card.getAttribute('data-href');
+            console.log(`Card ${index}:`, card.className, 'href:', href); // Debug log
+            
             // Add click interaction
             card.addEventListener('click', (e) => {
-                if (e.target.tagName === 'A') return; // Don't interfere with links
+                console.log('Card clicked:', e.target, 'card:', card); // Debug log
+                
+                // Don't interfere with actual links that have href attributes
+                if (e.target.tagName === 'A' && e.target.getAttribute('href')) {
+                    console.log('Link clicked, not handling'); // Debug log
+                    return;
+                }
+                
+                // Prevent default to avoid any conflicting behavior
+                e.preventDefault();
+                e.stopPropagation();
                 
                 const href = card.getAttribute('data-href') || card.querySelector('a')?.href;
                 if (href) {
-                    window.location.href = href;
+                    console.log('Navigating to:', href); // Debug log
+                    // Add a small delay to show the click effect
+                    setTimeout(() => {
+                        window.location.href = href;
+                    }, 100);
+                } else {
+                    console.log('No href found for card'); // Debug log
                 }
+            });
+
+            // Add mousedown/mouseup for better visual feedback
+            card.addEventListener('mousedown', (e) => {
+                if (e.target.tagName !== 'A') {
+                    card.style.transform = 'translateY(-2px) scale(0.98)';
+                }
+            });
+
+            card.addEventListener('mouseup', (e) => {
+                if (e.target.tagName !== 'A') {
+                    card.style.transform = '';
+                }
+            });
+
+            card.addEventListener('mouseleave', (e) => {
+                card.style.transform = '';
             });
 
             // Add keyboard support
@@ -132,6 +169,11 @@ class InterviewHub {
                     card.click();
                 }
             });
+
+            // Add cursor pointer style for clickable cards
+            if (card.getAttribute('data-href')) {
+                card.style.cursor = 'pointer';
+            }
 
             // Add progress indicator
             this.addProgressIndicator(card);
