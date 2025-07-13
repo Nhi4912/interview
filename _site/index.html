@@ -19,79 +19,111 @@
     <header>
         <nav class="container">
             <div class="logo">Frontend Interview Hub</div>
-            <ul class="nav-links">
+            <button class="mobile-menu-toggle" aria-label="Toggle navigation menu" aria-expanded="false">
+                <span aria-hidden="true">☰</span>
+            </button>
+            <ul class="nav-links" role="navigation" aria-label="Main navigation">
                 <li><a href="/">Home</a></li>
                 <li><a href="#progress">Progress</a></li>
                 <li><a href="#knowledge">Knowledge</a></li>
-                <li><a href="https://github.com/nee/interview">GitHub</a></li>
+                <li><a href="https://github.com/nee/interview" target="_blank" rel="noopener">GitHub</a></li>
             </ul>
         </nav>
     </header>
 
     <!-- Main Content -->
     <main>
-        <section id="home" class="hero">
+        <section id="home" class="hero" role="banner">
     <div class="container">
         <h1>Frontend Interview Mastery</h1>
         <p>Your comprehensive guide to acing frontend interviews at top tech companies. Track progress, visualize knowledge, and master fundamentals.</p>
-        <div class="cta-buttons">
-            <a href="/frontend-interview-complete-guide/" class="btn btn-primary">Complete Guide</a>
-            <a href="/interview-checklist/" class="btn btn-secondary">Start Preparation</a>
-            <a href="#progress" class="btn btn-outline">Browse Topics</a>
+        <div class="cta-buttons" role="navigation" aria-label="Primary navigation">
+            <a href="/frontend-interview-complete-guide/" class="btn btn-primary" 
+               aria-describedby="guide-desc">Complete Guide</a>
+            <a href="/interview-checklist/" class="btn btn-secondary"
+               aria-describedby="checklist-desc">Start Preparation</a>
+            <a href="#progress" class="btn btn-outline"
+               aria-describedby="progress-desc">Browse Topics</a>
+        </div>
+        
+        <!-- Screen reader descriptions -->
+        <div class="sr-only">
+            <div id="guide-desc">Access the comprehensive frontend interview preparation guide</div>
+            <div id="checklist-desc">Begin your 6-week structured preparation plan</div>
+            <div id="progress-desc">Explore learning topics and track your progress</div>
         </div>
     </div>
 </section>
 
-<section class="container">
-    <div class="stats">
-        <div class="stat-card">
-            <div class="stat-number">15+</div>
+<section class="container" aria-labelledby="stats-heading">
+    <h2 id="stats-heading" class="sr-only">Platform Statistics</h2>
+    <div class="stats" role="region" aria-label="Learning platform statistics">
+        <div class="stat-card interactive-card" data-tooltip="Comprehensive coverage of frontend topics">
+            <div class="stat-number" aria-label="15 plus topics">15+</div>
             <div class="stat-label">Topics Covered</div>
         </div>
-        <div class="stat-card">
-            <div class="stat-number">100+</div>
+        <div class="stat-card interactive-card" data-tooltip="Hands-on coding challenges">
+            <div class="stat-number" aria-label="100 plus problems">100+</div>
             <div class="stat-label">Coding Problems</div>
         </div>
-        <div class="stat-card">
-            <div class="stat-number">126</div>
+        <div class="stat-card interactive-card" data-tooltip="Algorithm practice problems">
+            <div class="stat-number" aria-label="126 problems">126</div>
             <div class="stat-label">LeetCode Problems</div>
         </div>
-        <div class="stat-card">
-            <div class="stat-number">6 Week</div>
+        <div class="stat-card interactive-card" data-tooltip="Structured learning timeline">
+            <div class="stat-number" aria-label="6 week plan">6 Week</div>
             <div class="stat-label">Study Plan</div>
+        </div>
+        
+        <!-- Dynamic stats will be added by JavaScript -->
+        <div class="stat-card interactive-card" id="completion-stat" style="display: none;">
+            <div class="stat-number" id="completion-rate">0%</div>
+            <div class="stat-label">Your Progress</div>
+        </div>
+        <div class="stat-card interactive-card" id="streak-stat" style="display: none;">
+            <div class="stat-number" id="current-streak">0</div>
+            <div class="stat-label">Current Streak</div>
         </div>
     </div>
 </section>
 
-<section class="container quick-start-section">
-    <h2 style="text-align: center; margin-bottom: 2rem;">🚀 Quick Start Guide</h2>
-    <div class="quick-start-grid">
-        <div class="quick-start-card">
-            <div class="card-icon">📋</div>
-            <h3 class="card-title">Interview Checklist</h3>
-            <p class="card-description">Complete 6-week preparation roadmap with daily tasks and milestones for Big Tech interviews.</p>
-            <a href="/interview-checklist/" class="card-link">Start Preparation →</a>
+<section class="container quick-start-section" aria-labelledby="quick-start-heading">
+    <h2 id="quick-start-heading" style="text-align: center; margin-bottom: 2rem;">🚀 Quick Start Guide</h2>
+    <div class="quick-start-grid" role="region" aria-label="Quick start navigation options">
+        <div class="quick-start-card interactive-card" role="button" tabindex="0" 
+             aria-labelledby="checklist-title" aria-describedby="checklist-desc-card"
+             data-href="/interview-checklist/">
+            <div class="card-icon" aria-hidden="true">📋</div>
+            <h3 id="checklist-title" class="card-title">Interview Checklist</h3>
+            <p id="checklist-desc-card" class="card-description">Complete 6-week preparation roadmap with daily tasks and milestones for Big Tech interviews.</p>
+            <a href="/interview-checklist/" class="card-link" aria-label="Go to Interview Checklist">Start Preparation →</a>
         </div>
 
-        <div class="quick-start-card">
-            <div class="card-icon">📊</div>
-            <h3 class="card-title">Progress Tracker</h3>
-            <p class="card-description">Track your learning progress across all topics and monitor your interview readiness.</p>
-            <a href="/progress-tracker/" class="card-link">Track Progress →</a>
+        <div class="quick-start-card interactive-card" role="button" tabindex="0"
+             aria-labelledby="tracker-title" aria-describedby="tracker-desc-card"
+             data-href="/progress-tracker/">
+            <div class="card-icon" aria-hidden="true">📊</div>
+            <h3 id="tracker-title" class="card-title">Progress Tracker</h3>
+            <p id="tracker-desc-card" class="card-description">Track your learning progress across all topics and monitor your interview readiness.</p>
+            <a href="/progress-tracker/" class="card-link" aria-label="Go to Progress Tracker">Track Progress →</a>
         </div>
 
-        <div class="quick-start-card">
-            <div class="card-icon">📚</div>
-            <h3 class="card-title">Complete Guide</h3>
-            <p class="card-description">Comprehensive overview of all topics, strategies, and preparation phases for frontend interviews.</p>
-            <a href="/frontend-interview-complete-guide/" class="card-link">Read Guide →</a>
+        <div class="quick-start-card interactive-card" role="button" tabindex="0"
+             aria-labelledby="guide-title" aria-describedby="guide-desc-card"
+             data-href="/frontend-interview-complete-guide/">
+            <div class="card-icon" aria-hidden="true">📚</div>
+            <h3 id="guide-title" class="card-title">Complete Guide</h3>
+            <p id="guide-desc-card" class="card-description">Comprehensive overview of all topics, strategies, and preparation phases for frontend interviews.</p>
+            <a href="/frontend-interview-complete-guide/" class="card-link" aria-label="Go to Complete Guide">Read Guide →</a>
         </div>
 
-        <div class="quick-start-card">
-            <div class="card-icon">📝</div>
-            <h3 class="card-title">Answer Templates</h3>
-            <p class="card-description">STAR method templates and structured approaches for behavioral and system design interviews.</p>
-            <a href="/templates/" class="card-link">Get Templates →</a>
+        <div class="quick-start-card interactive-card" role="button" tabindex="0"
+             aria-labelledby="templates-title" aria-describedby="templates-desc-card"
+             data-href="/templates/">
+            <div class="card-icon" aria-hidden="true">📝</div>
+            <h3 id="templates-title" class="card-title">Answer Templates</h3>
+            <p id="templates-desc-card" class="card-description">STAR method templates and structured approaches for behavioral and system design interviews.</p>
+            <a href="/templates/" class="card-link" aria-label="Go to Answer Templates">Get Templates →</a>
         </div>
     </div>
 </section>
@@ -718,6 +750,6 @@
     </footer>
 
     <!-- Scripts -->
-    <script src="/assets/js/main.js"></script>
+    <script src="/assets/js/app.js"></script>
 </body>
 </html>
