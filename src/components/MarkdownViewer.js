@@ -131,8 +131,14 @@ const MarkdownViewer = () => {
           // Handle frontend content
           if (subPath === "javascript") {
             filePath = "frontend/javascript/fundamentals.md";
+          } else if (subPath === "javascript/fundamentals") {
+            filePath = "frontend/javascript/fundamentals.md";
           } else if (subPath === "react") {
             filePath = "frontend/react/core.md";
+          } else if (subPath === "react/core") {
+            filePath = "frontend/react/core.md";
+          } else if (subPath === "react/advanced-patterns") {
+            filePath = "frontend/react/advanced-patterns.md";
           } else if (subPath === "typescript") {
             filePath = "frontend/typescript/README.md";
           } else if (subPath === "html-css") {
@@ -189,8 +195,63 @@ const MarkdownViewer = () => {
           } else if (subPath === "coding-problems") {
             filePath = "frontend/coding-problems/index.md";
           } else {
-            // Default to index.md for the subdirectory
-            filePath = `frontend/${subPath}/README.md`;
+            // Try exact path first, then fallback to README.md
+            if (subPath.endsWith('.md')) {
+              filePath = `frontend/${subPath}`;
+            } else {
+              // Check for specific paths and patterns
+              const pathMappings = {
+                // Core README paths
+                'networking': 'frontend/networking/README.md',
+                'performance': 'frontend/performance/README.md', 
+                'security': 'frontend/security/README.md',
+                'testing': 'frontend/testing/README.md',
+                'accessibility': 'frontend/accessibility/README.md',
+                'internationalization': 'frontend/internationalization/README.md',
+                'browser-apis': 'frontend/browser-apis/README.md',
+                'tools': 'frontend/tools/README.md',
+                'projects': 'frontend/projects/README.md',
+                'challenges': 'frontend/challenges/README.md',
+                'missing-content': 'frontend/missing-content/README.md',
+                'algorithms': 'frontend/algorithms/README.md',
+                'fundamentals': 'frontend/fundamentals/README.md',
+                'behavioral': 'frontend/behavioral/README.md',
+                'interview-strategy': 'frontend/interview-strategy/README.md',
+                'react-js-ts': 'frontend/react-js-ts/README.md',
+                'web-fundamentals': 'frontend/web-fundamentals/README.md',
+                // Direct markdown files
+                'mindmap': 'frontend/mindmap.md',
+                'COMPREHENSIVE_INTERVIEW_GUIDE': 'frontend/COMPREHENSIVE_INTERVIEW_GUIDE.md',
+                // Complex paths that need specific handling
+                'fundamentals/javascript-advanced-fundamentals': 'frontend/fundamentals/javascript-advanced-fundamentals.md',
+                'fundamentals/dom-manipulation-deep-dive': 'frontend/fundamentals/dom-manipulation-deep-dive.md',
+                'fundamentals/event-loop-deep-dive': 'frontend/fundamentals/event-loop-deep-dive.md',
+                'fundamentals/closure-scope-deep-dive': 'frontend/fundamentals/closure-scope-deep-dive.md',
+                'fundamentals/browser-internals-fundamentals': 'frontend/fundamentals/browser-internals-fundamentals.md',
+                'fundamentals/html-css-advanced-fundamentals': 'frontend/fundamentals/html-css-advanced-fundamentals.md',
+                'fundamentals/networking-http-fundamentals': 'frontend/fundamentals/networking-http-fundamentals.md',
+                'fundamentals/performance-optimization-fundamentals': 'frontend/fundamentals/performance-optimization-fundamentals.md',
+                'fundamentals/algorithms-data-structures-frontend': 'frontend/fundamentals/algorithms-data-structures-frontend.md',
+                'advanced/javascript-memory-performance-optimization': 'frontend/advanced/javascript-memory-performance-optimization.md',
+                'system-design/component-design': 'frontend/system-design/component-design.md',
+                'system-design/design-systems': 'frontend/system-design/design-systems.md',
+                'system-design/state-management': 'frontend/system-design/state-management.md',
+                'system-design/visual-architecture-diagrams': 'frontend/system-design/visual-architecture-diagrams.md',
+                'security/advanced-security-patterns': 'frontend/security/advanced-security-patterns.md',
+                'tools/modern-build-systems': 'frontend/tools/modern-build-systems.md'
+              };
+              
+              // Use mapping if available, otherwise construct path
+              if (pathMappings[subPath]) {
+                filePath = pathMappings[subPath];
+              } else if (subPath.includes('/')) {
+                // For paths with slashes, try direct construction
+                filePath = `frontend/${subPath}.md`;
+              } else {
+                // For simple paths, try .md first, then README.md
+                filePath = `frontend/${subPath}.md`;
+              }
+            }
           }
         } else if (category === "leetcode") {
           // Fix: If leetcode/problems/[problem].md, try to find the correct category
@@ -255,17 +316,45 @@ const MarkdownViewer = () => {
 
         console.log("Fetching content from:", filePath);
 
-        // Fetch the markdown content from the repository
-        const response = await fetch(
-          `https://raw.githubusercontent.com/nhi4912/interview/main/${filePath}`
-        );
+        // Try multiple file paths if the first one fails
+        const possiblePaths = [filePath];
+        
+        // Add fallback paths
+        if (!filePath.endsWith('README.md') && !filePath.endsWith('.md')) {
+          possiblePaths.push(`${filePath}.md`);
+          possiblePaths.push(`${filePath}/README.md`);
+        } else if (filePath.endsWith('.md') && !filePath.includes('README')) {
+          // If it's a .md file, also try README.md in that directory
+          const dirPath = filePath.replace(/\/[^/]+\.md$/, '');
+          possiblePaths.push(`${dirPath}/README.md`);
+        }
+        
+        let response;
+        let lastError;
+        
+        for (const tryPath of possiblePaths) {
+          try {
+            console.log("Trying path:", tryPath);
+            response = await fetch(
+              `https://raw.githubusercontent.com/nhi4912/interview/main/${tryPath}`
+            );
+            
+            console.log(`Response for ${tryPath} - status:`, response.status, "ok:", response.ok);
+            
+            if (response.ok) {
+              filePath = tryPath; // Update filePath to the successful one
+              break;
+            }
+            lastError = `${response.status} - ${tryPath}`;
+          } catch (err) {
+            lastError = `${err.message} - ${tryPath}`;
+            continue;
+          }
+        }
 
-        console.log("Response status:", response.status);
-        console.log("Response ok:", response.ok);
-
-        if (!response.ok) {
+        if (!response || !response.ok) {
           throw new Error(
-            `Failed to fetch content: ${response.status} - ${filePath}`
+            `Failed to fetch content: ${lastError}`
           );
         }
 
