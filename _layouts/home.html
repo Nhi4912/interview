@@ -1,0 +1,257 @@
+---
+layout: default
+---
+
+<div class="hero">
+    <div class="hero-container">
+        <div class="hero-content">
+            <h1 class="hero-title">Frontend Interview Preparation Guide</h1>
+            <p class="hero-description">Master frontend interviews at Big Tech companies with comprehensive coding challenges, system design patterns, and algorithmic problem-solving</p>
+            <div class="hero-actions">
+                <a href="{{ '/frontend/' | relative_url }}" class="btn btn-primary">Start Learning</a>
+                <a href="{{ '/leetcode/' | relative_url }}" class="btn btn-secondary">Practice Algorithms</a>
+            </div>
+            <div class="hero-stats">
+                <div class="stat">
+                    <span class="stat-number">100+</span>
+                    <span class="stat-label">Coding Problems</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number">15+</span>
+                    <span class="stat-label">Frontend Topics</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number">200+</span>
+                    <span class="stat-label">Algorithm Solutions</span>
+                </div>
+            </div>
+        </div>
+        <div class="hero-visual">
+            <div class="code-preview">
+                <div class="code-header">
+                    <div class="code-dots">
+                        <span class="dot dot-red"></span>
+                        <span class="dot dot-yellow"></span>
+                        <span class="dot dot-green"></span>
+                    </div>
+                    <span class="code-title">interview-prep.js</span>
+                </div>
+                <div class="code-content">
+                    <pre><code class="language-javascript">
+// React Virtual Scrolling Component
+const VirtualList = ({ items, itemHeight }) => {
+  const [scrollTop, setScrollTop] = useState(0);
+  
+  const visibleStart = Math.floor(scrollTop / itemHeight);
+  const visibleEnd = Math.min(
+    visibleStart + containerHeight / itemHeight,
+    items.length
+  );
+  
+  return (
+    &lt;div onScroll={e => setScrollTop(e.target.scrollTop)}&gt;
+      {items.slice(visibleStart, visibleEnd).map(item => 
+        &lt;Item key={item.id} data={item} /&gt;
+      )}
+    &lt;/div&gt;
+  );
+};
+                    </code></pre>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<section class="features">
+    <div class="features-container">
+        <h2 class="section-title">Everything You Need for Frontend Interviews</h2>
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i data-feather="code"></i>
+                </div>
+                <h3>Frontend Challenges</h3>
+                <p>Real interview coding problems covering React, vanilla JavaScript, CSS, and modern frontend patterns</p>
+                <a href="{{ '/frontend/coding-problems/' | relative_url }}" class="feature-link">
+                    Explore Challenges <i data-feather="arrow-right"></i>
+                </a>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i data-feather="cpu"></i>
+                </div>
+                <h3>Algorithm Practice</h3>
+                <p>200+ LeetCode problems organized by category with detailed TypeScript solutions and explanations</p>
+                <a href="{{ '/leetcode/' | relative_url }}" class="feature-link">
+                    Practice Algorithms <i data-feather="arrow-right"></i>
+                </a>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i data-feather="layers"></i>
+                </div>
+                <h3>System Design</h3>
+                <p>Frontend architecture patterns, scalability concepts, and system design frameworks for interviews</p>
+                <a href="{{ '/frontend/system-design/' | relative_url }}" class="feature-link">
+                    Learn Architecture <i data-feather="arrow-right"></i>
+                </a>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i data-feather="zap"></i>
+                </div>
+                <h3>Performance</h3>
+                <p>Core Web Vitals, optimization techniques, and performance monitoring for production applications</p>
+                <a href="{{ '/frontend/performance/' | relative_url }}" class="feature-link">
+                    Optimize Performance <i data-feather="arrow-right"></i>
+                </a>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i data-feather="shield"></i>
+                </div>
+                <h3>Security</h3>
+                <p>XSS prevention, CSRF protection, authentication patterns, and frontend security best practices</p>
+                <a href="{{ '/frontend/security/' | relative_url }}" class="feature-link">
+                    Secure Applications <i data-feather="arrow-right"></i>
+                </a>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i data-feather="check-circle"></i>
+                </div>
+                <h3>Testing</h3>
+                <p>Unit testing, integration testing, E2E testing with modern tools and frameworks</p>
+                <a href="{{ '/frontend/testing/' | relative_url }}" class="feature-link">
+                    Master Testing <i data-feather="arrow-right"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="study-path">
+    <div class="study-path-container">
+        <h2 class="section-title">Structured Learning Path</h2>
+        <div class="path-timeline">
+            <div class="path-step">
+                <div class="step-number">1</div>
+                <div class="step-content">
+                    <h3>Foundation</h3>
+                    <p>Master JavaScript fundamentals, ES6+, and core React concepts</p>
+                    <div class="step-links">
+                        <a href="{{ '/frontend/javascript/' | relative_url }}">JavaScript</a>
+                        <a href="{{ '/frontend/react/' | relative_url }}">React</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="path-step">
+                <div class="step-number">2</div>
+                <div class="step-content">
+                    <h3>Algorithms</h3>
+                    <p>Practice data structures and algorithms with increasing complexity</p>
+                    <div class="step-links">
+                        <a href="{{ '/leetcode/array/' | relative_url }}">Arrays</a>
+                        <a href="{{ '/leetcode/string/' | relative_url }}">Strings</a>
+                        <a href="{{ '/leetcode/tree-graph/' | relative_url }}">Trees</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="path-step">
+                <div class="step-number">3</div>
+                <div class="step-content">
+                    <h3>Frontend Skills</h3>
+                    <p>Build real-world components and solve practical coding challenges</p>
+                    <div class="step-links">
+                        <a href="{{ '/frontend/coding-problems/' | relative_url }}">Coding Problems</a>
+                        <a href="{{ '/frontend/challenges/' | relative_url }}">Advanced Challenges</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="path-step">
+                <div class="step-number">4</div>
+                <div class="step-content">
+                    <h3>System Design</h3>
+                    <p>Learn frontend architecture, performance optimization, and scalability</p>
+                    <div class="step-links">
+                        <a href="{{ '/frontend/system-design/' | relative_url }}">Architecture</a>
+                        <a href="{{ '/frontend/performance/' | relative_url }}">Performance</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="topics-overview">
+    <div class="topics-container">
+        <div class="topics-content">
+            <h2 class="section-title">Comprehensive Topic Coverage</h2>
+            <div class="topics-grid">
+                <div class="topic-category">
+                    <h3>Core Technologies</h3>
+                    <ul>
+                        <li><a href="{{ '/frontend/javascript/' | relative_url }}">JavaScript ES6+</a></li>
+                        <li><a href="{{ '/frontend/react/' | relative_url }}">React & Hooks</a></li>
+                        <li><a href="{{ '/frontend/typescript/' | relative_url }}">TypeScript</a></li>
+                        <li><a href="{{ '/frontend/html-css/' | relative_url }}">HTML5 & CSS3</a></li>
+                    </ul>
+                </div>
+                
+                <div class="topic-category">
+                    <h3>Advanced Concepts</h3>
+                    <ul>
+                        <li><a href="{{ '/frontend/system-design/' | relative_url }}">System Design</a></li>
+                        <li><a href="{{ '/frontend/performance/' | relative_url }}">Performance</a></li>
+                        <li><a href="{{ '/frontend/security/' | relative_url }}">Security</a></li>
+                        <li><a href="{{ '/frontend/accessibility/' | relative_url }}">Accessibility</a></li>
+                    </ul>
+                </div>
+                
+                <div class="topic-category">
+                    <h3>Algorithms</h3>
+                    <ul>
+                        <li><a href="{{ '/leetcode/array/' | relative_url }}">Arrays & Strings</a></li>
+                        <li><a href="{{ '/leetcode/tree-graph/' | relative_url }}">Trees & Graphs</a></li>
+                        <li><a href="{{ '/leetcode/dp/' | relative_url }}">Dynamic Programming</a></li>
+                        <li><a href="{{ '/leetcode/backtracking/' | relative_url }}">Backtracking</a></li>
+                    </ul>
+                </div>
+                
+                <div class="topic-category">
+                    <h3>Interview Prep</h3>
+                    <ul>
+                        <li><a href="{{ '/interview-checklist.html' | relative_url }}">Interview Checklist</a></li>
+                        <li><a href="{{ '/progress-tracker.html' | relative_url }}">Progress Tracker</a></li>
+                        <li><a href="{{ '/templates/' | relative_url }}">Answer Templates</a></li>
+                        <li><a href="{{ '/frontend/interview-strategy/' | relative_url }}">Strategy Guide</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="cta">
+    <div class="cta-container">
+        <div class="cta-content">
+            <h2>Ready to Ace Your Frontend Interview?</h2>
+            <p>Start with our comprehensive checklist and track your progress through structured preparation</p>
+            <div class="cta-actions">
+                <a href="{{ '/interview-checklist.html' | relative_url }}" class="btn btn-primary">Get Started</a>
+                <a href="{{ '/progress-tracker.html' | relative_url }}" class="btn btn-outline">Track Progress</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+{{ content }}

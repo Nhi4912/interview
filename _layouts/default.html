@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% if page.title %}{{ page.title }} | {% endif %}{{ site.title }}</title>
+    <meta name="description" content="{{ page.description | default: site.description }}">
+    
+    <!-- Favicons -->
+    <link rel="icon" type="image/svg+xml" href="{{ '/assets/images/favicon.svg' | relative_url }}">
+    <link rel="icon" type="image/png" href="{{ '/assets/images/favicon.png' | relative_url }}">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}">
+    
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.29.0/feather.min.css">
+    
+    <!-- SEO -->
+    {% seo %}
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <a href="{{ '/' | relative_url }}" class="brand-link">
+                    <svg class="brand-icon" viewBox="0 0 24 24">
+                        <path d="M12 2L2 7v10c0 5.55 3.84 10 9 11 1.83-.45 3.43-1.32 4.76-2.47L12 19l-4.47 4.47A9.86 9.86 0 0 0 12 22c5.16-1 9-5.45 9-11V7l-10-5z"/>
+                    </svg>
+                    <span class="brand-text">Frontend Interview Guide</span>
+                </a>
+            </div>
+            
+            <div class="nav-menu" id="navMenu">
+                <a href="{{ '/' | relative_url }}" class="nav-link">Home</a>
+                <div class="nav-dropdown">
+                    <a href="#" class="nav-link dropdown-toggle">Frontend <i data-feather="chevron-down"></i></a>
+                    <div class="dropdown-content">
+                        <a href="{{ '/frontend/javascript/' | relative_url }}">JavaScript</a>
+                        <a href="{{ '/frontend/react/' | relative_url }}">React</a>
+                        <a href="{{ '/frontend/html-css/' | relative_url }}">HTML/CSS</a>
+                        <a href="{{ '/frontend/typescript/' | relative_url }}">TypeScript</a>
+                        <a href="{{ '/frontend/system-design/' | relative_url }}">System Design</a>
+                        <a href="{{ '/frontend/performance/' | relative_url }}">Performance</a>
+                        <a href="{{ '/frontend/security/' | relative_url }}">Security</a>
+                        <a href="{{ '/frontend/testing/' | relative_url }}">Testing</a>
+                        <a href="{{ '/frontend/accessibility/' | relative_url }}">Accessibility</a>
+                    </div>
+                </div>
+                <div class="nav-dropdown">
+                    <a href="#" class="nav-link dropdown-toggle">Coding <i data-feather="chevron-down"></i></a>
+                    <div class="dropdown-content">
+                        <a href="{{ '/frontend/coding-problems/' | relative_url }}">Frontend Challenges</a>
+                        <a href="{{ '/leetcode/' | relative_url }}">LeetCode Problems</a>
+                        <a href="{{ '/frontend/challenges/' | relative_url }}">Advanced Challenges</a>
+                    </div>
+                </div>
+                <div class="nav-dropdown">
+                    <a href="#" class="nav-link dropdown-toggle">Algorithms <i data-feather="chevron-down"></i></a>
+                    <div class="dropdown-content">
+                        <a href="{{ '/leetcode/array/' | relative_url }}">Array & String</a>
+                        <a href="{{ '/leetcode/linked-list/' | relative_url }}">Linked List</a>
+                        <a href="{{ '/leetcode/tree-graph/' | relative_url }}">Tree & Graph</a>
+                        <a href="{{ '/leetcode/dp/' | relative_url }}">Dynamic Programming</a>
+                        <a href="{{ '/leetcode/backtracking/' | relative_url }}">Backtracking</a>
+                        <a href="{{ '/leetcode/others/' | relative_url }}">Stack & Queue</a>
+                    </div>
+                </div>
+                <a href="{{ '/interview-checklist.html' | relative_url }}" class="nav-link">Checklist</a>
+                <a href="{{ '/progress-tracker.html' | relative_url }}" class="nav-link">Progress</a>
+            </div>
+            
+            <div class="nav-actions">
+                <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
+                    <i data-feather="sun" class="theme-icon theme-icon-light"></i>
+                    <i data-feather="moon" class="theme-icon theme-icon-dark"></i>
+                </button>
+                <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        {% if page.layout == 'home' %}
+            {{ content }}
+        {% else %}
+            <div class="content-container">
+                {% unless page.hide_breadcrumb %}
+                    <nav class="breadcrumb">
+                        <ol>
+                            <li><a href="{{ '/' | relative_url }}">Home</a></li>
+                            {% assign crumbs = page.url | remove:'/index.html' | split: '/' %}
+                            {% assign crumb_path = '' %}
+                            {% for crumb in crumbs %}
+                                {% unless forloop.first %}
+                                    {% assign crumb_path = crumb_path | append: '/' | append: crumb %}
+                                    {% if forloop.last %}
+                                        <li class="active">{{ page.title | default: crumb | replace: '-', ' ' | capitalize }}</li>
+                                    {% else %}
+                                        <li><a href="{{ crumb_path | append: '/' | relative_url }}">{{ crumb | replace: '-', ' ' | capitalize }}</a></li>
+                                    {% endif %}
+                                {% endunless %}
+                            {% endfor %}
+                        </ol>
+                    </nav>
+                {% endunless %}
+                
+                <article class="content">
+                    {% if page.title %}
+                        <header class="content-header">
+                            <h1 class="content-title">{{ page.title }}</h1>
+                            {% if page.description %}
+                                <p class="content-description">{{ page.description }}</p>
+                            {% endif %}
+                            {% if page.difficulty %}
+                                <div class="content-meta">
+                                    <span class="difficulty difficulty-{{ page.difficulty | downcase }}">{{ page.difficulty }}</span>
+                                    {% if page.category %}
+                                        <span class="category">{{ page.category }}</span>
+                                    {% endif %}
+                                    {% if page.tags %}
+                                        <div class="tags">
+                                            {% for tag in page.tags %}
+                                                <span class="tag">{{ tag }}</span>
+                                            {% endfor %}
+                                        </div>
+                                    {% endif %}
+                                </div>
+                            {% endif %}
+                        </header>
+                    {% endif %}
+                    
+                    <div class="content-body">
+                        {{ content }}
+                    </div>
+                </article>
+            </div>
+        {% endif %}
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Frontend Interview Guide</h3>
+                    <p>Comprehensive preparation materials for Big Tech frontend interviews.</p>
+                    <div class="social-links">
+                        <a href="https://github.com/nee/interview" aria-label="GitHub" target="_blank" rel="noopener">
+                            <i data-feather="github"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Core Topics</h4>
+                    <ul>
+                        <li><a href="{{ '/frontend/javascript/' | relative_url }}">JavaScript</a></li>
+                        <li><a href="{{ '/frontend/react/' | relative_url }}">React</a></li>
+                        <li><a href="{{ '/frontend/system-design/' | relative_url }}">System Design</a></li>
+                        <li><a href="{{ '/frontend/performance/' | relative_url }}">Performance</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Practice</h4>
+                    <ul>
+                        <li><a href="{{ '/frontend/coding-problems/' | relative_url }}">Coding Problems</a></li>
+                        <li><a href="{{ '/leetcode/' | relative_url }}">Algorithms</a></li>
+                        <li><a href="{{ '/frontend/challenges/' | relative_url }}">Challenges</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Resources</h4>
+                    <ul>
+                        <li><a href="{{ '/interview-checklist.html' | relative_url }}">Interview Checklist</a></li>
+                        <li><a href="{{ '/progress-tracker.html' | relative_url }}">Progress Tracker</a></li>
+                        <li><a href="{{ '/templates/' | relative_url }}">Templates</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; {{ site.time | date: '%Y' }} Frontend Interview Guide. Created for educational purposes.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+    <script src="{{ '/assets/js/main.js' | relative_url }}"></script>
+</body>
+</html>

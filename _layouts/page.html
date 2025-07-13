@@ -1,0 +1,65 @@
+---
+layout: default
+---
+
+{{ content }}
+
+{% if page.url contains '/frontend/coding-problems/' or page.url contains '/leetcode/' %}
+<div class="problem-navigation">
+    <div class="nav-container">
+        {% assign collection_path = page.url | split: '/' | slice: 0, 3 | join: '/' %}
+        {% assign collection_name = page.url | split: '/' | slice: 2, 1 | first %}
+        
+        {% if page.url contains '/frontend/coding-problems/' %}
+            {% assign all_problems = site.pages | where_exp: "page", "page.url contains '/frontend/coding-problems/'" | sort: "url" %}
+        {% elsif page.url contains '/leetcode/' %}
+            {% assign all_problems = site.pages | where_exp: "page", "page.url contains collection_path" | sort: "url" %}
+        {% endif %}
+        
+        {% assign current_index = nil %}
+        {% for problem in all_problems %}
+            {% if problem.url == page.url %}
+                {% assign current_index = forloop.index0 %}
+                {% break %}
+            {% endif %}
+        {% endfor %}
+        
+        {% if current_index %}
+            {% assign prev_index = current_index | minus: 1 %}
+            {% assign next_index = current_index | plus: 1 %}
+            
+            <div class="nav-buttons">
+                {% if prev_index >= 0 %}
+                    {% assign prev_problem = all_problems[prev_index] %}
+                    <a href="{{ prev_problem.url | relative_url }}" class="nav-btn nav-prev">
+                        <i data-feather="arrow-left"></i>
+                        <span>Previous</span>
+                    </a>
+                {% endif %}
+                
+                <a href="{{ collection_path | append: '/' | relative_url }}" class="nav-btn nav-up">
+                    <i data-feather="list"></i>
+                    <span>All Problems</span>
+                </a>
+                
+                {% if next_index < all_problems.size %}
+                    {% assign next_problem = all_problems[next_index] %}
+                    <a href="{{ next_problem.url | relative_url }}" class="nav-btn nav-next">
+                        <span>Next</span>
+                        <i data-feather="arrow-right"></i>
+                    </a>
+                {% endif %}
+            </div>
+        {% endif %}
+    </div>
+</div>
+{% endif %}
+
+{% if page.url contains '/frontend/' or page.url contains '/leetcode/' %}
+<div class="page-toc">
+    <div class="toc-container">
+        <h4>On This Page</h4>
+        <div id="toc"></div>
+    </div>
+</div>
+{% endif %}

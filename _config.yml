@@ -7,7 +7,7 @@ baseurl: ""
 # Build settings
 markdown: kramdown
 highlighter: rouge
-theme: minima
+theme: null  # Using custom theme
 
 # Plugins
 plugins:
@@ -64,7 +64,43 @@ liquid:
   strict_filters: false
   strict_variables: false
 
-# Include TypeScript files
+# Include files
 include:
   - "*.ts"
   - "*.tsx"
+  - "_pages"
+  - "assets"
+
+# Exclude files
+exclude:
+  - "fix*.py"
+  - "cleanup*.sh"
+  - "fix*.sh"
+  - "*.sh"
+  - "Gemfile"
+  - "Gemfile.lock"
+  - "node_modules"
+  - "vendor"
+  - ".sass-cache"
+  - ".jekyll-cache"
+  - "gemfiles"
+
+# Permalink structure
+permalink: pretty
+
+# Reading Files
+safe: false
+encoding: "utf-8"
+markdown_ext: "markdown,mkdown,mkdn,mkd,md"
+
+# Outputting
+show_drafts: null
+limit_posts: 0
+future: false
+unpublished: false
+
+# Conversion
+highlighter: rouge
+lsi: false
+excerpt_separator: "\n\n"
+incremental: false
