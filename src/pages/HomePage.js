@@ -1,38 +1,159 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
-import {
-  Box,
-  Container,
-  Typography,
-  Button,
-  Grid,
-  Card,
-  CardContent,
-  LinearProgress,
-  Chip,
-} from "@mui/material";
-import { styled } from "@mui/material/styles";
+import { useRouter } from "next/router";
+import styled from "styled-components";
 import KnowledgeCard from "../components/KnowledgeCard";
 
-const HeroSection = styled(Box)(({ theme }) => ({
-  padding: theme.spacing(8, 0),
-  textAlign: "center",
-  background:
-    "radial-gradient(circle at 50% 50%, rgba(99, 102, 241, 0.1) 0%, transparent 70%)",
-}));
+const HeroSection = styled.div`
+  padding: 64px 0;
+  text-align: center;
+  background: radial-gradient(circle at 50% 50%, rgba(99, 102, 241, 0.1) 0%, transparent 70%);
+`;
 
-const StatsCard = styled(Card)(({ theme }) => ({
-  textAlign: "center",
-  cursor: "pointer",
-  transition: "all 0.3s ease",
-  "&:hover": {
-    transform: "translateY(-5px)",
-    borderColor: theme.palette.primary.main,
-  },
-}));
+const StatsCard = styled.div`
+  text-align: center;
+  padding: 24px;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  transition: transform 0.2s;
+  
+  &:hover {
+    transform: translateY(-2px);
+  }
+`;
+
+const Container = styled.div`
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+`;
+
+const Typography = styled.div`
+  font-family: inherit;
+  
+  &.h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #1a1a1a;
+    margin-bottom: 16px;
+  }
+  
+  &.h2 {
+    font-size: 2rem;
+    font-weight: 600;
+    color: #1a1a1a;
+    margin-bottom: 24px;
+  }
+  
+  &.h3 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #1a1a1a;
+    margin-bottom: 16px;
+  }
+  
+  &.subtitle {
+    font-size: 1.125rem;
+    color: #666;
+    margin-bottom: 32px;
+  }
+  
+  &.body {
+    font-size: 1rem;
+    color: #333;
+    line-height: 1.6;
+  }
+`;
+
+const Button = styled.button`
+  background: #3b82f6;
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+  
+  &:hover {
+    background: #2563eb;
+    transform: translateY(-1px);
+  }
+  
+  &:active {
+    transform: translateY(0);
+  }
+`;
+
+const Grid = styled.div`
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 24px;
+  margin-bottom: 48px;
+`;
+
+const Box = styled.div`
+  display: flex;
+  flex-direction: column;
+  
+  &.hero-content {
+    margin-bottom: 48px;
+  }
+  
+  &.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 24px;
+    margin-bottom: 48px;
+  }
+`;
+
+const LinearProgress = styled.div`
+  width: 100%;
+  height: 8px;
+  background: #e5e7eb;
+  border-radius: 4px;
+  overflow: hidden;
+  margin-bottom: 8px;
+  
+  &::after {
+    content: '';
+    display: block;
+    height: 100%;
+    background: #3b82f6;
+    width: ${props => props.value || 0}%;
+    transition: width 0.3s ease;
+  }
+`;
+
+const Chip = styled.span`
+  display: inline-block;
+  padding: 4px 8px;
+  background: #e3f2fd;
+  color: #1976d2;
+  border-radius: 16px;
+  font-size: 0.75rem;
+  font-weight: 500;
+`;
+
+const Card = styled.div`
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  transition: transform 0.2s;
+  
+  &:hover {
+    transform: translateY(-2px);
+  }
+`;
+
+const CardContent = styled.div`
+  padding: 24px;
+`;
 
 const HomePage = () => {
-  const navigate = useNavigate();
+  const router = useRouter();
 
   const knowledgeCards = [
     // Frontend Fundamentals
@@ -578,11 +699,11 @@ const HomePage = () => {
     <Box>
       {/* Hero Section */}
       <HeroSection>
-        <Container maxWidth="lg">
-          <Typography variant="h1" component="h1" gutterBottom>
+        <Container>
+          <Typography className="h1">
             Frontend Interview Mastery
           </Typography>
-          <Typography variant="h5" color="text.secondary" paragraph>
+          <Typography className="subtitle">
             Your comprehensive guide to acing frontend interviews at top tech
             companies. Track progress, visualize knowledge, and master
             fundamentals.
@@ -595,107 +716,79 @@ const HomePage = () => {
               flexWrap: "wrap",
               mt: 4,
             }}
-          >
-            <Button
-              variant="contained"
-              size="large"
-              onClick={() => navigate("/frontend-interview-complete-guide")}
-            >
-              Complete Guide
-            </Button>
-            <Button
-              variant="outlined"
-              size="large"
-              onClick={() => navigate("/interview-checklist")}
-            >
-              Start Preparation
-            </Button>
-            <Button
-              variant="text"
-              size="large"
-              onClick={() => navigate("/progress-tracker")}
-            >
-              Browse Topics
-            </Button>
+                      >
+              <Button
+                onClick={() => router.push("/frontend-interview-complete-guide")}
+              >
+                Complete Guide
+              </Button>
+              <Button
+                onClick={() => router.push("/interview-checklist")}
+              >
+                Start Preparation
+              </Button>
+              <Button
+                onClick={() => router.push("/progress-tracker")}
+              >
+                Browse Topics
+              </Button>
           </Box>
         </Container>
       </HeroSection>
 
-      {/* Stats Section */}
-      <Container maxWidth="lg" sx={{ py: 6 }}>
-        <Grid container spacing={3}>
-          {stats.map((stat, index) => (
-            <Grid item xs={12} sm={6} md={3} key={index}>
-              <StatsCard>
-                <CardContent>
-                  <Typography variant="h3" component="div" color="primary.main">
-                    {stat.number}
-                  </Typography>
-                  <Typography variant="body1" color="text.secondary">
-                    {stat.label}
-                  </Typography>
-                </CardContent>
+              {/* Stats Section */}
+        <Container>
+          <Box className="stats-grid">
+            {stats.map((stat, index) => (
+              <StatsCard key={index}>
+                <Typography className="h3">
+                  {stat.number}
+                </Typography>
+                <Typography className="body">
+                  {stat.label}
+                </Typography>
               </StatsCard>
-            </Grid>
-          ))}
-        </Grid>
-      </Container>
+            ))}
+          </Box>
+        </Container>
 
       {/* Progress Section */}
-      <Container maxWidth="lg" sx={{ py: 6 }}>
-        <Typography variant="h2" component="h2" textAlign="center" gutterBottom>
+      <Container>
+        <Typography className="h2" style={{ textAlign: "center" }}>
           Learning Progress
         </Typography>
-        <Grid container spacing={3} sx={{ mt: 2 }}>
+        <Grid>
           {progressData.map((item, index) => (
-            <Grid item xs={12} md={6} key={index}>
-              <Card>
-                <CardContent>
-                  <Box
-                    sx={{
-                      display: "flex",
-                      justifyContent: "space-between",
-                      alignItems: "center",
-                      mb: 2,
-                    }}
-                  >
-                    <Typography variant="h6">{item.title}</Typography>
-                    <Typography variant="h6" color="primary.main">
-                      {item.percentage}%
-                    </Typography>
-                  </Box>
-                  <LinearProgress
-                    variant="determinate"
-                    value={item.percentage}
-                    sx={{ height: 8, borderRadius: 4, mb: 2 }}
-                  />
-                  <Box sx={{ display: "flex", gap: 1, flexWrap: "wrap" }}>
-                    {item.topics.map((topic, topicIndex) => (
-                      <Chip
-                        key={topicIndex}
-                        label={topic}
-                        size="small"
-                        variant="outlined"
-                      />
-                    ))}
-                  </Box>
-                </CardContent>
-              </Card>
-            </Grid>
+            <Card key={index}>
+              <CardContent>
+                <Box style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "16px" }}>
+                  <Typography className="h3">{item.title}</Typography>
+                  <Typography className="h3" style={{ color: "#3b82f6" }}>
+                    {item.percentage}%
+                  </Typography>
+                </Box>
+                <LinearProgress value={item.percentage} />
+                <Box className="chip-container">
+                  {item.topics.map((topic, topicIndex) => (
+                    <Chip key={topicIndex}>
+                      {topic}
+                    </Chip>
+                  ))}
+                </Box>
+              </CardContent>
+            </Card>
           ))}
         </Grid>
       </Container>
 
       {/* Knowledge Map Section */}
-      <Container maxWidth="lg" sx={{ py: 6 }}>
-        <Typography variant="h2" component="h2" textAlign="center" gutterBottom>
+      <Container>
+        <Typography className="h2" style={{ textAlign: "center" }}>
           Knowledge Map
         </Typography>
-        <Grid container spacing={3} sx={{ mt: 2 }}>
+        <Grid>
           {knowledgeCards.map((card, index) => (
-            <Grid item xs={12} sm={6} md={4} key={index}>
-              <KnowledgeCard {...card} />
-            </Grid>
+            <KnowledgeCard key={index} {...card} />
           ))}
         </Grid>
       </Container>

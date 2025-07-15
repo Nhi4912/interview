@@ -1,63 +1,104 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
-import {
-  Card,
-  CardContent,
-  Typography,
-  Box,
-  Chip,
-  IconButton,
-} from "@mui/material";
-import { styled } from "@mui/material/styles";
+import { useRouter } from "next/router";
+import styled from "styled-components";
 
-const StyledCard = styled(Card)(({ theme }) => ({
-  height: "100%",
-  display: "flex",
-  flexDirection: "column",
-  cursor: "pointer",
-  userSelect: "none",
-  transition: "all 0.3s ease",
-  "&:hover": {
-    transform: "translateY(-8px)",
-    borderColor: theme.palette.primary.main,
-    boxShadow: "0 20px 40px rgba(0, 0, 0, 0.3)",
-  },
-  "&:active": {
-    transform: "translateY(-2px) scale(0.98)",
-  },
-}));
+const StyledCard = styled.div`
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+  user-select: none;
+  transition: all 0.3s ease;
+  border-radius: 8px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  background: white;
+  overflow: hidden;
+  
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+  }
+`;
 
-const CardIcon = styled(Box)(({ theme }) => ({
-  width: 48,
-  height: 48,
-  backgroundColor: theme.palette.primary.main,
-  borderRadius: 8,
-  display: "flex",
-  alignItems: "center",
-  justifyContent: "center",
-  marginBottom: theme.spacing(2),
-  fontSize: "1.5rem",
-}));
+const CardContent = styled.div`
+  padding: 16px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+`;
 
-const CompletionIndicator = styled(Box)(({ theme }) => ({
-  display: "flex",
-  alignItems: "center",
-  gap: theme.spacing(1),
-  fontSize: "0.8rem",
-  color: theme.palette.text.secondary,
-}));
+const Typography = styled.div`
+  margin-bottom: 8px;
+  font-family: inherit;
+  
+  &.title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #1a1a1a;
+    line-height: 1.6;
+  }
+  
+  &.subtitle {
+    font-size: 0.875rem;
+    color: #666;
+    margin-bottom: 16px;
+  }
+`;
 
-const CompletionCircle = styled(Box)(({ theme, status }) => ({
-  width: 12,
-  height: 12,
-  borderRadius: "50%",
-  backgroundColor:
-    status === "completed"
-      ? theme.palette.success.main
-      : status === "in-progress"
-      ? theme.palette.warning.main
-      : theme.palette.grey[600],
-}));
+const Box = styled.div`
+  display: flex;
+  flex-direction: column;
+  
+  &.chip-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 16px;
+  }
+`;
+
+const Chip = styled.span`
+  display: inline-block;
+  padding: 4px 8px;
+  background: #e3f2fd;
+  color: #1976d2;
+  border-radius: 16px;
+  font-size: 0.75rem;
+  font-weight: 500;
+`;
+
+const IconButton = styled.button`
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+  margin-left: auto;
+  border-radius: 4px;
+  transition: background-color 0.2s;
+  
+  &:hover {
+    background: #f5f5f5;
+  }
+`;
+
+const CompletionIndicator = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 0.8rem;
+  color: #666;
+`;
+
+const CompletionCircle = styled.div`
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: ${props => {
+    if (props.status === "completed") return "#4CAF50"; // Success green
+    if (props.status === "in-progress") return "#FFC107"; // Warning yellow
+    return "#9E9E9E"; // Grey
+  }};
+`;
 
 const KnowledgeCard = ({
   title,
@@ -68,7 +109,7 @@ const KnowledgeCard = ({
   href,
   onClick,
 }) => {
-  const navigate = useNavigate();
+  const router = useRouter();
 
   const handleClick = (e) => {
     e.preventDefault();
@@ -80,7 +121,7 @@ const KnowledgeCard = ({
       onClick();
     } else if (href) {
       console.log("Navigating to:", href);
-      navigate(href);
+      router.push(href);
     }
   };
 
@@ -123,44 +164,28 @@ const KnowledgeCard = ({
       role="button"
       aria-label={`Navigate to ${title}`}
     >
-      <CardContent
-        sx={{ flexGrow: 1, display: "flex", flexDirection: "column" }}
-      >
-        <CardIcon>{icon}</CardIcon>
+      <CardContent>
+        <Box>
+          {icon}
+        </Box>
 
-        <Typography variant="h6" component="h3" gutterBottom>
+        <Typography className="title">
           {title}
         </Typography>
 
-        <Typography
-          variant="body2"
-          color="text.secondary"
-          sx={{ flexGrow: 1, mb: 2 }}
-        >
+        <Typography className="subtitle">
           {description}
         </Typography>
 
-        <Box
-          sx={{
-            display: "flex",
-            justifyContent: "space-between",
-            alignItems: "center",
-            mt: "auto",
-          }}
-        >
+        <Box className="chip-container">
           {difficulty && (
-            <Chip
-              label={difficulty}
-              color={getDifficultyColor(difficulty)}
-              size="small"
-              variant="outlined"
-            />
+            <Chip>{difficulty}</Chip>
           )}
 
           {status && (
             <CompletionIndicator>
               <CompletionCircle status={status} />
-              <Typography variant="caption">{getStatusText(status)}</Typography>
+              <span>{getStatusText(status)}</span>
             </CompletionIndicator>
           )}
         </Box>
