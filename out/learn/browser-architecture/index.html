@@ -1,0 +1,986 @@
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><meta name="viewport" content="width=device-width, initial-scale=1"/><link rel="preload" href="/interview/_next/static/media/e4af272ccee01ff0-s.p.woff2" as="font" crossorigin="" type="font/woff2"/><link rel="stylesheet" href="/interview/_next/static/css/387024c6a2216908.css" data-precedence="next"/><link rel="preload" as="script" fetchPriority="low" href="/interview/_next/static/chunks/webpack-be7d7df45533bffc.js"/><script src="/interview/_next/static/chunks/fd9d1056-6922f449a204c2cc.js" async=""></script><script src="/interview/_next/static/chunks/117-8ebd5be41d819808.js" async=""></script><script src="/interview/_next/static/chunks/main-app-b06be5f3411c20c3.js" async=""></script><script src="/interview/_next/static/chunks/918-3273b83890f10546.js" async=""></script><script src="/interview/_next/static/chunks/972-011bba60ed155615.js" async=""></script><script src="/interview/_next/static/chunks/930-3262a6c9c5acace4.js" async=""></script><script src="/interview/_next/static/chunks/app/learn/%5Btopic%5D/page-4ab144227f7a7b3e.js" async=""></script><script src="/interview/_next/static/chunks/710-dfaa11b4dff08f8e.js" async=""></script><script src="/interview/_next/static/chunks/233-3e0c1d820a17eca9.js" async=""></script><script src="/interview/_next/static/chunks/app/layout-333f4adcd11f8f39.js" async=""></script><title>Frontend Interview Prep 2025 - Big Tech Interview Guide</title><meta name="description" content="Comprehensive frontend interview preparation for Big Tech companies including React, TypeScript, algorithms, and system design."/><link rel="icon" href="/favicon.ico"/><meta name="theme-color" content="#1a1a1a"/><meta property="og:title" content="Frontend Interview Prep 2025"/><meta property="og:description" content="Complete guide for frontend engineers targeting Big Tech companies"/><meta property="og:type" content="website"/><link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous"/><meta name="next-size-adjust"/><script src="/interview/_next/static/chunks/polyfills-42372ed130431b0a.js" noModule=""></script><style data-styled="" data-styled-version="6.1.19">*{margin:0;padding:0;box-sizing:border-box;}/*!sc*/
+html{font-size:16px;line-height:1.5;scroll-behavior:smooth;}/*!sc*/
+body{font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;font-size:1rem;line-height:1.5;color:#1e293b;background-color:#ffffff;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;}/*!sc*/
+h1,h2,h3,h4,h5,h6{font-weight:700;line-height:1.25;margin-bottom:0.5em;}/*!sc*/
+h1{font-size:3rem;}/*!sc*/
+@media (max-width: 768px){h1{font-size:2.25rem;}}/*!sc*/
+h2{font-size:2.25rem;}/*!sc*/
+@media (max-width: 768px){h2{font-size:1.875rem;}}/*!sc*/
+h3{font-size:1.875rem;}/*!sc*/
+@media (max-width: 768px){h3{font-size:1.5rem;}}/*!sc*/
+h4{font-size:1.5rem;}/*!sc*/
+@media (max-width: 768px){h4{font-size:1.25rem;}}/*!sc*/
+h5{font-size:1.25rem;}/*!sc*/
+h6{font-size:1.125rem;}/*!sc*/
+p{margin-bottom:1rem;line-height:1.75;}/*!sc*/
+a{color:#3b82f6;text-decoration:none;transition:color 0.15s ease;}/*!sc*/
+a:hover{color:#2563eb;}/*!sc*/
+a:focus{outline:2px solid #3b82f6;outline-offset:2px;}/*!sc*/
+button{cursor:pointer;border:none;background:none;font-family:inherit;font-size:inherit;}/*!sc*/
+button:disabled{cursor:not-allowed;opacity:0.6;}/*!sc*/
+button:focus{outline:2px solid #3b82f6;outline-offset:2px;}/*!sc*/
+input,textarea,select{font-family:inherit;font-size:inherit;}/*!sc*/
+input:focus,textarea:focus,select:focus{outline:2px solid #3b82f6;outline-offset:2px;}/*!sc*/
+img{max-width:100%;height:auto;}/*!sc*/
+ul,ol{margin-bottom:1rem;padding-left:1.5rem;}/*!sc*/
+li{margin-bottom:0.25rem;}/*!sc*/
+blockquote{margin:1rem 0;padding:1rem;border-left:4px solid #3b82f6;background-color:#f1f5f9;font-style:italic;}/*!sc*/
+code{font-family:SFMono-Regular,Consolas,"Liberation Mono",Menlo,monospace;font-size:0.9em;background-color:#f1f5f9;padding:0.2em 0.4em;border-radius:0.25rem;}/*!sc*/
+pre{background-color:#f1f5f9;padding:1rem;border-radius:0.5rem;overflow-x:auto;margin-bottom:1rem;}/*!sc*/
+pre code{background:none;padding:0;}/*!sc*/
+table{width:100%;border-collapse:collapse;margin-bottom:1rem;}/*!sc*/
+th,td{padding:0.75rem;text-align:left;border-bottom:1px solid #e2e8f0;}/*!sc*/
+th{font-weight:600;background-color:#f1f5f9;}/*!sc*/
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0, 0, 0, 0);white-space:nowrap;border:0;}/*!sc*/
+.skip-link{position:absolute;top:-40px;left:6px;background:#3b82f6;color:white;padding:8px;text-decoration:none;border-radius:4px;z-index:100;}/*!sc*/
+.skip-link:focus{top:6px;}/*!sc*/
+::-webkit-scrollbar{width:8px;height:8px;}/*!sc*/
+::-webkit-scrollbar-track{background:#f1f5f9;}/*!sc*/
+::-webkit-scrollbar-thumb{background:#94a3b8;border-radius:4px;}/*!sc*/
+::-webkit-scrollbar-thumb:hover{background:#64748b;}/*!sc*/
+::selection{background:#3b82f6;color:white;}/*!sc*/
+.focus-visible{outline:2px solid #3b82f6;outline-offset:2px;}/*!sc*/
+.fade-in{opacity:0;animation:fadeIn 0.3s ease forwards;}/*!sc*/
+.slide-up{transform:translateY(20px);opacity:0;animation:slideUp 0.3s ease forwards;}/*!sc*/
+@keyframes fadeIn{to{opacity:1;}}/*!sc*/
+@keyframes slideUp{to{transform:translateY(0);opacity:1;}}/*!sc*/
+@media print{*{background:white!important;color:black!important;box-shadow:none!important;text-shadow:none!important;}a,a:visited{text-decoration:underline;}h1,h2,h3,h4,h5,h6{break-after:avoid;}pre,blockquote{border:1px solid #999;break-inside:avoid;}img{max-width:100%!important;}@page{margin:0.5in;}}/*!sc*/
+data-styled.g19[id="sc-global-kxA-Ddz1"]{content:"sc-global-kxA-Ddz1,"}/*!sc*/
+.hNPaTO{position:fixed;top:0;width:100%;z-index:1020;background:transparent;backdrop-filter:blur(10px);border-bottom:1px solid transparent;transition:all 0.3s ease;}/*!sc*/
+data-styled.g20[id="sc-dNdcvo"]{content:"hNPaTO,"}/*!sc*/
+.jJxjWc{max-width:1200px;margin:0 auto;padding:0 2rem;display:flex;align-items:center;justify-content:space-between;height:70px;}/*!sc*/
+data-styled.g21[id="sc-fbQrwq"]{content:"jJxjWc,"}/*!sc*/
+.jwmRwa{display:flex;align-items:center;gap:0.5rem;font-size:1.5rem;font-weight:700;color:#3b82f6;text-decoration:none;cursor:pointer;}/*!sc*/
+.jwmRwa:hover{color:#2563eb;}/*!sc*/
+data-styled.g22[id="sc-gGKoUb"]{content:"jwmRwa,"}/*!sc*/
+.KQdZw{display:flex;align-items:center;gap:2rem;}/*!sc*/
+@media (max-width: 768px){.KQdZw{display:none;}}/*!sc*/
+data-styled.g23[id="sc-hwddKA"]{content:"KQdZw,"}/*!sc*/
+.ETszJ{color:#1e293b;font-weight:500;text-decoration:none;transition:color 0.15s ease;position:relative;}/*!sc*/
+.ETszJ:hover{color:#3b82f6;}/*!sc*/
+.ETszJ:after{content:'';position:absolute;bottom:-5px;left:0;width:0;height:2px;background:#3b82f6;transition:width 0.15s ease;}/*!sc*/
+.ETszJ:hover:after{width:100%;}/*!sc*/
+data-styled.g24[id="sc-jaXbil"]{content:"ETszJ,"}/*!sc*/
+.foClcg{display:none;background:none;border:none;color:#1e293b;cursor:pointer;padding:0.5rem;}/*!sc*/
+@media (max-width: 768px){.foClcg{display:block;}}/*!sc*/
+data-styled.g25[id="sc-eqNDNG"]{content:"foClcg,"}/*!sc*/
+.kBjfBo{display:flex;align-items:center;gap:0.5rem;background:#f1f5f9;border:1px solid #e2e8f0;border-radius:0.5rem;padding:0.5rem 1rem;color:#64748b;font-size:0.9rem;transition:all 0.15s ease;}/*!sc*/
+.kBjfBo:hover{background:#ffffff;border-color:#3b82f6;}/*!sc*/
+data-styled.g29[id="sc-eQwNpu"]{content:"kBjfBo,"}/*!sc*/
+.booJNS{background:#1e293b;color:white;padding:3rem 0 1rem;margin-top:auto;}/*!sc*/
+data-styled.g30[id="sc-gvqKNf"]{content:"booJNS,"}/*!sc*/
+.fVoYcP{max-width:1200px;margin:0 auto;padding:0 2rem;}/*!sc*/
+data-styled.g31[id="sc-cOpnSz"]{content:"fVoYcP,"}/*!sc*/
+.kKfrkv{display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:2rem;margin-bottom:2rem;}/*!sc*/
+@media (max-width: 768px){.kKfrkv{grid-template-columns:1fr 1fr;gap:1.5rem;}}/*!sc*/
+@media (max-width: 480px){.kKfrkv{grid-template-columns:1fr;}}/*!sc*/
+data-styled.g32[id="sc-kjwdDK"]{content:"kKfrkv,"}/*!sc*/
+.inEXDm h3{font-size:1.1rem;font-weight:600;margin-bottom:1rem;color:white;}/*!sc*/
+.inEXDm ul{list-style:none;padding:0;margin:0;}/*!sc*/
+.inEXDm li{margin-bottom:0.5rem;}/*!sc*/
+.inEXDm a{color:rgba(255, 255, 255, 0.7);text-decoration:none;transition:color 0.15s ease;}/*!sc*/
+.inEXDm a:hover{color:white;}/*!sc*/
+data-styled.g33[id="sc-eVqvcJ"]{content:"inEXDm,"}/*!sc*/
+.hWhopJ{display:flex;align-items:center;gap:0.5rem;font-size:1.2rem;font-weight:700;margin-bottom:1rem;color:white;}/*!sc*/
+data-styled.g34[id="sc-bbbBoY"]{content:"hWhopJ,"}/*!sc*/
+.exeTne{color:rgba(255, 255, 255, 0.7);line-height:1.6;margin-bottom:1rem;}/*!sc*/
+data-styled.g35[id="sc-cdmAjP"]{content:"exeTne,"}/*!sc*/
+.cgXMuV{display:flex;gap:1rem;}/*!sc*/
+.cgXMuV a{display:flex;align-items:center;justify-content:center;width:40px;height:40px;background:rgba(255, 255, 255, 0.1);border-radius:0.5rem;color:rgba(255, 255, 255, 0.7);transition:all 0.15s ease;}/*!sc*/
+.cgXMuV a:hover{background:rgba(255, 255, 255, 0.2);color:white;}/*!sc*/
+data-styled.g36[id="sc-jytpVa"]{content:"cgXMuV,"}/*!sc*/
+.iQqwrD{border-top:1px solid rgba(255, 255, 255, 0.1);padding-top:2rem;display:flex;justify-content:space-between;align-items:center;}/*!sc*/
+@media (max-width: 768px){.iQqwrD{flex-direction:column;gap:1rem;text-align:center;}}/*!sc*/
+data-styled.g37[id="sc-eknHtZ"]{content:"iQqwrD,"}/*!sc*/
+.gObJRG{color:rgba(255, 255, 255, 0.7);margin:0;font-size:0.9rem;}/*!sc*/
+data-styled.g38[id="sc-pYNGo"]{content:"gObJRG,"}/*!sc*/
+.eBqBtc{display:flex;gap:2rem;}/*!sc*/
+@media (max-width: 480px){.eBqBtc{flex-direction:column;gap:1rem;}}/*!sc*/
+.eBqBtc a{color:rgba(255, 255, 255, 0.7);text-decoration:none;font-size:0.9rem;transition:color 0.15s ease;}/*!sc*/
+.eBqBtc a:hover{color:white;}/*!sc*/
+data-styled.g39[id="sc-cCVJLD"]{content:"eBqBtc,"}/*!sc*/
+.kmsQDA{color:#1e293b;line-height:1.6;}/*!sc*/
+.kmsQDA h1,.kmsQDA h2,.kmsQDA h3,.kmsQDA h4,.kmsQDA h5,.kmsQDA h6{color:#1e293b;margin-top:2rem;margin-bottom:1rem;font-weight:600;}/*!sc*/
+.kmsQDA h1{font-size:2rem;border-bottom:2px solid #e2e8f0;padding-bottom:0.5rem;}/*!sc*/
+.kmsQDA h2{font-size:1.5rem;border-bottom:1px solid #e2e8f0;padding-bottom:0.3rem;}/*!sc*/
+.kmsQDA h3{font-size:1.25rem;}/*!sc*/
+.kmsQDA h4{font-size:1.1rem;}/*!sc*/
+.kmsQDA p{margin-bottom:1rem;color:#64748b;}/*!sc*/
+.kmsQDA a{color:#3b82f6;text-decoration:none;}/*!sc*/
+.kmsQDA a:hover{text-decoration:underline;}/*!sc*/
+.kmsQDA ul,.kmsQDA ol{margin-bottom:1rem;padding-left:1.5rem;}/*!sc*/
+.kmsQDA ul li,.kmsQDA ol li{margin-bottom:0.5rem;color:#64748b;}/*!sc*/
+.kmsQDA blockquote{border-left:4px solid #3b82f6;padding-left:1rem;margin:1rem 0;font-style:italic;color:#64748b;background:#f1f5f9;padding:1rem;border-radius:0.5rem;}/*!sc*/
+.kmsQDA code{background:#f1f5f9;padding:0.2rem 0.4rem;border-radius:0.25rem;font-family:SFMono-Regular,Consolas,"Liberation Mono",Menlo,monospace;font-size:0.9em;color:#f59e0b;}/*!sc*/
+.kmsQDA pre{background:#ffffff;border:1px solid #e2e8f0;border-radius:0.5rem;padding:1rem;margin:1rem 0;overflow-x:auto;}/*!sc*/
+.kmsQDA pre code{background:none;padding:0;color:#1e293b;font-size:0.9rem;}/*!sc*/
+.kmsQDA table{width:100%;border-collapse:collapse;margin:1rem 0;}/*!sc*/
+.kmsQDA table th,.kmsQDA table td{border:1px solid #e2e8f0;padding:0.5rem;text-align:left;}/*!sc*/
+.kmsQDA table th{background:#ffffff;font-weight:600;}/*!sc*/
+.kmsQDA table tr:nth-child(even){background:#f1f5f9;}/*!sc*/
+.kmsQDA hr{border:none;height:1px;background:#e2e8f0;margin:2rem 0;}/*!sc*/
+.kmsQDA .highlight{background:#3b82f620;padding:0.2rem 0.4rem;border-radius:0.25rem;font-weight:600;}/*!sc*/
+.kmsQDA .hljs{background:#ffffff;color:#1e293b;}/*!sc*/
+.kmsQDA .hljs-keyword{color:#3b82f6;font-weight:600;}/*!sc*/
+.kmsQDA .hljs-string{color:#10b981;}/*!sc*/
+.kmsQDA .hljs-function{color:#f59e0b;}/*!sc*/
+.kmsQDA .hljs-comment{color:#94a3b8;font-style:italic;}/*!sc*/
+.kmsQDA .hljs-number{color:#f59e0b;}/*!sc*/
+.kmsQDA .hljs-variable{color:#1e293b;}/*!sc*/
+.kmsQDA .hljs-title{color:#f59e0b;font-weight:600;}/*!sc*/
+data-styled.g40[id="sc-jYczwO"]{content:"kmsQDA,"}/*!sc*/
+</style></head><body class="__className_6eac61"><div style="min-height:100vh;display:flex;flex-direction:column"><nav class="sc-dNdcvo hNPaTO"><div class="sc-fbQrwq jJxjWc"><a href="/interview/"><a class="sc-gGKoUb jwmRwa"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-code "><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>Frontend Interview Prep</a></a><div class="sc-hwddKA KQdZw"><a href="/interview/problems"><a class="sc-jaXbil ETszJ">Problems</a></a><a href="/interview/learn"><a class="sc-jaXbil ETszJ">Learn</a></a><a href="/interview/study-guide"><a class="sc-jaXbil ETszJ">Study Guide</a></a><a href="/interview/system-design"><a class="sc-jaXbil ETszJ">System Design</a></a><a href="/interview/performance"><a class="sc-jaXbil ETszJ">Performance</a></a><a href="/interview/accessibility"><a class="sc-jaXbil ETszJ">Accessibility</a></a><a href="/interview/interview-tips"><a class="sc-jaXbil ETszJ">Interview Tips</a></a><button class="sc-eQwNpu kBjfBo"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-search "><circle cx="11" cy="11" r="8"></circle><path d="m21 21-4.3-4.3"></path></svg>Search</button></div><button class="sc-eqNDNG foClcg"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-menu "><line x1="4" x2="20" y1="12" y2="12"></line><line x1="4" x2="20" y1="6" y2="6"></line><line x1="4" x2="20" y1="18" y2="18"></line></svg></button></div></nav><main style="flex:1"><div class="max-w-6xl mx-auto px-8 py-24"><div class="flex items-center gap-4 mb-8"><a href="/interview/learn"><button class="flex items-center gap-2 bg-gray-100 border border-gray-300 text-gray-700 px-4 py-3 rounded-md font-medium hover:bg-gray-200 transition-colors"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-left "><path d="m12 19-7-7 7-7"></path><path d="M19 12H5"></path></svg>Back to Learn</button></a></div><div class="bg-white border border-gray-200 rounded-lg p-8 mb-8"><div class="flex items-center justify-between mb-4"><h1 class="text-3xl font-bold text-gray-900">🌐 Browser Architecture Deep Dive</h1><div class="flex gap-4"><button class="flex items-center gap-2 bg-transparent text-gray-700 border border-gray-300 px-6 py-3 rounded-md font-semibold hover:bg-gray-50 transition-colors"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-star "><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>Bookmark</button><button class="flex items-center gap-2 bg-transparent text-gray-700 border border-gray-300 px-6 py-3 rounded-md font-semibold hover:bg-gray-50 transition-colors"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-share2 "><circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><line x1="8.59" x2="15.42" y1="13.51" y2="17.49"></line><line x1="15.41" x2="8.59" y1="6.51" y2="10.49"></line></svg>Share</button></div></div><div class="flex gap-8 mb-4"><div class="flex items-center gap-2 text-sm text-gray-600"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-clock "><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>30-60 min</div><span class="px-3 py-1 rounded-full text-xs font-semibold text-white bg-yellow-500">Intermediate</span><span class="px-3 py-1 rounded-full text-xs font-semibold bg-blue-100 text-blue-700">Theory</span></div><p class="text-lg text-gray-700 leading-relaxed">Learn about browser-architecture</p></div><div class="grid grid-cols-1 lg:grid-cols-3 gap-8"><div class="lg:col-span-2"><div class="bg-white border border-gray-200 rounded-lg p-8"><div class="sc-jYczwO kmsQDA"><h1 id="🌐-browser-architecture-deep-dive" node="[object Object]">🌐 Browser Architecture Deep Dive</h1>
+<h2 id="📋-table-of-contents" node="[object Object]">📋 Table of Contents</h2>
+<ul>
+<li><a href="#browser-process-model" node="[object Object]">Browser Process Model</a></li>
+<li><a href="#rendering-pipeline" node="[object Object]">Rendering Pipeline</a></li>
+<li><a href="#network-stack" node="[object Object]">Network Stack</a></li>
+<li><a href="#security-model" node="[object Object]">Security Model</a></li>
+<li><a href="#performance-optimization" node="[object Object]">Performance Optimization</a></li>
+<li><a href="#visual-diagrams" node="[object Object]">Visual Diagrams</a></li>
+</ul>
+<h2 id="🏗️-browser-process-model" node="[object Object]">🏗️ Browser Process Model</h2>
+<h3 id="multi-process-architecture" node="[object Object]">Multi-Process Architecture</h3>
+<pre><pre><code class="hljs hljs language-mermaid">graph TB
+    subgraph &quot;Browser Process&quot;
+        A[Browser Process] --&gt; B[UI Thread]
+        A --&gt; C[Network Thread]
+        A --&gt; D[Storage Thread]
+    end
+
+    subgraph &quot;Renderer Processes&quot;
+        E[Renderer Process 1] --&gt; F[Main Thread]
+        E --&gt; G[Compositor Thread]
+        E --&gt; H[Raster Thread]
+
+        I[Renderer Process 2] --&gt; J[Main Thread]
+        I --&gt; K[Compositor Thread]
+        I --&gt; L[Raster Thread]
+    end
+
+    subgraph &quot;Utility Processes&quot;
+        M[GPU Process] --&gt; N[Hardware Acceleration]
+        O[Plugin Process] --&gt; P[Flash, PDF]
+        Q[Extension Process] --&gt; R[Browser Extensions]
+    end
+</code></pre></pre>
+<h3 id="process-communication" node="[object Object]">Process Communication</h3>
+<pre><pre><code class="hljs hljs language-mermaid">sequenceDiagram
+    participant User
+    participant Browser
+    participant Renderer
+    participant Network
+    participant GPU
+
+    User-&gt;&gt;Browser: Navigate to URL
+    Browser-&gt;&gt;Network: Fetch page
+    Network--&gt;&gt;Browser: HTML/CSS/JS
+    Browser-&gt;&gt;Renderer: Create renderer process
+    Renderer-&gt;&gt;Renderer: Parse &amp; render
+    Renderer-&gt;&gt;GPU: Composite layers
+    GPU--&gt;&gt;Renderer: Display frame
+    Renderer--&gt;&gt;Browser: Page ready
+    Browser--&gt;&gt;User: Show page
+</code></pre></pre>
+<h2 id="🎨-rendering-pipeline" node="[object Object]">🎨 Rendering Pipeline</h2>
+<h3 id="critical-rendering-path" node="[object Object]">Critical Rendering Path</h3>
+<pre><pre><code class="hljs hljs language-mermaid">graph LR
+    A[HTML] --&gt; B[DOM Tree]
+    C[CSS] --&gt; D[CSSOM Tree]
+    B --&gt; E[Render Tree]
+    D --&gt; E
+    E --&gt; F[Layout]
+    F --&gt; G[Paint]
+    G --&gt; H[Composite]
+</code></pre></pre>
+<h3 id="detailed-rendering-steps" node="[object Object]">Detailed Rendering Steps</h3>
+<pre><pre><code class="hljs hljs language-mermaid">graph TB
+    subgraph &quot;Parsing&quot;
+        A[HTML Bytes] --&gt; B[HTML Parser]
+        B --&gt; C[DOM Tree]
+        D[CSS Bytes] --&gt; E[CSS Parser]
+        E --&gt; F[CSSOM Tree]
+    end
+
+    subgraph &quot;Rendering&quot;
+        C --&gt; G[Render Tree]
+        F --&gt; G
+        G --&gt; H[Layout]
+        H --&gt; I[Paint]
+        I --&gt; J[Composite]
+    end
+
+    subgraph &quot;JavaScript&quot;
+        K[JavaScript] --&gt; L[DOM Manipulation]
+        L --&gt; M[Style Recalculation]
+        M --&gt; N[Layout Reflow]
+        N --&gt; O[Repaint]
+        O --&gt; P[Recomposite]
+    end
+</code></pre></pre>
+<h3 id="dom-tree-construction" node="[object Object]">DOM Tree Construction</h3>
+<pre><pre><code class="hljs hljs language-html"><span class="hljs-meta">&lt;!DOCTYPE <span class="hljs-keyword">html</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">html</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span>Example<span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;container&quot;</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>Hello World<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>This is a paragraph.<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span>
+</code></pre></pre>
+<pre><pre><code class="hljs hljs language-mermaid">graph TD
+    A[Document] --&gt; B[html]
+    B --&gt; C[head]
+    B --&gt; D[body]
+    C --&gt; E[title]
+    D --&gt; F[div#container]
+    F --&gt; G[h1]
+    F --&gt; H[p]
+    G --&gt; I[Text: Hello World]
+    H --&gt; J[Text: This is a paragraph]
+</code></pre></pre>
+<h3 id="cssom-tree-construction" node="[object Object]">CSSOM Tree Construction</h3>
+<pre><pre><code class="hljs hljs language-css"><span class="hljs-selector-tag">body</span> {
+  <span class="hljs-attribute">font-size</span>: <span class="hljs-number">16px</span>;
+  <span class="hljs-attribute">margin</span>: <span class="hljs-number">0</span>;
+}
+
+<span class="hljs-selector-id">#container</span> {
+  <span class="hljs-attribute">width</span>: <span class="hljs-number">100%</span>;
+  <span class="hljs-attribute">max-width</span>: <span class="hljs-number">1200px</span>;
+  <span class="hljs-attribute">margin</span>: <span class="hljs-number">0</span> auto;
+}
+
+<span class="hljs-selector-tag">h1</span> {
+  <span class="hljs-attribute">color</span>: <span class="hljs-number">#333</span>;
+  <span class="hljs-attribute">font-size</span>: <span class="hljs-number">2em</span>;
+}
+
+<span class="hljs-selector-tag">p</span> {
+  <span class="hljs-attribute">color</span>: <span class="hljs-number">#666</span>;
+  <span class="hljs-attribute">line-height</span>: <span class="hljs-number">1.6</span>;
+}
+</code></pre></pre>
+<pre><pre><code class="hljs hljs language-mermaid">graph TD
+    A[CSSOM] --&gt; B[body]
+    A --&gt; C[#container]
+    A --&gt; D[h1]
+    A --&gt; E[p]
+
+    B --&gt; F[font-size: 16px]
+    B --&gt; G[margin: 0]
+
+    C --&gt; H[width: 100%]
+    C --&gt; I[max-width: 1200px]
+    C --&gt; J[margin: 0 auto]
+
+    D --&gt; K[color: #333]
+    D --&gt; L[font-size: 2em]
+
+    E --&gt; M[color: #666]
+    E --&gt; N[line-height: 1.6]
+</code></pre></pre>
+<h2 id="🌐-network-stack" node="[object Object]">🌐 Network Stack</h2>
+<h3 id="http-request/response-flow" node="[object Object]">HTTP Request/Response Flow</h3>
+<pre><pre><code class="hljs hljs language-mermaid">sequenceDiagram
+    participant Browser
+    participant DNS
+    participant TCP
+    participant TLS
+    participant Server
+
+    Browser-&gt;&gt;DNS: DNS Lookup
+    DNS--&gt;&gt;Browser: IP Address
+    Browser-&gt;&gt;TCP: TCP Handshake
+    TCP--&gt;&gt;Browser: Connection Established
+    Browser-&gt;&gt;TLS: TLS Handshake
+    TLS--&gt;&gt;Browser: Encrypted Connection
+    Browser-&gt;&gt;Server: HTTP Request
+    Server--&gt;&gt;Browser: HTTP Response
+    Browser-&gt;&gt;Browser: Parse Response
+</code></pre></pre>
+<h3 id="resource-loading-pipeline" node="[object Object]">Resource Loading Pipeline</h3>
+<pre><pre><code class="hljs hljs language-mermaid">graph TB
+    subgraph &quot;Resource Discovery&quot;
+        A[HTML Parsing] --&gt; B[Resource Discovery]
+        B --&gt; C[CSS Files]
+        B --&gt; D[JavaScript Files]
+        B --&gt; E[Images]
+        B --&gt; F[Fonts]
+    end
+
+    subgraph &quot;Loading Priority&quot;
+        G[Critical Resources] --&gt; H[High Priority]
+        I[Non-Critical] --&gt; J[Low Priority]
+        K[Lazy Load] --&gt; L[On Demand]
+    end
+
+    subgraph &quot;Caching&quot;
+        M[Memory Cache] --&gt; N[Disk Cache]
+        N --&gt; O[Network Request]
+    end
+</code></pre></pre>
+<h3 id="network-optimization-strategies" node="[object Object]">Network Optimization Strategies</h3>
+<pre><pre><code class="hljs hljs language-javascript"><span class="hljs-comment">// 1. Resource Hints</span>
+<span class="hljs-keyword">const</span> resourceHints = <span class="hljs-string">`
+    &lt;!-- DNS Prefetch --&gt;
+    &lt;link rel=&quot;dns-prefetch&quot; href=&quot;//cdn.example.com&quot;&gt;
+    
+    &lt;!-- Preconnect --&gt;
+    &lt;link rel=&quot;preconnect&quot; href=&quot;https://api.example.com&quot;&gt;
+    
+    &lt;!-- Preload Critical Resources --&gt;
+    &lt;link rel=&quot;preload&quot; href=&quot;/critical.css&quot; as=&quot;style&quot;&gt;
+    &lt;link rel=&quot;preload&quot; href=&quot;/critical.js&quot; as=&quot;script&quot;&gt;
+    
+    &lt;!-- Prefetch Non-Critical Resources --&gt;
+    &lt;link rel=&quot;prefetch&quot; href=&quot;/next-page.js&quot;&gt;
+    
+    &lt;!-- Preload Images --&gt;
+    &lt;link rel=&quot;preload&quot; href=&quot;/hero-image.jpg&quot; as=&quot;image&quot;&gt;
+`</span>;
+
+<span class="hljs-comment">// 2. Service Worker Caching</span>
+<span class="hljs-keyword">class</span> <span class="hljs-title class_">CacheManager</span> {
+  <span class="hljs-title function_">constructor</span>(<span class="hljs-params"></span>) {
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">cacheName</span> = <span class="hljs-string">&quot;app-cache-v1&quot;</span>;
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">criticalResources</span> = [<span class="hljs-string">&quot;/&quot;</span>, <span class="hljs-string">&quot;/styles/main.css&quot;</span>, <span class="hljs-string">&quot;/scripts/app.js&quot;</span>];
+  }
+
+  <span class="hljs-keyword">async</span> <span class="hljs-title function_">install</span>(<span class="hljs-params">event</span>) {
+    <span class="hljs-keyword">const</span> cache = <span class="hljs-keyword">await</span> caches.<span class="hljs-title function_">open</span>(<span class="hljs-variable language_">this</span>.<span class="hljs-property">cacheName</span>);
+    <span class="hljs-keyword">await</span> cache.<span class="hljs-title function_">addAll</span>(<span class="hljs-variable language_">this</span>.<span class="hljs-property">criticalResources</span>);
+  }
+
+  <span class="hljs-keyword">async</span> <span class="hljs-title function_">fetch</span>(<span class="hljs-params">event</span>) {
+    <span class="hljs-keyword">const</span> cachedResponse = <span class="hljs-keyword">await</span> caches.<span class="hljs-title function_">match</span>(event.<span class="hljs-property">request</span>);
+    <span class="hljs-keyword">if</span> (cachedResponse) {
+      <span class="hljs-keyword">return</span> cachedResponse;
+    }
+
+    <span class="hljs-keyword">const</span> networkResponse = <span class="hljs-keyword">await</span> <span class="hljs-title function_">fetch</span>(event.<span class="hljs-property">request</span>);
+    <span class="hljs-keyword">const</span> cache = <span class="hljs-keyword">await</span> caches.<span class="hljs-title function_">open</span>(<span class="hljs-variable language_">this</span>.<span class="hljs-property">cacheName</span>);
+    cache.<span class="hljs-title function_">put</span>(event.<span class="hljs-property">request</span>, networkResponse.<span class="hljs-title function_">clone</span>());
+
+    <span class="hljs-keyword">return</span> networkResponse;
+  }
+}
+
+<span class="hljs-comment">// 3. HTTP/2 Server Push</span>
+<span class="hljs-keyword">const</span> http2Push = <span class="hljs-string">`
+    // Server-side (Node.js with HTTP/2)
+    const http2 = require(&#x27;http2&#x27;);
+    const fs = require(&#x27;fs&#x27;);
+    
+    const server = http2.createSecureServer({
+        key: fs.readFileSync(&#x27;key.pem&#x27;),
+        cert: fs.readFileSync(&#x27;cert.pem&#x27;)
+    });
+    
+    server.on(&#x27;stream&#x27;, (stream, headers) =&gt; {
+        if (headers[&#x27;:path&#x27;] === &#x27;/&#x27;) {
+            // Push critical CSS
+            stream.pushStream({ &#x27;:path&#x27;: &#x27;/styles/critical.css&#x27; }, (pushStream) =&gt; {
+                pushStream.respondWithFile(&#x27;./styles/critical.css&#x27;);
+            });
+            
+            // Push critical JS
+            stream.pushStream({ &#x27;:path&#x27;: &#x27;/scripts/critical.js&#x27; }, (pushStream) =&gt; {
+                pushStream.respondWithFile(&#x27;./scripts/critical.js&#x27;);
+            });
+            
+            stream.respondWithFile(&#x27;./index.html&#x27;);
+        }
+    });
+`</span>;
+</code></pre></pre>
+<h2 id="🔒-security-model" node="[object Object]">🔒 Security Model</h2>
+<h3 id="same-origin-policy" node="[object Object]">Same-Origin Policy</h3>
+<pre><pre><code class="hljs hljs language-mermaid">graph TB
+    subgraph &quot;Same-Origin Policy&quot;
+        A[Origin] --&gt; B[Protocol]
+        A --&gt; C[Host]
+        A --&gt; D[Port]
+    end
+
+    subgraph &quot;Cross-Origin Restrictions&quot;
+        E[DOM Access] --&gt; F[Blocked]
+        G[Cookie Access] --&gt; H[Blocked]
+        I[Network Requests] --&gt; J[CORS Required]
+    end
+</code></pre></pre>
+<h3 id="content-security-policy-(csp)" node="[object Object]">Content Security Policy (CSP)</h3>
+<pre><pre><code class="hljs hljs language-javascript"><span class="hljs-comment">// CSP Implementation</span>
+<span class="hljs-keyword">const</span> cspHeaders = {
+  <span class="hljs-string">&quot;Content-Security-Policy&quot;</span>: <span class="hljs-string">`
+        default-src &#x27;self&#x27;;
+        script-src &#x27;self&#x27; &#x27;unsafe-inline&#x27; https://cdn.example.com;
+        style-src &#x27;self&#x27; &#x27;unsafe-inline&#x27; https://fonts.googleapis.com;
+        img-src &#x27;self&#x27; data: https:;
+        font-src &#x27;self&#x27; https://fonts.gstatic.com;
+        connect-src &#x27;self&#x27; https://api.example.com;
+        frame-src &#x27;none&#x27;;
+        object-src &#x27;none&#x27;;
+        base-uri &#x27;self&#x27;;
+        form-action &#x27;self&#x27;;
+    `</span>
+    .<span class="hljs-title function_">replace</span>(<span class="hljs-regexp">/\s+/g</span>, <span class="hljs-string">&quot; &quot;</span>)
+    .<span class="hljs-title function_">trim</span>(),
+};
+
+<span class="hljs-comment">// CSP Violation Reporting</span>
+<span class="hljs-keyword">const</span> cspReporting = <span class="hljs-string">`
+    &lt;meta http-equiv=&quot;Content-Security-Policy&quot; 
+          content=&quot;default-src &#x27;self&#x27;; report-uri /csp-report&quot;&gt;
+`</span>;
+
+<span class="hljs-comment">// CSP Nonce for Inline Scripts</span>
+<span class="hljs-keyword">const</span> cspNonce = <span class="hljs-string">`
+    &lt;script nonce=&quot;random-nonce-here&quot;&gt;
+        // This script is allowed because of the nonce
+        console.log(&#x27;CSP compliant inline script&#x27;);
+    &lt;/script&gt;
+`</span>;
+</code></pre></pre>
+<h3 id="cross-origin-resource-sharing-(cors)" node="[object Object]">Cross-Origin Resource Sharing (CORS)</h3>
+<p>{% raw %}</p>
+<pre><pre><code class="hljs hljs language-javascript"><span class="hljs-comment">// CORS Implementation</span>
+<span class="hljs-keyword">class</span> <span class="hljs-title class_">CORSHandler</span> {
+  <span class="hljs-title function_">constructor</span>(<span class="hljs-params"></span>) {
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">allowedOrigins</span> = [
+      <span class="hljs-string">&quot;https://app.example.com&quot;</span>,
+      <span class="hljs-string">&quot;https://admin.example.com&quot;</span>,
+    ];
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">allowedMethods</span> = [<span class="hljs-string">&quot;GET&quot;</span>, <span class="hljs-string">&quot;POST&quot;</span>, <span class="hljs-string">&quot;PUT&quot;</span>, <span class="hljs-string">&quot;DELETE&quot;</span>, <span class="hljs-string">&quot;OPTIONS&quot;</span>];
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">allowedHeaders</span> = [<span class="hljs-string">&quot;Content-Type&quot;</span>, <span class="hljs-string">&quot;Authorization&quot;</span>];
+  }
+
+  <span class="hljs-title function_">handleRequest</span>(<span class="hljs-params">req, res</span>) {
+    <span class="hljs-keyword">const</span> origin = req.<span class="hljs-property">headers</span>.<span class="hljs-property">origin</span>;
+
+    <span class="hljs-comment">// Check if origin is allowed</span>
+    <span class="hljs-keyword">if</span> (<span class="hljs-variable language_">this</span>.<span class="hljs-property">allowedOrigins</span>.<span class="hljs-title function_">includes</span>(origin)) {
+      res.<span class="hljs-title function_">setHeader</span>(<span class="hljs-string">&quot;Access-Control-Allow-Origin&quot;</span>, origin);
+    }
+
+    <span class="hljs-comment">// Handle preflight requests</span>
+    <span class="hljs-keyword">if</span> (req.<span class="hljs-property">method</span> === <span class="hljs-string">&quot;OPTIONS&quot;</span>) {
+      res.<span class="hljs-title function_">setHeader</span>(
+        <span class="hljs-string">&quot;Access-Control-Allow-Methods&quot;</span>,
+        <span class="hljs-variable language_">this</span>.<span class="hljs-property">allowedMethods</span>.<span class="hljs-title function_">join</span>(<span class="hljs-string">&quot;, &quot;</span>)
+      );
+      res.<span class="hljs-title function_">setHeader</span>(
+        <span class="hljs-string">&quot;Access-Control-Allow-Headers&quot;</span>,
+        <span class="hljs-variable language_">this</span>.<span class="hljs-property">allowedHeaders</span>.<span class="hljs-title function_">join</span>(<span class="hljs-string">&quot;, &quot;</span>)
+      );
+      res.<span class="hljs-title function_">setHeader</span>(<span class="hljs-string">&quot;Access-Control-Max-Age&quot;</span>, <span class="hljs-string">&quot;86400&quot;</span>); <span class="hljs-comment">// 24 hours</span>
+      res.<span class="hljs-title function_">status</span>(<span class="hljs-number">200</span>).<span class="hljs-title function_">end</span>();
+      <span class="hljs-keyword">return</span>;
+    }
+
+    <span class="hljs-comment">// Handle actual request</span>
+    res.<span class="hljs-title function_">setHeader</span>(<span class="hljs-string">&quot;Access-Control-Allow-Credentials&quot;</span>, <span class="hljs-string">&quot;true&quot;</span>);
+    <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">processRequest</span>(req, res);
+  }
+
+  <span class="hljs-title function_">processRequest</span>(<span class="hljs-params">req, res</span>) {
+    <span class="hljs-comment">// Handle the actual request logic</span>
+    res.<span class="hljs-title function_">json</span>({ <span class="hljs-attr">message</span>: <span class="hljs-string">&quot;CORS enabled response&quot;</span> });
+  }
+}
+
+<span class="hljs-comment">// Client-side CORS handling</span>
+<span class="hljs-keyword">class</span> <span class="hljs-title class_">CORSClient</span> {
+  <span class="hljs-title function_">constructor</span>(<span class="hljs-params">baseURL</span>) {
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">baseURL</span> = baseURL;
+  }
+
+  <span class="hljs-keyword">async</span> <span class="hljs-title function_">request</span>(<span class="hljs-params">endpoint, options = {}</span>) {
+    <span class="hljs-keyword">const</span> url = <span class="hljs-string">`<span class="hljs-subst">${<span class="hljs-variable language_">this</span>.baseURL}</span><span class="hljs-subst">${endpoint}</span>`</span>;
+
+    <span class="hljs-keyword">const</span> config = {
+      <span class="hljs-attr">method</span>: <span class="hljs-string">&quot;GET&quot;</span>,
+      <span class="hljs-attr">credentials</span>: <span class="hljs-string">&quot;include&quot;</span>, <span class="hljs-comment">// Include cookies</span>
+      <span class="hljs-attr">headers</span>: {
+        <span class="hljs-string">&quot;Content-Type&quot;</span>: <span class="hljs-string">&quot;application/json&quot;</span>,
+        ...options.<span class="hljs-property">headers</span>,
+      },
+      ...options,
+    };
+
+    <span class="hljs-keyword">try</span> {
+      <span class="hljs-keyword">const</span> response = <span class="hljs-keyword">await</span> <span class="hljs-title function_">fetch</span>(url, config);
+
+      <span class="hljs-keyword">if</span> (!response.<span class="hljs-property">ok</span>) {
+        <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Error</span>(<span class="hljs-string">`HTTP error! status: <span class="hljs-subst">${response.status}</span>`</span>);
+      }
+
+      <span class="hljs-keyword">return</span> <span class="hljs-keyword">await</span> response.<span class="hljs-title function_">json</span>();
+    } <span class="hljs-keyword">catch</span> (error) {
+      <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">error</span>(<span class="hljs-string">&quot;CORS request failed:&quot;</span>, error);
+      <span class="hljs-keyword">throw</span> error;
+    }
+  }
+}
+</code></pre></pre>
+<p>{% endraw %}</p>
+<h2 id="⚡-performance-optimization" node="[object Object]">⚡ Performance Optimization</h2>
+<h3 id="rendering-performance" node="[object Object]">Rendering Performance</h3>
+<p>{% raw %}</p>
+<pre><pre><code class="hljs hljs language-javascript"><span class="hljs-comment">// 1. Optimize Layout Thrashing</span>
+<span class="hljs-keyword">class</span> <span class="hljs-title class_">LayoutOptimizer</span> {
+  <span class="hljs-title function_">constructor</span>(<span class="hljs-params"></span>) {
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">pendingReads</span> = [];
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">pendingWrites</span> = [];
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">scheduled</span> = <span class="hljs-literal">false</span>;
+  }
+
+  <span class="hljs-comment">// Batch read operations</span>
+  <span class="hljs-title function_">read</span>(<span class="hljs-params">callback</span>) {
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">pendingReads</span>.<span class="hljs-title function_">push</span>(callback);
+    <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">schedule</span>();
+  }
+
+  <span class="hljs-comment">// Batch write operations</span>
+  <span class="hljs-title function_">write</span>(<span class="hljs-params">callback</span>) {
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">pendingWrites</span>.<span class="hljs-title function_">push</span>(callback);
+    <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">schedule</span>();
+  }
+
+  <span class="hljs-title function_">schedule</span>(<span class="hljs-params"></span>) {
+    <span class="hljs-keyword">if</span> (!<span class="hljs-variable language_">this</span>.<span class="hljs-property">scheduled</span>) {
+      <span class="hljs-variable language_">this</span>.<span class="hljs-property">scheduled</span> = <span class="hljs-literal">true</span>;
+      <span class="hljs-title function_">requestAnimationFrame</span>(<span class="hljs-function">() =&gt;</span> <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">flush</span>());
+    }
+  }
+
+  <span class="hljs-title function_">flush</span>(<span class="hljs-params"></span>) {
+    <span class="hljs-comment">// Execute all reads first</span>
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">pendingReads</span>.<span class="hljs-title function_">forEach</span>(<span class="hljs-function">(<span class="hljs-params">callback</span>) =&gt;</span> <span class="hljs-title function_">callback</span>());
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">pendingReads</span>.<span class="hljs-property">length</span> = <span class="hljs-number">0</span>;
+
+    <span class="hljs-comment">// Then execute all writes</span>
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">pendingWrites</span>.<span class="hljs-title function_">forEach</span>(<span class="hljs-function">(<span class="hljs-params">callback</span>) =&gt;</span> <span class="hljs-title function_">callback</span>());
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">pendingWrites</span>.<span class="hljs-property">length</span> = <span class="hljs-number">0</span>;
+
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">scheduled</span> = <span class="hljs-literal">false</span>;
+  }
+}
+
+<span class="hljs-comment">// Usage</span>
+<span class="hljs-keyword">const</span> optimizer = <span class="hljs-keyword">new</span> <span class="hljs-title class_">LayoutOptimizer</span>();
+
+<span class="hljs-comment">// ❌ Bad: Layout thrashing</span>
+<span class="hljs-keyword">function</span> <span class="hljs-title function_">badExample</span>(<span class="hljs-params"></span>) {
+  <span class="hljs-keyword">const</span> elements = <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">querySelectorAll</span>(<span class="hljs-string">&quot;.item&quot;</span>);
+  elements.<span class="hljs-title function_">forEach</span>(<span class="hljs-function">(<span class="hljs-params">element</span>) =&gt;</span> {
+    <span class="hljs-keyword">const</span> height = element.<span class="hljs-property">offsetHeight</span>; <span class="hljs-comment">// Read</span>
+    element.<span class="hljs-property">style</span>.<span class="hljs-property">height</span> = height * <span class="hljs-number">2</span> + <span class="hljs-string">&quot;px&quot;</span>; <span class="hljs-comment">// Write</span>
+  });
+}
+
+<span class="hljs-comment">// ✅ Good: Batched operations</span>
+<span class="hljs-keyword">function</span> <span class="hljs-title function_">goodExample</span>(<span class="hljs-params"></span>) {
+  <span class="hljs-keyword">const</span> elements = <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">querySelectorAll</span>(<span class="hljs-string">&quot;.item&quot;</span>);
+
+  <span class="hljs-comment">// Batch reads</span>
+  optimizer.<span class="hljs-title function_">read</span>(<span class="hljs-function">() =&gt;</span> {
+    elements.<span class="hljs-title function_">forEach</span>(<span class="hljs-function">(<span class="hljs-params">element</span>) =&gt;</span> {
+      element.<span class="hljs-property">dataset</span>.<span class="hljs-property">height</span> = element.<span class="hljs-property">offsetHeight</span>;
+    });
+  });
+
+  <span class="hljs-comment">// Batch writes</span>
+  optimizer.<span class="hljs-title function_">write</span>(<span class="hljs-function">() =&gt;</span> {
+    elements.<span class="hljs-title function_">forEach</span>(<span class="hljs-function">(<span class="hljs-params">element</span>) =&gt;</span> {
+      <span class="hljs-keyword">const</span> height = element.<span class="hljs-property">dataset</span>.<span class="hljs-property">height</span>;
+      element.<span class="hljs-property">style</span>.<span class="hljs-property">height</span> = height * <span class="hljs-number">2</span> + <span class="hljs-string">&quot;px&quot;</span>;
+    });
+  });
+}
+
+<span class="hljs-comment">// 2. Virtual Scrolling</span>
+<span class="hljs-keyword">class</span> <span class="hljs-title class_">VirtualScroller</span> {
+  <span class="hljs-title function_">constructor</span>(<span class="hljs-params">container, itemHeight, totalItems</span>) {
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">container</span> = container;
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">itemHeight</span> = itemHeight;
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">totalItems</span> = totalItems;
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">visibleItems</span> = <span class="hljs-title class_">Math</span>.<span class="hljs-title function_">ceil</span>(container.<span class="hljs-property">clientHeight</span> / itemHeight);
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">scrollTop</span> = <span class="hljs-number">0</span>;
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">startIndex</span> = <span class="hljs-number">0</span>;
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">endIndex</span> = <span class="hljs-variable language_">this</span>.<span class="hljs-property">visibleItems</span>;
+
+    <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">setup</span>();
+  }
+
+  <span class="hljs-title function_">setup</span>(<span class="hljs-params"></span>) {
+    <span class="hljs-comment">// Create viewport</span>
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">viewport</span> = <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">createElement</span>(<span class="hljs-string">&quot;div&quot;</span>);
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">viewport</span>.<span class="hljs-property">style</span>.<span class="hljs-property">height</span> = <span class="hljs-string">`<span class="hljs-subst">${<span class="hljs-variable language_">this</span>.totalItems * <span class="hljs-variable language_">this</span>.itemHeight}</span>px`</span>;
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">viewport</span>.<span class="hljs-property">style</span>.<span class="hljs-property">position</span> = <span class="hljs-string">&quot;relative&quot;</span>;
+
+    <span class="hljs-comment">// Create visible items container</span>
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">visibleContainer</span> = <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">createElement</span>(<span class="hljs-string">&quot;div&quot;</span>);
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">visibleContainer</span>.<span class="hljs-property">style</span>.<span class="hljs-property">position</span> = <span class="hljs-string">&quot;absolute&quot;</span>;
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">visibleContainer</span>.<span class="hljs-property">style</span>.<span class="hljs-property">top</span> = <span class="hljs-string">&quot;0&quot;</span>;
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">visibleContainer</span>.<span class="hljs-property">style</span>.<span class="hljs-property">left</span> = <span class="hljs-string">&quot;0&quot;</span>;
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">visibleContainer</span>.<span class="hljs-property">style</span>.<span class="hljs-property">right</span> = <span class="hljs-string">&quot;0&quot;</span>;
+
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">viewport</span>.<span class="hljs-title function_">appendChild</span>(<span class="hljs-variable language_">this</span>.<span class="hljs-property">visibleContainer</span>);
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">container</span>.<span class="hljs-title function_">appendChild</span>(<span class="hljs-variable language_">this</span>.<span class="hljs-property">viewport</span>);
+
+    <span class="hljs-comment">// Add scroll listener</span>
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">container</span>.<span class="hljs-title function_">addEventListener</span>(<span class="hljs-string">&quot;scroll&quot;</span>, <span class="hljs-variable language_">this</span>.<span class="hljs-property">handleScroll</span>.<span class="hljs-title function_">bind</span>(<span class="hljs-variable language_">this</span>));
+
+    <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">render</span>();
+  }
+
+  <span class="hljs-title function_">handleScroll</span>(<span class="hljs-params"></span>) {
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">scrollTop</span> = <span class="hljs-variable language_">this</span>.<span class="hljs-property">container</span>.<span class="hljs-property">scrollTop</span>;
+    <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">updateVisibleRange</span>();
+    <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">render</span>();
+  }
+
+  <span class="hljs-title function_">updateVisibleRange</span>(<span class="hljs-params"></span>) {
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">startIndex</span> = <span class="hljs-title class_">Math</span>.<span class="hljs-title function_">floor</span>(<span class="hljs-variable language_">this</span>.<span class="hljs-property">scrollTop</span> / <span class="hljs-variable language_">this</span>.<span class="hljs-property">itemHeight</span>);
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">endIndex</span> = <span class="hljs-title class_">Math</span>.<span class="hljs-title function_">min</span>(
+      <span class="hljs-variable language_">this</span>.<span class="hljs-property">startIndex</span> + <span class="hljs-variable language_">this</span>.<span class="hljs-property">visibleItems</span> + <span class="hljs-number">1</span>,
+      <span class="hljs-variable language_">this</span>.<span class="hljs-property">totalItems</span>
+    );
+  }
+
+  <span class="hljs-title function_">render</span>(<span class="hljs-params"></span>) {
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">visibleContainer</span>.<span class="hljs-property">innerHTML</span> = <span class="hljs-string">&quot;&quot;</span>;
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">visibleContainer</span>.<span class="hljs-property">style</span>.<span class="hljs-property">transform</span> = <span class="hljs-string">`translateY(<span class="hljs-subst">${
+      <span class="hljs-variable language_">this</span>.startIndex * <span class="hljs-variable language_">this</span>.itemHeight
+    }</span>px)`</span>;
+
+    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-variable language_">this</span>.<span class="hljs-property">startIndex</span>; i &lt; <span class="hljs-variable language_">this</span>.<span class="hljs-property">endIndex</span>; i++) {
+      <span class="hljs-keyword">const</span> item = <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">createItem</span>(i);
+      <span class="hljs-variable language_">this</span>.<span class="hljs-property">visibleContainer</span>.<span class="hljs-title function_">appendChild</span>(item);
+    }
+  }
+
+  <span class="hljs-title function_">createItem</span>(<span class="hljs-params">index</span>) {
+    <span class="hljs-keyword">const</span> item = <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">createElement</span>(<span class="hljs-string">&quot;div&quot;</span>);
+    item.<span class="hljs-property">style</span>.<span class="hljs-property">height</span> = <span class="hljs-string">`<span class="hljs-subst">${<span class="hljs-variable language_">this</span>.itemHeight}</span>px`</span>;
+    item.<span class="hljs-property">textContent</span> = <span class="hljs-string">`Item <span class="hljs-subst">${index + <span class="hljs-number">1</span>}</span>`</span>;
+    <span class="hljs-keyword">return</span> item;
+  }
+}
+
+<span class="hljs-comment">// 3. Intersection Observer for Lazy Loading</span>
+<span class="hljs-keyword">class</span> <span class="hljs-title class_">LazyLoader</span> {
+  <span class="hljs-title function_">constructor</span>(<span class="hljs-params"></span>) {
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">observer</span> = <span class="hljs-keyword">new</span> <span class="hljs-title class_">IntersectionObserver</span>(
+      <span class="hljs-variable language_">this</span>.<span class="hljs-property">handleIntersection</span>.<span class="hljs-title function_">bind</span>(<span class="hljs-variable language_">this</span>),
+      {
+        <span class="hljs-attr">rootMargin</span>: <span class="hljs-string">&quot;50px&quot;</span>,
+        <span class="hljs-attr">threshold</span>: <span class="hljs-number">0.1</span>,
+      }
+    );
+  }
+
+  <span class="hljs-title function_">observe</span>(<span class="hljs-params">element</span>) {
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">observer</span>.<span class="hljs-title function_">observe</span>(element);
+  }
+
+  <span class="hljs-title function_">handleIntersection</span>(<span class="hljs-params">entries</span>) {
+    entries.<span class="hljs-title function_">forEach</span>(<span class="hljs-function">(<span class="hljs-params">entry</span>) =&gt;</span> {
+      <span class="hljs-keyword">if</span> (entry.<span class="hljs-property">isIntersecting</span>) {
+        <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">loadContent</span>(entry.<span class="hljs-property">target</span>);
+        <span class="hljs-variable language_">this</span>.<span class="hljs-property">observer</span>.<span class="hljs-title function_">unobserve</span>(entry.<span class="hljs-property">target</span>);
+      }
+    });
+  }
+
+  <span class="hljs-title function_">loadContent</span>(<span class="hljs-params">element</span>) {
+    <span class="hljs-keyword">const</span> src = element.<span class="hljs-property">dataset</span>.<span class="hljs-property">src</span>;
+    <span class="hljs-keyword">if</span> (src) {
+      <span class="hljs-keyword">if</span> (element.<span class="hljs-property">tagName</span> === <span class="hljs-string">&quot;IMG&quot;</span>) {
+        element.<span class="hljs-property">src</span> = src;
+      } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (element.<span class="hljs-property">tagName</span> === <span class="hljs-string">&quot;IFRAME&quot;</span>) {
+        element.<span class="hljs-property">src</span> = src;
+      }
+      element.<span class="hljs-title function_">removeAttribute</span>(<span class="hljs-string">&quot;data-src&quot;</span>);
+    }
+  }
+}
+
+<span class="hljs-comment">// Usage</span>
+<span class="hljs-keyword">const</span> lazyLoader = <span class="hljs-keyword">new</span> <span class="hljs-title class_">LazyLoader</span>();
+<span class="hljs-variable language_">document</span>.<span class="hljs-title function_">querySelectorAll</span>(<span class="hljs-string">&quot;[data-src]&quot;</span>).<span class="hljs-title function_">forEach</span>(<span class="hljs-function">(<span class="hljs-params">element</span>) =&gt;</span> {
+  lazyLoader.<span class="hljs-title function_">observe</span>(element);
+});
+</code></pre></pre>
+<p>{% endraw %}</p>
+<h2 id="🎯-memory-management" node="[object Object]">🎯 Memory Management</h2>
+<h3 id="memory-leaks-prevention" node="[object Object]">Memory Leaks Prevention</h3>
+<pre><pre><code class="hljs hljs language-javascript"><span class="hljs-comment">// 1. Event Listener Cleanup</span>
+<span class="hljs-keyword">class</span> <span class="hljs-title class_">EventManager</span> {
+  <span class="hljs-title function_">constructor</span>(<span class="hljs-params"></span>) {
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">listeners</span> = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Map</span>();
+  }
+
+  <span class="hljs-title function_">addListener</span>(<span class="hljs-params">element, event, handler</span>) {
+    <span class="hljs-keyword">if</span> (!<span class="hljs-variable language_">this</span>.<span class="hljs-property">listeners</span>.<span class="hljs-title function_">has</span>(element)) {
+      <span class="hljs-variable language_">this</span>.<span class="hljs-property">listeners</span>.<span class="hljs-title function_">set</span>(element, <span class="hljs-keyword">new</span> <span class="hljs-title class_">Map</span>());
+    }
+
+    <span class="hljs-keyword">const</span> elementListeners = <span class="hljs-variable language_">this</span>.<span class="hljs-property">listeners</span>.<span class="hljs-title function_">get</span>(element);
+    <span class="hljs-keyword">if</span> (!elementListeners.<span class="hljs-title function_">has</span>(event)) {
+      elementListeners.<span class="hljs-title function_">set</span>(event, []);
+    }
+
+    elementListeners.<span class="hljs-title function_">get</span>(event).<span class="hljs-title function_">push</span>(handler);
+    element.<span class="hljs-title function_">addEventListener</span>(event, handler);
+  }
+
+  <span class="hljs-title function_">removeListener</span>(<span class="hljs-params">element, event, handler</span>) {
+    <span class="hljs-keyword">const</span> elementListeners = <span class="hljs-variable language_">this</span>.<span class="hljs-property">listeners</span>.<span class="hljs-title function_">get</span>(element);
+    <span class="hljs-keyword">if</span> (elementListeners) {
+      <span class="hljs-keyword">const</span> handlers = elementListeners.<span class="hljs-title function_">get</span>(event);
+      <span class="hljs-keyword">if</span> (handlers) {
+        <span class="hljs-keyword">const</span> index = handlers.<span class="hljs-title function_">indexOf</span>(handler);
+        <span class="hljs-keyword">if</span> (index &gt; -<span class="hljs-number">1</span>) {
+          handlers.<span class="hljs-title function_">splice</span>(index, <span class="hljs-number">1</span>);
+          element.<span class="hljs-title function_">removeEventListener</span>(event, handler);
+        }
+      }
+    }
+  }
+
+  <span class="hljs-title function_">cleanup</span>(<span class="hljs-params">element</span>) {
+    <span class="hljs-keyword">const</span> elementListeners = <span class="hljs-variable language_">this</span>.<span class="hljs-property">listeners</span>.<span class="hljs-title function_">get</span>(element);
+    <span class="hljs-keyword">if</span> (elementListeners) {
+      elementListeners.<span class="hljs-title function_">forEach</span>(<span class="hljs-function">(<span class="hljs-params">handlers, event</span>) =&gt;</span> {
+        handlers.<span class="hljs-title function_">forEach</span>(<span class="hljs-function">(<span class="hljs-params">handler</span>) =&gt;</span> {
+          element.<span class="hljs-title function_">removeEventListener</span>(event, handler);
+        });
+      });
+      <span class="hljs-variable language_">this</span>.<span class="hljs-property">listeners</span>.<span class="hljs-title function_">delete</span>(element);
+    }
+  }
+}
+
+<span class="hljs-comment">// 2. WeakMap for Caching</span>
+<span class="hljs-keyword">class</span> <span class="hljs-title class_">CacheManager</span> {
+  <span class="hljs-title function_">constructor</span>(<span class="hljs-params"></span>) {
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">cache</span> = <span class="hljs-keyword">new</span> <span class="hljs-title class_">WeakMap</span>();
+  }
+
+  <span class="hljs-title function_">set</span>(<span class="hljs-params">key, value</span>) {
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">cache</span>.<span class="hljs-title function_">set</span>(key, value);
+  }
+
+  <span class="hljs-title function_">get</span>(<span class="hljs-params">key</span>) {
+    <span class="hljs-keyword">return</span> <span class="hljs-variable language_">this</span>.<span class="hljs-property">cache</span>.<span class="hljs-title function_">get</span>(key);
+  }
+
+  <span class="hljs-title function_">has</span>(<span class="hljs-params">key</span>) {
+    <span class="hljs-keyword">return</span> <span class="hljs-variable language_">this</span>.<span class="hljs-property">cache</span>.<span class="hljs-title function_">has</span>(key);
+  }
+
+  <span class="hljs-comment">// No need for cleanup - WeakMap automatically removes entries</span>
+  <span class="hljs-comment">// when the key object is garbage collected</span>
+}
+
+<span class="hljs-comment">// 3. AbortController for Cancellable Requests</span>
+<span class="hljs-keyword">class</span> <span class="hljs-title class_">RequestManager</span> {
+  <span class="hljs-title function_">constructor</span>(<span class="hljs-params"></span>) {
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">controllers</span> = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Map</span>();
+  }
+
+  <span class="hljs-keyword">async</span> <span class="hljs-title function_">request</span>(<span class="hljs-params">url, options = {}</span>) {
+    <span class="hljs-keyword">const</span> controller = <span class="hljs-keyword">new</span> <span class="hljs-title class_">AbortController</span>();
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">controllers</span>.<span class="hljs-title function_">set</span>(url, controller);
+
+    <span class="hljs-keyword">try</span> {
+      <span class="hljs-keyword">const</span> response = <span class="hljs-keyword">await</span> <span class="hljs-title function_">fetch</span>(url, {
+        ...options,
+        <span class="hljs-attr">signal</span>: controller.<span class="hljs-property">signal</span>,
+      });
+
+      <span class="hljs-variable language_">this</span>.<span class="hljs-property">controllers</span>.<span class="hljs-title function_">delete</span>(url);
+      <span class="hljs-keyword">return</span> response;
+    } <span class="hljs-keyword">catch</span> (error) {
+      <span class="hljs-keyword">if</span> (error.<span class="hljs-property">name</span> === <span class="hljs-string">&quot;AbortError&quot;</span>) {
+        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;Request was cancelled&quot;</span>);
+      }
+      <span class="hljs-keyword">throw</span> error;
+    }
+  }
+
+  <span class="hljs-title function_">cancel</span>(<span class="hljs-params">url</span>) {
+    <span class="hljs-keyword">const</span> controller = <span class="hljs-variable language_">this</span>.<span class="hljs-property">controllers</span>.<span class="hljs-title function_">get</span>(url);
+    <span class="hljs-keyword">if</span> (controller) {
+      controller.<span class="hljs-title function_">abort</span>();
+      <span class="hljs-variable language_">this</span>.<span class="hljs-property">controllers</span>.<span class="hljs-title function_">delete</span>(url);
+    }
+  }
+
+  <span class="hljs-title function_">cancelAll</span>(<span class="hljs-params"></span>) {
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">controllers</span>.<span class="hljs-title function_">forEach</span>(<span class="hljs-function">(<span class="hljs-params">controller</span>) =&gt;</span> controller.<span class="hljs-title function_">abort</span>());
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">controllers</span>.<span class="hljs-title function_">clear</span>();
+  }
+}
+</code></pre></pre>
+<h2 id="📊-performance-monitoring" node="[object Object]">📊 Performance Monitoring</h2>
+<h3 id="real-user-monitoring-(rum)" node="[object Object]">Real User Monitoring (RUM)</h3>
+<p>{% raw %}</p>
+<pre><pre><code class="hljs hljs language-javascript"><span class="hljs-keyword">class</span> <span class="hljs-title class_">PerformanceMonitor</span> {
+  <span class="hljs-title function_">constructor</span>(<span class="hljs-params"></span>) {
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">metrics</span> = {};
+    <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">init</span>();
+  }
+
+  <span class="hljs-title function_">init</span>(<span class="hljs-params"></span>) {
+    <span class="hljs-comment">// Core Web Vitals</span>
+    <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">observeLCP</span>();
+    <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">observeFID</span>();
+    <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">observeCLS</span>();
+
+    <span class="hljs-comment">// Custom metrics</span>
+    <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">observeCustomMetrics</span>();
+
+    <span class="hljs-comment">// Error tracking</span>
+    <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">observeErrors</span>();
+  }
+
+  <span class="hljs-title function_">observeLCP</span>(<span class="hljs-params"></span>) {
+    <span class="hljs-keyword">new</span> <span class="hljs-title class_">PerformanceObserver</span>(<span class="hljs-function">(<span class="hljs-params">list</span>) =&gt;</span> {
+      <span class="hljs-keyword">const</span> entries = list.<span class="hljs-title function_">getEntries</span>();
+      <span class="hljs-keyword">const</span> lastEntry = entries[entries.<span class="hljs-property">length</span> - <span class="hljs-number">1</span>];
+      <span class="hljs-variable language_">this</span>.<span class="hljs-property">metrics</span>.<span class="hljs-property">lcp</span> = lastEntry.<span class="hljs-property">startTime</span>;
+      <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">reportMetric</span>(<span class="hljs-string">&quot;LCP&quot;</span>, lastEntry.<span class="hljs-property">startTime</span>);
+    }).<span class="hljs-title function_">observe</span>({ <span class="hljs-attr">entryTypes</span>: [<span class="hljs-string">&quot;largest-contentful-paint&quot;</span>] });
+  }
+
+  <span class="hljs-title function_">observeFID</span>(<span class="hljs-params"></span>) {
+    <span class="hljs-keyword">new</span> <span class="hljs-title class_">PerformanceObserver</span>(<span class="hljs-function">(<span class="hljs-params">list</span>) =&gt;</span> {
+      <span class="hljs-keyword">const</span> entries = list.<span class="hljs-title function_">getEntries</span>();
+      entries.<span class="hljs-title function_">forEach</span>(<span class="hljs-function">(<span class="hljs-params">entry</span>) =&gt;</span> {
+        <span class="hljs-variable language_">this</span>.<span class="hljs-property">metrics</span>.<span class="hljs-property">fid</span> = entry.<span class="hljs-property">processingStart</span> - entry.<span class="hljs-property">startTime</span>;
+        <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">reportMetric</span>(<span class="hljs-string">&quot;FID&quot;</span>, <span class="hljs-variable language_">this</span>.<span class="hljs-property">metrics</span>.<span class="hljs-property">fid</span>);
+      });
+    }).<span class="hljs-title function_">observe</span>({ <span class="hljs-attr">entryTypes</span>: [<span class="hljs-string">&quot;first-input&quot;</span>] });
+  }
+
+  <span class="hljs-title function_">observeCLS</span>(<span class="hljs-params"></span>) {
+    <span class="hljs-keyword">let</span> clsValue = <span class="hljs-number">0</span>;
+    <span class="hljs-keyword">new</span> <span class="hljs-title class_">PerformanceObserver</span>(<span class="hljs-function">(<span class="hljs-params">list</span>) =&gt;</span> {
+      <span class="hljs-keyword">const</span> entries = list.<span class="hljs-title function_">getEntries</span>();
+      entries.<span class="hljs-title function_">forEach</span>(<span class="hljs-function">(<span class="hljs-params">entry</span>) =&gt;</span> {
+        <span class="hljs-keyword">if</span> (!entry.<span class="hljs-property">hadRecentInput</span>) {
+          clsValue += entry.<span class="hljs-property">value</span>;
+        }
+      });
+      <span class="hljs-variable language_">this</span>.<span class="hljs-property">metrics</span>.<span class="hljs-property">cls</span> = clsValue;
+      <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">reportMetric</span>(<span class="hljs-string">&quot;CLS&quot;</span>, clsValue);
+    }).<span class="hljs-title function_">observe</span>({ <span class="hljs-attr">entryTypes</span>: [<span class="hljs-string">&quot;layout-shift&quot;</span>] });
+  }
+
+  <span class="hljs-title function_">observeCustomMetrics</span>(<span class="hljs-params"></span>) {
+    <span class="hljs-comment">// Custom timing</span>
+    performance.<span class="hljs-title function_">mark</span>(<span class="hljs-string">&quot;app-start&quot;</span>);
+
+    <span class="hljs-comment">// Measure app initialization</span>
+    <span class="hljs-variable language_">window</span>.<span class="hljs-title function_">addEventListener</span>(<span class="hljs-string">&quot;load&quot;</span>, <span class="hljs-function">() =&gt;</span> {
+      performance.<span class="hljs-title function_">mark</span>(<span class="hljs-string">&quot;app-loaded&quot;</span>);
+      performance.<span class="hljs-title function_">measure</span>(<span class="hljs-string">&quot;app-init&quot;</span>, <span class="hljs-string">&quot;app-start&quot;</span>, <span class="hljs-string">&quot;app-loaded&quot;</span>);
+
+      <span class="hljs-keyword">const</span> measure = performance.<span class="hljs-title function_">getEntriesByName</span>(<span class="hljs-string">&quot;app-init&quot;</span>)[<span class="hljs-number">0</span>];
+      <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">reportMetric</span>(<span class="hljs-string">&quot;AppInit&quot;</span>, measure.<span class="hljs-property">duration</span>);
+    });
+  }
+
+  <span class="hljs-title function_">observeErrors</span>(<span class="hljs-params"></span>) {
+    <span class="hljs-variable language_">window</span>.<span class="hljs-title function_">addEventListener</span>(<span class="hljs-string">&quot;error&quot;</span>, <span class="hljs-function">(<span class="hljs-params">event</span>) =&gt;</span> {
+      <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">reportError</span>(<span class="hljs-string">&quot;JavaScript Error&quot;</span>, {
+        <span class="hljs-attr">message</span>: event.<span class="hljs-property">message</span>,
+        <span class="hljs-attr">filename</span>: event.<span class="hljs-property">filename</span>,
+        <span class="hljs-attr">lineno</span>: event.<span class="hljs-property">lineno</span>,
+        <span class="hljs-attr">colno</span>: event.<span class="hljs-property">colno</span>,
+      });
+    });
+
+    <span class="hljs-variable language_">window</span>.<span class="hljs-title function_">addEventListener</span>(<span class="hljs-string">&quot;unhandledrejection&quot;</span>, <span class="hljs-function">(<span class="hljs-params">event</span>) =&gt;</span> {
+      <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">reportError</span>(<span class="hljs-string">&quot;Unhandled Promise Rejection&quot;</span>, {
+        <span class="hljs-attr">reason</span>: event.<span class="hljs-property">reason</span>,
+      });
+    });
+  }
+
+  <span class="hljs-title function_">reportMetric</span>(<span class="hljs-params">name, value</span>) {
+    <span class="hljs-comment">// Send to analytics service</span>
+    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">`Metric: <span class="hljs-subst">${name}</span> = <span class="hljs-subst">${value}</span>`</span>);
+
+    <span class="hljs-comment">// You could send this to Google Analytics, custom analytics, etc.</span>
+    <span class="hljs-keyword">if</span> (<span class="hljs-variable language_">window</span>.<span class="hljs-property">gtag</span>) {
+      <span class="hljs-variable language_">window</span>.<span class="hljs-title function_">gtag</span>(<span class="hljs-string">&quot;event&quot;</span>, <span class="hljs-string">&quot;performance&quot;</span>, {
+        <span class="hljs-attr">metric_name</span>: name,
+        <span class="hljs-attr">metric_value</span>: value,
+      });
+    }
+  }
+
+  <span class="hljs-title function_">reportError</span>(<span class="hljs-params">type, details</span>) {
+    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">error</span>(<span class="hljs-string">`Error: <span class="hljs-subst">${type}</span>`</span>, details);
+
+    <span class="hljs-comment">// Send to error tracking service</span>
+    <span class="hljs-keyword">if</span> (<span class="hljs-variable language_">window</span>.<span class="hljs-property">Sentry</span>) {
+      <span class="hljs-variable language_">window</span>.<span class="hljs-property">Sentry</span>.<span class="hljs-title function_">captureException</span>(<span class="hljs-keyword">new</span> <span class="hljs-title class_">Error</span>(type), {
+        <span class="hljs-attr">extra</span>: details,
+      });
+    }
+  }
+
+  <span class="hljs-title function_">getMetrics</span>(<span class="hljs-params"></span>) {
+    <span class="hljs-keyword">return</span> {
+      ...<span class="hljs-variable language_">this</span>.<span class="hljs-property">metrics</span>,
+      <span class="hljs-attr">navigation</span>: performance.<span class="hljs-title function_">getEntriesByType</span>(<span class="hljs-string">&quot;navigation&quot;</span>)[<span class="hljs-number">0</span>],
+      <span class="hljs-attr">memory</span>: performance.<span class="hljs-property">memory</span>,
+    };
+  }
+}
+
+<span class="hljs-comment">// Usage</span>
+<span class="hljs-keyword">const</span> monitor = <span class="hljs-keyword">new</span> <span class="hljs-title class_">PerformanceMonitor</span>();
+
+<span class="hljs-comment">// Get metrics after page load</span>
+<span class="hljs-variable language_">window</span>.<span class="hljs-title function_">addEventListener</span>(<span class="hljs-string">&quot;load&quot;</span>, <span class="hljs-function">() =&gt;</span> {
+  <span class="hljs-built_in">setTimeout</span>(<span class="hljs-function">() =&gt;</span> {
+    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;Performance Metrics:&quot;</span>, monitor.<span class="hljs-title function_">getMetrics</span>());
+  }, <span class="hljs-number">1000</span>);
+});
+</code></pre></pre>
+<p>{% endraw %}</p>
+<hr/>
+<h2 id="🎯-summary" node="[object Object]">🎯 Summary</h2>
+<p>Understanding browser architecture helps you:</p>
+<ol>
+<li><strong>Optimize performance</strong> by leveraging browser capabilities</li>
+<li><strong>Debug issues</strong> more effectively</li>
+<li><strong>Write more efficient code</strong> that works with the browser&#x27;s rendering pipeline</li>
+<li><strong>Implement security best practices</strong> to protect users</li>
+<li><strong>Monitor and improve</strong> real-world performance</li>
+</ol>
+<h3 id="key-takeaways" node="[object Object]">Key Takeaways</h3>
+<ul>
+<li><strong>Multi-process architecture</strong> provides security and stability</li>
+<li><strong>Rendering pipeline</strong> affects performance and user experience</li>
+<li><strong>Network optimization</strong> reduces loading times</li>
+<li><strong>Security model</strong> protects users from malicious code</li>
+<li><strong>Memory management</strong> prevents leaks and improves performance</li>
+</ul>
+<h3 id="next-steps" node="[object Object]">Next Steps</h3>
+<ol>
+<li><strong>Profile your applications</strong> using browser DevTools</li>
+<li><strong>Monitor Core Web Vitals</strong> in production</li>
+<li><strong>Implement performance optimizations</strong> based on browser capabilities</li>
+<li><strong>Stay updated</strong> with browser features and best practices</li>
+</ol></div></div></div><div class="space-y-6"><div class="bg-white border border-gray-200 rounded-lg p-6"><h3 class="text-lg font-semibold text-gray-900 mb-4">Your Progress</h3><div class="w-full bg-gray-200 rounded-full h-2 mb-2"><div class="bg-blue-600 h-2 rounded-full" style="width:25%"></div></div><p class="text-sm text-gray-600">25% Complete</p></div></div></div></div></main><footer class="sc-gvqKNf booJNS"><div class="sc-cOpnSz fVoYcP"><div class="sc-kjwdDK kKfrkv"><div class="sc-eVqvcJ inEXDm"><div class="sc-bbbBoY hWhopJ"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-code "><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>Frontend Interview Prep</div><p class="sc-cdmAjP exeTne">Comprehensive interview preparation for frontend engineers targeting Big Tech companies.</p><div class="sc-jytpVa cgXMuV"><a href="https://github.com" aria-label="GitHub"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-github "><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"></path><path d="M9 18c-4.51 2-5-2-7-2"></path></svg></a><a href="https://twitter.com" aria-label="Twitter"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-twitter "><path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"></path></svg></a><a href="https://linkedin.com" aria-label="LinkedIn"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-linkedin "><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect width="4" height="12" x="2" y="9"></rect><circle cx="4" cy="4" r="2"></circle></svg></a><a href="mailto:contact@example.com" aria-label="Email"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-mail "><rect width="20" height="16" x="2" y="4" rx="2"></rect><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path></svg></a></div></div><div class="sc-eVqvcJ inEXDm"><h3>Study Materials</h3><ul><li><a href="/algorithms">Algorithms</a></li><li><a href="/react">React &amp; Frontend</a></li><li><a href="/system-design">System Design</a></li><li><a href="/typescript">TypeScript</a></li><li><a href="/performance">Performance</a></li></ul></div><div class="sc-eVqvcJ inEXDm"><h3>Companies</h3><ul><li><a href="/google">Google</a></li><li><a href="/meta">Meta</a></li><li><a href="/amazon">Amazon</a></li><li><a href="/microsoft">Microsoft</a></li><li><a href="/apple">Apple</a></li></ul></div><div class="sc-eVqvcJ inEXDm"><h3>Resources</h3><ul><li><a href="/interview-tips">Interview Tips</a></li><li><a href="/coding-challenges">Coding Challenges</a></li><li><a href="/mock-interviews">Mock Interviews</a></li><li><a href="/blog">Blog</a></li><li><a href="/faq">FAQ</a></li></ul></div></div><div class="sc-eknHtZ iQqwrD"><p class="sc-pYNGo gObJRG">© 2025 Frontend Interview Prep. All rights reserved.</p><div class="sc-cCVJLD eBqBtc"><a href="/privacy">Privacy Policy</a><a href="/terms">Terms of Service</a><a href="/contact">Contact</a></div></div></div></footer></div><script src="/interview/_next/static/chunks/webpack-be7d7df45533bffc.js" async=""></script><script>(self.__next_f=self.__next_f||[]).push([0]);self.__next_f.push([2,null])</script><script>self.__next_f.push([1,"1:HL[\"/interview/_next/static/media/e4af272ccee01ff0-s.p.woff2\",\"font\",{\"crossOrigin\":\"\",\"type\":\"font/woff2\"}]\n2:HL[\"/interview/_next/static/css/387024c6a2216908.css\",\"style\"]\n"])</script><script>self.__next_f.push([1,"3:I[2846,[],\"\"]\n5:I[2972,[\"918\",\"static/chunks/918-3273b83890f10546.js\",\"972\",\"static/chunks/972-011bba60ed155615.js\",\"930\",\"static/chunks/930-3262a6c9c5acace4.js\",\"289\",\"static/chunks/app/learn/%5Btopic%5D/page-4ab144227f7a7b3e.js\"],\"\"]\n6:I[5907,[\"918\",\"static/chunks/918-3273b83890f10546.js\",\"972\",\"static/chunks/972-011bba60ed155615.js\",\"930\",\"static/chunks/930-3262a6c9c5acace4.js\",\"289\",\"static/chunks/app/learn/%5Btopic%5D/page-4ab144227f7a7b3e.js\"],\"default\"]\n8:I[4707,[],\"\"]\na:I[6423,[],\"\"]\nb:I[2,[\"918\",\"static/chunks/918-3273b83890f10546.js\",\"710\",\"static/chunks/710-dfaa11b4dff08f8e.js\",\"972\",\"static/chunks/972-011bba60ed155615.js\",\"233\",\"static/chunks/233-3e0c1d820a17eca9.js\",\"185\",\"static/chunks/app/layout-333f4adcd11f8f39.js\"],\"default\",1]\nd:I[1060,[],\"\"]\n7:T52ae,"])</script><script>self.__next_f.push([1,"# 🌐 Browser Architecture Deep Dive\n\n## 📋 Table of Contents\n\n- [Browser Process Model](#browser-process-model)\n- [Rendering Pipeline](#rendering-pipeline)\n- [Network Stack](#network-stack)\n- [Security Model](#security-model)\n- [Performance Optimization](#performance-optimization)\n- [Visual Diagrams](#visual-diagrams)\n\n## 🏗️ Browser Process Model\n\n### Multi-Process Architecture\n\n```mermaid\ngraph TB\n    subgraph \"Browser Process\"\n        A[Browser Process] --\u003e B[UI Thread]\n        A --\u003e C[Network Thread]\n        A --\u003e D[Storage Thread]\n    end\n\n    subgraph \"Renderer Processes\"\n        E[Renderer Process 1] --\u003e F[Main Thread]\n        E --\u003e G[Compositor Thread]\n        E --\u003e H[Raster Thread]\n\n        I[Renderer Process 2] --\u003e J[Main Thread]\n        I --\u003e K[Compositor Thread]\n        I --\u003e L[Raster Thread]\n    end\n\n    subgraph \"Utility Processes\"\n        M[GPU Process] --\u003e N[Hardware Acceleration]\n        O[Plugin Process] --\u003e P[Flash, PDF]\n        Q[Extension Process] --\u003e R[Browser Extensions]\n    end\n```\n\n### Process Communication\n\n```mermaid\nsequenceDiagram\n    participant User\n    participant Browser\n    participant Renderer\n    participant Network\n    participant GPU\n\n    User-\u003e\u003eBrowser: Navigate to URL\n    Browser-\u003e\u003eNetwork: Fetch page\n    Network--\u003e\u003eBrowser: HTML/CSS/JS\n    Browser-\u003e\u003eRenderer: Create renderer process\n    Renderer-\u003e\u003eRenderer: Parse \u0026 render\n    Renderer-\u003e\u003eGPU: Composite layers\n    GPU--\u003e\u003eRenderer: Display frame\n    Renderer--\u003e\u003eBrowser: Page ready\n    Browser--\u003e\u003eUser: Show page\n```\n\n## 🎨 Rendering Pipeline\n\n### Critical Rendering Path\n\n```mermaid\ngraph LR\n    A[HTML] --\u003e B[DOM Tree]\n    C[CSS] --\u003e D[CSSOM Tree]\n    B --\u003e E[Render Tree]\n    D --\u003e E\n    E --\u003e F[Layout]\n    F --\u003e G[Paint]\n    G --\u003e H[Composite]\n```\n\n### Detailed Rendering Steps\n\n```mermaid\ngraph TB\n    subgraph \"Parsing\"\n        A[HTML Bytes] --\u003e B[HTML Parser]\n        B --\u003e C[DOM Tree]\n        D[CSS Bytes] --\u003e E[CSS Parser]\n        E --\u003e F[CSSOM Tree]\n    end\n\n    subgraph \"Rendering\"\n        C --\u003e G[Render Tree]\n        F --\u003e G\n        G --\u003e H[Layout]\n        H --\u003e I[Paint]\n        I --\u003e J[Composite]\n    end\n\n    subgraph \"JavaScript\"\n        K[JavaScript] --\u003e L[DOM Manipulation]\n        L --\u003e M[Style Recalculation]\n        M --\u003e N[Layout Reflow]\n        N --\u003e O[Repaint]\n        O --\u003e P[Recomposite]\n    end\n```\n\n### DOM Tree Construction\n\n```html\n\u003c!DOCTYPE html\u003e\n\u003chtml\u003e\n  \u003chead\u003e\n    \u003ctitle\u003eExample\u003c/title\u003e\n  \u003c/head\u003e\n  \u003cbody\u003e\n    \u003cdiv id=\"container\"\u003e\n      \u003ch1\u003eHello World\u003c/h1\u003e\n      \u003cp\u003eThis is a paragraph.\u003c/p\u003e\n    \u003c/div\u003e\n  \u003c/body\u003e\n\u003c/html\u003e\n```\n\n```mermaid\ngraph TD\n    A[Document] --\u003e B[html]\n    B --\u003e C[head]\n    B --\u003e D[body]\n    C --\u003e E[title]\n    D --\u003e F[div#container]\n    F --\u003e G[h1]\n    F --\u003e H[p]\n    G --\u003e I[Text: Hello World]\n    H --\u003e J[Text: This is a paragraph]\n```\n\n### CSSOM Tree Construction\n\n```css\nbody {\n  font-size: 16px;\n  margin: 0;\n}\n\n#container {\n  width: 100%;\n  max-width: 1200px;\n  margin: 0 auto;\n}\n\nh1 {\n  color: #333;\n  font-size: 2em;\n}\n\np {\n  color: #666;\n  line-height: 1.6;\n}\n```\n\n```mermaid\ngraph TD\n    A[CSSOM] --\u003e B[body]\n    A --\u003e C[#container]\n    A --\u003e D[h1]\n    A --\u003e E[p]\n\n    B --\u003e F[font-size: 16px]\n    B --\u003e G[margin: 0]\n\n    C --\u003e H[width: 100%]\n    C --\u003e I[max-width: 1200px]\n    C --\u003e J[margin: 0 auto]\n\n    D --\u003e K[color: #333]\n    D --\u003e L[font-size: 2em]\n\n    E --\u003e M[color: #666]\n    E --\u003e N[line-height: 1.6]\n```\n\n## 🌐 Network Stack\n\n### HTTP Request/Response Flow\n\n```mermaid\nsequenceDiagram\n    participant Browser\n    participant DNS\n    participant TCP\n    participant TLS\n    participant Server\n\n    Browser-\u003e\u003eDNS: DNS Lookup\n    DNS--\u003e\u003eBrowser: IP Address\n    Browser-\u003e\u003eTCP: TCP Handshake\n    TCP--\u003e\u003eBrowser: Connection Established\n    Browser-\u003e\u003eTLS: TLS Handshake\n    TLS--\u003e\u003eBrowser: Encrypted Connection\n    Browser-\u003e\u003eServer: HTTP Request\n    Server--\u003e\u003eBrowser: HTTP Response\n    Browser-\u003e\u003eBrowser: Parse Response\n```\n\n### Resource Loading Pipeline\n\n```mermaid\ngraph TB\n    subgraph \"Resource Discovery\"\n        A[HTML Parsing] --\u003e B[Resource Discovery]\n        B --\u003e C[CSS Files]\n        B --\u003e D[JavaScript Files]\n        B --\u003e E[Images]\n        B --\u003e F[Fonts]\n    end\n\n    subgraph \"Loading Priority\"\n        G[Critical Resources] --\u003e H[High Priority]\n        I[Non-Critical] --\u003e J[Low Priority]\n        K[Lazy Load] --\u003e L[On Demand]\n    end\n\n    subgraph \"Caching\"\n        M[Memory Cache] --\u003e N[Disk Cache]\n        N --\u003e O[Network Request]\n    end\n```\n\n### Network Optimization Strategies\n\n```javascript\n// 1. Resource Hints\nconst resourceHints = `\n    \u003c!-- DNS Prefetch --\u003e\n    \u003clink rel=\"dns-prefetch\" href=\"//cdn.example.com\"\u003e\n    \n    \u003c!-- Preconnect --\u003e\n    \u003clink rel=\"preconnect\" href=\"https://api.example.com\"\u003e\n    \n    \u003c!-- Preload Critical Resources --\u003e\n    \u003clink rel=\"preload\" href=\"/critical.css\" as=\"style\"\u003e\n    \u003clink rel=\"preload\" href=\"/critical.js\" as=\"script\"\u003e\n    \n    \u003c!-- Prefetch Non-Critical Resources --\u003e\n    \u003clink rel=\"prefetch\" href=\"/next-page.js\"\u003e\n    \n    \u003c!-- Preload Images --\u003e\n    \u003clink rel=\"preload\" href=\"/hero-image.jpg\" as=\"image\"\u003e\n`;\n\n// 2. Service Worker Caching\nclass CacheManager {\n  constructor() {\n    this.cacheName = \"app-cache-v1\";\n    this.criticalResources = [\"/\", \"/styles/main.css\", \"/scripts/app.js\"];\n  }\n\n  async install(event) {\n    const cache = await caches.open(this.cacheName);\n    await cache.addAll(this.criticalResources);\n  }\n\n  async fetch(event) {\n    const cachedResponse = await caches.match(event.request);\n    if (cachedResponse) {\n      return cachedResponse;\n    }\n\n    const networkResponse = await fetch(event.request);\n    const cache = await caches.open(this.cacheName);\n    cache.put(event.request, networkResponse.clone());\n\n    return networkResponse;\n  }\n}\n\n// 3. HTTP/2 Server Push\nconst http2Push = `\n    // Server-side (Node.js with HTTP/2)\n    const http2 = require('http2');\n    const fs = require('fs');\n    \n    const server = http2.createSecureServer({\n        key: fs.readFileSync('key.pem'),\n        cert: fs.readFileSync('cert.pem')\n    });\n    \n    server.on('stream', (stream, headers) =\u003e {\n        if (headers[':path'] === '/') {\n            // Push critical CSS\n            stream.pushStream({ ':path': '/styles/critical.css' }, (pushStream) =\u003e {\n                pushStream.respondWithFile('./styles/critical.css');\n            });\n            \n            // Push critical JS\n            stream.pushStream({ ':path': '/scripts/critical.js' }, (pushStream) =\u003e {\n                pushStream.respondWithFile('./scripts/critical.js');\n            });\n            \n            stream.respondWithFile('./index.html');\n        }\n    });\n`;\n```\n\n## 🔒 Security Model\n\n### Same-Origin Policy\n\n```mermaid\ngraph TB\n    subgraph \"Same-Origin Policy\"\n        A[Origin] --\u003e B[Protocol]\n        A --\u003e C[Host]\n        A --\u003e D[Port]\n    end\n\n    subgraph \"Cross-Origin Restrictions\"\n        E[DOM Access] --\u003e F[Blocked]\n        G[Cookie Access] --\u003e H[Blocked]\n        I[Network Requests] --\u003e J[CORS Required]\n    end\n```\n\n### Content Security Policy (CSP)\n\n```javascript\n// CSP Implementation\nconst cspHeaders = {\n  \"Content-Security-Policy\": `\n        default-src 'self';\n        script-src 'self' 'unsafe-inline' https://cdn.example.com;\n        style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;\n        img-src 'self' data: https:;\n        font-src 'self' https://fonts.gstatic.com;\n        connect-src 'self' https://api.example.com;\n        frame-src 'none';\n        object-src 'none';\n        base-uri 'self';\n        form-action 'self';\n    `\n    .replace(/\\s+/g, \" \")\n    .trim(),\n};\n\n// CSP Violation Reporting\nconst cspReporting = `\n    \u003cmeta http-equiv=\"Content-Security-Policy\" \n          content=\"default-src 'self'; report-uri /csp-report\"\u003e\n`;\n\n// CSP Nonce for Inline Scripts\nconst cspNonce = `\n    \u003cscript nonce=\"random-nonce-here\"\u003e\n        // This script is allowed because of the nonce\n        console.log('CSP compliant inline script');\n    \u003c/script\u003e\n`;\n```\n\n### Cross-Origin Resource Sharing (CORS)\n\n{% raw %}\n```javascript\n// CORS Implementation\nclass CORSHandler {\n  constructor() {\n    this.allowedOrigins = [\n      \"https://app.example.com\",\n      \"https://admin.example.com\",\n    ];\n    this.allowedMethods = [\"GET\", \"POST\", \"PUT\", \"DELETE\", \"OPTIONS\"];\n    this.allowedHeaders = [\"Content-Type\", \"Authorization\"];\n  }\n\n  handleRequest(req, res) {\n    const origin = req.headers.origin;\n\n    // Check if origin is allowed\n    if (this.allowedOrigins.includes(origin)) {\n      res.setHeader(\"Access-Control-Allow-Origin\", origin);\n    }\n\n    // Handle preflight requests\n    if (req.method === \"OPTIONS\") {\n      res.setHeader(\n        \"Access-Control-Allow-Methods\",\n        this.allowedMethods.join(\", \")\n      );\n      res.setHeader(\n        \"Access-Control-Allow-Headers\",\n        this.allowedHeaders.join(\", \")\n      );\n      res.setHeader(\"Access-Control-Max-Age\", \"86400\"); // 24 hours\n      res.status(200).end();\n      return;\n    }\n\n    // Handle actual request\n    res.setHeader(\"Access-Control-Allow-Credentials\", \"true\");\n    this.processRequest(req, res);\n  }\n\n  processRequest(req, res) {\n    // Handle the actual request logic\n    res.json({ message: \"CORS enabled response\" });\n  }\n}\n\n// Client-side CORS handling\nclass CORSClient {\n  constructor(baseURL) {\n    this.baseURL = baseURL;\n  }\n\n  async request(endpoint, options = {}) {\n    const url = `${this.baseURL}${endpoint}`;\n\n    const config = {\n      method: \"GET\",\n      credentials: \"include\", // Include cookies\n      headers: {\n        \"Content-Type\": \"application/json\",\n        ...options.headers,\n      },\n      ...options,\n    };\n\n    try {\n      const response = await fetch(url, config);\n\n      if (!response.ok) {\n        throw new Error(`HTTP error! status: ${response.status}`);\n      }\n\n      return await response.json();\n    } catch (error) {\n      console.error(\"CORS request failed:\", error);\n      throw error;\n    }\n  }\n}\n```\n{% endraw %}\n\n## ⚡ Performance Optimization\n\n### Rendering Performance\n\n{% raw %}\n```javascript\n// 1. Optimize Layout Thrashing\nclass LayoutOptimizer {\n  constructor() {\n    this.pendingReads = [];\n    this.pendingWrites = [];\n    this.scheduled = false;\n  }\n\n  // Batch read operations\n  read(callback) {\n    this.pendingReads.push(callback);\n    this.schedule();\n  }\n\n  // Batch write operations\n  write(callback) {\n    this.pendingWrites.push(callback);\n    this.schedule();\n  }\n\n  schedule() {\n    if (!this.scheduled) {\n      this.scheduled = true;\n      requestAnimationFrame(() =\u003e this.flush());\n    }\n  }\n\n  flush() {\n    // Execute all reads first\n    this.pendingReads.forEach((callback) =\u003e callback());\n    this.pendingReads.length = 0;\n\n    // Then execute all writes\n    this.pendingWrites.forEach((callback) =\u003e callback());\n    this.pendingWrites.length = 0;\n\n    this.scheduled = false;\n  }\n}\n\n// Usage\nconst optimizer = new LayoutOptimizer();\n\n// ❌ Bad: Layout thrashing\nfunction badExample() {\n  const elements = document.querySelectorAll(\".item\");\n  elements.forEach((element) =\u003e {\n    const height = element.offsetHeight; // Read\n    element.style.height = height * 2 + \"px\"; // Write\n  });\n}\n\n// ✅ Good: Batched operations\nfunction goodExample() {\n  const elements = document.querySelectorAll(\".item\");\n\n  // Batch reads\n  optimizer.read(() =\u003e {\n    elements.forEach((element) =\u003e {\n      element.dataset.height = element.offsetHeight;\n    });\n  });\n\n  // Batch writes\n  optimizer.write(() =\u003e {\n    elements.forEach((element) =\u003e {\n      const height = element.dataset.height;\n      element.style.height = height * 2 + \"px\";\n    });\n  });\n}\n\n// 2. Virtual Scrolling\nclass VirtualScroller {\n  constructor(container, itemHeight, totalItems) {\n    this.container = container;\n    this.itemHeight = itemHeight;\n    this.totalItems = totalItems;\n    this.visibleItems = Math.ceil(container.clientHeight / itemHeight);\n    this.scrollTop = 0;\n    this.startIndex = 0;\n    this.endIndex = this.visibleItems;\n\n    this.setup();\n  }\n\n  setup() {\n    // Create viewport\n    this.viewport = document.createElement(\"div\");\n    this.viewport.style.height = `${this.totalItems * this.itemHeight}px`;\n    this.viewport.style.position = \"relative\";\n\n    // Create visible items container\n    this.visibleContainer = document.createElement(\"div\");\n    this.visibleContainer.style.position = \"absolute\";\n    this.visibleContainer.style.top = \"0\";\n    this.visibleContainer.style.left = \"0\";\n    this.visibleContainer.style.right = \"0\";\n\n    this.viewport.appendChild(this.visibleContainer);\n    this.container.appendChild(this.viewport);\n\n    // Add scroll listener\n    this.container.addEventListener(\"scroll\", this.handleScroll.bind(this));\n\n    this.render();\n  }\n\n  handleScroll() {\n    this.scrollTop = this.container.scrollTop;\n    this.updateVisibleRange();\n    this.render();\n  }\n\n  updateVisibleRange() {\n    this.startIndex = Math.floor(this.scrollTop / this.itemHeight);\n    this.endIndex = Math.min(\n      this.startIndex + this.visibleItems + 1,\n      this.totalItems\n    );\n  }\n\n  render() {\n    this.visibleContainer.innerHTML = \"\";\n    this.visibleContainer.style.transform = `translateY(${\n      this.startIndex * this.itemHeight\n    }px)`;\n\n    for (let i = this.startIndex; i \u003c this.endIndex; i++) {\n      const item = this.createItem(i);\n      this.visibleContainer.appendChild(item);\n    }\n  }\n\n  createItem(index) {\n    const item = document.createElement(\"div\");\n    item.style.height = `${this.itemHeight}px`;\n    item.textContent = `Item ${index + 1}`;\n    return item;\n  }\n}\n\n// 3. Intersection Observer for Lazy Loading\nclass LazyLoader {\n  constructor() {\n    this.observer = new IntersectionObserver(\n      this.handleIntersection.bind(this),\n      {\n        rootMargin: \"50px\",\n        threshold: 0.1,\n      }\n    );\n  }\n\n  observe(element) {\n    this.observer.observe(element);\n  }\n\n  handleIntersection(entries) {\n    entries.forEach((entry) =\u003e {\n      if (entry.isIntersecting) {\n        this.loadContent(entry.target);\n        this.observer.unobserve(entry.target);\n      }\n    });\n  }\n\n  loadContent(element) {\n    const src = element.dataset.src;\n    if (src) {\n      if (element.tagName === \"IMG\") {\n        element.src = src;\n      } else if (element.tagName === \"IFRAME\") {\n        element.src = src;\n      }\n      element.removeAttribute(\"data-src\");\n    }\n  }\n}\n\n// Usage\nconst lazyLoader = new LazyLoader();\ndocument.querySelectorAll(\"[data-src]\").forEach((element) =\u003e {\n  lazyLoader.observe(element);\n});\n```\n{% endraw %}\n\n## 🎯 Memory Management\n\n### Memory Leaks Prevention\n\n```javascript\n// 1. Event Listener Cleanup\nclass EventManager {\n  constructor() {\n    this.listeners = new Map();\n  }\n\n  addListener(element, event, handler) {\n    if (!this.listeners.has(element)) {\n      this.listeners.set(element, new Map());\n    }\n\n    const elementListeners = this.listeners.get(element);\n    if (!elementListeners.has(event)) {\n      elementListeners.set(event, []);\n    }\n\n    elementListeners.get(event).push(handler);\n    element.addEventListener(event, handler);\n  }\n\n  removeListener(element, event, handler) {\n    const elementListeners = this.listeners.get(element);\n    if (elementListeners) {\n      const handlers = elementListeners.get(event);\n      if (handlers) {\n        const index = handlers.indexOf(handler);\n        if (index \u003e -1) {\n          handlers.splice(index, 1);\n          element.removeEventListener(event, handler);\n        }\n      }\n    }\n  }\n\n  cleanup(element) {\n    const elementListeners = this.listeners.get(element);\n    if (elementListeners) {\n      elementListeners.forEach((handlers, event) =\u003e {\n        handlers.forEach((handler) =\u003e {\n          element.removeEventListener(event, handler);\n        });\n      });\n      this.listeners.delete(element);\n    }\n  }\n}\n\n// 2. WeakMap for Caching\nclass CacheManager {\n  constructor() {\n    this.cache = new WeakMap();\n  }\n\n  set(key, value) {\n    this.cache.set(key, value);\n  }\n\n  get(key) {\n    return this.cache.get(key);\n  }\n\n  has(key) {\n    return this.cache.has(key);\n  }\n\n  // No need for cleanup - WeakMap automatically removes entries\n  // when the key object is garbage collected\n}\n\n// 3. AbortController for Cancellable Requests\nclass RequestManager {\n  constructor() {\n    this.controllers = new Map();\n  }\n\n  async request(url, options = {}) {\n    const controller = new AbortController();\n    this.controllers.set(url, controller);\n\n    try {\n      const response = await fetch(url, {\n        ...options,\n        signal: controller.signal,\n      });\n\n      this.controllers.delete(url);\n      return response;\n    } catch (error) {\n      if (error.name === \"AbortError\") {\n        console.log(\"Request was cancelled\");\n      }\n      throw error;\n    }\n  }\n\n  cancel(url) {\n    const controller = this.controllers.get(url);\n    if (controller) {\n      controller.abort();\n      this.controllers.delete(url);\n    }\n  }\n\n  cancelAll() {\n    this.controllers.forEach((controller) =\u003e controller.abort());\n    this.controllers.clear();\n  }\n}\n```\n\n## 📊 Performance Monitoring\n\n### Real User Monitoring (RUM)\n\n{% raw %}\n```javascript\nclass PerformanceMonitor {\n  constructor() {\n    this.metrics = {};\n    this.init();\n  }\n\n  init() {\n    // Core Web Vitals\n    this.observeLCP();\n    this.observeFID();\n    this.observeCLS();\n\n    // Custom metrics\n    this.observeCustomMetrics();\n\n    // Error tracking\n    this.observeErrors();\n  }\n\n  observeLCP() {\n    new PerformanceObserver((list) =\u003e {\n      const entries = list.getEntries();\n      const lastEntry = entries[entries.length - 1];\n      this.metrics.lcp = lastEntry.startTime;\n      this.reportMetric(\"LCP\", lastEntry.startTime);\n    }).observe({ entryTypes: [\"largest-contentful-paint\"] });\n  }\n\n  observeFID() {\n    new PerformanceObserver((list) =\u003e {\n      const entries = list.getEntries();\n      entries.forEach((entry) =\u003e {\n        this.metrics.fid = entry.processingStart - entry.startTime;\n        this.reportMetric(\"FID\", this.metrics.fid);\n      });\n    }).observe({ entryTypes: [\"first-input\"] });\n  }\n\n  observeCLS() {\n    let clsValue = 0;\n    new PerformanceObserver((list) =\u003e {\n      const entries = list.getEntries();\n      entries.forEach((entry) =\u003e {\n        if (!entry.hadRecentInput) {\n          clsValue += entry.value;\n        }\n      });\n      this.metrics.cls = clsValue;\n      this.reportMetric(\"CLS\", clsValue);\n    }).observe({ entryTypes: [\"layout-shift\"] });\n  }\n\n  observeCustomMetrics() {\n    // Custom timing\n    performance.mark(\"app-start\");\n\n    // Measure app initialization\n    window.addEventListener(\"load\", () =\u003e {\n      performance.mark(\"app-loaded\");\n      performance.measure(\"app-init\", \"app-start\", \"app-loaded\");\n\n      const measure = performance.getEntriesByName(\"app-init\")[0];\n      this.reportMetric(\"AppInit\", measure.duration);\n    });\n  }\n\n  observeErrors() {\n    window.addEventListener(\"error\", (event) =\u003e {\n      this.reportError(\"JavaScript Error\", {\n        message: event.message,\n        filename: event.filename,\n        lineno: event.lineno,\n        colno: event.colno,\n      });\n    });\n\n    window.addEventListener(\"unhandledrejection\", (event) =\u003e {\n      this.reportError(\"Unhandled Promise Rejection\", {\n        reason: event.reason,\n      });\n    });\n  }\n\n  reportMetric(name, value) {\n    // Send to analytics service\n    console.log(`Metric: ${name} = ${value}`);\n\n    // You could send this to Google Analytics, custom analytics, etc.\n    if (window.gtag) {\n      window.gtag(\"event\", \"performance\", {\n        metric_name: name,\n        metric_value: value,\n      });\n    }\n  }\n\n  reportError(type, details) {\n    console.error(`Error: ${type}`, details);\n\n    // Send to error tracking service\n    if (window.Sentry) {\n      window.Sentry.captureException(new Error(type), {\n        extra: details,\n      });\n    }\n  }\n\n  getMetrics() {\n    return {\n      ...this.metrics,\n      navigation: performance.getEntriesByType(\"navigation\")[0],\n      memory: performance.memory,\n    };\n  }\n}\n\n// Usage\nconst monitor = new PerformanceMonitor();\n\n// Get metrics after page load\nwindow.addEventListener(\"load\", () =\u003e {\n  setTimeout(() =\u003e {\n    console.log(\"Performance Metrics:\", monitor.getMetrics());\n  }, 1000);\n});\n```\n{% endraw %}\n\n---\n\n## 🎯 Summary\n\nUnderstanding browser architecture helps you:\n\n1. **Optimize performance** by leveraging browser capabilities\n2. **Debug issues** more effectively\n3. **Write more efficient code** that works with the browser's rendering pipeline\n4. **Implement security best practices** to protect users\n5. **Monitor and improve** real-world performance\n\n### Key Takeaways\n\n- **Multi-process architecture** provides security and stability\n- **Rendering pipeline** affects performance and user experience\n- **Network optimization** reduces loading times\n- **Security model** protects users from malicious code\n- **Memory management** prevents leaks and improves performance\n\n### Next Steps\n\n1. **Profile your applications** using browser DevTools\n2. **Monitor Core Web Vitals** in production\n3. **Implement performance optimizations** based on browser capabilities\n4. **Stay updated** with browser features and best practices\n"])</script><script>self.__next_f.push([1,"9:[\"topic\",\"browser-architecture\",\"d\"]\ne:[]\n"])</script><script>self.__next_f.push([1,"0:[\"$\",\"$L3\",null,{\"buildId\":\"I7A5ocHYe4ZFnjKnGR0g4\",\"assetPrefix\":\"/interview\",\"urlParts\":[\"\",\"learn\",\"browser-architecture\",\"\"],\"initialTree\":[\"\",{\"children\":[\"learn\",{\"children\":[[\"topic\",\"browser-architecture\",\"d\"],{\"children\":[\"__PAGE__?{\\\"topic\\\":\\\"browser-architecture\\\"}\",{}]}]}]},\"$undefined\",\"$undefined\",true],\"initialSeedData\":[\"\",{\"children\":[\"learn\",{\"children\":[[\"topic\",\"browser-architecture\",\"d\"],{\"children\":[\"__PAGE__\",{},[[\"$L4\",[\"$\",\"div\",null,{\"className\":\"max-w-6xl mx-auto px-8 py-24\",\"children\":[[\"$\",\"div\",null,{\"className\":\"flex items-center gap-4 mb-8\",\"children\":[\"$\",\"$L5\",null,{\"href\":\"/learn\",\"children\":[\"$\",\"button\",null,{\"className\":\"flex items-center gap-2 bg-gray-100 border border-gray-300 text-gray-700 px-4 py-3 rounded-md font-medium hover:bg-gray-200 transition-colors\",\"children\":[[\"$\",\"svg\",null,{\"xmlns\":\"http://www.w3.org/2000/svg\",\"width\":16,\"height\":16,\"viewBox\":\"0 0 24 24\",\"fill\":\"none\",\"stroke\":\"currentColor\",\"strokeWidth\":2,\"strokeLinecap\":\"round\",\"strokeLinejoin\":\"round\",\"className\":\"lucide lucide-arrow-left \",\"children\":[[\"$\",\"path\",\"1l729n\",{\"d\":\"m12 19-7-7 7-7\"}],[\"$\",\"path\",\"x3x0zl\",{\"d\":\"M19 12H5\"}],\"$undefined\"]}],\"Back to Learn\"]}]}]}],[\"$\",\"div\",null,{\"className\":\"bg-white border border-gray-200 rounded-lg p-8 mb-8\",\"children\":[[\"$\",\"div\",null,{\"className\":\"flex items-center justify-between mb-4\",\"children\":[[\"$\",\"h1\",null,{\"className\":\"text-3xl font-bold text-gray-900\",\"children\":\"🌐 Browser Architecture Deep Dive\"}],[\"$\",\"div\",null,{\"className\":\"flex gap-4\",\"children\":[[\"$\",\"button\",null,{\"className\":\"flex items-center gap-2 bg-transparent text-gray-700 border border-gray-300 px-6 py-3 rounded-md font-semibold hover:bg-gray-50 transition-colors\",\"children\":[[\"$\",\"svg\",null,{\"xmlns\":\"http://www.w3.org/2000/svg\",\"width\":16,\"height\":16,\"viewBox\":\"0 0 24 24\",\"fill\":\"none\",\"stroke\":\"currentColor\",\"strokeWidth\":2,\"strokeLinecap\":\"round\",\"strokeLinejoin\":\"round\",\"className\":\"lucide lucide-star \",\"children\":[[\"$\",\"polygon\",\"8f66p6\",{\"points\":\"12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2\"}],\"$undefined\"]}],\"Bookmark\"]}],[\"$\",\"button\",null,{\"className\":\"flex items-center gap-2 bg-transparent text-gray-700 border border-gray-300 px-6 py-3 rounded-md font-semibold hover:bg-gray-50 transition-colors\",\"children\":[[\"$\",\"svg\",null,{\"xmlns\":\"http://www.w3.org/2000/svg\",\"width\":16,\"height\":16,\"viewBox\":\"0 0 24 24\",\"fill\":\"none\",\"stroke\":\"currentColor\",\"strokeWidth\":2,\"strokeLinecap\":\"round\",\"strokeLinejoin\":\"round\",\"className\":\"lucide lucide-share2 \",\"children\":[[\"$\",\"circle\",\"gq8acd\",{\"cx\":\"18\",\"cy\":\"5\",\"r\":\"3\"}],[\"$\",\"circle\",\"w7nqdw\",{\"cx\":\"6\",\"cy\":\"12\",\"r\":\"3\"}],[\"$\",\"circle\",\"1xt0gg\",{\"cx\":\"18\",\"cy\":\"19\",\"r\":\"3\"}],[\"$\",\"line\",\"47mynk\",{\"x1\":\"8.59\",\"x2\":\"15.42\",\"y1\":\"13.51\",\"y2\":\"17.49\"}],[\"$\",\"line\",\"1n3mei\",{\"x1\":\"15.41\",\"x2\":\"8.59\",\"y1\":\"6.51\",\"y2\":\"10.49\"}],\"$undefined\"]}],\"Share\"]}]]}]]}],[\"$\",\"div\",null,{\"className\":\"flex gap-8 mb-4\",\"children\":[[\"$\",\"div\",null,{\"className\":\"flex items-center gap-2 text-sm text-gray-600\",\"children\":[[\"$\",\"svg\",null,{\"xmlns\":\"http://www.w3.org/2000/svg\",\"width\":16,\"height\":16,\"viewBox\":\"0 0 24 24\",\"fill\":\"none\",\"stroke\":\"currentColor\",\"strokeWidth\":2,\"strokeLinecap\":\"round\",\"strokeLinejoin\":\"round\",\"className\":\"lucide lucide-clock \",\"children\":[[\"$\",\"circle\",\"1mglay\",{\"cx\":\"12\",\"cy\":\"12\",\"r\":\"10\"}],[\"$\",\"polyline\",\"68esgv\",{\"points\":\"12 6 12 12 16 14\"}],\"$undefined\"]}],\"30-60 min\"]}],[\"$\",\"span\",null,{\"className\":\"px-3 py-1 rounded-full text-xs font-semibold text-white bg-yellow-500\",\"children\":\"Intermediate\"}],[\"$\",\"span\",null,{\"className\":\"px-3 py-1 rounded-full text-xs font-semibold bg-blue-100 text-blue-700\",\"children\":\"Theory\"}]]}],false,[\"$\",\"p\",null,{\"className\":\"text-lg text-gray-700 leading-relaxed\",\"children\":\"Learn about browser-architecture\"}]]}],[\"$\",\"div\",null,{\"className\":\"grid grid-cols-1 lg:grid-cols-3 gap-8\",\"children\":[[\"$\",\"div\",null,{\"className\":\"lg:col-span-2\",\"children\":[\"$\",\"div\",null,{\"className\":\"bg-white border border-gray-200 rounded-lg p-8\",\"children\":[\"$\",\"$L6\",null,{\"content\":\"$7\"}]}]}],[\"$\",\"div\",null,{\"className\":\"space-y-6\",\"children\":[[\"$\",\"div\",null,{\"className\":\"bg-white border border-gray-200 rounded-lg p-6\",\"children\":[[\"$\",\"h3\",null,{\"className\":\"text-lg font-semibold text-gray-900 mb-4\",\"children\":\"Your Progress\"}],[\"$\",\"div\",null,{\"className\":\"w-full bg-gray-200 rounded-full h-2 mb-2\",\"children\":[\"$\",\"div\",null,{\"className\":\"bg-blue-600 h-2 rounded-full\",\"style\":{\"width\":\"25%\"}}]}],[\"$\",\"p\",null,{\"className\":\"text-sm text-gray-600\",\"children\":\"25% Complete\"}]]}],false]}]]}]]}],null],null],null]},[null,[\"$\",\"$L8\",null,{\"parallelRouterKey\":\"children\",\"segmentPath\":[\"children\",\"learn\",\"children\",\"$9\",\"children\"],\"error\":\"$undefined\",\"errorStyles\":\"$undefined\",\"errorScripts\":\"$undefined\",\"template\":[\"$\",\"$La\",null,{}],\"templateStyles\":\"$undefined\",\"templateScripts\":\"$undefined\",\"notFound\":\"$undefined\",\"notFoundStyles\":\"$undefined\"}]],null]},[null,[\"$\",\"$L8\",null,{\"parallelRouterKey\":\"children\",\"segmentPath\":[\"children\",\"learn\",\"children\"],\"error\":\"$undefined\",\"errorStyles\":\"$undefined\",\"errorScripts\":\"$undefined\",\"template\":[\"$\",\"$La\",null,{}],\"templateStyles\":\"$undefined\",\"templateScripts\":\"$undefined\",\"notFound\":\"$undefined\",\"notFoundStyles\":\"$undefined\"}]],null]},[[[[\"$\",\"link\",\"0\",{\"rel\":\"stylesheet\",\"href\":\"/interview/_next/static/css/387024c6a2216908.css\",\"precedence\":\"next\",\"crossOrigin\":\"$undefined\"}]],[\"$\",\"$Lb\",null,{\"children\":[\"$\",\"$L8\",null,{\"parallelRouterKey\":\"children\",\"segmentPath\":[\"children\"],\"error\":\"$undefined\",\"errorStyles\":\"$undefined\",\"errorScripts\":\"$undefined\",\"template\":[\"$\",\"$La\",null,{}],\"templateStyles\":\"$undefined\",\"templateScripts\":\"$undefined\",\"notFound\":[[\"$\",\"title\",null,{\"children\":\"404: This page could not be found.\"}],[\"$\",\"div\",null,{\"style\":{\"fontFamily\":\"system-ui,\\\"Segoe UI\\\",Roboto,Helvetica,Arial,sans-serif,\\\"Apple Color Emoji\\\",\\\"Segoe UI Emoji\\\"\",\"height\":\"100vh\",\"textAlign\":\"center\",\"display\":\"flex\",\"flexDirection\":\"column\",\"alignItems\":\"center\",\"justifyContent\":\"center\"},\"children\":[\"$\",\"div\",null,{\"children\":[[\"$\",\"style\",null,{\"dangerouslySetInnerHTML\":{\"__html\":\"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}\"}}],[\"$\",\"h1\",null,{\"className\":\"next-error-h1\",\"style\":{\"display\":\"inline-block\",\"margin\":\"0 20px 0 0\",\"padding\":\"0 23px 0 0\",\"fontSize\":24,\"fontWeight\":500,\"verticalAlign\":\"top\",\"lineHeight\":\"49px\"},\"children\":\"404\"}],[\"$\",\"div\",null,{\"style\":{\"display\":\"inline-block\"},\"children\":[\"$\",\"h2\",null,{\"style\":{\"fontSize\":14,\"fontWeight\":400,\"lineHeight\":\"49px\",\"margin\":0},\"children\":\"This page could not be found.\"}]}]]}]}]],\"notFoundStyles\":[]}],\"params\":{}}]],null],null],\"couldBeIntercepted\":false,\"initialHead\":[null,\"$Lc\"],\"globalErrorComponent\":\"$d\",\"missingSlots\":\"$We\"}]\n"])</script><script>self.__next_f.push([1,"c:[[\"$\",\"meta\",\"0\",{\"name\":\"viewport\",\"content\":\"width=device-width, initial-scale=1\"}],[\"$\",\"meta\",\"1\",{\"charSet\":\"utf-8\"}],[\"$\",\"meta\",\"2\",{\"name\":\"next-size-adjust\"}]]\n4:null\n"])</script></body></html>
