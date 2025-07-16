@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X, Search, BookOpen, Code, Users, Award } from 'lucide-react';
+import { Menu, X, Search, BookOpen, Code, Users, Award, Brain, Activity, Eye, Zap } from 'lucide-react';
 
 const Nav = styled.nav<{ isScrolled: boolean }>`
   position: fixed;
@@ -149,8 +149,11 @@ const SearchButton = styled.button`
 
 const navigationItems = [
   { name: 'Problems', href: '/problems', icon: <Code size={16} /> },
+  { name: 'Learn', href: '/learn', icon: <Brain size={16} /> },
   { name: 'Study Guide', href: '/study-guide', icon: <BookOpen size={16} /> },
   { name: 'System Design', href: '/system-design', icon: <Users size={16} /> },
+  { name: 'Performance', href: '/performance', icon: <Zap size={16} /> },
+  { name: 'Accessibility', href: '/accessibility', icon: <Eye size={16} /> },
   { name: 'Interview Tips', href: '/interview-tips', icon: <Award size={16} /> },
 ];
 
