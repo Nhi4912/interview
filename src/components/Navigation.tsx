@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { motion, AnimatePresence } from 'framer-motion';
+import Link from 'next/link';
 import { Menu, X, Search, BookOpen, Code, Users, Award, Brain, Activity, Eye, Zap } from 'lucide-react';
 
 const Nav = styled.nav<{ isScrolled: boolean }>`
@@ -26,7 +27,7 @@ const NavContainer = styled.div`
   height: 70px;
 `;
 
-const Logo = styled.div`
+const Logo = styled.a`
   display: flex;
   align-items: center;
   gap: 0.5rem;
@@ -34,6 +35,7 @@ const Logo = styled.div`
   font-weight: 700;
   color: ${props => props.theme.colors.primary};
   text-decoration: none;
+  cursor: pointer;
   
   &:hover {
     color: ${props => props.theme.colors.primaryDark};
@@ -178,16 +180,20 @@ export default function Navigation() {
     <>
       <Nav isScrolled={isScrolled}>
         <NavContainer>
-          <Logo>
-            <Code size={24} />
-            Frontend Interview Prep
-          </Logo>
+          <Link href="/" passHref>
+            <Logo>
+              <Code size={24} />
+              Frontend Interview Prep
+            </Logo>
+          </Link>
           
           <NavLinks>
             {navigationItems.map((item) => (
-              <NavLink key={item.name} href={item.href}>
-                {item.name}
-              </NavLink>
+              <Link key={item.name} href={item.href} passHref>
+                <NavLink>
+                  {item.name}
+                </NavLink>
+              </Link>
             ))}
             <SearchButton>
               <Search size={16} />
@@ -211,13 +217,11 @@ export default function Navigation() {
           >
             <MobileNavLinks>
               {navigationItems.map((item) => (
-                <MobileNavLink 
-                  key={item.name} 
-                  href={item.href}
-                  onClick={() => setIsMobileMenuOpen(false)}
-                >
-                  {item.name}
-                </MobileNavLink>
+                <Link key={item.name} href={item.href} passHref>
+                  <MobileNavLink onClick={() => setIsMobileMenuOpen(false)}>
+                    {item.name}
+                  </MobileNavLink>
+                </Link>
               ))}
               <SearchButton>
                 <Search size={16} />

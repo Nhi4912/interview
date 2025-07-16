@@ -3,6 +3,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
+import Link from 'next/link';
 import { ArrowRight, Play, Github, Star } from 'lucide-react';
 
 const HeroSection = styled.section`
@@ -283,21 +284,25 @@ export default function Hero() {
             
             <motion.div variants={itemVariants}>
               <ButtonGroup>
-                <PrimaryButton
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                >
-                  Start Learning
-                  <ArrowRight size={20} />
-                </PrimaryButton>
+                <Link href="/learn">
+                  <PrimaryButton
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                  >
+                    Start Learning
+                    <ArrowRight size={20} />
+                  </PrimaryButton>
+                </Link>
                 
-                <SecondaryButton
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                >
-                  <Play size={20} />
-                  Watch Demo
-                </SecondaryButton>
+                <Link href="/problems">
+                  <SecondaryButton
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                  >
+                    <Play size={20} />
+                    Browse Problems
+                  </SecondaryButton>
+                </Link>
               </ButtonGroup>
             </motion.div>
             

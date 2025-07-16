@@ -3,6 +3,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
+import Link from 'next/link';
 import { ArrowRight, Github, ExternalLink } from 'lucide-react';
 
 const Section = styled.section`
@@ -150,21 +151,25 @@ export default function CTASection() {
           </Description>
           
           <ButtonGroup>
-            <PrimaryButton
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              Get Started Now
-              <ArrowRight size={20} />
-            </PrimaryButton>
+            <Link href="/learn">
+              <PrimaryButton
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                Get Started Now
+                <ArrowRight size={20} />
+              </PrimaryButton>
+            </Link>
             
-            <SecondaryButton
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              <Github size={20} />
-              View on GitHub
-            </SecondaryButton>
+            <a href="https://github.com/nhi4912/interview" target="_blank" rel="noopener noreferrer">
+              <SecondaryButton
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                <Github size={20} />
+                View on GitHub
+              </SecondaryButton>
+            </a>
           </ButtonGroup>
         </motion.div>
         
