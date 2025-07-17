@@ -23,6 +23,8 @@ import {
 import InteractiveKnowledgeGraph from '@/components/visualizations/InteractiveKnowledgeGraph';
 import { knowledgeGraph, KnowledgeNode, KnowledgeCategory } from '@/data/knowledgeGraph';
 import { companies, Company } from '@/data/companies';
+import { getAllTopics, getTopicsByCategory } from '@/lib/content';
+import Link from 'next/link';
 
 const PageContainer = styled.div`
   min-height: 100vh;
@@ -332,7 +334,7 @@ const PathStepContent = styled.div`
   }
 `;
 
-type TabType = 'overview' | 'knowledge-graph' | 'companies' | 'learning-paths';
+type TabType = 'overview' | 'knowledge-graph' | 'companies' | 'learning-paths' | 'topics';
 
 const stats = [
   {
@@ -418,6 +420,9 @@ export default function LearnPage() {
   const topCompanies = companies
     .sort((a, b) => a.difficulty === 'Hard' ? -1 : 1)
     .slice(0, 6);
+
+  const allTopics = getAllTopics();
+  const topicsByCategory = getTopicsByCategory();
 
   const renderTabContent = () => {
     switch (activeTab) {
@@ -584,6 +589,56 @@ export default function LearnPage() {
           </div>
         );
       
+      case 'topics':
+        return (
+          <div style={{ padding: '2rem' }}>
+            <h2 style={{ marginBottom: '2rem', color: '#1f2937' }}>All Learning Topics</h2>
+            <div style={{ display: 'grid', gap: '2rem' }}>
+              {Object.entries(topicsByCategory).map(([category, topics]) => (
+                <div key={category}>
+                  <h3 style={{ marginBottom: '1rem', color: '#374151', fontSize: '1.25rem' }}>{category}</h3>
+                  <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '1rem' }}>
+                    {topics.map((topicSlug) => (
+                      <Link key={topicSlug} href={`/learn/${topicSlug}`} style={{ textDecoration: 'none' }}>
+                        <div style={{
+                          background: '#f8fafc',
+                          border: '1px solid #e2e8f0',
+                          borderRadius: '0.5rem',
+                          padding: '1.5rem',
+                          cursor: 'pointer',
+                          transition: 'all 0.3s ease',
+                          height: '100%'
+                        }}>
+                          <h4 style={{ 
+                            margin: '0 0 0.5rem 0', 
+                            color: '#1f2937',
+                            fontSize: '1rem',
+                            fontWeight: '600'
+                          }}>
+                            {topicSlug.split('-').map(word => 
+                              word.charAt(0).toUpperCase() + word.slice(1)
+                            ).join(' ')}
+                          </h4>
+                          <div style={{ 
+                            display: 'flex', 
+                            alignItems: 'center', 
+                            gap: '0.5rem',
+                            color: '#64748b',
+                            fontSize: '0.875rem'
+                          }}>
+                            <ArrowRight size={16} />
+                            Start Learning
+                          </div>
+                        </div>
+                      </Link>
+                    ))}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        );
+      
       default:
         return null;
     }
@@ -627,6 +682,13 @@ export default function LearnPage() {
           >
             <Target size={20} />
             Learning Paths
+          </TabButton>
+          <TabButton 
+            active={activeTab === 'topics'} 
+            onClick={() => setActiveTab('topics')}
+          >
+            <BookOpen size={20} />
+            All Topics
           </TabButton>
         </TabContainer>
         
