@@ -20,12 +20,12 @@ const Title = styled.h1`
   font-size: 2.5rem;
   font-weight: 700;
   margin-bottom: 1rem;
-  color: ${props => props.theme.colors.text};
+  color: #1e293b;
 `;
 
 const Description = styled.p`
   font-size: 1.1rem;
-  color: ${props => props.theme.colors.textSecondary};
+  color: #64748b;
   max-width: 600px;
   margin: 0 auto;
 `;
@@ -38,17 +38,17 @@ const StudyPath = styled.div`
 `;
 
 const PathCard = styled(motion.div)`
-  background: ${props => props.theme.colors.surface};
-  border: 1px solid ${props => props.theme.colors.border};
-  border-radius: ${props => props.theme.borderRadius.lg};
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 0.75rem;
   padding: 2rem;
-  transition: all ${props => props.theme.animation.transition.normal};
+  transition: all 0.3s ease;
   cursor: pointer;
   
   &:hover {
     transform: translateY(-4px);
-    box-shadow: ${props => props.theme.shadows.xl};
-    border-color: ${props => props.theme.colors.primary};
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    border-color: #3b82f6;
   }
 `;
 
@@ -59,7 +59,7 @@ const PathIcon = styled.div<{ color: string }>`
   width: 60px;
   height: 60px;
   background: ${props => props.color}15;
-  border-radius: ${props => props.theme.borderRadius.lg};
+  border-radius: 0.75rem;
   color: ${props => props.color};
   margin-bottom: 1.5rem;
 `;
@@ -68,11 +68,11 @@ const PathTitle = styled.h3`
   font-size: 1.5rem;
   font-weight: 600;
   margin-bottom: 1rem;
-  color: ${props => props.theme.colors.text};
+  color: #1e293b;
 `;
 
 const PathDescription = styled.p`
-  color: ${props => props.theme.colors.textSecondary};
+  color: #64748b;
   line-height: 1.6;
   margin-bottom: 1.5rem;
 `;
@@ -87,8 +87,8 @@ const PathProgress = styled.div`
 const ProgressBar = styled.div`
   flex: 1;
   height: 8px;
-  background: ${props => props.theme.colors.surfaceLight};
-  border-radius: ${props => props.theme.borderRadius.full};
+  background: #f1f5f9;
+  border-radius: 9999px;
   overflow: hidden;
   margin-right: 1rem;
 `;
@@ -96,13 +96,13 @@ const ProgressBar = styled.div`
 const ProgressFill = styled.div<{ progress: number }>`
   height: 100%;
   width: ${props => props.progress}%;
-  background: ${props => props.theme.colors.primary};
-  transition: width ${props => props.theme.animation.transition.normal};
+  background: #3b82f6;
+  transition: width 0.3s ease;
 `;
 
 const ProgressText = styled.span`
   font-size: 0.875rem;
-  color: ${props => props.theme.colors.textSecondary};
+  color: #64748b;
   font-weight: 500;
 `;
 
@@ -114,15 +114,15 @@ const TopicsGrid = styled.div`
 `;
 
 const TopicCard = styled(motion.div)`
-  background: ${props => props.theme.colors.surface};
-  border: 1px solid ${props => props.theme.colors.border};
-  border-radius: ${props => props.theme.borderRadius.lg};
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 0.75rem;
   padding: 1.5rem;
-  transition: all ${props => props.theme.animation.transition.normal};
+  transition: all 0.3s ease;
   
   &:hover {
     transform: translateY(-2px);
-    box-shadow: ${props => props.theme.shadows.lg};
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
   }
 `;
 
@@ -136,14 +136,14 @@ const TopicHeader = styled.div`
 const TopicTitle = styled.h4`
   font-size: 1.1rem;
   font-weight: 600;
-  color: ${props => props.theme.colors.text};
+  color: #1e293b;
 `;
 
 const TopicStatus = styled.div<{ completed: boolean }>`
   display: flex;
   align-items: center;
   gap: 0.25rem;
-  color: ${props => props.completed ? props.theme.colors.success : props.theme.colors.textMuted};
+  color: ${props => props.completed ? '#10b981' : '#94a3b8'};
   font-size: 0.875rem;
 `;
 
@@ -158,11 +158,11 @@ const TopicItem = styled.li<{ completed: boolean }>`
   align-items: center;
   gap: 0.5rem;
   padding: 0.5rem 0;
-  color: ${props => props.completed ? props.theme.colors.success : props.theme.colors.textSecondary};
+  color: ${props => props.completed ? '#10b981' : '#64748b'};
   font-size: 0.9rem;
   
   &:not(:last-child) {
-    border-bottom: 1px solid ${props => props.theme.colors.border};
+    border-bottom: 1px solid #e2e8f0;
   }
 `;
 
