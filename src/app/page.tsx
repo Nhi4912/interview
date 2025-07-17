@@ -418,7 +418,7 @@ export default function DocumentationHome() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.4 + index * 0.1 }}
-            onClick={() => window.open(`/docs/category/${category.name}`, '_blank')}
+            onClick={() => window.open(`/interview/docs/${category.name}/README`, '_blank')}
           >
             <CategoryIcon>
               <FolderOpen size={24} />
@@ -446,7 +446,7 @@ export default function DocumentationHome() {
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.3, delay: index * 0.05 }}
-            onClick={() => window.open(`/docs/${file.path.replace(/\.md$/, '').replace(/\//g, '-')}`, '_blank')}
+            onClick={() => window.open(`/interview/docs/${file.path.replace(/\.md$/, '')}`, '_blank')}
           >
             <FileHeader>
               <FileInfo>

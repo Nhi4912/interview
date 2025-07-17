@@ -135,7 +135,7 @@ export default function DocumentationPage({ params }: PageProps) {
           fontSize: '0.9rem',
           marginBottom: '1rem'
         }}>
-          <a href="/" style={{ color: '#3b82f6', textDecoration: 'none' }}>
+          <a href="/interview" style={{ color: '#3b82f6', textDecoration: 'none' }}>
             Home
           </a>
           {' > '}
