@@ -1,0 +1,841 @@
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><meta name="viewport" content="width=device-width, initial-scale=1"/><link rel="preload" href="/interview/_next/static/media/e4af272ccee01ff0-s.p.woff2" as="font" crossorigin="" type="font/woff2"/><link rel="stylesheet" href="/interview/_next/static/css/387024c6a2216908.css" data-precedence="next"/><link rel="preload" as="script" fetchPriority="low" href="/interview/_next/static/chunks/webpack-be7d7df45533bffc.js"/><script src="/interview/_next/static/chunks/fd9d1056-6922f449a204c2cc.js" async=""></script><script src="/interview/_next/static/chunks/117-e7ecc085ce9cfab3.js" async=""></script><script src="/interview/_next/static/chunks/main-app-b06be5f3411c20c3.js" async=""></script><script src="/interview/_next/static/chunks/918-3273b83890f10546.js" async=""></script><script src="/interview/_next/static/chunks/972-011bba60ed155615.js" async=""></script><script src="/interview/_next/static/chunks/930-3262a6c9c5acace4.js" async=""></script><script src="/interview/_next/static/chunks/app/learn/%5Btopic%5D/page-4ab144227f7a7b3e.js" async=""></script><script src="/interview/_next/static/chunks/710-dfaa11b4dff08f8e.js" async=""></script><script src="/interview/_next/static/chunks/233-3e0c1d820a17eca9.js" async=""></script><script src="/interview/_next/static/chunks/app/layout-333f4adcd11f8f39.js" async=""></script><title>Frontend Interview Prep 2025 - Big Tech Interview Guide</title><meta name="description" content="Comprehensive frontend interview preparation for Big Tech companies including React, TypeScript, algorithms, and system design."/><link rel="icon" href="/favicon.ico"/><meta name="theme-color" content="#1a1a1a"/><meta property="og:title" content="Frontend Interview Prep 2025"/><meta property="og:description" content="Complete guide for frontend engineers targeting Big Tech companies"/><meta property="og:type" content="website"/><link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous"/><meta name="next-size-adjust"/><script src="/interview/_next/static/chunks/polyfills-42372ed130431b0a.js" noModule=""></script><style data-styled="" data-styled-version="6.1.19">*{margin:0;padding:0;box-sizing:border-box;}/*!sc*/
+html{font-size:16px;line-height:1.5;scroll-behavior:smooth;}/*!sc*/
+body{font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;font-size:1rem;line-height:1.5;color:#1e293b;background-color:#ffffff;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;}/*!sc*/
+h1,h2,h3,h4,h5,h6{font-weight:700;line-height:1.25;margin-bottom:0.5em;}/*!sc*/
+h1{font-size:3rem;}/*!sc*/
+@media (max-width: 768px){h1{font-size:2.25rem;}}/*!sc*/
+h2{font-size:2.25rem;}/*!sc*/
+@media (max-width: 768px){h2{font-size:1.875rem;}}/*!sc*/
+h3{font-size:1.875rem;}/*!sc*/
+@media (max-width: 768px){h3{font-size:1.5rem;}}/*!sc*/
+h4{font-size:1.5rem;}/*!sc*/
+@media (max-width: 768px){h4{font-size:1.25rem;}}/*!sc*/
+h5{font-size:1.25rem;}/*!sc*/
+h6{font-size:1.125rem;}/*!sc*/
+p{margin-bottom:1rem;line-height:1.75;}/*!sc*/
+a{color:#3b82f6;text-decoration:none;transition:color 0.15s ease;}/*!sc*/
+a:hover{color:#2563eb;}/*!sc*/
+a:focus{outline:2px solid #3b82f6;outline-offset:2px;}/*!sc*/
+button{cursor:pointer;border:none;background:none;font-family:inherit;font-size:inherit;}/*!sc*/
+button:disabled{cursor:not-allowed;opacity:0.6;}/*!sc*/
+button:focus{outline:2px solid #3b82f6;outline-offset:2px;}/*!sc*/
+input,textarea,select{font-family:inherit;font-size:inherit;}/*!sc*/
+input:focus,textarea:focus,select:focus{outline:2px solid #3b82f6;outline-offset:2px;}/*!sc*/
+img{max-width:100%;height:auto;}/*!sc*/
+ul,ol{margin-bottom:1rem;padding-left:1.5rem;}/*!sc*/
+li{margin-bottom:0.25rem;}/*!sc*/
+blockquote{margin:1rem 0;padding:1rem;border-left:4px solid #3b82f6;background-color:#f1f5f9;font-style:italic;}/*!sc*/
+code{font-family:SFMono-Regular,Consolas,"Liberation Mono",Menlo,monospace;font-size:0.9em;background-color:#f1f5f9;padding:0.2em 0.4em;border-radius:0.25rem;}/*!sc*/
+pre{background-color:#f1f5f9;padding:1rem;border-radius:0.5rem;overflow-x:auto;margin-bottom:1rem;}/*!sc*/
+pre code{background:none;padding:0;}/*!sc*/
+table{width:100%;border-collapse:collapse;margin-bottom:1rem;}/*!sc*/
+th,td{padding:0.75rem;text-align:left;border-bottom:1px solid #e2e8f0;}/*!sc*/
+th{font-weight:600;background-color:#f1f5f9;}/*!sc*/
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0, 0, 0, 0);white-space:nowrap;border:0;}/*!sc*/
+.skip-link{position:absolute;top:-40px;left:6px;background:#3b82f6;color:white;padding:8px;text-decoration:none;border-radius:4px;z-index:100;}/*!sc*/
+.skip-link:focus{top:6px;}/*!sc*/
+::-webkit-scrollbar{width:8px;height:8px;}/*!sc*/
+::-webkit-scrollbar-track{background:#f1f5f9;}/*!sc*/
+::-webkit-scrollbar-thumb{background:#94a3b8;border-radius:4px;}/*!sc*/
+::-webkit-scrollbar-thumb:hover{background:#64748b;}/*!sc*/
+::selection{background:#3b82f6;color:white;}/*!sc*/
+.focus-visible{outline:2px solid #3b82f6;outline-offset:2px;}/*!sc*/
+.fade-in{opacity:0;animation:fadeIn 0.3s ease forwards;}/*!sc*/
+.slide-up{transform:translateY(20px);opacity:0;animation:slideUp 0.3s ease forwards;}/*!sc*/
+@keyframes fadeIn{to{opacity:1;}}/*!sc*/
+@keyframes slideUp{to{transform:translateY(0);opacity:1;}}/*!sc*/
+@media print{*{background:white!important;color:black!important;box-shadow:none!important;text-shadow:none!important;}a,a:visited{text-decoration:underline;}h1,h2,h3,h4,h5,h6{break-after:avoid;}pre,blockquote{border:1px solid #999;break-inside:avoid;}img{max-width:100%!important;}@page{margin:0.5in;}}/*!sc*/
+data-styled.g65[id="sc-global-kxA-Ddz1"]{content:"sc-global-kxA-Ddz1,"}/*!sc*/
+.cIzzQl{position:fixed;top:0;width:100%;z-index:1020;background:transparent;backdrop-filter:blur(10px);border-bottom:1px solid transparent;transition:all 0.3s ease;}/*!sc*/
+data-styled.g66[id="sc-dTWiOz"]{content:"cIzzQl,"}/*!sc*/
+.cqZxah{max-width:1200px;margin:0 auto;padding:0 2rem;display:flex;align-items:center;justify-content:space-between;height:70px;}/*!sc*/
+data-styled.g67[id="sc-eJoXEY"]{content:"cqZxah,"}/*!sc*/
+.hUlCET{display:flex;align-items:center;gap:0.5rem;font-size:1.5rem;font-weight:700;color:#3b82f6;text-decoration:none;cursor:pointer;}/*!sc*/
+.hUlCET:hover{color:#2563eb;}/*!sc*/
+data-styled.g68[id="sc-goiVcJ"]{content:"hUlCET,"}/*!sc*/
+.fXlING{display:flex;align-items:center;gap:2rem;}/*!sc*/
+@media (max-width: 768px){.fXlING{display:none;}}/*!sc*/
+data-styled.g69[id="sc-gSifMm"]{content:"fXlING,"}/*!sc*/
+.ctmqex{color:#1e293b;font-weight:500;text-decoration:none;transition:color 0.15s ease;position:relative;}/*!sc*/
+.ctmqex:hover{color:#3b82f6;}/*!sc*/
+.ctmqex:after{content:'';position:absolute;bottom:-5px;left:0;width:0;height:2px;background:#3b82f6;transition:width 0.15s ease;}/*!sc*/
+.ctmqex:hover:after{width:100%;}/*!sc*/
+data-styled.g70[id="sc-ixcdjX"]{content:"ctmqex,"}/*!sc*/
+.eTvMgH{display:none;background:none;border:none;color:#1e293b;cursor:pointer;padding:0.5rem;}/*!sc*/
+@media (max-width: 768px){.eTvMgH{display:block;}}/*!sc*/
+data-styled.g71[id="sc-eQaGpr"]{content:"eTvMgH,"}/*!sc*/
+.cRlGRt{display:flex;align-items:center;gap:0.5rem;background:#f1f5f9;border:1px solid #e2e8f0;border-radius:0.5rem;padding:0.5rem 1rem;color:#64748b;font-size:0.9rem;transition:all 0.15s ease;}/*!sc*/
+.cRlGRt:hover{background:#ffffff;border-color:#3b82f6;}/*!sc*/
+data-styled.g75[id="sc-bBhMX"]{content:"cRlGRt,"}/*!sc*/
+.fgAPRO{background:#1e293b;color:white;padding:3rem 0 1rem;margin-top:auto;}/*!sc*/
+data-styled.g76[id="sc-hwHXyi"]{content:"fgAPRO,"}/*!sc*/
+.bQkEEK{max-width:1200px;margin:0 auto;padding:0 2rem;}/*!sc*/
+data-styled.g77[id="sc-ciCoXh"]{content:"bQkEEK,"}/*!sc*/
+.lmmFoJ{display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:2rem;margin-bottom:2rem;}/*!sc*/
+@media (max-width: 768px){.lmmFoJ{grid-template-columns:1fr 1fr;gap:1.5rem;}}/*!sc*/
+@media (max-width: 480px){.lmmFoJ{grid-template-columns:1fr;}}/*!sc*/
+data-styled.g78[id="sc-jDJeIs"]{content:"lmmFoJ,"}/*!sc*/
+.bKIGXv h3{font-size:1.1rem;font-weight:600;margin-bottom:1rem;color:white;}/*!sc*/
+.bKIGXv ul{list-style:none;padding:0;margin:0;}/*!sc*/
+.bKIGXv li{margin-bottom:0.5rem;}/*!sc*/
+.bKIGXv a{color:rgba(255, 255, 255, 0.7);text-decoration:none;transition:color 0.15s ease;}/*!sc*/
+.bKIGXv a:hover{color:white;}/*!sc*/
+data-styled.g79[id="sc-eEHciv"]{content:"bKIGXv,"}/*!sc*/
+.bMtRdQ{display:flex;align-items:center;gap:0.5rem;font-size:1.2rem;font-weight:700;margin-bottom:1rem;color:white;}/*!sc*/
+data-styled.g80[id="sc-KsiuK"]{content:"bMtRdQ,"}/*!sc*/
+.eRTluy{color:rgba(255, 255, 255, 0.7);line-height:1.6;margin-bottom:1rem;}/*!sc*/
+data-styled.g81[id="sc-hqtLyI"]{content:"eRTluy,"}/*!sc*/
+.jlMcom{display:flex;gap:1rem;}/*!sc*/
+.jlMcom a{display:flex;align-items:center;justify-content:center;width:40px;height:40px;background:rgba(255, 255, 255, 0.1);border-radius:0.5rem;color:rgba(255, 255, 255, 0.7);transition:all 0.15s ease;}/*!sc*/
+.jlMcom a:hover{background:rgba(255, 255, 255, 0.2);color:white;}/*!sc*/
+data-styled.g82[id="sc-iVnIWt"]{content:"jlMcom,"}/*!sc*/
+.fuxrZK{border-top:1px solid rgba(255, 255, 255, 0.1);padding-top:2rem;display:flex;justify-content:space-between;align-items:center;}/*!sc*/
+@media (max-width: 768px){.fuxrZK{flex-direction:column;gap:1rem;text-align:center;}}/*!sc*/
+data-styled.g83[id="sc-hWgKua"]{content:"fuxrZK,"}/*!sc*/
+.fMpVBW{color:rgba(255, 255, 255, 0.7);margin:0;font-size:0.9rem;}/*!sc*/
+data-styled.g84[id="sc-jBaHRL"]{content:"fMpVBW,"}/*!sc*/
+.fyWnKB{display:flex;gap:2rem;}/*!sc*/
+@media (max-width: 480px){.fyWnKB{flex-direction:column;gap:1rem;}}/*!sc*/
+.fyWnKB a{color:rgba(255, 255, 255, 0.7);text-decoration:none;font-size:0.9rem;transition:color 0.15s ease;}/*!sc*/
+.fyWnKB a:hover{color:white;}/*!sc*/
+data-styled.g85[id="sc-gFqXPY"]{content:"fyWnKB,"}/*!sc*/
+.gjVgwF{color:#1e293b;line-height:1.6;}/*!sc*/
+.gjVgwF h1,.gjVgwF h2,.gjVgwF h3,.gjVgwF h4,.gjVgwF h5,.gjVgwF h6{color:#1e293b;margin-top:2rem;margin-bottom:1rem;font-weight:600;}/*!sc*/
+.gjVgwF h1{font-size:2rem;border-bottom:2px solid #e2e8f0;padding-bottom:0.5rem;}/*!sc*/
+.gjVgwF h2{font-size:1.5rem;border-bottom:1px solid #e2e8f0;padding-bottom:0.3rem;}/*!sc*/
+.gjVgwF h3{font-size:1.25rem;}/*!sc*/
+.gjVgwF h4{font-size:1.1rem;}/*!sc*/
+.gjVgwF p{margin-bottom:1rem;color:#64748b;}/*!sc*/
+.gjVgwF a{color:#3b82f6;text-decoration:none;}/*!sc*/
+.gjVgwF a:hover{text-decoration:underline;}/*!sc*/
+.gjVgwF ul,.gjVgwF ol{margin-bottom:1rem;padding-left:1.5rem;}/*!sc*/
+.gjVgwF ul li,.gjVgwF ol li{margin-bottom:0.5rem;color:#64748b;}/*!sc*/
+.gjVgwF blockquote{border-left:4px solid #3b82f6;padding-left:1rem;margin:1rem 0;font-style:italic;color:#64748b;background:#f1f5f9;padding:1rem;border-radius:0.5rem;}/*!sc*/
+.gjVgwF code{background:#f1f5f9;padding:0.2rem 0.4rem;border-radius:0.25rem;font-family:SFMono-Regular,Consolas,"Liberation Mono",Menlo,monospace;font-size:0.9em;color:#f59e0b;}/*!sc*/
+.gjVgwF pre{background:#ffffff;border:1px solid #e2e8f0;border-radius:0.5rem;padding:1rem;margin:1rem 0;overflow-x:auto;}/*!sc*/
+.gjVgwF pre code{background:none;padding:0;color:#1e293b;font-size:0.9rem;}/*!sc*/
+.gjVgwF table{width:100%;border-collapse:collapse;margin:1rem 0;}/*!sc*/
+.gjVgwF table th,.gjVgwF table td{border:1px solid #e2e8f0;padding:0.5rem;text-align:left;}/*!sc*/
+.gjVgwF table th{background:#ffffff;font-weight:600;}/*!sc*/
+.gjVgwF table tr:nth-child(even){background:#f1f5f9;}/*!sc*/
+.gjVgwF hr{border:none;height:1px;background:#e2e8f0;margin:2rem 0;}/*!sc*/
+.gjVgwF .highlight{background:#3b82f620;padding:0.2rem 0.4rem;border-radius:0.25rem;font-weight:600;}/*!sc*/
+.gjVgwF .hljs{background:#ffffff;color:#1e293b;}/*!sc*/
+.gjVgwF .hljs-keyword{color:#3b82f6;font-weight:600;}/*!sc*/
+.gjVgwF .hljs-string{color:#10b981;}/*!sc*/
+.gjVgwF .hljs-function{color:#f59e0b;}/*!sc*/
+.gjVgwF .hljs-comment{color:#94a3b8;font-style:italic;}/*!sc*/
+.gjVgwF .hljs-number{color:#f59e0b;}/*!sc*/
+.gjVgwF .hljs-variable{color:#1e293b;}/*!sc*/
+.gjVgwF .hljs-title{color:#f59e0b;font-weight:600;}/*!sc*/
+data-styled.g86[id="sc-ikkVnJ"]{content:"gjVgwF,"}/*!sc*/
+</style></head><body class="__className_6eac61"><div style="min-height:100vh;display:flex;flex-direction:column"><nav class="sc-dTWiOz cIzzQl"><div class="sc-eJoXEY cqZxah"><a href="/interview"><a class="sc-goiVcJ hUlCET"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-code "><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>Frontend Interview Prep</a></a><div class="sc-gSifMm fXlING"><a href="/interview/problems"><a class="sc-ixcdjX ctmqex">Problems</a></a><a href="/interview/learn"><a class="sc-ixcdjX ctmqex">Learn</a></a><a href="/interview/study-guide"><a class="sc-ixcdjX ctmqex">Study Guide</a></a><a href="/interview/system-design"><a class="sc-ixcdjX ctmqex">System Design</a></a><a href="/interview/performance"><a class="sc-ixcdjX ctmqex">Performance</a></a><a href="/interview/accessibility"><a class="sc-ixcdjX ctmqex">Accessibility</a></a><a href="/interview/interview-tips"><a class="sc-ixcdjX ctmqex">Interview Tips</a></a><button class="sc-bBhMX cRlGRt"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-search "><circle cx="11" cy="11" r="8"></circle><path d="m21 21-4.3-4.3"></path></svg>Search</button></div><button class="sc-eQaGpr eTvMgH"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-menu "><line x1="4" x2="20" y1="12" y2="12"></line><line x1="4" x2="20" y1="6" y2="6"></line><line x1="4" x2="20" y1="18" y2="18"></line></svg></button></div></nav><main style="flex:1"><div class="max-w-6xl mx-auto px-8 py-24"><div class="flex items-center gap-4 mb-8"><a href="/interview/learn"><button class="flex items-center gap-2 bg-gray-100 border border-gray-300 text-gray-700 px-4 py-3 rounded-md font-medium hover:bg-gray-200 transition-colors"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-left "><path d="m12 19-7-7 7-7"></path><path d="M19 12H5"></path></svg>Back to Learn</button></a></div><div class="bg-white border border-gray-200 rounded-lg p-8 mb-8"><div class="flex items-center justify-between mb-4"><h1 class="text-3xl font-bold text-gray-900">Design Browser History</h1><div class="flex gap-4"><button class="flex items-center gap-2 bg-transparent text-gray-700 border border-gray-300 px-6 py-3 rounded-md font-semibold hover:bg-gray-50 transition-colors"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-star "><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>Bookmark</button><button class="flex items-center gap-2 bg-transparent text-gray-700 border border-gray-300 px-6 py-3 rounded-md font-semibold hover:bg-gray-50 transition-colors"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-share2 "><circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><line x1="8.59" x2="15.42" y1="13.51" y2="17.49"></line><line x1="15.41" x2="8.59" y1="6.51" y2="10.49"></line></svg>Share</button></div></div><div class="flex gap-8 mb-4"><div class="flex items-center gap-2 text-sm text-gray-600"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-clock "><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>2-3 hours</div><span class="px-3 py-1 rounded-full text-xs font-semibold text-white bg-red-500">Easy</span><span class="px-3 py-1 rounded-full text-xs font-semibold bg-blue-100 text-blue-700">Others</span></div><div class="flex flex-wrap gap-2 mb-4"><span class="bg-gray-100 text-gray-600 px-3 py-1 rounded-md text-xs font-medium">Others</span><span class="bg-gray-100 text-gray-600 px-3 py-1 rounded-md text-xs font-medium">Hash Table</span></div><p class="text-lg text-gray-700 leading-relaxed"> *  * You have a browser of one tab where you start on the homepage and you can visit  * another url, get back in the history number of steps or move forward in the  * history number of steps.  * ...</p></div><div class="grid grid-cols-1 lg:grid-cols-3 gap-8"><div class="lg:col-span-2"><div class="bg-white border border-gray-200 rounded-lg p-8"><div class="sc-ikkVnJ gjVgwF"><h1 id="design-browser-history" node="[object Object]">Design Browser History</h1>
+<h2 id="problem-description" node="[object Object]">Problem Description</h2>
+<ul>
+<li>
+<ul>
+<li>You have a browser of one tab where you start on the homepage and you can visit  * another url, get back in the history number of steps or move forward in the  * history number of steps.  *</li>
+</ul>
+</li>
+</ul>
+<h2 id="solutions" node="[object Object]">Solutions</h2>
+<p>{% raw %}
+/**</p>
+<ul>
+<li>Design Browser History</li>
+<li></li>
+<li>Problem: <a href="https://leetcode.com/problems/design-browser-history/" target="_blank" rel="noopener noreferrer" node="[object Object]">https://leetcode.com/problems/design-browser-history/</a></li>
+<li></li>
+<li>You have a browser of one tab where you start on the homepage and you can visit</li>
+<li>another url, get back in the history number of steps or move forward in the</li>
+<li>history number of steps.</li>
+<li></li>
+<li>Implement the BrowserHistory class:</li>
+<li>
+<ul>
+<li>BrowserHistory(string homepage) Initializes the object with the homepage of the browser.</li>
+</ul>
+</li>
+<li>
+<ul>
+<li>void visit(string url) Visits url from the current page. It clears up all the</li>
+</ul>
+</li>
+<li>forward history.</li>
+<li>
+<ul>
+<li>string back(int steps) Move steps back in history. If you can only return x steps</li>
+</ul>
+</li>
+<li>in the history and steps &gt; x, you will return only x steps. Return the current</li>
+<li>url after moving back in history at most steps.</li>
+<li>
+<ul>
+<li>string forward(int steps) Move steps forward in history. If you can only forward</li>
+</ul>
+</li>
+<li>x steps in the history and steps &gt; x, you will forward only x steps. Return the</li>
+<li>current url after forwarding in history at most steps.</li>
+<li></li>
+<li>Example:</li>
+<li>Input:</li>
+<li>[&quot;BrowserHistory&quot;,&quot;visit&quot;,&quot;visit&quot;,&quot;visit&quot;,&quot;back&quot;,&quot;back&quot;,&quot;forward&quot;,&quot;visit&quot;,&quot;forward&quot;,&quot;back&quot;,&quot;back&quot;]</li>
+<li>[[&quot;leetcode.com&quot;],[&quot;google.com&quot;],[&quot;facebook.com&quot;],[&quot;youtube.com&quot;],[1],[1],[1],[&quot;linkedin.com&quot;],[2],[2],[7]]</li>
+<li>Output: [null,null,null,null,&quot;facebook.com&quot;,&quot;google.com&quot;,&quot;facebook.com&quot;,null,&quot;linkedin.com&quot;,&quot;google.com&quot;,&quot;leetcode.com&quot;]</li>
+<li></li>
+<li>Explanation:</li>
+<li>BrowserHistory browserHistory = new BrowserHistory(&quot;leetcode.com&quot;);</li>
+<li>browserHistory.visit(&quot;google.com&quot;);       // You are in &quot;leetcode.com&quot;. Visit &quot;google.com&quot;</li>
+<li>browserHistory.visit(&quot;facebook.com&quot;);     // You are in &quot;google.com&quot;. Visit &quot;facebook.com&quot;</li>
+<li>browserHistory.visit(&quot;youtube.com&quot;);      // You are in &quot;facebook.com&quot;. Visit &quot;youtube.com&quot;</li>
+<li>browserHistory.back(1);                   // You are in &quot;youtube.com&quot;, move back to &quot;facebook.com&quot; return &quot;facebook.com&quot;</li>
+<li>browserHistory.back(1);                   // You are in &quot;facebook.com&quot;, move back to &quot;google.com&quot; return &quot;google.com&quot;</li>
+<li>browserHistory.forward(1);                // You are in &quot;google.com&quot;, move forward to &quot;facebook.com&quot; return &quot;facebook.com&quot;</li>
+<li>browserHistory.visit(&quot;linkedin.com&quot;);     // You are in &quot;facebook.com&quot;. Visit &quot;linkedin.com&quot;</li>
+<li>browserHistory.forward(2);                // You are in &quot;linkedin.com&quot;, you cannot move forward any more steps.</li>
+<li>browserHistory.back(2);                   // You are in &quot;linkedin.com&quot;, move back two steps to &quot;facebook.com&quot; then to &quot;google.com&quot;, return &quot;google.com&quot;</li>
+<li>browserHistory.back(7);                   // You are in &quot;google.com&quot;, you can move back only one step to &quot;leetcode.com&quot;, return &quot;leetcode.com&quot;</li>
+<li></li>
+<li>Constraints:</li>
+<li>
+<ul>
+<li>1 &lt;= homepage.length &lt;= 20</li>
+</ul>
+</li>
+<li>
+<ul>
+<li>1 &lt;= url.length &lt;= 20</li>
+</ul>
+</li>
+<li>
+<ul>
+<li>1 &lt;= steps &lt;= 100</li>
+</ul>
+</li>
+<li>
+<ul>
+<li>homepage and url consist of &#x27;.&#x27; or lower case English letters.</li>
+</ul>
+</li>
+<li>
+<ul>
+<li>At most 5000 calls will be made to visit, back, and forward.</li>
+</ul>
+</li>
+<li></li>
+<li>Solution Approaches:</li>
+<li>
+<ol>
+<li>Array-based implementation with current position</li>
+</ol>
+</li>
+<li>
+<ol start="2">
+<li>Stack-based implementation</li>
+</ol>
+</li>
+<li>
+<ol start="3">
+<li>Doubly linked list implementation</li>
+</ol>
+</li>
+<li>
+<ol start="4">
+<li>With additional features and statistics</li>
+</ol>
+</li>
+<li></li>
+<li>Time Complexity: O(1) for visit, O(steps) for back/forward</li>
+<li>Space Complexity: O(n) where n is the number of visited URLs
+*/</li>
+</ul>
+<p>/**</p>
+<ul>
+<li>BrowserHistory - Array-based Implementation</li>
+<li></li>
+<li>BrowserHistory - Triển khai dựa trên Array</li>
+<li></li>
+<li>This approach uses an array to store the history and a current position pointer
+*/
+class BrowserHistory {
+private history: string[];
+private currentIndex: number;</li>
+</ul>
+<p>constructor(homepage: string) {
+this.history = [homepage];
+this.currentIndex = 0;
+}</p>
+<p>/**</p>
+<ul>
+<li>Visit a new URL</li>
+<li>Truy cập một URL mới
+*/
+visit(url: string): void {
+// Remove all forward history
+this.history = this.history.slice(0, this.currentIndex + 1);</li>
+</ul>
+<pre><pre><code class="hljs undefined">// Add new URL
+</code></pre></pre>
+<pre><pre><code class="hljs undefined">this.history.push(url);
+this.currentIndex++;
+</code></pre></pre>
+<p>}</p>
+<p>/**</p>
+<ul>
+<li>Move back in history</li>
+<li>Di chuyển ngược trong lịch sử
+*/
+back(steps: number): string {
+const newIndex = Math.max(0, this.currentIndex - steps);
+this.currentIndex = newIndex;
+return this.history[this.currentIndex];
+}</li>
+</ul>
+<p>/**</p>
+<ul>
+<li>Move forward in history</li>
+<li>Di chuyển tiến trong lịch sử
+*/
+forward(steps: number): string {
+const newIndex = Math.min(
+this.history.length - 1,
+this.currentIndex + steps
+);
+this.currentIndex = newIndex;
+return this.history[this.currentIndex];
+}</li>
+</ul>
+<p>/**</p>
+<ul>
+<li>Get current URL</li>
+<li>Lấy URL hiện tại
+*/
+getCurrentUrl(): string {
+return this.history[this.currentIndex];
+}</li>
+</ul>
+<p>/**</p>
+<ul>
+<li>Get current position in history</li>
+<li>Lấy vị trí hiện tại trong lịch sử
+*/
+getCurrentPosition(): number {
+return this.currentIndex;
+}</li>
+</ul>
+<p>/**</p>
+<ul>
+<li>Get total history size</li>
+<li>Lấy tổng kích thước lịch sử
+*/
+getHistorySize(): number {
+return this.history.length;
+}</li>
+</ul>
+<p>/**</p>
+<ul>
+<li>Get the internal state for debugging</li>
+<li>Lấy trạng thái nội bộ để debug
+*/
+getState(): { history: string[]; currentIndex: number; currentUrl: string } {
+return {
+history: [...this.history],
+currentIndex: this.currentIndex,
+currentUrl: this.history[this.currentIndex],
+};
+}
+}</li>
+</ul>
+<p>/**</p>
+<ul>
+<li>Alternative Implementation: Stack-based Approach</li>
+<li></li>
+<li>Triển khai thay thế: Phương pháp dựa trên Stack
+*/
+class BrowserHistoryStack {
+private backStack: string[];
+private forwardStack: string[];
+private currentUrl: string;</li>
+</ul>
+<p>constructor(homepage: string) {
+this.backStack = [];
+this.forwardStack = [];
+this.currentUrl = homepage;
+}</p>
+<p>visit(url: string): void {
+// Push current URL to back stack
+this.backStack.push(this.currentUrl);</p>
+<pre><pre><code class="hljs undefined">// Clear forward stack
+this.forwardStack = [];
+
+// Set new current URL
+this.currentUrl = url;
+</code></pre></pre>
+<p>}</p>
+<p>back(steps: number): string {
+const actualSteps = Math.min(steps, this.backStack.length);</p>
+<pre><pre><code class="hljs undefined">for (let i = 0; i &lt; actualSteps; i++) {
+  // Push current URL to forward stack
+  this.forwardStack.push(this.currentUrl);
+
+  // Pop from back stack and set as current
+  this.currentUrl = this.backStack.pop()!;
+}
+
+return this.currentUrl;
+</code></pre></pre>
+<p>}</p>
+<p>forward(steps: number): string {
+const actualSteps = Math.min(steps, this.forwardStack.length);</p>
+<pre><pre><code class="hljs undefined">for (let i = 0; i &lt; actualSteps; i++) {
+  // Push current URL to back stack
+  this.backStack.push(this.currentUrl);
+
+  // Pop from forward stack and set as current
+  this.currentUrl = this.forwardStack.pop()!;
+}
+
+return this.currentUrl;
+</code></pre></pre>
+<p>}</p>
+<p>getCurrentUrl(): string {
+return this.currentUrl;
+}</p>
+<p>getBackStackSize(): number {
+return this.backStack.length;
+}</p>
+<p>getForwardStackSize(): number {
+return this.forwardStack.length;
+}
+}</p>
+<p>/**</p>
+<ul>
+<li>Doubly Linked List Implementation</li>
+<li></li>
+<li>Triển khai Doubly Linked List
+*/
+class HistoryNode {
+url: string;
+prev: HistoryNode | null;
+next: HistoryNode | null;</li>
+</ul>
+<p>constructor(url: string) {
+this.url = url;
+this.prev = null;
+this.next = null;
+}
+}</p>
+<p>class BrowserHistoryLinkedList {
+private head: HistoryNode;
+private current: HistoryNode;</p>
+<p>constructor(homepage: string) {
+this.head = new HistoryNode(homepage);
+this.current = this.head;
+}</p>
+<p>visit(url: string): void {
+// Create new node
+const newNode = new HistoryNode(url);</p>
+<pre><pre><code class="hljs undefined">// Link current node to new node
+this.current.next = newNode;
+newNode.prev = this.current;
+
+// Set new node as current
+this.current = newNode;
+</code></pre></pre>
+<p>}</p>
+<p>back(steps: number): string {
+for (let i = 0; i &lt; steps &amp;&amp; this.current.prev; i++) {
+this.current = this.current.prev;
+}</p>
+<pre><pre><code class="hljs undefined">return this.current.url;
+</code></pre></pre>
+<p>}</p>
+<p>forward(steps: number): string {
+for (let i = 0; i &lt; steps &amp;&amp; this.current.next; i++) {
+this.current = this.current.next;
+}</p>
+<pre><pre><code class="hljs undefined">return this.current.url;
+</code></pre></pre>
+<p>}</p>
+<p>getCurrentUrl(): string {
+return this.current.url;
+}</p>
+<p>/**</p>
+<ul>
+<li>Get all URLs in history</li>
+<li>Lấy tất cả URL trong lịch sử
+*/
+getAllUrls(): string[] {
+const urls: string[] = [];
+let current = this.head;</li>
+</ul>
+<pre><pre><code class="hljs undefined">while (current) {
+</code></pre></pre>
+<pre><pre><code class="hljs undefined">  urls.push(current.url);
+  current = current.next!;
+}
+
+return urls;
+</code></pre></pre>
+<p>}
+}</p>
+<p>/**</p>
+<ul>
+<li>Implementation with Statistics and Monitoring</li>
+<li></li>
+<li>Triển khai với thống kê và giám sát
+*/
+class BrowserHistoryWithStats extends BrowserHistory {
+private visitCount: number;
+private backCount: number;
+private forwardCount: number;
+private operationHistory: Array&lt;{
+operation: string;
+url?: string;
+steps?: number;
+timestamp: number;
+}&gt;;</li>
+</ul>
+<p>constructor(homepage: string) {
+super(homepage);
+this.visitCount = 0;
+this.backCount = 0;
+this.forwardCount = 0;
+this.operationHistory = [];
+}</p>
+<p>visit(url: string): void {
+super.visit(url);
+this.visitCount++;</p>
+<pre><pre><code class="hljs undefined">this.operationHistory.push({
+  operation: &quot;visit&quot;,
+  url,
+  timestamp: Date.now(),
+});
+</code></pre></pre>
+<p>}</p>
+<p>back(steps: number): string {
+const result = super.back(steps);
+this.backCount++;</p>
+<pre><pre><code class="hljs undefined">this.operationHistory.push({
+  operation: &quot;back&quot;,
+  steps,
+  timestamp: Date.now(),
+});
+
+return result;
+</code></pre></pre>
+<p>}</p>
+<p>forward(steps: number): string {
+const result = super.forward(steps);
+this.forwardCount++;</p>
+<pre><pre><code class="hljs undefined">this.operationHistory.push({
+  operation: &quot;forward&quot;,
+  steps,
+  timestamp: Date.now(),
+});
+
+return result;
+</code></pre></pre>
+<p>}</p>
+<p>/**</p>
+<ul>
+<li>Get browser statistics</li>
+<li>Lấy thống kê trình duyệt
+*/
+getStats(): {
+visitCount: number;
+backCount: number;
+forwardCount: number;
+totalOperations: number;
+averageStepsPerNavigation: number;
+recentActivity: Array&lt;{
+operation: string;
+url?: string;
+steps?: number;
+timestamp: number;
+}&gt;;
+} {
+const totalOperations =
+this.visitCount + this.backCount + this.forwardCount;</li>
+</ul>
+<pre><pre><code class="hljs undefined">// Calculate average steps per navigation
+</code></pre></pre>
+<pre><pre><code class="hljs undefined">let totalSteps = 0;
+let navigationCount = 0;
+
+for (const op of this.operationHistory) {
+  if (op.operation === &quot;back&quot; || op.operation === &quot;forward&quot;) {
+    totalSteps += op.steps || 0;
+    navigationCount++;
+  }
+}
+
+const averageStepsPerNavigation =
+  navigationCount &gt; 0 ? totalSteps / navigationCount : 0;
+
+return {
+  visitCount: this.visitCount,
+  backCount: this.backCount,
+  forwardCount: this.forwardCount,
+  totalOperations,
+  averageStepsPerNavigation,
+  recentActivity: this.operationHistory.slice(-10), // Last 10 operations
+};
+</code></pre></pre>
+<p>}</p>
+<p>/**</p>
+<ul>
+<li>Get navigation patterns</li>
+<li>Lấy mẫu điều hướng
+*/
+getNavigationPatterns(): {
+backToForwardRatio: number;
+mostVisitedUrls: Map&lt;string, number&gt;;
+averageSessionLength: number;
+} {
+const urlVisits = new Map&lt;string, number&gt;();
+let sessionCount = 0;
+let totalSessionLength = 0;</li>
+</ul>
+<pre><pre><code class="hljs undefined">for (const op of this.operationHistory) {
+</code></pre></pre>
+<pre><pre><code class="hljs undefined">  if (op.operation === &quot;visit&quot; &amp;&amp; op.url) {
+    urlVisits.set(op.url, (urlVisits.get(op.url) || 0) + 1);
+    sessionCount++;
+  }
+}
+
+const backToForwardRatio =
+  this.forwardCount &gt; 0
+    ? this.backCount / this.forwardCount
+    : this.backCount;
+const averageSessionLength =
+  sessionCount &gt; 0 ? totalSessionLength / sessionCount : 0;
+
+return {
+  backToForwardRatio,
+  mostVisitedUrls: urlVisits,
+  averageSessionLength,
+};
+</code></pre></pre>
+<p>}
+}</p>
+<p>/**</p>
+<ul>
+<li>Implementation with Bookmarks and Favorites</li>
+<li></li>
+<li>Triển khai với Bookmarks và Favorites
+*/
+class BrowserHistoryWithBookmarks extends BrowserHistory {
+private bookmarks: Set<string>;
+private favorites: Map&lt;string, number&gt;; // URL -&gt; visit count</string></li>
+</ul>
+<p>constructor(homepage: string) {
+super(homepage);
+this.bookmarks = new Set();
+this.favorites = new Map();
+}</p>
+<p>visit(url: string): void {
+super.visit(url);</p>
+<pre><pre><code class="hljs undefined">// Update favorites count
+this.favorites.set(url, (this.favorites.get(url) || 0) + 1);
+</code></pre></pre>
+<p>}</p>
+<p>/**</p>
+<ul>
+<li>Add current URL to bookmarks</li>
+<li>Thêm URL hiện tại vào bookmarks
+*/
+addBookmark(): boolean {
+const currentUrl = this.getCurrentUrl();
+if (this.bookmarks.has(currentUrl)) {
+return false; // Already bookmarked
+}</li>
+</ul>
+<pre><pre><code class="hljs undefined">this.bookmarks.add(currentUrl);
+</code></pre></pre>
+<pre><pre><code class="hljs undefined">return true;
+</code></pre></pre>
+<p>}</p>
+<p>/**</p>
+<ul>
+<li>Remove current URL from bookmarks</li>
+<li>Xóa URL hiện tại khỏi bookmarks
+*/
+removeBookmark(): boolean {
+const currentUrl = this.getCurrentUrl();
+return this.bookmarks.delete(currentUrl);
+}</li>
+</ul>
+<p>/**</p>
+<ul>
+<li>Check if current URL is bookmarked</li>
+<li>Kiểm tra xem URL hiện tại có được bookmark không
+*/
+isBookmarked(): boolean {
+return this.bookmarks.has(this.getCurrentUrl());
+}</li>
+</ul>
+<p>/**</p>
+<ul>
+<li>Get all bookmarks</li>
+<li>Lấy tất cả bookmarks
+*/
+getBookmarks(): string[] {
+return Array.from(this.bookmarks);
+}</li>
+</ul>
+<p>/**</p>
+<ul>
+<li>Get top visited URLs (favorites)</li>
+<li>Lấy các URL được truy cập nhiều nhất
+*/
+getTopVisitedUrls(count: number = 5): Array&lt;{ url: string; visits: number }&gt; {
+return Array.from(this.favorites.entries())
+.sort((a, b) =&gt; b[1] - a[1])
+.slice(0, count)
+.map(([url, visits]) =&gt; ({ url, visits }));
+}
+}</li>
+</ul>
+<p>/**</p>
+<ul>
+<li>Performance Comparison Function</li>
+<li></li>
+<li>Hàm so sánh hiệu suất các phương pháp
+*/
+function compareBrowserHistoryImplementations(
+operations: Array&lt;{
+type: &quot;visit&quot; | &quot;back&quot; | &quot;forward&quot;;
+url?: string;
+steps?: number;
+}&gt;
+): void {
+console.log(
+&quot;Browser History Implementation Performance Comparison / So sánh hiệu suất triển khai Browser History&quot;
+);
+console.log(&quot;=&quot;.repeat(90));</li>
+</ul>
+<p>const implementations = [
+{ name: &quot;Array-based&quot;, history: new BrowserHistory(&quot;homepage.com&quot;) },
+{ name: &quot;Stack-based&quot;, history: new BrowserHistoryStack(&quot;homepage.com&quot;) },
+{
+name: &quot;Linked List&quot;,
+history: new BrowserHistoryLinkedList(&quot;homepage.com&quot;),
+},
+];</p>
+<p>for (const impl of implementations) {
+console.log(<pre><code class="hljs undefined">\nTesting ${impl.name}:</code></pre>);</p>
+<pre><pre><code class="hljs undefined">const start = performance.now();
+
+for (const op of operations) {
+  switch (op.type) {
+    case &quot;visit&quot;:
+      impl.history.visit(op.url!);
+      break;
+    case &quot;back&quot;:
+      impl.history.back(op.steps!);
+      break;
+    case &quot;forward&quot;:
+      impl.history.forward(op.steps!);
+      break;
+  }
+}
+
+const end = performance.now();
+console.log(`  Time: ${(end - start).toFixed(4)}ms`);
+console.log(`  Current URL: ${impl.history.getCurrentUrl()}`);
+</code></pre></pre>
+<p>}
+}</p>
+<p>/**</p>
+<ul>
+<li>Test Cases</li>
+<li></li>
+<li>Các trường hợp kiểm thử
+*/
+function runTests(): void {
+console.log(&quot;Browser History Tests / Kiểm thử Browser History&quot;);
+console.log(&quot;=&quot;.repeat(50));</li>
+</ul>
+<p>// Test 1: Basic operations
+console.log(&quot;\nTest 1: Basic operations / Các thao tác cơ bản&quot;);
+const history1 = new BrowserHistory(&quot;leetcode.com&quot;);
+history1.visit(&quot;google.com&quot;);
+history1.visit(&quot;facebook.com&quot;);
+history1.visit(&quot;youtube.com&quot;);
+console.log(<pre><code class="hljs undefined">back(1): ${history1.back(1)}</code></pre>); // Expected: &quot;facebook.com&quot;
+console.log(<pre><code class="hljs undefined">back(1): ${history1.back(1)}</code></pre>); // Expected: &quot;google.com&quot;
+console.log(<pre><code class="hljs undefined">forward(1): ${history1.forward(1)}</code></pre>); // Expected: &quot;facebook.com&quot;
+history1.visit(&quot;linkedin.com&quot;);
+console.log(<pre><code class="hljs undefined">forward(2): ${history1.forward(2)}</code></pre>); // Expected: &quot;linkedin.com&quot;
+console.log(<pre><code class="hljs undefined">back(2): ${history1.back(2)}</code></pre>); // Expected: &quot;google.com&quot;
+console.log(<pre><code class="hljs undefined">back(7): ${history1.back(7)}</code></pre>); // Expected: &quot;leetcode.com&quot;</p>
+<p>// Test 2: Statistics tracking
+console.log(&quot;\nTest 2: Statistics tracking / Theo dõi thống kê&quot;);
+const statHistory = new BrowserHistoryWithStats(&quot;homepage.com&quot;);</p>
+<p>statHistory.visit(&quot;google.com&quot;);
+statHistory.visit(&quot;facebook.com&quot;);
+statHistory.back(1);
+statHistory.forward(1);
+statHistory.visit(&quot;youtube.com&quot;);
+statHistory.back(2);</p>
+<p>const stats = statHistory.getStats();
+console.log(<pre><code class="hljs undefined">Visit count: ${stats.visitCount}</code></pre>);
+console.log(<pre><code class="hljs undefined">Back count: ${stats.backCount}</code></pre>);
+console.log(<pre><code class="hljs undefined">Forward count: ${stats.forwardCount}</code></pre>);
+console.log(<pre><code class="hljs undefined">Total operations: ${stats.totalOperations}</code></pre>);
+console.log(
+<pre><code class="hljs undefined">Average steps per navigation: ${stats.averageStepsPerNavigation.toFixed(       2     )}</code></pre>
+);</p>
+<p>// Test 3: Bookmarks and favorites
+console.log(&quot;\nTest 3: Bookmarks and favorites / Bookmarks và favorites&quot;);
+const bookmarkHistory = new BrowserHistoryWithBookmarks(&quot;homepage.com&quot;);</p>
+<p>bookmarkHistory.visit(&quot;google.com&quot;);
+bookmarkHistory.addBookmark();
+bookmarkHistory.visit(&quot;facebook.com&quot;);
+bookmarkHistory.visit(&quot;google.com&quot;); // Visit again
+bookmarkHistory.addBookmark();</p>
+<p>console.log(<pre><code class="hljs undefined">Is current bookmarked: ${bookmarkHistory.isBookmarked()}</code></pre>);
+console.log(<pre><code class="hljs undefined">Bookmarks: [${bookmarkHistory.getBookmarks().join(&quot;, &quot;)}]</code></pre>);
+console.log(
+<pre><code class="hljs undefined">Top visited: ${JSON.stringify(bookmarkHistory.getTopVisitedUrls(3))}</code></pre>
+);</p>
+<p>// Test 4: State inspection
+console.log(&quot;\nTest 4: State inspection / Kiểm tra trạng thái&quot;);
+const stateHistory = new BrowserHistory(&quot;homepage.com&quot;);
+stateHistory.visit(&quot;google.com&quot;);
+stateHistory.visit(&quot;facebook.com&quot;);</p>
+<p>console.log(&quot;Current state:&quot;);
+console.log(stateHistory.getState());</p>
+<p>stateHistory.back(1);</p>
+<p>console.log(&quot;After back(1):&quot;);
+console.log(stateHistory.getState());</p>
+<p>// Test 5: Performance comparison
+console.log(&quot;\nTest 5: Performance comparison / So sánh hiệu suất&quot;);
+const testOperations = [
+{ type: &quot;visit&quot; as const, url: &quot;google.com&quot; },
+{ type: &quot;visit&quot; as const, url: &quot;facebook.com&quot; },
+{ type: &quot;visit&quot; as const, url: &quot;youtube.com&quot; },
+{ type: &quot;back&quot; as const, steps: 1 },
+{ type: &quot;back&quot; as const, steps: 1 },
+{ type: &quot;forward&quot; as const, steps: 1 },
+{ type: &quot;visit&quot; as const, url: &quot;linkedin.com&quot; },
+{ type: &quot;forward&quot; as const, steps: 2 },
+{ type: &quot;back&quot; as const, steps: 2 },
+];</p>
+<p>compareBrowserHistoryImplementations(testOperations);
+}</p>
+<p>// Uncomment to run tests
+// runTests();</p>
+<p>export {
+BrowserHistory,
+BrowserHistoryStack,
+BrowserHistoryLinkedList,
+BrowserHistoryWithStats,
+BrowserHistoryWithBookmarks,
+HistoryNode,
+compareBrowserHistoryImplementations,
+runTests,
+};
+{% endraw %}</p></div></div></div><div class="space-y-6"><div class="bg-white border border-gray-200 rounded-lg p-6"><h3 class="text-lg font-semibold text-gray-900 mb-4">Your Progress</h3><div class="w-full bg-gray-200 rounded-full h-2 mb-2"><div class="bg-blue-600 h-2 rounded-full" style="width:25%"></div></div><p class="text-sm text-gray-600">25% Complete</p></div></div></div></div></main><footer class="sc-hwHXyi fgAPRO"><div class="sc-ciCoXh bQkEEK"><div class="sc-jDJeIs lmmFoJ"><div class="sc-eEHciv bKIGXv"><div class="sc-KsiuK bMtRdQ"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-code "><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>Frontend Interview Prep</div><p class="sc-hqtLyI eRTluy">Comprehensive interview preparation for frontend engineers targeting Big Tech companies.</p><div class="sc-iVnIWt jlMcom"><a href="https://github.com" aria-label="GitHub"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-github "><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"></path><path d="M9 18c-4.51 2-5-2-7-2"></path></svg></a><a href="https://twitter.com" aria-label="Twitter"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-twitter "><path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"></path></svg></a><a href="https://linkedin.com" aria-label="LinkedIn"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-linkedin "><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect width="4" height="12" x="2" y="9"></rect><circle cx="4" cy="4" r="2"></circle></svg></a><a href="mailto:contact@example.com" aria-label="Email"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-mail "><rect width="20" height="16" x="2" y="4" rx="2"></rect><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path></svg></a></div></div><div class="sc-eEHciv bKIGXv"><h3>Study Materials</h3><ul><li><a href="/algorithms">Algorithms</a></li><li><a href="/react">React &amp; Frontend</a></li><li><a href="/system-design">System Design</a></li><li><a href="/typescript">TypeScript</a></li><li><a href="/performance">Performance</a></li></ul></div><div class="sc-eEHciv bKIGXv"><h3>Companies</h3><ul><li><a href="/google">Google</a></li><li><a href="/meta">Meta</a></li><li><a href="/amazon">Amazon</a></li><li><a href="/microsoft">Microsoft</a></li><li><a href="/apple">Apple</a></li></ul></div><div class="sc-eEHciv bKIGXv"><h3>Resources</h3><ul><li><a href="/interview-tips">Interview Tips</a></li><li><a href="/coding-challenges">Coding Challenges</a></li><li><a href="/mock-interviews">Mock Interviews</a></li><li><a href="/blog">Blog</a></li><li><a href="/faq">FAQ</a></li></ul></div></div><div class="sc-hWgKua fuxrZK"><p class="sc-jBaHRL fMpVBW">© 2025 Frontend Interview Prep. All rights reserved.</p><div class="sc-gFqXPY fyWnKB"><a href="/privacy">Privacy Policy</a><a href="/terms">Terms of Service</a><a href="/contact">Contact</a></div></div></div></footer></div><script src="/interview/_next/static/chunks/webpack-be7d7df45533bffc.js" async=""></script><script>(self.__next_f=self.__next_f||[]).push([0]);self.__next_f.push([2,null])</script><script>self.__next_f.push([1,"1:HL[\"/interview/_next/static/media/e4af272ccee01ff0-s.p.woff2\",\"font\",{\"crossOrigin\":\"\",\"type\":\"font/woff2\"}]\n2:HL[\"/interview/_next/static/css/387024c6a2216908.css\",\"style\"]\n"])</script><script>self.__next_f.push([1,"3:I[2846,[],\"\"]\n5:I[2972,[\"918\",\"static/chunks/918-3273b83890f10546.js\",\"972\",\"static/chunks/972-011bba60ed155615.js\",\"930\",\"static/chunks/930-3262a6c9c5acace4.js\",\"289\",\"static/chunks/app/learn/%5Btopic%5D/page-4ab144227f7a7b3e.js\"],\"\"]\n6:I[5907,[\"918\",\"static/chunks/918-3273b83890f10546.js\",\"972\",\"static/chunks/972-011bba60ed155615.js\",\"930\",\"static/chunks/930-3262a6c9c5acace4.js\",\"289\",\"static/chunks/app/learn/%5Btopic%5D/page-4ab144227f7a7b3e.js\"],\"default\"]\n8:I[4707,[],\"\"]\na:I[6423,[],\"\"]\nb:I[2,[\"918\",\"static/chunks/918-3273b83890f10546.js\",\"710\",\"static/chunks/710-dfaa11b4dff08f8e.js\",\"972\",\"static/chunks/972-011bba60ed155615.js\",\"233\",\"static/chunks/233-3e0c1d820a17eca9.js\",\"185\",\"static/chunks/app/layout-333f4adcd11f8f39.js\"],\"default\",1]\nd:I[1060,[],\"\"]\n7:T477e,"])</script><script>self.__next_f.push([1,"\n# Design Browser History\n\n\n\n## Problem Description\n\n *  * You have a browser of one tab where you start on the homepage and you can visit  * another url, get back in the history number of steps or move forward in the  * history number of steps.  * \n\n## Solutions\n\n{% raw %}\n/**\n * Design Browser History\n *\n * Problem: https://leetcode.com/problems/design-browser-history/\n *\n * You have a browser of one tab where you start on the homepage and you can visit\n * another url, get back in the history number of steps or move forward in the\n * history number of steps.\n *\n * Implement the BrowserHistory class:\n * - BrowserHistory(string homepage) Initializes the object with the homepage of the browser.\n * - void visit(string url) Visits url from the current page. It clears up all the\n *   forward history.\n * - string back(int steps) Move steps back in history. If you can only return x steps\n *   in the history and steps \u003e x, you will return only x steps. Return the current\n *   url after moving back in history at most steps.\n * - string forward(int steps) Move steps forward in history. If you can only forward\n *   x steps in the history and steps \u003e x, you will forward only x steps. Return the\n *   current url after forwarding in history at most steps.\n *\n * Example:\n * Input:\n * [\"BrowserHistory\",\"visit\",\"visit\",\"visit\",\"back\",\"back\",\"forward\",\"visit\",\"forward\",\"back\",\"back\"]\n * [[\"leetcode.com\"],[\"google.com\"],[\"facebook.com\"],[\"youtube.com\"],[1],[1],[1],[\"linkedin.com\"],[2],[2],[7]]\n * Output: [null,null,null,null,\"facebook.com\",\"google.com\",\"facebook.com\",null,\"linkedin.com\",\"google.com\",\"leetcode.com\"]\n *\n * Explanation:\n * BrowserHistory browserHistory = new BrowserHistory(\"leetcode.com\");\n * browserHistory.visit(\"google.com\");       // You are in \"leetcode.com\". Visit \"google.com\"\n * browserHistory.visit(\"facebook.com\");     // You are in \"google.com\". Visit \"facebook.com\"\n * browserHistory.visit(\"youtube.com\");      // You are in \"facebook.com\". Visit \"youtube.com\"\n * browserHistory.back(1);                   // You are in \"youtube.com\", move back to \"facebook.com\" return \"facebook.com\"\n * browserHistory.back(1);                   // You are in \"facebook.com\", move back to \"google.com\" return \"google.com\"\n * browserHistory.forward(1);                // You are in \"google.com\", move forward to \"facebook.com\" return \"facebook.com\"\n * browserHistory.visit(\"linkedin.com\");     // You are in \"facebook.com\". Visit \"linkedin.com\"\n * browserHistory.forward(2);                // You are in \"linkedin.com\", you cannot move forward any more steps.\n * browserHistory.back(2);                   // You are in \"linkedin.com\", move back two steps to \"facebook.com\" then to \"google.com\", return \"google.com\"\n * browserHistory.back(7);                   // You are in \"google.com\", you can move back only one step to \"leetcode.com\", return \"leetcode.com\"\n *\n * Constraints:\n * - 1 \u003c= homepage.length \u003c= 20\n * - 1 \u003c= url.length \u003c= 20\n * - 1 \u003c= steps \u003c= 100\n * - homepage and url consist of '.' or lower case English letters.\n * - At most 5000 calls will be made to visit, back, and forward.\n *\n * Solution Approaches:\n * 1. Array-based implementation with current position\n * 2. Stack-based implementation\n * 3. Doubly linked list implementation\n * 4. With additional features and statistics\n *\n * Time Complexity: O(1) for visit, O(steps) for back/forward\n * Space Complexity: O(n) where n is the number of visited URLs\n */\n\n/**\n * BrowserHistory - Array-based Implementation\n *\n * BrowserHistory - Triển khai dựa trên Array\n *\n * This approach uses an array to store the history and a current position pointer\n */\nclass BrowserHistory {\n  private history: string[];\n  private currentIndex: number;\n\n  constructor(homepage: string) {\n    this.history = [homepage];\n    this.currentIndex = 0;\n  }\n\n  /**\n   * Visit a new URL\n   * Truy cập một URL mới\n   */\n  visit(url: string): void {\n    // Remove all forward history\n    this.history = this.history.slice(0, this.currentIndex + 1);\n\n    // Add new URL\n    this.history.push(url);\n    this.currentIndex++;\n  }\n\n  /**\n   * Move back in history\n   * Di chuyển ngược trong lịch sử\n   */\n  back(steps: number): string {\n    const newIndex = Math.max(0, this.currentIndex - steps);\n    this.currentIndex = newIndex;\n    return this.history[this.currentIndex];\n  }\n\n  /**\n   * Move forward in history\n   * Di chuyển tiến trong lịch sử\n   */\n  forward(steps: number): string {\n    const newIndex = Math.min(\n      this.history.length - 1,\n      this.currentIndex + steps\n    );\n    this.currentIndex = newIndex;\n    return this.history[this.currentIndex];\n  }\n\n  /**\n   * Get current URL\n   * Lấy URL hiện tại\n   */\n  getCurrentUrl(): string {\n    return this.history[this.currentIndex];\n  }\n\n  /**\n   * Get current position in history\n   * Lấy vị trí hiện tại trong lịch sử\n   */\n  getCurrentPosition(): number {\n    return this.currentIndex;\n  }\n\n  /**\n   * Get total history size\n   * Lấy tổng kích thước lịch sử\n   */\n  getHistorySize(): number {\n    return this.history.length;\n  }\n\n  /**\n   * Get the internal state for debugging\n   * Lấy trạng thái nội bộ để debug\n   */\n  getState(): { history: string[]; currentIndex: number; currentUrl: string } {\n    return {\n      history: [...this.history],\n      currentIndex: this.currentIndex,\n      currentUrl: this.history[this.currentIndex],\n    };\n  }\n}\n\n/**\n * Alternative Implementation: Stack-based Approach\n *\n * Triển khai thay thế: Phương pháp dựa trên Stack\n */\nclass BrowserHistoryStack {\n  private backStack: string[];\n  private forwardStack: string[];\n  private currentUrl: string;\n\n  constructor(homepage: string) {\n    this.backStack = [];\n    this.forwardStack = [];\n    this.currentUrl = homepage;\n  }\n\n  visit(url: string): void {\n    // Push current URL to back stack\n    this.backStack.push(this.currentUrl);\n\n    // Clear forward stack\n    this.forwardStack = [];\n\n    // Set new current URL\n    this.currentUrl = url;\n  }\n\n  back(steps: number): string {\n    const actualSteps = Math.min(steps, this.backStack.length);\n\n    for (let i = 0; i \u003c actualSteps; i++) {\n      // Push current URL to forward stack\n      this.forwardStack.push(this.currentUrl);\n\n      // Pop from back stack and set as current\n      this.currentUrl = this.backStack.pop()!;\n    }\n\n    return this.currentUrl;\n  }\n\n  forward(steps: number): string {\n    const actualSteps = Math.min(steps, this.forwardStack.length);\n\n    for (let i = 0; i \u003c actualSteps; i++) {\n      // Push current URL to back stack\n      this.backStack.push(this.currentUrl);\n\n      // Pop from forward stack and set as current\n      this.currentUrl = this.forwardStack.pop()!;\n    }\n\n    return this.currentUrl;\n  }\n\n  getCurrentUrl(): string {\n    return this.currentUrl;\n  }\n\n  getBackStackSize(): number {\n    return this.backStack.length;\n  }\n\n  getForwardStackSize(): number {\n    return this.forwardStack.length;\n  }\n}\n\n/**\n * Doubly Linked List Implementation\n *\n * Triển khai Doubly Linked List\n */\nclass HistoryNode {\n  url: string;\n  prev: HistoryNode | null;\n  next: HistoryNode | null;\n\n  constructor(url: string) {\n    this.url = url;\n    this.prev = null;\n    this.next = null;\n  }\n}\n\nclass BrowserHistoryLinkedList {\n  private head: HistoryNode;\n  private current: HistoryNode;\n\n  constructor(homepage: string) {\n    this.head = new HistoryNode(homepage);\n    this.current = this.head;\n  }\n\n  visit(url: string): void {\n    // Create new node\n    const newNode = new HistoryNode(url);\n\n    // Link current node to new node\n    this.current.next = newNode;\n    newNode.prev = this.current;\n\n    // Set new node as current\n    this.current = newNode;\n  }\n\n  back(steps: number): string {\n    for (let i = 0; i \u003c steps \u0026\u0026 this.current.prev; i++) {\n      this.current = this.current.prev;\n    }\n\n    return this.current.url;\n  }\n\n  forward(steps: number): string {\n    for (let i = 0; i \u003c steps \u0026\u0026 this.current.next; i++) {\n      this.current = this.current.next;\n    }\n\n    return this.current.url;\n  }\n\n  getCurrentUrl(): string {\n    return this.current.url;\n  }\n\n  /**\n   * Get all URLs in history\n   * Lấy tất cả URL trong lịch sử\n   */\n  getAllUrls(): string[] {\n    const urls: string[] = [];\n    let current = this.head;\n\n    while (current) {\n      urls.push(current.url);\n      current = current.next!;\n    }\n\n    return urls;\n  }\n}\n\n/**\n * Implementation with Statistics and Monitoring\n *\n * Triển khai với thống kê và giám sát\n */\nclass BrowserHistoryWithStats extends BrowserHistory {\n  private visitCount: number;\n  private backCount: number;\n  private forwardCount: number;\n  private operationHistory: Array\u003c{\n    operation: string;\n    url?: string;\n    steps?: number;\n    timestamp: number;\n  }\u003e;\n\n  constructor(homepage: string) {\n    super(homepage);\n    this.visitCount = 0;\n    this.backCount = 0;\n    this.forwardCount = 0;\n    this.operationHistory = [];\n  }\n\n  visit(url: string): void {\n    super.visit(url);\n    this.visitCount++;\n\n    this.operationHistory.push({\n      operation: \"visit\",\n      url,\n      timestamp: Date.now(),\n    });\n  }\n\n  back(steps: number): string {\n    const result = super.back(steps);\n    this.backCount++;\n\n    this.operationHistory.push({\n      operation: \"back\",\n      steps,\n      timestamp: Date.now(),\n    });\n\n    return result;\n  }\n\n  forward(steps: number): string {\n    const result = super.forward(steps);\n    this.forwardCount++;\n\n    this.operationHistory.push({\n      operation: \"forward\",\n      steps,\n      timestamp: Date.now(),\n    });\n\n    return result;\n  }\n\n  /**\n   * Get browser statistics\n   * Lấy thống kê trình duyệt\n   */\n  getStats(): {\n    visitCount: number;\n    backCount: number;\n    forwardCount: number;\n    totalOperations: number;\n    averageStepsPerNavigation: number;\n    recentActivity: Array\u003c{\n      operation: string;\n      url?: string;\n      steps?: number;\n      timestamp: number;\n    }\u003e;\n  } {\n    const totalOperations =\n      this.visitCount + this.backCount + this.forwardCount;\n\n    // Calculate average steps per navigation\n    let totalSteps = 0;\n    let navigationCount = 0;\n\n    for (const op of this.operationHistory) {\n      if (op.operation === \"back\" || op.operation === \"forward\") {\n        totalSteps += op.steps || 0;\n        navigationCount++;\n      }\n    }\n\n    const averageStepsPerNavigation =\n      navigationCount \u003e 0 ? totalSteps / navigationCount : 0;\n\n    return {\n      visitCount: this.visitCount,\n      backCount: this.backCount,\n      forwardCount: this.forwardCount,\n      totalOperations,\n      averageStepsPerNavigation,\n      recentActivity: this.operationHistory.slice(-10), // Last 10 operations\n    };\n  }\n\n  /**\n   * Get navigation patterns\n   * Lấy mẫu điều hướng\n   */\n  getNavigationPatterns(): {\n    backToForwardRatio: number;\n    mostVisitedUrls: Map\u003cstring, number\u003e;\n    averageSessionLength: number;\n  } {\n    const urlVisits = new Map\u003cstring, number\u003e();\n    let sessionCount = 0;\n    let totalSessionLength = 0;\n\n    for (const op of this.operationHistory) {\n      if (op.operation === \"visit\" \u0026\u0026 op.url) {\n        urlVisits.set(op.url, (urlVisits.get(op.url) || 0) + 1);\n        sessionCount++;\n      }\n    }\n\n    const backToForwardRatio =\n      this.forwardCount \u003e 0\n        ? this.backCount / this.forwardCount\n        : this.backCount;\n    const averageSessionLength =\n      sessionCount \u003e 0 ? totalSessionLength / sessionCount : 0;\n\n    return {\n      backToForwardRatio,\n      mostVisitedUrls: urlVisits,\n      averageSessionLength,\n    };\n  }\n}\n\n/**\n * Implementation with Bookmarks and Favorites\n *\n * Triển khai với Bookmarks và Favorites\n */\nclass BrowserHistoryWithBookmarks extends BrowserHistory {\n  private bookmarks: Set\u003cstring\u003e;\n  private favorites: Map\u003cstring, number\u003e; // URL -\u003e visit count\n\n  constructor(homepage: string) {\n    super(homepage);\n    this.bookmarks = new Set();\n    this.favorites = new Map();\n  }\n\n  visit(url: string): void {\n    super.visit(url);\n\n    // Update favorites count\n    this.favorites.set(url, (this.favorites.get(url) || 0) + 1);\n  }\n\n  /**\n   * Add current URL to bookmarks\n   * Thêm URL hiện tại vào bookmarks\n   */\n  addBookmark(): boolean {\n    const currentUrl = this.getCurrentUrl();\n    if (this.bookmarks.has(currentUrl)) {\n      return false; // Already bookmarked\n    }\n\n    this.bookmarks.add(currentUrl);\n    return true;\n  }\n\n  /**\n   * Remove current URL from bookmarks\n   * Xóa URL hiện tại khỏi bookmarks\n   */\n  removeBookmark(): boolean {\n    const currentUrl = this.getCurrentUrl();\n    return this.bookmarks.delete(currentUrl);\n  }\n\n  /**\n   * Check if current URL is bookmarked\n   * Kiểm tra xem URL hiện tại có được bookmark không\n   */\n  isBookmarked(): boolean {\n    return this.bookmarks.has(this.getCurrentUrl());\n  }\n\n  /**\n   * Get all bookmarks\n   * Lấy tất cả bookmarks\n   */\n  getBookmarks(): string[] {\n    return Array.from(this.bookmarks);\n  }\n\n  /**\n   * Get top visited URLs (favorites)\n   * Lấy các URL được truy cập nhiều nhất\n   */\n  getTopVisitedUrls(count: number = 5): Array\u003c{ url: string; visits: number }\u003e {\n    return Array.from(this.favorites.entries())\n      .sort((a, b) =\u003e b[1] - a[1])\n      .slice(0, count)\n      .map(([url, visits]) =\u003e ({ url, visits }));\n  }\n}\n\n/**\n * Performance Comparison Function\n *\n * Hàm so sánh hiệu suất các phương pháp\n */\nfunction compareBrowserHistoryImplementations(\n  operations: Array\u003c{\n    type: \"visit\" | \"back\" | \"forward\";\n    url?: string;\n    steps?: number;\n  }\u003e\n): void {\n  console.log(\n    \"Browser History Implementation Performance Comparison / So sánh hiệu suất triển khai Browser History\"\n  );\n  console.log(\"=\".repeat(90));\n\n  const implementations = [\n    { name: \"Array-based\", history: new BrowserHistory(\"homepage.com\") },\n    { name: \"Stack-based\", history: new BrowserHistoryStack(\"homepage.com\") },\n    {\n      name: \"Linked List\",\n      history: new BrowserHistoryLinkedList(\"homepage.com\"),\n    },\n  ];\n\n  for (const impl of implementations) {\n    console.log(`\\nTesting ${impl.name}:`);\n\n    const start = performance.now();\n\n    for (const op of operations) {\n      switch (op.type) {\n        case \"visit\":\n          impl.history.visit(op.url!);\n          break;\n        case \"back\":\n          impl.history.back(op.steps!);\n          break;\n        case \"forward\":\n          impl.history.forward(op.steps!);\n          break;\n      }\n    }\n\n    const end = performance.now();\n    console.log(`  Time: ${(end - start).toFixed(4)}ms`);\n    console.log(`  Current URL: ${impl.history.getCurrentUrl()}`);\n  }\n}\n\n/**\n * Test Cases\n *\n * Các trường hợp kiểm thử\n */\nfunction runTests(): void {\n  console.log(\"Browser History Tests / Kiểm thử Browser History\");\n  console.log(\"=\".repeat(50));\n\n  // Test 1: Basic operations\n  console.log(\"\\nTest 1: Basic operations / Các thao tác cơ bản\");\n  const history1 = new BrowserHistory(\"leetcode.com\");\n  history1.visit(\"google.com\");\n  history1.visit(\"facebook.com\");\n  history1.visit(\"youtube.com\");\n  console.log(`back(1): ${history1.back(1)}`); // Expected: \"facebook.com\"\n  console.log(`back(1): ${history1.back(1)}`); // Expected: \"google.com\"\n  console.log(`forward(1): ${history1.forward(1)}`); // Expected: \"facebook.com\"\n  history1.visit(\"linkedin.com\");\n  console.log(`forward(2): ${history1.forward(2)}`); // Expected: \"linkedin.com\"\n  console.log(`back(2): ${history1.back(2)}`); // Expected: \"google.com\"\n  console.log(`back(7): ${history1.back(7)}`); // Expected: \"leetcode.com\"\n\n  // Test 2: Statistics tracking\n  console.log(\"\\nTest 2: Statistics tracking / Theo dõi thống kê\");\n  const statHistory = new BrowserHistoryWithStats(\"homepage.com\");\n\n  statHistory.visit(\"google.com\");\n  statHistory.visit(\"facebook.com\");\n  statHistory.back(1);\n  statHistory.forward(1);\n  statHistory.visit(\"youtube.com\");\n  statHistory.back(2);\n\n  const stats = statHistory.getStats();\n  console.log(`Visit count: ${stats.visitCount}`);\n  console.log(`Back count: ${stats.backCount}`);\n  console.log(`Forward count: ${stats.forwardCount}`);\n  console.log(`Total operations: ${stats.totalOperations}`);\n  console.log(\n    `Average steps per navigation: ${stats.averageStepsPerNavigation.toFixed(\n      2\n    )}`\n  );\n\n  // Test 3: Bookmarks and favorites\n  console.log(\"\\nTest 3: Bookmarks and favorites / Bookmarks và favorites\");\n  const bookmarkHistory = new BrowserHistoryWithBookmarks(\"homepage.com\");\n\n  bookmarkHistory.visit(\"google.com\");\n  bookmarkHistory.addBookmark();\n  bookmarkHistory.visit(\"facebook.com\");\n  bookmarkHistory.visit(\"google.com\"); // Visit again\n  bookmarkHistory.addBookmark();\n\n  console.log(`Is current bookmarked: ${bookmarkHistory.isBookmarked()}`);\n  console.log(`Bookmarks: [${bookmarkHistory.getBookmarks().join(\", \")}]`);\n  console.log(\n    `Top visited: ${JSON.stringify(bookmarkHistory.getTopVisitedUrls(3))}`\n  );\n\n  // Test 4: State inspection\n  console.log(\"\\nTest 4: State inspection / Kiểm tra trạng thái\");\n  const stateHistory = new BrowserHistory(\"homepage.com\");\n  stateHistory.visit(\"google.com\");\n  stateHistory.visit(\"facebook.com\");\n\n  console.log(\"Current state:\");\n  console.log(stateHistory.getState());\n\n  stateHistory.back(1);\n\n  console.log(\"After back(1):\");\n  console.log(stateHistory.getState());\n\n  // Test 5: Performance comparison\n  console.log(\"\\nTest 5: Performance comparison / So sánh hiệu suất\");\n  const testOperations = [\n    { type: \"visit\" as const, url: \"google.com\" },\n    { type: \"visit\" as const, url: \"facebook.com\" },\n    { type: \"visit\" as const, url: \"youtube.com\" },\n    { type: \"back\" as const, steps: 1 },\n    { type: \"back\" as const, steps: 1 },\n    { type: \"forward\" as const, steps: 1 },\n    { type: \"visit\" as const, url: \"linkedin.com\" },\n    { type: \"forward\" as const, steps: 2 },\n    { type: \"back\" as const, steps: 2 },\n  ];\n\n  compareBrowserHistoryImplementations(testOperations);\n}\n\n// Uncomment to run tests\n// runTests();\n\nexport {\n  BrowserHistory,\n  BrowserHistoryStack,\n  BrowserHistoryLinkedList,\n  BrowserHistoryWithStats,\n  BrowserHistoryWithBookmarks,\n  HistoryNode,\n  compareBrowserHistoryImplementations,\n  runTests,\n};\n{% endraw %}\n"])</script><script>self.__next_f.push([1,"9:[\"topic\",\"others-problems-10-design-browser-history\",\"d\"]\ne:[]\n"])</script><script>self.__next_f.push([1,"0:[\"$\",\"$L3\",null,{\"buildId\":\"2NmUhWiPdVVBzVtDZlggk\",\"assetPrefix\":\"/interview\",\"urlParts\":[\"\",\"learn\",\"others-problems-10-design-browser-history\"],\"initialTree\":[\"\",{\"children\":[\"learn\",{\"children\":[[\"topic\",\"others-problems-10-design-browser-history\",\"d\"],{\"children\":[\"__PAGE__?{\\\"topic\\\":\\\"others-problems-10-design-browser-history\\\"}\",{}]}]}]},\"$undefined\",\"$undefined\",true],\"initialSeedData\":[\"\",{\"children\":[\"learn\",{\"children\":[[\"topic\",\"others-problems-10-design-browser-history\",\"d\"],{\"children\":[\"__PAGE__\",{},[[\"$L4\",[\"$\",\"div\",null,{\"className\":\"max-w-6xl mx-auto px-8 py-24\",\"children\":[[\"$\",\"div\",null,{\"className\":\"flex items-center gap-4 mb-8\",\"children\":[\"$\",\"$L5\",null,{\"href\":\"/learn\",\"children\":[\"$\",\"button\",null,{\"className\":\"flex items-center gap-2 bg-gray-100 border border-gray-300 text-gray-700 px-4 py-3 rounded-md font-medium hover:bg-gray-200 transition-colors\",\"children\":[[\"$\",\"svg\",null,{\"xmlns\":\"http://www.w3.org/2000/svg\",\"width\":16,\"height\":16,\"viewBox\":\"0 0 24 24\",\"fill\":\"none\",\"stroke\":\"currentColor\",\"strokeWidth\":2,\"strokeLinecap\":\"round\",\"strokeLinejoin\":\"round\",\"className\":\"lucide lucide-arrow-left \",\"children\":[[\"$\",\"path\",\"1l729n\",{\"d\":\"m12 19-7-7 7-7\"}],[\"$\",\"path\",\"x3x0zl\",{\"d\":\"M19 12H5\"}],\"$undefined\"]}],\"Back to Learn\"]}]}]}],[\"$\",\"div\",null,{\"className\":\"bg-white border border-gray-200 rounded-lg p-8 mb-8\",\"children\":[[\"$\",\"div\",null,{\"className\":\"flex items-center justify-between mb-4\",\"children\":[[\"$\",\"h1\",null,{\"className\":\"text-3xl font-bold text-gray-900\",\"children\":\"Design Browser History\"}],[\"$\",\"div\",null,{\"className\":\"flex gap-4\",\"children\":[[\"$\",\"button\",null,{\"className\":\"flex items-center gap-2 bg-transparent text-gray-700 border border-gray-300 px-6 py-3 rounded-md font-semibold hover:bg-gray-50 transition-colors\",\"children\":[[\"$\",\"svg\",null,{\"xmlns\":\"http://www.w3.org/2000/svg\",\"width\":16,\"height\":16,\"viewBox\":\"0 0 24 24\",\"fill\":\"none\",\"stroke\":\"currentColor\",\"strokeWidth\":2,\"strokeLinecap\":\"round\",\"strokeLinejoin\":\"round\",\"className\":\"lucide lucide-star \",\"children\":[[\"$\",\"polygon\",\"8f66p6\",{\"points\":\"12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2\"}],\"$undefined\"]}],\"Bookmark\"]}],[\"$\",\"button\",null,{\"className\":\"flex items-center gap-2 bg-transparent text-gray-700 border border-gray-300 px-6 py-3 rounded-md font-semibold hover:bg-gray-50 transition-colors\",\"children\":[[\"$\",\"svg\",null,{\"xmlns\":\"http://www.w3.org/2000/svg\",\"width\":16,\"height\":16,\"viewBox\":\"0 0 24 24\",\"fill\":\"none\",\"stroke\":\"currentColor\",\"strokeWidth\":2,\"strokeLinecap\":\"round\",\"strokeLinejoin\":\"round\",\"className\":\"lucide lucide-share2 \",\"children\":[[\"$\",\"circle\",\"gq8acd\",{\"cx\":\"18\",\"cy\":\"5\",\"r\":\"3\"}],[\"$\",\"circle\",\"w7nqdw\",{\"cx\":\"6\",\"cy\":\"12\",\"r\":\"3\"}],[\"$\",\"circle\",\"1xt0gg\",{\"cx\":\"18\",\"cy\":\"19\",\"r\":\"3\"}],[\"$\",\"line\",\"47mynk\",{\"x1\":\"8.59\",\"x2\":\"15.42\",\"y1\":\"13.51\",\"y2\":\"17.49\"}],[\"$\",\"line\",\"1n3mei\",{\"x1\":\"15.41\",\"x2\":\"8.59\",\"y1\":\"6.51\",\"y2\":\"10.49\"}],\"$undefined\"]}],\"Share\"]}]]}]]}],[\"$\",\"div\",null,{\"className\":\"flex gap-8 mb-4\",\"children\":[[\"$\",\"div\",null,{\"className\":\"flex items-center gap-2 text-sm text-gray-600\",\"children\":[[\"$\",\"svg\",null,{\"xmlns\":\"http://www.w3.org/2000/svg\",\"width\":16,\"height\":16,\"viewBox\":\"0 0 24 24\",\"fill\":\"none\",\"stroke\":\"currentColor\",\"strokeWidth\":2,\"strokeLinecap\":\"round\",\"strokeLinejoin\":\"round\",\"className\":\"lucide lucide-clock \",\"children\":[[\"$\",\"circle\",\"1mglay\",{\"cx\":\"12\",\"cy\":\"12\",\"r\":\"10\"}],[\"$\",\"polyline\",\"68esgv\",{\"points\":\"12 6 12 12 16 14\"}],\"$undefined\"]}],\"2-3 hours\"]}],[\"$\",\"span\",null,{\"className\":\"px-3 py-1 rounded-full text-xs font-semibold text-white bg-red-500\",\"children\":\"Easy\"}],[\"$\",\"span\",null,{\"className\":\"px-3 py-1 rounded-full text-xs font-semibold bg-blue-100 text-blue-700\",\"children\":\"Others\"}]]}],[\"$\",\"div\",null,{\"className\":\"flex flex-wrap gap-2 mb-4\",\"children\":[[\"$\",\"span\",\"0\",{\"className\":\"bg-gray-100 text-gray-600 px-3 py-1 rounded-md text-xs font-medium\",\"children\":\"Others\"}],[\"$\",\"span\",\"1\",{\"className\":\"bg-gray-100 text-gray-600 px-3 py-1 rounded-md text-xs font-medium\",\"children\":\"Hash Table\"}]]}],[\"$\",\"p\",null,{\"className\":\"text-lg text-gray-700 leading-relaxed\",\"children\":\" *  * You have a browser of one tab where you start on the homepage and you can visit  * another url, get back in the history number of steps or move forward in the  * history number of steps.  * ...\"}]]}],[\"$\",\"div\",null,{\"className\":\"grid grid-cols-1 lg:grid-cols-3 gap-8\",\"children\":[[\"$\",\"div\",null,{\"className\":\"lg:col-span-2\",\"children\":[\"$\",\"div\",null,{\"className\":\"bg-white border border-gray-200 rounded-lg p-8\",\"children\":[\"$\",\"$L6\",null,{\"content\":\"$7\"}]}]}],[\"$\",\"div\",null,{\"className\":\"space-y-6\",\"children\":[[\"$\",\"div\",null,{\"className\":\"bg-white border border-gray-200 rounded-lg p-6\",\"children\":[[\"$\",\"h3\",null,{\"className\":\"text-lg font-semibold text-gray-900 mb-4\",\"children\":\"Your Progress\"}],[\"$\",\"div\",null,{\"className\":\"w-full bg-gray-200 rounded-full h-2 mb-2\",\"children\":[\"$\",\"div\",null,{\"className\":\"bg-blue-600 h-2 rounded-full\",\"style\":{\"width\":\"25%\"}}]}],[\"$\",\"p\",null,{\"className\":\"text-sm text-gray-600\",\"children\":\"25% Complete\"}]]}],false]}]]}]]}],null],null],null]},[null,[\"$\",\"$L8\",null,{\"parallelRouterKey\":\"children\",\"segmentPath\":[\"children\",\"learn\",\"children\",\"$9\",\"children\"],\"error\":\"$undefined\",\"errorStyles\":\"$undefined\",\"errorScripts\":\"$undefined\",\"template\":[\"$\",\"$La\",null,{}],\"templateStyles\":\"$undefined\",\"templateScripts\":\"$undefined\",\"notFound\":\"$undefined\",\"notFoundStyles\":\"$undefined\"}]],null]},[null,[\"$\",\"$L8\",null,{\"parallelRouterKey\":\"children\",\"segmentPath\":[\"children\",\"learn\",\"children\"],\"error\":\"$undefined\",\"errorStyles\":\"$undefined\",\"errorScripts\":\"$undefined\",\"template\":[\"$\",\"$La\",null,{}],\"templateStyles\":\"$undefined\",\"templateScripts\":\"$undefined\",\"notFound\":\"$undefined\",\"notFoundStyles\":\"$undefined\"}]],null]},[[[[\"$\",\"link\",\"0\",{\"rel\":\"stylesheet\",\"href\":\"/interview/_next/static/css/387024c6a2216908.css\",\"precedence\":\"next\",\"crossOrigin\":\"$undefined\"}]],[\"$\",\"$Lb\",null,{\"children\":[\"$\",\"$L8\",null,{\"parallelRouterKey\":\"children\",\"segmentPath\":[\"children\"],\"error\":\"$undefined\",\"errorStyles\":\"$undefined\",\"errorScripts\":\"$undefined\",\"template\":[\"$\",\"$La\",null,{}],\"templateStyles\":\"$undefined\",\"templateScripts\":\"$undefined\",\"notFound\":[[\"$\",\"title\",null,{\"children\":\"404: This page could not be found.\"}],[\"$\",\"div\",null,{\"style\":{\"fontFamily\":\"system-ui,\\\"Segoe UI\\\",Roboto,Helvetica,Arial,sans-serif,\\\"Apple Color Emoji\\\",\\\"Segoe UI Emoji\\\"\",\"height\":\"100vh\",\"textAlign\":\"center\",\"display\":\"flex\",\"flexDirection\":\"column\",\"alignItems\":\"center\",\"justifyContent\":\"center\"},\"children\":[\"$\",\"div\",null,{\"children\":[[\"$\",\"style\",null,{\"dangerouslySetInnerHTML\":{\"__html\":\"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}\"}}],[\"$\",\"h1\",null,{\"className\":\"next-error-h1\",\"style\":{\"display\":\"inline-block\",\"margin\":\"0 20px 0 0\",\"padding\":\"0 23px 0 0\",\"fontSize\":24,\"fontWeight\":500,\"verticalAlign\":\"top\",\"lineHeight\":\"49px\"},\"children\":\"404\"}],[\"$\",\"div\",null,{\"style\":{\"display\":\"inline-block\"},\"children\":[\"$\",\"h2\",null,{\"style\":{\"fontSize\":14,\"fontWeight\":400,\"lineHeight\":\"49px\",\"margin\":0},\"children\":\"This page could not be found.\"}]}]]}]}]],\"notFoundStyles\":[]}],\"params\":{}}]],null],null],\"couldBeIntercepted\":false,\"initialHead\":[null,\"$Lc\"],\"globalErrorComponent\":\"$d\",\"missingSlots\":\"$We\"}]\n"])</script><script>self.__next_f.push([1,"c:[[\"$\",\"meta\",\"0\",{\"name\":\"viewport\",\"content\":\"width=device-width, initial-scale=1\"}],[\"$\",\"meta\",\"1\",{\"charSet\":\"utf-8\"}],[\"$\",\"meta\",\"2\",{\"name\":\"next-size-adjust\"}]]\n4:null\n"])</script></body></html>

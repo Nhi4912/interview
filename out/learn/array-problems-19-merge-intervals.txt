@@ -1,0 +1,360 @@
+2:I[2972,["918","static/chunks/918-3273b83890f10546.js","972","static/chunks/972-011bba60ed155615.js","930","static/chunks/930-3262a6c9c5acace4.js","289","static/chunks/app/learn/%5Btopic%5D/page-4ab144227f7a7b3e.js"],""]
+3:I[5907,["918","static/chunks/918-3273b83890f10546.js","972","static/chunks/972-011bba60ed155615.js","930","static/chunks/930-3262a6c9c5acace4.js","289","static/chunks/app/learn/%5Btopic%5D/page-4ab144227f7a7b3e.js"],"default"]
+5:I[4707,[],""]
+7:I[6423,[],""]
+8:I[2,["918","static/chunks/918-3273b83890f10546.js","710","static/chunks/710-dfaa11b4dff08f8e.js","972","static/chunks/972-011bba60ed155615.js","233","static/chunks/233-3e0c1d820a17eca9.js","185","static/chunks/app/layout-333f4adcd11f8f39.js"],"default",1]
+4:T2821,
+# Merge Interval
+
+**LeetCode Problem # * 56. Merge Intervals**
+
+## Problem Description
+
+LeetCode problem solution with multiple approaches and explanations.
+
+## Solutions
+
+{% raw %}
+/**
+ * 56. Merge Intervals
+ * 
+ * Given an array of intervals where intervals[i] = [start_i, end_i], merge all overlapping intervals, 
+ * and return an array of the non-overlapping intervals that cover all the intervals in the input.
+ * 
+ * Example 1:
+ * Input: intervals = [[1,3],[2,6],[8,10],[15,18]]
+ * Output: [[1,6],[8,10],[15,18]]
+ * Explanation: Since intervals [1,3] and [2,6] overlap, merge them into [1,6].
+ * 
+ * Example 2:
+ * Input: intervals = [[1,4],[4,5]]
+ * Output: [[1,5]]
+ * Explanation: Intervals [1,4] and [4,5] are considered overlapping.
+ * 
+ * Constraints:
+ * - 1 <= intervals.length <= 10^4
+ * - intervals[i].length == 2
+ * - 0 <= start_i <= end_i <= 10^4
+ */
+
+// Solution 1: Sort and Merge
+// Time: O(n log n), Space: O(1) excluding output
+export function merge1(intervals: number[][]): number[][] {
+    if (intervals.length <= 1) return intervals;
+    
+    // Sort by start time
+    intervals.sort((a, b) => a[0] - b[0]);
+    
+    const result: number[][] = [intervals[0]];
+    
+    for (let i = 1; i < intervals.length; i++) {
+        const current = intervals[i];
+        const last = result[result.length - 1];
+        
+        if (current[0] <= last[1]) {
+            // Overlapping intervals, merge them
+            last[1] = Math.max(last[1], current[1]);
+        } else {
+            // Non-overlapping, add to result
+            result.push(current);
+        }
+    }
+    
+    return result;
+}
+
+// Solution 2: Two Pointers Approach
+// Time: O(n log n), Space: O(n)
+export function merge2(intervals: number[][]): number[][] {
+    if (intervals.length <= 1) return intervals;
+    
+    intervals.sort((a, b) => a[0] - b[0]);
+    
+    const result: number[][] = [];
+    let start = intervals[0][0];
+    let end = intervals[0][1];
+    
+    for (let i = 1; i < intervals.length; i++) {
+        const [currentStart, currentEnd] = intervals[i];
+        
+        if (currentStart <= end) {
+            // Overlapping, extend the end
+            end = Math.max(end, currentEnd);
+        } else {
+            // Non-overlapping, add previous interval and start new one
+            result.push([start, end]);
+            start = currentStart;
+            end = currentEnd;
+        }
+    }
+    
+    // Add the last interval
+    result.push([start, end]);
+    
+    return result;
+}
+
+// Solution 3: Stack-based Approach
+// Time: O(n log n), Space: O(n)
+export function merge3(intervals: number[][]): number[][] {
+    if (intervals.length <= 1) return intervals;
+    
+    intervals.sort((a, b) => a[0] - b[0]);
+    
+    const stack: number[][] = [intervals[0]];
+    
+    for (let i = 1; i < intervals.length; i++) {
+        const current = intervals[i];
+        const top = stack[stack.length - 1];
+        
+        if (current[0] <= top[1]) {
+            // Overlapping, merge with top of stack
+            top[1] = Math.max(top[1], current[1]);
+        } else {
+            // Non-overlapping, push to stack
+            stack.push(current);
+        }
+    }
+    
+    return stack;
+}
+
+// Solution 4: Sweep Line Algorithm
+// Time: O(n log n), Space: O(n)
+export function merge4(intervals: number[][]): number[][] {
+    if (intervals.length <= 1) return intervals;
+    
+    // Create events: start = +1, end = -1
+    const events: [number, number][] = [];
+    
+    for (const [start, end] of intervals) {
+        events.push([start, 1]);    // Start event
+        events.push([end + 1, -1]); // End event (end + 1 to handle touching intervals)
+    }
+    
+    // Sort events by position, then by type (start before end)
+    events.sort((a, b) => a[0] - b[0] || b[1] - a[1]);
+    
+    const result: number[][] = [];
+    let count = 0;
+    let start = -1;
+    
+    for (const [pos, type] of events) {
+        if (count === 0 && type === 1) {
+            // Start of a new merged interval
+            start = pos;
+        }
+        
+        count += type;
+        
+        if (count === 0 && type === -1) {
+            // End of a merged interval
+            result.push([start, pos - 1]);
+        }
+    }
+    
+    return result;
+}
+
+// Solution 5: Interval Tree Approach (Advanced)
+// Time: O(n log n), Space: O(n)
+export function merge5(intervals: number[][]): number[][] {
+    if (intervals.length <= 1) return intervals;
+    
+    // Build a sorted list of unique time points
+    const timePoints = new Set<number>();
+    for (const [start, end] of intervals) {
+        timePoints.add(start);
+        timePoints.add(end);
+    }
+    
+    const sortedTimes = Array.from(timePoints).sort((a, b) => a - b);
+    
+    // Mark which time segments are covered
+    const covered = new Array(sortedTimes.length - 1).fill(false);
+    
+    for (const [start, end] of intervals) {
+        const startIdx = sortedTimes.indexOf(start);
+        const endIdx = sortedTimes.indexOf(end);
+        
+        for (let i = startIdx; i < endIdx; i++) {
+            covered[i] = true;
+        }
+    }
+    
+    // Merge consecutive covered segments
+    const result: number[][] = [];
+    let i = 0;
+    
+    while (i < covered.length) {
+        if (covered[i]) {
+            const mergedStart = sortedTimes[i];
+            while (i < covered.length && covered[i]) {
+                i++;
+            }
+            const mergedEnd = sortedTimes[i];
+            result.push([mergedStart, mergedEnd]);
+        } else {
+            i++;
+        }
+    }
+    
+    return result;
+}
+
+// Solution 6: Optimized In-Place Merge
+// Time: O(n log n), Space: O(1)
+export function merge6(intervals: number[][]): number[][] {
+    if (intervals.length <= 1) return intervals;
+    
+    intervals.sort((a, b) => a[0] - b[0]);
+    
+    let writeIndex = 0;
+    
+    for (let readIndex = 1; readIndex < intervals.length; readIndex++) {
+        const current = intervals[readIndex];
+        const previous = intervals[writeIndex];
+        
+        if (current[0] <= previous[1]) {
+            // Overlapping, merge in-place
+            previous[1] = Math.max(previous[1], current[1]);
+        } else {
+            // Non-overlapping, move to next position
+            writeIndex++;
+            intervals[writeIndex] = current;
+        }
+    }
+    
+    // Return only the merged intervals
+    return intervals.slice(0, writeIndex + 1);
+}
+
+// Test cases
+export function testMerge() {
+    console.log("Testing Merge Intervals:");
+    
+    const testCases = [
+        {
+            input: [[1, 3], [2, 6], [8, 10], [15, 18]],
+            expected: [[1, 6], [8, 10], [15, 18]]
+        },
+        {
+            input: [[1, 4], [4, 5]],
+            expected: [[1, 5]]
+        },
+        {
+            input: [[1, 4], [2, 3]],
+            expected: [[1, 4]]
+        },
+        {
+            input: [[1, 4], [0, 4]],
+            expected: [[0, 4]]
+        },
+        {
+            input: [[1, 4], [0, 0]],
+            expected: [[0, 0], [1, 4]]
+        },
+        {
+            input: [[2, 3], [4, 5], [6, 7], [8, 9], [1, 10]],
+            expected: [[1, 10]]
+        }
+    ];
+    
+    const solutions = [
+        { name: "Sort and Merge", fn: merge1 },
+        { name: "Two Pointers", fn: merge2 },
+        { name: "Stack-based", fn: merge3 },
+        { name: "Sweep Line", fn: merge4 },
+        { name: "Interval Tree", fn: merge5 },
+        { name: "In-Place Merge", fn: merge6 }
+    ];
+    
+    solutions.forEach(solution => {
+        console.log(`\n${solution.name}:`);
+        testCases.forEach((test, i) => {
+            // Deep copy input for each test
+            const inputCopy = test.input.map(interval => [...interval]);
+            const result = solution.fn(inputCopy);
+            const passed = JSON.stringify(result) === JSON.stringify(test.expected);
+            console.log(`  Test ${i + 1}: ${passed ? 'PASS' : 'FAIL'}`);
+            if (!passed) {
+                console.log(`    Input: ${JSON.stringify(test.input)}`);
+                console.log(`    Expected: ${JSON.stringify(test.expected)}`);
+                console.log(`    Got: ${JSON.stringify(result)}`);
+            }
+        });
+    });
+}
+
+/**
+ * Key Insights:
+ * 
+ * 1. **Sorting is Essential**:
+ *    - Sort intervals by start time
+ *    - Enables linear scan for overlaps
+ *    - Time complexity dominated by sorting: O(n log n)
+ * 
+ * 2. **Overlap Detection**:
+ *    - Two intervals [a,b] and [c,d] overlap if: a <= d and c <= b
+ *    - After sorting: only need to check if start <= previous_end
+ * 
+ * 3. **Merging Strategy**:
+ *    - Keep track of current merged interval
+ *    - Extend end time when overlapping
+ *    - Start new interval when non-overlapping
+ * 
+ * 4. **Edge Cases**:
+ *    - Empty or single interval
+ *    - Touching intervals ([1,4] and [4,5])
+ *    - Nested intervals ([1,4] and [2,3])
+ *    - Multiple overlapping intervals
+ * 
+ * 5. **Space Optimization**:
+ *    - In-place modification possible
+ *    - Use write pointer to compact result
+ *    - Avoid creating new arrays when possible
+ * 
+ * 6. **Interview Strategy**:
+ *    - Start with sorting approach
+ *    - Explain overlap detection logic
+ *    - Handle edge cases carefully
+ *    - Consider space optimization
+ * 
+ * 7. **Time Complexity**: O(n log n)
+ *    - Sorting: O(n log n)
+ *    - Merging: O(n)
+ *    - Cannot be optimized further without constraints
+ * 
+ * 8. **Space Complexity**: O(1) to O(n)
+ *    - In-place: O(1) excluding output
+ *    - Stack/events: O(n) for intermediate storage
+ * 
+ * 9. **Advanced Techniques**:
+ *    - Sweep line for complex scenarios
+ *    - Interval trees for range queries
+ *    - Event-based processing
+ * 
+ * 10. **Big Tech Variations**:
+ *     - Google: Meeting rooms scheduling
+ *     - Meta: Timeline merging
+ *     - Amazon: Delivery time windows
+ *     - Microsoft: Calendar conflicts
+ * 
+ * 11. **Follow-up Questions**:
+ *     - Insert new interval into sorted list
+ *     - Find minimum number of rooms needed
+ *     - Merge intervals with priorities
+ *     - Handle infinite intervals
+ * 
+ * 12. **Real-world Applications**:
+ *     - Calendar scheduling
+ *     - Resource allocation
+ *     - Time series data processing
+ *     - Network bandwidth management
+ *     - Database query optimization
+ */
+{% endraw %}
+6:["topic","array-problems-19-merge-intervals","d"]
+0:["2NmUhWiPdVVBzVtDZlggk",[[["",{"children":["learn",{"children":[["topic","array-problems-19-merge-intervals","d"],{"children":["__PAGE__?{\"topic\":\"array-problems-19-merge-intervals\"}",{}]}]}]},"$undefined","$undefined",true],["",{"children":["learn",{"children":[["topic","array-problems-19-merge-intervals","d"],{"children":["__PAGE__",{},[["$L1",["$","div",null,{"className":"max-w-6xl mx-auto px-8 py-24","children":[["$","div",null,{"className":"flex items-center gap-4 mb-8","children":["$","$L2",null,{"href":"/learn","children":["$","button",null,{"className":"flex items-center gap-2 bg-gray-100 border border-gray-300 text-gray-700 px-4 py-3 rounded-md font-medium hover:bg-gray-200 transition-colors","children":[["$","svg",null,{"xmlns":"http://www.w3.org/2000/svg","width":16,"height":16,"viewBox":"0 0 24 24","fill":"none","stroke":"currentColor","strokeWidth":2,"strokeLinecap":"round","strokeLinejoin":"round","className":"lucide lucide-arrow-left ","children":[["$","path","1l729n",{"d":"m12 19-7-7 7-7"}],["$","path","x3x0zl",{"d":"M19 12H5"}],"$undefined"]}],"Back to Learn"]}]}]}],["$","div",null,{"className":"bg-white border border-gray-200 rounded-lg p-8 mb-8","children":[["$","div",null,{"className":"flex items-center justify-between mb-4","children":[["$","h1",null,{"className":"text-3xl font-bold text-gray-900","children":"Merge Interval"}],["$","div",null,{"className":"flex gap-4","children":[["$","button",null,{"className":"flex items-center gap-2 bg-transparent text-gray-700 border border-gray-300 px-6 py-3 rounded-md font-semibold hover:bg-gray-50 transition-colors","children":[["$","svg",null,{"xmlns":"http://www.w3.org/2000/svg","width":16,"height":16,"viewBox":"0 0 24 24","fill":"none","stroke":"currentColor","strokeWidth":2,"strokeLinecap":"round","strokeLinejoin":"round","className":"lucide lucide-star ","children":[["$","polygon","8f66p6",{"points":"12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"}],"$undefined"]}],"Bookmark"]}],["$","button",null,{"className":"flex items-center gap-2 bg-transparent text-gray-700 border border-gray-300 px-6 py-3 rounded-md font-semibold hover:bg-gray-50 transition-colors","children":[["$","svg",null,{"xmlns":"http://www.w3.org/2000/svg","width":16,"height":16,"viewBox":"0 0 24 24","fill":"none","stroke":"currentColor","strokeWidth":2,"strokeLinecap":"round","strokeLinejoin":"round","className":"lucide lucide-share2 ","children":[["$","circle","gq8acd",{"cx":"18","cy":"5","r":"3"}],["$","circle","w7nqdw",{"cx":"6","cy":"12","r":"3"}],["$","circle","1xt0gg",{"cx":"18","cy":"19","r":"3"}],["$","line","47mynk",{"x1":"8.59","x2":"15.42","y1":"13.51","y2":"17.49"}],["$","line","1n3mei",{"x1":"15.41","x2":"8.59","y1":"6.51","y2":"10.49"}],"$undefined"]}],"Share"]}]]}]]}],["$","div",null,{"className":"flex gap-8 mb-4","children":[["$","div",null,{"className":"flex items-center gap-2 text-sm text-gray-600","children":[["$","svg",null,{"xmlns":"http://www.w3.org/2000/svg","width":16,"height":16,"viewBox":"0 0 24 24","fill":"none","stroke":"currentColor","strokeWidth":2,"strokeLinecap":"round","strokeLinejoin":"round","className":"lucide lucide-clock ","children":[["$","circle","1mglay",{"cx":"12","cy":"12","r":"10"}],["$","polyline","68esgv",{"points":"12 6 12 12 16 14"}],"$undefined"]}],"2-3 hours"]}],["$","span",null,{"className":"px-3 py-1 rounded-full text-xs font-semibold text-white bg-red-500","children":"Hard"}],["$","span",null,{"className":"px-3 py-1 rounded-full text-xs font-semibold bg-blue-100 text-blue-700","children":"Array"}]]}],["$","div",null,{"className":"flex flex-wrap gap-2 mb-4","children":[["$","span","0",{"className":"bg-gray-100 text-gray-600 px-3 py-1 rounded-md text-xs font-medium","children":"Array"}],["$","span","1",{"className":"bg-gray-100 text-gray-600 px-3 py-1 rounded-md text-xs font-medium","children":"Two Pointers"}],["$","span","2",{"className":"bg-gray-100 text-gray-600 px-3 py-1 rounded-md text-xs font-medium","children":"Hash Table"}],["$","span","3",{"className":"bg-gray-100 text-gray-600 px-3 py-1 rounded-md text-xs font-medium","children":"Sorting"}]]}],["$","p",null,{"className":"text-lg text-gray-700 leading-relaxed","children":"**LeetCode Problem # * 56. Merge Intervals**..."}]]}],["$","div",null,{"className":"grid grid-cols-1 lg:grid-cols-3 gap-8","children":[["$","div",null,{"className":"lg:col-span-2","children":["$","div",null,{"className":"bg-white border border-gray-200 rounded-lg p-8","children":["$","$L3",null,{"content":"$4"}]}]}],["$","div",null,{"className":"space-y-6","children":[["$","div",null,{"className":"bg-white border border-gray-200 rounded-lg p-6","children":[["$","h3",null,{"className":"text-lg font-semibold text-gray-900 mb-4","children":"Your Progress"}],["$","div",null,{"className":"w-full bg-gray-200 rounded-full h-2 mb-2","children":["$","div",null,{"className":"bg-blue-600 h-2 rounded-full","style":{"width":"25%"}}]}],["$","p",null,{"className":"text-sm text-gray-600","children":"25% Complete"}]]}],false]}]]}]]}],null],null],null]},[null,["$","$L5",null,{"parallelRouterKey":"children","segmentPath":["children","learn","children","$6","children"],"error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L7",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","notFoundStyles":"$undefined"}]],null]},[null,["$","$L5",null,{"parallelRouterKey":"children","segmentPath":["children","learn","children"],"error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L7",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","notFoundStyles":"$undefined"}]],null]},[[[["$","link","0",{"rel":"stylesheet","href":"/interview/_next/static/css/387024c6a2216908.css","precedence":"next","crossOrigin":"$undefined"}]],["$","$L8",null,{"children":["$","$L5",null,{"parallelRouterKey":"children","segmentPath":["children"],"error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L7",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":{"fontFamily":"system-ui,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\"","height":"100vh","textAlign":"center","display":"flex","flexDirection":"column","alignItems":"center","justifyContent":"center"},"children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":{"display":"inline-block","margin":"0 20px 0 0","padding":"0 23px 0 0","fontSize":24,"fontWeight":500,"verticalAlign":"top","lineHeight":"49px"},"children":"404"}],["$","div",null,{"style":{"display":"inline-block"},"children":["$","h2",null,{"style":{"fontSize":14,"fontWeight":400,"lineHeight":"49px","margin":0},"children":"This page could not be found."}]}]]}]}]],"notFoundStyles":[]}],"params":{}}]],null],null],["$L9",null]]]]
+9:[["$","meta","0",{"name":"viewport","content":"width=device-width, initial-scale=1"}],["$","meta","1",{"charSet":"utf-8"}],["$","meta","2",{"name":"next-size-adjust"}]]
+1:null

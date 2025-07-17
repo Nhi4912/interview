@@ -1,0 +1,342 @@
+2:I[2972,["918","static/chunks/918-3273b83890f10546.js","972","static/chunks/972-011bba60ed155615.js","930","static/chunks/930-3262a6c9c5acace4.js","289","static/chunks/app/learn/%5Btopic%5D/page-4ab144227f7a7b3e.js"],""]
+3:I[5907,["918","static/chunks/918-3273b83890f10546.js","972","static/chunks/972-011bba60ed155615.js","930","static/chunks/930-3262a6c9c5acace4.js","289","static/chunks/app/learn/%5Btopic%5D/page-4ab144227f7a7b3e.js"],"default"]
+5:I[4707,[],""]
+7:I[6423,[],""]
+8:I[2,["918","static/chunks/918-3273b83890f10546.js","710","static/chunks/710-dfaa11b4dff08f8e.js","972","static/chunks/972-011bba60ed155615.js","233","static/chunks/233-3e0c1d820a17eca9.js","185","static/chunks/app/layout-333f4adcd11f8f39.js"],"default",1]
+4:T23f7,
+# Best Time to Buy and Sell Stock II
+
+**LeetCode Problem # * 122. Best Time to Buy and Sell Stock II**
+
+## Problem Description
+
+ * You are given an integer array prices where prices[i] is the price of a given stock on the ith day.  * On each day, you may decide to buy and/or sell the stock. You can only hold at most one share of  * the stock at any time. However, you can buy it then immediately sell it on the same day.  *  * Find and return the maximum profit you can achieve. 
+
+## Solutions
+
+{% raw %}
+/**
+ * 122. Best Time to Buy and Sell Stock II
+ *
+ * Problem:
+ * You are given an integer array prices where prices[i] is the price of a given stock on the ith day.
+ * On each day, you may decide to buy and/or sell the stock. You can only hold at most one share of
+ * the stock at any time. However, you can buy it then immediately sell it on the same day.
+ *
+ * Find and return the maximum profit you can achieve.
+ *
+ * Example:
+ * Input: prices = [7,1,5,3,6,4]
+ * Output: 7
+ * Explanation: Buy on day 2 (price = 1) and sell on day 3 (price = 5), profit = 5-1 = 4.
+ * Then buy on day 4 (price = 3) and sell on day 5 (price = 6), profit = 6-3 = 3.
+ * Total profit is 4 + 3 = 7.
+ *
+ * Input: prices = [1,2,3,4,5]
+ * Output: 4
+ * Explanation: Buy on day 1 (price = 1) and sell on day 5 (price = 5), profit = 5-1 = 4.
+ * Total profit is 4.
+ *
+ * LeetCode: https://leetcode.com/problems/best-time-to-buy-and-sell-stock-ii/
+ */
+
+/**
+ * Solution 1: Peak Valley Approach (Optimal)
+ *
+ * Approach:
+ * - Find all peaks and valleys in the price array
+ * - Buy at valleys and sell at peaks
+ * - Sum up all the profits from each transaction
+ *
+ * Time Complexity: O(n) - single pass through the array
+ * Space Complexity: O(1) - constant extra space
+ */
+function maxProfit(prices: number[]): number {
+  if (prices.length <= 1) return 0;
+
+  let maxProfit = 0;
+
+  for (let i = 1; i < prices.length; i++) {
+    // If current price is higher than previous, add the difference to profit
+    if (prices[i] > prices[i - 1]) {
+      maxProfit += prices[i] - prices[i - 1];
+    }
+  }
+
+  return maxProfit;
+}
+
+/**
+ * Solution 2: Dynamic Programming Approach
+ *
+ * Approach:
+ * - Use DP to track maximum profit with and without holding stock
+ * - dp[i][0] = max profit on day i without holding stock
+ * - dp[i][1] = max profit on day i with holding stock
+ *
+ * Time Complexity: O(n)
+ * Space Complexity: O(n) - DP array
+ */
+function maxProfitDP(prices: number[]): number {
+  if (prices.length <= 1) return 0;
+
+  const n = prices.length;
+  const dp: number[][] = Array(n)
+    .fill(0)
+    .map(() => Array(2).fill(0));
+
+  // Base case: day 0
+  dp[0][0] = 0; // No stock held
+  dp[0][1] = -prices[0]; // Bought stock on day 0
+
+  for (let i = 1; i < n; i++) {
+    // Not holding stock: either keep not holding or sell today
+    dp[i][0] = Math.max(dp[i - 1][0], dp[i - 1][1] + prices[i]);
+
+    // Holding stock: either keep holding or buy today
+    dp[i][1] = Math.max(dp[i - 1][1], dp[i - 1][0] - prices[i]);
+  }
+
+  return dp[n - 1][0]; // Final state should be not holding stock
+}
+
+/**
+ * Solution 3: Optimized DP (Space Optimized)
+ *
+ * Approach:
+ * - Same logic as DP but only keep track of previous state
+ * - Reduces space complexity to O(1)
+ *
+ * Time Complexity: O(n)
+ * Space Complexity: O(1)
+ */
+function maxProfitDPOptimized(prices: number[]): number {
+  if (prices.length <= 1) return 0;
+
+  let notHold = 0; // Max profit without holding stock
+  let hold = -prices[0]; // Max profit with holding stock
+
+  for (let i = 1; i < prices.length; i++) {
+    const prevNotHold = notHold;
+    const prevHold = hold;
+
+    // Not holding stock: either keep not holding or sell today
+    notHold = Math.max(prevNotHold, prevHold + prices[i]);
+
+    // Holding stock: either keep holding or buy today
+    hold = Math.max(prevHold, prevNotHold - prices[i]);
+  }
+
+  return notHold; // Final state should be not holding stock
+}
+
+/**
+ * Solution 4: Greedy with Local Minima and Maxima
+ *
+ * Approach:
+ * - Find all local minima (buy points) and local maxima (sell points)
+ * - Calculate profit for each buy-sell pair
+ *
+ * Time Complexity: O(n)
+ * Space Complexity: O(1)
+ */
+function maxProfitLocalExtrema(prices: number[]): number {
+  if (prices.length <= 1) return 0;
+
+  let maxProfit = 0;
+  let buyPrice = prices[0];
+
+  for (let i = 1; i < prices.length; i++) {
+    // If price is going down, update buy price
+    if (prices[i] < prices[i - 1]) {
+      // Sell at previous price if we have a profit
+      if (prices[i - 1] > buyPrice) {
+        maxProfit += prices[i - 1] - buyPrice;
+      }
+      buyPrice = prices[i];
+    }
+  }
+
+  // Check if we need to sell at the end
+  if (prices[prices.length - 1] > buyPrice) {
+    maxProfit += prices[prices.length - 1] - buyPrice;
+  }
+
+  return maxProfit;
+}
+
+/**
+ * Solution 5: Brute Force (For comparison - not recommended)
+ *
+ * Approach:
+ * - Try all possible combinations of buy and sell days
+ * - Use recursion to explore all possibilities
+ *
+ * Time Complexity: O(2^n) - exponential
+ * Space Complexity: O(n) - recursion stack
+ */
+function maxProfitBruteForce(prices: number[]): number {
+  function calculateMaxProfit(index: number, holding: boolean): number {
+    if (index >= prices.length) return 0;
+
+    if (holding) {
+      // Can sell or hold
+      return Math.max(
+        prices[index] + calculateMaxProfit(index + 1, false), // Sell
+        calculateMaxProfit(index + 1, true) // Hold
+      );
+    } else {
+      // Can buy or skip
+      return Math.max(
+        -prices[index] + calculateMaxProfit(index + 1, true), // Buy
+        calculateMaxProfit(index + 1, false) // Skip
+      );
+    }
+  }
+
+  return calculateMaxProfit(0, false);
+}
+
+// Test cases
+function testMaxProfit() {
+  console.log("=== Testing Best Time to Buy and Sell Stock II ===\n");
+
+  const testCases = [
+    {
+      input: [7, 1, 5, 3, 6, 4],
+      expected: 7,
+      description: "Multiple buy-sell opportunities",
+    },
+    {
+      input: [1, 2, 3, 4, 5],
+      expected: 4,
+      description: "Consistently increasing prices",
+    },
+    {
+      input: [7, 6, 4, 3, 1],
+      expected: 0,
+      description: "Consistently decreasing prices",
+    },
+    {
+      input: [1, 2, 3, 2, 1],
+      expected: 2,
+      description: "Peak in the middle",
+    },
+    {
+      input: [1],
+      expected: 0,
+      description: "Single day",
+    },
+    {
+      input: [],
+      expected: 0,
+      description: "Empty array",
+    },
+    {
+      input: [3, 3, 3, 3, 3],
+      expected: 0,
+      description: "Same price every day",
+    },
+  ];
+
+  testCases.forEach((testCase, index) => {
+    console.log(`Test Case ${index + 1}: ${testCase.description}`);
+    console.log(`Input: [${testCase.input}]`);
+    console.log(`Expected: ${testCase.expected}\n`);
+
+    // Test Solution 1 (Peak Valley)
+    const result1 = maxProfit([...testCase.input]);
+    console.log(
+      `Solution 1 (Peak Valley): ${result1} ${
+        result1 === testCase.expected ? "✅" : "❌"
+      }`
+    );
+
+    // Test Solution 2 (DP)
+    const result2 = maxProfitDP([...testCase.input]);
+    console.log(
+      `Solution 2 (DP): ${result2} ${
+        result2 === testCase.expected ? "✅" : "❌"
+      }`
+    );
+
+    // Test Solution 3 (Optimized DP)
+    const result3 = maxProfitDPOptimized([...testCase.input]);
+    console.log(
+      `Solution 3 (Optimized DP): ${result3} ${
+        result3 === testCase.expected ? "✅" : "❌"
+      }`
+    );
+
+    // Test Solution 4 (Local Extrema)
+    const result4 = maxProfitLocalExtrema([...testCase.input]);
+    console.log(
+      `Solution 4 (Local Extrema): ${result4} ${
+        result4 === testCase.expected ? "✅" : "❌"
+      }`
+    );
+
+    // Test Solution 5 (Brute Force) - only for small arrays
+    if (testCase.input.length <= 10) {
+      const result5 = maxProfitBruteForce([...testCase.input]);
+      console.log(
+        `Solution 5 (Brute Force): ${result5} ${
+          result5 === testCase.expected ? "✅" : "❌"
+        }`
+      );
+    } else {
+      console.log(`Solution 5 (Brute Force): Skipped (array too large)`);
+    }
+
+    console.log("\n---\n");
+  });
+}
+
+// Performance comparison
+function performanceComparison() {
+  console.log("=== Performance Comparison ===\n");
+
+  // Create large price array
+  const largePrices = Array.from(
+    { length: 100000 },
+    (_, i) => Math.floor(Math.random() * 100) + 1
+  );
+
+  const testCases = [
+    { name: "Peak Valley", func: maxProfit },
+    { name: "DP", func: maxProfitDP },
+    { name: "Optimized DP", func: maxProfitDPOptimized },
+    { name: "Local Extrema", func: maxProfitLocalExtrema },
+  ];
+
+  testCases.forEach(({ name, func }) => {
+    const testPrices = [...largePrices];
+    const start = performance.now();
+    const result = func(testPrices);
+    const end = performance.now();
+
+    console.log(`${name}:`);
+    console.log(`  Time: ${(end - start).toFixed(2)}ms`);
+    console.log(`  Result: ${result} profit`);
+    console.log(`  Memory: ${name === "DP" ? "O(n)" : "O(1)"}\n`);
+  });
+}
+
+// Run tests
+if (require.main === module) {
+  testMaxProfit();
+  performanceComparison();
+}
+
+export {
+  maxProfit,
+  maxProfitDP,
+  maxProfitDPOptimized,
+  maxProfitLocalExtrema,
+  maxProfitBruteForce,
+};
+{% endraw %}
+6:["topic","array-problems-02-best-time-to-buy-and-sell-stock-ii","d"]
+0:["2NmUhWiPdVVBzVtDZlggk",[[["",{"children":["learn",{"children":[["topic","array-problems-02-best-time-to-buy-and-sell-stock-ii","d"],{"children":["__PAGE__?{\"topic\":\"array-problems-02-best-time-to-buy-and-sell-stock-ii\"}",{}]}]}]},"$undefined","$undefined",true],["",{"children":["learn",{"children":[["topic","array-problems-02-best-time-to-buy-and-sell-stock-ii","d"],{"children":["__PAGE__",{},[["$L1",["$","div",null,{"className":"max-w-6xl mx-auto px-8 py-24","children":[["$","div",null,{"className":"flex items-center gap-4 mb-8","children":["$","$L2",null,{"href":"/learn","children":["$","button",null,{"className":"flex items-center gap-2 bg-gray-100 border border-gray-300 text-gray-700 px-4 py-3 rounded-md font-medium hover:bg-gray-200 transition-colors","children":[["$","svg",null,{"xmlns":"http://www.w3.org/2000/svg","width":16,"height":16,"viewBox":"0 0 24 24","fill":"none","stroke":"currentColor","strokeWidth":2,"strokeLinecap":"round","strokeLinejoin":"round","className":"lucide lucide-arrow-left ","children":[["$","path","1l729n",{"d":"m12 19-7-7 7-7"}],["$","path","x3x0zl",{"d":"M19 12H5"}],"$undefined"]}],"Back to Learn"]}]}]}],["$","div",null,{"className":"bg-white border border-gray-200 rounded-lg p-8 mb-8","children":[["$","div",null,{"className":"flex items-center justify-between mb-4","children":[["$","h1",null,{"className":"text-3xl font-bold text-gray-900","children":"Best Time to Buy and Sell Stock II"}],["$","div",null,{"className":"flex gap-4","children":[["$","button",null,{"className":"flex items-center gap-2 bg-transparent text-gray-700 border border-gray-300 px-6 py-3 rounded-md font-semibold hover:bg-gray-50 transition-colors","children":[["$","svg",null,{"xmlns":"http://www.w3.org/2000/svg","width":16,"height":16,"viewBox":"0 0 24 24","fill":"none","stroke":"currentColor","strokeWidth":2,"strokeLinecap":"round","strokeLinejoin":"round","className":"lucide lucide-star ","children":[["$","polygon","8f66p6",{"points":"12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"}],"$undefined"]}],"Bookmark"]}],["$","button",null,{"className":"flex items-center gap-2 bg-transparent text-gray-700 border border-gray-300 px-6 py-3 rounded-md font-semibold hover:bg-gray-50 transition-colors","children":[["$","svg",null,{"xmlns":"http://www.w3.org/2000/svg","width":16,"height":16,"viewBox":"0 0 24 24","fill":"none","stroke":"currentColor","strokeWidth":2,"strokeLinecap":"round","strokeLinejoin":"round","className":"lucide lucide-share2 ","children":[["$","circle","gq8acd",{"cx":"18","cy":"5","r":"3"}],["$","circle","w7nqdw",{"cx":"6","cy":"12","r":"3"}],["$","circle","1xt0gg",{"cx":"18","cy":"19","r":"3"}],["$","line","47mynk",{"x1":"8.59","x2":"15.42","y1":"13.51","y2":"17.49"}],["$","line","1n3mei",{"x1":"15.41","x2":"8.59","y1":"6.51","y2":"10.49"}],"$undefined"]}],"Share"]}]]}]]}],["$","div",null,{"className":"flex gap-8 mb-4","children":[["$","div",null,{"className":"flex items-center gap-2 text-sm text-gray-600","children":[["$","svg",null,{"xmlns":"http://www.w3.org/2000/svg","width":16,"height":16,"viewBox":"0 0 24 24","fill":"none","stroke":"currentColor","strokeWidth":2,"strokeLinecap":"round","strokeLinejoin":"round","className":"lucide lucide-clock ","children":[["$","circle","1mglay",{"cx":"12","cy":"12","r":"10"}],["$","polyline","68esgv",{"points":"12 6 12 12 16 14"}],"$undefined"]}],"2-3 hours"]}],["$","span",null,{"className":"px-3 py-1 rounded-full text-xs font-semibold text-white bg-red-500","children":"Hard"}],["$","span",null,{"className":"px-3 py-1 rounded-full text-xs font-semibold bg-blue-100 text-blue-700","children":"Array"}]]}],["$","div",null,{"className":"flex flex-wrap gap-2 mb-4","children":[["$","span","0",{"className":"bg-gray-100 text-gray-600 px-3 py-1 rounded-md text-xs font-medium","children":"Array"}],["$","span","1",{"className":"bg-gray-100 text-gray-600 px-3 py-1 rounded-md text-xs font-medium","children":"Greedy"}]]}],["$","p",null,{"className":"text-lg text-gray-700 leading-relaxed","children":"**LeetCode Problem # * 122. Best Time to Buy and Sell Stock II**..."}]]}],["$","div",null,{"className":"grid grid-cols-1 lg:grid-cols-3 gap-8","children":[["$","div",null,{"className":"lg:col-span-2","children":["$","div",null,{"className":"bg-white border border-gray-200 rounded-lg p-8","children":["$","$L3",null,{"content":"$4"}]}]}],["$","div",null,{"className":"space-y-6","children":[["$","div",null,{"className":"bg-white border border-gray-200 rounded-lg p-6","children":[["$","h3",null,{"className":"text-lg font-semibold text-gray-900 mb-4","children":"Your Progress"}],["$","div",null,{"className":"w-full bg-gray-200 rounded-full h-2 mb-2","children":["$","div",null,{"className":"bg-blue-600 h-2 rounded-full","style":{"width":"25%"}}]}],["$","p",null,{"className":"text-sm text-gray-600","children":"25% Complete"}]]}],false]}]]}]]}],null],null],null]},[null,["$","$L5",null,{"parallelRouterKey":"children","segmentPath":["children","learn","children","$6","children"],"error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L7",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","notFoundStyles":"$undefined"}]],null]},[null,["$","$L5",null,{"parallelRouterKey":"children","segmentPath":["children","learn","children"],"error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L7",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","notFoundStyles":"$undefined"}]],null]},[[[["$","link","0",{"rel":"stylesheet","href":"/interview/_next/static/css/387024c6a2216908.css","precedence":"next","crossOrigin":"$undefined"}]],["$","$L8",null,{"children":["$","$L5",null,{"parallelRouterKey":"children","segmentPath":["children"],"error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L7",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":{"fontFamily":"system-ui,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\"","height":"100vh","textAlign":"center","display":"flex","flexDirection":"column","alignItems":"center","justifyContent":"center"},"children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":{"display":"inline-block","margin":"0 20px 0 0","padding":"0 23px 0 0","fontSize":24,"fontWeight":500,"verticalAlign":"top","lineHeight":"49px"},"children":"404"}],["$","div",null,{"style":{"display":"inline-block"},"children":["$","h2",null,{"style":{"fontSize":14,"fontWeight":400,"lineHeight":"49px","margin":0},"children":"This page could not be found."}]}]]}]}]],"notFoundStyles":[]}],"params":{}}]],null],null],["$L9",null]]]]
+9:[["$","meta","0",{"name":"viewport","content":"width=device-width, initial-scale=1"}],["$","meta","1",{"charSet":"utf-8"}],["$","meta","2",{"name":"next-size-adjust"}]]
+1:null

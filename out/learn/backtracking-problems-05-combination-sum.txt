@@ -1,0 +1,813 @@
+2:I[2972,["918","static/chunks/918-3273b83890f10546.js","972","static/chunks/972-011bba60ed155615.js","930","static/chunks/930-3262a6c9c5acace4.js","289","static/chunks/app/learn/%5Btopic%5D/page-4ab144227f7a7b3e.js"],""]
+3:I[5907,["918","static/chunks/918-3273b83890f10546.js","972","static/chunks/972-011bba60ed155615.js","930","static/chunks/930-3262a6c9c5acace4.js","289","static/chunks/app/learn/%5Btopic%5D/page-4ab144227f7a7b3e.js"],"default"]
+5:I[4707,[],""]
+7:I[6423,[],""]
+8:I[2,["918","static/chunks/918-3273b83890f10546.js","710","static/chunks/710-dfaa11b4dff08f8e.js","972","static/chunks/972-011bba60ed155615.js","233","static/chunks/233-3e0c1d820a17eca9.js","185","static/chunks/app/layout-333f4adcd11f8f39.js"],"default",1]
+4:T4c2f,
+# Combination Sum
+
+**LeetCode Problem # * 39. Combination Sum**
+
+## Problem Description
+
+ * Given an array of distinct integers candidates and a target integer target,  * return a list of all unique combinations of candidates where the chosen numbers  * sum to target. You may return the combinations in any order.  *  * The same number may be chosen from candidates an unlimited number of times. 
+
+## Solutions
+
+{% raw %}
+/**
+ * 39. Combination Sum
+ *
+ * Problem:
+ * Given an array of distinct integers candidates and a target integer target,
+ * return a list of all unique combinations of candidates where the chosen numbers
+ * sum to target. You may return the combinations in any order.
+ *
+ * The same number may be chosen from candidates an unlimited number of times.
+ * Two combinations are unique if the frequency of at least one of the chosen
+ * numbers is different.
+ *
+ * Example:
+ * Input: candidates = [2,3,6,7], target = 7
+ * Output: [[2,2,3],[7]]
+ *
+ * Input: candidates = [2,3,5], target = 8
+ * Output: [[2,2,2,2],[2,3,3],[3,5]]
+ *
+ * Input: candidates = [2], target = 1
+ * Output: []
+ *
+ * LeetCode: https://leetcode.com/problems/combination-sum/
+ */
+
+/**
+ * Solution 1: Backtracking (Optimal)
+ *
+ * Approach:
+ * - Use recursive backtracking to find all combinations
+ * - Sort candidates first to avoid duplicates
+ * - Use start index to avoid generating duplicate combinations
+ *
+ * Time Complexity: O(2^target) - exponential
+ * Space Complexity: O(target) - recursion stack
+ */
+function combinationSum(candidates: number[], target: number): number[][] {
+  const result: number[][] = [];
+
+  // Sort candidates to avoid duplicates
+  candidates.sort((a, b) => a - b);
+
+  function backtrack(start: number, current: number[], sum: number) {
+    if (sum === target) {
+      result.push([...current]);
+      return;
+    }
+
+    if (sum > target) {
+      return;
+    }
+
+    for (let i = start; i < candidates.length; i++) {
+      current.push(candidates[i]);
+      backtrack(i, current, sum + candidates[i]);
+      current.pop();
+    }
+  }
+
+  backtrack(0, [], 0);
+  return result;
+}
+
+/**
+ * Solution 2: Recursive with Early Pruning
+ *
+ * Approach:
+ * - Add early pruning when sum exceeds target
+ * - More efficient pruning strategy
+ *
+ * Time Complexity: O(2^target)
+ * Space Complexity: O(target)
+ */
+function combinationSumPruning(
+  candidates: number[],
+  target: number
+): number[][] {
+  const result: number[][] = [];
+  candidates.sort((a, b) => a - b);
+
+  function backtrack(start: number, current: number[], sum: number) {
+    if (sum === target) {
+      result.push([...current]);
+      return;
+    }
+
+    for (let i = start; i < candidates.length; i++) {
+      // Early pruning
+      if (sum + candidates[i] > target) {
+        break;
+      }
+
+      current.push(candidates[i]);
+      backtrack(i, current, sum + candidates[i]);
+      current.pop();
+    }
+  }
+
+  backtrack(0, [], 0);
+  return result;
+}
+
+/**
+ * Solution 3: Using Set for Uniqueness
+ *
+ * Approach:
+ * - Use Set to ensure uniqueness
+ * - Convert combinations to strings for comparison
+ *
+ * Time Complexity: O(2^target)
+ * Space Complexity: O(2^target)
+ */
+function combinationSumSet(candidates: number[], target: number): number[][] {
+  const result = new Set<string>();
+  candidates.sort((a, b) => a - b);
+
+  function backtrack(start: number, current: number[], sum: number) {
+    if (sum === target) {
+      result.add(current.join(","));
+      return;
+    }
+
+    if (sum > target) {
+      return;
+    }
+
+    for (let i = start; i < candidates.length; i++) {
+      current.push(candidates[i]);
+      backtrack(i, current, sum + candidates[i]);
+      current.pop();
+    }
+  }
+
+  backtrack(0, [], 0);
+  return Array.from(result).map((s) => s.split(",").map(Number));
+}
+
+/**
+ * Solution 4: Using Map for Frequency Tracking
+ *
+ * Approach:
+ * - Use Map to track element frequencies
+ * - More explicit frequency management
+ *
+ * Time Complexity: O(2^target)
+ * Space Complexity: O(2^target)
+ */
+function combinationSumMap(candidates: number[], target: number): number[][] {
+  const result: number[][] = [];
+  const freqMap = new Map<number, number>();
+  candidates.sort((a, b) => a - b);
+
+  function backtrack(start: number, current: number[], sum: number) {
+    if (sum === target) {
+      result.push([...current]);
+      return;
+    }
+
+    if (sum > target) {
+      return;
+    }
+
+    for (let i = start; i < candidates.length; i++) {
+      const num = candidates[i];
+      freqMap.set(num, (freqMap.get(num) || 0) + 1);
+      current.push(num);
+      backtrack(i, current, sum + num);
+      current.pop();
+      freqMap.set(num, freqMap.get(num)! - 1);
+    }
+  }
+
+  backtrack(0, [], 0);
+  return result;
+}
+
+/**
+ * Solution 5: Using Generator (Memory efficient)
+ *
+ * Approach:
+ * - Use generator to yield combinations
+ * - Memory efficient for large targets
+ *
+ * Time Complexity: O(2^target)
+ * Space Complexity: O(target)
+ */
+function* combinationSumGenerator(
+  candidates: number[],
+  target: number
+): Generator<number[]> {
+  candidates.sort((a, b) => a - b);
+
+  function* generate(
+    start: number,
+    current: number[],
+    sum: number
+  ): Generator<number[]> {
+    if (sum === target) {
+      yield [...current];
+      return;
+    }
+
+    if (sum > target) {
+      return;
+    }
+
+    for (let i = start; i < candidates.length; i++) {
+      current.push(candidates[i]);
+      yield* generate(i, current, sum + candidates[i]);
+      current.pop();
+    }
+  }
+
+  yield* generate(0, [], 0);
+}
+
+function combinationSumWithGenerator(
+  candidates: number[],
+  target: number
+): number[][] {
+  return Array.from(combinationSumGenerator(candidates, target));
+}
+
+/**
+ * Solution 6: Using Class (Object-oriented)
+ *
+ * Approach:
+ * - Create a CombinationSumGenerator class
+ * - Encapsulate the generation logic
+ *
+ * Time Complexity: O(2^target)
+ * Space Complexity: O(2^target)
+ */
+class CombinationSumGenerator {
+  private candidates: number[];
+  private target: number;
+  private result: number[][];
+
+  constructor(candidates: number[], target: number) {
+    this.candidates = [...candidates].sort((a, b) => a - b);
+    this.target = target;
+    this.result = [];
+  }
+
+  generate(): number[][] {
+    this.result = [];
+    this.backtrack(0, [], 0);
+    return this.result;
+  }
+
+  private backtrack(start: number, current: number[], sum: number): void {
+    if (sum === this.target) {
+      this.result.push([...current]);
+      return;
+    }
+
+    if (sum > this.target) {
+      return;
+    }
+
+    for (let i = start; i < this.candidates.length; i++) {
+      current.push(this.candidates[i]);
+      this.backtrack(i, current, sum + this.candidates[i]);
+      current.pop();
+    }
+  }
+
+  getResult(): number[][] {
+    return [...this.result];
+  }
+}
+
+function combinationSumClass(candidates: number[], target: number): number[][] {
+  const generator = new CombinationSumGenerator(candidates, target);
+  return generator.generate();
+}
+
+/**
+ * Solution 7: Using Functional Approach
+ *
+ * Approach:
+ * - Use functional programming concepts
+ * - More declarative style
+ *
+ * Time Complexity: O(2^target)
+ * Space Complexity: O(2^target)
+ */
+function combinationSumFunctional(
+  candidates: number[],
+  target: number
+): number[][] {
+  candidates.sort((a, b) => a - b);
+
+  function generate(start: number, current: number[], sum: number): number[][] {
+    if (sum === target) {
+      return [current];
+    }
+
+    if (sum > target) {
+      return [];
+    }
+
+    return candidates.slice(start).flatMap((candidate, index) => {
+      return generate(start + index, [...current, candidate], sum + candidate);
+    });
+  }
+
+  return generate(0, [], 0);
+}
+
+/**
+ * Solution 8: Using Stack
+ *
+ * Approach:
+ * - Use stack to simulate recursion
+ * - Iterative approach with explicit stack
+ *
+ * Time Complexity: O(2^target)
+ * Space Complexity: O(2^target)
+ */
+function combinationSumStack(candidates: number[], target: number): number[][] {
+  const result: number[][] = [];
+  const stack: { start: number; current: number[]; sum: number }[] = [
+    { start: 0, current: [], sum: 0 },
+  ];
+
+  candidates.sort((a, b) => a - b);
+
+  while (stack.length > 0) {
+    const { start, current, sum } = stack.pop()!;
+
+    if (sum === target) {
+      result.push([...current]);
+      continue;
+    }
+
+    if (sum > target) {
+      continue;
+    }
+
+    for (let i = candidates.length - 1; i >= start; i--) {
+      stack.push({
+        start: i,
+        current: [...current, candidates[i]],
+        sum: sum + candidates[i],
+      });
+    }
+  }
+
+  return result;
+}
+
+/**
+ * Solution 9: Using Dynamic Programming
+ *
+ * Approach:
+ * - Use DP to build solutions incrementally
+ * - Cache intermediate results
+ *
+ * Time Complexity: O(target * candidates.length)
+ * Space Complexity: O(target * candidates.length)
+ */
+function combinationSumDP(candidates: number[], target: number): number[][] {
+  const dp: number[][][] = Array(target + 1)
+    .fill(null)
+    .map(() => []);
+  dp[0] = [[]];
+
+  candidates.sort((a, b) => a - b);
+
+  for (let i = 1; i <= target; i++) {
+    for (const candidate of candidates) {
+      if (candidate <= i) {
+        for (const combination of dp[i - candidate]) {
+          dp[i].push([...combination, candidate]);
+        }
+      }
+    }
+  }
+
+  return dp[target];
+}
+
+/**
+ * Solution 10: Using Memoization
+ *
+ * Approach:
+ * - Use memoization to cache results
+ * - Avoid recalculating same subproblems
+ *
+ * Time Complexity: O(target * candidates.length)
+ * Space Complexity: O(target * candidates.length)
+ */
+function combinationSumMemo(candidates: number[], target: number): number[][] {
+  const memo = new Map<string, number[][]>();
+  candidates.sort((a, b) => a - b);
+
+  function backtrack(
+    start: number,
+    current: number[],
+    sum: number
+  ): number[][] {
+    const key = `${start},${sum}`;
+
+    if (memo.has(key)) {
+      return memo.get(key)!.map((comb) => [...current, ...comb]);
+    }
+
+    if (sum === target) {
+      return [current];
+    }
+
+    if (sum > target) {
+      return [];
+    }
+
+    const result: number[][] = [];
+
+    for (let i = start; i < candidates.length; i++) {
+      const combinations = backtrack(
+        i,
+        [...current, candidates[i]],
+        sum + candidates[i]
+      );
+      result.push(...combinations);
+    }
+
+    memo.set(
+      key,
+      result.map((comb) => comb.slice(current.length))
+    );
+    return result;
+  }
+
+  return backtrack(0, [], 0);
+}
+
+/**
+ * Solution 11: Using Binary Search Optimization
+ *
+ * Approach:
+ * - Use binary search to find valid candidates
+ * - Optimize candidate selection
+ *
+ * Time Complexity: O(2^target * log(candidates.length))
+ * Space Complexity: O(target)
+ */
+function combinationSumBinarySearch(
+  candidates: number[],
+  target: number
+): number[][] {
+  const result: number[][] = [];
+  candidates.sort((a, b) => a - b);
+
+  function binarySearch(arr: number[], target: number): number {
+    let left = 0;
+    let right = arr.length - 1;
+
+    while (left <= right) {
+      const mid = Math.floor((left + right) / 2);
+      if (arr[mid] === target) return mid;
+      if (arr[mid] < target) left = mid + 1;
+      else right = mid - 1;
+    }
+
+    return -1;
+  }
+
+  function backtrack(start: number, current: number[], sum: number) {
+    if (sum === target) {
+      result.push([...current]);
+      return;
+    }
+
+    if (sum > target) {
+      return;
+    }
+
+    for (let i = start; i < candidates.length; i++) {
+      if (sum + candidates[i] > target) {
+        break;
+      }
+
+      current.push(candidates[i]);
+      backtrack(i, current, sum + candidates[i]);
+      current.pop();
+    }
+  }
+
+  backtrack(0, [], 0);
+  return result;
+}
+
+// Test cases
+function testCombinationSum() {
+  console.log("=== Testing Combination Sum ===\n");
+
+  const testCases = [
+    {
+      candidates: [2, 3, 6, 7],
+      target: 7,
+      expected: [[2, 2, 3], [7]],
+      description: "Basic case",
+    },
+    {
+      candidates: [2, 3, 5],
+      target: 8,
+      expected: [
+        [2, 2, 2, 2],
+        [2, 3, 3],
+        [3, 5],
+      ],
+      description: "Multiple combinations",
+    },
+    {
+      candidates: [2],
+      target: 1,
+      expected: [],
+      description: "No solution",
+    },
+    {
+      candidates: [1],
+      target: 1,
+      expected: [[1]],
+      description: "Single element",
+    },
+    {
+      candidates: [1],
+      target: 2,
+      expected: [[1, 1]],
+      description: "Repeated element",
+    },
+  ];
+
+  testCases.forEach((testCase, index) => {
+    console.log(`Test Case ${index + 1}: ${testCase.description}`);
+    console.log(
+      `Input: candidates = [${testCase.candidates.join(", ")}], target = ${
+        testCase.target
+      }`
+    );
+    console.log(`Expected: ${JSON.stringify(testCase.expected)}\n`);
+
+    // Test Solution 1 (Backtracking)
+    const result1 = combinationSum([...testCase.candidates], testCase.target);
+    console.log(
+      `Solution 1 (Backtracking): ${JSON.stringify(result1)} ${
+        JSON.stringify(result1.sort()) ===
+        JSON.stringify(testCase.expected.sort())
+          ? "✅"
+          : "❌"
+      }`
+    );
+
+    // Test Solution 2 (Pruning)
+    const result2 = combinationSumPruning(
+      [...testCase.candidates],
+      testCase.target
+    );
+    console.log(
+      `Solution 2 (Pruning): ${JSON.stringify(result2)} ${
+        JSON.stringify(result2.sort()) ===
+        JSON.stringify(testCase.expected.sort())
+          ? "✅"
+          : "❌"
+      }`
+    );
+
+    // Test Solution 3 (Set)
+    const result3 = combinationSumSet(
+      [...testCase.candidates],
+      testCase.target
+    );
+    console.log(
+      `Solution 3 (Set): ${JSON.stringify(result3)} ${
+        JSON.stringify(result3.sort()) ===
+        JSON.stringify(testCase.expected.sort())
+          ? "✅"
+          : "❌"
+      }`
+    );
+
+    // Test Solution 4 (Map)
+    const result4 = combinationSumMap(
+      [...testCase.candidates],
+      testCase.target
+    );
+    console.log(
+      `Solution 4 (Map): ${JSON.stringify(result4)} ${
+        JSON.stringify(result4.sort()) ===
+        JSON.stringify(testCase.expected.sort())
+          ? "✅"
+          : "❌"
+      }`
+    );
+
+    // Test Solution 5 (Generator)
+    const result5 = combinationSumWithGenerator(
+      [...testCase.candidates],
+      testCase.target
+    );
+    console.log(
+      `Solution 5 (Generator): ${JSON.stringify(result5)} ${
+        JSON.stringify(result5.sort()) ===
+        JSON.stringify(testCase.expected.sort())
+          ? "✅"
+          : "❌"
+      }`
+    );
+
+    // Test Solution 6 (Class)
+    const result6 = combinationSumClass(
+      [...testCase.candidates],
+      testCase.target
+    );
+    console.log(
+      `Solution 6 (Class): ${JSON.stringify(result6)} ${
+        JSON.stringify(result6.sort()) ===
+        JSON.stringify(testCase.expected.sort())
+          ? "✅"
+          : "❌"
+      }`
+    );
+
+    // Test Solution 7 (Functional)
+    const result7 = combinationSumFunctional(
+      [...testCase.candidates],
+      testCase.target
+    );
+    console.log(
+      `Solution 7 (Functional): ${JSON.stringify(result7)} ${
+        JSON.stringify(result7.sort()) ===
+        JSON.stringify(testCase.expected.sort())
+          ? "✅"
+          : "❌"
+      }`
+    );
+
+    // Test Solution 8 (Stack)
+    const result8 = combinationSumStack(
+      [...testCase.candidates],
+      testCase.target
+    );
+    console.log(
+      `Solution 8 (Stack): ${JSON.stringify(result8)} ${
+        JSON.stringify(result8.sort()) ===
+        JSON.stringify(testCase.expected.sort())
+          ? "✅"
+          : "❌"
+      }`
+    );
+
+    // Test Solution 9 (Dynamic Programming)
+    const result9 = combinationSumDP([...testCase.candidates], testCase.target);
+    console.log(
+      `Solution 9 (Dynamic Programming): ${JSON.stringify(result9)} ${
+        JSON.stringify(result9.sort()) ===
+        JSON.stringify(testCase.expected.sort())
+          ? "✅"
+          : "❌"
+      }`
+    );
+
+    // Test Solution 10 (Memoization)
+    const result10 = combinationSumMemo(
+      [...testCase.candidates],
+      testCase.target
+    );
+    console.log(
+      `Solution 10 (Memoization): ${JSON.stringify(result10)} ${
+        JSON.stringify(result10.sort()) ===
+        JSON.stringify(testCase.expected.sort())
+          ? "✅"
+          : "❌"
+      }`
+    );
+
+    // Test Solution 11 (Binary Search)
+    const result11 = combinationSumBinarySearch(
+      [...testCase.candidates],
+      testCase.target
+    );
+    console.log(
+      `Solution 11 (Binary Search): ${JSON.stringify(result11)} ${
+        JSON.stringify(result11.sort()) ===
+        JSON.stringify(testCase.expected.sort())
+          ? "✅"
+          : "❌"
+      }`
+    );
+
+    console.log("\n---\n");
+  });
+}
+
+// Performance comparison
+function performanceComparison() {
+  console.log("=== Performance Comparison ===\n");
+
+  const testCases = [
+    { name: "Backtracking", func: combinationSum },
+    { name: "Pruning", func: combinationSumPruning },
+    { name: "Set", func: combinationSumSet },
+    { name: "Map", func: combinationSumMap },
+    { name: "Generator", func: combinationSumWithGenerator },
+    { name: "Class", func: combinationSumClass },
+    { name: "Functional", func: combinationSumFunctional },
+    { name: "Stack", func: combinationSumStack },
+    { name: "Dynamic Programming", func: combinationSumDP },
+    { name: "Memoization", func: combinationSumMemo },
+    { name: "Binary Search", func: combinationSumBinarySearch },
+  ];
+
+  // Create test cases
+  const smallCase = { candidates: [2, 3, 6, 7], target: 7 };
+  const mediumCase = { candidates: [2, 3, 5], target: 8 };
+  const largeCase = { candidates: [2, 3, 5, 7], target: 10 };
+
+  const cases = [
+    { name: "Small", case: smallCase },
+    { name: "Medium", case: mediumCase },
+    { name: "Large", case: largeCase },
+  ];
+
+  cases.forEach(({ name, case: testCase }) => {
+    console.log(`${name} Case:`);
+
+    testCases.forEach(({ name: funcName, func }) => {
+      const start = performance.now();
+      const result = func([...testCase.candidates], testCase.target);
+      const end = performance.now();
+
+      console.log(
+        `  ${funcName}: ${(end - start).toFixed(2)}ms (${
+          result.length
+        } combinations)`
+      );
+    });
+
+    console.log("");
+  });
+}
+
+// Combination analysis
+function combinationAnalysis() {
+  console.log("=== Combination Analysis ===\n");
+
+  const testCases = [
+    { candidates: [2, 3, 6, 7], target: 7 },
+    { candidates: [2, 3, 5], target: 8 },
+    { candidates: [1, 2, 3], target: 4 },
+    { candidates: [2, 4, 6], target: 6 },
+  ];
+
+  testCases.forEach((testCase, index) => {
+    console.log(`Test Case ${index + 1}:`);
+    console.log(
+      `Candidates: [${testCase.candidates.join(", ")}], Target: ${
+        testCase.target
+      }`
+    );
+    const result = combinationSum([...testCase.candidates], testCase.target);
+    console.log(`Combinations: ${result.length}`);
+    console.log(`Result: ${JSON.stringify(result)}`);
+    console.log("");
+  });
+}
+
+// Uncomment the following lines to run tests
+// testCombinationSum();
+// performanceComparison();
+// combinationAnalysis();
+
+export {
+  combinationSum,
+  combinationSumPruning,
+  combinationSumSet,
+  combinationSumMap,
+  combinationSumWithGenerator,
+  combinationSumClass,
+  combinationSumFunctional,
+  combinationSumStack,
+  combinationSumDP,
+  combinationSumMemo,
+  combinationSumBinarySearch,
+  CombinationSumGenerator,
+  combinationSumGenerator,
+  testCombinationSum,
+  performanceComparison,
+  combinationAnalysis,
+};
+{% endraw %}
+6:["topic","backtracking-problems-05-combination-sum","d"]
+0:["2NmUhWiPdVVBzVtDZlggk",[[["",{"children":["learn",{"children":[["topic","backtracking-problems-05-combination-sum","d"],{"children":["__PAGE__?{\"topic\":\"backtracking-problems-05-combination-sum\"}",{}]}]}]},"$undefined","$undefined",true],["",{"children":["learn",{"children":[["topic","backtracking-problems-05-combination-sum","d"],{"children":["__PAGE__",{},[["$L1",["$","div",null,{"className":"max-w-6xl mx-auto px-8 py-24","children":[["$","div",null,{"className":"flex items-center gap-4 mb-8","children":["$","$L2",null,{"href":"/learn","children":["$","button",null,{"className":"flex items-center gap-2 bg-gray-100 border border-gray-300 text-gray-700 px-4 py-3 rounded-md font-medium hover:bg-gray-200 transition-colors","children":[["$","svg",null,{"xmlns":"http://www.w3.org/2000/svg","width":16,"height":16,"viewBox":"0 0 24 24","fill":"none","stroke":"currentColor","strokeWidth":2,"strokeLinecap":"round","strokeLinejoin":"round","className":"lucide lucide-arrow-left ","children":[["$","path","1l729n",{"d":"m12 19-7-7 7-7"}],["$","path","x3x0zl",{"d":"M19 12H5"}],"$undefined"]}],"Back to Learn"]}]}]}],["$","div",null,{"className":"bg-white border border-gray-200 rounded-lg p-8 mb-8","children":[["$","div",null,{"className":"flex items-center justify-between mb-4","children":[["$","h1",null,{"className":"text-3xl font-bold text-gray-900","children":"Combination Sum"}],["$","div",null,{"className":"flex gap-4","children":[["$","button",null,{"className":"flex items-center gap-2 bg-transparent text-gray-700 border border-gray-300 px-6 py-3 rounded-md font-semibold hover:bg-gray-50 transition-colors","children":[["$","svg",null,{"xmlns":"http://www.w3.org/2000/svg","width":16,"height":16,"viewBox":"0 0 24 24","fill":"none","stroke":"currentColor","strokeWidth":2,"strokeLinecap":"round","strokeLinejoin":"round","className":"lucide lucide-star ","children":[["$","polygon","8f66p6",{"points":"12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"}],"$undefined"]}],"Bookmark"]}],["$","button",null,{"className":"flex items-center gap-2 bg-transparent text-gray-700 border border-gray-300 px-6 py-3 rounded-md font-semibold hover:bg-gray-50 transition-colors","children":[["$","svg",null,{"xmlns":"http://www.w3.org/2000/svg","width":16,"height":16,"viewBox":"0 0 24 24","fill":"none","stroke":"currentColor","strokeWidth":2,"strokeLinecap":"round","strokeLinejoin":"round","className":"lucide lucide-share2 ","children":[["$","circle","gq8acd",{"cx":"18","cy":"5","r":"3"}],["$","circle","w7nqdw",{"cx":"6","cy":"12","r":"3"}],["$","circle","1xt0gg",{"cx":"18","cy":"19","r":"3"}],["$","line","47mynk",{"x1":"8.59","x2":"15.42","y1":"13.51","y2":"17.49"}],["$","line","1n3mei",{"x1":"15.41","x2":"8.59","y1":"6.51","y2":"10.49"}],"$undefined"]}],"Share"]}]]}]]}],["$","div",null,{"className":"flex gap-8 mb-4","children":[["$","div",null,{"className":"flex items-center gap-2 text-sm text-gray-600","children":[["$","svg",null,{"xmlns":"http://www.w3.org/2000/svg","width":16,"height":16,"viewBox":"0 0 24 24","fill":"none","stroke":"currentColor","strokeWidth":2,"strokeLinecap":"round","strokeLinejoin":"round","className":"lucide lucide-clock ","children":[["$","circle","1mglay",{"cx":"12","cy":"12","r":"10"}],["$","polyline","68esgv",{"points":"12 6 12 12 16 14"}],"$undefined"]}],"2-3 hours"]}],["$","span",null,{"className":"px-3 py-1 rounded-full text-xs font-semibold text-white bg-red-500","children":"Easy"}],["$","span",null,{"className":"px-3 py-1 rounded-full text-xs font-semibold bg-blue-100 text-blue-700","children":"Backtracking"}]]}],["$","div",null,{"className":"flex flex-wrap gap-2 mb-4","children":[["$","span","0",{"className":"bg-gray-100 text-gray-600 px-3 py-1 rounded-md text-xs font-medium","children":"Backtracking"}],["$","span","1",{"className":"bg-gray-100 text-gray-600 px-3 py-1 rounded-md text-xs font-medium","children":"Hash Table"}],["$","span","2",{"className":"bg-gray-100 text-gray-600 px-3 py-1 rounded-md text-xs font-medium","children":"Binary Search"}],["$","span","3",{"className":"bg-gray-100 text-gray-600 px-3 py-1 rounded-md text-xs font-medium","children":"Sorting"}]]}],["$","p",null,{"className":"text-lg text-gray-700 leading-relaxed","children":"**LeetCode Problem # * 39. Combination Sum**..."}]]}],["$","div",null,{"className":"grid grid-cols-1 lg:grid-cols-3 gap-8","children":[["$","div",null,{"className":"lg:col-span-2","children":["$","div",null,{"className":"bg-white border border-gray-200 rounded-lg p-8","children":["$","$L3",null,{"content":"$4"}]}]}],["$","div",null,{"className":"space-y-6","children":[["$","div",null,{"className":"bg-white border border-gray-200 rounded-lg p-6","children":[["$","h3",null,{"className":"text-lg font-semibold text-gray-900 mb-4","children":"Your Progress"}],["$","div",null,{"className":"w-full bg-gray-200 rounded-full h-2 mb-2","children":["$","div",null,{"className":"bg-blue-600 h-2 rounded-full","style":{"width":"25%"}}]}],["$","p",null,{"className":"text-sm text-gray-600","children":"25% Complete"}]]}],false]}]]}]]}],null],null],null]},[null,["$","$L5",null,{"parallelRouterKey":"children","segmentPath":["children","learn","children","$6","children"],"error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L7",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","notFoundStyles":"$undefined"}]],null]},[null,["$","$L5",null,{"parallelRouterKey":"children","segmentPath":["children","learn","children"],"error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L7",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","notFoundStyles":"$undefined"}]],null]},[[[["$","link","0",{"rel":"stylesheet","href":"/interview/_next/static/css/387024c6a2216908.css","precedence":"next","crossOrigin":"$undefined"}]],["$","$L8",null,{"children":["$","$L5",null,{"parallelRouterKey":"children","segmentPath":["children"],"error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L7",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":{"fontFamily":"system-ui,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\"","height":"100vh","textAlign":"center","display":"flex","flexDirection":"column","alignItems":"center","justifyContent":"center"},"children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":{"display":"inline-block","margin":"0 20px 0 0","padding":"0 23px 0 0","fontSize":24,"fontWeight":500,"verticalAlign":"top","lineHeight":"49px"},"children":"404"}],["$","div",null,{"style":{"display":"inline-block"},"children":["$","h2",null,{"style":{"fontSize":14,"fontWeight":400,"lineHeight":"49px","margin":0},"children":"This page could not be found."}]}]]}]}]],"notFoundStyles":[]}],"params":{}}]],null],null],["$L9",null]]]]
+9:[["$","meta","0",{"name":"viewport","content":"width=device-width, initial-scale=1"}],["$","meta","1",{"charSet":"utf-8"}],["$","meta","2",{"name":"next-size-adjust"}]]
+1:null

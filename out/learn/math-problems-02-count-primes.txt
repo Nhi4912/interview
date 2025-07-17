@@ -1,0 +1,415 @@
+2:I[2972,["918","static/chunks/918-3273b83890f10546.js","972","static/chunks/972-011bba60ed155615.js","930","static/chunks/930-3262a6c9c5acace4.js","289","static/chunks/app/learn/%5Btopic%5D/page-4ab144227f7a7b3e.js"],""]
+3:I[5907,["918","static/chunks/918-3273b83890f10546.js","972","static/chunks/972-011bba60ed155615.js","930","static/chunks/930-3262a6c9c5acace4.js","289","static/chunks/app/learn/%5Btopic%5D/page-4ab144227f7a7b3e.js"],"default"]
+5:I[4707,[],""]
+7:I[6423,[],""]
+8:I[2,["918","static/chunks/918-3273b83890f10546.js","710","static/chunks/710-dfaa11b4dff08f8e.js","972","static/chunks/972-011bba60ed155615.js","233","static/chunks/233-3e0c1d820a17eca9.js","185","static/chunks/app/layout-333f4adcd11f8f39.js"],"default",1]
+4:T273a,
+# Count Prime
+
+
+
+## Problem Description
+
+ *  * Given an integer n, return the number of prime numbers that are strictly less than n.  *  * Input: n = 10  * Output: 4 
+
+## Solutions
+
+{% raw %}
+/**
+ * Count Primes
+ *
+ * Problem: https://leetcode.com/problems/count-primes/
+ *
+ * Given an integer n, return the number of prime numbers that are strictly less than n.
+ *
+ * Example 1:
+ * Input: n = 10
+ * Output: 4
+ * Explanation: There are 4 prime numbers less than 10, they are 2, 3, 5, 7.
+ *
+ * Example 2:
+ * Input: n = 0
+ * Output: 0
+ *
+ * Example 3:
+ * Input: n = 1
+ * Output: 0
+ *
+ * Constraints:
+ * - 0 <= n <= 5 * 10^6
+ *
+ * Solution Approach:
+ * 1. Use Sieve of Eratosthenes algorithm
+ * 2. Create a boolean array to mark non-prime numbers
+ * 3. Start from 2 and mark all multiples as non-prime
+ * 4. Count the remaining unmarked numbers
+ *
+ * Time Complexity: O(n log log n) for Sieve of Eratosthenes
+ * Space Complexity: O(n) for the boolean array
+ */
+
+/**
+ * Count Primes - Sieve of Eratosthenes
+ *
+ * Đếm số nguyên tố - Sàng Eratosthenes
+ *
+ * @param n - Số nguyên dương
+ * @returns Số lượng số nguyên tố nhỏ hơn n
+ */
+function countPrimes(n: number): number {
+  if (n <= 2) return 0;
+
+  // Tạo mảng boolean để đánh dấu số không nguyên tố
+  const isPrime = new Array(n).fill(true);
+  isPrime[0] = false; // 0 không phải số nguyên tố
+  isPrime[1] = false; // 1 không phải số nguyên tố
+
+  // Sàng Eratosthenes
+  for (let i = 2; i * i < n; i++) {
+    if (isPrime[i]) {
+      // Đánh dấu tất cả bội số của i là không nguyên tố
+      for (let j = i * i; j < n; j += i) {
+        isPrime[j] = false;
+      }
+    }
+  }
+
+  // Đếm số nguyên tố
+  let count = 0;
+  for (let i = 2; i < n; i++) {
+    if (isPrime[i]) {
+      count++;
+    }
+  }
+
+  return count;
+}
+
+/**
+ * Alternative Solution: Optimized Sieve
+ *
+ * Giải pháp thay thế: Sàng tối ưu
+ *
+ * @param n - Số nguyên dương
+ * @returns Số lượng số nguyên tố nhỏ hơn n
+ */
+function countPrimesOptimized(n: number): number {
+  if (n <= 2) return 0;
+
+  const isPrime = new Array(n).fill(true);
+  isPrime[0] = false;
+  isPrime[1] = false;
+
+  let count = 0;
+
+  for (let i = 2; i < n; i++) {
+    if (isPrime[i]) {
+      count++;
+
+      // Chỉ đánh dấu bội số từ i*i trở đi
+      for (let j = i * i; j < n; j += i) {
+        isPrime[j] = false;
+      }
+    }
+  }
+
+  return count;
+}
+
+/**
+ * Brute Force Solution (for comparison)
+ *
+ * Giải pháp vét cạn (để so sánh)
+ *
+ * @param n - Số nguyên dương
+ * @returns Số lượng số nguyên tố nhỏ hơn n
+ */
+function countPrimesBruteForce(n: number): number {
+  if (n <= 2) return 0;
+
+  let count = 0;
+
+  for (let i = 2; i < n; i++) {
+    if (isPrimeNumber(i)) {
+      count++;
+    }
+  }
+
+  return count;
+}
+
+/**
+ * Check if a number is prime
+ *
+ * Kiểm tra xem một số có phải là số nguyên tố không
+ *
+ * @param num - Số cần kiểm tra
+ * @returns true nếu là số nguyên tố, false nếu không
+ */
+function isPrimeNumber(num: number): boolean {
+  if (num < 2) return false;
+  if (num === 2) return true;
+  if (num % 2 === 0) return false;
+
+  // Chỉ kiểm tra các số lẻ từ 3 đến căn bậc hai của num
+  for (let i = 3; i <= Math.sqrt(num); i += 2) {
+    if (num % i === 0) {
+      return false;
+    }
+  }
+
+  return true;
+}
+
+/**
+ * Solution with Prime List Generation
+ *
+ * Giải pháp với tạo danh sách số nguyên tố
+ *
+ * @param n - Số nguyên dương
+ * @returns Object chứa số lượng và danh sách số nguyên tố
+ */
+function countPrimesWithList(n: number): { count: number; primes: number[] } {
+  if (n <= 2) return { count: 0, primes: [] };
+
+  const isPrime = new Array(n).fill(true);
+  isPrime[0] = false;
+  isPrime[1] = false;
+
+  const primes: number[] = [];
+
+  for (let i = 2; i < n; i++) {
+    if (isPrime[i]) {
+      primes.push(i);
+
+      for (let j = i * i; j < n; j += i) {
+        isPrime[j] = false;
+      }
+    }
+  }
+
+  return { count: primes.length, primes };
+}
+
+/**
+ * Segmented Sieve (for very large numbers)
+ *
+ * Sàng phân đoạn (cho số rất lớn)
+ *
+ * @param n - Số nguyên dương
+ * @returns Số lượng số nguyên tố nhỏ hơn n
+ */
+function countPrimesSegmented(n: number): number {
+  if (n <= 2) return 0;
+
+  const segmentSize = Math.floor(Math.sqrt(n)) + 1;
+  const isPrime = new Array(segmentSize).fill(true);
+  isPrime[0] = false;
+  isPrime[1] = false;
+
+  // Tìm các số nguyên tố nhỏ hơn căn bậc hai của n
+  const smallPrimes: number[] = [];
+  for (let i = 2; i < segmentSize; i++) {
+    if (isPrime[i]) {
+      smallPrimes.push(i);
+      for (let j = i * i; j < segmentSize; j += i) {
+        isPrime[j] = false;
+      }
+    }
+  }
+
+  let count = smallPrimes.length;
+
+  // Xử lý từng đoạn
+  for (let low = segmentSize; low < n; low += segmentSize) {
+    const high = Math.min(low + segmentSize, n);
+    const segment = new Array(high - low).fill(true);
+
+    for (const prime of smallPrimes) {
+      const start = Math.max(prime * prime, Math.ceil(low / prime) * prime);
+      for (let j = start; j < high; j += prime) {
+        segment[j - low] = false;
+      }
+    }
+
+    for (let i = 0; i < segment.length; i++) {
+      if (segment[i]) {
+        count++;
+      }
+    }
+  }
+
+  return count;
+}
+
+// Test cases / Các trường hợp kiểm thử
+function runTests() {
+  console.log("=== Count Primes Tests ===");
+  console.log("=== Kiểm thử bài toán Đếm số nguyên tố ===\n");
+
+  const testCases = [
+    {
+      name: "Example 1: n = 10",
+      input: 10,
+      expected: 4,
+      description: "Primes less than 10: 2, 3, 5, 7",
+    },
+    {
+      name: "Example 2: n = 0",
+      input: 0,
+      expected: 0,
+      description: "No primes less than 0",
+    },
+    {
+      name: "Example 3: n = 1",
+      input: 1,
+      expected: 0,
+      description: "No primes less than 1",
+    },
+    {
+      name: "n = 2",
+      input: 2,
+      expected: 0,
+      description: "No primes less than 2",
+    },
+    {
+      name: "n = 3",
+      input: 3,
+      expected: 1,
+      description: "Only 2 is prime less than 3",
+    },
+    {
+      name: "n = 5",
+      input: 5,
+      expected: 2,
+      description: "Primes less than 5: 2, 3",
+    },
+    {
+      name: "n = 20",
+      input: 20,
+      expected: 8,
+      description: "Primes less than 20: 2, 3, 5, 7, 11, 13, 17, 19",
+    },
+    {
+      name: "n = 100",
+      input: 100,
+      expected: 25,
+      description: "25 primes less than 100",
+    },
+  ];
+
+  let passedTests = 0;
+  const totalTests = testCases.length;
+
+  for (const testCase of testCases) {
+    console.log(`Test: ${testCase.name}`);
+    console.log(`Input: n = ${testCase.input}`);
+    console.log(`Expected: ${testCase.expected}`);
+    console.log(`Description: ${testCase.description}`);
+
+    const result = countPrimes(testCase.input);
+    const passed = result === testCase.expected;
+
+    console.log(`Result: ${result}`);
+    console.log(`Status: ${passed ? "✅ PASSED" : "❌ FAILED"}`);
+
+    if (passed) {
+      passedTests++;
+    } else {
+      console.log(`Expected: ${testCase.expected}, Got: ${result}`);
+    }
+
+    console.log("---");
+  }
+
+  console.log(`\nTest Summary: ${passedTests}/${totalTests} tests passed`);
+  console.log(
+    `Tóm tắt kiểm thử: ${passedTests}/${totalTests} bài kiểm thử đã qua`
+  );
+
+  // Test with prime list generation
+  console.log("\n=== Testing with Prime List Generation ===");
+  console.log("=== Kiểm thử với tạo danh sách số nguyên tố ===\n");
+
+  const testN = 50;
+  const resultWithList = countPrimesWithList(testN);
+
+  console.log(`Primes less than ${testN}:`);
+  console.log(`Số nguyên tố nhỏ hơn ${testN}:`);
+  console.log(`Count: ${resultWithList.count}`);
+  console.log(`List: [${resultWithList.primes.join(", ")}]`);
+
+  // Performance comparison
+  console.log("\n=== Performance Comparison ===");
+  console.log("=== So sánh hiệu suất ===\n");
+
+  const testNumbers = [100, 1000, 10000];
+
+  for (const n of testNumbers) {
+    console.log(`Testing with n = ${n}:`);
+    console.log(`Kiểm thử với n = ${n}:`);
+
+    const start1 = performance.now();
+    const result1 = countPrimes(n);
+    const time1 = performance.now() - start1;
+
+    const start2 = performance.now();
+    const result2 = countPrimesOptimized(n);
+    const time2 = performance.now() - start2;
+
+    const start3 = performance.now();
+    const result3 = countPrimesSegmented(n);
+    const time3 = performance.now() - start3;
+
+    console.log(`  Sieve: ${time1.toFixed(4)}ms, Result: ${result1}`);
+    console.log(`  Optimized: ${time2.toFixed(4)}ms, Result: ${result2}`);
+    console.log(`  Segmented: ${time3.toFixed(4)}ms, Result: ${result3}`);
+    console.log(
+      `  Results match: ${
+        result1 === result2 && result2 === result3 ? "✅ Yes" : "❌ No"
+      }`
+    );
+    console.log("");
+  }
+
+  // Test brute force for small numbers
+  console.log("=== Brute Force Comparison (small numbers) ===");
+  console.log("=== So sánh với vét cạn (số nhỏ) ===\n");
+
+  const smallN = 100;
+  console.log(`Testing with n = ${smallN}:`);
+
+  const startBF = performance.now();
+  const resultBF = countPrimesBruteForce(smallN);
+  const timeBF = performance.now() - startBF;
+
+  const startSieve = performance.now();
+  const resultSieve = countPrimes(smallN);
+  const timeSieve = performance.now() - startSieve;
+
+  console.log(`Brute Force: ${timeBF.toFixed(4)}ms, Result: ${resultBF}`);
+  console.log(`Sieve: ${timeSieve.toFixed(4)}ms, Result: ${resultSieve}`);
+  console.log(`Speedup: ${(timeBF / timeSieve).toFixed(2)}x faster`);
+  console.log(
+    `Results match: ${resultBF === resultSieve ? "✅ Yes" : "❌ No"}`
+  );
+}
+
+// Run tests if this file is executed directly
+if (require.main === module) {
+  runTests();
+}
+
+export {
+  countPrimes,
+  countPrimesOptimized,
+  countPrimesBruteForce,
+  countPrimesWithList,
+  countPrimesSegmented,
+  isPrimeNumber,
+};
+{% endraw %}
+6:["topic","math-problems-02-count-primes","d"]
+0:["2NmUhWiPdVVBzVtDZlggk",[[["",{"children":["learn",{"children":[["topic","math-problems-02-count-primes","d"],{"children":["__PAGE__?{\"topic\":\"math-problems-02-count-primes\"}",{}]}]}]},"$undefined","$undefined",true],["",{"children":["learn",{"children":[["topic","math-problems-02-count-primes","d"],{"children":["__PAGE__",{},[["$L1",["$","div",null,{"className":"max-w-6xl mx-auto px-8 py-24","children":[["$","div",null,{"className":"flex items-center gap-4 mb-8","children":["$","$L2",null,{"href":"/learn","children":["$","button",null,{"className":"flex items-center gap-2 bg-gray-100 border border-gray-300 text-gray-700 px-4 py-3 rounded-md font-medium hover:bg-gray-200 transition-colors","children":[["$","svg",null,{"xmlns":"http://www.w3.org/2000/svg","width":16,"height":16,"viewBox":"0 0 24 24","fill":"none","stroke":"currentColor","strokeWidth":2,"strokeLinecap":"round","strokeLinejoin":"round","className":"lucide lucide-arrow-left ","children":[["$","path","1l729n",{"d":"m12 19-7-7 7-7"}],["$","path","x3x0zl",{"d":"M19 12H5"}],"$undefined"]}],"Back to Learn"]}]}]}],["$","div",null,{"className":"bg-white border border-gray-200 rounded-lg p-8 mb-8","children":[["$","div",null,{"className":"flex items-center justify-between mb-4","children":[["$","h1",null,{"className":"text-3xl font-bold text-gray-900","children":"Count Prime"}],["$","div",null,{"className":"flex gap-4","children":[["$","button",null,{"className":"flex items-center gap-2 bg-transparent text-gray-700 border border-gray-300 px-6 py-3 rounded-md font-semibold hover:bg-gray-50 transition-colors","children":[["$","svg",null,{"xmlns":"http://www.w3.org/2000/svg","width":16,"height":16,"viewBox":"0 0 24 24","fill":"none","stroke":"currentColor","strokeWidth":2,"strokeLinecap":"round","strokeLinejoin":"round","className":"lucide lucide-star ","children":[["$","polygon","8f66p6",{"points":"12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"}],"$undefined"]}],"Bookmark"]}],["$","button",null,{"className":"flex items-center gap-2 bg-transparent text-gray-700 border border-gray-300 px-6 py-3 rounded-md font-semibold hover:bg-gray-50 transition-colors","children":[["$","svg",null,{"xmlns":"http://www.w3.org/2000/svg","width":16,"height":16,"viewBox":"0 0 24 24","fill":"none","stroke":"currentColor","strokeWidth":2,"strokeLinecap":"round","strokeLinejoin":"round","className":"lucide lucide-share2 ","children":[["$","circle","gq8acd",{"cx":"18","cy":"5","r":"3"}],["$","circle","w7nqdw",{"cx":"6","cy":"12","r":"3"}],["$","circle","1xt0gg",{"cx":"18","cy":"19","r":"3"}],["$","line","47mynk",{"x1":"8.59","x2":"15.42","y1":"13.51","y2":"17.49"}],["$","line","1n3mei",{"x1":"15.41","x2":"8.59","y1":"6.51","y2":"10.49"}],"$undefined"]}],"Share"]}]]}]]}],["$","div",null,{"className":"flex gap-8 mb-4","children":[["$","div",null,{"className":"flex items-center gap-2 text-sm text-gray-600","children":[["$","svg",null,{"xmlns":"http://www.w3.org/2000/svg","width":16,"height":16,"viewBox":"0 0 24 24","fill":"none","stroke":"currentColor","strokeWidth":2,"strokeLinecap":"round","strokeLinejoin":"round","className":"lucide lucide-clock ","children":[["$","circle","1mglay",{"cx":"12","cy":"12","r":"10"}],["$","polyline","68esgv",{"points":"12 6 12 12 16 14"}],"$undefined"]}],"2-3 hours"]}],["$","span",null,{"className":"px-3 py-1 rounded-full text-xs font-semibold text-white bg-red-500","children":"Hard"}],["$","span",null,{"className":"px-3 py-1 rounded-full text-xs font-semibold bg-blue-100 text-blue-700","children":"Math"}]]}],["$","div",null,{"className":"flex flex-wrap gap-2 mb-4","children":[["$","span","0",{"className":"bg-gray-100 text-gray-600 px-3 py-1 rounded-md text-xs font-medium","children":"Math"}]]}],["$","p",null,{"className":"text-lg text-gray-700 leading-relaxed","children":" *  * Given an integer n, return the number of prime numbers that are strictly less than n.  *  * Input: n = 10  * Output: 4 ..."}]]}],["$","div",null,{"className":"grid grid-cols-1 lg:grid-cols-3 gap-8","children":[["$","div",null,{"className":"lg:col-span-2","children":["$","div",null,{"className":"bg-white border border-gray-200 rounded-lg p-8","children":["$","$L3",null,{"content":"$4"}]}]}],["$","div",null,{"className":"space-y-6","children":[["$","div",null,{"className":"bg-white border border-gray-200 rounded-lg p-6","children":[["$","h3",null,{"className":"text-lg font-semibold text-gray-900 mb-4","children":"Your Progress"}],["$","div",null,{"className":"w-full bg-gray-200 rounded-full h-2 mb-2","children":["$","div",null,{"className":"bg-blue-600 h-2 rounded-full","style":{"width":"25%"}}]}],["$","p",null,{"className":"text-sm text-gray-600","children":"25% Complete"}]]}],false]}]]}]]}],null],null],null]},[null,["$","$L5",null,{"parallelRouterKey":"children","segmentPath":["children","learn","children","$6","children"],"error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L7",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","notFoundStyles":"$undefined"}]],null]},[null,["$","$L5",null,{"parallelRouterKey":"children","segmentPath":["children","learn","children"],"error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L7",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","notFoundStyles":"$undefined"}]],null]},[[[["$","link","0",{"rel":"stylesheet","href":"/interview/_next/static/css/387024c6a2216908.css","precedence":"next","crossOrigin":"$undefined"}]],["$","$L8",null,{"children":["$","$L5",null,{"parallelRouterKey":"children","segmentPath":["children"],"error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L7",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":{"fontFamily":"system-ui,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\"","height":"100vh","textAlign":"center","display":"flex","flexDirection":"column","alignItems":"center","justifyContent":"center"},"children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":{"display":"inline-block","margin":"0 20px 0 0","padding":"0 23px 0 0","fontSize":24,"fontWeight":500,"verticalAlign":"top","lineHeight":"49px"},"children":"404"}],["$","div",null,{"style":{"display":"inline-block"},"children":["$","h2",null,{"style":{"fontSize":14,"fontWeight":400,"lineHeight":"49px","margin":0},"children":"This page could not be found."}]}]]}]}]],"notFoundStyles":[]}],"params":{}}]],null],null],["$L9",null]]]]
+9:[["$","meta","0",{"name":"viewport","content":"width=device-width, initial-scale=1"}],["$","meta","1",{"charSet":"utf-8"}],["$","meta","2",{"name":"next-size-adjust"}]]
+1:null

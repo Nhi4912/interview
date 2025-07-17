@@ -1,0 +1,908 @@
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><meta name="viewport" content="width=device-width, initial-scale=1"/><link rel="preload" href="/interview/_next/static/media/e4af272ccee01ff0-s.p.woff2" as="font" crossorigin="" type="font/woff2"/><link rel="stylesheet" href="/interview/_next/static/css/387024c6a2216908.css" data-precedence="next"/><link rel="preload" as="script" fetchPriority="low" href="/interview/_next/static/chunks/webpack-be7d7df45533bffc.js"/><script src="/interview/_next/static/chunks/fd9d1056-6922f449a204c2cc.js" async=""></script><script src="/interview/_next/static/chunks/117-e7ecc085ce9cfab3.js" async=""></script><script src="/interview/_next/static/chunks/main-app-b06be5f3411c20c3.js" async=""></script><script src="/interview/_next/static/chunks/918-3273b83890f10546.js" async=""></script><script src="/interview/_next/static/chunks/972-011bba60ed155615.js" async=""></script><script src="/interview/_next/static/chunks/930-3262a6c9c5acace4.js" async=""></script><script src="/interview/_next/static/chunks/app/learn/%5Btopic%5D/page-4ab144227f7a7b3e.js" async=""></script><script src="/interview/_next/static/chunks/710-dfaa11b4dff08f8e.js" async=""></script><script src="/interview/_next/static/chunks/233-3e0c1d820a17eca9.js" async=""></script><script src="/interview/_next/static/chunks/app/layout-333f4adcd11f8f39.js" async=""></script><title>Frontend Interview Prep 2025 - Big Tech Interview Guide</title><meta name="description" content="Comprehensive frontend interview preparation for Big Tech companies including React, TypeScript, algorithms, and system design."/><link rel="icon" href="/favicon.ico"/><meta name="theme-color" content="#1a1a1a"/><meta property="og:title" content="Frontend Interview Prep 2025"/><meta property="og:description" content="Complete guide for frontend engineers targeting Big Tech companies"/><meta property="og:type" content="website"/><link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous"/><meta name="next-size-adjust"/><script src="/interview/_next/static/chunks/polyfills-42372ed130431b0a.js" noModule=""></script><style data-styled="" data-styled-version="6.1.19">*{margin:0;padding:0;box-sizing:border-box;}/*!sc*/
+html{font-size:16px;line-height:1.5;scroll-behavior:smooth;}/*!sc*/
+body{font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;font-size:1rem;line-height:1.5;color:#1e293b;background-color:#ffffff;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;}/*!sc*/
+h1,h2,h3,h4,h5,h6{font-weight:700;line-height:1.25;margin-bottom:0.5em;}/*!sc*/
+h1{font-size:3rem;}/*!sc*/
+@media (max-width: 768px){h1{font-size:2.25rem;}}/*!sc*/
+h2{font-size:2.25rem;}/*!sc*/
+@media (max-width: 768px){h2{font-size:1.875rem;}}/*!sc*/
+h3{font-size:1.875rem;}/*!sc*/
+@media (max-width: 768px){h3{font-size:1.5rem;}}/*!sc*/
+h4{font-size:1.5rem;}/*!sc*/
+@media (max-width: 768px){h4{font-size:1.25rem;}}/*!sc*/
+h5{font-size:1.25rem;}/*!sc*/
+h6{font-size:1.125rem;}/*!sc*/
+p{margin-bottom:1rem;line-height:1.75;}/*!sc*/
+a{color:#3b82f6;text-decoration:none;transition:color 0.15s ease;}/*!sc*/
+a:hover{color:#2563eb;}/*!sc*/
+a:focus{outline:2px solid #3b82f6;outline-offset:2px;}/*!sc*/
+button{cursor:pointer;border:none;background:none;font-family:inherit;font-size:inherit;}/*!sc*/
+button:disabled{cursor:not-allowed;opacity:0.6;}/*!sc*/
+button:focus{outline:2px solid #3b82f6;outline-offset:2px;}/*!sc*/
+input,textarea,select{font-family:inherit;font-size:inherit;}/*!sc*/
+input:focus,textarea:focus,select:focus{outline:2px solid #3b82f6;outline-offset:2px;}/*!sc*/
+img{max-width:100%;height:auto;}/*!sc*/
+ul,ol{margin-bottom:1rem;padding-left:1.5rem;}/*!sc*/
+li{margin-bottom:0.25rem;}/*!sc*/
+blockquote{margin:1rem 0;padding:1rem;border-left:4px solid #3b82f6;background-color:#f1f5f9;font-style:italic;}/*!sc*/
+code{font-family:SFMono-Regular,Consolas,"Liberation Mono",Menlo,monospace;font-size:0.9em;background-color:#f1f5f9;padding:0.2em 0.4em;border-radius:0.25rem;}/*!sc*/
+pre{background-color:#f1f5f9;padding:1rem;border-radius:0.5rem;overflow-x:auto;margin-bottom:1rem;}/*!sc*/
+pre code{background:none;padding:0;}/*!sc*/
+table{width:100%;border-collapse:collapse;margin-bottom:1rem;}/*!sc*/
+th,td{padding:0.75rem;text-align:left;border-bottom:1px solid #e2e8f0;}/*!sc*/
+th{font-weight:600;background-color:#f1f5f9;}/*!sc*/
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0, 0, 0, 0);white-space:nowrap;border:0;}/*!sc*/
+.skip-link{position:absolute;top:-40px;left:6px;background:#3b82f6;color:white;padding:8px;text-decoration:none;border-radius:4px;z-index:100;}/*!sc*/
+.skip-link:focus{top:6px;}/*!sc*/
+::-webkit-scrollbar{width:8px;height:8px;}/*!sc*/
+::-webkit-scrollbar-track{background:#f1f5f9;}/*!sc*/
+::-webkit-scrollbar-thumb{background:#94a3b8;border-radius:4px;}/*!sc*/
+::-webkit-scrollbar-thumb:hover{background:#64748b;}/*!sc*/
+::selection{background:#3b82f6;color:white;}/*!sc*/
+.focus-visible{outline:2px solid #3b82f6;outline-offset:2px;}/*!sc*/
+.fade-in{opacity:0;animation:fadeIn 0.3s ease forwards;}/*!sc*/
+.slide-up{transform:translateY(20px);opacity:0;animation:slideUp 0.3s ease forwards;}/*!sc*/
+@keyframes fadeIn{to{opacity:1;}}/*!sc*/
+@keyframes slideUp{to{transform:translateY(0);opacity:1;}}/*!sc*/
+@media print{*{background:white!important;color:black!important;box-shadow:none!important;text-shadow:none!important;}a,a:visited{text-decoration:underline;}h1,h2,h3,h4,h5,h6{break-after:avoid;}pre,blockquote{border:1px solid #999;break-inside:avoid;}img{max-width:100%!important;}@page{margin:0.5in;}}/*!sc*/
+data-styled.g19[id="sc-global-kxA-Ddz1"]{content:"sc-global-kxA-Ddz1,"}/*!sc*/
+.hNPaTO{position:fixed;top:0;width:100%;z-index:1020;background:transparent;backdrop-filter:blur(10px);border-bottom:1px solid transparent;transition:all 0.3s ease;}/*!sc*/
+data-styled.g20[id="sc-dNdcvo"]{content:"hNPaTO,"}/*!sc*/
+.jJxjWc{max-width:1200px;margin:0 auto;padding:0 2rem;display:flex;align-items:center;justify-content:space-between;height:70px;}/*!sc*/
+data-styled.g21[id="sc-fbQrwq"]{content:"jJxjWc,"}/*!sc*/
+.jwmRwa{display:flex;align-items:center;gap:0.5rem;font-size:1.5rem;font-weight:700;color:#3b82f6;text-decoration:none;cursor:pointer;}/*!sc*/
+.jwmRwa:hover{color:#2563eb;}/*!sc*/
+data-styled.g22[id="sc-gGKoUb"]{content:"jwmRwa,"}/*!sc*/
+.KQdZw{display:flex;align-items:center;gap:2rem;}/*!sc*/
+@media (max-width: 768px){.KQdZw{display:none;}}/*!sc*/
+data-styled.g23[id="sc-hwddKA"]{content:"KQdZw,"}/*!sc*/
+.ETszJ{color:#1e293b;font-weight:500;text-decoration:none;transition:color 0.15s ease;position:relative;}/*!sc*/
+.ETszJ:hover{color:#3b82f6;}/*!sc*/
+.ETszJ:after{content:'';position:absolute;bottom:-5px;left:0;width:0;height:2px;background:#3b82f6;transition:width 0.15s ease;}/*!sc*/
+.ETszJ:hover:after{width:100%;}/*!sc*/
+data-styled.g24[id="sc-jaXbil"]{content:"ETszJ,"}/*!sc*/
+.foClcg{display:none;background:none;border:none;color:#1e293b;cursor:pointer;padding:0.5rem;}/*!sc*/
+@media (max-width: 768px){.foClcg{display:block;}}/*!sc*/
+data-styled.g25[id="sc-eqNDNG"]{content:"foClcg,"}/*!sc*/
+.kBjfBo{display:flex;align-items:center;gap:0.5rem;background:#f1f5f9;border:1px solid #e2e8f0;border-radius:0.5rem;padding:0.5rem 1rem;color:#64748b;font-size:0.9rem;transition:all 0.15s ease;}/*!sc*/
+.kBjfBo:hover{background:#ffffff;border-color:#3b82f6;}/*!sc*/
+data-styled.g29[id="sc-eQwNpu"]{content:"kBjfBo,"}/*!sc*/
+.booJNS{background:#1e293b;color:white;padding:3rem 0 1rem;margin-top:auto;}/*!sc*/
+data-styled.g30[id="sc-gvqKNf"]{content:"booJNS,"}/*!sc*/
+.fVoYcP{max-width:1200px;margin:0 auto;padding:0 2rem;}/*!sc*/
+data-styled.g31[id="sc-cOpnSz"]{content:"fVoYcP,"}/*!sc*/
+.kKfrkv{display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:2rem;margin-bottom:2rem;}/*!sc*/
+@media (max-width: 768px){.kKfrkv{grid-template-columns:1fr 1fr;gap:1.5rem;}}/*!sc*/
+@media (max-width: 480px){.kKfrkv{grid-template-columns:1fr;}}/*!sc*/
+data-styled.g32[id="sc-kjwdDK"]{content:"kKfrkv,"}/*!sc*/
+.inEXDm h3{font-size:1.1rem;font-weight:600;margin-bottom:1rem;color:white;}/*!sc*/
+.inEXDm ul{list-style:none;padding:0;margin:0;}/*!sc*/
+.inEXDm li{margin-bottom:0.5rem;}/*!sc*/
+.inEXDm a{color:rgba(255, 255, 255, 0.7);text-decoration:none;transition:color 0.15s ease;}/*!sc*/
+.inEXDm a:hover{color:white;}/*!sc*/
+data-styled.g33[id="sc-eVqvcJ"]{content:"inEXDm,"}/*!sc*/
+.hWhopJ{display:flex;align-items:center;gap:0.5rem;font-size:1.2rem;font-weight:700;margin-bottom:1rem;color:white;}/*!sc*/
+data-styled.g34[id="sc-bbbBoY"]{content:"hWhopJ,"}/*!sc*/
+.exeTne{color:rgba(255, 255, 255, 0.7);line-height:1.6;margin-bottom:1rem;}/*!sc*/
+data-styled.g35[id="sc-cdmAjP"]{content:"exeTne,"}/*!sc*/
+.cgXMuV{display:flex;gap:1rem;}/*!sc*/
+.cgXMuV a{display:flex;align-items:center;justify-content:center;width:40px;height:40px;background:rgba(255, 255, 255, 0.1);border-radius:0.5rem;color:rgba(255, 255, 255, 0.7);transition:all 0.15s ease;}/*!sc*/
+.cgXMuV a:hover{background:rgba(255, 255, 255, 0.2);color:white;}/*!sc*/
+data-styled.g36[id="sc-jytpVa"]{content:"cgXMuV,"}/*!sc*/
+.iQqwrD{border-top:1px solid rgba(255, 255, 255, 0.1);padding-top:2rem;display:flex;justify-content:space-between;align-items:center;}/*!sc*/
+@media (max-width: 768px){.iQqwrD{flex-direction:column;gap:1rem;text-align:center;}}/*!sc*/
+data-styled.g37[id="sc-eknHtZ"]{content:"iQqwrD,"}/*!sc*/
+.gObJRG{color:rgba(255, 255, 255, 0.7);margin:0;font-size:0.9rem;}/*!sc*/
+data-styled.g38[id="sc-pYNGo"]{content:"gObJRG,"}/*!sc*/
+.eBqBtc{display:flex;gap:2rem;}/*!sc*/
+@media (max-width: 480px){.eBqBtc{flex-direction:column;gap:1rem;}}/*!sc*/
+.eBqBtc a{color:rgba(255, 255, 255, 0.7);text-decoration:none;font-size:0.9rem;transition:color 0.15s ease;}/*!sc*/
+.eBqBtc a:hover{color:white;}/*!sc*/
+data-styled.g39[id="sc-cCVJLD"]{content:"eBqBtc,"}/*!sc*/
+.kmsQDA{color:#1e293b;line-height:1.6;}/*!sc*/
+.kmsQDA h1,.kmsQDA h2,.kmsQDA h3,.kmsQDA h4,.kmsQDA h5,.kmsQDA h6{color:#1e293b;margin-top:2rem;margin-bottom:1rem;font-weight:600;}/*!sc*/
+.kmsQDA h1{font-size:2rem;border-bottom:2px solid #e2e8f0;padding-bottom:0.5rem;}/*!sc*/
+.kmsQDA h2{font-size:1.5rem;border-bottom:1px solid #e2e8f0;padding-bottom:0.3rem;}/*!sc*/
+.kmsQDA h3{font-size:1.25rem;}/*!sc*/
+.kmsQDA h4{font-size:1.1rem;}/*!sc*/
+.kmsQDA p{margin-bottom:1rem;color:#64748b;}/*!sc*/
+.kmsQDA a{color:#3b82f6;text-decoration:none;}/*!sc*/
+.kmsQDA a:hover{text-decoration:underline;}/*!sc*/
+.kmsQDA ul,.kmsQDA ol{margin-bottom:1rem;padding-left:1.5rem;}/*!sc*/
+.kmsQDA ul li,.kmsQDA ol li{margin-bottom:0.5rem;color:#64748b;}/*!sc*/
+.kmsQDA blockquote{border-left:4px solid #3b82f6;padding-left:1rem;margin:1rem 0;font-style:italic;color:#64748b;background:#f1f5f9;padding:1rem;border-radius:0.5rem;}/*!sc*/
+.kmsQDA code{background:#f1f5f9;padding:0.2rem 0.4rem;border-radius:0.25rem;font-family:SFMono-Regular,Consolas,"Liberation Mono",Menlo,monospace;font-size:0.9em;color:#f59e0b;}/*!sc*/
+.kmsQDA pre{background:#ffffff;border:1px solid #e2e8f0;border-radius:0.5rem;padding:1rem;margin:1rem 0;overflow-x:auto;}/*!sc*/
+.kmsQDA pre code{background:none;padding:0;color:#1e293b;font-size:0.9rem;}/*!sc*/
+.kmsQDA table{width:100%;border-collapse:collapse;margin:1rem 0;}/*!sc*/
+.kmsQDA table th,.kmsQDA table td{border:1px solid #e2e8f0;padding:0.5rem;text-align:left;}/*!sc*/
+.kmsQDA table th{background:#ffffff;font-weight:600;}/*!sc*/
+.kmsQDA table tr:nth-child(even){background:#f1f5f9;}/*!sc*/
+.kmsQDA hr{border:none;height:1px;background:#e2e8f0;margin:2rem 0;}/*!sc*/
+.kmsQDA .highlight{background:#3b82f620;padding:0.2rem 0.4rem;border-radius:0.25rem;font-weight:600;}/*!sc*/
+.kmsQDA .hljs{background:#ffffff;color:#1e293b;}/*!sc*/
+.kmsQDA .hljs-keyword{color:#3b82f6;font-weight:600;}/*!sc*/
+.kmsQDA .hljs-string{color:#10b981;}/*!sc*/
+.kmsQDA .hljs-function{color:#f59e0b;}/*!sc*/
+.kmsQDA .hljs-comment{color:#94a3b8;font-style:italic;}/*!sc*/
+.kmsQDA .hljs-number{color:#f59e0b;}/*!sc*/
+.kmsQDA .hljs-variable{color:#1e293b;}/*!sc*/
+.kmsQDA .hljs-title{color:#f59e0b;font-weight:600;}/*!sc*/
+data-styled.g40[id="sc-jYczwO"]{content:"kmsQDA,"}/*!sc*/
+</style></head><body class="__className_6eac61"><div style="min-height:100vh;display:flex;flex-direction:column"><nav class="sc-dNdcvo hNPaTO"><div class="sc-fbQrwq jJxjWc"><a href="/interview"><a class="sc-gGKoUb jwmRwa"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-code "><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>Frontend Interview Prep</a></a><div class="sc-hwddKA KQdZw"><a href="/interview/problems"><a class="sc-jaXbil ETszJ">Problems</a></a><a href="/interview/learn"><a class="sc-jaXbil ETszJ">Learn</a></a><a href="/interview/study-guide"><a class="sc-jaXbil ETszJ">Study Guide</a></a><a href="/interview/system-design"><a class="sc-jaXbil ETszJ">System Design</a></a><a href="/interview/performance"><a class="sc-jaXbil ETszJ">Performance</a></a><a href="/interview/accessibility"><a class="sc-jaXbil ETszJ">Accessibility</a></a><a href="/interview/interview-tips"><a class="sc-jaXbil ETszJ">Interview Tips</a></a><button class="sc-eQwNpu kBjfBo"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-search "><circle cx="11" cy="11" r="8"></circle><path d="m21 21-4.3-4.3"></path></svg>Search</button></div><button class="sc-eqNDNG foClcg"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-menu "><line x1="4" x2="20" y1="12" y2="12"></line><line x1="4" x2="20" y1="6" y2="6"></line><line x1="4" x2="20" y1="18" y2="18"></line></svg></button></div></nav><main style="flex:1"><div class="max-w-6xl mx-auto px-8 py-24"><div class="flex items-center gap-4 mb-8"><a href="/interview/learn"><button class="flex items-center gap-2 bg-gray-100 border border-gray-300 text-gray-700 px-4 py-3 rounded-md font-medium hover:bg-gray-200 transition-colors"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-left "><path d="m12 19-7-7 7-7"></path><path d="M19 12H5"></path></svg>Back to Learn</button></a></div><div class="bg-white border border-gray-200 rounded-lg p-8 mb-8"><div class="flex items-center justify-between mb-4"><h1 class="text-3xl font-bold text-gray-900">Given an array nums of n integers, return an array of all the unique quadruplets </h1><div class="flex gap-4"><button class="flex items-center gap-2 bg-transparent text-gray-700 border border-gray-300 px-6 py-3 rounded-md font-semibold hover:bg-gray-50 transition-colors"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-star "><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>Bookmark</button><button class="flex items-center gap-2 bg-transparent text-gray-700 border border-gray-300 px-6 py-3 rounded-md font-semibold hover:bg-gray-50 transition-colors"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-share2 "><circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><line x1="8.59" x2="15.42" y1="13.51" y2="17.49"></line><line x1="15.41" x2="8.59" y1="6.51" y2="10.49"></line></svg>Share</button></div></div><div class="flex gap-8 mb-4"><div class="flex items-center gap-2 text-sm text-gray-600"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-clock "><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>2-3 hours</div><span class="px-3 py-1 rounded-full text-xs font-semibold text-white bg-red-500">Hard</span><span class="px-3 py-1 rounded-full text-xs font-semibold bg-blue-100 text-blue-700">Array</span></div><div class="flex flex-wrap gap-2 mb-4"><span class="bg-gray-100 text-gray-600 px-3 py-1 rounded-md text-xs font-medium">Array</span><span class="bg-gray-100 text-gray-600 px-3 py-1 rounded-md text-xs font-medium">Two Pointers</span><span class="bg-gray-100 text-gray-600 px-3 py-1 rounded-md text-xs font-medium">Hash Table</span></div><p class="text-lg text-gray-700 leading-relaxed">**LeetCode Problem # * 18. 4Sum**...</p></div><div class="grid grid-cols-1 lg:grid-cols-3 gap-8"><div class="lg:col-span-2"><div class="bg-white border border-gray-200 rounded-lg p-8"><div class="sc-jYczwO kmsQDA"><h1 id="given-an-array-nums-of-n-integers,-return-an-array-of-all-the-unique-quadruplets" node="[object Object]">Given an array nums of n integers, return an array of all the unique quadruplets</h1>
+<p><strong>LeetCode Problem # * 18. 4Sum</strong></p>
+<h2 id="problem-description" node="[object Object]">Problem Description</h2>
+<p>LeetCode problem solution with multiple approaches and explanations.</p>
+<h2 id="solutions" node="[object Object]">Solutions</h2>
+<p>{% raw %}
+/**</p>
+<ul>
+<li>18. 4Sum</li>
+<li></li>
+<li>Given an array nums of n integers, return an array of all the unique quadruplets</li>
+<li>[nums[a], nums[b], nums[c], nums[d]] such that:</li>
+<li>
+<ul>
+<li>0 &lt;= a, b, c, d &lt; n</li>
+</ul>
+</li>
+<li>
+<ul>
+<li>a, b, c, and d are distinct.</li>
+</ul>
+</li>
+<li>
+<ul>
+<li>nums[a] + nums[b] + nums[c] + nums[d] == target</li>
+</ul>
+</li>
+<li></li>
+<li>You may return the answer in any order.</li>
+<li></li>
+<li>Example 1:</li>
+<li>Input: nums = [1,0,-1,0,-2,2], target = 0</li>
+<li>Output: [[-2,-1,1,2],[-2,0,0,2],[-1,0,0,1]]</li>
+<li></li>
+<li>Example 2:</li>
+<li>Input: nums = [2,2,2,2,2], target = 8</li>
+<li>Output: [[2,2,2,2]]</li>
+<li></li>
+<li>Constraints:</li>
+<li>
+<ul>
+<li>1 &lt;= nums.length &lt;= 200</li>
+</ul>
+</li>
+<li>
+<ul>
+<li>-10^9 &lt;= nums[i] &lt;= 10^9</li>
+</ul>
+</li>
+<li>
+<ul>
+<li>-10^9 &lt;= target &lt;= 10^9
+*/</li>
+</ul>
+</li>
+</ul>
+<p>// Solution 1: Two Pointers (Optimal)
+// Time: O(n^3), Space: O(1)
+export function fourSum1(nums: number[], target: number): number[][] {
+nums.sort((a, b) =&gt; a - b);
+const result: number[][] = [];
+const n = nums.length;</p>
+<pre><pre><code class="hljs undefined">for (let i = 0; i &lt; n - 3; i++) {
+    // Skip duplicates for first element
+    if (i &gt; 0 &amp;&amp; nums[i] === nums[i - 1]) continue;
+    
+    // Early termination optimizations
+    if (nums[i] + nums[i + 1] + nums[i + 2] + nums[i + 3] &gt; target) break;
+    if (nums[i] + nums[n - 3] + nums[n - 2] + nums[n - 1] &lt; target) continue;
+    
+    for (let j = i + 1; j &lt; n - 2; j++) {
+        // Skip duplicates for second element
+        if (j &gt; i + 1 &amp;&amp; nums[j] === nums[j - 1]) continue;
+        
+        // Early termination for inner loop
+        if (nums[i] + nums[j] + nums[j + 1] + nums[j + 2] &gt; target) break;
+        if (nums[i] + nums[j] + nums[n - 2] + nums[n - 1] &lt; target) continue;
+        
+        let left = j + 1;
+        let right = n - 1;
+        
+        while (left &lt; right) {
+            const sum = nums[i] + nums[j] + nums[left] + nums[right];
+            
+            if (sum === target) {
+                result.push([nums[i], nums[j], nums[left], nums[right]]);
+                
+                // Skip duplicates for third element
+                while (left &lt; right &amp;&amp; nums[left] === nums[left + 1]) left++;
+                // Skip duplicates for fourth element
+                while (left &lt; right &amp;&amp; nums[right] === nums[right - 1]) right--;
+                
+                left++;
+                right--;
+            } else if (sum &lt; target) {
+                left++;
+            } else {
+                right--;
+            }
+        }
+    }
+}
+
+return result;
+</code></pre></pre>
+<p>}</p>
+<p>// Solution 2: Hash Map Approach
+// Time: O(n^3), Space: O(n^2)
+export function fourSum2(nums: number[], target: number): number[][] {
+nums.sort((a, b) =&gt; a - b);
+const result: number[][] = [];
+const n = nums.length;</p>
+<pre><pre><code class="hljs undefined">// Create map of pair sums to indices
+const pairSums = new Map&lt;number, [number, number][]&gt;();
+
+for (let i = 0; i &lt; n - 1; i++) {
+    for (let j = i + 1; j &lt; n; j++) {
+        const sum = nums[i] + nums[j];
+        if (!pairSums.has(sum)) {
+            pairSums.set(sum, []);
+        }
+        pairSums.get(sum)!.push([i, j]);
+    }
+}
+
+const seen = new Set&lt;string&gt;();
+
+for (let i = 0; i &lt; n - 3; i++) {
+    for (let j = i + 1; j &lt; n - 2; j++) {
+        const twoSum = nums[i] + nums[j];
+        const needed = target - twoSum;
+        
+        if (pairSums.has(needed)) {
+            for (const [k, l] of pairSums.get(needed)!) {
+                if (k &gt; j &amp;&amp; l &gt; k) { // Ensure no index overlap
+                    const quad = [nums[i], nums[j], nums[k], nums[l]];
+                    const key = quad.join(&#x27;,&#x27;);
+                    
+                    if (!seen.has(key)) {
+                        seen.add(key);
+                        result.push(quad);
+                    }
+                }
+            }
+        }
+    }
+}
+
+return result;
+</code></pre></pre>
+<p>}</p>
+<p>// Solution 3: Recursive k-Sum Generalization
+// Time: O(n^3), Space: O(n)
+export function fourSum3(nums: number[], target: number): number[][] {
+nums.sort((a, b) =&gt; a - b);</p>
+<pre><pre><code class="hljs undefined">function kSum(nums: number[], target: number, k: number, start: number): number[][] {
+    const result: number[][] = [];
+    
+    if (start &gt;= nums.length) return result;
+    
+    // Base case: 2Sum
+    if (k === 2) {
+        let left = start;
+        let right = nums.length - 1;
+        
+        while (left &lt; right) {
+            const sum = nums[left] + nums[right];
+            
+            if (sum === target) {
+                result.push([nums[left], nums[right]]);
+                
+                while (left &lt; right &amp;&amp; nums[left] === nums[left + 1]) left++;
+                while (left &lt; right &amp;&amp; nums[right] === nums[right - 1]) right--;
+                
+                left++;
+                right--;
+            } else if (sum &lt; target) {
+                left++;
+            } else {
+                right--;
+            }
+        }
+        
+        return result;
+    }
+    
+    // Recursive case: k &gt; 2
+    for (let i = start; i &lt;= nums.length - k; i++) {
+        if (i &gt; start &amp;&amp; nums[i] === nums[i - 1]) continue;
+        
+        const subResults = kSum(nums, target - nums[i], k - 1, i + 1);
+        
+        for (const subResult of subResults) {
+            result.push([nums[i], ...subResult]);
+        }
+    }
+    
+    return result;
+}
+
+return kSum(nums, target, 4, 0);
+</code></pre></pre>
+<p>}</p>
+<p>// Solution 4: Brute Force with Pruning
+// Time: O(n^4), Space: O(1)
+export function fourSum4(nums: number[], target: number): number[][] {
+nums.sort((a, b) =&gt; a - b);
+const result: number[][] = [];
+const n = nums.length;</p>
+<pre><pre><code class="hljs undefined">for (let i = 0; i &lt; n - 3; i++) {
+    if (i &gt; 0 &amp;&amp; nums[i] === nums[i - 1]) continue;
+    
+    for (let j = i + 1; j &lt; n - 2; j++) {
+        if (j &gt; i + 1 &amp;&amp; nums[j] === nums[j - 1]) continue;
+        
+        for (let k = j + 1; k &lt; n - 1; k++) {
+            if (k &gt; j + 1 &amp;&amp; nums[k] === nums[k - 1]) continue;
+            
+            for (let l = k + 1; l &lt; n; l++) {
+                if (l &gt; k + 1 &amp;&amp; nums[l] === nums[l - 1]) continue;
+                
+                if (nums[i] + nums[j] + nums[k] + nums[l] === target) {
+                    result.push([nums[i], nums[j], nums[k], nums[l]]);
+                }
+            }
+        }
+    }
+}
+
+return result;
+</code></pre></pre>
+<p>}</p>
+<p>// Solution 5: Hash Set for Unique Quadruplets
+// Time: O(n^3), Space: O(n)
+export function fourSum5(nums: number[], target: number): number[][] {
+nums.sort((a, b) =&gt; a - b);
+const result: number[][] = [];
+const n = nums.length;
+const seen = new Set<string>();</string></p>
+<pre><pre><code class="hljs undefined">for (let i = 0; i &lt; n - 3; i++) {
+    for (let j = i + 1; j &lt; n - 2; j++) {
+        const complement = new Set&lt;number&gt;();
+        
+        for (let k = j + 1; k &lt; n; k++) {
+            const needed = target - nums[i] - nums[j] - nums[k];
+            
+            if (complement.has(needed)) {
+                const quad = [nums[i], nums[j], needed, nums[k]].sort((a, b) =&gt; a - b);
+                const key = quad.join(&#x27;,&#x27;);
+                
+                if (!seen.has(key)) {
+                    seen.add(key);
+                    result.push(quad);
+                }
+            }
+            
+            complement.add(nums[k]);
+        }
+    }
+}
+
+return result;
+</code></pre></pre>
+<p>}</p>
+<p>// Solution 6: Divide and Conquer
+// Time: O(n^3), Space: O(n)
+export function fourSum6(nums: number[], target: number): number[][] {
+nums.sort((a, b) =&gt; a - b);</p>
+<pre><pre><code class="hljs undefined">function findQuadruplets(start: number, end: number, currentQuad: number[], targetSum: number, k: number): number[][] {
+    const result: number[][] = [];
+    
+    if (k === 0) {
+        if (targetSum === 0) {
+            result.push([...currentQuad]);
+        }
+        return result;
+    }
+    
+    if (end - start + 1 &lt; k) return result;
+    
+    for (let i = start; i &lt;= end - k + 1; i++) {
+        if (i &gt; start &amp;&amp; nums[i] === nums[i - 1]) continue;
+        
+        currentQuad.push(nums[i]);
+        const subResults = findQuadruplets(i + 1, end, currentQuad, targetSum - nums[i], k - 1);
+        result.push(...subResults);
+        currentQuad.pop();
+    }
+    
+    return result;
+}
+
+return findQuadruplets(0, nums.length - 1, [], target, 4);
+</code></pre></pre>
+<p>}</p>
+<p>// Test cases
+export function testFourSum() {
+console.log(&quot;Testing 4Sum:&quot;);</p>
+<pre><pre><code class="hljs undefined">const testCases = [
+    {
+        nums: [1, 0, -1, 0, -2, 2],
+        target: 0,
+        expected: [[-2, -1, 1, 2], [-2, 0, 0, 2], [-1, 0, 0, 1]]
+    },
+    {
+        nums: [2, 2, 2, 2, 2],
+        target: 8,
+        expected: [[2, 2, 2, 2]]
+    },
+    {
+        nums: [1, -2, -5, -4, -3, 3, 3, 5],
+        target: -11,
+        expected: [[-5, -4, -3, 1]]
+    },
+    {
+        nums: [],
+        target: 0,
+        expected: []
+    },
+    {
+        nums: [1, 2, 3],
+        target: 6,
+        expected: []
+    },
+    {
+        nums: [-3, -2, -1, 0, 0, 1, 2, 3],
+        target: 0,
+        expected: [[-3, -2, 2, 3], [-3, -1, 1, 3], [-3, 0, 0, 3], [-3, 0, 1, 2], [-2, -1, 0, 3], [-2, -1, 1, 2], [-2, 0, 0, 2], [-1, 0, 0, 1]]
+    }
+];
+
+const solutions = [
+    { name: &quot;Two Pointers (Optimal)&quot;, fn: fourSum1 },
+    { name: &quot;Hash Map Approach&quot;, fn: fourSum2 },
+    { name: &quot;Recursive k-Sum&quot;, fn: fourSum3 },
+    { name: &quot;Brute Force&quot;, fn: fourSum4 },
+    { name: &quot;Hash Set Unique&quot;, fn: fourSum5 },
+    { name: &quot;Divide and Conquer&quot;, fn: fourSum6 }
+];
+
+function normalizeResult(result: number[][]): number[][] {
+    return result.map(quad =&gt; [...quad].sort((a, b) =&gt; a - b)).sort();
+}
+
+function arraysEqual(a: number[][], b: number[][]): boolean {
+    const normalA = normalizeResult(a);
+    const normalB = normalizeResult(b);
+    
+    if (normalA.length !== normalB.length) return false;
+    
+    for (let i = 0; i &lt; normalA.length; i++) {
+        if (normalA[i].length !== normalB[i].length) return false;
+        for (let j = 0; j &lt; normalA[i].length; j++) {
+            if (normalA[i][j] !== normalB[i][j]) return false;
+        }
+    }
+    
+    return true;
+}
+
+solutions.forEach(solution =&gt; {
+    console.log(`\n${solution.name}:`);
+    testCases.forEach((test, i) =&gt; {
+        const result = solution.fn([...test.nums], test.target);
+        const passed = arraysEqual(result, test.expected);
+        console.log(`  Test ${i + 1}: ${passed ? &#x27;PASS&#x27; : &#x27;FAIL&#x27;}`);
+        if (!passed) {
+            console.log(`    Input: nums=${JSON.stringify(test.nums)}, target=${test.target}`);
+            console.log(`    Expected: ${JSON.stringify(normalizeResult(test.expected))}`);
+            console.log(`    Got: ${JSON.stringify(normalizeResult(result))}`);
+        }
+    });
+});
+</code></pre></pre>
+<p>}</p>
+<p>/**</p>
+<ul>
+<li>Key Insights:</li>
+<li></li>
+<li>
+<ol>
+<li><strong>Problem Complexity</strong>:</li>
+</ol>
+</li>
+<li>
+<ul>
+<li>Extension of 3Sum to four elements</li>
+</ul>
+</li>
+<li>
+<ul>
+<li>Need to find all unique quadruplets summing to target</li>
+</ul>
+</li>
+<li>
+<ul>
+<li>Avoid duplicate quadruplets in result</li>
+</ul>
+</li>
+<li></li>
+<li>
+<ol start="2">
+<li><strong>Two Pointers Strategy</strong>:</li>
+</ol>
+</li>
+<li>
+<ul>
+<li>Fix first two elements with nested loops</li>
+</ul>
+</li>
+<li>
+<ul>
+<li>Use two pointers for remaining two elements</li>
+</ul>
+</li>
+<li>
+<ul>
+<li>Reduces complexity from O(n^4) to O(n^3)</li>
+</ul>
+</li>
+<li></li>
+<li>
+<ol start="3">
+<li><strong>Duplicate Handling</strong>:</li>
+</ol>
+</li>
+<li>
+<ul>
+<li>Skip duplicate values at each level</li>
+</ul>
+</li>
+<li>
+<ul>
+<li>Essential for avoiding duplicate quadruplets</li>
+</ul>
+</li>
+<li>
+<ul>
+<li>Must be careful with indexing when skipping</li>
+</ul>
+</li>
+<li></li>
+<li>
+<ol start="4">
+<li><strong>Early Termination Optimizations</strong>:</li>
+</ol>
+</li>
+<li>
+<ul>
+<li>Check minimum/maximum possible sums</li>
+</ul>
+</li>
+<li>
+<ul>
+<li>Break early when target impossible to reach</li>
+</ul>
+</li>
+<li>
+<ul>
+<li>Significant performance improvement in practice</li>
+</ul>
+</li>
+<li></li>
+<li>
+<ol start="5">
+<li><strong>Time Complexity</strong>: O(n^3)</li>
+</ol>
+</li>
+<li>
+<ul>
+<li>O(n log n) for sorting</li>
+</ul>
+</li>
+<li>
+<ul>
+<li>O(n^3) for triple nested approach</li>
+</ul>
+</li>
+<li>
+<ul>
+<li>Best possible for general case</li>
+</ul>
+</li>
+<li></li>
+<li>
+<ol start="6">
+<li><strong>Space Complexity</strong>: O(1)</li>
+</ol>
+</li>
+<li>
+<ul>
+<li>Two pointers approach uses constant space</li>
+</ul>
+</li>
+<li>
+<ul>
+<li>Hash map approaches use O(n^2) space</li>
+</ul>
+</li>
+<li>
+<ul>
+<li>Result space not counted in complexity</li>
+</ul>
+</li>
+<li></li>
+<li>
+<ol start="7">
+<li><strong>k-Sum Generalization</strong>:</li>
+</ol>
+</li>
+<li>
+<ul>
+<li>Can be extended to any k-sum problem</li>
+</ul>
+</li>
+<li>
+<ul>
+<li>Recursive approach works for arbitrary k</li>
+</ul>
+</li>
+<li>
+<ul>
+<li>Base case is 2Sum with two pointers</li>
+</ul>
+</li>
+<li></li>
+<li>
+<ol start="8">
+<li><strong>Interview Strategy</strong>:</li>
+</ol>
+</li>
+<li>
+<ul>
+<li>Start with brute force O(n^4) approach</li>
+</ul>
+</li>
+<li>
+<ul>
+<li>Optimize to O(n^3) with two pointers</li>
+</ul>
+</li>
+<li>
+<ul>
+<li>Add duplicate handling and optimizations</li>
+</ul>
+</li>
+<li>
+<ul>
+<li>Discuss k-sum generalization</li>
+</ul>
+</li>
+<li></li>
+<li>
+<ol start="9">
+<li><strong>Alternative Approaches</strong>:</li>
+</ol>
+</li>
+<li>
+<ul>
+<li>Hash map for faster lookup</li>
+</ul>
+</li>
+<li>
+<ul>
+<li>Recursive k-sum implementation</li>
+</ul>
+</li>
+<li>
+<ul>
+<li>Divide and conquer strategies</li>
+</ul>
+</li>
+<li></li>
+<li>
+<ol start="10">
+<li><strong>Edge Cases</strong>:</li>
+</ol>
+</li>
+<li>
+<pre><pre><code class="hljs undefined">- Empty array or insufficient elements
+</code></pre></pre>
+</li>
+<li>
+<pre><pre><code class="hljs undefined">- All elements the same
+</code></pre></pre>
+</li>
+<li>
+<pre><pre><code class="hljs undefined">- No valid quadruplets exist
+</code></pre></pre>
+</li>
+<li>
+<pre><pre><code class="hljs undefined">- Multiple solutions with same elements
+</code></pre></pre>
+</li>
+<li></li>
+<li>
+<ol start="11">
+<li><strong>Optimization Techniques</strong>:</li>
+</ol>
+</li>
+<li>
+<pre><pre><code class="hljs undefined">- Early termination based on bounds
+</code></pre></pre>
+</li>
+<li>
+<pre><pre><code class="hljs undefined">- Efficient duplicate skipping
+</code></pre></pre>
+</li>
+<li>
+<pre><pre><code class="hljs undefined">- Pruning impossible branches
+</code></pre></pre>
+</li>
+<li>
+<pre><pre><code class="hljs undefined">- Minimizing redundant calculations
+</code></pre></pre>
+</li>
+<li></li>
+<li>
+<ol start="12">
+<li><strong>Common Mistakes</strong>:</li>
+</ol>
+</li>
+<li>
+<pre><pre><code class="hljs undefined">- Not handling duplicates properly
+</code></pre></pre>
+</li>
+<li>
+<pre><pre><code class="hljs undefined">- Index management errors
+</code></pre></pre>
+</li>
+<li>
+<pre><pre><code class="hljs undefined">- Wrong termination conditions
+</code></pre></pre>
+</li>
+<li>
+<pre><pre><code class="hljs undefined">- Inefficient duplicate detection
+</code></pre></pre>
+</li>
+<li></li>
+<li>
+<ol start="13">
+<li><strong>Big Tech Variations</strong>:</li>
+</ol>
+</li>
+<li>
+<pre><pre><code class="hljs undefined">- Google: k-Sum with k as parameter
+</code></pre></pre>
+</li>
+<li>
+<pre><pre><code class="hljs undefined">- Meta: 4Sum with specific constraints
+</code></pre></pre>
+</li>
+<li>
+<pre><pre><code class="hljs undefined">- Amazon: Closest 4Sum to target
+</code></pre></pre>
+</li>
+<li>
+<pre><pre><code class="hljs undefined">- Microsoft: 4Sum with repeated elements
+</code></pre></pre>
+</li>
+<li></li>
+<li>
+<ol start="14">
+<li><strong>Follow-up Questions</strong>:</li>
+</ol>
+</li>
+<li>
+<pre><pre><code class="hljs undefined">- Generalize to k-Sum problem
+</code></pre></pre>
+</li>
+<li>
+<pre><pre><code class="hljs undefined">- Find 4Sum closest to target
+</code></pre></pre>
+</li>
+<li>
+<pre><pre><code class="hljs undefined">- Count number of valid quadruplets
+</code></pre></pre>
+</li>
+<li>
+<pre><pre><code class="hljs undefined">- 4Sum with distinct elements only
+</code></pre></pre>
+</li>
+<li></li>
+<li>
+<ol start="15">
+<li><strong>Real-world Applications</strong>:</li>
+</ol>
+</li>
+<li>
+<pre><pre><code class="hljs undefined">- Portfolio optimization (4 assets)
+</code></pre></pre>
+</li>
+<li>
+<pre><pre><code class="hljs undefined">- Resource allocation problems
+</code></pre></pre>
+</li>
+<li>
+<pre><pre><code class="hljs undefined">- Chemical equation balancing
+</code></pre></pre>
+</li>
+<li>
+<pre><pre><code class="hljs undefined">- Game theory combinations
+</code></pre></pre>
+</li>
+<li>
+<pre><pre><code class="hljs undefined">- Statistical correlation analysis
+</code></pre></pre>
+</li>
+<li></li>
+<li>
+<ol start="16">
+<li><strong>Pattern Recognition</strong>:</li>
+</ol>
+</li>
+<li>
+<pre><pre><code class="hljs undefined">- Multi-pointer technique extension
+</code></pre></pre>
+</li>
+<li>
+<pre><pre><code class="hljs undefined">- Nested loop optimization patterns
+</code></pre></pre>
+</li>
+<li>
+<pre><pre><code class="hljs undefined">- Duplicate elimination strategies
+</code></pre></pre>
+</li>
+<li>
+<pre><pre><code class="hljs undefined">- Search space pruning techniques
+</code></pre></pre>
+</li>
+<li></li>
+<li>
+<ol start="17">
+<li><strong>Implementation Tips</strong>:</li>
+</ol>
+</li>
+<li>
+<pre><pre><code class="hljs undefined">- Careful index management in loops
+</code></pre></pre>
+</li>
+<li>
+<pre><pre><code class="hljs undefined">- Proper duplicate skipping logic
+</code></pre></pre>
+</li>
+<li>
+<pre><pre><code class="hljs undefined">- Efficient early termination checks
+</code></pre></pre>
+</li>
+<li>
+<pre><pre><code class="hljs undefined">- Clean quadruplet construction
+</code></pre></pre>
+</li>
+<li></li>
+<li>
+<ol start="18">
+<li><strong>Performance Considerations</strong>:</li>
+</ol>
+</li>
+<li>
+<pre><pre><code class="hljs undefined">- Early termination crucial for large inputs
+</code></pre></pre>
+</li>
+<li>
+<pre><pre><code class="hljs undefined">- Duplicate handling affects average case
+</code></pre></pre>
+</li>
+<li>
+<pre><pre><code class="hljs undefined">- Memory usage varies by approach
+</code></pre></pre>
+</li>
+<li>
+<pre><pre><code class="hljs undefined">- Cache-friendly access patterns
+</code></pre></pre>
+</li>
+</ul>
+<p>*/
+{% endraw %}</p></div></div></div><div class="space-y-6"><div class="bg-white border border-gray-200 rounded-lg p-6"><h3 class="text-lg font-semibold text-gray-900 mb-4">Your Progress</h3><div class="w-full bg-gray-200 rounded-full h-2 mb-2"><div class="bg-blue-600 h-2 rounded-full" style="width:25%"></div></div><p class="text-sm text-gray-600">25% Complete</p></div></div></div></div></main><footer class="sc-gvqKNf booJNS"><div class="sc-cOpnSz fVoYcP"><div class="sc-kjwdDK kKfrkv"><div class="sc-eVqvcJ inEXDm"><div class="sc-bbbBoY hWhopJ"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-code "><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>Frontend Interview Prep</div><p class="sc-cdmAjP exeTne">Comprehensive interview preparation for frontend engineers targeting Big Tech companies.</p><div class="sc-jytpVa cgXMuV"><a href="https://github.com" aria-label="GitHub"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-github "><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"></path><path d="M9 18c-4.51 2-5-2-7-2"></path></svg></a><a href="https://twitter.com" aria-label="Twitter"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-twitter "><path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"></path></svg></a><a href="https://linkedin.com" aria-label="LinkedIn"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-linkedin "><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect width="4" height="12" x="2" y="9"></rect><circle cx="4" cy="4" r="2"></circle></svg></a><a href="mailto:contact@example.com" aria-label="Email"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-mail "><rect width="20" height="16" x="2" y="4" rx="2"></rect><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path></svg></a></div></div><div class="sc-eVqvcJ inEXDm"><h3>Study Materials</h3><ul><li><a href="/algorithms">Algorithms</a></li><li><a href="/react">React &amp; Frontend</a></li><li><a href="/system-design">System Design</a></li><li><a href="/typescript">TypeScript</a></li><li><a href="/performance">Performance</a></li></ul></div><div class="sc-eVqvcJ inEXDm"><h3>Companies</h3><ul><li><a href="/google">Google</a></li><li><a href="/meta">Meta</a></li><li><a href="/amazon">Amazon</a></li><li><a href="/microsoft">Microsoft</a></li><li><a href="/apple">Apple</a></li></ul></div><div class="sc-eVqvcJ inEXDm"><h3>Resources</h3><ul><li><a href="/interview-tips">Interview Tips</a></li><li><a href="/coding-challenges">Coding Challenges</a></li><li><a href="/mock-interviews">Mock Interviews</a></li><li><a href="/blog">Blog</a></li><li><a href="/faq">FAQ</a></li></ul></div></div><div class="sc-eknHtZ iQqwrD"><p class="sc-pYNGo gObJRG">© 2025 Frontend Interview Prep. All rights reserved.</p><div class="sc-cCVJLD eBqBtc"><a href="/privacy">Privacy Policy</a><a href="/terms">Terms of Service</a><a href="/contact">Contact</a></div></div></div></footer></div><script src="/interview/_next/static/chunks/webpack-be7d7df45533bffc.js" async=""></script><script>(self.__next_f=self.__next_f||[]).push([0]);self.__next_f.push([2,null])</script><script>self.__next_f.push([1,"1:HL[\"/interview/_next/static/media/e4af272ccee01ff0-s.p.woff2\",\"font\",{\"crossOrigin\":\"\",\"type\":\"font/woff2\"}]\n2:HL[\"/interview/_next/static/css/387024c6a2216908.css\",\"style\"]\n"])</script><script>self.__next_f.push([1,"3:I[2846,[],\"\"]\n5:I[2972,[\"918\",\"static/chunks/918-3273b83890f10546.js\",\"972\",\"static/chunks/972-011bba60ed155615.js\",\"930\",\"static/chunks/930-3262a6c9c5acace4.js\",\"289\",\"static/chunks/app/learn/%5Btopic%5D/page-4ab144227f7a7b3e.js\"],\"\"]\n6:I[5907,[\"918\",\"static/chunks/918-3273b83890f10546.js\",\"972\",\"static/chunks/972-011bba60ed155615.js\",\"930\",\"static/chunks/930-3262a6c9c5acace4.js\",\"289\",\"static/chunks/app/learn/%5Btopic%5D/page-4ab144227f7a7b3e.js\"],\"default\"]\n8:I[4707,[],\"\"]\na:I[6423,[],\"\"]\nb:I[2,[\"918\",\"static/chunks/918-3273b83890f10546.js\",\"710\",\"static/chunks/710-dfaa11b4dff08f8e.js\",\"972\",\"static/chunks/972-011bba60ed155615.js\",\"233\",\"static/chunks/233-3e0c1d820a17eca9.js\",\"185\",\"static/chunks/app/layout-333f4adcd11f8f39.js\"],\"default\",1]\nd:I[1060,[],\"\"]\n7:T3ae5,"])</script><script>self.__next_f.push([1,"\n# Given an array nums of n integers, return an array of all the unique quadruplets \n\n**LeetCode Problem # * 18. 4Sum**\n\n## Problem Description\n\nLeetCode problem solution with multiple approaches and explanations.\n\n## Solutions\n\n{% raw %}\n/**\n * 18. 4Sum\n * \n * Given an array nums of n integers, return an array of all the unique quadruplets \n * [nums[a], nums[b], nums[c], nums[d]] such that:\n * - 0 \u003c= a, b, c, d \u003c n\n * - a, b, c, and d are distinct.\n * - nums[a] + nums[b] + nums[c] + nums[d] == target\n * \n * You may return the answer in any order.\n * \n * Example 1:\n * Input: nums = [1,0,-1,0,-2,2], target = 0\n * Output: [[-2,-1,1,2],[-2,0,0,2],[-1,0,0,1]]\n * \n * Example 2:\n * Input: nums = [2,2,2,2,2], target = 8\n * Output: [[2,2,2,2]]\n * \n * Constraints:\n * - 1 \u003c= nums.length \u003c= 200\n * - -10^9 \u003c= nums[i] \u003c= 10^9\n * - -10^9 \u003c= target \u003c= 10^9\n */\n\n// Solution 1: Two Pointers (Optimal)\n// Time: O(n^3), Space: O(1)\nexport function fourSum1(nums: number[], target: number): number[][] {\n    nums.sort((a, b) =\u003e a - b);\n    const result: number[][] = [];\n    const n = nums.length;\n    \n    for (let i = 0; i \u003c n - 3; i++) {\n        // Skip duplicates for first element\n        if (i \u003e 0 \u0026\u0026 nums[i] === nums[i - 1]) continue;\n        \n        // Early termination optimizations\n        if (nums[i] + nums[i + 1] + nums[i + 2] + nums[i + 3] \u003e target) break;\n        if (nums[i] + nums[n - 3] + nums[n - 2] + nums[n - 1] \u003c target) continue;\n        \n        for (let j = i + 1; j \u003c n - 2; j++) {\n            // Skip duplicates for second element\n            if (j \u003e i + 1 \u0026\u0026 nums[j] === nums[j - 1]) continue;\n            \n            // Early termination for inner loop\n            if (nums[i] + nums[j] + nums[j + 1] + nums[j + 2] \u003e target) break;\n            if (nums[i] + nums[j] + nums[n - 2] + nums[n - 1] \u003c target) continue;\n            \n            let left = j + 1;\n            let right = n - 1;\n            \n            while (left \u003c right) {\n                const sum = nums[i] + nums[j] + nums[left] + nums[right];\n                \n                if (sum === target) {\n                    result.push([nums[i], nums[j], nums[left], nums[right]]);\n                    \n                    // Skip duplicates for third element\n                    while (left \u003c right \u0026\u0026 nums[left] === nums[left + 1]) left++;\n                    // Skip duplicates for fourth element\n                    while (left \u003c right \u0026\u0026 nums[right] === nums[right - 1]) right--;\n                    \n                    left++;\n                    right--;\n                } else if (sum \u003c target) {\n                    left++;\n                } else {\n                    right--;\n                }\n            }\n        }\n    }\n    \n    return result;\n}\n\n// Solution 2: Hash Map Approach\n// Time: O(n^3), Space: O(n^2)\nexport function fourSum2(nums: number[], target: number): number[][] {\n    nums.sort((a, b) =\u003e a - b);\n    const result: number[][] = [];\n    const n = nums.length;\n    \n    // Create map of pair sums to indices\n    const pairSums = new Map\u003cnumber, [number, number][]\u003e();\n    \n    for (let i = 0; i \u003c n - 1; i++) {\n        for (let j = i + 1; j \u003c n; j++) {\n            const sum = nums[i] + nums[j];\n            if (!pairSums.has(sum)) {\n                pairSums.set(sum, []);\n            }\n            pairSums.get(sum)!.push([i, j]);\n        }\n    }\n    \n    const seen = new Set\u003cstring\u003e();\n    \n    for (let i = 0; i \u003c n - 3; i++) {\n        for (let j = i + 1; j \u003c n - 2; j++) {\n            const twoSum = nums[i] + nums[j];\n            const needed = target - twoSum;\n            \n            if (pairSums.has(needed)) {\n                for (const [k, l] of pairSums.get(needed)!) {\n                    if (k \u003e j \u0026\u0026 l \u003e k) { // Ensure no index overlap\n                        const quad = [nums[i], nums[j], nums[k], nums[l]];\n                        const key = quad.join(',');\n                        \n                        if (!seen.has(key)) {\n                            seen.add(key);\n                            result.push(quad);\n                        }\n                    }\n                }\n            }\n        }\n    }\n    \n    return result;\n}\n\n// Solution 3: Recursive k-Sum Generalization\n// Time: O(n^3), Space: O(n)\nexport function fourSum3(nums: number[], target: number): number[][] {\n    nums.sort((a, b) =\u003e a - b);\n    \n    function kSum(nums: number[], target: number, k: number, start: number): number[][] {\n        const result: number[][] = [];\n        \n        if (start \u003e= nums.length) return result;\n        \n        // Base case: 2Sum\n        if (k === 2) {\n            let left = start;\n            let right = nums.length - 1;\n            \n            while (left \u003c right) {\n                const sum = nums[left] + nums[right];\n                \n                if (sum === target) {\n                    result.push([nums[left], nums[right]]);\n                    \n                    while (left \u003c right \u0026\u0026 nums[left] === nums[left + 1]) left++;\n                    while (left \u003c right \u0026\u0026 nums[right] === nums[right - 1]) right--;\n                    \n                    left++;\n                    right--;\n                } else if (sum \u003c target) {\n                    left++;\n                } else {\n                    right--;\n                }\n            }\n            \n            return result;\n        }\n        \n        // Recursive case: k \u003e 2\n        for (let i = start; i \u003c= nums.length - k; i++) {\n            if (i \u003e start \u0026\u0026 nums[i] === nums[i - 1]) continue;\n            \n            const subResults = kSum(nums, target - nums[i], k - 1, i + 1);\n            \n            for (const subResult of subResults) {\n                result.push([nums[i], ...subResult]);\n            }\n        }\n        \n        return result;\n    }\n    \n    return kSum(nums, target, 4, 0);\n}\n\n// Solution 4: Brute Force with Pruning\n// Time: O(n^4), Space: O(1)\nexport function fourSum4(nums: number[], target: number): number[][] {\n    nums.sort((a, b) =\u003e a - b);\n    const result: number[][] = [];\n    const n = nums.length;\n    \n    for (let i = 0; i \u003c n - 3; i++) {\n        if (i \u003e 0 \u0026\u0026 nums[i] === nums[i - 1]) continue;\n        \n        for (let j = i + 1; j \u003c n - 2; j++) {\n            if (j \u003e i + 1 \u0026\u0026 nums[j] === nums[j - 1]) continue;\n            \n            for (let k = j + 1; k \u003c n - 1; k++) {\n                if (k \u003e j + 1 \u0026\u0026 nums[k] === nums[k - 1]) continue;\n                \n                for (let l = k + 1; l \u003c n; l++) {\n                    if (l \u003e k + 1 \u0026\u0026 nums[l] === nums[l - 1]) continue;\n                    \n                    if (nums[i] + nums[j] + nums[k] + nums[l] === target) {\n                        result.push([nums[i], nums[j], nums[k], nums[l]]);\n                    }\n                }\n            }\n        }\n    }\n    \n    return result;\n}\n\n// Solution 5: Hash Set for Unique Quadruplets\n// Time: O(n^3), Space: O(n)\nexport function fourSum5(nums: number[], target: number): number[][] {\n    nums.sort((a, b) =\u003e a - b);\n    const result: number[][] = [];\n    const n = nums.length;\n    const seen = new Set\u003cstring\u003e();\n    \n    for (let i = 0; i \u003c n - 3; i++) {\n        for (let j = i + 1; j \u003c n - 2; j++) {\n            const complement = new Set\u003cnumber\u003e();\n            \n            for (let k = j + 1; k \u003c n; k++) {\n                const needed = target - nums[i] - nums[j] - nums[k];\n                \n                if (complement.has(needed)) {\n                    const quad = [nums[i], nums[j], needed, nums[k]].sort((a, b) =\u003e a - b);\n                    const key = quad.join(',');\n                    \n                    if (!seen.has(key)) {\n                        seen.add(key);\n                        result.push(quad);\n                    }\n                }\n                \n                complement.add(nums[k]);\n            }\n        }\n    }\n    \n    return result;\n}\n\n// Solution 6: Divide and Conquer\n// Time: O(n^3), Space: O(n)\nexport function fourSum6(nums: number[], target: number): number[][] {\n    nums.sort((a, b) =\u003e a - b);\n    \n    function findQuadruplets(start: number, end: number, currentQuad: number[], targetSum: number, k: number): number[][] {\n        const result: number[][] = [];\n        \n        if (k === 0) {\n            if (targetSum === 0) {\n                result.push([...currentQuad]);\n            }\n            return result;\n        }\n        \n        if (end - start + 1 \u003c k) return result;\n        \n        for (let i = start; i \u003c= end - k + 1; i++) {\n            if (i \u003e start \u0026\u0026 nums[i] === nums[i - 1]) continue;\n            \n            currentQuad.push(nums[i]);\n            const subResults = findQuadruplets(i + 1, end, currentQuad, targetSum - nums[i], k - 1);\n            result.push(...subResults);\n            currentQuad.pop();\n        }\n        \n        return result;\n    }\n    \n    return findQuadruplets(0, nums.length - 1, [], target, 4);\n}\n\n// Test cases\nexport function testFourSum() {\n    console.log(\"Testing 4Sum:\");\n    \n    const testCases = [\n        {\n            nums: [1, 0, -1, 0, -2, 2],\n            target: 0,\n            expected: [[-2, -1, 1, 2], [-2, 0, 0, 2], [-1, 0, 0, 1]]\n        },\n        {\n            nums: [2, 2, 2, 2, 2],\n            target: 8,\n            expected: [[2, 2, 2, 2]]\n        },\n        {\n            nums: [1, -2, -5, -4, -3, 3, 3, 5],\n            target: -11,\n            expected: [[-5, -4, -3, 1]]\n        },\n        {\n            nums: [],\n            target: 0,\n            expected: []\n        },\n        {\n            nums: [1, 2, 3],\n            target: 6,\n            expected: []\n        },\n        {\n            nums: [-3, -2, -1, 0, 0, 1, 2, 3],\n            target: 0,\n            expected: [[-3, -2, 2, 3], [-3, -1, 1, 3], [-3, 0, 0, 3], [-3, 0, 1, 2], [-2, -1, 0, 3], [-2, -1, 1, 2], [-2, 0, 0, 2], [-1, 0, 0, 1]]\n        }\n    ];\n    \n    const solutions = [\n        { name: \"Two Pointers (Optimal)\", fn: fourSum1 },\n        { name: \"Hash Map Approach\", fn: fourSum2 },\n        { name: \"Recursive k-Sum\", fn: fourSum3 },\n        { name: \"Brute Force\", fn: fourSum4 },\n        { name: \"Hash Set Unique\", fn: fourSum5 },\n        { name: \"Divide and Conquer\", fn: fourSum6 }\n    ];\n    \n    function normalizeResult(result: number[][]): number[][] {\n        return result.map(quad =\u003e [...quad].sort((a, b) =\u003e a - b)).sort();\n    }\n    \n    function arraysEqual(a: number[][], b: number[][]): boolean {\n        const normalA = normalizeResult(a);\n        const normalB = normalizeResult(b);\n        \n        if (normalA.length !== normalB.length) return false;\n        \n        for (let i = 0; i \u003c normalA.length; i++) {\n            if (normalA[i].length !== normalB[i].length) return false;\n            for (let j = 0; j \u003c normalA[i].length; j++) {\n                if (normalA[i][j] !== normalB[i][j]) return false;\n            }\n        }\n        \n        return true;\n    }\n    \n    solutions.forEach(solution =\u003e {\n        console.log(`\\n${solution.name}:`);\n        testCases.forEach((test, i) =\u003e {\n            const result = solution.fn([...test.nums], test.target);\n            const passed = arraysEqual(result, test.expected);\n            console.log(`  Test ${i + 1}: ${passed ? 'PASS' : 'FAIL'}`);\n            if (!passed) {\n                console.log(`    Input: nums=${JSON.stringify(test.nums)}, target=${test.target}`);\n                console.log(`    Expected: ${JSON.stringify(normalizeResult(test.expected))}`);\n                console.log(`    Got: ${JSON.stringify(normalizeResult(result))}`);\n            }\n        });\n    });\n}\n\n/**\n * Key Insights:\n * \n * 1. **Problem Complexity**:\n *    - Extension of 3Sum to four elements\n *    - Need to find all unique quadruplets summing to target\n *    - Avoid duplicate quadruplets in result\n * \n * 2. **Two Pointers Strategy**:\n *    - Fix first two elements with nested loops\n *    - Use two pointers for remaining two elements\n *    - Reduces complexity from O(n^4) to O(n^3)\n * \n * 3. **Duplicate Handling**:\n *    - Skip duplicate values at each level\n *    - Essential for avoiding duplicate quadruplets\n *    - Must be careful with indexing when skipping\n * \n * 4. **Early Termination Optimizations**:\n *    - Check minimum/maximum possible sums\n *    - Break early when target impossible to reach\n *    - Significant performance improvement in practice\n * \n * 5. **Time Complexity**: O(n^3)\n *    - O(n log n) for sorting\n *    - O(n^3) for triple nested approach\n *    - Best possible for general case\n * \n * 6. **Space Complexity**: O(1)\n *    - Two pointers approach uses constant space\n *    - Hash map approaches use O(n^2) space\n *    - Result space not counted in complexity\n * \n * 7. **k-Sum Generalization**:\n *    - Can be extended to any k-sum problem\n *    - Recursive approach works for arbitrary k\n *    - Base case is 2Sum with two pointers\n * \n * 8. **Interview Strategy**:\n *    - Start with brute force O(n^4) approach\n *    - Optimize to O(n^3) with two pointers\n *    - Add duplicate handling and optimizations\n *    - Discuss k-sum generalization\n * \n * 9. **Alternative Approaches**:\n *    - Hash map for faster lookup\n *    - Recursive k-sum implementation\n *    - Divide and conquer strategies\n * \n * 10. **Edge Cases**:\n *     - Empty array or insufficient elements\n *     - All elements the same\n *     - No valid quadruplets exist\n *     - Multiple solutions with same elements\n * \n * 11. **Optimization Techniques**:\n *     - Early termination based on bounds\n *     - Efficient duplicate skipping\n *     - Pruning impossible branches\n *     - Minimizing redundant calculations\n * \n * 12. **Common Mistakes**:\n *     - Not handling duplicates properly\n *     - Index management errors\n *     - Wrong termination conditions\n *     - Inefficient duplicate detection\n * \n * 13. **Big Tech Variations**:\n *     - Google: k-Sum with k as parameter\n *     - Meta: 4Sum with specific constraints\n *     - Amazon: Closest 4Sum to target\n *     - Microsoft: 4Sum with repeated elements\n * \n * 14. **Follow-up Questions**:\n *     - Generalize to k-Sum problem\n *     - Find 4Sum closest to target\n *     - Count number of valid quadruplets\n *     - 4Sum with distinct elements only\n * \n * 15. **Real-world Applications**:\n *     - Portfolio optimization (4 assets)\n *     - Resource allocation problems\n *     - Chemical equation balancing\n *     - Game theory combinations\n *     - Statistical correlation analysis\n * \n * 16. **Pattern Recognition**:\n *     - Multi-pointer technique extension\n *     - Nested loop optimization patterns\n *     - Duplicate elimination strategies\n *     - Search space pruning techniques\n * \n * 17. **Implementation Tips**:\n *     - Careful index management in loops\n *     - Proper duplicate skipping logic\n *     - Efficient early termination checks\n *     - Clean quadruplet construction\n * \n * 18. **Performance Considerations**:\n *     - Early termination crucial for large inputs\n *     - Duplicate handling affects average case\n *     - Memory usage varies by approach\n *     - Cache-friendly access patterns\n */\n{% endraw %}\n"])</script><script>self.__next_f.push([1,"9:[\"topic\",\"array-problems-25-four-sum\",\"d\"]\ne:[]\n"])</script><script>self.__next_f.push([1,"0:[\"$\",\"$L3\",null,{\"buildId\":\"2NmUhWiPdVVBzVtDZlggk\",\"assetPrefix\":\"/interview\",\"urlParts\":[\"\",\"learn\",\"array-problems-25-four-sum\"],\"initialTree\":[\"\",{\"children\":[\"learn\",{\"children\":[[\"topic\",\"array-problems-25-four-sum\",\"d\"],{\"children\":[\"__PAGE__?{\\\"topic\\\":\\\"array-problems-25-four-sum\\\"}\",{}]}]}]},\"$undefined\",\"$undefined\",true],\"initialSeedData\":[\"\",{\"children\":[\"learn\",{\"children\":[[\"topic\",\"array-problems-25-four-sum\",\"d\"],{\"children\":[\"__PAGE__\",{},[[\"$L4\",[\"$\",\"div\",null,{\"className\":\"max-w-6xl mx-auto px-8 py-24\",\"children\":[[\"$\",\"div\",null,{\"className\":\"flex items-center gap-4 mb-8\",\"children\":[\"$\",\"$L5\",null,{\"href\":\"/learn\",\"children\":[\"$\",\"button\",null,{\"className\":\"flex items-center gap-2 bg-gray-100 border border-gray-300 text-gray-700 px-4 py-3 rounded-md font-medium hover:bg-gray-200 transition-colors\",\"children\":[[\"$\",\"svg\",null,{\"xmlns\":\"http://www.w3.org/2000/svg\",\"width\":16,\"height\":16,\"viewBox\":\"0 0 24 24\",\"fill\":\"none\",\"stroke\":\"currentColor\",\"strokeWidth\":2,\"strokeLinecap\":\"round\",\"strokeLinejoin\":\"round\",\"className\":\"lucide lucide-arrow-left \",\"children\":[[\"$\",\"path\",\"1l729n\",{\"d\":\"m12 19-7-7 7-7\"}],[\"$\",\"path\",\"x3x0zl\",{\"d\":\"M19 12H5\"}],\"$undefined\"]}],\"Back to Learn\"]}]}]}],[\"$\",\"div\",null,{\"className\":\"bg-white border border-gray-200 rounded-lg p-8 mb-8\",\"children\":[[\"$\",\"div\",null,{\"className\":\"flex items-center justify-between mb-4\",\"children\":[[\"$\",\"h1\",null,{\"className\":\"text-3xl font-bold text-gray-900\",\"children\":\"Given an array nums of n integers, return an array of all the unique quadruplets \"}],[\"$\",\"div\",null,{\"className\":\"flex gap-4\",\"children\":[[\"$\",\"button\",null,{\"className\":\"flex items-center gap-2 bg-transparent text-gray-700 border border-gray-300 px-6 py-3 rounded-md font-semibold hover:bg-gray-50 transition-colors\",\"children\":[[\"$\",\"svg\",null,{\"xmlns\":\"http://www.w3.org/2000/svg\",\"width\":16,\"height\":16,\"viewBox\":\"0 0 24 24\",\"fill\":\"none\",\"stroke\":\"currentColor\",\"strokeWidth\":2,\"strokeLinecap\":\"round\",\"strokeLinejoin\":\"round\",\"className\":\"lucide lucide-star \",\"children\":[[\"$\",\"polygon\",\"8f66p6\",{\"points\":\"12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2\"}],\"$undefined\"]}],\"Bookmark\"]}],[\"$\",\"button\",null,{\"className\":\"flex items-center gap-2 bg-transparent text-gray-700 border border-gray-300 px-6 py-3 rounded-md font-semibold hover:bg-gray-50 transition-colors\",\"children\":[[\"$\",\"svg\",null,{\"xmlns\":\"http://www.w3.org/2000/svg\",\"width\":16,\"height\":16,\"viewBox\":\"0 0 24 24\",\"fill\":\"none\",\"stroke\":\"currentColor\",\"strokeWidth\":2,\"strokeLinecap\":\"round\",\"strokeLinejoin\":\"round\",\"className\":\"lucide lucide-share2 \",\"children\":[[\"$\",\"circle\",\"gq8acd\",{\"cx\":\"18\",\"cy\":\"5\",\"r\":\"3\"}],[\"$\",\"circle\",\"w7nqdw\",{\"cx\":\"6\",\"cy\":\"12\",\"r\":\"3\"}],[\"$\",\"circle\",\"1xt0gg\",{\"cx\":\"18\",\"cy\":\"19\",\"r\":\"3\"}],[\"$\",\"line\",\"47mynk\",{\"x1\":\"8.59\",\"x2\":\"15.42\",\"y1\":\"13.51\",\"y2\":\"17.49\"}],[\"$\",\"line\",\"1n3mei\",{\"x1\":\"15.41\",\"x2\":\"8.59\",\"y1\":\"6.51\",\"y2\":\"10.49\"}],\"$undefined\"]}],\"Share\"]}]]}]]}],[\"$\",\"div\",null,{\"className\":\"flex gap-8 mb-4\",\"children\":[[\"$\",\"div\",null,{\"className\":\"flex items-center gap-2 text-sm text-gray-600\",\"children\":[[\"$\",\"svg\",null,{\"xmlns\":\"http://www.w3.org/2000/svg\",\"width\":16,\"height\":16,\"viewBox\":\"0 0 24 24\",\"fill\":\"none\",\"stroke\":\"currentColor\",\"strokeWidth\":2,\"strokeLinecap\":\"round\",\"strokeLinejoin\":\"round\",\"className\":\"lucide lucide-clock \",\"children\":[[\"$\",\"circle\",\"1mglay\",{\"cx\":\"12\",\"cy\":\"12\",\"r\":\"10\"}],[\"$\",\"polyline\",\"68esgv\",{\"points\":\"12 6 12 12 16 14\"}],\"$undefined\"]}],\"2-3 hours\"]}],[\"$\",\"span\",null,{\"className\":\"px-3 py-1 rounded-full text-xs font-semibold text-white bg-red-500\",\"children\":\"Hard\"}],[\"$\",\"span\",null,{\"className\":\"px-3 py-1 rounded-full text-xs font-semibold bg-blue-100 text-blue-700\",\"children\":\"Array\"}]]}],[\"$\",\"div\",null,{\"className\":\"flex flex-wrap gap-2 mb-4\",\"children\":[[\"$\",\"span\",\"0\",{\"className\":\"bg-gray-100 text-gray-600 px-3 py-1 rounded-md text-xs font-medium\",\"children\":\"Array\"}],[\"$\",\"span\",\"1\",{\"className\":\"bg-gray-100 text-gray-600 px-3 py-1 rounded-md text-xs font-medium\",\"children\":\"Two Pointers\"}],[\"$\",\"span\",\"2\",{\"className\":\"bg-gray-100 text-gray-600 px-3 py-1 rounded-md text-xs font-medium\",\"children\":\"Hash Table\"}]]}],[\"$\",\"p\",null,{\"className\":\"text-lg text-gray-700 leading-relaxed\",\"children\":\"**LeetCode Problem # * 18. 4Sum**...\"}]]}],[\"$\",\"div\",null,{\"className\":\"grid grid-cols-1 lg:grid-cols-3 gap-8\",\"children\":[[\"$\",\"div\",null,{\"className\":\"lg:col-span-2\",\"children\":[\"$\",\"div\",null,{\"className\":\"bg-white border border-gray-200 rounded-lg p-8\",\"children\":[\"$\",\"$L6\",null,{\"content\":\"$7\"}]}]}],[\"$\",\"div\",null,{\"className\":\"space-y-6\",\"children\":[[\"$\",\"div\",null,{\"className\":\"bg-white border border-gray-200 rounded-lg p-6\",\"children\":[[\"$\",\"h3\",null,{\"className\":\"text-lg font-semibold text-gray-900 mb-4\",\"children\":\"Your Progress\"}],[\"$\",\"div\",null,{\"className\":\"w-full bg-gray-200 rounded-full h-2 mb-2\",\"children\":[\"$\",\"div\",null,{\"className\":\"bg-blue-600 h-2 rounded-full\",\"style\":{\"width\":\"25%\"}}]}],[\"$\",\"p\",null,{\"className\":\"text-sm text-gray-600\",\"children\":\"25% Complete\"}]]}],false]}]]}]]}],null],null],null]},[null,[\"$\",\"$L8\",null,{\"parallelRouterKey\":\"children\",\"segmentPath\":[\"children\",\"learn\",\"children\",\"$9\",\"children\"],\"error\":\"$undefined\",\"errorStyles\":\"$undefined\",\"errorScripts\":\"$undefined\",\"template\":[\"$\",\"$La\",null,{}],\"templateStyles\":\"$undefined\",\"templateScripts\":\"$undefined\",\"notFound\":\"$undefined\",\"notFoundStyles\":\"$undefined\"}]],null]},[null,[\"$\",\"$L8\",null,{\"parallelRouterKey\":\"children\",\"segmentPath\":[\"children\",\"learn\",\"children\"],\"error\":\"$undefined\",\"errorStyles\":\"$undefined\",\"errorScripts\":\"$undefined\",\"template\":[\"$\",\"$La\",null,{}],\"templateStyles\":\"$undefined\",\"templateScripts\":\"$undefined\",\"notFound\":\"$undefined\",\"notFoundStyles\":\"$undefined\"}]],null]},[[[[\"$\",\"link\",\"0\",{\"rel\":\"stylesheet\",\"href\":\"/interview/_next/static/css/387024c6a2216908.css\",\"precedence\":\"next\",\"crossOrigin\":\"$undefined\"}]],[\"$\",\"$Lb\",null,{\"children\":[\"$\",\"$L8\",null,{\"parallelRouterKey\":\"children\",\"segmentPath\":[\"children\"],\"error\":\"$undefined\",\"errorStyles\":\"$undefined\",\"errorScripts\":\"$undefined\",\"template\":[\"$\",\"$La\",null,{}],\"templateStyles\":\"$undefined\",\"templateScripts\":\"$undefined\",\"notFound\":[[\"$\",\"title\",null,{\"children\":\"404: This page could not be found.\"}],[\"$\",\"div\",null,{\"style\":{\"fontFamily\":\"system-ui,\\\"Segoe UI\\\",Roboto,Helvetica,Arial,sans-serif,\\\"Apple Color Emoji\\\",\\\"Segoe UI Emoji\\\"\",\"height\":\"100vh\",\"textAlign\":\"center\",\"display\":\"flex\",\"flexDirection\":\"column\",\"alignItems\":\"center\",\"justifyContent\":\"center\"},\"children\":[\"$\",\"div\",null,{\"children\":[[\"$\",\"style\",null,{\"dangerouslySetInnerHTML\":{\"__html\":\"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}\"}}],[\"$\",\"h1\",null,{\"className\":\"next-error-h1\",\"style\":{\"display\":\"inline-block\",\"margin\":\"0 20px 0 0\",\"padding\":\"0 23px 0 0\",\"fontSize\":24,\"fontWeight\":500,\"verticalAlign\":\"top\",\"lineHeight\":\"49px\"},\"children\":\"404\"}],[\"$\",\"div\",null,{\"style\":{\"display\":\"inline-block\"},\"children\":[\"$\",\"h2\",null,{\"style\":{\"fontSize\":14,\"fontWeight\":400,\"lineHeight\":\"49px\",\"margin\":0},\"children\":\"This page could not be found.\"}]}]]}]}]],\"notFoundStyles\":[]}],\"params\":{}}]],null],null],\"couldBeIntercepted\":false,\"initialHead\":[null,\"$Lc\"],\"globalErrorComponent\":\"$d\",\"missingSlots\":\"$We\"}]\n"])</script><script>self.__next_f.push([1,"c:[[\"$\",\"meta\",\"0\",{\"name\":\"viewport\",\"content\":\"width=device-width, initial-scale=1\"}],[\"$\",\"meta\",\"1\",{\"charSet\":\"utf-8\"}],[\"$\",\"meta\",\"2\",{\"name\":\"next-size-adjust\"}]]\n4:null\n"])</script></body></html>

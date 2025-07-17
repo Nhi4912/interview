@@ -1,0 +1,473 @@
+2:I[2972,["918","static/chunks/918-3273b83890f10546.js","972","static/chunks/972-011bba60ed155615.js","930","static/chunks/930-3262a6c9c5acace4.js","289","static/chunks/app/learn/%5Btopic%5D/page-4ab144227f7a7b3e.js"],""]
+3:I[5907,["918","static/chunks/918-3273b83890f10546.js","972","static/chunks/972-011bba60ed155615.js","930","static/chunks/930-3262a6c9c5acace4.js","289","static/chunks/app/learn/%5Btopic%5D/page-4ab144227f7a7b3e.js"],"default"]
+5:I[4707,[],""]
+7:I[6423,[],""]
+8:I[2,["918","static/chunks/918-3273b83890f10546.js","710","static/chunks/710-dfaa11b4dff08f8e.js","972","static/chunks/972-011bba60ed155615.js","233","static/chunks/233-3e0c1d820a17eca9.js","185","static/chunks/app/layout-333f4adcd11f8f39.js"],"default",1]
+4:T28c9,
+# Reverse Integer
+
+**LeetCode Problem # * 7. Reverse Integer**
+
+## Problem Description
+
+ * Given a signed 32-bit integer x, return x with its digits reversed.  * If reversing x causes the value to go outside the signed 32-bit integer range [-2³¹, 2³¹ - 1],  * then return 0.  *  * Input: x = 123 
+
+## Solutions
+
+{% raw %}
+/**
+ * 7. Reverse Integer
+ *
+ * Problem:
+ * Given a signed 32-bit integer x, return x with its digits reversed.
+ * If reversing x causes the value to go outside the signed 32-bit integer range [-2³¹, 2³¹ - 1],
+ * then return 0.
+ *
+ * Example:
+ * Input: x = 123
+ * Output: 321
+ *
+ * Input: x = -123
+ * Output: -321
+ *
+ * Input: x = 120
+ * Output: 21
+ *
+ * LeetCode: https://leetcode.com/problems/reverse-integer/
+ */
+
+/**
+ * Solution 1: Mathematical Approach (Optimal)
+ *
+ * Approach:
+ * - Extract digits using modulo and division
+ * - Build reversed number digit by digit
+ * - Check for overflow at each step
+ *
+ * Time Complexity: O(log n)
+ * Space Complexity: O(1)
+ */
+function reverse(x: number): number {
+  let result = 0;
+  const isNegative = x < 0;
+  let num = Math.abs(x);
+
+  while (num > 0) {
+    const digit = num % 10;
+
+    // Check for overflow before multiplying
+    if (result > Math.floor((Math.pow(2, 31) - 1) / 10)) {
+      return 0;
+    }
+
+    result = result * 10 + digit;
+    num = Math.floor(num / 10);
+  }
+
+  return isNegative ? -result : result;
+}
+
+/**
+ * Solution 2: String Conversion
+ *
+ * Approach:
+ * - Convert to string, reverse, convert back
+ * - Handle negative sign separately
+ *
+ * Time Complexity: O(log n)
+ * Space Complexity: O(log n)
+ */
+function reverseString(x: number): number {
+  const isNegative = x < 0;
+  const str = Math.abs(x).toString();
+  const reversedStr = str.split("").reverse().join("");
+
+  const result = parseInt(reversedStr);
+
+  // Check for overflow
+  if (result > Math.pow(2, 31) - 1) {
+    return 0;
+  }
+
+  return isNegative ? -result : result;
+}
+
+/**
+ * Solution 3: Using Array Methods
+ *
+ * Approach:
+ * - Convert to array, reverse, join
+ * - More functional approach
+ *
+ * Time Complexity: O(log n)
+ * Space Complexity: O(log n)
+ */
+function reverseArray(x: number): number {
+  const isNegative = x < 0;
+  const digits = Math.abs(x).toString().split("");
+  const reversed = digits.reverse().join("");
+
+  const result = parseInt(reversed);
+
+  if (result > Math.pow(2, 31) - 1) {
+    return 0;
+  }
+
+  return isNegative ? -result : result;
+}
+
+/**
+ * Solution 4: Bit Manipulation (Advanced)
+ *
+ * Approach:
+ * - Use bit operations to check overflow
+ * - More efficient overflow detection
+ *
+ * Time Complexity: O(log n)
+ * Space Complexity: O(1)
+ */
+function reverseBitwise(x: number): number {
+  let result = 0;
+  const isNegative = x < 0;
+  let num = Math.abs(x);
+
+  while (num > 0) {
+    const digit = num % 10;
+
+    // Check overflow using bit manipulation
+    if (result > 0x7fffffff / 10) {
+      return 0;
+    }
+
+    result = result * 10 + digit;
+    num = Math.floor(num / 10);
+  }
+
+  return isNegative ? -result : result;
+}
+
+/**
+ * Solution 5: Using BigInt (Modern JavaScript)
+ *
+ * Approach:
+ * - Use BigInt to handle large numbers
+ * - Convert back to number for result
+ *
+ * Time Complexity: O(log n)
+ * Space Complexity: O(log n)
+ */
+function reverseBigInt(x: number): number {
+  const isNegative = x < 0;
+  const str = Math.abs(x).toString();
+  const reversedStr = str.split("").reverse().join("");
+
+  const bigResult = BigInt(reversedStr);
+
+  // Check if result fits in 32-bit signed integer
+  if (bigResult > BigInt(0x7fffffff)) {
+    return 0;
+  }
+
+  const result = Number(bigResult);
+  return isNegative ? -result : result;
+}
+
+/**
+ * Solution 6: Recursive Approach
+ *
+ * Approach:
+ * - Use recursion to reverse digits
+ * - Pass accumulated result as parameter
+ *
+ * Time Complexity: O(log n)
+ * Space Complexity: O(log n) - recursion stack
+ */
+function reverseRecursive(x: number): number {
+  const isNegative = x < 0;
+  const num = Math.abs(x);
+
+  function reverseHelper(n: number, acc: number): number {
+    if (n === 0) return acc;
+
+    const digit = n % 10;
+
+    // Check for overflow
+    if (acc > Math.floor((Math.pow(2, 31) - 1) / 10)) {
+      return 0;
+    }
+
+    return reverseHelper(Math.floor(n / 10), acc * 10 + digit);
+  }
+
+  const result = reverseHelper(num, 0);
+  return isNegative ? -result : result;
+}
+
+/**
+ * Solution 7: Using Math.log10 (Mathematical)
+ *
+ * Approach:
+ * - Calculate number of digits using log
+ * - Extract digits in reverse order
+ *
+ * Time Complexity: O(log n)
+ * Space Complexity: O(1)
+ */
+function reverseLog(x: number): number {
+  if (x === 0) return 0;
+
+  const isNegative = x < 0;
+  let num = Math.abs(x);
+  const numDigits = Math.floor(Math.log10(num)) + 1;
+  let result = 0;
+
+  for (let i = 0; i < numDigits; i++) {
+    const digit = num % 10;
+
+    if (result > Math.floor((Math.pow(2, 31) - 1) / 10)) {
+      return 0;
+    }
+
+    result = result * 10 + digit;
+    num = Math.floor(num / 10);
+  }
+
+  return isNegative ? -result : result;
+}
+
+/**
+ * Solution 8: Using Generator (Educational)
+ *
+ * Approach:
+ * - Use generator to yield digits
+ * - Build result from yielded digits
+ *
+ * Time Complexity: O(log n)
+ * Space Complexity: O(log n)
+ */
+function* digitGenerator(n: number): Generator<number> {
+  while (n > 0) {
+    yield n % 10;
+    n = Math.floor(n / 10);
+  }
+}
+
+function reverseGenerator(x: number): number {
+  if (x === 0) return 0;
+
+  const isNegative = x < 0;
+  const num = Math.abs(x);
+  let result = 0;
+
+  for (const digit of digitGenerator(num)) {
+    if (result > Math.floor((Math.pow(2, 31) - 1) / 10)) {
+      return 0;
+    }
+    result = result * 10 + digit;
+  }
+
+  return isNegative ? -result : result;
+}
+
+// Test cases
+function testReverseInteger() {
+  console.log("=== Testing Reverse Integer ===\n");
+
+  const testCases = [
+    {
+      input: 123,
+      expected: 321,
+      description: "Positive number",
+    },
+    {
+      input: -123,
+      expected: -321,
+      description: "Negative number",
+    },
+    {
+      input: 120,
+      expected: 21,
+      description: "Ending with zero",
+    },
+    {
+      input: 0,
+      expected: 0,
+      description: "Zero",
+    },
+    {
+      input: 1,
+      expected: 1,
+      description: "Single digit",
+    },
+    {
+      input: 1534236469,
+      expected: 0,
+      description: "Overflow case",
+    },
+    {
+      input: -2147483648,
+      expected: 0,
+      description: "Min 32-bit integer",
+    },
+    {
+      input: 2147483647,
+      expected: 0,
+      description: "Max 32-bit integer",
+    },
+    {
+      input: 1000,
+      expected: 1,
+      description: "Multiple trailing zeros",
+    },
+  ];
+
+  testCases.forEach((testCase, index) => {
+    console.log(`Test Case ${index + 1}: ${testCase.description}`);
+    console.log(`Input: ${testCase.input}`);
+    console.log(`Expected: ${testCase.expected}\n`);
+
+    // Test Solution 1 (Mathematical)
+    const result1 = reverse(testCase.input);
+    console.log(
+      `Solution 1 (Mathematical): ${result1} ${
+        result1 === testCase.expected ? "✅" : "❌"
+      }`
+    );
+
+    // Test Solution 2 (String)
+    const result2 = reverseString(testCase.input);
+    console.log(
+      `Solution 2 (String): ${result2} ${
+        result2 === testCase.expected ? "✅" : "❌"
+      }`
+    );
+
+    // Test Solution 3 (Array)
+    const result3 = reverseArray(testCase.input);
+    console.log(
+      `Solution 3 (Array): ${result3} ${
+        result3 === testCase.expected ? "✅" : "❌"
+      }`
+    );
+
+    // Test Solution 4 (Bitwise)
+    const result4 = reverseBitwise(testCase.input);
+    console.log(
+      `Solution 4 (Bitwise): ${result4} ${
+        result4 === testCase.expected ? "✅" : "❌"
+      }`
+    );
+
+    // Test Solution 5 (BigInt)
+    const result5 = reverseBigInt(testCase.input);
+    console.log(
+      `Solution 5 (BigInt): ${result5} ${
+        result5 === testCase.expected ? "✅" : "❌"
+      }`
+    );
+
+    // Test Solution 6 (Recursive)
+    const result6 = reverseRecursive(testCase.input);
+    console.log(
+      `Solution 6 (Recursive): ${result6} ${
+        result6 === testCase.expected ? "✅" : "❌"
+      }`
+    );
+
+    // Test Solution 7 (Log)
+    const result7 = reverseLog(testCase.input);
+    console.log(
+      `Solution 7 (Log): ${result7} ${
+        result7 === testCase.expected ? "✅" : "❌"
+      }`
+    );
+
+    // Test Solution 8 (Generator)
+    const result8 = reverseGenerator(testCase.input);
+    console.log(
+      `Solution 8 (Generator): ${result8} ${
+        result8 === testCase.expected ? "✅" : "❌"
+      }`
+    );
+
+    console.log("\n---\n");
+  });
+}
+
+// Performance comparison
+function performanceComparison() {
+  console.log("=== Performance Comparison ===\n");
+
+  const testCases = [
+    { name: "Mathematical", func: reverse },
+    { name: "String", func: reverseString },
+    { name: "Array", func: reverseArray },
+    { name: "Bitwise", func: reverseBitwise },
+    { name: "BigInt", func: reverseBigInt },
+    { name: "Recursive", func: reverseRecursive },
+    { name: "Log", func: reverseLog },
+    { name: "Generator", func: reverseGenerator },
+  ];
+
+  const numbers = [123, 12345, 123456789, 1534236469, -123, -12345];
+
+  numbers.forEach((num) => {
+    console.log(`Testing with ${num}:`);
+
+    testCases.forEach(({ name, func }) => {
+      const start = performance.now();
+      const result = func(num);
+      const end = performance.now();
+
+      console.log(`  ${name}: ${(end - start).toFixed(2)}ms (${result})`);
+    });
+
+    console.log("");
+  });
+}
+
+// Overflow demonstration
+function overflowDemo() {
+  console.log("=== Overflow Demonstration ===\n");
+
+  console.log("32-bit signed integer range:");
+  console.log(`Min: ${-Math.pow(2, 31)}`);
+  console.log(`Max: ${Math.pow(2, 31) - 1}\n`);
+
+  const testNumbers = [
+    1534236469, // Should overflow
+    2147483647, // Max 32-bit integer
+    -2147483648, // Min 32-bit integer
+    1234567890, // Should not overflow
+  ];
+
+  testNumbers.forEach((num) => {
+    const reversed = reverse(num);
+    console.log(`${num} -> ${reversed} ${reversed === 0 ? "(overflow)" : ""}`);
+  });
+}
+
+// Uncomment the following lines to run tests
+// testReverseInteger();
+// performanceComparison();
+// overflowDemo();
+
+export {
+  reverse,
+  reverseString,
+  reverseArray,
+  reverseBitwise,
+  reverseBigInt,
+  reverseRecursive,
+  reverseLog,
+  reverseGenerator,
+  digitGenerator,
+  testReverseInteger,
+  performanceComparison,
+  overflowDemo,
+};
+{% endraw %}
+6:["topic","string-problems-02-reverse-integer","d"]
+0:["2NmUhWiPdVVBzVtDZlggk",[[["",{"children":["learn",{"children":[["topic","string-problems-02-reverse-integer","d"],{"children":["__PAGE__?{\"topic\":\"string-problems-02-reverse-integer\"}",{}]}]}]},"$undefined","$undefined",true],["",{"children":["learn",{"children":[["topic","string-problems-02-reverse-integer","d"],{"children":["__PAGE__",{},[["$L1",["$","div",null,{"className":"max-w-6xl mx-auto px-8 py-24","children":[["$","div",null,{"className":"flex items-center gap-4 mb-8","children":["$","$L2",null,{"href":"/learn","children":["$","button",null,{"className":"flex items-center gap-2 bg-gray-100 border border-gray-300 text-gray-700 px-4 py-3 rounded-md font-medium hover:bg-gray-200 transition-colors","children":[["$","svg",null,{"xmlns":"http://www.w3.org/2000/svg","width":16,"height":16,"viewBox":"0 0 24 24","fill":"none","stroke":"currentColor","strokeWidth":2,"strokeLinecap":"round","strokeLinejoin":"round","className":"lucide lucide-arrow-left ","children":[["$","path","1l729n",{"d":"m12 19-7-7 7-7"}],["$","path","x3x0zl",{"d":"M19 12H5"}],"$undefined"]}],"Back to Learn"]}]}]}],["$","div",null,{"className":"bg-white border border-gray-200 rounded-lg p-8 mb-8","children":[["$","div",null,{"className":"flex items-center justify-between mb-4","children":[["$","h1",null,{"className":"text-3xl font-bold text-gray-900","children":"Reverse Integer"}],["$","div",null,{"className":"flex gap-4","children":[["$","button",null,{"className":"flex items-center gap-2 bg-transparent text-gray-700 border border-gray-300 px-6 py-3 rounded-md font-semibold hover:bg-gray-50 transition-colors","children":[["$","svg",null,{"xmlns":"http://www.w3.org/2000/svg","width":16,"height":16,"viewBox":"0 0 24 24","fill":"none","stroke":"currentColor","strokeWidth":2,"strokeLinecap":"round","strokeLinejoin":"round","className":"lucide lucide-star ","children":[["$","polygon","8f66p6",{"points":"12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"}],"$undefined"]}],"Bookmark"]}],["$","button",null,{"className":"flex items-center gap-2 bg-transparent text-gray-700 border border-gray-300 px-6 py-3 rounded-md font-semibold hover:bg-gray-50 transition-colors","children":[["$","svg",null,{"xmlns":"http://www.w3.org/2000/svg","width":16,"height":16,"viewBox":"0 0 24 24","fill":"none","stroke":"currentColor","strokeWidth":2,"strokeLinecap":"round","strokeLinejoin":"round","className":"lucide lucide-share2 ","children":[["$","circle","gq8acd",{"cx":"18","cy":"5","r":"3"}],["$","circle","w7nqdw",{"cx":"6","cy":"12","r":"3"}],["$","circle","1xt0gg",{"cx":"18","cy":"19","r":"3"}],["$","line","47mynk",{"x1":"8.59","x2":"15.42","y1":"13.51","y2":"17.49"}],["$","line","1n3mei",{"x1":"15.41","x2":"8.59","y1":"6.51","y2":"10.49"}],"$undefined"]}],"Share"]}]]}]]}],["$","div",null,{"className":"flex gap-8 mb-4","children":[["$","div",null,{"className":"flex items-center gap-2 text-sm text-gray-600","children":[["$","svg",null,{"xmlns":"http://www.w3.org/2000/svg","width":16,"height":16,"viewBox":"0 0 24 24","fill":"none","stroke":"currentColor","strokeWidth":2,"strokeLinecap":"round","strokeLinejoin":"round","className":"lucide lucide-clock ","children":[["$","circle","1mglay",{"cx":"12","cy":"12","r":"10"}],["$","polyline","68esgv",{"points":"12 6 12 12 16 14"}],"$undefined"]}],"2-3 hours"]}],["$","span",null,{"className":"px-3 py-1 rounded-full text-xs font-semibold text-white bg-red-500","children":"Hard"}],["$","span",null,{"className":"px-3 py-1 rounded-full text-xs font-semibold bg-blue-100 text-blue-700","children":"String"}]]}],["$","div",null,{"className":"flex flex-wrap gap-2 mb-4","children":[["$","span","0",{"className":"bg-gray-100 text-gray-600 px-3 py-1 rounded-md text-xs font-medium","children":"String"}]]}],["$","p",null,{"className":"text-lg text-gray-700 leading-relaxed","children":"**LeetCode Problem # * 7. Reverse Integer**..."}]]}],["$","div",null,{"className":"grid grid-cols-1 lg:grid-cols-3 gap-8","children":[["$","div",null,{"className":"lg:col-span-2","children":["$","div",null,{"className":"bg-white border border-gray-200 rounded-lg p-8","children":["$","$L3",null,{"content":"$4"}]}]}],["$","div",null,{"className":"space-y-6","children":[["$","div",null,{"className":"bg-white border border-gray-200 rounded-lg p-6","children":[["$","h3",null,{"className":"text-lg font-semibold text-gray-900 mb-4","children":"Your Progress"}],["$","div",null,{"className":"w-full bg-gray-200 rounded-full h-2 mb-2","children":["$","div",null,{"className":"bg-blue-600 h-2 rounded-full","style":{"width":"25%"}}]}],["$","p",null,{"className":"text-sm text-gray-600","children":"25% Complete"}]]}],false]}]]}]]}],null],null],null]},[null,["$","$L5",null,{"parallelRouterKey":"children","segmentPath":["children","learn","children","$6","children"],"error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L7",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","notFoundStyles":"$undefined"}]],null]},[null,["$","$L5",null,{"parallelRouterKey":"children","segmentPath":["children","learn","children"],"error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L7",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","notFoundStyles":"$undefined"}]],null]},[[[["$","link","0",{"rel":"stylesheet","href":"/interview/_next/static/css/387024c6a2216908.css","precedence":"next","crossOrigin":"$undefined"}]],["$","$L8",null,{"children":["$","$L5",null,{"parallelRouterKey":"children","segmentPath":["children"],"error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L7",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":{"fontFamily":"system-ui,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\"","height":"100vh","textAlign":"center","display":"flex","flexDirection":"column","alignItems":"center","justifyContent":"center"},"children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":{"display":"inline-block","margin":"0 20px 0 0","padding":"0 23px 0 0","fontSize":24,"fontWeight":500,"verticalAlign":"top","lineHeight":"49px"},"children":"404"}],["$","div",null,{"style":{"display":"inline-block"},"children":["$","h2",null,{"style":{"fontSize":14,"fontWeight":400,"lineHeight":"49px","margin":0},"children":"This page could not be found."}]}]]}]}]],"notFoundStyles":[]}],"params":{}}]],null],null],["$L9",null]]]]
+9:[["$","meta","0",{"name":"viewport","content":"width=device-width, initial-scale=1"}],["$","meta","1",{"charSet":"utf-8"}],["$","meta","2",{"name":"next-size-adjust"}]]
+1:null

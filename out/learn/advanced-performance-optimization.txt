@@ -1,0 +1,418 @@
+2:I[2972,["918","static/chunks/918-3273b83890f10546.js","972","static/chunks/972-011bba60ed155615.js","930","static/chunks/930-3262a6c9c5acace4.js","289","static/chunks/app/learn/%5Btopic%5D/page-4ab144227f7a7b3e.js"],""]
+3:I[5907,["918","static/chunks/918-3273b83890f10546.js","972","static/chunks/972-011bba60ed155615.js","930","static/chunks/930-3262a6c9c5acace4.js","289","static/chunks/app/learn/%5Btopic%5D/page-4ab144227f7a7b3e.js"],"default"]
+5:I[4707,[],""]
+7:I[6423,[],""]
+8:I[2,["918","static/chunks/918-3273b83890f10546.js","710","static/chunks/710-dfaa11b4dff08f8e.js","972","static/chunks/972-011bba60ed155615.js","233","static/chunks/233-3e0c1d820a17eca9.js","185","static/chunks/app/layout-333f4adcd11f8f39.js"],"default",1]
+4:T2a43,
+# Advanced Performance Optimization for FAANG Interviews
+
+## 🚀 Core Web Vitals Mastery
+
+### 1. Largest Contentful Paint (LCP) Optimization
+
+#### Problem: Slow LCP hurts user experience and SEO
+**Target: < 2.5 seconds**
+
+```typescript
+// Image optimization strategy
+class ImageOptimizer {
+  static generateSrcSet(imagePath: string, sizes: number[]): string {
+    return sizes
+      .map(size => `${imagePath}?w=${size}&q=80 ${size}w`)
+      .join(', ');
+  }
+  
+  static getOptimalFormat(userAgent: string): 'webp' | 'avif' | 'jpg' {
+    if (userAgent.includes('Chrome') && userAgent.includes('91')) return 'avif';
+    if (userAgent.includes('Chrome') || userAgent.includes('Firefox')) return 'webp';
+    return 'jpg';
+  }
+}
+
+// React component with optimized image loading
+const OptimizedImage: React.FC<{
+  src: string;
+  alt: string;
+  priority?: boolean;
+  sizes?: string;
+}> = ({ src, alt, priority = false, sizes = "100vw" }) => {
+  const [isLoaded, setIsLoaded] = useState(false);
+  const [error, setError] = useState(false);
+  const imgRef = useRef<HTMLImageElement>(null);
+  
+  // Intersection Observer for lazy loading
+  useEffect(() => {
+    if (priority) return; // Skip lazy loading for priority images
+    
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const img = entry.target as HTMLImageElement;
+            img.src = img.dataset.src!;
+            img.srcset = img.dataset.srcset!;
+            observer.unobserve(img);
+          }
+        });
+      },
+      { rootMargin: '50px' }
+    );
+    
+    if (imgRef.current) {
+      observer.observe(imgRef.current);
+    }
+    
+    return () => observer.disconnect();
+  }, [priority]);
+  
+  const srcSet = ImageOptimizer.generateSrcSet(src, [400, 800, 1200, 1600]);
+  
+  return (
+    <div className="image-container">
+      <img
+        ref={imgRef}
+        src={priority ? src : undefined}
+        data-src={priority ? undefined : src}
+        srcSet={priority ? srcSet : undefined}
+        data-srcset={priority ? undefined : srcSet}
+        sizes={sizes}
+        alt={alt}
+        loading={priority ? "eager" : "lazy"}
+        onLoad={() => setIsLoaded(true)}
+        onError={() => setError(true)}
+        style={{
+          opacity: isLoaded ? 1 : 0,
+          transition: 'opacity 0.3s ease'
+        }}
+      />
+      {!isLoaded && !error && (
+        <div className="image-placeholder" aria-hidden="true">
+          {/* Skeleton loader */}
+        </div>
+      )}
+    </div>
+  );
+};
+```
+
+### 2. First Input Delay (FID) Optimization
+
+#### Problem: JavaScript blocking main thread
+**Target: < 100ms**
+
+```typescript
+// Code splitting with React.lazy and Suspense
+const LazyComponent = React.lazy(() => 
+  import('./HeavyComponent').then(module => ({
+    default: module.HeavyComponent
+  }))
+);
+
+// Time slicing for heavy computations
+class TimeSlicedProcessor {
+  static async processLargeDataset<T, R>(
+    data: T[],
+    processor: (item: T) => R,
+    batchSize: number = 100
+  ): Promise<R[]> {
+    const results: R[] = [];
+    
+    for (let i = 0; i < data.length; i += batchSize) {
+      const batch = data.slice(i, i + batchSize);
+      const batchResults = batch.map(processor);
+      results.push(...batchResults);
+      
+      // Yield control back to browser
+      await new Promise(resolve => setTimeout(resolve, 0));
+    }
+    
+    return results;
+  }
+}
+
+// Web Workers for CPU-intensive tasks
+class WorkerPool {
+  private workers: Worker[] = [];
+  private taskQueue: Array<{
+    data: any;
+    resolve: (value: any) => void;
+    reject: (error: any) => void;
+  }> = [];
+  
+  constructor(workerScript: string, poolSize: number = navigator.hardwareConcurrency || 4) {
+    for (let i = 0; i < poolSize; i++) {
+      const worker = new Worker(workerScript);
+      worker.onmessage = this.handleWorkerMessage.bind(this);
+      this.workers.push(worker);
+    }
+  }
+  
+  execute<T, R>(data: T): Promise<R> {
+    return new Promise((resolve, reject) => {
+      const availableWorker = this.workers.find(w => !w.busy);
+      
+      if (availableWorker) {
+        this.assignTask(availableWorker, data, resolve, reject);
+      } else {
+        this.taskQueue.push({ data, resolve, reject });
+      }
+    });
+  }
+  
+  private assignTask(worker: Worker, data: any, resolve: Function, reject: Function): void {
+    worker.busy = true;
+    worker.currentResolve = resolve;
+    worker.currentReject = reject;
+    worker.postMessage(data);
+  }
+  
+  private handleWorkerMessage(event: MessageEvent): void {
+    const worker = event.target as Worker;
+    worker.busy = false;
+    
+    if (worker.currentResolve) {
+      worker.currentResolve(event.data);
+      worker.currentResolve = null;
+      worker.currentReject = null;
+    }
+    
+    // Process next task in queue
+    if (this.taskQueue.length > 0) {
+      const { data, resolve, reject } = this.taskQueue.shift()!;
+      this.assignTask(worker, data, resolve, reject);
+    }
+  }
+}
+```
+
+### 3. Cumulative Layout Shift (CLS) Optimization
+
+#### Problem: Unexpected layout shifts
+**Target: < 0.1**
+
+```typescript
+// Skeleton loading to prevent layout shifts
+const SkeletonLoader: React.FC<{
+  width?: string;
+  height?: string;
+  borderRadius?: string;
+  count?: number;
+}> = ({ width = "100%", height = "20px", borderRadius = "4px", count = 1 }) => {
+  return (
+    <>
+      {Array.from({ length: count }, (_, index) => (
+        <div
+          key={index}
+          className="skeleton"
+          style={{
+            width,
+            height,
+            borderRadius,
+            backgroundColor: '#f0f0f0',
+            backgroundImage: 'linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%)',
+            backgroundSize: '200% 100%',
+            animation: 'skeleton-loading 1.5s infinite'
+          }}
+        />
+      ))}
+    </>
+  );
+};
+
+// Aspect ratio containers to reserve space
+const AspectRatioContainer: React.FC<{
+  ratio: number; // width/height
+  children: React.ReactNode;
+}> = ({ ratio, children }) => {
+  return (
+    <div
+      style={{
+        position: 'relative',
+        width: '100%',
+        paddingBottom: `${(1 / ratio) * 100}%`
+      }}
+    >
+      <div
+        style={{
+          position: 'absolute',
+          top: 0,
+          left: 0,
+          width: '100%',
+          height: '100%'
+        }}
+      >
+        {children}
+      </div>
+    </div>
+  );
+};
+
+// Font loading optimization
+class FontOptimizer {
+  static preloadFonts(fonts: string[]): void {
+    fonts.forEach(font => {
+      const link = document.createElement('link');
+      link.rel = 'preload';
+      link.href = font;
+      link.as = 'font';
+      link.type = 'font/woff2';
+      link.crossOrigin = 'anonymous';
+      document.head.appendChild(link);
+    });
+  }
+  
+  static async loadFontWithFallback(
+    fontFamily: string,
+    fallbackFont: string,
+    timeout: number = 3000
+  ): Promise<void> {
+    const font = new FontFace(fontFamily, `url(${fontFamily})`);
+    
+    try {
+      await Promise.race([
+        font.load(),
+        new Promise((_, reject) => 
+          setTimeout(() => reject(new Error('Font load timeout')), timeout)
+        )
+      ]);
+      
+      document.fonts.add(font);
+    } catch (error) {
+      console.warn(`Failed to load ${fontFamily}, using fallback: ${fallbackFont}`);
+      // Apply fallback font
+      document.documentElement.style.setProperty('--primary-font', fallbackFont);
+    }
+  }
+}
+```
+
+## 🧠 Memory Management & Optimization
+
+### 1. Memory Leak Prevention
+
+```typescript
+// Custom hook for cleanup
+function useCleanup(cleanup: () => void): void {
+  const cleanupRef = useRef(cleanup);
+  cleanupRef.current = cleanup;
+  
+  useEffect(() => {
+    return () => cleanupRef.current();
+  }, []);
+}
+
+// Memory-efficient infinite scroll
+const useInfiniteScroll = <T>(
+  fetchMore: (page: number) => Promise<T[]>,
+  options: {
+    threshold?: number;
+    maxItems?: number;
+  } = {}
+) => {
+  const [items, setItems] = useState<T[]>([]);
+  const [loading, setLoading] = useState(false);
+  const [page, setPage] = useState(1);
+  const observerRef = useRef<IntersectionObserver>();
+  
+  const { threshold = 0.1, maxItems = 1000 } = options;
+  
+  const loadMore = useCallback(async () => {
+    if (loading) return;
+    
+    setLoading(true);
+    try {
+      const newItems = await fetchMore(page);
+      setItems(prev => {
+        const combined = [...prev, ...newItems];
+        // Prevent memory bloat by limiting items
+        return combined.length > maxItems 
+          ? combined.slice(-maxItems) 
+          : combined;
+      });
+      setPage(prev => prev + 1);
+    } finally {
+      setLoading(false);
+    }
+  }, [fetchMore, page, loading, maxItems]);
+  
+  const lastElementRef = useCallback((node: HTMLElement | null) => {
+    if (loading) return;
+    if (observerRef.current) observerRef.current.disconnect();
+    
+    observerRef.current = new IntersectionObserver(
+      entries => {
+        if (entries[0].isIntersecting) {
+          loadMore();
+        }
+      },
+      { threshold }
+    );
+    
+    if (node) observerRef.current.observe(node);
+  }, [loading, loadMore, threshold]);
+  
+  useCleanup(() => {
+    observerRef.current?.disconnect();
+  });
+  
+  return { items, loading, lastElementRef };
+};
+```
+
+### 2. Bundle Optimization Strategies
+
+```typescript
+// Dynamic imports with error boundaries
+const DynamicComponentLoader = <T extends React.ComponentType<any>>(
+  importFunc: () => Promise<{ default: T }>,
+  fallback: React.ComponentType = () => <div>Loading...</div>
+) => {
+  return React.lazy(async () => {
+    try {
+      return await importFunc();
+    } catch (error) {
+      console.error('Failed to load component:', error);
+      // Return fallback component
+      return { default: fallback };
+    }
+  });
+};
+
+// Tree shaking optimization
+export const utils = {
+  // Instead of importing entire lodash
+  debounce: (func: Function, wait: number) => {
+    let timeout: NodeJS.Timeout;
+    return (...args: any[]) => {
+      clearTimeout(timeout);
+      timeout = setTimeout(() => func.apply(this, args), wait);
+    };
+  },
+  
+  throttle: (func: Function, limit: number) => {
+    let inThrottle: boolean;
+    return (...args: any[]) => {
+      if (!inThrottle) {
+        func.apply(this, args);
+        inThrottle = true;
+        setTimeout(() => inThrottle = false, limit);
+      }
+    };
+  }
+};
+
+// Webpack bundle analysis helper
+class BundleAnalyzer {
+  static analyzeChunks(): void {
+    if (process.env.NODE_ENV === 'development') {
+      import('webpack-bundle-analyzer').then(({ BundleAnalyzerPlugin }) => {
+        // Analyze bundle in development
+        console.log('Bundle analysis available at http://localhost:8888');
+      });
+    }
+  }
+  
+  static measureComponentSize(Component: React.ComponentType): voi6:["topic","advanced-performance-optimization","d"]
+0:["2NmUhWiPdVVBzVtDZlggk",[[["",{"children":["learn",{"children":[["topic","advanced-performance-optimization","d"],{"children":["__PAGE__?{\"topic\":\"advanced-performance-optimization\"}",{}]}]}]},"$undefined","$undefined",true],["",{"children":["learn",{"children":[["topic","advanced-performance-optimization","d"],{"children":["__PAGE__",{},[["$L1",["$","div",null,{"className":"max-w-6xl mx-auto px-8 py-24","children":[["$","div",null,{"className":"flex items-center gap-4 mb-8","children":["$","$L2",null,{"href":"/learn","children":["$","button",null,{"className":"flex items-center gap-2 bg-gray-100 border border-gray-300 text-gray-700 px-4 py-3 rounded-md font-medium hover:bg-gray-200 transition-colors","children":[["$","svg",null,{"xmlns":"http://www.w3.org/2000/svg","width":16,"height":16,"viewBox":"0 0 24 24","fill":"none","stroke":"currentColor","strokeWidth":2,"strokeLinecap":"round","strokeLinejoin":"round","className":"lucide lucide-arrow-left ","children":[["$","path","1l729n",{"d":"m12 19-7-7 7-7"}],["$","path","x3x0zl",{"d":"M19 12H5"}],"$undefined"]}],"Back to Learn"]}]}]}],["$","div",null,{"className":"bg-white border border-gray-200 rounded-lg p-8 mb-8","children":[["$","div",null,{"className":"flex items-center justify-between mb-4","children":[["$","h1",null,{"className":"text-3xl font-bold text-gray-900","children":"Advanced Performance Optimization for FAANG Interviews"}],["$","div",null,{"className":"flex gap-4","children":[["$","button",null,{"className":"flex items-center gap-2 bg-transparent text-gray-700 border border-gray-300 px-6 py-3 rounded-md font-semibold hover:bg-gray-50 transition-colors","children":[["$","svg",null,{"xmlns":"http://www.w3.org/2000/svg","width":16,"height":16,"viewBox":"0 0 24 24","fill":"none","stroke":"currentColor","strokeWidth":2,"strokeLinecap":"round","strokeLinejoin":"round","className":"lucide lucide-star ","children":[["$","polygon","8f66p6",{"points":"12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"}],"$undefined"]}],"Bookmark"]}],["$","button",null,{"className":"flex items-center gap-2 bg-transparent text-gray-700 border border-gray-300 px-6 py-3 rounded-md font-semibold hover:bg-gray-50 transition-colors","children":[["$","svg",null,{"xmlns":"http://www.w3.org/2000/svg","width":16,"height":16,"viewBox":"0 0 24 24","fill":"none","stroke":"currentColor","strokeWidth":2,"strokeLinecap":"round","strokeLinejoin":"round","className":"lucide lucide-share2 ","children":[["$","circle","gq8acd",{"cx":"18","cy":"5","r":"3"}],["$","circle","w7nqdw",{"cx":"6","cy":"12","r":"3"}],["$","circle","1xt0gg",{"cx":"18","cy":"19","r":"3"}],["$","line","47mynk",{"x1":"8.59","x2":"15.42","y1":"13.51","y2":"17.49"}],["$","line","1n3mei",{"x1":"15.41","x2":"8.59","y1":"6.51","y2":"10.49"}],"$undefined"]}],"Share"]}]]}]]}],["$","div",null,{"className":"flex gap-8 mb-4","children":[["$","div",null,{"className":"flex items-center gap-2 text-sm text-gray-600","children":[["$","svg",null,{"xmlns":"http://www.w3.org/2000/svg","width":16,"height":16,"viewBox":"0 0 24 24","fill":"none","stroke":"currentColor","strokeWidth":2,"strokeLinecap":"round","strokeLinejoin":"round","className":"lucide lucide-clock ","children":[["$","circle","1mglay",{"cx":"12","cy":"12","r":"10"}],["$","polyline","68esgv",{"points":"12 6 12 12 16 14"}],"$undefined"]}],"2-3 hours"]}],["$","span",null,{"className":"px-3 py-1 rounded-full text-xs font-semibold text-white bg-yellow-500","children":"Intermediate"}],["$","span",null,{"className":"px-3 py-1 rounded-full text-xs font-semibold bg-blue-100 text-blue-700","children":"General"}]]}],["$","div",null,{"className":"flex flex-wrap gap-2 mb-4","children":[["$","span","0",{"className":"bg-gray-100 text-gray-600 px-3 py-1 rounded-md text-xs font-medium","children":"Performance"}],["$","span","1",{"className":"bg-gray-100 text-gray-600 px-3 py-1 rounded-md text-xs font-medium","children":"Optimization"}],["$","span","2",{"className":"bg-gray-100 text-gray-600 px-3 py-1 rounded-md text-xs font-medium","children":"React"}],["$","span","3",{"className":"bg-gray-100 text-gray-600 px-3 py-1 rounded-md text-xs font-medium","children":"JavaScript"}],["$","span","4",{"className":"bg-gray-100 text-gray-600 px-3 py-1 rounded-md text-xs font-medium","children":"Web Vitals"}]]}],["$","p",null,{"className":"text-lg text-gray-700 leading-relaxed","children":"Master performance optimization techniques for senior frontend roles"}]]}],["$","div",null,{"className":"grid grid-cols-1 lg:grid-cols-3 gap-8","children":[["$","div",null,{"className":"lg:col-span-2","children":["$","div",null,{"className":"bg-white border border-gray-200 rounded-lg p-8","children":["$","$L3",null,{"content":"$4"}]}]}],["$","div",null,{"className":"space-y-6","children":[["$","div",null,{"className":"bg-white border border-gray-200 rounded-lg p-6","children":[["$","h3",null,{"className":"text-lg font-semibold text-gray-900 mb-4","children":"Your Progress"}],["$","div",null,{"className":"w-full bg-gray-200 rounded-full h-2 mb-2","children":["$","div",null,{"className":"bg-blue-600 h-2 rounded-full","style":{"width":"25%"}}]}],["$","p",null,{"className":"text-sm text-gray-600","children":"25% Complete"}]]}],false]}]]}]]}],null],null],null]},[null,["$","$L5",null,{"parallelRouterKey":"children","segmentPath":["children","learn","children","$6","children"],"error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L7",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","notFoundStyles":"$undefined"}]],null]},[null,["$","$L5",null,{"parallelRouterKey":"children","segmentPath":["children","learn","children"],"error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L7",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","notFoundStyles":"$undefined"}]],null]},[[[["$","link","0",{"rel":"stylesheet","href":"/interview/_next/static/css/387024c6a2216908.css","precedence":"next","crossOrigin":"$undefined"}]],["$","$L8",null,{"children":["$","$L5",null,{"parallelRouterKey":"children","segmentPath":["children"],"error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L7",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":{"fontFamily":"system-ui,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\"","height":"100vh","textAlign":"center","display":"flex","flexDirection":"column","alignItems":"center","justifyContent":"center"},"children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":{"display":"inline-block","margin":"0 20px 0 0","padding":"0 23px 0 0","fontSize":24,"fontWeight":500,"verticalAlign":"top","lineHeight":"49px"},"children":"404"}],["$","div",null,{"style":{"display":"inline-block"},"children":["$","h2",null,{"style":{"fontSize":14,"fontWeight":400,"lineHeight":"49px","margin":0},"children":"This page could not be found."}]}]]}]}]],"notFoundStyles":[]}],"params":{}}]],null],null],["$L9",null]]]]
+9:[["$","meta","0",{"name":"viewport","content":"width=device-width, initial-scale=1"}],["$","meta","1",{"charSet":"utf-8"}],["$","meta","2",{"name":"next-size-adjust"}]]
+1:null

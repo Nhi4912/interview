@@ -1,0 +1,444 @@
+2:I[2972,["918","static/chunks/918-3273b83890f10546.js","972","static/chunks/972-011bba60ed155615.js","930","static/chunks/930-3262a6c9c5acace4.js","289","static/chunks/app/learn/%5Btopic%5D/page-4ab144227f7a7b3e.js"],""]
+3:I[5907,["918","static/chunks/918-3273b83890f10546.js","972","static/chunks/972-011bba60ed155615.js","930","static/chunks/930-3262a6c9c5acace4.js","289","static/chunks/app/learn/%5Btopic%5D/page-4ab144227f7a7b3e.js"],"default"]
+5:I[4707,[],""]
+7:I[6423,[],""]
+8:I[2,["918","static/chunks/918-3273b83890f10546.js","710","static/chunks/710-dfaa11b4dff08f8e.js","972","static/chunks/972-011bba60ed155615.js","233","static/chunks/233-3e0c1d820a17eca9.js","185","static/chunks/app/layout-333f4adcd11f8f39.js"],"default",1]
+4:T32b2,
+# LRU Cache
+
+**LeetCode Problem # * 146. LRU Cache**
+
+## Problem Description
+
+LeetCode problem solution with multiple approaches and explanations.
+
+## Solutions
+
+{% raw %}
+/**
+ * 146. LRU Cache
+ * 
+ * Design a data structure that follows the constraints of a Least Recently Used (LRU) cache.
+ * 
+ * Implement the LRUCache class:
+ * - LRUCache(int capacity) Initialize the LRU cache with positive size capacity.
+ * - int get(int key) Return the value of the key if the key exists, otherwise return -1.
+ * - void put(int key, int value) Update the value of the key if the key exists. 
+ *   Otherwise, add the key-value pair to the cache. If the number of keys exceeds 
+ *   the capacity from this operation, evict the least recently used key.
+ * 
+ * The functions get and put must each run in O(1) average time complexity.
+ * 
+ * Example 1:
+ * Input
+ * ["LRUCache", "put", "put", "get", "put", "get", "put", "get", "get", "get"]
+ * [[2], [1, 1], [2, 2], [1], [3, 3], [2], [4, 4], [1], [3], [4]]
+ * Output
+ * [null, null, null, 1, null, -1, null, -1, 3, 4]
+ * 
+ * Explanation
+ * LRUCache lRUCache = new LRUCache(2);
+ * lRUCache.put(1, 1); // cache is {1=1}
+ * lRUCache.put(2, 2); // cache is {1=1, 2=2}
+ * lRUCache.get(1);    // return 1
+ * lRUCache.put(3, 3); // LRU key was 2, evicts key 2, cache is {1=1, 3=3}
+ * lRUCache.get(2);    // returns -1 (not found)
+ * lRUCache.put(4, 4); // LRU key was 1, evicts key 1, cache is {3=3, 4=4}
+ * lRUCache.get(1);    // return -1 (not found)
+ * lRUCache.get(3);    // return 3
+ * lRUCache.get(4);    // return 4
+ * 
+ * Constraints:
+ * - 1 <= capacity <= 3000
+ * - 0 <= key <= 10^4
+ * - 0 <= value <= 10^5
+ * - At most 2 * 10^5 calls will be made to get and put.
+ */
+
+// Solution 1: HashMap + Doubly Linked List
+// Time: O(1) for both get and put, Space: O(capacity)
+class ListNode {
+    key: number;
+    value: number;
+    prev: ListNode | null;
+    next: ListNode | null;
+    
+    constructor(key: number = 0, value: number = 0) {
+        this.key = key;
+        this.value = value;
+        this.prev = null;
+        this.next = null;
+    }
+}
+
+export class LRUCache1 {
+    private capacity: number;
+    private cache: Map<number, ListNode>;
+    private head: ListNode;
+    private tail: ListNode;
+    
+    constructor(capacity: number) {
+        this.capacity = capacity;
+        this.cache = new Map();
+        
+        // Create dummy head and tail nodes
+        this.head = new ListNode();
+        this.tail = new ListNode();
+        this.head.next = this.tail;
+        this.tail.prev = this.head;
+    }
+    
+    private addToHead(node: ListNode): void {
+        node.prev = this.head;
+        node.next = this.head.next;
+        this.head.next!.prev = node;
+        this.head.next = node;
+    }
+    
+    private removeNode(node: ListNode): void {
+        node.prev!.next = node.next;
+        node.next!.prev = node.prev;
+    }
+    
+    private moveToHead(node: ListNode): void {
+        this.removeNode(node);
+        this.addToHead(node);
+    }
+    
+    private removeTail(): ListNode {
+        const last = this.tail.prev!;
+        this.removeNode(last);
+        return last;
+    }
+    
+    get(key: number): number {
+        const node = this.cache.get(key);
+        if (!node) return -1;
+        
+        // Move accessed node to head (most recently used)
+        this.moveToHead(node);
+        return node.value;
+    }
+    
+    put(key: number, value: number): void {
+        const node = this.cache.get(key);
+        
+        if (node) {
+            // Update existing node
+            node.value = value;
+            this.moveToHead(node);
+        } else {
+            // Add new node
+            const newNode = new ListNode(key, value);
+            
+            if (this.cache.size >= this.capacity) {
+                // Remove least recently used node
+                const tail = this.removeTail();
+                this.cache.delete(tail.key);
+            }
+            
+            this.cache.set(key, newNode);
+            this.addToHead(newNode);
+        }
+    }
+}
+
+// Solution 2: Using JavaScript Map (maintains insertion order)
+// Time: O(1) for both get and put, Space: O(capacity)
+export class LRUCache2 {
+    private capacity: number;
+    private cache: Map<number, number>;
+    
+    constructor(capacity: number) {
+        this.capacity = capacity;
+        this.cache = new Map();
+    }
+    
+    get(key: number): number {
+        if (!this.cache.has(key)) return -1;
+        
+        // Move to end (most recently used)
+        const value = this.cache.get(key)!;
+        this.cache.delete(key);
+        this.cache.set(key, value);
+        return value;
+    }
+    
+    put(key: number, value: number): void {
+        if (this.cache.has(key)) {
+            // Update existing key
+            this.cache.delete(key);
+        } else if (this.cache.size >= this.capacity) {
+            // Remove least recently used (first key)
+            const firstKey = this.cache.keys().next().value;
+            this.cache.delete(firstKey);
+        }
+        
+        this.cache.set(key, value);
+    }
+}
+
+// Solution 3: Array-based implementation
+// Time: O(n) for both get and put, Space: O(capacity)
+export class LRUCache3 {
+    private capacity: number;
+    private cache: Array<[number, number]>;
+    
+    constructor(capacity: number) {
+        this.capacity = capacity;
+        this.cache = [];
+    }
+    
+    private findIndex(key: number): number {
+        for (let i = 0; i < this.cache.length; i++) {
+            if (this.cache[i][0] === key) return i;
+        }
+        return -1;
+    }
+    
+    get(key: number): number {
+        const index = this.findIndex(key);
+        if (index === -1) return -1;
+        
+        // Move to end (most recently used)
+        const [k, v] = this.cache.splice(index, 1)[0];
+        this.cache.push([k, v]);
+        return v;
+    }
+    
+    put(key: number, value: number): void {
+        const index = this.findIndex(key);
+        
+        if (index !== -1) {
+            // Update existing key
+            this.cache.splice(index, 1);
+        } else if (this.cache.length >= this.capacity) {
+            // Remove least recently used (first element)
+            this.cache.shift();
+        }
+        
+        this.cache.push([key, value]);
+    }
+}
+
+// Solution 4: Two-way mapping approach
+// Time: O(1) for both get and put, Space: O(capacity)
+export class LRUCache4 {
+    private capacity: number;
+    private keyToValue: Map<number, number>;
+    private keyToTime: Map<number, number>;
+    private timeToKey: Map<number, number>;
+    private currentTime: number;
+    
+    constructor(capacity: number) {
+        this.capacity = capacity;
+        this.keyToValue = new Map();
+        this.keyToTime = new Map();
+        this.timeToKey = new Map();
+        this.currentTime = 0;
+    }
+    
+    private updateTime(key: number): void {
+        // Remove old time mapping
+        const oldTime = this.keyToTime.get(key);
+        if (oldTime !== undefined) {
+            this.timeToKey.delete(oldTime);
+        }
+        
+        // Add new time mapping
+        this.keyToTime.set(key, this.currentTime);
+        this.timeToKey.set(this.currentTime, key);
+        this.currentTime++;
+    }
+    
+    get(key: number): number {
+        if (!this.keyToValue.has(key)) return -1;
+        
+        this.updateTime(key);
+        return this.keyToValue.get(key)!;
+    }
+    
+    put(key: number, value: number): void {
+        if (this.keyToValue.has(key)) {
+            // Update existing key
+            this.keyToValue.set(key, value);
+            this.updateTime(key);
+        } else {
+            // Add new key
+            if (this.keyToValue.size >= this.capacity) {
+                // Find and remove LRU key
+                let minTime = Infinity;
+                let lruKey = -1;
+                
+                for (const [k, time] of this.keyToTime) {
+                    if (time < minTime) {
+                        minTime = time;
+                        lruKey = k;
+                    }
+                }
+                
+                // Remove LRU key
+                this.keyToValue.delete(lruKey);
+                this.keyToTime.delete(lruKey);
+                this.timeToKey.delete(minTime);
+            }
+            
+            this.keyToValue.set(key, value);
+            this.updateTime(key);
+        }
+    }
+}
+
+// Solution 5: Using Set for order tracking
+// Time: O(1) for both get and put, Space: O(capacity)
+export class LRUCache5 {
+    private capacity: number;
+    private values: Map<number, number>;
+    private usage: Set<number>;
+    
+    constructor(capacity: number) {
+        this.capacity = capacity;
+        this.values = new Map();
+        this.usage = new Set();
+    }
+    
+    get(key: number): number {
+        if (!this.values.has(key)) return -1;
+        
+        // Update usage order
+        this.usage.delete(key);
+        this.usage.add(key);
+        
+        return this.values.get(key)!;
+    }
+    
+    put(key: number, value: number): void {
+        if (this.values.has(key)) {
+            // Update existing key
+            this.values.set(key, value);
+            this.usage.delete(key);
+            this.usage.add(key);
+        } else {
+            // Add new key
+            if (this.values.size >= this.capacity) {
+                // Remove least recently used
+                const lruKey = this.usage.values().next().value;
+                this.values.delete(lruKey);
+                this.usage.delete(lruKey);
+            }
+            
+            this.values.set(key, value);
+            this.usage.add(key);
+        }
+    }
+}
+
+// Test cases
+export function testLRUCache() {
+    console.log("Testing LRU Cache:");
+    
+    const implementations = [
+        { name: "HashMap + Doubly Linked List", LRUCache: LRUCache1 },
+        { name: "JavaScript Map", LRUCache: LRUCache2 },
+        { name: "Array-based", LRUCache: LRUCache3 },
+        { name: "Two-way Mapping", LRUCache: LRUCache4 },
+        { name: "Set for Usage", LRUCache: LRUCache5 }
+    ];
+    
+    implementations.forEach(impl => {
+        console.log(`\n${impl.name}:`);
+        
+        const cache = new impl.LRUCache(2);
+        
+        // Test case 1
+        cache.put(1, 1);
+        cache.put(2, 2);
+        console.log(`  get(1): ${cache.get(1)} (expected: 1)`);
+        cache.put(3, 3);
+        console.log(`  get(2): ${cache.get(2)} (expected: -1)`);
+        cache.put(4, 4);
+        console.log(`  get(1): ${cache.get(1)} (expected: -1)`);
+        console.log(`  get(3): ${cache.get(3)} (expected: 3)`);
+        console.log(`  get(4): ${cache.get(4)} (expected: 4)`);
+    });
+}
+
+/**
+ * Key Insights:
+ * 
+ * 1. **Core Requirements**:
+ *    - O(1) time complexity for both get and put
+ *    - Fixed capacity with LRU eviction
+ *    - Most recently used items should be easily accessible
+ * 
+ * 2. **Data Structure Choice**:
+ *    - HashMap: O(1) key lookup
+ *    - Doubly Linked List: O(1) insertion/deletion at any position
+ *    - Combination provides O(1) for all operations
+ * 
+ * 3. **Doubly Linked List Advantages**:
+ *    - O(1) insertion at head (most recent)
+ *    - O(1) deletion at tail (least recent)
+ *    - O(1) node removal from middle (when accessing)
+ * 
+ * 4. **Implementation Details**:
+ *    - Dummy head/tail nodes simplify edge cases
+ *    - HashMap stores key → node mapping
+ *    - Move accessed nodes to head
+ *    - Remove from tail when capacity exceeded
+ * 
+ * 5. **Alternative Approaches**:
+ *    - JavaScript Map: Maintains insertion order
+ *    - Array-based: O(n) but simple implementation
+ *    - Two-way mapping: Complex but demonstrates concept
+ * 
+ * 6. **Interview Strategy**:
+ *    - Start with requirements analysis
+ *    - Discuss time complexity constraints
+ *    - Explain data structure choice
+ *    - Implement step by step
+ *    - Handle edge cases
+ * 
+ * 7. **Edge Cases**:
+ *    - Capacity of 1
+ *    - Accessing non-existent keys
+ *    - Updating existing keys
+ *    - Multiple accesses to same key
+ * 
+ * 8. **Common Mistakes**:
+ *    - Forgetting to update access order on get
+ *    - Incorrect linked list pointer manipulation
+ *    - Not handling capacity overflow
+ *    - Using wrong data structure (losing O(1) property)
+ * 
+ * 9. **Big Tech Variations**:
+ *    - LFU (Least Frequently Used) Cache
+ *    - TTL (Time To Live) Cache
+ *    - Multi-level caches
+ *    - Thread-safe implementations
+ * 
+ * 10. **Follow-up Questions**:
+ *     - Implement LFU cache
+ *     - Add TTL functionality
+ *     - Make it thread-safe
+ *     - Optimize for specific access patterns
+ *     - Handle cache statistics
+ * 
+ * 11. **Performance Considerations**:
+ *     - Memory usage vs access speed
+ *     - Cache hit/miss ratios
+ *     - Eviction policy efficiency
+ *     - Concurrent access handling
+ * 
+ * 12. **Real-world Applications**:
+ *     - CPU caches
+ *     - Database buffer pools
+ *     - Web browser caches
+ *     - Operating system page replacement
+ *     - CDN caching strategies
+ */
+{% endraw %}
+6:["topic","design-problems-09-lru-cache","d"]
+0:["2NmUhWiPdVVBzVtDZlggk",[[["",{"children":["learn",{"children":[["topic","design-problems-09-lru-cache","d"],{"children":["__PAGE__?{\"topic\":\"design-problems-09-lru-cache\"}",{}]}]}]},"$undefined","$undefined",true],["",{"children":["learn",{"children":[["topic","design-problems-09-lru-cache","d"],{"children":["__PAGE__",{},[["$L1",["$","div",null,{"className":"max-w-6xl mx-auto px-8 py-24","children":[["$","div",null,{"className":"flex items-center gap-4 mb-8","children":["$","$L2",null,{"href":"/learn","children":["$","button",null,{"className":"flex items-center gap-2 bg-gray-100 border border-gray-300 text-gray-700 px-4 py-3 rounded-md font-medium hover:bg-gray-200 transition-colors","children":[["$","svg",null,{"xmlns":"http://www.w3.org/2000/svg","width":16,"height":16,"viewBox":"0 0 24 24","fill":"none","stroke":"currentColor","strokeWidth":2,"strokeLinecap":"round","strokeLinejoin":"round","className":"lucide lucide-arrow-left ","children":[["$","path","1l729n",{"d":"m12 19-7-7 7-7"}],["$","path","x3x0zl",{"d":"M19 12H5"}],"$undefined"]}],"Back to Learn"]}]}]}],["$","div",null,{"className":"bg-white border border-gray-200 rounded-lg p-8 mb-8","children":[["$","div",null,{"className":"flex items-center justify-between mb-4","children":[["$","h1",null,{"className":"text-3xl font-bold text-gray-900","children":"LRU Cache"}],["$","div",null,{"className":"flex gap-4","children":[["$","button",null,{"className":"flex items-center gap-2 bg-transparent text-gray-700 border border-gray-300 px-6 py-3 rounded-md font-semibold hover:bg-gray-50 transition-colors","children":[["$","svg",null,{"xmlns":"http://www.w3.org/2000/svg","width":16,"height":16,"viewBox":"0 0 24 24","fill":"none","stroke":"currentColor","strokeWidth":2,"strokeLinecap":"round","strokeLinejoin":"round","className":"lucide lucide-star ","children":[["$","polygon","8f66p6",{"points":"12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"}],"$undefined"]}],"Bookmark"]}],["$","button",null,{"className":"flex items-center gap-2 bg-transparent text-gray-700 border border-gray-300 px-6 py-3 rounded-md font-semibold hover:bg-gray-50 transition-colors","children":[["$","svg",null,{"xmlns":"http://www.w3.org/2000/svg","width":16,"height":16,"viewBox":"0 0 24 24","fill":"none","stroke":"currentColor","strokeWidth":2,"strokeLinecap":"round","strokeLinejoin":"round","className":"lucide lucide-share2 ","children":[["$","circle","gq8acd",{"cx":"18","cy":"5","r":"3"}],["$","circle","w7nqdw",{"cx":"6","cy":"12","r":"3"}],["$","circle","1xt0gg",{"cx":"18","cy":"19","r":"3"}],["$","line","47mynk",{"x1":"8.59","x2":"15.42","y1":"13.51","y2":"17.49"}],["$","line","1n3mei",{"x1":"15.41","x2":"8.59","y1":"6.51","y2":"10.49"}],"$undefined"]}],"Share"]}]]}]]}],["$","div",null,{"className":"flex gap-8 mb-4","children":[["$","div",null,{"className":"flex items-center gap-2 text-sm text-gray-600","children":[["$","svg",null,{"xmlns":"http://www.w3.org/2000/svg","width":16,"height":16,"viewBox":"0 0 24 24","fill":"none","stroke":"currentColor","strokeWidth":2,"strokeLinecap":"round","strokeLinejoin":"round","className":"lucide lucide-clock ","children":[["$","circle","1mglay",{"cx":"12","cy":"12","r":"10"}],["$","polyline","68esgv",{"points":"12 6 12 12 16 14"}],"$undefined"]}],"2-3 hours"]}],["$","span",null,{"className":"px-3 py-1 rounded-full text-xs font-semibold text-white bg-red-500","children":"Easy"}],["$","span",null,{"className":"px-3 py-1 rounded-full text-xs font-semibold bg-blue-100 text-blue-700","children":"Design"}]]}],["$","div",null,{"className":"flex flex-wrap gap-2 mb-4","children":[["$","span","0",{"className":"bg-gray-100 text-gray-600 px-3 py-1 rounded-md text-xs font-medium","children":"Design"}],["$","span","1",{"className":"bg-gray-100 text-gray-600 px-3 py-1 rounded-md text-xs font-medium","children":"Hash Table"}]]}],["$","p",null,{"className":"text-lg text-gray-700 leading-relaxed","children":"**LeetCode Problem # * 146. LRU Cache**..."}]]}],["$","div",null,{"className":"grid grid-cols-1 lg:grid-cols-3 gap-8","children":[["$","div",null,{"className":"lg:col-span-2","children":["$","div",null,{"className":"bg-white border border-gray-200 rounded-lg p-8","children":["$","$L3",null,{"content":"$4"}]}]}],["$","div",null,{"className":"space-y-6","children":[["$","div",null,{"className":"bg-white border border-gray-200 rounded-lg p-6","children":[["$","h3",null,{"className":"text-lg font-semibold text-gray-900 mb-4","children":"Your Progress"}],["$","div",null,{"className":"w-full bg-gray-200 rounded-full h-2 mb-2","children":["$","div",null,{"className":"bg-blue-600 h-2 rounded-full","style":{"width":"25%"}}]}],["$","p",null,{"className":"text-sm text-gray-600","children":"25% Complete"}]]}],false]}]]}]]}],null],null],null]},[null,["$","$L5",null,{"parallelRouterKey":"children","segmentPath":["children","learn","children","$6","children"],"error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L7",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","notFoundStyles":"$undefined"}]],null]},[null,["$","$L5",null,{"parallelRouterKey":"children","segmentPath":["children","learn","children"],"error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L7",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","notFoundStyles":"$undefined"}]],null]},[[[["$","link","0",{"rel":"stylesheet","href":"/interview/_next/static/css/387024c6a2216908.css","precedence":"next","crossOrigin":"$undefined"}]],["$","$L8",null,{"children":["$","$L5",null,{"parallelRouterKey":"children","segmentPath":["children"],"error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L7",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":{"fontFamily":"system-ui,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\"","height":"100vh","textAlign":"center","display":"flex","flexDirection":"column","alignItems":"center","justifyContent":"center"},"children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":{"display":"inline-block","margin":"0 20px 0 0","padding":"0 23px 0 0","fontSize":24,"fontWeight":500,"verticalAlign":"top","lineHeight":"49px"},"children":"404"}],["$","div",null,{"style":{"display":"inline-block"},"children":["$","h2",null,{"style":{"fontSize":14,"fontWeight":400,"lineHeight":"49px","margin":0},"children":"This page could not be found."}]}]]}]}]],"notFoundStyles":[]}],"params":{}}]],null],null],["$L9",null]]]]
+9:[["$","meta","0",{"name":"viewport","content":"width=device-width, initial-scale=1"}],["$","meta","1",{"charSet":"utf-8"}],["$","meta","2",{"name":"next-size-adjust"}]]
+1:null

@@ -1,0 +1,846 @@
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><meta name="viewport" content="width=device-width, initial-scale=1"/><link rel="preload" href="/interview/_next/static/media/e4af272ccee01ff0-s.p.woff2" as="font" crossorigin="" type="font/woff2"/><link rel="stylesheet" href="/interview/_next/static/css/387024c6a2216908.css" data-precedence="next"/><link rel="preload" as="script" fetchPriority="low" href="/interview/_next/static/chunks/webpack-be7d7df45533bffc.js"/><script src="/interview/_next/static/chunks/fd9d1056-6922f449a204c2cc.js" async=""></script><script src="/interview/_next/static/chunks/117-e7ecc085ce9cfab3.js" async=""></script><script src="/interview/_next/static/chunks/main-app-b06be5f3411c20c3.js" async=""></script><script src="/interview/_next/static/chunks/918-3273b83890f10546.js" async=""></script><script src="/interview/_next/static/chunks/972-011bba60ed155615.js" async=""></script><script src="/interview/_next/static/chunks/930-3262a6c9c5acace4.js" async=""></script><script src="/interview/_next/static/chunks/app/learn/%5Btopic%5D/page-4ab144227f7a7b3e.js" async=""></script><script src="/interview/_next/static/chunks/710-dfaa11b4dff08f8e.js" async=""></script><script src="/interview/_next/static/chunks/233-3e0c1d820a17eca9.js" async=""></script><script src="/interview/_next/static/chunks/app/layout-333f4adcd11f8f39.js" async=""></script><title>Frontend Interview Prep 2025 - Big Tech Interview Guide</title><meta name="description" content="Comprehensive frontend interview preparation for Big Tech companies including React, TypeScript, algorithms, and system design."/><link rel="icon" href="/favicon.ico"/><meta name="theme-color" content="#1a1a1a"/><meta property="og:title" content="Frontend Interview Prep 2025"/><meta property="og:description" content="Complete guide for frontend engineers targeting Big Tech companies"/><meta property="og:type" content="website"/><link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous"/><meta name="next-size-adjust"/><script src="/interview/_next/static/chunks/polyfills-42372ed130431b0a.js" noModule=""></script><style data-styled="" data-styled-version="6.1.19">*{margin:0;padding:0;box-sizing:border-box;}/*!sc*/
+html{font-size:16px;line-height:1.5;scroll-behavior:smooth;}/*!sc*/
+body{font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;font-size:1rem;line-height:1.5;color:#1e293b;background-color:#ffffff;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;}/*!sc*/
+h1,h2,h3,h4,h5,h6{font-weight:700;line-height:1.25;margin-bottom:0.5em;}/*!sc*/
+h1{font-size:3rem;}/*!sc*/
+@media (max-width: 768px){h1{font-size:2.25rem;}}/*!sc*/
+h2{font-size:2.25rem;}/*!sc*/
+@media (max-width: 768px){h2{font-size:1.875rem;}}/*!sc*/
+h3{font-size:1.875rem;}/*!sc*/
+@media (max-width: 768px){h3{font-size:1.5rem;}}/*!sc*/
+h4{font-size:1.5rem;}/*!sc*/
+@media (max-width: 768px){h4{font-size:1.25rem;}}/*!sc*/
+h5{font-size:1.25rem;}/*!sc*/
+h6{font-size:1.125rem;}/*!sc*/
+p{margin-bottom:1rem;line-height:1.75;}/*!sc*/
+a{color:#3b82f6;text-decoration:none;transition:color 0.15s ease;}/*!sc*/
+a:hover{color:#2563eb;}/*!sc*/
+a:focus{outline:2px solid #3b82f6;outline-offset:2px;}/*!sc*/
+button{cursor:pointer;border:none;background:none;font-family:inherit;font-size:inherit;}/*!sc*/
+button:disabled{cursor:not-allowed;opacity:0.6;}/*!sc*/
+button:focus{outline:2px solid #3b82f6;outline-offset:2px;}/*!sc*/
+input,textarea,select{font-family:inherit;font-size:inherit;}/*!sc*/
+input:focus,textarea:focus,select:focus{outline:2px solid #3b82f6;outline-offset:2px;}/*!sc*/
+img{max-width:100%;height:auto;}/*!sc*/
+ul,ol{margin-bottom:1rem;padding-left:1.5rem;}/*!sc*/
+li{margin-bottom:0.25rem;}/*!sc*/
+blockquote{margin:1rem 0;padding:1rem;border-left:4px solid #3b82f6;background-color:#f1f5f9;font-style:italic;}/*!sc*/
+code{font-family:SFMono-Regular,Consolas,"Liberation Mono",Menlo,monospace;font-size:0.9em;background-color:#f1f5f9;padding:0.2em 0.4em;border-radius:0.25rem;}/*!sc*/
+pre{background-color:#f1f5f9;padding:1rem;border-radius:0.5rem;overflow-x:auto;margin-bottom:1rem;}/*!sc*/
+pre code{background:none;padding:0;}/*!sc*/
+table{width:100%;border-collapse:collapse;margin-bottom:1rem;}/*!sc*/
+th,td{padding:0.75rem;text-align:left;border-bottom:1px solid #e2e8f0;}/*!sc*/
+th{font-weight:600;background-color:#f1f5f9;}/*!sc*/
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0, 0, 0, 0);white-space:nowrap;border:0;}/*!sc*/
+.skip-link{position:absolute;top:-40px;left:6px;background:#3b82f6;color:white;padding:8px;text-decoration:none;border-radius:4px;z-index:100;}/*!sc*/
+.skip-link:focus{top:6px;}/*!sc*/
+::-webkit-scrollbar{width:8px;height:8px;}/*!sc*/
+::-webkit-scrollbar-track{background:#f1f5f9;}/*!sc*/
+::-webkit-scrollbar-thumb{background:#94a3b8;border-radius:4px;}/*!sc*/
+::-webkit-scrollbar-thumb:hover{background:#64748b;}/*!sc*/
+::selection{background:#3b82f6;color:white;}/*!sc*/
+.focus-visible{outline:2px solid #3b82f6;outline-offset:2px;}/*!sc*/
+.fade-in{opacity:0;animation:fadeIn 0.3s ease forwards;}/*!sc*/
+.slide-up{transform:translateY(20px);opacity:0;animation:slideUp 0.3s ease forwards;}/*!sc*/
+@keyframes fadeIn{to{opacity:1;}}/*!sc*/
+@keyframes slideUp{to{transform:translateY(0);opacity:1;}}/*!sc*/
+@media print{*{background:white!important;color:black!important;box-shadow:none!important;text-shadow:none!important;}a,a:visited{text-decoration:underline;}h1,h2,h3,h4,h5,h6{break-after:avoid;}pre,blockquote{border:1px solid #999;break-inside:avoid;}img{max-width:100%!important;}@page{margin:0.5in;}}/*!sc*/
+data-styled.g21[id="sc-global-kxA-Ddz1"]{content:"sc-global-kxA-Ddz1,"}/*!sc*/
+.iIQwfN{position:fixed;top:0;width:100%;z-index:1020;background:transparent;backdrop-filter:blur(10px);border-bottom:1px solid transparent;transition:all 0.3s ease;}/*!sc*/
+data-styled.g22[id="sc-gGKoUb"]{content:"iIQwfN,"}/*!sc*/
+.cEuiWg{max-width:1200px;margin:0 auto;padding:0 2rem;display:flex;align-items:center;justify-content:space-between;height:70px;}/*!sc*/
+data-styled.g23[id="sc-hwddKA"]{content:"cEuiWg,"}/*!sc*/
+.bqPomF{display:flex;align-items:center;gap:0.5rem;font-size:1.5rem;font-weight:700;color:#3b82f6;text-decoration:none;cursor:pointer;}/*!sc*/
+.bqPomF:hover{color:#2563eb;}/*!sc*/
+data-styled.g24[id="sc-jaXbil"]{content:"bqPomF,"}/*!sc*/
+.iwwpNe{display:flex;align-items:center;gap:2rem;}/*!sc*/
+@media (max-width: 768px){.iwwpNe{display:none;}}/*!sc*/
+data-styled.g25[id="sc-eqNDNG"]{content:"iwwpNe,"}/*!sc*/
+.iuGltB{color:#1e293b;font-weight:500;text-decoration:none;transition:color 0.15s ease;position:relative;}/*!sc*/
+.iuGltB:hover{color:#3b82f6;}/*!sc*/
+.iuGltB:after{content:'';position:absolute;bottom:-5px;left:0;width:0;height:2px;background:#3b82f6;transition:width 0.15s ease;}/*!sc*/
+.iuGltB:hover:after{width:100%;}/*!sc*/
+data-styled.g26[id="sc-fVHBlr"]{content:"iuGltB,"}/*!sc*/
+.lmsDAj{display:none;background:none;border:none;color:#1e293b;cursor:pointer;padding:0.5rem;}/*!sc*/
+@media (max-width: 768px){.lmsDAj{display:block;}}/*!sc*/
+data-styled.g27[id="sc-gLaqbQ"]{content:"lmsDAj,"}/*!sc*/
+.keTsRT{display:flex;align-items:center;gap:0.5rem;background:#f1f5f9;border:1px solid #e2e8f0;border-radius:0.5rem;padding:0.5rem 1rem;color:#64748b;font-size:0.9rem;transition:all 0.15s ease;}/*!sc*/
+.keTsRT:hover{background:#ffffff;border-color:#3b82f6;}/*!sc*/
+data-styled.g31[id="sc-cOpnSz"]{content:"keTsRT,"}/*!sc*/
+.hrfQfY{background:#1e293b;color:white;padding:3rem 0 1rem;margin-top:auto;}/*!sc*/
+data-styled.g32[id="sc-kjwdDK"]{content:"hrfQfY,"}/*!sc*/
+.dwFHjZ{max-width:1200px;margin:0 auto;padding:0 2rem;}/*!sc*/
+data-styled.g33[id="sc-eVqvcJ"]{content:"dwFHjZ,"}/*!sc*/
+.kWATso{display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:2rem;margin-bottom:2rem;}/*!sc*/
+@media (max-width: 768px){.kWATso{grid-template-columns:1fr 1fr;gap:1.5rem;}}/*!sc*/
+@media (max-width: 480px){.kWATso{grid-template-columns:1fr;}}/*!sc*/
+data-styled.g34[id="sc-bbbBoY"]{content:"kWATso,"}/*!sc*/
+.fBmmqS h3{font-size:1.1rem;font-weight:600;margin-bottom:1rem;color:white;}/*!sc*/
+.fBmmqS ul{list-style:none;padding:0;margin:0;}/*!sc*/
+.fBmmqS li{margin-bottom:0.5rem;}/*!sc*/
+.fBmmqS a{color:rgba(255, 255, 255, 0.7);text-decoration:none;transition:color 0.15s ease;}/*!sc*/
+.fBmmqS a:hover{color:white;}/*!sc*/
+data-styled.g35[id="sc-cdmAjP"]{content:"fBmmqS,"}/*!sc*/
+.iNKxsb{display:flex;align-items:center;gap:0.5rem;font-size:1.2rem;font-weight:700;margin-bottom:1rem;color:white;}/*!sc*/
+data-styled.g36[id="sc-jytpVa"]{content:"iNKxsb,"}/*!sc*/
+.fYhkiV{color:rgba(255, 255, 255, 0.7);line-height:1.6;margin-bottom:1rem;}/*!sc*/
+data-styled.g37[id="sc-eknHtZ"]{content:"fYhkiV,"}/*!sc*/
+.eVAQiq{display:flex;gap:1rem;}/*!sc*/
+.eVAQiq a{display:flex;align-items:center;justify-content:center;width:40px;height:40px;background:rgba(255, 255, 255, 0.1);border-radius:0.5rem;color:rgba(255, 255, 255, 0.7);transition:all 0.15s ease;}/*!sc*/
+.eVAQiq a:hover{background:rgba(255, 255, 255, 0.2);color:white;}/*!sc*/
+data-styled.g38[id="sc-pYNGo"]{content:"eVAQiq,"}/*!sc*/
+.fgJmHp{border-top:1px solid rgba(255, 255, 255, 0.1);padding-top:2rem;display:flex;justify-content:space-between;align-items:center;}/*!sc*/
+@media (max-width: 768px){.fgJmHp{flex-direction:column;gap:1rem;text-align:center;}}/*!sc*/
+data-styled.g39[id="sc-cCVJLD"]{content:"fgJmHp,"}/*!sc*/
+.gYGLHT{color:rgba(255, 255, 255, 0.7);margin:0;font-size:0.9rem;}/*!sc*/
+data-styled.g40[id="sc-jYczwO"]{content:"gYGLHT,"}/*!sc*/
+.ghBULZ{display:flex;gap:2rem;}/*!sc*/
+@media (max-width: 480px){.ghBULZ{flex-direction:column;gap:1rem;}}/*!sc*/
+.ghBULZ a{color:rgba(255, 255, 255, 0.7);text-decoration:none;font-size:0.9rem;transition:color 0.15s ease;}/*!sc*/
+.ghBULZ a:hover{color:white;}/*!sc*/
+data-styled.g41[id="sc-dNFkOE"]{content:"ghBULZ,"}/*!sc*/
+.fUIuKh{color:#1e293b;line-height:1.6;}/*!sc*/
+.fUIuKh h1,.fUIuKh h2,.fUIuKh h3,.fUIuKh h4,.fUIuKh h5,.fUIuKh h6{color:#1e293b;margin-top:2rem;margin-bottom:1rem;font-weight:600;}/*!sc*/
+.fUIuKh h1{font-size:2rem;border-bottom:2px solid #e2e8f0;padding-bottom:0.5rem;}/*!sc*/
+.fUIuKh h2{font-size:1.5rem;border-bottom:1px solid #e2e8f0;padding-bottom:0.3rem;}/*!sc*/
+.fUIuKh h3{font-size:1.25rem;}/*!sc*/
+.fUIuKh h4{font-size:1.1rem;}/*!sc*/
+.fUIuKh p{margin-bottom:1rem;color:#64748b;}/*!sc*/
+.fUIuKh a{color:#3b82f6;text-decoration:none;}/*!sc*/
+.fUIuKh a:hover{text-decoration:underline;}/*!sc*/
+.fUIuKh ul,.fUIuKh ol{margin-bottom:1rem;padding-left:1.5rem;}/*!sc*/
+.fUIuKh ul li,.fUIuKh ol li{margin-bottom:0.5rem;color:#64748b;}/*!sc*/
+.fUIuKh blockquote{border-left:4px solid #3b82f6;padding-left:1rem;margin:1rem 0;font-style:italic;color:#64748b;background:#f1f5f9;padding:1rem;border-radius:0.5rem;}/*!sc*/
+.fUIuKh code{background:#f1f5f9;padding:0.2rem 0.4rem;border-radius:0.25rem;font-family:SFMono-Regular,Consolas,"Liberation Mono",Menlo,monospace;font-size:0.9em;color:#f59e0b;}/*!sc*/
+.fUIuKh pre{background:#ffffff;border:1px solid #e2e8f0;border-radius:0.5rem;padding:1rem;margin:1rem 0;overflow-x:auto;}/*!sc*/
+.fUIuKh pre code{background:none;padding:0;color:#1e293b;font-size:0.9rem;}/*!sc*/
+.fUIuKh table{width:100%;border-collapse:collapse;margin:1rem 0;}/*!sc*/
+.fUIuKh table th,.fUIuKh table td{border:1px solid #e2e8f0;padding:0.5rem;text-align:left;}/*!sc*/
+.fUIuKh table th{background:#ffffff;font-weight:600;}/*!sc*/
+.fUIuKh table tr:nth-child(even){background:#f1f5f9;}/*!sc*/
+.fUIuKh hr{border:none;height:1px;background:#e2e8f0;margin:2rem 0;}/*!sc*/
+.fUIuKh .highlight{background:#3b82f620;padding:0.2rem 0.4rem;border-radius:0.25rem;font-weight:600;}/*!sc*/
+.fUIuKh .hljs{background:#ffffff;color:#1e293b;}/*!sc*/
+.fUIuKh .hljs-keyword{color:#3b82f6;font-weight:600;}/*!sc*/
+.fUIuKh .hljs-string{color:#10b981;}/*!sc*/
+.fUIuKh .hljs-function{color:#f59e0b;}/*!sc*/
+.fUIuKh .hljs-comment{color:#94a3b8;font-style:italic;}/*!sc*/
+.fUIuKh .hljs-number{color:#f59e0b;}/*!sc*/
+.fUIuKh .hljs-variable{color:#1e293b;}/*!sc*/
+.fUIuKh .hljs-title{color:#f59e0b;font-weight:600;}/*!sc*/
+data-styled.g42[id="sc-fszimp"]{content:"fUIuKh,"}/*!sc*/
+</style></head><body class="__className_6eac61"><div style="min-height:100vh;display:flex;flex-direction:column"><nav class="sc-gGKoUb iIQwfN"><div class="sc-hwddKA cEuiWg"><a href="/interview"><a class="sc-jaXbil bqPomF"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-code "><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>Frontend Interview Prep</a></a><div class="sc-eqNDNG iwwpNe"><a href="/interview/problems"><a class="sc-fVHBlr iuGltB">Problems</a></a><a href="/interview/learn"><a class="sc-fVHBlr iuGltB">Learn</a></a><a href="/interview/study-guide"><a class="sc-fVHBlr iuGltB">Study Guide</a></a><a href="/interview/system-design"><a class="sc-fVHBlr iuGltB">System Design</a></a><a href="/interview/performance"><a class="sc-fVHBlr iuGltB">Performance</a></a><a href="/interview/accessibility"><a class="sc-fVHBlr iuGltB">Accessibility</a></a><a href="/interview/interview-tips"><a class="sc-fVHBlr iuGltB">Interview Tips</a></a><button class="sc-cOpnSz keTsRT"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-search "><circle cx="11" cy="11" r="8"></circle><path d="m21 21-4.3-4.3"></path></svg>Search</button></div><button class="sc-gLaqbQ lmsDAj"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-menu "><line x1="4" x2="20" y1="12" y2="12"></line><line x1="4" x2="20" y1="6" y2="6"></line><line x1="4" x2="20" y1="18" y2="18"></line></svg></button></div></nav><main style="flex:1"><div class="max-w-6xl mx-auto px-8 py-24"><div class="flex items-center gap-4 mb-8"><a href="/interview/learn"><button class="flex items-center gap-2 bg-gray-100 border border-gray-300 text-gray-700 px-4 py-3 rounded-md font-medium hover:bg-gray-200 transition-colors"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-left "><path d="m12 19-7-7 7-7"></path><path d="M19 12H5"></path></svg>Back to Learn</button></a></div><div class="bg-white border border-gray-200 rounded-lg p-8 mb-8"><div class="flex items-center justify-between mb-4"><h1 class="text-3xl font-bold text-gray-900">Linked List Cycle</h1><div class="flex gap-4"><button class="flex items-center gap-2 bg-transparent text-gray-700 border border-gray-300 px-6 py-3 rounded-md font-semibold hover:bg-gray-50 transition-colors"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-star "><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>Bookmark</button><button class="flex items-center gap-2 bg-transparent text-gray-700 border border-gray-300 px-6 py-3 rounded-md font-semibold hover:bg-gray-50 transition-colors"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-share2 "><circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><line x1="8.59" x2="15.42" y1="13.51" y2="17.49"></line><line x1="15.41" x2="8.59" y1="6.51" y2="10.49"></line></svg>Share</button></div></div><div class="flex gap-8 mb-4"><div class="flex items-center gap-2 text-sm text-gray-600"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-clock "><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>2-3 hours</div><span class="px-3 py-1 rounded-full text-xs font-semibold text-white bg-red-500">Hard</span><span class="px-3 py-1 rounded-full text-xs font-semibold bg-blue-100 text-blue-700">Linked List</span></div><div class="flex flex-wrap gap-2 mb-4"><span class="bg-gray-100 text-gray-600 px-3 py-1 rounded-md text-xs font-medium">Linked List</span><span class="bg-gray-100 text-gray-600 px-3 py-1 rounded-md text-xs font-medium">Two Pointers</span><span class="bg-gray-100 text-gray-600 px-3 py-1 rounded-md text-xs font-medium">Hash Table</span></div><p class="text-lg text-gray-700 leading-relaxed">**LeetCode Problem # * 141. Linked List Cycle**...</p></div><div class="grid grid-cols-1 lg:grid-cols-3 gap-8"><div class="lg:col-span-2"><div class="bg-white border border-gray-200 rounded-lg p-8"><div class="sc-fszimp fUIuKh"><h1 id="linked-list-cycle" node="[object Object]">Linked List Cycle</h1>
+<p><strong>LeetCode Problem # * 141. Linked List Cycle</strong></p>
+<h2 id="problem-description" node="[object Object]">Problem Description</h2>
+<ul>
+<li>Given head, the head of a linked list, determine if the linked list has a cycle in it.  *  * There is a cycle in a linked list if there is some node in the list that can be reached  * again by continuously following the next pointer. Internally, pos is used to denote the  * index of the node that tail&#x27;s next pointer is connected to. Note that pos is not passed</li>
+</ul>
+<h2 id="solutions" node="[object Object]">Solutions</h2>
+<p>{% raw %}
+/**</p>
+<ul>
+<li>141. Linked List Cycle</li>
+<li></li>
+<li>Problem:</li>
+<li>Given head, the head of a linked list, determine if the linked list has a cycle in it.</li>
+<li></li>
+<li>There is a cycle in a linked list if there is some node in the list that can be reached</li>
+<li>again by continuously following the next pointer. Internally, pos is used to denote the</li>
+<li>index of the node that tail&#x27;s next pointer is connected to. Note that pos is not passed</li>
+<li>as a parameter.</li>
+<li></li>
+<li>Return true if there is a cycle in the linked list. Otherwise, return false.</li>
+<li></li>
+<li>Example:</li>
+<li>Input: head = [3,2,0,-4], pos = 1</li>
+<li>Output: true</li>
+<li>Explanation: There is a cycle in the linked list, where the tail connects to the 1st node (0-indexed).</li>
+<li></li>
+<li>Input: head = [1,2], pos = 0</li>
+<li>Output: true</li>
+<li>Explanation: There is a cycle in the linked list, where the tail connects to the 0th node.</li>
+<li></li>
+<li>Input: head = [1], pos = -1</li>
+<li>Output: false</li>
+<li>Explanation: There is no cycle in the linked list.</li>
+<li></li>
+<li>LeetCode: <a href="https://leetcode.com/problems/linked-list-cycle/" target="_blank" rel="noopener noreferrer" node="[object Object]">https://leetcode.com/problems/linked-list-cycle/</a>
+*/</li>
+</ul>
+<p>// Definition for singly-linked list
+class ListNode {
+val: number;
+next: ListNode | null;
+constructor(val?: number, next?: ListNode | null) {
+this.val = val === undefined ? 0 : val;
+this.next = next === undefined ? null : next;
+}
+}</p>
+<p>/**</p>
+<ul>
+<li>Solution 1: Floyd&#x27;s Cycle Detection Algorithm (Fast and Slow Pointer)</li>
+<li></li>
+<li>Approach:</li>
+<li>
+<ul>
+<li>Use two pointers: slow (moves 1 step) and fast (moves 2 steps)</li>
+</ul>
+</li>
+<li>
+<ul>
+<li>If there&#x27;s a cycle, fast will eventually catch up to slow</li>
+</ul>
+</li>
+<li>
+<ul>
+<li>If fast reaches null, there&#x27;s no cycle</li>
+</ul>
+</li>
+<li></li>
+<li>Time Complexity: O(n)</li>
+<li>Space Complexity: O(1)
+*/
+function hasCycle(head: ListNode | null): boolean {
+if (!head || !head.next) return false;</li>
+</ul>
+<p>let slow = head;
+let fast = head;</p>
+<p>while (fast &amp;&amp; fast.next) {
+slow = slow.next!;
+fast = fast.next.next!;</p>
+<pre><pre><code class="hljs undefined">if (slow === fast) {
+  return true;
+}
+</code></pre></pre>
+<p>}</p>
+<p>return false;
+}</p>
+<p>/**</p>
+<ul>
+<li>Solution 2: Using Set</li>
+<li></li>
+<li>Approach:</li>
+<li>
+<ul>
+<li>Use Set to track visited nodes</li>
+</ul>
+</li>
+<li>
+<ul>
+<li>If we encounter a node that&#x27;s already in the set, there&#x27;s a cycle</li>
+</ul>
+</li>
+<li></li>
+<li>Time Complexity: O(n)</li>
+<li>Space Complexity: O(n)
+*/
+function hasCycleSet(head: ListNode | null): boolean {
+const visited = new Set<listnode>();
+let current = head;</listnode></li>
+</ul>
+<p>while (current) {
+if (visited.has(current)) {
+return true;
+}
+visited.add(current);
+current = current.next;
+}</p>
+<p>return false;
+}</p>
+<p>/**</p>
+<ul>
+<li>Solution 3: Using Map</li>
+<li></li>
+<li>Approach:</li>
+<li>
+<ul>
+<li>Use Map to track visited nodes with additional information</li>
+</ul>
+</li>
+<li>
+<ul>
+<li>More explicit tracking of node positions</li>
+</ul>
+</li>
+<li></li>
+<li>Time Complexity: O(n)</li>
+<li>Space Complexity: O(n)
+*/
+function hasCycleMap(head: ListNode | null): boolean {
+const visited = new Map&lt;ListNode, number&gt;();
+let current = head;
+let position = 0;</li>
+</ul>
+<p>while (current) {
+if (visited.has(current)) {
+return true;
+}
+visited.set(current, position);
+current = current.next;
+position++;
+}</p>
+<p>return false;
+}</p>
+<p>/**</p>
+<ul>
+<li>Solution 4: Using Array</li>
+<li></li>
+<li>Approach:</li>
+<li>
+<ul>
+<li>Use array to store visited nodes</li>
+</ul>
+</li>
+<li>
+<ul>
+<li>Check if current node exists in array</li>
+</ul>
+</li>
+<li></li>
+<li>Time Complexity: O(n²) - includes array search</li>
+<li>Space Complexity: O(n)
+*/
+function hasCycleArray(head: ListNode | null): boolean {
+const visited: ListNode[] = [];
+let current = head;</li>
+</ul>
+<p>while (current) {
+if (visited.includes(current)) {
+return true;
+}
+visited.push(current);
+current = current.next;
+}</p>
+<p>return false;
+}</p>
+<p>/**</p>
+<ul>
+<li>Solution 5: Using Object as Hash Map</li>
+<li></li>
+<li>Approach:</li>
+<li>
+<ul>
+<li>Use JavaScript object as hash map</li>
+</ul>
+</li>
+<li>
+<ul>
+<li>More familiar for JavaScript developers</li>
+</ul>
+</li>
+<li></li>
+<li>Time Complexity: O(n)</li>
+<li>Space Complexity: O(n)
+*/
+function hasCycleObject(head: ListNode | null): boolean {
+const visited: { [key: string]: boolean } = {};
+let current = head;</li>
+</ul>
+<p>while (current) {
+const key = current.toString();
+if (visited[key]) {
+return true;
+}
+visited[key] = true;
+current = current.next;
+}</p>
+<p>return false;
+}</p>
+<p>/**</p>
+<ul>
+<li>Solution 6: Using Class (Object-oriented)</li>
+<li></li>
+<li>Approach:</li>
+<li>
+<ul>
+<li>Create a CycleDetector class</li>
+</ul>
+</li>
+<li>
+<ul>
+<li>Encapsulate the detection logic</li>
+</ul>
+</li>
+<li></li>
+<li>Time Complexity: O(n)</li>
+<li>Space Complexity: O(1)
+*/
+class CycleDetector {
+private head: ListNode | null;</li>
+</ul>
+<p>constructor(head: ListNode | null) {
+this.head = head;
+}</p>
+<p>detect(): boolean {
+if (!this.head || !this.head.next) return false;</p>
+<pre><pre><code class="hljs undefined">let slow = this.head;
+let fast = this.head;
+
+while (fast &amp;&amp; fast.next) {
+  slow = slow.next!;
+  fast = fast.next.next!;
+
+  if (slow === fast) {
+    return true;
+  }
+}
+
+return false;
+</code></pre></pre>
+<p>}</p>
+<p>getHead(): ListNode | null {
+return this.head;
+}
+}</p>
+<p>function hasCycleClass(head: ListNode | null): boolean {
+const detector = new CycleDetector(head);
+return detector.detect();
+}</p>
+<p>/**</p>
+<ul>
+<li>Solution 7: Using Generator (Memory efficient)</li>
+<li></li>
+<li>Approach:</li>
+<li>
+<ul>
+<li>Use generator to yield nodes</li>
+</ul>
+</li>
+<li>
+<ul>
+<li>Memory efficient for large lists</li>
+</ul>
+</li>
+<li></li>
+<li>Time Complexity: O(n)</li>
+<li>Space Complexity: O(1)
+<em>/
+function</em> hasCycleGenerator(head: ListNode | null): Generator<listnode> {
+let current = head;</listnode></li>
+</ul>
+<p>while (current) {
+yield current;
+current = current.next;
+}
+}</p>
+<p>function hasCycleWithGenerator(head: ListNode | null): boolean {
+const visited = new Set<listnode>();</listnode></p>
+<p>for (const node of hasCycleGenerator(head)) {
+if (visited.has(node)) {
+return true;
+}
+visited.add(node);
+}</p>
+<p>return false;
+}</p>
+<p>/**</p>
+<ul>
+<li>Solution 8: Using Functional Approach</li>
+<li></li>
+<li>Approach:</li>
+<li>
+<ul>
+<li>Use functional programming concepts</li>
+</ul>
+</li>
+<li>
+<ul>
+<li>More declarative style</li>
+</ul>
+</li>
+<li></li>
+<li>Time Complexity: O(n)</li>
+<li>Space Complexity: O(n)
+*/
+function hasCycleFunctional(head: ListNode | null): boolean {
+const visited = new Set<listnode>();</listnode></li>
+</ul>
+<p>function traverse(node: ListNode | null): boolean {
+if (!node) return false;
+if (visited.has(node)) return true;</p>
+<pre><pre><code class="hljs undefined">visited.add(node);
+return traverse(node.next);
+</code></pre></pre>
+<p>}</p>
+<p>return traverse(head);
+}</p>
+<p>/**</p>
+<ul>
+<li>Solution 9: Using Three Pointers</li>
+<li></li>
+<li>Approach:</li>
+<li>
+<ul>
+<li>Use three pointers for more complex cycle detection</li>
+</ul>
+</li>
+<li>
+<ul>
+<li>Can detect cycle length and starting point</li>
+</ul>
+</li>
+<li></li>
+<li>Time Complexity: O(n)</li>
+<li>Space Complexity: O(1)
+*/
+function hasCycleThreePointers(head: ListNode | null): boolean {
+if (!head || !head.next) return false;</li>
+</ul>
+<p>let slow = head;
+let fast = head;
+let third = head;</p>
+<p>while (fast &amp;&amp; fast.next) {
+slow = slow.next!;
+fast = fast.next.next!;</p>
+<pre><pre><code class="hljs undefined">if (slow === fast) {
+  // Find cycle starting point
+  while (slow !== third) {
+    slow = slow.next!;
+    third = third.next!;
+  }
+  return true;
+}
+</code></pre></pre>
+<p>}</p>
+<p>return false;
+}</p>
+<p>/**</p>
+<ul>
+<li>Solution 10: Using Recursion with Memoization</li>
+<li></li>
+<li>Approach:</li>
+<li>
+<ul>
+<li>Use recursion with memoization</li>
+</ul>
+</li>
+<li>
+<ul>
+<li>Track visited nodes in recursive calls</li>
+</ul>
+</li>
+<li></li>
+<li>Time Complexity: O(n)</li>
+<li>Space Complexity: O(n) - recursion stack
+*/
+function hasCycleRecursive(head: ListNode | null): boolean {
+const visited = new Set<listnode>();</listnode></li>
+</ul>
+<p>function detect(node: ListNode | null): boolean {
+if (!node) return false;
+if (visited.has(node)) return true;</p>
+<pre><pre><code class="hljs undefined">visited.add(node);
+return detect(node.next);
+</code></pre></pre>
+<p>}</p>
+<p>return detect(head);
+}</p>
+<p>/**</p>
+<ul>
+<li>Solution 11: Using Bit Manipulation (Node Marking)</li>
+<li></li>
+<li>Approach:</li>
+<li>
+<ul>
+<li>Mark visited nodes by modifying their values</li>
+</ul>
+</li>
+<li>
+<ul>
+<li>Use special value to indicate visited nodes</li>
+</ul>
+</li>
+<li></li>
+<li>Time Complexity: O(n)</li>
+<li>Space Complexity: O(1) - but modifies original list
+*/
+function hasCycleBitManipulation(head: ListNode | null): boolean {
+const MARKED_VALUE = -100001; // Special value to mark visited nodes
+let current = head;</li>
+</ul>
+<p>while (current) {
+if (current.val === MARKED_VALUE) {
+return true;
+}
+current.val = MARKED_VALUE;
+current = current.next;
+}</p>
+<p>return false;
+}</p>
+<p>// Helper function to create a linked list with cycle
+function createLinkedListWithCycle(
+values: number[],
+cyclePos: number
+): ListNode | null {
+if (values.length === 0) return null;</p>
+<p>const head = new ListNode(values[0]);
+let current = head;
+let cycleNode: ListNode | null = null;</p>
+<p>for (let i = 1; i &lt; values.length; i++) {
+current.next = new ListNode(values[i]);
+current = current.next!;</p>
+<pre><pre><code class="hljs undefined">if (i === cyclePos) {
+  cycleNode = current;
+}
+</code></pre></pre>
+<p>}</p>
+<p>if (cyclePos &gt;= 0 &amp;&amp; cycleNode) {
+current.next = cycleNode;
+}</p>
+<p>return head;
+}</p>
+<p>// Helper function to create a linked list without cycle
+function createLinkedList(values: number[]): ListNode | null {
+if (values.length === 0) return null;</p>
+<p>const head = new ListNode(values[0]);
+let current = head;</p>
+<p>for (let i = 1; i &lt; values.length; i++) {
+current.next = new ListNode(values[i]);
+current = current.next!;
+}</p>
+<p>return head;
+}</p>
+<p>// Test cases
+function testHasCycle() {
+console.log(&quot;=== Testing Linked List Cycle ===\n&quot;);</p>
+<p>const testCases = [
+{
+values: [3, 2, 0, -4],
+cyclePos: 1,
+expected: true,
+description: &quot;Cycle exists&quot;,
+},
+{
+values: [1, 2],
+cyclePos: 0,
+expected: true,
+description: &quot;Cycle at beginning&quot;,
+},
+{
+values: [1],
+cyclePos: -1,
+expected: false,
+description: &quot;No cycle, single node&quot;,
+},
+{
+values: [],
+cyclePos: -1,
+expected: false,
+description: &quot;Empty list&quot;,
+},
+{
+values: [1, 2, 3, 4, 5],
+cyclePos: -1,
+expected: false,
+description: &quot;No cycle, multiple nodes&quot;,
+},
+{
+values: [1, 2, 3, 4, 5],
+cyclePos: 2,
+expected: true,
+description: &quot;Cycle in middle&quot;,
+},
+];</p>
+<p>testCases.forEach((testCase, index) =&gt; {
+console.log(<pre><code class="hljs undefined">Test Case ${index + 1}: ${testCase.description}</code></pre>);
+console.log(
+<pre><code class="hljs undefined">Values: [${testCase.values.join(&quot;, &quot;)}], Cycle Position: ${         testCase.cyclePos       }</code></pre>
+);
+console.log(<pre><code class="hljs undefined">Expected: ${testCase.expected}\n</code></pre>);</p>
+<pre><pre><code class="hljs undefined">const head =
+  testCase.cyclePos &gt;= 0
+    ? createLinkedListWithCycle(testCase.values, testCase.cyclePos)
+    : createLinkedList(testCase.values);
+
+// Test Solution 1 (Floyd&#x27;s Algorithm)
+const result1 = hasCycle(head);
+console.log(
+  `Solution 1 (Floyd&#x27;s Algorithm): ${result1} ${
+    result1 === testCase.expected ? &quot;✅&quot; : &quot;❌&quot;
+  }`
+);
+
+// Test Solution 2 (Set)
+const result2 = hasCycleSet(head);
+console.log(
+  `Solution 2 (Set): ${result2} ${
+    result2 === testCase.expected ? &quot;✅&quot; : &quot;❌&quot;
+  }`
+);
+
+// Test Solution 3 (Map)
+const result3 = hasCycleMap(head);
+console.log(
+  `Solution 3 (Map): ${result3} ${
+    result3 === testCase.expected ? &quot;✅&quot; : &quot;❌&quot;
+  }`
+);
+
+// Test Solution 4 (Array)
+const result4 = hasCycleArray(head);
+console.log(
+  `Solution 4 (Array): ${result4} ${
+    result4 === testCase.expected ? &quot;✅&quot; : &quot;❌&quot;
+  }`
+);
+
+// Test Solution 5 (Object)
+const result5 = hasCycleObject(head);
+console.log(
+  `Solution 5 (Object): ${result5} ${
+    result5 === testCase.expected ? &quot;✅&quot; : &quot;❌&quot;
+  }`
+);
+
+// Test Solution 6 (Class)
+const result6 = hasCycleClass(head);
+console.log(
+  `Solution 6 (Class): ${result6} ${
+    result6 === testCase.expected ? &quot;✅&quot; : &quot;❌&quot;
+  }`
+);
+
+// Test Solution 7 (Generator)
+const result7 = hasCycleWithGenerator(head);
+console.log(
+  `Solution 7 (Generator): ${result7} ${
+    result7 === testCase.expected ? &quot;✅&quot; : &quot;❌&quot;
+  }`
+);
+
+// Test Solution 8 (Functional)
+const result8 = hasCycleFunctional(head);
+console.log(
+  `Solution 8 (Functional): ${result8} ${
+    result8 === testCase.expected ? &quot;✅&quot; : &quot;❌&quot;
+  }`
+);
+
+// Test Solution 9 (Three Pointers)
+const result9 = hasCycleThreePointers(head);
+console.log(
+  `Solution 9 (Three Pointers): ${result9} ${
+    result9 === testCase.expected ? &quot;✅&quot; : &quot;❌&quot;
+  }`
+);
+
+// Test Solution 10 (Recursive)
+const result10 = hasCycleRecursive(head);
+console.log(
+  `Solution 10 (Recursive): ${result10} ${
+    result10 === testCase.expected ? &quot;✅&quot; : &quot;❌&quot;
+  }`
+);
+
+// Test Solution 11 (Bit Manipulation) - Only for non-cycle cases to avoid modification
+if (testCase.cyclePos === -1) {
+  const headCopy = createLinkedList(testCase.values);
+  const result11 = hasCycleBitManipulation(headCopy);
+  console.log(
+    `Solution 11 (Bit Manipulation): ${result11} ${
+      result11 === testCase.expected ? &quot;✅&quot; : &quot;❌&quot;
+    }`
+  );
+} else {
+  console.log(`Solution 11 (Bit Manipulation): Skipped (modifies list)`);
+}
+
+console.log(&quot;\n---\n&quot;);
+</code></pre></pre>
+<p>});
+}</p>
+<p>// Performance comparison
+function performanceComparison() {
+console.log(&quot;=== Performance Comparison ===\n&quot;);</p>
+<p>const testCases = [
+{ name: &quot;Floyd&#x27;s Algorithm&quot;, func: hasCycle },
+{ name: &quot;Set&quot;, func: hasCycleSet },
+{ name: &quot;Map&quot;, func: hasCycleMap },
+{ name: &quot;Array&quot;, func: hasCycleArray },
+{ name: &quot;Object&quot;, func: hasCycleObject },
+{ name: &quot;Class&quot;, func: hasCycleClass },
+{ name: &quot;Generator&quot;, func: hasCycleWithGenerator },
+{ name: &quot;Functional&quot;, func: hasCycleFunctional },
+{ name: &quot;Three Pointers&quot;, func: hasCycleThreePointers },
+{ name: &quot;Recursive&quot;, func: hasCycleRecursive },
+];</p>
+<p>// Create test cases
+const smallCase = createLinkedListWithCycle([1, 2, 3, 4], 1);
+const mediumCase = createLinkedListWithCycle(
+Array.from({ length: 100 }, (<em>, i) =&gt; i),
+50
+);
+const largeCase = createLinkedListWithCycle(
+Array.from({ length: 1000 }, (</em>, i) =&gt; i),
+500
+);</p>
+<p>const cases = [
+{ name: &quot;Small&quot;, case: smallCase },
+{ name: &quot;Medium&quot;, case: mediumCase },
+{ name: &quot;Large&quot;, case: largeCase },
+];</p>
+<p>cases.forEach(({ name, case: testCase }) =&gt; {
+console.log(<pre><code class="hljs undefined">${name} Case:</code></pre>);</p>
+<pre><pre><code class="hljs undefined">testCases.forEach(({ name: funcName, func }) =&gt; {
+  const start = performance.now();
+  const result = func(testCase);
+  const end = performance.now();
+
+  console.log(`  ${funcName}: ${(end - start).toFixed(2)}ms (${result})`);
+});
+
+console.log(&quot;&quot;);
+</code></pre></pre>
+<p>});
+}</p>
+<p>// Cycle analysis
+function cycleAnalysis() {
+console.log(&quot;=== Cycle Analysis ===\n&quot;);</p>
+<p>const testCases = [
+{ values: [1, 2, 3, 4, 5], cyclePos: 1 },
+{ values: [1, 2, 3, 4, 5], cyclePos: -1 },
+{ values: [1], cyclePos: 0 },
+{ values: [1, 2, 3], cyclePos: 2 },
+];</p>
+<p>testCases.forEach((testCase, index) =&gt; {
+console.log(<pre><code class="hljs undefined">Test Case ${index + 1}:</code></pre>);
+console.log(
+<pre><code class="hljs undefined">Values: [${testCase.values.join(&quot;, &quot;)}], Cycle Position: ${         testCase.cyclePos       }</code></pre>
+);</p>
+<pre><pre><code class="hljs undefined">const head =
+  testCase.cyclePos &gt;= 0
+    ? createLinkedListWithCycle(testCase.values, testCase.cyclePos)
+    : createLinkedList(testCase.values);
+
+const result = hasCycle(head);
+console.log(`Has cycle: ${result}`);
+console.log(&quot;&quot;);
+</code></pre></pre>
+<p>});
+}</p>
+<p>// Uncomment the following lines to run tests
+// testHasCycle();
+// performanceComparison();
+// cycleAnalysis();</p>
+<p>export {
+hasCycle,
+hasCycleSet,
+hasCycleMap,
+hasCycleArray,
+hasCycleObject,
+hasCycleClass,
+hasCycleWithGenerator,
+hasCycleFunctional,
+hasCycleThreePointers,
+hasCycleRecursive,
+hasCycleBitManipulation,
+CycleDetector,
+hasCycleGenerator,
+ListNode,
+createLinkedListWithCycle,
+createLinkedList,
+testHasCycle,
+performanceComparison,
+cycleAnalysis,
+};
+{% endraw %}</p></div></div></div><div class="space-y-6"><div class="bg-white border border-gray-200 rounded-lg p-6"><h3 class="text-lg font-semibold text-gray-900 mb-4">Your Progress</h3><div class="w-full bg-gray-200 rounded-full h-2 mb-2"><div class="bg-blue-600 h-2 rounded-full" style="width:25%"></div></div><p class="text-sm text-gray-600">25% Complete</p></div></div></div></div></main><footer class="sc-kjwdDK hrfQfY"><div class="sc-eVqvcJ dwFHjZ"><div class="sc-bbbBoY kWATso"><div class="sc-cdmAjP fBmmqS"><div class="sc-jytpVa iNKxsb"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-code "><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>Frontend Interview Prep</div><p class="sc-eknHtZ fYhkiV">Comprehensive interview preparation for frontend engineers targeting Big Tech companies.</p><div class="sc-pYNGo eVAQiq"><a href="https://github.com" aria-label="GitHub"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-github "><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"></path><path d="M9 18c-4.51 2-5-2-7-2"></path></svg></a><a href="https://twitter.com" aria-label="Twitter"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-twitter "><path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"></path></svg></a><a href="https://linkedin.com" aria-label="LinkedIn"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-linkedin "><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect width="4" height="12" x="2" y="9"></rect><circle cx="4" cy="4" r="2"></circle></svg></a><a href="mailto:contact@example.com" aria-label="Email"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-mail "><rect width="20" height="16" x="2" y="4" rx="2"></rect><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path></svg></a></div></div><div class="sc-cdmAjP fBmmqS"><h3>Study Materials</h3><ul><li><a href="/algorithms">Algorithms</a></li><li><a href="/react">React &amp; Frontend</a></li><li><a href="/system-design">System Design</a></li><li><a href="/typescript">TypeScript</a></li><li><a href="/performance">Performance</a></li></ul></div><div class="sc-cdmAjP fBmmqS"><h3>Companies</h3><ul><li><a href="/google">Google</a></li><li><a href="/meta">Meta</a></li><li><a href="/amazon">Amazon</a></li><li><a href="/microsoft">Microsoft</a></li><li><a href="/apple">Apple</a></li></ul></div><div class="sc-cdmAjP fBmmqS"><h3>Resources</h3><ul><li><a href="/interview-tips">Interview Tips</a></li><li><a href="/coding-challenges">Coding Challenges</a></li><li><a href="/mock-interviews">Mock Interviews</a></li><li><a href="/blog">Blog</a></li><li><a href="/faq">FAQ</a></li></ul></div></div><div class="sc-cCVJLD fgJmHp"><p class="sc-jYczwO gYGLHT">© 2025 Frontend Interview Prep. All rights reserved.</p><div class="sc-dNFkOE ghBULZ"><a href="/privacy">Privacy Policy</a><a href="/terms">Terms of Service</a><a href="/contact">Contact</a></div></div></div></footer></div><script src="/interview/_next/static/chunks/webpack-be7d7df45533bffc.js" async=""></script><script>(self.__next_f=self.__next_f||[]).push([0]);self.__next_f.push([2,null])</script><script>self.__next_f.push([1,"1:HL[\"/interview/_next/static/media/e4af272ccee01ff0-s.p.woff2\",\"font\",{\"crossOrigin\":\"\",\"type\":\"font/woff2\"}]\n2:HL[\"/interview/_next/static/css/387024c6a2216908.css\",\"style\"]\n"])</script><script>self.__next_f.push([1,"3:I[2846,[],\"\"]\n5:I[2972,[\"918\",\"static/chunks/918-3273b83890f10546.js\",\"972\",\"static/chunks/972-011bba60ed155615.js\",\"930\",\"static/chunks/930-3262a6c9c5acace4.js\",\"289\",\"static/chunks/app/learn/%5Btopic%5D/page-4ab144227f7a7b3e.js\"],\"\"]\n6:I[5907,[\"918\",\"static/chunks/918-3273b83890f10546.js\",\"972\",\"static/chunks/972-011bba60ed155615.js\",\"930\",\"static/chunks/930-3262a6c9c5acace4.js\",\"289\",\"static/chunks/app/learn/%5Btopic%5D/page-4ab144227f7a7b3e.js\"],\"default\"]\n8:I[4707,[],\"\"]\na:I[6423,[],\"\"]\nb:I[2,[\"918\",\"static/chunks/918-3273b83890f10546.js\",\"710\",\"static/chunks/710-dfaa11b4dff08f8e.js\",\"972\",\"static/chunks/972-011bba60ed155615.js\",\"233\",\"static/chunks/233-3e0c1d820a17eca9.js\",\"185\",\"static/chunks/app/layout-333f4adcd11f8f39.js\"],\"default\",1]\nd:I[1060,[],\"\"]\n7:T3d46,"])</script><script>self.__next_f.push([1,"\n# Linked List Cycle\n\n**LeetCode Problem # * 141. Linked List Cycle**\n\n## Problem Description\n\n * Given head, the head of a linked list, determine if the linked list has a cycle in it.  *  * There is a cycle in a linked list if there is some node in the list that can be reached  * again by continuously following the next pointer. Internally, pos is used to denote the  * index of the node that tail's next pointer is connected to. Note that pos is not passed \n\n## Solutions\n\n{% raw %}\n/**\n * 141. Linked List Cycle\n *\n * Problem:\n * Given head, the head of a linked list, determine if the linked list has a cycle in it.\n *\n * There is a cycle in a linked list if there is some node in the list that can be reached\n * again by continuously following the next pointer. Internally, pos is used to denote the\n * index of the node that tail's next pointer is connected to. Note that pos is not passed\n * as a parameter.\n *\n * Return true if there is a cycle in the linked list. Otherwise, return false.\n *\n * Example:\n * Input: head = [3,2,0,-4], pos = 1\n * Output: true\n * Explanation: There is a cycle in the linked list, where the tail connects to the 1st node (0-indexed).\n *\n * Input: head = [1,2], pos = 0\n * Output: true\n * Explanation: There is a cycle in the linked list, where the tail connects to the 0th node.\n *\n * Input: head = [1], pos = -1\n * Output: false\n * Explanation: There is no cycle in the linked list.\n *\n * LeetCode: https://leetcode.com/problems/linked-list-cycle/\n */\n\n// Definition for singly-linked list\nclass ListNode {\n  val: number;\n  next: ListNode | null;\n  constructor(val?: number, next?: ListNode | null) {\n    this.val = val === undefined ? 0 : val;\n    this.next = next === undefined ? null : next;\n  }\n}\n\n/**\n * Solution 1: Floyd's Cycle Detection Algorithm (Fast and Slow Pointer)\n *\n * Approach:\n * - Use two pointers: slow (moves 1 step) and fast (moves 2 steps)\n * - If there's a cycle, fast will eventually catch up to slow\n * - If fast reaches null, there's no cycle\n *\n * Time Complexity: O(n)\n * Space Complexity: O(1)\n */\nfunction hasCycle(head: ListNode | null): boolean {\n  if (!head || !head.next) return false;\n\n  let slow = head;\n  let fast = head;\n\n  while (fast \u0026\u0026 fast.next) {\n    slow = slow.next!;\n    fast = fast.next.next!;\n\n    if (slow === fast) {\n      return true;\n    }\n  }\n\n  return false;\n}\n\n/**\n * Solution 2: Using Set\n *\n * Approach:\n * - Use Set to track visited nodes\n * - If we encounter a node that's already in the set, there's a cycle\n *\n * Time Complexity: O(n)\n * Space Complexity: O(n)\n */\nfunction hasCycleSet(head: ListNode | null): boolean {\n  const visited = new Set\u003cListNode\u003e();\n  let current = head;\n\n  while (current) {\n    if (visited.has(current)) {\n      return true;\n    }\n    visited.add(current);\n    current = current.next;\n  }\n\n  return false;\n}\n\n/**\n * Solution 3: Using Map\n *\n * Approach:\n * - Use Map to track visited nodes with additional information\n * - More explicit tracking of node positions\n *\n * Time Complexity: O(n)\n * Space Complexity: O(n)\n */\nfunction hasCycleMap(head: ListNode | null): boolean {\n  const visited = new Map\u003cListNode, number\u003e();\n  let current = head;\n  let position = 0;\n\n  while (current) {\n    if (visited.has(current)) {\n      return true;\n    }\n    visited.set(current, position);\n    current = current.next;\n    position++;\n  }\n\n  return false;\n}\n\n/**\n * Solution 4: Using Array\n *\n * Approach:\n * - Use array to store visited nodes\n * - Check if current node exists in array\n *\n * Time Complexity: O(n²) - includes array search\n * Space Complexity: O(n)\n */\nfunction hasCycleArray(head: ListNode | null): boolean {\n  const visited: ListNode[] = [];\n  let current = head;\n\n  while (current) {\n    if (visited.includes(current)) {\n      return true;\n    }\n    visited.push(current);\n    current = current.next;\n  }\n\n  return false;\n}\n\n/**\n * Solution 5: Using Object as Hash Map\n *\n * Approach:\n * - Use JavaScript object as hash map\n * - More familiar for JavaScript developers\n *\n * Time Complexity: O(n)\n * Space Complexity: O(n)\n */\nfunction hasCycleObject(head: ListNode | null): boolean {\n  const visited: { [key: string]: boolean } = {};\n  let current = head;\n\n  while (current) {\n    const key = current.toString();\n    if (visited[key]) {\n      return true;\n    }\n    visited[key] = true;\n    current = current.next;\n  }\n\n  return false;\n}\n\n/**\n * Solution 6: Using Class (Object-oriented)\n *\n * Approach:\n * - Create a CycleDetector class\n * - Encapsulate the detection logic\n *\n * Time Complexity: O(n)\n * Space Complexity: O(1)\n */\nclass CycleDetector {\n  private head: ListNode | null;\n\n  constructor(head: ListNode | null) {\n    this.head = head;\n  }\n\n  detect(): boolean {\n    if (!this.head || !this.head.next) return false;\n\n    let slow = this.head;\n    let fast = this.head;\n\n    while (fast \u0026\u0026 fast.next) {\n      slow = slow.next!;\n      fast = fast.next.next!;\n\n      if (slow === fast) {\n        return true;\n      }\n    }\n\n    return false;\n  }\n\n  getHead(): ListNode | null {\n    return this.head;\n  }\n}\n\nfunction hasCycleClass(head: ListNode | null): boolean {\n  const detector = new CycleDetector(head);\n  return detector.detect();\n}\n\n/**\n * Solution 7: Using Generator (Memory efficient)\n *\n * Approach:\n * - Use generator to yield nodes\n * - Memory efficient for large lists\n *\n * Time Complexity: O(n)\n * Space Complexity: O(1)\n */\nfunction* hasCycleGenerator(head: ListNode | null): Generator\u003cListNode\u003e {\n  let current = head;\n\n  while (current) {\n    yield current;\n    current = current.next;\n  }\n}\n\nfunction hasCycleWithGenerator(head: ListNode | null): boolean {\n  const visited = new Set\u003cListNode\u003e();\n\n  for (const node of hasCycleGenerator(head)) {\n    if (visited.has(node)) {\n      return true;\n    }\n    visited.add(node);\n  }\n\n  return false;\n}\n\n/**\n * Solution 8: Using Functional Approach\n *\n * Approach:\n * - Use functional programming concepts\n * - More declarative style\n *\n * Time Complexity: O(n)\n * Space Complexity: O(n)\n */\nfunction hasCycleFunctional(head: ListNode | null): boolean {\n  const visited = new Set\u003cListNode\u003e();\n\n  function traverse(node: ListNode | null): boolean {\n    if (!node) return false;\n    if (visited.has(node)) return true;\n\n    visited.add(node);\n    return traverse(node.next);\n  }\n\n  return traverse(head);\n}\n\n/**\n * Solution 9: Using Three Pointers\n *\n * Approach:\n * - Use three pointers for more complex cycle detection\n * - Can detect cycle length and starting point\n *\n * Time Complexity: O(n)\n * Space Complexity: O(1)\n */\nfunction hasCycleThreePointers(head: ListNode | null): boolean {\n  if (!head || !head.next) return false;\n\n  let slow = head;\n  let fast = head;\n  let third = head;\n\n  while (fast \u0026\u0026 fast.next) {\n    slow = slow.next!;\n    fast = fast.next.next!;\n\n    if (slow === fast) {\n      // Find cycle starting point\n      while (slow !== third) {\n        slow = slow.next!;\n        third = third.next!;\n      }\n      return true;\n    }\n  }\n\n  return false;\n}\n\n/**\n * Solution 10: Using Recursion with Memoization\n *\n * Approach:\n * - Use recursion with memoization\n * - Track visited nodes in recursive calls\n *\n * Time Complexity: O(n)\n * Space Complexity: O(n) - recursion stack\n */\nfunction hasCycleRecursive(head: ListNode | null): boolean {\n  const visited = new Set\u003cListNode\u003e();\n\n  function detect(node: ListNode | null): boolean {\n    if (!node) return false;\n    if (visited.has(node)) return true;\n\n    visited.add(node);\n    return detect(node.next);\n  }\n\n  return detect(head);\n}\n\n/**\n * Solution 11: Using Bit Manipulation (Node Marking)\n *\n * Approach:\n * - Mark visited nodes by modifying their values\n * - Use special value to indicate visited nodes\n *\n * Time Complexity: O(n)\n * Space Complexity: O(1) - but modifies original list\n */\nfunction hasCycleBitManipulation(head: ListNode | null): boolean {\n  const MARKED_VALUE = -100001; // Special value to mark visited nodes\n  let current = head;\n\n  while (current) {\n    if (current.val === MARKED_VALUE) {\n      return true;\n    }\n    current.val = MARKED_VALUE;\n    current = current.next;\n  }\n\n  return false;\n}\n\n// Helper function to create a linked list with cycle\nfunction createLinkedListWithCycle(\n  values: number[],\n  cyclePos: number\n): ListNode | null {\n  if (values.length === 0) return null;\n\n  const head = new ListNode(values[0]);\n  let current = head;\n  let cycleNode: ListNode | null = null;\n\n  for (let i = 1; i \u003c values.length; i++) {\n    current.next = new ListNode(values[i]);\n    current = current.next!;\n\n    if (i === cyclePos) {\n      cycleNode = current;\n    }\n  }\n\n  if (cyclePos \u003e= 0 \u0026\u0026 cycleNode) {\n    current.next = cycleNode;\n  }\n\n  return head;\n}\n\n// Helper function to create a linked list without cycle\nfunction createLinkedList(values: number[]): ListNode | null {\n  if (values.length === 0) return null;\n\n  const head = new ListNode(values[0]);\n  let current = head;\n\n  for (let i = 1; i \u003c values.length; i++) {\n    current.next = new ListNode(values[i]);\n    current = current.next!;\n  }\n\n  return head;\n}\n\n// Test cases\nfunction testHasCycle() {\n  console.log(\"=== Testing Linked List Cycle ===\\n\");\n\n  const testCases = [\n    {\n      values: [3, 2, 0, -4],\n      cyclePos: 1,\n      expected: true,\n      description: \"Cycle exists\",\n    },\n    {\n      values: [1, 2],\n      cyclePos: 0,\n      expected: true,\n      description: \"Cycle at beginning\",\n    },\n    {\n      values: [1],\n      cyclePos: -1,\n      expected: false,\n      description: \"No cycle, single node\",\n    },\n    {\n      values: [],\n      cyclePos: -1,\n      expected: false,\n      description: \"Empty list\",\n    },\n    {\n      values: [1, 2, 3, 4, 5],\n      cyclePos: -1,\n      expected: false,\n      description: \"No cycle, multiple nodes\",\n    },\n    {\n      values: [1, 2, 3, 4, 5],\n      cyclePos: 2,\n      expected: true,\n      description: \"Cycle in middle\",\n    },\n  ];\n\n  testCases.forEach((testCase, index) =\u003e {\n    console.log(`Test Case ${index + 1}: ${testCase.description}`);\n    console.log(\n      `Values: [${testCase.values.join(\", \")}], Cycle Position: ${\n        testCase.cyclePos\n      }`\n    );\n    console.log(`Expected: ${testCase.expected}\\n`);\n\n    const head =\n      testCase.cyclePos \u003e= 0\n        ? createLinkedListWithCycle(testCase.values, testCase.cyclePos)\n        : createLinkedList(testCase.values);\n\n    // Test Solution 1 (Floyd's Algorithm)\n    const result1 = hasCycle(head);\n    console.log(\n      `Solution 1 (Floyd's Algorithm): ${result1} ${\n        result1 === testCase.expected ? \"✅\" : \"❌\"\n      }`\n    );\n\n    // Test Solution 2 (Set)\n    const result2 = hasCycleSet(head);\n    console.log(\n      `Solution 2 (Set): ${result2} ${\n        result2 === testCase.expected ? \"✅\" : \"❌\"\n      }`\n    );\n\n    // Test Solution 3 (Map)\n    const result3 = hasCycleMap(head);\n    console.log(\n      `Solution 3 (Map): ${result3} ${\n        result3 === testCase.expected ? \"✅\" : \"❌\"\n      }`\n    );\n\n    // Test Solution 4 (Array)\n    const result4 = hasCycleArray(head);\n    console.log(\n      `Solution 4 (Array): ${result4} ${\n        result4 === testCase.expected ? \"✅\" : \"❌\"\n      }`\n    );\n\n    // Test Solution 5 (Object)\n    const result5 = hasCycleObject(head);\n    console.log(\n      `Solution 5 (Object): ${result5} ${\n        result5 === testCase.expected ? \"✅\" : \"❌\"\n      }`\n    );\n\n    // Test Solution 6 (Class)\n    const result6 = hasCycleClass(head);\n    console.log(\n      `Solution 6 (Class): ${result6} ${\n        result6 === testCase.expected ? \"✅\" : \"❌\"\n      }`\n    );\n\n    // Test Solution 7 (Generator)\n    const result7 = hasCycleWithGenerator(head);\n    console.log(\n      `Solution 7 (Generator): ${result7} ${\n        result7 === testCase.expected ? \"✅\" : \"❌\"\n      }`\n    );\n\n    // Test Solution 8 (Functional)\n    const result8 = hasCycleFunctional(head);\n    console.log(\n      `Solution 8 (Functional): ${result8} ${\n        result8 === testCase.expected ? \"✅\" : \"❌\"\n      }`\n    );\n\n    // Test Solution 9 (Three Pointers)\n    const result9 = hasCycleThreePointers(head);\n    console.log(\n      `Solution 9 (Three Pointers): ${result9} ${\n        result9 === testCase.expected ? \"✅\" : \"❌\"\n      }`\n    );\n\n    // Test Solution 10 (Recursive)\n    const result10 = hasCycleRecursive(head);\n    console.log(\n      `Solution 10 (Recursive): ${result10} ${\n        result10 === testCase.expected ? \"✅\" : \"❌\"\n      }`\n    );\n\n    // Test Solution 11 (Bit Manipulation) - Only for non-cycle cases to avoid modification\n    if (testCase.cyclePos === -1) {\n      const headCopy = createLinkedList(testCase.values);\n      const result11 = hasCycleBitManipulation(headCopy);\n      console.log(\n        `Solution 11 (Bit Manipulation): ${result11} ${\n          result11 === testCase.expected ? \"✅\" : \"❌\"\n        }`\n      );\n    } else {\n      console.log(`Solution 11 (Bit Manipulation): Skipped (modifies list)`);\n    }\n\n    console.log(\"\\n---\\n\");\n  });\n}\n\n// Performance comparison\nfunction performanceComparison() {\n  console.log(\"=== Performance Comparison ===\\n\");\n\n  const testCases = [\n    { name: \"Floyd's Algorithm\", func: hasCycle },\n    { name: \"Set\", func: hasCycleSet },\n    { name: \"Map\", func: hasCycleMap },\n    { name: \"Array\", func: hasCycleArray },\n    { name: \"Object\", func: hasCycleObject },\n    { name: \"Class\", func: hasCycleClass },\n    { name: \"Generator\", func: hasCycleWithGenerator },\n    { name: \"Functional\", func: hasCycleFunctional },\n    { name: \"Three Pointers\", func: hasCycleThreePointers },\n    { name: \"Recursive\", func: hasCycleRecursive },\n  ];\n\n  // Create test cases\n  const smallCase = createLinkedListWithCycle([1, 2, 3, 4], 1);\n  const mediumCase = createLinkedListWithCycle(\n    Array.from({ length: 100 }, (_, i) =\u003e i),\n    50\n  );\n  const largeCase = createLinkedListWithCycle(\n    Array.from({ length: 1000 }, (_, i) =\u003e i),\n    500\n  );\n\n  const cases = [\n    { name: \"Small\", case: smallCase },\n    { name: \"Medium\", case: mediumCase },\n    { name: \"Large\", case: largeCase },\n  ];\n\n  cases.forEach(({ name, case: testCase }) =\u003e {\n    console.log(`${name} Case:`);\n\n    testCases.forEach(({ name: funcName, func }) =\u003e {\n      const start = performance.now();\n      const result = func(testCase);\n      const end = performance.now();\n\n      console.log(`  ${funcName}: ${(end - start).toFixed(2)}ms (${result})`);\n    });\n\n    console.log(\"\");\n  });\n}\n\n// Cycle analysis\nfunction cycleAnalysis() {\n  console.log(\"=== Cycle Analysis ===\\n\");\n\n  const testCases = [\n    { values: [1, 2, 3, 4, 5], cyclePos: 1 },\n    { values: [1, 2, 3, 4, 5], cyclePos: -1 },\n    { values: [1], cyclePos: 0 },\n    { values: [1, 2, 3], cyclePos: 2 },\n  ];\n\n  testCases.forEach((testCase, index) =\u003e {\n    console.log(`Test Case ${index + 1}:`);\n    console.log(\n      `Values: [${testCase.values.join(\", \")}], Cycle Position: ${\n        testCase.cyclePos\n      }`\n    );\n\n    const head =\n      testCase.cyclePos \u003e= 0\n        ? createLinkedListWithCycle(testCase.values, testCase.cyclePos)\n        : createLinkedList(testCase.values);\n\n    const result = hasCycle(head);\n    console.log(`Has cycle: ${result}`);\n    console.log(\"\");\n  });\n}\n\n// Uncomment the following lines to run tests\n// testHasCycle();\n// performanceComparison();\n// cycleAnalysis();\n\nexport {\n  hasCycle,\n  hasCycleSet,\n  hasCycleMap,\n  hasCycleArray,\n  hasCycleObject,\n  hasCycleClass,\n  hasCycleWithGenerator,\n  hasCycleFunctional,\n  hasCycleThreePointers,\n  hasCycleRecursive,\n  hasCycleBitManipulation,\n  CycleDetector,\n  hasCycleGenerator,\n  ListNode,\n  createLinkedListWithCycle,\n  createLinkedList,\n  testHasCycle,\n  performanceComparison,\n  cycleAnalysis,\n};\n{% endraw %}\n"])</script><script>self.__next_f.push([1,"9:[\"topic\",\"linked-list-problems-06-linked-list-cycle\",\"d\"]\ne:[]\n"])</script><script>self.__next_f.push([1,"0:[\"$\",\"$L3\",null,{\"buildId\":\"2NmUhWiPdVVBzVtDZlggk\",\"assetPrefix\":\"/interview\",\"urlParts\":[\"\",\"learn\",\"linked-list-problems-06-linked-list-cycle\"],\"initialTree\":[\"\",{\"children\":[\"learn\",{\"children\":[[\"topic\",\"linked-list-problems-06-linked-list-cycle\",\"d\"],{\"children\":[\"__PAGE__?{\\\"topic\\\":\\\"linked-list-problems-06-linked-list-cycle\\\"}\",{}]}]}]},\"$undefined\",\"$undefined\",true],\"initialSeedData\":[\"\",{\"children\":[\"learn\",{\"children\":[[\"topic\",\"linked-list-problems-06-linked-list-cycle\",\"d\"],{\"children\":[\"__PAGE__\",{},[[\"$L4\",[\"$\",\"div\",null,{\"className\":\"max-w-6xl mx-auto px-8 py-24\",\"children\":[[\"$\",\"div\",null,{\"className\":\"flex items-center gap-4 mb-8\",\"children\":[\"$\",\"$L5\",null,{\"href\":\"/learn\",\"children\":[\"$\",\"button\",null,{\"className\":\"flex items-center gap-2 bg-gray-100 border border-gray-300 text-gray-700 px-4 py-3 rounded-md font-medium hover:bg-gray-200 transition-colors\",\"children\":[[\"$\",\"svg\",null,{\"xmlns\":\"http://www.w3.org/2000/svg\",\"width\":16,\"height\":16,\"viewBox\":\"0 0 24 24\",\"fill\":\"none\",\"stroke\":\"currentColor\",\"strokeWidth\":2,\"strokeLinecap\":\"round\",\"strokeLinejoin\":\"round\",\"className\":\"lucide lucide-arrow-left \",\"children\":[[\"$\",\"path\",\"1l729n\",{\"d\":\"m12 19-7-7 7-7\"}],[\"$\",\"path\",\"x3x0zl\",{\"d\":\"M19 12H5\"}],\"$undefined\"]}],\"Back to Learn\"]}]}]}],[\"$\",\"div\",null,{\"className\":\"bg-white border border-gray-200 rounded-lg p-8 mb-8\",\"children\":[[\"$\",\"div\",null,{\"className\":\"flex items-center justify-between mb-4\",\"children\":[[\"$\",\"h1\",null,{\"className\":\"text-3xl font-bold text-gray-900\",\"children\":\"Linked List Cycle\"}],[\"$\",\"div\",null,{\"className\":\"flex gap-4\",\"children\":[[\"$\",\"button\",null,{\"className\":\"flex items-center gap-2 bg-transparent text-gray-700 border border-gray-300 px-6 py-3 rounded-md font-semibold hover:bg-gray-50 transition-colors\",\"children\":[[\"$\",\"svg\",null,{\"xmlns\":\"http://www.w3.org/2000/svg\",\"width\":16,\"height\":16,\"viewBox\":\"0 0 24 24\",\"fill\":\"none\",\"stroke\":\"currentColor\",\"strokeWidth\":2,\"strokeLinecap\":\"round\",\"strokeLinejoin\":\"round\",\"className\":\"lucide lucide-star \",\"children\":[[\"$\",\"polygon\",\"8f66p6\",{\"points\":\"12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2\"}],\"$undefined\"]}],\"Bookmark\"]}],[\"$\",\"button\",null,{\"className\":\"flex items-center gap-2 bg-transparent text-gray-700 border border-gray-300 px-6 py-3 rounded-md font-semibold hover:bg-gray-50 transition-colors\",\"children\":[[\"$\",\"svg\",null,{\"xmlns\":\"http://www.w3.org/2000/svg\",\"width\":16,\"height\":16,\"viewBox\":\"0 0 24 24\",\"fill\":\"none\",\"stroke\":\"currentColor\",\"strokeWidth\":2,\"strokeLinecap\":\"round\",\"strokeLinejoin\":\"round\",\"className\":\"lucide lucide-share2 \",\"children\":[[\"$\",\"circle\",\"gq8acd\",{\"cx\":\"18\",\"cy\":\"5\",\"r\":\"3\"}],[\"$\",\"circle\",\"w7nqdw\",{\"cx\":\"6\",\"cy\":\"12\",\"r\":\"3\"}],[\"$\",\"circle\",\"1xt0gg\",{\"cx\":\"18\",\"cy\":\"19\",\"r\":\"3\"}],[\"$\",\"line\",\"47mynk\",{\"x1\":\"8.59\",\"x2\":\"15.42\",\"y1\":\"13.51\",\"y2\":\"17.49\"}],[\"$\",\"line\",\"1n3mei\",{\"x1\":\"15.41\",\"x2\":\"8.59\",\"y1\":\"6.51\",\"y2\":\"10.49\"}],\"$undefined\"]}],\"Share\"]}]]}]]}],[\"$\",\"div\",null,{\"className\":\"flex gap-8 mb-4\",\"children\":[[\"$\",\"div\",null,{\"className\":\"flex items-center gap-2 text-sm text-gray-600\",\"children\":[[\"$\",\"svg\",null,{\"xmlns\":\"http://www.w3.org/2000/svg\",\"width\":16,\"height\":16,\"viewBox\":\"0 0 24 24\",\"fill\":\"none\",\"stroke\":\"currentColor\",\"strokeWidth\":2,\"strokeLinecap\":\"round\",\"strokeLinejoin\":\"round\",\"className\":\"lucide lucide-clock \",\"children\":[[\"$\",\"circle\",\"1mglay\",{\"cx\":\"12\",\"cy\":\"12\",\"r\":\"10\"}],[\"$\",\"polyline\",\"68esgv\",{\"points\":\"12 6 12 12 16 14\"}],\"$undefined\"]}],\"2-3 hours\"]}],[\"$\",\"span\",null,{\"className\":\"px-3 py-1 rounded-full text-xs font-semibold text-white bg-red-500\",\"children\":\"Hard\"}],[\"$\",\"span\",null,{\"className\":\"px-3 py-1 rounded-full text-xs font-semibold bg-blue-100 text-blue-700\",\"children\":\"Linked List\"}]]}],[\"$\",\"div\",null,{\"className\":\"flex flex-wrap gap-2 mb-4\",\"children\":[[\"$\",\"span\",\"0\",{\"className\":\"bg-gray-100 text-gray-600 px-3 py-1 rounded-md text-xs font-medium\",\"children\":\"Linked List\"}],[\"$\",\"span\",\"1\",{\"className\":\"bg-gray-100 text-gray-600 px-3 py-1 rounded-md text-xs font-medium\",\"children\":\"Two Pointers\"}],[\"$\",\"span\",\"2\",{\"className\":\"bg-gray-100 text-gray-600 px-3 py-1 rounded-md text-xs font-medium\",\"children\":\"Hash Table\"}]]}],[\"$\",\"p\",null,{\"className\":\"text-lg text-gray-700 leading-relaxed\",\"children\":\"**LeetCode Problem # * 141. Linked List Cycle**...\"}]]}],[\"$\",\"div\",null,{\"className\":\"grid grid-cols-1 lg:grid-cols-3 gap-8\",\"children\":[[\"$\",\"div\",null,{\"className\":\"lg:col-span-2\",\"children\":[\"$\",\"div\",null,{\"className\":\"bg-white border border-gray-200 rounded-lg p-8\",\"children\":[\"$\",\"$L6\",null,{\"content\":\"$7\"}]}]}],[\"$\",\"div\",null,{\"className\":\"space-y-6\",\"children\":[[\"$\",\"div\",null,{\"className\":\"bg-white border border-gray-200 rounded-lg p-6\",\"children\":[[\"$\",\"h3\",null,{\"className\":\"text-lg font-semibold text-gray-900 mb-4\",\"children\":\"Your Progress\"}],[\"$\",\"div\",null,{\"className\":\"w-full bg-gray-200 rounded-full h-2 mb-2\",\"children\":[\"$\",\"div\",null,{\"className\":\"bg-blue-600 h-2 rounded-full\",\"style\":{\"width\":\"25%\"}}]}],[\"$\",\"p\",null,{\"className\":\"text-sm text-gray-600\",\"children\":\"25% Complete\"}]]}],false]}]]}]]}],null],null],null]},[null,[\"$\",\"$L8\",null,{\"parallelRouterKey\":\"children\",\"segmentPath\":[\"children\",\"learn\",\"children\",\"$9\",\"children\"],\"error\":\"$undefined\",\"errorStyles\":\"$undefined\",\"errorScripts\":\"$undefined\",\"template\":[\"$\",\"$La\",null,{}],\"templateStyles\":\"$undefined\",\"templateScripts\":\"$undefined\",\"notFound\":\"$undefined\",\"notFoundStyles\":\"$undefined\"}]],null]},[null,[\"$\",\"$L8\",null,{\"parallelRouterKey\":\"children\",\"segmentPath\":[\"children\",\"learn\",\"children\"],\"error\":\"$undefined\",\"errorStyles\":\"$undefined\",\"errorScripts\":\"$undefined\",\"template\":[\"$\",\"$La\",null,{}],\"templateStyles\":\"$undefined\",\"templateScripts\":\"$undefined\",\"notFound\":\"$undefined\",\"notFoundStyles\":\"$undefined\"}]],null]},[[[[\"$\",\"link\",\"0\",{\"rel\":\"stylesheet\",\"href\":\"/interview/_next/static/css/387024c6a2216908.css\",\"precedence\":\"next\",\"crossOrigin\":\"$undefined\"}]],[\"$\",\"$Lb\",null,{\"children\":[\"$\",\"$L8\",null,{\"parallelRouterKey\":\"children\",\"segmentPath\":[\"children\"],\"error\":\"$undefined\",\"errorStyles\":\"$undefined\",\"errorScripts\":\"$undefined\",\"template\":[\"$\",\"$La\",null,{}],\"templateStyles\":\"$undefined\",\"templateScripts\":\"$undefined\",\"notFound\":[[\"$\",\"title\",null,{\"children\":\"404: This page could not be found.\"}],[\"$\",\"div\",null,{\"style\":{\"fontFamily\":\"system-ui,\\\"Segoe UI\\\",Roboto,Helvetica,Arial,sans-serif,\\\"Apple Color Emoji\\\",\\\"Segoe UI Emoji\\\"\",\"height\":\"100vh\",\"textAlign\":\"center\",\"display\":\"flex\",\"flexDirection\":\"column\",\"alignItems\":\"center\",\"justifyContent\":\"center\"},\"children\":[\"$\",\"div\",null,{\"children\":[[\"$\",\"style\",null,{\"dangerouslySetInnerHTML\":{\"__html\":\"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}\"}}],[\"$\",\"h1\",null,{\"className\":\"next-error-h1\",\"style\":{\"display\":\"inline-block\",\"margin\":\"0 20px 0 0\",\"padding\":\"0 23px 0 0\",\"fontSize\":24,\"fontWeight\":500,\"verticalAlign\":\"top\",\"lineHeight\":\"49px\"},\"children\":\"404\"}],[\"$\",\"div\",null,{\"style\":{\"display\":\"inline-block\"},\"children\":[\"$\",\"h2\",null,{\"style\":{\"fontSize\":14,\"fontWeight\":400,\"lineHeight\":\"49px\",\"margin\":0},\"children\":\"This page could not be found.\"}]}]]}]}]],\"notFoundStyles\":[]}],\"params\":{}}]],null],null],\"couldBeIntercepted\":false,\"initialHead\":[null,\"$Lc\"],\"globalErrorComponent\":\"$d\",\"missingSlots\":\"$We\"}]\n"])</script><script>self.__next_f.push([1,"c:[[\"$\",\"meta\",\"0\",{\"name\":\"viewport\",\"content\":\"width=device-width, initial-scale=1\"}],[\"$\",\"meta\",\"1\",{\"charSet\":\"utf-8\"}],[\"$\",\"meta\",\"2\",{\"name\":\"next-size-adjust\"}]]\n4:null\n"])</script></body></html>

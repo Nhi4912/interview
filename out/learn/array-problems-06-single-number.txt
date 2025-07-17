@@ -1,0 +1,420 @@
+2:I[2972,["918","static/chunks/918-3273b83890f10546.js","972","static/chunks/972-011bba60ed155615.js","930","static/chunks/930-3262a6c9c5acace4.js","289","static/chunks/app/learn/%5Btopic%5D/page-4ab144227f7a7b3e.js"],""]
+3:I[5907,["918","static/chunks/918-3273b83890f10546.js","972","static/chunks/972-011bba60ed155615.js","930","static/chunks/930-3262a6c9c5acace4.js","289","static/chunks/app/learn/%5Btopic%5D/page-4ab144227f7a7b3e.js"],"default"]
+5:I[4707,[],""]
+7:I[6423,[],""]
+8:I[2,["918","static/chunks/918-3273b83890f10546.js","710","static/chunks/710-dfaa11b4dff08f8e.js","972","static/chunks/972-011bba60ed155615.js","233","static/chunks/233-3e0c1d820a17eca9.js","185","static/chunks/app/layout-333f4adcd11f8f39.js"],"default",1]
+4:T24f3,
+# Single Number
+
+**LeetCode Problem # * 136. Single Number**
+
+## Problem Description
+
+ * Given a non-empty array of integers nums, every element appears twice except for one.  * Find that single one.  *  * You must implement a solution with a linear runtime complexity and use only constant extra space.  * 
+
+## Solutions
+
+{% raw %}
+/**
+ * 136. Single Number
+ *
+ * Problem:
+ * Given a non-empty array of integers nums, every element appears twice except for one.
+ * Find that single one.
+ *
+ * You must implement a solution with a linear runtime complexity and use only constant extra space.
+ *
+ * Example:
+ * Input: nums = [2,2,1]
+ * Output: 1
+ *
+ * Input: nums = [4,1,2,1,2]
+ * Output: 4
+ *
+ * Input: nums = [1]
+ * Output: 1
+ *
+ * LeetCode: https://leetcode.com/problems/single-number/
+ */
+
+/**
+ * Solution 1: XOR Operation (Optimal)
+ *
+ * Approach:
+ * - Use XOR operation: a ^ a = 0, a ^ 0 = a
+ * - XOR all numbers, duplicates cancel out
+ * - Result is the single number
+ *
+ * Time Complexity: O(n)
+ * Space Complexity: O(1)
+ */
+function singleNumber(nums: number[]): number {
+  let result = 0;
+
+  for (const num of nums) {
+    result ^= num;
+  }
+
+  return result;
+}
+
+/**
+ * Solution 2: Using Set
+ *
+ * Approach:
+ * - Add numbers to set, remove if already present
+ * - Remaining number is the single one
+ *
+ * Time Complexity: O(n)
+ * Space Complexity: O(n)
+ */
+function singleNumberSet(nums: number[]): number {
+  const seen = new Set<number>();
+
+  for (const num of nums) {
+    if (seen.has(num)) {
+      seen.delete(num);
+    } else {
+      seen.add(num);
+    }
+  }
+
+  return Array.from(seen)[0];
+}
+
+/**
+ * Solution 3: Using Map (Frequency counting)
+ *
+ * Approach:
+ * - Count frequency of each number
+ * - Find number with frequency 1
+ *
+ * Time Complexity: O(n)
+ * Space Complexity: O(n)
+ */
+function singleNumberMap(nums: number[]): number {
+  const frequency = new Map<number, number>();
+
+  for (const num of nums) {
+    frequency.set(num, (frequency.get(num) || 0) + 1);
+  }
+
+  for (const [num, count] of frequency) {
+    if (count === 1) {
+      return num;
+    }
+  }
+
+  return -1; // Should not reach here
+}
+
+/**
+ * Solution 4: Using Array Methods (Functional)
+ *
+ * Approach:
+ * - Use filter to find number that appears only once
+ *
+ * Time Complexity: O(n²) - includes() is O(n)
+ * Space Complexity: O(1)
+ */
+function singleNumberFunctional(nums: number[]): number {
+  return nums.find((num) => nums.indexOf(num) === nums.lastIndexOf(num))!;
+}
+
+/**
+ * Solution 5: Using Sort
+ *
+ * Approach:
+ * - Sort array and check adjacent elements
+ * - Single number will not have a pair
+ *
+ * Time Complexity: O(n log n)
+ * Space Complexity: O(1) - assuming in-place sort
+ */
+function singleNumberSort(nums: number[]): number {
+  nums.sort((a, b) => a - b);
+
+  for (let i = 0; i < nums.length; i += 2) {
+    if (i === nums.length - 1 || nums[i] !== nums[i + 1]) {
+      return nums[i];
+    }
+  }
+
+  return -1; // Should not reach here
+}
+
+/**
+ * Solution 6: Using Object (Hash table)
+ *
+ * Approach:
+ * - Use object to track frequency
+ * - Find key with value 1
+ *
+ * Time Complexity: O(n)
+ * Space Complexity: O(n)
+ */
+function singleNumberObject(nums: number[]): number {
+  const frequency: { [key: number]: number } = {};
+
+  for (const num of nums) {
+    frequency[num] = (frequency[num] || 0) + 1;
+  }
+
+  for (const num in frequency) {
+    if (frequency[num] === 1) {
+      return parseInt(num);
+    }
+  }
+
+  return -1; // Should not reach here
+}
+
+/**
+ * Solution 7: Using Math (Sum approach)
+ *
+ * Approach:
+ * - Calculate sum of all unique numbers * 2
+ * - Subtract sum of all numbers
+ * - Result is the single number
+ *
+ * Time Complexity: O(n)
+ * Space Complexity: O(n)
+ */
+function singleNumberMath(nums: number[]): number {
+  const uniqueSum = Array.from(new Set(nums)).reduce(
+    (sum, num) => sum + num,
+    0
+  );
+  const totalSum = nums.reduce((sum, num) => sum + num, 0);
+
+  return 2 * uniqueSum - totalSum;
+}
+
+/**
+ * Solution 8: Using Bit Manipulation with Loop
+ *
+ * Approach:
+ * - Check each bit position
+ * - Count 1s at each position
+ * - If count is odd, that bit is set in result
+ *
+ * Time Complexity: O(32 * n) = O(n)
+ * Space Complexity: O(1)
+ */
+function singleNumberBitwise(nums: number[]): number {
+  let result = 0;
+
+  for (let i = 0; i < 32; i++) {
+    let count = 0;
+
+    for (const num of nums) {
+      if ((num >> i) & 1) {
+        count++;
+      }
+    }
+
+    if (count % 2 === 1) {
+      result |= 1 << i;
+    }
+  }
+
+  return result;
+}
+
+// Test cases
+function testSingleNumber() {
+  console.log("=== Testing Single Number ===\n");
+
+  const testCases = [
+    {
+      input: [2, 2, 1],
+      expected: 1,
+      description: "Basic case",
+    },
+    {
+      input: [4, 1, 2, 1, 2],
+      expected: 4,
+      description: "Single number in middle",
+    },
+    {
+      input: [1],
+      expected: 1,
+      description: "Single element",
+    },
+    {
+      input: [1, 1, 2, 2, 3],
+      expected: 3,
+      description: "Single number at end",
+    },
+    {
+      input: [1, 2, 2, 1, 3],
+      expected: 3,
+      description: "Single number in middle",
+    },
+    {
+      input: [0, 1, 0, 1, 99],
+      expected: 99,
+      description: "Large single number",
+    },
+    {
+      input: [-1, -1, -2],
+      expected: -2,
+      description: "Negative numbers",
+    },
+  ];
+
+  testCases.forEach((testCase, index) => {
+    console.log(`Test Case ${index + 1}: ${testCase.description}`);
+    console.log(`Input: [${testCase.input.join(", ")}]`);
+    console.log(`Expected: ${testCase.expected}\n`);
+
+    // Test Solution 1 (XOR)
+    const result1 = singleNumber(testCase.input);
+    console.log(
+      `Solution 1 (XOR): ${result1} ${
+        result1 === testCase.expected ? "✅" : "❌"
+      }`
+    );
+
+    // Test Solution 2 (Set)
+    const result2 = singleNumberSet(testCase.input);
+    console.log(
+      `Solution 2 (Set): ${result2} ${
+        result2 === testCase.expected ? "✅" : "❌"
+      }`
+    );
+
+    // Test Solution 3 (Map)
+    const result3 = singleNumberMap(testCase.input);
+    console.log(
+      `Solution 3 (Map): ${result3} ${
+        result3 === testCase.expected ? "✅" : "❌"
+      }`
+    );
+
+    // Test Solution 4 (Functional)
+    const result4 = singleNumberFunctional(testCase.input);
+    console.log(
+      `Solution 4 (Functional): ${result4} ${
+        result4 === testCase.expected ? "✅" : "❌"
+      }`
+    );
+
+    // Test Solution 5 (Sort)
+    const result5 = singleNumberSort([...testCase.input]);
+    console.log(
+      `Solution 5 (Sort): ${result5} ${
+        result5 === testCase.expected ? "✅" : "❌"
+      }`
+    );
+
+    // Test Solution 6 (Object)
+    const result6 = singleNumberObject(testCase.input);
+    console.log(
+      `Solution 6 (Object): ${result6} ${
+        result6 === testCase.expected ? "✅" : "❌"
+      }`
+    );
+
+    // Test Solution 7 (Math)
+    const result7 = singleNumberMath(testCase.input);
+    console.log(
+      `Solution 7 (Math): ${result7} ${
+        result7 === testCase.expected ? "✅" : "❌"
+      }`
+    );
+
+    // Test Solution 8 (Bitwise)
+    const result8 = singleNumberBitwise(testCase.input);
+    console.log(
+      `Solution 8 (Bitwise): ${result8} ${
+        result8 === testCase.expected ? "✅" : "❌"
+      }`
+    );
+
+    console.log("\n---\n");
+  });
+}
+
+// Performance comparison
+function performanceComparison() {
+  console.log("=== Performance Comparison ===\n");
+
+  const testCases = [
+    { name: "XOR", func: singleNumber },
+    { name: "Set", func: singleNumberSet },
+    { name: "Map", func: singleNumberMap },
+    { name: "Functional", func: singleNumberFunctional },
+    { name: "Sort", func: singleNumberSort },
+    { name: "Object", func: singleNumberObject },
+    { name: "Math", func: singleNumberMath },
+    { name: "Bitwise", func: singleNumberBitwise },
+  ];
+
+  // Create test arrays
+  const smallArray = Array.from({ length: 1000 }, (_, i) => Math.floor(i / 2));
+  const largeArray = Array.from({ length: 100000 }, (_, i) =>
+    Math.floor(i / 2)
+  );
+
+  const arrays = [
+    { name: "Small (1000)", array: smallArray },
+    { name: "Large (100000)", array: largeArray },
+  ];
+
+  arrays.forEach(({ name, array }) => {
+    console.log(`${name}:`);
+
+    testCases.forEach(({ name: funcName, func }) => {
+      const start = performance.now();
+      const result = func([...array]);
+      const end = performance.now();
+
+      console.log(`  ${funcName}: ${(end - start).toFixed(2)}ms (${result})`);
+    });
+
+    console.log("");
+  });
+}
+
+// XOR properties demonstration
+function xorPropertiesDemo() {
+  console.log("=== XOR Properties Demonstration ===\n");
+
+  const a = 5;
+  const b = 3;
+
+  console.log(`a = ${a}, b = ${b}`);
+  console.log(`a ^ a = ${a ^ a} (should be 0)`);
+  console.log(`a ^ 0 = ${a ^ 0} (should be ${a})`);
+  console.log(`a ^ b ^ a = ${a ^ b ^ a} (should be ${b})`);
+  console.log(`a ^ b ^ b = ${a ^ b ^ b} (should be ${a})`);
+
+  console.log("\nThis is why XOR works for finding single number:");
+  console.log("- Duplicates cancel out: a ^ a = 0");
+  console.log("- Single number remains: 0 ^ single = single");
+}
+
+// Uncomment the following lines to run tests
+// testSingleNumber();
+// performanceComparison();
+// xorPropertiesDemo();
+
+export {
+  singleNumber,
+  singleNumberSet,
+  singleNumberMap,
+  singleNumberFunctional,
+  singleNumberSort,
+  singleNumberObject,
+  singleNumberMath,
+  singleNumberBitwise,
+  testSingleNumber,
+  performanceComparison,
+  xorPropertiesDemo,
+};
+{% endraw %}
+6:["topic","array-problems-06-single-number","d"]
+0:["2NmUhWiPdVVBzVtDZlggk",[[["",{"children":["learn",{"children":[["topic","array-problems-06-single-number","d"],{"children":["__PAGE__?{\"topic\":\"array-problems-06-single-number\"}",{}]}]}]},"$undefined","$undefined",true],["",{"children":["learn",{"children":[["topic","array-problems-06-single-number","d"],{"children":["__PAGE__",{},[["$L1",["$","div",null,{"className":"max-w-6xl mx-auto px-8 py-24","children":[["$","div",null,{"className":"flex items-center gap-4 mb-8","children":["$","$L2",null,{"href":"/learn","children":["$","button",null,{"className":"flex items-center gap-2 bg-gray-100 border border-gray-300 text-gray-700 px-4 py-3 rounded-md font-medium hover:bg-gray-200 transition-colors","children":[["$","svg",null,{"xmlns":"http://www.w3.org/2000/svg","width":16,"height":16,"viewBox":"0 0 24 24","fill":"none","stroke":"currentColor","strokeWidth":2,"strokeLinecap":"round","strokeLinejoin":"round","className":"lucide lucide-arrow-left ","children":[["$","path","1l729n",{"d":"m12 19-7-7 7-7"}],["$","path","x3x0zl",{"d":"M19 12H5"}],"$undefined"]}],"Back to Learn"]}]}]}],["$","div",null,{"className":"bg-white border border-gray-200 rounded-lg p-8 mb-8","children":[["$","div",null,{"className":"flex items-center justify-between mb-4","children":[["$","h1",null,{"className":"text-3xl font-bold text-gray-900","children":"Single Number"}],["$","div",null,{"className":"flex gap-4","children":[["$","button",null,{"className":"flex items-center gap-2 bg-transparent text-gray-700 border border-gray-300 px-6 py-3 rounded-md font-semibold hover:bg-gray-50 transition-colors","children":[["$","svg",null,{"xmlns":"http://www.w3.org/2000/svg","width":16,"height":16,"viewBox":"0 0 24 24","fill":"none","stroke":"currentColor","strokeWidth":2,"strokeLinecap":"round","strokeLinejoin":"round","className":"lucide lucide-star ","children":[["$","polygon","8f66p6",{"points":"12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"}],"$undefined"]}],"Bookmark"]}],["$","button",null,{"className":"flex items-center gap-2 bg-transparent text-gray-700 border border-gray-300 px-6 py-3 rounded-md font-semibold hover:bg-gray-50 transition-colors","children":[["$","svg",null,{"xmlns":"http://www.w3.org/2000/svg","width":16,"height":16,"viewBox":"0 0 24 24","fill":"none","stroke":"currentColor","strokeWidth":2,"strokeLinecap":"round","strokeLinejoin":"round","className":"lucide lucide-share2 ","children":[["$","circle","gq8acd",{"cx":"18","cy":"5","r":"3"}],["$","circle","w7nqdw",{"cx":"6","cy":"12","r":"3"}],["$","circle","1xt0gg",{"cx":"18","cy":"19","r":"3"}],["$","line","47mynk",{"x1":"8.59","x2":"15.42","y1":"13.51","y2":"17.49"}],["$","line","1n3mei",{"x1":"15.41","x2":"8.59","y1":"6.51","y2":"10.49"}],"$undefined"]}],"Share"]}]]}]]}],["$","div",null,{"className":"flex gap-8 mb-4","children":[["$","div",null,{"className":"flex items-center gap-2 text-sm text-gray-600","children":[["$","svg",null,{"xmlns":"http://www.w3.org/2000/svg","width":16,"height":16,"viewBox":"0 0 24 24","fill":"none","stroke":"currentColor","strokeWidth":2,"strokeLinecap":"round","strokeLinejoin":"round","className":"lucide lucide-clock ","children":[["$","circle","1mglay",{"cx":"12","cy":"12","r":"10"}],["$","polyline","68esgv",{"points":"12 6 12 12 16 14"}],"$undefined"]}],"2-3 hours"]}],["$","span",null,{"className":"px-3 py-1 rounded-full text-xs font-semibold text-white bg-red-500","children":"Easy"}],["$","span",null,{"className":"px-3 py-1 rounded-full text-xs font-semibold bg-blue-100 text-blue-700","children":"Array"}]]}],["$","div",null,{"className":"flex flex-wrap gap-2 mb-4","children":[["$","span","0",{"className":"bg-gray-100 text-gray-600 px-3 py-1 rounded-md text-xs font-medium","children":"Array"}],["$","span","1",{"className":"bg-gray-100 text-gray-600 px-3 py-1 rounded-md text-xs font-medium","children":"Hash Table"}],["$","span","2",{"className":"bg-gray-100 text-gray-600 px-3 py-1 rounded-md text-xs font-medium","children":"Sorting"}]]}],["$","p",null,{"className":"text-lg text-gray-700 leading-relaxed","children":"**LeetCode Problem # * 136. Single Number**..."}]]}],["$","div",null,{"className":"grid grid-cols-1 lg:grid-cols-3 gap-8","children":[["$","div",null,{"className":"lg:col-span-2","children":["$","div",null,{"className":"bg-white border border-gray-200 rounded-lg p-8","children":["$","$L3",null,{"content":"$4"}]}]}],["$","div",null,{"className":"space-y-6","children":[["$","div",null,{"className":"bg-white border border-gray-200 rounded-lg p-6","children":[["$","h3",null,{"className":"text-lg font-semibold text-gray-900 mb-4","children":"Your Progress"}],["$","div",null,{"className":"w-full bg-gray-200 rounded-full h-2 mb-2","children":["$","div",null,{"className":"bg-blue-600 h-2 rounded-full","style":{"width":"25%"}}]}],["$","p",null,{"className":"text-sm text-gray-600","children":"25% Complete"}]]}],false]}]]}]]}],null],null],null]},[null,["$","$L5",null,{"parallelRouterKey":"children","segmentPath":["children","learn","children","$6","children"],"error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L7",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","notFoundStyles":"$undefined"}]],null]},[null,["$","$L5",null,{"parallelRouterKey":"children","segmentPath":["children","learn","children"],"error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L7",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","notFoundStyles":"$undefined"}]],null]},[[[["$","link","0",{"rel":"stylesheet","href":"/interview/_next/static/css/387024c6a2216908.css","precedence":"next","crossOrigin":"$undefined"}]],["$","$L8",null,{"children":["$","$L5",null,{"parallelRouterKey":"children","segmentPath":["children"],"error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L7",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":{"fontFamily":"system-ui,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\"","height":"100vh","textAlign":"center","display":"flex","flexDirection":"column","alignItems":"center","justifyContent":"center"},"children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":{"display":"inline-block","margin":"0 20px 0 0","padding":"0 23px 0 0","fontSize":24,"fontWeight":500,"verticalAlign":"top","lineHeight":"49px"},"children":"404"}],["$","div",null,{"style":{"display":"inline-block"},"children":["$","h2",null,{"style":{"fontSize":14,"fontWeight":400,"lineHeight":"49px","margin":0},"children":"This page could not be found."}]}]]}]}]],"notFoundStyles":[]}],"params":{}}]],null],null],["$L9",null]]]]
+9:[["$","meta","0",{"name":"viewport","content":"width=device-width, initial-scale=1"}],["$","meta","1",{"charSet":"utf-8"}],["$","meta","2",{"name":"next-size-adjust"}]]
+1:null

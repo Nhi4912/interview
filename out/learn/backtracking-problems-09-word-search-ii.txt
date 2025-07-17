@@ -1,0 +1,524 @@
+2:I[2972,["918","static/chunks/918-3273b83890f10546.js","972","static/chunks/972-011bba60ed155615.js","930","static/chunks/930-3262a6c9c5acace4.js","289","static/chunks/app/learn/%5Btopic%5D/page-4ab144227f7a7b3e.js"],""]
+3:I[5907,["918","static/chunks/918-3273b83890f10546.js","972","static/chunks/972-011bba60ed155615.js","930","static/chunks/930-3262a6c9c5acace4.js","289","static/chunks/app/learn/%5Btopic%5D/page-4ab144227f7a7b3e.js"],"default"]
+5:I[4707,[],""]
+7:I[6423,[],""]
+8:I[2,["918","static/chunks/918-3273b83890f10546.js","710","static/chunks/710-dfaa11b4dff08f8e.js","972","static/chunks/972-011bba60ed155615.js","233","static/chunks/233-3e0c1d820a17eca9.js","185","static/chunks/app/layout-333f4adcd11f8f39.js"],"default",1]
+4:T3aef,
+# Word Search II
+
+**LeetCode Problem # * 212. Word Search II**
+
+## Problem Description
+
+LeetCode problem solution with multiple approaches and explanations.
+
+## Solutions
+
+{% raw %}
+/**
+ * 212. Word Search II
+ * 
+ * Given an m x n board of characters and a list of strings words, return all words on the board.
+ * 
+ * Each word must be constructed from letters of sequentially adjacent cells, where adjacent cells 
+ * are horizontally or vertically neighboring. The same letter cell may not be used more than once in a word.
+ * 
+ * Example 1:
+ * Input: board = [["o","a","a","n"],["e","t","a","e"],["i","h","k","r"],["i","f","l","v"]], 
+ *        words = ["oath","pea","eat","rain"]
+ * Output: ["eat","oath"]
+ * 
+ * Example 2:
+ * Input: board = [["a","b"],["c","d"]], words = ["abcb"]
+ * Output: []
+ * 
+ * Constraints:
+ * - m == board.length
+ * - n == board[i].length
+ * - 1 <= m, n <= 12
+ * - board[i][j] is a lowercase English letter.
+ * - 1 <= words.length <= 3 * 10^4
+ * - 1 <= words[i].length <= 10
+ * - words[i] consists of lowercase English letters.
+ * - All the values of words are unique.
+ */
+
+// Trie Node class for efficient prefix matching
+class TrieNode {
+    children: Map<string, TrieNode>;
+    word: string | null;
+    
+    constructor() {
+        this.children = new Map();
+        this.word = null;
+    }
+}
+
+// Solution 1: Backtracking with Trie (Optimal)
+// Time: O(M×N×4^L), Space: O(W×L)
+// M×N = board dimensions, L = max word length, W = number of words
+export function findWords1(board: string[][], words: string[]): string[] {
+    const root = buildTrie(words);
+    const result: string[] = [];
+    const m = board.length;
+    const n = board[0].length;
+    
+    function buildTrie(words: string[]): TrieNode {
+        const root = new TrieNode();
+        
+        for (const word of words) {
+            let node = root;
+            for (const char of word) {
+                if (!node.children.has(char)) {
+                    node.children.set(char, new TrieNode());
+                }
+                node = node.children.get(char)!;
+            }
+            node.word = word;
+        }
+        
+        return root;
+    }
+    
+    function dfs(i: number, j: number, node: TrieNode): void {
+        if (i < 0 || i >= m || j < 0 || j >= n) return;
+        
+        const char = board[i][j];
+        if (char === '#' || !node.children.has(char)) return;
+        
+        node = node.children.get(char)!;
+        
+        // Found a complete word
+        if (node.word) {
+            result.push(node.word);
+            node.word = null; // Avoid duplicates
+        }
+        
+        // Mark as visited
+        board[i][j] = '#';
+        
+        // Explore all 4 directions
+        dfs(i + 1, j, node);
+        dfs(i - 1, j, node);
+        dfs(i, j + 1, node);
+        dfs(i, j - 1, node);
+        
+        // Backtrack
+        board[i][j] = char;
+    }
+    
+    // Start DFS from each cell
+    for (let i = 0; i < m; i++) {
+        for (let j = 0; j < n; j++) {
+            dfs(i, j, root);
+        }
+    }
+    
+    return result;
+}
+
+// Solution 2: Backtracking with Trie + Pruning
+// Time: O(M×N×4^L), Space: O(W×L)
+export function findWords2(board: string[][], words: string[]): string[] {
+    const root = buildTrie(words);
+    const result: string[] = [];
+    const m = board.length;
+    const n = board[0].length;
+    
+    function buildTrie(words: string[]): TrieNode {
+        const root = new TrieNode();
+        
+        for (const word of words) {
+            let node = root;
+            for (const char of word) {
+                if (!node.children.has(char)) {
+                    node.children.set(char, new TrieNode());
+                }
+                node = node.children.get(char)!;
+            }
+            node.word = word;
+        }
+        
+        return root;
+    }
+    
+    function dfs(i: number, j: number, node: TrieNode): void {
+        if (i < 0 || i >= m || j < 0 || j >= n) return;
+        
+        const char = board[i][j];
+        if (char === '#' || !node.children.has(char)) return;
+        
+        node = node.children.get(char)!;
+        
+        // Found a complete word
+        if (node.word) {
+            result.push(node.word);
+            node.word = null; // Avoid duplicates
+        }
+        
+        // Mark as visited
+        board[i][j] = '#';
+        
+        // Explore all 4 directions
+        dfs(i + 1, j, node);
+        dfs(i - 1, j, node);
+        dfs(i, j + 1, node);
+        dfs(i, j - 1, node);
+        
+        // Backtrack
+        board[i][j] = char;
+        
+        // Pruning: remove leaf nodes to optimize future searches
+        if (node.children.size === 0) {
+            node.children.clear();
+        }
+    }
+    
+    // Start DFS from each cell
+    for (let i = 0; i < m; i++) {
+        for (let j = 0; j < n; j++) {
+            dfs(i, j, root);
+        }
+    }
+    
+    return result;
+}
+
+// Solution 3: Individual Word Search (Brute Force)
+// Time: O(W×M×N×4^L), Space: O(L)
+export function findWords3(board: string[][], words: string[]): string[] {
+    const result: string[] = [];
+    
+    function exist(word: string): boolean {
+        const m = board.length;
+        const n = board[0].length;
+        
+        function dfs(i: number, j: number, index: number): boolean {
+            if (index === word.length) return true;
+            if (i < 0 || i >= m || j < 0 || j >= n) return false;
+            if (board[i][j] !== word[index]) return false;
+            
+            // Mark as visited
+            const temp = board[i][j];
+            board[i][j] = '#';
+            
+            // Search in 4 directions
+            const found = dfs(i + 1, j, index + 1) ||
+                         dfs(i - 1, j, index + 1) ||
+                         dfs(i, j + 1, index + 1) ||
+                         dfs(i, j - 1, index + 1);
+            
+            // Backtrack
+            board[i][j] = temp;
+            
+            return found;
+        }
+        
+        for (let i = 0; i < m; i++) {
+            for (let j = 0; j < n; j++) {
+                if (board[i][j] === word[0] && dfs(i, j, 0)) {
+                    return true;
+                }
+            }
+        }
+        
+        return false;
+    }
+    
+    for (const word of words) {
+        if (exist(word)) {
+            result.push(word);
+        }
+    }
+    
+    return result;
+}
+
+// Solution 4: Trie with Iterative DFS
+// Time: O(M×N×4^L), Space: O(W×L)
+export function findWords4(board: string[][], words: string[]): string[] {
+    const root = buildTrie(words);
+    const result: string[] = [];
+    const m = board.length;
+    const n = board[0].length;
+    
+    function buildTrie(words: string[]): TrieNode {
+        const root = new TrieNode();
+        
+        for (const word of words) {
+            let node = root;
+            for (const char of word) {
+                if (!node.children.has(char)) {
+                    node.children.set(char, new TrieNode());
+                }
+                node = node.children.get(char)!;
+            }
+            node.word = word;
+        }
+        
+        return root;
+    }
+    
+    function dfsIterative(startI: number, startJ: number): void {
+        const stack: [number, number, TrieNode, string[][]][] = [];
+        const initialBoard = board.map(row => [...row]);
+        stack.push([startI, startJ, root, initialBoard]);
+        
+        while (stack.length > 0) {
+            const [i, j, node, currentBoard] = stack.pop()!;
+            
+            if (i < 0 || i >= m || j < 0 || j >= n) continue;
+            
+            const char = currentBoard[i][j];
+            if (char === '#' || !node.children.has(char)) continue;
+            
+            const nextNode = node.children.get(char)!;
+            
+            // Found a complete word
+            if (nextNode.word) {
+                result.push(nextNode.word);
+                nextNode.word = null; // Avoid duplicates
+            }
+            
+            // Create new board state with current cell marked
+            const newBoard = currentBoard.map(row => [...row]);
+            newBoard[i][j] = '#';
+            
+            // Add all 4 directions to stack
+            stack.push([i + 1, j, nextNode, newBoard]);
+            stack.push([i - 1, j, nextNode, newBoard]);
+            stack.push([i, j + 1, nextNode, newBoard]);
+            stack.push([i, j - 1, nextNode, newBoard]);
+        }
+    }
+    
+    // Start DFS from each cell
+    for (let i = 0; i < m; i++) {
+        for (let j = 0; j < n; j++) {
+            dfsIterative(i, j);
+        }
+    }
+    
+    return result;
+}
+
+// Solution 5: Optimized Trie with Early Termination
+// Time: O(M×N×4^L), Space: O(W×L)
+export function findWords5(board: string[][], words: string[]): string[] {
+    // Filter words that can't possibly exist on the board
+    const boardChars = new Set<string>();
+    for (const row of board) {
+        for (const char of row) {
+            boardChars.add(char);
+        }
+    }
+    
+    const filteredWords = words.filter(word => 
+        word.split('').every(char => boardChars.has(char))
+    );
+    
+    if (filteredWords.length === 0) return [];
+    
+    const root = buildTrie(filteredWords);
+    const result: string[] = [];
+    const m = board.length;
+    const n = board[0].length;
+    
+    function buildTrie(words: string[]): TrieNode {
+        const root = new TrieNode();
+        
+        for (const word of words) {
+            let node = root;
+            for (const char of word) {
+                if (!node.children.has(char)) {
+                    node.children.set(char, new TrieNode());
+                }
+                node = node.children.get(char)!;
+            }
+            node.word = word;
+        }
+        
+        return root;
+    }
+    
+    function dfs(i: number, j: number, node: TrieNode): void {
+        if (i < 0 || i >= m || j < 0 || j >= n) return;
+        
+        const char = board[i][j];
+        if (char === '#' || !node.children.has(char)) return;
+        
+        node = node.children.get(char)!;
+        
+        // Found a complete word
+        if (node.word) {
+            result.push(node.word);
+            node.word = null; // Avoid duplicates
+        }
+        
+        // Early termination if no more children
+        if (node.children.size === 0) return;
+        
+        // Mark as visited
+        board[i][j] = '#';
+        
+        // Explore all 4 directions
+        dfs(i + 1, j, node);
+        dfs(i - 1, j, node);
+        dfs(i, j + 1, node);
+        dfs(i, j - 1, node);
+        
+        // Backtrack
+        board[i][j] = char;
+    }
+    
+    // Start DFS from each cell
+    for (let i = 0; i < m; i++) {
+        for (let j = 0; j < n; j++) {
+            dfs(i, j, root);
+        }
+    }
+    
+    return result;
+}
+
+// Test cases
+export function testFindWords() {
+    console.log("Testing Word Search II:");
+    
+    const testCases = [
+        {
+            board: [
+                ["o", "a", "a", "n"],
+                ["e", "t", "a", "e"],
+                ["i", "h", "k", "r"],
+                ["i", "f", "l", "v"]
+            ],
+            words: ["oath", "pea", "eat", "rain"],
+            expected: ["eat", "oath"]
+        },
+        {
+            board: [["a", "b"], ["c", "d"]],
+            words: ["abcb"],
+            expected: []
+        },
+        {
+            board: [["a", "a"]],
+            words: ["a"],
+            expected: ["a"]
+        },
+        {
+            board: [["a", "b"], ["a", "a"]],
+            words: ["aba", "baa", "bab", "aaab", "aaa", "aaaa", "aaba"],
+            expected: ["aba", "baa", "aaa", "aaab", "aaba"]
+        }
+    ];
+    
+    const solutions = [
+        { name: "Trie + Backtracking", fn: findWords1 },
+        { name: "Trie + Pruning", fn: findWords2 },
+        { name: "Individual Word Search", fn: findWords3 },
+        { name: "Iterative DFS", fn: findWords4 },
+        { name: "Optimized Trie", fn: findWords5 }
+    ];
+    
+    solutions.forEach(solution => {
+        console.log(`\n${solution.name}:`);
+        testCases.forEach((test, i) => {
+            // Create deep copy of board for each test
+            const boardCopy = test.board.map(row => [...row]);
+            const result = solution.fn(boardCopy, test.words);
+            result.sort();
+            test.expected.sort();
+            
+            const passed = JSON.stringify(result) === JSON.stringify(test.expected);
+            console.log(`  Test ${i + 1}: ${passed ? 'PASS' : 'FAIL'}`);
+            if (!passed) {
+                console.log(`    Expected: ${JSON.stringify(test.expected)}`);
+                console.log(`    Got: ${JSON.stringify(result)}`);
+            }
+        });
+    });
+}
+
+/**
+ * Key Insights:
+ * 
+ * 1. **Problem Recognition**:
+ *    - Multiple word search in 2D grid
+ *    - Optimization needed for large word lists
+ *    - Trie data structure is key for efficiency
+ * 
+ * 2. **Trie Advantages**:
+ *    - Prefix matching in O(1) per character
+ *    - Eliminates redundant searches
+ *    - Prunes search space early
+ * 
+ * 3. **Backtracking Pattern**:
+ *    - Mark current cell as visited
+ *    - Explore 4 directions recursively
+ *    - Restore cell state when backtracking
+ * 
+ * 4. **Time Complexity**: O(M×N×4^L)
+ *    - M×N: starting positions
+ *    - 4^L: worst case branching factor
+ *    - L: maximum word length
+ * 
+ * 5. **Space Complexity**: O(W×L)
+ *    - W: number of words
+ *    - L: average word length
+ *    - Trie storage + recursion stack
+ * 
+ * 6. **Optimization Techniques**:
+ *    - Remove found words from Trie
+ *    - Prune empty branches
+ *    - Filter impossible words early
+ *    - Use character frequency analysis
+ * 
+ * 7. **Interview Strategy**:
+ *    - Start with single word search
+ *    - Identify inefficiency with multiple words
+ *    - Introduce Trie for optimization
+ *    - Implement backtracking with Trie
+ * 
+ * 8. **Edge Cases**:
+ *    - Empty board or word list
+ *    - Single character words
+ *    - Words longer than board allows
+ *    - Duplicate words (handle in Trie)
+ * 
+ * 9. **Common Mistakes**:
+ *    - Not restoring board state during backtracking
+ *    - Forgetting to mark cells as visited
+ *    - Incorrect Trie construction
+ *    - Not handling duplicate results
+ * 
+ * 10. **Big Tech Variations**:
+ *     - Google: 3D word search
+ *     - Meta: Word search with wildcards
+ *     - Amazon: Case-insensitive search
+ *     - Microsoft: Circular board (wrap-around)
+ * 
+ * 11. **Follow-up Questions**:
+ *     - Return word positions/paths
+ *     - Count occurrences of each word
+ *     - Handle dictionary updates dynamically
+ *     - Optimize for repeated queries
+ * 
+ * 12. **Performance Considerations**:
+ *     - Memory usage of Trie vs hash set
+ *     - Recursive vs iterative implementation
+ *     - Pruning strategies effectiveness
+ *     - Early termination conditions
+ * 
+ * 13. **Real-world Applications**:
+ *     - Crossword puzzle solvers
+ *     - Word game implementations
+ *     - Text mining and search
+ *     - Pattern recognition in grids
+ *     - Bioinformatics sequence analysis
+ */
+{% endraw %}
+6:["topic","backtracking-problems-09-word-search-ii","d"]
+0:["2NmUhWiPdVVBzVtDZlggk",[[["",{"children":["learn",{"children":[["topic","backtracking-problems-09-word-search-ii","d"],{"children":["__PAGE__?{\"topic\":\"backtracking-problems-09-word-search-ii\"}",{}]}]}]},"$undefined","$undefined",true],["",{"children":["learn",{"children":[["topic","backtracking-problems-09-word-search-ii","d"],{"children":["__PAGE__",{},[["$L1",["$","div",null,{"className":"max-w-6xl mx-auto px-8 py-24","children":[["$","div",null,{"className":"flex items-center gap-4 mb-8","children":["$","$L2",null,{"href":"/learn","children":["$","button",null,{"className":"flex items-center gap-2 bg-gray-100 border border-gray-300 text-gray-700 px-4 py-3 rounded-md font-medium hover:bg-gray-200 transition-colors","children":[["$","svg",null,{"xmlns":"http://www.w3.org/2000/svg","width":16,"height":16,"viewBox":"0 0 24 24","fill":"none","stroke":"currentColor","strokeWidth":2,"strokeLinecap":"round","strokeLinejoin":"round","className":"lucide lucide-arrow-left ","children":[["$","path","1l729n",{"d":"m12 19-7-7 7-7"}],["$","path","x3x0zl",{"d":"M19 12H5"}],"$undefined"]}],"Back to Learn"]}]}]}],["$","div",null,{"className":"bg-white border border-gray-200 rounded-lg p-8 mb-8","children":[["$","div",null,{"className":"flex items-center justify-between mb-4","children":[["$","h1",null,{"className":"text-3xl font-bold text-gray-900","children":"Word Search II"}],["$","div",null,{"className":"flex gap-4","children":[["$","button",null,{"className":"flex items-center gap-2 bg-transparent text-gray-700 border border-gray-300 px-6 py-3 rounded-md font-semibold hover:bg-gray-50 transition-colors","children":[["$","svg",null,{"xmlns":"http://www.w3.org/2000/svg","width":16,"height":16,"viewBox":"0 0 24 24","fill":"none","stroke":"currentColor","strokeWidth":2,"strokeLinecap":"round","strokeLinejoin":"round","className":"lucide lucide-star ","children":[["$","polygon","8f66p6",{"points":"12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"}],"$undefined"]}],"Bookmark"]}],["$","button",null,{"className":"flex items-center gap-2 bg-transparent text-gray-700 border border-gray-300 px-6 py-3 rounded-md font-semibold hover:bg-gray-50 transition-colors","children":[["$","svg",null,{"xmlns":"http://www.w3.org/2000/svg","width":16,"height":16,"viewBox":"0 0 24 24","fill":"none","stroke":"currentColor","strokeWidth":2,"strokeLinecap":"round","strokeLinejoin":"round","className":"lucide lucide-share2 ","children":[["$","circle","gq8acd",{"cx":"18","cy":"5","r":"3"}],["$","circle","w7nqdw",{"cx":"6","cy":"12","r":"3"}],["$","circle","1xt0gg",{"cx":"18","cy":"19","r":"3"}],["$","line","47mynk",{"x1":"8.59","x2":"15.42","y1":"13.51","y2":"17.49"}],["$","line","1n3mei",{"x1":"15.41","x2":"8.59","y1":"6.51","y2":"10.49"}],"$undefined"]}],"Share"]}]]}]]}],["$","div",null,{"className":"flex gap-8 mb-4","children":[["$","div",null,{"className":"flex items-center gap-2 text-sm text-gray-600","children":[["$","svg",null,{"xmlns":"http://www.w3.org/2000/svg","width":16,"height":16,"viewBox":"0 0 24 24","fill":"none","stroke":"currentColor","strokeWidth":2,"strokeLinecap":"round","strokeLinejoin":"round","className":"lucide lucide-clock ","children":[["$","circle","1mglay",{"cx":"12","cy":"12","r":"10"}],["$","polyline","68esgv",{"points":"12 6 12 12 16 14"}],"$undefined"]}],"2-3 hours"]}],["$","span",null,{"className":"px-3 py-1 rounded-full text-xs font-semibold text-white bg-red-500","children":"Hard"}],["$","span",null,{"className":"px-3 py-1 rounded-full text-xs font-semibold bg-blue-100 text-blue-700","children":"Backtracking"}]]}],["$","div",null,{"className":"flex flex-wrap gap-2 mb-4","children":[["$","span","0",{"className":"bg-gray-100 text-gray-600 px-3 py-1 rounded-md text-xs font-medium","children":"Backtracking"}],["$","span","1",{"className":"bg-gray-100 text-gray-600 px-3 py-1 rounded-md text-xs font-medium","children":"Hash Table"}]]}],["$","p",null,{"className":"text-lg text-gray-700 leading-relaxed","children":"**LeetCode Problem # * 212. Word Search II**..."}]]}],["$","div",null,{"className":"grid grid-cols-1 lg:grid-cols-3 gap-8","children":[["$","div",null,{"className":"lg:col-span-2","children":["$","div",null,{"className":"bg-white border border-gray-200 rounded-lg p-8","children":["$","$L3",null,{"content":"$4"}]}]}],["$","div",null,{"className":"space-y-6","children":[["$","div",null,{"className":"bg-white border border-gray-200 rounded-lg p-6","children":[["$","h3",null,{"className":"text-lg font-semibold text-gray-900 mb-4","children":"Your Progress"}],["$","div",null,{"className":"w-full bg-gray-200 rounded-full h-2 mb-2","children":["$","div",null,{"className":"bg-blue-600 h-2 rounded-full","style":{"width":"25%"}}]}],["$","p",null,{"className":"text-sm text-gray-600","children":"25% Complete"}]]}],false]}]]}]]}],null],null],null]},[null,["$","$L5",null,{"parallelRouterKey":"children","segmentPath":["children","learn","children","$6","children"],"error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L7",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","notFoundStyles":"$undefined"}]],null]},[null,["$","$L5",null,{"parallelRouterKey":"children","segmentPath":["children","learn","children"],"error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L7",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","notFoundStyles":"$undefined"}]],null]},[[[["$","link","0",{"rel":"stylesheet","href":"/interview/_next/static/css/387024c6a2216908.css","precedence":"next","crossOrigin":"$undefined"}]],["$","$L8",null,{"children":["$","$L5",null,{"parallelRouterKey":"children","segmentPath":["children"],"error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L7",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":{"fontFamily":"system-ui,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\"","height":"100vh","textAlign":"center","display":"flex","flexDirection":"column","alignItems":"center","justifyContent":"center"},"children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":{"display":"inline-block","margin":"0 20px 0 0","padding":"0 23px 0 0","fontSize":24,"fontWeight":500,"verticalAlign":"top","lineHeight":"49px"},"children":"404"}],["$","div",null,{"style":{"display":"inline-block"},"children":["$","h2",null,{"style":{"fontSize":14,"fontWeight":400,"lineHeight":"49px","margin":0},"children":"This page could not be found."}]}]]}]}]],"notFoundStyles":[]}],"params":{}}]],null],null],["$L9",null]]]]
+9:[["$","meta","0",{"name":"viewport","content":"width=device-width, initial-scale=1"}],["$","meta","1",{"charSet":"utf-8"}],["$","meta","2",{"name":"next-size-adjust"}]]
+1:null

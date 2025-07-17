@@ -1,0 +1,663 @@
+2:I[2972,["918","static/chunks/918-3273b83890f10546.js","972","static/chunks/972-011bba60ed155615.js","930","static/chunks/930-3262a6c9c5acace4.js","289","static/chunks/app/learn/%5Btopic%5D/page-4ab144227f7a7b3e.js"],""]
+3:I[5907,["918","static/chunks/918-3273b83890f10546.js","972","static/chunks/972-011bba60ed155615.js","930","static/chunks/930-3262a6c9c5acace4.js","289","static/chunks/app/learn/%5Btopic%5D/page-4ab144227f7a7b3e.js"],"default"]
+5:I[4707,[],""]
+7:I[6423,[],""]
+8:I[2,["918","static/chunks/918-3273b83890f10546.js","710","static/chunks/710-dfaa11b4dff08f8e.js","972","static/chunks/972-011bba60ed155615.js","233","static/chunks/233-3e0c1d820a17eca9.js","185","static/chunks/app/layout-333f4adcd11f8f39.js"],"default",1]
+4:T3bba,
+# Set Matrix Zeroe
+
+**LeetCode Problem # * 73. Set Matrix Zeroes**
+
+## Problem Description
+
+ * Given an m x n integer matrix matrix, if an element is 0, set its entire row  * and column to 0's.  *  * You must do it in place.  * 
+
+## Solutions
+
+{% raw %}
+/**
+ * 73. Set Matrix Zeroes
+ *
+ * Problem:
+ * Given an m x n integer matrix matrix, if an element is 0, set its entire row
+ * and column to 0's.
+ *
+ * You must do it in place.
+ *
+ * Example:
+ * Input: matrix = [[1,1,1],[1,0,1],[1,1,1]]
+ * Output: [[1,0,1],[0,0,0],[1,0,1]]
+ *
+ * Input: matrix = [[0,1,2,0],[3,4,5,2],[1,3,1,5]]
+ * Output: [[0,0,0,0],[0,4,5,0],[0,3,1,0]]
+ *
+ * LeetCode: https://leetcode.com/problems/set-matrix-zeroes/
+ */
+
+/**
+ * Solution 1: Using First Row and Column as Markers (Optimal)
+ *
+ * Approach:
+ * - Use first row and column to mark which rows/columns should be zeroed
+ * - Use additional variable for first row
+ *
+ * Time Complexity: O(m * n)
+ * Space Complexity: O(1)
+ */
+function setZeroes(matrix: number[][]): void {
+  const m = matrix.length;
+  const n = matrix[0].length;
+  let firstRowHasZero = false;
+  let firstColHasZero = false;
+
+  // Check if first row has zero
+  for (let j = 0; j < n; j++) {
+    if (matrix[0][j] === 0) {
+      firstRowHasZero = true;
+      break;
+    }
+  }
+
+  // Check if first column has zero
+  for (let i = 0; i < m; i++) {
+    if (matrix[i][0] === 0) {
+      firstColHasZero = true;
+      break;
+    }
+  }
+
+  // Use first row and column as markers
+  for (let i = 1; i < m; i++) {
+    for (let j = 1; j < n; j++) {
+      if (matrix[i][j] === 0) {
+        matrix[i][0] = 0;
+        matrix[0][j] = 0;
+      }
+    }
+  }
+
+  // Set zeros based on markers
+  for (let i = 1; i < m; i++) {
+    for (let j = 1; j < n; j++) {
+      if (matrix[i][0] === 0 || matrix[0][j] === 0) {
+        matrix[i][j] = 0;
+      }
+    }
+  }
+
+  // Set first row to zero if needed
+  if (firstRowHasZero) {
+    for (let j = 0; j < n; j++) {
+      matrix[0][j] = 0;
+    }
+  }
+
+  // Set first column to zero if needed
+  if (firstColHasZero) {
+    for (let i = 0; i < m; i++) {
+      matrix[i][0] = 0;
+    }
+  }
+}
+
+/**
+ * Solution 2: Using Extra Arrays
+ *
+ * Approach:
+ * - Use separate arrays to track rows and columns to zero
+ * - Simple but uses extra space
+ *
+ * Time Complexity: O(m * n)
+ * Space Complexity: O(m + n)
+ */
+function setZeroesExtraSpace(matrix: number[][]): void {
+  const m = matrix.length;
+  const n = matrix[0].length;
+  const rowsToZero = new Array(m).fill(false);
+  const colsToZero = new Array(n).fill(false);
+
+  // Mark rows and columns to zero
+  for (let i = 0; i < m; i++) {
+    for (let j = 0; j < n; j++) {
+      if (matrix[i][j] === 0) {
+        rowsToZero[i] = true;
+        colsToZero[j] = true;
+      }
+    }
+  }
+
+  // Set zeros
+  for (let i = 0; i < m; i++) {
+    for (let j = 0; j < n; j++) {
+      if (rowsToZero[i] || colsToZero[j]) {
+        matrix[i][j] = 0;
+      }
+    }
+  }
+}
+
+/**
+ * Solution 3: Using Sets
+ *
+ * Approach:
+ * - Use Sets to track rows and columns to zero
+ * - More memory efficient than arrays for sparse matrices
+ *
+ * Time Complexity: O(m * n)
+ * Space Complexity: O(m + n)
+ */
+function setZeroesSet(matrix: number[][]): void {
+  const m = matrix.length;
+  const n = matrix[0].length;
+  const rowsToZero = new Set<number>();
+  const colsToZero = new Set<number>();
+
+  // Mark rows and columns to zero
+  for (let i = 0; i < m; i++) {
+    for (let j = 0; j < n; j++) {
+      if (matrix[i][j] === 0) {
+        rowsToZero.add(i);
+        colsToZero.add(j);
+      }
+    }
+  }
+
+  // Set zeros
+  for (let i = 0; i < m; i++) {
+    for (let j = 0; j < n; j++) {
+      if (rowsToZero.has(i) || colsToZero.has(j)) {
+        matrix[i][j] = 0;
+      }
+    }
+  }
+}
+
+/**
+ * Solution 4: Using Map
+ *
+ * Approach:
+ * - Use Map to track rows and columns to zero
+ * - More flexible than arrays
+ *
+ * Time Complexity: O(m * n)
+ * Space Complexity: O(m + n)
+ */
+function setZeroesMap(matrix: number[][]): void {
+  const m = matrix.length;
+  const n = matrix[0].length;
+  const rowsToZero = new Map<number, boolean>();
+  const colsToZero = new Map<number, boolean>();
+
+  // Mark rows and columns to zero
+  for (let i = 0; i < m; i++) {
+    for (let j = 0; j < n; j++) {
+      if (matrix[i][j] === 0) {
+        rowsToZero.set(i, true);
+        colsToZero.set(j, true);
+      }
+    }
+  }
+
+  // Set zeros
+  for (let i = 0; i < m; i++) {
+    for (let j = 0; j < n; j++) {
+      if (rowsToZero.has(i) || colsToZero.has(j)) {
+        matrix[i][j] = 0;
+      }
+    }
+  }
+}
+
+/**
+ * Solution 5: Functional Approach
+ *
+ * Approach:
+ * - Use functional programming concepts
+ * - More declarative style
+ *
+ * Time Complexity: O(m * n)
+ * Space Complexity: O(m + n)
+ */
+function setZeroesFunctional(matrix: number[][]): void {
+  const m = matrix.length;
+  const n = matrix[0].length;
+
+  // Find zero positions
+  const zeroPositions = matrix.flatMap((row, i) =>
+    row.map((cell, j) => (cell === 0 ? [i, j] : null)).filter(Boolean)
+  );
+
+  // Get unique rows and columns to zero
+  const rowsToZero = new Set(zeroPositions.map(([i, _]) => i));
+  const colsToZero = new Set(zeroPositions.map(([_, j]) => j));
+
+  // Set zeros
+  matrix.forEach((row, i) => {
+    row.forEach((_, j) => {
+      if (rowsToZero.has(i) || colsToZero.has(j)) {
+        matrix[i][j] = 0;
+      }
+    });
+  });
+}
+
+/**
+ * Solution 6: Using Generator (Memory efficient)
+ *
+ * Approach:
+ * - Use generator to yield zero positions
+ * - Memory efficient for large matrices
+ *
+ * Time Complexity: O(m * n)
+ * Space Complexity: O(m + n)
+ */
+function* zeroPositionGenerator(
+  matrix: number[][]
+): Generator<[number, number]> {
+  const m = matrix.length;
+  const n = matrix[0].length;
+
+  for (let i = 0; i < m; i++) {
+    for (let j = 0; j < n; j++) {
+      if (matrix[i][j] === 0) {
+        yield [i, j];
+      }
+    }
+  }
+}
+
+function setZeroesGenerator(matrix: number[][]): void {
+  const rowsToZero = new Set<number>();
+  const colsToZero = new Set<number>();
+
+  // Collect zero positions
+  for (const [i, j] of zeroPositionGenerator(matrix)) {
+    rowsToZero.add(i);
+    colsToZero.add(j);
+  }
+
+  // Set zeros
+  const m = matrix.length;
+  const n = matrix[0].length;
+
+  for (let i = 0; i < m; i++) {
+    for (let j = 0; j < n; j++) {
+      if (rowsToZero.has(i) || colsToZero.has(j)) {
+        matrix[i][j] = 0;
+      }
+    }
+  }
+}
+
+/**
+ * Solution 7: Using Class (Object-oriented)
+ *
+ * Approach:
+ * - Create a MatrixZeroSetter class
+ * - Encapsulate zero-setting logic
+ *
+ * Time Complexity: O(m * n)
+ * Space Complexity: O(1)
+ */
+class MatrixZeroSetter {
+  private matrix: number[][];
+  private m: number;
+  private n: number;
+
+  constructor(matrix: number[][]) {
+    this.matrix = matrix;
+    this.m = matrix.length;
+    this.n = matrix[0].length;
+  }
+
+  setZeroes(): void {
+    let firstRowHasZero = false;
+    let firstColHasZero = false;
+
+    // Check first row
+    for (let j = 0; j < this.n; j++) {
+      if (this.matrix[0][j] === 0) {
+        firstRowHasZero = true;
+        break;
+      }
+    }
+
+    // Check first column
+    for (let i = 0; i < this.m; i++) {
+      if (this.matrix[i][0] === 0) {
+        firstColHasZero = true;
+        break;
+      }
+    }
+
+    // Use first row and column as markers
+    for (let i = 1; i < this.m; i++) {
+      for (let j = 1; j < this.n; j++) {
+        if (this.matrix[i][j] === 0) {
+          this.matrix[i][0] = 0;
+          this.matrix[0][j] = 0;
+        }
+      }
+    }
+
+    // Set zeros based on markers
+    for (let i = 1; i < this.m; i++) {
+      for (let j = 1; j < this.n; j++) {
+        if (this.matrix[i][0] === 0 || this.matrix[0][j] === 0) {
+          this.matrix[i][j] = 0;
+        }
+      }
+    }
+
+    // Set first row
+    if (firstRowHasZero) {
+      for (let j = 0; j < this.n; j++) {
+        this.matrix[0][j] = 0;
+      }
+    }
+
+    // Set first column
+    if (firstColHasZero) {
+      for (let i = 0; i < this.m; i++) {
+        this.matrix[i][0] = 0;
+      }
+    }
+  }
+
+  getMatrix(): number[][] {
+    return this.matrix.map((row) => [...row]);
+  }
+}
+
+function setZeroesClass(matrix: number[][]): void {
+  const setter = new MatrixZeroSetter(matrix);
+  setter.setZeroes();
+}
+
+/**
+ * Solution 8: Using Bit Manipulation (Limited use case)
+ *
+ * Approach:
+ * - Use bit flags for small matrices
+ * - Limited to small matrices due to integer size
+ *
+ * Time Complexity: O(m * n)
+ * Space Complexity: O(1)
+ */
+function setZeroesBitwise(matrix: number[][]): void {
+  const m = matrix.length;
+  const n = matrix[0].length;
+
+  if (m > 32 || n > 32) {
+    // Fallback to standard approach for large matrices
+    setZeroes(matrix);
+    return;
+  }
+
+  let rowFlags = 0;
+  let colFlags = 0;
+
+  // Set flags for rows and columns with zeros
+  for (let i = 0; i < m; i++) {
+    for (let j = 0; j < n; j++) {
+      if (matrix[i][j] === 0) {
+        rowFlags |= 1 << i;
+        colFlags |= 1 << j;
+      }
+    }
+  }
+
+  // Set zeros based on flags
+  for (let i = 0; i < m; i++) {
+    for (let j = 0; j < n; j++) {
+      if (rowFlags & (1 << i) || colFlags & (1 << j)) {
+        matrix[i][j] = 0;
+      }
+    }
+  }
+}
+
+// Helper functions
+function printMatrix(matrix: number[][]): string {
+  return matrix.map((row) => `[${row.join(", ")}]`).join("\n");
+}
+
+function createTestMatrix(m: number, n: number): number[][] {
+  return Array.from({ length: m }, (_, i) =>
+    Array.from({ length: n }, (_, j) => i * n + j + 1)
+  );
+}
+
+// Test cases
+function testSetMatrixZeroes() {
+  console.log("=== Testing Set Matrix Zeroes ===\n");
+
+  const testCases = [
+    {
+      input: [
+        [1, 1, 1],
+        [1, 0, 1],
+        [1, 1, 1],
+      ],
+      expected: [
+        [1, 0, 1],
+        [0, 0, 0],
+        [1, 0, 1],
+      ],
+      description: "3x3 matrix with center zero",
+    },
+    {
+      input: [
+        [0, 1, 2, 0],
+        [3, 4, 5, 2],
+        [1, 3, 1, 5],
+      ],
+      expected: [
+        [0, 0, 0, 0],
+        [0, 4, 5, 0],
+        [0, 3, 1, 0],
+      ],
+      description: "3x4 matrix with edge zeros",
+    },
+    {
+      input: [[1, 0]],
+      expected: [[0, 0]],
+      description: "1x2 matrix",
+    },
+    {
+      input: [[1], [0]],
+      expected: [[0], [0]],
+      description: "2x1 matrix",
+    },
+    {
+      input: [[0]],
+      expected: [[0]],
+      description: "1x1 matrix with zero",
+    },
+    {
+      input: [[1]],
+      expected: [[1]],
+      description: "1x1 matrix without zero",
+    },
+  ];
+
+  testCases.forEach((testCase, index) => {
+    console.log(`Test Case ${index + 1}: ${testCase.description}`);
+    console.log(`Input:\n${printMatrix(testCase.input)}`);
+    console.log(`Expected:\n${printMatrix(testCase.expected)}\n`);
+
+    // Test Solution 1 (First Row/Column Markers)
+    const matrix1 = testCase.input.map((row) => [...row]);
+    setZeroes(matrix1);
+    console.log(`Solution 1 (Markers):\n${printMatrix(matrix1)}`);
+    console.log(
+      `Result: ${
+        JSON.stringify(matrix1) === JSON.stringify(testCase.expected)
+          ? "✅"
+          : "❌"
+      }\n`
+    );
+
+    // Test Solution 2 (Extra Space)
+    const matrix2 = testCase.input.map((row) => [...row]);
+    setZeroesExtraSpace(matrix2);
+    console.log(`Solution 2 (Extra Space):\n${printMatrix(matrix2)}`);
+    console.log(
+      `Result: ${
+        JSON.stringify(matrix2) === JSON.stringify(testCase.expected)
+          ? "✅"
+          : "❌"
+      }\n`
+    );
+
+    // Test Solution 3 (Set)
+    const matrix3 = testCase.input.map((row) => [...row]);
+    setZeroesSet(matrix3);
+    console.log(`Solution 3 (Set):\n${printMatrix(matrix3)}`);
+    console.log(
+      `Result: ${
+        JSON.stringify(matrix3) === JSON.stringify(testCase.expected)
+          ? "✅"
+          : "❌"
+      }\n`
+    );
+
+    // Test Solution 4 (Map)
+    const matrix4 = testCase.input.map((row) => [...row]);
+    setZeroesMap(matrix4);
+    console.log(`Solution 4 (Map):\n${printMatrix(matrix4)}`);
+    console.log(
+      `Result: ${
+        JSON.stringify(matrix4) === JSON.stringify(testCase.expected)
+          ? "✅"
+          : "❌"
+      }\n`
+    );
+
+    // Test Solution 5 (Functional)
+    const matrix5 = testCase.input.map((row) => [...row]);
+    setZeroesFunctional(matrix5);
+    console.log(`Solution 5 (Functional):\n${printMatrix(matrix5)}`);
+    console.log(
+      `Result: ${
+        JSON.stringify(matrix5) === JSON.stringify(testCase.expected)
+          ? "✅"
+          : "❌"
+      }\n`
+    );
+
+    // Test Solution 6 (Generator)
+    const matrix6 = testCase.input.map((row) => [...row]);
+    setZeroesGenerator(matrix6);
+    console.log(`Solution 6 (Generator):\n${printMatrix(matrix6)}`);
+    console.log(
+      `Result: ${
+        JSON.stringify(matrix6) === JSON.stringify(testCase.expected)
+          ? "✅"
+          : "❌"
+      }\n`
+    );
+
+    // Test Solution 7 (Class)
+    const matrix7 = testCase.input.map((row) => [...row]);
+    setZeroesClass(matrix7);
+    console.log(`Solution 7 (Class):\n${printMatrix(matrix7)}`);
+    console.log(
+      `Result: ${
+        JSON.stringify(matrix7) === JSON.stringify(testCase.expected)
+          ? "✅"
+          : "❌"
+      }\n`
+    );
+
+    // Test Solution 8 (Bitwise)
+    const matrix8 = testCase.input.map((row) => [...row]);
+    setZeroesBitwise(matrix8);
+    console.log(`Solution 8 (Bitwise):\n${printMatrix(matrix8)}`);
+    console.log(
+      `Result: ${
+        JSON.stringify(matrix8) === JSON.stringify(testCase.expected)
+          ? "✅"
+          : "❌"
+      }\n`
+    );
+
+    console.log("---\n");
+  });
+}
+
+// Performance comparison
+function performanceComparison() {
+  console.log("=== Performance Comparison ===\n");
+
+  const testCases = [
+    { name: "Markers", func: setZeroes },
+    { name: "Extra Space", func: setZeroesExtraSpace },
+    { name: "Set", func: setZeroesSet },
+    { name: "Map", func: setZeroesMap },
+    { name: "Functional", func: setZeroesFunctional },
+    { name: "Generator", func: setZeroesGenerator },
+    { name: "Class", func: setZeroesClass },
+    { name: "Bitwise", func: setZeroesBitwise },
+  ];
+
+  // Create test matrices
+  const smallMatrix = createTestMatrix(5, 5);
+  const mediumMatrix = createTestMatrix(20, 20);
+  const largeMatrix = createTestMatrix(50, 50);
+
+  // Add some zeros
+  smallMatrix[2][2] = 0;
+  mediumMatrix[5][5] = 0;
+  mediumMatrix[10][10] = 0;
+  largeMatrix[10][10] = 0;
+  largeMatrix[20][20] = 0;
+  largeMatrix[30][30] = 0;
+
+  const matrices = [
+    { name: "Small (5x5)", matrix: smallMatrix },
+    { name: "Medium (20x20)", matrix: mediumMatrix },
+    { name: "Large (50x50)", matrix: largeMatrix },
+  ];
+
+  matrices.forEach(({ name, matrix }) => {
+    console.log(`${name} Matrix:`);
+
+    testCases.forEach(({ name: funcName, func }) => {
+      const testMatrix = matrix.map((row) => [...row]);
+      const start = performance.now();
+      func(testMatrix);
+      const end = performance.now();
+
+      console.log(`  ${funcName}: ${(end - start).toFixed(2)}ms`);
+    });
+
+    console.log("");
+  });
+}
+
+// Uncomment the following lines to run tests
+// testSetMatrixZeroes();
+// performanceComparison();
+
+export {
+  setZeroes,
+  setZeroesExtraSpace,
+  setZeroesSet,
+  setZeroesMap,
+  setZeroesFunctional,
+  setZeroesGenerator,
+  setZeroesClass,
+  setZeroesBitwise,
+  MatrixZeroSetter,
+  zeroPositionGenerator,
+  printMatrix,
+  createTestMatrix,
+  testSetMatrixZeroes,
+  performanceComparison,
+};
+{% endraw %}
+6:["topic","array-problems-13-set-matrix-zeroes","d"]
+0:["2NmUhWiPdVVBzVtDZlggk",[[["",{"children":["learn",{"children":[["topic","array-problems-13-set-matrix-zeroes","d"],{"children":["__PAGE__?{\"topic\":\"array-problems-13-set-matrix-zeroes\"}",{}]}]}]},"$undefined","$undefined",true],["",{"children":["learn",{"children":[["topic","array-problems-13-set-matrix-zeroes","d"],{"children":["__PAGE__",{},[["$L1",["$","div",null,{"className":"max-w-6xl mx-auto px-8 py-24","children":[["$","div",null,{"className":"flex items-center gap-4 mb-8","children":["$","$L2",null,{"href":"/learn","children":["$","button",null,{"className":"flex items-center gap-2 bg-gray-100 border border-gray-300 text-gray-700 px-4 py-3 rounded-md font-medium hover:bg-gray-200 transition-colors","children":[["$","svg",null,{"xmlns":"http://www.w3.org/2000/svg","width":16,"height":16,"viewBox":"0 0 24 24","fill":"none","stroke":"currentColor","strokeWidth":2,"strokeLinecap":"round","strokeLinejoin":"round","className":"lucide lucide-arrow-left ","children":[["$","path","1l729n",{"d":"m12 19-7-7 7-7"}],["$","path","x3x0zl",{"d":"M19 12H5"}],"$undefined"]}],"Back to Learn"]}]}]}],["$","div",null,{"className":"bg-white border border-gray-200 rounded-lg p-8 mb-8","children":[["$","div",null,{"className":"flex items-center justify-between mb-4","children":[["$","h1",null,{"className":"text-3xl font-bold text-gray-900","children":"Set Matrix Zeroe"}],["$","div",null,{"className":"flex gap-4","children":[["$","button",null,{"className":"flex items-center gap-2 bg-transparent text-gray-700 border border-gray-300 px-6 py-3 rounded-md font-semibold hover:bg-gray-50 transition-colors","children":[["$","svg",null,{"xmlns":"http://www.w3.org/2000/svg","width":16,"height":16,"viewBox":"0 0 24 24","fill":"none","stroke":"currentColor","strokeWidth":2,"strokeLinecap":"round","strokeLinejoin":"round","className":"lucide lucide-star ","children":[["$","polygon","8f66p6",{"points":"12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"}],"$undefined"]}],"Bookmark"]}],["$","button",null,{"className":"flex items-center gap-2 bg-transparent text-gray-700 border border-gray-300 px-6 py-3 rounded-md font-semibold hover:bg-gray-50 transition-colors","children":[["$","svg",null,{"xmlns":"http://www.w3.org/2000/svg","width":16,"height":16,"viewBox":"0 0 24 24","fill":"none","stroke":"currentColor","strokeWidth":2,"strokeLinecap":"round","strokeLinejoin":"round","className":"lucide lucide-share2 ","children":[["$","circle","gq8acd",{"cx":"18","cy":"5","r":"3"}],["$","circle","w7nqdw",{"cx":"6","cy":"12","r":"3"}],["$","circle","1xt0gg",{"cx":"18","cy":"19","r":"3"}],["$","line","47mynk",{"x1":"8.59","x2":"15.42","y1":"13.51","y2":"17.49"}],["$","line","1n3mei",{"x1":"15.41","x2":"8.59","y1":"6.51","y2":"10.49"}],"$undefined"]}],"Share"]}]]}]]}],["$","div",null,{"className":"flex gap-8 mb-4","children":[["$","div",null,{"className":"flex items-center gap-2 text-sm text-gray-600","children":[["$","svg",null,{"xmlns":"http://www.w3.org/2000/svg","width":16,"height":16,"viewBox":"0 0 24 24","fill":"none","stroke":"currentColor","strokeWidth":2,"strokeLinecap":"round","strokeLinejoin":"round","className":"lucide lucide-clock ","children":[["$","circle","1mglay",{"cx":"12","cy":"12","r":"10"}],["$","polyline","68esgv",{"points":"12 6 12 12 16 14"}],"$undefined"]}],"2-3 hours"]}],["$","span",null,{"className":"px-3 py-1 rounded-full text-xs font-semibold text-white bg-red-500","children":"Easy"}],["$","span",null,{"className":"px-3 py-1 rounded-full text-xs font-semibold bg-blue-100 text-blue-700","children":"Array"}]]}],["$","div",null,{"className":"flex flex-wrap gap-2 mb-4","children":[["$","span","0",{"className":"bg-gray-100 text-gray-600 px-3 py-1 rounded-md text-xs font-medium","children":"Array"}],["$","span","1",{"className":"bg-gray-100 text-gray-600 px-3 py-1 rounded-md text-xs font-medium","children":"Hash Table"}]]}],["$","p",null,{"className":"text-lg text-gray-700 leading-relaxed","children":"**LeetCode Problem # * 73. Set Matrix Zeroes**..."}]]}],["$","div",null,{"className":"grid grid-cols-1 lg:grid-cols-3 gap-8","children":[["$","div",null,{"className":"lg:col-span-2","children":["$","div",null,{"className":"bg-white border border-gray-200 rounded-lg p-8","children":["$","$L3",null,{"content":"$4"}]}]}],["$","div",null,{"className":"space-y-6","children":[["$","div",null,{"className":"bg-white border border-gray-200 rounded-lg p-6","children":[["$","h3",null,{"className":"text-lg font-semibold text-gray-900 mb-4","children":"Your Progress"}],["$","div",null,{"className":"w-full bg-gray-200 rounded-full h-2 mb-2","children":["$","div",null,{"className":"bg-blue-600 h-2 rounded-full","style":{"width":"25%"}}]}],["$","p",null,{"className":"text-sm text-gray-600","children":"25% Complete"}]]}],false]}]]}]]}],null],null],null]},[null,["$","$L5",null,{"parallelRouterKey":"children","segmentPath":["children","learn","children","$6","children"],"error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L7",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","notFoundStyles":"$undefined"}]],null]},[null,["$","$L5",null,{"parallelRouterKey":"children","segmentPath":["children","learn","children"],"error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L7",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","notFoundStyles":"$undefined"}]],null]},[[[["$","link","0",{"rel":"stylesheet","href":"/interview/_next/static/css/387024c6a2216908.css","precedence":"next","crossOrigin":"$undefined"}]],["$","$L8",null,{"children":["$","$L5",null,{"parallelRouterKey":"children","segmentPath":["children"],"error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L7",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":{"fontFamily":"system-ui,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\"","height":"100vh","textAlign":"center","display":"flex","flexDirection":"column","alignItems":"center","justifyContent":"center"},"children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":{"display":"inline-block","margin":"0 20px 0 0","padding":"0 23px 0 0","fontSize":24,"fontWeight":500,"verticalAlign":"top","lineHeight":"49px"},"children":"404"}],["$","div",null,{"style":{"display":"inline-block"},"children":["$","h2",null,{"style":{"fontSize":14,"fontWeight":400,"lineHeight":"49px","margin":0},"children":"This page could not be found."}]}]]}]}]],"notFoundStyles":[]}],"params":{}}]],null],null],["$L9",null]]]]
+9:[["$","meta","0",{"name":"viewport","content":"width=device-width, initial-scale=1"}],["$","meta","1",{"charSet":"utf-8"}],["$","meta","2",{"name":"next-size-adjust"}]]
+1:null

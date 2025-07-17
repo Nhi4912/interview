@@ -1,0 +1,508 @@
+2:I[2972,["918","static/chunks/918-3273b83890f10546.js","972","static/chunks/972-011bba60ed155615.js","930","static/chunks/930-3262a6c9c5acace4.js","289","static/chunks/app/learn/%5Btopic%5D/page-4ab144227f7a7b3e.js"],""]
+3:I[5907,["918","static/chunks/918-3273b83890f10546.js","972","static/chunks/972-011bba60ed155615.js","930","static/chunks/930-3262a6c9c5acace4.js","289","static/chunks/app/learn/%5Btopic%5D/page-4ab144227f7a7b3e.js"],"default"]
+5:I[4707,[],""]
+7:I[6423,[],""]
+8:I[2,["918","static/chunks/918-3273b83890f10546.js","710","static/chunks/710-dfaa11b4dff08f8e.js","972","static/chunks/972-011bba60ed155615.js","233","static/chunks/233-3e0c1d820a17eca9.js","185","static/chunks/app/layout-333f4adcd11f8f39.js"],"default",1]
+4:T2c4c,
+# Fizz Buzz
+
+**LeetCode Problem # * 412. Fizz Buzz**
+
+## Problem Description
+
+ * Given an integer n, return a string array answer (1-indexed) where:  * - answer[i] == "FizzBuzz" if i is divisible by both 3 and 5.  * - answer[i] == "Fizz" if i is divisible by 3.  * - answer[i] == "Buzz" if i is divisible by 5.  * - answer[i] == i (as a string) if none of the above conditions are true. 
+
+## Solutions
+
+{% raw %}
+/**
+ * 412. Fizz Buzz
+ *
+ * Problem:
+ * Given an integer n, return a string array answer (1-indexed) where:
+ * - answer[i] == "FizzBuzz" if i is divisible by both 3 and 5.
+ * - answer[i] == "Fizz" if i is divisible by 3.
+ * - answer[i] == "Buzz" if i is divisible by 5.
+ * - answer[i] == i (as a string) if none of the above conditions are true.
+ *
+ * Example:
+ * Input: n = 3
+ * Output: ["1","2","Fizz"]
+ *
+ * Input: n = 5
+ * Output: ["1","2","Fizz","4","Buzz"]
+ *
+ * Input: n = 15
+ * Output: ["1","2","Fizz","4","Buzz","Fizz","7","8","Fizz","Buzz","11","Fizz","13","14","FizzBuzz"]
+ *
+ * LeetCode: https://leetcode.com/problems/fizz-buzz/
+ */
+
+/**
+ * Solution 1: Simple Conditional (Most Readable)
+ *
+ * Approach:
+ * - Check each condition in order: FizzBuzz, Fizz, Buzz, number
+ * - Use if-else statements for clarity
+ *
+ * Time Complexity: O(n)
+ * Space Complexity: O(n) - output array
+ */
+function fizzBuzz(n: number): string[] {
+  const result: string[] = [];
+
+  for (let i = 1; i <= n; i++) {
+    if (i % 3 === 0 && i % 5 === 0) {
+      result.push("FizzBuzz");
+    } else if (i % 3 === 0) {
+      result.push("Fizz");
+    } else if (i % 5 === 0) {
+      result.push("Buzz");
+    } else {
+      result.push(i.toString());
+    }
+  }
+
+  return result;
+}
+
+/**
+ * Solution 2: String Concatenation
+ *
+ * Approach:
+ * - Build the result string by concatenating "Fizz" and "Buzz"
+ * - More efficient than multiple conditions
+ *
+ * Time Complexity: O(n)
+ * Space Complexity: O(n)
+ */
+function fizzBuzzConcatenation(n: number): string[] {
+  const result: string[] = [];
+
+  for (let i = 1; i <= n; i++) {
+    let str = "";
+
+    if (i % 3 === 0) str += "Fizz";
+    if (i % 5 === 0) str += "Buzz";
+
+    result.push(str || i.toString());
+  }
+
+  return result;
+}
+
+/**
+ * Solution 3: Using Map (Extensible)
+ *
+ * Approach:
+ * - Use a map to store divisibility rules
+ * - Easy to extend for more rules
+ *
+ * Time Complexity: O(n)
+ * Space Complexity: O(n)
+ */
+function fizzBuzzMap(n: number): string[] {
+  const result: string[] = [];
+  const rules = new Map<number, string>([
+    [3, "Fizz"],
+    [5, "Buzz"],
+  ]);
+
+  for (let i = 1; i <= n; i++) {
+    let str = "";
+
+    for (const [divisor, word] of rules) {
+      if (i % divisor === 0) {
+        str += word;
+      }
+    }
+
+    result.push(str || i.toString());
+  }
+
+  return result;
+}
+
+/**
+ * Solution 4: Using Array Methods (Functional)
+ *
+ * Approach:
+ * - Use Array.from and map for functional approach
+ * - More declarative style
+ *
+ * Time Complexity: O(n)
+ * Space Complexity: O(n)
+ */
+function fizzBuzzFunctional(n: number): string[] {
+  return Array.from({ length: n }, (_, i) => {
+    const num = i + 1;
+    let str = "";
+
+    if (num % 3 === 0) str += "Fizz";
+    if (num % 5 === 0) str += "Buzz";
+
+    return str || num.toString();
+  });
+}
+
+/**
+ * Solution 5: Using Bit Manipulation (Advanced)
+ *
+ * Approach:
+ * - Use bit flags to track divisibility
+ * - More efficient for multiple conditions
+ *
+ * Time Complexity: O(n)
+ * Space Complexity: O(n)
+ */
+function fizzBuzzBitwise(n: number): string[] {
+  const result: string[] = [];
+
+  for (let i = 1; i <= n; i++) {
+    let flags = 0;
+
+    if (i % 3 === 0) flags |= 1; // Set bit 0
+    if (i % 5 === 0) flags |= 2; // Set bit 1
+
+    switch (flags) {
+      case 0: // Neither divisible by 3 nor 5
+        result.push(i.toString());
+        break;
+      case 1: // Divisible by 3 only
+        result.push("Fizz");
+        break;
+      case 2: // Divisible by 5 only
+        result.push("Buzz");
+        break;
+      case 3: // Divisible by both 3 and 5
+        result.push("FizzBuzz");
+        break;
+    }
+  }
+
+  return result;
+}
+
+/**
+ * Solution 6: Using Lookup Table (Optimized)
+ *
+ * Approach:
+ * - Pre-compute results for numbers 1-15
+ * - Use modulo 15 to get the pattern
+ *
+ * Time Complexity: O(n)
+ * Space Complexity: O(n)
+ */
+function fizzBuzzLookup(n: number): string[] {
+  const lookup = [
+    "1",
+    "2",
+    "Fizz",
+    "4",
+    "Buzz",
+    "Fizz",
+    "7",
+    "8",
+    "Fizz",
+    "Buzz",
+    "11",
+    "Fizz",
+    "13",
+    "14",
+    "FizzBuzz",
+  ];
+
+  const result: string[] = [];
+
+  for (let i = 1; i <= n; i++) {
+    const index = (i - 1) % 15;
+    result.push(lookup[index]);
+  }
+
+  return result;
+}
+
+/**
+ * Solution 7: Using Generator (Memory Efficient)
+ *
+ * Approach:
+ * - Use generator to yield results one by one
+ * - Memory efficient for large n
+ *
+ * Time Complexity: O(n)
+ * Space Complexity: O(1) - only current result in memory
+ */
+function* fizzBuzzGenerator(n: number): Generator<string> {
+  for (let i = 1; i <= n; i++) {
+    let str = "";
+
+    if (i % 3 === 0) str += "Fizz";
+    if (i % 5 === 0) str += "Buzz";
+
+    yield str || i.toString();
+  }
+}
+
+function fizzBuzzWithGenerator(n: number): string[] {
+  return Array.from(fizzBuzzGenerator(n));
+}
+
+/**
+ * Solution 8: Using Class (Object-Oriented)
+ *
+ * Approach:
+ * - Encapsulate logic in a class
+ * - Good for extensibility and testing
+ *
+ * Time Complexity: O(n)
+ * Space Complexity: O(n)
+ */
+class FizzBuzzSolver {
+  private rules: Array<{ divisor: number; word: string }>;
+
+  constructor() {
+    this.rules = [
+      { divisor: 3, word: "Fizz" },
+      { divisor: 5, word: "Buzz" },
+    ];
+  }
+
+  solve(n: number): string[] {
+    const result: string[] = [];
+
+    for (let i = 1; i <= n; i++) {
+      let str = "";
+
+      for (const rule of this.rules) {
+        if (i % rule.divisor === 0) {
+          str += rule.word;
+        }
+      }
+
+      result.push(str || i.toString());
+    }
+
+    return result;
+  }
+
+  addRule(divisor: number, word: string): void {
+    this.rules.push({ divisor, word });
+  }
+}
+
+function fizzBuzzClass(n: number): string[] {
+  const solver = new FizzBuzzSolver();
+  return solver.solve(n);
+}
+
+// Test cases
+function testFizzBuzz() {
+  console.log("=== Testing Fizz Buzz ===\n");
+
+  const testCases = [
+    {
+      input: 3,
+      expected: ["1", "2", "Fizz"],
+      description: "Small number",
+    },
+    {
+      input: 5,
+      expected: ["1", "2", "Fizz", "4", "Buzz"],
+      description: "Medium number",
+    },
+    {
+      input: 15,
+      expected: [
+        "1",
+        "2",
+        "Fizz",
+        "4",
+        "Buzz",
+        "Fizz",
+        "7",
+        "8",
+        "Fizz",
+        "Buzz",
+        "11",
+        "Fizz",
+        "13",
+        "14",
+        "FizzBuzz",
+      ],
+      description: "Large number with FizzBuzz",
+    },
+    {
+      input: 1,
+      expected: ["1"],
+      description: "Single number",
+    },
+    {
+      input: 0,
+      expected: [],
+      description: "Zero",
+    },
+  ];
+
+  testCases.forEach((testCase, index) => {
+    console.log(`Test Case ${index + 1}: ${testCase.description}`);
+    console.log(`Input: n = ${testCase.input}`);
+    console.log(`Expected: [${testCase.expected.join(", ")}]\n`);
+
+    // Test Solution 1 (Simple Conditional)
+    const result1 = fizzBuzz(testCase.input);
+    console.log(
+      `Solution 1 (Simple): [${result1.join(", ")}] ${
+        JSON.stringify(result1) === JSON.stringify(testCase.expected)
+          ? "✅"
+          : "❌"
+      }`
+    );
+
+    // Test Solution 2 (Concatenation)
+    const result2 = fizzBuzzConcatenation(testCase.input);
+    console.log(
+      `Solution 2 (Concatenation): [${result2.join(", ")}] ${
+        JSON.stringify(result2) === JSON.stringify(testCase.expected)
+          ? "✅"
+          : "❌"
+      }`
+    );
+
+    // Test Solution 3 (Map)
+    const result3 = fizzBuzzMap(testCase.input);
+    console.log(
+      `Solution 3 (Map): [${result3.join(", ")}] ${
+        JSON.stringify(result3) === JSON.stringify(testCase.expected)
+          ? "✅"
+          : "❌"
+      }`
+    );
+
+    // Test Solution 4 (Functional)
+    const result4 = fizzBuzzFunctional(testCase.input);
+    console.log(
+      `Solution 4 (Functional): [${result4.join(", ")}] ${
+        JSON.stringify(result4) === JSON.stringify(testCase.expected)
+          ? "✅"
+          : "❌"
+      }`
+    );
+
+    // Test Solution 5 (Bitwise)
+    const result5 = fizzBuzzBitwise(testCase.input);
+    console.log(
+      `Solution 5 (Bitwise): [${result5.join(", ")}] ${
+        JSON.stringify(result5) === JSON.stringify(testCase.expected)
+          ? "✅"
+          : "❌"
+      }`
+    );
+
+    // Test Solution 6 (Lookup)
+    const result6 = fizzBuzzLookup(testCase.input);
+    console.log(
+      `Solution 6 (Lookup): [${result6.join(", ")}] ${
+        JSON.stringify(result6) === JSON.stringify(testCase.expected)
+          ? "✅"
+          : "❌"
+      }`
+    );
+
+    // Test Solution 7 (Generator)
+    const result7 = fizzBuzzWithGenerator(testCase.input);
+    console.log(
+      `Solution 7 (Generator): [${result7.join(", ")}] ${
+        JSON.stringify(result7) === JSON.stringify(testCase.expected)
+          ? "✅"
+          : "❌"
+      }`
+    );
+
+    // Test Solution 8 (Class)
+    const result8 = fizzBuzzClass(testCase.input);
+    console.log(
+      `Solution 8 (Class): [${result8.join(", ")}] ${
+        JSON.stringify(result8) === JSON.stringify(testCase.expected)
+          ? "✅"
+          : "❌"
+      }`
+    );
+
+    console.log("\n---\n");
+  });
+}
+
+// Performance comparison
+function performanceComparison() {
+  console.log("=== Performance Comparison ===\n");
+
+  const testCases = [
+    { name: "Simple", func: fizzBuzz },
+    { name: "Concatenation", func: fizzBuzzConcatenation },
+    { name: "Map", func: fizzBuzzMap },
+    { name: "Functional", func: fizzBuzzFunctional },
+    { name: "Bitwise", func: fizzBuzzBitwise },
+    { name: "Lookup", func: fizzBuzzLookup },
+    { name: "Generator", func: fizzBuzzWithGenerator },
+    { name: "Class", func: fizzBuzzClass },
+  ];
+
+  const largeN = 100000;
+
+  testCases.forEach(({ name, func }) => {
+    const start = performance.now();
+    const result = func(largeN);
+    const end = performance.now();
+
+    console.log(`${name}:`);
+    console.log(`  Time: ${(end - start).toFixed(2)}ms`);
+    console.log(`  Result: ${result.length} elements`);
+    console.log(`  Memory: ${name === "Generator" ? "O(1)" : "O(n)"}\n`);
+  });
+}
+
+// Pattern analysis
+function patternAnalysis() {
+  console.log("=== Pattern Analysis ===\n");
+
+  console.log("FizzBuzz Pattern (first 30 numbers):");
+  const pattern = fizzBuzz(30);
+
+  for (let i = 0; i < pattern.length; i++) {
+    const num = i + 1;
+    const result = pattern[i];
+    console.log(`${num.toString().padStart(2)}: ${result}`);
+
+    if ((i + 1) % 15 === 0) {
+      console.log("---"); // Pattern repeats every 15 numbers
+    }
+  }
+
+  console.log("\nPattern repeats every 15 numbers (LCM of 3 and 5)");
+}
+
+// Uncomment the following lines to run tests
+// testFizzBuzz();
+// performanceComparison();
+// patternAnalysis();
+
+export {
+  fizzBuzz,
+  fizzBuzzConcatenation,
+  fizzBuzzMap,
+  fizzBuzzFunctional,
+  fizzBuzzBitwise,
+  fizzBuzzLookup,
+  fizzBuzzWithGenerator,
+  fizzBuzzGenerator,
+  fizzBuzzClass,
+  FizzBuzzSolver,
+  testFizzBuzz,
+  performanceComparison,
+  patternAnalysis,
+};
+{% endraw %}
+6:["topic","math-problems-01-fizz-buzz","d"]
+0:["2NmUhWiPdVVBzVtDZlggk",[[["",{"children":["learn",{"children":[["topic","math-problems-01-fizz-buzz","d"],{"children":["__PAGE__?{\"topic\":\"math-problems-01-fizz-buzz\"}",{}]}]}]},"$undefined","$undefined",true],["",{"children":["learn",{"children":[["topic","math-problems-01-fizz-buzz","d"],{"children":["__PAGE__",{},[["$L1",["$","div",null,{"className":"max-w-6xl mx-auto px-8 py-24","children":[["$","div",null,{"className":"flex items-center gap-4 mb-8","children":["$","$L2",null,{"href":"/learn","children":["$","button",null,{"className":"flex items-center gap-2 bg-gray-100 border border-gray-300 text-gray-700 px-4 py-3 rounded-md font-medium hover:bg-gray-200 transition-colors","children":[["$","svg",null,{"xmlns":"http://www.w3.org/2000/svg","width":16,"height":16,"viewBox":"0 0 24 24","fill":"none","stroke":"currentColor","strokeWidth":2,"strokeLinecap":"round","strokeLinejoin":"round","className":"lucide lucide-arrow-left ","children":[["$","path","1l729n",{"d":"m12 19-7-7 7-7"}],["$","path","x3x0zl",{"d":"M19 12H5"}],"$undefined"]}],"Back to Learn"]}]}]}],["$","div",null,{"className":"bg-white border border-gray-200 rounded-lg p-8 mb-8","children":[["$","div",null,{"className":"flex items-center justify-between mb-4","children":[["$","h1",null,{"className":"text-3xl font-bold text-gray-900","children":"Fizz Buzz"}],["$","div",null,{"className":"flex gap-4","children":[["$","button",null,{"className":"flex items-center gap-2 bg-transparent text-gray-700 border border-gray-300 px-6 py-3 rounded-md font-semibold hover:bg-gray-50 transition-colors","children":[["$","svg",null,{"xmlns":"http://www.w3.org/2000/svg","width":16,"height":16,"viewBox":"0 0 24 24","fill":"none","stroke":"currentColor","strokeWidth":2,"strokeLinecap":"round","strokeLinejoin":"round","className":"lucide lucide-star ","children":[["$","polygon","8f66p6",{"points":"12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"}],"$undefined"]}],"Bookmark"]}],["$","button",null,{"className":"flex items-center gap-2 bg-transparent text-gray-700 border border-gray-300 px-6 py-3 rounded-md font-semibold hover:bg-gray-50 transition-colors","children":[["$","svg",null,{"xmlns":"http://www.w3.org/2000/svg","width":16,"height":16,"viewBox":"0 0 24 24","fill":"none","stroke":"currentColor","strokeWidth":2,"strokeLinecap":"round","strokeLinejoin":"round","className":"lucide lucide-share2 ","children":[["$","circle","gq8acd",{"cx":"18","cy":"5","r":"3"}],["$","circle","w7nqdw",{"cx":"6","cy":"12","r":"3"}],["$","circle","1xt0gg",{"cx":"18","cy":"19","r":"3"}],["$","line","47mynk",{"x1":"8.59","x2":"15.42","y1":"13.51","y2":"17.49"}],["$","line","1n3mei",{"x1":"15.41","x2":"8.59","y1":"6.51","y2":"10.49"}],"$undefined"]}],"Share"]}]]}]]}],["$","div",null,{"className":"flex gap-8 mb-4","children":[["$","div",null,{"className":"flex items-center gap-2 text-sm text-gray-600","children":[["$","svg",null,{"xmlns":"http://www.w3.org/2000/svg","width":16,"height":16,"viewBox":"0 0 24 24","fill":"none","stroke":"currentColor","strokeWidth":2,"strokeLinecap":"round","strokeLinejoin":"round","className":"lucide lucide-clock ","children":[["$","circle","1mglay",{"cx":"12","cy":"12","r":"10"}],["$","polyline","68esgv",{"points":"12 6 12 12 16 14"}],"$undefined"]}],"2-3 hours"]}],["$","span",null,{"className":"px-3 py-1 rounded-full text-xs font-semibold text-white bg-red-500","children":"Easy"}],["$","span",null,{"className":"px-3 py-1 rounded-full text-xs font-semibold bg-blue-100 text-blue-700","children":"Math"}]]}],["$","div",null,{"className":"flex flex-wrap gap-2 mb-4","children":[["$","span","0",{"className":"bg-gray-100 text-gray-600 px-3 py-1 rounded-md text-xs font-medium","children":"Math"}],["$","span","1",{"className":"bg-gray-100 text-gray-600 px-3 py-1 rounded-md text-xs font-medium","children":"Hash Table"}]]}],["$","p",null,{"className":"text-lg text-gray-700 leading-relaxed","children":"**LeetCode Problem # * 412. Fizz Buzz**..."}]]}],["$","div",null,{"className":"grid grid-cols-1 lg:grid-cols-3 gap-8","children":[["$","div",null,{"className":"lg:col-span-2","children":["$","div",null,{"className":"bg-white border border-gray-200 rounded-lg p-8","children":["$","$L3",null,{"content":"$4"}]}]}],["$","div",null,{"className":"space-y-6","children":[["$","div",null,{"className":"bg-white border border-gray-200 rounded-lg p-6","children":[["$","h3",null,{"className":"text-lg font-semibold text-gray-900 mb-4","children":"Your Progress"}],["$","div",null,{"className":"w-full bg-gray-200 rounded-full h-2 mb-2","children":["$","div",null,{"className":"bg-blue-600 h-2 rounded-full","style":{"width":"25%"}}]}],["$","p",null,{"className":"text-sm text-gray-600","children":"25% Complete"}]]}],false]}]]}]]}],null],null],null]},[null,["$","$L5",null,{"parallelRouterKey":"children","segmentPath":["children","learn","children","$6","children"],"error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L7",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","notFoundStyles":"$undefined"}]],null]},[null,["$","$L5",null,{"parallelRouterKey":"children","segmentPath":["children","learn","children"],"error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L7",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","notFoundStyles":"$undefined"}]],null]},[[[["$","link","0",{"rel":"stylesheet","href":"/interview/_next/static/css/387024c6a2216908.css","precedence":"next","crossOrigin":"$undefined"}]],["$","$L8",null,{"children":["$","$L5",null,{"parallelRouterKey":"children","segmentPath":["children"],"error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L7",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":{"fontFamily":"system-ui,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\"","height":"100vh","textAlign":"center","display":"flex","flexDirection":"column","alignItems":"center","justifyContent":"center"},"children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":{"display":"inline-block","margin":"0 20px 0 0","padding":"0 23px 0 0","fontSize":24,"fontWeight":500,"verticalAlign":"top","lineHeight":"49px"},"children":"404"}],["$","div",null,{"style":{"display":"inline-block"},"children":["$","h2",null,{"style":{"fontSize":14,"fontWeight":400,"lineHeight":"49px","margin":0},"children":"This page could not be found."}]}]]}]}]],"notFoundStyles":[]}],"params":{}}]],null],null],["$L9",null]]]]
+9:[["$","meta","0",{"name":"viewport","content":"width=device-width, initial-scale=1"}],["$","meta","1",{"charSet":"utf-8"}],["$","meta","2",{"name":"next-size-adjust"}]]
+1:null

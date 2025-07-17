@@ -1,0 +1,560 @@
+2:I[2972,["918","static/chunks/918-3273b83890f10546.js","972","static/chunks/972-011bba60ed155615.js","930","static/chunks/930-3262a6c9c5acace4.js","289","static/chunks/app/learn/%5Btopic%5D/page-4ab144227f7a7b3e.js"],""]
+3:I[5907,["918","static/chunks/918-3273b83890f10546.js","972","static/chunks/972-011bba60ed155615.js","930","static/chunks/930-3262a6c9c5acace4.js","289","static/chunks/app/learn/%5Btopic%5D/page-4ab144227f7a7b3e.js"],"default"]
+5:I[4707,[],""]
+7:I[6423,[],""]
+8:I[2,["918","static/chunks/918-3273b83890f10546.js","710","static/chunks/710-dfaa11b4dff08f8e.js","972","static/chunks/972-011bba60ed155615.js","233","static/chunks/233-3e0c1d820a17eca9.js","185","static/chunks/app/layout-333f4adcd11f8f39.js"],"default",1]
+4:T34cc,
+# Intersection of Two Arrays II
+
+**LeetCode Problem # * 350. Intersection of Two Arrays II**
+
+## Problem Description
+
+ * Given two integer arrays nums1 and nums2, return an array of their intersection.  * Each element in the result must appear as many times as it shows in both arrays  * and you may return the result in any order.  *  * Input: nums1 = [1,2,2,1], nums2 = [2,2] 
+
+## Solutions
+
+{% raw %}
+/**
+ * 350. Intersection of Two Arrays II
+ *
+ * Problem:
+ * Given two integer arrays nums1 and nums2, return an array of their intersection.
+ * Each element in the result must appear as many times as it shows in both arrays
+ * and you may return the result in any order.
+ *
+ * Example:
+ * Input: nums1 = [1,2,2,1], nums2 = [2,2]
+ * Output: [2,2]
+ *
+ * Input: nums1 = [4,9,5], nums2 = [9,4,9,8,4]
+ * Output: [4,9]
+ *
+ * LeetCode: https://leetcode.com/problems/intersection-of-two-arrays-ii/
+ */
+
+/**
+ * Solution 1: Hash Map (Optimal)
+ *
+ * Approach:
+ * - Use hash map to count frequency of elements in nums1
+ * - Iterate through nums2 and check if element exists in map
+ * - Decrement count and add to result if found
+ *
+ * Time Complexity: O(n + m)
+ * Space Complexity: O(min(n, m))
+ */
+function intersect(nums1: number[], nums2: number[]): number[] {
+  // Use the smaller array for the hash map to optimize space
+  if (nums1.length > nums2.length) {
+    return intersect(nums2, nums1);
+  }
+
+  const frequency = new Map<number, number>();
+  const result: number[] = [];
+
+  // Count frequency of elements in nums1
+  for (const num of nums1) {
+    frequency.set(num, (frequency.get(num) || 0) + 1);
+  }
+
+  // Check elements in nums2
+  for (const num of nums2) {
+    const count = frequency.get(num);
+    if (count && count > 0) {
+      result.push(num);
+      frequency.set(num, count - 1);
+    }
+  }
+
+  return result;
+}
+
+/**
+ * Solution 2: Sort and Two Pointers
+ *
+ * Approach:
+ * - Sort both arrays
+ * - Use two pointers to find common elements
+ * - Add to result when elements match
+ *
+ * Time Complexity: O(n log n + m log m)
+ * Space Complexity: O(1) - excluding sort space
+ */
+function intersectSort(nums1: number[], nums2: number[]): number[] {
+  nums1.sort((a, b) => a - b);
+  nums2.sort((a, b) => a - b);
+
+  const result: number[] = [];
+  let i = 0,
+    j = 0;
+
+  while (i < nums1.length && j < nums2.length) {
+    if (nums1[i] === nums2[j]) {
+      result.push(nums1[i]);
+      i++;
+      j++;
+    } else if (nums1[i] < nums2[j]) {
+      i++;
+    } else {
+      j++;
+    }
+  }
+
+  return result;
+}
+
+/**
+ * Solution 3: Using Object (Hash table)
+ *
+ * Approach:
+ * - Use plain object as hash table
+ * - Similar to Solution 1 but with object
+ *
+ * Time Complexity: O(n + m)
+ * Space Complexity: O(min(n, m))
+ */
+function intersectObject(nums1: number[], nums2: number[]): number[] {
+  if (nums1.length > nums2.length) {
+    return intersectObject(nums2, nums1);
+  }
+
+  const frequency: { [key: number]: number } = {};
+  const result: number[] = [];
+
+  // Count frequency of elements in nums1
+  for (const num of nums1) {
+    frequency[num] = (frequency[num] || 0) + 1;
+  }
+
+  // Check elements in nums2
+  for (const num of nums2) {
+    if (frequency[num] && frequency[num] > 0) {
+      result.push(num);
+      frequency[num]--;
+    }
+  }
+
+  return result;
+}
+
+/**
+ * Solution 4: Binary Search (For large arrays)
+ *
+ * Approach:
+ * - Sort one array and binary search in it
+ * - Useful when one array is much larger than the other
+ *
+ * Time Complexity: O(n log m + m log m) where n < m
+ * Space Complexity: O(1) - excluding sort space
+ */
+function intersectBinarySearch(nums1: number[], nums2: number[]): number[] {
+  // Sort the larger array for binary search
+  if (nums1.length > nums2.length) {
+    return intersectBinarySearch(nums2, nums1);
+  }
+
+  nums2.sort((a, b) => a - b);
+  const result: number[] = [];
+  const used = new Set<number>();
+
+  for (const num of nums1) {
+    const index = binarySearch(nums2, num, used);
+    if (index !== -1) {
+      result.push(num);
+      used.add(index);
+    }
+  }
+
+  return result;
+}
+
+function binarySearch(
+  arr: number[],
+  target: number,
+  used: Set<number>
+): number {
+  let left = 0;
+  let right = arr.length - 1;
+
+  while (left <= right) {
+    const mid = Math.floor((left + right) / 2);
+
+    if (arr[mid] === target) {
+      // Find the leftmost occurrence that hasn't been used
+      let result = mid;
+      while (
+        result > 0 &&
+        arr[result - 1] === target &&
+        !used.has(result - 1)
+      ) {
+        result--;
+      }
+      if (!used.has(result)) {
+        return result;
+      }
+      // Continue searching right if this position is used
+      left = mid + 1;
+    } else if (arr[mid] < target) {
+      left = mid + 1;
+    } else {
+      right = mid - 1;
+    }
+  }
+
+  return -1;
+}
+
+/**
+ * Solution 5: Using Array Methods (Functional)
+ *
+ * Approach:
+ * - Use filter and includes methods
+ * - Simple but inefficient for large arrays
+ *
+ * Time Complexity: O(n * m)
+ * Space Complexity: O(min(n, m))
+ */
+function intersectFunctional(nums1: number[], nums2: number[]): number[] {
+  const result: number[] = [];
+  const nums2Copy = [...nums2];
+
+  for (const num of nums1) {
+    const index = nums2Copy.indexOf(num);
+    if (index !== -1) {
+      result.push(num);
+      nums2Copy.splice(index, 1);
+    }
+  }
+
+  return result;
+}
+
+/**
+ * Solution 6: Using Set (Incorrect but educational)
+ *
+ * Approach:
+ * - This approach is INCORRECT for this problem
+ * - Shows common mistake of using Set for frequency problems
+ *
+ * Time Complexity: O(n + m)
+ * Space Complexity: O(min(n, m))
+ */
+function intersectSet(nums1: number[], nums2: number[]): number[] {
+  const set1 = new Set(nums1);
+  const set2 = new Set(nums2);
+  const intersection = new Set([...set1].filter((x) => set2.has(x)));
+
+  return Array.from(intersection);
+}
+
+/**
+ * Solution 7: Using Counter Class (Object-oriented)
+ *
+ * Approach:
+ * - Create a Counter class to handle frequency counting
+ * - More structured approach
+ *
+ * Time Complexity: O(n + m)
+ * Space Complexity: O(min(n, m))
+ */
+class Counter {
+  private counts: Map<number, number> = new Map();
+
+  constructor(items: number[]) {
+    for (const item of items) {
+      this.add(item);
+    }
+  }
+
+  add(item: number): void {
+    this.counts.set(item, (this.counts.get(item) || 0) + 1);
+  }
+
+  get(item: number): number {
+    return this.counts.get(item) || 0;
+  }
+
+  decrement(item: number): boolean {
+    const count = this.counts.get(item);
+    if (count && count > 0) {
+      this.counts.set(item, count - 1);
+      return true;
+    }
+    return false;
+  }
+}
+
+function intersectCounter(nums1: number[], nums2: number[]): number[] {
+  if (nums1.length > nums2.length) {
+    return intersectCounter(nums2, nums1);
+  }
+
+  const counter = new Counter(nums1);
+  const result: number[] = [];
+
+  for (const num of nums2) {
+    if (counter.decrement(num)) {
+      result.push(num);
+    }
+  }
+
+  return result;
+}
+
+/**
+ * Solution 8: Using Generator (Memory efficient)
+ *
+ * Approach:
+ * - Use generator to yield intersection elements
+ * - Memory efficient for large arrays
+ *
+ * Time Complexity: O(n + m)
+ * Space Complexity: O(min(n, m))
+ */
+function* intersectGenerator(
+  nums1: number[],
+  nums2: number[]
+): Generator<number> {
+  if (nums1.length > nums2.length) {
+    yield* intersectGenerator(nums2, nums1);
+    return;
+  }
+
+  const frequency = new Map<number, number>();
+
+  // Count frequency of elements in nums1
+  for (const num of nums1) {
+    frequency.set(num, (frequency.get(num) || 0) + 1);
+  }
+
+  // Yield elements from nums2 that exist in frequency map
+  for (const num of nums2) {
+    const count = frequency.get(num);
+    if (count && count > 0) {
+      frequency.set(num, count - 1);
+      yield num;
+    }
+  }
+}
+
+function intersectWithGenerator(nums1: number[], nums2: number[]): number[] {
+  return Array.from(intersectGenerator(nums1, nums2));
+}
+
+// Test cases
+function testIntersection() {
+  console.log("=== Testing Intersection of Two Arrays II ===\n");
+
+  const testCases = [
+    {
+      nums1: [1, 2, 2, 1],
+      nums2: [2, 2],
+      expected: [2, 2],
+      description: "Basic intersection with duplicates",
+    },
+    {
+      nums1: [4, 9, 5],
+      nums2: [9, 4, 9, 8, 4],
+      expected: [4, 9],
+      description: "Intersection with different frequencies",
+    },
+    {
+      nums1: [1, 2, 3],
+      nums2: [4, 5, 6],
+      expected: [],
+      description: "No intersection",
+    },
+    {
+      nums1: [1, 1, 1],
+      nums2: [1, 1],
+      expected: [1, 1],
+      description: "Multiple duplicates",
+    },
+    {
+      nums1: [],
+      nums2: [1, 2, 3],
+      expected: [],
+      description: "Empty first array",
+    },
+    {
+      nums1: [1, 2, 3],
+      nums2: [],
+      expected: [],
+      description: "Empty second array",
+    },
+    {
+      nums1: [1, 2, 3, 4, 5],
+      nums2: [1, 2, 3, 4, 5],
+      expected: [1, 2, 3, 4, 5],
+      description: "Identical arrays",
+    },
+  ];
+
+  testCases.forEach((testCase, index) => {
+    console.log(`Test Case ${index + 1}: ${testCase.description}`);
+    console.log(
+      `Input: nums1 = [${testCase.nums1.join(
+        ", "
+      )}], nums2 = [${testCase.nums2.join(", ")}]`
+    );
+    console.log(`Expected: [${testCase.expected.join(", ")}]\n`);
+
+    // Test Solution 1 (Hash Map)
+    const result1 = intersect([...testCase.nums1], [...testCase.nums2]);
+    console.log(
+      `Solution 1 (Hash Map): [${result1.join(", ")}] ${
+        JSON.stringify(result1.sort()) ===
+        JSON.stringify(testCase.expected.sort())
+          ? "✅"
+          : "❌"
+      }`
+    );
+
+    // Test Solution 2 (Sort)
+    const result2 = intersectSort([...testCase.nums1], [...testCase.nums2]);
+    console.log(
+      `Solution 2 (Sort): [${result2.join(", ")}] ${
+        JSON.stringify(result2.sort()) ===
+        JSON.stringify(testCase.expected.sort())
+          ? "✅"
+          : "❌"
+      }`
+    );
+
+    // Test Solution 3 (Object)
+    const result3 = intersectObject([...testCase.nums1], [...testCase.nums2]);
+    console.log(
+      `Solution 3 (Object): [${result3.join(", ")}] ${
+        JSON.stringify(result3.sort()) ===
+        JSON.stringify(testCase.expected.sort())
+          ? "✅"
+          : "❌"
+      }`
+    );
+
+    // Test Solution 4 (Binary Search)
+    const result4 = intersectBinarySearch(
+      [...testCase.nums1],
+      [...testCase.nums2]
+    );
+    console.log(
+      `Solution 4 (Binary Search): [${result4.join(", ")}] ${
+        JSON.stringify(result4.sort()) ===
+        JSON.stringify(testCase.expected.sort())
+          ? "✅"
+          : "❌"
+      }`
+    );
+
+    // Test Solution 5 (Functional)
+    const result5 = intersectFunctional(
+      [...testCase.nums1],
+      [...testCase.nums2]
+    );
+    console.log(
+      `Solution 5 (Functional): [${result5.join(", ")}] ${
+        JSON.stringify(result5.sort()) ===
+        JSON.stringify(testCase.expected.sort())
+          ? "✅"
+          : "❌"
+      }`
+    );
+
+    // Test Solution 6 (Set) - Note: This is incorrect for frequency problems
+    const result6 = intersectSet([...testCase.nums1], [...testCase.nums2]);
+    console.log(
+      `Solution 6 (Set): [${result6.join(", ")}] ${
+        JSON.stringify(result6.sort()) ===
+        JSON.stringify(testCase.expected.sort())
+          ? "✅"
+          : "❌"
+      } (Note: Incorrect for frequency)`
+    );
+
+    // Test Solution 7 (Counter)
+    const result7 = intersectCounter([...testCase.nums1], [...testCase.nums2]);
+    console.log(
+      `Solution 7 (Counter): [${result7.join(", ")}] ${
+        JSON.stringify(result7.sort()) ===
+        JSON.stringify(testCase.expected.sort())
+          ? "✅"
+          : "❌"
+      }`
+    );
+
+    // Test Solution 8 (Generator)
+    const result8 = intersectWithGenerator(
+      [...testCase.nums1],
+      [...testCase.nums2]
+    );
+    console.log(
+      `Solution 8 (Generator): [${result8.join(", ")}] ${
+        JSON.stringify(result8.sort()) ===
+        JSON.stringify(testCase.expected.sort())
+          ? "✅"
+          : "❌"
+      }`
+    );
+
+    console.log("\n---\n");
+  });
+}
+
+// Performance comparison
+function performanceComparison() {
+  console.log("=== Performance Comparison ===\n");
+
+  const testCases = [
+    { name: "Hash Map", func: intersect },
+    { name: "Sort", func: intersectSort },
+    { name: "Object", func: intersectObject },
+    { name: "Binary Search", func: intersectBinarySearch },
+    { name: "Functional", func: intersectFunctional },
+    { name: "Counter", func: intersectCounter },
+    { name: "Generator", func: intersectWithGenerator },
+  ];
+
+  // Create test arrays
+  const nums1 = Array.from({ length: 10000 }, (_, i) => i % 1000);
+  const nums2 = Array.from({ length: 10000 }, (_, i) => i % 1000);
+
+  testCases.forEach(({ name, func }) => {
+    const start = performance.now();
+    const result = func([...nums1], [...nums2]);
+    const end = performance.now();
+
+    console.log(`${name}:`);
+    console.log(`  Time: ${(end - start).toFixed(2)}ms`);
+    console.log(`  Result length: ${result.length}`);
+    console.log(
+      `  Memory: ${
+        name === "Sort" || name === "Binary Search" ? "O(1)" : "O(min(n,m))"
+      }\n`
+    );
+  });
+}
+
+// Uncomment the following lines to run tests
+// testIntersection();
+// performanceComparison();
+
+export {
+  intersect,
+  intersectSort,
+  intersectObject,
+  intersectBinarySearch,
+  intersectFunctional,
+  intersectSet,
+  intersectCounter,
+  intersectWithGenerator,
+  intersectGenerator,
+  Counter,
+  testIntersection,
+  performanceComparison,
+};
+{% endraw %}
+6:["topic","array-problems-07-intersection-of-two-arrays-ii","d"]
+0:["2NmUhWiPdVVBzVtDZlggk",[[["",{"children":["learn",{"children":[["topic","array-problems-07-intersection-of-two-arrays-ii","d"],{"children":["__PAGE__?{\"topic\":\"array-problems-07-intersection-of-two-arrays-ii\"}",{}]}]}]},"$undefined","$undefined",true],["",{"children":["learn",{"children":[["topic","array-problems-07-intersection-of-two-arrays-ii","d"],{"children":["__PAGE__",{},[["$L1",["$","div",null,{"className":"max-w-6xl mx-auto px-8 py-24","children":[["$","div",null,{"className":"flex items-center gap-4 mb-8","children":["$","$L2",null,{"href":"/learn","children":["$","button",null,{"className":"flex items-center gap-2 bg-gray-100 border border-gray-300 text-gray-700 px-4 py-3 rounded-md font-medium hover:bg-gray-200 transition-colors","children":[["$","svg",null,{"xmlns":"http://www.w3.org/2000/svg","width":16,"height":16,"viewBox":"0 0 24 24","fill":"none","stroke":"currentColor","strokeWidth":2,"strokeLinecap":"round","strokeLinejoin":"round","className":"lucide lucide-arrow-left ","children":[["$","path","1l729n",{"d":"m12 19-7-7 7-7"}],["$","path","x3x0zl",{"d":"M19 12H5"}],"$undefined"]}],"Back to Learn"]}]}]}],["$","div",null,{"className":"bg-white border border-gray-200 rounded-lg p-8 mb-8","children":[["$","div",null,{"className":"flex items-center justify-between mb-4","children":[["$","h1",null,{"className":"text-3xl font-bold text-gray-900","children":"Intersection of Two Arrays II"}],["$","div",null,{"className":"flex gap-4","children":[["$","button",null,{"className":"flex items-center gap-2 bg-transparent text-gray-700 border border-gray-300 px-6 py-3 rounded-md font-semibold hover:bg-gray-50 transition-colors","children":[["$","svg",null,{"xmlns":"http://www.w3.org/2000/svg","width":16,"height":16,"viewBox":"0 0 24 24","fill":"none","stroke":"currentColor","strokeWidth":2,"strokeLinecap":"round","strokeLinejoin":"round","className":"lucide lucide-star ","children":[["$","polygon","8f66p6",{"points":"12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"}],"$undefined"]}],"Bookmark"]}],["$","button",null,{"className":"flex items-center gap-2 bg-transparent text-gray-700 border border-gray-300 px-6 py-3 rounded-md font-semibold hover:bg-gray-50 transition-colors","children":[["$","svg",null,{"xmlns":"http://www.w3.org/2000/svg","width":16,"height":16,"viewBox":"0 0 24 24","fill":"none","stroke":"currentColor","strokeWidth":2,"strokeLinecap":"round","strokeLinejoin":"round","className":"lucide lucide-share2 ","children":[["$","circle","gq8acd",{"cx":"18","cy":"5","r":"3"}],["$","circle","w7nqdw",{"cx":"6","cy":"12","r":"3"}],["$","circle","1xt0gg",{"cx":"18","cy":"19","r":"3"}],["$","line","47mynk",{"x1":"8.59","x2":"15.42","y1":"13.51","y2":"17.49"}],["$","line","1n3mei",{"x1":"15.41","x2":"8.59","y1":"6.51","y2":"10.49"}],"$undefined"]}],"Share"]}]]}]]}],["$","div",null,{"className":"flex gap-8 mb-4","children":[["$","div",null,{"className":"flex items-center gap-2 text-sm text-gray-600","children":[["$","svg",null,{"xmlns":"http://www.w3.org/2000/svg","width":16,"height":16,"viewBox":"0 0 24 24","fill":"none","stroke":"currentColor","strokeWidth":2,"strokeLinecap":"round","strokeLinejoin":"round","className":"lucide lucide-clock ","children":[["$","circle","1mglay",{"cx":"12","cy":"12","r":"10"}],["$","polyline","68esgv",{"points":"12 6 12 12 16 14"}],"$undefined"]}],"2-3 hours"]}],["$","span",null,{"className":"px-3 py-1 rounded-full text-xs font-semibold text-white bg-red-500","children":"Easy"}],["$","span",null,{"className":"px-3 py-1 rounded-full text-xs font-semibold bg-blue-100 text-blue-700","children":"Array"}]]}],["$","div",null,{"className":"flex flex-wrap gap-2 mb-4","children":[["$","span","0",{"className":"bg-gray-100 text-gray-600 px-3 py-1 rounded-md text-xs font-medium","children":"Array"}],["$","span","1",{"className":"bg-gray-100 text-gray-600 px-3 py-1 rounded-md text-xs font-medium","children":"Two Pointers"}],["$","span","2",{"className":"bg-gray-100 text-gray-600 px-3 py-1 rounded-md text-xs font-medium","children":"Hash Table"}],["$","span","3",{"className":"bg-gray-100 text-gray-600 px-3 py-1 rounded-md text-xs font-medium","children":"Binary Search"}],["$","span","4",{"className":"bg-gray-100 text-gray-600 px-3 py-1 rounded-md text-xs font-medium","children":"Sorting"}]]}],["$","p",null,{"className":"text-lg text-gray-700 leading-relaxed","children":"**LeetCode Problem # * 350. Intersection of Two Arrays II**..."}]]}],["$","div",null,{"className":"grid grid-cols-1 lg:grid-cols-3 gap-8","children":[["$","div",null,{"className":"lg:col-span-2","children":["$","div",null,{"className":"bg-white border border-gray-200 rounded-lg p-8","children":["$","$L3",null,{"content":"$4"}]}]}],["$","div",null,{"className":"space-y-6","children":[["$","div",null,{"className":"bg-white border border-gray-200 rounded-lg p-6","children":[["$","h3",null,{"className":"text-lg font-semibold text-gray-900 mb-4","children":"Your Progress"}],["$","div",null,{"className":"w-full bg-gray-200 rounded-full h-2 mb-2","children":["$","div",null,{"className":"bg-blue-600 h-2 rounded-full","style":{"width":"25%"}}]}],["$","p",null,{"className":"text-sm text-gray-600","children":"25% Complete"}]]}],false]}]]}]]}],null],null],null]},[null,["$","$L5",null,{"parallelRouterKey":"children","segmentPath":["children","learn","children","$6","children"],"error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L7",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","notFoundStyles":"$undefined"}]],null]},[null,["$","$L5",null,{"parallelRouterKey":"children","segmentPath":["children","learn","children"],"error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L7",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","notFoundStyles":"$undefined"}]],null]},[[[["$","link","0",{"rel":"stylesheet","href":"/interview/_next/static/css/387024c6a2216908.css","precedence":"next","crossOrigin":"$undefined"}]],["$","$L8",null,{"children":["$","$L5",null,{"parallelRouterKey":"children","segmentPath":["children"],"error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L7",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":{"fontFamily":"system-ui,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\"","height":"100vh","textAlign":"center","display":"flex","flexDirection":"column","alignItems":"center","justifyContent":"center"},"children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":{"display":"inline-block","margin":"0 20px 0 0","padding":"0 23px 0 0","fontSize":24,"fontWeight":500,"verticalAlign":"top","lineHeight":"49px"},"children":"404"}],["$","div",null,{"style":{"display":"inline-block"},"children":["$","h2",null,{"style":{"fontSize":14,"fontWeight":400,"lineHeight":"49px","margin":0},"children":"This page could not be found."}]}]]}]}]],"notFoundStyles":[]}],"params":{}}]],null],null],["$L9",null]]]]
+9:[["$","meta","0",{"name":"viewport","content":"width=device-width, initial-scale=1"}],["$","meta","1",{"charSet":"utf-8"}],["$","meta","2",{"name":"next-size-adjust"}]]
+1:null

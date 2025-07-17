@@ -1,0 +1,944 @@
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><meta name="viewport" content="width=device-width, initial-scale=1"/><link rel="preload" href="/interview/_next/static/media/e4af272ccee01ff0-s.p.woff2" as="font" crossorigin="" type="font/woff2"/><link rel="stylesheet" href="/interview/_next/static/css/387024c6a2216908.css" data-precedence="next"/><link rel="preload" as="script" fetchPriority="low" href="/interview/_next/static/chunks/webpack-be7d7df45533bffc.js"/><script src="/interview/_next/static/chunks/fd9d1056-6922f449a204c2cc.js" async=""></script><script src="/interview/_next/static/chunks/117-e7ecc085ce9cfab3.js" async=""></script><script src="/interview/_next/static/chunks/main-app-b06be5f3411c20c3.js" async=""></script><script src="/interview/_next/static/chunks/918-3273b83890f10546.js" async=""></script><script src="/interview/_next/static/chunks/972-011bba60ed155615.js" async=""></script><script src="/interview/_next/static/chunks/930-3262a6c9c5acace4.js" async=""></script><script src="/interview/_next/static/chunks/app/learn/%5Btopic%5D/page-4ab144227f7a7b3e.js" async=""></script><script src="/interview/_next/static/chunks/710-dfaa11b4dff08f8e.js" async=""></script><script src="/interview/_next/static/chunks/233-3e0c1d820a17eca9.js" async=""></script><script src="/interview/_next/static/chunks/app/layout-333f4adcd11f8f39.js" async=""></script><title>Frontend Interview Prep 2025 - Big Tech Interview Guide</title><meta name="description" content="Comprehensive frontend interview preparation for Big Tech companies including React, TypeScript, algorithms, and system design."/><link rel="icon" href="/favicon.ico"/><meta name="theme-color" content="#1a1a1a"/><meta property="og:title" content="Frontend Interview Prep 2025"/><meta property="og:description" content="Complete guide for frontend engineers targeting Big Tech companies"/><meta property="og:type" content="website"/><link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous"/><meta name="next-size-adjust"/><script src="/interview/_next/static/chunks/polyfills-42372ed130431b0a.js" noModule=""></script><style data-styled="" data-styled-version="6.1.19">*{margin:0;padding:0;box-sizing:border-box;}/*!sc*/
+html{font-size:16px;line-height:1.5;scroll-behavior:smooth;}/*!sc*/
+body{font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;font-size:1rem;line-height:1.5;color:#1e293b;background-color:#ffffff;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;}/*!sc*/
+h1,h2,h3,h4,h5,h6{font-weight:700;line-height:1.25;margin-bottom:0.5em;}/*!sc*/
+h1{font-size:3rem;}/*!sc*/
+@media (max-width: 768px){h1{font-size:2.25rem;}}/*!sc*/
+h2{font-size:2.25rem;}/*!sc*/
+@media (max-width: 768px){h2{font-size:1.875rem;}}/*!sc*/
+h3{font-size:1.875rem;}/*!sc*/
+@media (max-width: 768px){h3{font-size:1.5rem;}}/*!sc*/
+h4{font-size:1.5rem;}/*!sc*/
+@media (max-width: 768px){h4{font-size:1.25rem;}}/*!sc*/
+h5{font-size:1.25rem;}/*!sc*/
+h6{font-size:1.125rem;}/*!sc*/
+p{margin-bottom:1rem;line-height:1.75;}/*!sc*/
+a{color:#3b82f6;text-decoration:none;transition:color 0.15s ease;}/*!sc*/
+a:hover{color:#2563eb;}/*!sc*/
+a:focus{outline:2px solid #3b82f6;outline-offset:2px;}/*!sc*/
+button{cursor:pointer;border:none;background:none;font-family:inherit;font-size:inherit;}/*!sc*/
+button:disabled{cursor:not-allowed;opacity:0.6;}/*!sc*/
+button:focus{outline:2px solid #3b82f6;outline-offset:2px;}/*!sc*/
+input,textarea,select{font-family:inherit;font-size:inherit;}/*!sc*/
+input:focus,textarea:focus,select:focus{outline:2px solid #3b82f6;outline-offset:2px;}/*!sc*/
+img{max-width:100%;height:auto;}/*!sc*/
+ul,ol{margin-bottom:1rem;padding-left:1.5rem;}/*!sc*/
+li{margin-bottom:0.25rem;}/*!sc*/
+blockquote{margin:1rem 0;padding:1rem;border-left:4px solid #3b82f6;background-color:#f1f5f9;font-style:italic;}/*!sc*/
+code{font-family:SFMono-Regular,Consolas,"Liberation Mono",Menlo,monospace;font-size:0.9em;background-color:#f1f5f9;padding:0.2em 0.4em;border-radius:0.25rem;}/*!sc*/
+pre{background-color:#f1f5f9;padding:1rem;border-radius:0.5rem;overflow-x:auto;margin-bottom:1rem;}/*!sc*/
+pre code{background:none;padding:0;}/*!sc*/
+table{width:100%;border-collapse:collapse;margin-bottom:1rem;}/*!sc*/
+th,td{padding:0.75rem;text-align:left;border-bottom:1px solid #e2e8f0;}/*!sc*/
+th{font-weight:600;background-color:#f1f5f9;}/*!sc*/
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0, 0, 0, 0);white-space:nowrap;border:0;}/*!sc*/
+.skip-link{position:absolute;top:-40px;left:6px;background:#3b82f6;color:white;padding:8px;text-decoration:none;border-radius:4px;z-index:100;}/*!sc*/
+.skip-link:focus{top:6px;}/*!sc*/
+::-webkit-scrollbar{width:8px;height:8px;}/*!sc*/
+::-webkit-scrollbar-track{background:#f1f5f9;}/*!sc*/
+::-webkit-scrollbar-thumb{background:#94a3b8;border-radius:4px;}/*!sc*/
+::-webkit-scrollbar-thumb:hover{background:#64748b;}/*!sc*/
+::selection{background:#3b82f6;color:white;}/*!sc*/
+.focus-visible{outline:2px solid #3b82f6;outline-offset:2px;}/*!sc*/
+.fade-in{opacity:0;animation:fadeIn 0.3s ease forwards;}/*!sc*/
+.slide-up{transform:translateY(20px);opacity:0;animation:slideUp 0.3s ease forwards;}/*!sc*/
+@keyframes fadeIn{to{opacity:1;}}/*!sc*/
+@keyframes slideUp{to{transform:translateY(0);opacity:1;}}/*!sc*/
+@media print{*{background:white!important;color:black!important;box-shadow:none!important;text-shadow:none!important;}a,a:visited{text-decoration:underline;}h1,h2,h3,h4,h5,h6{break-after:avoid;}pre,blockquote{border:1px solid #999;break-inside:avoid;}img{max-width:100%!important;}@page{margin:0.5in;}}/*!sc*/
+data-styled.g1[id="sc-global-kxA-Ddz1"]{content:"sc-global-kxA-Ddz1,"}/*!sc*/
+.wbMrm{position:fixed;top:0;width:100%;z-index:1020;background:transparent;backdrop-filter:blur(10px);border-bottom:1px solid transparent;transition:all 0.3s ease;}/*!sc*/
+data-styled.g2[id="sc-bRKDuR"]{content:"wbMrm,"}/*!sc*/
+.kDxBNU{max-width:1200px;margin:0 auto;padding:0 2rem;display:flex;align-items:center;justify-content:space-between;height:70px;}/*!sc*/
+data-styled.g3[id="sc-hvigdm"]{content:"kDxBNU,"}/*!sc*/
+.cvsJZg{display:flex;align-items:center;gap:0.5rem;font-size:1.5rem;font-weight:700;color:#3b82f6;text-decoration:none;cursor:pointer;}/*!sc*/
+.cvsJZg:hover{color:#2563eb;}/*!sc*/
+data-styled.g4[id="sc-fhHczv"]{content:"cvsJZg,"}/*!sc*/
+.lfYVIv{display:flex;align-items:center;gap:2rem;}/*!sc*/
+@media (max-width: 768px){.lfYVIv{display:none;}}/*!sc*/
+data-styled.g5[id="sc-ggWZvA"]{content:"lfYVIv,"}/*!sc*/
+.bhKRhV{color:#1e293b;font-weight:500;text-decoration:none;transition:color 0.15s ease;position:relative;}/*!sc*/
+.bhKRhV:hover{color:#3b82f6;}/*!sc*/
+.bhKRhV:after{content:'';position:absolute;bottom:-5px;left:0;width:0;height:2px;background:#3b82f6;transition:width 0.15s ease;}/*!sc*/
+.bhKRhV:hover:after{width:100%;}/*!sc*/
+data-styled.g6[id="sc-dTvVRJ"]{content:"bhKRhV,"}/*!sc*/
+.gpUImn{display:none;background:none;border:none;color:#1e293b;cursor:pointer;padding:0.5rem;}/*!sc*/
+@media (max-width: 768px){.gpUImn{display:block;}}/*!sc*/
+data-styled.g7[id="sc-jwTyAe"]{content:"gpUImn,"}/*!sc*/
+.hpKWkw{display:flex;align-items:center;gap:0.5rem;background:#f1f5f9;border:1px solid #e2e8f0;border-radius:0.5rem;padding:0.5rem 1rem;color:#64748b;font-size:0.9rem;transition:all 0.15s ease;}/*!sc*/
+.hpKWkw:hover{background:#ffffff;border-color:#3b82f6;}/*!sc*/
+data-styled.g11[id="sc-kNOymR"]{content:"hpKWkw,"}/*!sc*/
+.cJzheU{background:#1e293b;color:white;padding:3rem 0 1rem;margin-top:auto;}/*!sc*/
+data-styled.g12[id="sc-dYwGCk"]{content:"cJzheU,"}/*!sc*/
+.hJUFeT{max-width:1200px;margin:0 auto;padding:0 2rem;}/*!sc*/
+data-styled.g13[id="sc-lgpSej"]{content:"hJUFeT,"}/*!sc*/
+.mSxwd{display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:2rem;margin-bottom:2rem;}/*!sc*/
+@media (max-width: 768px){.mSxwd{grid-template-columns:1fr 1fr;gap:1.5rem;}}/*!sc*/
+@media (max-width: 480px){.mSxwd{grid-template-columns:1fr;}}/*!sc*/
+data-styled.g14[id="sc-eqYatC"]{content:"mSxwd,"}/*!sc*/
+.cmBIup h3{font-size:1.1rem;font-weight:600;margin-bottom:1rem;color:white;}/*!sc*/
+.cmBIup ul{list-style:none;padding:0;margin:0;}/*!sc*/
+.cmBIup li{margin-bottom:0.5rem;}/*!sc*/
+.cmBIup a{color:rgba(255, 255, 255, 0.7);text-decoration:none;transition:color 0.15s ease;}/*!sc*/
+.cmBIup a:hover{color:white;}/*!sc*/
+data-styled.g15[id="sc-kcLKEh"]{content:"cmBIup,"}/*!sc*/
+.bAsNIP{display:flex;align-items:center;gap:0.5rem;font-size:1.2rem;font-weight:700;margin-bottom:1rem;color:white;}/*!sc*/
+data-styled.g16[id="sc-dntSTA"]{content:"bAsNIP,"}/*!sc*/
+.gWXMDV{color:rgba(255, 255, 255, 0.7);line-height:1.6;margin-bottom:1rem;}/*!sc*/
+data-styled.g17[id="sc-kvnevz"]{content:"gWXMDV,"}/*!sc*/
+.jCoOHQ{display:flex;gap:1rem;}/*!sc*/
+.jCoOHQ a{display:flex;align-items:center;justify-content:center;width:40px;height:40px;background:rgba(255, 255, 255, 0.1);border-radius:0.5rem;color:rgba(255, 255, 255, 0.7);transition:all 0.15s ease;}/*!sc*/
+.jCoOHQ a:hover{background:rgba(255, 255, 255, 0.2);color:white;}/*!sc*/
+data-styled.g18[id="sc-dFVmKS"]{content:"jCoOHQ,"}/*!sc*/
+.crUaYh{border-top:1px solid rgba(255, 255, 255, 0.1);padding-top:2rem;display:flex;justify-content:space-between;align-items:center;}/*!sc*/
+@media (max-width: 768px){.crUaYh{flex-direction:column;gap:1rem;text-align:center;}}/*!sc*/
+data-styled.g19[id="sc-kCuUfV"]{content:"crUaYh,"}/*!sc*/
+.esMlQF{color:rgba(255, 255, 255, 0.7);margin:0;font-size:0.9rem;}/*!sc*/
+data-styled.g20[id="sc-dNdcvo"]{content:"esMlQF,"}/*!sc*/
+.eHcrXx{display:flex;gap:2rem;}/*!sc*/
+@media (max-width: 480px){.eHcrXx{flex-direction:column;gap:1rem;}}/*!sc*/
+.eHcrXx a{color:rgba(255, 255, 255, 0.7);text-decoration:none;font-size:0.9rem;transition:color 0.15s ease;}/*!sc*/
+.eHcrXx a:hover{color:white;}/*!sc*/
+data-styled.g21[id="sc-fbQrwq"]{content:"eHcrXx,"}/*!sc*/
+.dAQFGp{color:#1e293b;line-height:1.6;}/*!sc*/
+.dAQFGp h1,.dAQFGp h2,.dAQFGp h3,.dAQFGp h4,.dAQFGp h5,.dAQFGp h6{color:#1e293b;margin-top:2rem;margin-bottom:1rem;font-weight:600;}/*!sc*/
+.dAQFGp h1{font-size:2rem;border-bottom:2px solid #e2e8f0;padding-bottom:0.5rem;}/*!sc*/
+.dAQFGp h2{font-size:1.5rem;border-bottom:1px solid #e2e8f0;padding-bottom:0.3rem;}/*!sc*/
+.dAQFGp h3{font-size:1.25rem;}/*!sc*/
+.dAQFGp h4{font-size:1.1rem;}/*!sc*/
+.dAQFGp p{margin-bottom:1rem;color:#64748b;}/*!sc*/
+.dAQFGp a{color:#3b82f6;text-decoration:none;}/*!sc*/
+.dAQFGp a:hover{text-decoration:underline;}/*!sc*/
+.dAQFGp ul,.dAQFGp ol{margin-bottom:1rem;padding-left:1.5rem;}/*!sc*/
+.dAQFGp ul li,.dAQFGp ol li{margin-bottom:0.5rem;color:#64748b;}/*!sc*/
+.dAQFGp blockquote{border-left:4px solid #3b82f6;padding-left:1rem;margin:1rem 0;font-style:italic;color:#64748b;background:#f1f5f9;padding:1rem;border-radius:0.5rem;}/*!sc*/
+.dAQFGp code{background:#f1f5f9;padding:0.2rem 0.4rem;border-radius:0.25rem;font-family:SFMono-Regular,Consolas,"Liberation Mono",Menlo,monospace;font-size:0.9em;color:#f59e0b;}/*!sc*/
+.dAQFGp pre{background:#ffffff;border:1px solid #e2e8f0;border-radius:0.5rem;padding:1rem;margin:1rem 0;overflow-x:auto;}/*!sc*/
+.dAQFGp pre code{background:none;padding:0;color:#1e293b;font-size:0.9rem;}/*!sc*/
+.dAQFGp table{width:100%;border-collapse:collapse;margin:1rem 0;}/*!sc*/
+.dAQFGp table th,.dAQFGp table td{border:1px solid #e2e8f0;padding:0.5rem;text-align:left;}/*!sc*/
+.dAQFGp table th{background:#ffffff;font-weight:600;}/*!sc*/
+.dAQFGp table tr:nth-child(even){background:#f1f5f9;}/*!sc*/
+.dAQFGp hr{border:none;height:1px;background:#e2e8f0;margin:2rem 0;}/*!sc*/
+.dAQFGp .highlight{background:#3b82f620;padding:0.2rem 0.4rem;border-radius:0.25rem;font-weight:600;}/*!sc*/
+.dAQFGp .hljs{background:#ffffff;color:#1e293b;}/*!sc*/
+.dAQFGp .hljs-keyword{color:#3b82f6;font-weight:600;}/*!sc*/
+.dAQFGp .hljs-string{color:#10b981;}/*!sc*/
+.dAQFGp .hljs-function{color:#f59e0b;}/*!sc*/
+.dAQFGp .hljs-comment{color:#94a3b8;font-style:italic;}/*!sc*/
+.dAQFGp .hljs-number{color:#f59e0b;}/*!sc*/
+.dAQFGp .hljs-variable{color:#1e293b;}/*!sc*/
+.dAQFGp .hljs-title{color:#f59e0b;font-weight:600;}/*!sc*/
+data-styled.g22[id="sc-gGKoUb"]{content:"dAQFGp,"}/*!sc*/
+</style></head><body class="__className_6eac61"><div style="min-height:100vh;display:flex;flex-direction:column"><nav class="sc-bRKDuR wbMrm"><div class="sc-hvigdm kDxBNU"><a href="/interview"><a class="sc-fhHczv cvsJZg"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-code "><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>Frontend Interview Prep</a></a><div class="sc-ggWZvA lfYVIv"><a href="/interview/problems"><a class="sc-dTvVRJ bhKRhV">Problems</a></a><a href="/interview/learn"><a class="sc-dTvVRJ bhKRhV">Learn</a></a><a href="/interview/study-guide"><a class="sc-dTvVRJ bhKRhV">Study Guide</a></a><a href="/interview/system-design"><a class="sc-dTvVRJ bhKRhV">System Design</a></a><a href="/interview/performance"><a class="sc-dTvVRJ bhKRhV">Performance</a></a><a href="/interview/accessibility"><a class="sc-dTvVRJ bhKRhV">Accessibility</a></a><a href="/interview/interview-tips"><a class="sc-dTvVRJ bhKRhV">Interview Tips</a></a><button class="sc-kNOymR hpKWkw"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-search "><circle cx="11" cy="11" r="8"></circle><path d="m21 21-4.3-4.3"></path></svg>Search</button></div><button class="sc-jwTyAe gpUImn"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-menu "><line x1="4" x2="20" y1="12" y2="12"></line><line x1="4" x2="20" y1="6" y2="6"></line><line x1="4" x2="20" y1="18" y2="18"></line></svg></button></div></nav><main style="flex:1"><div class="max-w-6xl mx-auto px-8 py-24"><div class="flex items-center gap-4 mb-8"><a href="/interview/learn"><button class="flex items-center gap-2 bg-gray-100 border border-gray-300 text-gray-700 px-4 py-3 rounded-md font-medium hover:bg-gray-200 transition-colors"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-left "><path d="m12 19-7-7 7-7"></path><path d="M19 12H5"></path></svg>Back to Learn</button></a></div><div class="bg-white border border-gray-200 rounded-lg p-8 mb-8"><div class="flex items-center justify-between mb-4"><h1 class="text-3xl font-bold text-gray-900">Insert Interval</h1><div class="flex gap-4"><button class="flex items-center gap-2 bg-transparent text-gray-700 border border-gray-300 px-6 py-3 rounded-md font-semibold hover:bg-gray-50 transition-colors"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-star "><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>Bookmark</button><button class="flex items-center gap-2 bg-transparent text-gray-700 border border-gray-300 px-6 py-3 rounded-md font-semibold hover:bg-gray-50 transition-colors"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-share2 "><circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><line x1="8.59" x2="15.42" y1="13.51" y2="17.49"></line><line x1="15.41" x2="8.59" y1="6.51" y2="10.49"></line></svg>Share</button></div></div><div class="flex gap-8 mb-4"><div class="flex items-center gap-2 text-sm text-gray-600"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-clock "><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>2-3 hours</div><span class="px-3 py-1 rounded-full text-xs font-semibold text-white bg-red-500">Hard</span><span class="px-3 py-1 rounded-full text-xs font-semibold bg-blue-100 text-blue-700">Array</span></div><div class="flex flex-wrap gap-2 mb-4"><span class="bg-gray-100 text-gray-600 px-3 py-1 rounded-md text-xs font-medium">Array</span><span class="bg-gray-100 text-gray-600 px-3 py-1 rounded-md text-xs font-medium">Binary Search</span><span class="bg-gray-100 text-gray-600 px-3 py-1 rounded-md text-xs font-medium">Greedy</span></div><p class="text-lg text-gray-700 leading-relaxed">**LeetCode Problem # * 57. Insert Interval**...</p></div><div class="grid grid-cols-1 lg:grid-cols-3 gap-8"><div class="lg:col-span-2"><div class="bg-white border border-gray-200 rounded-lg p-8"><div class="sc-gGKoUb dAQFGp"><h1 id="insert-interval" node="[object Object]">Insert Interval</h1>
+<p><strong>LeetCode Problem # * 57. Insert Interval</strong></p>
+<h2 id="problem-description" node="[object Object]">Problem Description</h2>
+<p>LeetCode problem solution with multiple approaches and explanations.</p>
+<h2 id="solutions" node="[object Object]">Solutions</h2>
+<p>{% raw %}
+/**</p>
+<ul>
+<li>57. Insert Interval</li>
+<li></li>
+<li>You are given an array of non-overlapping intervals intervals where intervals[i] = [starti, endi]</li>
+<li>represent the start and the end of the ith interval and intervals is sorted in ascending order by starti.</li>
+<li>You are also given an interval newInterval = [start, end] that represents the start and end of another interval.</li>
+<li></li>
+<li>Insert newInterval into intervals such that intervals is still sorted in ascending order by starti</li>
+<li>and intervals still does not have any overlapping intervals (merge overlapping intervals if necessary).</li>
+<li></li>
+<li>Return intervals after the insertion.</li>
+<li></li>
+<li>Example 1:</li>
+<li>Input: intervals = [[1,3],[6,9]], newInterval = [2,5]</li>
+<li>Output: [[1,5],[6,9]]</li>
+<li></li>
+<li>Example 2:</li>
+<li>Input: intervals = [[1,2],[3,5],[6,7],[8,10],[12,16]], newInterval = [4,8]</li>
+<li>Output: [[1,2],[3,10],[12,16]]</li>
+<li></li>
+<li>Constraints:</li>
+<li>
+<ul>
+<li>0 &lt;= intervals.length &lt;= 10^4</li>
+</ul>
+</li>
+<li>
+<ul>
+<li>intervals[i].length == 2</li>
+</ul>
+</li>
+<li>
+<ul>
+<li>0 &lt;= starti &lt;= endi &lt;= 10^5</li>
+</ul>
+</li>
+<li>
+<ul>
+<li>intervals is sorted by starti.</li>
+</ul>
+</li>
+<li>
+<ul>
+<li>newInterval.length == 2</li>
+</ul>
+</li>
+<li>
+<ul>
+<li>0 &lt;= start &lt;= end &lt;= 10^5
+*/</li>
+</ul>
+</li>
+</ul>
+<p>// Solution 1: Linear Scan and Merge
+// Time: O(n), Space: O(n)
+export function insert1(intervals: number[][], newInterval: number[]): number[][] {
+const result: number[][] = [];
+let i = 0;
+const n = intervals.length;</p>
+<pre><pre><code class="hljs undefined">// Add all intervals that end before newInterval starts
+while (i &lt; n &amp;&amp; intervals[i][1] &lt; newInterval[0]) {
+    result.push(intervals[i]);
+    i++;
+}
+
+// Merge overlapping intervals with newInterval
+while (i &lt; n &amp;&amp; intervals[i][0] &lt;= newInterval[1]) {
+    // Merge intervals
+    newInterval[0] = Math.min(newInterval[0], intervals[i][0]);
+    newInterval[1] = Math.max(newInterval[1], intervals[i][1]);
+    i++;
+}
+
+// Add the merged interval
+result.push(newInterval);
+
+// Add remaining intervals
+while (i &lt; n) {
+    result.push(intervals[i]);
+    i++;
+}
+
+return result;
+</code></pre></pre>
+<p>}</p>
+<p>// Solution 2: Binary Search + Merge
+// Time: O(n), Space: O(n)
+export function insert2(intervals: number[][], newInterval: number[]): number[][] {
+if (intervals.length === 0) return [newInterval];</p>
+<pre><pre><code class="hljs undefined">// Binary search for insertion position
+function binarySearchLeft(target: number): number {
+    let left = 0, right = intervals.length;
+    while (left &lt; right) {
+        const mid = Math.floor((left + right) / 2);
+        if (intervals[mid][0] &lt; target) {
+            left = mid + 1;
+        } else {
+            right = mid;
+        }
+    }
+    return left;
+}
+
+function binarySearchRight(target: number): number {
+    let left = 0, right = intervals.length;
+    while (left &lt; right) {
+        const mid = Math.floor((left + right) / 2);
+        if (intervals[mid][1] &lt;= target) {
+            left = mid + 1;
+        } else {
+            right = mid;
+        }
+    }
+    return left;
+}
+
+const result: number[][] = [];
+
+// Find range of intervals that overlap with newInterval
+let start = 0, end = intervals.length;
+
+// Find first interval that might overlap
+for (let i = 0; i &lt; intervals.length; i++) {
+    if (intervals[i][1] &gt;= newInterval[0]) {
+        start = i;
+        break;
+    }
+}
+
+// Find last interval that might overlap
+for (let i = intervals.length - 1; i &gt;= 0; i--) {
+    if (intervals[i][0] &lt;= newInterval[1]) {
+        end = i + 1;
+        break;
+    }
+}
+
+// Add intervals before overlap
+for (let i = 0; i &lt; start; i++) {
+    result.push(intervals[i]);
+}
+
+// Merge overlapping intervals
+let mergedStart = newInterval[0];
+let mergedEnd = newInterval[1];
+
+for (let i = start; i &lt; end; i++) {
+    if (intervals[i][0] &lt;= newInterval[1] &amp;&amp; intervals[i][1] &gt;= newInterval[0]) {
+        mergedStart = Math.min(mergedStart, intervals[i][0]);
+        mergedEnd = Math.max(mergedEnd, intervals[i][1]);
+    }
+}
+
+result.push([mergedStart, mergedEnd]);
+
+// Add intervals after overlap
+for (let i = end; i &lt; intervals.length; i++) {
+    result.push(intervals[i]);
+}
+
+return result;
+</code></pre></pre>
+<p>}</p>
+<p>// Solution 3: Three-Phase Approach
+// Time: O(n), Space: O(n)
+export function insert3(intervals: number[][], newInterval: number[]): number[][] {
+const result: number[][] = [];
+let inserted = false;</p>
+<pre><pre><code class="hljs undefined">for (const interval of intervals) {
+    if (interval[1] &lt; newInterval[0]) {
+        // No overlap, interval ends before newInterval starts
+        result.push(interval);
+    } else if (interval[0] &gt; newInterval[1]) {
+        // No overlap, interval starts after newInterval ends
+        if (!inserted) {
+            result.push(newInterval);
+            inserted = true;
+        }
+        result.push(interval);
+    } else {
+        // Overlap, merge intervals
+        newInterval[0] = Math.min(newInterval[0], interval[0]);
+        newInterval[1] = Math.max(newInterval[1], interval[1]);
+    }
+}
+
+// Add newInterval if not inserted yet
+if (!inserted) {
+    result.push(newInterval);
+}
+
+return result;
+</code></pre></pre>
+<p>}</p>
+<p>// Solution 4: Stack-based Approach
+// Time: O(n), Space: O(n)
+export function insert4(intervals: number[][], newInterval: number[]): number[][] {
+const stack: number[][] = [];
+let inserted = false;</p>
+<pre><pre><code class="hljs undefined">for (let i = 0; i &lt;= intervals.length; i++) {
+    let current: number[];
+    
+    if (i === intervals.length) {
+        if (!inserted) {
+            current = newInterval;
+        } else {
+            break;
+        }
+    } else if (!inserted &amp;&amp; intervals[i][0] &gt;= newInterval[0]) {
+        current = newInterval;
+        inserted = true;
+        i--; // Process current interval in next iteration
+        continue;
+    } else {
+        current = intervals[i];
+    }
+    
+    if (stack.length === 0 || stack[stack.length - 1][1] &lt; current[0]) {
+        // No overlap
+        stack.push(current);
+    } else {
+        // Overlap, merge
+        stack[stack.length - 1][1] = Math.max(stack[stack.length - 1][1], current[1]);
+    }
+}
+
+return stack;
+</code></pre></pre>
+<p>}</p>
+<p>// Solution 5: Recursive Approach
+// Time: O(n), Space: O(n)
+export function insert5(intervals: number[][], newInterval: number[]): number[][] {
+function insertHelper(intervals: number[][], newInterval: number[], index: number): number[][] {
+if (index &gt;= intervals.length) {
+return [newInterval];
+}</p>
+<pre><pre><code class="hljs undefined">    const current = intervals[index];
+    
+    if (newInterval[1] &lt; current[0]) {
+        // Insert before current
+        return [newInterval, ...intervals.slice(index)];
+    } else if (newInterval[0] &gt; current[1]) {
+        // Insert after current
+        return [current, ...insertHelper(intervals, newInterval, index + 1)];
+    } else {
+        // Merge with current
+        const merged = [
+            Math.min(newInterval[0], current[0]),
+            Math.max(newInterval[1], current[1])
+        ];
+        return insertHelper(intervals, merged, index + 1);
+    }
+}
+
+return insertHelper(intervals, newInterval, 0);
+</code></pre></pre>
+<p>}</p>
+<p>// Solution 6: Two-Pass Approach
+// Time: O(n), Space: O(n)
+export function insert6(intervals: number[][], newInterval: number[]): number[][] {
+const result: number[][] = [];</p>
+<pre><pre><code class="hljs undefined">// First pass: find merge range
+let mergeStart = -1;
+let mergeEnd = -1;
+
+for (let i = 0; i &lt; intervals.length; i++) {
+    const interval = intervals[i];
+    
+    if (interval[0] &lt;= newInterval[1] &amp;&amp; interval[1] &gt;= newInterval[0]) {
+        // Overlapping interval
+        if (mergeStart === -1) {
+            mergeStart = i;
+        }
+        mergeEnd = i;
+    }
+}
+
+// Second pass: build result
+let i = 0;
+
+// Add intervals before merge range
+while (i &lt; mergeStart) {
+    result.push(intervals[i]);
+    i++;
+}
+
+// Add merged interval
+if (mergeStart === -1) {
+    // No overlaps, find insertion position
+    let insertPos = 0;
+    while (insertPos &lt; intervals.length &amp;&amp; intervals[insertPos][0] &lt; newInterval[0]) {
+        insertPos++;
+    }
+    
+    // Build result with insertion
+    for (let j = 0; j &lt; insertPos; j++) {
+        result.push(intervals[j]);
+    }
+    result.push(newInterval);
+    for (let j = insertPos; j &lt; intervals.length; j++) {
+        result.push(intervals[j]);
+    }
+} else {
+    // Merge overlapping intervals
+    let mergedStart = newInterval[0];
+    let mergedEnd = newInterval[1];
+    
+    for (let j = mergeStart; j &lt;= mergeEnd; j++) {
+        mergedStart = Math.min(mergedStart, intervals[j][0]);
+        mergedEnd = Math.max(mergedEnd, intervals[j][1]);
+    }
+    
+    result.push([mergedStart, mergedEnd]);
+    
+    // Add intervals after merge range
+    for (let j = mergeEnd + 1; j &lt; intervals.length; j++) {
+        result.push(intervals[j]);
+    }
+}
+
+return result;
+</code></pre></pre>
+<p>}</p>
+<p>// Test cases
+export function testInsert() {
+console.log(&quot;Testing Insert Interval:&quot;);</p>
+<pre><pre><code class="hljs undefined">const testCases = [
+    {
+        intervals: [[1, 3], [6, 9]],
+        newInterval: [2, 5],
+        expected: [[1, 5], [6, 9]]
+    },
+    {
+        intervals: [[1, 2], [3, 5], [6, 7], [8, 10], [12, 16]],
+        newInterval: [4, 8],
+        expected: [[1, 2], [3, 10], [12, 16]]
+    },
+    {
+        intervals: [],
+        newInterval: [5, 7],
+        expected: [[5, 7]]
+    },
+    {
+        intervals: [[1, 5]],
+        newInterval: [2, 3],
+        expected: [[1, 5]]
+    },
+    {
+        intervals: [[1, 5]],
+        newInterval: [6, 8],
+        expected: [[1, 5], [6, 8]]
+    },
+    {
+        intervals: [[1, 5]],
+        newInterval: [0, 0],
+        expected: [[0, 0], [1, 5]]
+    },
+    {
+        intervals: [[1, 3], [6, 9]],
+        newInterval: [2, 5],
+        expected: [[1, 5], [6, 9]]
+    },
+    {
+        intervals: [[1, 2], [3, 5], [6, 7], [8, 10], [12, 16]],
+        newInterval: [4, 8],
+        expected: [[1, 2], [3, 10], [12, 16]]
+    }
+];
+
+const solutions = [
+    { name: &quot;Linear Scan and Merge&quot;, fn: insert1 },
+    { name: &quot;Binary Search + Merge&quot;, fn: insert2 },
+    { name: &quot;Three-Phase Approach&quot;, fn: insert3 },
+    { name: &quot;Stack-based&quot;, fn: insert4 },
+    { name: &quot;Recursive&quot;, fn: insert5 },
+    { name: &quot;Two-Pass&quot;, fn: insert6 }
+];
+
+function arraysEqual(a: number[][], b: number[][]): boolean {
+    if (a.length !== b.length) return false;
+    for (let i = 0; i &lt; a.length; i++) {
+        if (a[i].length !== b[i].length) return false;
+        for (let j = 0; j &lt; a[i].length; j++) {
+            if (a[i][j] !== b[i][j]) return false;
+        }
+    }
+    return true;
+}
+
+solutions.forEach(solution =&gt; {
+    console.log(`\n${solution.name}:`);
+    testCases.forEach((test, i) =&gt; {
+        const intervals = test.intervals.map(interval =&gt; [...interval]);
+        const newInterval = [...test.newInterval];
+        const result = solution.fn(intervals, newInterval);
+        const passed = arraysEqual(result, test.expected);
+        console.log(`  Test ${i + 1}: ${passed ? &#x27;PASS&#x27; : &#x27;FAIL&#x27;}`);
+        if (!passed) {
+            console.log(`    Intervals: ${JSON.stringify(test.intervals)}`);
+            console.log(`    New Interval: ${JSON.stringify(test.newInterval)}`);
+            console.log(`    Expected: ${JSON.stringify(test.expected)}`);
+            console.log(`    Got: ${JSON.stringify(result)}`);
+        }
+    });
+});
+</code></pre></pre>
+<p>}</p>
+<p>/**</p>
+<ul>
+<li>Key Insights:</li>
+<li></li>
+<li>
+<ol>
+<li><strong>Problem Structure</strong>:</li>
+</ol>
+</li>
+<li>
+<ul>
+<li>Intervals are already sorted and non-overlapping</li>
+</ul>
+</li>
+<li>
+<ul>
+<li>Need to insert and merge new interval</li>
+</ul>
+</li>
+<li>
+<ul>
+<li>Maintain sorted order and no overlaps</li>
+</ul>
+</li>
+<li></li>
+<li>
+<ol start="2">
+<li><strong>Three Phases Strategy</strong>:</li>
+</ol>
+</li>
+<li>
+<ul>
+<li>Phase 1: Add intervals that end before newInterval starts</li>
+</ul>
+</li>
+<li>
+<ul>
+<li>Phase 2: Merge overlapping intervals with newInterval</li>
+</ul>
+</li>
+<li>
+<ul>
+<li>Phase 3: Add intervals that start after newInterval ends</li>
+</ul>
+</li>
+<li></li>
+<li>
+<ol start="3">
+<li><strong>Overlap Detection</strong>:</li>
+</ol>
+</li>
+<li>
+<ul>
+<li>Two intervals [a,b] and [c,d] overlap if: max(a,c) &lt;= min(b,d)</li>
+</ul>
+</li>
+<li>
+<ul>
+<li>Or equivalently: a &lt;= d &amp;&amp; c &lt;= b</li>
+</ul>
+</li>
+<li>
+<ul>
+<li>No overlap if: b &lt; c or d &lt; a</li>
+</ul>
+</li>
+<li></li>
+<li>
+<ol start="4">
+<li><strong>Merging Logic</strong>:</li>
+</ol>
+</li>
+<li>
+<ul>
+<li>Merged interval: [min(start1, start2), max(end1, end2)]</li>
+</ul>
+</li>
+<li>
+<ul>
+<li>Keep expanding newInterval as we find overlaps</li>
+</ul>
+</li>
+<li>
+<ul>
+<li>Add final merged interval to result</li>
+</ul>
+</li>
+<li></li>
+<li>
+<ol start="5">
+<li><strong>Time Complexity</strong>: O(n)</li>
+</ol>
+</li>
+<li>
+<ul>
+<li>Single pass through intervals</li>
+</ul>
+</li>
+<li>
+<ul>
+<li>Constant work per interval</li>
+</ul>
+</li>
+<li>
+<ul>
+<li>Cannot be improved (must examine all intervals)</li>
+</ul>
+</li>
+<li></li>
+<li>
+<ol start="6">
+<li><strong>Space Complexity</strong>: O(n)</li>
+</ol>
+</li>
+<li>
+<ul>
+<li>Result array stores all intervals</li>
+</ul>
+</li>
+<li>
+<ul>
+<li>Input modification could reduce to O(1)</li>
+</ul>
+</li>
+<li>
+<ul>
+<li>Depends on whether input can be modified</li>
+</ul>
+</li>
+<li></li>
+<li>
+<ol start="7">
+<li><strong>Edge Cases</strong>:</li>
+</ol>
+</li>
+<li>
+<ul>
+<li>Empty intervals array</li>
+</ul>
+</li>
+<li>
+<ul>
+<li>NewInterval doesn&#x27;t overlap with any</li>
+</ul>
+</li>
+<li>
+<ul>
+<li>NewInterval overlaps with all</li>
+</ul>
+</li>
+<li>
+<ul>
+<li>NewInterval is subset of existing interval</li>
+</ul>
+</li>
+<li></li>
+<li>
+<ol start="8">
+<li><strong>Interview Strategy</strong>:</li>
+</ol>
+</li>
+<li>
+<ul>
+<li>Start with three-phase approach</li>
+</ul>
+</li>
+<li>
+<ul>
+<li>Explain overlap detection clearly</li>
+</ul>
+</li>
+<li>
+<ul>
+<li>Handle edge cases systematically</li>
+</ul>
+</li>
+<li>
+<ul>
+<li>Discuss optimization opportunities</li>
+</ul>
+</li>
+<li></li>
+<li>
+<ol start="9">
+<li><strong>Key Observations</strong>:</li>
+</ol>
+</li>
+<li>
+<ul>
+<li>Input is already sorted (don&#x27;t need to sort)</li>
+</ul>
+</li>
+<li>
+<ul>
+<li>Can process in single left-to-right pass</li>
+</ul>
+</li>
+<li>
+<ul>
+<li>Merge operations extend newInterval boundaries</li>
+</ul>
+</li>
+<li></li>
+<li>
+<ol start="10">
+<li><strong>Implementation Patterns</strong>:</li>
+</ol>
+</li>
+<li>
+<pre><pre><code class="hljs undefined">- Linear scan: most straightforward
+</code></pre></pre>
+</li>
+<li>
+<pre><pre><code class="hljs undefined">- Binary search: helpful for very large inputs
+</code></pre></pre>
+</li>
+<li>
+<pre><pre><code class="hljs undefined">- Stack-based: natural for interval problems
+</code></pre></pre>
+</li>
+<li></li>
+<li>
+<ol start="11">
+<li><strong>Optimization Considerations</strong>:</li>
+</ol>
+</li>
+<li>
+<pre><pre><code class="hljs undefined">- Early termination after processing overlaps
+</code></pre></pre>
+</li>
+<li>
+<pre><pre><code class="hljs undefined">- Binary search for insertion point (large inputs)
+</code></pre></pre>
+</li>
+<li>
+<pre><pre><code class="hljs undefined">- In-place modification if allowed
+</code></pre></pre>
+</li>
+<li></li>
+<li>
+<ol start="12">
+<li><strong>Common Mistakes</strong>:</li>
+</ol>
+</li>
+<li>
+<pre><pre><code class="hljs undefined">- Incorrect overlap detection logic
+</code></pre></pre>
+</li>
+<li>
+<pre><pre><code class="hljs undefined">- Not handling boundary cases (touching intervals)
+</code></pre></pre>
+</li>
+<li>
+<pre><pre><code class="hljs undefined">- Forgetting to add newInterval when no overlaps
+</code></pre></pre>
+</li>
+<li>
+<pre><pre><code class="hljs undefined">- Wrong order in final result
+</code></pre></pre>
+</li>
+<li></li>
+<li>
+<ol start="13">
+<li><strong>Big Tech Variations</strong>:</li>
+</ol>
+</li>
+<li>
+<pre><pre><code class="hljs undefined">- Google: Insert multiple intervals at once
+</code></pre></pre>
+</li>
+<li>
+<pre><pre><code class="hljs undefined">- Meta: Insert with priority/weight considerations
+</code></pre></pre>
+</li>
+<li>
+<pre><pre><code class="hljs undefined">- Amazon: Calendar scheduling with conflicts
+</code></pre></pre>
+</li>
+<li>
+<pre><pre><code class="hljs undefined">- Microsoft: Meeting room booking systems
+</code></pre></pre>
+</li>
+<li></li>
+<li>
+<ol start="14">
+<li><strong>Follow-up Questions</strong>:</li>
+</ol>
+</li>
+<li>
+<pre><pre><code class="hljs undefined">- What if intervals weren&#x27;t sorted?
+</code></pre></pre>
+</li>
+<li>
+<pre><pre><code class="hljs undefined">- Insert multiple new intervals efficiently
+</code></pre></pre>
+</li>
+<li>
+<pre><pre><code class="hljs undefined">- Remove intervals that overlap with new one
+</code></pre></pre>
+</li>
+<li>
+<pre><pre><code class="hljs undefined">- Find gaps in interval coverage
+</code></pre></pre>
+</li>
+<li></li>
+<li>
+<ol start="15">
+<li><strong>Real-world Applications</strong>:</li>
+</ol>
+</li>
+<li>
+<pre><pre><code class="hljs undefined">- Calendar management systems
+</code></pre></pre>
+</li>
+<li>
+<pre><pre><code class="hljs undefined">- Resource booking platforms
+</code></pre></pre>
+</li>
+<li>
+<pre><pre><code class="hljs undefined">- Network bandwidth allocation
+</code></pre></pre>
+</li>
+<li>
+<pre><pre><code class="hljs undefined">- Memory management (free/allocated blocks)
+</code></pre></pre>
+</li>
+<li>
+<pre><pre><code class="hljs undefined">- Timeline visualization tools
+</code></pre></pre>
+</li>
+<li></li>
+<li>
+<ol start="16">
+<li><strong>Pattern Recognition</strong>:</li>
+</ol>
+</li>
+<li>
+<pre><pre><code class="hljs undefined">- Interval merging pattern
+</code></pre></pre>
+</li>
+<li>
+<pre><pre><code class="hljs undefined">- Linear scan with state tracking
+</code></pre></pre>
+</li>
+<li>
+<pre><pre><code class="hljs undefined">- Greedy algorithm approach
+</code></pre></pre>
+</li>
+<li>
+<pre><pre><code class="hljs undefined">- Boundary condition handling
+</code></pre></pre>
+</li>
+<li></li>
+<li>
+<ol start="17">
+<li><strong>Testing Strategy</strong>:</li>
+</ol>
+</li>
+<li>
+<pre><pre><code class="hljs undefined">- Test with no overlaps
+</code></pre></pre>
+</li>
+<li>
+<pre><pre><code class="hljs undefined">- Test with complete overlap
+</code></pre></pre>
+</li>
+<li>
+<pre><pre><code class="hljs undefined">- Test with partial overlaps
+</code></pre></pre>
+</li>
+<li>
+<pre><pre><code class="hljs undefined">- Test edge cases (empty, single interval)
+</code></pre></pre>
+</li>
+<li></li>
+<li>
+<ol start="18">
+<li><strong>Alternative Approaches</strong>:</li>
+</ol>
+</li>
+<li>
+<pre><pre><code class="hljs undefined">- Recursive divide and conquer
+</code></pre></pre>
+</li>
+<li>
+<pre><pre><code class="hljs undefined">- Event-based processing
+</code></pre></pre>
+</li>
+<li>
+<pre><pre><code class="hljs undefined">- Interval tree data structure
+</code></pre></pre>
+</li>
+<li>
+<pre><pre><code class="hljs undefined">- Segment tree for range queries
+</code></pre></pre>
+</li>
+</ul>
+<p>*/
+{% endraw %}</p></div></div></div><div class="space-y-6"><div class="bg-white border border-gray-200 rounded-lg p-6"><h3 class="text-lg font-semibold text-gray-900 mb-4">Your Progress</h3><div class="w-full bg-gray-200 rounded-full h-2 mb-2"><div class="bg-blue-600 h-2 rounded-full" style="width:25%"></div></div><p class="text-sm text-gray-600">25% Complete</p></div></div></div></div></main><footer class="sc-dYwGCk cJzheU"><div class="sc-lgpSej hJUFeT"><div class="sc-eqYatC mSxwd"><div class="sc-kcLKEh cmBIup"><div class="sc-dntSTA bAsNIP"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-code "><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>Frontend Interview Prep</div><p class="sc-kvnevz gWXMDV">Comprehensive interview preparation for frontend engineers targeting Big Tech companies.</p><div class="sc-dFVmKS jCoOHQ"><a href="https://github.com" aria-label="GitHub"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-github "><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"></path><path d="M9 18c-4.51 2-5-2-7-2"></path></svg></a><a href="https://twitter.com" aria-label="Twitter"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-twitter "><path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"></path></svg></a><a href="https://linkedin.com" aria-label="LinkedIn"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-linkedin "><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect width="4" height="12" x="2" y="9"></rect><circle cx="4" cy="4" r="2"></circle></svg></a><a href="mailto:contact@example.com" aria-label="Email"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-mail "><rect width="20" height="16" x="2" y="4" rx="2"></rect><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path></svg></a></div></div><div class="sc-kcLKEh cmBIup"><h3>Study Materials</h3><ul><li><a href="/algorithms">Algorithms</a></li><li><a href="/react">React &amp; Frontend</a></li><li><a href="/system-design">System Design</a></li><li><a href="/typescript">TypeScript</a></li><li><a href="/performance">Performance</a></li></ul></div><div class="sc-kcLKEh cmBIup"><h3>Companies</h3><ul><li><a href="/google">Google</a></li><li><a href="/meta">Meta</a></li><li><a href="/amazon">Amazon</a></li><li><a href="/microsoft">Microsoft</a></li><li><a href="/apple">Apple</a></li></ul></div><div class="sc-kcLKEh cmBIup"><h3>Resources</h3><ul><li><a href="/interview-tips">Interview Tips</a></li><li><a href="/coding-challenges">Coding Challenges</a></li><li><a href="/mock-interviews">Mock Interviews</a></li><li><a href="/blog">Blog</a></li><li><a href="/faq">FAQ</a></li></ul></div></div><div class="sc-kCuUfV crUaYh"><p class="sc-dNdcvo esMlQF">© 2025 Frontend Interview Prep. All rights reserved.</p><div class="sc-fbQrwq eHcrXx"><a href="/privacy">Privacy Policy</a><a href="/terms">Terms of Service</a><a href="/contact">Contact</a></div></div></div></footer></div><script src="/interview/_next/static/chunks/webpack-be7d7df45533bffc.js" async=""></script><script>(self.__next_f=self.__next_f||[]).push([0]);self.__next_f.push([2,null])</script><script>self.__next_f.push([1,"1:HL[\"/interview/_next/static/media/e4af272ccee01ff0-s.p.woff2\",\"font\",{\"crossOrigin\":\"\",\"type\":\"font/woff2\"}]\n2:HL[\"/interview/_next/static/css/387024c6a2216908.css\",\"style\"]\n"])</script><script>self.__next_f.push([1,"3:I[2846,[],\"\"]\n5:I[2972,[\"918\",\"static/chunks/918-3273b83890f10546.js\",\"972\",\"static/chunks/972-011bba60ed155615.js\",\"930\",\"static/chunks/930-3262a6c9c5acace4.js\",\"289\",\"static/chunks/app/learn/%5Btopic%5D/page-4ab144227f7a7b3e.js\"],\"\"]\n6:I[5907,[\"918\",\"static/chunks/918-3273b83890f10546.js\",\"972\",\"static/chunks/972-011bba60ed155615.js\",\"930\",\"static/chunks/930-3262a6c9c5acace4.js\",\"289\",\"static/chunks/app/learn/%5Btopic%5D/page-4ab144227f7a7b3e.js\"],\"default\"]\n8:I[4707,[],\"\"]\na:I[6423,[],\"\"]\nb:I[2,[\"918\",\"static/chunks/918-3273b83890f10546.js\",\"710\",\"static/chunks/710-dfaa11b4dff08f8e.js\",\"972\",\"static/chunks/972-011bba60ed155615.js\",\"233\",\"static/chunks/233-3e0c1d820a17eca9.js\",\"185\",\"static/chunks/app/layout-333f4adcd11f8f39.js\"],\"default\",1]\nd:I[1060,[],\"\"]\n7:T3e0f,"])</script><script>self.__next_f.push([1,"\n# Insert Interval\n\n**LeetCode Problem # * 57. Insert Interval**\n\n## Problem Description\n\nLeetCode problem solution with multiple approaches and explanations.\n\n## Solutions\n\n{% raw %}\n/**\n * 57. Insert Interval\n * \n * You are given an array of non-overlapping intervals intervals where intervals[i] = [starti, endi] \n * represent the start and the end of the ith interval and intervals is sorted in ascending order by starti. \n * You are also given an interval newInterval = [start, end] that represents the start and end of another interval.\n * \n * Insert newInterval into intervals such that intervals is still sorted in ascending order by starti \n * and intervals still does not have any overlapping intervals (merge overlapping intervals if necessary).\n * \n * Return intervals after the insertion.\n * \n * Example 1:\n * Input: intervals = [[1,3],[6,9]], newInterval = [2,5]\n * Output: [[1,5],[6,9]]\n * \n * Example 2:\n * Input: intervals = [[1,2],[3,5],[6,7],[8,10],[12,16]], newInterval = [4,8]\n * Output: [[1,2],[3,10],[12,16]]\n * \n * Constraints:\n * - 0 \u003c= intervals.length \u003c= 10^4\n * - intervals[i].length == 2\n * - 0 \u003c= starti \u003c= endi \u003c= 10^5\n * - intervals is sorted by starti.\n * - newInterval.length == 2\n * - 0 \u003c= start \u003c= end \u003c= 10^5\n */\n\n// Solution 1: Linear Scan and Merge\n// Time: O(n), Space: O(n)\nexport function insert1(intervals: number[][], newInterval: number[]): number[][] {\n    const result: number[][] = [];\n    let i = 0;\n    const n = intervals.length;\n    \n    // Add all intervals that end before newInterval starts\n    while (i \u003c n \u0026\u0026 intervals[i][1] \u003c newInterval[0]) {\n        result.push(intervals[i]);\n        i++;\n    }\n    \n    // Merge overlapping intervals with newInterval\n    while (i \u003c n \u0026\u0026 intervals[i][0] \u003c= newInterval[1]) {\n        // Merge intervals\n        newInterval[0] = Math.min(newInterval[0], intervals[i][0]);\n        newInterval[1] = Math.max(newInterval[1], intervals[i][1]);\n        i++;\n    }\n    \n    // Add the merged interval\n    result.push(newInterval);\n    \n    // Add remaining intervals\n    while (i \u003c n) {\n        result.push(intervals[i]);\n        i++;\n    }\n    \n    return result;\n}\n\n// Solution 2: Binary Search + Merge\n// Time: O(n), Space: O(n)\nexport function insert2(intervals: number[][], newInterval: number[]): number[][] {\n    if (intervals.length === 0) return [newInterval];\n    \n    // Binary search for insertion position\n    function binarySearchLeft(target: number): number {\n        let left = 0, right = intervals.length;\n        while (left \u003c right) {\n            const mid = Math.floor((left + right) / 2);\n            if (intervals[mid][0] \u003c target) {\n                left = mid + 1;\n            } else {\n                right = mid;\n            }\n        }\n        return left;\n    }\n    \n    function binarySearchRight(target: number): number {\n        let left = 0, right = intervals.length;\n        while (left \u003c right) {\n            const mid = Math.floor((left + right) / 2);\n            if (intervals[mid][1] \u003c= target) {\n                left = mid + 1;\n            } else {\n                right = mid;\n            }\n        }\n        return left;\n    }\n    \n    const result: number[][] = [];\n    \n    // Find range of intervals that overlap with newInterval\n    let start = 0, end = intervals.length;\n    \n    // Find first interval that might overlap\n    for (let i = 0; i \u003c intervals.length; i++) {\n        if (intervals[i][1] \u003e= newInterval[0]) {\n            start = i;\n            break;\n        }\n    }\n    \n    // Find last interval that might overlap\n    for (let i = intervals.length - 1; i \u003e= 0; i--) {\n        if (intervals[i][0] \u003c= newInterval[1]) {\n            end = i + 1;\n            break;\n        }\n    }\n    \n    // Add intervals before overlap\n    for (let i = 0; i \u003c start; i++) {\n        result.push(intervals[i]);\n    }\n    \n    // Merge overlapping intervals\n    let mergedStart = newInterval[0];\n    let mergedEnd = newInterval[1];\n    \n    for (let i = start; i \u003c end; i++) {\n        if (intervals[i][0] \u003c= newInterval[1] \u0026\u0026 intervals[i][1] \u003e= newInterval[0]) {\n            mergedStart = Math.min(mergedStart, intervals[i][0]);\n            mergedEnd = Math.max(mergedEnd, intervals[i][1]);\n        }\n    }\n    \n    result.push([mergedStart, mergedEnd]);\n    \n    // Add intervals after overlap\n    for (let i = end; i \u003c intervals.length; i++) {\n        result.push(intervals[i]);\n    }\n    \n    return result;\n}\n\n// Solution 3: Three-Phase Approach\n// Time: O(n), Space: O(n)\nexport function insert3(intervals: number[][], newInterval: number[]): number[][] {\n    const result: number[][] = [];\n    let inserted = false;\n    \n    for (const interval of intervals) {\n        if (interval[1] \u003c newInterval[0]) {\n            // No overlap, interval ends before newInterval starts\n            result.push(interval);\n        } else if (interval[0] \u003e newInterval[1]) {\n            // No overlap, interval starts after newInterval ends\n            if (!inserted) {\n                result.push(newInterval);\n                inserted = true;\n            }\n            result.push(interval);\n        } else {\n            // Overlap, merge intervals\n            newInterval[0] = Math.min(newInterval[0], interval[0]);\n            newInterval[1] = Math.max(newInterval[1], interval[1]);\n        }\n    }\n    \n    // Add newInterval if not inserted yet\n    if (!inserted) {\n        result.push(newInterval);\n    }\n    \n    return result;\n}\n\n// Solution 4: Stack-based Approach\n// Time: O(n), Space: O(n)\nexport function insert4(intervals: number[][], newInterval: number[]): number[][] {\n    const stack: number[][] = [];\n    let inserted = false;\n    \n    for (let i = 0; i \u003c= intervals.length; i++) {\n        let current: number[];\n        \n        if (i === intervals.length) {\n            if (!inserted) {\n                current = newInterval;\n            } else {\n                break;\n            }\n        } else if (!inserted \u0026\u0026 intervals[i][0] \u003e= newInterval[0]) {\n            current = newInterval;\n            inserted = true;\n            i--; // Process current interval in next iteration\n            continue;\n        } else {\n            current = intervals[i];\n        }\n        \n        if (stack.length === 0 || stack[stack.length - 1][1] \u003c current[0]) {\n            // No overlap\n            stack.push(current);\n        } else {\n            // Overlap, merge\n            stack[stack.length - 1][1] = Math.max(stack[stack.length - 1][1], current[1]);\n        }\n    }\n    \n    return stack;\n}\n\n// Solution 5: Recursive Approach\n// Time: O(n), Space: O(n)\nexport function insert5(intervals: number[][], newInterval: number[]): number[][] {\n    function insertHelper(intervals: number[][], newInterval: number[], index: number): number[][] {\n        if (index \u003e= intervals.length) {\n            return [newInterval];\n        }\n        \n        const current = intervals[index];\n        \n        if (newInterval[1] \u003c current[0]) {\n            // Insert before current\n            return [newInterval, ...intervals.slice(index)];\n        } else if (newInterval[0] \u003e current[1]) {\n            // Insert after current\n            return [current, ...insertHelper(intervals, newInterval, index + 1)];\n        } else {\n            // Merge with current\n            const merged = [\n                Math.min(newInterval[0], current[0]),\n                Math.max(newInterval[1], current[1])\n            ];\n            return insertHelper(intervals, merged, index + 1);\n        }\n    }\n    \n    return insertHelper(intervals, newInterval, 0);\n}\n\n// Solution 6: Two-Pass Approach\n// Time: O(n), Space: O(n)\nexport function insert6(intervals: number[][], newInterval: number[]): number[][] {\n    const result: number[][] = [];\n    \n    // First pass: find merge range\n    let mergeStart = -1;\n    let mergeEnd = -1;\n    \n    for (let i = 0; i \u003c intervals.length; i++) {\n        const interval = intervals[i];\n        \n        if (interval[0] \u003c= newInterval[1] \u0026\u0026 interval[1] \u003e= newInterval[0]) {\n            // Overlapping interval\n            if (mergeStart === -1) {\n                mergeStart = i;\n            }\n            mergeEnd = i;\n        }\n    }\n    \n    // Second pass: build result\n    let i = 0;\n    \n    // Add intervals before merge range\n    while (i \u003c mergeStart) {\n        result.push(intervals[i]);\n        i++;\n    }\n    \n    // Add merged interval\n    if (mergeStart === -1) {\n        // No overlaps, find insertion position\n        let insertPos = 0;\n        while (insertPos \u003c intervals.length \u0026\u0026 intervals[insertPos][0] \u003c newInterval[0]) {\n            insertPos++;\n        }\n        \n        // Build result with insertion\n        for (let j = 0; j \u003c insertPos; j++) {\n            result.push(intervals[j]);\n        }\n        result.push(newInterval);\n        for (let j = insertPos; j \u003c intervals.length; j++) {\n            result.push(intervals[j]);\n        }\n    } else {\n        // Merge overlapping intervals\n        let mergedStart = newInterval[0];\n        let mergedEnd = newInterval[1];\n        \n        for (let j = mergeStart; j \u003c= mergeEnd; j++) {\n            mergedStart = Math.min(mergedStart, intervals[j][0]);\n            mergedEnd = Math.max(mergedEnd, intervals[j][1]);\n        }\n        \n        result.push([mergedStart, mergedEnd]);\n        \n        // Add intervals after merge range\n        for (let j = mergeEnd + 1; j \u003c intervals.length; j++) {\n            result.push(intervals[j]);\n        }\n    }\n    \n    return result;\n}\n\n// Test cases\nexport function testInsert() {\n    console.log(\"Testing Insert Interval:\");\n    \n    const testCases = [\n        {\n            intervals: [[1, 3], [6, 9]],\n            newInterval: [2, 5],\n            expected: [[1, 5], [6, 9]]\n        },\n        {\n            intervals: [[1, 2], [3, 5], [6, 7], [8, 10], [12, 16]],\n            newInterval: [4, 8],\n            expected: [[1, 2], [3, 10], [12, 16]]\n        },\n        {\n            intervals: [],\n            newInterval: [5, 7],\n            expected: [[5, 7]]\n        },\n        {\n            intervals: [[1, 5]],\n            newInterval: [2, 3],\n            expected: [[1, 5]]\n        },\n        {\n            intervals: [[1, 5]],\n            newInterval: [6, 8],\n            expected: [[1, 5], [6, 8]]\n        },\n        {\n            intervals: [[1, 5]],\n            newInterval: [0, 0],\n            expected: [[0, 0], [1, 5]]\n        },\n        {\n            intervals: [[1, 3], [6, 9]],\n            newInterval: [2, 5],\n            expected: [[1, 5], [6, 9]]\n        },\n        {\n            intervals: [[1, 2], [3, 5], [6, 7], [8, 10], [12, 16]],\n            newInterval: [4, 8],\n            expected: [[1, 2], [3, 10], [12, 16]]\n        }\n    ];\n    \n    const solutions = [\n        { name: \"Linear Scan and Merge\", fn: insert1 },\n        { name: \"Binary Search + Merge\", fn: insert2 },\n        { name: \"Three-Phase Approach\", fn: insert3 },\n        { name: \"Stack-based\", fn: insert4 },\n        { name: \"Recursive\", fn: insert5 },\n        { name: \"Two-Pass\", fn: insert6 }\n    ];\n    \n    function arraysEqual(a: number[][], b: number[][]): boolean {\n        if (a.length !== b.length) return false;\n        for (let i = 0; i \u003c a.length; i++) {\n            if (a[i].length !== b[i].length) return false;\n            for (let j = 0; j \u003c a[i].length; j++) {\n                if (a[i][j] !== b[i][j]) return false;\n            }\n        }\n        return true;\n    }\n    \n    solutions.forEach(solution =\u003e {\n        console.log(`\\n${solution.name}:`);\n        testCases.forEach((test, i) =\u003e {\n            const intervals = test.intervals.map(interval =\u003e [...interval]);\n            const newInterval = [...test.newInterval];\n            const result = solution.fn(intervals, newInterval);\n            const passed = arraysEqual(result, test.expected);\n            console.log(`  Test ${i + 1}: ${passed ? 'PASS' : 'FAIL'}`);\n            if (!passed) {\n                console.log(`    Intervals: ${JSON.stringify(test.intervals)}`);\n                console.log(`    New Interval: ${JSON.stringify(test.newInterval)}`);\n                console.log(`    Expected: ${JSON.stringify(test.expected)}`);\n                console.log(`    Got: ${JSON.stringify(result)}`);\n            }\n        });\n    });\n}\n\n/**\n * Key Insights:\n * \n * 1. **Problem Structure**:\n *    - Intervals are already sorted and non-overlapping\n *    - Need to insert and merge new interval\n *    - Maintain sorted order and no overlaps\n * \n * 2. **Three Phases Strategy**:\n *    - Phase 1: Add intervals that end before newInterval starts\n *    - Phase 2: Merge overlapping intervals with newInterval\n *    - Phase 3: Add intervals that start after newInterval ends\n * \n * 3. **Overlap Detection**:\n *    - Two intervals [a,b] and [c,d] overlap if: max(a,c) \u003c= min(b,d)\n *    - Or equivalently: a \u003c= d \u0026\u0026 c \u003c= b\n *    - No overlap if: b \u003c c or d \u003c a\n * \n * 4. **Merging Logic**:\n *    - Merged interval: [min(start1, start2), max(end1, end2)]\n *    - Keep expanding newInterval as we find overlaps\n *    - Add final merged interval to result\n * \n * 5. **Time Complexity**: O(n)\n *    - Single pass through intervals\n *    - Constant work per interval\n *    - Cannot be improved (must examine all intervals)\n * \n * 6. **Space Complexity**: O(n)\n *    - Result array stores all intervals\n *    - Input modification could reduce to O(1)\n *    - Depends on whether input can be modified\n * \n * 7. **Edge Cases**:\n *    - Empty intervals array\n *    - NewInterval doesn't overlap with any\n *    - NewInterval overlaps with all\n *    - NewInterval is subset of existing interval\n * \n * 8. **Interview Strategy**:\n *    - Start with three-phase approach\n *    - Explain overlap detection clearly\n *    - Handle edge cases systematically\n *    - Discuss optimization opportunities\n * \n * 9. **Key Observations**:\n *    - Input is already sorted (don't need to sort)\n *    - Can process in single left-to-right pass\n *    - Merge operations extend newInterval boundaries\n * \n * 10. **Implementation Patterns**:\n *     - Linear scan: most straightforward\n *     - Binary search: helpful for very large inputs\n *     - Stack-based: natural for interval problems\n * \n * 11. **Optimization Considerations**:\n *     - Early termination after processing overlaps\n *     - Binary search for insertion point (large inputs)\n *     - In-place modification if allowed\n * \n * 12. **Common Mistakes**:\n *     - Incorrect overlap detection logic\n *     - Not handling boundary cases (touching intervals)\n *     - Forgetting to add newInterval when no overlaps\n *     - Wrong order in final result\n * \n * 13. **Big Tech Variations**:\n *     - Google: Insert multiple intervals at once\n *     - Meta: Insert with priority/weight considerations\n *     - Amazon: Calendar scheduling with conflicts\n *     - Microsoft: Meeting room booking systems\n * \n * 14. **Follow-up Questions**:\n *     - What if intervals weren't sorted?\n *     - Insert multiple new intervals efficiently\n *     - Remove intervals that overlap with new one\n *     - Find gaps in interval coverage\n * \n * 15. **Real-world Applications**:\n *     - Calendar management systems\n *     - Resource booking platforms\n *     - Network bandwidth allocation\n *     - Memory management (free/allocated blocks)\n *     - Timeline visualization tools\n * \n * 16. **Pattern Recognition**:\n *     - Interval merging pattern\n *     - Linear scan with state tracking\n *     - Greedy algorithm approach\n *     - Boundary condition handling\n * \n * 17. **Testing Strategy**:\n *     - Test with no overlaps\n *     - Test with complete overlap\n *     - Test with partial overlaps\n *     - Test edge cases (empty, single interval)\n * \n * 18. **Alternative Approaches**:\n *     - Recursive divide and conquer\n *     - Event-based processing\n *     - Interval tree data structure\n *     - Segment tree for range queries\n */\n{% endraw %}\n"])</script><script>self.__next_f.push([1,"9:[\"topic\",\"array-problems-23-insert-interval\",\"d\"]\ne:[]\n"])</script><script>self.__next_f.push([1,"0:[\"$\",\"$L3\",null,{\"buildId\":\"2NmUhWiPdVVBzVtDZlggk\",\"assetPrefix\":\"/interview\",\"urlParts\":[\"\",\"learn\",\"array-problems-23-insert-interval\"],\"initialTree\":[\"\",{\"children\":[\"learn\",{\"children\":[[\"topic\",\"array-problems-23-insert-interval\",\"d\"],{\"children\":[\"__PAGE__?{\\\"topic\\\":\\\"array-problems-23-insert-interval\\\"}\",{}]}]}]},\"$undefined\",\"$undefined\",true],\"initialSeedData\":[\"\",{\"children\":[\"learn\",{\"children\":[[\"topic\",\"array-problems-23-insert-interval\",\"d\"],{\"children\":[\"__PAGE__\",{},[[\"$L4\",[\"$\",\"div\",null,{\"className\":\"max-w-6xl mx-auto px-8 py-24\",\"children\":[[\"$\",\"div\",null,{\"className\":\"flex items-center gap-4 mb-8\",\"children\":[\"$\",\"$L5\",null,{\"href\":\"/learn\",\"children\":[\"$\",\"button\",null,{\"className\":\"flex items-center gap-2 bg-gray-100 border border-gray-300 text-gray-700 px-4 py-3 rounded-md font-medium hover:bg-gray-200 transition-colors\",\"children\":[[\"$\",\"svg\",null,{\"xmlns\":\"http://www.w3.org/2000/svg\",\"width\":16,\"height\":16,\"viewBox\":\"0 0 24 24\",\"fill\":\"none\",\"stroke\":\"currentColor\",\"strokeWidth\":2,\"strokeLinecap\":\"round\",\"strokeLinejoin\":\"round\",\"className\":\"lucide lucide-arrow-left \",\"children\":[[\"$\",\"path\",\"1l729n\",{\"d\":\"m12 19-7-7 7-7\"}],[\"$\",\"path\",\"x3x0zl\",{\"d\":\"M19 12H5\"}],\"$undefined\"]}],\"Back to Learn\"]}]}]}],[\"$\",\"div\",null,{\"className\":\"bg-white border border-gray-200 rounded-lg p-8 mb-8\",\"children\":[[\"$\",\"div\",null,{\"className\":\"flex items-center justify-between mb-4\",\"children\":[[\"$\",\"h1\",null,{\"className\":\"text-3xl font-bold text-gray-900\",\"children\":\"Insert Interval\"}],[\"$\",\"div\",null,{\"className\":\"flex gap-4\",\"children\":[[\"$\",\"button\",null,{\"className\":\"flex items-center gap-2 bg-transparent text-gray-700 border border-gray-300 px-6 py-3 rounded-md font-semibold hover:bg-gray-50 transition-colors\",\"children\":[[\"$\",\"svg\",null,{\"xmlns\":\"http://www.w3.org/2000/svg\",\"width\":16,\"height\":16,\"viewBox\":\"0 0 24 24\",\"fill\":\"none\",\"stroke\":\"currentColor\",\"strokeWidth\":2,\"strokeLinecap\":\"round\",\"strokeLinejoin\":\"round\",\"className\":\"lucide lucide-star \",\"children\":[[\"$\",\"polygon\",\"8f66p6\",{\"points\":\"12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2\"}],\"$undefined\"]}],\"Bookmark\"]}],[\"$\",\"button\",null,{\"className\":\"flex items-center gap-2 bg-transparent text-gray-700 border border-gray-300 px-6 py-3 rounded-md font-semibold hover:bg-gray-50 transition-colors\",\"children\":[[\"$\",\"svg\",null,{\"xmlns\":\"http://www.w3.org/2000/svg\",\"width\":16,\"height\":16,\"viewBox\":\"0 0 24 24\",\"fill\":\"none\",\"stroke\":\"currentColor\",\"strokeWidth\":2,\"strokeLinecap\":\"round\",\"strokeLinejoin\":\"round\",\"className\":\"lucide lucide-share2 \",\"children\":[[\"$\",\"circle\",\"gq8acd\",{\"cx\":\"18\",\"cy\":\"5\",\"r\":\"3\"}],[\"$\",\"circle\",\"w7nqdw\",{\"cx\":\"6\",\"cy\":\"12\",\"r\":\"3\"}],[\"$\",\"circle\",\"1xt0gg\",{\"cx\":\"18\",\"cy\":\"19\",\"r\":\"3\"}],[\"$\",\"line\",\"47mynk\",{\"x1\":\"8.59\",\"x2\":\"15.42\",\"y1\":\"13.51\",\"y2\":\"17.49\"}],[\"$\",\"line\",\"1n3mei\",{\"x1\":\"15.41\",\"x2\":\"8.59\",\"y1\":\"6.51\",\"y2\":\"10.49\"}],\"$undefined\"]}],\"Share\"]}]]}]]}],[\"$\",\"div\",null,{\"className\":\"flex gap-8 mb-4\",\"children\":[[\"$\",\"div\",null,{\"className\":\"flex items-center gap-2 text-sm text-gray-600\",\"children\":[[\"$\",\"svg\",null,{\"xmlns\":\"http://www.w3.org/2000/svg\",\"width\":16,\"height\":16,\"viewBox\":\"0 0 24 24\",\"fill\":\"none\",\"stroke\":\"currentColor\",\"strokeWidth\":2,\"strokeLinecap\":\"round\",\"strokeLinejoin\":\"round\",\"className\":\"lucide lucide-clock \",\"children\":[[\"$\",\"circle\",\"1mglay\",{\"cx\":\"12\",\"cy\":\"12\",\"r\":\"10\"}],[\"$\",\"polyline\",\"68esgv\",{\"points\":\"12 6 12 12 16 14\"}],\"$undefined\"]}],\"2-3 hours\"]}],[\"$\",\"span\",null,{\"className\":\"px-3 py-1 rounded-full text-xs font-semibold text-white bg-red-500\",\"children\":\"Hard\"}],[\"$\",\"span\",null,{\"className\":\"px-3 py-1 rounded-full text-xs font-semibold bg-blue-100 text-blue-700\",\"children\":\"Array\"}]]}],[\"$\",\"div\",null,{\"className\":\"flex flex-wrap gap-2 mb-4\",\"children\":[[\"$\",\"span\",\"0\",{\"className\":\"bg-gray-100 text-gray-600 px-3 py-1 rounded-md text-xs font-medium\",\"children\":\"Array\"}],[\"$\",\"span\",\"1\",{\"className\":\"bg-gray-100 text-gray-600 px-3 py-1 rounded-md text-xs font-medium\",\"children\":\"Binary Search\"}],[\"$\",\"span\",\"2\",{\"className\":\"bg-gray-100 text-gray-600 px-3 py-1 rounded-md text-xs font-medium\",\"children\":\"Greedy\"}]]}],[\"$\",\"p\",null,{\"className\":\"text-lg text-gray-700 leading-relaxed\",\"children\":\"**LeetCode Problem # * 57. Insert Interval**...\"}]]}],[\"$\",\"div\",null,{\"className\":\"grid grid-cols-1 lg:grid-cols-3 gap-8\",\"children\":[[\"$\",\"div\",null,{\"className\":\"lg:col-span-2\",\"children\":[\"$\",\"div\",null,{\"className\":\"bg-white border border-gray-200 rounded-lg p-8\",\"children\":[\"$\",\"$L6\",null,{\"content\":\"$7\"}]}]}],[\"$\",\"div\",null,{\"className\":\"space-y-6\",\"children\":[[\"$\",\"div\",null,{\"className\":\"bg-white border border-gray-200 rounded-lg p-6\",\"children\":[[\"$\",\"h3\",null,{\"className\":\"text-lg font-semibold text-gray-900 mb-4\",\"children\":\"Your Progress\"}],[\"$\",\"div\",null,{\"className\":\"w-full bg-gray-200 rounded-full h-2 mb-2\",\"children\":[\"$\",\"div\",null,{\"className\":\"bg-blue-600 h-2 rounded-full\",\"style\":{\"width\":\"25%\"}}]}],[\"$\",\"p\",null,{\"className\":\"text-sm text-gray-600\",\"children\":\"25% Complete\"}]]}],false]}]]}]]}],null],null],null]},[null,[\"$\",\"$L8\",null,{\"parallelRouterKey\":\"children\",\"segmentPath\":[\"children\",\"learn\",\"children\",\"$9\",\"children\"],\"error\":\"$undefined\",\"errorStyles\":\"$undefined\",\"errorScripts\":\"$undefined\",\"template\":[\"$\",\"$La\",null,{}],\"templateStyles\":\"$undefined\",\"templateScripts\":\"$undefined\",\"notFound\":\"$undefined\",\"notFoundStyles\":\"$undefined\"}]],null]},[null,[\"$\",\"$L8\",null,{\"parallelRouterKey\":\"children\",\"segmentPath\":[\"children\",\"learn\",\"children\"],\"error\":\"$undefined\",\"errorStyles\":\"$undefined\",\"errorScripts\":\"$undefined\",\"template\":[\"$\",\"$La\",null,{}],\"templateStyles\":\"$undefined\",\"templateScripts\":\"$undefined\",\"notFound\":\"$undefined\",\"notFoundStyles\":\"$undefined\"}]],null]},[[[[\"$\",\"link\",\"0\",{\"rel\":\"stylesheet\",\"href\":\"/interview/_next/static/css/387024c6a2216908.css\",\"precedence\":\"next\",\"crossOrigin\":\"$undefined\"}]],[\"$\",\"$Lb\",null,{\"children\":[\"$\",\"$L8\",null,{\"parallelRouterKey\":\"children\",\"segmentPath\":[\"children\"],\"error\":\"$undefined\",\"errorStyles\":\"$undefined\",\"errorScripts\":\"$undefined\",\"template\":[\"$\",\"$La\",null,{}],\"templateStyles\":\"$undefined\",\"templateScripts\":\"$undefined\",\"notFound\":[[\"$\",\"title\",null,{\"children\":\"404: This page could not be found.\"}],[\"$\",\"div\",null,{\"style\":{\"fontFamily\":\"system-ui,\\\"Segoe UI\\\",Roboto,Helvetica,Arial,sans-serif,\\\"Apple Color Emoji\\\",\\\"Segoe UI Emoji\\\"\",\"height\":\"100vh\",\"textAlign\":\"center\",\"display\":\"flex\",\"flexDirection\":\"column\",\"alignItems\":\"center\",\"justifyContent\":\"center\"},\"children\":[\"$\",\"div\",null,{\"children\":[[\"$\",\"style\",null,{\"dangerouslySetInnerHTML\":{\"__html\":\"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}\"}}],[\"$\",\"h1\",null,{\"className\":\"next-error-h1\",\"style\":{\"display\":\"inline-block\",\"margin\":\"0 20px 0 0\",\"padding\":\"0 23px 0 0\",\"fontSize\":24,\"fontWeight\":500,\"verticalAlign\":\"top\",\"lineHeight\":\"49px\"},\"children\":\"404\"}],[\"$\",\"div\",null,{\"style\":{\"display\":\"inline-block\"},\"children\":[\"$\",\"h2\",null,{\"style\":{\"fontSize\":14,\"fontWeight\":400,\"lineHeight\":\"49px\",\"margin\":0},\"children\":\"This page could not be found.\"}]}]]}]}]],\"notFoundStyles\":[]}],\"params\":{}}]],null],null],\"couldBeIntercepted\":false,\"initialHead\":[null,\"$Lc\"],\"globalErrorComponent\":\"$d\",\"missingSlots\":\"$We\"}]\n"])</script><script>self.__next_f.push([1,"c:[[\"$\",\"meta\",\"0\",{\"name\":\"viewport\",\"content\":\"width=device-width, initial-scale=1\"}],[\"$\",\"meta\",\"1\",{\"charSet\":\"utf-8\"}],[\"$\",\"meta\",\"2\",{\"name\":\"next-size-adjust\"}]]\n4:null\n"])</script></body></html>

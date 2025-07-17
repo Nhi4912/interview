@@ -1,0 +1,608 @@
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><meta name="viewport" content="width=device-width, initial-scale=1"/><link rel="preload" href="/interview/_next/static/media/e4af272ccee01ff0-s.p.woff2" as="font" crossorigin="" type="font/woff2"/><link rel="stylesheet" href="/interview/_next/static/css/387024c6a2216908.css" data-precedence="next"/><link rel="preload" as="script" fetchPriority="low" href="/interview/_next/static/chunks/webpack-be7d7df45533bffc.js"/><script src="/interview/_next/static/chunks/fd9d1056-6922f449a204c2cc.js" async=""></script><script src="/interview/_next/static/chunks/117-e7ecc085ce9cfab3.js" async=""></script><script src="/interview/_next/static/chunks/main-app-b06be5f3411c20c3.js" async=""></script><script src="/interview/_next/static/chunks/918-3273b83890f10546.js" async=""></script><script src="/interview/_next/static/chunks/972-011bba60ed155615.js" async=""></script><script src="/interview/_next/static/chunks/930-3262a6c9c5acace4.js" async=""></script><script src="/interview/_next/static/chunks/app/learn/%5Btopic%5D/page-4ab144227f7a7b3e.js" async=""></script><script src="/interview/_next/static/chunks/710-dfaa11b4dff08f8e.js" async=""></script><script src="/interview/_next/static/chunks/233-3e0c1d820a17eca9.js" async=""></script><script src="/interview/_next/static/chunks/app/layout-333f4adcd11f8f39.js" async=""></script><title>Frontend Interview Prep 2025 - Big Tech Interview Guide</title><meta name="description" content="Comprehensive frontend interview preparation for Big Tech companies including React, TypeScript, algorithms, and system design."/><link rel="icon" href="/favicon.ico"/><meta name="theme-color" content="#1a1a1a"/><meta property="og:title" content="Frontend Interview Prep 2025"/><meta property="og:description" content="Complete guide for frontend engineers targeting Big Tech companies"/><meta property="og:type" content="website"/><link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous"/><meta name="next-size-adjust"/><script src="/interview/_next/static/chunks/polyfills-42372ed130431b0a.js" noModule=""></script><style data-styled="" data-styled-version="6.1.19">*{margin:0;padding:0;box-sizing:border-box;}/*!sc*/
+html{font-size:16px;line-height:1.5;scroll-behavior:smooth;}/*!sc*/
+body{font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;font-size:1rem;line-height:1.5;color:#1e293b;background-color:#ffffff;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;}/*!sc*/
+h1,h2,h3,h4,h5,h6{font-weight:700;line-height:1.25;margin-bottom:0.5em;}/*!sc*/
+h1{font-size:3rem;}/*!sc*/
+@media (max-width: 768px){h1{font-size:2.25rem;}}/*!sc*/
+h2{font-size:2.25rem;}/*!sc*/
+@media (max-width: 768px){h2{font-size:1.875rem;}}/*!sc*/
+h3{font-size:1.875rem;}/*!sc*/
+@media (max-width: 768px){h3{font-size:1.5rem;}}/*!sc*/
+h4{font-size:1.5rem;}/*!sc*/
+@media (max-width: 768px){h4{font-size:1.25rem;}}/*!sc*/
+h5{font-size:1.25rem;}/*!sc*/
+h6{font-size:1.125rem;}/*!sc*/
+p{margin-bottom:1rem;line-height:1.75;}/*!sc*/
+a{color:#3b82f6;text-decoration:none;transition:color 0.15s ease;}/*!sc*/
+a:hover{color:#2563eb;}/*!sc*/
+a:focus{outline:2px solid #3b82f6;outline-offset:2px;}/*!sc*/
+button{cursor:pointer;border:none;background:none;font-family:inherit;font-size:inherit;}/*!sc*/
+button:disabled{cursor:not-allowed;opacity:0.6;}/*!sc*/
+button:focus{outline:2px solid #3b82f6;outline-offset:2px;}/*!sc*/
+input,textarea,select{font-family:inherit;font-size:inherit;}/*!sc*/
+input:focus,textarea:focus,select:focus{outline:2px solid #3b82f6;outline-offset:2px;}/*!sc*/
+img{max-width:100%;height:auto;}/*!sc*/
+ul,ol{margin-bottom:1rem;padding-left:1.5rem;}/*!sc*/
+li{margin-bottom:0.25rem;}/*!sc*/
+blockquote{margin:1rem 0;padding:1rem;border-left:4px solid #3b82f6;background-color:#f1f5f9;font-style:italic;}/*!sc*/
+code{font-family:SFMono-Regular,Consolas,"Liberation Mono",Menlo,monospace;font-size:0.9em;background-color:#f1f5f9;padding:0.2em 0.4em;border-radius:0.25rem;}/*!sc*/
+pre{background-color:#f1f5f9;padding:1rem;border-radius:0.5rem;overflow-x:auto;margin-bottom:1rem;}/*!sc*/
+pre code{background:none;padding:0;}/*!sc*/
+table{width:100%;border-collapse:collapse;margin-bottom:1rem;}/*!sc*/
+th,td{padding:0.75rem;text-align:left;border-bottom:1px solid #e2e8f0;}/*!sc*/
+th{font-weight:600;background-color:#f1f5f9;}/*!sc*/
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0, 0, 0, 0);white-space:nowrap;border:0;}/*!sc*/
+.skip-link{position:absolute;top:-40px;left:6px;background:#3b82f6;color:white;padding:8px;text-decoration:none;border-radius:4px;z-index:100;}/*!sc*/
+.skip-link:focus{top:6px;}/*!sc*/
+::-webkit-scrollbar{width:8px;height:8px;}/*!sc*/
+::-webkit-scrollbar-track{background:#f1f5f9;}/*!sc*/
+::-webkit-scrollbar-thumb{background:#94a3b8;border-radius:4px;}/*!sc*/
+::-webkit-scrollbar-thumb:hover{background:#64748b;}/*!sc*/
+::selection{background:#3b82f6;color:white;}/*!sc*/
+.focus-visible{outline:2px solid #3b82f6;outline-offset:2px;}/*!sc*/
+.fade-in{opacity:0;animation:fadeIn 0.3s ease forwards;}/*!sc*/
+.slide-up{transform:translateY(20px);opacity:0;animation:slideUp 0.3s ease forwards;}/*!sc*/
+@keyframes fadeIn{to{opacity:1;}}/*!sc*/
+@keyframes slideUp{to{transform:translateY(0);opacity:1;}}/*!sc*/
+@media print{*{background:white!important;color:black!important;box-shadow:none!important;text-shadow:none!important;}a,a:visited{text-decoration:underline;}h1,h2,h3,h4,h5,h6{break-after:avoid;}pre,blockquote{border:1px solid #999;break-inside:avoid;}img{max-width:100%!important;}@page{margin:0.5in;}}/*!sc*/
+data-styled.g54[id="sc-global-kxA-Ddz1"]{content:"sc-global-kxA-Ddz1,"}/*!sc*/
+.bzkCfv{position:fixed;top:0;width:100%;z-index:1020;background:transparent;backdrop-filter:blur(10px);border-bottom:1px solid transparent;transition:all 0.3s ease;}/*!sc*/
+data-styled.g55[id="sc-ibashp"]{content:"bzkCfv,"}/*!sc*/
+.kNdevN{max-width:1200px;margin:0 auto;padding:0 2rem;display:flex;align-items:center;justify-content:space-between;height:70px;}/*!sc*/
+data-styled.g56[id="sc-blIAwI"]{content:"kNdevN,"}/*!sc*/
+.dHtnqP{display:flex;align-items:center;gap:0.5rem;font-size:1.5rem;font-weight:700;color:#3b82f6;text-decoration:none;cursor:pointer;}/*!sc*/
+.dHtnqP:hover{color:#2563eb;}/*!sc*/
+data-styled.g57[id="sc-itBLYH"]{content:"dHtnqP,"}/*!sc*/
+.gjGOer{display:flex;align-items:center;gap:2rem;}/*!sc*/
+@media (max-width: 768px){.gjGOer{display:none;}}/*!sc*/
+data-styled.g58[id="sc-bEjUoa"]{content:"gjGOer,"}/*!sc*/
+.eJvFQF{color:#1e293b;font-weight:500;text-decoration:none;transition:color 0.15s ease;position:relative;}/*!sc*/
+.eJvFQF:hover{color:#3b82f6;}/*!sc*/
+.eJvFQF:after{content:'';position:absolute;bottom:-5px;left:0;width:0;height:2px;background:#3b82f6;transition:width 0.15s ease;}/*!sc*/
+.eJvFQF:hover:after{width:100%;}/*!sc*/
+data-styled.g59[id="sc-boKDdR"]{content:"eJvFQF,"}/*!sc*/
+.dxhQGU{display:none;background:none;border:none;color:#1e293b;cursor:pointer;padding:0.5rem;}/*!sc*/
+@media (max-width: 768px){.dxhQGU{display:block;}}/*!sc*/
+data-styled.g60[id="sc-fOOuSg"]{content:"dxhQGU,"}/*!sc*/
+.crUfVg{display:flex;align-items:center;gap:0.5rem;background:#f1f5f9;border:1px solid #e2e8f0;border-radius:0.5rem;padding:0.5rem 1rem;color:#64748b;font-size:0.9rem;transition:all 0.15s ease;}/*!sc*/
+.crUfVg:hover{background:#ffffff;border-color:#3b82f6;}/*!sc*/
+data-styled.g64[id="sc-lcItFd"]{content:"crUfVg,"}/*!sc*/
+.dvUWLf{background:#1e293b;color:white;padding:3rem 0 1rem;margin-top:auto;}/*!sc*/
+data-styled.g65[id="sc-cpclqO"]{content:"dvUWLf,"}/*!sc*/
+.eoKQFL{max-width:1200px;margin:0 auto;padding:0 2rem;}/*!sc*/
+data-styled.g66[id="sc-dTWiOz"]{content:"eoKQFL,"}/*!sc*/
+.QGRVy{display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:2rem;margin-bottom:2rem;}/*!sc*/
+@media (max-width: 768px){.QGRVy{grid-template-columns:1fr 1fr;gap:1.5rem;}}/*!sc*/
+@media (max-width: 480px){.QGRVy{grid-template-columns:1fr;}}/*!sc*/
+data-styled.g67[id="sc-eJoXEY"]{content:"QGRVy,"}/*!sc*/
+.khBOid h3{font-size:1.1rem;font-weight:600;margin-bottom:1rem;color:white;}/*!sc*/
+.khBOid ul{list-style:none;padding:0;margin:0;}/*!sc*/
+.khBOid li{margin-bottom:0.5rem;}/*!sc*/
+.khBOid a{color:rgba(255, 255, 255, 0.7);text-decoration:none;transition:color 0.15s ease;}/*!sc*/
+.khBOid a:hover{color:white;}/*!sc*/
+data-styled.g68[id="sc-goiVcJ"]{content:"khBOid,"}/*!sc*/
+.cbjBRw{display:flex;align-items:center;gap:0.5rem;font-size:1.2rem;font-weight:700;margin-bottom:1rem;color:white;}/*!sc*/
+data-styled.g69[id="sc-gSifMm"]{content:"cbjBRw,"}/*!sc*/
+.jbdjPj{color:rgba(255, 255, 255, 0.7);line-height:1.6;margin-bottom:1rem;}/*!sc*/
+data-styled.g70[id="sc-ixcdjX"]{content:"jbdjPj,"}/*!sc*/
+.bNxBtJ{display:flex;gap:1rem;}/*!sc*/
+.bNxBtJ a{display:flex;align-items:center;justify-content:center;width:40px;height:40px;background:rgba(255, 255, 255, 0.1);border-radius:0.5rem;color:rgba(255, 255, 255, 0.7);transition:all 0.15s ease;}/*!sc*/
+.bNxBtJ a:hover{background:rgba(255, 255, 255, 0.2);color:white;}/*!sc*/
+data-styled.g71[id="sc-eQaGpr"]{content:"bNxBtJ,"}/*!sc*/
+.cEvBef{border-top:1px solid rgba(255, 255, 255, 0.1);padding-top:2rem;display:flex;justify-content:space-between;align-items:center;}/*!sc*/
+@media (max-width: 768px){.cEvBef{flex-direction:column;gap:1rem;text-align:center;}}/*!sc*/
+data-styled.g72[id="sc-VLMBG"]{content:"cEvBef,"}/*!sc*/
+.elpMJS{color:rgba(255, 255, 255, 0.7);margin:0;font-size:0.9rem;}/*!sc*/
+data-styled.g73[id="sc-gXbNzB"]{content:"elpMJS,"}/*!sc*/
+.lkzbbv{display:flex;gap:2rem;}/*!sc*/
+@media (max-width: 480px){.lkzbbv{flex-direction:column;gap:1rem;}}/*!sc*/
+.lkzbbv a{color:rgba(255, 255, 255, 0.7);text-decoration:none;font-size:0.9rem;transition:color 0.15s ease;}/*!sc*/
+.lkzbbv a:hover{color:white;}/*!sc*/
+data-styled.g74[id="sc-dcMTLQ"]{content:"lkzbbv,"}/*!sc*/
+.crtZmr{color:#1e293b;line-height:1.6;}/*!sc*/
+.crtZmr h1,.crtZmr h2,.crtZmr h3,.crtZmr h4,.crtZmr h5,.crtZmr h6{color:#1e293b;margin-top:2rem;margin-bottom:1rem;font-weight:600;}/*!sc*/
+.crtZmr h1{font-size:2rem;border-bottom:2px solid #e2e8f0;padding-bottom:0.5rem;}/*!sc*/
+.crtZmr h2{font-size:1.5rem;border-bottom:1px solid #e2e8f0;padding-bottom:0.3rem;}/*!sc*/
+.crtZmr h3{font-size:1.25rem;}/*!sc*/
+.crtZmr h4{font-size:1.1rem;}/*!sc*/
+.crtZmr p{margin-bottom:1rem;color:#64748b;}/*!sc*/
+.crtZmr a{color:#3b82f6;text-decoration:none;}/*!sc*/
+.crtZmr a:hover{text-decoration:underline;}/*!sc*/
+.crtZmr ul,.crtZmr ol{margin-bottom:1rem;padding-left:1.5rem;}/*!sc*/
+.crtZmr ul li,.crtZmr ol li{margin-bottom:0.5rem;color:#64748b;}/*!sc*/
+.crtZmr blockquote{border-left:4px solid #3b82f6;padding-left:1rem;margin:1rem 0;font-style:italic;color:#64748b;background:#f1f5f9;padding:1rem;border-radius:0.5rem;}/*!sc*/
+.crtZmr code{background:#f1f5f9;padding:0.2rem 0.4rem;border-radius:0.25rem;font-family:SFMono-Regular,Consolas,"Liberation Mono",Menlo,monospace;font-size:0.9em;color:#f59e0b;}/*!sc*/
+.crtZmr pre{background:#ffffff;border:1px solid #e2e8f0;border-radius:0.5rem;padding:1rem;margin:1rem 0;overflow-x:auto;}/*!sc*/
+.crtZmr pre code{background:none;padding:0;color:#1e293b;font-size:0.9rem;}/*!sc*/
+.crtZmr table{width:100%;border-collapse:collapse;margin:1rem 0;}/*!sc*/
+.crtZmr table th,.crtZmr table td{border:1px solid #e2e8f0;padding:0.5rem;text-align:left;}/*!sc*/
+.crtZmr table th{background:#ffffff;font-weight:600;}/*!sc*/
+.crtZmr table tr:nth-child(even){background:#f1f5f9;}/*!sc*/
+.crtZmr hr{border:none;height:1px;background:#e2e8f0;margin:2rem 0;}/*!sc*/
+.crtZmr .highlight{background:#3b82f620;padding:0.2rem 0.4rem;border-radius:0.25rem;font-weight:600;}/*!sc*/
+.crtZmr .hljs{background:#ffffff;color:#1e293b;}/*!sc*/
+.crtZmr .hljs-keyword{color:#3b82f6;font-weight:600;}/*!sc*/
+.crtZmr .hljs-string{color:#10b981;}/*!sc*/
+.crtZmr .hljs-function{color:#f59e0b;}/*!sc*/
+.crtZmr .hljs-comment{color:#94a3b8;font-style:italic;}/*!sc*/
+.crtZmr .hljs-number{color:#f59e0b;}/*!sc*/
+.crtZmr .hljs-variable{color:#1e293b;}/*!sc*/
+.crtZmr .hljs-title{color:#f59e0b;font-weight:600;}/*!sc*/
+data-styled.g75[id="sc-bBhMX"]{content:"crtZmr,"}/*!sc*/
+</style></head><body class="__className_6eac61"><div style="min-height:100vh;display:flex;flex-direction:column"><nav class="sc-ibashp bzkCfv"><div class="sc-blIAwI kNdevN"><a href="/interview"><a class="sc-itBLYH dHtnqP"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-code "><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>Frontend Interview Prep</a></a><div class="sc-bEjUoa gjGOer"><a href="/interview/problems"><a class="sc-boKDdR eJvFQF">Problems</a></a><a href="/interview/learn"><a class="sc-boKDdR eJvFQF">Learn</a></a><a href="/interview/study-guide"><a class="sc-boKDdR eJvFQF">Study Guide</a></a><a href="/interview/system-design"><a class="sc-boKDdR eJvFQF">System Design</a></a><a href="/interview/performance"><a class="sc-boKDdR eJvFQF">Performance</a></a><a href="/interview/accessibility"><a class="sc-boKDdR eJvFQF">Accessibility</a></a><a href="/interview/interview-tips"><a class="sc-boKDdR eJvFQF">Interview Tips</a></a><button class="sc-lcItFd crUfVg"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-search "><circle cx="11" cy="11" r="8"></circle><path d="m21 21-4.3-4.3"></path></svg>Search</button></div><button class="sc-fOOuSg dxhQGU"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-menu "><line x1="4" x2="20" y1="12" y2="12"></line><line x1="4" x2="20" y1="6" y2="6"></line><line x1="4" x2="20" y1="18" y2="18"></line></svg></button></div></nav><main style="flex:1"><div class="max-w-6xl mx-auto px-8 py-24"><div class="flex items-center gap-4 mb-8"><a href="/interview/learn"><button class="flex items-center gap-2 bg-gray-100 border border-gray-300 text-gray-700 px-4 py-3 rounded-md font-medium hover:bg-gray-200 transition-colors"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-left "><path d="m12 19-7-7 7-7"></path><path d="M19 12H5"></path></svg>Back to Learn</button></a></div><div class="bg-white border border-gray-200 rounded-lg p-8 mb-8"><div class="flex items-center justify-between mb-4"><h1 class="text-3xl font-bold text-gray-900">Binary Tree Zigzag Level Order Traversal</h1><div class="flex gap-4"><button class="flex items-center gap-2 bg-transparent text-gray-700 border border-gray-300 px-6 py-3 rounded-md font-semibold hover:bg-gray-50 transition-colors"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-star "><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>Bookmark</button><button class="flex items-center gap-2 bg-transparent text-gray-700 border border-gray-300 px-6 py-3 rounded-md font-semibold hover:bg-gray-50 transition-colors"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-share2 "><circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><line x1="8.59" x2="15.42" y1="13.51" y2="17.49"></line><line x1="15.41" x2="8.59" y1="6.51" y2="10.49"></line></svg>Share</button></div></div><div class="flex gap-8 mb-4"><div class="flex items-center gap-2 text-sm text-gray-600"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-clock "><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>2-3 hours</div><span class="px-3 py-1 rounded-full text-xs font-semibold text-white bg-red-500">Hard</span><span class="px-3 py-1 rounded-full text-xs font-semibold bg-blue-100 text-blue-700">Tree/Graph</span></div><div class="flex flex-wrap gap-2 mb-4"><span class="bg-gray-100 text-gray-600 px-3 py-1 rounded-md text-xs font-medium">Tree/Graph</span></div><p class="text-lg text-gray-700 leading-relaxed"> *  * Given the root of a binary tree, return the zigzag level order traversal of its nodes&#x27; values.  * (i.e., from left to right, then right to left for the next level and alternate between).  *  * I...</p></div><div class="grid grid-cols-1 lg:grid-cols-3 gap-8"><div class="lg:col-span-2"><div class="bg-white border border-gray-200 rounded-lg p-8"><div class="sc-bBhMX crtZmr"><h1 id="binary-tree-zigzag-level-order-traversal" node="[object Object]">Binary Tree Zigzag Level Order Traversal</h1>
+<h2 id="problem-description" node="[object Object]">Problem Description</h2>
+<ul>
+<li>
+<ul>
+<li>Given the root of a binary tree, return the zigzag level order traversal of its nodes&#x27; values.  * (i.e., from left to right, then right to left for the next level and alternate between).  *  * Input: root = [3,9,20,null,null,15,7]</li>
+</ul>
+</li>
+</ul>
+<h2 id="solutions" node="[object Object]">Solutions</h2>
+<p>{% raw %}
+/**</p>
+<ul>
+<li>Binary Tree Zigzag Level Order Traversal</li>
+<li></li>
+<li>Problem: <a href="https://leetcode.com/problems/binary-tree-zigzag-level-order-traversal/" target="_blank" rel="noopener noreferrer" node="[object Object]">https://leetcode.com/problems/binary-tree-zigzag-level-order-traversal/</a></li>
+<li></li>
+<li>Given the root of a binary tree, return the zigzag level order traversal of its nodes&#x27; values.</li>
+<li>(i.e., from left to right, then right to left for the next level and alternate between).</li>
+<li></li>
+<li>Example 1:</li>
+<li>Input: root = [3,9,20,null,null,15,7]</li>
+<li>Output: [[3],[20,9],[15,7]]</li>
+<li></li>
+<li>Example 2:</li>
+<li>Input: root = [1]</li>
+<li>Output: [[1]]</li>
+<li></li>
+<li>Example 3:</li>
+<li>Input: root = []</li>
+<li>Output: []</li>
+<li></li>
+<li>Constraints:</li>
+<li>
+<ul>
+<li>The number of nodes in the tree is in the range [0, 2000].</li>
+</ul>
+</li>
+<li>
+<ul>
+<li>-100 &lt;= Node.val &lt;= 100</li>
+</ul>
+</li>
+<li></li>
+<li>Solution Approach:</li>
+<li>
+<ol>
+<li>Use BFS with level tracking</li>
+</ol>
+</li>
+<li>
+<ol start="2">
+<li>Reverse alternate levels</li>
+</ol>
+</li>
+<li>
+<ol start="3">
+<li>Use deque for efficient operations</li>
+</ol>
+</li>
+<li>
+<ol start="4">
+<li>Track level number to determine direction</li>
+</ol>
+</li>
+<li></li>
+<li>Time Complexity: O(n) where n is the number of nodes</li>
+<li>Space Complexity: O(n) for storing the result
+*/</li>
+</ul>
+<p>/**</p>
+<ul>
+<li>TreeNode class definition</li>
+<li></li>
+<li>Định nghĩa lớp TreeNode
+*/
+class TreeNode {
+val: number;
+left: TreeNode | null;
+right: TreeNode | null;</li>
+</ul>
+<p>constructor(
+val: number = 0,
+left: TreeNode | null = null,
+right: TreeNode | null = null
+) {
+this.val = val;
+this.left = left;
+this.right = right;
+}
+}</p>
+<p>/**</p>
+<ul>
+<li>Zigzag Level Order Traversal - BFS Solution</li>
+<li></li>
+<li>Giải pháp BFS cho bài toán Duyệt cây theo mức zigzag</li>
+<li></li>
+<li>@param root - Root of the binary tree</li>
+<li>@returns Array of arrays representing zigzag level order traversal
+*/
+function zigzagLevelOrder(root: TreeNode | null): number[][] {
+if (!root) return [];</li>
+</ul>
+<p>const result: number[][] = [];
+const queue: { node: TreeNode; level: number }[] = [{ node: root, level: 0 }];</p>
+<p>while (queue.length &gt; 0) {
+const { node, level } = queue.shift()!;</p>
+<pre><pre><code class="hljs undefined">// Initialize level array if needed
+if (result.length &lt;= level) {
+  result.push([]);
+}
+
+// Add node to current level
+result[level].push(node.val);
+
+// Add children to queue
+if (node.left) {
+  queue.push({ node: node.left, level: level + 1 });
+}
+if (node.right) {
+  queue.push({ node: node.right, level: level + 1 });
+}
+</code></pre></pre>
+<p>}</p>
+<p>// Reverse odd levels for zigzag effect
+for (let i = 1; i &lt; result.length; i += 2) {
+result[i].reverse();
+}</p>
+<p>return result;
+}</p>
+<p>/**</p>
+<ul>
+<li>Alternative Solution: Using Two Stacks</li>
+<li></li>
+<li>Giải pháp thay thế: Sử dụng hai stack</li>
+<li></li>
+<li>@param root - Root of the binary tree</li>
+<li>@returns Array of arrays representing zigzag level order traversal
+*/
+function zigzagLevelOrderTwoStacks(root: TreeNode | null): number[][] {
+if (!root) return [];</li>
+</ul>
+<p>const result: number[][] = [];
+const currentLevel: TreeNode[] = [root];
+const nextLevel: TreeNode[] = [];
+let leftToRight = true;</p>
+<p>while (currentLevel.length &gt; 0) {
+const levelResult: number[] = [];</p>
+<pre><pre><code class="hljs undefined">while (currentLevel.length &gt; 0) {
+  const node = currentLevel.pop()!;
+  levelResult.push(node.val);
+
+  if (leftToRight) {
+    if (node.left) nextLevel.push(node.left);
+    if (node.right) nextLevel.push(node.right);
+  } else {
+    if (node.right) nextLevel.push(node.right);
+    if (node.left) nextLevel.push(node.left);
+  }
+}
+
+result.push(levelResult);
+
+// Swap stacks and direction
+[currentLevel, nextLevel] = [nextLevel, currentLevel];
+leftToRight = !leftToRight;
+</code></pre></pre>
+<p>}</p>
+<p>return result;
+}</p>
+<p>/**</p>
+<ul>
+<li>Solution with Level Information</li>
+<li></li>
+<li>Giải pháp với thông tin mức</li>
+<li></li>
+<li>@param root - Root of the binary tree</li>
+<li>@returns Object containing zigzag traversal and level information
+*/
+function zigzagLevelOrderWithInfo(root: TreeNode | null): {
+traversal: number[][];
+levelInfo: Array&lt;{ level: number; direction: string; nodeCount: number }&gt;;
+} {
+if (!root) return { traversal: [], levelInfo: [] };</li>
+</ul>
+<p>const traversal: number[][] = [];
+const levelInfo: Array&lt;{
+level: number;
+direction: string;
+nodeCount: number;
+}&gt; = [];
+const queue: { node: TreeNode; level: number }[] = [{ node: root, level: 0 }];</p>
+<p>while (queue.length &gt; 0) {
+const { node, level } = queue.shift()!;</p>
+<pre><pre><code class="hljs undefined">if (traversal.length &lt;= level) {
+  traversal.push([]);
+  levelInfo.push({
+    level,
+    direction: level % 2 === 0 ? &quot;left-to-right&quot; : &quot;right-to-left&quot;,
+    nodeCount: 0,
+  });
+}
+
+traversal[level].push(node.val);
+levelInfo[level].nodeCount++;
+
+if (node.left) {
+  queue.push({ node: node.left, level: level + 1 });
+}
+if (node.right) {
+  queue.push({ node: node.right, level: level + 1 });
+}
+</code></pre></pre>
+<p>}</p>
+<p>// Reverse odd levels
+for (let i = 1; i &lt; traversal.length; i += 2) {
+traversal[i].reverse();
+}</p>
+<p>return { traversal, levelInfo };
+}</p>
+<p>/**</p>
+<ul>
+<li>Recursive Solution with Level Tracking</li>
+<li></li>
+<li>Giải pháp đệ quy với theo dõi mức</li>
+<li></li>
+<li>@param root - Root of the binary tree</li>
+<li>@returns Array of arrays representing zigzag level order traversal
+*/
+function zigzagLevelOrderRecursive(root: TreeNode | null): number[][] {
+const result: number[][] = [];</li>
+</ul>
+<p>function dfs(node: TreeNode | null, level: number): void {
+if (!node) return;</p>
+<pre><pre><code class="hljs undefined">if (result.length &lt;= level) {
+  result.push([]);
+}
+
+// Add node to current level
+result[level].push(node.val);
+
+// Recursive calls
+dfs(node.left, level + 1);
+dfs(node.right, level + 1);
+</code></pre></pre>
+<p>}</p>
+<p>dfs(root, 0);</p>
+<p>// Reverse odd levels
+for (let i = 1; i &lt; result.length; i += 2) {
+result[i].reverse();
+}</p>
+<p>return result;
+}</p>
+<p>/**</p>
+<ul>
+<li>Solution with Visualization</li>
+<li></li>
+<li>Giải pháp với hiển thị</li>
+<li></li>
+<li>@param root - Root of the binary tree</li>
+<li>@returns Object containing traversal and visualization
+*/
+function zigzagLevelOrderWithVisualization(root: TreeNode | null): {
+traversal: number[][];
+visualization: string;
+} {
+const { traversal, levelInfo } = zigzagLevelOrderWithInfo(root);</li>
+</ul>
+<p>let visualization = &quot;Zigzag Level Order Traversal:\n&quot;;
+visualization += &quot;Duyệt cây theo mức zigzag:\n\n&quot;;</p>
+<p>for (let i = 0; i &lt; traversal.length; i++) {
+const level = traversal[i];
+const info = levelInfo[i];</p>
+<pre><pre><code class="hljs undefined">visualization += `Level ${i} (${info.direction}): [${level.join(&quot;, &quot;)}]\n`;
+visualization += `Mức ${i} (${info.direction}): [${level.join(&quot;, &quot;)}]\n`;
+visualization += `Node count: ${info.nodeCount}\n`;
+visualization += `Số nút: ${info.nodeCount}\n\n`;
+</code></pre></pre>
+<p>}</p>
+<p>return { traversal, visualization };
+}</p>
+<p>/**</p>
+<ul>
+<li>Utility function to create a binary tree from array</li>
+<li></li>
+<li>Hàm tiện ích để tạo cây nhị phân từ mảng</li>
+<li></li>
+<li>@param arr - Array representation of the tree</li>
+<li>@returns Root of the created tree
+*/
+function createTreeFromArray(arr: (number | null)[]): TreeNode | null {
+if (arr.length === 0 || arr[0] === null) return null;</li>
+</ul>
+<p>const root = new TreeNode(arr[0]!);
+const queue: TreeNode[] = [root];
+let i = 1;</p>
+<p>while (queue.length &gt; 0 &amp;&amp; i &lt; arr.length) {
+const node = queue.shift()!;</p>
+<pre><pre><code class="hljs undefined">// Left child
+if (i &lt; arr.length &amp;&amp; arr[i] !== null) {
+  node.left = new TreeNode(arr[i]!);
+  queue.push(node.left);
+}
+i++;
+
+// Right child
+if (i &lt; arr.length &amp;&amp; arr[i] !== null) {
+  node.right = new TreeNode(arr[i]!);
+  queue.push(node.right);
+}
+i++;
+</code></pre></pre>
+<p>}</p>
+<p>return root;
+}</p>
+<p>// Test cases / Các trường hợp kiểm thử
+function runTests() {
+console.log(&quot;=== Binary Tree Zigzag Level Order Traversal Tests ===&quot;);
+console.log(&quot;=== Kiểm thử bài toán Duyệt cây theo mức zigzag ===\n&quot;);</p>
+<p>const testCases = [
+{
+name: &quot;Example 1: Standard tree&quot;,
+input: [3, 9, 20, null, null, 15, 7],
+expected: [[3], [20, 9], [15, 7]],
+description: &quot;Standard binary tree with 3 levels&quot;,
+},
+{
+name: &quot;Example 2: Single node&quot;,
+input: [1],
+expected: [[1]],
+description: &quot;Tree with single node&quot;,
+},
+{
+name: &quot;Example 3: Empty tree&quot;,
+input: [],
+expected: [],
+description: &quot;Empty tree&quot;,
+},
+{
+name: &quot;Left-skewed tree&quot;,
+input: [1, 2, null, 3, null, 4],
+expected: [[1], [2], [3], [4]],
+description: &quot;Tree skewed to the left&quot;,
+},
+{
+name: &quot;Right-skewed tree&quot;,
+input: [1, null, 2, null, 3, null, 4],
+expected: [[1], [2], [3], [4]],
+description: &quot;Tree skewed to the right&quot;,
+},
+{
+name: &quot;Complete binary tree&quot;,
+input: [1, 2, 3, 4, 5, 6, 7],
+expected: [[1], [3, 2], [4, 5, 6, 7]],
+description: &quot;Complete binary tree&quot;,
+},
+{
+name: &quot;Unbalanced tree&quot;,
+input: [1, 2, 3, 4, null, null, 5],
+expected: [[1], [3, 2], [4, 5]],
+description: &quot;Unbalanced tree&quot;,
+},
+];</p>
+<p>for (const testCase of testCases) {
+console.log(<pre><code class="hljs undefined">Test: ${testCase.name}</code></pre>);
+console.log(<pre><code class="hljs undefined">Input: [${testCase.input.join(&quot;, &quot;)}]</code></pre>);
+console.log(<pre><code class="hljs undefined">Expected: ${JSON.stringify(testCase.expected)}</code></pre>);
+console.log(<pre><code class="hljs undefined">Description: ${testCase.description}</code></pre>);</p>
+<pre><pre><code class="hljs undefined">const root = createTreeFromArray(testCase.input);
+
+// Test BFS solution
+const result1 = zigzagLevelOrder(root);
+const passed1 =
+  JSON.stringify(result1) === JSON.stringify(testCase.expected);
+
+console.log(`BFS Result: ${JSON.stringify(result1)}`);
+console.log(`BFS Status: ${passed1 ? &quot;✅ PASSED&quot; : &quot;❌ FAILED&quot;}`);
+
+// Test Two Stacks solution
+const result2 = zigzagLevelOrderTwoStacks(root);
+const passed2 =
+  JSON.stringify(result2) === JSON.stringify(testCase.expected);
+
+console.log(`Two Stacks Result: ${JSON.stringify(result2)}`);
+console.log(`Two Stacks Status: ${passed2 ? &quot;✅ PASSED&quot; : &quot;❌ FAILED&quot;}`);
+
+// Test Recursive solution
+const result3 = zigzagLevelOrderRecursive(root);
+const passed3 =
+  JSON.stringify(result3) === JSON.stringify(testCase.expected);
+
+console.log(`Recursive Result: ${JSON.stringify(result3)}`);
+console.log(`Recursive Status: ${passed3 ? &quot;✅ PASSED&quot; : &quot;❌ FAILED&quot;}`);
+
+const allPassed = passed1 &amp;&amp; passed2 &amp;&amp; passed3;
+console.log(`All implementations match: ${allPassed ? &quot;✅ Yes&quot; : &quot;❌ No&quot;}`);
+
+console.log(&quot;---&quot;);
+</code></pre></pre>
+<p>}</p>
+<p>// Test with visualization
+console.log(&quot;\n=== Testing with Visualization ===&quot;);
+console.log(&quot;=== Kiểm thử với hiển thị ===\n&quot;);</p>
+<p>const testTree = createTreeFromArray([3, 9, 20, null, null, 15, 7]);
+const { traversal, visualization } =
+zigzagLevelOrderWithVisualization(testTree);</p>
+<p>console.log(visualization);</p>
+<p>// Test with level information
+console.log(&quot;\n=== Testing with Level Information ===&quot;);
+console.log(&quot;=== Kiểm thử với thông tin mức ===\n&quot;);</p>
+<p>const { traversal: traversal2, levelInfo } =
+zigzagLevelOrderWithInfo(testTree);</p>
+<p>console.log(&quot;Level Information:&quot;);
+console.log(&quot;Thông tin mức:&quot;);
+for (const info of levelInfo) {
+console.log(
+<pre><code class="hljs undefined">  Level ${info.level}: ${info.direction}, ${info.nodeCount} nodes</code></pre>
+);
+}</p>
+<p>// Performance comparison
+console.log(&quot;\n=== Performance Comparison ===&quot;);
+console.log(&quot;=== So sánh hiệu suất ===\n&quot;);</p>
+<p>// Create a large tree
+const largeTreeArray: (number | null)[] = [];
+for (let i = 0; i &lt; 1000; i++) {
+largeTreeArray.push(i);
+}</p>
+<p>const largeTree = createTreeFromArray(largeTreeArray);</p>
+<p>console.log(&quot;Testing with large tree (1000 nodes)...&quot;);
+console.log(&quot;Kiểm thử với cây lớn (1000 nút)...&quot;);</p>
+<p>const start1 = performance.now();
+const result1 = zigzagLevelOrder(largeTree);
+const time1 = performance.now() - start1;</p>
+<p>const start2 = performance.now();
+const result2 = zigzagLevelOrderTwoStacks(largeTree);
+const time2 = performance.now() - start2;</p>
+<p>const start3 = performance.now();
+const result3 = zigzagLevelOrderRecursive(largeTree);
+const time3 = performance.now() - start3;</p>
+<p>console.log(<pre><code class="hljs undefined">BFS: ${time1.toFixed(4)}ms, Levels: ${result1.length}</code></pre>);
+console.log(<pre><code class="hljs undefined">Two Stacks: ${time2.toFixed(4)}ms, Levels: ${result2.length}</code></pre>);
+console.log(<pre><code class="hljs undefined">Recursive: ${time3.toFixed(4)}ms, Levels: ${result3.length}</code></pre>);</p>
+<p>const resultsMatch =
+JSON.stringify(result1) === JSON.stringify(result2) &amp;&amp;
+JSON.stringify(result2) === JSON.stringify(result3);
+console.log(<pre><code class="hljs undefined">Results match: ${resultsMatch ? &quot;✅ Yes&quot; : &quot;❌ No&quot;}</code></pre>);</p>
+<p>// Test edge cases
+console.log(&quot;\n=== Edge Cases Testing ===&quot;);
+console.log(&quot;=== Kiểm thử trường hợp đặc biệt ===\n&quot;);</p>
+<p>const edgeCases = [
+{ name: &quot;Null root&quot;, tree: null },
+{ name: &quot;Single node&quot;, tree: new TreeNode(42) },
+{ name: &quot;Two nodes&quot;, tree: new TreeNode(1, new TreeNode(2)) },
+{
+name: &quot;Three nodes&quot;,
+tree: new TreeNode(1, new TreeNode(2), new TreeNode(3)),
+},
+];</p>
+<p>for (const edgeCase of edgeCases) {
+const result = zigzagLevelOrder(edgeCase.tree);
+console.log(<pre><code class="hljs undefined">${edgeCase.name}: ${JSON.stringify(result)}</code></pre>);
+}
+}</p>
+<p>// Run tests if this file is executed directly
+if (require.main === module) {
+runTests();
+}</p>
+<p>export {
+TreeNode,
+zigzagLevelOrder,
+zigzagLevelOrderTwoStacks,
+zigzagLevelOrderWithInfo,
+zigzagLevelOrderRecursive,
+zigzagLevelOrderWithVisualization,
+createTreeFromArray,
+};
+{% endraw %}</p></div></div></div><div class="space-y-6"><div class="bg-white border border-gray-200 rounded-lg p-6"><h3 class="text-lg font-semibold text-gray-900 mb-4">Your Progress</h3><div class="w-full bg-gray-200 rounded-full h-2 mb-2"><div class="bg-blue-600 h-2 rounded-full" style="width:25%"></div></div><p class="text-sm text-gray-600">25% Complete</p></div></div></div></div></main><footer class="sc-cpclqO dvUWLf"><div class="sc-dTWiOz eoKQFL"><div class="sc-eJoXEY QGRVy"><div class="sc-goiVcJ khBOid"><div class="sc-gSifMm cbjBRw"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-code "><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>Frontend Interview Prep</div><p class="sc-ixcdjX jbdjPj">Comprehensive interview preparation for frontend engineers targeting Big Tech companies.</p><div class="sc-eQaGpr bNxBtJ"><a href="https://github.com" aria-label="GitHub"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-github "><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"></path><path d="M9 18c-4.51 2-5-2-7-2"></path></svg></a><a href="https://twitter.com" aria-label="Twitter"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-twitter "><path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"></path></svg></a><a href="https://linkedin.com" aria-label="LinkedIn"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-linkedin "><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect width="4" height="12" x="2" y="9"></rect><circle cx="4" cy="4" r="2"></circle></svg></a><a href="mailto:contact@example.com" aria-label="Email"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-mail "><rect width="20" height="16" x="2" y="4" rx="2"></rect><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path></svg></a></div></div><div class="sc-goiVcJ khBOid"><h3>Study Materials</h3><ul><li><a href="/algorithms">Algorithms</a></li><li><a href="/react">React &amp; Frontend</a></li><li><a href="/system-design">System Design</a></li><li><a href="/typescript">TypeScript</a></li><li><a href="/performance">Performance</a></li></ul></div><div class="sc-goiVcJ khBOid"><h3>Companies</h3><ul><li><a href="/google">Google</a></li><li><a href="/meta">Meta</a></li><li><a href="/amazon">Amazon</a></li><li><a href="/microsoft">Microsoft</a></li><li><a href="/apple">Apple</a></li></ul></div><div class="sc-goiVcJ khBOid"><h3>Resources</h3><ul><li><a href="/interview-tips">Interview Tips</a></li><li><a href="/coding-challenges">Coding Challenges</a></li><li><a href="/mock-interviews">Mock Interviews</a></li><li><a href="/blog">Blog</a></li><li><a href="/faq">FAQ</a></li></ul></div></div><div class="sc-VLMBG cEvBef"><p class="sc-gXbNzB elpMJS">© 2025 Frontend Interview Prep. All rights reserved.</p><div class="sc-dcMTLQ lkzbbv"><a href="/privacy">Privacy Policy</a><a href="/terms">Terms of Service</a><a href="/contact">Contact</a></div></div></div></footer></div><script src="/interview/_next/static/chunks/webpack-be7d7df45533bffc.js" async=""></script><script>(self.__next_f=self.__next_f||[]).push([0]);self.__next_f.push([2,null])</script><script>self.__next_f.push([1,"1:HL[\"/interview/_next/static/media/e4af272ccee01ff0-s.p.woff2\",\"font\",{\"crossOrigin\":\"\",\"type\":\"font/woff2\"}]\n2:HL[\"/interview/_next/static/css/387024c6a2216908.css\",\"style\"]\n"])</script><script>self.__next_f.push([1,"3:I[2846,[],\"\"]\n5:I[2972,[\"918\",\"static/chunks/918-3273b83890f10546.js\",\"972\",\"static/chunks/972-011bba60ed155615.js\",\"930\",\"static/chunks/930-3262a6c9c5acace4.js\",\"289\",\"static/chunks/app/learn/%5Btopic%5D/page-4ab144227f7a7b3e.js\"],\"\"]\n6:I[5907,[\"918\",\"static/chunks/918-3273b83890f10546.js\",\"972\",\"static/chunks/972-011bba60ed155615.js\",\"930\",\"static/chunks/930-3262a6c9c5acace4.js\",\"289\",\"static/chunks/app/learn/%5Btopic%5D/page-4ab144227f7a7b3e.js\"],\"default\"]\n8:I[4707,[],\"\"]\na:I[6423,[],\"\"]\nb:I[2,[\"918\",\"static/chunks/918-3273b83890f10546.js\",\"710\",\"static/chunks/710-dfaa11b4dff08f8e.js\",\"972\",\"static/chunks/972-011bba60ed155615.js\",\"233\",\"static/chunks/233-3e0c1d820a17eca9.js\",\"185\",\"static/chunks/app/layout-333f4adcd11f8f39.js\"],\"default\",1]\nd:I[1060,[],\"\"]\n7:T3414,"])</script><script>self.__next_f.push([1,"\n# Binary Tree Zigzag Level Order Traversal\n\n\n\n## Problem Description\n\n *  * Given the root of a binary tree, return the zigzag level order traversal of its nodes' values.  * (i.e., from left to right, then right to left for the next level and alternate between).  *  * Input: root = [3,9,20,null,null,15,7] \n\n## Solutions\n\n{% raw %}\n/**\n * Binary Tree Zigzag Level Order Traversal\n *\n * Problem: https://leetcode.com/problems/binary-tree-zigzag-level-order-traversal/\n *\n * Given the root of a binary tree, return the zigzag level order traversal of its nodes' values.\n * (i.e., from left to right, then right to left for the next level and alternate between).\n *\n * Example 1:\n * Input: root = [3,9,20,null,null,15,7]\n * Output: [[3],[20,9],[15,7]]\n *\n * Example 2:\n * Input: root = [1]\n * Output: [[1]]\n *\n * Example 3:\n * Input: root = []\n * Output: []\n *\n * Constraints:\n * - The number of nodes in the tree is in the range [0, 2000].\n * - -100 \u003c= Node.val \u003c= 100\n *\n * Solution Approach:\n * 1. Use BFS with level tracking\n * 2. Reverse alternate levels\n * 3. Use deque for efficient operations\n * 4. Track level number to determine direction\n *\n * Time Complexity: O(n) where n is the number of nodes\n * Space Complexity: O(n) for storing the result\n */\n\n/**\n * TreeNode class definition\n *\n * Định nghĩa lớp TreeNode\n */\nclass TreeNode {\n  val: number;\n  left: TreeNode | null;\n  right: TreeNode | null;\n\n  constructor(\n    val: number = 0,\n    left: TreeNode | null = null,\n    right: TreeNode | null = null\n  ) {\n    this.val = val;\n    this.left = left;\n    this.right = right;\n  }\n}\n\n/**\n * Zigzag Level Order Traversal - BFS Solution\n *\n * Giải pháp BFS cho bài toán Duyệt cây theo mức zigzag\n *\n * @param root - Root of the binary tree\n * @returns Array of arrays representing zigzag level order traversal\n */\nfunction zigzagLevelOrder(root: TreeNode | null): number[][] {\n  if (!root) return [];\n\n  const result: number[][] = [];\n  const queue: { node: TreeNode; level: number }[] = [{ node: root, level: 0 }];\n\n  while (queue.length \u003e 0) {\n    const { node, level } = queue.shift()!;\n\n    // Initialize level array if needed\n    if (result.length \u003c= level) {\n      result.push([]);\n    }\n\n    // Add node to current level\n    result[level].push(node.val);\n\n    // Add children to queue\n    if (node.left) {\n      queue.push({ node: node.left, level: level + 1 });\n    }\n    if (node.right) {\n      queue.push({ node: node.right, level: level + 1 });\n    }\n  }\n\n  // Reverse odd levels for zigzag effect\n  for (let i = 1; i \u003c result.length; i += 2) {\n    result[i].reverse();\n  }\n\n  return result;\n}\n\n/**\n * Alternative Solution: Using Two Stacks\n *\n * Giải pháp thay thế: Sử dụng hai stack\n *\n * @param root - Root of the binary tree\n * @returns Array of arrays representing zigzag level order traversal\n */\nfunction zigzagLevelOrderTwoStacks(root: TreeNode | null): number[][] {\n  if (!root) return [];\n\n  const result: number[][] = [];\n  const currentLevel: TreeNode[] = [root];\n  const nextLevel: TreeNode[] = [];\n  let leftToRight = true;\n\n  while (currentLevel.length \u003e 0) {\n    const levelResult: number[] = [];\n\n    while (currentLevel.length \u003e 0) {\n      const node = currentLevel.pop()!;\n      levelResult.push(node.val);\n\n      if (leftToRight) {\n        if (node.left) nextLevel.push(node.left);\n        if (node.right) nextLevel.push(node.right);\n      } else {\n        if (node.right) nextLevel.push(node.right);\n        if (node.left) nextLevel.push(node.left);\n      }\n    }\n\n    result.push(levelResult);\n\n    // Swap stacks and direction\n    [currentLevel, nextLevel] = [nextLevel, currentLevel];\n    leftToRight = !leftToRight;\n  }\n\n  return result;\n}\n\n/**\n * Solution with Level Information\n *\n * Giải pháp với thông tin mức\n *\n * @param root - Root of the binary tree\n * @returns Object containing zigzag traversal and level information\n */\nfunction zigzagLevelOrderWithInfo(root: TreeNode | null): {\n  traversal: number[][];\n  levelInfo: Array\u003c{ level: number; direction: string; nodeCount: number }\u003e;\n} {\n  if (!root) return { traversal: [], levelInfo: [] };\n\n  const traversal: number[][] = [];\n  const levelInfo: Array\u003c{\n    level: number;\n    direction: string;\n    nodeCount: number;\n  }\u003e = [];\n  const queue: { node: TreeNode; level: number }[] = [{ node: root, level: 0 }];\n\n  while (queue.length \u003e 0) {\n    const { node, level } = queue.shift()!;\n\n    if (traversal.length \u003c= level) {\n      traversal.push([]);\n      levelInfo.push({\n        level,\n        direction: level % 2 === 0 ? \"left-to-right\" : \"right-to-left\",\n        nodeCount: 0,\n      });\n    }\n\n    traversal[level].push(node.val);\n    levelInfo[level].nodeCount++;\n\n    if (node.left) {\n      queue.push({ node: node.left, level: level + 1 });\n    }\n    if (node.right) {\n      queue.push({ node: node.right, level: level + 1 });\n    }\n  }\n\n  // Reverse odd levels\n  for (let i = 1; i \u003c traversal.length; i += 2) {\n    traversal[i].reverse();\n  }\n\n  return { traversal, levelInfo };\n}\n\n/**\n * Recursive Solution with Level Tracking\n *\n * Giải pháp đệ quy với theo dõi mức\n *\n * @param root - Root of the binary tree\n * @returns Array of arrays representing zigzag level order traversal\n */\nfunction zigzagLevelOrderRecursive(root: TreeNode | null): number[][] {\n  const result: number[][] = [];\n\n  function dfs(node: TreeNode | null, level: number): void {\n    if (!node) return;\n\n    if (result.length \u003c= level) {\n      result.push([]);\n    }\n\n    // Add node to current level\n    result[level].push(node.val);\n\n    // Recursive calls\n    dfs(node.left, level + 1);\n    dfs(node.right, level + 1);\n  }\n\n  dfs(root, 0);\n\n  // Reverse odd levels\n  for (let i = 1; i \u003c result.length; i += 2) {\n    result[i].reverse();\n  }\n\n  return result;\n}\n\n/**\n * Solution with Visualization\n *\n * Giải pháp với hiển thị\n *\n * @param root - Root of the binary tree\n * @returns Object containing traversal and visualization\n */\nfunction zigzagLevelOrderWithVisualization(root: TreeNode | null): {\n  traversal: number[][];\n  visualization: string;\n} {\n  const { traversal, levelInfo } = zigzagLevelOrderWithInfo(root);\n\n  let visualization = \"Zigzag Level Order Traversal:\\n\";\n  visualization += \"Duyệt cây theo mức zigzag:\\n\\n\";\n\n  for (let i = 0; i \u003c traversal.length; i++) {\n    const level = traversal[i];\n    const info = levelInfo[i];\n\n    visualization += `Level ${i} (${info.direction}): [${level.join(\", \")}]\\n`;\n    visualization += `Mức ${i} (${info.direction}): [${level.join(\", \")}]\\n`;\n    visualization += `Node count: ${info.nodeCount}\\n`;\n    visualization += `Số nút: ${info.nodeCount}\\n\\n`;\n  }\n\n  return { traversal, visualization };\n}\n\n/**\n * Utility function to create a binary tree from array\n *\n * Hàm tiện ích để tạo cây nhị phân từ mảng\n *\n * @param arr - Array representation of the tree\n * @returns Root of the created tree\n */\nfunction createTreeFromArray(arr: (number | null)[]): TreeNode | null {\n  if (arr.length === 0 || arr[0] === null) return null;\n\n  const root = new TreeNode(arr[0]!);\n  const queue: TreeNode[] = [root];\n  let i = 1;\n\n  while (queue.length \u003e 0 \u0026\u0026 i \u003c arr.length) {\n    const node = queue.shift()!;\n\n    // Left child\n    if (i \u003c arr.length \u0026\u0026 arr[i] !== null) {\n      node.left = new TreeNode(arr[i]!);\n      queue.push(node.left);\n    }\n    i++;\n\n    // Right child\n    if (i \u003c arr.length \u0026\u0026 arr[i] !== null) {\n      node.right = new TreeNode(arr[i]!);\n      queue.push(node.right);\n    }\n    i++;\n  }\n\n  return root;\n}\n\n// Test cases / Các trường hợp kiểm thử\nfunction runTests() {\n  console.log(\"=== Binary Tree Zigzag Level Order Traversal Tests ===\");\n  console.log(\"=== Kiểm thử bài toán Duyệt cây theo mức zigzag ===\\n\");\n\n  const testCases = [\n    {\n      name: \"Example 1: Standard tree\",\n      input: [3, 9, 20, null, null, 15, 7],\n      expected: [[3], [20, 9], [15, 7]],\n      description: \"Standard binary tree with 3 levels\",\n    },\n    {\n      name: \"Example 2: Single node\",\n      input: [1],\n      expected: [[1]],\n      description: \"Tree with single node\",\n    },\n    {\n      name: \"Example 3: Empty tree\",\n      input: [],\n      expected: [],\n      description: \"Empty tree\",\n    },\n    {\n      name: \"Left-skewed tree\",\n      input: [1, 2, null, 3, null, 4],\n      expected: [[1], [2], [3], [4]],\n      description: \"Tree skewed to the left\",\n    },\n    {\n      name: \"Right-skewed tree\",\n      input: [1, null, 2, null, 3, null, 4],\n      expected: [[1], [2], [3], [4]],\n      description: \"Tree skewed to the right\",\n    },\n    {\n      name: \"Complete binary tree\",\n      input: [1, 2, 3, 4, 5, 6, 7],\n      expected: [[1], [3, 2], [4, 5, 6, 7]],\n      description: \"Complete binary tree\",\n    },\n    {\n      name: \"Unbalanced tree\",\n      input: [1, 2, 3, 4, null, null, 5],\n      expected: [[1], [3, 2], [4, 5]],\n      description: \"Unbalanced tree\",\n    },\n  ];\n\n  for (const testCase of testCases) {\n    console.log(`Test: ${testCase.name}`);\n    console.log(`Input: [${testCase.input.join(\", \")}]`);\n    console.log(`Expected: ${JSON.stringify(testCase.expected)}`);\n    console.log(`Description: ${testCase.description}`);\n\n    const root = createTreeFromArray(testCase.input);\n\n    // Test BFS solution\n    const result1 = zigzagLevelOrder(root);\n    const passed1 =\n      JSON.stringify(result1) === JSON.stringify(testCase.expected);\n\n    console.log(`BFS Result: ${JSON.stringify(result1)}`);\n    console.log(`BFS Status: ${passed1 ? \"✅ PASSED\" : \"❌ FAILED\"}`);\n\n    // Test Two Stacks solution\n    const result2 = zigzagLevelOrderTwoStacks(root);\n    const passed2 =\n      JSON.stringify(result2) === JSON.stringify(testCase.expected);\n\n    console.log(`Two Stacks Result: ${JSON.stringify(result2)}`);\n    console.log(`Two Stacks Status: ${passed2 ? \"✅ PASSED\" : \"❌ FAILED\"}`);\n\n    // Test Recursive solution\n    const result3 = zigzagLevelOrderRecursive(root);\n    const passed3 =\n      JSON.stringify(result3) === JSON.stringify(testCase.expected);\n\n    console.log(`Recursive Result: ${JSON.stringify(result3)}`);\n    console.log(`Recursive Status: ${passed3 ? \"✅ PASSED\" : \"❌ FAILED\"}`);\n\n    const allPassed = passed1 \u0026\u0026 passed2 \u0026\u0026 passed3;\n    console.log(`All implementations match: ${allPassed ? \"✅ Yes\" : \"❌ No\"}`);\n\n    console.log(\"---\");\n  }\n\n  // Test with visualization\n  console.log(\"\\n=== Testing with Visualization ===\");\n  console.log(\"=== Kiểm thử với hiển thị ===\\n\");\n\n  const testTree = createTreeFromArray([3, 9, 20, null, null, 15, 7]);\n  const { traversal, visualization } =\n    zigzagLevelOrderWithVisualization(testTree);\n\n  console.log(visualization);\n\n  // Test with level information\n  console.log(\"\\n=== Testing with Level Information ===\");\n  console.log(\"=== Kiểm thử với thông tin mức ===\\n\");\n\n  const { traversal: traversal2, levelInfo } =\n    zigzagLevelOrderWithInfo(testTree);\n\n  console.log(\"Level Information:\");\n  console.log(\"Thông tin mức:\");\n  for (const info of levelInfo) {\n    console.log(\n      `  Level ${info.level}: ${info.direction}, ${info.nodeCount} nodes`\n    );\n  }\n\n  // Performance comparison\n  console.log(\"\\n=== Performance Comparison ===\");\n  console.log(\"=== So sánh hiệu suất ===\\n\");\n\n  // Create a large tree\n  const largeTreeArray: (number | null)[] = [];\n  for (let i = 0; i \u003c 1000; i++) {\n    largeTreeArray.push(i);\n  }\n\n  const largeTree = createTreeFromArray(largeTreeArray);\n\n  console.log(\"Testing with large tree (1000 nodes)...\");\n  console.log(\"Kiểm thử với cây lớn (1000 nút)...\");\n\n  const start1 = performance.now();\n  const result1 = zigzagLevelOrder(largeTree);\n  const time1 = performance.now() - start1;\n\n  const start2 = performance.now();\n  const result2 = zigzagLevelOrderTwoStacks(largeTree);\n  const time2 = performance.now() - start2;\n\n  const start3 = performance.now();\n  const result3 = zigzagLevelOrderRecursive(largeTree);\n  const time3 = performance.now() - start3;\n\n  console.log(`BFS: ${time1.toFixed(4)}ms, Levels: ${result1.length}`);\n  console.log(`Two Stacks: ${time2.toFixed(4)}ms, Levels: ${result2.length}`);\n  console.log(`Recursive: ${time3.toFixed(4)}ms, Levels: ${result3.length}`);\n\n  const resultsMatch =\n    JSON.stringify(result1) === JSON.stringify(result2) \u0026\u0026\n    JSON.stringify(result2) === JSON.stringify(result3);\n  console.log(`Results match: ${resultsMatch ? \"✅ Yes\" : \"❌ No\"}`);\n\n  // Test edge cases\n  console.log(\"\\n=== Edge Cases Testing ===\");\n  console.log(\"=== Kiểm thử trường hợp đặc biệt ===\\n\");\n\n  const edgeCases = [\n    { name: \"Null root\", tree: null },\n    { name: \"Single node\", tree: new TreeNode(42) },\n    { name: \"Two nodes\", tree: new TreeNode(1, new TreeNode(2)) },\n    {\n      name: \"Three nodes\",\n      tree: new TreeNode(1, new TreeNode(2), new TreeNode(3)),\n    },\n  ];\n\n  for (const edgeCase of edgeCases) {\n    const result = zigzagLevelOrder(edgeCase.tree);\n    console.log(`${edgeCase.name}: ${JSON.stringify(result)}`);\n  }\n}\n\n// Run tests if this file is executed directly\nif (require.main === module) {\n  runTests();\n}\n\nexport {\n  TreeNode,\n  zigzagLevelOrder,\n  zigzagLevelOrderTwoStacks,\n  zigzagLevelOrderWithInfo,\n  zigzagLevelOrderRecursive,\n  zigzagLevelOrderWithVisualization,\n  createTreeFromArray,\n};\n{% endraw %}\n"])</script><script>self.__next_f.push([1,"9:[\"topic\",\"tree-graph-problems-07-binary-tree-zigzag-level-order-traversal\",\"d\"]\ne:[]\n"])</script><script>self.__next_f.push([1,"0:[\"$\",\"$L3\",null,{\"buildId\":\"2NmUhWiPdVVBzVtDZlggk\",\"assetPrefix\":\"/interview\",\"urlParts\":[\"\",\"learn\",\"tree-graph-problems-07-binary-tree-zigzag-level-order-traversal\"],\"initialTree\":[\"\",{\"children\":[\"learn\",{\"children\":[[\"topic\",\"tree-graph-problems-07-binary-tree-zigzag-level-order-traversal\",\"d\"],{\"children\":[\"__PAGE__?{\\\"topic\\\":\\\"tree-graph-problems-07-binary-tree-zigzag-level-order-traversal\\\"}\",{}]}]}]},\"$undefined\",\"$undefined\",true],\"initialSeedData\":[\"\",{\"children\":[\"learn\",{\"children\":[[\"topic\",\"tree-graph-problems-07-binary-tree-zigzag-level-order-traversal\",\"d\"],{\"children\":[\"__PAGE__\",{},[[\"$L4\",[\"$\",\"div\",null,{\"className\":\"max-w-6xl mx-auto px-8 py-24\",\"children\":[[\"$\",\"div\",null,{\"className\":\"flex items-center gap-4 mb-8\",\"children\":[\"$\",\"$L5\",null,{\"href\":\"/learn\",\"children\":[\"$\",\"button\",null,{\"className\":\"flex items-center gap-2 bg-gray-100 border border-gray-300 text-gray-700 px-4 py-3 rounded-md font-medium hover:bg-gray-200 transition-colors\",\"children\":[[\"$\",\"svg\",null,{\"xmlns\":\"http://www.w3.org/2000/svg\",\"width\":16,\"height\":16,\"viewBox\":\"0 0 24 24\",\"fill\":\"none\",\"stroke\":\"currentColor\",\"strokeWidth\":2,\"strokeLinecap\":\"round\",\"strokeLinejoin\":\"round\",\"className\":\"lucide lucide-arrow-left \",\"children\":[[\"$\",\"path\",\"1l729n\",{\"d\":\"m12 19-7-7 7-7\"}],[\"$\",\"path\",\"x3x0zl\",{\"d\":\"M19 12H5\"}],\"$undefined\"]}],\"Back to Learn\"]}]}]}],[\"$\",\"div\",null,{\"className\":\"bg-white border border-gray-200 rounded-lg p-8 mb-8\",\"children\":[[\"$\",\"div\",null,{\"className\":\"flex items-center justify-between mb-4\",\"children\":[[\"$\",\"h1\",null,{\"className\":\"text-3xl font-bold text-gray-900\",\"children\":\"Binary Tree Zigzag Level Order Traversal\"}],[\"$\",\"div\",null,{\"className\":\"flex gap-4\",\"children\":[[\"$\",\"button\",null,{\"className\":\"flex items-center gap-2 bg-transparent text-gray-700 border border-gray-300 px-6 py-3 rounded-md font-semibold hover:bg-gray-50 transition-colors\",\"children\":[[\"$\",\"svg\",null,{\"xmlns\":\"http://www.w3.org/2000/svg\",\"width\":16,\"height\":16,\"viewBox\":\"0 0 24 24\",\"fill\":\"none\",\"stroke\":\"currentColor\",\"strokeWidth\":2,\"strokeLinecap\":\"round\",\"strokeLinejoin\":\"round\",\"className\":\"lucide lucide-star \",\"children\":[[\"$\",\"polygon\",\"8f66p6\",{\"points\":\"12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2\"}],\"$undefined\"]}],\"Bookmark\"]}],[\"$\",\"button\",null,{\"className\":\"flex items-center gap-2 bg-transparent text-gray-700 border border-gray-300 px-6 py-3 rounded-md font-semibold hover:bg-gray-50 transition-colors\",\"children\":[[\"$\",\"svg\",null,{\"xmlns\":\"http://www.w3.org/2000/svg\",\"width\":16,\"height\":16,\"viewBox\":\"0 0 24 24\",\"fill\":\"none\",\"stroke\":\"currentColor\",\"strokeWidth\":2,\"strokeLinecap\":\"round\",\"strokeLinejoin\":\"round\",\"className\":\"lucide lucide-share2 \",\"children\":[[\"$\",\"circle\",\"gq8acd\",{\"cx\":\"18\",\"cy\":\"5\",\"r\":\"3\"}],[\"$\",\"circle\",\"w7nqdw\",{\"cx\":\"6\",\"cy\":\"12\",\"r\":\"3\"}],[\"$\",\"circle\",\"1xt0gg\",{\"cx\":\"18\",\"cy\":\"19\",\"r\":\"3\"}],[\"$\",\"line\",\"47mynk\",{\"x1\":\"8.59\",\"x2\":\"15.42\",\"y1\":\"13.51\",\"y2\":\"17.49\"}],[\"$\",\"line\",\"1n3mei\",{\"x1\":\"15.41\",\"x2\":\"8.59\",\"y1\":\"6.51\",\"y2\":\"10.49\"}],\"$undefined\"]}],\"Share\"]}]]}]]}],[\"$\",\"div\",null,{\"className\":\"flex gap-8 mb-4\",\"children\":[[\"$\",\"div\",null,{\"className\":\"flex items-center gap-2 text-sm text-gray-600\",\"children\":[[\"$\",\"svg\",null,{\"xmlns\":\"http://www.w3.org/2000/svg\",\"width\":16,\"height\":16,\"viewBox\":\"0 0 24 24\",\"fill\":\"none\",\"stroke\":\"currentColor\",\"strokeWidth\":2,\"strokeLinecap\":\"round\",\"strokeLinejoin\":\"round\",\"className\":\"lucide lucide-clock \",\"children\":[[\"$\",\"circle\",\"1mglay\",{\"cx\":\"12\",\"cy\":\"12\",\"r\":\"10\"}],[\"$\",\"polyline\",\"68esgv\",{\"points\":\"12 6 12 12 16 14\"}],\"$undefined\"]}],\"2-3 hours\"]}],[\"$\",\"span\",null,{\"className\":\"px-3 py-1 rounded-full text-xs font-semibold text-white bg-red-500\",\"children\":\"Hard\"}],[\"$\",\"span\",null,{\"className\":\"px-3 py-1 rounded-full text-xs font-semibold bg-blue-100 text-blue-700\",\"children\":\"Tree/Graph\"}]]}],[\"$\",\"div\",null,{\"className\":\"flex flex-wrap gap-2 mb-4\",\"children\":[[\"$\",\"span\",\"0\",{\"className\":\"bg-gray-100 text-gray-600 px-3 py-1 rounded-md text-xs font-medium\",\"children\":\"Tree/Graph\"}]]}],[\"$\",\"p\",null,{\"className\":\"text-lg text-gray-700 leading-relaxed\",\"children\":\" *  * Given the root of a binary tree, return the zigzag level order traversal of its nodes' values.  * (i.e., from left to right, then right to left for the next level and alternate between).  *  * I...\"}]]}],[\"$\",\"div\",null,{\"className\":\"grid grid-cols-1 lg:grid-cols-3 gap-8\",\"children\":[[\"$\",\"div\",null,{\"className\":\"lg:col-span-2\",\"children\":[\"$\",\"div\",null,{\"className\":\"bg-white border border-gray-200 rounded-lg p-8\",\"children\":[\"$\",\"$L6\",null,{\"content\":\"$7\"}]}]}],[\"$\",\"div\",null,{\"className\":\"space-y-6\",\"children\":[[\"$\",\"div\",null,{\"className\":\"bg-white border border-gray-200 rounded-lg p-6\",\"children\":[[\"$\",\"h3\",null,{\"className\":\"text-lg font-semibold text-gray-900 mb-4\",\"children\":\"Your Progress\"}],[\"$\",\"div\",null,{\"className\":\"w-full bg-gray-200 rounded-full h-2 mb-2\",\"children\":[\"$\",\"div\",null,{\"className\":\"bg-blue-600 h-2 rounded-full\",\"style\":{\"width\":\"25%\"}}]}],[\"$\",\"p\",null,{\"className\":\"text-sm text-gray-600\",\"children\":\"25% Complete\"}]]}],false]}]]}]]}],null],null],null]},[null,[\"$\",\"$L8\",null,{\"parallelRouterKey\":\"children\",\"segmentPath\":[\"children\",\"learn\",\"children\",\"$9\",\"children\"],\"error\":\"$undefined\",\"errorStyles\":\"$undefined\",\"errorScripts\":\"$undefined\",\"template\":[\"$\",\"$La\",null,{}],\"templateStyles\":\"$undefined\",\"templateScripts\":\"$undefined\",\"notFound\":\"$undefined\",\"notFoundStyles\":\"$undefined\"}]],null]},[null,[\"$\",\"$L8\",null,{\"parallelRouterKey\":\"children\",\"segmentPath\":[\"children\",\"learn\",\"children\"],\"error\":\"$undefined\",\"errorStyles\":\"$undefined\",\"errorScripts\":\"$undefined\",\"template\":[\"$\",\"$La\",null,{}],\"templateStyles\":\"$undefined\",\"templateScripts\":\"$undefined\",\"notFound\":\"$undefined\",\"notFoundStyles\":\"$undefined\"}]],null]},[[[[\"$\",\"link\",\"0\",{\"rel\":\"stylesheet\",\"href\":\"/interview/_next/static/css/387024c6a2216908.css\",\"precedence\":\"next\",\"crossOrigin\":\"$undefined\"}]],[\"$\",\"$Lb\",null,{\"children\":[\"$\",\"$L8\",null,{\"parallelRouterKey\":\"children\",\"segmentPath\":[\"children\"],\"error\":\"$undefined\",\"errorStyles\":\"$undefined\",\"errorScripts\":\"$undefined\",\"template\":[\"$\",\"$La\",null,{}],\"templateStyles\":\"$undefined\",\"templateScripts\":\"$undefined\",\"notFound\":[[\"$\",\"title\",null,{\"children\":\"404: This page could not be found.\"}],[\"$\",\"div\",null,{\"style\":{\"fontFamily\":\"system-ui,\\\"Segoe UI\\\",Roboto,Helvetica,Arial,sans-serif,\\\"Apple Color Emoji\\\",\\\"Segoe UI Emoji\\\"\",\"height\":\"100vh\",\"textAlign\":\"center\",\"display\":\"flex\",\"flexDirection\":\"column\",\"alignItems\":\"center\",\"justifyContent\":\"center\"},\"children\":[\"$\",\"div\",null,{\"children\":[[\"$\",\"style\",null,{\"dangerouslySetInnerHTML\":{\"__html\":\"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}\"}}],[\"$\",\"h1\",null,{\"className\":\"next-error-h1\",\"style\":{\"display\":\"inline-block\",\"margin\":\"0 20px 0 0\",\"padding\":\"0 23px 0 0\",\"fontSize\":24,\"fontWeight\":500,\"verticalAlign\":\"top\",\"lineHeight\":\"49px\"},\"children\":\"404\"}],[\"$\",\"div\",null,{\"style\":{\"display\":\"inline-block\"},\"children\":[\"$\",\"h2\",null,{\"style\":{\"fontSize\":14,\"fontWeight\":400,\"lineHeight\":\"49px\",\"margin\":0},\"children\":\"This page could not be found.\"}]}]]}]}]],\"notFoundStyles\":[]}],\"params\":{}}]],null],null],\"couldBeIntercepted\":false,\"initialHead\":[null,\"$Lc\"],\"globalErrorComponent\":\"$d\",\"missingSlots\":\"$We\"}]\n"])</script><script>self.__next_f.push([1,"c:[[\"$\",\"meta\",\"0\",{\"name\":\"viewport\",\"content\":\"width=device-width, initial-scale=1\"}],[\"$\",\"meta\",\"1\",{\"charSet\":\"utf-8\"}],[\"$\",\"meta\",\"2\",{\"name\":\"next-size-adjust\"}]]\n4:null\n"])</script></body></html>

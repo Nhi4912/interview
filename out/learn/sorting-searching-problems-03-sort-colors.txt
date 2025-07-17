@@ -1,0 +1,445 @@
+2:I[2972,["918","static/chunks/918-3273b83890f10546.js","972","static/chunks/972-011bba60ed155615.js","930","static/chunks/930-3262a6c9c5acace4.js","289","static/chunks/app/learn/%5Btopic%5D/page-4ab144227f7a7b3e.js"],""]
+3:I[5907,["918","static/chunks/918-3273b83890f10546.js","972","static/chunks/972-011bba60ed155615.js","930","static/chunks/930-3262a6c9c5acace4.js","289","static/chunks/app/learn/%5Btopic%5D/page-4ab144227f7a7b3e.js"],"default"]
+5:I[4707,[],""]
+7:I[6423,[],""]
+8:I[2,["918","static/chunks/918-3273b83890f10546.js","710","static/chunks/710-dfaa11b4dff08f8e.js","972","static/chunks/972-011bba60ed155615.js","233","static/chunks/233-3e0c1d820a17eca9.js","185","static/chunks/app/layout-333f4adcd11f8f39.js"],"default",1]
+4:T2ce8,
+# Sort Color
+
+
+
+## Problem Description
+
+ *  * Given an array nums with n objects colored red, white, or blue, sort them in-place  * so that objects of the same color are adjacent, with the colors in the order red,  * white, and blue.  * 
+
+## Solutions
+
+{% raw %}
+/**
+ * Sort Colors
+ *
+ * Problem: https://leetcode.com/problems/sort-colors/
+ *
+ * Given an array nums with n objects colored red, white, or blue, sort them in-place
+ * so that objects of the same color are adjacent, with the colors in the order red,
+ * white, and blue.
+ *
+ * We will use the integers 0, 1, and 2 to represent the color red, white, and blue, respectively.
+ *
+ * You must solve this problem without using the library's sort function.
+ *
+ * Example 1:
+ * Input: nums = [2,0,2,1,1,0]
+ * Output: [0,0,1,1,2,2]
+ *
+ * Example 2:
+ * Input: nums = [2,2,2,2]
+ * Output: [2,2,2,2]
+ *
+ * Constraints:
+ * - n == nums.length
+ * - 1 <= n <= 300
+ * - nums[i] is 0, 1, or 2.
+ *
+ * Solution Approach:
+ * 1. Dutch National Flag Algorithm (Three-way partitioning)
+ * 2. Use three pointers: low, mid, high
+ * 3. Maintain invariant: elements before low are 0, after high are 2
+ * 4. Process elements at mid pointer
+ *
+ * Time Complexity: O(n) where n is the length of nums array
+ * Space Complexity: O(1) as we sort in-place
+ */
+
+/**
+ * Sort Colors - Dutch National Flag Algorithm
+ *
+ * Sắp xếp màu sắc - Thuật toán cờ quốc gia Hà Lan
+ *
+ * @param nums - Mảng các số đại diện cho màu sắc (0=đỏ, 1=trắng, 2=xanh)
+ */
+function sortColors(nums: number[]): void {
+  let low = 0; // Con trỏ cho vùng màu đỏ (0)
+  let mid = 0; // Con trỏ hiện tại
+  let high = nums.length - 1; // Con trỏ cho vùng màu xanh (2)
+
+  while (mid <= high) {
+    if (nums[mid] === 0) {
+      // Hoán đổi với phần tử ở vị trí low
+      [nums[low], nums[mid]] = [nums[mid], nums[low]];
+      low++;
+      mid++;
+    } else if (nums[mid] === 1) {
+      // Giữ nguyên, di chuyển mid
+      mid++;
+    } else if (nums[mid] === 2) {
+      // Hoán đổi với phần tử ở vị trí high
+      [nums[mid], nums[high]] = [nums[high], nums[mid]];
+      high--;
+    }
+  }
+}
+
+/**
+ * Alternative Solution: Counting Sort
+ *
+ * Giải pháp thay thế: Sắp xếp đếm
+ *
+ * @param nums - Mảng các số đại diện cho màu sắc
+ */
+function sortColorsCounting(nums: number[]): void {
+  const counts = [0, 0, 0]; // Đếm số lượng 0, 1, 2
+
+  // Đếm số lượng mỗi màu
+  for (const num of nums) {
+    counts[num]++;
+  }
+
+  // Điền lại mảng theo thứ tự
+  let index = 0;
+  for (let color = 0; color <= 2; color++) {
+    for (let i = 0; i < counts[color]; i++) {
+      nums[index++] = color;
+    }
+  }
+}
+
+/**
+ * Solution with Two Passes
+ *
+ * Giải pháp với hai lần duyệt
+ *
+ * @param nums - Mảng các số đại diện cho màu sắc
+ */
+function sortColorsTwoPass(nums: number[]): void {
+  // Lần đầu: đưa tất cả số 0 về đầu
+  let insertPos = 0;
+  for (let i = 0; i < nums.length; i++) {
+    if (nums[i] === 0) {
+      [nums[insertPos], nums[i]] = [nums[i], nums[insertPos]];
+      insertPos++;
+    }
+  }
+
+  // Lần hai: đưa tất cả số 1 về sau số 0
+  for (let i = insertPos; i < nums.length; i++) {
+    if (nums[i] === 1) {
+      [nums[insertPos], nums[i]] = [nums[i], nums[insertPos]];
+      insertPos++;
+    }
+  }
+  // Số 2 sẽ tự động ở cuối
+}
+
+/**
+ * Solution with Visualization
+ *
+ * Giải pháp với hiển thị quá trình
+ *
+ * @param nums - Mảng các số đại diện cho màu sắc
+ * @returns Mảng các bước thực hiện
+ */
+function sortColorsWithSteps(
+  nums: number[]
+): Array<{ step: number; array: number[]; description: string }> {
+  const steps: Array<{ step: number; array: number[]; description: string }> =
+    [];
+  const workingArray = [...nums];
+
+  let low = 0;
+  let mid = 0;
+  let high = workingArray.length - 1;
+  let step = 0;
+
+  steps.push({
+    step: step++,
+    array: [...workingArray],
+    description: "Initial state",
+  });
+
+  while (mid <= high) {
+    if (workingArray[mid] === 0) {
+      [workingArray[low], workingArray[mid]] = [
+        workingArray[mid],
+        workingArray[low],
+      ];
+      steps.push({
+        step: step++,
+        array: [...workingArray],
+        description: `Swapped 0 at position ${mid} with position ${low}`,
+      });
+      low++;
+      mid++;
+    } else if (workingArray[mid] === 1) {
+      steps.push({
+        step: step++,
+        array: [...workingArray],
+        description: `Kept 1 at position ${mid}`,
+      });
+      mid++;
+    } else if (workingArray[mid] === 2) {
+      [workingArray[mid], workingArray[high]] = [
+        workingArray[high],
+        workingArray[mid],
+      ];
+      steps.push({
+        step: step++,
+        array: [...workingArray],
+        description: `Swapped 2 at position ${mid} with position ${high}`,
+      });
+      high--;
+    }
+  }
+
+  return steps;
+}
+
+/**
+ * Solution with Color Names
+ *
+ * Giải pháp với tên màu
+ *
+ * @param nums - Mảng các số đại diện cho màu sắc
+ * @returns Mảng tên màu đã sắp xếp
+ */
+function sortColorsWithNames(nums: number[]): string[] {
+  const colorMap = { 0: "Red", 1: "White", 2: "Blue" };
+  const sortedNums = [...nums];
+
+  sortColors(sortedNums);
+
+  return sortedNums.map((num) => colorMap[num as keyof typeof colorMap]);
+}
+
+/**
+ * Validation function
+ *
+ * Hàm kiểm tra tính hợp lệ
+ *
+ * @param nums - Mảng cần kiểm tra
+ * @returns true nếu mảng đã được sắp xếp đúng
+ */
+function isSorted(nums: number[]): boolean {
+  for (let i = 1; i < nums.length; i++) {
+    if (nums[i] < nums[i - 1]) {
+      return false;
+    }
+  }
+  return true;
+}
+
+/**
+ * Count colors function
+ *
+ * Hàm đếm số lượng màu
+ *
+ * @param nums - Mảng các số đại diện cho màu sắc
+ * @returns Object chứa số lượng mỗi màu
+ */
+function countColors(nums: number[]): {
+  red: number;
+  white: number;
+  blue: number;
+} {
+  const counts = { red: 0, white: 0, blue: 0 };
+
+  for (const num of nums) {
+    if (num === 0) counts.red++;
+    else if (num === 1) counts.white++;
+    else if (num === 2) counts.blue++;
+  }
+
+  return counts;
+}
+
+// Test cases / Các trường hợp kiểm thử
+function runTests() {
+  console.log("=== Sort Colors Tests ===");
+  console.log("=== Kiểm thử bài toán Sắp xếp màu sắc ===\n");
+
+  const testCases = [
+    {
+      name: "Example 1: Mixed colors",
+      input: [2, 0, 2, 1, 1, 0],
+      expected: [0, 0, 1, 1, 2, 2],
+      description: "Mixed colors with all three types",
+    },
+    {
+      name: "Example 2: All same color",
+      input: [2, 2, 2, 2],
+      expected: [2, 2, 2, 2],
+      description: "All elements are blue",
+    },
+    {
+      name: "Single element",
+      input: [1],
+      expected: [1],
+      description: "Single white element",
+    },
+    {
+      name: "Two elements",
+      input: [2, 0],
+      expected: [0, 2],
+      description: "Blue and red elements",
+    },
+    {
+      name: "Already sorted",
+      input: [0, 0, 1, 1, 2, 2],
+      expected: [0, 0, 1, 1, 2, 2],
+      description: "Array already in correct order",
+    },
+    {
+      name: "Reverse sorted",
+      input: [2, 2, 1, 1, 0, 0],
+      expected: [0, 0, 1, 1, 2, 2],
+      description: "Array in reverse order",
+    },
+    {
+      name: "Only red and white",
+      input: [1, 0, 1, 0, 1],
+      expected: [0, 0, 1, 1, 1],
+      description: "Only red and white colors",
+    },
+    {
+      name: "Only white and blue",
+      input: [2, 1, 2, 1, 2],
+      expected: [1, 1, 2, 2, 2],
+      description: "Only white and blue colors",
+    },
+  ];
+
+  let passedTests = 0;
+  const totalTests = testCases.length;
+
+  for (const testCase of testCases) {
+    console.log(`Test: ${testCase.name}`);
+    console.log(`Input: [${testCase.input.join(", ")}]`);
+    console.log(`Expected: [${testCase.expected.join(", ")}]`);
+    console.log(`Description: ${testCase.description}`);
+
+    const nums = [...testCase.input];
+    sortColors(nums);
+
+    const passed = JSON.stringify(nums) === JSON.stringify(testCase.expected);
+
+    console.log(`Result: [${nums.join(", ")}]`);
+    console.log(`Status: ${passed ? "✅ PASSED" : "❌ FAILED"}`);
+
+    if (passed) {
+      passedTests++;
+    } else {
+      console.log(
+        `Expected: [${testCase.expected.join(", ")}], Got: [${nums.join(", ")}]`
+      );
+    }
+
+    console.log("---");
+  }
+
+  console.log(`\nTest Summary: ${passedTests}/${totalTests} tests passed`);
+  console.log(
+    `Tóm tắt kiểm thử: ${passedTests}/${totalTests} bài kiểm thử đã qua`
+  );
+
+  // Test with visualization
+  console.log("\n=== Testing with Visualization ===");
+  console.log("=== Kiểm thử với hiển thị quá trình ===\n");
+
+  const testArray = [2, 0, 2, 1, 1, 0];
+  const steps = sortColorsWithSteps(testArray);
+
+  console.log("Sorting steps:");
+  console.log("Các bước sắp xếp:");
+  for (const step of steps) {
+    console.log(
+      `Step ${step.step}: [${step.array.join(", ")}] - ${step.description}`
+    );
+  }
+
+  // Test with color names
+  console.log("\n=== Testing with Color Names ===");
+  console.log("=== Kiểm thử với tên màu ===\n");
+
+  const colorArray = [2, 0, 2, 1, 1, 0];
+  const sortedColors = sortColorsWithNames(colorArray);
+
+  console.log(`Original: [${colorArray.join(", ")}]`);
+  console.log(`Sorted: [${sortedColors.join(", ")}]`);
+
+  // Performance comparison
+  console.log("\n=== Performance Comparison ===");
+  console.log("=== So sánh hiệu suất ===\n");
+
+  const largeArray = Array.from({ length: 10000 }, () =>
+    Math.floor(Math.random() * 3)
+  );
+
+  console.log("Testing with large array (10,000 elements)...");
+  console.log("Kiểm thử với mảng lớn (10,000 phần tử)...");
+
+  const start1 = performance.now();
+  const array1 = [...largeArray];
+  sortColors(array1);
+  const time1 = performance.now() - start1;
+
+  const start2 = performance.now();
+  const array2 = [...largeArray];
+  sortColorsCounting(array2);
+  const time2 = performance.now() - start2;
+
+  const start3 = performance.now();
+  const array3 = [...largeArray];
+  sortColorsTwoPass(array3);
+  const time3 = performance.now() - start3;
+
+  console.log(`Dutch National Flag: ${time1.toFixed(4)}ms`);
+  console.log(`Counting Sort: ${time2.toFixed(4)}ms`);
+  console.log(`Two Pass: ${time3.toFixed(4)}ms`);
+
+  const resultsMatch =
+    JSON.stringify(array1) === JSON.stringify(array2) &&
+    JSON.stringify(array2) === JSON.stringify(array3);
+  console.log(`Results match: ${resultsMatch ? "✅ Yes" : "❌ No"}`);
+
+  // Verify sorting
+  console.log(
+    `All arrays are sorted: ${
+      isSorted(array1) && isSorted(array2) && isSorted(array3)
+        ? "✅ Yes"
+        : "❌ No"
+    }`
+  );
+
+  // Show color distribution
+  const originalCounts = countColors(largeArray);
+  const sortedCounts = countColors(array1);
+
+  console.log("\nColor distribution:");
+  console.log("Phân bố màu sắc:");
+  console.log(
+    `Original - Red: ${originalCounts.red}, White: ${originalCounts.white}, Blue: ${originalCounts.blue}`
+  );
+  console.log(
+    `Sorted - Red: ${sortedCounts.red}, White: ${sortedCounts.white}, Blue: ${sortedCounts.blue}`
+  );
+}
+
+// Run tests if this file is executed directly
+if (require.main === module) {
+  runTests();
+}
+
+export {
+  sortColors,
+  sortColorsCounting,
+  sortColorsTwoPass,
+  sortColorsWithSteps,
+  sortColorsWithNames,
+  isSorted,
+  countColors,
+};
+{% endraw %}
+6:["topic","sorting-searching-problems-03-sort-colors","d"]
+0:["2NmUhWiPdVVBzVtDZlggk",[[["",{"children":["learn",{"children":[["topic","sorting-searching-problems-03-sort-colors","d"],{"children":["__PAGE__?{\"topic\":\"sorting-searching-problems-03-sort-colors\"}",{}]}]}]},"$undefined","$undefined",true],["",{"children":["learn",{"children":[["topic","sorting-searching-problems-03-sort-colors","d"],{"children":["__PAGE__",{},[["$L1",["$","div",null,{"className":"max-w-6xl mx-auto px-8 py-24","children":[["$","div",null,{"className":"flex items-center gap-4 mb-8","children":["$","$L2",null,{"href":"/learn","children":["$","button",null,{"className":"flex items-center gap-2 bg-gray-100 border border-gray-300 text-gray-700 px-4 py-3 rounded-md font-medium hover:bg-gray-200 transition-colors","children":[["$","svg",null,{"xmlns":"http://www.w3.org/2000/svg","width":16,"height":16,"viewBox":"0 0 24 24","fill":"none","stroke":"currentColor","strokeWidth":2,"strokeLinecap":"round","strokeLinejoin":"round","className":"lucide lucide-arrow-left ","children":[["$","path","1l729n",{"d":"m12 19-7-7 7-7"}],["$","path","x3x0zl",{"d":"M19 12H5"}],"$undefined"]}],"Back to Learn"]}]}]}],["$","div",null,{"className":"bg-white border border-gray-200 rounded-lg p-8 mb-8","children":[["$","div",null,{"className":"flex items-center justify-between mb-4","children":[["$","h1",null,{"className":"text-3xl font-bold text-gray-900","children":"Sort Color"}],["$","div",null,{"className":"flex gap-4","children":[["$","button",null,{"className":"flex items-center gap-2 bg-transparent text-gray-700 border border-gray-300 px-6 py-3 rounded-md font-semibold hover:bg-gray-50 transition-colors","children":[["$","svg",null,{"xmlns":"http://www.w3.org/2000/svg","width":16,"height":16,"viewBox":"0 0 24 24","fill":"none","stroke":"currentColor","strokeWidth":2,"strokeLinecap":"round","strokeLinejoin":"round","className":"lucide lucide-star ","children":[["$","polygon","8f66p6",{"points":"12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"}],"$undefined"]}],"Bookmark"]}],["$","button",null,{"className":"flex items-center gap-2 bg-transparent text-gray-700 border border-gray-300 px-6 py-3 rounded-md font-semibold hover:bg-gray-50 transition-colors","children":[["$","svg",null,{"xmlns":"http://www.w3.org/2000/svg","width":16,"height":16,"viewBox":"0 0 24 24","fill":"none","stroke":"currentColor","strokeWidth":2,"strokeLinecap":"round","strokeLinejoin":"round","className":"lucide lucide-share2 ","children":[["$","circle","gq8acd",{"cx":"18","cy":"5","r":"3"}],["$","circle","w7nqdw",{"cx":"6","cy":"12","r":"3"}],["$","circle","1xt0gg",{"cx":"18","cy":"19","r":"3"}],["$","line","47mynk",{"x1":"8.59","x2":"15.42","y1":"13.51","y2":"17.49"}],["$","line","1n3mei",{"x1":"15.41","x2":"8.59","y1":"6.51","y2":"10.49"}],"$undefined"]}],"Share"]}]]}]]}],["$","div",null,{"className":"flex gap-8 mb-4","children":[["$","div",null,{"className":"flex items-center gap-2 text-sm text-gray-600","children":[["$","svg",null,{"xmlns":"http://www.w3.org/2000/svg","width":16,"height":16,"viewBox":"0 0 24 24","fill":"none","stroke":"currentColor","strokeWidth":2,"strokeLinecap":"round","strokeLinejoin":"round","className":"lucide lucide-clock ","children":[["$","circle","1mglay",{"cx":"12","cy":"12","r":"10"}],["$","polyline","68esgv",{"points":"12 6 12 12 16 14"}],"$undefined"]}],"2-3 hours"]}],["$","span",null,{"className":"px-3 py-1 rounded-full text-xs font-semibold text-white bg-red-500","children":"Hard"}],["$","span",null,{"className":"px-3 py-1 rounded-full text-xs font-semibold bg-blue-100 text-blue-700","children":"Sorting/Searching"}]]}],["$","div",null,{"className":"flex flex-wrap gap-2 mb-4","children":[["$","span","0",{"className":"bg-gray-100 text-gray-600 px-3 py-1 rounded-md text-xs font-medium","children":"Sorting/Searching"}],["$","span","1",{"className":"bg-gray-100 text-gray-600 px-3 py-1 rounded-md text-xs font-medium","children":"Hash Table"}],["$","span","2",{"className":"bg-gray-100 text-gray-600 px-3 py-1 rounded-md text-xs font-medium","children":"Sorting"}]]}],["$","p",null,{"className":"text-lg text-gray-700 leading-relaxed","children":" *  * Given an array nums with n objects colored red, white, or blue, sort them in-place  * so that objects of the same color are adjacent, with the colors in the order red,  * white, and blue.  * ..."}]]}],["$","div",null,{"className":"grid grid-cols-1 lg:grid-cols-3 gap-8","children":[["$","div",null,{"className":"lg:col-span-2","children":["$","div",null,{"className":"bg-white border border-gray-200 rounded-lg p-8","children":["$","$L3",null,{"content":"$4"}]}]}],["$","div",null,{"className":"space-y-6","children":[["$","div",null,{"className":"bg-white border border-gray-200 rounded-lg p-6","children":[["$","h3",null,{"className":"text-lg font-semibold text-gray-900 mb-4","children":"Your Progress"}],["$","div",null,{"className":"w-full bg-gray-200 rounded-full h-2 mb-2","children":["$","div",null,{"className":"bg-blue-600 h-2 rounded-full","style":{"width":"25%"}}]}],["$","p",null,{"className":"text-sm text-gray-600","children":"25% Complete"}]]}],false]}]]}]]}],null],null],null]},[null,["$","$L5",null,{"parallelRouterKey":"children","segmentPath":["children","learn","children","$6","children"],"error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L7",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","notFoundStyles":"$undefined"}]],null]},[null,["$","$L5",null,{"parallelRouterKey":"children","segmentPath":["children","learn","children"],"error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L7",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","notFoundStyles":"$undefined"}]],null]},[[[["$","link","0",{"rel":"stylesheet","href":"/interview/_next/static/css/387024c6a2216908.css","precedence":"next","crossOrigin":"$undefined"}]],["$","$L8",null,{"children":["$","$L5",null,{"parallelRouterKey":"children","segmentPath":["children"],"error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L7",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":{"fontFamily":"system-ui,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\"","height":"100vh","textAlign":"center","display":"flex","flexDirection":"column","alignItems":"center","justifyContent":"center"},"children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":{"display":"inline-block","margin":"0 20px 0 0","padding":"0 23px 0 0","fontSize":24,"fontWeight":500,"verticalAlign":"top","lineHeight":"49px"},"children":"404"}],["$","div",null,{"style":{"display":"inline-block"},"children":["$","h2",null,{"style":{"fontSize":14,"fontWeight":400,"lineHeight":"49px","margin":0},"children":"This page could not be found."}]}]]}]}]],"notFoundStyles":[]}],"params":{}}]],null],null],["$L9",null]]]]
+9:[["$","meta","0",{"name":"viewport","content":"width=device-width, initial-scale=1"}],["$","meta","1",{"charSet":"utf-8"}],["$","meta","2",{"name":"next-size-adjust"}]]
+1:null

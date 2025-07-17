@@ -1,0 +1,468 @@
+2:I[2972,["918","static/chunks/918-3273b83890f10546.js","972","static/chunks/972-011bba60ed155615.js","930","static/chunks/930-3262a6c9c5acace4.js","289","static/chunks/app/learn/%5Btopic%5D/page-4ab144227f7a7b3e.js"],""]
+3:I[5907,["918","static/chunks/918-3273b83890f10546.js","972","static/chunks/972-011bba60ed155615.js","930","static/chunks/930-3262a6c9c5acace4.js","289","static/chunks/app/learn/%5Btopic%5D/page-4ab144227f7a7b3e.js"],"default"]
+5:I[4707,[],""]
+7:I[6423,[],""]
+8:I[2,["918","static/chunks/918-3273b83890f10546.js","710","static/chunks/710-dfaa11b4dff08f8e.js","972","static/chunks/972-011bba60ed155615.js","233","static/chunks/233-3e0c1d820a17eca9.js","185","static/chunks/app/layout-333f4adcd11f8f39.js"],"default",1]
+4:T2d40,
+# Problem 4: Virtual Scrolling Implementation
+
+## Problem Description
+
+Implement virtual scrolling for a large list of items to improve performance when dealing with thousands of records.
+
+## Requirements
+
+- Handle thousands of items efficiently
+- Maintain smooth scrolling
+- Support dynamic item heights
+- Implement proper recycling
+- Handle scroll events optimally
+
+## Solution
+
+{% raw %}
+```javascript
+class VirtualScroller {
+  constructor(container, options = {}) {
+    this.container = container;
+    this.itemHeight = options.itemHeight || 50;
+    this.overscan = options.overscan || 5;
+    this.items = [];
+    this.visibleItems = new Map();
+    this.scrollTop = 0;
+    this.containerHeight = 0;
+    this.totalHeight = 0;
+
+    this.init();
+  }
+
+  init() {
+    this.setupContainer();
+    this.attachEventListeners();
+    this.updateDimensions();
+  }
+
+  setupContainer() {
+    this.container.innerHTML = `
+      <div class="virtual-scroller">
+        <div class="virtual-scroller-content"></div>
+        <div class="virtual-scroller-spacer"></div>
+      </div>
+    `;
+
+    this.content = this.container.querySelector(".virtual-scroller-content");
+    this.spacer = this.container.querySelector(".virtual-scroller-spacer");
+  }
+
+  attachEventListeners() {
+    let ticking = false;
+
+    this.container.addEventListener("scroll", () => {
+      if (!ticking) {
+        requestAnimationFrame(() => {
+          this.handleScroll();
+          ticking = false;
+        });
+        ticking = true;
+      }
+    });
+
+    window.addEventListener("resize", () => {
+      this.updateDimensions();
+      this.render();
+    });
+  }
+
+  handleScroll() {
+    const newScrollTop = this.container.scrollTop;
+    if (Math.abs(newScrollTop - this.scrollTop) > this.itemHeight / 2) {
+      this.scrollTop = newScrollTop;
+      this.render();
+    }
+  }
+
+  updateDimensions() {
+    this.containerHeight = this.container.clientHeight;
+    this.totalHeight = this.items.length * this.itemHeight;
+    this.spacer.style.height = `${this.totalHeight}px`;
+  }
+
+  setItems(items) {
+    this.items = items;
+    this.updateDimensions();
+    this.render();
+  }
+
+  render() {
+    const startIndex = Math.floor(this.scrollTop / this.itemHeight);
+    const endIndex = Math.min(
+      startIndex +
+        Math.ceil(this.containerHeight / this.itemHeight) +
+        this.overscan,
+      this.items.length
+    );
+
+    const startIndexWithOverscan = Math.max(0, startIndex - this.overscan);
+    const endIndexWithOverscan = Math.min(
+      this.items.length,
+      endIndex + this.overscan
+    );
+
+    // Remove items that are no longer visible
+    for (const [index, element] of this.visibleItems) {
+      if (index < startIndexWithOverscan || index >= endIndexWithOverscan) {
+        element.remove();
+        this.visibleItems.delete(index);
+      }
+    }
+
+    // Add new visible items
+    for (let i = startIndexWithOverscan; i < endIndexWithOverscan; i++) {
+      if (!this.visibleItems.has(i)) {
+        const element = this.renderItem(this.items[i], i);
+        element.style.position = "absolute";
+        element.style.top = `${i * this.itemHeight}px`;
+        element.style.width = "100%";
+        element.style.height = `${this.itemHeight}px`;
+
+        this.content.appendChild(element);
+        this.visibleItems.set(i, element);
+      }
+    }
+  }
+
+  renderItem(item, index) {
+    const element = document.createElement("div");
+    element.className = "virtual-item";
+    element.innerHTML = `
+      <div class="item-content">
+        <span class="item-index">${index + 1}</span>
+        <span class="item-text">${item.text}</span>
+      </div>
+    `;
+    return element;
+  }
+
+  scrollToIndex(index) {
+    const scrollTop = index * this.itemHeight;
+    this.container.scrollTop = scrollTop;
+  }
+
+  getVisibleRange() {
+    const startIndex = Math.floor(this.scrollTop / this.itemHeight);
+    const endIndex = Math.min(
+      startIndex + Math.ceil(this.containerHeight / this.itemHeight),
+      this.items.length
+    );
+    return { startIndex, endIndex };
+  }
+}
+
+// Usage
+const container = document.getElementById("virtual-scroll-container");
+const virtualScroller = new VirtualScroller(container, {
+  itemHeight: 60,
+  overscan: 10,
+});
+
+// Generate large dataset
+const items = Array.from({ length: 10000 }, (_, i) => ({
+  id: i,
+  text: `Item ${
+    i + 1
+  } - Lorem ipsum dolor sit amet, consectetur adipiscing elit.`,
+}));
+
+virtualScroller.setItems(items);
+```
+{% endraw %}
+
+## CSS Styling
+
+```css
+.virtual-scroller {
+  position: relative;
+  height: 100%;
+  overflow: hidden;
+}
+
+.virtual-scroller-content {
+  position: relative;
+  width: 100%;
+}
+
+.virtual-scroller-spacer {
+  width: 100%;
+}
+
+.virtual-item {
+  border-bottom: 1px solid #eee;
+  background: white;
+  transition: background-color 0.2s;
+}
+
+.virtual-item:hover {
+  background-color: #f8f9fa;
+}
+
+.item-content {
+  padding: 16px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.item-index {
+  font-weight: 600;
+  color: #007bff;
+  min-width: 40px;
+}
+
+.item-text {
+  color: #333;
+  line-height: 1.4;
+}
+```
+
+## Advanced Features
+
+### Dynamic Height Support
+
+```javascript
+class DynamicVirtualScroller extends VirtualScroller {
+  constructor(container, options = {}) {
+    super(container, options);
+    this.itemHeights = new Map();
+    this.estimatedHeight = options.estimatedHeight || 50;
+  }
+
+  updateItemHeight(index, height) {
+    this.itemHeights.set(index, height);
+    this.updateTotalHeight();
+    this.render();
+  }
+
+  updateTotalHeight() {
+    this.totalHeight = Array.from(
+      { length: this.items.length },
+      (_, i) => this.itemHeights.get(i) || this.estimatedHeight
+    ).reduce((sum, height) => sum + height, 0);
+
+    this.spacer.style.height = `${this.totalHeight}px`;
+  }
+
+  getItemTop(index) {
+    let top = 0;
+    for (let i = 0; i < index; i++) {
+      top += this.itemHeights.get(i) || this.estimatedHeight;
+    }
+    return top;
+  }
+
+  render() {
+    const visibleRange = this.getVisibleRange();
+    const startIndex = Math.max(0, visibleRange.startIndex - this.overscan);
+    const endIndex = Math.min(
+      this.items.length,
+      visibleRange.endIndex + this.overscan
+    );
+
+    // Remove items that are no longer visible
+    for (const [index, element] of this.visibleItems) {
+      if (index < startIndex || index >= endIndex) {
+        element.remove();
+        this.visibleItems.delete(index);
+      }
+    }
+
+    // Add new visible items
+    for (let i = startIndex; i < endIndex; i++) {
+      if (!this.visibleItems.has(i)) {
+        const element = this.renderItem(this.items[i], i);
+        element.style.position = "absolute";
+        element.style.top = `${this.getItemTop(i)}px`;
+        element.style.width = "100%";
+
+        this.content.appendChild(element);
+        this.visibleItems.set(i, element);
+      }
+    }
+  }
+}
+```
+
+### Search and Filter Support
+
+```javascript
+class SearchableVirtualScroller extends VirtualScroller {
+  constructor(container, options = {}) {
+    super(container, options);
+    this.filteredItems = [];
+    this.searchTerm = "";
+  }
+
+  search(term) {
+    this.searchTerm = term.toLowerCase();
+    this.filteredItems = this.items.filter((item) =>
+      item.text.toLowerCase().includes(this.searchTerm)
+    );
+    this.updateDimensions();
+    this.render();
+  }
+
+  updateDimensions() {
+    this.containerHeight = this.container.clientHeight;
+    this.totalHeight = this.filteredItems.length * this.itemHeight;
+    this.spacer.style.height = `${this.totalHeight}px`;
+  }
+
+  render() {
+    const startIndex = Math.floor(this.scrollTop / this.itemHeight);
+    const endIndex = Math.min(
+      startIndex +
+        Math.ceil(this.containerHeight / this.itemHeight) +
+        this.overscan,
+      this.filteredItems.length
+    );
+
+    const startIndexWithOverscan = Math.max(0, startIndex - this.overscan);
+    const endIndexWithOverscan = Math.min(
+      this.filteredItems.length,
+      endIndex + this.overscan
+    );
+
+    // Remove items that are no longer visible
+    for (const [index, element] of this.visibleItems) {
+      if (index < startIndexWithOverscan || index >= endIndexWithOverscan) {
+        element.remove();
+        this.visibleItems.delete(index);
+      }
+    }
+
+    // Add new visible items
+    for (let i = startIndexWithOverscan; i < endIndexWithOverscan; i++) {
+      if (!this.visibleItems.has(i)) {
+        const element = this.renderItem(this.filteredItems[i], i);
+        element.style.position = "absolute";
+        element.style.top = `${i * this.itemHeight}px`;
+        element.style.width = "100%";
+        element.style.height = `${this.itemHeight}px`;
+
+        this.content.appendChild(element);
+        this.visibleItems.set(i, element);
+      }
+    }
+  }
+}
+```
+
+## Performance Optimizations
+
+### Memory Management
+
+```javascript
+class OptimizedVirtualScroller extends VirtualScroller {
+  constructor(container, options = {}) {
+    super(container, options);
+    this.elementPool = [];
+    this.maxPoolSize = options.maxPoolSize || 100;
+  }
+
+  getElementFromPool() {
+    if (this.elementPool.length > 0) {
+      return this.elementPool.pop();
+    }
+    return document.createElement("div");
+  }
+
+  returnElementToPool(element) {
+    if (this.elementPool.length < this.maxPoolSize) {
+      element.innerHTML = "";
+      element.className = "";
+      element.style.cssText = "";
+      this.elementPool.push(element);
+    }
+  }
+
+  render() {
+    // Implementation with element recycling
+    const visibleRange = this.getVisibleRange();
+
+    // Remove invisible items and return to pool
+    for (const [index, element] of this.visibleItems) {
+      if (
+        index < visibleRange.startIndex - this.overscan ||
+        index >= visibleRange.endIndex + this.overscan
+      ) {
+        this.returnElementToPool(element);
+        this.visibleItems.delete(index);
+      }
+    }
+
+    // Add visible items
+    for (
+      let i = visibleRange.startIndex - this.overscan;
+      i < visibleRange.endIndex + this.overscan;
+      i++
+    ) {
+      if (i >= 0 && i < this.items.length && !this.visibleItems.has(i)) {
+        const element = this.getElementFromPool();
+        this.renderItem(this.items[i], i, element);
+        element.style.position = "absolute";
+        element.style.top = `${i * this.itemHeight}px`;
+        element.style.width = "100%";
+        element.style.height = `${this.itemHeight}px`;
+
+        this.content.appendChild(element);
+        this.visibleItems.set(i, element);
+      }
+    }
+  }
+}
+```
+
+## Key Features
+
+1. **Efficient Rendering**: Only renders visible items plus overscan
+2. **Smooth Scrolling**: Uses requestAnimationFrame for optimal performance
+3. **Memory Management**: Recycles DOM elements to reduce memory usage
+4. **Dynamic Heights**: Support for variable item heights
+5. **Search Integration**: Filter items while maintaining performance
+6. **Responsive Design**: Adapts to container size changes
+7. **Accessibility**: Maintains proper focus management
+8. **Error Handling**: Graceful handling of edge cases
+
+## Usage Examples
+
+```javascript
+// Basic usage
+const basicScroller = new VirtualScroller(container, {
+  itemHeight: 60,
+  overscan: 10,
+});
+
+// With search
+const searchableScroller = new SearchableVirtualScroller(container, {
+  itemHeight: 60,
+  overscan: 10,
+});
+
+searchableScroller.search("lorem");
+
+// With dynamic heights
+const dynamicScroller = new DynamicVirtualScroller(container, {
+  estimatedHeight: 50,
+  overscan: 10,
+});
+
+// With optimization
+const optimizedScroller = new OptimizedVirtualScroller(container, {
+  itemHeight: 60,
+  overscan: 10,
+  maxPoolSize: 100,
+});
+```
+6:["topic","coding-problems-04-virtual-scrolling","d"]
+0:["2NmUhWiPdVVBzVtDZlggk",[[["",{"children":["learn",{"children":[["topic","coding-problems-04-virtual-scrolling","d"],{"children":["__PAGE__?{\"topic\":\"coding-problems-04-virtual-scrolling\"}",{}]}]}]},"$undefined","$undefined",true],["",{"children":["learn",{"children":[["topic","coding-problems-04-virtual-scrolling","d"],{"children":["__PAGE__",{},[["$L1",["$","div",null,{"className":"max-w-6xl mx-auto px-8 py-24","children":[["$","div",null,{"className":"flex items-center gap-4 mb-8","children":["$","$L2",null,{"href":"/learn","children":["$","button",null,{"className":"flex items-center gap-2 bg-gray-100 border border-gray-300 text-gray-700 px-4 py-3 rounded-md font-medium hover:bg-gray-200 transition-colors","children":[["$","svg",null,{"xmlns":"http://www.w3.org/2000/svg","width":16,"height":16,"viewBox":"0 0 24 24","fill":"none","stroke":"currentColor","strokeWidth":2,"strokeLinecap":"round","strokeLinejoin":"round","className":"lucide lucide-arrow-left ","children":[["$","path","1l729n",{"d":"m12 19-7-7 7-7"}],["$","path","x3x0zl",{"d":"M19 12H5"}],"$undefined"]}],"Back to Learn"]}]}]}],["$","div",null,{"className":"bg-white border border-gray-200 rounded-lg p-8 mb-8","children":[["$","div",null,{"className":"flex items-center justify-between mb-4","children":[["$","h1",null,{"className":"text-3xl font-bold text-gray-900","children":"Virtual Scrolling Implementation"}],["$","div",null,{"className":"flex gap-4","children":[["$","button",null,{"className":"flex items-center gap-2 bg-transparent text-gray-700 border border-gray-300 px-6 py-3 rounded-md font-semibold hover:bg-gray-50 transition-colors","children":[["$","svg",null,{"xmlns":"http://www.w3.org/2000/svg","width":16,"height":16,"viewBox":"0 0 24 24","fill":"none","stroke":"currentColor","strokeWidth":2,"strokeLinecap":"round","strokeLinejoin":"round","className":"lucide lucide-star ","children":[["$","polygon","8f66p6",{"points":"12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"}],"$undefined"]}],"Bookmark"]}],["$","button",null,{"className":"flex items-center gap-2 bg-transparent text-gray-700 border border-gray-300 px-6 py-3 rounded-md font-semibold hover:bg-gray-50 transition-colors","children":[["$","svg",null,{"xmlns":"http://www.w3.org/2000/svg","width":16,"height":16,"viewBox":"0 0 24 24","fill":"none","stroke":"currentColor","strokeWidth":2,"strokeLinecap":"round","strokeLinejoin":"round","className":"lucide lucide-share2 ","children":[["$","circle","gq8acd",{"cx":"18","cy":"5","r":"3"}],["$","circle","w7nqdw",{"cx":"6","cy":"12","r":"3"}],["$","circle","1xt0gg",{"cx":"18","cy":"19","r":"3"}],["$","line","47mynk",{"x1":"8.59","x2":"15.42","y1":"13.51","y2":"17.49"}],["$","line","1n3mei",{"x1":"15.41","x2":"8.59","y1":"6.51","y2":"10.49"}],"$undefined"]}],"Share"]}]]}]]}],["$","div",null,{"className":"flex gap-8 mb-4","children":[["$","div",null,{"className":"flex items-center gap-2 text-sm text-gray-600","children":[["$","svg",null,{"xmlns":"http://www.w3.org/2000/svg","width":16,"height":16,"viewBox":"0 0 24 24","fill":"none","stroke":"currentColor","strokeWidth":2,"strokeLinecap":"round","strokeLinejoin":"round","className":"lucide lucide-clock ","children":[["$","circle","1mglay",{"cx":"12","cy":"12","r":"10"}],["$","polyline","68esgv",{"points":"12 6 12 12 16 14"}],"$undefined"]}],"2-3 hours"]}],["$","span",null,{"className":"px-3 py-1 rounded-full text-xs font-semibold text-white bg-red-500","children":"Hard"}],["$","span",null,{"className":"px-3 py-1 rounded-full text-xs font-semibold bg-blue-100 text-blue-700","children":"Coding Problems"}]]}],["$","div",null,{"className":"flex flex-wrap gap-2 mb-4","children":[["$","span","0",{"className":"bg-gray-100 text-gray-600 px-3 py-1 rounded-md text-xs font-medium","children":"javascript"}],["$","span","1",{"className":"bg-gray-100 text-gray-600 px-3 py-1 rounded-md text-xs font-medium","children":"performance"}],["$","span","2",{"className":"bg-gray-100 text-gray-600 px-3 py-1 rounded-md text-xs font-medium","children":"virtualization"}],["$","span","3",{"className":"bg-gray-100 text-gray-600 px-3 py-1 rounded-md text-xs font-medium","children":"large-datasets"}],["$","span","4",{"className":"bg-gray-100 text-gray-600 px-3 py-1 rounded-md text-xs font-medium","children":"optimization"}],["$","span","5",{"className":"bg-gray-100 text-gray-600 px-3 py-1 rounded-md text-xs font-medium","children":"memory-management"}]]}],["$","p",null,{"className":"text-lg text-gray-700 leading-relaxed","children":"Implement virtual scrolling for a large list of items to improve performance when dealing with thousands of records...."}]]}],["$","div",null,{"className":"grid grid-cols-1 lg:grid-cols-3 gap-8","children":[["$","div",null,{"className":"lg:col-span-2","children":["$","div",null,{"className":"bg-white border border-gray-200 rounded-lg p-8","children":["$","$L3",null,{"content":"$4"}]}]}],["$","div",null,{"className":"space-y-6","children":[["$","div",null,{"className":"bg-white border border-gray-200 rounded-lg p-6","children":[["$","h3",null,{"className":"text-lg font-semibold text-gray-900 mb-4","children":"Your Progress"}],["$","div",null,{"className":"w-full bg-gray-200 rounded-full h-2 mb-2","children":["$","div",null,{"className":"bg-blue-600 h-2 rounded-full","style":{"width":"25%"}}]}],["$","p",null,{"className":"text-sm text-gray-600","children":"25% Complete"}]]}],false]}]]}]]}],null],null],null]},[null,["$","$L5",null,{"parallelRouterKey":"children","segmentPath":["children","learn","children","$6","children"],"error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L7",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","notFoundStyles":"$undefined"}]],null]},[null,["$","$L5",null,{"parallelRouterKey":"children","segmentPath":["children","learn","children"],"error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L7",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","notFoundStyles":"$undefined"}]],null]},[[[["$","link","0",{"rel":"stylesheet","href":"/interview/_next/static/css/387024c6a2216908.css","precedence":"next","crossOrigin":"$undefined"}]],["$","$L8",null,{"children":["$","$L5",null,{"parallelRouterKey":"children","segmentPath":["children"],"error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L7",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":{"fontFamily":"system-ui,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\"","height":"100vh","textAlign":"center","display":"flex","flexDirection":"column","alignItems":"center","justifyContent":"center"},"children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":{"display":"inline-block","margin":"0 20px 0 0","padding":"0 23px 0 0","fontSize":24,"fontWeight":500,"verticalAlign":"top","lineHeight":"49px"},"children":"404"}],["$","div",null,{"style":{"display":"inline-block"},"children":["$","h2",null,{"style":{"fontSize":14,"fontWeight":400,"lineHeight":"49px","margin":0},"children":"This page could not be found."}]}]]}]}]],"notFoundStyles":[]}],"params":{}}]],null],null],["$L9",null]]]]
+9:[["$","meta","0",{"name":"viewport","content":"width=device-width, initial-scale=1"}],["$","meta","1",{"charSet":"utf-8"}],["$","meta","2",{"name":"next-size-adjust"}]]
+1:null

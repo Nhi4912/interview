@@ -1,0 +1,626 @@
+2:I[2972,["918","static/chunks/918-3273b83890f10546.js","972","static/chunks/972-011bba60ed155615.js","930","static/chunks/930-3262a6c9c5acace4.js","289","static/chunks/app/learn/%5Btopic%5D/page-4ab144227f7a7b3e.js"],""]
+3:I[5907,["918","static/chunks/918-3273b83890f10546.js","972","static/chunks/972-011bba60ed155615.js","930","static/chunks/930-3262a6c9c5acace4.js","289","static/chunks/app/learn/%5Btopic%5D/page-4ab144227f7a7b3e.js"],"default"]
+5:I[4707,[],""]
+7:I[6423,[],""]
+8:I[2,["918","static/chunks/918-3273b83890f10546.js","710","static/chunks/710-dfaa11b4dff08f8e.js","972","static/chunks/972-011bba60ed155615.js","233","static/chunks/233-3e0c1d820a17eca9.js","185","static/chunks/app/layout-333f4adcd11f8f39.js"],"default",1]
+4:T3d70,
+# Longest Substring Without Repeating Character
+
+**LeetCode Problem # * 3. Longest Substring Without Repeating Characters**
+
+## Problem Description
+
+ * Given a string s, find the length of the longest substring without repeating characters.  *  * Input: s = "abcabcbb"  * Output: 3  * Explanation: The answer is "abc", with the length of 3. 
+
+## Solutions
+
+{% raw %}
+/**
+ * 3. Longest Substring Without Repeating Characters
+ *
+ * Problem:
+ * Given a string s, find the length of the longest substring without repeating characters.
+ *
+ * Example:
+ * Input: s = "abcabcbb"
+ * Output: 3
+ * Explanation: The answer is "abc", with the length of 3.
+ *
+ * Input: s = "bbbbb"
+ * Output: 1
+ * Explanation: The answer is "b", with the length of 1.
+ *
+ * Input: s = "pwwkew"
+ * Output: 3
+ * Explanation: The answer is "wke", with the length of 3.
+ *
+ * LeetCode: https://leetcode.com/problems/longest-substring-without-repeating-characters/
+ */
+
+/**
+ * Solution 1: Sliding Window with Set (Optimal)
+ *
+ * Approach:
+ * - Use sliding window technique with two pointers
+ * - Use Set to track characters in current window
+ * - Expand window when no duplicates, shrink when duplicates found
+ *
+ * Time Complexity: O(n)
+ * Space Complexity: O(min(m, n)) where m is charset size
+ */
+function lengthOfLongestSubstring(s: string): number {
+  const charSet = new Set<string>();
+  let maxLength = 0;
+  let left = 0;
+
+  for (let right = 0; right < s.length; right++) {
+    while (charSet.has(s[right])) {
+      charSet.delete(s[left]);
+      left++;
+    }
+
+    charSet.add(s[right]);
+    maxLength = Math.max(maxLength, right - left + 1);
+  }
+
+  return maxLength;
+}
+
+/**
+ * Solution 2: Sliding Window with Map
+ *
+ * Approach:
+ * - Use Map to store character positions
+ * - More efficient for finding duplicate positions
+ *
+ * Time Complexity: O(n)
+ * Space Complexity: O(min(m, n))
+ */
+function lengthOfLongestSubstringMap(s: string): number {
+  const charMap = new Map<string, number>();
+  let maxLength = 0;
+  let left = 0;
+
+  for (let right = 0; right < s.length; right++) {
+    if (charMap.has(s[right])) {
+      left = Math.max(left, charMap.get(s[right])! + 1);
+    }
+
+    charMap.set(s[right], right);
+    maxLength = Math.max(maxLength, right - left + 1);
+  }
+
+  return maxLength;
+}
+
+/**
+ * Solution 3: Using Array for Character Tracking
+ *
+ * Approach:
+ * - Use array to track character positions
+ * - Assume ASCII characters (128 or 256 size array)
+ *
+ * Time Complexity: O(n)
+ * Space Complexity: O(1) - fixed size array
+ */
+function lengthOfLongestSubstringArray(s: string): number {
+  const charIndex = new Array(128).fill(-1);
+  let maxLength = 0;
+  let left = 0;
+
+  for (let right = 0; right < s.length; right++) {
+    const charCode = s[right].charCodeAt(0);
+
+    if (charIndex[charCode] >= left) {
+      left = charIndex[charCode] + 1;
+    }
+
+    charIndex[charCode] = right;
+    maxLength = Math.max(maxLength, right - left + 1);
+  }
+
+  return maxLength;
+}
+
+/**
+ * Solution 4: Brute Force with Set
+ *
+ * Approach:
+ * - Check all possible substrings
+ * - Use Set to check for duplicates
+ *
+ * Time Complexity: O(n²)
+ * Space Complexity: O(min(m, n))
+ */
+function lengthOfLongestSubstringBruteForce(s: string): number {
+  let maxLength = 0;
+
+  for (let i = 0; i < s.length; i++) {
+    const charSet = new Set<string>();
+    let currentLength = 0;
+
+    for (let j = i; j < s.length; j++) {
+      if (charSet.has(s[j])) {
+        break;
+      }
+      charSet.add(s[j]);
+      currentLength++;
+    }
+
+    maxLength = Math.max(maxLength, currentLength);
+  }
+
+  return maxLength;
+}
+
+/**
+ * Solution 5: Using Object as Hash Map
+ *
+ * Approach:
+ * - Use JavaScript object as hash map
+ * - More familiar for JavaScript developers
+ *
+ * Time Complexity: O(n)
+ * Space Complexity: O(min(m, n))
+ */
+function lengthOfLongestSubstringObject(s: string): number {
+  const charMap: { [key: string]: number } = {};
+  let maxLength = 0;
+  let left = 0;
+
+  for (let right = 0; right < s.length; right++) {
+    if (s[right] in charMap && charMap[s[right]] >= left) {
+      left = charMap[s[right]] + 1;
+    }
+
+    charMap[s[right]] = right;
+    maxLength = Math.max(maxLength, right - left + 1);
+  }
+
+  return maxLength;
+}
+
+/**
+ * Solution 6: Using Class (Object-oriented)
+ *
+ * Approach:
+ * - Create a LongestSubstringFinder class
+ * - Encapsulate the finding logic
+ *
+ * Time Complexity: O(n)
+ * Space Complexity: O(min(m, n))
+ */
+class LongestSubstringFinder {
+  private charMap: Map<string, number>;
+
+  constructor() {
+    this.charMap = new Map();
+  }
+
+  findLength(s: string): number {
+    this.charMap.clear();
+    let maxLength = 0;
+    let left = 0;
+
+    for (let right = 0; right < s.length; right++) {
+      if (this.charMap.has(s[right])) {
+        left = Math.max(left, this.charMap.get(s[right])! + 1);
+      }
+
+      this.charMap.set(s[right], right);
+      maxLength = Math.max(maxLength, right - left + 1);
+    }
+
+    return maxLength;
+  }
+
+  getCharMap(): Map<string, number> {
+    return new Map(this.charMap);
+  }
+}
+
+function lengthOfLongestSubstringClass(s: string): number {
+  const finder = new LongestSubstringFinder();
+  return finder.findLength(s);
+}
+
+/**
+ * Solution 7: Using Generator (Memory efficient)
+ *
+ * Approach:
+ * - Use generator to yield substring lengths
+ * - Memory efficient for large strings
+ *
+ * Time Complexity: O(n)
+ * Space Complexity: O(min(m, n))
+ */
+function* lengthOfLongestSubstringGenerator(s: string): Generator<number> {
+  const charMap = new Map<string, number>();
+  let left = 0;
+
+  for (let right = 0; right < s.length; right++) {
+    if (charMap.has(s[right])) {
+      left = Math.max(left, charMap.get(s[right])! + 1);
+    }
+
+    charMap.set(s[right], right);
+    yield right - left + 1;
+  }
+}
+
+function lengthOfLongestSubstringWithGenerator(s: string): number {
+  let maxLength = 0;
+  for (const length of lengthOfLongestSubstringGenerator(s)) {
+    maxLength = Math.max(maxLength, length);
+  }
+  return maxLength;
+}
+
+/**
+ * Solution 8: Using Functional Approach
+ *
+ * Approach:
+ * - Use functional programming concepts
+ * - More declarative style
+ *
+ * Time Complexity: O(n)
+ * Space Complexity: O(min(m, n))
+ */
+function lengthOfLongestSubstringFunctional(s: string): number {
+  return s.split("").reduce((acc, char, index) => {
+    const charMap = new Map<string, number>();
+    let left = 0;
+    let maxLength = 0;
+
+    for (let i = 0; i <= index; i++) {
+      if (charMap.has(s[i])) {
+        left = Math.max(left, charMap.get(s[i])! + 1);
+      }
+      charMap.set(s[i], i);
+      maxLength = Math.max(maxLength, i - left + 1);
+    }
+
+    return Math.max(acc, maxLength);
+  }, 0);
+}
+
+/**
+ * Solution 9: Using Two Pointers with Array
+ *
+ * Approach:
+ * - Use two pointers with array tracking
+ * - More explicit pointer manipulation
+ *
+ * Time Complexity: O(n)
+ * Space Complexity: O(1)
+ */
+function lengthOfLongestSubstringTwoPointers(s: string): number {
+  const charIndex = new Array(128).fill(-1);
+  let maxLength = 0;
+  let start = 0;
+  let end = 0;
+
+  while (end < s.length) {
+    const charCode = s[end].charCodeAt(0);
+
+    if (charIndex[charCode] >= start) {
+      start = charIndex[charCode] + 1;
+    }
+
+    charIndex[charCode] = end;
+    maxLength = Math.max(maxLength, end - start + 1);
+    end++;
+  }
+
+  return maxLength;
+}
+
+/**
+ * Solution 10: Using Bit Manipulation (for small alphabets)
+ *
+ * Approach:
+ * - Use bit manipulation for character tracking
+ * - Efficient for small character sets
+ *
+ * Time Complexity: O(n)
+ * Space Complexity: O(1)
+ */
+function lengthOfLongestSubstringBitwise(s: string): number {
+  let maxLength = 0;
+  let left = 0;
+  let charBits = 0;
+
+  for (let right = 0; right < s.length; right++) {
+    const charCode = s[right].charCodeAt(0) - "a".charCodeAt(0);
+    const bit = 1 << charCode;
+
+    while (charBits & bit) {
+      const leftCharCode = s[left].charCodeAt(0) - "a".charCodeAt(0);
+      charBits &= ~(1 << leftCharCode);
+      left++;
+    }
+
+    charBits |= bit;
+    maxLength = Math.max(maxLength, right - left + 1);
+  }
+
+  return maxLength;
+}
+
+/**
+ * Solution 11: Using Queue-like Approach
+ *
+ * Approach:
+ * - Use array as queue to maintain current substring
+ * - Remove characters from front when duplicates found
+ *
+ * Time Complexity: O(n)
+ * Space Complexity: O(min(m, n))
+ */
+function lengthOfLongestSubstringQueue(s: string): number {
+  const queue: string[] = [];
+  let maxLength = 0;
+
+  for (const char of s) {
+    const index = queue.indexOf(char);
+    if (index !== -1) {
+      queue.splice(0, index + 1);
+    }
+    queue.push(char);
+    maxLength = Math.max(maxLength, queue.length);
+  }
+
+  return maxLength;
+}
+
+// Test cases
+function testLengthOfLongestSubstring() {
+  console.log(
+    "=== Testing Longest Substring Without Repeating Characters ===\n"
+  );
+
+  const testCases = [
+    {
+      input: "abcabcbb",
+      expected: 3,
+      description: "Multiple repeating characters",
+    },
+    {
+      input: "bbbbb",
+      expected: 1,
+      description: "All same characters",
+    },
+    {
+      input: "pwwkew",
+      expected: 3,
+      description: "Mixed repeating characters",
+    },
+    {
+      input: "",
+      expected: 0,
+      description: "Empty string",
+    },
+    {
+      input: "a",
+      expected: 1,
+      description: "Single character",
+    },
+    {
+      input: "abcdef",
+      expected: 6,
+      description: "No repeating characters",
+    },
+    {
+      input: "dvdf",
+      expected: 3,
+      description: "Repeating character in middle",
+    },
+  ];
+
+  testCases.forEach((testCase, index) => {
+    console.log(`Test Case ${index + 1}: ${testCase.description}`);
+    console.log(`Input: "${testCase.input}"`);
+    console.log(`Expected: ${testCase.expected}\n`);
+
+    // Test Solution 1 (Sliding Window with Set)
+    const result1 = lengthOfLongestSubstring(testCase.input);
+    console.log(
+      `Solution 1 (Sliding Window with Set): ${result1} ${
+        result1 === testCase.expected ? "✅" : "❌"
+      }`
+    );
+
+    // Test Solution 2 (Sliding Window with Map)
+    const result2 = lengthOfLongestSubstringMap(testCase.input);
+    console.log(
+      `Solution 2 (Sliding Window with Map): ${result2} ${
+        result2 === testCase.expected ? "✅" : "❌"
+      }`
+    );
+
+    // Test Solution 3 (Array)
+    const result3 = lengthOfLongestSubstringArray(testCase.input);
+    console.log(
+      `Solution 3 (Array): ${result3} ${
+        result3 === testCase.expected ? "✅" : "❌"
+      }`
+    );
+
+    // Test Solution 4 (Brute Force)
+    const result4 = lengthOfLongestSubstringBruteForce(testCase.input);
+    console.log(
+      `Solution 4 (Brute Force): ${result4} ${
+        result4 === testCase.expected ? "✅" : "❌"
+      }`
+    );
+
+    // Test Solution 5 (Object)
+    const result5 = lengthOfLongestSubstringObject(testCase.input);
+    console.log(
+      `Solution 5 (Object): ${result5} ${
+        result5 === testCase.expected ? "✅" : "❌"
+      }`
+    );
+
+    // Test Solution 6 (Class)
+    const result6 = lengthOfLongestSubstringClass(testCase.input);
+    console.log(
+      `Solution 6 (Class): ${result6} ${
+        result6 === testCase.expected ? "✅" : "❌"
+      }`
+    );
+
+    // Test Solution 7 (Generator)
+    const result7 = lengthOfLongestSubstringWithGenerator(testCase.input);
+    console.log(
+      `Solution 7 (Generator): ${result7} ${
+        result7 === testCase.expected ? "✅" : "❌"
+      }`
+    );
+
+    // Test Solution 8 (Functional)
+    const result8 = lengthOfLongestSubstringFunctional(testCase.input);
+    console.log(
+      `Solution 8 (Functional): ${result8} ${
+        result8 === testCase.expected ? "✅" : "❌"
+      }`
+    );
+
+    // Test Solution 9 (Two Pointers)
+    const result9 = lengthOfLongestSubstringTwoPointers(testCase.input);
+    console.log(
+      `Solution 9 (Two Pointers): ${result9} ${
+        result9 === testCase.expected ? "✅" : "❌"
+      }`
+    );
+
+    // Test Solution 10 (Bitwise)
+    const result10 = lengthOfLongestSubstringBitwise(testCase.input);
+    console.log(
+      `Solution 10 (Bitwise): ${result10} ${
+        result10 === testCase.expected ? "✅" : "❌"
+      }`
+    );
+
+    // Test Solution 11 (Queue)
+    const result11 = lengthOfLongestSubstringQueue(testCase.input);
+    console.log(
+      `Solution 11 (Queue): ${result11} ${
+        result11 === testCase.expected ? "✅" : "❌"
+      }`
+    );
+
+    console.log("\n---\n");
+  });
+}
+
+// Performance comparison
+function performanceComparison() {
+  console.log("=== Performance Comparison ===\n");
+
+  const testCases = [
+    { name: "Sliding Window with Set", func: lengthOfLongestSubstring },
+    { name: "Sliding Window with Map", func: lengthOfLongestSubstringMap },
+    { name: "Array", func: lengthOfLongestSubstringArray },
+    { name: "Brute Force", func: lengthOfLongestSubstringBruteForce },
+    { name: "Object", func: lengthOfLongestSubstringObject },
+    { name: "Class", func: lengthOfLongestSubstringClass },
+    { name: "Generator", func: lengthOfLongestSubstringWithGenerator },
+    { name: "Functional", func: lengthOfLongestSubstringFunctional },
+    { name: "Two Pointers", func: lengthOfLongestSubstringTwoPointers },
+    { name: "Bitwise", func: lengthOfLongestSubstringBitwise },
+    { name: "Queue", func: lengthOfLongestSubstringQueue },
+  ];
+
+  // Create test cases
+  const smallCase = "abcabcbb";
+  const mediumCase = "abcdefghijklmnopqrstuvwxyz";
+  const largeCase = "a".repeat(1000) + "b".repeat(1000) + "c".repeat(1000);
+
+  const cases = [
+    { name: "Small", case: smallCase },
+    { name: "Medium", case: mediumCase },
+    { name: "Large", case: largeCase },
+  ];
+
+  cases.forEach(({ name, case: testCase }) => {
+    console.log(`${name} Case:`);
+
+    testCases.forEach(({ name: funcName, func }) => {
+      const start = performance.now();
+      const result = func(testCase);
+      const end = performance.now();
+
+      console.log(
+        `  ${funcName}: ${(end - start).toFixed(2)}ms (length: ${result})`
+      );
+    });
+
+    console.log("");
+  });
+}
+
+// Substring analysis
+function substringAnalysis() {
+  console.log("=== Substring Analysis ===\n");
+
+  const testCases = ["abcabcbb", "bbbbb", "pwwkew", "abcdef", "dvdf", "anviaj"];
+
+  testCases.forEach((testCase, index) => {
+    console.log(`Test Case ${index + 1}:`);
+    console.log(`String: "${testCase}"`);
+    const result = lengthOfLongestSubstring(testCase);
+    console.log(`Longest substring length: ${result}`);
+
+    // Find the actual substring
+    const charMap = new Map<string, number>();
+    let maxLength = 0;
+    let left = 0;
+    let maxLeft = 0;
+
+    for (let right = 0; right < testCase.length; right++) {
+      if (charMap.has(testCase[right])) {
+        left = Math.max(left, charMap.get(testCase[right])! + 1);
+      }
+      charMap.set(testCase[right], right);
+
+      if (right - left + 1 > maxLength) {
+        maxLength = right - left + 1;
+        maxLeft = left;
+      }
+    }
+
+    const substring = testCase.substring(maxLeft, maxLeft + maxLength);
+    console.log(`Longest substring: "${substring}"`);
+    console.log("");
+  });
+}
+
+// Uncomment the following lines to run tests
+// testLengthOfLongestSubstring();
+// performanceComparison();
+// substringAnalysis();
+
+export {
+  lengthOfLongestSubstring,
+  lengthOfLongestSubstringMap,
+  lengthOfLongestSubstringArray,
+  lengthOfLongestSubstringBruteForce,
+  lengthOfLongestSubstringObject,
+  lengthOfLongestSubstringClass,
+  lengthOfLongestSubstringWithGenerator,
+  lengthOfLongestSubstringFunctional,
+  lengthOfLongestSubstringTwoPointers,
+  lengthOfLongestSubstringBitwise,
+  lengthOfLongestSubstringQueue,
+  LongestSubstringFinder,
+  lengthOfLongestSubstringGenerator,
+  testLengthOfLongestSubstring,
+  performanceComparison,
+  substringAnalysis,
+};
+{% endraw %}
+6:["topic","string-problems-10-longest-substring-without-repeating-characters","d"]
+0:["2NmUhWiPdVVBzVtDZlggk",[[["",{"children":["learn",{"children":[["topic","string-problems-10-longest-substring-without-repeating-characters","d"],{"children":["__PAGE__?{\"topic\":\"string-problems-10-longest-substring-without-repeating-characters\"}",{}]}]}]},"$undefined","$undefined",true],["",{"children":["learn",{"children":[["topic","string-problems-10-longest-substring-without-repeating-characters","d"],{"children":["__PAGE__",{},[["$L1",["$","div",null,{"className":"max-w-6xl mx-auto px-8 py-24","children":[["$","div",null,{"className":"flex items-center gap-4 mb-8","children":["$","$L2",null,{"href":"/learn","children":["$","button",null,{"className":"flex items-center gap-2 bg-gray-100 border border-gray-300 text-gray-700 px-4 py-3 rounded-md font-medium hover:bg-gray-200 transition-colors","children":[["$","svg",null,{"xmlns":"http://www.w3.org/2000/svg","width":16,"height":16,"viewBox":"0 0 24 24","fill":"none","stroke":"currentColor","strokeWidth":2,"strokeLinecap":"round","strokeLinejoin":"round","className":"lucide lucide-arrow-left ","children":[["$","path","1l729n",{"d":"m12 19-7-7 7-7"}],["$","path","x3x0zl",{"d":"M19 12H5"}],"$undefined"]}],"Back to Learn"]}]}]}],["$","div",null,{"className":"bg-white border border-gray-200 rounded-lg p-8 mb-8","children":[["$","div",null,{"className":"flex items-center justify-between mb-4","children":[["$","h1",null,{"className":"text-3xl font-bold text-gray-900","children":"Longest Substring Without Repeating Character"}],["$","div",null,{"className":"flex gap-4","children":[["$","button",null,{"className":"flex items-center gap-2 bg-transparent text-gray-700 border border-gray-300 px-6 py-3 rounded-md font-semibold hover:bg-gray-50 transition-colors","children":[["$","svg",null,{"xmlns":"http://www.w3.org/2000/svg","width":16,"height":16,"viewBox":"0 0 24 24","fill":"none","stroke":"currentColor","strokeWidth":2,"strokeLinecap":"round","strokeLinejoin":"round","className":"lucide lucide-star ","children":[["$","polygon","8f66p6",{"points":"12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"}],"$undefined"]}],"Bookmark"]}],["$","button",null,{"className":"flex items-center gap-2 bg-transparent text-gray-700 border border-gray-300 px-6 py-3 rounded-md font-semibold hover:bg-gray-50 transition-colors","children":[["$","svg",null,{"xmlns":"http://www.w3.org/2000/svg","width":16,"height":16,"viewBox":"0 0 24 24","fill":"none","stroke":"currentColor","strokeWidth":2,"strokeLinecap":"round","strokeLinejoin":"round","className":"lucide lucide-share2 ","children":[["$","circle","gq8acd",{"cx":"18","cy":"5","r":"3"}],["$","circle","w7nqdw",{"cx":"6","cy":"12","r":"3"}],["$","circle","1xt0gg",{"cx":"18","cy":"19","r":"3"}],["$","line","47mynk",{"x1":"8.59","x2":"15.42","y1":"13.51","y2":"17.49"}],["$","line","1n3mei",{"x1":"15.41","x2":"8.59","y1":"6.51","y2":"10.49"}],"$undefined"]}],"Share"]}]]}]]}],["$","div",null,{"className":"flex gap-8 mb-4","children":[["$","div",null,{"className":"flex items-center gap-2 text-sm text-gray-600","children":[["$","svg",null,{"xmlns":"http://www.w3.org/2000/svg","width":16,"height":16,"viewBox":"0 0 24 24","fill":"none","stroke":"currentColor","strokeWidth":2,"strokeLinecap":"round","strokeLinejoin":"round","className":"lucide lucide-clock ","children":[["$","circle","1mglay",{"cx":"12","cy":"12","r":"10"}],["$","polyline","68esgv",{"points":"12 6 12 12 16 14"}],"$undefined"]}],"2-3 hours"]}],["$","span",null,{"className":"px-3 py-1 rounded-full text-xs font-semibold text-white bg-red-500","children":"Hard"}],["$","span",null,{"className":"px-3 py-1 rounded-full text-xs font-semibold bg-blue-100 text-blue-700","children":"String"}]]}],["$","div",null,{"className":"flex flex-wrap gap-2 mb-4","children":[["$","span","0",{"className":"bg-gray-100 text-gray-600 px-3 py-1 rounded-md text-xs font-medium","children":"String"}],["$","span","1",{"className":"bg-gray-100 text-gray-600 px-3 py-1 rounded-md text-xs font-medium","children":"Two Pointers"}],["$","span","2",{"className":"bg-gray-100 text-gray-600 px-3 py-1 rounded-md text-xs font-medium","children":"Hash Table"}],["$","span","3",{"className":"bg-gray-100 text-gray-600 px-3 py-1 rounded-md text-xs font-medium","children":"Sliding Window"}]]}],["$","p",null,{"className":"text-lg text-gray-700 leading-relaxed","children":"**LeetCode Problem # * 3. Longest Substring Without Repeating Characters**..."}]]}],["$","div",null,{"className":"grid grid-cols-1 lg:grid-cols-3 gap-8","children":[["$","div",null,{"className":"lg:col-span-2","children":["$","div",null,{"className":"bg-white border border-gray-200 rounded-lg p-8","children":["$","$L3",null,{"content":"$4"}]}]}],["$","div",null,{"className":"space-y-6","children":[["$","div",null,{"className":"bg-white border border-gray-200 rounded-lg p-6","children":[["$","h3",null,{"className":"text-lg font-semibold text-gray-900 mb-4","children":"Your Progress"}],["$","div",null,{"className":"w-full bg-gray-200 rounded-full h-2 mb-2","children":["$","div",null,{"className":"bg-blue-600 h-2 rounded-full","style":{"width":"25%"}}]}],["$","p",null,{"className":"text-sm text-gray-600","children":"25% Complete"}]]}],false]}]]}]]}],null],null],null]},[null,["$","$L5",null,{"parallelRouterKey":"children","segmentPath":["children","learn","children","$6","children"],"error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L7",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","notFoundStyles":"$undefined"}]],null]},[null,["$","$L5",null,{"parallelRouterKey":"children","segmentPath":["children","learn","children"],"error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L7",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","notFoundStyles":"$undefined"}]],null]},[[[["$","link","0",{"rel":"stylesheet","href":"/interview/_next/static/css/387024c6a2216908.css","precedence":"next","crossOrigin":"$undefined"}]],["$","$L8",null,{"children":["$","$L5",null,{"parallelRouterKey":"children","segmentPath":["children"],"error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L7",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":{"fontFamily":"system-ui,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\"","height":"100vh","textAlign":"center","display":"flex","flexDirection":"column","alignItems":"center","justifyContent":"center"},"children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":{"display":"inline-block","margin":"0 20px 0 0","padding":"0 23px 0 0","fontSize":24,"fontWeight":500,"verticalAlign":"top","lineHeight":"49px"},"children":"404"}],["$","div",null,{"style":{"display":"inline-block"},"children":["$","h2",null,{"style":{"fontSize":14,"fontWeight":400,"lineHeight":"49px","margin":0},"children":"This page could not be found."}]}]]}]}]],"notFoundStyles":[]}],"params":{}}]],null],null],["$L9",null]]]]
+9:[["$","meta","0",{"name":"viewport","content":"width=device-width, initial-scale=1"}],["$","meta","1",{"charSet":"utf-8"}],["$","meta","2",{"name":"next-size-adjust"}]]
+1:null

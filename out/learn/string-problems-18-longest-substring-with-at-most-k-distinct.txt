@@ -1,0 +1,471 @@
+2:I[2972,["918","static/chunks/918-3273b83890f10546.js","972","static/chunks/972-011bba60ed155615.js","930","static/chunks/930-3262a6c9c5acace4.js","289","static/chunks/app/learn/%5Btopic%5D/page-4ab144227f7a7b3e.js"],""]
+3:I[5907,["918","static/chunks/918-3273b83890f10546.js","972","static/chunks/972-011bba60ed155615.js","930","static/chunks/930-3262a6c9c5acace4.js","289","static/chunks/app/learn/%5Btopic%5D/page-4ab144227f7a7b3e.js"],"default"]
+5:I[4707,[],""]
+7:I[6423,[],""]
+8:I[2,["918","static/chunks/918-3273b83890f10546.js","710","static/chunks/710-dfaa11b4dff08f8e.js","972","static/chunks/972-011bba60ed155615.js","233","static/chunks/233-3e0c1d820a17eca9.js","185","static/chunks/app/layout-333f4adcd11f8f39.js"],"default",1]
+4:T36ba,
+# Longest Substring with At Most K Distinct Character
+
+**LeetCode Problem # * 340. Longest Substring with At Most K Distinct Characters**
+
+## Problem Description
+
+LeetCode problem solution with multiple approaches and explanations.
+
+## Solutions
+
+{% raw %}
+/**
+ * 340. Longest Substring with At Most K Distinct Characters
+ * 
+ * Given a string s and an integer k, return the length of the longest substring 
+ * of s that contains at most k distinct characters.
+ * 
+ * Example 1:
+ * Input: s = "eceba", k = 2
+ * Output: 3
+ * Explanation: The substring is "ece" with length 3.
+ * 
+ * Example 2:
+ * Input: s = "aa", k = 1
+ * Output: 2
+ * Explanation: The substring is "aa" with length 2.
+ * 
+ * Constraints:
+ * - 1 <= s.length <= 5 * 10^4
+ * - 0 <= k <= 50
+ * - s consists of lowercase English letters.
+ */
+
+// Solution 1: Sliding Window with HashMap
+// Time: O(n), Space: O(k)
+export function lengthOfLongestSubstringKDistinct1(s: string, k: number): number {
+    if (k === 0) return 0;
+    
+    const charCount = new Map<string, number>();
+    let left = 0;
+    let maxLength = 0;
+    
+    for (let right = 0; right < s.length; right++) {
+        const rightChar = s[right];
+        charCount.set(rightChar, (charCount.get(rightChar) || 0) + 1);
+        
+        // Shrink window if we have more than k distinct characters
+        while (charCount.size > k) {
+            const leftChar = s[left];
+            charCount.set(leftChar, charCount.get(leftChar)! - 1);
+            
+            if (charCount.get(leftChar) === 0) {
+                charCount.delete(leftChar);
+            }
+            
+            left++;
+        }
+        
+        maxLength = Math.max(maxLength, right - left + 1);
+    }
+    
+    return maxLength;
+}
+
+// Solution 2: Sliding Window with Last Occurrence Tracking
+// Time: O(n), Space: O(k)
+export function lengthOfLongestSubstringKDistinct2(s: string, k: number): number {
+    if (k === 0) return 0;
+    
+    const lastOccurrence = new Map<string, number>();
+    let left = 0;
+    let maxLength = 0;
+    
+    for (let right = 0; right < s.length; right++) {
+        const rightChar = s[right];
+        lastOccurrence.set(rightChar, right);
+        
+        // If we have more than k distinct characters
+        if (lastOccurrence.size > k) {
+            // Find the character with the smallest last occurrence
+            let minIdx = right;
+            let charToRemove = '';
+            
+            for (const [char, idx] of lastOccurrence) {
+                if (idx < minIdx) {
+                    minIdx = idx;
+                    charToRemove = char;
+                }
+            }
+            
+            lastOccurrence.delete(charToRemove);
+            left = minIdx + 1;
+        }
+        
+        maxLength = Math.max(maxLength, right - left + 1);
+    }
+    
+    return maxLength;
+}
+
+// Solution 3: Optimized with Ordered Map Simulation
+// Time: O(n), Space: O(k)
+export function lengthOfLongestSubstringKDistinct3(s: string, k: number): number {
+    if (k === 0) return 0;
+    
+    // Use array to simulate ordered map for better performance
+    const chars: string[] = [];
+    const charIndex = new Map<string, number>();
+    let left = 0;
+    let maxLength = 0;
+    
+    for (let right = 0; right < s.length; right++) {
+        const rightChar = s[right];
+        
+        // If character already exists, remove it from current position
+        if (charIndex.has(rightChar)) {
+            const idx = charIndex.get(rightChar)!;
+            chars.splice(idx, 1);
+            // Update indices for characters after the removed one
+            for (let i = idx; i < chars.length; i++) {
+                charIndex.set(chars[i], i);
+            }
+        }
+        
+        // Add character to the end
+        chars.push(rightChar);
+        charIndex.set(rightChar, chars.length - 1);
+        
+        // If we have more than k distinct characters, remove the first one
+        if (chars.length > k) {
+            const charToRemove = chars.shift()!;
+            charIndex.delete(charToRemove);
+            // Update indices
+            for (let i = 0; i < chars.length; i++) {
+                charIndex.set(chars[i], i);
+            }
+            // Move left pointer to exclude the removed character
+            while (left <= right && s[left] !== charToRemove) {
+                left++;
+            }
+            left++;
+        }
+        
+        maxLength = Math.max(maxLength, right - left + 1);
+    }
+    
+    return maxLength;
+}
+
+// Solution 4: Two Pointers with Frequency Array
+// Time: O(n), Space: O(1) - assuming lowercase letters only
+export function lengthOfLongestSubstringKDistinct4(s: string, k: number): number {
+    if (k === 0) return 0;
+    
+    const freq = new Array(26).fill(0);
+    let distinctCount = 0;
+    let left = 0;
+    let maxLength = 0;
+    
+    for (let right = 0; right < s.length; right++) {
+        const rightCharCode = s.charCodeAt(right) - 97; // 'a' = 97
+        
+        if (freq[rightCharCode] === 0) {
+            distinctCount++;
+        }
+        freq[rightCharCode]++;
+        
+        // Shrink window if necessary
+        while (distinctCount > k) {
+            const leftCharCode = s.charCodeAt(left) - 97;
+            freq[leftCharCode]--;
+            
+            if (freq[leftCharCode] === 0) {
+                distinctCount--;
+            }
+            
+            left++;
+        }
+        
+        maxLength = Math.max(maxLength, right - left + 1);
+    }
+    
+    return maxLength;
+}
+
+// Solution 5: Sliding Window with Deque for LRU
+// Time: O(n), Space: O(k)
+export function lengthOfLongestSubstringKDistinct5(s: string, k: number): number {
+    if (k === 0) return 0;
+    
+    const charDeque: string[] = []; // LRU order
+    const charSet = new Set<string>();
+    let left = 0;
+    let maxLength = 0;
+    
+    for (let right = 0; right < s.length; right++) {
+        const rightChar = s[right];
+        
+        // If character already exists, move it to the end
+        if (charSet.has(rightChar)) {
+            const idx = charDeque.indexOf(rightChar);
+            charDeque.splice(idx, 1);
+        } else {
+            charSet.add(rightChar);
+        }
+        
+        charDeque.push(rightChar);
+        
+        // If we exceed k distinct characters
+        if (charSet.size > k) {
+            const lruChar = charDeque.shift()!;
+            charSet.delete(lruChar);
+            
+            // Move left pointer past all occurrences of removed character
+            while (left <= right && s[left] !== lruChar) {
+                left++;
+            }
+            left++;
+        }
+        
+        maxLength = Math.max(maxLength, right - left + 1);
+    }
+    
+    return maxLength;
+}
+
+// Solution 6: Advanced with Character Position Tracking
+// Time: O(n), Space: O(k)
+export function lengthOfLongestSubstringKDistinct6(s: string, k: number): number {
+    if (k === 0) return 0;
+    
+    class CharTracker {
+        char: string;
+        positions: number[] = [];
+        
+        constructor(char: string) {
+            this.char = char;
+        }
+        
+        addPosition(pos: number): void {
+            this.positions.push(pos);
+        }
+        
+        getEarliestPosition(): number {
+            return this.positions.length > 0 ? this.positions[0] : -1;
+        }
+        
+        removePositionsUpTo(pos: number): void {
+            while (this.positions.length > 0 && this.positions[0] <= pos) {
+                this.positions.shift();
+            }
+        }
+        
+        isEmpty(): boolean {
+            return this.positions.length === 0;
+        }
+    }
+    
+    const charTrackers = new Map<string, CharTracker>();
+    let left = 0;
+    let maxLength = 0;
+    
+    for (let right = 0; right < s.length; right++) {
+        const rightChar = s[right];
+        
+        if (!charTrackers.has(rightChar)) {
+            charTrackers.set(rightChar, new CharTracker(rightChar));
+        }
+        
+        charTrackers.get(rightChar)!.addPosition(right);
+        
+        // If we have more than k distinct characters
+        while (charTrackers.size > k) {
+            // Find character with earliest position
+            let earliestPos = right;
+            let charToRemove = '';
+            
+            for (const [char, tracker] of charTrackers) {
+                const earliestCharPos = tracker.getEarliestPosition();
+                if (earliestCharPos < earliestPos) {
+                    earliestPos = earliestCharPos;
+                    charToRemove = char;
+                }
+            }
+            
+            // Remove this character and update left pointer
+            if (charToRemove) {
+                charTrackers.delete(charToRemove);
+                left = earliestPos + 1;
+                
+                // Clean up positions for remaining characters
+                for (const tracker of charTrackers.values()) {
+                    tracker.removePositionsUpTo(earliestPos);
+                }
+            }
+        }
+        
+        maxLength = Math.max(maxLength, right - left + 1);
+    }
+    
+    return maxLength;
+}
+
+// Test cases
+export function testLengthOfLongestSubstringKDistinct() {
+    console.log("Testing Longest Substring with At Most K Distinct Characters:");
+    
+    const testCases = [
+        {
+            s: "eceba",
+            k: 2,
+            expected: 3
+        },
+        {
+            s: "aa",
+            k: 1,
+            expected: 2
+        },
+        {
+            s: "abaccc",
+            k: 2,
+            expected: 4
+        },
+        {
+            s: "abcdef",
+            k: 3,
+            expected: 3
+        },
+        {
+            s: "aaaaaaa",
+            k: 1,
+            expected: 7
+        },
+        {
+            s: "abcadcacacaca",
+            k: 3,
+            expected: 11
+        },
+        {
+            s: "a",
+            k: 0,
+            expected: 0
+        },
+        {
+            s: "abc",
+            k: 4,
+            expected: 3
+        }
+    ];
+    
+    const solutions = [
+        { name: "HashMap Sliding Window", fn: lengthOfLongestSubstringKDistinct1 },
+        { name: "Last Occurrence Tracking", fn: lengthOfLongestSubstringKDistinct2 },
+        { name: "Ordered Map Simulation", fn: lengthOfLongestSubstringKDistinct3 },
+        { name: "Frequency Array", fn: lengthOfLongestSubstringKDistinct4 },
+        { name: "Deque LRU", fn: lengthOfLongestSubstringKDistinct5 },
+        { name: "Position Tracking", fn: lengthOfLongestSubstringKDistinct6 }
+    ];
+    
+    solutions.forEach(solution => {
+        console.log(`\n${solution.name}:`);
+        testCases.forEach((test, i) => {
+            const result = solution.fn(test.s, test.k);
+            const passed = result === test.expected;
+            console.log(`  Test ${i + 1}: ${passed ? 'PASS' : 'FAIL'}`);
+            if (!passed) {
+                console.log(`    Input: s="${test.s}", k=${test.k}`);
+                console.log(`    Expected: ${test.expected}`);
+                console.log(`    Got: ${result}`);
+            }
+        });
+    });
+}
+
+/**
+ * Key Insights:
+ * 
+ * 1. **Sliding Window Pattern**:
+ *    - Expand right pointer to include new characters
+ *    - Contract left pointer when constraint violated
+ *    - Track distinct character count efficiently
+ * 
+ * 2. **Character Tracking Strategies**:
+ *    - HashMap with frequency counting
+ *    - Last occurrence tracking for LRU eviction
+ *    - Position arrays for advanced scenarios
+ * 
+ * 3. **Window Shrinking Logic**:
+ *    - When distinct count > k, remove leftmost character
+ *    - Different approaches to find "leftmost" character
+ *    - Update left pointer to exclude removed character
+ * 
+ * 4. **Time Complexity**: O(n)
+ *    - Each character processed at most twice
+ *    - HashMap operations are O(1) on average
+ *    - Linear scan with constant work per character
+ * 
+ * 5. **Space Complexity**: O(k)
+ *    - HashMap stores at most k+1 characters
+ *    - Additional data structures bounded by k
+ *    - Can be O(1) with character array for limited alphabet
+ * 
+ * 6. **Optimization Techniques**:
+ *    - Character arrays for limited alphabets
+ *    - LRU tracking for efficient eviction
+ *    - Position tracking for advanced use cases
+ * 
+ * 7. **Interview Strategy**:
+ *    - Start with basic sliding window approach
+ *    - Explain character counting mechanism
+ *    - Handle window shrinking logic carefully
+ *    - Optimize based on constraints
+ * 
+ * 8. **Edge Cases**:
+ *    - k = 0 (no characters allowed)
+ *    - k >= unique characters in string
+ *    - Single character string
+ *    - Empty string
+ * 
+ * 9. **Common Mistakes**:
+ *    - Incorrect window shrinking logic
+ *    - Not updating left pointer properly
+ *    - Off-by-one errors in length calculation
+ *    - Inefficient character removal
+ * 
+ * 10. **Pattern Recognition**:
+ *     - Classic sliding window with constraint
+ *     - Maintain invariant: at most k distinct
+ *     - Expand when possible, contract when necessary
+ * 
+ * 11. **Big Tech Variations**:
+ *     - Google: Exactly k distinct characters
+ *     - Meta: Weighted characters
+ *     - Amazon: Multiple strings processing
+ *     - Microsoft: Stream processing version
+ * 
+ * 12. **Follow-up Questions**:
+ *     - Return the actual substring
+ *     - Handle Unicode characters
+ *     - Process streaming data
+ *     - Find all substrings of length exactly k distinct
+ * 
+ * 13. **Real-world Applications**:
+ *     - Text analysis and pattern matching
+ *     - Data compression algorithms
+ *     - Network packet analysis
+ *     - Bioinformatics sequence analysis
+ *     - Language model training data preprocessing
+ * 
+ * 14. **Alternative Approaches**:
+ *     - Two-pass algorithm (less efficient)
+ *     - Recursive with memoization (overkill)
+ *     - Trie-based solutions (complex)
+ * 
+ * 15. **Performance Considerations**:
+ *     - Cache locality with character arrays
+ *     - Memory allocation patterns
+ *     - String operation efficiency
+ *     - Early termination opportunities
+ */
+{% endraw %}
+6:["topic","string-problems-18-longest-substring-with-at-most-k-distinct","d"]
+0:["2NmUhWiPdVVBzVtDZlggk",[[["",{"children":["learn",{"children":[["topic","string-problems-18-longest-substring-with-at-most-k-distinct","d"],{"children":["__PAGE__?{\"topic\":\"string-problems-18-longest-substring-with-at-most-k-distinct\"}",{}]}]}]},"$undefined","$undefined",true],["",{"children":["learn",{"children":[["topic","string-problems-18-longest-substring-with-at-most-k-distinct","d"],{"children":["__PAGE__",{},[["$L1",["$","div",null,{"className":"max-w-6xl mx-auto px-8 py-24","children":[["$","div",null,{"className":"flex items-center gap-4 mb-8","children":["$","$L2",null,{"href":"/learn","children":["$","button",null,{"className":"flex items-center gap-2 bg-gray-100 border border-gray-300 text-gray-700 px-4 py-3 rounded-md font-medium hover:bg-gray-200 transition-colors","children":[["$","svg",null,{"xmlns":"http://www.w3.org/2000/svg","width":16,"height":16,"viewBox":"0 0 24 24","fill":"none","stroke":"currentColor","strokeWidth":2,"strokeLinecap":"round","strokeLinejoin":"round","className":"lucide lucide-arrow-left ","children":[["$","path","1l729n",{"d":"m12 19-7-7 7-7"}],["$","path","x3x0zl",{"d":"M19 12H5"}],"$undefined"]}],"Back to Learn"]}]}]}],["$","div",null,{"className":"bg-white border border-gray-200 rounded-lg p-8 mb-8","children":[["$","div",null,{"className":"flex items-center justify-between mb-4","children":[["$","h1",null,{"className":"text-3xl font-bold text-gray-900","children":"Longest Substring with At Most K Distinct Character"}],["$","div",null,{"className":"flex gap-4","children":[["$","button",null,{"className":"flex items-center gap-2 bg-transparent text-gray-700 border border-gray-300 px-6 py-3 rounded-md font-semibold hover:bg-gray-50 transition-colors","children":[["$","svg",null,{"xmlns":"http://www.w3.org/2000/svg","width":16,"height":16,"viewBox":"0 0 24 24","fill":"none","stroke":"currentColor","strokeWidth":2,"strokeLinecap":"round","strokeLinejoin":"round","className":"lucide lucide-star ","children":[["$","polygon","8f66p6",{"points":"12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"}],"$undefined"]}],"Bookmark"]}],["$","button",null,{"className":"flex items-center gap-2 bg-transparent text-gray-700 border border-gray-300 px-6 py-3 rounded-md font-semibold hover:bg-gray-50 transition-colors","children":[["$","svg",null,{"xmlns":"http://www.w3.org/2000/svg","width":16,"height":16,"viewBox":"0 0 24 24","fill":"none","stroke":"currentColor","strokeWidth":2,"strokeLinecap":"round","strokeLinejoin":"round","className":"lucide lucide-share2 ","children":[["$","circle","gq8acd",{"cx":"18","cy":"5","r":"3"}],["$","circle","w7nqdw",{"cx":"6","cy":"12","r":"3"}],["$","circle","1xt0gg",{"cx":"18","cy":"19","r":"3"}],["$","line","47mynk",{"x1":"8.59","x2":"15.42","y1":"13.51","y2":"17.49"}],["$","line","1n3mei",{"x1":"15.41","x2":"8.59","y1":"6.51","y2":"10.49"}],"$undefined"]}],"Share"]}]]}]]}],["$","div",null,{"className":"flex gap-8 mb-4","children":[["$","div",null,{"className":"flex items-center gap-2 text-sm text-gray-600","children":[["$","svg",null,{"xmlns":"http://www.w3.org/2000/svg","width":16,"height":16,"viewBox":"0 0 24 24","fill":"none","stroke":"currentColor","strokeWidth":2,"strokeLinecap":"round","strokeLinejoin":"round","className":"lucide lucide-clock ","children":[["$","circle","1mglay",{"cx":"12","cy":"12","r":"10"}],["$","polyline","68esgv",{"points":"12 6 12 12 16 14"}],"$undefined"]}],"2-3 hours"]}],["$","span",null,{"className":"px-3 py-1 rounded-full text-xs font-semibold text-white bg-red-500","children":"Easy"}],["$","span",null,{"className":"px-3 py-1 rounded-full text-xs font-semibold bg-blue-100 text-blue-700","children":"String"}]]}],["$","div",null,{"className":"flex flex-wrap gap-2 mb-4","children":[["$","span","0",{"className":"bg-gray-100 text-gray-600 px-3 py-1 rounded-md text-xs font-medium","children":"String"}],["$","span","1",{"className":"bg-gray-100 text-gray-600 px-3 py-1 rounded-md text-xs font-medium","children":"Two Pointers"}],["$","span","2",{"className":"bg-gray-100 text-gray-600 px-3 py-1 rounded-md text-xs font-medium","children":"Hash Table"}],["$","span","3",{"className":"bg-gray-100 text-gray-600 px-3 py-1 rounded-md text-xs font-medium","children":"Sliding Window"}]]}],["$","p",null,{"className":"text-lg text-gray-700 leading-relaxed","children":"**LeetCode Problem # * 340. Longest Substring with At Most K Distinct Characters**..."}]]}],["$","div",null,{"className":"grid grid-cols-1 lg:grid-cols-3 gap-8","children":[["$","div",null,{"className":"lg:col-span-2","children":["$","div",null,{"className":"bg-white border border-gray-200 rounded-lg p-8","children":["$","$L3",null,{"content":"$4"}]}]}],["$","div",null,{"className":"space-y-6","children":[["$","div",null,{"className":"bg-white border border-gray-200 rounded-lg p-6","children":[["$","h3",null,{"className":"text-lg font-semibold text-gray-900 mb-4","children":"Your Progress"}],["$","div",null,{"className":"w-full bg-gray-200 rounded-full h-2 mb-2","children":["$","div",null,{"className":"bg-blue-600 h-2 rounded-full","style":{"width":"25%"}}]}],["$","p",null,{"className":"text-sm text-gray-600","children":"25% Complete"}]]}],false]}]]}]]}],null],null],null]},[null,["$","$L5",null,{"parallelRouterKey":"children","segmentPath":["children","learn","children","$6","children"],"error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L7",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","notFoundStyles":"$undefined"}]],null]},[null,["$","$L5",null,{"parallelRouterKey":"children","segmentPath":["children","learn","children"],"error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L7",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","notFoundStyles":"$undefined"}]],null]},[[[["$","link","0",{"rel":"stylesheet","href":"/interview/_next/static/css/387024c6a2216908.css","precedence":"next","crossOrigin":"$undefined"}]],["$","$L8",null,{"children":["$","$L5",null,{"parallelRouterKey":"children","segmentPath":["children"],"error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L7",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":{"fontFamily":"system-ui,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\"","height":"100vh","textAlign":"center","display":"flex","flexDirection":"column","alignItems":"center","justifyContent":"center"},"children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":{"display":"inline-block","margin":"0 20px 0 0","padding":"0 23px 0 0","fontSize":24,"fontWeight":500,"verticalAlign":"top","lineHeight":"49px"},"children":"404"}],["$","div",null,{"style":{"display":"inline-block"},"children":["$","h2",null,{"style":{"fontSize":14,"fontWeight":400,"lineHeight":"49px","margin":0},"children":"This page could not be found."}]}]]}]}]],"notFoundStyles":[]}],"params":{}}]],null],null],["$L9",null]]]]
+9:[["$","meta","0",{"name":"viewport","content":"width=device-width, initial-scale=1"}],["$","meta","1",{"charSet":"utf-8"}],["$","meta","2",{"name":"next-size-adjust"}]]
+1:null
