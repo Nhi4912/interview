@@ -2,203 +2,76 @@ import React from "react";
 import Link from "next/link";
 import { ArrowLeft, Clock, Star, Play, Code, FileText } from "lucide-react";
 import MarkdownViewer from "@/components/MarkdownViewer";
+import fs from 'fs';
+import path from 'path';
+import matter from 'gray-matter';
 
-// Mock problems data
-const mockProblems = {
-  1: {
-    id: 1,
-    title: "Two Sum",
-    difficulty: "Easy",
-    category: "Array",
-    description:
-      "Given an array of integers nums and an integer target, return indices of the two numbers such that they add up to target.",
-    tags: ["Array", "Hash Table"],
-    timeComplexity: "O(n)",
-    spaceComplexity: "O(n)",
-    solved: false,
-    starred: false,
-    content: `
-# Two Sum
-
-## Problem Description
-
-Given an array of integers \`nums\` and an integer \`target\`, return indices of the two numbers such that they add up to \`target\`.
-
-You may assume that each input would have exactly one solution, and you may not use the same element twice.
-
-You can return the answer in any order.
-
-## Examples
-
-\`\`\`
-Input: nums = [2,7,11,15], target = 9
-Output: [0,1]
-Explanation: Because nums[0] + nums[1] == 9, we return [0, 1].
-
-Input: nums = [3,2,4], target = 6
-Output: [1,2]
-
-Input: nums = [3,3], target = 6
-Output: [0,1]
-\`\`\`
-
-## Solution
-
-### Approach 1: Brute Force
-
-\`\`\`javascript
-function twoSum(nums, target) {
-    for (let i = 0; i < nums.length; i++) {
-        for (let j = i + 1; j < nums.length; j++) {
-            if (nums[i] + nums[j] === target) {
-                return [i, j];
-            }
-        }
-    }
-    return [];
-}
-\`\`\`
-
-**Time Complexity:** O(n²)
-**Space Complexity:** O(1)
-
-### Approach 2: Hash Map (Optimal)
-
-\`\`\`javascript
-function twoSum(nums, target) {
-    const map = new Map();
-    
-    for (let i = 0; i < nums.length; i++) {
-        const complement = target - nums[i];
-        
-        if (map.has(complement)) {
-            return [map.get(complement), i];
-        }
-        
-        map.set(nums[i], i);
-    }
-    
-    return [];
-}
-\`\`\`
-
-**Time Complexity:** O(n)
-**Space Complexity:** O(n)
-
-## Related Problems
-
-- Two Sum II - Input Array Is Sorted (Easy)
-- Two Sum III - Data Structure Design (Easy)
-    `,
-  },
-  2: {
-    id: 2,
-    title: "Virtual Scrolling Implementation",
-    difficulty: "Medium",
-    category: "Frontend",
-    description:
-      "Implement a virtual scrolling component for handling large datasets efficiently in React.",
-    tags: ["React", "Performance", "DOM"],
-    timeComplexity: "O(1)",
-    spaceComplexity: "O(1)",
-    solved: false,
-    starred: true,
-    content: `
-# Virtual Scrolling Implementation
-
-## Problem Description
-
-Implement a virtual scrolling component that can efficiently render large lists of data by only rendering the visible items and a small buffer.
-
-## Solution
-
-\`\`\`jsx
-import React, { useState, useEffect, useRef } from 'react';
-
-const VirtualScroller = ({ items, itemHeight, containerHeight }) => {
-  const [scrollTop, setScrollTop] = useState(0);
-  const containerRef = useRef(null);
-
-  const totalHeight = items.length * itemHeight;
-  const visibleCount = Math.ceil(containerHeight / itemHeight);
-  const startIndex = Math.floor(scrollTop / itemHeight);
-  const endIndex = Math.min(startIndex + visibleCount + 1, items.length);
-
-  const visibleItems = items.slice(startIndex, endIndex);
-  const offsetY = startIndex * itemHeight;
-
-  const handleScroll = (e) => {
-    setScrollTop(e.target.scrollTop);
-  };
-
-  return (
-    <div
-      ref={containerRef}
-      style={{
-        height: containerHeight,
-        overflow: 'auto',
-        position: 'relative'
-      }}
-      onScroll={handleScroll}
-    >
-      <div style={{ height: totalHeight }}>
-        <div style={{ transform: \`translateY(\${offsetY}px)\` }}>
-          {visibleItems.map((item, index) => (
-            <div
-              key={startIndex + index}
-              style={{
-                height: itemHeight,
-                display: 'flex',
-                alignItems: 'center',
-                padding: '0 16px',
-                borderBottom: '1px solid #eee'
-              }}
-            >
-              {item}
-            </div>
-          ))}
-        </div>
-      </div>
-    </div>
-  );
+// Problem mappings from number to file path
+const problemMappings: { [key: string]: string } = {
+  '1': 'leetcode/array/problems/01-remove-duplicates-from-sorted-array.md',
+  '2': 'leetcode/array/problems/02-best-time-to-buy-and-sell-stock-ii.md',
+  '3': 'leetcode/array/problems/03-rotate-array.md',
+  '4': 'leetcode/array/problems/04-two-sum.md',
+  '5': 'leetcode/array/problems/05-contains-duplicate.md',
+  '6': 'leetcode/array/problems/06-single-number.md',
+  '7': 'leetcode/array/problems/07-intersection-of-two-arrays-ii.md',
+  '8': 'leetcode/array/problems/08-plus-one.md',
+  '9': 'leetcode/array/problems/09-move-zeroes.md',
+  '10': 'leetcode/array/problems/10-valid-sudoku.md',
+  '11': 'leetcode/array/problems/11-rotate-image.md',
+  '12': 'leetcode/array/problems/12-3sum.md',
+  '13': 'leetcode/array/problems/13-set-matrix-zeroes.md',
+  '14': 'leetcode/array/problems/14-increasing-triplet-subsequence.md',
+  '15': 'leetcode/array/problems/15-missing-ranges.md',
+  '16': 'leetcode/array/problems/16-count-and-say.md',
+  '17': 'leetcode/array/problems/17-product-of-array-except-self.md',
+  '18': 'leetcode/array/problems/18-container-with-most-water.md',
+  '19': 'leetcode/array/problems/19-merge-intervals.md',
+  '20': 'leetcode/array/problems/20-trapping-rain-water.md',
 };
 
-// Usage
-const App = () => {
-  const items = Array.from({ length: 10000 }, (_, i) => \`Item \${i + 1}\`);
+// Function to get problem data from markdown file
+function getProblemData(problemId: string) {
+  const filePath = problemMappings[problemId];
+  if (!filePath) return null;
   
-  return (
-    <VirtualScroller
-      items={items}
-      itemHeight={50}
-      containerHeight={400}
-    />
-  );
-};
-\`\`\`
-
-## Key Concepts
-
-1. **Viewport Calculation**: Calculate how many items fit in the visible area
-2. **Start/End Index**: Determine which items to render based on scroll position
-3. **Transform**: Use CSS transform to position the visible items correctly
-4. **Buffer**: Render extra items above and below for smooth scrolling
-
-## Performance Benefits
-
-- **Memory**: Only renders visible items + buffer
-- **DOM Nodes**: Minimal DOM manipulation
-- **Scrolling**: Smooth performance even with millions of items
-- **Responsive**: Adapts to different screen sizes
-
-This implementation provides a solid foundation for virtual scrolling that can handle large datasets efficiently while maintaining good user experience.
-    `,
-  },
-};
+  try {
+    const fullPath = path.join(process.cwd(), filePath);
+    if (!fs.existsSync(fullPath)) return null;
+    
+    const fileContents = fs.readFileSync(fullPath, 'utf8');
+    const { data, content } = matter(fileContents);
+    
+    // Extract problem number from filename
+    const fileName = path.basename(filePath, '.md');
+    const match = fileName.match(/^(\d+)-(.+)$/);
+    const problemNumber = match ? parseInt(match[1]) : parseInt(problemId);
+    const problemTitle = match ? match[2].replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase()) : data.title || 'Problem';
+    
+    return {
+      id: problemNumber,
+      title: data.title || problemTitle,
+      difficulty: data.difficulty || 'Medium',
+      category: data.category || 'Array',
+      description: data.description || content.substring(0, 200) + '...',
+      tags: data.tags || ['Array'],
+      timeComplexity: data.timeComplexity || 'O(n)',
+      spaceComplexity: data.spaceComplexity || 'O(1)',
+      solved: false,
+      starred: false,
+      content: content,
+      filePath: filePath,
+      leetcodeUrl: data.leetcode_url
+    };
+  } catch (error) {
+    console.error('Error reading problem file:', error);
+    return null;
+  }
+}
 
 // Generate static params for all problems
 export function generateStaticParams() {
-  const problemIds = Object.keys(mockProblems);
+  const problemIds = Object.keys(problemMappings);
   return problemIds.map((id) => ({
     id: id.toString(),
   }));
@@ -209,8 +82,8 @@ export default function ProblemDetailPage({
 }: {
   params: { id: string };
 }) {
-  const problemId = parseInt(params.id);
-  const problem = mockProblems[problemId as keyof typeof mockProblems];
+  const problemId = params.id;
+  const problem = getProblemData(problemId);
 
   if (!problem) {
     return (
@@ -344,19 +217,34 @@ export default function ProblemDetailPage({
             <h3 className="text-lg font-semibold text-gray-900 mb-4">
               Related Problems
             </h3>
-            {problemId === 1 && (
-              <Link href="/problems/2">
+            {problem.leetcodeUrl && (
+              <a href={problem.leetcodeUrl} target="_blank" rel="noopener noreferrer">
                 <div className="flex items-center gap-2 p-3 bg-gray-50 border border-gray-200 rounded-md text-gray-700 mb-2 hover:bg-gray-100 transition-colors">
                   <Code size={16} />
-                  Virtual Scrolling Implementation
+                  View on LeetCode
+                </div>
+              </a>
+            )}
+            <Link href={`/interview/docs/${problem.filePath.replace(/\.md$/, '')}`}>
+              <div className="flex items-center gap-2 p-3 bg-gray-50 border border-gray-200 rounded-md text-gray-700 mb-2 hover:bg-gray-100 transition-colors">
+                <FileText size={16} />
+                View Full Documentation
+              </div>
+            </Link>
+            {/* Show related problems in same category */}
+            {parseInt(problemId) > 1 && (
+              <Link href={`/problems/${parseInt(problemId) - 1}`}>
+                <div className="flex items-center gap-2 p-3 bg-gray-50 border border-gray-200 rounded-md text-gray-700 mb-2 hover:bg-gray-100 transition-colors">
+                  <Code size={16} />
+                  Previous Problem
                 </div>
               </Link>
             )}
-            {problemId === 2 && (
-              <Link href="/problems/1">
+            {parseInt(problemId) < 20 && (
+              <Link href={`/problems/${parseInt(problemId) + 1}`}>
                 <div className="flex items-center gap-2 p-3 bg-gray-50 border border-gray-200 rounded-md text-gray-700 mb-2 hover:bg-gray-100 transition-colors">
                   <Code size={16} />
-                  Two Sum
+                  Next Problem
                 </div>
               </Link>
             )}
