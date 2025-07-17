@@ -1,0 +1,1025 @@
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><meta name="viewport" content="width=device-width, initial-scale=1"/><link rel="preload" href="/interview/_next/static/media/e4af272ccee01ff0-s.p.woff2" as="font" crossorigin="" type="font/woff2"/><link rel="stylesheet" href="/interview/_next/static/css/387024c6a2216908.css" data-precedence="next"/><link rel="preload" as="script" fetchPriority="low" href="/interview/_next/static/chunks/webpack-be7d7df45533bffc.js"/><script src="/interview/_next/static/chunks/fd9d1056-6922f449a204c2cc.js" async=""></script><script src="/interview/_next/static/chunks/117-e7ecc085ce9cfab3.js" async=""></script><script src="/interview/_next/static/chunks/main-app-b06be5f3411c20c3.js" async=""></script><script src="/interview/_next/static/chunks/918-3273b83890f10546.js" async=""></script><script src="/interview/_next/static/chunks/930-3262a6c9c5acace4.js" async=""></script><script src="/interview/_next/static/chunks/app/docs/%5B...slug%5D/page-32962e9542d32755.js" async=""></script><script src="/interview/_next/static/chunks/710-dfaa11b4dff08f8e.js" async=""></script><script src="/interview/_next/static/chunks/972-011bba60ed155615.js" async=""></script><script src="/interview/_next/static/chunks/233-3e0c1d820a17eca9.js" async=""></script><script src="/interview/_next/static/chunks/app/layout-333f4adcd11f8f39.js" async=""></script><title>Frontend Interview Prep 2025 - Big Tech Interview Guide</title><meta name="description" content="Comprehensive frontend interview preparation for Big Tech companies including React, TypeScript, algorithms, and system design."/><link rel="icon" href="/favicon.ico"/><meta name="theme-color" content="#1a1a1a"/><meta property="og:title" content="Frontend Interview Prep 2025"/><meta property="og:description" content="Complete guide for frontend engineers targeting Big Tech companies"/><meta property="og:type" content="website"/><link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous"/><title>README - Frontend Interview Docs</title><meta name="description" content="# TypeScript for Frontend Interviews  ## Table of Contents - [TypeScript Fundamentals](#typescript-fundamentals) - [Advanced Types](#advanced-types) - [React wi"/><meta property="og:title" content="README - Frontend Interview Docs"/><meta property="og:description" content="# TypeScript for Frontend Interviews  ## Table of Contents - [TypeScript Fundamentals](#typescript-fundamentals) - [Advanced Types](#advanced-types) - [React wi"/><meta property="og:type" content="article"/><meta name="twitter:card" content="summary"/><meta name="twitter:title" content="README - Frontend Interview Docs"/><meta name="twitter:description" content="# TypeScript for Frontend Interviews  ## Table of Contents - [TypeScript Fundamentals](#typescript-fundamentals) - [Advanced Types](#advanced-types) - [React wi"/><meta name="next-size-adjust"/><script src="/interview/_next/static/chunks/polyfills-42372ed130431b0a.js" noModule=""></script><style data-styled="" data-styled-version="6.1.19">*{margin:0;padding:0;box-sizing:border-box;}/*!sc*/
+html{font-size:16px;line-height:1.5;scroll-behavior:smooth;}/*!sc*/
+body{font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;font-size:1rem;line-height:1.5;color:#1e293b;background-color:#ffffff;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;}/*!sc*/
+h1,h2,h3,h4,h5,h6{font-weight:700;line-height:1.25;margin-bottom:0.5em;}/*!sc*/
+h1{font-size:3rem;}/*!sc*/
+@media (max-width: 768px){h1{font-size:2.25rem;}}/*!sc*/
+h2{font-size:2.25rem;}/*!sc*/
+@media (max-width: 768px){h2{font-size:1.875rem;}}/*!sc*/
+h3{font-size:1.875rem;}/*!sc*/
+@media (max-width: 768px){h3{font-size:1.5rem;}}/*!sc*/
+h4{font-size:1.5rem;}/*!sc*/
+@media (max-width: 768px){h4{font-size:1.25rem;}}/*!sc*/
+h5{font-size:1.25rem;}/*!sc*/
+h6{font-size:1.125rem;}/*!sc*/
+p{margin-bottom:1rem;line-height:1.75;}/*!sc*/
+a{color:#3b82f6;text-decoration:none;transition:color 0.15s ease;}/*!sc*/
+a:hover{color:#2563eb;}/*!sc*/
+a:focus{outline:2px solid #3b82f6;outline-offset:2px;}/*!sc*/
+button{cursor:pointer;border:none;background:none;font-family:inherit;font-size:inherit;}/*!sc*/
+button:disabled{cursor:not-allowed;opacity:0.6;}/*!sc*/
+button:focus{outline:2px solid #3b82f6;outline-offset:2px;}/*!sc*/
+input,textarea,select{font-family:inherit;font-size:inherit;}/*!sc*/
+input:focus,textarea:focus,select:focus{outline:2px solid #3b82f6;outline-offset:2px;}/*!sc*/
+img{max-width:100%;height:auto;}/*!sc*/
+ul,ol{margin-bottom:1rem;padding-left:1.5rem;}/*!sc*/
+li{margin-bottom:0.25rem;}/*!sc*/
+blockquote{margin:1rem 0;padding:1rem;border-left:4px solid #3b82f6;background-color:#f1f5f9;font-style:italic;}/*!sc*/
+code{font-family:SFMono-Regular,Consolas,"Liberation Mono",Menlo,monospace;font-size:0.9em;background-color:#f1f5f9;padding:0.2em 0.4em;border-radius:0.25rem;}/*!sc*/
+pre{background-color:#f1f5f9;padding:1rem;border-radius:0.5rem;overflow-x:auto;margin-bottom:1rem;}/*!sc*/
+pre code{background:none;padding:0;}/*!sc*/
+table{width:100%;border-collapse:collapse;margin-bottom:1rem;}/*!sc*/
+th,td{padding:0.75rem;text-align:left;border-bottom:1px solid #e2e8f0;}/*!sc*/
+th{font-weight:600;background-color:#f1f5f9;}/*!sc*/
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0, 0, 0, 0);white-space:nowrap;border:0;}/*!sc*/
+.skip-link{position:absolute;top:-40px;left:6px;background:#3b82f6;color:white;padding:8px;text-decoration:none;border-radius:4px;z-index:100;}/*!sc*/
+.skip-link:focus{top:6px;}/*!sc*/
+::-webkit-scrollbar{width:8px;height:8px;}/*!sc*/
+::-webkit-scrollbar-track{background:#f1f5f9;}/*!sc*/
+::-webkit-scrollbar-thumb{background:#94a3b8;border-radius:4px;}/*!sc*/
+::-webkit-scrollbar-thumb:hover{background:#64748b;}/*!sc*/
+::selection{background:#3b82f6;color:white;}/*!sc*/
+.focus-visible{outline:2px solid #3b82f6;outline-offset:2px;}/*!sc*/
+.fade-in{opacity:0;animation:fadeIn 0.3s ease forwards;}/*!sc*/
+.slide-up{transform:translateY(20px);opacity:0;animation:slideUp 0.3s ease forwards;}/*!sc*/
+@keyframes fadeIn{to{opacity:1;}}/*!sc*/
+@keyframes slideUp{to{transform:translateY(0);opacity:1;}}/*!sc*/
+@media print{*{background:white!important;color:black!important;box-shadow:none!important;text-shadow:none!important;}a,a:visited{text-decoration:underline;}h1,h2,h3,h4,h5,h6{break-after:avoid;}pre,blockquote{border:1px solid #999;break-inside:avoid;}img{max-width:100%!important;}@page{margin:0.5in;}}/*!sc*/
+data-styled.g21[id="sc-global-kxA-Ddz1"]{content:"sc-global-kxA-Ddz1,"}/*!sc*/
+.iIQwfN{position:fixed;top:0;width:100%;z-index:1020;background:transparent;backdrop-filter:blur(10px);border-bottom:1px solid transparent;transition:all 0.3s ease;}/*!sc*/
+data-styled.g22[id="sc-gGKoUb"]{content:"iIQwfN,"}/*!sc*/
+.cEuiWg{max-width:1200px;margin:0 auto;padding:0 2rem;display:flex;align-items:center;justify-content:space-between;height:70px;}/*!sc*/
+data-styled.g23[id="sc-hwddKA"]{content:"cEuiWg,"}/*!sc*/
+.bqPomF{display:flex;align-items:center;gap:0.5rem;font-size:1.5rem;font-weight:700;color:#3b82f6;text-decoration:none;cursor:pointer;}/*!sc*/
+.bqPomF:hover{color:#2563eb;}/*!sc*/
+data-styled.g24[id="sc-jaXbil"]{content:"bqPomF,"}/*!sc*/
+.iwwpNe{display:flex;align-items:center;gap:2rem;}/*!sc*/
+@media (max-width: 768px){.iwwpNe{display:none;}}/*!sc*/
+data-styled.g25[id="sc-eqNDNG"]{content:"iwwpNe,"}/*!sc*/
+.iuGltB{color:#1e293b;font-weight:500;text-decoration:none;transition:color 0.15s ease;position:relative;}/*!sc*/
+.iuGltB:hover{color:#3b82f6;}/*!sc*/
+.iuGltB:after{content:'';position:absolute;bottom:-5px;left:0;width:0;height:2px;background:#3b82f6;transition:width 0.15s ease;}/*!sc*/
+.iuGltB:hover:after{width:100%;}/*!sc*/
+data-styled.g26[id="sc-fVHBlr"]{content:"iuGltB,"}/*!sc*/
+.lmsDAj{display:none;background:none;border:none;color:#1e293b;cursor:pointer;padding:0.5rem;}/*!sc*/
+@media (max-width: 768px){.lmsDAj{display:block;}}/*!sc*/
+data-styled.g27[id="sc-gLaqbQ"]{content:"lmsDAj,"}/*!sc*/
+.keTsRT{display:flex;align-items:center;gap:0.5rem;background:#f1f5f9;border:1px solid #e2e8f0;border-radius:0.5rem;padding:0.5rem 1rem;color:#64748b;font-size:0.9rem;transition:all 0.15s ease;}/*!sc*/
+.keTsRT:hover{background:#ffffff;border-color:#3b82f6;}/*!sc*/
+data-styled.g31[id="sc-cOpnSz"]{content:"keTsRT,"}/*!sc*/
+.hrfQfY{background:#1e293b;color:white;padding:3rem 0 1rem;margin-top:auto;}/*!sc*/
+data-styled.g32[id="sc-kjwdDK"]{content:"hrfQfY,"}/*!sc*/
+.dwFHjZ{max-width:1200px;margin:0 auto;padding:0 2rem;}/*!sc*/
+data-styled.g33[id="sc-eVqvcJ"]{content:"dwFHjZ,"}/*!sc*/
+.kWATso{display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:2rem;margin-bottom:2rem;}/*!sc*/
+@media (max-width: 768px){.kWATso{grid-template-columns:1fr 1fr;gap:1.5rem;}}/*!sc*/
+@media (max-width: 480px){.kWATso{grid-template-columns:1fr;}}/*!sc*/
+data-styled.g34[id="sc-bbbBoY"]{content:"kWATso,"}/*!sc*/
+.fBmmqS h3{font-size:1.1rem;font-weight:600;margin-bottom:1rem;color:white;}/*!sc*/
+.fBmmqS ul{list-style:none;padding:0;margin:0;}/*!sc*/
+.fBmmqS li{margin-bottom:0.5rem;}/*!sc*/
+.fBmmqS a{color:rgba(255, 255, 255, 0.7);text-decoration:none;transition:color 0.15s ease;}/*!sc*/
+.fBmmqS a:hover{color:white;}/*!sc*/
+data-styled.g35[id="sc-cdmAjP"]{content:"fBmmqS,"}/*!sc*/
+.iNKxsb{display:flex;align-items:center;gap:0.5rem;font-size:1.2rem;font-weight:700;margin-bottom:1rem;color:white;}/*!sc*/
+data-styled.g36[id="sc-jytpVa"]{content:"iNKxsb,"}/*!sc*/
+.fYhkiV{color:rgba(255, 255, 255, 0.7);line-height:1.6;margin-bottom:1rem;}/*!sc*/
+data-styled.g37[id="sc-eknHtZ"]{content:"fYhkiV,"}/*!sc*/
+.eVAQiq{display:flex;gap:1rem;}/*!sc*/
+.eVAQiq a{display:flex;align-items:center;justify-content:center;width:40px;height:40px;background:rgba(255, 255, 255, 0.1);border-radius:0.5rem;color:rgba(255, 255, 255, 0.7);transition:all 0.15s ease;}/*!sc*/
+.eVAQiq a:hover{background:rgba(255, 255, 255, 0.2);color:white;}/*!sc*/
+data-styled.g38[id="sc-pYNGo"]{content:"eVAQiq,"}/*!sc*/
+.fgJmHp{border-top:1px solid rgba(255, 255, 255, 0.1);padding-top:2rem;display:flex;justify-content:space-between;align-items:center;}/*!sc*/
+@media (max-width: 768px){.fgJmHp{flex-direction:column;gap:1rem;text-align:center;}}/*!sc*/
+data-styled.g39[id="sc-cCVJLD"]{content:"fgJmHp,"}/*!sc*/
+.gYGLHT{color:rgba(255, 255, 255, 0.7);margin:0;font-size:0.9rem;}/*!sc*/
+data-styled.g40[id="sc-jYczwO"]{content:"gYGLHT,"}/*!sc*/
+.ghBULZ{display:flex;gap:2rem;}/*!sc*/
+@media (max-width: 480px){.ghBULZ{flex-direction:column;gap:1rem;}}/*!sc*/
+.ghBULZ a{color:rgba(255, 255, 255, 0.7);text-decoration:none;font-size:0.9rem;transition:color 0.15s ease;}/*!sc*/
+.ghBULZ a:hover{color:white;}/*!sc*/
+data-styled.g41[id="sc-dNFkOE"]{content:"ghBULZ,"}/*!sc*/
+.fUIuKh{color:#1e293b;line-height:1.6;}/*!sc*/
+.fUIuKh h1,.fUIuKh h2,.fUIuKh h3,.fUIuKh h4,.fUIuKh h5,.fUIuKh h6{color:#1e293b;margin-top:2rem;margin-bottom:1rem;font-weight:600;}/*!sc*/
+.fUIuKh h1{font-size:2rem;border-bottom:2px solid #e2e8f0;padding-bottom:0.5rem;}/*!sc*/
+.fUIuKh h2{font-size:1.5rem;border-bottom:1px solid #e2e8f0;padding-bottom:0.3rem;}/*!sc*/
+.fUIuKh h3{font-size:1.25rem;}/*!sc*/
+.fUIuKh h4{font-size:1.1rem;}/*!sc*/
+.fUIuKh p{margin-bottom:1rem;color:#64748b;}/*!sc*/
+.fUIuKh a{color:#3b82f6;text-decoration:none;}/*!sc*/
+.fUIuKh a:hover{text-decoration:underline;}/*!sc*/
+.fUIuKh ul,.fUIuKh ol{margin-bottom:1rem;padding-left:1.5rem;}/*!sc*/
+.fUIuKh ul li,.fUIuKh ol li{margin-bottom:0.5rem;color:#64748b;}/*!sc*/
+.fUIuKh blockquote{border-left:4px solid #3b82f6;padding-left:1rem;margin:1rem 0;font-style:italic;color:#64748b;background:#f1f5f9;padding:1rem;border-radius:0.5rem;}/*!sc*/
+.fUIuKh code{background:#f1f5f9;padding:0.2rem 0.4rem;border-radius:0.25rem;font-family:SFMono-Regular,Consolas,"Liberation Mono",Menlo,monospace;font-size:0.9em;color:#f59e0b;}/*!sc*/
+.fUIuKh pre{background:#ffffff;border:1px solid #e2e8f0;border-radius:0.5rem;padding:1rem;margin:1rem 0;overflow-x:auto;}/*!sc*/
+.fUIuKh pre code{background:none;padding:0;color:#1e293b;font-size:0.9rem;}/*!sc*/
+.fUIuKh table{width:100%;border-collapse:collapse;margin:1rem 0;}/*!sc*/
+.fUIuKh table th,.fUIuKh table td{border:1px solid #e2e8f0;padding:0.5rem;text-align:left;}/*!sc*/
+.fUIuKh table th{background:#ffffff;font-weight:600;}/*!sc*/
+.fUIuKh table tr:nth-child(even){background:#f1f5f9;}/*!sc*/
+.fUIuKh hr{border:none;height:1px;background:#e2e8f0;margin:2rem 0;}/*!sc*/
+.fUIuKh .highlight{background:#3b82f620;padding:0.2rem 0.4rem;border-radius:0.25rem;font-weight:600;}/*!sc*/
+.fUIuKh .hljs{background:#ffffff;color:#1e293b;}/*!sc*/
+.fUIuKh .hljs-keyword{color:#3b82f6;font-weight:600;}/*!sc*/
+.fUIuKh .hljs-string{color:#10b981;}/*!sc*/
+.fUIuKh .hljs-function{color:#f59e0b;}/*!sc*/
+.fUIuKh .hljs-comment{color:#94a3b8;font-style:italic;}/*!sc*/
+.fUIuKh .hljs-number{color:#f59e0b;}/*!sc*/
+.fUIuKh .hljs-variable{color:#1e293b;}/*!sc*/
+.fUIuKh .hljs-title{color:#f59e0b;font-weight:600;}/*!sc*/
+data-styled.g42[id="sc-fszimp"]{content:"fUIuKh,"}/*!sc*/
+</style></head><body class="__className_6eac61"><div style="min-height:100vh;display:flex;flex-direction:column"><nav class="sc-gGKoUb iIQwfN"><div class="sc-hwddKA cEuiWg"><a href="/interview"><a class="sc-jaXbil bqPomF"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-code "><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>Frontend Interview Prep</a></a><div class="sc-eqNDNG iwwpNe"><a href="/interview/problems"><a class="sc-fVHBlr iuGltB">Problems</a></a><a href="/interview/learn"><a class="sc-fVHBlr iuGltB">Learn</a></a><a href="/interview/study-guide"><a class="sc-fVHBlr iuGltB">Study Guide</a></a><a href="/interview/system-design"><a class="sc-fVHBlr iuGltB">System Design</a></a><a href="/interview/performance"><a class="sc-fVHBlr iuGltB">Performance</a></a><a href="/interview/accessibility"><a class="sc-fVHBlr iuGltB">Accessibility</a></a><a href="/interview/interview-tips"><a class="sc-fVHBlr iuGltB">Interview Tips</a></a><button class="sc-cOpnSz keTsRT"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-search "><circle cx="11" cy="11" r="8"></circle><path d="m21 21-4.3-4.3"></path></svg>Search</button></div><button class="sc-gLaqbQ lmsDAj"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-menu "><line x1="4" x2="20" y1="12" y2="12"></line><line x1="4" x2="20" y1="6" y2="6"></line><line x1="4" x2="20" y1="18" y2="18"></line></svg></button></div></nav><main style="flex:1"><div style="max-width:1200px;margin:0 auto;padding:2rem;padding-top:6rem"><div style="margin-bottom:2rem"><nav style="color:#64748b;font-size:0.9rem;margin-bottom:1rem"><a href="/" style="color:#3b82f6;text-decoration:none">Home</a> &gt; <span>src &gt; content &gt; frontend &gt; typescript &gt; README</span></nav><h1 style="font-size:2.5rem;font-weight:800;margin-bottom:0.5rem;color:#1e293b">README</h1><div style="color:#64748b;font-size:0.9rem;margin-bottom:2rem"><span>📁 <!-- -->src/content/frontend/typescript/README.md</span></div></div><div class="sc-fszimp fUIuKh"><h1 id="typescript-for-frontend-interviews" node="[object Object]">TypeScript for Frontend Interviews</h1>
+<h2 id="table-of-contents" node="[object Object]">Table of Contents</h2>
+<ul>
+<li><a href="#typescript-fundamentals" node="[object Object]">TypeScript Fundamentals</a></li>
+<li><a href="#advanced-types" node="[object Object]">Advanced Types</a></li>
+<li><a href="#react-with-typescript" node="[object Object]">React with TypeScript</a></li>
+<li><a href="#interview-questions" node="[object Object]">Interview Questions</a></li>
+<li><a href="#best-practices" node="[object Object]">Best Practices</a></li>
+<li><a href="#common-patterns" node="[object Object]">Common Patterns</a></li>
+</ul>
+<h2 id="typescript-fundamentals" node="[object Object]">TypeScript Fundamentals</h2>
+<h3 id="why-typescript?" node="[object Object]">Why TypeScript?</h3>
+<p>TypeScript is a superset of JavaScript that adds static type definitions. It&#x27;s essential for modern frontend development and frequently tested in interviews.</p>
+<p><strong>Key Benefits:</strong></p>
+<ul>
+<li><strong>Static Type Checking</strong>: Catch errors at compile time</li>
+<li><strong>Better IDE Support</strong>: Enhanced autocomplete, refactoring, and navigation</li>
+<li><strong>Self-Documenting Code</strong>: Types serve as documentation</li>
+<li><strong>Easier Refactoring</strong>: Compiler helps identify breaking changes</li>
+<li><strong>Better Team Collaboration</strong>: Clear interfaces and contracts</li>
+</ul>
+<h3 id="basic-types" node="[object Object]">Basic Types</h3>
+<pre><pre><code class="hljs hljs language-typescript"><span class="hljs-comment">// Primitive types</span>
+<span class="hljs-keyword">let</span> <span class="hljs-attr">name</span>: <span class="hljs-built_in">string</span> = <span class="hljs-string">&quot;John&quot;</span>;
+<span class="hljs-keyword">let</span> <span class="hljs-attr">age</span>: <span class="hljs-built_in">number</span> = <span class="hljs-number">25</span>;
+<span class="hljs-keyword">let</span> <span class="hljs-attr">isActive</span>: <span class="hljs-built_in">boolean</span> = <span class="hljs-literal">true</span>;
+<span class="hljs-keyword">let</span> <span class="hljs-attr">nothing</span>: <span class="hljs-literal">null</span> = <span class="hljs-literal">null</span>;
+<span class="hljs-keyword">let</span> <span class="hljs-attr">undefined</span>: <span class="hljs-literal">undefined</span> = <span class="hljs-literal">undefined</span>;
+
+<span class="hljs-comment">// Arrays</span>
+<span class="hljs-keyword">let</span> <span class="hljs-attr">numbers</span>: <span class="hljs-built_in">number</span>[] = [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>];
+<span class="hljs-keyword">let</span> <span class="hljs-attr">strings</span>: <span class="hljs-title class_">Array</span>&lt;<span class="hljs-built_in">string</span>&gt; = [<span class="hljs-string">&quot;a&quot;</span>, <span class="hljs-string">&quot;b&quot;</span>, <span class="hljs-string">&quot;c&quot;</span>];
+
+<span class="hljs-comment">// Tuples</span>
+<span class="hljs-keyword">let</span> <span class="hljs-attr">person</span>: [<span class="hljs-built_in">string</span>, <span class="hljs-built_in">number</span>] = [<span class="hljs-string">&quot;John&quot;</span>, <span class="hljs-number">25</span>];
+
+<span class="hljs-comment">// Enums</span>
+<span class="hljs-keyword">enum</span> <span class="hljs-title class_">Color</span> {
+  <span class="hljs-title class_">Red</span>,
+  <span class="hljs-title class_">Green</span>,
+  <span class="hljs-title class_">Blue</span>
+}
+<span class="hljs-keyword">let</span> <span class="hljs-attr">c</span>: <span class="hljs-title class_">Color</span> = <span class="hljs-title class_">Color</span>.<span class="hljs-property">Green</span>;
+
+<span class="hljs-comment">// Any (use sparingly)</span>
+<span class="hljs-keyword">let</span> <span class="hljs-attr">anything</span>: <span class="hljs-built_in">any</span> = <span class="hljs-number">42</span>;
+anything = <span class="hljs-string">&quot;hello&quot;</span>;
+anything = <span class="hljs-literal">true</span>;
+
+<span class="hljs-comment">// Unknown (safer than any)</span>
+<span class="hljs-keyword">let</span> <span class="hljs-attr">userInput</span>: <span class="hljs-built_in">unknown</span>;
+<span class="hljs-keyword">if</span> (<span class="hljs-keyword">typeof</span> userInput === <span class="hljs-string">&quot;string&quot;</span>) {
+  <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(userInput.<span class="hljs-title function_">toUpperCase</span>());
+}
+
+<span class="hljs-comment">// Never (functions that never return)</span>
+<span class="hljs-keyword">function</span> <span class="hljs-title function_">throwError</span>(<span class="hljs-params"><span class="hljs-attr">message</span>: <span class="hljs-built_in">string</span></span>): <span class="hljs-built_in">never</span> {
+  <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Error</span>(message);
+}
+
+<span class="hljs-comment">// Void (no return value)</span>
+<span class="hljs-keyword">function</span> <span class="hljs-title function_">logMessage</span>(<span class="hljs-params"><span class="hljs-attr">message</span>: <span class="hljs-built_in">string</span></span>): <span class="hljs-built_in">void</span> {
+  <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(message);
+}
+</code></pre></pre>
+<h3 id="objects-and-interfaces" node="[object Object]">Objects and Interfaces</h3>
+<pre><pre><code class="hljs hljs language-typescript"><span class="hljs-comment">// Object types</span>
+<span class="hljs-keyword">let</span> <span class="hljs-attr">user</span>: { <span class="hljs-attr">name</span>: <span class="hljs-built_in">string</span>; <span class="hljs-attr">age</span>: <span class="hljs-built_in">number</span> } = {
+  <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;John&quot;</span>,
+  <span class="hljs-attr">age</span>: <span class="hljs-number">25</span>
+};
+
+<span class="hljs-comment">// Interface definition</span>
+<span class="hljs-keyword">interface</span> <span class="hljs-title class_">User</span> {
+  <span class="hljs-keyword">readonly</span> <span class="hljs-attr">id</span>: <span class="hljs-built_in">number</span>;
+  <span class="hljs-attr">name</span>: <span class="hljs-built_in">string</span>;
+  <span class="hljs-attr">email</span>: <span class="hljs-built_in">string</span>;
+  <span class="hljs-attr">age</span>?: <span class="hljs-built_in">number</span>; <span class="hljs-comment">// Optional property</span>
+}
+
+<span class="hljs-comment">// Using interfaces</span>
+<span class="hljs-keyword">const</span> createUser = (<span class="hljs-attr">userData</span>: <span class="hljs-title class_">User</span>): <span class="hljs-function"><span class="hljs-params">User</span> =&gt;</span> {
+  <span class="hljs-keyword">return</span> {
+    <span class="hljs-attr">id</span>: <span class="hljs-title class_">Math</span>.<span class="hljs-title function_">random</span>(),
+    ...userData
+  };
+};
+
+<span class="hljs-comment">// Extending interfaces</span>
+<span class="hljs-keyword">interface</span> <span class="hljs-title class_">AdminUser</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_">User</span> {
+  <span class="hljs-attr">permissions</span>: <span class="hljs-built_in">string</span>[];
+  <span class="hljs-attr">isAdmin</span>: <span class="hljs-built_in">boolean</span>;
+}
+
+<span class="hljs-comment">// Index signatures</span>
+<span class="hljs-keyword">interface</span> <span class="hljs-title class_">StringDictionary</span> {
+  [<span class="hljs-attr">key</span>: <span class="hljs-built_in">string</span>]: <span class="hljs-built_in">string</span>;
+}
+
+<span class="hljs-keyword">const</span> <span class="hljs-attr">dictionary</span>: <span class="hljs-title class_">StringDictionary</span> = {
+  <span class="hljs-attr">hello</span>: <span class="hljs-string">&quot;world&quot;</span>,
+  <span class="hljs-attr">foo</span>: <span class="hljs-string">&quot;bar&quot;</span>
+};
+</code></pre></pre>
+<h3 id="functions" node="[object Object]">Functions</h3>
+<p>{% raw %}</p>
+<pre><pre><code class="hljs hljs language-typescript"><span class="hljs-comment">// Function types</span>
+<span class="hljs-keyword">type</span> <span class="hljs-title class_">MathOperation</span> = <span class="hljs-function">(<span class="hljs-params"><span class="hljs-attr">a</span>: <span class="hljs-built_in">number</span>, <span class="hljs-attr">b</span>: <span class="hljs-built_in">number</span></span>) =&gt;</span> <span class="hljs-built_in">number</span>;
+
+<span class="hljs-keyword">const</span> <span class="hljs-attr">add</span>: <span class="hljs-title class_">MathOperation</span> = <span class="hljs-function">(<span class="hljs-params">a, b</span>) =&gt;</span> a + b;
+<span class="hljs-keyword">const</span> <span class="hljs-attr">multiply</span>: <span class="hljs-title class_">MathOperation</span> = <span class="hljs-function">(<span class="hljs-params">a, b</span>) =&gt;</span> a * b;
+
+<span class="hljs-comment">// Function overloads</span>
+<span class="hljs-keyword">function</span> <span class="hljs-title function_">process</span>(<span class="hljs-params"><span class="hljs-attr">input</span>: <span class="hljs-built_in">string</span></span>): <span class="hljs-built_in">string</span>;
+<span class="hljs-keyword">function</span> <span class="hljs-title function_">process</span>(<span class="hljs-params"><span class="hljs-attr">input</span>: <span class="hljs-built_in">number</span></span>): <span class="hljs-built_in">number</span>;
+<span class="hljs-keyword">function</span> <span class="hljs-title function_">process</span>(<span class="hljs-params"><span class="hljs-attr">input</span>: <span class="hljs-built_in">string</span> | <span class="hljs-built_in">number</span></span>): <span class="hljs-built_in">string</span> | <span class="hljs-built_in">number</span> {
+  <span class="hljs-keyword">if</span> (<span class="hljs-keyword">typeof</span> input === <span class="hljs-string">&quot;string&quot;</span>) {
+    <span class="hljs-keyword">return</span> input.<span class="hljs-title function_">toUpperCase</span>();
+  }
+  <span class="hljs-keyword">return</span> input * <span class="hljs-number">2</span>;
+}
+
+<span class="hljs-comment">// Rest parameters</span>
+<span class="hljs-keyword">function</span> <span class="hljs-title function_">sum</span>(<span class="hljs-params">...<span class="hljs-attr">numbers</span>: <span class="hljs-built_in">number</span>[]</span>): <span class="hljs-built_in">number</span> {
+  <span class="hljs-keyword">return</span> numbers.<span class="hljs-title function_">reduce</span>(<span class="hljs-function">(<span class="hljs-params">total, num</span>) =&gt;</span> total + num, <span class="hljs-number">0</span>);
+}
+
+<span class="hljs-comment">// Optional parameters</span>
+<span class="hljs-keyword">function</span> <span class="hljs-title function_">greet</span>(<span class="hljs-params"><span class="hljs-attr">name</span>: <span class="hljs-built_in">string</span>, <span class="hljs-attr">greeting</span>?: <span class="hljs-built_in">string</span></span>): <span class="hljs-built_in">string</span> {
+  <span class="hljs-keyword">return</span> <span class="hljs-string">`<span class="hljs-subst">${greeting || <span class="hljs-string">&quot;Hello&quot;</span>}</span>, <span class="hljs-subst">${name}</span>!`</span>;
+}
+
+<span class="hljs-comment">// Default parameters</span>
+<span class="hljs-keyword">function</span> <span class="hljs-title function_">createUser</span>(<span class="hljs-params"><span class="hljs-attr">name</span>: <span class="hljs-built_in">string</span>, <span class="hljs-attr">age</span>: <span class="hljs-built_in">number</span> = <span class="hljs-number">18</span></span>): <span class="hljs-title class_">User</span> {
+  <span class="hljs-keyword">return</span> { <span class="hljs-attr">id</span>: <span class="hljs-title class_">Math</span>.<span class="hljs-title function_">random</span>(), name, <span class="hljs-attr">email</span>: <span class="hljs-string">`<span class="hljs-subst">${name}</span>@example.com`</span>, age };
+}
+</code></pre></pre>
+<p>{% endraw %}</p>
+<h2 id="advanced-types" node="[object Object]">Advanced Types</h2>
+<h3 id="union-and-intersection-types" node="[object Object]">Union and Intersection Types</h3>
+<pre><pre><code class="hljs hljs language-typescript"><span class="hljs-comment">// Union types</span>
+<span class="hljs-keyword">type</span> <span class="hljs-title class_">StringOrNumber</span> = <span class="hljs-built_in">string</span> | <span class="hljs-built_in">number</span>;
+<span class="hljs-keyword">type</span> <span class="hljs-title class_">Status</span> = <span class="hljs-string">&quot;loading&quot;</span> | <span class="hljs-string">&quot;success&quot;</span> | <span class="hljs-string">&quot;error&quot;</span>;
+
+<span class="hljs-keyword">function</span> <span class="hljs-title function_">processId</span>(<span class="hljs-params"><span class="hljs-attr">id</span>: <span class="hljs-title class_">StringOrNumber</span></span>): <span class="hljs-built_in">void</span> {
+  <span class="hljs-keyword">if</span> (<span class="hljs-keyword">typeof</span> id === <span class="hljs-string">&quot;string&quot;</span>) {
+    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(id.<span class="hljs-title function_">toUpperCase</span>());
+  } <span class="hljs-keyword">else</span> {
+    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(id.<span class="hljs-title function_">toFixed</span>(<span class="hljs-number">2</span>));
+  }
+}
+
+<span class="hljs-comment">// Intersection types</span>
+<span class="hljs-keyword">interface</span> <span class="hljs-title class_">Person</span> {
+  <span class="hljs-attr">name</span>: <span class="hljs-built_in">string</span>;
+  <span class="hljs-attr">age</span>: <span class="hljs-built_in">number</span>;
+}
+
+<span class="hljs-keyword">interface</span> <span class="hljs-title class_">Employee</span> {
+  <span class="hljs-attr">employeeId</span>: <span class="hljs-built_in">number</span>;
+  <span class="hljs-attr">department</span>: <span class="hljs-built_in">string</span>;
+}
+
+<span class="hljs-keyword">type</span> <span class="hljs-title class_">PersonEmployee</span> = <span class="hljs-title class_">Person</span> &amp; <span class="hljs-title class_">Employee</span>;
+
+<span class="hljs-keyword">const</span> <span class="hljs-attr">emp</span>: <span class="hljs-title class_">PersonEmployee</span> = {
+  <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;John&quot;</span>,
+  <span class="hljs-attr">age</span>: <span class="hljs-number">30</span>,
+  <span class="hljs-attr">employeeId</span>: <span class="hljs-number">123</span>,
+  <span class="hljs-attr">department</span>: <span class="hljs-string">&quot;Engineering&quot;</span>
+};
+</code></pre></pre>
+<h3 id="generics" node="[object Object]">Generics</h3>
+<pre><pre><code class="hljs hljs language-typescript"><span class="hljs-comment">// Generic functions</span>
+<span class="hljs-keyword">function</span> identity&lt;T&gt;(<span class="hljs-attr">arg</span>: T): T {
+  <span class="hljs-keyword">return</span> arg;
+}
+
+<span class="hljs-keyword">const</span> stringResult = identity&lt;<span class="hljs-built_in">string</span>&gt;(<span class="hljs-string">&quot;hello&quot;</span>);
+<span class="hljs-keyword">const</span> numberResult = identity&lt;<span class="hljs-built_in">number</span>&gt;(<span class="hljs-number">42</span>);
+
+<span class="hljs-comment">// Generic interfaces</span>
+<span class="hljs-keyword">interface</span> <span class="hljs-title class_">ApiResponse</span>&lt;T&gt; {
+  <span class="hljs-attr">data</span>: T;
+  <span class="hljs-attr">status</span>: <span class="hljs-built_in">number</span>;
+  <span class="hljs-attr">message</span>: <span class="hljs-built_in">string</span>;
+}
+
+<span class="hljs-keyword">interface</span> <span class="hljs-title class_">User</span> {
+  <span class="hljs-attr">id</span>: <span class="hljs-built_in">number</span>;
+  <span class="hljs-attr">name</span>: <span class="hljs-built_in">string</span>;
+}
+
+<span class="hljs-keyword">const</span> <span class="hljs-attr">userResponse</span>: <span class="hljs-title class_">ApiResponse</span>&lt;<span class="hljs-title class_">User</span>&gt; = {
+  <span class="hljs-attr">data</span>: { <span class="hljs-attr">id</span>: <span class="hljs-number">1</span>, <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;John&quot;</span> },
+  <span class="hljs-attr">status</span>: <span class="hljs-number">200</span>,
+  <span class="hljs-attr">message</span>: <span class="hljs-string">&quot;Success&quot;</span>
+};
+
+<span class="hljs-comment">// Generic classes</span>
+<span class="hljs-keyword">class</span> <span class="hljs-title class_">Repository</span>&lt;T&gt; {
+  <span class="hljs-keyword">private</span> <span class="hljs-attr">items</span>: T[] = [];
+
+  <span class="hljs-title function_">add</span>(<span class="hljs-attr">item</span>: T): <span class="hljs-built_in">void</span> {
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">items</span>.<span class="hljs-title function_">push</span>(item);
+  }
+
+  <span class="hljs-title function_">findById</span>(<span class="hljs-attr">id</span>: <span class="hljs-built_in">number</span>): T | <span class="hljs-literal">undefined</span> {
+    <span class="hljs-keyword">return</span> <span class="hljs-variable language_">this</span>.<span class="hljs-property">items</span>.<span class="hljs-title function_">find</span>(<span class="hljs-function">(<span class="hljs-params"><span class="hljs-attr">item</span>: <span class="hljs-built_in">any</span></span>) =&gt;</span> item.<span class="hljs-property">id</span> === id);
+  }
+
+  <span class="hljs-title function_">getAll</span>(): T[] {
+    <span class="hljs-keyword">return</span> [...<span class="hljs-variable language_">this</span>.<span class="hljs-property">items</span>];
+  }
+}
+
+<span class="hljs-comment">// Generic constraints</span>
+<span class="hljs-keyword">interface</span> <span class="hljs-title class_">HasLength</span> {
+  <span class="hljs-attr">length</span>: <span class="hljs-built_in">number</span>;
+}
+
+<span class="hljs-keyword">function</span> logLength&lt;T <span class="hljs-keyword">extends</span> <span class="hljs-title class_">HasLength</span>&gt;(<span class="hljs-attr">arg</span>: T): T {
+  <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(arg.<span class="hljs-property">length</span>);
+  <span class="hljs-keyword">return</span> arg;
+}
+
+<span class="hljs-comment">// Conditional types</span>
+<span class="hljs-keyword">type</span> <span class="hljs-title class_">NonNullable</span>&lt;T&gt; = T <span class="hljs-keyword">extends</span> <span class="hljs-literal">null</span> | <span class="hljs-literal">undefined</span> ? <span class="hljs-built_in">never</span> : T;
+
+<span class="hljs-comment">// Mapped types</span>
+<span class="hljs-keyword">type</span> <span class="hljs-title class_">Partial</span>&lt;T&gt; = {
+  [P <span class="hljs-keyword">in</span> keyof T]?: T[P];
+};
+
+<span class="hljs-keyword">type</span> <span class="hljs-title class_">Required</span>&lt;T&gt; = {
+  [P <span class="hljs-keyword">in</span> keyof T]-?: T[P];
+};
+
+<span class="hljs-keyword">type</span> <span class="hljs-title class_">Readonly</span>&lt;T&gt; = {
+  <span class="hljs-keyword">readonly</span> [P <span class="hljs-keyword">in</span> keyof T]: T[P];
+};
+</code></pre></pre>
+<h3 id="utility-types" node="[object Object]">Utility Types</h3>
+<pre><pre><code class="hljs hljs language-typescript"><span class="hljs-comment">// Built-in utility types</span>
+<span class="hljs-keyword">interface</span> <span class="hljs-title class_">User</span> {
+  <span class="hljs-attr">id</span>: <span class="hljs-built_in">number</span>;
+  <span class="hljs-attr">name</span>: <span class="hljs-built_in">string</span>;
+  <span class="hljs-attr">email</span>: <span class="hljs-built_in">string</span>;
+  <span class="hljs-attr">age</span>: <span class="hljs-built_in">number</span>;
+}
+
+<span class="hljs-comment">// Partial - makes all properties optional</span>
+<span class="hljs-keyword">type</span> <span class="hljs-title class_">PartialUser</span> = <span class="hljs-title class_">Partial</span>&lt;<span class="hljs-title class_">User</span>&gt;;
+
+<span class="hljs-comment">// Required - makes all properties required</span>
+<span class="hljs-keyword">type</span> <span class="hljs-title class_">RequiredUser</span> = <span class="hljs-title class_">Required</span>&lt;<span class="hljs-title class_">User</span>&gt;;
+
+<span class="hljs-comment">// Readonly - makes all properties readonly</span>
+<span class="hljs-keyword">type</span> <span class="hljs-title class_">ReadonlyUser</span> = <span class="hljs-title class_">Readonly</span>&lt;<span class="hljs-title class_">User</span>&gt;;
+
+<span class="hljs-comment">// Pick - selects specific properties</span>
+<span class="hljs-keyword">type</span> <span class="hljs-title class_">UserPreview</span> = <span class="hljs-title class_">Pick</span>&lt;<span class="hljs-title class_">User</span>, <span class="hljs-string">&quot;id&quot;</span> | <span class="hljs-string">&quot;name&quot;</span>&gt;;
+
+<span class="hljs-comment">// Omit - excludes specific properties</span>
+<span class="hljs-keyword">type</span> <span class="hljs-title class_">UserWithoutId</span> = <span class="hljs-title class_">Omit</span>&lt;<span class="hljs-title class_">User</span>, <span class="hljs-string">&quot;id&quot;</span>&gt;;
+
+<span class="hljs-comment">// Record - creates an object type with specific key and value types</span>
+<span class="hljs-keyword">type</span> <span class="hljs-title class_">UserRoles</span> = <span class="hljs-title class_">Record</span>&lt;<span class="hljs-built_in">string</span>, <span class="hljs-built_in">string</span>[]&gt;;
+
+<span class="hljs-comment">// ReturnType - extracts return type of function</span>
+<span class="hljs-keyword">function</span> <span class="hljs-title function_">getUser</span>(<span class="hljs-params"></span>): <span class="hljs-title class_">User</span> {
+  <span class="hljs-keyword">return</span> { <span class="hljs-attr">id</span>: <span class="hljs-number">1</span>, <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;John&quot;</span>, <span class="hljs-attr">email</span>: <span class="hljs-string">&quot;john@example.com&quot;</span>, <span class="hljs-attr">age</span>: <span class="hljs-number">25</span> };
+}
+
+<span class="hljs-keyword">type</span> <span class="hljs-title class_">GetUserReturnType</span> = <span class="hljs-title class_">ReturnType</span>&lt;<span class="hljs-keyword">typeof</span> getUser&gt;; <span class="hljs-comment">// User</span>
+
+<span class="hljs-comment">// Parameters - extracts parameter types</span>
+<span class="hljs-keyword">function</span> <span class="hljs-title function_">updateUser</span>(<span class="hljs-params"><span class="hljs-attr">id</span>: <span class="hljs-built_in">number</span>, <span class="hljs-attr">updates</span>: <span class="hljs-title class_">Partial</span>&lt;<span class="hljs-title class_">User</span>&gt;</span>): <span class="hljs-built_in">void</span> {}
+
+<span class="hljs-keyword">type</span> <span class="hljs-title class_">UpdateUserParams</span> = <span class="hljs-title class_">Parameters</span>&lt;<span class="hljs-keyword">typeof</span> updateUser&gt;; <span class="hljs-comment">// [number, Partial&lt;User&gt;]</span>
+</code></pre></pre>
+<h2 id="react-with-typescript" node="[object Object]">React with TypeScript</h2>
+<h3 id="component-types" node="[object Object]">Component Types</h3>
+<pre><pre><code class="hljs hljs language-typescript"><span class="hljs-keyword">import</span> <span class="hljs-title class_">React</span>, { useState, useEffect, <span class="hljs-title class_">ReactNode</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;react&#x27;</span>;
+
+<span class="hljs-comment">// Props interface</span>
+<span class="hljs-keyword">interface</span> <span class="hljs-title class_">ButtonProps</span> {
+  <span class="hljs-attr">children</span>: <span class="hljs-title class_">ReactNode</span>;
+  <span class="hljs-attr">onClick</span>: <span class="hljs-function">() =&gt;</span> <span class="hljs-built_in">void</span>;
+  <span class="hljs-attr">variant</span>?: <span class="hljs-string">&#x27;primary&#x27;</span> | <span class="hljs-string">&#x27;secondary&#x27;</span>;
+  <span class="hljs-attr">disabled</span>?: <span class="hljs-built_in">boolean</span>;
+}
+
+<span class="hljs-comment">// Function component</span>
+<span class="hljs-keyword">const</span> <span class="hljs-title class_">Button</span>: <span class="hljs-title class_">React</span>.<span class="hljs-property">FC</span>&lt;<span class="hljs-title class_">ButtonProps</span>&gt; = <span class="hljs-function">(<span class="hljs-params">{ 
+  children, 
+  onClick, 
+  variant = <span class="hljs-string">&#x27;primary&#x27;</span>, 
+  disabled = <span class="hljs-literal">false</span> 
+}</span>) =&gt;</span> {
+  <span class="hljs-keyword">return</span> (
+    <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">button</span> 
+      <span class="hljs-attr">onClick</span>=<span class="hljs-string">{onClick}</span> 
+      <span class="hljs-attr">disabled</span>=<span class="hljs-string">{disabled}</span>
+      <span class="hljs-attr">className</span>=<span class="hljs-string">{</span>`<span class="hljs-attr">btn</span> <span class="hljs-attr">btn-</span>${<span class="hljs-attr">variant</span>}`}
+    &gt;</span>
+      {children}
+    <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span></span>
+  );
+};
+
+<span class="hljs-comment">// Generic component</span>
+<span class="hljs-keyword">interface</span> <span class="hljs-title class_">ListProps</span>&lt;T&gt; {
+  <span class="hljs-attr">items</span>: T[];
+  <span class="hljs-attr">renderItem</span>: <span class="hljs-function">(<span class="hljs-params"><span class="hljs-attr">item</span>: T</span>) =&gt;</span> <span class="hljs-title class_">ReactNode</span>;
+  <span class="hljs-attr">keyExtractor</span>: <span class="hljs-function">(<span class="hljs-params"><span class="hljs-attr">item</span>: T</span>) =&gt;</span> <span class="hljs-built_in">string</span> | <span class="hljs-built_in">number</span>;
+}
+
+<span class="hljs-keyword">function</span> <span class="hljs-title class_">List</span>&lt;T&gt;({ items, renderItem, keyExtractor }: <span class="hljs-title class_">ListProps</span>&lt;T&gt;) {
+  <span class="hljs-keyword">return</span> (
+    <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">ul</span>&gt;</span>
+      {items.map(item =&gt; (
+        <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">key</span>=<span class="hljs-string">{keyExtractor(item)}</span>&gt;</span>
+          {renderItem(item)}
+        <span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+      ))}
+    <span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span></span>
+  );
+}
+
+<span class="hljs-comment">// Using the generic component</span>
+<span class="hljs-keyword">interface</span> <span class="hljs-title class_">User</span> {
+  <span class="hljs-attr">id</span>: <span class="hljs-built_in">number</span>;
+  <span class="hljs-attr">name</span>: <span class="hljs-built_in">string</span>;
+}
+
+<span class="hljs-keyword">const</span> <span class="hljs-title class_">UserList</span>: <span class="hljs-title class_">React</span>.<span class="hljs-property">FC</span>&lt;{ <span class="hljs-attr">users</span>: <span class="hljs-title class_">User</span>[] }&gt; = <span class="hljs-function">(<span class="hljs-params">{ users }</span>) =&gt;</span> {
+  <span class="hljs-keyword">return</span> (
+    <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">List</span>
+      <span class="hljs-attr">items</span>=<span class="hljs-string">{users}</span>
+      <span class="hljs-attr">keyExtractor</span>=<span class="hljs-string">{user</span> =&gt;</span> user.id}
+      renderItem={user =&gt; <span class="hljs-tag">&lt;<span class="hljs-name">span</span>&gt;</span>{user.name}<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>}
+    /&gt;</span>
+  );
+};
+</code></pre></pre>
+<h3 id="hooks-with-typescript" node="[object Object]">Hooks with TypeScript</h3>
+<pre><pre><code class="hljs hljs language-typescript"><span class="hljs-keyword">import</span> { useState, useEffect, useCallback, useMemo, useRef } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;react&#x27;</span>;
+
+<span class="hljs-comment">// useState with explicit types</span>
+<span class="hljs-keyword">const</span> [count, setCount] = useState&lt;<span class="hljs-built_in">number</span>&gt;(<span class="hljs-number">0</span>);
+<span class="hljs-keyword">const</span> [user, setUser] = useState&lt;<span class="hljs-title class_">User</span> | <span class="hljs-literal">null</span>&gt;(<span class="hljs-literal">null</span>);
+<span class="hljs-keyword">const</span> [loading, setLoading] = useState&lt;<span class="hljs-built_in">boolean</span>&gt;(<span class="hljs-literal">false</span>);
+
+<span class="hljs-comment">// useEffect with cleanup</span>
+<span class="hljs-title function_">useEffect</span>(<span class="hljs-function">() =&gt;</span> {
+  <span class="hljs-keyword">const</span> timer = <span class="hljs-built_in">setTimeout</span>(<span class="hljs-function">() =&gt;</span> {
+    <span class="hljs-title function_">setCount</span>(<span class="hljs-function"><span class="hljs-params">prev</span> =&gt;</span> prev + <span class="hljs-number">1</span>);
+  }, <span class="hljs-number">1000</span>);
+
+  <span class="hljs-keyword">return</span> <span class="hljs-function">() =&gt;</span> <span class="hljs-built_in">clearTimeout</span>(timer);
+}, []);
+
+<span class="hljs-comment">// useCallback with proper typing</span>
+<span class="hljs-keyword">const</span> handleClick = <span class="hljs-title function_">useCallback</span>(<span class="hljs-function">(<span class="hljs-params"><span class="hljs-attr">id</span>: <span class="hljs-built_in">number</span></span>) =&gt;</span> {
+  <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;Clicked:&#x27;</span>, id);
+}, []);
+
+<span class="hljs-comment">// useMemo with type inference</span>
+<span class="hljs-keyword">const</span> expensiveValue = <span class="hljs-title function_">useMemo</span>(<span class="hljs-function">() =&gt;</span> {
+  <span class="hljs-keyword">return</span> items.<span class="hljs-title function_">filter</span>(<span class="hljs-function"><span class="hljs-params">item</span> =&gt;</span> item.<span class="hljs-property">active</span>).<span class="hljs-property">length</span>;
+}, [items]);
+
+<span class="hljs-comment">// useRef with DOM elements</span>
+<span class="hljs-keyword">const</span> inputRef = useRef&lt;<span class="hljs-title class_">HTMLInputElement</span>&gt;(<span class="hljs-literal">null</span>);
+
+<span class="hljs-keyword">const</span> <span class="hljs-title function_">focusInput</span> = (<span class="hljs-params"></span>) =&gt; {
+  inputRef.<span class="hljs-property">current</span>?.<span class="hljs-title function_">focus</span>();
+};
+
+<span class="hljs-comment">// Custom hook with TypeScript</span>
+<span class="hljs-keyword">interface</span> <span class="hljs-title class_">UseApiResult</span>&lt;T&gt; {
+  <span class="hljs-attr">data</span>: T | <span class="hljs-literal">null</span>;
+  <span class="hljs-attr">loading</span>: <span class="hljs-built_in">boolean</span>;
+  <span class="hljs-attr">error</span>: <span class="hljs-built_in">string</span> | <span class="hljs-literal">null</span>;
+  <span class="hljs-attr">refetch</span>: <span class="hljs-function">() =&gt;</span> <span class="hljs-built_in">void</span>;
+}
+
+<span class="hljs-keyword">function</span> useApi&lt;T&gt;(<span class="hljs-attr">url</span>: <span class="hljs-built_in">string</span>): <span class="hljs-title class_">UseApiResult</span>&lt;T&gt; {
+  <span class="hljs-keyword">const</span> [data, setData] = useState&lt;T | <span class="hljs-literal">null</span>&gt;(<span class="hljs-literal">null</span>);
+  <span class="hljs-keyword">const</span> [loading, setLoading] = useState&lt;<span class="hljs-built_in">boolean</span>&gt;(<span class="hljs-literal">true</span>);
+  <span class="hljs-keyword">const</span> [error, setError] = useState&lt;<span class="hljs-built_in">string</span> | <span class="hljs-literal">null</span>&gt;(<span class="hljs-literal">null</span>);
+
+  <span class="hljs-keyword">const</span> fetchData = <span class="hljs-title function_">useCallback</span>(<span class="hljs-title function_">async</span> () =&gt; {
+    <span class="hljs-keyword">try</span> {
+      <span class="hljs-title function_">setLoading</span>(<span class="hljs-literal">true</span>);
+      <span class="hljs-title function_">setError</span>(<span class="hljs-literal">null</span>);
+      <span class="hljs-keyword">const</span> response = <span class="hljs-keyword">await</span> <span class="hljs-title function_">fetch</span>(url);
+      
+      <span class="hljs-keyword">if</span> (!response.<span class="hljs-property">ok</span>) {
+        <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Error</span>(<span class="hljs-string">`HTTP error! status: <span class="hljs-subst">${response.status}</span>`</span>);
+      }
+      
+      <span class="hljs-keyword">const</span> result = <span class="hljs-keyword">await</span> response.<span class="hljs-title function_">json</span>();
+      <span class="hljs-title function_">setData</span>(result);
+    } <span class="hljs-keyword">catch</span> (err) {
+      <span class="hljs-title function_">setError</span>(err <span class="hljs-keyword">instanceof</span> <span class="hljs-title class_">Error</span> ? err.<span class="hljs-property">message</span> : <span class="hljs-string">&#x27;An error occurred&#x27;</span>);
+    } <span class="hljs-keyword">finally</span> {
+      <span class="hljs-title function_">setLoading</span>(<span class="hljs-literal">false</span>);
+    }
+  }, [url]);
+
+  <span class="hljs-title function_">useEffect</span>(<span class="hljs-function">() =&gt;</span> {
+    <span class="hljs-title function_">fetchData</span>();
+  }, [fetchData]);
+
+  <span class="hljs-keyword">return</span> { data, loading, error, <span class="hljs-attr">refetch</span>: fetchData };
+}
+
+<span class="hljs-comment">// Using the custom hook</span>
+<span class="hljs-keyword">interface</span> <span class="hljs-title class_">ApiUser</span> {
+  <span class="hljs-attr">id</span>: <span class="hljs-built_in">number</span>;
+  <span class="hljs-attr">name</span>: <span class="hljs-built_in">string</span>;
+  <span class="hljs-attr">email</span>: <span class="hljs-built_in">string</span>;
+}
+
+<span class="hljs-keyword">const</span> <span class="hljs-title class_">UserComponent</span>: <span class="hljs-title class_">React</span>.<span class="hljs-property">FC</span> = <span class="hljs-function">() =&gt;</span> {
+  <span class="hljs-keyword">const</span> { <span class="hljs-attr">data</span>: user, loading, error, refetch } = useApi&lt;<span class="hljs-title class_">ApiUser</span>&gt;(<span class="hljs-string">&#x27;/api/user/1&#x27;</span>);
+
+  <span class="hljs-keyword">if</span> (loading) <span class="hljs-keyword">return</span> <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>Loading...<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span>;
+  <span class="hljs-keyword">if</span> (error) <span class="hljs-keyword">return</span> <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>Error: {error}<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span>;
+  <span class="hljs-keyword">if</span> (!user) <span class="hljs-keyword">return</span> <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>No user found<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span>;
+
+  <span class="hljs-keyword">return</span> (
+    <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>{user.name}<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>{user.email}<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">onClick</span>=<span class="hljs-string">{refetch}</span>&gt;</span>Refresh<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span>
+  );
+};
+</code></pre></pre>
+<h3 id="context-with-typescript" node="[object Object]">Context with TypeScript</h3>
+<pre><pre><code class="hljs hljs language-typescript"><span class="hljs-keyword">import</span> <span class="hljs-title class_">React</span>, { createContext, useContext, useReducer, <span class="hljs-title class_">ReactNode</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;react&#x27;</span>;
+
+<span class="hljs-comment">// State interface</span>
+<span class="hljs-keyword">interface</span> <span class="hljs-title class_">AppState</span> {
+  <span class="hljs-attr">user</span>: <span class="hljs-title class_">User</span> | <span class="hljs-literal">null</span>;
+  <span class="hljs-attr">theme</span>: <span class="hljs-string">&#x27;light&#x27;</span> | <span class="hljs-string">&#x27;dark&#x27;</span>;
+  <span class="hljs-attr">notifications</span>: <span class="hljs-title class_">Notification</span>[];
+}
+
+<span class="hljs-comment">// Actions</span>
+<span class="hljs-keyword">type</span> <span class="hljs-title class_">AppAction</span> = 
+  | { <span class="hljs-attr">type</span>: <span class="hljs-string">&#x27;SET_USER&#x27;</span>; <span class="hljs-attr">payload</span>: <span class="hljs-title class_">User</span> | <span class="hljs-literal">null</span> }
+  | { <span class="hljs-attr">type</span>: <span class="hljs-string">&#x27;SET_THEME&#x27;</span>; <span class="hljs-attr">payload</span>: <span class="hljs-string">&#x27;light&#x27;</span> | <span class="hljs-string">&#x27;dark&#x27;</span> }
+  | { <span class="hljs-attr">type</span>: <span class="hljs-string">&#x27;ADD_NOTIFICATION&#x27;</span>; <span class="hljs-attr">payload</span>: <span class="hljs-title class_">Notification</span> }
+  | { <span class="hljs-attr">type</span>: <span class="hljs-string">&#x27;REMOVE_NOTIFICATION&#x27;</span>; <span class="hljs-attr">payload</span>: <span class="hljs-built_in">string</span> };
+
+<span class="hljs-comment">// Context type</span>
+<span class="hljs-keyword">interface</span> <span class="hljs-title class_">AppContextType</span> {
+  <span class="hljs-attr">state</span>: <span class="hljs-title class_">AppState</span>;
+  <span class="hljs-attr">dispatch</span>: <span class="hljs-title class_">React</span>.<span class="hljs-property">Dispatch</span>&lt;<span class="hljs-title class_">AppAction</span>&gt;;
+}
+
+<span class="hljs-comment">// Create context</span>
+<span class="hljs-keyword">const</span> <span class="hljs-title class_">AppContext</span> = createContext&lt;<span class="hljs-title class_">AppContextType</span> | <span class="hljs-literal">undefined</span>&gt;(<span class="hljs-literal">undefined</span>);
+
+<span class="hljs-comment">// Reducer</span>
+<span class="hljs-keyword">const</span> appReducer = (<span class="hljs-attr">state</span>: <span class="hljs-title class_">AppState</span>, <span class="hljs-attr">action</span>: <span class="hljs-title class_">AppAction</span>): <span class="hljs-function"><span class="hljs-params">AppState</span> =&gt;</span> {
+  <span class="hljs-keyword">switch</span> (action.<span class="hljs-property">type</span>) {
+    <span class="hljs-keyword">case</span> <span class="hljs-string">&#x27;SET_USER&#x27;</span>:
+      <span class="hljs-keyword">return</span> { ...state, <span class="hljs-attr">user</span>: action.<span class="hljs-property">payload</span> };
+    <span class="hljs-keyword">case</span> <span class="hljs-string">&#x27;SET_THEME&#x27;</span>:
+      <span class="hljs-keyword">return</span> { ...state, <span class="hljs-attr">theme</span>: action.<span class="hljs-property">payload</span> };
+    <span class="hljs-keyword">case</span> <span class="hljs-string">&#x27;ADD_NOTIFICATION&#x27;</span>:
+      <span class="hljs-keyword">return</span> { 
+        ...state, 
+        <span class="hljs-attr">notifications</span>: [...state.<span class="hljs-property">notifications</span>, action.<span class="hljs-property">payload</span>] 
+      };
+    <span class="hljs-keyword">case</span> <span class="hljs-string">&#x27;REMOVE_NOTIFICATION&#x27;</span>:
+      <span class="hljs-keyword">return</span> {
+        ...state,
+        <span class="hljs-attr">notifications</span>: state.<span class="hljs-property">notifications</span>.<span class="hljs-title function_">filter</span>(<span class="hljs-function"><span class="hljs-params">n</span> =&gt;</span> n.<span class="hljs-property">id</span> !== action.<span class="hljs-property">payload</span>)
+      };
+    <span class="hljs-attr">default</span>:
+      <span class="hljs-keyword">return</span> state;
+  }
+};
+
+<span class="hljs-comment">// Provider component</span>
+<span class="hljs-keyword">interface</span> <span class="hljs-title class_">AppProviderProps</span> {
+  <span class="hljs-attr">children</span>: <span class="hljs-title class_">ReactNode</span>;
+}
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">const</span> <span class="hljs-title class_">AppProvider</span>: <span class="hljs-title class_">React</span>.<span class="hljs-property">FC</span>&lt;<span class="hljs-title class_">AppProviderProps</span>&gt; = <span class="hljs-function">(<span class="hljs-params">{ children }</span>) =&gt;</span> {
+  <span class="hljs-keyword">const</span> [state, dispatch] = <span class="hljs-title function_">useReducer</span>(appReducer, {
+    <span class="hljs-attr">user</span>: <span class="hljs-literal">null</span>,
+    <span class="hljs-attr">theme</span>: <span class="hljs-string">&#x27;light&#x27;</span>,
+    <span class="hljs-attr">notifications</span>: []
+  });
+
+  <span class="hljs-keyword">return</span> (
+    <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">AppContext.Provider</span> <span class="hljs-attr">value</span>=<span class="hljs-string">{%</span> <span class="hljs-attr">raw</span> %}{{ <span class="hljs-attr">state</span>, <span class="hljs-attr">dispatch</span> }}{% <span class="hljs-attr">endraw</span> %}&gt;</span>
+      {children}
+    <span class="hljs-tag">&lt;/<span class="hljs-name">AppContext.Provider</span>&gt;</span></span>
+  );
+};
+
+<span class="hljs-comment">// Custom hook</span>
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">const</span> useAppContext = (): <span class="hljs-function"><span class="hljs-params">AppContextType</span> =&gt;</span> {
+  <span class="hljs-keyword">const</span> context = <span class="hljs-title function_">useContext</span>(<span class="hljs-title class_">AppContext</span>);
+  <span class="hljs-keyword">if</span> (!context) {
+    <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Error</span>(<span class="hljs-string">&#x27;useAppContext must be used within an AppProvider&#x27;</span>);
+  }
+  <span class="hljs-keyword">return</span> context;
+};
+</code></pre></pre>
+<h2 id="interview-questions" node="[object Object]">Interview Questions</h2>
+<h3 id="1.-what-is-typescript-and-why-would-you-use-it?" node="[object Object]">1. What is TypeScript and why would you use it?</h3>
+<p><strong>Answer:</strong>
+TypeScript is a statically typed superset of JavaScript that compiles to plain JavaScript. Key benefits include:</p>
+<ul>
+<li><strong>Static Type Checking</strong>: Catches errors at compile time rather than runtime</li>
+<li><strong>Better IDE Support</strong>: Enhanced autocomplete, refactoring, and navigation</li>
+<li><strong>Self-Documenting Code</strong>: Types serve as documentation for APIs and functions</li>
+<li><strong>Easier Refactoring</strong>: Compiler helps identify breaking changes across codebase</li>
+<li><strong>Better Team Collaboration</strong>: Clear interfaces and contracts between team members</li>
+</ul>
+<h3 id="2.-explain-the-difference-between-,[object-object],-and-,[object-object],-in-typescript." node="[object Object]">2. Explain the difference between <pre><code class="hljs undefined">interface</code></pre> and <pre><code class="hljs undefined">type</code></pre> in TypeScript.</h3>
+<p><strong>Answer:</strong></p>
+<pre><pre><code class="hljs hljs language-typescript"><span class="hljs-comment">// Interface - can be extended and merged</span>
+<span class="hljs-keyword">interface</span> <span class="hljs-title class_">User</span> {
+  <span class="hljs-attr">name</span>: <span class="hljs-built_in">string</span>;
+  <span class="hljs-attr">age</span>: <span class="hljs-built_in">number</span>;
+}
+
+<span class="hljs-keyword">interface</span> <span class="hljs-title class_">User</span> {
+  <span class="hljs-attr">email</span>: <span class="hljs-built_in">string</span>; <span class="hljs-comment">// Declaration merging</span>
+}
+
+<span class="hljs-keyword">interface</span> <span class="hljs-title class_">AdminUser</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_">User</span> {
+  <span class="hljs-attr">permissions</span>: <span class="hljs-built_in">string</span>[];
+}
+
+<span class="hljs-comment">// Type - more flexible, supports unions, intersections</span>
+<span class="hljs-keyword">type</span> <span class="hljs-title class_">Status</span> = <span class="hljs-string">&#x27;loading&#x27;</span> | <span class="hljs-string">&#x27;success&#x27;</span> | <span class="hljs-string">&#x27;error&#x27;</span>;
+<span class="hljs-keyword">type</span> <span class="hljs-title class_">User</span> = {
+  <span class="hljs-attr">name</span>: <span class="hljs-built_in">string</span>;
+  <span class="hljs-attr">age</span>: <span class="hljs-built_in">number</span>;
+};
+
+<span class="hljs-keyword">type</span> <span class="hljs-title class_">AdminUser</span> = <span class="hljs-title class_">User</span> &amp; {
+  <span class="hljs-attr">permissions</span>: <span class="hljs-built_in">string</span>[];
+};
+</code></pre></pre>
+<p><strong>Key Differences:</strong></p>
+<ul>
+<li><strong>Interfaces</strong> can be extended and merged, better for object shapes</li>
+<li><strong>Types</strong> are more flexible, support unions, intersections, and primitives</li>
+<li><strong>Interfaces</strong> are preferred for public APIs that might be extended</li>
+<li><strong>Types</strong> are preferred for complex type compositions</li>
+</ul>
+<h3 id="3.-what-are-generics-and-why-are-they-useful?" node="[object Object]">3. What are generics and why are they useful?</h3>
+<p><strong>Answer:</strong>
+Generics allow you to write reusable code that works with multiple types while maintaining type safety.</p>
+<pre><pre><code class="hljs hljs language-typescript"><span class="hljs-comment">// Without generics - not reusable</span>
+<span class="hljs-keyword">function</span> <span class="hljs-title function_">identityString</span>(<span class="hljs-params"><span class="hljs-attr">arg</span>: <span class="hljs-built_in">string</span></span>): <span class="hljs-built_in">string</span> {
+  <span class="hljs-keyword">return</span> arg;
+}
+
+<span class="hljs-keyword">function</span> <span class="hljs-title function_">identityNumber</span>(<span class="hljs-params"><span class="hljs-attr">arg</span>: <span class="hljs-built_in">number</span></span>): <span class="hljs-built_in">number</span> {
+  <span class="hljs-keyword">return</span> arg;
+}
+
+<span class="hljs-comment">// With generics - reusable and type-safe</span>
+<span class="hljs-keyword">function</span> identity&lt;T&gt;(<span class="hljs-attr">arg</span>: T): T {
+  <span class="hljs-keyword">return</span> arg;
+}
+
+<span class="hljs-keyword">const</span> stringResult = identity&lt;<span class="hljs-built_in">string</span>&gt;(<span class="hljs-string">&quot;hello&quot;</span>); <span class="hljs-comment">// string</span>
+<span class="hljs-keyword">const</span> numberResult = identity&lt;<span class="hljs-built_in">number</span>&gt;(<span class="hljs-number">42</span>); <span class="hljs-comment">// number</span>
+
+<span class="hljs-comment">// Generic constraints</span>
+<span class="hljs-keyword">interface</span> <span class="hljs-title class_">Lengthwise</span> {
+  <span class="hljs-attr">length</span>: <span class="hljs-built_in">number</span>;
+}
+
+<span class="hljs-keyword">function</span> logLength&lt;T <span class="hljs-keyword">extends</span> <span class="hljs-title class_">Lengthwise</span>&gt;(<span class="hljs-attr">arg</span>: T): T {
+  <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(arg.<span class="hljs-property">length</span>); <span class="hljs-comment">// Now we know it has a length property</span>
+  <span class="hljs-keyword">return</span> arg;
+}
+</code></pre></pre>
+<h3 id="4.-how-do-you-handle-asynchronous-operations-in-typescript?" node="[object Object]">4. How do you handle asynchronous operations in TypeScript?</h3>
+<p><strong>Answer:</strong></p>
+<pre><pre><code class="hljs hljs language-typescript"><span class="hljs-comment">// Promise types</span>
+<span class="hljs-keyword">async</span> <span class="hljs-keyword">function</span> <span class="hljs-title function_">fetchUser</span>(<span class="hljs-params"><span class="hljs-attr">id</span>: <span class="hljs-built_in">number</span></span>): <span class="hljs-title class_">Promise</span>&lt;<span class="hljs-title class_">User</span>&gt; {
+  <span class="hljs-keyword">const</span> response = <span class="hljs-keyword">await</span> <span class="hljs-title function_">fetch</span>(<span class="hljs-string">`/api/users/<span class="hljs-subst">${id}</span>`</span>);
+  
+  <span class="hljs-keyword">if</span> (!response.<span class="hljs-property">ok</span>) {
+    <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Error</span>(<span class="hljs-string">`HTTP error! status: <span class="hljs-subst">${response.status}</span>`</span>);
+  }
+  
+  <span class="hljs-keyword">return</span> response.<span class="hljs-title function_">json</span>();
+}
+
+<span class="hljs-comment">// Error handling with custom error types</span>
+<span class="hljs-keyword">class</span> <span class="hljs-title class_">ApiError</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_ inherited__">Error</span> {
+  <span class="hljs-title function_">constructor</span>(<span class="hljs-params">
+    <span class="hljs-attr">message</span>: <span class="hljs-built_in">string</span>,
+    <span class="hljs-keyword">public</span> <span class="hljs-attr">status</span>: <span class="hljs-built_in">number</span>,
+    <span class="hljs-keyword">public</span> <span class="hljs-attr">code</span>: <span class="hljs-built_in">string</span>
+  </span>) {
+    <span class="hljs-variable language_">super</span>(message);
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">name</span> = <span class="hljs-string">&#x27;ApiError&#x27;</span>;
+  }
+}
+
+<span class="hljs-keyword">async</span> <span class="hljs-keyword">function</span> <span class="hljs-title function_">fetchUserWithErrorHandling</span>(<span class="hljs-params"><span class="hljs-attr">id</span>: <span class="hljs-built_in">number</span></span>): <span class="hljs-title class_">Promise</span>&lt;<span class="hljs-title class_">User</span>&gt; {
+  <span class="hljs-keyword">try</span> {
+    <span class="hljs-keyword">const</span> response = <span class="hljs-keyword">await</span> <span class="hljs-title function_">fetch</span>(<span class="hljs-string">`/api/users/<span class="hljs-subst">${id}</span>`</span>);
+    
+    <span class="hljs-keyword">if</span> (!response.<span class="hljs-property">ok</span>) {
+      <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">ApiError</span>(
+        <span class="hljs-string">`Failed to fetch user`</span>,
+        response.<span class="hljs-property">status</span>,
+        <span class="hljs-string">&#x27;FETCH_ERROR&#x27;</span>
+      );
+    }
+    
+    <span class="hljs-keyword">return</span> response.<span class="hljs-title function_">json</span>();
+  } <span class="hljs-keyword">catch</span> (error) {
+    <span class="hljs-keyword">if</span> (error <span class="hljs-keyword">instanceof</span> <span class="hljs-title class_">ApiError</span>) {
+      <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">error</span>(<span class="hljs-string">&#x27;API Error:&#x27;</span>, error.<span class="hljs-property">message</span>, error.<span class="hljs-property">status</span>);
+    } <span class="hljs-keyword">else</span> {
+      <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">error</span>(<span class="hljs-string">&#x27;Unknown error:&#x27;</span>, error);
+    }
+    <span class="hljs-keyword">throw</span> error;
+  }
+}
+</code></pre></pre>
+<h3 id="5.-what-are-utility-types-and-how-do-you-use-them?" node="[object Object]">5. What are utility types and how do you use them?</h3>
+<p><strong>Answer:</strong>
+Utility types are built-in TypeScript types that help transform existing types.</p>
+<pre><pre><code class="hljs hljs language-typescript"><span class="hljs-keyword">interface</span> <span class="hljs-title class_">User</span> {
+  <span class="hljs-attr">id</span>: <span class="hljs-built_in">number</span>;
+  <span class="hljs-attr">name</span>: <span class="hljs-built_in">string</span>;
+  <span class="hljs-attr">email</span>: <span class="hljs-built_in">string</span>;
+  <span class="hljs-attr">age</span>: <span class="hljs-built_in">number</span>;
+}
+
+<span class="hljs-comment">// Partial - makes all properties optional</span>
+<span class="hljs-keyword">type</span> <span class="hljs-title class_">PartialUser</span> = <span class="hljs-title class_">Partial</span>&lt;<span class="hljs-title class_">User</span>&gt;;
+<span class="hljs-comment">// { id?: number; name?: string; email?: string; age?: number; }</span>
+
+<span class="hljs-comment">// Pick - selects specific properties</span>
+<span class="hljs-keyword">type</span> <span class="hljs-title class_">UserPreview</span> = <span class="hljs-title class_">Pick</span>&lt;<span class="hljs-title class_">User</span>, <span class="hljs-string">&#x27;id&#x27;</span> | <span class="hljs-string">&#x27;name&#x27;</span>&gt;;
+<span class="hljs-comment">// { id: number; name: string; }</span>
+
+<span class="hljs-comment">// Omit - excludes specific properties</span>
+<span class="hljs-keyword">type</span> <span class="hljs-title class_">CreateUserRequest</span> = <span class="hljs-title class_">Omit</span>&lt;<span class="hljs-title class_">User</span>, <span class="hljs-string">&#x27;id&#x27;</span>&gt;;
+<span class="hljs-comment">// { name: string; email: string; age: number; }</span>
+
+<span class="hljs-comment">// Record - creates object with specific key/value types</span>
+<span class="hljs-keyword">type</span> <span class="hljs-title class_">UserRoles</span> = <span class="hljs-title class_">Record</span>&lt;<span class="hljs-built_in">string</span>, <span class="hljs-built_in">string</span>[]&gt;;
+<span class="hljs-comment">// { [key: string]: string[] }</span>
+
+<span class="hljs-comment">// ReturnType - extracts function return type</span>
+<span class="hljs-keyword">function</span> <span class="hljs-title function_">getUser</span>(<span class="hljs-params"></span>): <span class="hljs-title class_">User</span> {
+  <span class="hljs-keyword">return</span> { <span class="hljs-attr">id</span>: <span class="hljs-number">1</span>, <span class="hljs-attr">name</span>: <span class="hljs-string">&#x27;John&#x27;</span>, <span class="hljs-attr">email</span>: <span class="hljs-string">&#x27;john@example.com&#x27;</span>, <span class="hljs-attr">age</span>: <span class="hljs-number">25</span> };
+}
+
+<span class="hljs-keyword">type</span> <span class="hljs-title class_">GetUserReturn</span> = <span class="hljs-title class_">ReturnType</span>&lt;<span class="hljs-keyword">typeof</span> getUser&gt;; <span class="hljs-comment">// User</span>
+</code></pre></pre>
+<h2 id="best-practices" node="[object Object]">Best Practices</h2>
+<h3 id="1.-type-definitions" node="[object Object]">1. Type Definitions</h3>
+<pre><pre><code class="hljs hljs language-typescript"><span class="hljs-comment">// ✅ Good - Use interfaces for object shapes</span>
+<span class="hljs-keyword">interface</span> <span class="hljs-title class_">User</span> {
+  <span class="hljs-keyword">readonly</span> <span class="hljs-attr">id</span>: <span class="hljs-built_in">number</span>;
+  <span class="hljs-attr">name</span>: <span class="hljs-built_in">string</span>;
+  <span class="hljs-attr">email</span>: <span class="hljs-built_in">string</span>;
+  <span class="hljs-attr">age</span>?: <span class="hljs-built_in">number</span>;
+}
+
+<span class="hljs-comment">// ✅ Good - Use types for unions and computed types</span>
+<span class="hljs-keyword">type</span> <span class="hljs-title class_">Status</span> = <span class="hljs-string">&#x27;loading&#x27;</span> | <span class="hljs-string">&#x27;success&#x27;</span> | <span class="hljs-string">&#x27;error&#x27;</span>;
+<span class="hljs-keyword">type</span> <span class="hljs-title class_">UserKeys</span> = keyof <span class="hljs-title class_">User</span>;
+
+<span class="hljs-comment">// ❌ Avoid - Don&#x27;t use any</span>
+<span class="hljs-keyword">function</span> <span class="hljs-title function_">process</span>(<span class="hljs-params"><span class="hljs-attr">data</span>: <span class="hljs-built_in">any</span></span>): <span class="hljs-built_in">any</span> {
+  <span class="hljs-keyword">return</span> data;
+}
+
+<span class="hljs-comment">// ✅ Good - Use unknown for unknown data</span>
+<span class="hljs-keyword">function</span> <span class="hljs-title function_">process</span>(<span class="hljs-params"><span class="hljs-attr">data</span>: <span class="hljs-built_in">unknown</span></span>): <span class="hljs-built_in">string</span> {
+  <span class="hljs-keyword">if</span> (<span class="hljs-keyword">typeof</span> data === <span class="hljs-string">&#x27;string&#x27;</span>) {
+    <span class="hljs-keyword">return</span> data.<span class="hljs-title function_">toUpperCase</span>();
+  }
+  <span class="hljs-keyword">return</span> <span class="hljs-title class_">String</span>(data);
+}
+</code></pre></pre>
+<h3 id="2.-function-types" node="[object Object]">2. Function Types</h3>
+<pre><pre><code class="hljs hljs language-typescript"><span class="hljs-comment">// ✅ Good - Explicit return types for public APIs</span>
+<span class="hljs-keyword">function</span> <span class="hljs-title function_">calculateTotal</span>(<span class="hljs-params"><span class="hljs-attr">items</span>: <span class="hljs-title class_">Item</span>[]</span>): <span class="hljs-built_in">number</span> {
+  <span class="hljs-keyword">return</span> items.<span class="hljs-title function_">reduce</span>(<span class="hljs-function">(<span class="hljs-params">sum, item</span>) =&gt;</span> sum + item.<span class="hljs-property">price</span>, <span class="hljs-number">0</span>);
+}
+
+<span class="hljs-comment">// ✅ Good - Use readonly for arrays that shouldn&#x27;t be modified</span>
+<span class="hljs-keyword">function</span> <span class="hljs-title function_">processItems</span>(<span class="hljs-params"><span class="hljs-attr">items</span>: <span class="hljs-keyword">readonly</span> <span class="hljs-title class_">Item</span>[]</span>): <span class="hljs-title class_">Item</span>[] {
+  <span class="hljs-keyword">return</span> items.<span class="hljs-title function_">filter</span>(<span class="hljs-function"><span class="hljs-params">item</span> =&gt;</span> item.<span class="hljs-property">active</span>);
+}
+
+<span class="hljs-comment">// ✅ Good - Use function overloads for multiple signatures</span>
+<span class="hljs-keyword">function</span> <span class="hljs-title function_">format</span>(<span class="hljs-params"><span class="hljs-attr">value</span>: <span class="hljs-built_in">string</span></span>): <span class="hljs-built_in">string</span>;
+<span class="hljs-keyword">function</span> <span class="hljs-title function_">format</span>(<span class="hljs-params"><span class="hljs-attr">value</span>: <span class="hljs-built_in">number</span></span>): <span class="hljs-built_in">string</span>;
+<span class="hljs-keyword">function</span> <span class="hljs-title function_">format</span>(<span class="hljs-params"><span class="hljs-attr">value</span>: <span class="hljs-title class_">Date</span></span>): <span class="hljs-built_in">string</span>;
+<span class="hljs-keyword">function</span> <span class="hljs-title function_">format</span>(<span class="hljs-params"><span class="hljs-attr">value</span>: <span class="hljs-built_in">string</span> | <span class="hljs-built_in">number</span> | <span class="hljs-title class_">Date</span></span>): <span class="hljs-built_in">string</span> {
+  <span class="hljs-keyword">if</span> (value <span class="hljs-keyword">instanceof</span> <span class="hljs-title class_">Date</span>) {
+    <span class="hljs-keyword">return</span> value.<span class="hljs-title function_">toISOString</span>();
+  }
+  <span class="hljs-keyword">return</span> <span class="hljs-title class_">String</span>(value);
+}
+</code></pre></pre>
+<h3 id="3.-error-handling" node="[object Object]">3. Error Handling</h3>
+<pre><pre><code class="hljs hljs language-typescript"><span class="hljs-comment">// ✅ Good - Custom error types</span>
+<span class="hljs-keyword">class</span> <span class="hljs-title class_">ValidationError</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_ inherited__">Error</span> {
+  <span class="hljs-title function_">constructor</span>(<span class="hljs-params">
+    <span class="hljs-attr">message</span>: <span class="hljs-built_in">string</span>,
+    <span class="hljs-keyword">public</span> <span class="hljs-attr">field</span>: <span class="hljs-built_in">string</span>,
+    <span class="hljs-keyword">public</span> <span class="hljs-attr">code</span>: <span class="hljs-built_in">string</span>
+  </span>) {
+    <span class="hljs-variable language_">super</span>(message);
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">name</span> = <span class="hljs-string">&#x27;ValidationError&#x27;</span>;
+  }
+}
+
+<span class="hljs-comment">// ✅ Good - Result type pattern</span>
+<span class="hljs-keyword">type</span> <span class="hljs-title class_">Result</span>&lt;T, E = <span class="hljs-title class_">Error</span>&gt; = 
+  | { <span class="hljs-attr">success</span>: <span class="hljs-literal">true</span>; <span class="hljs-attr">data</span>: T }
+  | { <span class="hljs-attr">success</span>: <span class="hljs-literal">false</span>; <span class="hljs-attr">error</span>: E };
+
+<span class="hljs-keyword">async</span> <span class="hljs-keyword">function</span> safeApiCall&lt;T&gt;(<span class="hljs-attr">url</span>: <span class="hljs-built_in">string</span>): <span class="hljs-title class_">Promise</span>&lt;<span class="hljs-title class_">Result</span>&lt;T&gt;&gt; {
+  <span class="hljs-keyword">try</span> {
+    <span class="hljs-keyword">const</span> response = <span class="hljs-keyword">await</span> <span class="hljs-title function_">fetch</span>(url);
+    <span class="hljs-keyword">const</span> data = <span class="hljs-keyword">await</span> response.<span class="hljs-title function_">json</span>();
+    <span class="hljs-keyword">return</span> { <span class="hljs-attr">success</span>: <span class="hljs-literal">true</span>, data };
+  } <span class="hljs-keyword">catch</span> (error) {
+    <span class="hljs-keyword">return</span> { 
+      <span class="hljs-attr">success</span>: <span class="hljs-literal">false</span>, 
+      <span class="hljs-attr">error</span>: error <span class="hljs-keyword">instanceof</span> <span class="hljs-title class_">Error</span> ? error : <span class="hljs-keyword">new</span> <span class="hljs-title class_">Error</span>(<span class="hljs-title class_">String</span>(error))
+    };
+  }
+}
+</code></pre></pre>
+<h2 id="common-patterns" node="[object Object]">Common Patterns</h2>
+<h3 id="1.-builder-pattern" node="[object Object]">1. Builder Pattern</h3>
+<pre><pre><code class="hljs hljs language-typescript"><span class="hljs-keyword">class</span> <span class="hljs-title class_">UserBuilder</span> {
+  <span class="hljs-keyword">private</span> <span class="hljs-attr">user</span>: <span class="hljs-title class_">Partial</span>&lt;<span class="hljs-title class_">User</span>&gt; = {};
+
+  <span class="hljs-title function_">setName</span>(<span class="hljs-attr">name</span>: <span class="hljs-built_in">string</span>): <span class="hljs-variable language_">this</span> {
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">user</span>.<span class="hljs-property">name</span> = name;
+    <span class="hljs-keyword">return</span> <span class="hljs-variable language_">this</span>;
+  }
+
+  <span class="hljs-title function_">setEmail</span>(<span class="hljs-attr">email</span>: <span class="hljs-built_in">string</span>): <span class="hljs-variable language_">this</span> {
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">user</span>.<span class="hljs-property">email</span> = email;
+    <span class="hljs-keyword">return</span> <span class="hljs-variable language_">this</span>;
+  }
+
+  <span class="hljs-title function_">setAge</span>(<span class="hljs-attr">age</span>: <span class="hljs-built_in">number</span>): <span class="hljs-variable language_">this</span> {
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">user</span>.<span class="hljs-property">age</span> = age;
+    <span class="hljs-keyword">return</span> <span class="hljs-variable language_">this</span>;
+  }
+
+  <span class="hljs-title function_">build</span>(): <span class="hljs-title class_">User</span> {
+    <span class="hljs-keyword">if</span> (!<span class="hljs-variable language_">this</span>.<span class="hljs-property">user</span>.<span class="hljs-property">name</span> || !<span class="hljs-variable language_">this</span>.<span class="hljs-property">user</span>.<span class="hljs-property">email</span>) {
+      <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Error</span>(<span class="hljs-string">&#x27;Name and email are required&#x27;</span>);
+    }
+    
+    <span class="hljs-keyword">return</span> {
+      <span class="hljs-attr">id</span>: <span class="hljs-title class_">Math</span>.<span class="hljs-title function_">random</span>(),
+      <span class="hljs-attr">name</span>: <span class="hljs-variable language_">this</span>.<span class="hljs-property">user</span>.<span class="hljs-property">name</span>,
+      <span class="hljs-attr">email</span>: <span class="hljs-variable language_">this</span>.<span class="hljs-property">user</span>.<span class="hljs-property">email</span>,
+      <span class="hljs-attr">age</span>: <span class="hljs-variable language_">this</span>.<span class="hljs-property">user</span>.<span class="hljs-property">age</span> || <span class="hljs-number">18</span>
+    };
+  }
+}
+
+<span class="hljs-comment">// Usage</span>
+<span class="hljs-keyword">const</span> user = <span class="hljs-keyword">new</span> <span class="hljs-title class_">UserBuilder</span>()
+  .<span class="hljs-title function_">setName</span>(<span class="hljs-string">&#x27;John&#x27;</span>)
+  .<span class="hljs-title function_">setEmail</span>(<span class="hljs-string">&#x27;john@example.com&#x27;</span>)
+  .<span class="hljs-title function_">setAge</span>(<span class="hljs-number">25</span>)
+  .<span class="hljs-title function_">build</span>();
+</code></pre></pre>
+<h3 id="2.-factory-pattern" node="[object Object]">2. Factory Pattern</h3>
+<pre><pre><code class="hljs hljs language-typescript"><span class="hljs-keyword">interface</span> <span class="hljs-title class_">Shape</span> {
+  <span class="hljs-title function_">area</span>(): <span class="hljs-built_in">number</span>;
+  <span class="hljs-title function_">perimeter</span>(): <span class="hljs-built_in">number</span>;
+}
+
+<span class="hljs-keyword">class</span> <span class="hljs-title class_">Circle</span> <span class="hljs-keyword">implements</span> <span class="hljs-title class_">Shape</span> {
+  <span class="hljs-title function_">constructor</span>(<span class="hljs-params"><span class="hljs-keyword">private</span> <span class="hljs-attr">radius</span>: <span class="hljs-built_in">number</span></span>) {}
+
+  <span class="hljs-title function_">area</span>(): <span class="hljs-built_in">number</span> {
+    <span class="hljs-keyword">return</span> <span class="hljs-title class_">Math</span>.<span class="hljs-property">PI</span> * <span class="hljs-variable language_">this</span>.<span class="hljs-property">radius</span> ** <span class="hljs-number">2</span>;
+  }
+
+  <span class="hljs-title function_">perimeter</span>(): <span class="hljs-built_in">number</span> {
+    <span class="hljs-keyword">return</span> <span class="hljs-number">2</span> * <span class="hljs-title class_">Math</span>.<span class="hljs-property">PI</span> * <span class="hljs-variable language_">this</span>.<span class="hljs-property">radius</span>;
+  }
+}
+
+<span class="hljs-keyword">class</span> <span class="hljs-title class_">Rectangle</span> <span class="hljs-keyword">implements</span> <span class="hljs-title class_">Shape</span> {
+  <span class="hljs-title function_">constructor</span>(<span class="hljs-params"><span class="hljs-keyword">private</span> <span class="hljs-attr">width</span>: <span class="hljs-built_in">number</span>, <span class="hljs-keyword">private</span> <span class="hljs-attr">height</span>: <span class="hljs-built_in">number</span></span>) {}
+
+  <span class="hljs-title function_">area</span>(): <span class="hljs-built_in">number</span> {
+    <span class="hljs-keyword">return</span> <span class="hljs-variable language_">this</span>.<span class="hljs-property">width</span> * <span class="hljs-variable language_">this</span>.<span class="hljs-property">height</span>;
+  }
+
+  <span class="hljs-title function_">perimeter</span>(): <span class="hljs-built_in">number</span> {
+    <span class="hljs-keyword">return</span> <span class="hljs-number">2</span> * (<span class="hljs-variable language_">this</span>.<span class="hljs-property">width</span> + <span class="hljs-variable language_">this</span>.<span class="hljs-property">height</span>);
+  }
+}
+
+<span class="hljs-keyword">type</span> <span class="hljs-title class_">ShapeType</span> = <span class="hljs-string">&#x27;circle&#x27;</span> | <span class="hljs-string">&#x27;rectangle&#x27;</span>;
+
+<span class="hljs-keyword">interface</span> <span class="hljs-title class_">ShapeConfig</span> {
+  <span class="hljs-attr">type</span>: <span class="hljs-string">&#x27;circle&#x27;</span>;
+  <span class="hljs-attr">radius</span>: <span class="hljs-built_in">number</span>;
+} | {
+  <span class="hljs-attr">type</span>: <span class="hljs-string">&#x27;rectangle&#x27;</span>;
+  <span class="hljs-attr">width</span>: <span class="hljs-built_in">number</span>;
+  <span class="hljs-attr">height</span>: <span class="hljs-built_in">number</span>;
+};
+
+<span class="hljs-keyword">class</span> <span class="hljs-title class_">ShapeFactory</span> {
+  <span class="hljs-keyword">static</span> <span class="hljs-title function_">createShape</span>(<span class="hljs-attr">config</span>: <span class="hljs-title class_">ShapeConfig</span>): <span class="hljs-title class_">Shape</span> {
+    <span class="hljs-keyword">switch</span> (config.<span class="hljs-property">type</span>) {
+      <span class="hljs-keyword">case</span> <span class="hljs-string">&#x27;circle&#x27;</span>:
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Circle</span>(config.<span class="hljs-property">radius</span>);
+      <span class="hljs-keyword">case</span> <span class="hljs-string">&#x27;rectangle&#x27;</span>:
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Rectangle</span>(config.<span class="hljs-property">width</span>, config.<span class="hljs-property">height</span>);
+      <span class="hljs-attr">default</span>:
+        <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Error</span>(<span class="hljs-string">&#x27;Unknown shape type&#x27;</span>);
+    }
+  }
+}
+</code></pre></pre>
+<h3 id="3.-repository-pattern" node="[object Object]">3. Repository Pattern</h3>
+<pre><pre><code class="hljs hljs language-typescript"><span class="hljs-keyword">interface</span> <span class="hljs-title class_">Repository</span>&lt;T&gt; {
+  <span class="hljs-title function_">findById</span>(<span class="hljs-attr">id</span>: <span class="hljs-built_in">string</span>): <span class="hljs-title class_">Promise</span>&lt;T | <span class="hljs-literal">null</span>&gt;;
+  <span class="hljs-title function_">findAll</span>(): <span class="hljs-title class_">Promise</span>&lt;T[]&gt;;
+  <span class="hljs-title function_">create</span>(<span class="hljs-attr">item</span>: <span class="hljs-title class_">Omit</span>&lt;T, <span class="hljs-string">&#x27;id&#x27;</span>&gt;): <span class="hljs-title class_">Promise</span>&lt;T&gt;;
+  <span class="hljs-title function_">update</span>(<span class="hljs-attr">id</span>: <span class="hljs-built_in">string</span>, <span class="hljs-attr">item</span>: <span class="hljs-title class_">Partial</span>&lt;T&gt;): <span class="hljs-title class_">Promise</span>&lt;T&gt;;
+  <span class="hljs-title function_">delete</span>(<span class="hljs-attr">id</span>: <span class="hljs-built_in">string</span>): <span class="hljs-title class_">Promise</span>&lt;<span class="hljs-built_in">void</span>&gt;;
+}
+
+<span class="hljs-keyword">class</span> <span class="hljs-title class_">UserRepository</span> <span class="hljs-keyword">implements</span> <span class="hljs-title class_">Repository</span>&lt;<span class="hljs-title class_">User</span>&gt; {
+  <span class="hljs-title function_">constructor</span>(<span class="hljs-params"><span class="hljs-keyword">private</span> <span class="hljs-attr">apiClient</span>: <span class="hljs-title class_">ApiClient</span></span>) {}
+
+  <span class="hljs-keyword">async</span> <span class="hljs-title function_">findById</span>(<span class="hljs-attr">id</span>: <span class="hljs-built_in">string</span>): <span class="hljs-title class_">Promise</span>&lt;<span class="hljs-title class_">User</span> | <span class="hljs-literal">null</span>&gt; {
+    <span class="hljs-keyword">try</span> {
+      <span class="hljs-keyword">const</span> response = <span class="hljs-keyword">await</span> <span class="hljs-variable language_">this</span>.<span class="hljs-property">apiClient</span>.<span class="hljs-title function_">get</span>(<span class="hljs-string">`/users/<span class="hljs-subst">${id}</span>`</span>);
+      <span class="hljs-keyword">return</span> response.<span class="hljs-property">data</span>;
+    } <span class="hljs-keyword">catch</span> (error) {
+      <span class="hljs-keyword">if</span> (error.<span class="hljs-property">status</span> === <span class="hljs-number">404</span>) {
+        <span class="hljs-keyword">return</span> <span class="hljs-literal">null</span>;
+      }
+      <span class="hljs-keyword">throw</span> error;
+    }
+  }
+
+  <span class="hljs-keyword">async</span> <span class="hljs-title function_">findAll</span>(): <span class="hljs-title class_">Promise</span>&lt;<span class="hljs-title class_">User</span>[]&gt; {
+    <span class="hljs-keyword">const</span> response = <span class="hljs-keyword">await</span> <span class="hljs-variable language_">this</span>.<span class="hljs-property">apiClient</span>.<span class="hljs-title function_">get</span>(<span class="hljs-string">&#x27;/users&#x27;</span>);
+    <span class="hljs-keyword">return</span> response.<span class="hljs-property">data</span>;
+  }
+
+  <span class="hljs-keyword">async</span> <span class="hljs-title function_">create</span>(<span class="hljs-attr">userData</span>: <span class="hljs-title class_">Omit</span>&lt;<span class="hljs-title class_">User</span>, <span class="hljs-string">&#x27;id&#x27;</span>&gt;): <span class="hljs-title class_">Promise</span>&lt;<span class="hljs-title class_">User</span>&gt; {
+    <span class="hljs-keyword">const</span> response = <span class="hljs-keyword">await</span> <span class="hljs-variable language_">this</span>.<span class="hljs-property">apiClient</span>.<span class="hljs-title function_">post</span>(<span class="hljs-string">&#x27;/users&#x27;</span>, userData);
+    <span class="hljs-keyword">return</span> response.<span class="hljs-property">data</span>;
+  }
+
+  <span class="hljs-keyword">async</span> <span class="hljs-title function_">update</span>(<span class="hljs-attr">id</span>: <span class="hljs-built_in">string</span>, <span class="hljs-attr">userData</span>: <span class="hljs-title class_">Partial</span>&lt;<span class="hljs-title class_">User</span>&gt;): <span class="hljs-title class_">Promise</span>&lt;<span class="hljs-title class_">User</span>&gt; {
+    <span class="hljs-keyword">const</span> response = <span class="hljs-keyword">await</span> <span class="hljs-variable language_">this</span>.<span class="hljs-property">apiClient</span>.<span class="hljs-title function_">put</span>(<span class="hljs-string">`/users/<span class="hljs-subst">${id}</span>`</span>, userData);
+    <span class="hljs-keyword">return</span> response.<span class="hljs-property">data</span>;
+  }
+
+  <span class="hljs-keyword">async</span> <span class="hljs-title function_">delete</span>(<span class="hljs-attr">id</span>: <span class="hljs-built_in">string</span>): <span class="hljs-title class_">Promise</span>&lt;<span class="hljs-built_in">void</span>&gt; {
+    <span class="hljs-keyword">await</span> <span class="hljs-variable language_">this</span>.<span class="hljs-property">apiClient</span>.<span class="hljs-title function_">delete</span>(<span class="hljs-string">`/users/<span class="hljs-subst">${id}</span>`</span>);
+  }
+}
+</code></pre></pre>
+<p>This comprehensive TypeScript guide covers all the essential concepts and patterns you&#x27;ll need for frontend interviews. The key is to understand not just the syntax, but when and why to use different TypeScript features to write more maintainable and type-safe code.</p></div></div></main><footer class="sc-kjwdDK hrfQfY"><div class="sc-eVqvcJ dwFHjZ"><div class="sc-bbbBoY kWATso"><div class="sc-cdmAjP fBmmqS"><div class="sc-jytpVa iNKxsb"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-code "><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>Frontend Interview Prep</div><p class="sc-eknHtZ fYhkiV">Comprehensive interview preparation for frontend engineers targeting Big Tech companies.</p><div class="sc-pYNGo eVAQiq"><a href="https://github.com" aria-label="GitHub"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-github "><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"></path><path d="M9 18c-4.51 2-5-2-7-2"></path></svg></a><a href="https://twitter.com" aria-label="Twitter"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-twitter "><path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"></path></svg></a><a href="https://linkedin.com" aria-label="LinkedIn"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-linkedin "><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect width="4" height="12" x="2" y="9"></rect><circle cx="4" cy="4" r="2"></circle></svg></a><a href="mailto:contact@example.com" aria-label="Email"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-mail "><rect width="20" height="16" x="2" y="4" rx="2"></rect><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path></svg></a></div></div><div class="sc-cdmAjP fBmmqS"><h3>Study Materials</h3><ul><li><a href="/algorithms">Algorithms</a></li><li><a href="/react">React &amp; Frontend</a></li><li><a href="/system-design">System Design</a></li><li><a href="/typescript">TypeScript</a></li><li><a href="/performance">Performance</a></li></ul></div><div class="sc-cdmAjP fBmmqS"><h3>Companies</h3><ul><li><a href="/google">Google</a></li><li><a href="/meta">Meta</a></li><li><a href="/amazon">Amazon</a></li><li><a href="/microsoft">Microsoft</a></li><li><a href="/apple">Apple</a></li></ul></div><div class="sc-cdmAjP fBmmqS"><h3>Resources</h3><ul><li><a href="/interview-tips">Interview Tips</a></li><li><a href="/coding-challenges">Coding Challenges</a></li><li><a href="/mock-interviews">Mock Interviews</a></li><li><a href="/blog">Blog</a></li><li><a href="/faq">FAQ</a></li></ul></div></div><div class="sc-cCVJLD fgJmHp"><p class="sc-jYczwO gYGLHT">© 2025 Frontend Interview Prep. All rights reserved.</p><div class="sc-dNFkOE ghBULZ"><a href="/privacy">Privacy Policy</a><a href="/terms">Terms of Service</a><a href="/contact">Contact</a></div></div></div></footer></div><script src="/interview/_next/static/chunks/webpack-be7d7df45533bffc.js" async=""></script><script>(self.__next_f=self.__next_f||[]).push([0]);self.__next_f.push([2,null])</script><script>self.__next_f.push([1,"1:HL[\"/interview/_next/static/media/e4af272ccee01ff0-s.p.woff2\",\"font\",{\"crossOrigin\":\"\",\"type\":\"font/woff2\"}]\n2:HL[\"/interview/_next/static/css/387024c6a2216908.css\",\"style\"]\n"])</script><script>self.__next_f.push([1,"3:I[2846,[],\"\"]\n5:I[5907,[\"918\",\"static/chunks/918-3273b83890f10546.js\",\"930\",\"static/chunks/930-3262a6c9c5acace4.js\",\"687\",\"static/chunks/app/docs/%5B...slug%5D/page-32962e9542d32755.js\"],\"default\"]\n7:I[4707,[],\"\"]\n9:I[6423,[],\"\"]\na:I[2,[\"918\",\"static/chunks/918-3273b83890f10546.js\",\"710\",\"static/chunks/710-dfaa11b4dff08f8e.js\",\"972\",\"static/chunks/972-011bba60ed155615.js\",\"233\",\"static/chunks/233-3e0c1d820a17eca9.js\",\"185\",\"static/chunks/app/layout-333f4adcd11f8f39.js\"],\"default\",1]\nc:I[1060,[],\"\"]\n6:T529e,"])</script><script>self.__next_f.push([1,"# TypeScript for Frontend Interviews\n\n## Table of Contents\n- [TypeScript Fundamentals](#typescript-fundamentals)\n- [Advanced Types](#advanced-types)\n- [React with TypeScript](#react-with-typescript)\n- [Interview Questions](#interview-questions)\n- [Best Practices](#best-practices)\n- [Common Patterns](#common-patterns)\n\n## TypeScript Fundamentals\n\n### Why TypeScript?\nTypeScript is a superset of JavaScript that adds static type definitions. It's essential for modern frontend development and frequently tested in interviews.\n\n**Key Benefits:**\n- **Static Type Checking**: Catch errors at compile time\n- **Better IDE Support**: Enhanced autocomplete, refactoring, and navigation\n- **Self-Documenting Code**: Types serve as documentation\n- **Easier Refactoring**: Compiler helps identify breaking changes\n- **Better Team Collaboration**: Clear interfaces and contracts\n\n### Basic Types\n\n```typescript\n// Primitive types\nlet name: string = \"John\";\nlet age: number = 25;\nlet isActive: boolean = true;\nlet nothing: null = null;\nlet undefined: undefined = undefined;\n\n// Arrays\nlet numbers: number[] = [1, 2, 3];\nlet strings: Array\u003cstring\u003e = [\"a\", \"b\", \"c\"];\n\n// Tuples\nlet person: [string, number] = [\"John\", 25];\n\n// Enums\nenum Color {\n  Red,\n  Green,\n  Blue\n}\nlet c: Color = Color.Green;\n\n// Any (use sparingly)\nlet anything: any = 42;\nanything = \"hello\";\nanything = true;\n\n// Unknown (safer than any)\nlet userInput: unknown;\nif (typeof userInput === \"string\") {\n  console.log(userInput.toUpperCase());\n}\n\n// Never (functions that never return)\nfunction throwError(message: string): never {\n  throw new Error(message);\n}\n\n// Void (no return value)\nfunction logMessage(message: string): void {\n  console.log(message);\n}\n```\n\n### Objects and Interfaces\n\n```typescript\n// Object types\nlet user: { name: string; age: number } = {\n  name: \"John\",\n  age: 25\n};\n\n// Interface definition\ninterface User {\n  readonly id: number;\n  name: string;\n  email: string;\n  age?: number; // Optional property\n}\n\n// Using interfaces\nconst createUser = (userData: User): User =\u003e {\n  return {\n    id: Math.random(),\n    ...userData\n  };\n};\n\n// Extending interfaces\ninterface AdminUser extends User {\n  permissions: string[];\n  isAdmin: boolean;\n}\n\n// Index signatures\ninterface StringDictionary {\n  [key: string]: string;\n}\n\nconst dictionary: StringDictionary = {\n  hello: \"world\",\n  foo: \"bar\"\n};\n```\n\n### Functions\n\n{% raw %}\n```typescript\n// Function types\ntype MathOperation = (a: number, b: number) =\u003e number;\n\nconst add: MathOperation = (a, b) =\u003e a + b;\nconst multiply: MathOperation = (a, b) =\u003e a * b;\n\n// Function overloads\nfunction process(input: string): string;\nfunction process(input: number): number;\nfunction process(input: string | number): string | number {\n  if (typeof input === \"string\") {\n    return input.toUpperCase();\n  }\n  return input * 2;\n}\n\n// Rest parameters\nfunction sum(...numbers: number[]): number {\n  return numbers.reduce((total, num) =\u003e total + num, 0);\n}\n\n// Optional parameters\nfunction greet(name: string, greeting?: string): string {\n  return `${greeting || \"Hello\"}, ${name}!`;\n}\n\n// Default parameters\nfunction createUser(name: string, age: number = 18): User {\n  return { id: Math.random(), name, email: `${name}@example.com`, age };\n}\n```\n{% endraw %}\n\n## Advanced Types\n\n### Union and Intersection Types\n\n```typescript\n// Union types\ntype StringOrNumber = string | number;\ntype Status = \"loading\" | \"success\" | \"error\";\n\nfunction processId(id: StringOrNumber): void {\n  if (typeof id === \"string\") {\n    console.log(id.toUpperCase());\n  } else {\n    console.log(id.toFixed(2));\n  }\n}\n\n// Intersection types\ninterface Person {\n  name: string;\n  age: number;\n}\n\ninterface Employee {\n  employeeId: number;\n  department: string;\n}\n\ntype PersonEmployee = Person \u0026 Employee;\n\nconst emp: PersonEmployee = {\n  name: \"John\",\n  age: 30,\n  employeeId: 123,\n  department: \"Engineering\"\n};\n```\n\n### Generics\n\n```typescript\n// Generic functions\nfunction identity\u003cT\u003e(arg: T): T {\n  return arg;\n}\n\nconst stringResult = identity\u003cstring\u003e(\"hello\");\nconst numberResult = identity\u003cnumber\u003e(42);\n\n// Generic interfaces\ninterface ApiResponse\u003cT\u003e {\n  data: T;\n  status: number;\n  message: string;\n}\n\ninterface User {\n  id: number;\n  name: string;\n}\n\nconst userResponse: ApiResponse\u003cUser\u003e = {\n  data: { id: 1, name: \"John\" },\n  status: 200,\n  message: \"Success\"\n};\n\n// Generic classes\nclass Repository\u003cT\u003e {\n  private items: T[] = [];\n\n  add(item: T): void {\n    this.items.push(item);\n  }\n\n  findById(id: number): T | undefined {\n    return this.items.find((item: any) =\u003e item.id === id);\n  }\n\n  getAll(): T[] {\n    return [...this.items];\n  }\n}\n\n// Generic constraints\ninterface HasLength {\n  length: number;\n}\n\nfunction logLength\u003cT extends HasLength\u003e(arg: T): T {\n  console.log(arg.length);\n  return arg;\n}\n\n// Conditional types\ntype NonNullable\u003cT\u003e = T extends null | undefined ? never : T;\n\n// Mapped types\ntype Partial\u003cT\u003e = {\n  [P in keyof T]?: T[P];\n};\n\ntype Required\u003cT\u003e = {\n  [P in keyof T]-?: T[P];\n};\n\ntype Readonly\u003cT\u003e = {\n  readonly [P in keyof T]: T[P];\n};\n```\n\n### Utility Types\n\n```typescript\n// Built-in utility types\ninterface User {\n  id: number;\n  name: string;\n  email: string;\n  age: number;\n}\n\n// Partial - makes all properties optional\ntype PartialUser = Partial\u003cUser\u003e;\n\n// Required - makes all properties required\ntype RequiredUser = Required\u003cUser\u003e;\n\n// Readonly - makes all properties readonly\ntype ReadonlyUser = Readonly\u003cUser\u003e;\n\n// Pick - selects specific properties\ntype UserPreview = Pick\u003cUser, \"id\" | \"name\"\u003e;\n\n// Omit - excludes specific properties\ntype UserWithoutId = Omit\u003cUser, \"id\"\u003e;\n\n// Record - creates an object type with specific key and value types\ntype UserRoles = Record\u003cstring, string[]\u003e;\n\n// ReturnType - extracts return type of function\nfunction getUser(): User {\n  return { id: 1, name: \"John\", email: \"john@example.com\", age: 25 };\n}\n\ntype GetUserReturnType = ReturnType\u003ctypeof getUser\u003e; // User\n\n// Parameters - extracts parameter types\nfunction updateUser(id: number, updates: Partial\u003cUser\u003e): void {}\n\ntype UpdateUserParams = Parameters\u003ctypeof updateUser\u003e; // [number, Partial\u003cUser\u003e]\n```\n\n## React with TypeScript\n\n### Component Types\n\n```typescript\nimport React, { useState, useEffect, ReactNode } from 'react';\n\n// Props interface\ninterface ButtonProps {\n  children: ReactNode;\n  onClick: () =\u003e void;\n  variant?: 'primary' | 'secondary';\n  disabled?: boolean;\n}\n\n// Function component\nconst Button: React.FC\u003cButtonProps\u003e = ({ \n  children, \n  onClick, \n  variant = 'primary', \n  disabled = false \n}) =\u003e {\n  return (\n    \u003cbutton \n      onClick={onClick} \n      disabled={disabled}\n      className={`btn btn-${variant}`}\n    \u003e\n      {children}\n    \u003c/button\u003e\n  );\n};\n\n// Generic component\ninterface ListProps\u003cT\u003e {\n  items: T[];\n  renderItem: (item: T) =\u003e ReactNode;\n  keyExtractor: (item: T) =\u003e string | number;\n}\n\nfunction List\u003cT\u003e({ items, renderItem, keyExtractor }: ListProps\u003cT\u003e) {\n  return (\n    \u003cul\u003e\n      {items.map(item =\u003e (\n        \u003cli key={keyExtractor(item)}\u003e\n          {renderItem(item)}\n        \u003c/li\u003e\n      ))}\n    \u003c/ul\u003e\n  );\n}\n\n// Using the generic component\ninterface User {\n  id: number;\n  name: string;\n}\n\nconst UserList: React.FC\u003c{ users: User[] }\u003e = ({ users }) =\u003e {\n  return (\n    \u003cList\n      items={users}\n      keyExtractor={user =\u003e user.id}\n      renderItem={user =\u003e \u003cspan\u003e{user.name}\u003c/span\u003e}\n    /\u003e\n  );\n};\n```\n\n### Hooks with TypeScript\n\n```typescript\nimport { useState, useEffect, useCallback, useMemo, useRef } from 'react';\n\n// useState with explicit types\nconst [count, setCount] = useState\u003cnumber\u003e(0);\nconst [user, setUser] = useState\u003cUser | null\u003e(null);\nconst [loading, setLoading] = useState\u003cboolean\u003e(false);\n\n// useEffect with cleanup\nuseEffect(() =\u003e {\n  const timer = setTimeout(() =\u003e {\n    setCount(prev =\u003e prev + 1);\n  }, 1000);\n\n  return () =\u003e clearTimeout(timer);\n}, []);\n\n// useCallback with proper typing\nconst handleClick = useCallback((id: number) =\u003e {\n  console.log('Clicked:', id);\n}, []);\n\n// useMemo with type inference\nconst expensiveValue = useMemo(() =\u003e {\n  return items.filter(item =\u003e item.active).length;\n}, [items]);\n\n// useRef with DOM elements\nconst inputRef = useRef\u003cHTMLInputElement\u003e(null);\n\nconst focusInput = () =\u003e {\n  inputRef.current?.focus();\n};\n\n// Custom hook with TypeScript\ninterface UseApiResult\u003cT\u003e {\n  data: T | null;\n  loading: boolean;\n  error: string | null;\n  refetch: () =\u003e void;\n}\n\nfunction useApi\u003cT\u003e(url: string): UseApiResult\u003cT\u003e {\n  const [data, setData] = useState\u003cT | null\u003e(null);\n  const [loading, setLoading] = useState\u003cboolean\u003e(true);\n  const [error, setError] = useState\u003cstring | null\u003e(null);\n\n  const fetchData = useCallback(async () =\u003e {\n    try {\n      setLoading(true);\n      setError(null);\n      const response = await fetch(url);\n      \n      if (!response.ok) {\n        throw new Error(`HTTP error! status: ${response.status}`);\n      }\n      \n      const result = await response.json();\n      setData(result);\n    } catch (err) {\n      setError(err instanceof Error ? err.message : 'An error occurred');\n    } finally {\n      setLoading(false);\n    }\n  }, [url]);\n\n  useEffect(() =\u003e {\n    fetchData();\n  }, [fetchData]);\n\n  return { data, loading, error, refetch: fetchData };\n}\n\n// Using the custom hook\ninterface ApiUser {\n  id: number;\n  name: string;\n  email: string;\n}\n\nconst UserComponent: React.FC = () =\u003e {\n  const { data: user, loading, error, refetch } = useApi\u003cApiUser\u003e('/api/user/1');\n\n  if (loading) return \u003cdiv\u003eLoading...\u003c/div\u003e;\n  if (error) return \u003cdiv\u003eError: {error}\u003c/div\u003e;\n  if (!user) return \u003cdiv\u003eNo user found\u003c/div\u003e;\n\n  return (\n    \u003cdiv\u003e\n      \u003ch1\u003e{user.name}\u003c/h1\u003e\n      \u003cp\u003e{user.email}\u003c/p\u003e\n      \u003cbutton onClick={refetch}\u003eRefresh\u003c/button\u003e\n    \u003c/div\u003e\n  );\n};\n```\n\n### Context with TypeScript\n\n```typescript\nimport React, { createContext, useContext, useReducer, ReactNode } from 'react';\n\n// State interface\ninterface AppState {\n  user: User | null;\n  theme: 'light' | 'dark';\n  notifications: Notification[];\n}\n\n// Actions\ntype AppAction = \n  | { type: 'SET_USER'; payload: User | null }\n  | { type: 'SET_THEME'; payload: 'light' | 'dark' }\n  | { type: 'ADD_NOTIFICATION'; payload: Notification }\n  | { type: 'REMOVE_NOTIFICATION'; payload: string };\n\n// Context type\ninterface AppContextType {\n  state: AppState;\n  dispatch: React.Dispatch\u003cAppAction\u003e;\n}\n\n// Create context\nconst AppContext = createContext\u003cAppContextType | undefined\u003e(undefined);\n\n// Reducer\nconst appReducer = (state: AppState, action: AppAction): AppState =\u003e {\n  switch (action.type) {\n    case 'SET_USER':\n      return { ...state, user: action.payload };\n    case 'SET_THEME':\n      return { ...state, theme: action.payload };\n    case 'ADD_NOTIFICATION':\n      return { \n        ...state, \n        notifications: [...state.notifications, action.payload] \n      };\n    case 'REMOVE_NOTIFICATION':\n      return {\n        ...state,\n        notifications: state.notifications.filter(n =\u003e n.id !== action.payload)\n      };\n    default:\n      return state;\n  }\n};\n\n// Provider component\ninterface AppProviderProps {\n  children: ReactNode;\n}\n\nexport const AppProvider: React.FC\u003cAppProviderProps\u003e = ({ children }) =\u003e {\n  const [state, dispatch] = useReducer(appReducer, {\n    user: null,\n    theme: 'light',\n    notifications: []\n  });\n\n  return (\n    \u003cAppContext.Provider value={% raw %}{{ state, dispatch }}{% endraw %}\u003e\n      {children}\n    \u003c/AppContext.Provider\u003e\n  );\n};\n\n// Custom hook\nexport const useAppContext = (): AppContextType =\u003e {\n  const context = useContext(AppContext);\n  if (!context) {\n    throw new Error('useAppContext must be used within an AppProvider');\n  }\n  return context;\n};\n```\n\n## Interview Questions\n\n### 1. What is TypeScript and why would you use it?\n\n**Answer:**\nTypeScript is a statically typed superset of JavaScript that compiles to plain JavaScript. Key benefits include:\n\n- **Static Type Checking**: Catches errors at compile time rather than runtime\n- **Better IDE Support**: Enhanced autocomplete, refactoring, and navigation\n- **Self-Documenting Code**: Types serve as documentation for APIs and functions\n- **Easier Refactoring**: Compiler helps identify breaking changes across codebase\n- **Better Team Collaboration**: Clear interfaces and contracts between team members\n\n### 2. Explain the difference between `interface` and `type` in TypeScript.\n\n**Answer:**\n```typescript\n// Interface - can be extended and merged\ninterface User {\n  name: string;\n  age: number;\n}\n\ninterface User {\n  email: string; // Declaration merging\n}\n\ninterface AdminUser extends User {\n  permissions: string[];\n}\n\n// Type - more flexible, supports unions, intersections\ntype Status = 'loading' | 'success' | 'error';\ntype User = {\n  name: string;\n  age: number;\n};\n\ntype AdminUser = User \u0026 {\n  permissions: string[];\n};\n```\n\n**Key Differences:**\n- **Interfaces** can be extended and merged, better for object shapes\n- **Types** are more flexible, support unions, intersections, and primitives\n- **Interfaces** are preferred for public APIs that might be extended\n- **Types** are preferred for complex type compositions\n\n### 3. What are generics and why are they useful?\n\n**Answer:**\nGenerics allow you to write reusable code that works with multiple types while maintaining type safety.\n\n```typescript\n// Without generics - not reusable\nfunction identityString(arg: string): string {\n  return arg;\n}\n\nfunction identityNumber(arg: number): number {\n  return arg;\n}\n\n// With generics - reusable and type-safe\nfunction identity\u003cT\u003e(arg: T): T {\n  return arg;\n}\n\nconst stringResult = identity\u003cstring\u003e(\"hello\"); // string\nconst numberResult = identity\u003cnumber\u003e(42); // number\n\n// Generic constraints\ninterface Lengthwise {\n  length: number;\n}\n\nfunction logLength\u003cT extends Lengthwise\u003e(arg: T): T {\n  console.log(arg.length); // Now we know it has a length property\n  return arg;\n}\n```\n\n### 4. How do you handle asynchronous operations in TypeScript?\n\n**Answer:**\n```typescript\n// Promise types\nasync function fetchUser(id: number): Promise\u003cUser\u003e {\n  const response = await fetch(`/api/users/${id}`);\n  \n  if (!response.ok) {\n    throw new Error(`HTTP error! status: ${response.status}`);\n  }\n  \n  return response.json();\n}\n\n// Error handling with custom error types\nclass ApiError extends Error {\n  constructor(\n    message: string,\n    public status: number,\n    public code: string\n  ) {\n    super(message);\n    this.name = 'ApiError';\n  }\n}\n\nasync function fetchUserWithErrorHandling(id: number): Promise\u003cUser\u003e {\n  try {\n    const response = await fetch(`/api/users/${id}`);\n    \n    if (!response.ok) {\n      throw new ApiError(\n        `Failed to fetch user`,\n        response.status,\n        'FETCH_ERROR'\n      );\n    }\n    \n    return response.json();\n  } catch (error) {\n    if (error instanceof ApiError) {\n      console.error('API Error:', error.message, error.status);\n    } else {\n      console.error('Unknown error:', error);\n    }\n    throw error;\n  }\n}\n```\n\n### 5. What are utility types and how do you use them?\n\n**Answer:**\nUtility types are built-in TypeScript types that help transform existing types.\n\n```typescript\ninterface User {\n  id: number;\n  name: string;\n  email: string;\n  age: number;\n}\n\n// Partial - makes all properties optional\ntype PartialUser = Partial\u003cUser\u003e;\n// { id?: number; name?: string; email?: string; age?: number; }\n\n// Pick - selects specific properties\ntype UserPreview = Pick\u003cUser, 'id' | 'name'\u003e;\n// { id: number; name: string; }\n\n// Omit - excludes specific properties\ntype CreateUserRequest = Omit\u003cUser, 'id'\u003e;\n// { name: string; email: string; age: number; }\n\n// Record - creates object with specific key/value types\ntype UserRoles = Record\u003cstring, string[]\u003e;\n// { [key: string]: string[] }\n\n// ReturnType - extracts function return type\nfunction getUser(): User {\n  return { id: 1, name: 'John', email: 'john@example.com', age: 25 };\n}\n\ntype GetUserReturn = ReturnType\u003ctypeof getUser\u003e; // User\n```\n\n## Best Practices\n\n### 1. Type Definitions\n\n```typescript\n// ✅ Good - Use interfaces for object shapes\ninterface User {\n  readonly id: number;\n  name: string;\n  email: string;\n  age?: number;\n}\n\n// ✅ Good - Use types for unions and computed types\ntype Status = 'loading' | 'success' | 'error';\ntype UserKeys = keyof User;\n\n// ❌ Avoid - Don't use any\nfunction process(data: any): any {\n  return data;\n}\n\n// ✅ Good - Use unknown for unknown data\nfunction process(data: unknown): string {\n  if (typeof data === 'string') {\n    return data.toUpperCase();\n  }\n  return String(data);\n}\n```\n\n### 2. Function Types\n\n```typescript\n// ✅ Good - Explicit return types for public APIs\nfunction calculateTotal(items: Item[]): number {\n  return items.reduce((sum, item) =\u003e sum + item.price, 0);\n}\n\n// ✅ Good - Use readonly for arrays that shouldn't be modified\nfunction processItems(items: readonly Item[]): Item[] {\n  return items.filter(item =\u003e item.active);\n}\n\n// ✅ Good - Use function overloads for multiple signatures\nfunction format(value: string): string;\nfunction format(value: number): string;\nfunction format(value: Date): string;\nfunction format(value: string | number | Date): string {\n  if (value instanceof Date) {\n    return value.toISOString();\n  }\n  return String(value);\n}\n```\n\n### 3. Error Handling\n\n```typescript\n// ✅ Good - Custom error types\nclass ValidationError extends Error {\n  constructor(\n    message: string,\n    public field: string,\n    public code: string\n  ) {\n    super(message);\n    this.name = 'ValidationError';\n  }\n}\n\n// ✅ Good - Result type pattern\ntype Result\u003cT, E = Error\u003e = \n  | { success: true; data: T }\n  | { success: false; error: E };\n\nasync function safeApiCall\u003cT\u003e(url: string): Promise\u003cResult\u003cT\u003e\u003e {\n  try {\n    const response = await fetch(url);\n    const data = await response.json();\n    return { success: true, data };\n  } catch (error) {\n    return { \n      success: false, \n      error: error instanceof Error ? error : new Error(String(error))\n    };\n  }\n}\n```\n\n## Common Patterns\n\n### 1. Builder Pattern\n\n```typescript\nclass UserBuilder {\n  private user: Partial\u003cUser\u003e = {};\n\n  setName(name: string): this {\n    this.user.name = name;\n    return this;\n  }\n\n  setEmail(email: string): this {\n    this.user.email = email;\n    return this;\n  }\n\n  setAge(age: number): this {\n    this.user.age = age;\n    return this;\n  }\n\n  build(): User {\n    if (!this.user.name || !this.user.email) {\n      throw new Error('Name and email are required');\n    }\n    \n    return {\n      id: Math.random(),\n      name: this.user.name,\n      email: this.user.email,\n      age: this.user.age || 18\n    };\n  }\n}\n\n// Usage\nconst user = new UserBuilder()\n  .setName('John')\n  .setEmail('john@example.com')\n  .setAge(25)\n  .build();\n```\n\n### 2. Factory Pattern\n\n```typescript\ninterface Shape {\n  area(): number;\n  perimeter(): number;\n}\n\nclass Circle implements Shape {\n  constructor(private radius: number) {}\n\n  area(): number {\n    return Math.PI * this.radius ** 2;\n  }\n\n  perimeter(): number {\n    return 2 * Math.PI * this.radius;\n  }\n}\n\nclass Rectangle implements Shape {\n  constructor(private width: number, private height: number) {}\n\n  area(): number {\n    return this.width * this.height;\n  }\n\n  perimeter(): number {\n    return 2 * (this.width + this.height);\n  }\n}\n\ntype ShapeType = 'circle' | 'rectangle';\n\ninterface ShapeConfig {\n  type: 'circle';\n  radius: number;\n} | {\n  type: 'rectangle';\n  width: number;\n  height: number;\n};\n\nclass ShapeFactory {\n  static createShape(config: ShapeConfig): Shape {\n    switch (config.type) {\n      case 'circle':\n        return new Circle(config.radius);\n      case 'rectangle':\n        return new Rectangle(config.width, config.height);\n      default:\n        throw new Error('Unknown shape type');\n    }\n  }\n}\n```\n\n### 3. Repository Pattern\n\n```typescript\ninterface Repository\u003cT\u003e {\n  findById(id: string): Promise\u003cT | null\u003e;\n  findAll(): Promise\u003cT[]\u003e;\n  create(item: Omit\u003cT, 'id'\u003e): Promise\u003cT\u003e;\n  update(id: string, item: Partial\u003cT\u003e): Promise\u003cT\u003e;\n  delete(id: string): Promise\u003cvoid\u003e;\n}\n\nclass UserRepository implements Repository\u003cUser\u003e {\n  constructor(private apiClient: ApiClient) {}\n\n  async findById(id: string): Promise\u003cUser | null\u003e {\n    try {\n      const response = await this.apiClient.get(`/users/${id}`);\n      return response.data;\n    } catch (error) {\n      if (error.status === 404) {\n        return null;\n      }\n      throw error;\n    }\n  }\n\n  async findAll(): Promise\u003cUser[]\u003e {\n    const response = await this.apiClient.get('/users');\n    return response.data;\n  }\n\n  async create(userData: Omit\u003cUser, 'id'\u003e): Promise\u003cUser\u003e {\n    const response = await this.apiClient.post('/users', userData);\n    return response.data;\n  }\n\n  async update(id: string, userData: Partial\u003cUser\u003e): Promise\u003cUser\u003e {\n    const response = await this.apiClient.put(`/users/${id}`, userData);\n    return response.data;\n  }\n\n  async delete(id: string): Promise\u003cvoid\u003e {\n    await this.apiClient.delete(`/users/${id}`);\n  }\n}\n```\n\nThis comprehensive TypeScript guide covers all the essential concepts and patterns you'll need for frontend interviews. The key is to understand not just the syntax, but when and why to use different TypeScript features to write more maintainable and type-safe code.\n"])</script><script>self.__next_f.push([1,"8:[\"slug\",\"src/content/frontend/typescript/README\",\"c\"]\nd:[]\n"])</script><script>self.__next_f.push([1,"0:[\"$\",\"$L3\",null,{\"buildId\":\"7uJ7BVaXJTiEOD9iYDv3n\",\"assetPrefix\":\"/interview\",\"urlParts\":[\"\",\"docs\",\"src\",\"content\",\"frontend\",\"typescript\",\"README\"],\"initialTree\":[\"\",{\"children\":[\"docs\",{\"children\":[[\"slug\",\"src/content/frontend/typescript/README\",\"c\"],{\"children\":[\"__PAGE__?{\\\"slug\\\":[\\\"src\\\",\\\"content\\\",\\\"frontend\\\",\\\"typescript\\\",\\\"README\\\"]}\",{}]}]}]},\"$undefined\",\"$undefined\",true],\"initialSeedData\":[\"\",{\"children\":[\"docs\",{\"children\":[[\"slug\",\"src/content/frontend/typescript/README\",\"c\"],{\"children\":[\"__PAGE__\",{},[[\"$L4\",[\"$\",\"div\",null,{\"style\":{\"maxWidth\":\"1200px\",\"margin\":\"0 auto\",\"padding\":\"2rem\",\"paddingTop\":\"6rem\"},\"children\":[[\"$\",\"div\",null,{\"style\":{\"marginBottom\":\"2rem\"},\"children\":[[\"$\",\"nav\",null,{\"style\":{\"color\":\"#64748b\",\"fontSize\":\"0.9rem\",\"marginBottom\":\"1rem\"},\"children\":[[\"$\",\"a\",null,{\"href\":\"/\",\"style\":{\"color\":\"#3b82f6\",\"textDecoration\":\"none\"},\"children\":\"Home\"}],\" \u003e \",[\"$\",\"span\",null,{\"children\":\"src \u003e content \u003e frontend \u003e typescript \u003e README\"}]]}],[\"$\",\"h1\",null,{\"style\":{\"fontSize\":\"2.5rem\",\"fontWeight\":\"800\",\"marginBottom\":\"0.5rem\",\"color\":\"#1e293b\"},\"children\":\"README\"}],[\"$\",\"div\",null,{\"style\":{\"color\":\"#64748b\",\"fontSize\":\"0.9rem\",\"marginBottom\":\"2rem\"},\"children\":[[\"$\",\"span\",null,{\"children\":[\"📁 \",\"src/content/frontend/typescript/README.md\"]}],\"$undefined\",\"$undefined\"]}]]}],[\"$\",\"$L5\",null,{\"content\":\"$6\"}]]}],null],null],null]},[null,[\"$\",\"$L7\",null,{\"parallelRouterKey\":\"children\",\"segmentPath\":[\"children\",\"docs\",\"children\",\"$8\",\"children\"],\"error\":\"$undefined\",\"errorStyles\":\"$undefined\",\"errorScripts\":\"$undefined\",\"template\":[\"$\",\"$L9\",null,{}],\"templateStyles\":\"$undefined\",\"templateScripts\":\"$undefined\",\"notFound\":\"$undefined\",\"notFoundStyles\":\"$undefined\"}]],null]},[null,[\"$\",\"$L7\",null,{\"parallelRouterKey\":\"children\",\"segmentPath\":[\"children\",\"docs\",\"children\"],\"error\":\"$undefined\",\"errorStyles\":\"$undefined\",\"errorScripts\":\"$undefined\",\"template\":[\"$\",\"$L9\",null,{}],\"templateStyles\":\"$undefined\",\"templateScripts\":\"$undefined\",\"notFound\":\"$undefined\",\"notFoundStyles\":\"$undefined\"}]],null]},[[[[\"$\",\"link\",\"0\",{\"rel\":\"stylesheet\",\"href\":\"/interview/_next/static/css/387024c6a2216908.css\",\"precedence\":\"next\",\"crossOrigin\":\"$undefined\"}]],[\"$\",\"$La\",null,{\"children\":[\"$\",\"$L7\",null,{\"parallelRouterKey\":\"children\",\"segmentPath\":[\"children\"],\"error\":\"$undefined\",\"errorStyles\":\"$undefined\",\"errorScripts\":\"$undefined\",\"template\":[\"$\",\"$L9\",null,{}],\"templateStyles\":\"$undefined\",\"templateScripts\":\"$undefined\",\"notFound\":[[\"$\",\"title\",null,{\"children\":\"404: This page could not be found.\"}],[\"$\",\"div\",null,{\"style\":{\"fontFamily\":\"system-ui,\\\"Segoe UI\\\",Roboto,Helvetica,Arial,sans-serif,\\\"Apple Color Emoji\\\",\\\"Segoe UI Emoji\\\"\",\"height\":\"100vh\",\"textAlign\":\"center\",\"display\":\"flex\",\"flexDirection\":\"column\",\"alignItems\":\"center\",\"justifyContent\":\"center\"},\"children\":[\"$\",\"div\",null,{\"children\":[[\"$\",\"style\",null,{\"dangerouslySetInnerHTML\":{\"__html\":\"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}\"}}],[\"$\",\"h1\",null,{\"className\":\"next-error-h1\",\"style\":{\"display\":\"inline-block\",\"margin\":\"0 20px 0 0\",\"padding\":\"0 23px 0 0\",\"fontSize\":24,\"fontWeight\":500,\"verticalAlign\":\"top\",\"lineHeight\":\"49px\"},\"children\":\"404\"}],[\"$\",\"div\",null,{\"style\":{\"display\":\"inline-block\"},\"children\":[\"$\",\"h2\",null,{\"style\":{\"fontSize\":14,\"fontWeight\":400,\"lineHeight\":\"49px\",\"margin\":0},\"children\":\"This page could not be found.\"}]}]]}]}]],\"notFoundStyles\":[]}],\"params\":{}}]],null],null],\"couldBeIntercepted\":false,\"initialHead\":[null,\"$Lb\"],\"globalErrorComponent\":\"$c\",\"missingSlots\":\"$Wd\"}]\n"])</script><script>self.__next_f.push([1,"b:[[\"$\",\"meta\",\"0\",{\"name\":\"viewport\",\"content\":\"width=device-width, initial-scale=1\"}],[\"$\",\"meta\",\"1\",{\"charSet\":\"utf-8\"}],[\"$\",\"title\",\"2\",{\"children\":\"README - Frontend Interview Docs\"}],[\"$\",\"meta\",\"3\",{\"name\":\"description\",\"content\":\"# TypeScript for Frontend Interviews  ## Table of Contents - [TypeScript Fundamentals](#typescript-fundamentals) - [Advanced Types](#advanced-types) - [React wi\"}],[\"$\",\"meta\",\"4\",{\"property\":\"og:title\",\"content\":\"README - Frontend Interview Docs\"}],[\"$\",\"meta\",\"5\",{\"property\":\"og:description\",\"content\":\"# TypeScript for Frontend Interviews  ## Table of Contents - [TypeScript Fundamentals](#typescript-fundamentals) - [Advanced Types](#advanced-types) - [React wi\"}],[\"$\",\"meta\",\"6\",{\"property\":\"og:type\",\"content\":\"article\"}],[\"$\",\"meta\",\"7\",{\"name\":\"twitter:card\",\"content\":\"summary\"}],[\"$\",\"meta\",\"8\",{\"name\":\"twitter:title\",\"content\":\"README - Frontend Interview Docs\"}],[\"$\",\"meta\",\"9\",{\"name\":\"twitter:description\",\"content\":\"# TypeScript for Frontend Interviews  ## Table of Contents - [TypeScript Fundamentals](#typescript-fundamentals) - [Advanced Types](#advanced-types) - [React wi\"}],[\"$\",\"meta\",\"10\",{\"name\":\"next-size-adjust\"}]]\n4:null\n"])</script></body></html>

@@ -1,0 +1,1152 @@
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><meta name="viewport" content="width=device-width, initial-scale=1"/><link rel="preload" href="/interview/_next/static/media/e4af272ccee01ff0-s.p.woff2" as="font" crossorigin="" type="font/woff2"/><link rel="stylesheet" href="/interview/_next/static/css/387024c6a2216908.css" data-precedence="next"/><link rel="preload" as="script" fetchPriority="low" href="/interview/_next/static/chunks/webpack-be7d7df45533bffc.js"/><script src="/interview/_next/static/chunks/fd9d1056-6922f449a204c2cc.js" async=""></script><script src="/interview/_next/static/chunks/117-e7ecc085ce9cfab3.js" async=""></script><script src="/interview/_next/static/chunks/main-app-b06be5f3411c20c3.js" async=""></script><script src="/interview/_next/static/chunks/918-3273b83890f10546.js" async=""></script><script src="/interview/_next/static/chunks/930-3262a6c9c5acace4.js" async=""></script><script src="/interview/_next/static/chunks/app/docs/%5B...slug%5D/page-32962e9542d32755.js" async=""></script><script src="/interview/_next/static/chunks/710-dfaa11b4dff08f8e.js" async=""></script><script src="/interview/_next/static/chunks/972-011bba60ed155615.js" async=""></script><script src="/interview/_next/static/chunks/233-3e0c1d820a17eca9.js" async=""></script><script src="/interview/_next/static/chunks/app/layout-333f4adcd11f8f39.js" async=""></script><title>Frontend Interview Prep 2025 - Big Tech Interview Guide</title><meta name="description" content="Comprehensive frontend interview preparation for Big Tech companies including React, TypeScript, algorithms, and system design."/><link rel="icon" href="/favicon.ico"/><meta name="theme-color" content="#1a1a1a"/><meta property="og:title" content="Frontend Interview Prep 2025"/><meta property="og:description" content="Complete guide for frontend engineers targeting Big Tech companies"/><meta property="og:type" content="website"/><link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous"/><title>React Advanced Patterns &amp; Interview Questions - Frontend Interview Docs</title><meta name="description" content="Advanced React patterns including hooks, performance optimization, React 18 features, state management, and comprehensive interview preparation"/><meta property="og:title" content="React Advanced Patterns &amp; Interview Questions - Frontend Interview Docs"/><meta property="og:description" content="Advanced React patterns including hooks, performance optimization, React 18 features, state management, and comprehensive interview preparation"/><meta property="og:type" content="article"/><meta name="twitter:card" content="summary"/><meta name="twitter:title" content="React Advanced Patterns &amp; Interview Questions - Frontend Interview Docs"/><meta name="twitter:description" content="Advanced React patterns including hooks, performance optimization, React 18 features, state management, and comprehensive interview preparation"/><meta name="next-size-adjust"/><script src="/interview/_next/static/chunks/polyfills-42372ed130431b0a.js" noModule=""></script><style data-styled="" data-styled-version="6.1.19">*{margin:0;padding:0;box-sizing:border-box;}/*!sc*/
+html{font-size:16px;line-height:1.5;scroll-behavior:smooth;}/*!sc*/
+body{font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;font-size:1rem;line-height:1.5;color:#1e293b;background-color:#ffffff;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;}/*!sc*/
+h1,h2,h3,h4,h5,h6{font-weight:700;line-height:1.25;margin-bottom:0.5em;}/*!sc*/
+h1{font-size:3rem;}/*!sc*/
+@media (max-width: 768px){h1{font-size:2.25rem;}}/*!sc*/
+h2{font-size:2.25rem;}/*!sc*/
+@media (max-width: 768px){h2{font-size:1.875rem;}}/*!sc*/
+h3{font-size:1.875rem;}/*!sc*/
+@media (max-width: 768px){h3{font-size:1.5rem;}}/*!sc*/
+h4{font-size:1.5rem;}/*!sc*/
+@media (max-width: 768px){h4{font-size:1.25rem;}}/*!sc*/
+h5{font-size:1.25rem;}/*!sc*/
+h6{font-size:1.125rem;}/*!sc*/
+p{margin-bottom:1rem;line-height:1.75;}/*!sc*/
+a{color:#3b82f6;text-decoration:none;transition:color 0.15s ease;}/*!sc*/
+a:hover{color:#2563eb;}/*!sc*/
+a:focus{outline:2px solid #3b82f6;outline-offset:2px;}/*!sc*/
+button{cursor:pointer;border:none;background:none;font-family:inherit;font-size:inherit;}/*!sc*/
+button:disabled{cursor:not-allowed;opacity:0.6;}/*!sc*/
+button:focus{outline:2px solid #3b82f6;outline-offset:2px;}/*!sc*/
+input,textarea,select{font-family:inherit;font-size:inherit;}/*!sc*/
+input:focus,textarea:focus,select:focus{outline:2px solid #3b82f6;outline-offset:2px;}/*!sc*/
+img{max-width:100%;height:auto;}/*!sc*/
+ul,ol{margin-bottom:1rem;padding-left:1.5rem;}/*!sc*/
+li{margin-bottom:0.25rem;}/*!sc*/
+blockquote{margin:1rem 0;padding:1rem;border-left:4px solid #3b82f6;background-color:#f1f5f9;font-style:italic;}/*!sc*/
+code{font-family:SFMono-Regular,Consolas,"Liberation Mono",Menlo,monospace;font-size:0.9em;background-color:#f1f5f9;padding:0.2em 0.4em;border-radius:0.25rem;}/*!sc*/
+pre{background-color:#f1f5f9;padding:1rem;border-radius:0.5rem;overflow-x:auto;margin-bottom:1rem;}/*!sc*/
+pre code{background:none;padding:0;}/*!sc*/
+table{width:100%;border-collapse:collapse;margin-bottom:1rem;}/*!sc*/
+th,td{padding:0.75rem;text-align:left;border-bottom:1px solid #e2e8f0;}/*!sc*/
+th{font-weight:600;background-color:#f1f5f9;}/*!sc*/
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0, 0, 0, 0);white-space:nowrap;border:0;}/*!sc*/
+.skip-link{position:absolute;top:-40px;left:6px;background:#3b82f6;color:white;padding:8px;text-decoration:none;border-radius:4px;z-index:100;}/*!sc*/
+.skip-link:focus{top:6px;}/*!sc*/
+::-webkit-scrollbar{width:8px;height:8px;}/*!sc*/
+::-webkit-scrollbar-track{background:#f1f5f9;}/*!sc*/
+::-webkit-scrollbar-thumb{background:#94a3b8;border-radius:4px;}/*!sc*/
+::-webkit-scrollbar-thumb:hover{background:#64748b;}/*!sc*/
+::selection{background:#3b82f6;color:white;}/*!sc*/
+.focus-visible{outline:2px solid #3b82f6;outline-offset:2px;}/*!sc*/
+.fade-in{opacity:0;animation:fadeIn 0.3s ease forwards;}/*!sc*/
+.slide-up{transform:translateY(20px);opacity:0;animation:slideUp 0.3s ease forwards;}/*!sc*/
+@keyframes fadeIn{to{opacity:1;}}/*!sc*/
+@keyframes slideUp{to{transform:translateY(0);opacity:1;}}/*!sc*/
+@media print{*{background:white!important;color:black!important;box-shadow:none!important;text-shadow:none!important;}a,a:visited{text-decoration:underline;}h1,h2,h3,h4,h5,h6{break-after:avoid;}pre,blockquote{border:1px solid #999;break-inside:avoid;}img{max-width:100%!important;}@page{margin:0.5in;}}/*!sc*/
+data-styled.g31[id="sc-global-kxA-Ddz1"]{content:"sc-global-kxA-Ddz1,"}/*!sc*/
+.hknxvr{position:fixed;top:0;width:100%;z-index:1020;background:transparent;backdrop-filter:blur(10px);border-bottom:1px solid transparent;transition:all 0.3s ease;}/*!sc*/
+data-styled.g32[id="sc-kjwdDK"]{content:"hknxvr,"}/*!sc*/
+.kyNSdY{max-width:1200px;margin:0 auto;padding:0 2rem;display:flex;align-items:center;justify-content:space-between;height:70px;}/*!sc*/
+data-styled.g33[id="sc-eVqvcJ"]{content:"kyNSdY,"}/*!sc*/
+.boGzeT{display:flex;align-items:center;gap:0.5rem;font-size:1.5rem;font-weight:700;color:#3b82f6;text-decoration:none;cursor:pointer;}/*!sc*/
+.boGzeT:hover{color:#2563eb;}/*!sc*/
+data-styled.g34[id="sc-bbbBoY"]{content:"boGzeT,"}/*!sc*/
+.dfWopA{display:flex;align-items:center;gap:2rem;}/*!sc*/
+@media (max-width: 768px){.dfWopA{display:none;}}/*!sc*/
+data-styled.g35[id="sc-cdmAjP"]{content:"dfWopA,"}/*!sc*/
+.QBGbV{color:#1e293b;font-weight:500;text-decoration:none;transition:color 0.15s ease;position:relative;}/*!sc*/
+.QBGbV:hover{color:#3b82f6;}/*!sc*/
+.QBGbV:after{content:'';position:absolute;bottom:-5px;left:0;width:0;height:2px;background:#3b82f6;transition:width 0.15s ease;}/*!sc*/
+.QBGbV:hover:after{width:100%;}/*!sc*/
+data-styled.g36[id="sc-jytpVa"]{content:"QBGbV,"}/*!sc*/
+.iApUGV{display:none;background:none;border:none;color:#1e293b;cursor:pointer;padding:0.5rem;}/*!sc*/
+@media (max-width: 768px){.iApUGV{display:block;}}/*!sc*/
+data-styled.g37[id="sc-eknHtZ"]{content:"iApUGV,"}/*!sc*/
+.iRzASV{display:flex;align-items:center;gap:0.5rem;background:#f1f5f9;border:1px solid #e2e8f0;border-radius:0.5rem;padding:0.5rem 1rem;color:#64748b;font-size:0.9rem;transition:all 0.15s ease;}/*!sc*/
+.iRzASV:hover{background:#ffffff;border-color:#3b82f6;}/*!sc*/
+data-styled.g41[id="sc-dNFkOE"]{content:"iRzASV,"}/*!sc*/
+.eFXxtK{background:#1e293b;color:white;padding:3rem 0 1rem;margin-top:auto;}/*!sc*/
+data-styled.g42[id="sc-fszimp"]{content:"eFXxtK,"}/*!sc*/
+.lgRhNJ{max-width:1200px;margin:0 auto;padding:0 2rem;}/*!sc*/
+data-styled.g43[id="sc-etsjJW"]{content:"lgRhNJ,"}/*!sc*/
+.clXrDw{display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:2rem;margin-bottom:2rem;}/*!sc*/
+@media (max-width: 768px){.clXrDw{grid-template-columns:1fr 1fr;gap:1.5rem;}}/*!sc*/
+@media (max-width: 480px){.clXrDw{grid-template-columns:1fr;}}/*!sc*/
+data-styled.g44[id="sc-fYmhhH"]{content:"clXrDw,"}/*!sc*/
+.eVcCHs h3{font-size:1.1rem;font-weight:600;margin-bottom:1rem;color:white;}/*!sc*/
+.eVcCHs ul{list-style:none;padding:0;margin:0;}/*!sc*/
+.eVcCHs li{margin-bottom:0.5rem;}/*!sc*/
+.eVcCHs a{color:rgba(255, 255, 255, 0.7);text-decoration:none;transition:color 0.15s ease;}/*!sc*/
+.eVcCHs a:hover{color:white;}/*!sc*/
+data-styled.g45[id="sc-koBvLg"]{content:"eVcCHs,"}/*!sc*/
+.erNuOr{display:flex;align-items:center;gap:0.5rem;font-size:1.2rem;font-weight:700;margin-bottom:1rem;color:white;}/*!sc*/
+data-styled.g46[id="sc-DZJJV"]{content:"erNuOr,"}/*!sc*/
+.eFlHp{color:rgba(255, 255, 255, 0.7);line-height:1.6;margin-bottom:1rem;}/*!sc*/
+data-styled.g47[id="sc-kUouGy"]{content:"eFlHp,"}/*!sc*/
+.cKmbMZ{display:flex;gap:1rem;}/*!sc*/
+.cKmbMZ a{display:flex;align-items:center;justify-content:center;width:40px;height:40px;background:rgba(255, 255, 255, 0.1);border-radius:0.5rem;color:rgba(255, 255, 255, 0.7);transition:all 0.15s ease;}/*!sc*/
+.cKmbMZ a:hover{background:rgba(255, 255, 255, 0.2);color:white;}/*!sc*/
+data-styled.g48[id="sc-bjMIFn"]{content:"cKmbMZ,"}/*!sc*/
+.jjzpGQ{border-top:1px solid rgba(255, 255, 255, 0.1);padding-top:2rem;display:flex;justify-content:space-between;align-items:center;}/*!sc*/
+@media (max-width: 768px){.jjzpGQ{flex-direction:column;gap:1rem;text-align:center;}}/*!sc*/
+data-styled.g49[id="sc-dClGHI"]{content:"jjzpGQ,"}/*!sc*/
+.bxgLTO{color:rgba(255, 255, 255, 0.7);margin:0;font-size:0.9rem;}/*!sc*/
+data-styled.g50[id="sc-fhfEft"]{content:"bxgLTO,"}/*!sc*/
+.lnKwnT{display:flex;gap:2rem;}/*!sc*/
+@media (max-width: 480px){.lnKwnT{flex-direction:column;gap:1rem;}}/*!sc*/
+.lnKwnT a{color:rgba(255, 255, 255, 0.7);text-decoration:none;font-size:0.9rem;transition:color 0.15s ease;}/*!sc*/
+.lnKwnT a:hover{color:white;}/*!sc*/
+data-styled.g51[id="sc-bAehkN"]{content:"lnKwnT,"}/*!sc*/
+.iAvhVM{color:#1e293b;line-height:1.6;}/*!sc*/
+.iAvhVM h1,.iAvhVM h2,.iAvhVM h3,.iAvhVM h4,.iAvhVM h5,.iAvhVM h6{color:#1e293b;margin-top:2rem;margin-bottom:1rem;font-weight:600;}/*!sc*/
+.iAvhVM h1{font-size:2rem;border-bottom:2px solid #e2e8f0;padding-bottom:0.5rem;}/*!sc*/
+.iAvhVM h2{font-size:1.5rem;border-bottom:1px solid #e2e8f0;padding-bottom:0.3rem;}/*!sc*/
+.iAvhVM h3{font-size:1.25rem;}/*!sc*/
+.iAvhVM h4{font-size:1.1rem;}/*!sc*/
+.iAvhVM p{margin-bottom:1rem;color:#64748b;}/*!sc*/
+.iAvhVM a{color:#3b82f6;text-decoration:none;}/*!sc*/
+.iAvhVM a:hover{text-decoration:underline;}/*!sc*/
+.iAvhVM ul,.iAvhVM ol{margin-bottom:1rem;padding-left:1.5rem;}/*!sc*/
+.iAvhVM ul li,.iAvhVM ol li{margin-bottom:0.5rem;color:#64748b;}/*!sc*/
+.iAvhVM blockquote{border-left:4px solid #3b82f6;padding-left:1rem;margin:1rem 0;font-style:italic;color:#64748b;background:#f1f5f9;padding:1rem;border-radius:0.5rem;}/*!sc*/
+.iAvhVM code{background:#f1f5f9;padding:0.2rem 0.4rem;border-radius:0.25rem;font-family:SFMono-Regular,Consolas,"Liberation Mono",Menlo,monospace;font-size:0.9em;color:#f59e0b;}/*!sc*/
+.iAvhVM pre{background:#ffffff;border:1px solid #e2e8f0;border-radius:0.5rem;padding:1rem;margin:1rem 0;overflow-x:auto;}/*!sc*/
+.iAvhVM pre code{background:none;padding:0;color:#1e293b;font-size:0.9rem;}/*!sc*/
+.iAvhVM table{width:100%;border-collapse:collapse;margin:1rem 0;}/*!sc*/
+.iAvhVM table th,.iAvhVM table td{border:1px solid #e2e8f0;padding:0.5rem;text-align:left;}/*!sc*/
+.iAvhVM table th{background:#ffffff;font-weight:600;}/*!sc*/
+.iAvhVM table tr:nth-child(even){background:#f1f5f9;}/*!sc*/
+.iAvhVM hr{border:none;height:1px;background:#e2e8f0;margin:2rem 0;}/*!sc*/
+.iAvhVM .highlight{background:#3b82f620;padding:0.2rem 0.4rem;border-radius:0.25rem;font-weight:600;}/*!sc*/
+.iAvhVM .hljs{background:#ffffff;color:#1e293b;}/*!sc*/
+.iAvhVM .hljs-keyword{color:#3b82f6;font-weight:600;}/*!sc*/
+.iAvhVM .hljs-string{color:#10b981;}/*!sc*/
+.iAvhVM .hljs-function{color:#f59e0b;}/*!sc*/
+.iAvhVM .hljs-comment{color:#94a3b8;font-style:italic;}/*!sc*/
+.iAvhVM .hljs-number{color:#f59e0b;}/*!sc*/
+.iAvhVM .hljs-variable{color:#1e293b;}/*!sc*/
+.iAvhVM .hljs-title{color:#f59e0b;font-weight:600;}/*!sc*/
+data-styled.g52[id="sc-gahYZc"]{content:"iAvhVM,"}/*!sc*/
+</style></head><body class="__className_6eac61"><div style="min-height:100vh;display:flex;flex-direction:column"><nav class="sc-kjwdDK hknxvr"><div class="sc-eVqvcJ kyNSdY"><a href="/interview"><a class="sc-bbbBoY boGzeT"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-code "><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>Frontend Interview Prep</a></a><div class="sc-cdmAjP dfWopA"><a href="/interview/problems"><a class="sc-jytpVa QBGbV">Problems</a></a><a href="/interview/learn"><a class="sc-jytpVa QBGbV">Learn</a></a><a href="/interview/study-guide"><a class="sc-jytpVa QBGbV">Study Guide</a></a><a href="/interview/system-design"><a class="sc-jytpVa QBGbV">System Design</a></a><a href="/interview/performance"><a class="sc-jytpVa QBGbV">Performance</a></a><a href="/interview/accessibility"><a class="sc-jytpVa QBGbV">Accessibility</a></a><a href="/interview/interview-tips"><a class="sc-jytpVa QBGbV">Interview Tips</a></a><button class="sc-dNFkOE iRzASV"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-search "><circle cx="11" cy="11" r="8"></circle><path d="m21 21-4.3-4.3"></path></svg>Search</button></div><button class="sc-eknHtZ iApUGV"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-menu "><line x1="4" x2="20" y1="12" y2="12"></line><line x1="4" x2="20" y1="6" y2="6"></line><line x1="4" x2="20" y1="18" y2="18"></line></svg></button></div></nav><main style="flex:1"><div style="max-width:1200px;margin:0 auto;padding:2rem;padding-top:6rem"><div style="margin-bottom:2rem"><nav style="color:#64748b;font-size:0.9rem;margin-bottom:1rem"><a href="/" style="color:#3b82f6;text-decoration:none">Home</a> &gt; <span>frontend &gt; react &gt; advanced-patterns</span></nav><h1 style="font-size:2.5rem;font-weight:800;margin-bottom:0.5rem;color:#1e293b">React Advanced Patterns &amp; Interview Questions</h1><div style="color:#64748b;font-size:0.9rem;margin-bottom:2rem"><span>📁 <!-- -->frontend/react/advanced-patterns.md</span></div></div><div class="sc-gahYZc iAvhVM"><h1 id="react-advanced-patterns-&amp;-interview-questions" node="[object Object]">React Advanced Patterns &amp; Interview Questions</h1>
+<h2 id="table-of-contents" node="[object Object]">Table of Contents</h2>
+<ul>
+<li><a href="#advanced-hooks" node="[object Object]">Advanced Hooks</a></li>
+<li><a href="#performance-optimization" node="[object Object]">Performance Optimization</a></li>
+<li><a href="#react-18-features" node="[object Object]">React 18 Features</a></li>
+<li><a href="#state-management-patterns" node="[object Object]">State Management Patterns</a></li>
+<li><a href="#testing-react-components" node="[object Object]">Testing React Components</a></li>
+<li><a href="#common-patterns" node="[object Object]">Common Patterns</a></li>
+<li><a href="#server-side-rendering" node="[object Object]">Server-Side Rendering</a></li>
+<li><a href="#advanced-interview-questions" node="[object Object]">Advanced Interview Questions</a></li>
+</ul>
+<h2 id="advanced-hooks" node="[object Object]">Advanced Hooks</h2>
+<h3 id="usereducer-for-complex-state" node="[object Object]">useReducer for Complex State</h3>
+<pre><pre><code class="hljs hljs language-jsx"><span class="hljs-comment">// Complex state management with useReducer</span>
+<span class="hljs-keyword">const</span> initialState = {
+  <span class="hljs-attr">items</span>: [],
+  <span class="hljs-attr">loading</span>: <span class="hljs-literal">false</span>,
+  <span class="hljs-attr">error</span>: <span class="hljs-literal">null</span>,
+  <span class="hljs-attr">filter</span>: <span class="hljs-string">&#x27;all&#x27;</span>
+};
+
+<span class="hljs-keyword">function</span> <span class="hljs-title function_">todoReducer</span>(<span class="hljs-params">state, action</span>) {
+  <span class="hljs-keyword">switch</span> (action.<span class="hljs-property">type</span>) {
+    <span class="hljs-keyword">case</span> <span class="hljs-string">&#x27;FETCH_START&#x27;</span>:
+      <span class="hljs-keyword">return</span> { ...state, <span class="hljs-attr">loading</span>: <span class="hljs-literal">true</span>, <span class="hljs-attr">error</span>: <span class="hljs-literal">null</span> };
+    <span class="hljs-keyword">case</span> <span class="hljs-string">&#x27;FETCH_SUCCESS&#x27;</span>:
+      <span class="hljs-keyword">return</span> { ...state, <span class="hljs-attr">loading</span>: <span class="hljs-literal">false</span>, <span class="hljs-attr">items</span>: action.<span class="hljs-property">payload</span> };
+    <span class="hljs-keyword">case</span> <span class="hljs-string">&#x27;FETCH_ERROR&#x27;</span>:
+      <span class="hljs-keyword">return</span> { ...state, <span class="hljs-attr">loading</span>: <span class="hljs-literal">false</span>, <span class="hljs-attr">error</span>: action.<span class="hljs-property">payload</span> };
+    <span class="hljs-keyword">case</span> <span class="hljs-string">&#x27;ADD_ITEM&#x27;</span>:
+      <span class="hljs-keyword">return</span> { ...state, <span class="hljs-attr">items</span>: [...state.<span class="hljs-property">items</span>, action.<span class="hljs-property">payload</span>] };
+    <span class="hljs-keyword">case</span> <span class="hljs-string">&#x27;UPDATE_ITEM&#x27;</span>:
+      <span class="hljs-keyword">return</span> {
+        ...state,
+        <span class="hljs-attr">items</span>: state.<span class="hljs-property">items</span>.<span class="hljs-title function_">map</span>(<span class="hljs-function"><span class="hljs-params">item</span> =&gt;</span>
+          item.<span class="hljs-property">id</span> === action.<span class="hljs-property">payload</span>.<span class="hljs-property">id</span> ? action.<span class="hljs-property">payload</span> : item
+        )
+      };
+    <span class="hljs-keyword">case</span> <span class="hljs-string">&#x27;DELETE_ITEM&#x27;</span>:
+      <span class="hljs-keyword">return</span> {
+        ...state,
+        <span class="hljs-attr">items</span>: state.<span class="hljs-property">items</span>.<span class="hljs-title function_">filter</span>(<span class="hljs-function"><span class="hljs-params">item</span> =&gt;</span> item.<span class="hljs-property">id</span> !== action.<span class="hljs-property">payload</span>)
+      };
+    <span class="hljs-keyword">case</span> <span class="hljs-string">&#x27;SET_FILTER&#x27;</span>:
+      <span class="hljs-keyword">return</span> { ...state, <span class="hljs-attr">filter</span>: action.<span class="hljs-property">payload</span> };
+    <span class="hljs-attr">default</span>:
+      <span class="hljs-keyword">return</span> state;
+  }
+}
+
+<span class="hljs-keyword">function</span> <span class="hljs-title function_">TodoApp</span>(<span class="hljs-params"></span>) {
+  <span class="hljs-keyword">const</span> [state, dispatch] = <span class="hljs-title function_">useReducer</span>(todoReducer, initialState);
+
+  <span class="hljs-title function_">useEffect</span>(<span class="hljs-function">() =&gt;</span> {
+    <span class="hljs-title function_">dispatch</span>({ <span class="hljs-attr">type</span>: <span class="hljs-string">&#x27;FETCH_START&#x27;</span> });
+    <span class="hljs-title function_">fetchTodos</span>()
+      .<span class="hljs-title function_">then</span>(<span class="hljs-function"><span class="hljs-params">todos</span> =&gt;</span> <span class="hljs-title function_">dispatch</span>({ <span class="hljs-attr">type</span>: <span class="hljs-string">&#x27;FETCH_SUCCESS&#x27;</span>, <span class="hljs-attr">payload</span>: todos }))
+      .<span class="hljs-title function_">catch</span>(<span class="hljs-function"><span class="hljs-params">error</span> =&gt;</span> <span class="hljs-title function_">dispatch</span>({ <span class="hljs-attr">type</span>: <span class="hljs-string">&#x27;FETCH_ERROR&#x27;</span>, <span class="hljs-attr">payload</span>: error.<span class="hljs-property">message</span> }));
+  }, []);
+
+  <span class="hljs-keyword">const</span> <span class="hljs-title function_">addTodo</span> = (<span class="hljs-params">text</span>) =&gt; {
+    <span class="hljs-keyword">const</span> newTodo = {
+      <span class="hljs-attr">id</span>: <span class="hljs-title class_">Date</span>.<span class="hljs-title function_">now</span>(),
+      text,
+      <span class="hljs-attr">completed</span>: <span class="hljs-literal">false</span>
+    };
+    <span class="hljs-title function_">dispatch</span>({ <span class="hljs-attr">type</span>: <span class="hljs-string">&#x27;ADD_ITEM&#x27;</span>, <span class="hljs-attr">payload</span>: newTodo });
+  };
+
+  <span class="hljs-keyword">const</span> filteredItems = state.<span class="hljs-property">items</span>.<span class="hljs-title function_">filter</span>(<span class="hljs-function"><span class="hljs-params">item</span> =&gt;</span> {
+    <span class="hljs-keyword">if</span> (state.<span class="hljs-property">filter</span> === <span class="hljs-string">&#x27;completed&#x27;</span>) <span class="hljs-keyword">return</span> item.<span class="hljs-property">completed</span>;
+    <span class="hljs-keyword">if</span> (state.<span class="hljs-property">filter</span> === <span class="hljs-string">&#x27;pending&#x27;</span>) <span class="hljs-keyword">return</span> !item.<span class="hljs-property">completed</span>;
+    <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;
+  });
+
+  <span class="hljs-keyword">return</span> (
+    <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">TodoForm</span> <span class="hljs-attr">onSubmit</span>=<span class="hljs-string">{addTodo}</span> /&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">FilterButtons</span> 
+        <span class="hljs-attr">filter</span>=<span class="hljs-string">{state.filter}</span> 
+        <span class="hljs-attr">onChange</span>=<span class="hljs-string">{(filter)</span> =&gt;</span> dispatch({ type: &#x27;SET_FILTER&#x27;, payload: filter })}
+      /&gt;
+      {state.loading &amp;&amp; <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>Loading...<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>}
+      {state.error &amp;&amp; <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>Error: {state.error}<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>}
+      <span class="hljs-tag">&lt;<span class="hljs-name">TodoList</span> <span class="hljs-attr">items</span>=<span class="hljs-string">{filteredItems}</span> <span class="hljs-attr">dispatch</span>=<span class="hljs-string">{dispatch}</span> /&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span>
+  );
+}
+</code></pre></pre>
+<h3 id="custom-hooks" node="[object Object]">Custom Hooks</h3>
+<p>{% raw %}</p>
+<pre><pre><code class="hljs hljs language-jsx"><span class="hljs-comment">// Custom hook for API calls</span>
+<span class="hljs-keyword">function</span> <span class="hljs-title function_">useApi</span>(<span class="hljs-params">url</span>) {
+  <span class="hljs-keyword">const</span> [data, setData] = <span class="hljs-title function_">useState</span>(<span class="hljs-literal">null</span>);
+  <span class="hljs-keyword">const</span> [loading, setLoading] = <span class="hljs-title function_">useState</span>(<span class="hljs-literal">true</span>);
+  <span class="hljs-keyword">const</span> [error, setError] = <span class="hljs-title function_">useState</span>(<span class="hljs-literal">null</span>);
+
+  <span class="hljs-title function_">useEffect</span>(<span class="hljs-function">() =&gt;</span> {
+    <span class="hljs-keyword">const</span> <span class="hljs-title function_">fetchData</span> = <span class="hljs-keyword">async</span> (<span class="hljs-params"></span>) =&gt; {
+      <span class="hljs-keyword">try</span> {
+        <span class="hljs-title function_">setLoading</span>(<span class="hljs-literal">true</span>);
+        <span class="hljs-title function_">setError</span>(<span class="hljs-literal">null</span>);
+        <span class="hljs-keyword">const</span> response = <span class="hljs-keyword">await</span> <span class="hljs-title function_">fetch</span>(url);
+        
+        <span class="hljs-keyword">if</span> (!response.<span class="hljs-property">ok</span>) {
+          <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Error</span>(<span class="hljs-string">`HTTP error! status: <span class="hljs-subst">${response.status}</span>`</span>);
+        }
+        
+        <span class="hljs-keyword">const</span> result = <span class="hljs-keyword">await</span> response.<span class="hljs-title function_">json</span>();
+        <span class="hljs-title function_">setData</span>(result);
+      } <span class="hljs-keyword">catch</span> (err) {
+        <span class="hljs-title function_">setError</span>(err.<span class="hljs-property">message</span>);
+      } <span class="hljs-keyword">finally</span> {
+        <span class="hljs-title function_">setLoading</span>(<span class="hljs-literal">false</span>);
+      }
+    };
+
+    <span class="hljs-title function_">fetchData</span>();
+  }, [url]);
+
+  <span class="hljs-keyword">const</span> refetch = <span class="hljs-title function_">useCallback</span>(<span class="hljs-function">() =&gt;</span> {
+    <span class="hljs-title function_">fetchData</span>();
+  }, [url]);
+
+  <span class="hljs-keyword">return</span> { data, loading, error, refetch };
+}
+
+<span class="hljs-comment">// Custom hook for local storage</span>
+<span class="hljs-keyword">function</span> <span class="hljs-title function_">useLocalStorage</span>(<span class="hljs-params">key, initialValue</span>) {
+  <span class="hljs-keyword">const</span> [storedValue, setStoredValue] = <span class="hljs-title function_">useState</span>(<span class="hljs-function">() =&gt;</span> {
+    <span class="hljs-keyword">try</span> {
+      <span class="hljs-keyword">const</span> item = <span class="hljs-variable language_">window</span>.<span class="hljs-property">localStorage</span>.<span class="hljs-title function_">getItem</span>(key);
+      <span class="hljs-keyword">return</span> item ? <span class="hljs-title class_">JSON</span>.<span class="hljs-title function_">parse</span>(item) : initialValue;
+    } <span class="hljs-keyword">catch</span> (error) {
+      <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">error</span>(<span class="hljs-string">&#x27;Error reading from localStorage:&#x27;</span>, error);
+      <span class="hljs-keyword">return</span> initialValue;
+    }
+  });
+
+  <span class="hljs-keyword">const</span> setValue = <span class="hljs-title function_">useCallback</span>(<span class="hljs-function">(<span class="hljs-params">value</span>) =&gt;</span> {
+    <span class="hljs-keyword">try</span> {
+      <span class="hljs-keyword">const</span> valueToStore = value <span class="hljs-keyword">instanceof</span> <span class="hljs-title class_">Function</span> ? <span class="hljs-title function_">value</span>(storedValue) : value;
+      <span class="hljs-title function_">setStoredValue</span>(valueToStore);
+      <span class="hljs-variable language_">window</span>.<span class="hljs-property">localStorage</span>.<span class="hljs-title function_">setItem</span>(key, <span class="hljs-title class_">JSON</span>.<span class="hljs-title function_">stringify</span>(valueToStore));
+    } <span class="hljs-keyword">catch</span> (error) {
+      <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">error</span>(<span class="hljs-string">&#x27;Error writing to localStorage:&#x27;</span>, error);
+    }
+  }, [key, storedValue]);
+
+  <span class="hljs-keyword">return</span> [storedValue, setValue];
+}
+
+<span class="hljs-comment">// Custom hook for form handling</span>
+<span class="hljs-keyword">function</span> <span class="hljs-title function_">useForm</span>(<span class="hljs-params">initialValues, validate</span>) {
+  <span class="hljs-keyword">const</span> [values, setValues] = <span class="hljs-title function_">useState</span>(initialValues);
+  <span class="hljs-keyword">const</span> [errors, setErrors] = <span class="hljs-title function_">useState</span>({});
+  <span class="hljs-keyword">const</span> [touched, setTouched] = <span class="hljs-title function_">useState</span>({});
+
+  <span class="hljs-keyword">const</span> handleChange = <span class="hljs-title function_">useCallback</span>(<span class="hljs-function">(<span class="hljs-params">name, value</span>) =&gt;</span> {
+    <span class="hljs-title function_">setValues</span>(<span class="hljs-function"><span class="hljs-params">prev</span> =&gt;</span> ({ ...prev, [name]: value }));
+    
+    <span class="hljs-comment">// Clear error when user starts typing</span>
+    <span class="hljs-keyword">if</span> (errors[name]) {
+      <span class="hljs-title function_">setErrors</span>(<span class="hljs-function"><span class="hljs-params">prev</span> =&gt;</span> ({ ...prev, [name]: <span class="hljs-literal">null</span> }));
+    }
+  }, [errors]);
+
+  <span class="hljs-keyword">const</span> handleBlur = <span class="hljs-title function_">useCallback</span>(<span class="hljs-function">(<span class="hljs-params">name</span>) =&gt;</span> {
+    <span class="hljs-title function_">setTouched</span>(<span class="hljs-function"><span class="hljs-params">prev</span> =&gt;</span> ({ ...prev, [name]: <span class="hljs-literal">true</span> }));
+    
+    <span class="hljs-keyword">if</span> (validate) {
+      <span class="hljs-keyword">const</span> fieldErrors = <span class="hljs-title function_">validate</span>({ ...values, [name]: values[name] });
+      <span class="hljs-title function_">setErrors</span>(<span class="hljs-function"><span class="hljs-params">prev</span> =&gt;</span> ({ ...prev, [name]: fieldErrors[name] }));
+    }
+  }, [values, validate]);
+
+  <span class="hljs-keyword">const</span> handleSubmit = <span class="hljs-title function_">useCallback</span>(<span class="hljs-function">(<span class="hljs-params">onSubmit</span>) =&gt;</span> {
+    <span class="hljs-keyword">return</span> <span class="hljs-function">(<span class="hljs-params">e</span>) =&gt;</span> {
+      e.<span class="hljs-title function_">preventDefault</span>();
+      
+      <span class="hljs-keyword">const</span> validationErrors = validate ? <span class="hljs-title function_">validate</span>(values) : {};
+      <span class="hljs-title function_">setErrors</span>(validationErrors);
+      
+      <span class="hljs-keyword">if</span> (<span class="hljs-title class_">Object</span>.<span class="hljs-title function_">keys</span>(validationErrors).<span class="hljs-property">length</span> === <span class="hljs-number">0</span>) {
+        <span class="hljs-title function_">onSubmit</span>(values);
+      }
+    };
+  }, [values, validate]);
+
+  <span class="hljs-keyword">return</span> {
+    values,
+    errors,
+    touched,
+    handleChange,
+    handleBlur,
+    handleSubmit
+  };
+}
+</code></pre></pre>
+<p>{% endraw %}</p>
+<h2 id="performance-optimization" node="[object Object]">Performance Optimization</h2>
+<h3 id="react.memo-and-usememo" node="[object Object]">React.memo and useMemo</h3>
+<pre><pre><code class="hljs hljs language-jsx"><span class="hljs-comment">// React.memo for component memoization</span>
+<span class="hljs-keyword">const</span> <span class="hljs-title class_">ExpensiveComponent</span> = <span class="hljs-title class_">React</span>.<span class="hljs-title function_">memo</span>(<span class="hljs-function">(<span class="hljs-params">{ data, onClick }</span>) =&gt;</span> {
+  <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;ExpensiveComponent rendered&#x27;</span>);
+  
+  <span class="hljs-keyword">return</span> (
+    <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>
+      {data.map(item =&gt; (
+        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">key</span>=<span class="hljs-string">{item.id}</span> <span class="hljs-attr">onClick</span>=<span class="hljs-string">{()</span> =&gt;</span> onClick(item.id)}&gt;
+          {item.name}
+        <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+      ))}
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span>
+  );
+}, <span class="hljs-function">(<span class="hljs-params">prevProps, nextProps</span>) =&gt;</span> {
+  <span class="hljs-comment">// Custom comparison function</span>
+  <span class="hljs-keyword">return</span> prevProps.<span class="hljs-property">data</span>.<span class="hljs-property">length</span> === nextProps.<span class="hljs-property">data</span>.<span class="hljs-property">length</span> &amp;&amp;
+         prevProps.<span class="hljs-property">onClick</span> === nextProps.<span class="hljs-property">onClick</span>;
+});
+
+<span class="hljs-comment">// useMemo for expensive calculations</span>
+<span class="hljs-keyword">function</span> <span class="hljs-title function_">DataProcessor</span>(<span class="hljs-params">{ items, filter }</span>) {
+  <span class="hljs-keyword">const</span> processedData = <span class="hljs-title function_">useMemo</span>(<span class="hljs-function">() =&gt;</span> {
+    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;Processing data...&#x27;</span>);
+    
+    <span class="hljs-keyword">return</span> items
+      .<span class="hljs-title function_">filter</span>(<span class="hljs-function"><span class="hljs-params">item</span> =&gt;</span> item.<span class="hljs-property">category</span> === filter)
+      .<span class="hljs-title function_">sort</span>(<span class="hljs-function">(<span class="hljs-params">a, b</span>) =&gt;</span> a.<span class="hljs-property">priority</span> - b.<span class="hljs-property">priority</span>)
+      .<span class="hljs-title function_">map</span>(<span class="hljs-function"><span class="hljs-params">item</span> =&gt;</span> ({
+        ...item,
+        <span class="hljs-attr">displayName</span>: <span class="hljs-string">`<span class="hljs-subst">${item.name}</span> (<span class="hljs-subst">${item.category}</span>)`</span>
+      }));
+  }, [items, filter]);
+
+  <span class="hljs-keyword">return</span> (
+    <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>
+      {processedData.map(item =&gt; (
+        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">key</span>=<span class="hljs-string">{item.id}</span>&gt;</span>{item.displayName}<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+      ))}
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span>
+  );
+}
+
+<span class="hljs-comment">// useCallback for stable function references</span>
+<span class="hljs-keyword">function</span> <span class="hljs-title function_">TodoList</span>(<span class="hljs-params">{ todos, onToggle, onDelete }</span>) {
+  <span class="hljs-keyword">const</span> handleToggle = <span class="hljs-title function_">useCallback</span>(<span class="hljs-function">(<span class="hljs-params">id</span>) =&gt;</span> {
+    <span class="hljs-title function_">onToggle</span>(id);
+  }, [onToggle]);
+
+  <span class="hljs-keyword">const</span> handleDelete = <span class="hljs-title function_">useCallback</span>(<span class="hljs-function">(<span class="hljs-params">id</span>) =&gt;</span> {
+    <span class="hljs-title function_">onDelete</span>(id);
+  }, [onDelete]);
+
+  <span class="hljs-keyword">return</span> (
+    <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>
+      {todos.map(todo =&gt; (
+        <span class="hljs-tag">&lt;<span class="hljs-name">TodoItem</span>
+          <span class="hljs-attr">key</span>=<span class="hljs-string">{todo.id}</span>
+          <span class="hljs-attr">todo</span>=<span class="hljs-string">{todo}</span>
+          <span class="hljs-attr">onToggle</span>=<span class="hljs-string">{handleToggle}</span>
+          <span class="hljs-attr">onDelete</span>=<span class="hljs-string">{handleDelete}</span>
+        /&gt;</span>
+      ))}
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span>
+  );
+}
+</code></pre></pre>
+<h3 id="code-splitting-and-lazy-loading" node="[object Object]">Code Splitting and Lazy Loading</h3>
+<pre><pre><code class="hljs hljs language-jsx"><span class="hljs-comment">// React.lazy for code splitting</span>
+<span class="hljs-keyword">const</span> <span class="hljs-title class_">LazyComponent</span> = <span class="hljs-title class_">React</span>.<span class="hljs-title function_">lazy</span>(<span class="hljs-function">() =&gt;</span> <span class="hljs-keyword">import</span>(<span class="hljs-string">&#x27;./LazyComponent&#x27;</span>));
+<span class="hljs-keyword">const</span> <span class="hljs-title class_">AnotherLazyComponent</span> = <span class="hljs-title class_">React</span>.<span class="hljs-title function_">lazy</span>(<span class="hljs-function">() =&gt;</span> 
+  <span class="hljs-keyword">import</span>(<span class="hljs-string">&#x27;./AnotherComponent&#x27;</span>).<span class="hljs-title function_">then</span>(<span class="hljs-function"><span class="hljs-params">module</span> =&gt;</span> ({
+    <span class="hljs-attr">default</span>: <span class="hljs-variable language_">module</span>.<span class="hljs-property">AnotherComponent</span>
+  }))
+);
+
+<span class="hljs-keyword">function</span> <span class="hljs-title function_">App</span>(<span class="hljs-params"></span>) {
+  <span class="hljs-keyword">return</span> (
+    <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">Header</span> /&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">Suspense</span> <span class="hljs-attr">fallback</span>=<span class="hljs-string">{</span>&lt;<span class="hljs-attr">div</span>&gt;</span>Loading...<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>}&gt;
+        <span class="hljs-tag">&lt;<span class="hljs-name">Routes</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">Route</span> <span class="hljs-attr">path</span>=<span class="hljs-string">&quot;/lazy&quot;</span> <span class="hljs-attr">element</span>=<span class="hljs-string">{</span>&lt;<span class="hljs-attr">LazyComponent</span> /&gt;</span>} /&gt;
+          <span class="hljs-tag">&lt;<span class="hljs-name">Route</span> <span class="hljs-attr">path</span>=<span class="hljs-string">&quot;/another&quot;</span> <span class="hljs-attr">element</span>=<span class="hljs-string">{</span>&lt;<span class="hljs-attr">AnotherLazyComponent</span> /&gt;</span>} /&gt;
+        <span class="hljs-tag">&lt;/<span class="hljs-name">Routes</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">Suspense</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span>
+  );
+}
+
+<span class="hljs-comment">// Dynamic imports based on conditions</span>
+<span class="hljs-keyword">function</span> <span class="hljs-title function_">ConditionalComponent</span>(<span class="hljs-params">{ userRole }</span>) {
+  <span class="hljs-keyword">const</span> [<span class="hljs-title class_">Component</span>, setComponent] = <span class="hljs-title function_">useState</span>(<span class="hljs-literal">null</span>);
+
+  <span class="hljs-title function_">useEffect</span>(<span class="hljs-function">() =&gt;</span> {
+    <span class="hljs-keyword">if</span> (userRole === <span class="hljs-string">&#x27;admin&#x27;</span>) {
+      <span class="hljs-keyword">import</span>(<span class="hljs-string">&#x27;./AdminPanel&#x27;</span>).<span class="hljs-title function_">then</span>(<span class="hljs-function"><span class="hljs-params">module</span> =&gt;</span> {
+        <span class="hljs-title function_">setComponent</span>(<span class="hljs-function">() =&gt;</span> <span class="hljs-variable language_">module</span>.<span class="hljs-property">default</span>);
+      });
+    } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (userRole === <span class="hljs-string">&#x27;user&#x27;</span>) {
+      <span class="hljs-keyword">import</span>(<span class="hljs-string">&#x27;./UserDashboard&#x27;</span>).<span class="hljs-title function_">then</span>(<span class="hljs-function"><span class="hljs-params">module</span> =&gt;</span> {
+        <span class="hljs-title function_">setComponent</span>(<span class="hljs-function">() =&gt;</span> <span class="hljs-variable language_">module</span>.<span class="hljs-property">default</span>);
+      });
+    }
+  }, [userRole]);
+
+  <span class="hljs-keyword">if</span> (!<span class="hljs-title class_">Component</span>) {
+    <span class="hljs-keyword">return</span> <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>Loading...<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span>;
+  }
+
+  <span class="hljs-keyword">return</span> <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">Component</span> /&gt;</span></span>;
+}
+</code></pre></pre>
+<h2 id="react-18-features" node="[object Object]">React 18 Features</h2>
+<h3 id="concurrent-features" node="[object Object]">Concurrent Features</h3>
+<pre><pre><code class="hljs hljs language-jsx"><span class="hljs-comment">// Suspense for data fetching</span>
+<span class="hljs-keyword">function</span> <span class="hljs-title function_">UserProfile</span>(<span class="hljs-params">{ userId }</span>) {
+  <span class="hljs-keyword">const</span> user = <span class="hljs-title function_">useSuspenseQuery</span>([<span class="hljs-string">&#x27;user&#x27;</span>, userId], <span class="hljs-function">() =&gt;</span> <span class="hljs-title function_">fetchUser</span>(userId));
+
+  <span class="hljs-keyword">return</span> (
+    <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>{user.name}<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>{user.email}<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span>
+  );
+}
+
+<span class="hljs-keyword">function</span> <span class="hljs-title function_">App</span>(<span class="hljs-params"></span>) {
+  <span class="hljs-keyword">return</span> (
+    <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">Suspense</span> <span class="hljs-attr">fallback</span>=<span class="hljs-string">{</span>&lt;<span class="hljs-attr">UserProfileSkeleton</span> /&gt;</span>}&gt;
+      <span class="hljs-tag">&lt;<span class="hljs-name">UserProfile</span> <span class="hljs-attr">userId</span>=<span class="hljs-string">{1}</span> /&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">Suspense</span>&gt;</span></span>
+  );
+}
+
+<span class="hljs-comment">// useTransition for non-urgent updates</span>
+<span class="hljs-keyword">function</span> <span class="hljs-title function_">SearchComponent</span>(<span class="hljs-params"></span>) {
+  <span class="hljs-keyword">const</span> [query, setQuery] = <span class="hljs-title function_">useState</span>(<span class="hljs-string">&#x27;&#x27;</span>);
+  <span class="hljs-keyword">const</span> [results, setResults] = <span class="hljs-title function_">useState</span>([]);
+  <span class="hljs-keyword">const</span> [isPending, startTransition] = <span class="hljs-title function_">useTransition</span>();
+
+  <span class="hljs-keyword">const</span> <span class="hljs-title function_">handleSearch</span> = (<span class="hljs-params">value</span>) =&gt; {
+    <span class="hljs-title function_">setQuery</span>(value);
+    
+    <span class="hljs-comment">// Mark this update as non-urgent</span>
+    <span class="hljs-title function_">startTransition</span>(<span class="hljs-function">() =&gt;</span> {
+      <span class="hljs-title function_">setResults</span>(<span class="hljs-title function_">searchItems</span>(value));
+    });
+  };
+
+  <span class="hljs-keyword">return</span> (
+    <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">input</span>
+        <span class="hljs-attr">value</span>=<span class="hljs-string">{query}</span>
+        <span class="hljs-attr">onChange</span>=<span class="hljs-string">{(e)</span> =&gt;</span> handleSearch(e.target.value)}
+        placeholder=&quot;Search...&quot;
+      /&gt;
+      {isPending &amp;&amp; <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>Searching...<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>}
+      <span class="hljs-tag">&lt;<span class="hljs-name">SearchResults</span> <span class="hljs-attr">results</span>=<span class="hljs-string">{results}</span> /&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span>
+  );
+}
+
+<span class="hljs-comment">// useDeferredValue for deferring expensive updates</span>
+<span class="hljs-keyword">function</span> <span class="hljs-title function_">ExpensiveList</span>(<span class="hljs-params">{ query }</span>) {
+  <span class="hljs-keyword">const</span> deferredQuery = <span class="hljs-title function_">useDeferredValue</span>(query);
+  <span class="hljs-keyword">const</span> filteredItems = <span class="hljs-title function_">useMemo</span>(<span class="hljs-function">() =&gt;</span> {
+    <span class="hljs-keyword">return</span> items.<span class="hljs-title function_">filter</span>(<span class="hljs-function"><span class="hljs-params">item</span> =&gt;</span> 
+      item.<span class="hljs-property">name</span>.<span class="hljs-title function_">toLowerCase</span>().<span class="hljs-title function_">includes</span>(deferredQuery.<span class="hljs-title function_">toLowerCase</span>())
+    );
+  }, [deferredQuery]);
+
+  <span class="hljs-keyword">return</span> (
+    <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>
+      {filteredItems.map(item =&gt; (
+        <span class="hljs-tag">&lt;<span class="hljs-name">ExpensiveItem</span> <span class="hljs-attr">key</span>=<span class="hljs-string">{item.id}</span> <span class="hljs-attr">item</span>=<span class="hljs-string">{item}</span> /&gt;</span>
+      ))}
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span>
+  );
+}
+</code></pre></pre>
+<h3 id="new-hooks-in-react-18" node="[object Object]">New Hooks in React 18</h3>
+<pre><pre><code class="hljs hljs language-jsx"><span class="hljs-comment">// useId for unique IDs</span>
+<span class="hljs-keyword">function</span> <span class="hljs-title function_">FormField</span>(<span class="hljs-params">{ label, type = <span class="hljs-string">&#x27;text&#x27;</span> }</span>) {
+  <span class="hljs-keyword">const</span> id = <span class="hljs-title function_">useId</span>();
+
+  <span class="hljs-keyword">return</span> (
+    <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">label</span> <span class="hljs-attr">htmlFor</span>=<span class="hljs-string">{id}</span>&gt;</span>{label}<span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">id</span>=<span class="hljs-string">{id}</span> <span class="hljs-attr">type</span>=<span class="hljs-string">{type}</span> /&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span>
+  );
+}
+
+<span class="hljs-comment">// useSyncExternalStore for external state</span>
+<span class="hljs-keyword">function</span> <span class="hljs-title function_">useOnlineStatus</span>(<span class="hljs-params"></span>) {
+  <span class="hljs-keyword">const</span> isOnline = <span class="hljs-title function_">useSyncExternalStore</span>(
+    <span class="hljs-function">(<span class="hljs-params">callback</span>) =&gt;</span> {
+      <span class="hljs-variable language_">window</span>.<span class="hljs-title function_">addEventListener</span>(<span class="hljs-string">&#x27;online&#x27;</span>, callback);
+      <span class="hljs-variable language_">window</span>.<span class="hljs-title function_">addEventListener</span>(<span class="hljs-string">&#x27;offline&#x27;</span>, callback);
+      <span class="hljs-keyword">return</span> <span class="hljs-function">() =&gt;</span> {
+        <span class="hljs-variable language_">window</span>.<span class="hljs-title function_">removeEventListener</span>(<span class="hljs-string">&#x27;online&#x27;</span>, callback);
+        <span class="hljs-variable language_">window</span>.<span class="hljs-title function_">removeEventListener</span>(<span class="hljs-string">&#x27;offline&#x27;</span>, callback);
+      };
+    },
+    <span class="hljs-function">() =&gt;</span> navigator.<span class="hljs-property">onLine</span>,
+    <span class="hljs-function">() =&gt;</span> <span class="hljs-literal">true</span> <span class="hljs-comment">// Server-side snapshot</span>
+  );
+
+  <span class="hljs-keyword">return</span> isOnline;
+}
+
+<span class="hljs-comment">// useInsertionEffect for CSS-in-JS libraries</span>
+<span class="hljs-keyword">function</span> <span class="hljs-title function_">useCSS</span>(<span class="hljs-params">css</span>) {
+  <span class="hljs-title function_">useInsertionEffect</span>(<span class="hljs-function">() =&gt;</span> {
+    <span class="hljs-keyword">const</span> style = <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">createElement</span>(<span class="hljs-string">&#x27;style&#x27;</span>);
+    style.<span class="hljs-property">textContent</span> = css;
+    <span class="hljs-variable language_">document</span>.<span class="hljs-property">head</span>.<span class="hljs-title function_">appendChild</span>(style);
+    
+    <span class="hljs-keyword">return</span> <span class="hljs-function">() =&gt;</span> {
+      <span class="hljs-variable language_">document</span>.<span class="hljs-property">head</span>.<span class="hljs-title function_">removeChild</span>(style);
+    };
+  }, [css]);
+}
+</code></pre></pre>
+<h2 id="state-management-patterns" node="[object Object]">State Management Patterns</h2>
+<h3 id="context-+-reducer-pattern" node="[object Object]">Context + Reducer Pattern</h3>
+<pre><pre><code class="hljs hljs language-jsx"><span class="hljs-comment">// State management with Context and Reducer</span>
+<span class="hljs-keyword">const</span> <span class="hljs-title class_">AppStateContext</span> = <span class="hljs-title function_">createContext</span>();
+<span class="hljs-keyword">const</span> <span class="hljs-title class_">AppDispatchContext</span> = <span class="hljs-title function_">createContext</span>();
+
+<span class="hljs-keyword">function</span> <span class="hljs-title function_">appReducer</span>(<span class="hljs-params">state, action</span>) {
+  <span class="hljs-keyword">switch</span> (action.<span class="hljs-property">type</span>) {
+    <span class="hljs-keyword">case</span> <span class="hljs-string">&#x27;SET_USER&#x27;</span>:
+      <span class="hljs-keyword">return</span> { ...state, <span class="hljs-attr">user</span>: action.<span class="hljs-property">payload</span> };
+    <span class="hljs-keyword">case</span> <span class="hljs-string">&#x27;SET_THEME&#x27;</span>:
+      <span class="hljs-keyword">return</span> { ...state, <span class="hljs-attr">theme</span>: action.<span class="hljs-property">payload</span> };
+    <span class="hljs-keyword">case</span> <span class="hljs-string">&#x27;ADD_NOTIFICATION&#x27;</span>:
+      <span class="hljs-keyword">return</span> {
+        ...state,
+        <span class="hljs-attr">notifications</span>: [...state.<span class="hljs-property">notifications</span>, action.<span class="hljs-property">payload</span>]
+      };
+    <span class="hljs-keyword">case</span> <span class="hljs-string">&#x27;REMOVE_NOTIFICATION&#x27;</span>:
+      <span class="hljs-keyword">return</span> {
+        ...state,
+        <span class="hljs-attr">notifications</span>: state.<span class="hljs-property">notifications</span>.<span class="hljs-title function_">filter</span>(<span class="hljs-function"><span class="hljs-params">n</span> =&gt;</span> n.<span class="hljs-property">id</span> !== action.<span class="hljs-property">payload</span>)
+      };
+    <span class="hljs-attr">default</span>:
+      <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Error</span>(<span class="hljs-string">`Unhandled action type: <span class="hljs-subst">${action.type}</span>`</span>);
+  }
+}
+
+<span class="hljs-keyword">function</span> <span class="hljs-title function_">AppProvider</span>(<span class="hljs-params">{ children }</span>) {
+  <span class="hljs-keyword">const</span> [state, dispatch] = <span class="hljs-title function_">useReducer</span>(appReducer, {
+    <span class="hljs-attr">user</span>: <span class="hljs-literal">null</span>,
+    <span class="hljs-attr">theme</span>: <span class="hljs-string">&#x27;light&#x27;</span>,
+    <span class="hljs-attr">notifications</span>: []
+  });
+
+  <span class="hljs-keyword">return</span> (
+    <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">AppStateContext.Provider</span> <span class="hljs-attr">value</span>=<span class="hljs-string">{state}</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">AppDispatchContext.Provider</span> <span class="hljs-attr">value</span>=<span class="hljs-string">{dispatch}</span>&gt;</span>
+        {children}
+      <span class="hljs-tag">&lt;/<span class="hljs-name">AppDispatchContext.Provider</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">AppStateContext.Provider</span>&gt;</span></span>
+  );
+}
+
+<span class="hljs-comment">// Custom hooks for accessing state and dispatch</span>
+<span class="hljs-keyword">function</span> <span class="hljs-title function_">useAppState</span>(<span class="hljs-params"></span>) {
+  <span class="hljs-keyword">const</span> context = <span class="hljs-title function_">useContext</span>(<span class="hljs-title class_">AppStateContext</span>);
+  <span class="hljs-keyword">if</span> (!context) {
+    <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Error</span>(<span class="hljs-string">&#x27;useAppState must be used within AppProvider&#x27;</span>);
+  }
+  <span class="hljs-keyword">return</span> context;
+}
+
+<span class="hljs-keyword">function</span> <span class="hljs-title function_">useAppDispatch</span>(<span class="hljs-params"></span>) {
+  <span class="hljs-keyword">const</span> context = <span class="hljs-title function_">useContext</span>(<span class="hljs-title class_">AppDispatchContext</span>);
+  <span class="hljs-keyword">if</span> (!context) {
+    <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Error</span>(<span class="hljs-string">&#x27;useAppDispatch must be used within AppProvider&#x27;</span>);
+  }
+  <span class="hljs-keyword">return</span> context;
+}
+</code></pre></pre>
+<h3 id="zustand-integration" node="[object Object]">Zustand Integration</h3>
+<pre><pre><code class="hljs hljs language-jsx"><span class="hljs-comment">// Zustand store</span>
+<span class="hljs-keyword">import</span> { create } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;zustand&#x27;</span>;
+<span class="hljs-keyword">import</span> { subscribeWithSelector } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;zustand/middleware&#x27;</span>;
+
+<span class="hljs-keyword">const</span> useStore = <span class="hljs-title function_">create</span>(
+  <span class="hljs-title function_">subscribeWithSelector</span>(<span class="hljs-function">(<span class="hljs-params">set, get</span>) =&gt;</span> ({
+    <span class="hljs-comment">// State</span>
+    <span class="hljs-attr">user</span>: <span class="hljs-literal">null</span>,
+    <span class="hljs-attr">todos</span>: [],
+    <span class="hljs-attr">filter</span>: <span class="hljs-string">&#x27;all&#x27;</span>,
+    
+    <span class="hljs-comment">// Actions</span>
+    <span class="hljs-attr">setUser</span>: <span class="hljs-function">(<span class="hljs-params">user</span>) =&gt;</span> <span class="hljs-title function_">set</span>({ user }),
+    
+    <span class="hljs-attr">addTodo</span>: <span class="hljs-function">(<span class="hljs-params">text</span>) =&gt;</span> <span class="hljs-title function_">set</span>(<span class="hljs-function">(<span class="hljs-params">state</span>) =&gt;</span> ({
+      <span class="hljs-attr">todos</span>: [...state.<span class="hljs-property">todos</span>, {
+        <span class="hljs-attr">id</span>: <span class="hljs-title class_">Date</span>.<span class="hljs-title function_">now</span>(),
+        text,
+        <span class="hljs-attr">completed</span>: <span class="hljs-literal">false</span>
+      }]
+    })),
+    
+    <span class="hljs-attr">toggleTodo</span>: <span class="hljs-function">(<span class="hljs-params">id</span>) =&gt;</span> <span class="hljs-title function_">set</span>(<span class="hljs-function">(<span class="hljs-params">state</span>) =&gt;</span> ({
+      <span class="hljs-attr">todos</span>: state.<span class="hljs-property">todos</span>.<span class="hljs-title function_">map</span>(<span class="hljs-function"><span class="hljs-params">todo</span> =&gt;</span>
+        todo.<span class="hljs-property">id</span> === id ? { ...todo, <span class="hljs-attr">completed</span>: !todo.<span class="hljs-property">completed</span> } : todo
+      )
+    })),
+    
+    <span class="hljs-attr">setFilter</span>: <span class="hljs-function">(<span class="hljs-params">filter</span>) =&gt;</span> <span class="hljs-title function_">set</span>({ filter }),
+    
+    <span class="hljs-comment">// Computed values</span>
+    <span class="hljs-keyword">get</span> <span class="hljs-title function_">filteredTodos</span>() {
+      <span class="hljs-keyword">const</span> { todos, filter } = <span class="hljs-title function_">get</span>();
+      <span class="hljs-keyword">if</span> (filter === <span class="hljs-string">&#x27;completed&#x27;</span>) <span class="hljs-keyword">return</span> todos.<span class="hljs-title function_">filter</span>(<span class="hljs-function"><span class="hljs-params">t</span> =&gt;</span> t.<span class="hljs-property">completed</span>);
+      <span class="hljs-keyword">if</span> (filter === <span class="hljs-string">&#x27;pending&#x27;</span>) <span class="hljs-keyword">return</span> todos.<span class="hljs-title function_">filter</span>(<span class="hljs-function"><span class="hljs-params">t</span> =&gt;</span> !t.<span class="hljs-property">completed</span>);
+      <span class="hljs-keyword">return</span> todos;
+    }
+  }))
+);
+
+<span class="hljs-comment">// Using Zustand in components</span>
+<span class="hljs-keyword">function</span> <span class="hljs-title function_">TodoApp</span>(<span class="hljs-params"></span>) {
+  <span class="hljs-keyword">const</span> { filteredTodos, addTodo, toggleTodo, filter, setFilter } = <span class="hljs-title function_">useStore</span>();
+
+  <span class="hljs-keyword">return</span> (
+    <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">TodoForm</span> <span class="hljs-attr">onSubmit</span>=<span class="hljs-string">{addTodo}</span> /&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">FilterButtons</span> <span class="hljs-attr">filter</span>=<span class="hljs-string">{filter}</span> <span class="hljs-attr">onChange</span>=<span class="hljs-string">{setFilter}</span> /&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">TodoList</span> <span class="hljs-attr">todos</span>=<span class="hljs-string">{filteredTodos}</span> <span class="hljs-attr">onToggle</span>=<span class="hljs-string">{toggleTodo}</span> /&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span>
+  );
+}
+</code></pre></pre>
+<h2 id="testing-react-components" node="[object Object]">Testing React Components</h2>
+<h3 id="testing-with-jest-and-react-testing-library" node="[object Object]">Testing with Jest and React Testing Library</h3>
+<pre><pre><code class="hljs hljs language-jsx"><span class="hljs-comment">// Component to test</span>
+<span class="hljs-keyword">function</span> <span class="hljs-title function_">Counter</span>(<span class="hljs-params">{ initialCount = <span class="hljs-number">0</span> }</span>) {
+  <span class="hljs-keyword">const</span> [count, setCount] = <span class="hljs-title function_">useState</span>(initialCount);
+
+  <span class="hljs-keyword">return</span> (
+    <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">data-testid</span>=<span class="hljs-string">&quot;count&quot;</span>&gt;</span>Count: {count}<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">onClick</span>=<span class="hljs-string">{()</span> =&gt;</span> setCount(count + 1)}&gt;Increment<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">onClick</span>=<span class="hljs-string">{()</span> =&gt;</span> setCount(count - 1)}&gt;Decrement<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">onClick</span>=<span class="hljs-string">{()</span> =&gt;</span> setCount(0)}&gt;Reset<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span>
+  );
+}
+
+<span class="hljs-comment">// Test file</span>
+<span class="hljs-keyword">import</span> { render, screen, fireEvent } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@testing-library/react&#x27;</span>;
+<span class="hljs-keyword">import</span> userEvent <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@testing-library/user-event&#x27;</span>;
+<span class="hljs-keyword">import</span> <span class="hljs-title class_">Counter</span> <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;./Counter&#x27;</span>;
+
+<span class="hljs-title function_">describe</span>(<span class="hljs-string">&#x27;Counter Component&#x27;</span>, <span class="hljs-function">() =&gt;</span> {
+  <span class="hljs-title function_">test</span>(<span class="hljs-string">&#x27;renders with initial count&#x27;</span>, <span class="hljs-function">() =&gt;</span> {
+    <span class="hljs-title function_">render</span>(<span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">Counter</span> <span class="hljs-attr">initialCount</span>=<span class="hljs-string">{5}</span> /&gt;</span></span>);
+    <span class="hljs-title function_">expect</span>(screen.<span class="hljs-title function_">getByTestId</span>(<span class="hljs-string">&#x27;count&#x27;</span>)).<span class="hljs-title function_">toHaveTextContent</span>(<span class="hljs-string">&#x27;Count: 5&#x27;</span>);
+  });
+
+  <span class="hljs-title function_">test</span>(<span class="hljs-string">&#x27;increments count when increment button is clicked&#x27;</span>, <span class="hljs-title function_">async</span> () =&gt; {
+    <span class="hljs-keyword">const</span> user = userEvent.<span class="hljs-title function_">setup</span>();
+    <span class="hljs-title function_">render</span>(<span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">Counter</span> /&gt;</span></span>);
+    
+    <span class="hljs-keyword">const</span> incrementButton = screen.<span class="hljs-title function_">getByText</span>(<span class="hljs-string">&#x27;Increment&#x27;</span>);
+    <span class="hljs-keyword">await</span> user.<span class="hljs-title function_">click</span>(incrementButton);
+    
+    <span class="hljs-title function_">expect</span>(screen.<span class="hljs-title function_">getByTestId</span>(<span class="hljs-string">&#x27;count&#x27;</span>)).<span class="hljs-title function_">toHaveTextContent</span>(<span class="hljs-string">&#x27;Count: 1&#x27;</span>);
+  });
+
+  <span class="hljs-title function_">test</span>(<span class="hljs-string">&#x27;decrements count when decrement button is clicked&#x27;</span>, <span class="hljs-title function_">async</span> () =&gt; {
+    <span class="hljs-keyword">const</span> user = userEvent.<span class="hljs-title function_">setup</span>();
+    <span class="hljs-title function_">render</span>(<span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">Counter</span> <span class="hljs-attr">initialCount</span>=<span class="hljs-string">{2}</span> /&gt;</span></span>);
+    
+    <span class="hljs-keyword">const</span> decrementButton = screen.<span class="hljs-title function_">getByText</span>(<span class="hljs-string">&#x27;Decrement&#x27;</span>);
+    <span class="hljs-keyword">await</span> user.<span class="hljs-title function_">click</span>(decrementButton);
+    
+    <span class="hljs-title function_">expect</span>(screen.<span class="hljs-title function_">getByTestId</span>(<span class="hljs-string">&#x27;count&#x27;</span>)).<span class="hljs-title function_">toHaveTextContent</span>(<span class="hljs-string">&#x27;Count: 1&#x27;</span>);
+  });
+
+  <span class="hljs-title function_">test</span>(<span class="hljs-string">&#x27;resets count when reset button is clicked&#x27;</span>, <span class="hljs-title function_">async</span> () =&gt; {
+    <span class="hljs-keyword">const</span> user = userEvent.<span class="hljs-title function_">setup</span>();
+    <span class="hljs-title function_">render</span>(<span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">Counter</span> <span class="hljs-attr">initialCount</span>=<span class="hljs-string">{5}</span> /&gt;</span></span>);
+    
+    <span class="hljs-keyword">const</span> resetButton = screen.<span class="hljs-title function_">getByText</span>(<span class="hljs-string">&#x27;Reset&#x27;</span>);
+    <span class="hljs-keyword">await</span> user.<span class="hljs-title function_">click</span>(resetButton);
+    
+    <span class="hljs-title function_">expect</span>(screen.<span class="hljs-title function_">getByTestId</span>(<span class="hljs-string">&#x27;count&#x27;</span>)).<span class="hljs-title function_">toHaveTextContent</span>(<span class="hljs-string">&#x27;Count: 0&#x27;</span>);
+  });
+});
+
+<span class="hljs-comment">// Testing hooks</span>
+<span class="hljs-keyword">import</span> { renderHook, act } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@testing-library/react&#x27;</span>;
+<span class="hljs-keyword">import</span> { useCounter } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;./useCounter&#x27;</span>;
+
+<span class="hljs-title function_">describe</span>(<span class="hljs-string">&#x27;useCounter Hook&#x27;</span>, <span class="hljs-function">() =&gt;</span> {
+  <span class="hljs-title function_">test</span>(<span class="hljs-string">&#x27;should initialize with default value&#x27;</span>, <span class="hljs-function">() =&gt;</span> {
+    <span class="hljs-keyword">const</span> { result } = <span class="hljs-title function_">renderHook</span>(<span class="hljs-function">() =&gt;</span> <span class="hljs-title function_">useCounter</span>());
+    <span class="hljs-title function_">expect</span>(result.<span class="hljs-property">current</span>.<span class="hljs-property">count</span>).<span class="hljs-title function_">toBe</span>(<span class="hljs-number">0</span>);
+  });
+
+  <span class="hljs-title function_">test</span>(<span class="hljs-string">&#x27;should increment count&#x27;</span>, <span class="hljs-function">() =&gt;</span> {
+    <span class="hljs-keyword">const</span> { result } = <span class="hljs-title function_">renderHook</span>(<span class="hljs-function">() =&gt;</span> <span class="hljs-title function_">useCounter</span>());
+    
+    <span class="hljs-title function_">act</span>(<span class="hljs-function">() =&gt;</span> {
+      result.<span class="hljs-property">current</span>.<span class="hljs-title function_">increment</span>();
+    });
+    
+    <span class="hljs-title function_">expect</span>(result.<span class="hljs-property">current</span>.<span class="hljs-property">count</span>).<span class="hljs-title function_">toBe</span>(<span class="hljs-number">1</span>);
+  });
+
+  <span class="hljs-title function_">test</span>(<span class="hljs-string">&#x27;should decrement count&#x27;</span>, <span class="hljs-function">() =&gt;</span> {
+    <span class="hljs-keyword">const</span> { result } = <span class="hljs-title function_">renderHook</span>(<span class="hljs-function">() =&gt;</span> <span class="hljs-title function_">useCounter</span>(<span class="hljs-number">5</span>));
+    
+    <span class="hljs-title function_">act</span>(<span class="hljs-function">() =&gt;</span> {
+      result.<span class="hljs-property">current</span>.<span class="hljs-title function_">decrement</span>();
+    });
+    
+    <span class="hljs-title function_">expect</span>(result.<span class="hljs-property">current</span>.<span class="hljs-property">count</span>).<span class="hljs-title function_">toBe</span>(<span class="hljs-number">4</span>);
+  });
+});
+</code></pre></pre>
+<h2 id="common-patterns" node="[object Object]">Common Patterns</h2>
+<h3 id="higher-order-components-(hocs)" node="[object Object]">Higher-Order Components (HOCs)</h3>
+<pre><pre><code class="hljs hljs language-jsx"><span class="hljs-comment">// HOC for authentication</span>
+<span class="hljs-keyword">function</span> <span class="hljs-title function_">withAuth</span>(<span class="hljs-params">Component</span>) {
+  <span class="hljs-keyword">return</span> <span class="hljs-keyword">function</span> <span class="hljs-title function_">AuthenticatedComponent</span>(<span class="hljs-params">props</span>) {
+    <span class="hljs-keyword">const</span> { user, loading } = <span class="hljs-title function_">useAuth</span>();
+
+    <span class="hljs-keyword">if</span> (loading) {
+      <span class="hljs-keyword">return</span> <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>Loading...<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span>;
+    }
+
+    <span class="hljs-keyword">if</span> (!user) {
+      <span class="hljs-keyword">return</span> <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>Please log in to access this page.<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span>;
+    }
+
+    <span class="hljs-keyword">return</span> <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">Component</span> {<span class="hljs-attr">...props</span>} <span class="hljs-attr">user</span>=<span class="hljs-string">{user}</span> /&gt;</span></span>;
+  };
+}
+
+<span class="hljs-comment">// Usage</span>
+<span class="hljs-keyword">const</span> <span class="hljs-title class_">ProtectedDashboard</span> = <span class="hljs-title function_">withAuth</span>(<span class="hljs-title class_">Dashboard</span>);
+
+<span class="hljs-comment">// HOC for loading state</span>
+<span class="hljs-keyword">function</span> <span class="hljs-title function_">withLoading</span>(<span class="hljs-params">Component</span>) {
+  <span class="hljs-keyword">return</span> <span class="hljs-keyword">function</span> <span class="hljs-title function_">LoadingComponent</span>(<span class="hljs-params">{ isLoading, ...props }</span>) {
+    <span class="hljs-keyword">if</span> (isLoading) {
+      <span class="hljs-keyword">return</span> <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>Loading...<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span>;
+    }
+
+    <span class="hljs-keyword">return</span> <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">Component</span> {<span class="hljs-attr">...props</span>} /&gt;</span></span>;
+  };
+}
+</code></pre></pre>
+<h3 id="render-props-pattern" node="[object Object]">Render Props Pattern</h3>
+<pre><pre><code class="hljs hljs language-jsx"><span class="hljs-comment">// Render props for data fetching</span>
+<span class="hljs-keyword">function</span> <span class="hljs-title function_">DataFetcher</span>(<span class="hljs-params">{ url, children }</span>) {
+  <span class="hljs-keyword">const</span> [data, setData] = <span class="hljs-title function_">useState</span>(<span class="hljs-literal">null</span>);
+  <span class="hljs-keyword">const</span> [loading, setLoading] = <span class="hljs-title function_">useState</span>(<span class="hljs-literal">true</span>);
+  <span class="hljs-keyword">const</span> [error, setError] = <span class="hljs-title function_">useState</span>(<span class="hljs-literal">null</span>);
+
+  <span class="hljs-title function_">useEffect</span>(<span class="hljs-function">() =&gt;</span> {
+    <span class="hljs-title function_">fetch</span>(url)
+      .<span class="hljs-title function_">then</span>(<span class="hljs-function"><span class="hljs-params">response</span> =&gt;</span> response.<span class="hljs-title function_">json</span>())
+      .<span class="hljs-title function_">then</span>(<span class="hljs-function"><span class="hljs-params">data</span> =&gt;</span> {
+        <span class="hljs-title function_">setData</span>(data);
+        <span class="hljs-title function_">setLoading</span>(<span class="hljs-literal">false</span>);
+      })
+      .<span class="hljs-title function_">catch</span>(<span class="hljs-function"><span class="hljs-params">error</span> =&gt;</span> {
+        <span class="hljs-title function_">setError</span>(error);
+        <span class="hljs-title function_">setLoading</span>(<span class="hljs-literal">false</span>);
+      });
+  }, [url]);
+
+  <span class="hljs-keyword">return</span> <span class="hljs-title function_">children</span>({ data, loading, error });
+}
+
+<span class="hljs-comment">// Usage</span>
+<span class="hljs-keyword">function</span> <span class="hljs-title function_">UserList</span>(<span class="hljs-params"></span>) {
+  <span class="hljs-keyword">return</span> (
+    <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">DataFetcher</span> <span class="hljs-attr">url</span>=<span class="hljs-string">&quot;/api/users&quot;</span>&gt;</span>
+      {({ data, loading, error }) =&gt; {
+        if (loading) return <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>Loading...<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>;
+        if (error) return <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>Error: {error.message}<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>;
+        
+        return (
+          <span class="hljs-tag">&lt;<span class="hljs-name">ul</span>&gt;</span>
+            {data.map(user =&gt; (
+              <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">key</span>=<span class="hljs-string">{user.id}</span>&gt;</span>{user.name}<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+            ))}
+          <span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span>
+        );
+      }}
+    <span class="hljs-tag">&lt;/<span class="hljs-name">DataFetcher</span>&gt;</span></span>
+  );
+}
+</code></pre></pre>
+<h3 id="compound-components-pattern" node="[object Object]">Compound Components Pattern</h3>
+<pre><pre><code class="hljs hljs language-jsx"><span class="hljs-comment">// Compound components for tabs</span>
+<span class="hljs-keyword">const</span> <span class="hljs-title class_">TabsContext</span> = <span class="hljs-title function_">createContext</span>();
+
+<span class="hljs-keyword">function</span> <span class="hljs-title function_">Tabs</span>(<span class="hljs-params">{ children, defaultValue }</span>) {
+  <span class="hljs-keyword">const</span> [activeTab, setActiveTab] = <span class="hljs-title function_">useState</span>(defaultValue);
+
+  <span class="hljs-keyword">return</span> (
+    <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">TabsContext.Provider</span> <span class="hljs-attr">value</span>=<span class="hljs-string">{%</span> <span class="hljs-attr">raw</span> %}{{ <span class="hljs-attr">activeTab</span>, <span class="hljs-attr">setActiveTab</span> }}{% <span class="hljs-attr">endraw</span> %}&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">className</span>=<span class="hljs-string">&quot;tabs&quot;</span>&gt;</span>{children}<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">TabsContext.Provider</span>&gt;</span></span>
+  );
+}
+
+<span class="hljs-keyword">function</span> <span class="hljs-title function_">TabList</span>(<span class="hljs-params">{ children }</span>) {
+  <span class="hljs-keyword">return</span> <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">className</span>=<span class="hljs-string">&quot;tab-list&quot;</span>&gt;</span>{children}<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span>;
+}
+
+<span class="hljs-keyword">function</span> <span class="hljs-title function_">Tab</span>(<span class="hljs-params">{ value, children }</span>) {
+  <span class="hljs-keyword">const</span> { activeTab, setActiveTab } = <span class="hljs-title function_">useContext</span>(<span class="hljs-title class_">TabsContext</span>);
+  <span class="hljs-keyword">const</span> isActive = activeTab === value;
+
+  <span class="hljs-keyword">return</span> (
+    <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">button</span>
+      <span class="hljs-attr">className</span>=<span class="hljs-string">{</span>`<span class="hljs-attr">tab</span> ${<span class="hljs-attr">isActive</span> ? &#x27;<span class="hljs-attr">active</span>&#x27; <span class="hljs-attr">:</span> &#x27;&#x27;}`}
+      <span class="hljs-attr">onClick</span>=<span class="hljs-string">{()</span> =&gt;</span> setActiveTab(value)}
+    &gt;
+      {children}
+    <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span></span>
+  );
+}
+
+<span class="hljs-keyword">function</span> <span class="hljs-title function_">TabPanels</span>(<span class="hljs-params">{ children }</span>) {
+  <span class="hljs-keyword">return</span> <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">className</span>=<span class="hljs-string">&quot;tab-panels&quot;</span>&gt;</span>{children}<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span>;
+}
+
+<span class="hljs-keyword">function</span> <span class="hljs-title function_">TabPanel</span>(<span class="hljs-params">{ value, children }</span>) {
+  <span class="hljs-keyword">const</span> { activeTab } = <span class="hljs-title function_">useContext</span>(<span class="hljs-title class_">TabsContext</span>);
+  
+  <span class="hljs-keyword">if</span> (activeTab !== value) {
+    <span class="hljs-keyword">return</span> <span class="hljs-literal">null</span>;
+  }
+
+  <span class="hljs-keyword">return</span> <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">className</span>=<span class="hljs-string">&quot;tab-panel&quot;</span>&gt;</span>{children}<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span>;
+}
+
+<span class="hljs-comment">// Attach components to main component</span>
+<span class="hljs-title class_">Tabs</span>.<span class="hljs-property">List</span> = <span class="hljs-title class_">TabList</span>;
+<span class="hljs-title class_">Tabs</span>.<span class="hljs-property">Tab</span> = <span class="hljs-title class_">Tab</span>;
+<span class="hljs-title class_">Tabs</span>.<span class="hljs-property">Panels</span> = <span class="hljs-title class_">TabPanels</span>;
+<span class="hljs-title class_">Tabs</span>.<span class="hljs-property">Panel</span> = <span class="hljs-title class_">TabPanel</span>;
+
+<span class="hljs-comment">// Usage</span>
+<span class="hljs-keyword">function</span> <span class="hljs-title function_">App</span>(<span class="hljs-params"></span>) {
+  <span class="hljs-keyword">return</span> (
+    <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">Tabs</span> <span class="hljs-attr">defaultValue</span>=<span class="hljs-string">&quot;tab1&quot;</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">Tabs.List</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">Tabs.Tab</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;tab1&quot;</span>&gt;</span>Tab 1<span class="hljs-tag">&lt;/<span class="hljs-name">Tabs.Tab</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">Tabs.Tab</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;tab2&quot;</span>&gt;</span>Tab 2<span class="hljs-tag">&lt;/<span class="hljs-name">Tabs.Tab</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">Tabs.Tab</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;tab3&quot;</span>&gt;</span>Tab 3<span class="hljs-tag">&lt;/<span class="hljs-name">Tabs.Tab</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">Tabs.List</span>&gt;</span>
+      
+      <span class="hljs-tag">&lt;<span class="hljs-name">Tabs.Panels</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">Tabs.Panel</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;tab1&quot;</span>&gt;</span>Content of Tab 1<span class="hljs-tag">&lt;/<span class="hljs-name">Tabs.Panel</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">Tabs.Panel</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;tab2&quot;</span>&gt;</span>Content of Tab 2<span class="hljs-tag">&lt;/<span class="hljs-name">Tabs.Panel</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">Tabs.Panel</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;tab3&quot;</span>&gt;</span>Content of Tab 3<span class="hljs-tag">&lt;/<span class="hljs-name">Tabs.Panel</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">Tabs.Panels</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">Tabs</span>&gt;</span></span>
+  );
+}
+</code></pre></pre>
+<h2 id="server-side-rendering" node="[object Object]">Server-Side Rendering</h2>
+<h3 id="next.js-patterns" node="[object Object]">Next.js Patterns</h3>
+<pre><pre><code class="hljs hljs language-jsx"><span class="hljs-comment">// Server-side rendering with getServerSideProps</span>
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">async</span> <span class="hljs-keyword">function</span> <span class="hljs-title function_">getServerSideProps</span>(<span class="hljs-params">context</span>) {
+  <span class="hljs-keyword">const</span> { params, query, req, res } = context;
+  
+  <span class="hljs-keyword">try</span> {
+    <span class="hljs-keyword">const</span> data = <span class="hljs-keyword">await</span> <span class="hljs-title function_">fetchData</span>(params.<span class="hljs-property">id</span>);
+    
+    <span class="hljs-keyword">return</span> {
+      <span class="hljs-attr">props</span>: {
+        data,
+        <span class="hljs-attr">timestamp</span>: <span class="hljs-title class_">Date</span>.<span class="hljs-title function_">now</span>()
+      }
+    };
+  } <span class="hljs-keyword">catch</span> (error) {
+    <span class="hljs-keyword">return</span> {
+      <span class="hljs-attr">notFound</span>: <span class="hljs-literal">true</span>
+    };
+  }
+}
+
+<span class="hljs-comment">// Static generation with getStaticProps</span>
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">async</span> <span class="hljs-keyword">function</span> <span class="hljs-title function_">getStaticProps</span>(<span class="hljs-params">{ params }</span>) {
+  <span class="hljs-keyword">const</span> post = <span class="hljs-keyword">await</span> <span class="hljs-title function_">getPostBySlug</span>(params.<span class="hljs-property">slug</span>);
+  
+  <span class="hljs-keyword">return</span> {
+    <span class="hljs-attr">props</span>: {
+      post
+    },
+    <span class="hljs-attr">revalidate</span>: <span class="hljs-number">60</span> <span class="hljs-comment">// ISR - revalidate every 60 seconds</span>
+  };
+}
+
+<span class="hljs-comment">// Dynamic routes with getStaticPaths</span>
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">async</span> <span class="hljs-keyword">function</span> <span class="hljs-title function_">getStaticPaths</span>(<span class="hljs-params"></span>) {
+  <span class="hljs-keyword">const</span> posts = <span class="hljs-keyword">await</span> <span class="hljs-title function_">getAllPosts</span>();
+  <span class="hljs-keyword">const</span> paths = posts.<span class="hljs-title function_">map</span>(<span class="hljs-function"><span class="hljs-params">post</span> =&gt;</span> ({
+    <span class="hljs-attr">params</span>: { <span class="hljs-attr">slug</span>: post.<span class="hljs-property">slug</span> }
+  }));
+  
+  <span class="hljs-keyword">return</span> {
+    paths,
+    <span class="hljs-attr">fallback</span>: <span class="hljs-string">&#x27;blocking&#x27;</span> <span class="hljs-comment">// or false, true</span>
+  };
+}
+
+<span class="hljs-comment">// App Router (React 18)</span>
+<span class="hljs-comment">// app/page.tsx</span>
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-keyword">async</span> <span class="hljs-keyword">function</span> <span class="hljs-title function_">HomePage</span>(<span class="hljs-params"></span>) {
+  <span class="hljs-keyword">const</span> data = <span class="hljs-keyword">await</span> <span class="hljs-title function_">fetchData</span>();
+  
+  <span class="hljs-keyword">return</span> (
+    <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>Welcome<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">DataComponent</span> <span class="hljs-attr">data</span>=<span class="hljs-string">{data}</span> /&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span>
+  );
+}
+
+<span class="hljs-comment">// app/layout.tsx</span>
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-keyword">function</span> <span class="hljs-title function_">RootLayout</span>(<span class="hljs-params">{ children }</span>) {
+  <span class="hljs-keyword">return</span> (
+    <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">html</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">header</span>&gt;</span>My App<span class="hljs-tag">&lt;/<span class="hljs-name">header</span>&gt;</span>
+        {children}
+        <span class="hljs-tag">&lt;<span class="hljs-name">footer</span>&gt;</span>Footer<span class="hljs-tag">&lt;/<span class="hljs-name">footer</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span></span>
+  );
+}
+</code></pre></pre>
+<h2 id="advanced-interview-questions" node="[object Object]">Advanced Interview Questions</h2>
+<h3 id="1.-explain-react&#x27;s-reconciliation-algorithm-and-how-keys-work." node="[object Object]">1. Explain React&#x27;s reconciliation algorithm and how keys work.</h3>
+<p><strong>Answer:</strong>
+React&#x27;s reconciliation is the diffing algorithm that compares the current virtual DOM tree with the previous one to determine what changes need to be made to the real DOM.</p>
+<p><strong>How it works:</strong></p>
+<ol>
+<li>When state or props change, React creates a new virtual DOM tree</li>
+<li>React compares (diffs) the new tree with the previous tree</li>
+<li>React calculates the minimum set of changes needed</li>
+<li>React applies only those changes to the real DOM</li>
+</ol>
+<p><strong>Keys are crucial for:</strong></p>
+<ul>
+<li>Identifying which items have changed, been added, or removed</li>
+<li>Maintaining component state during re-renders</li>
+<li>Optimizing performance by reusing DOM nodes</li>
+</ul>
+<pre><pre><code class="hljs hljs language-jsx"><span class="hljs-comment">// ❌ Bad - using array index</span>
+{items.<span class="hljs-title function_">map</span>(<span class="hljs-function">(<span class="hljs-params">item, index</span>) =&gt;</span> (
+  <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">Item</span> <span class="hljs-attr">key</span>=<span class="hljs-string">{index}</span> <span class="hljs-attr">data</span>=<span class="hljs-string">{item}</span> /&gt;</span></span>
+))}
+
+<span class="hljs-comment">// ✅ Good - using stable unique identifier</span>
+{items.<span class="hljs-title function_">map</span>(<span class="hljs-function"><span class="hljs-params">item</span> =&gt;</span> (
+  <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">Item</span> <span class="hljs-attr">key</span>=<span class="hljs-string">{item.id}</span> <span class="hljs-attr">data</span>=<span class="hljs-string">{item}</span> /&gt;</span></span>
+))}
+</code></pre></pre>
+<h3 id="2.-what-are-the-differences-between-usememo-and-usecallback?" node="[object Object]">2. What are the differences between useMemo and useCallback?</h3>
+<p><strong>Answer:</strong></p>
+<ul>
+<li><strong>useMemo</strong>: Memoizes the result of a computation/expression</li>
+<li><strong>useCallback</strong>: Memoizes a function definition</li>
+</ul>
+<pre><pre><code class="hljs hljs language-jsx"><span class="hljs-comment">// useMemo - memoizes the computed value</span>
+<span class="hljs-keyword">const</span> expensiveValue = <span class="hljs-title function_">useMemo</span>(<span class="hljs-function">() =&gt;</span> {
+  <span class="hljs-keyword">return</span> <span class="hljs-title function_">computeExpensiveValue</span>(a, b);
+}, [a, b]);
+
+<span class="hljs-comment">// useCallback - memoizes the function itself</span>
+<span class="hljs-keyword">const</span> memoizedCallback = <span class="hljs-title function_">useCallback</span>(<span class="hljs-function">() =&gt;</span> {
+  <span class="hljs-title function_">doSomething</span>(a, b);
+}, [a, b]);
+
+<span class="hljs-comment">// useCallback is equivalent to:</span>
+<span class="hljs-keyword">const</span> memoizedCallback = <span class="hljs-title function_">useMemo</span>(<span class="hljs-function">() =&gt;</span> {
+  <span class="hljs-keyword">return</span> <span class="hljs-function">() =&gt;</span> <span class="hljs-title function_">doSomething</span>(a, b);
+}, [a, b]);
+</code></pre></pre>
+<h3 id="3.-how-does-react&#x27;s-fiber-architecture-improve-performance?" node="[object Object]">3. How does React&#x27;s Fiber architecture improve performance?</h3>
+<p><strong>Answer:</strong>
+Fiber is React&#x27;s reconciliation algorithm that makes reconciliation interruptible and prioritizable:</p>
+<p><strong>Key improvements:</strong></p>
+<ul>
+<li><strong>Incremental rendering</strong>: Work can be split into chunks</li>
+<li><strong>Prioritization</strong>: Updates can have different priorities</li>
+<li><strong>Pausing and resuming</strong>: React can pause work and come back to it later</li>
+<li><strong>Error boundaries</strong>: Better error handling during rendering</li>
+<li><strong>Time slicing</strong>: Prevents blocking the main thread</li>
+</ul>
+<p><strong>Benefits:</strong></p>
+<ul>
+<li>Smoother animations and interactions</li>
+<li>Better responsiveness</li>
+<li>Ability to schedule low-priority updates</li>
+<li>Improved user experience</li>
+</ul>
+<h3 id="4.-explain-the-difference-between-controlled-and-uncontrolled-components." node="[object Object]">4. Explain the difference between controlled and uncontrolled components.</h3>
+<p><strong>Answer:</strong></p>
+<p><strong>Controlled Components:</strong></p>
+<pre><pre><code class="hljs hljs language-jsx"><span class="hljs-keyword">function</span> <span class="hljs-title function_">ControlledInput</span>(<span class="hljs-params"></span>) {
+  <span class="hljs-keyword">const</span> [value, setValue] = <span class="hljs-title function_">useState</span>(<span class="hljs-string">&#x27;&#x27;</span>);
+  
+  <span class="hljs-keyword">return</span> (
+    <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">input</span>
+      <span class="hljs-attr">value</span>=<span class="hljs-string">{value}</span>
+      <span class="hljs-attr">onChange</span>=<span class="hljs-string">{(e)</span> =&gt;</span> setValue(e.target.value)}
+    /&gt;</span>
+  );
+}
+</code></pre></pre>
+<p><strong>Uncontrolled Components:</strong></p>
+<pre><pre><code class="hljs hljs language-jsx"><span class="hljs-keyword">function</span> <span class="hljs-title function_">UncontrolledInput</span>(<span class="hljs-params"></span>) {
+  <span class="hljs-keyword">const</span> inputRef = <span class="hljs-title function_">useRef</span>();
+  
+  <span class="hljs-keyword">const</span> <span class="hljs-title function_">handleSubmit</span> = (<span class="hljs-params"></span>) =&gt; {
+    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(inputRef.<span class="hljs-property">current</span>.<span class="hljs-property">value</span>);
+  };
+  
+  <span class="hljs-keyword">return</span> (
+    <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">ref</span>=<span class="hljs-string">{inputRef}</span> <span class="hljs-attr">defaultValue</span>=<span class="hljs-string">&quot;initial&quot;</span> /&gt;</span></span>
+  );
+}
+</code></pre></pre>
+<p><strong>When to use:</strong></p>
+<ul>
+<li><strong>Controlled</strong>: When you need validation, formatting, or dynamic behavior</li>
+<li><strong>Uncontrolled</strong>: For simple forms or when integrating with non-React code</li>
+</ul>
+<h3 id="5.-what-are-react-portals-and-when-would-you-use-them?" node="[object Object]">5. What are React Portals and when would you use them?</h3>
+<p><strong>Answer:</strong>
+Portals provide a way to render children into a DOM node outside of the parent component&#x27;s DOM hierarchy.</p>
+<pre><pre><code class="hljs hljs language-jsx"><span class="hljs-keyword">function</span> <span class="hljs-title function_">Modal</span>(<span class="hljs-params">{ children, isOpen }</span>) {
+  <span class="hljs-keyword">if</span> (!isOpen) <span class="hljs-keyword">return</span> <span class="hljs-literal">null</span>;
+  
+  <span class="hljs-keyword">return</span> <span class="hljs-title class_">ReactDOM</span>.<span class="hljs-title function_">createPortal</span>(
+    <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">className</span>=<span class="hljs-string">&quot;modal-overlay&quot;</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">className</span>=<span class="hljs-string">&quot;modal-content&quot;</span>&gt;</span>
+        {children}
+      <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span>,
+    <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">getElementById</span>(<span class="hljs-string">&#x27;modal-root&#x27;</span>)
+  );
+}
+</code></pre></pre>
+<p><strong>Use cases:</strong></p>
+<ul>
+<li>Modals and dialogs</li>
+<li>Tooltips and popovers</li>
+<li>Notifications</li>
+<li>Any UI that needs to escape parent&#x27;s overflow/z-index constraints</li>
+</ul>
+<h3 id="6.-how-do-you-handle-error-boundaries-in-react?" node="[object Object]">6. How do you handle error boundaries in React?</h3>
+<p><strong>Answer:</strong>
+Error boundaries are React components that catch JavaScript errors anywhere in their child component tree.</p>
+<pre><pre><code class="hljs hljs language-jsx"><span class="hljs-keyword">class</span> <span class="hljs-title class_">ErrorBoundary</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_ inherited__">React.Component</span> {
+  <span class="hljs-title function_">constructor</span>(<span class="hljs-params">props</span>) {
+    <span class="hljs-variable language_">super</span>(props);
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">state</span> = { <span class="hljs-attr">hasError</span>: <span class="hljs-literal">false</span>, <span class="hljs-attr">error</span>: <span class="hljs-literal">null</span> };
+  }
+
+  <span class="hljs-keyword">static</span> <span class="hljs-title function_">getDerivedStateFromError</span>(<span class="hljs-params">error</span>) {
+    <span class="hljs-keyword">return</span> { <span class="hljs-attr">hasError</span>: <span class="hljs-literal">true</span>, error };
+  }
+
+  <span class="hljs-title function_">componentDidCatch</span>(<span class="hljs-params">error, errorInfo</span>) {
+    <span class="hljs-comment">// Log error to monitoring service</span>
+    <span class="hljs-title function_">logErrorToService</span>(error, errorInfo);
+  }
+
+  <span class="hljs-title function_">render</span>(<span class="hljs-params"></span>) {
+    <span class="hljs-keyword">if</span> (<span class="hljs-variable language_">this</span>.<span class="hljs-property">state</span>.<span class="hljs-property">hasError</span>) {
+      <span class="hljs-keyword">return</span> (
+        <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">h2</span>&gt;</span>Something went wrong.<span class="hljs-tag">&lt;/<span class="hljs-name">h2</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">details</span>&gt;</span>
+            {this.state.error &amp;&amp; this.state.error.toString()}
+          <span class="hljs-tag">&lt;/<span class="hljs-name">details</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span>
+      );
+    }
+
+    <span class="hljs-keyword">return</span> <span class="hljs-variable language_">this</span>.<span class="hljs-property">props</span>.<span class="hljs-property">children</span>;
+  }
+}
+
+<span class="hljs-comment">// Usage</span>
+<span class="hljs-keyword">function</span> <span class="hljs-title function_">App</span>(<span class="hljs-params"></span>) {
+  <span class="hljs-keyword">return</span> (
+    <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">ErrorBoundary</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">MyComponent</span> /&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">ErrorBoundary</span>&gt;</span></span>
+  );
+}
+</code></pre></pre>
+<p><strong>Important notes:</strong></p>
+<ul>
+<li>Error boundaries only work in class components</li>
+<li>They don&#x27;t catch errors in event handlers, async code, or during SSR</li>
+<li>Use libraries like <pre><code class="hljs undefined">react-error-boundary</code></pre> for hook-based error boundaries</li>
+</ul>
+<p>This comprehensive guide covers advanced React patterns and interview questions essential for senior frontend positions at Big Tech companies.</p></div></div></main><footer class="sc-fszimp eFXxtK"><div class="sc-etsjJW lgRhNJ"><div class="sc-fYmhhH clXrDw"><div class="sc-koBvLg eVcCHs"><div class="sc-DZJJV erNuOr"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-code "><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>Frontend Interview Prep</div><p class="sc-kUouGy eFlHp">Comprehensive interview preparation for frontend engineers targeting Big Tech companies.</p><div class="sc-bjMIFn cKmbMZ"><a href="https://github.com" aria-label="GitHub"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-github "><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"></path><path d="M9 18c-4.51 2-5-2-7-2"></path></svg></a><a href="https://twitter.com" aria-label="Twitter"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-twitter "><path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"></path></svg></a><a href="https://linkedin.com" aria-label="LinkedIn"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-linkedin "><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect width="4" height="12" x="2" y="9"></rect><circle cx="4" cy="4" r="2"></circle></svg></a><a href="mailto:contact@example.com" aria-label="Email"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-mail "><rect width="20" height="16" x="2" y="4" rx="2"></rect><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path></svg></a></div></div><div class="sc-koBvLg eVcCHs"><h3>Study Materials</h3><ul><li><a href="/algorithms">Algorithms</a></li><li><a href="/react">React &amp; Frontend</a></li><li><a href="/system-design">System Design</a></li><li><a href="/typescript">TypeScript</a></li><li><a href="/performance">Performance</a></li></ul></div><div class="sc-koBvLg eVcCHs"><h3>Companies</h3><ul><li><a href="/google">Google</a></li><li><a href="/meta">Meta</a></li><li><a href="/amazon">Amazon</a></li><li><a href="/microsoft">Microsoft</a></li><li><a href="/apple">Apple</a></li></ul></div><div class="sc-koBvLg eVcCHs"><h3>Resources</h3><ul><li><a href="/interview-tips">Interview Tips</a></li><li><a href="/coding-challenges">Coding Challenges</a></li><li><a href="/mock-interviews">Mock Interviews</a></li><li><a href="/blog">Blog</a></li><li><a href="/faq">FAQ</a></li></ul></div></div><div class="sc-dClGHI jjzpGQ"><p class="sc-fhfEft bxgLTO">© 2025 Frontend Interview Prep. All rights reserved.</p><div class="sc-bAehkN lnKwnT"><a href="/privacy">Privacy Policy</a><a href="/terms">Terms of Service</a><a href="/contact">Contact</a></div></div></div></footer></div><script src="/interview/_next/static/chunks/webpack-be7d7df45533bffc.js" async=""></script><script>(self.__next_f=self.__next_f||[]).push([0]);self.__next_f.push([2,null])</script><script>self.__next_f.push([1,"1:HL[\"/interview/_next/static/media/e4af272ccee01ff0-s.p.woff2\",\"font\",{\"crossOrigin\":\"\",\"type\":\"font/woff2\"}]\n2:HL[\"/interview/_next/static/css/387024c6a2216908.css\",\"style\"]\n"])</script><script>self.__next_f.push([1,"3:I[2846,[],\"\"]\n5:I[5907,[\"918\",\"static/chunks/918-3273b83890f10546.js\",\"930\",\"static/chunks/930-3262a6c9c5acace4.js\",\"687\",\"static/chunks/app/docs/%5B...slug%5D/page-32962e9542d32755.js\"],\"default\"]\n7:I[4707,[],\"\"]\n9:I[6423,[],\"\"]\na:I[2,[\"918\",\"static/chunks/918-3273b83890f10546.js\",\"710\",\"static/chunks/710-dfaa11b4dff08f8e.js\",\"972\",\"static/chunks/972-011bba60ed155615.js\",\"233\",\"static/chunks/233-3e0c1d820a17eca9.js\",\"185\",\"static/chunks/app/layout-333f4adcd11f8f39.js\"],\"default\",1]\nc:I[1060,[],\"\"]\n6:T64e4,"])</script><script>self.__next_f.push([1,"\n# React Advanced Patterns \u0026 Interview Questions\n\n## Table of Contents\n\n- [Advanced Hooks](#advanced-hooks)\n- [Performance Optimization](#performance-optimization)\n- [React 18 Features](#react-18-features)\n- [State Management Patterns](#state-management-patterns)\n- [Testing React Components](#testing-react-components)\n- [Common Patterns](#common-patterns)\n- [Server-Side Rendering](#server-side-rendering)\n- [Advanced Interview Questions](#advanced-interview-questions)\n\n## Advanced Hooks\n\n### useReducer for Complex State\n\n```jsx\n// Complex state management with useReducer\nconst initialState = {\n  items: [],\n  loading: false,\n  error: null,\n  filter: 'all'\n};\n\nfunction todoReducer(state, action) {\n  switch (action.type) {\n    case 'FETCH_START':\n      return { ...state, loading: true, error: null };\n    case 'FETCH_SUCCESS':\n      return { ...state, loading: false, items: action.payload };\n    case 'FETCH_ERROR':\n      return { ...state, loading: false, error: action.payload };\n    case 'ADD_ITEM':\n      return { ...state, items: [...state.items, action.payload] };\n    case 'UPDATE_ITEM':\n      return {\n        ...state,\n        items: state.items.map(item =\u003e\n          item.id === action.payload.id ? action.payload : item\n        )\n      };\n    case 'DELETE_ITEM':\n      return {\n        ...state,\n        items: state.items.filter(item =\u003e item.id !== action.payload)\n      };\n    case 'SET_FILTER':\n      return { ...state, filter: action.payload };\n    default:\n      return state;\n  }\n}\n\nfunction TodoApp() {\n  const [state, dispatch] = useReducer(todoReducer, initialState);\n\n  useEffect(() =\u003e {\n    dispatch({ type: 'FETCH_START' });\n    fetchTodos()\n      .then(todos =\u003e dispatch({ type: 'FETCH_SUCCESS', payload: todos }))\n      .catch(error =\u003e dispatch({ type: 'FETCH_ERROR', payload: error.message }));\n  }, []);\n\n  const addTodo = (text) =\u003e {\n    const newTodo = {\n      id: Date.now(),\n      text,\n      completed: false\n    };\n    dispatch({ type: 'ADD_ITEM', payload: newTodo });\n  };\n\n  const filteredItems = state.items.filter(item =\u003e {\n    if (state.filter === 'completed') return item.completed;\n    if (state.filter === 'pending') return !item.completed;\n    return true;\n  });\n\n  return (\n    \u003cdiv\u003e\n      \u003cTodoForm onSubmit={addTodo} /\u003e\n      \u003cFilterButtons \n        filter={state.filter} \n        onChange={(filter) =\u003e dispatch({ type: 'SET_FILTER', payload: filter })}\n      /\u003e\n      {state.loading \u0026\u0026 \u003cdiv\u003eLoading...\u003c/div\u003e}\n      {state.error \u0026\u0026 \u003cdiv\u003eError: {state.error}\u003c/div\u003e}\n      \u003cTodoList items={filteredItems} dispatch={dispatch} /\u003e\n    \u003c/div\u003e\n  );\n}\n```\n\n### Custom Hooks\n\n{% raw %}\n```jsx\n// Custom hook for API calls\nfunction useApi(url) {\n  const [data, setData] = useState(null);\n  const [loading, setLoading] = useState(true);\n  const [error, setError] = useState(null);\n\n  useEffect(() =\u003e {\n    const fetchData = async () =\u003e {\n      try {\n        setLoading(true);\n        setError(null);\n        const response = await fetch(url);\n        \n        if (!response.ok) {\n          throw new Error(`HTTP error! status: ${response.status}`);\n        }\n        \n        const result = await response.json();\n        setData(result);\n      } catch (err) {\n        setError(err.message);\n      } finally {\n        setLoading(false);\n      }\n    };\n\n    fetchData();\n  }, [url]);\n\n  const refetch = useCallback(() =\u003e {\n    fetchData();\n  }, [url]);\n\n  return { data, loading, error, refetch };\n}\n\n// Custom hook for local storage\nfunction useLocalStorage(key, initialValue) {\n  const [storedValue, setStoredValue] = useState(() =\u003e {\n    try {\n      const item = window.localStorage.getItem(key);\n      return item ? JSON.parse(item) : initialValue;\n    } catch (error) {\n      console.error('Error reading from localStorage:', error);\n      return initialValue;\n    }\n  });\n\n  const setValue = useCallback((value) =\u003e {\n    try {\n      const valueToStore = value instanceof Function ? value(storedValue) : value;\n      setStoredValue(valueToStore);\n      window.localStorage.setItem(key, JSON.stringify(valueToStore));\n    } catch (error) {\n      console.error('Error writing to localStorage:', error);\n    }\n  }, [key, storedValue]);\n\n  return [storedValue, setValue];\n}\n\n// Custom hook for form handling\nfunction useForm(initialValues, validate) {\n  const [values, setValues] = useState(initialValues);\n  const [errors, setErrors] = useState({});\n  const [touched, setTouched] = useState({});\n\n  const handleChange = useCallback((name, value) =\u003e {\n    setValues(prev =\u003e ({ ...prev, [name]: value }));\n    \n    // Clear error when user starts typing\n    if (errors[name]) {\n      setErrors(prev =\u003e ({ ...prev, [name]: null }));\n    }\n  }, [errors]);\n\n  const handleBlur = useCallback((name) =\u003e {\n    setTouched(prev =\u003e ({ ...prev, [name]: true }));\n    \n    if (validate) {\n      const fieldErrors = validate({ ...values, [name]: values[name] });\n      setErrors(prev =\u003e ({ ...prev, [name]: fieldErrors[name] }));\n    }\n  }, [values, validate]);\n\n  const handleSubmit = useCallback((onSubmit) =\u003e {\n    return (e) =\u003e {\n      e.preventDefault();\n      \n      const validationErrors = validate ? validate(values) : {};\n      setErrors(validationErrors);\n      \n      if (Object.keys(validationErrors).length === 0) {\n        onSubmit(values);\n      }\n    };\n  }, [values, validate]);\n\n  return {\n    values,\n    errors,\n    touched,\n    handleChange,\n    handleBlur,\n    handleSubmit\n  };\n}\n```\n{% endraw %}\n\n## Performance Optimization\n\n### React.memo and useMemo\n\n```jsx\n// React.memo for component memoization\nconst ExpensiveComponent = React.memo(({ data, onClick }) =\u003e {\n  console.log('ExpensiveComponent rendered');\n  \n  return (\n    \u003cdiv\u003e\n      {data.map(item =\u003e (\n        \u003cdiv key={item.id} onClick={() =\u003e onClick(item.id)}\u003e\n          {item.name}\n        \u003c/div\u003e\n      ))}\n    \u003c/div\u003e\n  );\n}, (prevProps, nextProps) =\u003e {\n  // Custom comparison function\n  return prevProps.data.length === nextProps.data.length \u0026\u0026\n         prevProps.onClick === nextProps.onClick;\n});\n\n// useMemo for expensive calculations\nfunction DataProcessor({ items, filter }) {\n  const processedData = useMemo(() =\u003e {\n    console.log('Processing data...');\n    \n    return items\n      .filter(item =\u003e item.category === filter)\n      .sort((a, b) =\u003e a.priority - b.priority)\n      .map(item =\u003e ({\n        ...item,\n        displayName: `${item.name} (${item.category})`\n      }));\n  }, [items, filter]);\n\n  return (\n    \u003cdiv\u003e\n      {processedData.map(item =\u003e (\n        \u003cdiv key={item.id}\u003e{item.displayName}\u003c/div\u003e\n      ))}\n    \u003c/div\u003e\n  );\n}\n\n// useCallback for stable function references\nfunction TodoList({ todos, onToggle, onDelete }) {\n  const handleToggle = useCallback((id) =\u003e {\n    onToggle(id);\n  }, [onToggle]);\n\n  const handleDelete = useCallback((id) =\u003e {\n    onDelete(id);\n  }, [onDelete]);\n\n  return (\n    \u003cdiv\u003e\n      {todos.map(todo =\u003e (\n        \u003cTodoItem\n          key={todo.id}\n          todo={todo}\n          onToggle={handleToggle}\n          onDelete={handleDelete}\n        /\u003e\n      ))}\n    \u003c/div\u003e\n  );\n}\n```\n\n### Code Splitting and Lazy Loading\n\n```jsx\n// React.lazy for code splitting\nconst LazyComponent = React.lazy(() =\u003e import('./LazyComponent'));\nconst AnotherLazyComponent = React.lazy(() =\u003e \n  import('./AnotherComponent').then(module =\u003e ({\n    default: module.AnotherComponent\n  }))\n);\n\nfunction App() {\n  return (\n    \u003cdiv\u003e\n      \u003cHeader /\u003e\n      \u003cSuspense fallback={\u003cdiv\u003eLoading...\u003c/div\u003e}\u003e\n        \u003cRoutes\u003e\n          \u003cRoute path=\"/lazy\" element={\u003cLazyComponent /\u003e} /\u003e\n          \u003cRoute path=\"/another\" element={\u003cAnotherLazyComponent /\u003e} /\u003e\n        \u003c/Routes\u003e\n      \u003c/Suspense\u003e\n    \u003c/div\u003e\n  );\n}\n\n// Dynamic imports based on conditions\nfunction ConditionalComponent({ userRole }) {\n  const [Component, setComponent] = useState(null);\n\n  useEffect(() =\u003e {\n    if (userRole === 'admin') {\n      import('./AdminPanel').then(module =\u003e {\n        setComponent(() =\u003e module.default);\n      });\n    } else if (userRole === 'user') {\n      import('./UserDashboard').then(module =\u003e {\n        setComponent(() =\u003e module.default);\n      });\n    }\n  }, [userRole]);\n\n  if (!Component) {\n    return \u003cdiv\u003eLoading...\u003c/div\u003e;\n  }\n\n  return \u003cComponent /\u003e;\n}\n```\n\n## React 18 Features\n\n### Concurrent Features\n\n```jsx\n// Suspense for data fetching\nfunction UserProfile({ userId }) {\n  const user = useSuspenseQuery(['user', userId], () =\u003e fetchUser(userId));\n\n  return (\n    \u003cdiv\u003e\n      \u003ch1\u003e{user.name}\u003c/h1\u003e\n      \u003cp\u003e{user.email}\u003c/p\u003e\n    \u003c/div\u003e\n  );\n}\n\nfunction App() {\n  return (\n    \u003cSuspense fallback={\u003cUserProfileSkeleton /\u003e}\u003e\n      \u003cUserProfile userId={1} /\u003e\n    \u003c/Suspense\u003e\n  );\n}\n\n// useTransition for non-urgent updates\nfunction SearchComponent() {\n  const [query, setQuery] = useState('');\n  const [results, setResults] = useState([]);\n  const [isPending, startTransition] = useTransition();\n\n  const handleSearch = (value) =\u003e {\n    setQuery(value);\n    \n    // Mark this update as non-urgent\n    startTransition(() =\u003e {\n      setResults(searchItems(value));\n    });\n  };\n\n  return (\n    \u003cdiv\u003e\n      \u003cinput\n        value={query}\n        onChange={(e) =\u003e handleSearch(e.target.value)}\n        placeholder=\"Search...\"\n      /\u003e\n      {isPending \u0026\u0026 \u003cdiv\u003eSearching...\u003c/div\u003e}\n      \u003cSearchResults results={results} /\u003e\n    \u003c/div\u003e\n  );\n}\n\n// useDeferredValue for deferring expensive updates\nfunction ExpensiveList({ query }) {\n  const deferredQuery = useDeferredValue(query);\n  const filteredItems = useMemo(() =\u003e {\n    return items.filter(item =\u003e \n      item.name.toLowerCase().includes(deferredQuery.toLowerCase())\n    );\n  }, [deferredQuery]);\n\n  return (\n    \u003cdiv\u003e\n      {filteredItems.map(item =\u003e (\n        \u003cExpensiveItem key={item.id} item={item} /\u003e\n      ))}\n    \u003c/div\u003e\n  );\n}\n```\n\n### New Hooks in React 18\n\n```jsx\n// useId for unique IDs\nfunction FormField({ label, type = 'text' }) {\n  const id = useId();\n\n  return (\n    \u003cdiv\u003e\n      \u003clabel htmlFor={id}\u003e{label}\u003c/label\u003e\n      \u003cinput id={id} type={type} /\u003e\n    \u003c/div\u003e\n  );\n}\n\n// useSyncExternalStore for external state\nfunction useOnlineStatus() {\n  const isOnline = useSyncExternalStore(\n    (callback) =\u003e {\n      window.addEventListener('online', callback);\n      window.addEventListener('offline', callback);\n      return () =\u003e {\n        window.removeEventListener('online', callback);\n        window.removeEventListener('offline', callback);\n      };\n    },\n    () =\u003e navigator.onLine,\n    () =\u003e true // Server-side snapshot\n  );\n\n  return isOnline;\n}\n\n// useInsertionEffect for CSS-in-JS libraries\nfunction useCSS(css) {\n  useInsertionEffect(() =\u003e {\n    const style = document.createElement('style');\n    style.textContent = css;\n    document.head.appendChild(style);\n    \n    return () =\u003e {\n      document.head.removeChild(style);\n    };\n  }, [css]);\n}\n```\n\n## State Management Patterns\n\n### Context + Reducer Pattern\n\n```jsx\n// State management with Context and Reducer\nconst AppStateContext = createContext();\nconst AppDispatchContext = createContext();\n\nfunction appReducer(state, action) {\n  switch (action.type) {\n    case 'SET_USER':\n      return { ...state, user: action.payload };\n    case 'SET_THEME':\n      return { ...state, theme: action.payload };\n    case 'ADD_NOTIFICATION':\n      return {\n        ...state,\n        notifications: [...state.notifications, action.payload]\n      };\n    case 'REMOVE_NOTIFICATION':\n      return {\n        ...state,\n        notifications: state.notifications.filter(n =\u003e n.id !== action.payload)\n      };\n    default:\n      throw new Error(`Unhandled action type: ${action.type}`);\n  }\n}\n\nfunction AppProvider({ children }) {\n  const [state, dispatch] = useReducer(appReducer, {\n    user: null,\n    theme: 'light',\n    notifications: []\n  });\n\n  return (\n    \u003cAppStateContext.Provider value={state}\u003e\n      \u003cAppDispatchContext.Provider value={dispatch}\u003e\n        {children}\n      \u003c/AppDispatchContext.Provider\u003e\n    \u003c/AppStateContext.Provider\u003e\n  );\n}\n\n// Custom hooks for accessing state and dispatch\nfunction useAppState() {\n  const context = useContext(AppStateContext);\n  if (!context) {\n    throw new Error('useAppState must be used within AppProvider');\n  }\n  return context;\n}\n\nfunction useAppDispatch() {\n  const context = useContext(AppDispatchContext);\n  if (!context) {\n    throw new Error('useAppDispatch must be used within AppProvider');\n  }\n  return context;\n}\n```\n\n### Zustand Integration\n\n```jsx\n// Zustand store\nimport { create } from 'zustand';\nimport { subscribeWithSelector } from 'zustand/middleware';\n\nconst useStore = create(\n  subscribeWithSelector((set, get) =\u003e ({\n    // State\n    user: null,\n    todos: [],\n    filter: 'all',\n    \n    // Actions\n    setUser: (user) =\u003e set({ user }),\n    \n    addTodo: (text) =\u003e set((state) =\u003e ({\n      todos: [...state.todos, {\n        id: Date.now(),\n        text,\n        completed: false\n      }]\n    })),\n    \n    toggleTodo: (id) =\u003e set((state) =\u003e ({\n      todos: state.todos.map(todo =\u003e\n        todo.id === id ? { ...todo, completed: !todo.completed } : todo\n      )\n    })),\n    \n    setFilter: (filter) =\u003e set({ filter }),\n    \n    // Computed values\n    get filteredTodos() {\n      const { todos, filter } = get();\n      if (filter === 'completed') return todos.filter(t =\u003e t.completed);\n      if (filter === 'pending') return todos.filter(t =\u003e !t.completed);\n      return todos;\n    }\n  }))\n);\n\n// Using Zustand in components\nfunction TodoApp() {\n  const { filteredTodos, addTodo, toggleTodo, filter, setFilter } = useStore();\n\n  return (\n    \u003cdiv\u003e\n      \u003cTodoForm onSubmit={addTodo} /\u003e\n      \u003cFilterButtons filter={filter} onChange={setFilter} /\u003e\n      \u003cTodoList todos={filteredTodos} onToggle={toggleTodo} /\u003e\n    \u003c/div\u003e\n  );\n}\n```\n\n## Testing React Components\n\n### Testing with Jest and React Testing Library\n\n```jsx\n// Component to test\nfunction Counter({ initialCount = 0 }) {\n  const [count, setCount] = useState(initialCount);\n\n  return (\n    \u003cdiv\u003e\n      \u003cspan data-testid=\"count\"\u003eCount: {count}\u003c/span\u003e\n      \u003cbutton onClick={() =\u003e setCount(count + 1)}\u003eIncrement\u003c/button\u003e\n      \u003cbutton onClick={() =\u003e setCount(count - 1)}\u003eDecrement\u003c/button\u003e\n      \u003cbutton onClick={() =\u003e setCount(0)}\u003eReset\u003c/button\u003e\n    \u003c/div\u003e\n  );\n}\n\n// Test file\nimport { render, screen, fireEvent } from '@testing-library/react';\nimport userEvent from '@testing-library/user-event';\nimport Counter from './Counter';\n\ndescribe('Counter Component', () =\u003e {\n  test('renders with initial count', () =\u003e {\n    render(\u003cCounter initialCount={5} /\u003e);\n    expect(screen.getByTestId('count')).toHaveTextContent('Count: 5');\n  });\n\n  test('increments count when increment button is clicked', async () =\u003e {\n    const user = userEvent.setup();\n    render(\u003cCounter /\u003e);\n    \n    const incrementButton = screen.getByText('Increment');\n    await user.click(incrementButton);\n    \n    expect(screen.getByTestId('count')).toHaveTextContent('Count: 1');\n  });\n\n  test('decrements count when decrement button is clicked', async () =\u003e {\n    const user = userEvent.setup();\n    render(\u003cCounter initialCount={2} /\u003e);\n    \n    const decrementButton = screen.getByText('Decrement');\n    await user.click(decrementButton);\n    \n    expect(screen.getByTestId('count')).toHaveTextContent('Count: 1');\n  });\n\n  test('resets count when reset button is clicked', async () =\u003e {\n    const user = userEvent.setup();\n    render(\u003cCounter initialCount={5} /\u003e);\n    \n    const resetButton = screen.getByText('Reset');\n    await user.click(resetButton);\n    \n    expect(screen.getByTestId('count')).toHaveTextContent('Count: 0');\n  });\n});\n\n// Testing hooks\nimport { renderHook, act } from '@testing-library/react';\nimport { useCounter } from './useCounter';\n\ndescribe('useCounter Hook', () =\u003e {\n  test('should initialize with default value', () =\u003e {\n    const { result } = renderHook(() =\u003e useCounter());\n    expect(result.current.count).toBe(0);\n  });\n\n  test('should increment count', () =\u003e {\n    const { result } = renderHook(() =\u003e useCounter());\n    \n    act(() =\u003e {\n      result.current.increment();\n    });\n    \n    expect(result.current.count).toBe(1);\n  });\n\n  test('should decrement count', () =\u003e {\n    const { result } = renderHook(() =\u003e useCounter(5));\n    \n    act(() =\u003e {\n      result.current.decrement();\n    });\n    \n    expect(result.current.count).toBe(4);\n  });\n});\n```\n\n## Common Patterns\n\n### Higher-Order Components (HOCs)\n\n```jsx\n// HOC for authentication\nfunction withAuth(Component) {\n  return function AuthenticatedComponent(props) {\n    const { user, loading } = useAuth();\n\n    if (loading) {\n      return \u003cdiv\u003eLoading...\u003c/div\u003e;\n    }\n\n    if (!user) {\n      return \u003cdiv\u003ePlease log in to access this page.\u003c/div\u003e;\n    }\n\n    return \u003cComponent {...props} user={user} /\u003e;\n  };\n}\n\n// Usage\nconst ProtectedDashboard = withAuth(Dashboard);\n\n// HOC for loading state\nfunction withLoading(Component) {\n  return function LoadingComponent({ isLoading, ...props }) {\n    if (isLoading) {\n      return \u003cdiv\u003eLoading...\u003c/div\u003e;\n    }\n\n    return \u003cComponent {...props} /\u003e;\n  };\n}\n```\n\n### Render Props Pattern\n\n```jsx\n// Render props for data fetching\nfunction DataFetcher({ url, children }) {\n  const [data, setData] = useState(null);\n  const [loading, setLoading] = useState(true);\n  const [error, setError] = useState(null);\n\n  useEffect(() =\u003e {\n    fetch(url)\n      .then(response =\u003e response.json())\n      .then(data =\u003e {\n        setData(data);\n        setLoading(false);\n      })\n      .catch(error =\u003e {\n        setError(error);\n        setLoading(false);\n      });\n  }, [url]);\n\n  return children({ data, loading, error });\n}\n\n// Usage\nfunction UserList() {\n  return (\n    \u003cDataFetcher url=\"/api/users\"\u003e\n      {({ data, loading, error }) =\u003e {\n        if (loading) return \u003cdiv\u003eLoading...\u003c/div\u003e;\n        if (error) return \u003cdiv\u003eError: {error.message}\u003c/div\u003e;\n        \n        return (\n          \u003cul\u003e\n            {data.map(user =\u003e (\n              \u003cli key={user.id}\u003e{user.name}\u003c/li\u003e\n            ))}\n          \u003c/ul\u003e\n        );\n      }}\n    \u003c/DataFetcher\u003e\n  );\n}\n```\n\n### Compound Components Pattern\n\n```jsx\n// Compound components for tabs\nconst TabsContext = createContext();\n\nfunction Tabs({ children, defaultValue }) {\n  const [activeTab, setActiveTab] = useState(defaultValue);\n\n  return (\n    \u003cTabsContext.Provider value={% raw %}{{ activeTab, setActiveTab }}{% endraw %}\u003e\n      \u003cdiv className=\"tabs\"\u003e{children}\u003c/div\u003e\n    \u003c/TabsContext.Provider\u003e\n  );\n}\n\nfunction TabList({ children }) {\n  return \u003cdiv className=\"tab-list\"\u003e{children}\u003c/div\u003e;\n}\n\nfunction Tab({ value, children }) {\n  const { activeTab, setActiveTab } = useContext(TabsContext);\n  const isActive = activeTab === value;\n\n  return (\n    \u003cbutton\n      className={`tab ${isActive ? 'active' : ''}`}\n      onClick={() =\u003e setActiveTab(value)}\n    \u003e\n      {children}\n    \u003c/button\u003e\n  );\n}\n\nfunction TabPanels({ children }) {\n  return \u003cdiv className=\"tab-panels\"\u003e{children}\u003c/div\u003e;\n}\n\nfunction TabPanel({ value, children }) {\n  const { activeTab } = useContext(TabsContext);\n  \n  if (activeTab !== value) {\n    return null;\n  }\n\n  return \u003cdiv className=\"tab-panel\"\u003e{children}\u003c/div\u003e;\n}\n\n// Attach components to main component\nTabs.List = TabList;\nTabs.Tab = Tab;\nTabs.Panels = TabPanels;\nTabs.Panel = TabPanel;\n\n// Usage\nfunction App() {\n  return (\n    \u003cTabs defaultValue=\"tab1\"\u003e\n      \u003cTabs.List\u003e\n        \u003cTabs.Tab value=\"tab1\"\u003eTab 1\u003c/Tabs.Tab\u003e\n        \u003cTabs.Tab value=\"tab2\"\u003eTab 2\u003c/Tabs.Tab\u003e\n        \u003cTabs.Tab value=\"tab3\"\u003eTab 3\u003c/Tabs.Tab\u003e\n      \u003c/Tabs.List\u003e\n      \n      \u003cTabs.Panels\u003e\n        \u003cTabs.Panel value=\"tab1\"\u003eContent of Tab 1\u003c/Tabs.Panel\u003e\n        \u003cTabs.Panel value=\"tab2\"\u003eContent of Tab 2\u003c/Tabs.Panel\u003e\n        \u003cTabs.Panel value=\"tab3\"\u003eContent of Tab 3\u003c/Tabs.Panel\u003e\n      \u003c/Tabs.Panels\u003e\n    \u003c/Tabs\u003e\n  );\n}\n```\n\n## Server-Side Rendering\n\n### Next.js Patterns\n\n```jsx\n// Server-side rendering with getServerSideProps\nexport async function getServerSideProps(context) {\n  const { params, query, req, res } = context;\n  \n  try {\n    const data = await fetchData(params.id);\n    \n    return {\n      props: {\n        data,\n        timestamp: Date.now()\n      }\n    };\n  } catch (error) {\n    return {\n      notFound: true\n    };\n  }\n}\n\n// Static generation with getStaticProps\nexport async function getStaticProps({ params }) {\n  const post = await getPostBySlug(params.slug);\n  \n  return {\n    props: {\n      post\n    },\n    revalidate: 60 // ISR - revalidate every 60 seconds\n  };\n}\n\n// Dynamic routes with getStaticPaths\nexport async function getStaticPaths() {\n  const posts = await getAllPosts();\n  const paths = posts.map(post =\u003e ({\n    params: { slug: post.slug }\n  }));\n  \n  return {\n    paths,\n    fallback: 'blocking' // or false, true\n  };\n}\n\n// App Router (React 18)\n// app/page.tsx\nexport default async function HomePage() {\n  const data = await fetchData();\n  \n  return (\n    \u003cdiv\u003e\n      \u003ch1\u003eWelcome\u003c/h1\u003e\n      \u003cDataComponent data={data} /\u003e\n    \u003c/div\u003e\n  );\n}\n\n// app/layout.tsx\nexport default function RootLayout({ children }) {\n  return (\n    \u003chtml\u003e\n      \u003cbody\u003e\n        \u003cheader\u003eMy App\u003c/header\u003e\n        {children}\n        \u003cfooter\u003eFooter\u003c/footer\u003e\n      \u003c/body\u003e\n    \u003c/html\u003e\n  );\n}\n```\n\n## Advanced Interview Questions\n\n### 1. Explain React's reconciliation algorithm and how keys work.\n\n**Answer:**\nReact's reconciliation is the diffing algorithm that compares the current virtual DOM tree with the previous one to determine what changes need to be made to the real DOM.\n\n**How it works:**\n1. When state or props change, React creates a new virtual DOM tree\n2. React compares (diffs) the new tree with the previous tree\n3. React calculates the minimum set of changes needed\n4. React applies only those changes to the real DOM\n\n**Keys are crucial for:**\n- Identifying which items have changed, been added, or removed\n- Maintaining component state during re-renders\n- Optimizing performance by reusing DOM nodes\n\n```jsx\n// ❌ Bad - using array index\n{items.map((item, index) =\u003e (\n  \u003cItem key={index} data={item} /\u003e\n))}\n\n// ✅ Good - using stable unique identifier\n{items.map(item =\u003e (\n  \u003cItem key={item.id} data={item} /\u003e\n))}\n```\n\n### 2. What are the differences between useMemo and useCallback?\n\n**Answer:**\n- **useMemo**: Memoizes the result of a computation/expression\n- **useCallback**: Memoizes a function definition\n\n```jsx\n// useMemo - memoizes the computed value\nconst expensiveValue = useMemo(() =\u003e {\n  return computeExpensiveValue(a, b);\n}, [a, b]);\n\n// useCallback - memoizes the function itself\nconst memoizedCallback = useCallback(() =\u003e {\n  doSomething(a, b);\n}, [a, b]);\n\n// useCallback is equivalent to:\nconst memoizedCallback = useMemo(() =\u003e {\n  return () =\u003e doSomething(a, b);\n}, [a, b]);\n```\n\n### 3. How does React's Fiber architecture improve performance?\n\n**Answer:**\nFiber is React's reconciliation algorithm that makes reconciliation interruptible and prioritizable:\n\n**Key improvements:**\n- **Incremental rendering**: Work can be split into chunks\n- **Prioritization**: Updates can have different priorities\n- **Pausing and resuming**: React can pause work and come back to it later\n- **Error boundaries**: Better error handling during rendering\n- **Time slicing**: Prevents blocking the main thread\n\n**Benefits:**\n- Smoother animations and interactions\n- Better responsiveness\n- Ability to schedule low-priority updates\n- Improved user experience\n\n### 4. Explain the difference between controlled and uncontrolled components.\n\n**Answer:**\n\n**Controlled Components:**\n```jsx\nfunction ControlledInput() {\n  const [value, setValue] = useState('');\n  \n  return (\n    \u003cinput\n      value={value}\n      onChange={(e) =\u003e setValue(e.target.value)}\n    /\u003e\n  );\n}\n```\n\n**Uncontrolled Components:**\n```jsx\nfunction UncontrolledInput() {\n  const inputRef = useRef();\n  \n  const handleSubmit = () =\u003e {\n    console.log(inputRef.current.value);\n  };\n  \n  return (\n    \u003cinput ref={inputRef} defaultValue=\"initial\" /\u003e\n  );\n}\n```\n\n**When to use:**\n- **Controlled**: When you need validation, formatting, or dynamic behavior\n- **Uncontrolled**: For simple forms or when integrating with non-React code\n\n### 5. What are React Portals and when would you use them?\n\n**Answer:**\nPortals provide a way to render children into a DOM node outside of the parent component's DOM hierarchy.\n\n```jsx\nfunction Modal({ children, isOpen }) {\n  if (!isOpen) return null;\n  \n  return ReactDOM.createPortal(\n    \u003cdiv className=\"modal-overlay\"\u003e\n      \u003cdiv className=\"modal-content\"\u003e\n        {children}\n      \u003c/div\u003e\n    \u003c/div\u003e,\n    document.getElementById('modal-root')\n  );\n}\n```\n\n**Use cases:**\n- Modals and dialogs\n- Tooltips and popovers\n- Notifications\n- Any UI that needs to escape parent's overflow/z-index constraints\n\n### 6. How do you handle error boundaries in React?\n\n**Answer:**\nError boundaries are React components that catch JavaScript errors anywhere in their child component tree.\n\n```jsx\nclass ErrorBoundary extends React.Component {\n  constructor(props) {\n    super(props);\n    this.state = { hasError: false, error: null };\n  }\n\n  static getDerivedStateFromError(error) {\n    return { hasError: true, error };\n  }\n\n  componentDidCatch(error, errorInfo) {\n    // Log error to monitoring service\n    logErrorToService(error, errorInfo);\n  }\n\n  render() {\n    if (this.state.hasError) {\n      return (\n        \u003cdiv\u003e\n          \u003ch2\u003eSomething went wrong.\u003c/h2\u003e\n          \u003cdetails\u003e\n            {this.state.error \u0026\u0026 this.state.error.toString()}\n          \u003c/details\u003e\n        \u003c/div\u003e\n      );\n    }\n\n    return this.props.children;\n  }\n}\n\n// Usage\nfunction App() {\n  return (\n    \u003cErrorBoundary\u003e\n      \u003cMyComponent /\u003e\n    \u003c/ErrorBoundary\u003e\n  );\n}\n```\n\n**Important notes:**\n- Error boundaries only work in class components\n- They don't catch errors in event handlers, async code, or during SSR\n- Use libraries like `react-error-boundary` for hook-based error boundaries\n\nThis comprehensive guide covers advanced React patterns and interview questions essential for senior frontend positions at Big Tech companies.\n"])</script><script>self.__next_f.push([1,"8:[\"slug\",\"frontend/react/advanced-patterns\",\"c\"]\nd:[]\n"])</script><script>self.__next_f.push([1,"0:[\"$\",\"$L3\",null,{\"buildId\":\"7uJ7BVaXJTiEOD9iYDv3n\",\"assetPrefix\":\"/interview\",\"urlParts\":[\"\",\"docs\",\"frontend\",\"react\",\"advanced-patterns\"],\"initialTree\":[\"\",{\"children\":[\"docs\",{\"children\":[[\"slug\",\"frontend/react/advanced-patterns\",\"c\"],{\"children\":[\"__PAGE__?{\\\"slug\\\":[\\\"frontend\\\",\\\"react\\\",\\\"advanced-patterns\\\"]}\",{}]}]}]},\"$undefined\",\"$undefined\",true],\"initialSeedData\":[\"\",{\"children\":[\"docs\",{\"children\":[[\"slug\",\"frontend/react/advanced-patterns\",\"c\"],{\"children\":[\"__PAGE__\",{},[[\"$L4\",[\"$\",\"div\",null,{\"style\":{\"maxWidth\":\"1200px\",\"margin\":\"0 auto\",\"padding\":\"2rem\",\"paddingTop\":\"6rem\"},\"children\":[[\"$\",\"div\",null,{\"style\":{\"marginBottom\":\"2rem\"},\"children\":[[\"$\",\"nav\",null,{\"style\":{\"color\":\"#64748b\",\"fontSize\":\"0.9rem\",\"marginBottom\":\"1rem\"},\"children\":[[\"$\",\"a\",null,{\"href\":\"/\",\"style\":{\"color\":\"#3b82f6\",\"textDecoration\":\"none\"},\"children\":\"Home\"}],\" \u003e \",[\"$\",\"span\",null,{\"children\":\"frontend \u003e react \u003e advanced-patterns\"}]]}],[\"$\",\"h1\",null,{\"style\":{\"fontSize\":\"2.5rem\",\"fontWeight\":\"800\",\"marginBottom\":\"0.5rem\",\"color\":\"#1e293b\"},\"children\":\"React Advanced Patterns \u0026 Interview Questions\"}],[\"$\",\"div\",null,{\"style\":{\"color\":\"#64748b\",\"fontSize\":\"0.9rem\",\"marginBottom\":\"2rem\"},\"children\":[[\"$\",\"span\",null,{\"children\":[\"📁 \",\"frontend/react/advanced-patterns.md\"]}],\"$undefined\",\"$undefined\"]}]]}],[\"$\",\"$L5\",null,{\"content\":\"$6\"}]]}],null],null],null]},[null,[\"$\",\"$L7\",null,{\"parallelRouterKey\":\"children\",\"segmentPath\":[\"children\",\"docs\",\"children\",\"$8\",\"children\"],\"error\":\"$undefined\",\"errorStyles\":\"$undefined\",\"errorScripts\":\"$undefined\",\"template\":[\"$\",\"$L9\",null,{}],\"templateStyles\":\"$undefined\",\"templateScripts\":\"$undefined\",\"notFound\":\"$undefined\",\"notFoundStyles\":\"$undefined\"}]],null]},[null,[\"$\",\"$L7\",null,{\"parallelRouterKey\":\"children\",\"segmentPath\":[\"children\",\"docs\",\"children\"],\"error\":\"$undefined\",\"errorStyles\":\"$undefined\",\"errorScripts\":\"$undefined\",\"template\":[\"$\",\"$L9\",null,{}],\"templateStyles\":\"$undefined\",\"templateScripts\":\"$undefined\",\"notFound\":\"$undefined\",\"notFoundStyles\":\"$undefined\"}]],null]},[[[[\"$\",\"link\",\"0\",{\"rel\":\"stylesheet\",\"href\":\"/interview/_next/static/css/387024c6a2216908.css\",\"precedence\":\"next\",\"crossOrigin\":\"$undefined\"}]],[\"$\",\"$La\",null,{\"children\":[\"$\",\"$L7\",null,{\"parallelRouterKey\":\"children\",\"segmentPath\":[\"children\"],\"error\":\"$undefined\",\"errorStyles\":\"$undefined\",\"errorScripts\":\"$undefined\",\"template\":[\"$\",\"$L9\",null,{}],\"templateStyles\":\"$undefined\",\"templateScripts\":\"$undefined\",\"notFound\":[[\"$\",\"title\",null,{\"children\":\"404: This page could not be found.\"}],[\"$\",\"div\",null,{\"style\":{\"fontFamily\":\"system-ui,\\\"Segoe UI\\\",Roboto,Helvetica,Arial,sans-serif,\\\"Apple Color Emoji\\\",\\\"Segoe UI Emoji\\\"\",\"height\":\"100vh\",\"textAlign\":\"center\",\"display\":\"flex\",\"flexDirection\":\"column\",\"alignItems\":\"center\",\"justifyContent\":\"center\"},\"children\":[\"$\",\"div\",null,{\"children\":[[\"$\",\"style\",null,{\"dangerouslySetInnerHTML\":{\"__html\":\"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}\"}}],[\"$\",\"h1\",null,{\"className\":\"next-error-h1\",\"style\":{\"display\":\"inline-block\",\"margin\":\"0 20px 0 0\",\"padding\":\"0 23px 0 0\",\"fontSize\":24,\"fontWeight\":500,\"verticalAlign\":\"top\",\"lineHeight\":\"49px\"},\"children\":\"404\"}],[\"$\",\"div\",null,{\"style\":{\"display\":\"inline-block\"},\"children\":[\"$\",\"h2\",null,{\"style\":{\"fontSize\":14,\"fontWeight\":400,\"lineHeight\":\"49px\",\"margin\":0},\"children\":\"This page could not be found.\"}]}]]}]}]],\"notFoundStyles\":[]}],\"params\":{}}]],null],null],\"couldBeIntercepted\":false,\"initialHead\":[null,\"$Lb\"],\"globalErrorComponent\":\"$c\",\"missingSlots\":\"$Wd\"}]\n"])</script><script>self.__next_f.push([1,"b:[[\"$\",\"meta\",\"0\",{\"name\":\"viewport\",\"content\":\"width=device-width, initial-scale=1\"}],[\"$\",\"meta\",\"1\",{\"charSet\":\"utf-8\"}],[\"$\",\"title\",\"2\",{\"children\":\"React Advanced Patterns \u0026 Interview Questions - Frontend Interview Docs\"}],[\"$\",\"meta\",\"3\",{\"name\":\"description\",\"content\":\"Advanced React patterns including hooks, performance optimization, React 18 features, state management, and comprehensive interview preparation\"}],[\"$\",\"meta\",\"4\",{\"property\":\"og:title\",\"content\":\"React Advanced Patterns \u0026 Interview Questions - Frontend Interview Docs\"}],[\"$\",\"meta\",\"5\",{\"property\":\"og:description\",\"content\":\"Advanced React patterns including hooks, performance optimization, React 18 features, state management, and comprehensive interview preparation\"}],[\"$\",\"meta\",\"6\",{\"property\":\"og:type\",\"content\":\"article\"}],[\"$\",\"meta\",\"7\",{\"name\":\"twitter:card\",\"content\":\"summary\"}],[\"$\",\"meta\",\"8\",{\"name\":\"twitter:title\",\"content\":\"React Advanced Patterns \u0026 Interview Questions - Frontend Interview Docs\"}],[\"$\",\"meta\",\"9\",{\"name\":\"twitter:description\",\"content\":\"Advanced React patterns including hooks, performance optimization, React 18 features, state management, and comprehensive interview preparation\"}],[\"$\",\"meta\",\"10\",{\"name\":\"next-size-adjust\"}]]\n4:null\n"])</script></body></html>

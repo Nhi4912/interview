@@ -1,0 +1,314 @@
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><meta name="viewport" content="width=device-width, initial-scale=1"/><link rel="preload" href="/interview/_next/static/media/e4af272ccee01ff0-s.p.woff2" as="font" crossorigin="" type="font/woff2"/><link rel="stylesheet" href="/interview/_next/static/css/387024c6a2216908.css" data-precedence="next"/><link rel="preload" as="script" fetchPriority="low" href="/interview/_next/static/chunks/webpack-be7d7df45533bffc.js"/><script src="/interview/_next/static/chunks/fd9d1056-6922f449a204c2cc.js" async=""></script><script src="/interview/_next/static/chunks/117-e7ecc085ce9cfab3.js" async=""></script><script src="/interview/_next/static/chunks/main-app-b06be5f3411c20c3.js" async=""></script><script src="/interview/_next/static/chunks/918-3273b83890f10546.js" async=""></script><script src="/interview/_next/static/chunks/930-3262a6c9c5acace4.js" async=""></script><script src="/interview/_next/static/chunks/app/docs/%5B...slug%5D/page-32962e9542d32755.js" async=""></script><script src="/interview/_next/static/chunks/710-dfaa11b4dff08f8e.js" async=""></script><script src="/interview/_next/static/chunks/972-011bba60ed155615.js" async=""></script><script src="/interview/_next/static/chunks/233-3e0c1d820a17eca9.js" async=""></script><script src="/interview/_next/static/chunks/app/layout-333f4adcd11f8f39.js" async=""></script><title>Frontend Interview Prep 2025 - Big Tech Interview Guide</title><meta name="description" content="Comprehensive frontend interview preparation for Big Tech companies including React, TypeScript, algorithms, and system design."/><link rel="icon" href="/favicon.ico"/><meta name="theme-color" content="#1a1a1a"/><meta property="og:title" content="Frontend Interview Prep 2025"/><meta property="og:description" content="Complete guide for frontend engineers targeting Big Tech companies"/><meta property="og:type" content="website"/><link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous"/><title>Advanced Array Patterns for FAANG Interviews - Frontend Interview Docs</title><meta name="description" content=" # Advanced Array Patterns for FAANG Interviews  ## 🎯 Core Patterns Every Mid-Level Developer Must Master  ### 1. Sliding Window Technique  **When to Use:** Su"/><meta property="og:title" content="Advanced Array Patterns for FAANG Interviews - Frontend Interview Docs"/><meta property="og:description" content=" # Advanced Array Patterns for FAANG Interviews  ## 🎯 Core Patterns Every Mid-Level Developer Must Master  ### 1. Sliding Window Technique  **When to Use:** Su"/><meta property="og:type" content="article"/><meta name="twitter:card" content="summary"/><meta name="twitter:title" content="Advanced Array Patterns for FAANG Interviews - Frontend Interview Docs"/><meta name="twitter:description" content=" # Advanced Array Patterns for FAANG Interviews  ## 🎯 Core Patterns Every Mid-Level Developer Must Master  ### 1. Sliding Window Technique  **When to Use:** Su"/><meta name="next-size-adjust"/><script src="/interview/_next/static/chunks/polyfills-42372ed130431b0a.js" noModule=""></script><style data-styled="" data-styled-version="6.1.19">*{margin:0;padding:0;box-sizing:border-box;}/*!sc*/
+html{font-size:16px;line-height:1.5;scroll-behavior:smooth;}/*!sc*/
+body{font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;font-size:1rem;line-height:1.5;color:#1e293b;background-color:#ffffff;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;}/*!sc*/
+h1,h2,h3,h4,h5,h6{font-weight:700;line-height:1.25;margin-bottom:0.5em;}/*!sc*/
+h1{font-size:3rem;}/*!sc*/
+@media (max-width: 768px){h1{font-size:2.25rem;}}/*!sc*/
+h2{font-size:2.25rem;}/*!sc*/
+@media (max-width: 768px){h2{font-size:1.875rem;}}/*!sc*/
+h3{font-size:1.875rem;}/*!sc*/
+@media (max-width: 768px){h3{font-size:1.5rem;}}/*!sc*/
+h4{font-size:1.5rem;}/*!sc*/
+@media (max-width: 768px){h4{font-size:1.25rem;}}/*!sc*/
+h5{font-size:1.25rem;}/*!sc*/
+h6{font-size:1.125rem;}/*!sc*/
+p{margin-bottom:1rem;line-height:1.75;}/*!sc*/
+a{color:#3b82f6;text-decoration:none;transition:color 0.15s ease;}/*!sc*/
+a:hover{color:#2563eb;}/*!sc*/
+a:focus{outline:2px solid #3b82f6;outline-offset:2px;}/*!sc*/
+button{cursor:pointer;border:none;background:none;font-family:inherit;font-size:inherit;}/*!sc*/
+button:disabled{cursor:not-allowed;opacity:0.6;}/*!sc*/
+button:focus{outline:2px solid #3b82f6;outline-offset:2px;}/*!sc*/
+input,textarea,select{font-family:inherit;font-size:inherit;}/*!sc*/
+input:focus,textarea:focus,select:focus{outline:2px solid #3b82f6;outline-offset:2px;}/*!sc*/
+img{max-width:100%;height:auto;}/*!sc*/
+ul,ol{margin-bottom:1rem;padding-left:1.5rem;}/*!sc*/
+li{margin-bottom:0.25rem;}/*!sc*/
+blockquote{margin:1rem 0;padding:1rem;border-left:4px solid #3b82f6;background-color:#f1f5f9;font-style:italic;}/*!sc*/
+code{font-family:SFMono-Regular,Consolas,"Liberation Mono",Menlo,monospace;font-size:0.9em;background-color:#f1f5f9;padding:0.2em 0.4em;border-radius:0.25rem;}/*!sc*/
+pre{background-color:#f1f5f9;padding:1rem;border-radius:0.5rem;overflow-x:auto;margin-bottom:1rem;}/*!sc*/
+pre code{background:none;padding:0;}/*!sc*/
+table{width:100%;border-collapse:collapse;margin-bottom:1rem;}/*!sc*/
+th,td{padding:0.75rem;text-align:left;border-bottom:1px solid #e2e8f0;}/*!sc*/
+th{font-weight:600;background-color:#f1f5f9;}/*!sc*/
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0, 0, 0, 0);white-space:nowrap;border:0;}/*!sc*/
+.skip-link{position:absolute;top:-40px;left:6px;background:#3b82f6;color:white;padding:8px;text-decoration:none;border-radius:4px;z-index:100;}/*!sc*/
+.skip-link:focus{top:6px;}/*!sc*/
+::-webkit-scrollbar{width:8px;height:8px;}/*!sc*/
+::-webkit-scrollbar-track{background:#f1f5f9;}/*!sc*/
+::-webkit-scrollbar-thumb{background:#94a3b8;border-radius:4px;}/*!sc*/
+::-webkit-scrollbar-thumb:hover{background:#64748b;}/*!sc*/
+::selection{background:#3b82f6;color:white;}/*!sc*/
+.focus-visible{outline:2px solid #3b82f6;outline-offset:2px;}/*!sc*/
+.fade-in{opacity:0;animation:fadeIn 0.3s ease forwards;}/*!sc*/
+.slide-up{transform:translateY(20px);opacity:0;animation:slideUp 0.3s ease forwards;}/*!sc*/
+@keyframes fadeIn{to{opacity:1;}}/*!sc*/
+@keyframes slideUp{to{transform:translateY(0);opacity:1;}}/*!sc*/
+@media print{*{background:white!important;color:black!important;box-shadow:none!important;text-shadow:none!important;}a,a:visited{text-decoration:underline;}h1,h2,h3,h4,h5,h6{break-after:avoid;}pre,blockquote{border:1px solid #999;break-inside:avoid;}img{max-width:100%!important;}@page{margin:0.5in;}}/*!sc*/
+data-styled.g1[id="sc-global-kxA-Ddz1"]{content:"sc-global-kxA-Ddz1,"}/*!sc*/
+.wbMrm{position:fixed;top:0;width:100%;z-index:1020;background:transparent;backdrop-filter:blur(10px);border-bottom:1px solid transparent;transition:all 0.3s ease;}/*!sc*/
+data-styled.g2[id="sc-bRKDuR"]{content:"wbMrm,"}/*!sc*/
+.kDxBNU{max-width:1200px;margin:0 auto;padding:0 2rem;display:flex;align-items:center;justify-content:space-between;height:70px;}/*!sc*/
+data-styled.g3[id="sc-hvigdm"]{content:"kDxBNU,"}/*!sc*/
+.cvsJZg{display:flex;align-items:center;gap:0.5rem;font-size:1.5rem;font-weight:700;color:#3b82f6;text-decoration:none;cursor:pointer;}/*!sc*/
+.cvsJZg:hover{color:#2563eb;}/*!sc*/
+data-styled.g4[id="sc-fhHczv"]{content:"cvsJZg,"}/*!sc*/
+.lfYVIv{display:flex;align-items:center;gap:2rem;}/*!sc*/
+@media (max-width: 768px){.lfYVIv{display:none;}}/*!sc*/
+data-styled.g5[id="sc-ggWZvA"]{content:"lfYVIv,"}/*!sc*/
+.bhKRhV{color:#1e293b;font-weight:500;text-decoration:none;transition:color 0.15s ease;position:relative;}/*!sc*/
+.bhKRhV:hover{color:#3b82f6;}/*!sc*/
+.bhKRhV:after{content:'';position:absolute;bottom:-5px;left:0;width:0;height:2px;background:#3b82f6;transition:width 0.15s ease;}/*!sc*/
+.bhKRhV:hover:after{width:100%;}/*!sc*/
+data-styled.g6[id="sc-dTvVRJ"]{content:"bhKRhV,"}/*!sc*/
+.gpUImn{display:none;background:none;border:none;color:#1e293b;cursor:pointer;padding:0.5rem;}/*!sc*/
+@media (max-width: 768px){.gpUImn{display:block;}}/*!sc*/
+data-styled.g7[id="sc-jwTyAe"]{content:"gpUImn,"}/*!sc*/
+.hpKWkw{display:flex;align-items:center;gap:0.5rem;background:#f1f5f9;border:1px solid #e2e8f0;border-radius:0.5rem;padding:0.5rem 1rem;color:#64748b;font-size:0.9rem;transition:all 0.15s ease;}/*!sc*/
+.hpKWkw:hover{background:#ffffff;border-color:#3b82f6;}/*!sc*/
+data-styled.g11[id="sc-kNOymR"]{content:"hpKWkw,"}/*!sc*/
+.cJzheU{background:#1e293b;color:white;padding:3rem 0 1rem;margin-top:auto;}/*!sc*/
+data-styled.g12[id="sc-dYwGCk"]{content:"cJzheU,"}/*!sc*/
+.hJUFeT{max-width:1200px;margin:0 auto;padding:0 2rem;}/*!sc*/
+data-styled.g13[id="sc-lgpSej"]{content:"hJUFeT,"}/*!sc*/
+.mSxwd{display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:2rem;margin-bottom:2rem;}/*!sc*/
+@media (max-width: 768px){.mSxwd{grid-template-columns:1fr 1fr;gap:1.5rem;}}/*!sc*/
+@media (max-width: 480px){.mSxwd{grid-template-columns:1fr;}}/*!sc*/
+data-styled.g14[id="sc-eqYatC"]{content:"mSxwd,"}/*!sc*/
+.cmBIup h3{font-size:1.1rem;font-weight:600;margin-bottom:1rem;color:white;}/*!sc*/
+.cmBIup ul{list-style:none;padding:0;margin:0;}/*!sc*/
+.cmBIup li{margin-bottom:0.5rem;}/*!sc*/
+.cmBIup a{color:rgba(255, 255, 255, 0.7);text-decoration:none;transition:color 0.15s ease;}/*!sc*/
+.cmBIup a:hover{color:white;}/*!sc*/
+data-styled.g15[id="sc-kcLKEh"]{content:"cmBIup,"}/*!sc*/
+.bAsNIP{display:flex;align-items:center;gap:0.5rem;font-size:1.2rem;font-weight:700;margin-bottom:1rem;color:white;}/*!sc*/
+data-styled.g16[id="sc-dntSTA"]{content:"bAsNIP,"}/*!sc*/
+.gWXMDV{color:rgba(255, 255, 255, 0.7);line-height:1.6;margin-bottom:1rem;}/*!sc*/
+data-styled.g17[id="sc-kvnevz"]{content:"gWXMDV,"}/*!sc*/
+.jCoOHQ{display:flex;gap:1rem;}/*!sc*/
+.jCoOHQ a{display:flex;align-items:center;justify-content:center;width:40px;height:40px;background:rgba(255, 255, 255, 0.1);border-radius:0.5rem;color:rgba(255, 255, 255, 0.7);transition:all 0.15s ease;}/*!sc*/
+.jCoOHQ a:hover{background:rgba(255, 255, 255, 0.2);color:white;}/*!sc*/
+data-styled.g18[id="sc-dFVmKS"]{content:"jCoOHQ,"}/*!sc*/
+.crUaYh{border-top:1px solid rgba(255, 255, 255, 0.1);padding-top:2rem;display:flex;justify-content:space-between;align-items:center;}/*!sc*/
+@media (max-width: 768px){.crUaYh{flex-direction:column;gap:1rem;text-align:center;}}/*!sc*/
+data-styled.g19[id="sc-kCuUfV"]{content:"crUaYh,"}/*!sc*/
+.esMlQF{color:rgba(255, 255, 255, 0.7);margin:0;font-size:0.9rem;}/*!sc*/
+data-styled.g20[id="sc-dNdcvo"]{content:"esMlQF,"}/*!sc*/
+.eHcrXx{display:flex;gap:2rem;}/*!sc*/
+@media (max-width: 480px){.eHcrXx{flex-direction:column;gap:1rem;}}/*!sc*/
+.eHcrXx a{color:rgba(255, 255, 255, 0.7);text-decoration:none;font-size:0.9rem;transition:color 0.15s ease;}/*!sc*/
+.eHcrXx a:hover{color:white;}/*!sc*/
+data-styled.g21[id="sc-fbQrwq"]{content:"eHcrXx,"}/*!sc*/
+.dAQFGp{color:#1e293b;line-height:1.6;}/*!sc*/
+.dAQFGp h1,.dAQFGp h2,.dAQFGp h3,.dAQFGp h4,.dAQFGp h5,.dAQFGp h6{color:#1e293b;margin-top:2rem;margin-bottom:1rem;font-weight:600;}/*!sc*/
+.dAQFGp h1{font-size:2rem;border-bottom:2px solid #e2e8f0;padding-bottom:0.5rem;}/*!sc*/
+.dAQFGp h2{font-size:1.5rem;border-bottom:1px solid #e2e8f0;padding-bottom:0.3rem;}/*!sc*/
+.dAQFGp h3{font-size:1.25rem;}/*!sc*/
+.dAQFGp h4{font-size:1.1rem;}/*!sc*/
+.dAQFGp p{margin-bottom:1rem;color:#64748b;}/*!sc*/
+.dAQFGp a{color:#3b82f6;text-decoration:none;}/*!sc*/
+.dAQFGp a:hover{text-decoration:underline;}/*!sc*/
+.dAQFGp ul,.dAQFGp ol{margin-bottom:1rem;padding-left:1.5rem;}/*!sc*/
+.dAQFGp ul li,.dAQFGp ol li{margin-bottom:0.5rem;color:#64748b;}/*!sc*/
+.dAQFGp blockquote{border-left:4px solid #3b82f6;padding-left:1rem;margin:1rem 0;font-style:italic;color:#64748b;background:#f1f5f9;padding:1rem;border-radius:0.5rem;}/*!sc*/
+.dAQFGp code{background:#f1f5f9;padding:0.2rem 0.4rem;border-radius:0.25rem;font-family:SFMono-Regular,Consolas,"Liberation Mono",Menlo,monospace;font-size:0.9em;color:#f59e0b;}/*!sc*/
+.dAQFGp pre{background:#ffffff;border:1px solid #e2e8f0;border-radius:0.5rem;padding:1rem;margin:1rem 0;overflow-x:auto;}/*!sc*/
+.dAQFGp pre code{background:none;padding:0;color:#1e293b;font-size:0.9rem;}/*!sc*/
+.dAQFGp table{width:100%;border-collapse:collapse;margin:1rem 0;}/*!sc*/
+.dAQFGp table th,.dAQFGp table td{border:1px solid #e2e8f0;padding:0.5rem;text-align:left;}/*!sc*/
+.dAQFGp table th{background:#ffffff;font-weight:600;}/*!sc*/
+.dAQFGp table tr:nth-child(even){background:#f1f5f9;}/*!sc*/
+.dAQFGp hr{border:none;height:1px;background:#e2e8f0;margin:2rem 0;}/*!sc*/
+.dAQFGp .highlight{background:#3b82f620;padding:0.2rem 0.4rem;border-radius:0.25rem;font-weight:600;}/*!sc*/
+.dAQFGp .hljs{background:#ffffff;color:#1e293b;}/*!sc*/
+.dAQFGp .hljs-keyword{color:#3b82f6;font-weight:600;}/*!sc*/
+.dAQFGp .hljs-string{color:#10b981;}/*!sc*/
+.dAQFGp .hljs-function{color:#f59e0b;}/*!sc*/
+.dAQFGp .hljs-comment{color:#94a3b8;font-style:italic;}/*!sc*/
+.dAQFGp .hljs-number{color:#f59e0b;}/*!sc*/
+.dAQFGp .hljs-variable{color:#1e293b;}/*!sc*/
+.dAQFGp .hljs-title{color:#f59e0b;font-weight:600;}/*!sc*/
+data-styled.g22[id="sc-gGKoUb"]{content:"dAQFGp,"}/*!sc*/
+</style></head><body class="__className_6eac61"><div style="min-height:100vh;display:flex;flex-direction:column"><nav class="sc-bRKDuR wbMrm"><div class="sc-hvigdm kDxBNU"><a href="/interview"><a class="sc-fhHczv cvsJZg"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-code "><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>Frontend Interview Prep</a></a><div class="sc-ggWZvA lfYVIv"><a href="/interview/problems"><a class="sc-dTvVRJ bhKRhV">Problems</a></a><a href="/interview/learn"><a class="sc-dTvVRJ bhKRhV">Learn</a></a><a href="/interview/study-guide"><a class="sc-dTvVRJ bhKRhV">Study Guide</a></a><a href="/interview/system-design"><a class="sc-dTvVRJ bhKRhV">System Design</a></a><a href="/interview/performance"><a class="sc-dTvVRJ bhKRhV">Performance</a></a><a href="/interview/accessibility"><a class="sc-dTvVRJ bhKRhV">Accessibility</a></a><a href="/interview/interview-tips"><a class="sc-dTvVRJ bhKRhV">Interview Tips</a></a><button class="sc-kNOymR hpKWkw"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-search "><circle cx="11" cy="11" r="8"></circle><path d="m21 21-4.3-4.3"></path></svg>Search</button></div><button class="sc-jwTyAe gpUImn"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-menu "><line x1="4" x2="20" y1="12" y2="12"></line><line x1="4" x2="20" y1="6" y2="6"></line><line x1="4" x2="20" y1="18" y2="18"></line></svg></button></div></nav><main style="flex:1"><div style="max-width:1200px;margin:0 auto;padding:2rem;padding-top:6rem"><div style="margin-bottom:2rem"><nav style="color:#64748b;font-size:0.9rem;margin-bottom:1rem"><a href="/" style="color:#3b82f6;text-decoration:none">Home</a> &gt; <span>src &gt; content &gt; leetcode &gt; array &gt; advanced-patterns</span></nav><h1 style="font-size:2.5rem;font-weight:800;margin-bottom:0.5rem;color:#1e293b">Advanced Array Patterns for FAANG Interviews</h1><div style="color:#64748b;font-size:0.9rem;margin-bottom:2rem"><span>📁 <!-- -->src/content/leetcode/array/advanced-patterns.md</span></div></div><div class="sc-gGKoUb dAQFGp"><h1 id="advanced-array-patterns-for-faang-interviews" node="[object Object]">Advanced Array Patterns for FAANG Interviews</h1>
+<h2 id="🎯-core-patterns-every-mid-level-developer-must-master" node="[object Object]">🎯 Core Patterns Every Mid-Level Developer Must Master</h2>
+<h3 id="1.-sliding-window-technique" node="[object Object]">1. Sliding Window Technique</h3>
+<p><strong>When to Use:</strong> Subarray/substring problems with contiguous elements
+<strong>Time Complexity:</strong> O(n) instead of O(n²)</p>
+<h4>Pattern Template:</h4>
+<pre><pre><code class="hljs hljs language-typescript"><span class="hljs-keyword">function</span> <span class="hljs-title function_">slidingWindow</span>(<span class="hljs-params"><span class="hljs-attr">arr</span>: <span class="hljs-built_in">number</span>[], <span class="hljs-attr">target</span>: <span class="hljs-built_in">number</span></span>): <span class="hljs-built_in">number</span> {
+    <span class="hljs-keyword">let</span> left = <span class="hljs-number">0</span>, right = <span class="hljs-number">0</span>;
+    <span class="hljs-keyword">let</span> windowSum = <span class="hljs-number">0</span>;
+    <span class="hljs-keyword">let</span> result = <span class="hljs-number">0</span>;
+    
+    <span class="hljs-keyword">while</span> (right &lt; arr.<span class="hljs-property">length</span>) {
+        <span class="hljs-comment">// Expand window</span>
+        windowSum += arr[right];
+        
+        <span class="hljs-comment">// Contract window if needed</span>
+        <span class="hljs-keyword">while</span> (windowSum &gt; target) {
+            windowSum -= arr[left];
+            left++;
+        }
+        
+        <span class="hljs-comment">// Update result</span>
+        result = <span class="hljs-title class_">Math</span>.<span class="hljs-title function_">max</span>(result, right - left + <span class="hljs-number">1</span>);
+        right++;
+    }
+    
+    <span class="hljs-keyword">return</span> result;
+}
+</code></pre></pre>
+<h4>FAANG Interview Problems:</h4>
+<p><strong>Google Favorite:</strong> Longest Substring Without Repeating Characters</p>
+<pre><pre><code class="hljs hljs language-typescript"><span class="hljs-keyword">function</span> <span class="hljs-title function_">lengthOfLongestSubstring</span>(<span class="hljs-params"><span class="hljs-attr">s</span>: <span class="hljs-built_in">string</span></span>): <span class="hljs-built_in">number</span> {
+    <span class="hljs-keyword">const</span> charSet = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Set</span>&lt;<span class="hljs-built_in">string</span>&gt;();
+    <span class="hljs-keyword">let</span> left = <span class="hljs-number">0</span>, maxLength = <span class="hljs-number">0</span>;
+    
+    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> right = <span class="hljs-number">0</span>; right &lt; s.<span class="hljs-property">length</span>; right++) {
+        <span class="hljs-keyword">while</span> (charSet.<span class="hljs-title function_">has</span>(s[right])) {
+            charSet.<span class="hljs-title function_">delete</span>(s[left]);
+            left++;
+        }
+        charSet.<span class="hljs-title function_">add</span>(s[right]);
+        maxLength = <span class="hljs-title class_">Math</span>.<span class="hljs-title function_">max</span>(maxLength, right - left + <span class="hljs-number">1</span>);
+    }
+    
+    <span class="hljs-keyword">return</span> maxLength;
+}
+
+<span class="hljs-comment">// Test cases for interview</span>
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-title function_">lengthOfLongestSubstring</span>(<span class="hljs-string">&quot;abcabcbb&quot;</span>)); <span class="hljs-comment">// 3</span>
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-title function_">lengthOfLongestSubstring</span>(<span class="hljs-string">&quot;bbbbb&quot;</span>)); <span class="hljs-comment">// 1</span>
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-title function_">lengthOfLongestSubstring</span>(<span class="hljs-string">&quot;pwwkew&quot;</span>)); <span class="hljs-comment">// 3</span>
+</code></pre></pre>
+<p><strong>Meta Favorite:</strong> Minimum Window Substring</p>
+<pre><pre><code class="hljs hljs language-typescript"><span class="hljs-keyword">function</span> <span class="hljs-title function_">minWindow</span>(<span class="hljs-params"><span class="hljs-attr">s</span>: <span class="hljs-built_in">string</span>, <span class="hljs-attr">t</span>: <span class="hljs-built_in">string</span></span>): <span class="hljs-built_in">string</span> {
+    <span class="hljs-keyword">if</span> (s.<span class="hljs-property">length</span> &lt; t.<span class="hljs-property">length</span>) <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;&quot;</span>;
+    
+    <span class="hljs-keyword">const</span> targetCount = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Map</span>&lt;<span class="hljs-built_in">string</span>, <span class="hljs-built_in">number</span>&gt;();
+    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">const</span> char <span class="hljs-keyword">of</span> t) {
+        targetCount.<span class="hljs-title function_">set</span>(char, (targetCount.<span class="hljs-title function_">get</span>(char) || <span class="hljs-number">0</span>) + <span class="hljs-number">1</span>);
+    }
+    
+    <span class="hljs-keyword">let</span> left = <span class="hljs-number">0</span>, right = <span class="hljs-number">0</span>;
+    <span class="hljs-keyword">let</span> formed = <span class="hljs-number">0</span>;
+    <span class="hljs-keyword">const</span> required = targetCount.<span class="hljs-property">size</span>;
+    <span class="hljs-keyword">const</span> windowCounts = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Map</span>&lt;<span class="hljs-built_in">string</span>, <span class="hljs-built_in">number</span>&gt;();
+    
+    <span class="hljs-keyword">let</span> minLen = <span class="hljs-title class_">Infinity</span>;
+    <span class="hljs-keyword">let</span> minLeft = <span class="hljs-number">0</span>;
+    
+    <span class="hljs-keyword">while</span> (right &lt; s.<span class="hljs-property">length</span>) {
+        <span class="hljs-keyword">const</span> char = s[right];
+        windowCounts.<span class="hljs-title function_">set</span>(char, (windowCounts.<span class="hljs-title function_">get</span>(char) || <span class="hljs-number">0</span>) + <span class="hljs-number">1</span>);
+        
+        <span class="hljs-keyword">if</span> (targetCount.<span class="hljs-title function_">has</span>(char) &amp;&amp; windowCounts.<span class="hljs-title function_">get</span>(char) === targetCount.<span class="hljs-title function_">get</span>(char)) {
+            formed++;
+        }
+        
+        <span class="hljs-keyword">while</span> (left &lt;= right &amp;&amp; formed === required) {
+            <span class="hljs-keyword">if</span> (right - left + <span class="hljs-number">1</span> &lt; minLen) {
+                minLen = right - left + <span class="hljs-number">1</span>;
+                minLeft = left;
+            }
+            
+            <span class="hljs-keyword">const</span> leftChar = s[left];
+            windowCounts.<span class="hljs-title function_">set</span>(leftChar, windowCounts.<span class="hljs-title function_">get</span>(leftChar)! - <span class="hljs-number">1</span>);
+            <span class="hljs-keyword">if</span> (targetCount.<span class="hljs-title function_">has</span>(leftChar) &amp;&amp; windowCounts.<span class="hljs-title function_">get</span>(leftChar)! &lt; targetCount.<span class="hljs-title function_">get</span>(leftChar)!) {
+                formed--;
+            }
+            left++;
+        }
+        right++;
+    }
+    
+    <span class="hljs-keyword">return</span> minLen === <span class="hljs-title class_">Infinity</span> ? <span class="hljs-string">&quot;&quot;</span> : s.<span class="hljs-title function_">substring</span>(minLeft, minLeft + minLen);
+}
+</code></pre></pre>
+<h3 id="2.-two-pointers-mastery" node="[object Object]">2. Two Pointers Mastery</h3>
+<h4>Amazon&#x27;s Favorite: Container With Most Water</h4>
+<pre><pre><code class="hljs hljs language-typescript"><span class="hljs-keyword">function</span> <span class="hljs-title function_">maxArea</span>(<span class="hljs-params"><span class="hljs-attr">height</span>: <span class="hljs-built_in">number</span>[]</span>): <span class="hljs-built_in">number</span> {
+    <span class="hljs-keyword">let</span> left = <span class="hljs-number">0</span>, right = height.<span class="hljs-property">length</span> - <span class="hljs-number">1</span>;
+    <span class="hljs-keyword">let</span> maxWater = <span class="hljs-number">0</span>;
+    
+    <span class="hljs-keyword">while</span> (left &lt; right) {
+        <span class="hljs-keyword">const</span> width = right - left;
+        <span class="hljs-keyword">const</span> currentWater = <span class="hljs-title class_">Math</span>.<span class="hljs-title function_">min</span>(height[left], height[right]) * width;
+        maxWater = <span class="hljs-title class_">Math</span>.<span class="hljs-title function_">max</span>(maxWater, currentWater);
+        
+        <span class="hljs-comment">// Move pointer with smaller height</span>
+        <span class="hljs-keyword">if</span> (height[left] &lt; height[right]) {
+            left++;
+        } <span class="hljs-keyword">else</span> {
+            right--;
+        }
+    }
+    
+    <span class="hljs-keyword">return</span> maxWater;
+}
+
+<span class="hljs-comment">// Interview follow-up: What if we need to find the actual container positions?</span>
+<span class="hljs-keyword">function</span> <span class="hljs-title function_">maxAreaWithPositions</span>(<span class="hljs-params"><span class="hljs-attr">height</span>: <span class="hljs-built_in">number</span>[]</span>): [<span class="hljs-built_in">number</span>, <span class="hljs-built_in">number</span>, <span class="hljs-built_in">number</span>] {
+    <span class="hljs-keyword">let</span> left = <span class="hljs-number">0</span>, right = height.<span class="hljs-property">length</span> - <span class="hljs-number">1</span>;
+    <span class="hljs-keyword">let</span> maxWater = <span class="hljs-number">0</span>;
+    <span class="hljs-keyword">let</span> bestLeft = <span class="hljs-number">0</span>, bestRight = <span class="hljs-number">0</span>;
+    
+    <span class="hljs-keyword">while</span> (left &lt; right) {
+        <span class="hljs-keyword">const</span> width = right - left;
+        <span class="hljs-keyword">const</span> currentWater = <span class="hljs-title class_">Math</span>.<span class="hljs-title function_">min</span>(height[left], height[right]) * width;
+        
+        <span class="hljs-keyword">if</span> (currentWater &gt; maxWater) {
+            maxWater = currentWater;
+            bestLeft = left;
+            bestRight = right;
+        }
+        
+        <span class="hljs-keyword">if</span> (height[left] &lt; height[right]) {
+            left++;
+        } <span class="hljs-keyword">else</span> {
+            right--;
+        }
+    }
+    
+    <span class="hljs-keyword">return</span> [maxWater, bestLeft, bestRight];
+}
+</code></pre></pre>
+<h2 id="🔥-faang-specific-problem-patterns" node="[object Object]">🔥 FAANG-Specific Problem Patterns</h2>
+<h3 id="google:-focus-on-optimal-solutions" node="[object Object]">Google: Focus on Optimal Solutions</h3>
+<ul>
+<li>Always ask about time/space complexity</li>
+<li>Prefer O(n) solutions over O(n log n)</li>
+<li>Master bit manipulation for optimization</li>
+</ul>
+<h3 id="meta:-react-related-array-problems" node="[object Object]">Meta: React-Related Array Problems</h3>
+<ul>
+<li>Virtual scrolling implementations</li>
+<li>Efficient list rendering</li>
+<li>State management with arrays</li>
+</ul>
+<h3 id="amazon:-leadership-principles-in-code" node="[object Object]">Amazon: Leadership Principles in Code</h3>
+<ul>
+<li>Write clean, maintainable solutions</li>
+<li>Consider edge cases thoroughly</li>
+<li>Optimize for customer experience (performance)</li>
+</ul>
+<h2 id="📊-interview-success-metrics" node="[object Object]">📊 Interview Success Metrics</h2>
+<p><strong>For Mid-Level (3-5 years):</strong></p>
+<ul>
+<li>Solve 80% of Medium problems in 25-30 minutes</li>
+<li>Solve 40% of Hard problems in 45 minutes</li>
+<li>Explain time/space complexity clearly</li>
+<li>Provide multiple approaches when possible</li>
+</ul>
+<h2 id="🎯-practice-schedule" node="[object Object]">🎯 Practice Schedule</h2>
+<p><strong>Week 1-2:</strong> Master sliding window (15 problems)
+<strong>Week 3-4:</strong> Perfect two pointers (20 problems)
+<strong>Week 5-6:</strong> Advanced patterns combination (10 problems)</p>
+<h2 id="💡-pro-tips-for-faang-interviews" node="[object Object]">💡 Pro Tips for FAANG Interviews</h2>
+<ol>
+<li><strong>Always clarify constraints first</strong></li>
+<li><strong>Start with brute force, then optimize</strong></li>
+<li><strong>Think out loud during problem solving</strong></li>
+<li><strong>Test with edge cases</strong></li>
+<li><strong>Discuss trade-offs between solutions</strong></li>
+</ol></div></div></main><footer class="sc-dYwGCk cJzheU"><div class="sc-lgpSej hJUFeT"><div class="sc-eqYatC mSxwd"><div class="sc-kcLKEh cmBIup"><div class="sc-dntSTA bAsNIP"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-code "><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>Frontend Interview Prep</div><p class="sc-kvnevz gWXMDV">Comprehensive interview preparation for frontend engineers targeting Big Tech companies.</p><div class="sc-dFVmKS jCoOHQ"><a href="https://github.com" aria-label="GitHub"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-github "><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"></path><path d="M9 18c-4.51 2-5-2-7-2"></path></svg></a><a href="https://twitter.com" aria-label="Twitter"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-twitter "><path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"></path></svg></a><a href="https://linkedin.com" aria-label="LinkedIn"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-linkedin "><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect width="4" height="12" x="2" y="9"></rect><circle cx="4" cy="4" r="2"></circle></svg></a><a href="mailto:contact@example.com" aria-label="Email"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-mail "><rect width="20" height="16" x="2" y="4" rx="2"></rect><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path></svg></a></div></div><div class="sc-kcLKEh cmBIup"><h3>Study Materials</h3><ul><li><a href="/algorithms">Algorithms</a></li><li><a href="/react">React &amp; Frontend</a></li><li><a href="/system-design">System Design</a></li><li><a href="/typescript">TypeScript</a></li><li><a href="/performance">Performance</a></li></ul></div><div class="sc-kcLKEh cmBIup"><h3>Companies</h3><ul><li><a href="/google">Google</a></li><li><a href="/meta">Meta</a></li><li><a href="/amazon">Amazon</a></li><li><a href="/microsoft">Microsoft</a></li><li><a href="/apple">Apple</a></li></ul></div><div class="sc-kcLKEh cmBIup"><h3>Resources</h3><ul><li><a href="/interview-tips">Interview Tips</a></li><li><a href="/coding-challenges">Coding Challenges</a></li><li><a href="/mock-interviews">Mock Interviews</a></li><li><a href="/blog">Blog</a></li><li><a href="/faq">FAQ</a></li></ul></div></div><div class="sc-kCuUfV crUaYh"><p class="sc-dNdcvo esMlQF">© 2025 Frontend Interview Prep. All rights reserved.</p><div class="sc-fbQrwq eHcrXx"><a href="/privacy">Privacy Policy</a><a href="/terms">Terms of Service</a><a href="/contact">Contact</a></div></div></div></footer></div><script src="/interview/_next/static/chunks/webpack-be7d7df45533bffc.js" async=""></script><script>(self.__next_f=self.__next_f||[]).push([0]);self.__next_f.push([2,null])</script><script>self.__next_f.push([1,"1:HL[\"/interview/_next/static/media/e4af272ccee01ff0-s.p.woff2\",\"font\",{\"crossOrigin\":\"\",\"type\":\"font/woff2\"}]\n2:HL[\"/interview/_next/static/css/387024c6a2216908.css\",\"style\"]\n"])</script><script>self.__next_f.push([1,"3:I[2846,[],\"\"]\n5:I[5907,[\"918\",\"static/chunks/918-3273b83890f10546.js\",\"930\",\"static/chunks/930-3262a6c9c5acace4.js\",\"687\",\"static/chunks/app/docs/%5B...slug%5D/page-32962e9542d32755.js\"],\"default\"]\n7:I[4707,[],\"\"]\n9:I[6423,[],\"\"]\na:I[2,[\"918\",\"static/chunks/918-3273b83890f10546.js\",\"710\",\"static/chunks/710-dfaa11b4dff08f8e.js\",\"972\",\"static/chunks/972-011bba60ed155615.js\",\"233\",\"static/chunks/233-3e0c1d820a17eca9.js\",\"185\",\"static/chunks/app/layout-333f4adcd11f8f39.js\"],\"default\",1]\nc:I[1060,[],\"\"]\n6:T153a,"])</script><script>self.__next_f.push([1,"\n# Advanced Array Patterns for FAANG Interviews\n\n## 🎯 Core Patterns Every Mid-Level Developer Must Master\n\n### 1. Sliding Window Technique\n\n**When to Use:** Subarray/substring problems with contiguous elements\n**Time Complexity:** O(n) instead of O(n²)\n\n#### Pattern Template:\n```typescript\nfunction slidingWindow(arr: number[], target: number): number {\n    let left = 0, right = 0;\n    let windowSum = 0;\n    let result = 0;\n    \n    while (right \u003c arr.length) {\n        // Expand window\n        windowSum += arr[right];\n        \n        // Contract window if needed\n        while (windowSum \u003e target) {\n            windowSum -= arr[left];\n            left++;\n        }\n        \n        // Update result\n        result = Math.max(result, right - left + 1);\n        right++;\n    }\n    \n    return result;\n}\n```\n\n#### FAANG Interview Problems:\n\n**Google Favorite:** Longest Substring Without Repeating Characters\n```typescript\nfunction lengthOfLongestSubstring(s: string): number {\n    const charSet = new Set\u003cstring\u003e();\n    let left = 0, maxLength = 0;\n    \n    for (let right = 0; right \u003c s.length; right++) {\n        while (charSet.has(s[right])) {\n            charSet.delete(s[left]);\n            left++;\n        }\n        charSet.add(s[right]);\n        maxLength = Math.max(maxLength, right - left + 1);\n    }\n    \n    return maxLength;\n}\n\n// Test cases for interview\nconsole.log(lengthOfLongestSubstring(\"abcabcbb\")); // 3\nconsole.log(lengthOfLongestSubstring(\"bbbbb\")); // 1\nconsole.log(lengthOfLongestSubstring(\"pwwkew\")); // 3\n```\n\n**Meta Favorite:** Minimum Window Substring\n```typescript\nfunction minWindow(s: string, t: string): string {\n    if (s.length \u003c t.length) return \"\";\n    \n    const targetCount = new Map\u003cstring, number\u003e();\n    for (const char of t) {\n        targetCount.set(char, (targetCount.get(char) || 0) + 1);\n    }\n    \n    let left = 0, right = 0;\n    let formed = 0;\n    const required = targetCount.size;\n    const windowCounts = new Map\u003cstring, number\u003e();\n    \n    let minLen = Infinity;\n    let minLeft = 0;\n    \n    while (right \u003c s.length) {\n        const char = s[right];\n        windowCounts.set(char, (windowCounts.get(char) || 0) + 1);\n        \n        if (targetCount.has(char) \u0026\u0026 windowCounts.get(char) === targetCount.get(char)) {\n            formed++;\n        }\n        \n        while (left \u003c= right \u0026\u0026 formed === required) {\n            if (right - left + 1 \u003c minLen) {\n                minLen = right - left + 1;\n                minLeft = left;\n            }\n            \n            const leftChar = s[left];\n            windowCounts.set(leftChar, windowCounts.get(leftChar)! - 1);\n            if (targetCount.has(leftChar) \u0026\u0026 windowCounts.get(leftChar)! \u003c targetCount.get(leftChar)!) {\n                formed--;\n            }\n            left++;\n        }\n        right++;\n    }\n    \n    return minLen === Infinity ? \"\" : s.substring(minLeft, minLeft + minLen);\n}\n```\n\n### 2. Two Pointers Mastery\n\n#### Amazon's Favorite: Container With Most Water\n```typescript\nfunction maxArea(height: number[]): number {\n    let left = 0, right = height.length - 1;\n    let maxWater = 0;\n    \n    while (left \u003c right) {\n        const width = right - left;\n        const currentWater = Math.min(height[left], height[right]) * width;\n        maxWater = Math.max(maxWater, currentWater);\n        \n        // Move pointer with smaller height\n        if (height[left] \u003c height[right]) {\n            left++;\n        } else {\n            right--;\n        }\n    }\n    \n    return maxWater;\n}\n\n// Interview follow-up: What if we need to find the actual container positions?\nfunction maxAreaWithPositions(height: number[]): [number, number, number] {\n    let left = 0, right = height.length - 1;\n    let maxWater = 0;\n    let bestLeft = 0, bestRight = 0;\n    \n    while (left \u003c right) {\n        const width = right - left;\n        const currentWater = Math.min(height[left], height[right]) * width;\n        \n        if (currentWater \u003e maxWater) {\n            maxWater = currentWater;\n            bestLeft = left;\n            bestRight = right;\n        }\n        \n        if (height[left] \u003c height[right]) {\n            left++;\n        } else {\n            right--;\n        }\n    }\n    \n    return [maxWater, bestLeft, bestRight];\n}\n```\n\n## 🔥 FAANG-Specific Problem Patterns\n\n### Google: Focus on Optimal Solutions\n- Always ask about time/space complexity\n- Prefer O(n) solutions over O(n log n)\n- Master bit manipulation for optimization\n\n### Meta: React-Related Array Problems\n- Virtual scrolling implementations\n- Efficient list rendering\n- State management with arrays\n\n### Amazon: Leadership Principles in Code\n- Write clean, maintainable solutions\n- Consider edge cases thoroughly\n- Optimize for customer experience (performance)\n\n## 📊 Interview Success Metrics\n\n**For Mid-Level (3-5 years):**\n- Solve 80% of Medium problems in 25-30 minutes\n- Solve 40% of Hard problems in 45 minutes\n- Explain time/space complexity clearly\n- Provide multiple approaches when possible\n\n## 🎯 Practice Schedule\n\n**Week 1-2:** Master sliding window (15 problems)\n**Week 3-4:** Perfect two pointers (20 problems)\n**Week 5-6:** Advanced patterns combination (10 problems)\n\n## 💡 Pro Tips for FAANG Interviews\n\n1. **Always clarify constraints first**\n2. **Start with brute force, then optimize**\n3. **Think out loud during problem solving**\n4. **Test with edge cases**\n5. **Discuss trade-offs between solutions**"])</script><script>self.__next_f.push([1,"8:[\"slug\",\"src/content/leetcode/array/advanced-patterns\",\"c\"]\nd:[]\n"])</script><script>self.__next_f.push([1,"0:[\"$\",\"$L3\",null,{\"buildId\":\"7uJ7BVaXJTiEOD9iYDv3n\",\"assetPrefix\":\"/interview\",\"urlParts\":[\"\",\"docs\",\"src\",\"content\",\"leetcode\",\"array\",\"advanced-patterns\"],\"initialTree\":[\"\",{\"children\":[\"docs\",{\"children\":[[\"slug\",\"src/content/leetcode/array/advanced-patterns\",\"c\"],{\"children\":[\"__PAGE__?{\\\"slug\\\":[\\\"src\\\",\\\"content\\\",\\\"leetcode\\\",\\\"array\\\",\\\"advanced-patterns\\\"]}\",{}]}]}]},\"$undefined\",\"$undefined\",true],\"initialSeedData\":[\"\",{\"children\":[\"docs\",{\"children\":[[\"slug\",\"src/content/leetcode/array/advanced-patterns\",\"c\"],{\"children\":[\"__PAGE__\",{},[[\"$L4\",[\"$\",\"div\",null,{\"style\":{\"maxWidth\":\"1200px\",\"margin\":\"0 auto\",\"padding\":\"2rem\",\"paddingTop\":\"6rem\"},\"children\":[[\"$\",\"div\",null,{\"style\":{\"marginBottom\":\"2rem\"},\"children\":[[\"$\",\"nav\",null,{\"style\":{\"color\":\"#64748b\",\"fontSize\":\"0.9rem\",\"marginBottom\":\"1rem\"},\"children\":[[\"$\",\"a\",null,{\"href\":\"/\",\"style\":{\"color\":\"#3b82f6\",\"textDecoration\":\"none\"},\"children\":\"Home\"}],\" \u003e \",[\"$\",\"span\",null,{\"children\":\"src \u003e content \u003e leetcode \u003e array \u003e advanced-patterns\"}]]}],[\"$\",\"h1\",null,{\"style\":{\"fontSize\":\"2.5rem\",\"fontWeight\":\"800\",\"marginBottom\":\"0.5rem\",\"color\":\"#1e293b\"},\"children\":\"Advanced Array Patterns for FAANG Interviews\"}],[\"$\",\"div\",null,{\"style\":{\"color\":\"#64748b\",\"fontSize\":\"0.9rem\",\"marginBottom\":\"2rem\"},\"children\":[[\"$\",\"span\",null,{\"children\":[\"📁 \",\"src/content/leetcode/array/advanced-patterns.md\"]}],\"$undefined\",\"$undefined\"]}]]}],[\"$\",\"$L5\",null,{\"content\":\"$6\"}]]}],null],null],null]},[null,[\"$\",\"$L7\",null,{\"parallelRouterKey\":\"children\",\"segmentPath\":[\"children\",\"docs\",\"children\",\"$8\",\"children\"],\"error\":\"$undefined\",\"errorStyles\":\"$undefined\",\"errorScripts\":\"$undefined\",\"template\":[\"$\",\"$L9\",null,{}],\"templateStyles\":\"$undefined\",\"templateScripts\":\"$undefined\",\"notFound\":\"$undefined\",\"notFoundStyles\":\"$undefined\"}]],null]},[null,[\"$\",\"$L7\",null,{\"parallelRouterKey\":\"children\",\"segmentPath\":[\"children\",\"docs\",\"children\"],\"error\":\"$undefined\",\"errorStyles\":\"$undefined\",\"errorScripts\":\"$undefined\",\"template\":[\"$\",\"$L9\",null,{}],\"templateStyles\":\"$undefined\",\"templateScripts\":\"$undefined\",\"notFound\":\"$undefined\",\"notFoundStyles\":\"$undefined\"}]],null]},[[[[\"$\",\"link\",\"0\",{\"rel\":\"stylesheet\",\"href\":\"/interview/_next/static/css/387024c6a2216908.css\",\"precedence\":\"next\",\"crossOrigin\":\"$undefined\"}]],[\"$\",\"$La\",null,{\"children\":[\"$\",\"$L7\",null,{\"parallelRouterKey\":\"children\",\"segmentPath\":[\"children\"],\"error\":\"$undefined\",\"errorStyles\":\"$undefined\",\"errorScripts\":\"$undefined\",\"template\":[\"$\",\"$L9\",null,{}],\"templateStyles\":\"$undefined\",\"templateScripts\":\"$undefined\",\"notFound\":[[\"$\",\"title\",null,{\"children\":\"404: This page could not be found.\"}],[\"$\",\"div\",null,{\"style\":{\"fontFamily\":\"system-ui,\\\"Segoe UI\\\",Roboto,Helvetica,Arial,sans-serif,\\\"Apple Color Emoji\\\",\\\"Segoe UI Emoji\\\"\",\"height\":\"100vh\",\"textAlign\":\"center\",\"display\":\"flex\",\"flexDirection\":\"column\",\"alignItems\":\"center\",\"justifyContent\":\"center\"},\"children\":[\"$\",\"div\",null,{\"children\":[[\"$\",\"style\",null,{\"dangerouslySetInnerHTML\":{\"__html\":\"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}\"}}],[\"$\",\"h1\",null,{\"className\":\"next-error-h1\",\"style\":{\"display\":\"inline-block\",\"margin\":\"0 20px 0 0\",\"padding\":\"0 23px 0 0\",\"fontSize\":24,\"fontWeight\":500,\"verticalAlign\":\"top\",\"lineHeight\":\"49px\"},\"children\":\"404\"}],[\"$\",\"div\",null,{\"style\":{\"display\":\"inline-block\"},\"children\":[\"$\",\"h2\",null,{\"style\":{\"fontSize\":14,\"fontWeight\":400,\"lineHeight\":\"49px\",\"margin\":0},\"children\":\"This page could not be found.\"}]}]]}]}]],\"notFoundStyles\":[]}],\"params\":{}}]],null],null],\"couldBeIntercepted\":false,\"initialHead\":[null,\"$Lb\"],\"globalErrorComponent\":\"$c\",\"missingSlots\":\"$Wd\"}]\n"])</script><script>self.__next_f.push([1,"b:[[\"$\",\"meta\",\"0\",{\"name\":\"viewport\",\"content\":\"width=device-width, initial-scale=1\"}],[\"$\",\"meta\",\"1\",{\"charSet\":\"utf-8\"}],[\"$\",\"title\",\"2\",{\"children\":\"Advanced Array Patterns for FAANG Interviews - Frontend Interview Docs\"}],[\"$\",\"meta\",\"3\",{\"name\":\"description\",\"content\":\" # Advanced Array Patterns for FAANG Interviews  ## 🎯 Core Patterns Every Mid-Level Developer Must Master  ### 1. Sliding Window Technique  **When to Use:** Su\"}],[\"$\",\"meta\",\"4\",{\"property\":\"og:title\",\"content\":\"Advanced Array Patterns for FAANG Interviews - Frontend Interview Docs\"}],[\"$\",\"meta\",\"5\",{\"property\":\"og:description\",\"content\":\" # Advanced Array Patterns for FAANG Interviews  ## 🎯 Core Patterns Every Mid-Level Developer Must Master  ### 1. Sliding Window Technique  **When to Use:** Su\"}],[\"$\",\"meta\",\"6\",{\"property\":\"og:type\",\"content\":\"article\"}],[\"$\",\"meta\",\"7\",{\"name\":\"twitter:card\",\"content\":\"summary\"}],[\"$\",\"meta\",\"8\",{\"name\":\"twitter:title\",\"content\":\"Advanced Array Patterns for FAANG Interviews - Frontend Interview Docs\"}],[\"$\",\"meta\",\"9\",{\"name\":\"twitter:description\",\"content\":\" # Advanced Array Patterns for FAANG Interviews  ## 🎯 Core Patterns Every Mid-Level Developer Must Master  ### 1. Sliding Window Technique  **When to Use:** Su\"}],[\"$\",\"meta\",\"10\",{\"name\":\"next-size-adjust\"}]]\n4:null\n"])</script></body></html>

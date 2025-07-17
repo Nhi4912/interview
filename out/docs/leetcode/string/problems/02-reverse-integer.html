@@ -1,0 +1,634 @@
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><meta name="viewport" content="width=device-width, initial-scale=1"/><link rel="preload" href="/interview/_next/static/media/e4af272ccee01ff0-s.p.woff2" as="font" crossorigin="" type="font/woff2"/><link rel="stylesheet" href="/interview/_next/static/css/387024c6a2216908.css" data-precedence="next"/><link rel="preload" as="script" fetchPriority="low" href="/interview/_next/static/chunks/webpack-be7d7df45533bffc.js"/><script src="/interview/_next/static/chunks/fd9d1056-6922f449a204c2cc.js" async=""></script><script src="/interview/_next/static/chunks/117-e7ecc085ce9cfab3.js" async=""></script><script src="/interview/_next/static/chunks/main-app-b06be5f3411c20c3.js" async=""></script><script src="/interview/_next/static/chunks/918-3273b83890f10546.js" async=""></script><script src="/interview/_next/static/chunks/930-3262a6c9c5acace4.js" async=""></script><script src="/interview/_next/static/chunks/app/docs/%5B...slug%5D/page-32962e9542d32755.js" async=""></script><script src="/interview/_next/static/chunks/710-dfaa11b4dff08f8e.js" async=""></script><script src="/interview/_next/static/chunks/972-011bba60ed155615.js" async=""></script><script src="/interview/_next/static/chunks/233-3e0c1d820a17eca9.js" async=""></script><script src="/interview/_next/static/chunks/app/layout-333f4adcd11f8f39.js" async=""></script><title>Frontend Interview Prep 2025 - Big Tech Interview Guide</title><meta name="description" content="Comprehensive frontend interview preparation for Big Tech companies including React, TypeScript, algorithms, and system design."/><link rel="icon" href="/favicon.ico"/><meta name="theme-color" content="#1a1a1a"/><meta property="og:title" content="Frontend Interview Prep 2025"/><meta property="og:description" content="Complete guide for frontend engineers targeting Big Tech companies"/><meta property="og:type" content="website"/><link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous"/><title>Reverse Integer - Frontend Interview Docs</title><meta name="description" content=" # Reverse Integer  **LeetCode Problem # * 7. Reverse Integer**  ## Problem Description   * Given a signed 32-bit integer x, return x with its digits reversed. "/><meta property="og:title" content="Reverse Integer - Frontend Interview Docs"/><meta property="og:description" content=" # Reverse Integer  **LeetCode Problem # * 7. Reverse Integer**  ## Problem Description   * Given a signed 32-bit integer x, return x with its digits reversed. "/><meta property="og:type" content="article"/><meta name="twitter:card" content="summary"/><meta name="twitter:title" content="Reverse Integer - Frontend Interview Docs"/><meta name="twitter:description" content=" # Reverse Integer  **LeetCode Problem # * 7. Reverse Integer**  ## Problem Description   * Given a signed 32-bit integer x, return x with its digits reversed. "/><meta name="next-size-adjust"/><script src="/interview/_next/static/chunks/polyfills-42372ed130431b0a.js" noModule=""></script><style data-styled="" data-styled-version="6.1.19">*{margin:0;padding:0;box-sizing:border-box;}/*!sc*/
+html{font-size:16px;line-height:1.5;scroll-behavior:smooth;}/*!sc*/
+body{font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;font-size:1rem;line-height:1.5;color:#1e293b;background-color:#ffffff;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;}/*!sc*/
+h1,h2,h3,h4,h5,h6{font-weight:700;line-height:1.25;margin-bottom:0.5em;}/*!sc*/
+h1{font-size:3rem;}/*!sc*/
+@media (max-width: 768px){h1{font-size:2.25rem;}}/*!sc*/
+h2{font-size:2.25rem;}/*!sc*/
+@media (max-width: 768px){h2{font-size:1.875rem;}}/*!sc*/
+h3{font-size:1.875rem;}/*!sc*/
+@media (max-width: 768px){h3{font-size:1.5rem;}}/*!sc*/
+h4{font-size:1.5rem;}/*!sc*/
+@media (max-width: 768px){h4{font-size:1.25rem;}}/*!sc*/
+h5{font-size:1.25rem;}/*!sc*/
+h6{font-size:1.125rem;}/*!sc*/
+p{margin-bottom:1rem;line-height:1.75;}/*!sc*/
+a{color:#3b82f6;text-decoration:none;transition:color 0.15s ease;}/*!sc*/
+a:hover{color:#2563eb;}/*!sc*/
+a:focus{outline:2px solid #3b82f6;outline-offset:2px;}/*!sc*/
+button{cursor:pointer;border:none;background:none;font-family:inherit;font-size:inherit;}/*!sc*/
+button:disabled{cursor:not-allowed;opacity:0.6;}/*!sc*/
+button:focus{outline:2px solid #3b82f6;outline-offset:2px;}/*!sc*/
+input,textarea,select{font-family:inherit;font-size:inherit;}/*!sc*/
+input:focus,textarea:focus,select:focus{outline:2px solid #3b82f6;outline-offset:2px;}/*!sc*/
+img{max-width:100%;height:auto;}/*!sc*/
+ul,ol{margin-bottom:1rem;padding-left:1.5rem;}/*!sc*/
+li{margin-bottom:0.25rem;}/*!sc*/
+blockquote{margin:1rem 0;padding:1rem;border-left:4px solid #3b82f6;background-color:#f1f5f9;font-style:italic;}/*!sc*/
+code{font-family:SFMono-Regular,Consolas,"Liberation Mono",Menlo,monospace;font-size:0.9em;background-color:#f1f5f9;padding:0.2em 0.4em;border-radius:0.25rem;}/*!sc*/
+pre{background-color:#f1f5f9;padding:1rem;border-radius:0.5rem;overflow-x:auto;margin-bottom:1rem;}/*!sc*/
+pre code{background:none;padding:0;}/*!sc*/
+table{width:100%;border-collapse:collapse;margin-bottom:1rem;}/*!sc*/
+th,td{padding:0.75rem;text-align:left;border-bottom:1px solid #e2e8f0;}/*!sc*/
+th{font-weight:600;background-color:#f1f5f9;}/*!sc*/
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0, 0, 0, 0);white-space:nowrap;border:0;}/*!sc*/
+.skip-link{position:absolute;top:-40px;left:6px;background:#3b82f6;color:white;padding:8px;text-decoration:none;border-radius:4px;z-index:100;}/*!sc*/
+.skip-link:focus{top:6px;}/*!sc*/
+::-webkit-scrollbar{width:8px;height:8px;}/*!sc*/
+::-webkit-scrollbar-track{background:#f1f5f9;}/*!sc*/
+::-webkit-scrollbar-thumb{background:#94a3b8;border-radius:4px;}/*!sc*/
+::-webkit-scrollbar-thumb:hover{background:#64748b;}/*!sc*/
+::selection{background:#3b82f6;color:white;}/*!sc*/
+.focus-visible{outline:2px solid #3b82f6;outline-offset:2px;}/*!sc*/
+.fade-in{opacity:0;animation:fadeIn 0.3s ease forwards;}/*!sc*/
+.slide-up{transform:translateY(20px);opacity:0;animation:slideUp 0.3s ease forwards;}/*!sc*/
+@keyframes fadeIn{to{opacity:1;}}/*!sc*/
+@keyframes slideUp{to{transform:translateY(0);opacity:1;}}/*!sc*/
+@media print{*{background:white!important;color:black!important;box-shadow:none!important;text-shadow:none!important;}a,a:visited{text-decoration:underline;}h1,h2,h3,h4,h5,h6{break-after:avoid;}pre,blockquote{border:1px solid #999;break-inside:avoid;}img{max-width:100%!important;}@page{margin:0.5in;}}/*!sc*/
+data-styled.g21[id="sc-global-kxA-Ddz1"]{content:"sc-global-kxA-Ddz1,"}/*!sc*/
+.iIQwfN{position:fixed;top:0;width:100%;z-index:1020;background:transparent;backdrop-filter:blur(10px);border-bottom:1px solid transparent;transition:all 0.3s ease;}/*!sc*/
+data-styled.g22[id="sc-gGKoUb"]{content:"iIQwfN,"}/*!sc*/
+.cEuiWg{max-width:1200px;margin:0 auto;padding:0 2rem;display:flex;align-items:center;justify-content:space-between;height:70px;}/*!sc*/
+data-styled.g23[id="sc-hwddKA"]{content:"cEuiWg,"}/*!sc*/
+.bqPomF{display:flex;align-items:center;gap:0.5rem;font-size:1.5rem;font-weight:700;color:#3b82f6;text-decoration:none;cursor:pointer;}/*!sc*/
+.bqPomF:hover{color:#2563eb;}/*!sc*/
+data-styled.g24[id="sc-jaXbil"]{content:"bqPomF,"}/*!sc*/
+.iwwpNe{display:flex;align-items:center;gap:2rem;}/*!sc*/
+@media (max-width: 768px){.iwwpNe{display:none;}}/*!sc*/
+data-styled.g25[id="sc-eqNDNG"]{content:"iwwpNe,"}/*!sc*/
+.iuGltB{color:#1e293b;font-weight:500;text-decoration:none;transition:color 0.15s ease;position:relative;}/*!sc*/
+.iuGltB:hover{color:#3b82f6;}/*!sc*/
+.iuGltB:after{content:'';position:absolute;bottom:-5px;left:0;width:0;height:2px;background:#3b82f6;transition:width 0.15s ease;}/*!sc*/
+.iuGltB:hover:after{width:100%;}/*!sc*/
+data-styled.g26[id="sc-fVHBlr"]{content:"iuGltB,"}/*!sc*/
+.lmsDAj{display:none;background:none;border:none;color:#1e293b;cursor:pointer;padding:0.5rem;}/*!sc*/
+@media (max-width: 768px){.lmsDAj{display:block;}}/*!sc*/
+data-styled.g27[id="sc-gLaqbQ"]{content:"lmsDAj,"}/*!sc*/
+.keTsRT{display:flex;align-items:center;gap:0.5rem;background:#f1f5f9;border:1px solid #e2e8f0;border-radius:0.5rem;padding:0.5rem 1rem;color:#64748b;font-size:0.9rem;transition:all 0.15s ease;}/*!sc*/
+.keTsRT:hover{background:#ffffff;border-color:#3b82f6;}/*!sc*/
+data-styled.g31[id="sc-cOpnSz"]{content:"keTsRT,"}/*!sc*/
+.hrfQfY{background:#1e293b;color:white;padding:3rem 0 1rem;margin-top:auto;}/*!sc*/
+data-styled.g32[id="sc-kjwdDK"]{content:"hrfQfY,"}/*!sc*/
+.dwFHjZ{max-width:1200px;margin:0 auto;padding:0 2rem;}/*!sc*/
+data-styled.g33[id="sc-eVqvcJ"]{content:"dwFHjZ,"}/*!sc*/
+.kWATso{display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:2rem;margin-bottom:2rem;}/*!sc*/
+@media (max-width: 768px){.kWATso{grid-template-columns:1fr 1fr;gap:1.5rem;}}/*!sc*/
+@media (max-width: 480px){.kWATso{grid-template-columns:1fr;}}/*!sc*/
+data-styled.g34[id="sc-bbbBoY"]{content:"kWATso,"}/*!sc*/
+.fBmmqS h3{font-size:1.1rem;font-weight:600;margin-bottom:1rem;color:white;}/*!sc*/
+.fBmmqS ul{list-style:none;padding:0;margin:0;}/*!sc*/
+.fBmmqS li{margin-bottom:0.5rem;}/*!sc*/
+.fBmmqS a{color:rgba(255, 255, 255, 0.7);text-decoration:none;transition:color 0.15s ease;}/*!sc*/
+.fBmmqS a:hover{color:white;}/*!sc*/
+data-styled.g35[id="sc-cdmAjP"]{content:"fBmmqS,"}/*!sc*/
+.iNKxsb{display:flex;align-items:center;gap:0.5rem;font-size:1.2rem;font-weight:700;margin-bottom:1rem;color:white;}/*!sc*/
+data-styled.g36[id="sc-jytpVa"]{content:"iNKxsb,"}/*!sc*/
+.fYhkiV{color:rgba(255, 255, 255, 0.7);line-height:1.6;margin-bottom:1rem;}/*!sc*/
+data-styled.g37[id="sc-eknHtZ"]{content:"fYhkiV,"}/*!sc*/
+.eVAQiq{display:flex;gap:1rem;}/*!sc*/
+.eVAQiq a{display:flex;align-items:center;justify-content:center;width:40px;height:40px;background:rgba(255, 255, 255, 0.1);border-radius:0.5rem;color:rgba(255, 255, 255, 0.7);transition:all 0.15s ease;}/*!sc*/
+.eVAQiq a:hover{background:rgba(255, 255, 255, 0.2);color:white;}/*!sc*/
+data-styled.g38[id="sc-pYNGo"]{content:"eVAQiq,"}/*!sc*/
+.fgJmHp{border-top:1px solid rgba(255, 255, 255, 0.1);padding-top:2rem;display:flex;justify-content:space-between;align-items:center;}/*!sc*/
+@media (max-width: 768px){.fgJmHp{flex-direction:column;gap:1rem;text-align:center;}}/*!sc*/
+data-styled.g39[id="sc-cCVJLD"]{content:"fgJmHp,"}/*!sc*/
+.gYGLHT{color:rgba(255, 255, 255, 0.7);margin:0;font-size:0.9rem;}/*!sc*/
+data-styled.g40[id="sc-jYczwO"]{content:"gYGLHT,"}/*!sc*/
+.ghBULZ{display:flex;gap:2rem;}/*!sc*/
+@media (max-width: 480px){.ghBULZ{flex-direction:column;gap:1rem;}}/*!sc*/
+.ghBULZ a{color:rgba(255, 255, 255, 0.7);text-decoration:none;font-size:0.9rem;transition:color 0.15s ease;}/*!sc*/
+.ghBULZ a:hover{color:white;}/*!sc*/
+data-styled.g41[id="sc-dNFkOE"]{content:"ghBULZ,"}/*!sc*/
+.fUIuKh{color:#1e293b;line-height:1.6;}/*!sc*/
+.fUIuKh h1,.fUIuKh h2,.fUIuKh h3,.fUIuKh h4,.fUIuKh h5,.fUIuKh h6{color:#1e293b;margin-top:2rem;margin-bottom:1rem;font-weight:600;}/*!sc*/
+.fUIuKh h1{font-size:2rem;border-bottom:2px solid #e2e8f0;padding-bottom:0.5rem;}/*!sc*/
+.fUIuKh h2{font-size:1.5rem;border-bottom:1px solid #e2e8f0;padding-bottom:0.3rem;}/*!sc*/
+.fUIuKh h3{font-size:1.25rem;}/*!sc*/
+.fUIuKh h4{font-size:1.1rem;}/*!sc*/
+.fUIuKh p{margin-bottom:1rem;color:#64748b;}/*!sc*/
+.fUIuKh a{color:#3b82f6;text-decoration:none;}/*!sc*/
+.fUIuKh a:hover{text-decoration:underline;}/*!sc*/
+.fUIuKh ul,.fUIuKh ol{margin-bottom:1rem;padding-left:1.5rem;}/*!sc*/
+.fUIuKh ul li,.fUIuKh ol li{margin-bottom:0.5rem;color:#64748b;}/*!sc*/
+.fUIuKh blockquote{border-left:4px solid #3b82f6;padding-left:1rem;margin:1rem 0;font-style:italic;color:#64748b;background:#f1f5f9;padding:1rem;border-radius:0.5rem;}/*!sc*/
+.fUIuKh code{background:#f1f5f9;padding:0.2rem 0.4rem;border-radius:0.25rem;font-family:SFMono-Regular,Consolas,"Liberation Mono",Menlo,monospace;font-size:0.9em;color:#f59e0b;}/*!sc*/
+.fUIuKh pre{background:#ffffff;border:1px solid #e2e8f0;border-radius:0.5rem;padding:1rem;margin:1rem 0;overflow-x:auto;}/*!sc*/
+.fUIuKh pre code{background:none;padding:0;color:#1e293b;font-size:0.9rem;}/*!sc*/
+.fUIuKh table{width:100%;border-collapse:collapse;margin:1rem 0;}/*!sc*/
+.fUIuKh table th,.fUIuKh table td{border:1px solid #e2e8f0;padding:0.5rem;text-align:left;}/*!sc*/
+.fUIuKh table th{background:#ffffff;font-weight:600;}/*!sc*/
+.fUIuKh table tr:nth-child(even){background:#f1f5f9;}/*!sc*/
+.fUIuKh hr{border:none;height:1px;background:#e2e8f0;margin:2rem 0;}/*!sc*/
+.fUIuKh .highlight{background:#3b82f620;padding:0.2rem 0.4rem;border-radius:0.25rem;font-weight:600;}/*!sc*/
+.fUIuKh .hljs{background:#ffffff;color:#1e293b;}/*!sc*/
+.fUIuKh .hljs-keyword{color:#3b82f6;font-weight:600;}/*!sc*/
+.fUIuKh .hljs-string{color:#10b981;}/*!sc*/
+.fUIuKh .hljs-function{color:#f59e0b;}/*!sc*/
+.fUIuKh .hljs-comment{color:#94a3b8;font-style:italic;}/*!sc*/
+.fUIuKh .hljs-number{color:#f59e0b;}/*!sc*/
+.fUIuKh .hljs-variable{color:#1e293b;}/*!sc*/
+.fUIuKh .hljs-title{color:#f59e0b;font-weight:600;}/*!sc*/
+data-styled.g42[id="sc-fszimp"]{content:"fUIuKh,"}/*!sc*/
+</style></head><body class="__className_6eac61"><div style="min-height:100vh;display:flex;flex-direction:column"><nav class="sc-gGKoUb iIQwfN"><div class="sc-hwddKA cEuiWg"><a href="/interview"><a class="sc-jaXbil bqPomF"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-code "><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>Frontend Interview Prep</a></a><div class="sc-eqNDNG iwwpNe"><a href="/interview/problems"><a class="sc-fVHBlr iuGltB">Problems</a></a><a href="/interview/learn"><a class="sc-fVHBlr iuGltB">Learn</a></a><a href="/interview/study-guide"><a class="sc-fVHBlr iuGltB">Study Guide</a></a><a href="/interview/system-design"><a class="sc-fVHBlr iuGltB">System Design</a></a><a href="/interview/performance"><a class="sc-fVHBlr iuGltB">Performance</a></a><a href="/interview/accessibility"><a class="sc-fVHBlr iuGltB">Accessibility</a></a><a href="/interview/interview-tips"><a class="sc-fVHBlr iuGltB">Interview Tips</a></a><button class="sc-cOpnSz keTsRT"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-search "><circle cx="11" cy="11" r="8"></circle><path d="m21 21-4.3-4.3"></path></svg>Search</button></div><button class="sc-gLaqbQ lmsDAj"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-menu "><line x1="4" x2="20" y1="12" y2="12"></line><line x1="4" x2="20" y1="6" y2="6"></line><line x1="4" x2="20" y1="18" y2="18"></line></svg></button></div></nav><main style="flex:1"><div style="max-width:1200px;margin:0 auto;padding:2rem;padding-top:6rem"><div style="margin-bottom:2rem"><nav style="color:#64748b;font-size:0.9rem;margin-bottom:1rem"><a href="/" style="color:#3b82f6;text-decoration:none">Home</a> &gt; <span>leetcode &gt; string &gt; problems &gt; 02-reverse-integer</span></nav><h1 style="font-size:2.5rem;font-weight:800;margin-bottom:0.5rem;color:#1e293b">Reverse Integer</h1><div style="color:#64748b;font-size:0.9rem;margin-bottom:2rem"><span>📁 <!-- -->leetcode/string/problems/02-reverse-integer.md</span></div></div><div class="sc-fszimp fUIuKh"><h1 id="reverse-integer" node="[object Object]">Reverse Integer</h1>
+<p><strong>LeetCode Problem # * 7. Reverse Integer</strong></p>
+<h2 id="problem-description" node="[object Object]">Problem Description</h2>
+<ul>
+<li>Given a signed 32-bit integer x, return x with its digits reversed.  * If reversing x causes the value to go outside the signed 32-bit integer range [-2³¹, 2³¹ - 1],  * then return 0.  *  * Input: x = 123</li>
+</ul>
+<h2 id="solutions" node="[object Object]">Solutions</h2>
+<p>{% raw %}
+/**</p>
+<ul>
+<li>7. Reverse Integer</li>
+<li></li>
+<li>Problem:</li>
+<li>Given a signed 32-bit integer x, return x with its digits reversed.</li>
+<li>If reversing x causes the value to go outside the signed 32-bit integer range [-2³¹, 2³¹ - 1],</li>
+<li>then return 0.</li>
+<li></li>
+<li>Example:</li>
+<li>Input: x = 123</li>
+<li>Output: 321</li>
+<li></li>
+<li>Input: x = -123</li>
+<li>Output: -321</li>
+<li></li>
+<li>Input: x = 120</li>
+<li>Output: 21</li>
+<li></li>
+<li>LeetCode: <a href="https://leetcode.com/problems/reverse-integer/" target="_blank" rel="noopener noreferrer" node="[object Object]">https://leetcode.com/problems/reverse-integer/</a>
+*/</li>
+</ul>
+<p>/**</p>
+<ul>
+<li>Solution 1: Mathematical Approach (Optimal)</li>
+<li></li>
+<li>Approach:</li>
+<li>
+<ul>
+<li>Extract digits using modulo and division</li>
+</ul>
+</li>
+<li>
+<ul>
+<li>Build reversed number digit by digit</li>
+</ul>
+</li>
+<li>
+<ul>
+<li>Check for overflow at each step</li>
+</ul>
+</li>
+<li></li>
+<li>Time Complexity: O(log n)</li>
+<li>Space Complexity: O(1)
+*/
+function reverse(x: number): number {
+let result = 0;
+const isNegative = x &lt; 0;
+let num = Math.abs(x);</li>
+</ul>
+<p>while (num &gt; 0) {
+const digit = num % 10;</p>
+<pre><pre><code class="hljs undefined">// Check for overflow before multiplying
+if (result &gt; Math.floor((Math.pow(2, 31) - 1) / 10)) {
+  return 0;
+}
+
+result = result * 10 + digit;
+num = Math.floor(num / 10);
+</code></pre></pre>
+<p>}</p>
+<p>return isNegative ? -result : result;
+}</p>
+<p>/**</p>
+<ul>
+<li>Solution 2: String Conversion</li>
+<li></li>
+<li>Approach:</li>
+<li>
+<ul>
+<li>Convert to string, reverse, convert back</li>
+</ul>
+</li>
+<li>
+<ul>
+<li>Handle negative sign separately</li>
+</ul>
+</li>
+<li></li>
+<li>Time Complexity: O(log n)</li>
+<li>Space Complexity: O(log n)
+*/
+function reverseString(x: number): number {
+const isNegative = x &lt; 0;
+const str = Math.abs(x).toString();
+const reversedStr = str.split(&quot;&quot;).reverse().join(&quot;&quot;);</li>
+</ul>
+<p>const result = parseInt(reversedStr);</p>
+<p>// Check for overflow
+if (result &gt; Math.pow(2, 31) - 1) {
+return 0;
+}</p>
+<p>return isNegative ? -result : result;
+}</p>
+<p>/**</p>
+<ul>
+<li>Solution 3: Using Array Methods</li>
+<li></li>
+<li>Approach:</li>
+<li>
+<ul>
+<li>Convert to array, reverse, join</li>
+</ul>
+</li>
+<li>
+<ul>
+<li>More functional approach</li>
+</ul>
+</li>
+<li></li>
+<li>Time Complexity: O(log n)</li>
+<li>Space Complexity: O(log n)
+*/
+function reverseArray(x: number): number {
+const isNegative = x &lt; 0;
+const digits = Math.abs(x).toString().split(&quot;&quot;);
+const reversed = digits.reverse().join(&quot;&quot;);</li>
+</ul>
+<p>const result = parseInt(reversed);</p>
+<p>if (result &gt; Math.pow(2, 31) - 1) {
+return 0;
+}</p>
+<p>return isNegative ? -result : result;
+}</p>
+<p>/**</p>
+<ul>
+<li>Solution 4: Bit Manipulation (Advanced)</li>
+<li></li>
+<li>Approach:</li>
+<li>
+<ul>
+<li>Use bit operations to check overflow</li>
+</ul>
+</li>
+<li>
+<ul>
+<li>More efficient overflow detection</li>
+</ul>
+</li>
+<li></li>
+<li>Time Complexity: O(log n)</li>
+<li>Space Complexity: O(1)
+*/
+function reverseBitwise(x: number): number {
+let result = 0;
+const isNegative = x &lt; 0;
+let num = Math.abs(x);</li>
+</ul>
+<p>while (num &gt; 0) {
+const digit = num % 10;</p>
+<pre><pre><code class="hljs undefined">// Check overflow using bit manipulation
+if (result &gt; 0x7fffffff / 10) {
+  return 0;
+}
+
+result = result * 10 + digit;
+num = Math.floor(num / 10);
+</code></pre></pre>
+<p>}</p>
+<p>return isNegative ? -result : result;
+}</p>
+<p>/**</p>
+<ul>
+<li>Solution 5: Using BigInt (Modern JavaScript)</li>
+<li></li>
+<li>Approach:</li>
+<li>
+<ul>
+<li>Use BigInt to handle large numbers</li>
+</ul>
+</li>
+<li>
+<ul>
+<li>Convert back to number for result</li>
+</ul>
+</li>
+<li></li>
+<li>Time Complexity: O(log n)</li>
+<li>Space Complexity: O(log n)
+*/
+function reverseBigInt(x: number): number {
+const isNegative = x &lt; 0;
+const str = Math.abs(x).toString();
+const reversedStr = str.split(&quot;&quot;).reverse().join(&quot;&quot;);</li>
+</ul>
+<p>const bigResult = BigInt(reversedStr);</p>
+<p>// Check if result fits in 32-bit signed integer
+if (bigResult &gt; BigInt(0x7fffffff)) {
+return 0;
+}</p>
+<p>const result = Number(bigResult);
+return isNegative ? -result : result;
+}</p>
+<p>/**</p>
+<ul>
+<li>Solution 6: Recursive Approach</li>
+<li></li>
+<li>Approach:</li>
+<li>
+<ul>
+<li>Use recursion to reverse digits</li>
+</ul>
+</li>
+<li>
+<ul>
+<li>Pass accumulated result as parameter</li>
+</ul>
+</li>
+<li></li>
+<li>Time Complexity: O(log n)</li>
+<li>Space Complexity: O(log n) - recursion stack
+*/
+function reverseRecursive(x: number): number {
+const isNegative = x &lt; 0;
+const num = Math.abs(x);</li>
+</ul>
+<p>function reverseHelper(n: number, acc: number): number {
+if (n === 0) return acc;</p>
+<pre><pre><code class="hljs undefined">const digit = n % 10;
+
+// Check for overflow
+if (acc &gt; Math.floor((Math.pow(2, 31) - 1) / 10)) {
+  return 0;
+}
+
+return reverseHelper(Math.floor(n / 10), acc * 10 + digit);
+</code></pre></pre>
+<p>}</p>
+<p>const result = reverseHelper(num, 0);
+return isNegative ? -result : result;
+}</p>
+<p>/**</p>
+<ul>
+<li>Solution 7: Using Math.log10 (Mathematical)</li>
+<li></li>
+<li>Approach:</li>
+<li>
+<ul>
+<li>Calculate number of digits using log</li>
+</ul>
+</li>
+<li>
+<ul>
+<li>Extract digits in reverse order</li>
+</ul>
+</li>
+<li></li>
+<li>Time Complexity: O(log n)</li>
+<li>Space Complexity: O(1)
+*/
+function reverseLog(x: number): number {
+if (x === 0) return 0;</li>
+</ul>
+<p>const isNegative = x &lt; 0;
+let num = Math.abs(x);
+const numDigits = Math.floor(Math.log10(num)) + 1;
+let result = 0;</p>
+<p>for (let i = 0; i &lt; numDigits; i++) {
+const digit = num % 10;</p>
+<pre><pre><code class="hljs undefined">if (result &gt; Math.floor((Math.pow(2, 31) - 1) / 10)) {
+  return 0;
+}
+
+result = result * 10 + digit;
+num = Math.floor(num / 10);
+</code></pre></pre>
+<p>}</p>
+<p>return isNegative ? -result : result;
+}</p>
+<p>/**</p>
+<ul>
+<li>Solution 8: Using Generator (Educational)</li>
+<li></li>
+<li>Approach:</li>
+<li>
+<ul>
+<li>Use generator to yield digits</li>
+</ul>
+</li>
+<li>
+<ul>
+<li>Build result from yielded digits</li>
+</ul>
+</li>
+<li></li>
+<li>Time Complexity: O(log n)</li>
+<li>Space Complexity: O(log n)
+<em>/
+function</em> digitGenerator(n: number): Generator<number> {
+while (n &gt; 0) {
+yield n % 10;
+n = Math.floor(n / 10);
+}
+}</number></li>
+</ul>
+<p>function reverseGenerator(x: number): number {
+if (x === 0) return 0;</p>
+<p>const isNegative = x &lt; 0;
+const num = Math.abs(x);
+let result = 0;</p>
+<p>for (const digit of digitGenerator(num)) {
+if (result &gt; Math.floor((Math.pow(2, 31) - 1) / 10)) {
+return 0;
+}
+result = result * 10 + digit;
+}</p>
+<p>return isNegative ? -result : result;
+}</p>
+<p>// Test cases
+function testReverseInteger() {
+console.log(&quot;=== Testing Reverse Integer ===\n&quot;);</p>
+<p>const testCases = [
+{
+input: 123,
+expected: 321,
+description: &quot;Positive number&quot;,
+},
+{
+input: -123,
+expected: -321,
+description: &quot;Negative number&quot;,
+},
+{
+input: 120,
+expected: 21,
+description: &quot;Ending with zero&quot;,
+},
+{
+input: 0,
+expected: 0,
+description: &quot;Zero&quot;,
+},
+{
+input: 1,
+expected: 1,
+description: &quot;Single digit&quot;,
+},
+{
+input: 1534236469,
+expected: 0,
+description: &quot;Overflow case&quot;,
+},
+{
+input: -2147483648,
+expected: 0,
+description: &quot;Min 32-bit integer&quot;,
+},
+{
+input: 2147483647,
+expected: 0,
+description: &quot;Max 32-bit integer&quot;,
+},
+{
+input: 1000,
+expected: 1,
+description: &quot;Multiple trailing zeros&quot;,
+},
+];</p>
+<p>testCases.forEach((testCase, index) =&gt; {
+console.log(<pre><code class="hljs undefined">Test Case ${index + 1}: ${testCase.description}</code></pre>);
+console.log(<pre><code class="hljs undefined">Input: ${testCase.input}</code></pre>);
+console.log(<pre><code class="hljs undefined">Expected: ${testCase.expected}\n</code></pre>);</p>
+<pre><pre><code class="hljs undefined">// Test Solution 1 (Mathematical)
+const result1 = reverse(testCase.input);
+console.log(
+  `Solution 1 (Mathematical): ${result1} ${
+    result1 === testCase.expected ? &quot;✅&quot; : &quot;❌&quot;
+  }`
+);
+
+// Test Solution 2 (String)
+const result2 = reverseString(testCase.input);
+console.log(
+  `Solution 2 (String): ${result2} ${
+    result2 === testCase.expected ? &quot;✅&quot; : &quot;❌&quot;
+  }`
+);
+
+// Test Solution 3 (Array)
+const result3 = reverseArray(testCase.input);
+console.log(
+  `Solution 3 (Array): ${result3} ${
+    result3 === testCase.expected ? &quot;✅&quot; : &quot;❌&quot;
+  }`
+);
+
+// Test Solution 4 (Bitwise)
+const result4 = reverseBitwise(testCase.input);
+console.log(
+  `Solution 4 (Bitwise): ${result4} ${
+    result4 === testCase.expected ? &quot;✅&quot; : &quot;❌&quot;
+  }`
+);
+
+// Test Solution 5 (BigInt)
+const result5 = reverseBigInt(testCase.input);
+console.log(
+  `Solution 5 (BigInt): ${result5} ${
+    result5 === testCase.expected ? &quot;✅&quot; : &quot;❌&quot;
+  }`
+);
+
+// Test Solution 6 (Recursive)
+const result6 = reverseRecursive(testCase.input);
+console.log(
+  `Solution 6 (Recursive): ${result6} ${
+    result6 === testCase.expected ? &quot;✅&quot; : &quot;❌&quot;
+  }`
+);
+
+// Test Solution 7 (Log)
+const result7 = reverseLog(testCase.input);
+console.log(
+  `Solution 7 (Log): ${result7} ${
+    result7 === testCase.expected ? &quot;✅&quot; : &quot;❌&quot;
+  }`
+);
+
+// Test Solution 8 (Generator)
+const result8 = reverseGenerator(testCase.input);
+console.log(
+  `Solution 8 (Generator): ${result8} ${
+    result8 === testCase.expected ? &quot;✅&quot; : &quot;❌&quot;
+  }`
+);
+
+console.log(&quot;\n---\n&quot;);
+</code></pre></pre>
+<p>});
+}</p>
+<p>// Performance comparison
+function performanceComparison() {
+console.log(&quot;=== Performance Comparison ===\n&quot;);</p>
+<p>const testCases = [
+{ name: &quot;Mathematical&quot;, func: reverse },
+{ name: &quot;String&quot;, func: reverseString },
+{ name: &quot;Array&quot;, func: reverseArray },
+{ name: &quot;Bitwise&quot;, func: reverseBitwise },
+{ name: &quot;BigInt&quot;, func: reverseBigInt },
+{ name: &quot;Recursive&quot;, func: reverseRecursive },
+{ name: &quot;Log&quot;, func: reverseLog },
+{ name: &quot;Generator&quot;, func: reverseGenerator },
+];</p>
+<p>const numbers = [123, 12345, 123456789, 1534236469, -123, -12345];</p>
+<p>numbers.forEach((num) =&gt; {
+console.log(<pre><code class="hljs undefined">Testing with ${num}:</code></pre>);</p>
+<pre><pre><code class="hljs undefined">testCases.forEach(({ name, func }) =&gt; {
+  const start = performance.now();
+  const result = func(num);
+  const end = performance.now();
+
+  console.log(`  ${name}: ${(end - start).toFixed(2)}ms (${result})`);
+});
+
+console.log(&quot;&quot;);
+</code></pre></pre>
+<p>});
+}</p>
+<p>// Overflow demonstration
+function overflowDemo() {
+console.log(&quot;=== Overflow Demonstration ===\n&quot;);</p>
+<p>console.log(&quot;32-bit signed integer range:&quot;);
+console.log(<pre><code class="hljs undefined">Min: ${-Math.pow(2, 31)}</code></pre>);
+console.log(<pre><code class="hljs undefined">Max: ${Math.pow(2, 31) - 1}\n</code></pre>);</p>
+<p>const testNumbers = [
+1534236469, // Should overflow
+2147483647, // Max 32-bit integer
+-2147483648, // Min 32-bit integer
+1234567890, // Should not overflow
+];</p>
+<p>testNumbers.forEach((num) =&gt; {
+const reversed = reverse(num);
+console.log(<pre><code class="hljs undefined">${num} -&gt; ${reversed} ${reversed === 0 ? &quot;(overflow)&quot; : &quot;&quot;}</code></pre>);
+});
+}</p>
+<p>// Uncomment the following lines to run tests
+// testReverseInteger();
+// performanceComparison();
+// overflowDemo();</p>
+<p>export {
+reverse,
+reverseString,
+reverseArray,
+reverseBitwise,
+reverseBigInt,
+reverseRecursive,
+reverseLog,
+reverseGenerator,
+digitGenerator,
+testReverseInteger,
+performanceComparison,
+overflowDemo,
+};
+{% endraw %}</p></div></div></main><footer class="sc-kjwdDK hrfQfY"><div class="sc-eVqvcJ dwFHjZ"><div class="sc-bbbBoY kWATso"><div class="sc-cdmAjP fBmmqS"><div class="sc-jytpVa iNKxsb"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-code "><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>Frontend Interview Prep</div><p class="sc-eknHtZ fYhkiV">Comprehensive interview preparation for frontend engineers targeting Big Tech companies.</p><div class="sc-pYNGo eVAQiq"><a href="https://github.com" aria-label="GitHub"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-github "><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"></path><path d="M9 18c-4.51 2-5-2-7-2"></path></svg></a><a href="https://twitter.com" aria-label="Twitter"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-twitter "><path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"></path></svg></a><a href="https://linkedin.com" aria-label="LinkedIn"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-linkedin "><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect width="4" height="12" x="2" y="9"></rect><circle cx="4" cy="4" r="2"></circle></svg></a><a href="mailto:contact@example.com" aria-label="Email"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-mail "><rect width="20" height="16" x="2" y="4" rx="2"></rect><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path></svg></a></div></div><div class="sc-cdmAjP fBmmqS"><h3>Study Materials</h3><ul><li><a href="/algorithms">Algorithms</a></li><li><a href="/react">React &amp; Frontend</a></li><li><a href="/system-design">System Design</a></li><li><a href="/typescript">TypeScript</a></li><li><a href="/performance">Performance</a></li></ul></div><div class="sc-cdmAjP fBmmqS"><h3>Companies</h3><ul><li><a href="/google">Google</a></li><li><a href="/meta">Meta</a></li><li><a href="/amazon">Amazon</a></li><li><a href="/microsoft">Microsoft</a></li><li><a href="/apple">Apple</a></li></ul></div><div class="sc-cdmAjP fBmmqS"><h3>Resources</h3><ul><li><a href="/interview-tips">Interview Tips</a></li><li><a href="/coding-challenges">Coding Challenges</a></li><li><a href="/mock-interviews">Mock Interviews</a></li><li><a href="/blog">Blog</a></li><li><a href="/faq">FAQ</a></li></ul></div></div><div class="sc-cCVJLD fgJmHp"><p class="sc-jYczwO gYGLHT">© 2025 Frontend Interview Prep. All rights reserved.</p><div class="sc-dNFkOE ghBULZ"><a href="/privacy">Privacy Policy</a><a href="/terms">Terms of Service</a><a href="/contact">Contact</a></div></div></div></footer></div><script src="/interview/_next/static/chunks/webpack-be7d7df45533bffc.js" async=""></script><script>(self.__next_f=self.__next_f||[]).push([0]);self.__next_f.push([2,null])</script><script>self.__next_f.push([1,"1:HL[\"/interview/_next/static/media/e4af272ccee01ff0-s.p.woff2\",\"font\",{\"crossOrigin\":\"\",\"type\":\"font/woff2\"}]\n2:HL[\"/interview/_next/static/css/387024c6a2216908.css\",\"style\"]\n"])</script><script>self.__next_f.push([1,"3:I[2846,[],\"\"]\n5:I[5907,[\"918\",\"static/chunks/918-3273b83890f10546.js\",\"930\",\"static/chunks/930-3262a6c9c5acace4.js\",\"687\",\"static/chunks/app/docs/%5B...slug%5D/page-32962e9542d32755.js\"],\"default\"]\n7:I[4707,[],\"\"]\n9:I[6423,[],\"\"]\na:I[2,[\"918\",\"static/chunks/918-3273b83890f10546.js\",\"710\",\"static/chunks/710-dfaa11b4dff08f8e.js\",\"972\",\"static/chunks/972-011bba60ed155615.js\",\"233\",\"static/chunks/233-3e0c1d820a17eca9.js\",\"185\",\"static/chunks/app/layout-333f4adcd11f8f39.js\"],\"default\",1]\nc:I[1060,[],\"\"]\n6:T28c9,"])</script><script>self.__next_f.push([1,"\n# Reverse Integer\n\n**LeetCode Problem # * 7. Reverse Integer**\n\n## Problem Description\n\n * Given a signed 32-bit integer x, return x with its digits reversed.  * If reversing x causes the value to go outside the signed 32-bit integer range [-2³¹, 2³¹ - 1],  * then return 0.  *  * Input: x = 123 \n\n## Solutions\n\n{% raw %}\n/**\n * 7. Reverse Integer\n *\n * Problem:\n * Given a signed 32-bit integer x, return x with its digits reversed.\n * If reversing x causes the value to go outside the signed 32-bit integer range [-2³¹, 2³¹ - 1],\n * then return 0.\n *\n * Example:\n * Input: x = 123\n * Output: 321\n *\n * Input: x = -123\n * Output: -321\n *\n * Input: x = 120\n * Output: 21\n *\n * LeetCode: https://leetcode.com/problems/reverse-integer/\n */\n\n/**\n * Solution 1: Mathematical Approach (Optimal)\n *\n * Approach:\n * - Extract digits using modulo and division\n * - Build reversed number digit by digit\n * - Check for overflow at each step\n *\n * Time Complexity: O(log n)\n * Space Complexity: O(1)\n */\nfunction reverse(x: number): number {\n  let result = 0;\n  const isNegative = x \u003c 0;\n  let num = Math.abs(x);\n\n  while (num \u003e 0) {\n    const digit = num % 10;\n\n    // Check for overflow before multiplying\n    if (result \u003e Math.floor((Math.pow(2, 31) - 1) / 10)) {\n      return 0;\n    }\n\n    result = result * 10 + digit;\n    num = Math.floor(num / 10);\n  }\n\n  return isNegative ? -result : result;\n}\n\n/**\n * Solution 2: String Conversion\n *\n * Approach:\n * - Convert to string, reverse, convert back\n * - Handle negative sign separately\n *\n * Time Complexity: O(log n)\n * Space Complexity: O(log n)\n */\nfunction reverseString(x: number): number {\n  const isNegative = x \u003c 0;\n  const str = Math.abs(x).toString();\n  const reversedStr = str.split(\"\").reverse().join(\"\");\n\n  const result = parseInt(reversedStr);\n\n  // Check for overflow\n  if (result \u003e Math.pow(2, 31) - 1) {\n    return 0;\n  }\n\n  return isNegative ? -result : result;\n}\n\n/**\n * Solution 3: Using Array Methods\n *\n * Approach:\n * - Convert to array, reverse, join\n * - More functional approach\n *\n * Time Complexity: O(log n)\n * Space Complexity: O(log n)\n */\nfunction reverseArray(x: number): number {\n  const isNegative = x \u003c 0;\n  const digits = Math.abs(x).toString().split(\"\");\n  const reversed = digits.reverse().join(\"\");\n\n  const result = parseInt(reversed);\n\n  if (result \u003e Math.pow(2, 31) - 1) {\n    return 0;\n  }\n\n  return isNegative ? -result : result;\n}\n\n/**\n * Solution 4: Bit Manipulation (Advanced)\n *\n * Approach:\n * - Use bit operations to check overflow\n * - More efficient overflow detection\n *\n * Time Complexity: O(log n)\n * Space Complexity: O(1)\n */\nfunction reverseBitwise(x: number): number {\n  let result = 0;\n  const isNegative = x \u003c 0;\n  let num = Math.abs(x);\n\n  while (num \u003e 0) {\n    const digit = num % 10;\n\n    // Check overflow using bit manipulation\n    if (result \u003e 0x7fffffff / 10) {\n      return 0;\n    }\n\n    result = result * 10 + digit;\n    num = Math.floor(num / 10);\n  }\n\n  return isNegative ? -result : result;\n}\n\n/**\n * Solution 5: Using BigInt (Modern JavaScript)\n *\n * Approach:\n * - Use BigInt to handle large numbers\n * - Convert back to number for result\n *\n * Time Complexity: O(log n)\n * Space Complexity: O(log n)\n */\nfunction reverseBigInt(x: number): number {\n  const isNegative = x \u003c 0;\n  const str = Math.abs(x).toString();\n  const reversedStr = str.split(\"\").reverse().join(\"\");\n\n  const bigResult = BigInt(reversedStr);\n\n  // Check if result fits in 32-bit signed integer\n  if (bigResult \u003e BigInt(0x7fffffff)) {\n    return 0;\n  }\n\n  const result = Number(bigResult);\n  return isNegative ? -result : result;\n}\n\n/**\n * Solution 6: Recursive Approach\n *\n * Approach:\n * - Use recursion to reverse digits\n * - Pass accumulated result as parameter\n *\n * Time Complexity: O(log n)\n * Space Complexity: O(log n) - recursion stack\n */\nfunction reverseRecursive(x: number): number {\n  const isNegative = x \u003c 0;\n  const num = Math.abs(x);\n\n  function reverseHelper(n: number, acc: number): number {\n    if (n === 0) return acc;\n\n    const digit = n % 10;\n\n    // Check for overflow\n    if (acc \u003e Math.floor((Math.pow(2, 31) - 1) / 10)) {\n      return 0;\n    }\n\n    return reverseHelper(Math.floor(n / 10), acc * 10 + digit);\n  }\n\n  const result = reverseHelper(num, 0);\n  return isNegative ? -result : result;\n}\n\n/**\n * Solution 7: Using Math.log10 (Mathematical)\n *\n * Approach:\n * - Calculate number of digits using log\n * - Extract digits in reverse order\n *\n * Time Complexity: O(log n)\n * Space Complexity: O(1)\n */\nfunction reverseLog(x: number): number {\n  if (x === 0) return 0;\n\n  const isNegative = x \u003c 0;\n  let num = Math.abs(x);\n  const numDigits = Math.floor(Math.log10(num)) + 1;\n  let result = 0;\n\n  for (let i = 0; i \u003c numDigits; i++) {\n    const digit = num % 10;\n\n    if (result \u003e Math.floor((Math.pow(2, 31) - 1) / 10)) {\n      return 0;\n    }\n\n    result = result * 10 + digit;\n    num = Math.floor(num / 10);\n  }\n\n  return isNegative ? -result : result;\n}\n\n/**\n * Solution 8: Using Generator (Educational)\n *\n * Approach:\n * - Use generator to yield digits\n * - Build result from yielded digits\n *\n * Time Complexity: O(log n)\n * Space Complexity: O(log n)\n */\nfunction* digitGenerator(n: number): Generator\u003cnumber\u003e {\n  while (n \u003e 0) {\n    yield n % 10;\n    n = Math.floor(n / 10);\n  }\n}\n\nfunction reverseGenerator(x: number): number {\n  if (x === 0) return 0;\n\n  const isNegative = x \u003c 0;\n  const num = Math.abs(x);\n  let result = 0;\n\n  for (const digit of digitGenerator(num)) {\n    if (result \u003e Math.floor((Math.pow(2, 31) - 1) / 10)) {\n      return 0;\n    }\n    result = result * 10 + digit;\n  }\n\n  return isNegative ? -result : result;\n}\n\n// Test cases\nfunction testReverseInteger() {\n  console.log(\"=== Testing Reverse Integer ===\\n\");\n\n  const testCases = [\n    {\n      input: 123,\n      expected: 321,\n      description: \"Positive number\",\n    },\n    {\n      input: -123,\n      expected: -321,\n      description: \"Negative number\",\n    },\n    {\n      input: 120,\n      expected: 21,\n      description: \"Ending with zero\",\n    },\n    {\n      input: 0,\n      expected: 0,\n      description: \"Zero\",\n    },\n    {\n      input: 1,\n      expected: 1,\n      description: \"Single digit\",\n    },\n    {\n      input: 1534236469,\n      expected: 0,\n      description: \"Overflow case\",\n    },\n    {\n      input: -2147483648,\n      expected: 0,\n      description: \"Min 32-bit integer\",\n    },\n    {\n      input: 2147483647,\n      expected: 0,\n      description: \"Max 32-bit integer\",\n    },\n    {\n      input: 1000,\n      expected: 1,\n      description: \"Multiple trailing zeros\",\n    },\n  ];\n\n  testCases.forEach((testCase, index) =\u003e {\n    console.log(`Test Case ${index + 1}: ${testCase.description}`);\n    console.log(`Input: ${testCase.input}`);\n    console.log(`Expected: ${testCase.expected}\\n`);\n\n    // Test Solution 1 (Mathematical)\n    const result1 = reverse(testCase.input);\n    console.log(\n      `Solution 1 (Mathematical): ${result1} ${\n        result1 === testCase.expected ? \"✅\" : \"❌\"\n      }`\n    );\n\n    // Test Solution 2 (String)\n    const result2 = reverseString(testCase.input);\n    console.log(\n      `Solution 2 (String): ${result2} ${\n        result2 === testCase.expected ? \"✅\" : \"❌\"\n      }`\n    );\n\n    // Test Solution 3 (Array)\n    const result3 = reverseArray(testCase.input);\n    console.log(\n      `Solution 3 (Array): ${result3} ${\n        result3 === testCase.expected ? \"✅\" : \"❌\"\n      }`\n    );\n\n    // Test Solution 4 (Bitwise)\n    const result4 = reverseBitwise(testCase.input);\n    console.log(\n      `Solution 4 (Bitwise): ${result4} ${\n        result4 === testCase.expected ? \"✅\" : \"❌\"\n      }`\n    );\n\n    // Test Solution 5 (BigInt)\n    const result5 = reverseBigInt(testCase.input);\n    console.log(\n      `Solution 5 (BigInt): ${result5} ${\n        result5 === testCase.expected ? \"✅\" : \"❌\"\n      }`\n    );\n\n    // Test Solution 6 (Recursive)\n    const result6 = reverseRecursive(testCase.input);\n    console.log(\n      `Solution 6 (Recursive): ${result6} ${\n        result6 === testCase.expected ? \"✅\" : \"❌\"\n      }`\n    );\n\n    // Test Solution 7 (Log)\n    const result7 = reverseLog(testCase.input);\n    console.log(\n      `Solution 7 (Log): ${result7} ${\n        result7 === testCase.expected ? \"✅\" : \"❌\"\n      }`\n    );\n\n    // Test Solution 8 (Generator)\n    const result8 = reverseGenerator(testCase.input);\n    console.log(\n      `Solution 8 (Generator): ${result8} ${\n        result8 === testCase.expected ? \"✅\" : \"❌\"\n      }`\n    );\n\n    console.log(\"\\n---\\n\");\n  });\n}\n\n// Performance comparison\nfunction performanceComparison() {\n  console.log(\"=== Performance Comparison ===\\n\");\n\n  const testCases = [\n    { name: \"Mathematical\", func: reverse },\n    { name: \"String\", func: reverseString },\n    { name: \"Array\", func: reverseArray },\n    { name: \"Bitwise\", func: reverseBitwise },\n    { name: \"BigInt\", func: reverseBigInt },\n    { name: \"Recursive\", func: reverseRecursive },\n    { name: \"Log\", func: reverseLog },\n    { name: \"Generator\", func: reverseGenerator },\n  ];\n\n  const numbers = [123, 12345, 123456789, 1534236469, -123, -12345];\n\n  numbers.forEach((num) =\u003e {\n    console.log(`Testing with ${num}:`);\n\n    testCases.forEach(({ name, func }) =\u003e {\n      const start = performance.now();\n      const result = func(num);\n      const end = performance.now();\n\n      console.log(`  ${name}: ${(end - start).toFixed(2)}ms (${result})`);\n    });\n\n    console.log(\"\");\n  });\n}\n\n// Overflow demonstration\nfunction overflowDemo() {\n  console.log(\"=== Overflow Demonstration ===\\n\");\n\n  console.log(\"32-bit signed integer range:\");\n  console.log(`Min: ${-Math.pow(2, 31)}`);\n  console.log(`Max: ${Math.pow(2, 31) - 1}\\n`);\n\n  const testNumbers = [\n    1534236469, // Should overflow\n    2147483647, // Max 32-bit integer\n    -2147483648, // Min 32-bit integer\n    1234567890, // Should not overflow\n  ];\n\n  testNumbers.forEach((num) =\u003e {\n    const reversed = reverse(num);\n    console.log(`${num} -\u003e ${reversed} ${reversed === 0 ? \"(overflow)\" : \"\"}`);\n  });\n}\n\n// Uncomment the following lines to run tests\n// testReverseInteger();\n// performanceComparison();\n// overflowDemo();\n\nexport {\n  reverse,\n  reverseString,\n  reverseArray,\n  reverseBitwise,\n  reverseBigInt,\n  reverseRecursive,\n  reverseLog,\n  reverseGenerator,\n  digitGenerator,\n  testReverseInteger,\n  performanceComparison,\n  overflowDemo,\n};\n{% endraw %}\n"])</script><script>self.__next_f.push([1,"8:[\"slug\",\"leetcode/string/problems/02-reverse-integer\",\"c\"]\nd:[]\n"])</script><script>self.__next_f.push([1,"0:[\"$\",\"$L3\",null,{\"buildId\":\"7uJ7BVaXJTiEOD9iYDv3n\",\"assetPrefix\":\"/interview\",\"urlParts\":[\"\",\"docs\",\"leetcode\",\"string\",\"problems\",\"02-reverse-integer\"],\"initialTree\":[\"\",{\"children\":[\"docs\",{\"children\":[[\"slug\",\"leetcode/string/problems/02-reverse-integer\",\"c\"],{\"children\":[\"__PAGE__?{\\\"slug\\\":[\\\"leetcode\\\",\\\"string\\\",\\\"problems\\\",\\\"02-reverse-integer\\\"]}\",{}]}]}]},\"$undefined\",\"$undefined\",true],\"initialSeedData\":[\"\",{\"children\":[\"docs\",{\"children\":[[\"slug\",\"leetcode/string/problems/02-reverse-integer\",\"c\"],{\"children\":[\"__PAGE__\",{},[[\"$L4\",[\"$\",\"div\",null,{\"style\":{\"maxWidth\":\"1200px\",\"margin\":\"0 auto\",\"padding\":\"2rem\",\"paddingTop\":\"6rem\"},\"children\":[[\"$\",\"div\",null,{\"style\":{\"marginBottom\":\"2rem\"},\"children\":[[\"$\",\"nav\",null,{\"style\":{\"color\":\"#64748b\",\"fontSize\":\"0.9rem\",\"marginBottom\":\"1rem\"},\"children\":[[\"$\",\"a\",null,{\"href\":\"/\",\"style\":{\"color\":\"#3b82f6\",\"textDecoration\":\"none\"},\"children\":\"Home\"}],\" \u003e \",[\"$\",\"span\",null,{\"children\":\"leetcode \u003e string \u003e problems \u003e 02-reverse-integer\"}]]}],[\"$\",\"h1\",null,{\"style\":{\"fontSize\":\"2.5rem\",\"fontWeight\":\"800\",\"marginBottom\":\"0.5rem\",\"color\":\"#1e293b\"},\"children\":\"Reverse Integer\"}],[\"$\",\"div\",null,{\"style\":{\"color\":\"#64748b\",\"fontSize\":\"0.9rem\",\"marginBottom\":\"2rem\"},\"children\":[[\"$\",\"span\",null,{\"children\":[\"📁 \",\"leetcode/string/problems/02-reverse-integer.md\"]}],\"$undefined\",\"$undefined\"]}]]}],[\"$\",\"$L5\",null,{\"content\":\"$6\"}]]}],null],null],null]},[null,[\"$\",\"$L7\",null,{\"parallelRouterKey\":\"children\",\"segmentPath\":[\"children\",\"docs\",\"children\",\"$8\",\"children\"],\"error\":\"$undefined\",\"errorStyles\":\"$undefined\",\"errorScripts\":\"$undefined\",\"template\":[\"$\",\"$L9\",null,{}],\"templateStyles\":\"$undefined\",\"templateScripts\":\"$undefined\",\"notFound\":\"$undefined\",\"notFoundStyles\":\"$undefined\"}]],null]},[null,[\"$\",\"$L7\",null,{\"parallelRouterKey\":\"children\",\"segmentPath\":[\"children\",\"docs\",\"children\"],\"error\":\"$undefined\",\"errorStyles\":\"$undefined\",\"errorScripts\":\"$undefined\",\"template\":[\"$\",\"$L9\",null,{}],\"templateStyles\":\"$undefined\",\"templateScripts\":\"$undefined\",\"notFound\":\"$undefined\",\"notFoundStyles\":\"$undefined\"}]],null]},[[[[\"$\",\"link\",\"0\",{\"rel\":\"stylesheet\",\"href\":\"/interview/_next/static/css/387024c6a2216908.css\",\"precedence\":\"next\",\"crossOrigin\":\"$undefined\"}]],[\"$\",\"$La\",null,{\"children\":[\"$\",\"$L7\",null,{\"parallelRouterKey\":\"children\",\"segmentPath\":[\"children\"],\"error\":\"$undefined\",\"errorStyles\":\"$undefined\",\"errorScripts\":\"$undefined\",\"template\":[\"$\",\"$L9\",null,{}],\"templateStyles\":\"$undefined\",\"templateScripts\":\"$undefined\",\"notFound\":[[\"$\",\"title\",null,{\"children\":\"404: This page could not be found.\"}],[\"$\",\"div\",null,{\"style\":{\"fontFamily\":\"system-ui,\\\"Segoe UI\\\",Roboto,Helvetica,Arial,sans-serif,\\\"Apple Color Emoji\\\",\\\"Segoe UI Emoji\\\"\",\"height\":\"100vh\",\"textAlign\":\"center\",\"display\":\"flex\",\"flexDirection\":\"column\",\"alignItems\":\"center\",\"justifyContent\":\"center\"},\"children\":[\"$\",\"div\",null,{\"children\":[[\"$\",\"style\",null,{\"dangerouslySetInnerHTML\":{\"__html\":\"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}\"}}],[\"$\",\"h1\",null,{\"className\":\"next-error-h1\",\"style\":{\"display\":\"inline-block\",\"margin\":\"0 20px 0 0\",\"padding\":\"0 23px 0 0\",\"fontSize\":24,\"fontWeight\":500,\"verticalAlign\":\"top\",\"lineHeight\":\"49px\"},\"children\":\"404\"}],[\"$\",\"div\",null,{\"style\":{\"display\":\"inline-block\"},\"children\":[\"$\",\"h2\",null,{\"style\":{\"fontSize\":14,\"fontWeight\":400,\"lineHeight\":\"49px\",\"margin\":0},\"children\":\"This page could not be found.\"}]}]]}]}]],\"notFoundStyles\":[]}],\"params\":{}}]],null],null],\"couldBeIntercepted\":false,\"initialHead\":[null,\"$Lb\"],\"globalErrorComponent\":\"$c\",\"missingSlots\":\"$Wd\"}]\n"])</script><script>self.__next_f.push([1,"b:[[\"$\",\"meta\",\"0\",{\"name\":\"viewport\",\"content\":\"width=device-width, initial-scale=1\"}],[\"$\",\"meta\",\"1\",{\"charSet\":\"utf-8\"}],[\"$\",\"title\",\"2\",{\"children\":\"Reverse Integer - Frontend Interview Docs\"}],[\"$\",\"meta\",\"3\",{\"name\":\"description\",\"content\":\" # Reverse Integer  **LeetCode Problem # * 7. Reverse Integer**  ## Problem Description   * Given a signed 32-bit integer x, return x with its digits reversed. \"}],[\"$\",\"meta\",\"4\",{\"property\":\"og:title\",\"content\":\"Reverse Integer - Frontend Interview Docs\"}],[\"$\",\"meta\",\"5\",{\"property\":\"og:description\",\"content\":\" # Reverse Integer  **LeetCode Problem # * 7. Reverse Integer**  ## Problem Description   * Given a signed 32-bit integer x, return x with its digits reversed. \"}],[\"$\",\"meta\",\"6\",{\"property\":\"og:type\",\"content\":\"article\"}],[\"$\",\"meta\",\"7\",{\"name\":\"twitter:card\",\"content\":\"summary\"}],[\"$\",\"meta\",\"8\",{\"name\":\"twitter:title\",\"content\":\"Reverse Integer - Frontend Interview Docs\"}],[\"$\",\"meta\",\"9\",{\"name\":\"twitter:description\",\"content\":\" # Reverse Integer  **LeetCode Problem # * 7. Reverse Integer**  ## Problem Description   * Given a signed 32-bit integer x, return x with its digits reversed. \"}],[\"$\",\"meta\",\"10\",{\"name\":\"next-size-adjust\"}]]\n4:null\n"])</script></body></html>

@@ -1,0 +1,512 @@
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><meta name="viewport" content="width=device-width, initial-scale=1"/><link rel="preload" href="/interview/_next/static/media/e4af272ccee01ff0-s.p.woff2" as="font" crossorigin="" type="font/woff2"/><link rel="stylesheet" href="/interview/_next/static/css/387024c6a2216908.css" data-precedence="next"/><link rel="preload" as="script" fetchPriority="low" href="/interview/_next/static/chunks/webpack-be7d7df45533bffc.js"/><script src="/interview/_next/static/chunks/fd9d1056-6922f449a204c2cc.js" async=""></script><script src="/interview/_next/static/chunks/117-e7ecc085ce9cfab3.js" async=""></script><script src="/interview/_next/static/chunks/main-app-b06be5f3411c20c3.js" async=""></script><script src="/interview/_next/static/chunks/918-3273b83890f10546.js" async=""></script><script src="/interview/_next/static/chunks/930-3262a6c9c5acace4.js" async=""></script><script src="/interview/_next/static/chunks/app/docs/%5B...slug%5D/page-32962e9542d32755.js" async=""></script><script src="/interview/_next/static/chunks/710-dfaa11b4dff08f8e.js" async=""></script><script src="/interview/_next/static/chunks/972-011bba60ed155615.js" async=""></script><script src="/interview/_next/static/chunks/233-3e0c1d820a17eca9.js" async=""></script><script src="/interview/_next/static/chunks/app/layout-333f4adcd11f8f39.js" async=""></script><title>Frontend Interview Prep 2025 - Big Tech Interview Guide</title><meta name="description" content="Comprehensive frontend interview preparation for Big Tech companies including React, TypeScript, algorithms, and system design."/><link rel="icon" href="/favicon.ico"/><meta name="theme-color" content="#1a1a1a"/><meta property="og:title" content="Frontend Interview Prep 2025"/><meta property="og:description" content="Complete guide for frontend engineers targeting Big Tech companies"/><meta property="og:type" content="website"/><link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous"/><title>Debounce Throttle - Frontend Interview Docs</title><meta name="description" content="# Debounce and Throttle Implementation  ## Problem Description  Implement debounce and throttle functions for performance optimization.  ## Requirements  - Debo"/><meta property="og:title" content="Debounce Throttle - Frontend Interview Docs"/><meta property="og:description" content="# Debounce and Throttle Implementation  ## Problem Description  Implement debounce and throttle functions for performance optimization.  ## Requirements  - Debo"/><meta property="og:type" content="article"/><meta name="twitter:card" content="summary"/><meta name="twitter:title" content="Debounce Throttle - Frontend Interview Docs"/><meta name="twitter:description" content="# Debounce and Throttle Implementation  ## Problem Description  Implement debounce and throttle functions for performance optimization.  ## Requirements  - Debo"/><meta name="next-size-adjust"/><script src="/interview/_next/static/chunks/polyfills-42372ed130431b0a.js" noModule=""></script><style data-styled="" data-styled-version="6.1.19">*{margin:0;padding:0;box-sizing:border-box;}/*!sc*/
+html{font-size:16px;line-height:1.5;scroll-behavior:smooth;}/*!sc*/
+body{font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;font-size:1rem;line-height:1.5;color:#1e293b;background-color:#ffffff;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;}/*!sc*/
+h1,h2,h3,h4,h5,h6{font-weight:700;line-height:1.25;margin-bottom:0.5em;}/*!sc*/
+h1{font-size:3rem;}/*!sc*/
+@media (max-width: 768px){h1{font-size:2.25rem;}}/*!sc*/
+h2{font-size:2.25rem;}/*!sc*/
+@media (max-width: 768px){h2{font-size:1.875rem;}}/*!sc*/
+h3{font-size:1.875rem;}/*!sc*/
+@media (max-width: 768px){h3{font-size:1.5rem;}}/*!sc*/
+h4{font-size:1.5rem;}/*!sc*/
+@media (max-width: 768px){h4{font-size:1.25rem;}}/*!sc*/
+h5{font-size:1.25rem;}/*!sc*/
+h6{font-size:1.125rem;}/*!sc*/
+p{margin-bottom:1rem;line-height:1.75;}/*!sc*/
+a{color:#3b82f6;text-decoration:none;transition:color 0.15s ease;}/*!sc*/
+a:hover{color:#2563eb;}/*!sc*/
+a:focus{outline:2px solid #3b82f6;outline-offset:2px;}/*!sc*/
+button{cursor:pointer;border:none;background:none;font-family:inherit;font-size:inherit;}/*!sc*/
+button:disabled{cursor:not-allowed;opacity:0.6;}/*!sc*/
+button:focus{outline:2px solid #3b82f6;outline-offset:2px;}/*!sc*/
+input,textarea,select{font-family:inherit;font-size:inherit;}/*!sc*/
+input:focus,textarea:focus,select:focus{outline:2px solid #3b82f6;outline-offset:2px;}/*!sc*/
+img{max-width:100%;height:auto;}/*!sc*/
+ul,ol{margin-bottom:1rem;padding-left:1.5rem;}/*!sc*/
+li{margin-bottom:0.25rem;}/*!sc*/
+blockquote{margin:1rem 0;padding:1rem;border-left:4px solid #3b82f6;background-color:#f1f5f9;font-style:italic;}/*!sc*/
+code{font-family:SFMono-Regular,Consolas,"Liberation Mono",Menlo,monospace;font-size:0.9em;background-color:#f1f5f9;padding:0.2em 0.4em;border-radius:0.25rem;}/*!sc*/
+pre{background-color:#f1f5f9;padding:1rem;border-radius:0.5rem;overflow-x:auto;margin-bottom:1rem;}/*!sc*/
+pre code{background:none;padding:0;}/*!sc*/
+table{width:100%;border-collapse:collapse;margin-bottom:1rem;}/*!sc*/
+th,td{padding:0.75rem;text-align:left;border-bottom:1px solid #e2e8f0;}/*!sc*/
+th{font-weight:600;background-color:#f1f5f9;}/*!sc*/
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0, 0, 0, 0);white-space:nowrap;border:0;}/*!sc*/
+.skip-link{position:absolute;top:-40px;left:6px;background:#3b82f6;color:white;padding:8px;text-decoration:none;border-radius:4px;z-index:100;}/*!sc*/
+.skip-link:focus{top:6px;}/*!sc*/
+::-webkit-scrollbar{width:8px;height:8px;}/*!sc*/
+::-webkit-scrollbar-track{background:#f1f5f9;}/*!sc*/
+::-webkit-scrollbar-thumb{background:#94a3b8;border-radius:4px;}/*!sc*/
+::-webkit-scrollbar-thumb:hover{background:#64748b;}/*!sc*/
+::selection{background:#3b82f6;color:white;}/*!sc*/
+.focus-visible{outline:2px solid #3b82f6;outline-offset:2px;}/*!sc*/
+.fade-in{opacity:0;animation:fadeIn 0.3s ease forwards;}/*!sc*/
+.slide-up{transform:translateY(20px);opacity:0;animation:slideUp 0.3s ease forwards;}/*!sc*/
+@keyframes fadeIn{to{opacity:1;}}/*!sc*/
+@keyframes slideUp{to{transform:translateY(0);opacity:1;}}/*!sc*/
+@media print{*{background:white!important;color:black!important;box-shadow:none!important;text-shadow:none!important;}a,a:visited{text-decoration:underline;}h1,h2,h3,h4,h5,h6{break-after:avoid;}pre,blockquote{border:1px solid #999;break-inside:avoid;}img{max-width:100%!important;}@page{margin:0.5in;}}/*!sc*/
+data-styled.g1[id="sc-global-kxA-Ddz1"]{content:"sc-global-kxA-Ddz1,"}/*!sc*/
+.wbMrm{position:fixed;top:0;width:100%;z-index:1020;background:transparent;backdrop-filter:blur(10px);border-bottom:1px solid transparent;transition:all 0.3s ease;}/*!sc*/
+data-styled.g2[id="sc-bRKDuR"]{content:"wbMrm,"}/*!sc*/
+.kDxBNU{max-width:1200px;margin:0 auto;padding:0 2rem;display:flex;align-items:center;justify-content:space-between;height:70px;}/*!sc*/
+data-styled.g3[id="sc-hvigdm"]{content:"kDxBNU,"}/*!sc*/
+.cvsJZg{display:flex;align-items:center;gap:0.5rem;font-size:1.5rem;font-weight:700;color:#3b82f6;text-decoration:none;cursor:pointer;}/*!sc*/
+.cvsJZg:hover{color:#2563eb;}/*!sc*/
+data-styled.g4[id="sc-fhHczv"]{content:"cvsJZg,"}/*!sc*/
+.lfYVIv{display:flex;align-items:center;gap:2rem;}/*!sc*/
+@media (max-width: 768px){.lfYVIv{display:none;}}/*!sc*/
+data-styled.g5[id="sc-ggWZvA"]{content:"lfYVIv,"}/*!sc*/
+.bhKRhV{color:#1e293b;font-weight:500;text-decoration:none;transition:color 0.15s ease;position:relative;}/*!sc*/
+.bhKRhV:hover{color:#3b82f6;}/*!sc*/
+.bhKRhV:after{content:'';position:absolute;bottom:-5px;left:0;width:0;height:2px;background:#3b82f6;transition:width 0.15s ease;}/*!sc*/
+.bhKRhV:hover:after{width:100%;}/*!sc*/
+data-styled.g6[id="sc-dTvVRJ"]{content:"bhKRhV,"}/*!sc*/
+.gpUImn{display:none;background:none;border:none;color:#1e293b;cursor:pointer;padding:0.5rem;}/*!sc*/
+@media (max-width: 768px){.gpUImn{display:block;}}/*!sc*/
+data-styled.g7[id="sc-jwTyAe"]{content:"gpUImn,"}/*!sc*/
+.hpKWkw{display:flex;align-items:center;gap:0.5rem;background:#f1f5f9;border:1px solid #e2e8f0;border-radius:0.5rem;padding:0.5rem 1rem;color:#64748b;font-size:0.9rem;transition:all 0.15s ease;}/*!sc*/
+.hpKWkw:hover{background:#ffffff;border-color:#3b82f6;}/*!sc*/
+data-styled.g11[id="sc-kNOymR"]{content:"hpKWkw,"}/*!sc*/
+.cJzheU{background:#1e293b;color:white;padding:3rem 0 1rem;margin-top:auto;}/*!sc*/
+data-styled.g12[id="sc-dYwGCk"]{content:"cJzheU,"}/*!sc*/
+.hJUFeT{max-width:1200px;margin:0 auto;padding:0 2rem;}/*!sc*/
+data-styled.g13[id="sc-lgpSej"]{content:"hJUFeT,"}/*!sc*/
+.mSxwd{display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:2rem;margin-bottom:2rem;}/*!sc*/
+@media (max-width: 768px){.mSxwd{grid-template-columns:1fr 1fr;gap:1.5rem;}}/*!sc*/
+@media (max-width: 480px){.mSxwd{grid-template-columns:1fr;}}/*!sc*/
+data-styled.g14[id="sc-eqYatC"]{content:"mSxwd,"}/*!sc*/
+.cmBIup h3{font-size:1.1rem;font-weight:600;margin-bottom:1rem;color:white;}/*!sc*/
+.cmBIup ul{list-style:none;padding:0;margin:0;}/*!sc*/
+.cmBIup li{margin-bottom:0.5rem;}/*!sc*/
+.cmBIup a{color:rgba(255, 255, 255, 0.7);text-decoration:none;transition:color 0.15s ease;}/*!sc*/
+.cmBIup a:hover{color:white;}/*!sc*/
+data-styled.g15[id="sc-kcLKEh"]{content:"cmBIup,"}/*!sc*/
+.bAsNIP{display:flex;align-items:center;gap:0.5rem;font-size:1.2rem;font-weight:700;margin-bottom:1rem;color:white;}/*!sc*/
+data-styled.g16[id="sc-dntSTA"]{content:"bAsNIP,"}/*!sc*/
+.gWXMDV{color:rgba(255, 255, 255, 0.7);line-height:1.6;margin-bottom:1rem;}/*!sc*/
+data-styled.g17[id="sc-kvnevz"]{content:"gWXMDV,"}/*!sc*/
+.jCoOHQ{display:flex;gap:1rem;}/*!sc*/
+.jCoOHQ a{display:flex;align-items:center;justify-content:center;width:40px;height:40px;background:rgba(255, 255, 255, 0.1);border-radius:0.5rem;color:rgba(255, 255, 255, 0.7);transition:all 0.15s ease;}/*!sc*/
+.jCoOHQ a:hover{background:rgba(255, 255, 255, 0.2);color:white;}/*!sc*/
+data-styled.g18[id="sc-dFVmKS"]{content:"jCoOHQ,"}/*!sc*/
+.crUaYh{border-top:1px solid rgba(255, 255, 255, 0.1);padding-top:2rem;display:flex;justify-content:space-between;align-items:center;}/*!sc*/
+@media (max-width: 768px){.crUaYh{flex-direction:column;gap:1rem;text-align:center;}}/*!sc*/
+data-styled.g19[id="sc-kCuUfV"]{content:"crUaYh,"}/*!sc*/
+.esMlQF{color:rgba(255, 255, 255, 0.7);margin:0;font-size:0.9rem;}/*!sc*/
+data-styled.g20[id="sc-dNdcvo"]{content:"esMlQF,"}/*!sc*/
+.eHcrXx{display:flex;gap:2rem;}/*!sc*/
+@media (max-width: 480px){.eHcrXx{flex-direction:column;gap:1rem;}}/*!sc*/
+.eHcrXx a{color:rgba(255, 255, 255, 0.7);text-decoration:none;font-size:0.9rem;transition:color 0.15s ease;}/*!sc*/
+.eHcrXx a:hover{color:white;}/*!sc*/
+data-styled.g21[id="sc-fbQrwq"]{content:"eHcrXx,"}/*!sc*/
+.dAQFGp{color:#1e293b;line-height:1.6;}/*!sc*/
+.dAQFGp h1,.dAQFGp h2,.dAQFGp h3,.dAQFGp h4,.dAQFGp h5,.dAQFGp h6{color:#1e293b;margin-top:2rem;margin-bottom:1rem;font-weight:600;}/*!sc*/
+.dAQFGp h1{font-size:2rem;border-bottom:2px solid #e2e8f0;padding-bottom:0.5rem;}/*!sc*/
+.dAQFGp h2{font-size:1.5rem;border-bottom:1px solid #e2e8f0;padding-bottom:0.3rem;}/*!sc*/
+.dAQFGp h3{font-size:1.25rem;}/*!sc*/
+.dAQFGp h4{font-size:1.1rem;}/*!sc*/
+.dAQFGp p{margin-bottom:1rem;color:#64748b;}/*!sc*/
+.dAQFGp a{color:#3b82f6;text-decoration:none;}/*!sc*/
+.dAQFGp a:hover{text-decoration:underline;}/*!sc*/
+.dAQFGp ul,.dAQFGp ol{margin-bottom:1rem;padding-left:1.5rem;}/*!sc*/
+.dAQFGp ul li,.dAQFGp ol li{margin-bottom:0.5rem;color:#64748b;}/*!sc*/
+.dAQFGp blockquote{border-left:4px solid #3b82f6;padding-left:1rem;margin:1rem 0;font-style:italic;color:#64748b;background:#f1f5f9;padding:1rem;border-radius:0.5rem;}/*!sc*/
+.dAQFGp code{background:#f1f5f9;padding:0.2rem 0.4rem;border-radius:0.25rem;font-family:SFMono-Regular,Consolas,"Liberation Mono",Menlo,monospace;font-size:0.9em;color:#f59e0b;}/*!sc*/
+.dAQFGp pre{background:#ffffff;border:1px solid #e2e8f0;border-radius:0.5rem;padding:1rem;margin:1rem 0;overflow-x:auto;}/*!sc*/
+.dAQFGp pre code{background:none;padding:0;color:#1e293b;font-size:0.9rem;}/*!sc*/
+.dAQFGp table{width:100%;border-collapse:collapse;margin:1rem 0;}/*!sc*/
+.dAQFGp table th,.dAQFGp table td{border:1px solid #e2e8f0;padding:0.5rem;text-align:left;}/*!sc*/
+.dAQFGp table th{background:#ffffff;font-weight:600;}/*!sc*/
+.dAQFGp table tr:nth-child(even){background:#f1f5f9;}/*!sc*/
+.dAQFGp hr{border:none;height:1px;background:#e2e8f0;margin:2rem 0;}/*!sc*/
+.dAQFGp .highlight{background:#3b82f620;padding:0.2rem 0.4rem;border-radius:0.25rem;font-weight:600;}/*!sc*/
+.dAQFGp .hljs{background:#ffffff;color:#1e293b;}/*!sc*/
+.dAQFGp .hljs-keyword{color:#3b82f6;font-weight:600;}/*!sc*/
+.dAQFGp .hljs-string{color:#10b981;}/*!sc*/
+.dAQFGp .hljs-function{color:#f59e0b;}/*!sc*/
+.dAQFGp .hljs-comment{color:#94a3b8;font-style:italic;}/*!sc*/
+.dAQFGp .hljs-number{color:#f59e0b;}/*!sc*/
+.dAQFGp .hljs-variable{color:#1e293b;}/*!sc*/
+.dAQFGp .hljs-title{color:#f59e0b;font-weight:600;}/*!sc*/
+data-styled.g22[id="sc-gGKoUb"]{content:"dAQFGp,"}/*!sc*/
+</style></head><body class="__className_6eac61"><div style="min-height:100vh;display:flex;flex-direction:column"><nav class="sc-bRKDuR wbMrm"><div class="sc-hvigdm kDxBNU"><a href="/interview"><a class="sc-fhHczv cvsJZg"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-code "><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>Frontend Interview Prep</a></a><div class="sc-ggWZvA lfYVIv"><a href="/interview/problems"><a class="sc-dTvVRJ bhKRhV">Problems</a></a><a href="/interview/learn"><a class="sc-dTvVRJ bhKRhV">Learn</a></a><a href="/interview/study-guide"><a class="sc-dTvVRJ bhKRhV">Study Guide</a></a><a href="/interview/system-design"><a class="sc-dTvVRJ bhKRhV">System Design</a></a><a href="/interview/performance"><a class="sc-dTvVRJ bhKRhV">Performance</a></a><a href="/interview/accessibility"><a class="sc-dTvVRJ bhKRhV">Accessibility</a></a><a href="/interview/interview-tips"><a class="sc-dTvVRJ bhKRhV">Interview Tips</a></a><button class="sc-kNOymR hpKWkw"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-search "><circle cx="11" cy="11" r="8"></circle><path d="m21 21-4.3-4.3"></path></svg>Search</button></div><button class="sc-jwTyAe gpUImn"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-menu "><line x1="4" x2="20" y1="12" y2="12"></line><line x1="4" x2="20" y1="6" y2="6"></line><line x1="4" x2="20" y1="18" y2="18"></line></svg></button></div></nav><main style="flex:1"><div style="max-width:1200px;margin:0 auto;padding:2rem;padding-top:6rem"><div style="margin-bottom:2rem"><nav style="color:#64748b;font-size:0.9rem;margin-bottom:1rem"><a href="/" style="color:#3b82f6;text-decoration:none">Home</a> &gt; <span>src &gt; content &gt; frontend &gt; coding-problems &gt; debounce-throttle</span></nav><h1 style="font-size:2.5rem;font-weight:800;margin-bottom:0.5rem;color:#1e293b">Debounce Throttle</h1><div style="color:#64748b;font-size:0.9rem;margin-bottom:2rem"><span>📁 <!-- -->src/content/frontend/coding-problems/debounce-throttle.md</span></div></div><div class="sc-gGKoUb dAQFGp"><h1 id="debounce-and-throttle-implementation" node="[object Object]">Debounce and Throttle Implementation</h1>
+<h2 id="problem-description" node="[object Object]">Problem Description</h2>
+<p>Implement debounce and throttle functions for performance optimization.</p>
+<h2 id="requirements" node="[object Object]">Requirements</h2>
+<ul>
+<li>Debounce: Delay function execution until after a pause</li>
+<li>Throttle: Limit function execution to once per time period</li>
+<li>Handle edge cases</li>
+<li>Support immediate execution option</li>
+<li>Cancel functionality</li>
+</ul>
+<h2 id="solution" node="[object Object]">Solution</h2>
+<p>{% raw %}</p>
+<pre><pre><code class="hljs hljs language-javascript"><span class="hljs-keyword">class</span> <span class="hljs-title class_">FunctionOptimizer</span> {
+  <span class="hljs-keyword">static</span> <span class="hljs-title function_">debounce</span>(<span class="hljs-params">func, delay, immediate = <span class="hljs-literal">false</span></span>) {
+    <span class="hljs-keyword">let</span> timeoutId;
+
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">function</span> (<span class="hljs-params">...args</span>) {
+      <span class="hljs-keyword">const</span> context = <span class="hljs-variable language_">this</span>;
+
+      <span class="hljs-keyword">const</span> later = <span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) {
+        timeoutId = <span class="hljs-literal">null</span>;
+        <span class="hljs-keyword">if</span> (!immediate) func.<span class="hljs-title function_">apply</span>(context, args);
+      };
+
+      <span class="hljs-keyword">const</span> callNow = immediate &amp;&amp; !timeoutId;
+
+      <span class="hljs-built_in">clearTimeout</span>(timeoutId);
+      timeoutId = <span class="hljs-built_in">setTimeout</span>(later, delay);
+
+      <span class="hljs-keyword">if</span> (callNow) func.<span class="hljs-title function_">apply</span>(context, args);
+    };
+  }
+
+  <span class="hljs-keyword">static</span> <span class="hljs-title function_">throttle</span>(<span class="hljs-params">func, limit, options = {}</span>) {
+    <span class="hljs-keyword">let</span> inThrottle;
+    <span class="hljs-keyword">let</span> lastFunc;
+    <span class="hljs-keyword">let</span> lastRan;
+
+    <span class="hljs-keyword">const</span> { leading = <span class="hljs-literal">true</span>, trailing = <span class="hljs-literal">true</span> } = options;
+
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">function</span> (<span class="hljs-params">...args</span>) {
+      <span class="hljs-keyword">const</span> context = <span class="hljs-variable language_">this</span>;
+
+      <span class="hljs-keyword">if</span> (!inThrottle) {
+        <span class="hljs-keyword">if</span> (leading) {
+          func.<span class="hljs-title function_">apply</span>(context, args);
+        }
+        lastRan = <span class="hljs-title class_">Date</span>.<span class="hljs-title function_">now</span>();
+        inThrottle = <span class="hljs-literal">true</span>;
+      } <span class="hljs-keyword">else</span> {
+        <span class="hljs-built_in">clearTimeout</span>(lastFunc);
+        lastFunc = <span class="hljs-built_in">setTimeout</span>(<span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) {
+          <span class="hljs-keyword">if</span> (<span class="hljs-title class_">Date</span>.<span class="hljs-title function_">now</span>() - lastRan &gt;= limit) {
+            <span class="hljs-keyword">if</span> (trailing) {
+              func.<span class="hljs-title function_">apply</span>(context, args);
+            }
+            inThrottle = <span class="hljs-literal">false</span>;
+          }
+        }, limit - (<span class="hljs-title class_">Date</span>.<span class="hljs-title function_">now</span>() - lastRan));
+      }
+    };
+  }
+
+  <span class="hljs-keyword">static</span> <span class="hljs-title function_">debounceWithCancel</span>(<span class="hljs-params">func, delay, immediate = <span class="hljs-literal">false</span></span>) {
+    <span class="hljs-keyword">let</span> timeoutId;
+
+    <span class="hljs-keyword">const</span> debounced = <span class="hljs-keyword">function</span> (<span class="hljs-params">...args</span>) {
+      <span class="hljs-keyword">const</span> context = <span class="hljs-variable language_">this</span>;
+
+      <span class="hljs-keyword">const</span> later = <span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) {
+        timeoutId = <span class="hljs-literal">null</span>;
+        <span class="hljs-keyword">if</span> (!immediate) func.<span class="hljs-title function_">apply</span>(context, args);
+      };
+
+      <span class="hljs-keyword">const</span> callNow = immediate &amp;&amp; !timeoutId;
+
+      <span class="hljs-built_in">clearTimeout</span>(timeoutId);
+      timeoutId = <span class="hljs-built_in">setTimeout</span>(later, delay);
+
+      <span class="hljs-keyword">if</span> (callNow) func.<span class="hljs-title function_">apply</span>(context, args);
+    };
+
+    debounced.<span class="hljs-property">cancel</span> = <span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) {
+      <span class="hljs-built_in">clearTimeout</span>(timeoutId);
+      timeoutId = <span class="hljs-literal">null</span>;
+    };
+
+    <span class="hljs-keyword">return</span> debounced;
+  }
+
+  <span class="hljs-keyword">static</span> <span class="hljs-title function_">throttleWithCancel</span>(<span class="hljs-params">func, limit, options = {}</span>) {
+    <span class="hljs-keyword">let</span> inThrottle;
+    <span class="hljs-keyword">let</span> lastFunc;
+    <span class="hljs-keyword">let</span> lastRan;
+
+    <span class="hljs-keyword">const</span> { leading = <span class="hljs-literal">true</span>, trailing = <span class="hljs-literal">true</span> } = options;
+
+    <span class="hljs-keyword">const</span> throttled = <span class="hljs-keyword">function</span> (<span class="hljs-params">...args</span>) {
+      <span class="hljs-keyword">const</span> context = <span class="hljs-variable language_">this</span>;
+
+      <span class="hljs-keyword">if</span> (!inThrottle) {
+        <span class="hljs-keyword">if</span> (leading) {
+          func.<span class="hljs-title function_">apply</span>(context, args);
+        }
+        lastRan = <span class="hljs-title class_">Date</span>.<span class="hljs-title function_">now</span>();
+        inThrottle = <span class="hljs-literal">true</span>;
+      } <span class="hljs-keyword">else</span> {
+        <span class="hljs-built_in">clearTimeout</span>(lastFunc);
+        lastFunc = <span class="hljs-built_in">setTimeout</span>(<span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) {
+          <span class="hljs-keyword">if</span> (<span class="hljs-title class_">Date</span>.<span class="hljs-title function_">now</span>() - lastRan &gt;= limit) {
+            <span class="hljs-keyword">if</span> (trailing) {
+              func.<span class="hljs-title function_">apply</span>(context, args);
+            }
+            inThrottle = <span class="hljs-literal">false</span>;
+          }
+        }, limit - (<span class="hljs-title class_">Date</span>.<span class="hljs-title function_">now</span>() - lastRan));
+      }
+    };
+
+    throttled.<span class="hljs-property">cancel</span> = <span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) {
+      <span class="hljs-built_in">clearTimeout</span>(lastFunc);
+      inThrottle = <span class="hljs-literal">false</span>;
+      lastRan = <span class="hljs-number">0</span>;
+    };
+
+    <span class="hljs-keyword">return</span> throttled;
+  }
+}
+
+<span class="hljs-comment">// Usage examples</span>
+<span class="hljs-keyword">class</span> <span class="hljs-title class_">SearchComponent</span> {
+  <span class="hljs-title function_">constructor</span>(<span class="hljs-params"></span>) {
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">searchInput</span> = <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">getElementById</span>(<span class="hljs-string">&quot;search-input&quot;</span>);
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">resultsContainer</span> = <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">getElementById</span>(<span class="hljs-string">&quot;search-results&quot;</span>);
+
+    <span class="hljs-comment">// Debounced search</span>
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">debouncedSearch</span> = <span class="hljs-title class_">FunctionOptimizer</span>.<span class="hljs-title function_">debounce</span>(
+      <span class="hljs-variable language_">this</span>.<span class="hljs-property">performSearch</span>.<span class="hljs-title function_">bind</span>(<span class="hljs-variable language_">this</span>),
+      <span class="hljs-number">300</span>
+    );
+
+    <span class="hljs-comment">// Throttled scroll handler</span>
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">throttledScroll</span> = <span class="hljs-title class_">FunctionOptimizer</span>.<span class="hljs-title function_">throttle</span>(
+      <span class="hljs-variable language_">this</span>.<span class="hljs-property">handleScroll</span>.<span class="hljs-title function_">bind</span>(<span class="hljs-variable language_">this</span>),
+      <span class="hljs-number">100</span>
+    );
+
+    <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">init</span>();
+  }
+
+  <span class="hljs-title function_">init</span>(<span class="hljs-params"></span>) {
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">searchInput</span>.<span class="hljs-title function_">addEventListener</span>(<span class="hljs-string">&quot;input&quot;</span>, <span class="hljs-variable language_">this</span>.<span class="hljs-property">debouncedSearch</span>);
+    <span class="hljs-variable language_">window</span>.<span class="hljs-title function_">addEventListener</span>(<span class="hljs-string">&quot;scroll&quot;</span>, <span class="hljs-variable language_">this</span>.<span class="hljs-property">throttledScroll</span>);
+  }
+
+  <span class="hljs-keyword">async</span> <span class="hljs-title function_">performSearch</span>(<span class="hljs-params">query</span>) {
+    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;Searching for:&quot;</span>, query);
+
+    <span class="hljs-comment">// Simulate API call</span>
+    <span class="hljs-keyword">const</span> results = <span class="hljs-keyword">await</span> <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">fetchSearchResults</span>(query);
+    <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">displayResults</span>(results);
+  }
+
+  <span class="hljs-keyword">async</span> <span class="hljs-title function_">fetchSearchResults</span>(<span class="hljs-params">query</span>) {
+    <span class="hljs-comment">// Simulate API delay</span>
+    <span class="hljs-keyword">await</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Promise</span>(<span class="hljs-function">(<span class="hljs-params">resolve</span>) =&gt;</span> <span class="hljs-built_in">setTimeout</span>(resolve, <span class="hljs-number">500</span>));
+
+    <span class="hljs-keyword">return</span> [
+      { <span class="hljs-attr">id</span>: <span class="hljs-number">1</span>, <span class="hljs-attr">title</span>: <span class="hljs-string">`Result 1 for <span class="hljs-subst">${query}</span>`</span> },
+      { <span class="hljs-attr">id</span>: <span class="hljs-number">2</span>, <span class="hljs-attr">title</span>: <span class="hljs-string">`Result 2 for <span class="hljs-subst">${query}</span>`</span> },
+      { <span class="hljs-attr">id</span>: <span class="hljs-number">3</span>, <span class="hljs-attr">title</span>: <span class="hljs-string">`Result 3 for <span class="hljs-subst">${query}</span>`</span> },
+    ];
+  }
+
+  <span class="hljs-title function_">displayResults</span>(<span class="hljs-params">results</span>) {
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">resultsContainer</span>.<span class="hljs-property">innerHTML</span> = results
+      .<span class="hljs-title function_">map</span>(<span class="hljs-function">(<span class="hljs-params">result</span>) =&gt;</span> <span class="hljs-string">`&lt;div class=&quot;result-item&quot;&gt;<span class="hljs-subst">${result.title}</span>&lt;/div&gt;`</span>)
+      .<span class="hljs-title function_">join</span>(<span class="hljs-string">&quot;&quot;</span>);
+  }
+
+  <span class="hljs-title function_">handleScroll</span>(<span class="hljs-params"></span>) {
+    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;Scroll position:&quot;</span>, <span class="hljs-variable language_">window</span>.<span class="hljs-property">pageYOffset</span>);
+    <span class="hljs-comment">// Handle scroll-based functionality</span>
+  }
+}
+
+<span class="hljs-comment">// Advanced usage with cancel functionality</span>
+<span class="hljs-keyword">class</span> <span class="hljs-title class_">AdvancedSearchComponent</span> {
+  <span class="hljs-title function_">constructor</span>(<span class="hljs-params"></span>) {
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">searchInput</span> = <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">getElementById</span>(<span class="hljs-string">&quot;advanced-search-input&quot;</span>);
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">resultsContainer</span> = <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">getElementById</span>(<span class="hljs-string">&quot;advanced-search-results&quot;</span>);
+
+    <span class="hljs-comment">// Debounced search with cancel</span>
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">debouncedSearch</span> = <span class="hljs-title class_">FunctionOptimizer</span>.<span class="hljs-title function_">debounceWithCancel</span>(
+      <span class="hljs-variable language_">this</span>.<span class="hljs-property">performAdvancedSearch</span>.<span class="hljs-title function_">bind</span>(<span class="hljs-variable language_">this</span>),
+      <span class="hljs-number">500</span>
+    );
+
+    <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">init</span>();
+  }
+
+  <span class="hljs-title function_">init</span>(<span class="hljs-params"></span>) {
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">searchInput</span>.<span class="hljs-title function_">addEventListener</span>(<span class="hljs-string">&quot;input&quot;</span>, <span class="hljs-function">(<span class="hljs-params">e</span>) =&gt;</span> {
+      <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">debouncedSearch</span>(e.<span class="hljs-property">target</span>.<span class="hljs-property">value</span>);
+    });
+
+    <span class="hljs-comment">// Cancel search on blur</span>
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">searchInput</span>.<span class="hljs-title function_">addEventListener</span>(<span class="hljs-string">&quot;blur&quot;</span>, <span class="hljs-function">() =&gt;</span> {
+      <span class="hljs-variable language_">this</span>.<span class="hljs-property">debouncedSearch</span>.<span class="hljs-title function_">cancel</span>();
+    });
+  }
+
+  <span class="hljs-keyword">async</span> <span class="hljs-title function_">performAdvancedSearch</span>(<span class="hljs-params">query</span>) {
+    <span class="hljs-keyword">if</span> (!query.<span class="hljs-title function_">trim</span>()) {
+      <span class="hljs-variable language_">this</span>.<span class="hljs-property">resultsContainer</span>.<span class="hljs-property">innerHTML</span> = <span class="hljs-string">&quot;&quot;</span>;
+      <span class="hljs-keyword">return</span>;
+    }
+
+    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;Advanced search for:&quot;</span>, query);
+
+    <span class="hljs-comment">// Simulate complex search</span>
+    <span class="hljs-keyword">const</span> results = <span class="hljs-keyword">await</span> <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">fetchAdvancedResults</span>(query);
+    <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">displayAdvancedResults</span>(results);
+  }
+
+  <span class="hljs-keyword">async</span> <span class="hljs-title function_">fetchAdvancedResults</span>(<span class="hljs-params">query</span>) {
+    <span class="hljs-keyword">await</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Promise</span>(<span class="hljs-function">(<span class="hljs-params">resolve</span>) =&gt;</span> <span class="hljs-built_in">setTimeout</span>(resolve, <span class="hljs-number">800</span>));
+
+    <span class="hljs-keyword">return</span> [
+      { <span class="hljs-attr">id</span>: <span class="hljs-number">1</span>, <span class="hljs-attr">title</span>: <span class="hljs-string">`Advanced result 1 for <span class="hljs-subst">${query}</span>`</span>, <span class="hljs-attr">score</span>: <span class="hljs-number">0.95</span> },
+      { <span class="hljs-attr">id</span>: <span class="hljs-number">2</span>, <span class="hljs-attr">title</span>: <span class="hljs-string">`Advanced result 2 for <span class="hljs-subst">${query}</span>`</span>, <span class="hljs-attr">score</span>: <span class="hljs-number">0.87</span> },
+      { <span class="hljs-attr">id</span>: <span class="hljs-number">3</span>, <span class="hljs-attr">title</span>: <span class="hljs-string">`Advanced result 3 for <span class="hljs-subst">${query}</span>`</span>, <span class="hljs-attr">score</span>: <span class="hljs-number">0.76</span> },
+    ];
+  }
+
+  <span class="hljs-title function_">displayAdvancedResults</span>(<span class="hljs-params">results</span>) {
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">resultsContainer</span>.<span class="hljs-property">innerHTML</span> = results
+      .<span class="hljs-title function_">map</span>(
+        <span class="hljs-function">(<span class="hljs-params">result</span>) =&gt;</span> <span class="hljs-string">`
+        &lt;div class=&quot;advanced-result-item&quot;&gt;
+          &lt;span class=&quot;result-title&quot;&gt;<span class="hljs-subst">${result.title}</span>&lt;/span&gt;
+          &lt;span class=&quot;result-score&quot;&gt;<span class="hljs-subst">${(result.score * <span class="hljs-number">100</span>).toFixed(<span class="hljs-number">0</span>)}</span>%&lt;/span&gt;
+        &lt;/div&gt;
+      `</span>
+      )
+      .<span class="hljs-title function_">join</span>(<span class="hljs-string">&quot;&quot;</span>);
+  }
+}
+</code></pre></pre>
+<p>{% endraw %}</p>
+<h2 id="css-styling" node="[object Object]">CSS Styling</h2>
+<pre><pre><code class="hljs hljs language-css"><span class="hljs-selector-class">.search-container</span> {
+  <span class="hljs-attribute">max-width</span>: <span class="hljs-number">600px</span>;
+  <span class="hljs-attribute">margin</span>: <span class="hljs-number">20px</span> auto;
+  <span class="hljs-attribute">padding</span>: <span class="hljs-number">20px</span>;
+}
+
+<span class="hljs-selector-class">.search-input</span> {
+  <span class="hljs-attribute">width</span>: <span class="hljs-number">100%</span>;
+  <span class="hljs-attribute">padding</span>: <span class="hljs-number">12px</span> <span class="hljs-number">16px</span>;
+  <span class="hljs-attribute">border</span>: <span class="hljs-number">2px</span> solid <span class="hljs-number">#ddd</span>;
+  <span class="hljs-attribute">border-radius</span>: <span class="hljs-number">8px</span>;
+  <span class="hljs-attribute">font-size</span>: <span class="hljs-number">16px</span>;
+  <span class="hljs-attribute">transition</span>: border-color <span class="hljs-number">0.3s</span>;
+}
+
+<span class="hljs-selector-class">.search-input</span><span class="hljs-selector-pseudo">:focus</span> {
+  <span class="hljs-attribute">outline</span>: none;
+  <span class="hljs-attribute">border-color</span>: <span class="hljs-number">#007bff</span>;
+}
+
+<span class="hljs-selector-class">.search-results</span> {
+  <span class="hljs-attribute">margin-top</span>: <span class="hljs-number">20px</span>;
+}
+
+<span class="hljs-selector-class">.result-item</span> {
+  <span class="hljs-attribute">padding</span>: <span class="hljs-number">12px</span>;
+  <span class="hljs-attribute">border</span>: <span class="hljs-number">1px</span> solid <span class="hljs-number">#eee</span>;
+  <span class="hljs-attribute">border-radius</span>: <span class="hljs-number">4px</span>;
+  <span class="hljs-attribute">margin-bottom</span>: <span class="hljs-number">8px</span>;
+  <span class="hljs-attribute">background</span>: white;
+  <span class="hljs-attribute">transition</span>: background-color <span class="hljs-number">0.2s</span>;
+}
+
+<span class="hljs-selector-class">.result-item</span><span class="hljs-selector-pseudo">:hover</span> {
+  <span class="hljs-attribute">background-color</span>: <span class="hljs-number">#f8f9fa</span>;
+}
+
+<span class="hljs-selector-class">.advanced-result-item</span> {
+  <span class="hljs-attribute">display</span>: flex;
+  <span class="hljs-attribute">justify-content</span>: space-between;
+  <span class="hljs-attribute">align-items</span>: center;
+  <span class="hljs-attribute">padding</span>: <span class="hljs-number">12px</span>;
+  <span class="hljs-attribute">border</span>: <span class="hljs-number">1px</span> solid <span class="hljs-number">#eee</span>;
+  <span class="hljs-attribute">border-radius</span>: <span class="hljs-number">4px</span>;
+  <span class="hljs-attribute">margin-bottom</span>: <span class="hljs-number">8px</span>;
+  <span class="hljs-attribute">background</span>: white;
+}
+
+<span class="hljs-selector-class">.result-score</span> {
+  <span class="hljs-attribute">color</span>: <span class="hljs-number">#007bff</span>;
+  <span class="hljs-attribute">font-weight</span>: <span class="hljs-number">600</span>;
+  <span class="hljs-attribute">font-size</span>: <span class="hljs-number">14px</span>;
+}
+</code></pre></pre>
+<h2 id="key-features" node="[object Object]">Key Features</h2>
+<ol>
+<li><strong>Debounce</strong>: Delays function execution until user stops typing</li>
+<li><strong>Throttle</strong>: Limits function execution to prevent excessive calls</li>
+<li><strong>Cancel Support</strong>: Allows cancellation of pending executions</li>
+<li><strong>Immediate Option</strong>: Supports immediate execution for debounce</li>
+<li><strong>Leading/Trailing</strong>: Configurable execution timing for throttle</li>
+<li><strong>Context Preservation</strong>: Maintains proper <pre><code class="hljs undefined">this</code></pre> context</li>
+</ol>
+<h2 id="performance-benefits" node="[object Object]">Performance Benefits</h2>
+<ul>
+<li><strong>Reduced API Calls</strong>: Debounce prevents excessive search requests</li>
+<li><strong>Smooth Scrolling</strong>: Throttle ensures smooth scroll performance</li>
+<li><strong>Memory Efficiency</strong>: Proper cleanup prevents memory leaks</li>
+<li><strong>User Experience</strong>: Responsive interface with appropriate delays</li>
+</ul>
+<h2 id="advanced-patterns" node="[object Object]">Advanced Patterns</h2>
+<pre><pre><code class="hljs hljs language-javascript"><span class="hljs-comment">// Custom debounce with different strategies</span>
+<span class="hljs-keyword">class</span> <span class="hljs-title class_">CustomDebounce</span> {
+  <span class="hljs-keyword">static</span> <span class="hljs-title function_">withMaxWait</span>(<span class="hljs-params">func, delay, maxWait</span>) {
+    <span class="hljs-keyword">let</span> timeoutId;
+    <span class="hljs-keyword">let</span> lastCallTime = <span class="hljs-number">0</span>;
+
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">function</span> (<span class="hljs-params">...args</span>) {
+      <span class="hljs-keyword">const</span> now = <span class="hljs-title class_">Date</span>.<span class="hljs-title function_">now</span>();
+      <span class="hljs-keyword">const</span> timeSinceLastCall = now - lastCallTime;
+
+      <span class="hljs-built_in">clearTimeout</span>(timeoutId);
+
+      <span class="hljs-keyword">if</span> (timeSinceLastCall &gt;= maxWait) {
+        func.<span class="hljs-title function_">apply</span>(<span class="hljs-variable language_">this</span>, args);
+        lastCallTime = now;
+      } <span class="hljs-keyword">else</span> {
+        timeoutId = <span class="hljs-built_in">setTimeout</span>(<span class="hljs-function">() =&gt;</span> {
+          func.<span class="hljs-title function_">apply</span>(<span class="hljs-variable language_">this</span>, args);
+          lastCallTime = <span class="hljs-title class_">Date</span>.<span class="hljs-title function_">now</span>();
+        }, delay);
+      }
+    };
+  }
+
+  <span class="hljs-keyword">static</span> <span class="hljs-title function_">withQueue</span>(<span class="hljs-params">func, delay, maxQueueSize = <span class="hljs-number">10</span></span>) {
+    <span class="hljs-keyword">let</span> timeoutId;
+    <span class="hljs-keyword">let</span> queue = [];
+
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">function</span> (<span class="hljs-params">...args</span>) {
+      <span class="hljs-keyword">if</span> (queue.<span class="hljs-property">length</span> &gt;= maxQueueSize) {
+        queue.<span class="hljs-title function_">shift</span>(); <span class="hljs-comment">// Remove oldest item</span>
+      }
+
+      queue.<span class="hljs-title function_">push</span>(args);
+
+      <span class="hljs-built_in">clearTimeout</span>(timeoutId);
+      timeoutId = <span class="hljs-built_in">setTimeout</span>(<span class="hljs-function">() =&gt;</span> {
+        <span class="hljs-keyword">const</span> currentQueue = [...queue];
+        queue = [];
+        currentQueue.<span class="hljs-title function_">forEach</span>(<span class="hljs-function">(<span class="hljs-params">args</span>) =&gt;</span> func.<span class="hljs-title function_">apply</span>(<span class="hljs-variable language_">this</span>, args));
+      }, delay);
+    };
+  }
+}
+
+<span class="hljs-comment">// Usage examples</span>
+<span class="hljs-keyword">const</span> searchWithMaxWait = <span class="hljs-title class_">CustomDebounce</span>.<span class="hljs-title function_">withMaxWait</span>(
+  performSearch,
+  <span class="hljs-number">300</span>,
+  <span class="hljs-number">2000</span> <span class="hljs-comment">// Max wait of 2 seconds</span>
+);
+
+<span class="hljs-keyword">const</span> searchWithQueue = <span class="hljs-title class_">CustomDebounce</span>.<span class="hljs-title function_">withQueue</span>(
+  performSearch,
+  <span class="hljs-number">300</span>,
+  <span class="hljs-number">5</span> <span class="hljs-comment">// Max 5 items in queue</span>
+);
+</code></pre></pre></div></div></main><footer class="sc-dYwGCk cJzheU"><div class="sc-lgpSej hJUFeT"><div class="sc-eqYatC mSxwd"><div class="sc-kcLKEh cmBIup"><div class="sc-dntSTA bAsNIP"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-code "><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>Frontend Interview Prep</div><p class="sc-kvnevz gWXMDV">Comprehensive interview preparation for frontend engineers targeting Big Tech companies.</p><div class="sc-dFVmKS jCoOHQ"><a href="https://github.com" aria-label="GitHub"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-github "><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"></path><path d="M9 18c-4.51 2-5-2-7-2"></path></svg></a><a href="https://twitter.com" aria-label="Twitter"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-twitter "><path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"></path></svg></a><a href="https://linkedin.com" aria-label="LinkedIn"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-linkedin "><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect width="4" height="12" x="2" y="9"></rect><circle cx="4" cy="4" r="2"></circle></svg></a><a href="mailto:contact@example.com" aria-label="Email"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-mail "><rect width="20" height="16" x="2" y="4" rx="2"></rect><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path></svg></a></div></div><div class="sc-kcLKEh cmBIup"><h3>Study Materials</h3><ul><li><a href="/algorithms">Algorithms</a></li><li><a href="/react">React &amp; Frontend</a></li><li><a href="/system-design">System Design</a></li><li><a href="/typescript">TypeScript</a></li><li><a href="/performance">Performance</a></li></ul></div><div class="sc-kcLKEh cmBIup"><h3>Companies</h3><ul><li><a href="/google">Google</a></li><li><a href="/meta">Meta</a></li><li><a href="/amazon">Amazon</a></li><li><a href="/microsoft">Microsoft</a></li><li><a href="/apple">Apple</a></li></ul></div><div class="sc-kcLKEh cmBIup"><h3>Resources</h3><ul><li><a href="/interview-tips">Interview Tips</a></li><li><a href="/coding-challenges">Coding Challenges</a></li><li><a href="/mock-interviews">Mock Interviews</a></li><li><a href="/blog">Blog</a></li><li><a href="/faq">FAQ</a></li></ul></div></div><div class="sc-kCuUfV crUaYh"><p class="sc-dNdcvo esMlQF">© 2025 Frontend Interview Prep. All rights reserved.</p><div class="sc-fbQrwq eHcrXx"><a href="/privacy">Privacy Policy</a><a href="/terms">Terms of Service</a><a href="/contact">Contact</a></div></div></div></footer></div><script src="/interview/_next/static/chunks/webpack-be7d7df45533bffc.js" async=""></script><script>(self.__next_f=self.__next_f||[]).push([0]);self.__next_f.push([2,null])</script><script>self.__next_f.push([1,"1:HL[\"/interview/_next/static/media/e4af272ccee01ff0-s.p.woff2\",\"font\",{\"crossOrigin\":\"\",\"type\":\"font/woff2\"}]\n2:HL[\"/interview/_next/static/css/387024c6a2216908.css\",\"style\"]\n"])</script><script>self.__next_f.push([1,"3:I[2846,[],\"\"]\n5:I[5907,[\"918\",\"static/chunks/918-3273b83890f10546.js\",\"930\",\"static/chunks/930-3262a6c9c5acace4.js\",\"687\",\"static/chunks/app/docs/%5B...slug%5D/page-32962e9542d32755.js\"],\"default\"]\n7:I[4707,[],\"\"]\n9:I[6423,[],\"\"]\na:I[2,[\"918\",\"static/chunks/918-3273b83890f10546.js\",\"710\",\"static/chunks/710-dfaa11b4dff08f8e.js\",\"972\",\"static/chunks/972-011bba60ed155615.js\",\"233\",\"static/chunks/233-3e0c1d820a17eca9.js\",\"185\",\"static/chunks/app/layout-333f4adcd11f8f39.js\"],\"default\",1]\nc:I[1060,[],\"\"]\n6:T2353,"])</script><script>self.__next_f.push([1,"# Debounce and Throttle Implementation\n\n## Problem Description\n\nImplement debounce and throttle functions for performance optimization.\n\n## Requirements\n\n- Debounce: Delay function execution until after a pause\n- Throttle: Limit function execution to once per time period\n- Handle edge cases\n- Support immediate execution option\n- Cancel functionality\n\n## Solution\n\n{% raw %}\n```javascript\nclass FunctionOptimizer {\n  static debounce(func, delay, immediate = false) {\n    let timeoutId;\n\n    return function (...args) {\n      const context = this;\n\n      const later = function () {\n        timeoutId = null;\n        if (!immediate) func.apply(context, args);\n      };\n\n      const callNow = immediate \u0026\u0026 !timeoutId;\n\n      clearTimeout(timeoutId);\n      timeoutId = setTimeout(later, delay);\n\n      if (callNow) func.apply(context, args);\n    };\n  }\n\n  static throttle(func, limit, options = {}) {\n    let inThrottle;\n    let lastFunc;\n    let lastRan;\n\n    const { leading = true, trailing = true } = options;\n\n    return function (...args) {\n      const context = this;\n\n      if (!inThrottle) {\n        if (leading) {\n          func.apply(context, args);\n        }\n        lastRan = Date.now();\n        inThrottle = true;\n      } else {\n        clearTimeout(lastFunc);\n        lastFunc = setTimeout(function () {\n          if (Date.now() - lastRan \u003e= limit) {\n            if (trailing) {\n              func.apply(context, args);\n            }\n            inThrottle = false;\n          }\n        }, limit - (Date.now() - lastRan));\n      }\n    };\n  }\n\n  static debounceWithCancel(func, delay, immediate = false) {\n    let timeoutId;\n\n    const debounced = function (...args) {\n      const context = this;\n\n      const later = function () {\n        timeoutId = null;\n        if (!immediate) func.apply(context, args);\n      };\n\n      const callNow = immediate \u0026\u0026 !timeoutId;\n\n      clearTimeout(timeoutId);\n      timeoutId = setTimeout(later, delay);\n\n      if (callNow) func.apply(context, args);\n    };\n\n    debounced.cancel = function () {\n      clearTimeout(timeoutId);\n      timeoutId = null;\n    };\n\n    return debounced;\n  }\n\n  static throttleWithCancel(func, limit, options = {}) {\n    let inThrottle;\n    let lastFunc;\n    let lastRan;\n\n    const { leading = true, trailing = true } = options;\n\n    const throttled = function (...args) {\n      const context = this;\n\n      if (!inThrottle) {\n        if (leading) {\n          func.apply(context, args);\n        }\n        lastRan = Date.now();\n        inThrottle = true;\n      } else {\n        clearTimeout(lastFunc);\n        lastFunc = setTimeout(function () {\n          if (Date.now() - lastRan \u003e= limit) {\n            if (trailing) {\n              func.apply(context, args);\n            }\n            inThrottle = false;\n          }\n        }, limit - (Date.now() - lastRan));\n      }\n    };\n\n    throttled.cancel = function () {\n      clearTimeout(lastFunc);\n      inThrottle = false;\n      lastRan = 0;\n    };\n\n    return throttled;\n  }\n}\n\n// Usage examples\nclass SearchComponent {\n  constructor() {\n    this.searchInput = document.getElementById(\"search-input\");\n    this.resultsContainer = document.getElementById(\"search-results\");\n\n    // Debounced search\n    this.debouncedSearch = FunctionOptimizer.debounce(\n      this.performSearch.bind(this),\n      300\n    );\n\n    // Throttled scroll handler\n    this.throttledScroll = FunctionOptimizer.throttle(\n      this.handleScroll.bind(this),\n      100\n    );\n\n    this.init();\n  }\n\n  init() {\n    this.searchInput.addEventListener(\"input\", this.debouncedSearch);\n    window.addEventListener(\"scroll\", this.throttledScroll);\n  }\n\n  async performSearch(query) {\n    console.log(\"Searching for:\", query);\n\n    // Simulate API call\n    const results = await this.fetchSearchResults(query);\n    this.displayResults(results);\n  }\n\n  async fetchSearchResults(query) {\n    // Simulate API delay\n    await new Promise((resolve) =\u003e setTimeout(resolve, 500));\n\n    return [\n      { id: 1, title: `Result 1 for ${query}` },\n      { id: 2, title: `Result 2 for ${query}` },\n      { id: 3, title: `Result 3 for ${query}` },\n    ];\n  }\n\n  displayResults(results) {\n    this.resultsContainer.innerHTML = results\n      .map((result) =\u003e `\u003cdiv class=\"result-item\"\u003e${result.title}\u003c/div\u003e`)\n      .join(\"\");\n  }\n\n  handleScroll() {\n    console.log(\"Scroll position:\", window.pageYOffset);\n    // Handle scroll-based functionality\n  }\n}\n\n// Advanced usage with cancel functionality\nclass AdvancedSearchComponent {\n  constructor() {\n    this.searchInput = document.getElementById(\"advanced-search-input\");\n    this.resultsContainer = document.getElementById(\"advanced-search-results\");\n\n    // Debounced search with cancel\n    this.debouncedSearch = FunctionOptimizer.debounceWithCancel(\n      this.performAdvancedSearch.bind(this),\n      500\n    );\n\n    this.init();\n  }\n\n  init() {\n    this.searchInput.addEventListener(\"input\", (e) =\u003e {\n      this.debouncedSearch(e.target.value);\n    });\n\n    // Cancel search on blur\n    this.searchInput.addEventListener(\"blur\", () =\u003e {\n      this.debouncedSearch.cancel();\n    });\n  }\n\n  async performAdvancedSearch(query) {\n    if (!query.trim()) {\n      this.resultsContainer.innerHTML = \"\";\n      return;\n    }\n\n    console.log(\"Advanced search for:\", query);\n\n    // Simulate complex search\n    const results = await this.fetchAdvancedResults(query);\n    this.displayAdvancedResults(results);\n  }\n\n  async fetchAdvancedResults(query) {\n    await new Promise((resolve) =\u003e setTimeout(resolve, 800));\n\n    return [\n      { id: 1, title: `Advanced result 1 for ${query}`, score: 0.95 },\n      { id: 2, title: `Advanced result 2 for ${query}`, score: 0.87 },\n      { id: 3, title: `Advanced result 3 for ${query}`, score: 0.76 },\n    ];\n  }\n\n  displayAdvancedResults(results) {\n    this.resultsContainer.innerHTML = results\n      .map(\n        (result) =\u003e `\n        \u003cdiv class=\"advanced-result-item\"\u003e\n          \u003cspan class=\"result-title\"\u003e${result.title}\u003c/span\u003e\n          \u003cspan class=\"result-score\"\u003e${(result.score * 100).toFixed(0)}%\u003c/span\u003e\n        \u003c/div\u003e\n      `\n      )\n      .join(\"\");\n  }\n}\n```\n{% endraw %}\n\n## CSS Styling\n\n```css\n.search-container {\n  max-width: 600px;\n  margin: 20px auto;\n  padding: 20px;\n}\n\n.search-input {\n  width: 100%;\n  padding: 12px 16px;\n  border: 2px solid #ddd;\n  border-radius: 8px;\n  font-size: 16px;\n  transition: border-color 0.3s;\n}\n\n.search-input:focus {\n  outline: none;\n  border-color: #007bff;\n}\n\n.search-results {\n  margin-top: 20px;\n}\n\n.result-item {\n  padding: 12px;\n  border: 1px solid #eee;\n  border-radius: 4px;\n  margin-bottom: 8px;\n  background: white;\n  transition: background-color 0.2s;\n}\n\n.result-item:hover {\n  background-color: #f8f9fa;\n}\n\n.advanced-result-item {\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n  padding: 12px;\n  border: 1px solid #eee;\n  border-radius: 4px;\n  margin-bottom: 8px;\n  background: white;\n}\n\n.result-score {\n  color: #007bff;\n  font-weight: 600;\n  font-size: 14px;\n}\n```\n\n## Key Features\n\n1. **Debounce**: Delays function execution until user stops typing\n2. **Throttle**: Limits function execution to prevent excessive calls\n3. **Cancel Support**: Allows cancellation of pending executions\n4. **Immediate Option**: Supports immediate execution for debounce\n5. **Leading/Trailing**: Configurable execution timing for throttle\n6. **Context Preservation**: Maintains proper `this` context\n\n## Performance Benefits\n\n- **Reduced API Calls**: Debounce prevents excessive search requests\n- **Smooth Scrolling**: Throttle ensures smooth scroll performance\n- **Memory Efficiency**: Proper cleanup prevents memory leaks\n- **User Experience**: Responsive interface with appropriate delays\n\n## Advanced Patterns\n\n```javascript\n// Custom debounce with different strategies\nclass CustomDebounce {\n  static withMaxWait(func, delay, maxWait) {\n    let timeoutId;\n    let lastCallTime = 0;\n\n    return function (...args) {\n      const now = Date.now();\n      const timeSinceLastCall = now - lastCallTime;\n\n      clearTimeout(timeoutId);\n\n      if (timeSinceLastCall \u003e= maxWait) {\n        func.apply(this, args);\n        lastCallTime = now;\n      } else {\n        timeoutId = setTimeout(() =\u003e {\n          func.apply(this, args);\n          lastCallTime = Date.now();\n        }, delay);\n      }\n    };\n  }\n\n  static withQueue(func, delay, maxQueueSize = 10) {\n    let timeoutId;\n    let queue = [];\n\n    return function (...args) {\n      if (queue.length \u003e= maxQueueSize) {\n        queue.shift(); // Remove oldest item\n      }\n\n      queue.push(args);\n\n      clearTimeout(timeoutId);\n      timeoutId = setTimeout(() =\u003e {\n        const currentQueue = [...queue];\n        queue = [];\n        currentQueue.forEach((args) =\u003e func.apply(this, args));\n      }, delay);\n    };\n  }\n}\n\n// Usage examples\nconst searchWithMaxWait = CustomDebounce.withMaxWait(\n  performSearch,\n  300,\n  2000 // Max wait of 2 seconds\n);\n\nconst searchWithQueue = CustomDebounce.withQueue(\n  performSearch,\n  300,\n  5 // Max 5 items in queue\n);\n```\n"])</script><script>self.__next_f.push([1,"8:[\"slug\",\"src/content/frontend/coding-problems/debounce-throttle\",\"c\"]\nd:[]\n"])</script><script>self.__next_f.push([1,"0:[\"$\",\"$L3\",null,{\"buildId\":\"7uJ7BVaXJTiEOD9iYDv3n\",\"assetPrefix\":\"/interview\",\"urlParts\":[\"\",\"docs\",\"src\",\"content\",\"frontend\",\"coding-problems\",\"debounce-throttle\"],\"initialTree\":[\"\",{\"children\":[\"docs\",{\"children\":[[\"slug\",\"src/content/frontend/coding-problems/debounce-throttle\",\"c\"],{\"children\":[\"__PAGE__?{\\\"slug\\\":[\\\"src\\\",\\\"content\\\",\\\"frontend\\\",\\\"coding-problems\\\",\\\"debounce-throttle\\\"]}\",{}]}]}]},\"$undefined\",\"$undefined\",true],\"initialSeedData\":[\"\",{\"children\":[\"docs\",{\"children\":[[\"slug\",\"src/content/frontend/coding-problems/debounce-throttle\",\"c\"],{\"children\":[\"__PAGE__\",{},[[\"$L4\",[\"$\",\"div\",null,{\"style\":{\"maxWidth\":\"1200px\",\"margin\":\"0 auto\",\"padding\":\"2rem\",\"paddingTop\":\"6rem\"},\"children\":[[\"$\",\"div\",null,{\"style\":{\"marginBottom\":\"2rem\"},\"children\":[[\"$\",\"nav\",null,{\"style\":{\"color\":\"#64748b\",\"fontSize\":\"0.9rem\",\"marginBottom\":\"1rem\"},\"children\":[[\"$\",\"a\",null,{\"href\":\"/\",\"style\":{\"color\":\"#3b82f6\",\"textDecoration\":\"none\"},\"children\":\"Home\"}],\" \u003e \",[\"$\",\"span\",null,{\"children\":\"src \u003e content \u003e frontend \u003e coding-problems \u003e debounce-throttle\"}]]}],[\"$\",\"h1\",null,{\"style\":{\"fontSize\":\"2.5rem\",\"fontWeight\":\"800\",\"marginBottom\":\"0.5rem\",\"color\":\"#1e293b\"},\"children\":\"Debounce Throttle\"}],[\"$\",\"div\",null,{\"style\":{\"color\":\"#64748b\",\"fontSize\":\"0.9rem\",\"marginBottom\":\"2rem\"},\"children\":[[\"$\",\"span\",null,{\"children\":[\"📁 \",\"src/content/frontend/coding-problems/debounce-throttle.md\"]}],\"$undefined\",\"$undefined\"]}]]}],[\"$\",\"$L5\",null,{\"content\":\"$6\"}]]}],null],null],null]},[null,[\"$\",\"$L7\",null,{\"parallelRouterKey\":\"children\",\"segmentPath\":[\"children\",\"docs\",\"children\",\"$8\",\"children\"],\"error\":\"$undefined\",\"errorStyles\":\"$undefined\",\"errorScripts\":\"$undefined\",\"template\":[\"$\",\"$L9\",null,{}],\"templateStyles\":\"$undefined\",\"templateScripts\":\"$undefined\",\"notFound\":\"$undefined\",\"notFoundStyles\":\"$undefined\"}]],null]},[null,[\"$\",\"$L7\",null,{\"parallelRouterKey\":\"children\",\"segmentPath\":[\"children\",\"docs\",\"children\"],\"error\":\"$undefined\",\"errorStyles\":\"$undefined\",\"errorScripts\":\"$undefined\",\"template\":[\"$\",\"$L9\",null,{}],\"templateStyles\":\"$undefined\",\"templateScripts\":\"$undefined\",\"notFound\":\"$undefined\",\"notFoundStyles\":\"$undefined\"}]],null]},[[[[\"$\",\"link\",\"0\",{\"rel\":\"stylesheet\",\"href\":\"/interview/_next/static/css/387024c6a2216908.css\",\"precedence\":\"next\",\"crossOrigin\":\"$undefined\"}]],[\"$\",\"$La\",null,{\"children\":[\"$\",\"$L7\",null,{\"parallelRouterKey\":\"children\",\"segmentPath\":[\"children\"],\"error\":\"$undefined\",\"errorStyles\":\"$undefined\",\"errorScripts\":\"$undefined\",\"template\":[\"$\",\"$L9\",null,{}],\"templateStyles\":\"$undefined\",\"templateScripts\":\"$undefined\",\"notFound\":[[\"$\",\"title\",null,{\"children\":\"404: This page could not be found.\"}],[\"$\",\"div\",null,{\"style\":{\"fontFamily\":\"system-ui,\\\"Segoe UI\\\",Roboto,Helvetica,Arial,sans-serif,\\\"Apple Color Emoji\\\",\\\"Segoe UI Emoji\\\"\",\"height\":\"100vh\",\"textAlign\":\"center\",\"display\":\"flex\",\"flexDirection\":\"column\",\"alignItems\":\"center\",\"justifyContent\":\"center\"},\"children\":[\"$\",\"div\",null,{\"children\":[[\"$\",\"style\",null,{\"dangerouslySetInnerHTML\":{\"__html\":\"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}\"}}],[\"$\",\"h1\",null,{\"className\":\"next-error-h1\",\"style\":{\"display\":\"inline-block\",\"margin\":\"0 20px 0 0\",\"padding\":\"0 23px 0 0\",\"fontSize\":24,\"fontWeight\":500,\"verticalAlign\":\"top\",\"lineHeight\":\"49px\"},\"children\":\"404\"}],[\"$\",\"div\",null,{\"style\":{\"display\":\"inline-block\"},\"children\":[\"$\",\"h2\",null,{\"style\":{\"fontSize\":14,\"fontWeight\":400,\"lineHeight\":\"49px\",\"margin\":0},\"children\":\"This page could not be found.\"}]}]]}]}]],\"notFoundStyles\":[]}],\"params\":{}}]],null],null],\"couldBeIntercepted\":false,\"initialHead\":[null,\"$Lb\"],\"globalErrorComponent\":\"$c\",\"missingSlots\":\"$Wd\"}]\n"])</script><script>self.__next_f.push([1,"b:[[\"$\",\"meta\",\"0\",{\"name\":\"viewport\",\"content\":\"width=device-width, initial-scale=1\"}],[\"$\",\"meta\",\"1\",{\"charSet\":\"utf-8\"}],[\"$\",\"title\",\"2\",{\"children\":\"Debounce Throttle - Frontend Interview Docs\"}],[\"$\",\"meta\",\"3\",{\"name\":\"description\",\"content\":\"# Debounce and Throttle Implementation  ## Problem Description  Implement debounce and throttle functions for performance optimization.  ## Requirements  - Debo\"}],[\"$\",\"meta\",\"4\",{\"property\":\"og:title\",\"content\":\"Debounce Throttle - Frontend Interview Docs\"}],[\"$\",\"meta\",\"5\",{\"property\":\"og:description\",\"content\":\"# Debounce and Throttle Implementation  ## Problem Description  Implement debounce and throttle functions for performance optimization.  ## Requirements  - Debo\"}],[\"$\",\"meta\",\"6\",{\"property\":\"og:type\",\"content\":\"article\"}],[\"$\",\"meta\",\"7\",{\"name\":\"twitter:card\",\"content\":\"summary\"}],[\"$\",\"meta\",\"8\",{\"name\":\"twitter:title\",\"content\":\"Debounce Throttle - Frontend Interview Docs\"}],[\"$\",\"meta\",\"9\",{\"name\":\"twitter:description\",\"content\":\"# Debounce and Throttle Implementation  ## Problem Description  Implement debounce and throttle functions for performance optimization.  ## Requirements  - Debo\"}],[\"$\",\"meta\",\"10\",{\"name\":\"next-size-adjust\"}]]\n4:null\n"])</script></body></html>

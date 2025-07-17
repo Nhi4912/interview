@@ -1,0 +1,282 @@
+2:I[5907,["918","static/chunks/918-3273b83890f10546.js","930","static/chunks/930-3262a6c9c5acace4.js","687","static/chunks/app/docs/%5B...slug%5D/page-32962e9542d32755.js"],"default"]
+4:I[4707,[],""]
+6:I[6423,[],""]
+7:I[2,["918","static/chunks/918-3273b83890f10546.js","710","static/chunks/710-dfaa11b4dff08f8e.js","972","static/chunks/972-011bba60ed155615.js","233","static/chunks/233-3e0c1d820a17eca9.js","185","static/chunks/app/layout-333f4adcd11f8f39.js"],"default",1]
+3:T1f01,
+# Remove Duplicates from Sorted Array
+
+**LeetCode Problem # * 26. Remove Duplicates from Sorted Array**
+
+## Problem Description
+
+ * Given an integer array nums sorted in non-decreasing order, remove the duplicates in-place  * such that each unique element appears only once. The relative order of the elements should  * be kept the same. Then return the number of unique elements in nums.  *  * Consider the number of unique elements of nums to be k, to get accepted, you need to do 
+
+## Solutions
+
+{% raw %}
+/**
+ * 26. Remove Duplicates from Sorted Array
+ *
+ * Problem:
+ * Given an integer array nums sorted in non-decreasing order, remove the duplicates in-place
+ * such that each unique element appears only once. The relative order of the elements should
+ * be kept the same. Then return the number of unique elements in nums.
+ *
+ * Consider the number of unique elements of nums to be k, to get accepted, you need to do
+ * the following things:
+ * 1. Change the array nums such that the first k elements of nums contain the unique elements
+ *    in the order they were present in nums initially.
+ * 2. The remaining elements of nums are not important as well as the size of nums.
+ * 3. Return k.
+ *
+ * Example:
+ * Input: nums = [1,1,2]
+ * Output: 2, nums = [1,2,_]
+ * Explanation: Your function should return k = 2, with the first two elements of nums being 1 and 2 respectively.
+ *
+ * Input: nums = [0,0,1,1,1,2,2,3,3,4]
+ * Output: 5, nums = [0,1,2,3,4,_,_,_,_,_]
+ *
+ * LeetCode: https://leetcode.com/problems/remove-duplicates-from-sorted-array/
+ */
+
+/**
+ * Solution 1: Two Pointers Approach (Optimal)
+ *
+ * Approach:
+ * - Use two pointers: i (slow) and j (fast)
+ * - i points to the last unique element
+ * - j scans through the array
+ * - When nums[j] != nums[i], increment i and copy nums[j] to nums[i]
+ *
+ * Time Complexity: O(n) - we traverse the array once
+ * Space Complexity: O(1) - we modify the array in-place
+ */
+function removeDuplicates(nums: number[]): number {
+  if (nums.length === 0) return 0;
+
+  let i = 0; // slow pointer - last unique element position
+
+  for (let j = 1; j < nums.length; j++) {
+    // If current element is different from last unique element
+    if (nums[j] !== nums[i]) {
+      i++; // Move to next position
+      nums[i] = nums[j]; // Copy the unique element
+    }
+  }
+
+  return i + 1; // Return number of unique elements
+}
+
+/**
+ * Solution 2: Using Set (Not in-place, but shows alternative approach)
+ *
+ * Approach:
+ * - Convert array to Set to remove duplicates
+ * - Convert back to array
+ * - Copy elements back to original array
+ *
+ * Time Complexity: O(n)
+ * Space Complexity: O(n) - requires extra space for Set
+ */
+function removeDuplicatesWithSet(nums: number[]): number {
+  const uniqueSet = new Set(nums);
+  const uniqueArray = Array.from(uniqueSet);
+
+  // Copy unique elements back to original array
+  for (let i = 0; i < uniqueArray.length; i++) {
+    nums[i] = uniqueArray[i];
+  }
+
+  return uniqueArray.length;
+}
+
+/**
+ * Solution 3: Using Filter (Functional approach)
+ *
+ * Approach:
+ * - Use filter to create new array with unique elements
+ * - Copy back to original array
+ *
+ * Time Complexity: O(n)
+ * Space Complexity: O(n) - requires extra space for filtered array
+ */
+function removeDuplicatesWithFilter(nums: number[]): number {
+  const uniqueArray = nums.filter((num, index) => nums.indexOf(num) === index);
+
+  // Copy unique elements back to original array
+  for (let i = 0; i < uniqueArray.length; i++) {
+    nums[i] = uniqueArray[i];
+  }
+
+  return uniqueArray.length;
+}
+
+/**
+ * Solution 4: Manual approach with explicit duplicate checking
+ *
+ * Approach:
+ * - Compare each element with all previous elements
+ * - Only keep elements that haven't appeared before
+ *
+ * Time Complexity: O(n²) - for each element, check all previous elements
+ * Space Complexity: O(1) - in-place modification
+ */
+function removeDuplicatesManual(nums: number[]): number {
+  if (nums.length === 0) return 0;
+
+  let writeIndex = 1; // Position to write next unique element
+
+  for (let i = 1; i < nums.length; i++) {
+    let isDuplicate = false;
+
+    // Check if current element is duplicate of any previous element
+    for (let j = 0; j < writeIndex; j++) {
+      if (nums[i] === nums[j]) {
+        isDuplicate = true;
+        break;
+      }
+    }
+
+    // If not duplicate, add to result
+    if (!isDuplicate) {
+      nums[writeIndex] = nums[i];
+      writeIndex++;
+    }
+  }
+
+  return writeIndex;
+}
+
+// Test cases
+function testRemoveDuplicates() {
+  console.log("=== Testing Remove Duplicates from Sorted Array ===\n");
+
+  const testCases = [
+    {
+      input: [1, 1, 2],
+      expected: 2,
+      description: "Basic case with one duplicate",
+    },
+    {
+      input: [0, 0, 1, 1, 1, 2, 2, 3, 3, 4],
+      expected: 5,
+      description: "Multiple duplicates",
+    },
+    {
+      input: [1, 2, 3, 4, 5],
+      expected: 5,
+      description: "No duplicates",
+    },
+    {
+      input: [1, 1, 1, 1, 1],
+      expected: 1,
+      description: "All same elements",
+    },
+    {
+      input: [],
+      expected: 0,
+      description: "Empty array",
+    },
+    {
+      input: [1],
+      expected: 1,
+      description: "Single element",
+    },
+  ];
+
+  testCases.forEach((testCase, index) => {
+    console.log(`Test Case ${index + 1}: ${testCase.description}`);
+    console.log(`Input: [${testCase.input}]`);
+
+    // Test Solution 1 (Optimal)
+    const nums1 = [...testCase.input];
+    const result1 = removeDuplicates(nums1);
+    console.log(
+      `Solution 1 (Two Pointers): k = ${result1}, nums = [${nums1.slice(
+        0,
+        result1
+      )}]`
+    );
+    console.log(`Expected: k = ${testCase.expected}`);
+    console.log(`Correct: ${result1 === testCase.expected ? "✅" : "❌"}\n`);
+
+    // Test Solution 2 (Set)
+    const nums2 = [...testCase.input];
+    const result2 = removeDuplicatesWithSet(nums2);
+    console.log(
+      `Solution 2 (Set): k = ${result2}, nums = [${nums2.slice(0, result2)}]`
+    );
+    console.log(`Correct: ${result2 === testCase.expected ? "✅" : "❌"}\n`);
+
+    // Test Solution 3 (Filter)
+    const nums3 = [...testCase.input];
+    const result3 = removeDuplicatesWithFilter(nums3);
+    console.log(
+      `Solution 3 (Filter): k = ${result3}, nums = [${nums3.slice(0, result3)}]`
+    );
+    console.log(`Correct: ${result3 === testCase.expected ? "✅" : "❌"}\n`);
+
+    // Test Solution 4 (Manual)
+    const nums4 = [...testCase.input];
+    const result4 = removeDuplicatesManual(nums4);
+    console.log(
+      `Solution 4 (Manual): k = ${result4}, nums = [${nums4.slice(0, result4)}]`
+    );
+    console.log(`Correct: ${result4 === testCase.expected ? "✅" : "❌"}\n`);
+
+    console.log("---\n");
+  });
+}
+
+// Performance comparison
+function performanceComparison() {
+  console.log("=== Performance Comparison ===\n");
+
+  // Create large sorted array with duplicates
+  const largeArray = [];
+  for (let i = 0; i < 100000; i++) {
+    largeArray.push(Math.floor(i / 100)); // Creates many duplicates
+  }
+
+  const testCases = [
+    { name: "Two Pointers", func: removeDuplicates },
+    { name: "Set", func: removeDuplicatesWithSet },
+    { name: "Filter", func: removeDuplicatesWithFilter },
+    { name: "Manual", func: removeDuplicatesManual },
+  ];
+
+  testCases.forEach(({ name, func }) => {
+    const testArray = [...largeArray];
+    const start = performance.now();
+    const result = func(testArray);
+    const end = performance.now();
+
+    console.log(`${name}:`);
+    console.log(`  Time: ${(end - start).toFixed(2)}ms`);
+    console.log(`  Result: ${result} unique elements`);
+    console.log(
+      `  Memory: ${
+        name === "Two Pointers" || name === "Manual" ? "O(1)" : "O(n)"
+      }\n`
+    );
+  });
+}
+
+// Run tests
+if (require.main === module) {
+  testRemoveDuplicates();
+  performanceComparison();
+}
+
+export {
+  removeDuplicates,
+  removeDuplicatesWithSet,
+  removeDuplicatesWithFilter,
+  removeDuplicatesManual,
+};
+{% endraw %}
+5:["slug","leetcode/array/problems/01-remove-duplicates-from-sorted-array","c"]
+0:["7uJ7BVaXJTiEOD9iYDv3n",[[["",{"children":["docs",{"children":[["slug","leetcode/array/problems/01-remove-duplicates-from-sorted-array","c"],{"children":["__PAGE__?{\"slug\":[\"leetcode\",\"array\",\"problems\",\"01-remove-duplicates-from-sorted-array\"]}",{}]}]}]},"$undefined","$undefined",true],["",{"children":["docs",{"children":[["slug","leetcode/array/problems/01-remove-duplicates-from-sorted-array","c"],{"children":["__PAGE__",{},[["$L1",["$","div",null,{"style":{"maxWidth":"1200px","margin":"0 auto","padding":"2rem","paddingTop":"6rem"},"children":[["$","div",null,{"style":{"marginBottom":"2rem"},"children":[["$","nav",null,{"style":{"color":"#64748b","fontSize":"0.9rem","marginBottom":"1rem"},"children":[["$","a",null,{"href":"/","style":{"color":"#3b82f6","textDecoration":"none"},"children":"Home"}]," > ",["$","span",null,{"children":"leetcode > array > problems > 01-remove-duplicates-from-sorted-array"}]]}],["$","h1",null,{"style":{"fontSize":"2.5rem","fontWeight":"800","marginBottom":"0.5rem","color":"#1e293b"},"children":"Remove Duplicates from Sorted Array"}],["$","div",null,{"style":{"color":"#64748b","fontSize":"0.9rem","marginBottom":"2rem"},"children":[["$","span",null,{"children":["📁 ","leetcode/array/problems/01-remove-duplicates-from-sorted-array.md"]}],"$undefined","$undefined"]}]]}],["$","$L2",null,{"content":"$3"}]]}],null],null],null]},[null,["$","$L4",null,{"parallelRouterKey":"children","segmentPath":["children","docs","children","$5","children"],"error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L6",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","notFoundStyles":"$undefined"}]],null]},[null,["$","$L4",null,{"parallelRouterKey":"children","segmentPath":["children","docs","children"],"error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L6",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","notFoundStyles":"$undefined"}]],null]},[[[["$","link","0",{"rel":"stylesheet","href":"/interview/_next/static/css/387024c6a2216908.css","precedence":"next","crossOrigin":"$undefined"}]],["$","$L7",null,{"children":["$","$L4",null,{"parallelRouterKey":"children","segmentPath":["children"],"error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L6",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":{"fontFamily":"system-ui,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\"","height":"100vh","textAlign":"center","display":"flex","flexDirection":"column","alignItems":"center","justifyContent":"center"},"children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":{"display":"inline-block","margin":"0 20px 0 0","padding":"0 23px 0 0","fontSize":24,"fontWeight":500,"verticalAlign":"top","lineHeight":"49px"},"children":"404"}],["$","div",null,{"style":{"display":"inline-block"},"children":["$","h2",null,{"style":{"fontSize":14,"fontWeight":400,"lineHeight":"49px","margin":0},"children":"This page could not be found."}]}]]}]}]],"notFoundStyles":[]}],"params":{}}]],null],null],["$L8",null]]]]
+8:[["$","meta","0",{"name":"viewport","content":"width=device-width, initial-scale=1"}],["$","meta","1",{"charSet":"utf-8"}],["$","title","2",{"children":"Remove Duplicates from Sorted Array - Frontend Interview Docs"}],["$","meta","3",{"name":"description","content":" # Remove Duplicates from Sorted Array  **LeetCode Problem # * 26. Remove Duplicates from Sorted Array**  ## Problem Description   * Given an integer array nums"}],["$","meta","4",{"property":"og:title","content":"Remove Duplicates from Sorted Array - Frontend Interview Docs"}],["$","meta","5",{"property":"og:description","content":" # Remove Duplicates from Sorted Array  **LeetCode Problem # * 26. Remove Duplicates from Sorted Array**  ## Problem Description   * Given an integer array nums"}],["$","meta","6",{"property":"og:type","content":"article"}],["$","meta","7",{"name":"twitter:card","content":"summary"}],["$","meta","8",{"name":"twitter:title","content":"Remove Duplicates from Sorted Array - Frontend Interview Docs"}],["$","meta","9",{"name":"twitter:description","content":" # Remove Duplicates from Sorted Array  **LeetCode Problem # * 26. Remove Duplicates from Sorted Array**  ## Problem Description   * Given an integer array nums"}],["$","meta","10",{"name":"next-size-adjust"}]]
+1:null

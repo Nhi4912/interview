@@ -1,0 +1,1618 @@
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><meta name="viewport" content="width=device-width, initial-scale=1"/><link rel="preload" href="/interview/_next/static/media/e4af272ccee01ff0-s.p.woff2" as="font" crossorigin="" type="font/woff2"/><link rel="stylesheet" href="/interview/_next/static/css/387024c6a2216908.css" data-precedence="next"/><link rel="preload" as="script" fetchPriority="low" href="/interview/_next/static/chunks/webpack-be7d7df45533bffc.js"/><script src="/interview/_next/static/chunks/fd9d1056-6922f449a204c2cc.js" async=""></script><script src="/interview/_next/static/chunks/117-e7ecc085ce9cfab3.js" async=""></script><script src="/interview/_next/static/chunks/main-app-b06be5f3411c20c3.js" async=""></script><script src="/interview/_next/static/chunks/918-3273b83890f10546.js" async=""></script><script src="/interview/_next/static/chunks/930-3262a6c9c5acace4.js" async=""></script><script src="/interview/_next/static/chunks/app/docs/%5B...slug%5D/page-32962e9542d32755.js" async=""></script><script src="/interview/_next/static/chunks/710-dfaa11b4dff08f8e.js" async=""></script><script src="/interview/_next/static/chunks/972-011bba60ed155615.js" async=""></script><script src="/interview/_next/static/chunks/233-3e0c1d820a17eca9.js" async=""></script><script src="/interview/_next/static/chunks/app/layout-333f4adcd11f8f39.js" async=""></script><title>Frontend Interview Prep 2025 - Big Tech Interview Guide</title><meta name="description" content="Comprehensive frontend interview preparation for Big Tech companies including React, TypeScript, algorithms, and system design."/><link rel="icon" href="/favicon.ico"/><meta name="theme-color" content="#1a1a1a"/><meta property="og:title" content="Frontend Interview Prep 2025"/><meta property="og:description" content="Complete guide for frontend engineers targeting Big Tech companies"/><meta property="og:type" content="website"/><link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous"/><title>Javascript Advanced Fundamentals - Frontend Interview Docs</title><meta name="description" content="# JavaScript Advanced Fundamentals  ## Overview Deep understanding of JavaScript fundamentals is crucial for frontend interviews. This guide covers advanced con"/><meta property="og:title" content="Javascript Advanced Fundamentals - Frontend Interview Docs"/><meta property="og:description" content="# JavaScript Advanced Fundamentals  ## Overview Deep understanding of JavaScript fundamentals is crucial for frontend interviews. This guide covers advanced con"/><meta property="og:type" content="article"/><meta name="twitter:card" content="summary"/><meta name="twitter:title" content="Javascript Advanced Fundamentals - Frontend Interview Docs"/><meta name="twitter:description" content="# JavaScript Advanced Fundamentals  ## Overview Deep understanding of JavaScript fundamentals is crucial for frontend interviews. This guide covers advanced con"/><meta name="next-size-adjust"/><script src="/interview/_next/static/chunks/polyfills-42372ed130431b0a.js" noModule=""></script><style data-styled="" data-styled-version="6.1.19">*{margin:0;padding:0;box-sizing:border-box;}/*!sc*/
+html{font-size:16px;line-height:1.5;scroll-behavior:smooth;}/*!sc*/
+body{font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;font-size:1rem;line-height:1.5;color:#1e293b;background-color:#ffffff;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;}/*!sc*/
+h1,h2,h3,h4,h5,h6{font-weight:700;line-height:1.25;margin-bottom:0.5em;}/*!sc*/
+h1{font-size:3rem;}/*!sc*/
+@media (max-width: 768px){h1{font-size:2.25rem;}}/*!sc*/
+h2{font-size:2.25rem;}/*!sc*/
+@media (max-width: 768px){h2{font-size:1.875rem;}}/*!sc*/
+h3{font-size:1.875rem;}/*!sc*/
+@media (max-width: 768px){h3{font-size:1.5rem;}}/*!sc*/
+h4{font-size:1.5rem;}/*!sc*/
+@media (max-width: 768px){h4{font-size:1.25rem;}}/*!sc*/
+h5{font-size:1.25rem;}/*!sc*/
+h6{font-size:1.125rem;}/*!sc*/
+p{margin-bottom:1rem;line-height:1.75;}/*!sc*/
+a{color:#3b82f6;text-decoration:none;transition:color 0.15s ease;}/*!sc*/
+a:hover{color:#2563eb;}/*!sc*/
+a:focus{outline:2px solid #3b82f6;outline-offset:2px;}/*!sc*/
+button{cursor:pointer;border:none;background:none;font-family:inherit;font-size:inherit;}/*!sc*/
+button:disabled{cursor:not-allowed;opacity:0.6;}/*!sc*/
+button:focus{outline:2px solid #3b82f6;outline-offset:2px;}/*!sc*/
+input,textarea,select{font-family:inherit;font-size:inherit;}/*!sc*/
+input:focus,textarea:focus,select:focus{outline:2px solid #3b82f6;outline-offset:2px;}/*!sc*/
+img{max-width:100%;height:auto;}/*!sc*/
+ul,ol{margin-bottom:1rem;padding-left:1.5rem;}/*!sc*/
+li{margin-bottom:0.25rem;}/*!sc*/
+blockquote{margin:1rem 0;padding:1rem;border-left:4px solid #3b82f6;background-color:#f1f5f9;font-style:italic;}/*!sc*/
+code{font-family:SFMono-Regular,Consolas,"Liberation Mono",Menlo,monospace;font-size:0.9em;background-color:#f1f5f9;padding:0.2em 0.4em;border-radius:0.25rem;}/*!sc*/
+pre{background-color:#f1f5f9;padding:1rem;border-radius:0.5rem;overflow-x:auto;margin-bottom:1rem;}/*!sc*/
+pre code{background:none;padding:0;}/*!sc*/
+table{width:100%;border-collapse:collapse;margin-bottom:1rem;}/*!sc*/
+th,td{padding:0.75rem;text-align:left;border-bottom:1px solid #e2e8f0;}/*!sc*/
+th{font-weight:600;background-color:#f1f5f9;}/*!sc*/
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0, 0, 0, 0);white-space:nowrap;border:0;}/*!sc*/
+.skip-link{position:absolute;top:-40px;left:6px;background:#3b82f6;color:white;padding:8px;text-decoration:none;border-radius:4px;z-index:100;}/*!sc*/
+.skip-link:focus{top:6px;}/*!sc*/
+::-webkit-scrollbar{width:8px;height:8px;}/*!sc*/
+::-webkit-scrollbar-track{background:#f1f5f9;}/*!sc*/
+::-webkit-scrollbar-thumb{background:#94a3b8;border-radius:4px;}/*!sc*/
+::-webkit-scrollbar-thumb:hover{background:#64748b;}/*!sc*/
+::selection{background:#3b82f6;color:white;}/*!sc*/
+.focus-visible{outline:2px solid #3b82f6;outline-offset:2px;}/*!sc*/
+.fade-in{opacity:0;animation:fadeIn 0.3s ease forwards;}/*!sc*/
+.slide-up{transform:translateY(20px);opacity:0;animation:slideUp 0.3s ease forwards;}/*!sc*/
+@keyframes fadeIn{to{opacity:1;}}/*!sc*/
+@keyframes slideUp{to{transform:translateY(0);opacity:1;}}/*!sc*/
+@media print{*{background:white!important;color:black!important;box-shadow:none!important;text-shadow:none!important;}a,a:visited{text-decoration:underline;}h1,h2,h3,h4,h5,h6{break-after:avoid;}pre,blockquote{border:1px solid #999;break-inside:avoid;}img{max-width:100%!important;}@page{margin:0.5in;}}/*!sc*/
+data-styled.g21[id="sc-global-kxA-Ddz1"]{content:"sc-global-kxA-Ddz1,"}/*!sc*/
+.iIQwfN{position:fixed;top:0;width:100%;z-index:1020;background:transparent;backdrop-filter:blur(10px);border-bottom:1px solid transparent;transition:all 0.3s ease;}/*!sc*/
+data-styled.g22[id="sc-gGKoUb"]{content:"iIQwfN,"}/*!sc*/
+.cEuiWg{max-width:1200px;margin:0 auto;padding:0 2rem;display:flex;align-items:center;justify-content:space-between;height:70px;}/*!sc*/
+data-styled.g23[id="sc-hwddKA"]{content:"cEuiWg,"}/*!sc*/
+.bqPomF{display:flex;align-items:center;gap:0.5rem;font-size:1.5rem;font-weight:700;color:#3b82f6;text-decoration:none;cursor:pointer;}/*!sc*/
+.bqPomF:hover{color:#2563eb;}/*!sc*/
+data-styled.g24[id="sc-jaXbil"]{content:"bqPomF,"}/*!sc*/
+.iwwpNe{display:flex;align-items:center;gap:2rem;}/*!sc*/
+@media (max-width: 768px){.iwwpNe{display:none;}}/*!sc*/
+data-styled.g25[id="sc-eqNDNG"]{content:"iwwpNe,"}/*!sc*/
+.iuGltB{color:#1e293b;font-weight:500;text-decoration:none;transition:color 0.15s ease;position:relative;}/*!sc*/
+.iuGltB:hover{color:#3b82f6;}/*!sc*/
+.iuGltB:after{content:'';position:absolute;bottom:-5px;left:0;width:0;height:2px;background:#3b82f6;transition:width 0.15s ease;}/*!sc*/
+.iuGltB:hover:after{width:100%;}/*!sc*/
+data-styled.g26[id="sc-fVHBlr"]{content:"iuGltB,"}/*!sc*/
+.lmsDAj{display:none;background:none;border:none;color:#1e293b;cursor:pointer;padding:0.5rem;}/*!sc*/
+@media (max-width: 768px){.lmsDAj{display:block;}}/*!sc*/
+data-styled.g27[id="sc-gLaqbQ"]{content:"lmsDAj,"}/*!sc*/
+.keTsRT{display:flex;align-items:center;gap:0.5rem;background:#f1f5f9;border:1px solid #e2e8f0;border-radius:0.5rem;padding:0.5rem 1rem;color:#64748b;font-size:0.9rem;transition:all 0.15s ease;}/*!sc*/
+.keTsRT:hover{background:#ffffff;border-color:#3b82f6;}/*!sc*/
+data-styled.g31[id="sc-cOpnSz"]{content:"keTsRT,"}/*!sc*/
+.hrfQfY{background:#1e293b;color:white;padding:3rem 0 1rem;margin-top:auto;}/*!sc*/
+data-styled.g32[id="sc-kjwdDK"]{content:"hrfQfY,"}/*!sc*/
+.dwFHjZ{max-width:1200px;margin:0 auto;padding:0 2rem;}/*!sc*/
+data-styled.g33[id="sc-eVqvcJ"]{content:"dwFHjZ,"}/*!sc*/
+.kWATso{display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:2rem;margin-bottom:2rem;}/*!sc*/
+@media (max-width: 768px){.kWATso{grid-template-columns:1fr 1fr;gap:1.5rem;}}/*!sc*/
+@media (max-width: 480px){.kWATso{grid-template-columns:1fr;}}/*!sc*/
+data-styled.g34[id="sc-bbbBoY"]{content:"kWATso,"}/*!sc*/
+.fBmmqS h3{font-size:1.1rem;font-weight:600;margin-bottom:1rem;color:white;}/*!sc*/
+.fBmmqS ul{list-style:none;padding:0;margin:0;}/*!sc*/
+.fBmmqS li{margin-bottom:0.5rem;}/*!sc*/
+.fBmmqS a{color:rgba(255, 255, 255, 0.7);text-decoration:none;transition:color 0.15s ease;}/*!sc*/
+.fBmmqS a:hover{color:white;}/*!sc*/
+data-styled.g35[id="sc-cdmAjP"]{content:"fBmmqS,"}/*!sc*/
+.iNKxsb{display:flex;align-items:center;gap:0.5rem;font-size:1.2rem;font-weight:700;margin-bottom:1rem;color:white;}/*!sc*/
+data-styled.g36[id="sc-jytpVa"]{content:"iNKxsb,"}/*!sc*/
+.fYhkiV{color:rgba(255, 255, 255, 0.7);line-height:1.6;margin-bottom:1rem;}/*!sc*/
+data-styled.g37[id="sc-eknHtZ"]{content:"fYhkiV,"}/*!sc*/
+.eVAQiq{display:flex;gap:1rem;}/*!sc*/
+.eVAQiq a{display:flex;align-items:center;justify-content:center;width:40px;height:40px;background:rgba(255, 255, 255, 0.1);border-radius:0.5rem;color:rgba(255, 255, 255, 0.7);transition:all 0.15s ease;}/*!sc*/
+.eVAQiq a:hover{background:rgba(255, 255, 255, 0.2);color:white;}/*!sc*/
+data-styled.g38[id="sc-pYNGo"]{content:"eVAQiq,"}/*!sc*/
+.fgJmHp{border-top:1px solid rgba(255, 255, 255, 0.1);padding-top:2rem;display:flex;justify-content:space-between;align-items:center;}/*!sc*/
+@media (max-width: 768px){.fgJmHp{flex-direction:column;gap:1rem;text-align:center;}}/*!sc*/
+data-styled.g39[id="sc-cCVJLD"]{content:"fgJmHp,"}/*!sc*/
+.gYGLHT{color:rgba(255, 255, 255, 0.7);margin:0;font-size:0.9rem;}/*!sc*/
+data-styled.g40[id="sc-jYczwO"]{content:"gYGLHT,"}/*!sc*/
+.ghBULZ{display:flex;gap:2rem;}/*!sc*/
+@media (max-width: 480px){.ghBULZ{flex-direction:column;gap:1rem;}}/*!sc*/
+.ghBULZ a{color:rgba(255, 255, 255, 0.7);text-decoration:none;font-size:0.9rem;transition:color 0.15s ease;}/*!sc*/
+.ghBULZ a:hover{color:white;}/*!sc*/
+data-styled.g41[id="sc-dNFkOE"]{content:"ghBULZ,"}/*!sc*/
+.fUIuKh{color:#1e293b;line-height:1.6;}/*!sc*/
+.fUIuKh h1,.fUIuKh h2,.fUIuKh h3,.fUIuKh h4,.fUIuKh h5,.fUIuKh h6{color:#1e293b;margin-top:2rem;margin-bottom:1rem;font-weight:600;}/*!sc*/
+.fUIuKh h1{font-size:2rem;border-bottom:2px solid #e2e8f0;padding-bottom:0.5rem;}/*!sc*/
+.fUIuKh h2{font-size:1.5rem;border-bottom:1px solid #e2e8f0;padding-bottom:0.3rem;}/*!sc*/
+.fUIuKh h3{font-size:1.25rem;}/*!sc*/
+.fUIuKh h4{font-size:1.1rem;}/*!sc*/
+.fUIuKh p{margin-bottom:1rem;color:#64748b;}/*!sc*/
+.fUIuKh a{color:#3b82f6;text-decoration:none;}/*!sc*/
+.fUIuKh a:hover{text-decoration:underline;}/*!sc*/
+.fUIuKh ul,.fUIuKh ol{margin-bottom:1rem;padding-left:1.5rem;}/*!sc*/
+.fUIuKh ul li,.fUIuKh ol li{margin-bottom:0.5rem;color:#64748b;}/*!sc*/
+.fUIuKh blockquote{border-left:4px solid #3b82f6;padding-left:1rem;margin:1rem 0;font-style:italic;color:#64748b;background:#f1f5f9;padding:1rem;border-radius:0.5rem;}/*!sc*/
+.fUIuKh code{background:#f1f5f9;padding:0.2rem 0.4rem;border-radius:0.25rem;font-family:SFMono-Regular,Consolas,"Liberation Mono",Menlo,monospace;font-size:0.9em;color:#f59e0b;}/*!sc*/
+.fUIuKh pre{background:#ffffff;border:1px solid #e2e8f0;border-radius:0.5rem;padding:1rem;margin:1rem 0;overflow-x:auto;}/*!sc*/
+.fUIuKh pre code{background:none;padding:0;color:#1e293b;font-size:0.9rem;}/*!sc*/
+.fUIuKh table{width:100%;border-collapse:collapse;margin:1rem 0;}/*!sc*/
+.fUIuKh table th,.fUIuKh table td{border:1px solid #e2e8f0;padding:0.5rem;text-align:left;}/*!sc*/
+.fUIuKh table th{background:#ffffff;font-weight:600;}/*!sc*/
+.fUIuKh table tr:nth-child(even){background:#f1f5f9;}/*!sc*/
+.fUIuKh hr{border:none;height:1px;background:#e2e8f0;margin:2rem 0;}/*!sc*/
+.fUIuKh .highlight{background:#3b82f620;padding:0.2rem 0.4rem;border-radius:0.25rem;font-weight:600;}/*!sc*/
+.fUIuKh .hljs{background:#ffffff;color:#1e293b;}/*!sc*/
+.fUIuKh .hljs-keyword{color:#3b82f6;font-weight:600;}/*!sc*/
+.fUIuKh .hljs-string{color:#10b981;}/*!sc*/
+.fUIuKh .hljs-function{color:#f59e0b;}/*!sc*/
+.fUIuKh .hljs-comment{color:#94a3b8;font-style:italic;}/*!sc*/
+.fUIuKh .hljs-number{color:#f59e0b;}/*!sc*/
+.fUIuKh .hljs-variable{color:#1e293b;}/*!sc*/
+.fUIuKh .hljs-title{color:#f59e0b;font-weight:600;}/*!sc*/
+data-styled.g42[id="sc-fszimp"]{content:"fUIuKh,"}/*!sc*/
+</style></head><body class="__className_6eac61"><div style="min-height:100vh;display:flex;flex-direction:column"><nav class="sc-gGKoUb iIQwfN"><div class="sc-hwddKA cEuiWg"><a href="/interview"><a class="sc-jaXbil bqPomF"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-code "><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>Frontend Interview Prep</a></a><div class="sc-eqNDNG iwwpNe"><a href="/interview/problems"><a class="sc-fVHBlr iuGltB">Problems</a></a><a href="/interview/learn"><a class="sc-fVHBlr iuGltB">Learn</a></a><a href="/interview/study-guide"><a class="sc-fVHBlr iuGltB">Study Guide</a></a><a href="/interview/system-design"><a class="sc-fVHBlr iuGltB">System Design</a></a><a href="/interview/performance"><a class="sc-fVHBlr iuGltB">Performance</a></a><a href="/interview/accessibility"><a class="sc-fVHBlr iuGltB">Accessibility</a></a><a href="/interview/interview-tips"><a class="sc-fVHBlr iuGltB">Interview Tips</a></a><button class="sc-cOpnSz keTsRT"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-search "><circle cx="11" cy="11" r="8"></circle><path d="m21 21-4.3-4.3"></path></svg>Search</button></div><button class="sc-gLaqbQ lmsDAj"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-menu "><line x1="4" x2="20" y1="12" y2="12"></line><line x1="4" x2="20" y1="6" y2="6"></line><line x1="4" x2="20" y1="18" y2="18"></line></svg></button></div></nav><main style="flex:1"><div style="max-width:1200px;margin:0 auto;padding:2rem;padding-top:6rem"><div style="margin-bottom:2rem"><nav style="color:#64748b;font-size:0.9rem;margin-bottom:1rem"><a href="/" style="color:#3b82f6;text-decoration:none">Home</a> &gt; <span>frontend &gt; fundamentals &gt; javascript-advanced-fundamentals</span></nav><h1 style="font-size:2.5rem;font-weight:800;margin-bottom:0.5rem;color:#1e293b">Javascript Advanced Fundamentals</h1><div style="color:#64748b;font-size:0.9rem;margin-bottom:2rem"><span>📁 <!-- -->frontend/fundamentals/javascript-advanced-fundamentals.md</span></div></div><div class="sc-fszimp fUIuKh"><h1 id="javascript-advanced-fundamentals" node="[object Object]">JavaScript Advanced Fundamentals</h1>
+<h2 id="overview" node="[object Object]">Overview</h2>
+<p>Deep understanding of JavaScript fundamentals is crucial for frontend interviews. This guide covers advanced concepts that separate junior from senior developers.</p>
+<hr/>
+<h2 id="memory-management-&amp;-garbage-collection" node="[object Object]">Memory Management &amp; Garbage Collection</h2>
+<h3 id="[object-object]" node="[object Object]"><strong>Understanding Memory Lifecycle</strong></h3>
+<pre><pre><code class="hljs hljs language-javascript"><span class="hljs-comment">// Memory allocation patterns and optimization</span>
+<span class="hljs-keyword">class</span> <span class="hljs-title class_">MemoryOptimizedDataStructure</span> {
+  <span class="hljs-title function_">constructor</span>(<span class="hljs-params"></span>) {
+    <span class="hljs-comment">// Use typed arrays for better memory efficiency</span>
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">buffer</span> = <span class="hljs-keyword">new</span> <span class="hljs-title class_">ArrayBuffer</span>(<span class="hljs-number">1024</span>);
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">view</span> = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Int32Array</span>(<span class="hljs-variable language_">this</span>.<span class="hljs-property">buffer</span>);
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">stringPool</span> = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Map</span>(); <span class="hljs-comment">// String interning</span>
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">objectPool</span> = []; <span class="hljs-comment">// Object pooling</span>
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">weakRefs</span> = <span class="hljs-keyword">new</span> <span class="hljs-title class_">WeakMap</span>(); <span class="hljs-comment">// Prevent memory leaks</span>
+  }
+
+  <span class="hljs-comment">// Object pooling to reduce garbage collection pressure</span>
+  <span class="hljs-title function_">createObject</span>(<span class="hljs-params">data</span>) {
+    <span class="hljs-keyword">let</span> obj = <span class="hljs-variable language_">this</span>.<span class="hljs-property">objectPool</span>.<span class="hljs-title function_">pop</span>();
+    <span class="hljs-keyword">if</span> (!obj) {
+      obj = { <span class="hljs-attr">id</span>: <span class="hljs-literal">null</span>, <span class="hljs-attr">data</span>: <span class="hljs-literal">null</span>, <span class="hljs-attr">timestamp</span>: <span class="hljs-literal">null</span> };
+    }
+    
+    obj.<span class="hljs-property">id</span> = data.<span class="hljs-property">id</span>;
+    obj.<span class="hljs-property">data</span> = data.<span class="hljs-property">data</span>;
+    obj.<span class="hljs-property">timestamp</span> = <span class="hljs-title class_">Date</span>.<span class="hljs-title function_">now</span>();
+    
+    <span class="hljs-keyword">return</span> obj;
+  }
+
+  <span class="hljs-title function_">recycleObject</span>(<span class="hljs-params">obj</span>) {
+    <span class="hljs-comment">// Clear references before pooling</span>
+    obj.<span class="hljs-property">id</span> = <span class="hljs-literal">null</span>;
+    obj.<span class="hljs-property">data</span> = <span class="hljs-literal">null</span>;
+    obj.<span class="hljs-property">timestamp</span> = <span class="hljs-literal">null</span>;
+    
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">objectPool</span>.<span class="hljs-title function_">push</span>(obj);
+  }
+
+  <span class="hljs-comment">// String interning to reduce memory usage</span>
+  <span class="hljs-title function_">internString</span>(<span class="hljs-params">str</span>) {
+    <span class="hljs-keyword">if</span> (<span class="hljs-variable language_">this</span>.<span class="hljs-property">stringPool</span>.<span class="hljs-title function_">has</span>(str)) {
+      <span class="hljs-keyword">return</span> <span class="hljs-variable language_">this</span>.<span class="hljs-property">stringPool</span>.<span class="hljs-title function_">get</span>(str);
+    }
+    
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">stringPool</span>.<span class="hljs-title function_">set</span>(str, str);
+    <span class="hljs-keyword">return</span> str;
+  }
+
+  <span class="hljs-comment">// WeakMap usage to prevent memory leaks</span>
+  <span class="hljs-title function_">associateMetadata</span>(<span class="hljs-params">obj, metadata</span>) {
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">weakRefs</span>.<span class="hljs-title function_">set</span>(obj, metadata);
+    <span class="hljs-comment">// When obj is garbage collected, metadata is automatically removed</span>
+  }
+}
+
+<span class="hljs-comment">// Demonstrating memory leaks and how to prevent them</span>
+<span class="hljs-keyword">class</span> <span class="hljs-title class_">MemoryLeakExamples</span> {
+  <span class="hljs-title function_">constructor</span>(<span class="hljs-params"></span>) {
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">listeners</span> = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Set</span>();
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">timers</span> = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Set</span>();
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">observers</span> = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Set</span>();
+  }
+
+  <span class="hljs-comment">// ❌ Memory leak: Forgotten event listener</span>
+  <span class="hljs-title function_">addEventListenerBad</span>(<span class="hljs-params"></span>) {
+    <span class="hljs-keyword">const</span> button = <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">getElementById</span>(<span class="hljs-string">&#x27;myButton&#x27;</span>);
+    button.<span class="hljs-title function_">addEventListener</span>(<span class="hljs-string">&#x27;click&#x27;</span>, <span class="hljs-variable language_">this</span>.<span class="hljs-property">handleClick</span>.<span class="hljs-title function_">bind</span>(<span class="hljs-variable language_">this</span>));
+    <span class="hljs-comment">// Listener never removed, creates memory leak</span>
+  }
+
+  <span class="hljs-comment">// ✅ Proper cleanup</span>
+  <span class="hljs-title function_">addEventListenerGood</span>(<span class="hljs-params"></span>) {
+    <span class="hljs-keyword">const</span> button = <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">getElementById</span>(<span class="hljs-string">&#x27;myButton&#x27;</span>);
+    <span class="hljs-keyword">const</span> boundHandler = <span class="hljs-variable language_">this</span>.<span class="hljs-property">handleClick</span>.<span class="hljs-title function_">bind</span>(<span class="hljs-variable language_">this</span>);
+    
+    button.<span class="hljs-title function_">addEventListener</span>(<span class="hljs-string">&#x27;click&#x27;</span>, boundHandler);
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">listeners</span>.<span class="hljs-title function_">add</span>({ <span class="hljs-attr">element</span>: button, <span class="hljs-attr">event</span>: <span class="hljs-string">&#x27;click&#x27;</span>, <span class="hljs-attr">handler</span>: boundHandler });
+  }
+
+  <span class="hljs-comment">// ❌ Memory leak: Forgotten timer</span>
+  <span class="hljs-title function_">startTimerBad</span>(<span class="hljs-params"></span>) {
+    <span class="hljs-built_in">setInterval</span>(<span class="hljs-function">() =&gt;</span> {
+      <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;Timer running...&#x27;</span>);
+    }, <span class="hljs-number">1000</span>);
+    <span class="hljs-comment">// Timer never cleared</span>
+  }
+
+  <span class="hljs-comment">// ✅ Proper timer management</span>
+  <span class="hljs-title function_">startTimerGood</span>(<span class="hljs-params"></span>) {
+    <span class="hljs-keyword">const</span> timerId = <span class="hljs-built_in">setInterval</span>(<span class="hljs-function">() =&gt;</span> {
+      <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;Timer running...&#x27;</span>);
+    }, <span class="hljs-number">1000</span>);
+    
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">timers</span>.<span class="hljs-title function_">add</span>(timerId);
+  }
+
+  <span class="hljs-comment">// ❌ Memory leak: Circular references</span>
+  <span class="hljs-title function_">createCircularReferenceBad</span>(<span class="hljs-params"></span>) {
+    <span class="hljs-keyword">const</span> obj1 = {};
+    <span class="hljs-keyword">const</span> obj2 = {};
+    
+    obj1.<span class="hljs-property">ref</span> = obj2;
+    obj2.<span class="hljs-property">ref</span> = obj1; <span class="hljs-comment">// Circular reference</span>
+    
+    <span class="hljs-keyword">return</span> { obj1, obj2 }; <span class="hljs-comment">// Both objects cannot be garbage collected</span>
+  }
+
+  <span class="hljs-comment">// ✅ Using WeakMap to break cycles</span>
+  <span class="hljs-title function_">createCircularReferenceGood</span>(<span class="hljs-params"></span>) {
+    <span class="hljs-keyword">const</span> obj1 = {};
+    <span class="hljs-keyword">const</span> obj2 = {};
+    <span class="hljs-keyword">const</span> refs = <span class="hljs-keyword">new</span> <span class="hljs-title class_">WeakMap</span>();
+    
+    refs.<span class="hljs-title function_">set</span>(obj1, obj2);
+    refs.<span class="hljs-title function_">set</span>(obj2, obj1);
+    
+    <span class="hljs-keyword">return</span> { obj1, obj2, <span class="hljs-attr">getRefs</span>: <span class="hljs-function">(<span class="hljs-params">obj</span>) =&gt;</span> refs.<span class="hljs-title function_">get</span>(obj) };
+  }
+
+  <span class="hljs-comment">// Cleanup method</span>
+  <span class="hljs-title function_">cleanup</span>(<span class="hljs-params"></span>) {
+    <span class="hljs-comment">// Remove all event listeners</span>
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">listeners</span>.<span class="hljs-title function_">forEach</span>(<span class="hljs-function">(<span class="hljs-params">{ element, event, handler }</span>) =&gt;</span> {
+      element.<span class="hljs-title function_">removeEventListener</span>(event, handler);
+    });
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">listeners</span>.<span class="hljs-title function_">clear</span>();
+
+    <span class="hljs-comment">// Clear all timers</span>
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">timers</span>.<span class="hljs-title function_">forEach</span>(<span class="hljs-function"><span class="hljs-params">timerId</span> =&gt;</span> <span class="hljs-built_in">clearInterval</span>(timerId));
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">timers</span>.<span class="hljs-title function_">clear</span>();
+
+    <span class="hljs-comment">// Disconnect all observers</span>
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">observers</span>.<span class="hljs-title function_">forEach</span>(<span class="hljs-function"><span class="hljs-params">observer</span> =&gt;</span> observer.<span class="hljs-title function_">disconnect</span>());
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">observers</span>.<span class="hljs-title function_">clear</span>();
+  }
+
+  <span class="hljs-title function_">handleClick</span>(<span class="hljs-params">event</span>) {
+    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;Button clicked&#x27;</span>);
+  }
+}
+</code></pre></pre>
+<h3 id="[object-object]" node="[object Object]"><strong>Understanding Garbage Collection</strong></h3>
+<pre><pre><code class="hljs hljs language-javascript"><span class="hljs-comment">// Demonstrating GC behavior and optimization</span>
+<span class="hljs-keyword">class</span> <span class="hljs-title class_">GarbageCollectionDemo</span> {
+  <span class="hljs-title function_">constructor</span>(<span class="hljs-params"></span>) {
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">largeObjects</span> = [];
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">generation</span> = <span class="hljs-number">0</span>;
+  }
+
+  <span class="hljs-comment">// Force garbage collection (for demonstration in Node.js)</span>
+  <span class="hljs-title function_">forceGC</span>(<span class="hljs-params"></span>) {
+    <span class="hljs-keyword">if</span> (<span class="hljs-variable language_">global</span>.<span class="hljs-property">gc</span>) {
+      <span class="hljs-variable language_">global</span>.<span class="hljs-title function_">gc</span>();
+    }
+  }
+
+  <span class="hljs-comment">// Monitor memory usage</span>
+  <span class="hljs-title function_">getMemoryUsage</span>(<span class="hljs-params"></span>) {
+    <span class="hljs-keyword">if</span> (performance.<span class="hljs-property">memory</span>) {
+      <span class="hljs-keyword">return</span> {
+        <span class="hljs-attr">used</span>: performance.<span class="hljs-property">memory</span>.<span class="hljs-property">usedJSHeapSize</span>,
+        <span class="hljs-attr">total</span>: performance.<span class="hljs-property">memory</span>.<span class="hljs-property">totalJSHeapSize</span>,
+        <span class="hljs-attr">limit</span>: performance.<span class="hljs-property">memory</span>.<span class="hljs-property">jsHeapSizeLimit</span>
+      };
+    }
+    <span class="hljs-keyword">return</span> <span class="hljs-literal">null</span>;
+  }
+
+  <span class="hljs-comment">// Demonstrate generational GC behavior</span>
+  <span class="hljs-title function_">demonstrateGenerationalGC</span>(<span class="hljs-params"></span>) {
+    <span class="hljs-keyword">const</span> beforeMemory = <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">getMemoryUsage</span>();
+    
+    <span class="hljs-comment">// Create young generation objects (likely to be collected quickly)</span>
+    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">1000</span>; i++) {
+      <span class="hljs-keyword">const</span> temp = { <span class="hljs-attr">id</span>: i, <span class="hljs-attr">data</span>: <span class="hljs-keyword">new</span> <span class="hljs-title class_">Array</span>(<span class="hljs-number">100</span>).<span class="hljs-title function_">fill</span>(i) };
+      <span class="hljs-comment">// These objects become eligible for collection immediately</span>
+    }
+    
+    <span class="hljs-comment">// Create older generation objects (survive longer)</span>
+    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">100</span>; i++) {
+      <span class="hljs-variable language_">this</span>.<span class="hljs-property">largeObjects</span>.<span class="hljs-title function_">push</span>({
+        <span class="hljs-attr">id</span>: i,
+        <span class="hljs-attr">generation</span>: <span class="hljs-variable language_">this</span>.<span class="hljs-property">generation</span>,
+        <span class="hljs-attr">data</span>: <span class="hljs-keyword">new</span> <span class="hljs-title class_">Array</span>(<span class="hljs-number">1000</span>).<span class="hljs-title function_">fill</span>(i),
+        <span class="hljs-attr">created</span>: <span class="hljs-title class_">Date</span>.<span class="hljs-title function_">now</span>()
+      });
+    }
+    
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">generation</span>++;
+    
+    <span class="hljs-keyword">const</span> afterMemory = <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">getMemoryUsage</span>();
+    
+    <span class="hljs-keyword">return</span> {
+      <span class="hljs-attr">before</span>: beforeMemory,
+      <span class="hljs-attr">after</span>: afterMemory,
+      <span class="hljs-attr">difference</span>: afterMemory ? afterMemory.<span class="hljs-property">used</span> - beforeMemory.<span class="hljs-property">used</span> : <span class="hljs-literal">null</span>
+    };
+  }
+
+  <span class="hljs-comment">// Optimize for mark-and-sweep collector</span>
+  <span class="hljs-title function_">optimizeForMarkSweep</span>(<span class="hljs-params"></span>) {
+    <span class="hljs-comment">// Remove circular references</span>
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">largeObjects</span>.<span class="hljs-title function_">forEach</span>(<span class="hljs-function"><span class="hljs-params">obj</span> =&gt;</span> {
+      <span class="hljs-keyword">if</span> (obj.<span class="hljs-property">parent</span>) {
+        obj.<span class="hljs-property">parent</span> = <span class="hljs-literal">null</span>;
+      }
+    });
+    
+    <span class="hljs-comment">// Clear arrays efficiently</span>
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">largeObjects</span>.<span class="hljs-property">length</span> = <span class="hljs-number">0</span>; <span class="hljs-comment">// Better than this.largeObjects = []</span>
+  }
+}
+</code></pre></pre>
+<hr/>
+<h2 id="execution-context-&amp;-scope-chain" node="[object Object]">Execution Context &amp; Scope Chain</h2>
+<h3 id="[object-object]" node="[object Object]"><strong>Advanced Scope and Closure Patterns</strong></h3>
+<p>{% raw %}</p>
+<pre><pre><code class="hljs hljs language-javascript"><span class="hljs-comment">// Understanding execution context and scope chain</span>
+<span class="hljs-keyword">class</span> <span class="hljs-title class_">ExecutionContextDemo</span> {
+  <span class="hljs-title function_">constructor</span>(<span class="hljs-params"></span>) {
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">globalVar</span> = <span class="hljs-string">&#x27;global&#x27;</span>;
+  }
+
+  <span class="hljs-comment">// Demonstrating scope chain resolution</span>
+  <span class="hljs-title function_">demonstrateScopeChain</span>(<span class="hljs-params"></span>) {
+    <span class="hljs-keyword">const</span> outerVar = <span class="hljs-string">&#x27;outer&#x27;</span>;
+    
+    <span class="hljs-keyword">function</span> <span class="hljs-title function_">outerFunction</span>(<span class="hljs-params"></span>) {
+      <span class="hljs-keyword">const</span> middleVar = <span class="hljs-string">&#x27;middle&#x27;</span>;
+      
+      <span class="hljs-keyword">function</span> <span class="hljs-title function_">innerFunction</span>(<span class="hljs-params"></span>) {
+        <span class="hljs-keyword">const</span> innerVar = <span class="hljs-string">&#x27;inner&#x27;</span>;
+        
+        <span class="hljs-comment">// Scope chain: innerFunction -&gt; outerFunction -&gt; global</span>
+        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(innerVar);   <span class="hljs-comment">// Found in current scope</span>
+        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(middleVar);  <span class="hljs-comment">// Found in outer function scope</span>
+        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(outerVar);   <span class="hljs-comment">// Found in function scope</span>
+        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-variable language_">this</span>.<span class="hljs-property">globalVar</span>); <span class="hljs-comment">// Found in global scope (if bound)</span>
+        
+        <span class="hljs-comment">// Demonstrate lexical scoping</span>
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">function</span> <span class="hljs-title function_">deepestFunction</span>(<span class="hljs-params"></span>) {
+          <span class="hljs-comment">// Still has access to all outer scopes</span>
+          <span class="hljs-keyword">return</span> { innerVar, middleVar, outerVar };
+        };
+      }
+      
+      <span class="hljs-keyword">return</span> innerFunction;
+    }
+    
+    <span class="hljs-keyword">return</span> <span class="hljs-title function_">outerFunction</span>();
+  }
+
+  <span class="hljs-comment">// Advanced closure patterns</span>
+  <span class="hljs-title function_">createAdvancedClosure</span>(<span class="hljs-params"></span>) {
+    <span class="hljs-keyword">let</span> privateCounter = <span class="hljs-number">0</span>;
+    <span class="hljs-keyword">const</span> privateArray = [];
+    
+    <span class="hljs-comment">// Module pattern with closures</span>
+    <span class="hljs-keyword">return</span> {
+      <span class="hljs-title function_">increment</span>(<span class="hljs-params">amount = <span class="hljs-number">1</span></span>) {
+        privateCounter += amount;
+        privateArray.<span class="hljs-title function_">push</span>(privateCounter);
+        <span class="hljs-keyword">return</span> <span class="hljs-variable language_">this</span>; <span class="hljs-comment">// Method chaining</span>
+      },
+      
+      <span class="hljs-title function_">decrement</span>(<span class="hljs-params">amount = <span class="hljs-number">1</span></span>) {
+        privateCounter -= amount;
+        privateArray.<span class="hljs-title function_">push</span>(privateCounter);
+        <span class="hljs-keyword">return</span> <span class="hljs-variable language_">this</span>;
+      },
+      
+      <span class="hljs-title function_">getValue</span>(<span class="hljs-params"></span>) {
+        <span class="hljs-keyword">return</span> privateCounter;
+      },
+      
+      <span class="hljs-title function_">getHistory</span>(<span class="hljs-params"></span>) {
+        <span class="hljs-keyword">return</span> [...privateArray]; <span class="hljs-comment">// Return copy to prevent mutation</span>
+      },
+      
+      <span class="hljs-title function_">reset</span>(<span class="hljs-params"></span>) {
+        privateCounter = <span class="hljs-number">0</span>;
+        privateArray.<span class="hljs-property">length</span> = <span class="hljs-number">0</span>;
+        <span class="hljs-keyword">return</span> <span class="hljs-variable language_">this</span>;
+      },
+      
+      <span class="hljs-comment">// Lazy evaluation with closures</span>
+      <span class="hljs-title function_">createLazyGetter</span>(<span class="hljs-params">computeFunc</span>) {
+        <span class="hljs-keyword">let</span> cached = <span class="hljs-literal">null</span>;
+        <span class="hljs-keyword">let</span> computed = <span class="hljs-literal">false</span>;
+        
+        <span class="hljs-keyword">return</span> <span class="hljs-function">() =&gt;</span> {
+          <span class="hljs-keyword">if</span> (!computed) {
+            cached = <span class="hljs-title function_">computeFunc</span>(privateCounter);
+            computed = <span class="hljs-literal">true</span>;
+          }
+          <span class="hljs-keyword">return</span> cached;
+        };
+      }
+    };
+  }
+
+  <span class="hljs-comment">// Temporal Dead Zone demonstration</span>
+  <span class="hljs-title function_">demonstrateTemporalDeadZone</span>(<span class="hljs-params"></span>) {
+    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;Before block&#x27;</span>);
+    
+    <span class="hljs-comment">// console.log(letVar); // ReferenceError: Cannot access before initialization</span>
+    <span class="hljs-comment">// console.log(constVar); // ReferenceError: Cannot access before initialization</span>
+    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(varVar); <span class="hljs-comment">// undefined (hoisted but not initialized)</span>
+    
+    {
+      <span class="hljs-comment">// Temporal Dead Zone starts here for let and const</span>
+      
+      <span class="hljs-comment">// console.log(letVar); // ReferenceError</span>
+      <span class="hljs-comment">// console.log(constVar); // ReferenceError</span>
+      
+      <span class="hljs-keyword">let</span> letVar = <span class="hljs-string">&#x27;let value&#x27;</span>;
+      <span class="hljs-keyword">const</span> constVar = <span class="hljs-string">&#x27;const value&#x27;</span>;
+      <span class="hljs-keyword">var</span> varVar = <span class="hljs-string">&#x27;var value&#x27;</span>;
+      
+      <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>({ letVar, constVar, varVar });
+    }
+    
+    <span class="hljs-comment">// console.log(letVar); // ReferenceError: letVar is not defined</span>
+    <span class="hljs-comment">// console.log(constVar); // ReferenceError: constVar is not defined</span>
+    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(varVar); <span class="hljs-comment">// &#x27;var value&#x27; (function scoped)</span>
+  }
+
+  <span class="hljs-comment">// Understanding &#x27;this&#x27; binding in different contexts</span>
+  <span class="hljs-title function_">demonstrateThisBinding</span>(<span class="hljs-params"></span>) {
+    <span class="hljs-keyword">const</span> regularFunction = <span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) {
+      <span class="hljs-keyword">return</span> <span class="hljs-variable language_">this</span>; <span class="hljs-comment">// Depends on how function is called</span>
+    };
+    
+    <span class="hljs-keyword">const</span> <span class="hljs-title function_">arrowFunction</span> = (<span class="hljs-params"></span>) =&gt; {
+      <span class="hljs-keyword">return</span> <span class="hljs-variable language_">this</span>; <span class="hljs-comment">// Lexically bound to enclosing scope</span>
+    };
+    
+    <span class="hljs-keyword">const</span> obj = {
+      <span class="hljs-attr">method</span>: regularFunction,
+      <span class="hljs-attr">arrowMethod</span>: arrowFunction,
+      
+      <span class="hljs-comment">// Method with explicit binding</span>
+      <span class="hljs-attr">boundMethod</span>: regularFunction.<span class="hljs-title function_">bind</span>({ <span class="hljs-attr">bound</span>: <span class="hljs-literal">true</span> }),
+      
+      <span class="hljs-comment">// Method that returns bound function</span>
+      <span class="hljs-title function_">createBoundFunction</span>(<span class="hljs-params"></span>) {
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) {
+          <span class="hljs-keyword">return</span> <span class="hljs-variable language_">this</span>;
+        }.<span class="hljs-title function_">bind</span>(<span class="hljs-variable language_">this</span>);
+      }
+    };
+    
+    <span class="hljs-keyword">return</span> {
+      <span class="hljs-comment">// Different call contexts</span>
+      <span class="hljs-attr">directCall</span>: <span class="hljs-title function_">regularFunction</span>(), <span class="hljs-comment">// global object or undefined in strict mode</span>
+      <span class="hljs-attr">methodCall</span>: obj.<span class="hljs-title function_">method</span>(), <span class="hljs-comment">// obj</span>
+      <span class="hljs-attr">arrowCall</span>: obj.<span class="hljs-title function_">arrowMethod</span>(), <span class="hljs-comment">// lexical this (ExecutionContextDemo instance)</span>
+      <span class="hljs-attr">boundCall</span>: obj.<span class="hljs-title function_">boundMethod</span>(), <span class="hljs-comment">// { bound: true }</span>
+      
+      <span class="hljs-comment">// Call/apply/bind</span>
+      <span class="hljs-attr">callExample</span>: regularFunction.<span class="hljs-title function_">call</span>({ <span class="hljs-attr">called</span>: <span class="hljs-literal">true</span> }),
+      <span class="hljs-attr">applyExample</span>: regularFunction.<span class="hljs-title function_">apply</span>({ <span class="hljs-attr">applied</span>: <span class="hljs-literal">true</span> }),
+      <span class="hljs-attr">bindExample</span>: regularFunction.<span class="hljs-title function_">bind</span>({ <span class="hljs-attr">bound</span>: <span class="hljs-literal">true</span> })(),
+      
+      <span class="hljs-comment">// Constructor context</span>
+      <span class="hljs-attr">constructorExample</span>: <span class="hljs-title function_">new</span> (<span class="hljs-keyword">function</span> <span class="hljs-title function_">Constructor</span>(<span class="hljs-params"></span>) {
+        <span class="hljs-variable language_">this</span>.<span class="hljs-property">constructed</span> = <span class="hljs-literal">true</span>;
+        <span class="hljs-keyword">return</span> <span class="hljs-variable language_">this</span>;
+      })()
+    };
+  }
+}
+
+<span class="hljs-comment">// Advanced closure patterns for real-world scenarios</span>
+<span class="hljs-keyword">class</span> <span class="hljs-title class_">AdvancedClosurePatterns</span> {
+  <span class="hljs-comment">// Memoization with closures</span>
+  <span class="hljs-keyword">static</span> <span class="hljs-title function_">createMemoizer</span>(<span class="hljs-params">func, maxCacheSize = <span class="hljs-number">100</span></span>) {
+    <span class="hljs-keyword">const</span> cache = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Map</span>();
+    <span class="hljs-keyword">const</span> accessOrder = [];
+    
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">function</span> <span class="hljs-title function_">memoized</span>(<span class="hljs-params">...args</span>) {
+      <span class="hljs-keyword">const</span> key = <span class="hljs-title class_">JSON</span>.<span class="hljs-title function_">stringify</span>(args);
+      
+      <span class="hljs-keyword">if</span> (cache.<span class="hljs-title function_">has</span>(key)) {
+        <span class="hljs-comment">// Move to end (most recently used)</span>
+        <span class="hljs-keyword">const</span> index = accessOrder.<span class="hljs-title function_">indexOf</span>(key);
+        accessOrder.<span class="hljs-title function_">splice</span>(index, <span class="hljs-number">1</span>);
+        accessOrder.<span class="hljs-title function_">push</span>(key);
+        <span class="hljs-keyword">return</span> cache.<span class="hljs-title function_">get</span>(key);
+      }
+      
+      <span class="hljs-keyword">const</span> result = func.<span class="hljs-title function_">apply</span>(<span class="hljs-variable language_">this</span>, args);
+      
+      <span class="hljs-comment">// Implement LRU cache</span>
+      <span class="hljs-keyword">if</span> (cache.<span class="hljs-property">size</span> &gt;= maxCacheSize) {
+        <span class="hljs-keyword">const</span> lru = accessOrder.<span class="hljs-title function_">shift</span>();
+        cache.<span class="hljs-title function_">delete</span>(lru);
+      }
+      
+      cache.<span class="hljs-title function_">set</span>(key, result);
+      accessOrder.<span class="hljs-title function_">push</span>(key);
+      
+      <span class="hljs-keyword">return</span> result;
+    };
+  }
+
+  <span class="hljs-comment">// Debouncing with closures</span>
+  <span class="hljs-keyword">static</span> <span class="hljs-title function_">createDebouncer</span>(<span class="hljs-params">func, delay, immediate = <span class="hljs-literal">false</span></span>) {
+    <span class="hljs-keyword">let</span> timeoutId = <span class="hljs-literal">null</span>;
+    <span class="hljs-keyword">let</span> lastCallTime = <span class="hljs-number">0</span>;
+    
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">function</span> <span class="hljs-title function_">debounced</span>(<span class="hljs-params">...args</span>) {
+      <span class="hljs-keyword">const</span> callNow = immediate &amp;&amp; !timeoutId;
+      <span class="hljs-keyword">const</span> now = <span class="hljs-title class_">Date</span>.<span class="hljs-title function_">now</span>();
+      
+      <span class="hljs-built_in">clearTimeout</span>(timeoutId);
+      
+      timeoutId = <span class="hljs-built_in">setTimeout</span>(<span class="hljs-function">() =&gt;</span> {
+        timeoutId = <span class="hljs-literal">null</span>;
+        <span class="hljs-keyword">if</span> (!immediate) {
+          func.<span class="hljs-title function_">apply</span>(<span class="hljs-variable language_">this</span>, args);
+        }
+      }, delay);
+      
+      <span class="hljs-keyword">if</span> (callNow) {
+        func.<span class="hljs-title function_">apply</span>(<span class="hljs-variable language_">this</span>, args);
+      }
+      
+      lastCallTime = now;
+    };
+  }
+
+  <span class="hljs-comment">// Throttling with closures</span>
+  <span class="hljs-keyword">static</span> <span class="hljs-title function_">createThrottler</span>(<span class="hljs-params">func, limit</span>) {
+    <span class="hljs-keyword">let</span> inThrottle = <span class="hljs-literal">false</span>;
+    <span class="hljs-keyword">let</span> lastFunc = <span class="hljs-literal">null</span>;
+    <span class="hljs-keyword">let</span> lastRan = <span class="hljs-literal">null</span>;
+    
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">function</span> <span class="hljs-title function_">throttled</span>(<span class="hljs-params">...args</span>) {
+      <span class="hljs-keyword">if</span> (!inThrottle) {
+        func.<span class="hljs-title function_">apply</span>(<span class="hljs-variable language_">this</span>, args);
+        lastRan = <span class="hljs-title class_">Date</span>.<span class="hljs-title function_">now</span>();
+        inThrottle = <span class="hljs-literal">true</span>;
+      } <span class="hljs-keyword">else</span> {
+        <span class="hljs-built_in">clearTimeout</span>(lastFunc);
+        lastFunc = <span class="hljs-built_in">setTimeout</span>(<span class="hljs-function">() =&gt;</span> {
+          <span class="hljs-keyword">if</span> ((<span class="hljs-title class_">Date</span>.<span class="hljs-title function_">now</span>() - lastRan) &gt;= limit) {
+            func.<span class="hljs-title function_">apply</span>(<span class="hljs-variable language_">this</span>, args);
+            lastRan = <span class="hljs-title class_">Date</span>.<span class="hljs-title function_">now</span>();
+          }
+        }, limit - (<span class="hljs-title class_">Date</span>.<span class="hljs-title function_">now</span>() - lastRan));
+      }
+    };
+  }
+
+  <span class="hljs-comment">// State machine with closures</span>
+  <span class="hljs-keyword">static</span> <span class="hljs-title function_">createStateMachine</span>(<span class="hljs-params">initialState, transitions</span>) {
+    <span class="hljs-keyword">let</span> currentState = initialState;
+    <span class="hljs-keyword">const</span> stateHistory = [initialState];
+    
+    <span class="hljs-keyword">return</span> {
+      <span class="hljs-title function_">getCurrentState</span>(<span class="hljs-params"></span>) {
+        <span class="hljs-keyword">return</span> currentState;
+      },
+      
+      <span class="hljs-title function_">getHistory</span>(<span class="hljs-params"></span>) {
+        <span class="hljs-keyword">return</span> [...stateHistory];
+      },
+      
+      <span class="hljs-title function_">transition</span>(<span class="hljs-params">action</span>) {
+        <span class="hljs-keyword">const</span> possibleTransitions = transitions[currentState];
+        
+        <span class="hljs-keyword">if</span> (!possibleTransitions || !possibleTransitions[action]) {
+          <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Error</span>(<span class="hljs-string">`Invalid transition: <span class="hljs-subst">${currentState}</span> -&gt; <span class="hljs-subst">${action}</span>`</span>);
+        }
+        
+        <span class="hljs-keyword">const</span> newState = possibleTransitions[action];
+        currentState = newState;
+        stateHistory.<span class="hljs-title function_">push</span>(newState);
+        
+        <span class="hljs-keyword">return</span> newState;
+      },
+      
+      <span class="hljs-title function_">canTransition</span>(<span class="hljs-params">action</span>) {
+        <span class="hljs-keyword">const</span> possibleTransitions = transitions[currentState];
+        <span class="hljs-keyword">return</span> !!(possibleTransitions &amp;&amp; possibleTransitions[action]);
+      },
+      
+      <span class="hljs-title function_">reset</span>(<span class="hljs-params"></span>) {
+        currentState = initialState;
+        stateHistory.<span class="hljs-property">length</span> = <span class="hljs-number">1</span>;
+        stateHistory[<span class="hljs-number">0</span>] = initialState;
+      }
+    };
+  }
+}
+</code></pre></pre>
+<p>{% endraw %}</p>
+<hr/>
+<h2 id="asynchronous-javascript-mastery" node="[object Object]">Asynchronous JavaScript Mastery</h2>
+<h3 id="[object-object]" node="[object Object]"><strong>Advanced Promise Patterns</strong></h3>
+<pre><pre><code class="hljs hljs language-javascript"><span class="hljs-comment">// Advanced promise patterns and error handling</span>
+<span class="hljs-keyword">class</span> <span class="hljs-title class_">AdvancedPromisePatterns</span> {
+  <span class="hljs-comment">// Promise.all with individual error handling</span>
+  <span class="hljs-keyword">static</span> <span class="hljs-keyword">async</span> <span class="hljs-title function_">allSettled</span>(<span class="hljs-params">promises</span>) {
+    <span class="hljs-keyword">return</span> <span class="hljs-title class_">Promise</span>.<span class="hljs-title function_">allSettled</span>(promises).<span class="hljs-title function_">then</span>(<span class="hljs-function"><span class="hljs-params">results</span> =&gt;</span> {
+      <span class="hljs-keyword">const</span> fulfilled = [];
+      <span class="hljs-keyword">const</span> rejected = [];
+      
+      results.<span class="hljs-title function_">forEach</span>(<span class="hljs-function">(<span class="hljs-params">result, index</span>) =&gt;</span> {
+        <span class="hljs-keyword">if</span> (result.<span class="hljs-property">status</span> === <span class="hljs-string">&#x27;fulfilled&#x27;</span>) {
+          fulfilled.<span class="hljs-title function_">push</span>({ index, <span class="hljs-attr">value</span>: result.<span class="hljs-property">value</span> });
+        } <span class="hljs-keyword">else</span> {
+          rejected.<span class="hljs-title function_">push</span>({ index, <span class="hljs-attr">reason</span>: result.<span class="hljs-property">reason</span> });
+        }
+      });
+      
+      <span class="hljs-keyword">return</span> { fulfilled, rejected };
+    });
+  }
+
+  <span class="hljs-comment">// Promise with timeout</span>
+  <span class="hljs-keyword">static</span> <span class="hljs-title function_">withTimeout</span>(<span class="hljs-params">promise, timeoutMs, timeoutMessage = <span class="hljs-string">&#x27;Operation timed out&#x27;</span></span>) {
+    <span class="hljs-keyword">return</span> <span class="hljs-title class_">Promise</span>.<span class="hljs-title function_">race</span>([
+      promise,
+      <span class="hljs-keyword">new</span> <span class="hljs-title class_">Promise</span>(<span class="hljs-function">(<span class="hljs-params">_, reject</span>) =&gt;</span> {
+        <span class="hljs-built_in">setTimeout</span>(<span class="hljs-function">() =&gt;</span> <span class="hljs-title function_">reject</span>(<span class="hljs-keyword">new</span> <span class="hljs-title class_">Error</span>(timeoutMessage)), timeoutMs);
+      })
+    ]);
+  }
+
+  <span class="hljs-comment">// Retry mechanism with exponential backoff</span>
+  <span class="hljs-keyword">static</span> <span class="hljs-keyword">async</span> <span class="hljs-title function_">retryWithBackoff</span>(<span class="hljs-params">
+    operation, 
+    maxRetries = <span class="hljs-number">3</span>, 
+    baseDelay = <span class="hljs-number">1000</span>, 
+    maxDelay = <span class="hljs-number">10000</span>,
+    backoffFactor = <span class="hljs-number">2</span>
+  </span>) {
+    <span class="hljs-keyword">let</span> lastError;
+    
+    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> attempt = <span class="hljs-number">0</span>; attempt &lt;= maxRetries; attempt++) {
+      <span class="hljs-keyword">try</span> {
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">await</span> <span class="hljs-title function_">operation</span>();
+      } <span class="hljs-keyword">catch</span> (error) {
+        lastError = error;
+        
+        <span class="hljs-keyword">if</span> (attempt === maxRetries) {
+          <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Error</span>(<span class="hljs-string">`Operation failed after <span class="hljs-subst">${maxRetries + <span class="hljs-number">1</span>}</span> attempts: <span class="hljs-subst">${error.message}</span>`</span>);
+        }
+        
+        <span class="hljs-keyword">const</span> delay = <span class="hljs-title class_">Math</span>.<span class="hljs-title function_">min</span>(baseDelay * <span class="hljs-title class_">Math</span>.<span class="hljs-title function_">pow</span>(backoffFactor, attempt), maxDelay);
+        <span class="hljs-keyword">await</span> <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">delay</span>(delay);
+      }
+    }
+  }
+
+  <span class="hljs-comment">// Circuit breaker pattern</span>
+  <span class="hljs-keyword">static</span> <span class="hljs-title function_">createCircuitBreaker</span>(<span class="hljs-params">operation, threshold = <span class="hljs-number">5</span>, timeout = <span class="hljs-number">60000</span></span>) {
+    <span class="hljs-keyword">let</span> failures = <span class="hljs-number">0</span>;
+    <span class="hljs-keyword">let</span> lastFailureTime = <span class="hljs-literal">null</span>;
+    <span class="hljs-keyword">let</span> state = <span class="hljs-string">&#x27;CLOSED&#x27;</span>; <span class="hljs-comment">// CLOSED, OPEN, HALF_OPEN</span>
+    
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">async</span> <span class="hljs-keyword">function</span> <span class="hljs-title function_">circuitBreakerWrapper</span>(<span class="hljs-params">...args</span>) {
+      <span class="hljs-keyword">const</span> now = <span class="hljs-title class_">Date</span>.<span class="hljs-title function_">now</span>();
+      
+      <span class="hljs-comment">// Reset if timeout has passed</span>
+      <span class="hljs-keyword">if</span> (state === <span class="hljs-string">&#x27;OPEN&#x27;</span> &amp;&amp; now - lastFailureTime &gt; timeout) {
+        state = <span class="hljs-string">&#x27;HALF_OPEN&#x27;</span>;
+        failures = <span class="hljs-number">0</span>;
+      }
+      
+      <span class="hljs-keyword">if</span> (state === <span class="hljs-string">&#x27;OPEN&#x27;</span>) {
+        <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Error</span>(<span class="hljs-string">&#x27;Circuit breaker is OPEN&#x27;</span>);
+      }
+      
+      <span class="hljs-keyword">try</span> {
+        <span class="hljs-keyword">const</span> result = <span class="hljs-keyword">await</span> <span class="hljs-title function_">operation</span>(...args);
+        
+        <span class="hljs-comment">// Success - reset failure count</span>
+        <span class="hljs-keyword">if</span> (state === <span class="hljs-string">&#x27;HALF_OPEN&#x27;</span>) {
+          state = <span class="hljs-string">&#x27;CLOSED&#x27;</span>;
+        }
+        failures = <span class="hljs-number">0</span>;
+        
+        <span class="hljs-keyword">return</span> result;
+      } <span class="hljs-keyword">catch</span> (error) {
+        failures++;
+        lastFailureTime = now;
+        
+        <span class="hljs-keyword">if</span> (failures &gt;= threshold) {
+          state = <span class="hljs-string">&#x27;OPEN&#x27;</span>;
+        }
+        
+        <span class="hljs-keyword">throw</span> error;
+      }
+    };
+  }
+
+  <span class="hljs-comment">// Promise queue for rate limiting</span>
+  <span class="hljs-keyword">static</span> <span class="hljs-title function_">createPromiseQueue</span>(<span class="hljs-params">concurrency = <span class="hljs-number">1</span></span>) {
+    <span class="hljs-keyword">const</span> queue = [];
+    <span class="hljs-keyword">let</span> running = <span class="hljs-number">0</span>;
+    
+    <span class="hljs-keyword">async</span> <span class="hljs-keyword">function</span> <span class="hljs-title function_">process</span>(<span class="hljs-params"></span>) {
+      <span class="hljs-keyword">if</span> (running &gt;= concurrency || queue.<span class="hljs-property">length</span> === <span class="hljs-number">0</span>) {
+        <span class="hljs-keyword">return</span>;
+      }
+      
+      running++;
+      <span class="hljs-keyword">const</span> { operation, resolve, reject } = queue.<span class="hljs-title function_">shift</span>();
+      
+      <span class="hljs-keyword">try</span> {
+        <span class="hljs-keyword">const</span> result = <span class="hljs-keyword">await</span> <span class="hljs-title function_">operation</span>();
+        <span class="hljs-title function_">resolve</span>(result);
+      } <span class="hljs-keyword">catch</span> (error) {
+        <span class="hljs-title function_">reject</span>(error);
+      } <span class="hljs-keyword">finally</span> {
+        running--;
+        <span class="hljs-title function_">process</span>(); <span class="hljs-comment">// Process next item</span>
+      }
+    }
+    
+    <span class="hljs-keyword">return</span> {
+      <span class="hljs-title function_">add</span>(<span class="hljs-params">operation</span>) {
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Promise</span>(<span class="hljs-function">(<span class="hljs-params">resolve, reject</span>) =&gt;</span> {
+          queue.<span class="hljs-title function_">push</span>({ operation, resolve, reject });
+          <span class="hljs-title function_">process</span>();
+        });
+      },
+      
+      <span class="hljs-title function_">clear</span>(<span class="hljs-params"></span>) {
+        queue.<span class="hljs-property">length</span> = <span class="hljs-number">0</span>;
+      },
+      
+      <span class="hljs-title function_">size</span>(<span class="hljs-params"></span>) {
+        <span class="hljs-keyword">return</span> queue.<span class="hljs-property">length</span>;
+      },
+      
+      <span class="hljs-title function_">isRunning</span>(<span class="hljs-params"></span>) {
+        <span class="hljs-keyword">return</span> running &gt; <span class="hljs-number">0</span>;
+      }
+    };
+  }
+
+  <span class="hljs-comment">// Cancellable promises</span>
+  <span class="hljs-keyword">static</span> <span class="hljs-title function_">createCancellablePromise</span>(<span class="hljs-params">operation</span>) {
+    <span class="hljs-keyword">let</span> cancelled = <span class="hljs-literal">false</span>;
+    <span class="hljs-keyword">let</span> cancelResolve;
+    
+    <span class="hljs-keyword">const</span> cancelPromise = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Promise</span>(<span class="hljs-function"><span class="hljs-params">resolve</span> =&gt;</span> {
+      cancelResolve = resolve;
+    });
+    
+    <span class="hljs-keyword">const</span> mainPromise = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Promise</span>(<span class="hljs-title function_">async</span> (resolve, reject) =&gt; {
+      <span class="hljs-keyword">try</span> {
+        <span class="hljs-keyword">const</span> result = <span class="hljs-keyword">await</span> <span class="hljs-title class_">Promise</span>.<span class="hljs-title function_">race</span>([
+          <span class="hljs-title function_">operation</span>(),
+          cancelPromise.<span class="hljs-title function_">then</span>(<span class="hljs-function">() =&gt;</span> {
+            <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Error</span>(<span class="hljs-string">&#x27;Operation cancelled&#x27;</span>);
+          })
+        ]);
+        
+        <span class="hljs-keyword">if</span> (!cancelled) {
+          <span class="hljs-title function_">resolve</span>(result);
+        }
+      } <span class="hljs-keyword">catch</span> (error) {
+        <span class="hljs-keyword">if</span> (!cancelled) {
+          <span class="hljs-title function_">reject</span>(error);
+        }
+      }
+    });
+    
+    <span class="hljs-keyword">return</span> {
+      <span class="hljs-attr">promise</span>: mainPromise,
+      <span class="hljs-title function_">cancel</span>(<span class="hljs-params"></span>) {
+        cancelled = <span class="hljs-literal">true</span>;
+        <span class="hljs-title function_">cancelResolve</span>();
+      },
+      <span class="hljs-title function_">isCancelled</span>(<span class="hljs-params"></span>) {
+        <span class="hljs-keyword">return</span> cancelled;
+      }
+    };
+  }
+
+  <span class="hljs-comment">// Utility methods</span>
+  <span class="hljs-keyword">static</span> <span class="hljs-title function_">delay</span>(<span class="hljs-params">ms</span>) {
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Promise</span>(<span class="hljs-function"><span class="hljs-params">resolve</span> =&gt;</span> <span class="hljs-built_in">setTimeout</span>(resolve, ms));
+  }
+
+  <span class="hljs-comment">// Progressive loading with promises</span>
+  <span class="hljs-keyword">static</span> <span class="hljs-keyword">async</span> <span class="hljs-title function_">loadResourcesProgressively</span>(<span class="hljs-params">resources, onProgress</span>) {
+    <span class="hljs-keyword">const</span> results = [];
+    
+    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>; i &lt; resources.<span class="hljs-property">length</span>; i++) {
+      <span class="hljs-keyword">try</span> {
+        <span class="hljs-keyword">const</span> result = <span class="hljs-keyword">await</span> resources[i]();
+        results.<span class="hljs-title function_">push</span>({ <span class="hljs-attr">success</span>: <span class="hljs-literal">true</span>, <span class="hljs-attr">data</span>: result, <span class="hljs-attr">index</span>: i });
+        
+        <span class="hljs-keyword">if</span> (onProgress) {
+          <span class="hljs-title function_">onProgress</span>({
+            <span class="hljs-attr">completed</span>: i + <span class="hljs-number">1</span>,
+            <span class="hljs-attr">total</span>: resources.<span class="hljs-property">length</span>,
+            <span class="hljs-attr">percentage</span>: ((i + <span class="hljs-number">1</span>) / resources.<span class="hljs-property">length</span>) * <span class="hljs-number">100</span>,
+            result
+          });
+        }
+      } <span class="hljs-keyword">catch</span> (error) {
+        results.<span class="hljs-title function_">push</span>({ <span class="hljs-attr">success</span>: <span class="hljs-literal">false</span>, error, <span class="hljs-attr">index</span>: i });
+        
+        <span class="hljs-keyword">if</span> (onProgress) {
+          <span class="hljs-title function_">onProgress</span>({
+            <span class="hljs-attr">completed</span>: i + <span class="hljs-number">1</span>,
+            <span class="hljs-attr">total</span>: resources.<span class="hljs-property">length</span>,
+            <span class="hljs-attr">percentage</span>: ((i + <span class="hljs-number">1</span>) / resources.<span class="hljs-property">length</span>) * <span class="hljs-number">100</span>,
+            error
+          });
+        }
+      }
+    }
+    
+    <span class="hljs-keyword">return</span> results;
+  }
+}
+
+<span class="hljs-comment">// Advanced async/await patterns</span>
+<span class="hljs-keyword">class</span> <span class="hljs-title class_">AsyncAwaitPatterns</span> {
+  <span class="hljs-comment">// Parallel execution with async/await</span>
+  <span class="hljs-keyword">async</span> <span class="hljs-title function_">executeInParallel</span>(<span class="hljs-params">operations</span>) {
+    <span class="hljs-keyword">const</span> startTime = <span class="hljs-title class_">Date</span>.<span class="hljs-title function_">now</span>();
+    
+    <span class="hljs-keyword">try</span> {
+      <span class="hljs-comment">// Execute all operations in parallel</span>
+      <span class="hljs-keyword">const</span> results = <span class="hljs-keyword">await</span> <span class="hljs-title class_">Promise</span>.<span class="hljs-title function_">all</span>(operations.<span class="hljs-title function_">map</span>(<span class="hljs-title function_">async</span> (op, index) =&gt; {
+        <span class="hljs-keyword">const</span> opStartTime = <span class="hljs-title class_">Date</span>.<span class="hljs-title function_">now</span>();
+        <span class="hljs-keyword">const</span> result = <span class="hljs-keyword">await</span> <span class="hljs-title function_">op</span>();
+        <span class="hljs-keyword">const</span> duration = <span class="hljs-title class_">Date</span>.<span class="hljs-title function_">now</span>() - opStartTime;
+        
+        <span class="hljs-keyword">return</span> { index, result, duration, <span class="hljs-attr">success</span>: <span class="hljs-literal">true</span> };
+      }));
+      
+      <span class="hljs-keyword">return</span> {
+        <span class="hljs-attr">success</span>: <span class="hljs-literal">true</span>,
+        results,
+        <span class="hljs-attr">totalDuration</span>: <span class="hljs-title class_">Date</span>.<span class="hljs-title function_">now</span>() - startTime
+      };
+    } <span class="hljs-keyword">catch</span> (error) {
+      <span class="hljs-keyword">return</span> {
+        <span class="hljs-attr">success</span>: <span class="hljs-literal">false</span>,
+        <span class="hljs-attr">error</span>: error.<span class="hljs-property">message</span>,
+        <span class="hljs-attr">totalDuration</span>: <span class="hljs-title class_">Date</span>.<span class="hljs-title function_">now</span>() - startTime
+      };
+    }
+  }
+
+  <span class="hljs-comment">// Sequential execution with async/await</span>
+  <span class="hljs-keyword">async</span> <span class="hljs-title function_">executeSequentially</span>(<span class="hljs-params">operations</span>) {
+    <span class="hljs-keyword">const</span> results = [];
+    <span class="hljs-keyword">const</span> startTime = <span class="hljs-title class_">Date</span>.<span class="hljs-title function_">now</span>();
+    
+    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>; i &lt; operations.<span class="hljs-property">length</span>; i++) {
+      <span class="hljs-keyword">const</span> opStartTime = <span class="hljs-title class_">Date</span>.<span class="hljs-title function_">now</span>();
+      
+      <span class="hljs-keyword">try</span> {
+        <span class="hljs-keyword">const</span> result = <span class="hljs-keyword">await</span> operations[i]();
+        <span class="hljs-keyword">const</span> duration = <span class="hljs-title class_">Date</span>.<span class="hljs-title function_">now</span>() - opStartTime;
+        
+        results.<span class="hljs-title function_">push</span>({ <span class="hljs-attr">index</span>: i, result, duration, <span class="hljs-attr">success</span>: <span class="hljs-literal">true</span> });
+      } <span class="hljs-keyword">catch</span> (error) {
+        <span class="hljs-keyword">const</span> duration = <span class="hljs-title class_">Date</span>.<span class="hljs-title function_">now</span>() - opStartTime;
+        results.<span class="hljs-title function_">push</span>({ <span class="hljs-attr">index</span>: i, <span class="hljs-attr">error</span>: error.<span class="hljs-property">message</span>, duration, <span class="hljs-attr">success</span>: <span class="hljs-literal">false</span> });
+        
+        <span class="hljs-comment">// Stop on first error</span>
+        <span class="hljs-keyword">break</span>;
+      }
+    }
+    
+    <span class="hljs-keyword">return</span> {
+      results,
+      <span class="hljs-attr">totalDuration</span>: <span class="hljs-title class_">Date</span>.<span class="hljs-title function_">now</span>() - startTime,
+      <span class="hljs-attr">completed</span>: results.<span class="hljs-property">length</span>,
+      <span class="hljs-attr">total</span>: operations.<span class="hljs-property">length</span>
+    };
+  }
+
+  <span class="hljs-comment">// Async iteration patterns</span>
+  <span class="hljs-keyword">async</span> *<span class="hljs-title function_">asyncGenerator</span>(<span class="hljs-params">data</span>) {
+    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">const</span> item <span class="hljs-keyword">of</span> data) {
+      <span class="hljs-comment">// Simulate async processing</span>
+      <span class="hljs-keyword">await</span> <span class="hljs-title class_">AdvancedPromisePatterns</span>.<span class="hljs-title function_">delay</span>(<span class="hljs-number">100</span>);
+      <span class="hljs-keyword">yield</span> item * <span class="hljs-number">2</span>;
+    }
+  }
+
+  <span class="hljs-keyword">async</span> <span class="hljs-title function_">processAsyncIterable</span>(<span class="hljs-params">iterable</span>) {
+    <span class="hljs-keyword">const</span> results = [];
+    
+    <span class="hljs-keyword">for</span> <span class="hljs-title function_">await</span> (<span class="hljs-keyword">const</span> item <span class="hljs-keyword">of</span> iterable) {
+      results.<span class="hljs-title function_">push</span>(item);
+    }
+    
+    <span class="hljs-keyword">return</span> results;
+  }
+
+  <span class="hljs-comment">// Error handling patterns</span>
+  <span class="hljs-keyword">async</span> <span class="hljs-title function_">executeWithGracefulFailure</span>(<span class="hljs-params">operations, { 
+    continueOnError = <span class="hljs-literal">true</span>, 
+    maxErrors = <span class="hljs-literal">Infinity</span>,
+    errorHandler = <span class="hljs-literal">null</span> 
+  } = {}</span>) {
+    <span class="hljs-keyword">const</span> results = [];
+    <span class="hljs-keyword">const</span> errors = [];
+    <span class="hljs-keyword">let</span> errorCount = <span class="hljs-number">0</span>;
+    
+    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>; i &lt; operations.<span class="hljs-property">length</span>; i++) {
+      <span class="hljs-keyword">try</span> {
+        <span class="hljs-keyword">const</span> result = <span class="hljs-keyword">await</span> operations[i]();
+        results.<span class="hljs-title function_">push</span>({ <span class="hljs-attr">index</span>: i, result, <span class="hljs-attr">success</span>: <span class="hljs-literal">true</span> });
+      } <span class="hljs-keyword">catch</span> (error) {
+        errorCount++;
+        <span class="hljs-keyword">const</span> errorInfo = { <span class="hljs-attr">index</span>: i, <span class="hljs-attr">error</span>: error.<span class="hljs-property">message</span>, <span class="hljs-attr">success</span>: <span class="hljs-literal">false</span> };
+        
+        errors.<span class="hljs-title function_">push</span>(errorInfo);
+        results.<span class="hljs-title function_">push</span>(errorInfo);
+        
+        <span class="hljs-keyword">if</span> (errorHandler) {
+          <span class="hljs-keyword">await</span> <span class="hljs-title function_">errorHandler</span>(error, i);
+        }
+        
+        <span class="hljs-keyword">if</span> (!continueOnError || errorCount &gt;= maxErrors) {
+          <span class="hljs-keyword">break</span>;
+        }
+      }
+    }
+    
+    <span class="hljs-keyword">return</span> {
+      results,
+      errors,
+      <span class="hljs-attr">successCount</span>: results.<span class="hljs-title function_">filter</span>(<span class="hljs-function"><span class="hljs-params">r</span> =&gt;</span> r.<span class="hljs-property">success</span>).<span class="hljs-property">length</span>,
+      errorCount,
+      <span class="hljs-attr">completed</span>: results.<span class="hljs-property">length</span>,
+      <span class="hljs-attr">total</span>: operations.<span class="hljs-property">length</span>
+    };
+  }
+}
+</code></pre></pre>
+<hr/>
+<h2 id="event-loop-&amp;-microtasks" node="[object Object]">Event Loop &amp; Microtasks</h2>
+<h3 id="[object-object]" node="[object Object]"><strong>Understanding the Event Loop</strong></h3>
+<pre><pre><code class="hljs hljs language-javascript"><span class="hljs-comment">// Event loop demonstration and microtask understanding</span>
+<span class="hljs-keyword">class</span> <span class="hljs-title class_">EventLoopDemo</span> {
+  <span class="hljs-title function_">constructor</span>(<span class="hljs-params"></span>) {
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">executionOrder</span> = [];
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">timers</span> = [];
+  }
+
+  <span class="hljs-comment">// Demonstrate event loop phases</span>
+  <span class="hljs-title function_">demonstrateEventLoop</span>(<span class="hljs-params"></span>) {
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">executionOrder</span> = [];
+    
+    <span class="hljs-comment">// 1. Synchronous code</span>
+    <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;1: Synchronous start&#x27;</span>);
+    
+    <span class="hljs-comment">// 2. Macrotask (Timer)</span>
+    <span class="hljs-built_in">setTimeout</span>(<span class="hljs-function">() =&gt;</span> {
+      <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;6: setTimeout (macrotask)&#x27;</span>);
+    }, <span class="hljs-number">0</span>);
+    
+    <span class="hljs-comment">// 3. Microtask (Promise)</span>
+    <span class="hljs-title class_">Promise</span>.<span class="hljs-title function_">resolve</span>().<span class="hljs-title function_">then</span>(<span class="hljs-function">() =&gt;</span> {
+      <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;4: Promise.then (microtask)&#x27;</span>);
+    });
+    
+    <span class="hljs-comment">// 4. Immediate microtask</span>
+    <span class="hljs-title function_">queueMicrotask</span>(<span class="hljs-function">() =&gt;</span> {
+      <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;5: queueMicrotask&#x27;</span>);
+    });
+    
+    <span class="hljs-comment">// 5. More synchronous code</span>
+    <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;2: Synchronous middle&#x27;</span>);
+    
+    <span class="hljs-comment">// 6. Nested microtask</span>
+    <span class="hljs-title class_">Promise</span>.<span class="hljs-title function_">resolve</span>().<span class="hljs-title function_">then</span>(<span class="hljs-function">() =&gt;</span> {
+      <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;3: First Promise&#x27;</span>);
+      
+      <span class="hljs-comment">// This microtask runs before macrotasks</span>
+      <span class="hljs-title class_">Promise</span>.<span class="hljs-title function_">resolve</span>().<span class="hljs-title function_">then</span>(<span class="hljs-function">() =&gt;</span> {
+        <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;3.5: Nested Promise (microtask)&#x27;</span>);
+      });
+    });
+    
+    <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;3: Synchronous end&#x27;</span>);
+    
+    <span class="hljs-comment">// Return promise that resolves after all tasks complete</span>
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Promise</span>(<span class="hljs-function"><span class="hljs-params">resolve</span> =&gt;</span> {
+      <span class="hljs-built_in">setTimeout</span>(<span class="hljs-function">() =&gt;</span> {
+        <span class="hljs-title function_">resolve</span>(<span class="hljs-variable language_">this</span>.<span class="hljs-property">executionOrder</span>);
+      }, <span class="hljs-number">10</span>);
+    });
+  }
+
+  <span class="hljs-comment">// Demonstrate microtask vs macrotask priority</span>
+  <span class="hljs-title function_">demonstratePriority</span>(<span class="hljs-params"></span>) {
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">executionOrder</span> = [];
+    
+    <span class="hljs-comment">// Schedule multiple macrotasks</span>
+    <span class="hljs-built_in">setTimeout</span>(<span class="hljs-function">() =&gt;</span> <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;Timeout 1&#x27;</span>), <span class="hljs-number">0</span>);
+    <span class="hljs-built_in">setTimeout</span>(<span class="hljs-function">() =&gt;</span> <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;Timeout 2&#x27;</span>), <span class="hljs-number">0</span>);
+    
+    <span class="hljs-comment">// Schedule multiple microtasks</span>
+    <span class="hljs-title class_">Promise</span>.<span class="hljs-title function_">resolve</span>().<span class="hljs-title function_">then</span>(<span class="hljs-function">() =&gt;</span> <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;Promise 1&#x27;</span>));
+    <span class="hljs-title class_">Promise</span>.<span class="hljs-title function_">resolve</span>().<span class="hljs-title function_">then</span>(<span class="hljs-function">() =&gt;</span> <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;Promise 2&#x27;</span>));
+    
+    <span class="hljs-comment">// Immediate execution</span>
+    <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;Sync code&#x27;</span>);
+    
+    <span class="hljs-comment">// More microtasks</span>
+    <span class="hljs-title function_">queueMicrotask</span>(<span class="hljs-function">() =&gt;</span> <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;Microtask 1&#x27;</span>));
+    <span class="hljs-title function_">queueMicrotask</span>(<span class="hljs-function">() =&gt;</span> <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;Microtask 2&#x27;</span>));
+    
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Promise</span>(<span class="hljs-function"><span class="hljs-params">resolve</span> =&gt;</span> {
+      <span class="hljs-built_in">setTimeout</span>(<span class="hljs-function">() =&gt;</span> <span class="hljs-title function_">resolve</span>(<span class="hljs-variable language_">this</span>.<span class="hljs-property">executionOrder</span>), <span class="hljs-number">10</span>);
+    });
+  }
+
+  <span class="hljs-comment">// Complex event loop scenario</span>
+  <span class="hljs-title function_">demonstrateComplexScenario</span>(<span class="hljs-params"></span>) {
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">executionOrder</span> = [];
+    
+    <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;=== Start ===&#x27;</span>);
+    
+    <span class="hljs-built_in">setTimeout</span>(<span class="hljs-function">() =&gt;</span> {
+      <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;Timer 1&#x27;</span>);
+      
+      <span class="hljs-title class_">Promise</span>.<span class="hljs-title function_">resolve</span>().<span class="hljs-title function_">then</span>(<span class="hljs-function">() =&gt;</span> {
+        <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;Promise in Timer 1&#x27;</span>);
+      });
+      
+      <span class="hljs-built_in">setTimeout</span>(<span class="hljs-function">() =&gt;</span> {
+        <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;Nested Timer in Timer 1&#x27;</span>);
+      }, <span class="hljs-number">0</span>);
+    }, <span class="hljs-number">0</span>);
+    
+    <span class="hljs-title class_">Promise</span>.<span class="hljs-title function_">resolve</span>().<span class="hljs-title function_">then</span>(<span class="hljs-function">() =&gt;</span> {
+      <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;Promise 1&#x27;</span>);
+      
+      <span class="hljs-built_in">setTimeout</span>(<span class="hljs-function">() =&gt;</span> {
+        <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;Timer in Promise 1&#x27;</span>);
+      }, <span class="hljs-number">0</span>);
+      
+      <span class="hljs-keyword">return</span> <span class="hljs-title class_">Promise</span>.<span class="hljs-title function_">resolve</span>();
+    }).<span class="hljs-title function_">then</span>(<span class="hljs-function">() =&gt;</span> {
+      <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;Chained Promise 1&#x27;</span>);
+    });
+    
+    <span class="hljs-built_in">setTimeout</span>(<span class="hljs-function">() =&gt;</span> {
+      <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;Timer 2&#x27;</span>);
+    }, <span class="hljs-number">0</span>);
+    
+    <span class="hljs-title class_">Promise</span>.<span class="hljs-title function_">resolve</span>().<span class="hljs-title function_">then</span>(<span class="hljs-function">() =&gt;</span> {
+      <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;Promise 2&#x27;</span>);
+    });
+    
+    <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;=== End Sync ===&#x27;</span>);
+    
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Promise</span>(<span class="hljs-function"><span class="hljs-params">resolve</span> =&gt;</span> {
+      <span class="hljs-built_in">setTimeout</span>(<span class="hljs-function">() =&gt;</span> <span class="hljs-title function_">resolve</span>(<span class="hljs-variable language_">this</span>.<span class="hljs-property">executionOrder</span>), <span class="hljs-number">50</span>);
+    });
+  }
+
+  <span class="hljs-comment">// Demonstrate blocking behavior</span>
+  <span class="hljs-title function_">demonstrateBlocking</span>(<span class="hljs-params"></span>) {
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">executionOrder</span> = [];
+    
+    <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;Before blocking operation&#x27;</span>);
+    
+    <span class="hljs-comment">// Simulate CPU-intensive task</span>
+    <span class="hljs-keyword">const</span> start = <span class="hljs-title class_">Date</span>.<span class="hljs-title function_">now</span>();
+    <span class="hljs-keyword">while</span> (<span class="hljs-title class_">Date</span>.<span class="hljs-title function_">now</span>() - start &lt; <span class="hljs-number">100</span>) {
+      <span class="hljs-comment">// Blocking loop</span>
+    }
+    
+    <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;After blocking operation&#x27;</span>);
+    
+    <span class="hljs-built_in">setTimeout</span>(<span class="hljs-function">() =&gt;</span> {
+      <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;This timer was delayed by blocking&#x27;</span>);
+    }, <span class="hljs-number">0</span>);
+    
+    <span class="hljs-title class_">Promise</span>.<span class="hljs-title function_">resolve</span>().<span class="hljs-title function_">then</span>(<span class="hljs-function">() =&gt;</span> {
+      <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;This microtask runs immediately&#x27;</span>);
+    });
+    
+    <span class="hljs-keyword">return</span> <span class="hljs-variable language_">this</span>.<span class="hljs-property">executionOrder</span>;
+  }
+
+  <span class="hljs-comment">// Non-blocking alternatives</span>
+  <span class="hljs-title function_">demonstrateNonBlocking</span>(<span class="hljs-params"></span>) {
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">executionOrder</span> = [];
+    
+    <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;Before non-blocking operation&#x27;</span>);
+    
+    <span class="hljs-comment">// Break up work into chunks</span>
+    <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">performWorkInChunks</span>(<span class="hljs-number">100</span>, <span class="hljs-number">10</span>).<span class="hljs-title function_">then</span>(<span class="hljs-function">() =&gt;</span> {
+      <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;Non-blocking work completed&#x27;</span>);
+    });
+    
+    <span class="hljs-built_in">setTimeout</span>(<span class="hljs-function">() =&gt;</span> {
+      <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;This timer is not blocked&#x27;</span>);
+    }, <span class="hljs-number">50</span>);
+    
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Promise</span>(<span class="hljs-function"><span class="hljs-params">resolve</span> =&gt;</span> {
+      <span class="hljs-built_in">setTimeout</span>(<span class="hljs-function">() =&gt;</span> <span class="hljs-title function_">resolve</span>(<span class="hljs-variable language_">this</span>.<span class="hljs-property">executionOrder</span>), <span class="hljs-number">200</span>);
+    });
+  }
+
+  <span class="hljs-keyword">async</span> <span class="hljs-title function_">performWorkInChunks</span>(<span class="hljs-params">totalWork, chunkSize</span>) {
+    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>; i &lt; totalWork; i += chunkSize) {
+      <span class="hljs-comment">// Do chunk of work</span>
+      <span class="hljs-keyword">const</span> end = <span class="hljs-title class_">Math</span>.<span class="hljs-title function_">min</span>(i + chunkSize, totalWork);
+      <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> j = i; j &lt; end; j++) {
+        <span class="hljs-comment">// Simulate work</span>
+        <span class="hljs-title class_">Math</span>.<span class="hljs-title function_">random</span>();
+      }
+      
+      <span class="hljs-comment">// Yield control back to event loop</span>
+      <span class="hljs-keyword">await</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Promise</span>(<span class="hljs-function"><span class="hljs-params">resolve</span> =&gt;</span> <span class="hljs-built_in">setTimeout</span>(resolve, <span class="hljs-number">0</span>));
+      
+      <span class="hljs-keyword">if</span> (i % <span class="hljs-number">50</span> === <span class="hljs-number">0</span>) {
+        <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">`Processed <span class="hljs-subst">${i}</span>/<span class="hljs-subst">${totalWork}</span> items`</span>);
+      }
+    }
+  }
+
+  <span class="hljs-title function_">log</span>(<span class="hljs-params">message</span>) {
+    <span class="hljs-keyword">const</span> timestamp = performance.<span class="hljs-title function_">now</span>().<span class="hljs-title function_">toFixed</span>(<span class="hljs-number">2</span>);
+    <span class="hljs-keyword">const</span> entry = <span class="hljs-string">`<span class="hljs-subst">${timestamp}</span>ms: <span class="hljs-subst">${message}</span>`</span>;
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">executionOrder</span>.<span class="hljs-title function_">push</span>(entry);
+    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(entry);
+  }
+}
+
+<span class="hljs-comment">// Web Workers for true parallelism</span>
+<span class="hljs-keyword">class</span> <span class="hljs-title class_">WebWorkerDemo</span> {
+  <span class="hljs-title function_">constructor</span>(<span class="hljs-params"></span>) {
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">workers</span> = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Map</span>();
+  }
+
+  <span class="hljs-comment">// Create and manage web workers</span>
+  <span class="hljs-title function_">createWorker</span>(<span class="hljs-params">script</span>) {
+    <span class="hljs-keyword">const</span> blob = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Blob</span>([script], { <span class="hljs-attr">type</span>: <span class="hljs-string">&#x27;application/javascript&#x27;</span> });
+    <span class="hljs-keyword">const</span> workerUrl = <span class="hljs-variable constant_">URL</span>.<span class="hljs-title function_">createObjectURL</span>(blob);
+    <span class="hljs-keyword">const</span> worker = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Worker</span>(workerUrl);
+    
+    <span class="hljs-keyword">const</span> workerId = <span class="hljs-title class_">Math</span>.<span class="hljs-title function_">random</span>().<span class="hljs-title function_">toString</span>(<span class="hljs-number">36</span>).<span class="hljs-title function_">substr</span>(<span class="hljs-number">2</span>, <span class="hljs-number">9</span>);
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">workers</span>.<span class="hljs-title function_">set</span>(workerId, worker);
+    
+    <span class="hljs-comment">// Cleanup</span>
+    worker.<span class="hljs-title function_">addEventListener</span>(<span class="hljs-string">&#x27;error&#x27;</span>, <span class="hljs-function">() =&gt;</span> {
+      <span class="hljs-variable constant_">URL</span>.<span class="hljs-title function_">revokeObjectURL</span>(workerUrl);
+      <span class="hljs-variable language_">this</span>.<span class="hljs-property">workers</span>.<span class="hljs-title function_">delete</span>(workerId);
+    });
+    
+    <span class="hljs-keyword">return</span> { worker, workerId };
+  }
+
+  <span class="hljs-comment">// Heavy computation in web worker</span>
+  <span class="hljs-title function_">performHeavyComputation</span>(<span class="hljs-params">data</span>) {
+    <span class="hljs-keyword">const</span> workerScript = <span class="hljs-string">`
+      self.onmessage = function(e) {
+        const { data, operation } = e.data;
+        
+        let result;
+        const startTime = Date.now();
+        
+        switch(operation) {
+          case &#x27;fibonacci&#x27;:
+            result = fibonacci(data);
+            break;
+          case &#x27;primes&#x27;:
+            result = findPrimes(data);
+            break;
+          case &#x27;sort&#x27;:
+            result = data.sort((a, b) =&gt; a - b);
+            break;
+          default:
+            result = data;
+        }
+        
+        const duration = Date.now() - startTime;
+        
+        self.postMessage({ result, duration });
+      };
+      
+      function fibonacci(n) {
+        if (n &lt;= 1) return n;
+        return fibonacci(n - 1) + fibonacci(n - 2);
+      }
+      
+      function findPrimes(max) {
+        const primes = [];
+        for (let i = 2; i &lt;= max; i++) {
+          let isPrime = true;
+          for (let j = 2; j &lt;= Math.sqrt(i); j++) {
+            if (i % j === 0) {
+              isPrime = false;
+              break;
+            }
+          }
+          if (isPrime) primes.push(i);
+        }
+        return primes;
+      }
+    `</span>;
+    
+    <span class="hljs-keyword">const</span> { worker, workerId } = <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">createWorker</span>(workerScript);
+    
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Promise</span>(<span class="hljs-function">(<span class="hljs-params">resolve, reject</span>) =&gt;</span> {
+      worker.<span class="hljs-property">onmessage</span> = <span class="hljs-function">(<span class="hljs-params">e</span>) =&gt;</span> {
+        <span class="hljs-title function_">resolve</span>(e.<span class="hljs-property">data</span>);
+        worker.<span class="hljs-title function_">terminate</span>();
+        <span class="hljs-variable language_">this</span>.<span class="hljs-property">workers</span>.<span class="hljs-title function_">delete</span>(workerId);
+      };
+      
+      worker.<span class="hljs-property">onerror</span> = <span class="hljs-function">(<span class="hljs-params">error</span>) =&gt;</span> {
+        <span class="hljs-title function_">reject</span>(error);
+        worker.<span class="hljs-title function_">terminate</span>();
+        <span class="hljs-variable language_">this</span>.<span class="hljs-property">workers</span>.<span class="hljs-title function_">delete</span>(workerId);
+      };
+      
+      worker.<span class="hljs-title function_">postMessage</span>(data);
+    });
+  }
+
+  <span class="hljs-comment">// Cleanup all workers</span>
+  <span class="hljs-title function_">terminateAllWorkers</span>(<span class="hljs-params"></span>) {
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">workers</span>.<span class="hljs-title function_">forEach</span>(<span class="hljs-function"><span class="hljs-params">worker</span> =&gt;</span> worker.<span class="hljs-title function_">terminate</span>());
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">workers</span>.<span class="hljs-title function_">clear</span>();
+  }
+}
+</code></pre></pre>
+<hr/>
+<h2 id="prototypal-inheritance-deep-dive" node="[object Object]">Prototypal Inheritance Deep Dive</h2>
+<h3 id="[object-object]" node="[object Object]"><strong>Advanced Prototype Patterns</strong></h3>
+<pre><pre><code class="hljs hljs language-javascript"><span class="hljs-comment">// Understanding prototype chain and inheritance</span>
+<span class="hljs-keyword">class</span> <span class="hljs-title class_">PrototypeDemo</span> {
+  <span class="hljs-comment">// Demonstrate prototype chain</span>
+  <span class="hljs-keyword">static</span> <span class="hljs-title function_">demonstratePrototypeChain</span>(<span class="hljs-params"></span>) {
+    <span class="hljs-comment">// Create base object</span>
+    <span class="hljs-keyword">const</span> animal = {
+      <span class="hljs-attr">type</span>: <span class="hljs-string">&#x27;Animal&#x27;</span>,
+      <span class="hljs-title function_">breathe</span>(<span class="hljs-params"></span>) {
+        <span class="hljs-keyword">return</span> <span class="hljs-string">`<span class="hljs-subst">${<span class="hljs-variable language_">this</span>.name}</span> is breathing`</span>;
+      }
+    };
+    
+    <span class="hljs-comment">// Create mammal that inherits from animal</span>
+    <span class="hljs-keyword">const</span> mammal = <span class="hljs-title class_">Object</span>.<span class="hljs-title function_">create</span>(animal);
+    mammal.<span class="hljs-property">type</span> = <span class="hljs-string">&#x27;Mammal&#x27;</span>;
+    mammal.<span class="hljs-property">warmBlooded</span> = <span class="hljs-literal">true</span>;
+    mammal.<span class="hljs-property">nurse</span> = <span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) {
+      <span class="hljs-keyword">return</span> <span class="hljs-string">`<span class="hljs-subst">${<span class="hljs-variable language_">this</span>.name}</span> is nursing`</span>;
+    };
+    
+    <span class="hljs-comment">// Create dog that inherits from mammal</span>
+    <span class="hljs-keyword">const</span> dog = <span class="hljs-title class_">Object</span>.<span class="hljs-title function_">create</span>(mammal);
+    dog.<span class="hljs-property">type</span> = <span class="hljs-string">&#x27;Dog&#x27;</span>;
+    dog.<span class="hljs-property">bark</span> = <span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) {
+      <span class="hljs-keyword">return</span> <span class="hljs-string">`<span class="hljs-subst">${<span class="hljs-variable language_">this</span>.name}</span> is barking`</span>;
+    };
+    
+    <span class="hljs-comment">// Create specific dog instance</span>
+    <span class="hljs-keyword">const</span> buddy = <span class="hljs-title class_">Object</span>.<span class="hljs-title function_">create</span>(dog);
+    buddy.<span class="hljs-property">name</span> = <span class="hljs-string">&#x27;Buddy&#x27;</span>;
+    buddy.<span class="hljs-property">breed</span> = <span class="hljs-string">&#x27;Golden Retriever&#x27;</span>;
+    
+    <span class="hljs-comment">// Demonstrate prototype chain traversal</span>
+    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;Prototype chain for buddy:&#x27;</span>);
+    <span class="hljs-keyword">let</span> current = buddy;
+    <span class="hljs-keyword">let</span> level = <span class="hljs-number">0</span>;
+    
+    <span class="hljs-keyword">while</span> (current) {
+      <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">`Level <span class="hljs-subst">${level}</span>:`</span>, current);
+      <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;Own properties:&#x27;</span>, <span class="hljs-title class_">Object</span>.<span class="hljs-title function_">getOwnPropertyNames</span>(current));
+      current = <span class="hljs-title class_">Object</span>.<span class="hljs-title function_">getPrototypeOf</span>(current);
+      level++;
+      
+      <span class="hljs-keyword">if</span> (level &gt; <span class="hljs-number">10</span>) <span class="hljs-keyword">break</span>; <span class="hljs-comment">// Prevent infinite loop</span>
+    }
+    
+    <span class="hljs-keyword">return</span> {
+      buddy,
+      <span class="hljs-attr">chain</span>: {
+        <span class="hljs-attr">canBreathe</span>: buddy.<span class="hljs-title function_">breathe</span>(),
+        <span class="hljs-attr">canNurse</span>: buddy.<span class="hljs-title function_">nurse</span>(),
+        <span class="hljs-attr">canBark</span>: buddy.<span class="hljs-title function_">bark</span>(),
+        <span class="hljs-attr">properties</span>: {
+          <span class="hljs-attr">name</span>: buddy.<span class="hljs-property">name</span>,
+          <span class="hljs-attr">breed</span>: buddy.<span class="hljs-property">breed</span>,
+          <span class="hljs-attr">type</span>: buddy.<span class="hljs-property">type</span>,
+          <span class="hljs-attr">warmBlooded</span>: buddy.<span class="hljs-property">warmBlooded</span>
+        }
+      }
+    };
+  }
+
+  <span class="hljs-comment">// Classical inheritance patterns</span>
+  <span class="hljs-keyword">static</span> <span class="hljs-title function_">demonstrateClassicalInheritance</span>(<span class="hljs-params"></span>) {
+    <span class="hljs-comment">// Constructor function pattern</span>
+    <span class="hljs-keyword">function</span> <span class="hljs-title function_">Vehicle</span>(<span class="hljs-params">make, model</span>) {
+      <span class="hljs-variable language_">this</span>.<span class="hljs-property">make</span> = make;
+      <span class="hljs-variable language_">this</span>.<span class="hljs-property">model</span> = model;
+      <span class="hljs-variable language_">this</span>.<span class="hljs-property">speed</span> = <span class="hljs-number">0</span>;
+    }
+    
+    <span class="hljs-title class_">Vehicle</span>.<span class="hljs-property"><span class="hljs-keyword">prototype</span></span>.<span class="hljs-property">accelerate</span> = <span class="hljs-keyword">function</span>(<span class="hljs-params">amount</span>) {
+      <span class="hljs-variable language_">this</span>.<span class="hljs-property">speed</span> += amount;
+      <span class="hljs-keyword">return</span> <span class="hljs-variable language_">this</span>;
+    };
+    
+    <span class="hljs-title class_">Vehicle</span>.<span class="hljs-property"><span class="hljs-keyword">prototype</span></span>.<span class="hljs-property">brake</span> = <span class="hljs-keyword">function</span>(<span class="hljs-params">amount</span>) {
+      <span class="hljs-variable language_">this</span>.<span class="hljs-property">speed</span> = <span class="hljs-title class_">Math</span>.<span class="hljs-title function_">max</span>(<span class="hljs-number">0</span>, <span class="hljs-variable language_">this</span>.<span class="hljs-property">speed</span> - amount);
+      <span class="hljs-keyword">return</span> <span class="hljs-variable language_">this</span>;
+    };
+    
+    <span class="hljs-title class_">Vehicle</span>.<span class="hljs-property"><span class="hljs-keyword">prototype</span></span>.<span class="hljs-property">getInfo</span> = <span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) {
+      <span class="hljs-keyword">return</span> <span class="hljs-string">`<span class="hljs-subst">${<span class="hljs-variable language_">this</span>.make}</span> <span class="hljs-subst">${<span class="hljs-variable language_">this</span>.model}</span> going <span class="hljs-subst">${<span class="hljs-variable language_">this</span>.speed}</span> mph`</span>;
+    };
+    
+    <span class="hljs-comment">// Inheritance with constructor functions</span>
+    <span class="hljs-keyword">function</span> <span class="hljs-title function_">Car</span>(<span class="hljs-params">make, model, doors</span>) {
+      <span class="hljs-comment">// Call parent constructor</span>
+      <span class="hljs-title class_">Vehicle</span>.<span class="hljs-title function_">call</span>(<span class="hljs-variable language_">this</span>, make, model);
+      <span class="hljs-variable language_">this</span>.<span class="hljs-property">doors</span> = doors;
+    }
+    
+    <span class="hljs-comment">// Set up prototype chain</span>
+    <span class="hljs-title class_">Car</span>.<span class="hljs-property"><span class="hljs-keyword">prototype</span></span> = <span class="hljs-title class_">Object</span>.<span class="hljs-title function_">create</span>(<span class="hljs-title class_">Vehicle</span>.<span class="hljs-property"><span class="hljs-keyword">prototype</span></span>);
+    <span class="hljs-title class_">Car</span>.<span class="hljs-property"><span class="hljs-keyword">prototype</span></span>.<span class="hljs-property">constructor</span> = <span class="hljs-title class_">Car</span>;
+    
+    <span class="hljs-comment">// Add car-specific methods</span>
+    <span class="hljs-title class_">Car</span>.<span class="hljs-property"><span class="hljs-keyword">prototype</span></span>.<span class="hljs-property">honk</span> = <span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) {
+      <span class="hljs-keyword">return</span> <span class="hljs-string">`<span class="hljs-subst">${<span class="hljs-variable language_">this</span>.make}</span> <span class="hljs-subst">${<span class="hljs-variable language_">this</span>.model}</span> is honking!`</span>;
+    };
+    
+    <span class="hljs-comment">// Override parent method</span>
+    <span class="hljs-title class_">Car</span>.<span class="hljs-property"><span class="hljs-keyword">prototype</span></span>.<span class="hljs-property">getInfo</span> = <span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) {
+      <span class="hljs-keyword">return</span> <span class="hljs-string">`<span class="hljs-subst">${<span class="hljs-variable language_">this</span>.make}</span> <span class="hljs-subst">${<span class="hljs-variable language_">this</span>.model}</span> (<span class="hljs-subst">${<span class="hljs-variable language_">this</span>.doors}</span> doors) going <span class="hljs-subst">${<span class="hljs-variable language_">this</span>.speed}</span> mph`</span>;
+    };
+    
+    <span class="hljs-keyword">const</span> myCar = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Car</span>(<span class="hljs-string">&#x27;Toyota&#x27;</span>, <span class="hljs-string">&#x27;Camry&#x27;</span>, <span class="hljs-number">4</span>);
+    
+    <span class="hljs-keyword">return</span> {
+      myCar,
+      <span class="hljs-attr">demo</span>: {
+        <span class="hljs-attr">initial</span>: myCar.<span class="hljs-title function_">getInfo</span>(),
+        <span class="hljs-attr">afterAccelerate</span>: myCar.<span class="hljs-title function_">accelerate</span>(<span class="hljs-number">30</span>).<span class="hljs-title function_">getInfo</span>(),
+        <span class="hljs-attr">afterBrake</span>: myCar.<span class="hljs-title function_">brake</span>(<span class="hljs-number">10</span>).<span class="hljs-title function_">getInfo</span>(),
+        <span class="hljs-attr">honk</span>: myCar.<span class="hljs-title function_">honk</span>(),
+        <span class="hljs-attr">instanceof</span>: {
+          <span class="hljs-title class_">Car</span>: myCar <span class="hljs-keyword">instanceof</span> <span class="hljs-title class_">Car</span>,
+          <span class="hljs-title class_">Vehicle</span>: myCar <span class="hljs-keyword">instanceof</span> <span class="hljs-title class_">Vehicle</span>,
+          <span class="hljs-title class_">Object</span>: myCar <span class="hljs-keyword">instanceof</span> <span class="hljs-title class_">Object</span>
+        }
+      }
+    };
+  }
+
+  <span class="hljs-comment">// Modern class syntax with private fields</span>
+  <span class="hljs-keyword">static</span> <span class="hljs-title function_">demonstrateModernClasses</span>(<span class="hljs-params"></span>) {
+    <span class="hljs-keyword">class</span> <span class="hljs-title class_">Shape</span> {
+      #id = <span class="hljs-title class_">Math</span>.<span class="hljs-title function_">random</span>().<span class="hljs-title function_">toString</span>(<span class="hljs-number">36</span>).<span class="hljs-title function_">substr</span>(<span class="hljs-number">2</span>, <span class="hljs-number">9</span>);
+      
+      <span class="hljs-title function_">constructor</span>(<span class="hljs-params">color</span>) {
+        <span class="hljs-variable language_">this</span>.<span class="hljs-property">color</span> = color;
+      }
+      
+      <span class="hljs-keyword">get</span> <span class="hljs-title function_">id</span>() {
+        <span class="hljs-keyword">return</span> <span class="hljs-variable language_">this</span>.#id;
+      }
+      
+      <span class="hljs-title function_">area</span>(<span class="hljs-params"></span>) {
+        <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Error</span>(<span class="hljs-string">&#x27;area() must be implemented by subclass&#x27;</span>);
+      }
+      
+      <span class="hljs-title function_">getInfo</span>(<span class="hljs-params"></span>) {
+        <span class="hljs-keyword">return</span> <span class="hljs-string">`<span class="hljs-subst">${<span class="hljs-variable language_">this</span>.constructor.name}</span> (<span class="hljs-subst">${<span class="hljs-variable language_">this</span>.color}</span>) - Area: <span class="hljs-subst">${<span class="hljs-variable language_">this</span>.area()}</span>`</span>;
+      }
+      
+      <span class="hljs-keyword">static</span> <span class="hljs-title function_">isShape</span>(<span class="hljs-params">obj</span>) {
+        <span class="hljs-keyword">return</span> obj <span class="hljs-keyword">instanceof</span> <span class="hljs-title class_">Shape</span>;
+      }
+    }
+    
+    <span class="hljs-keyword">class</span> <span class="hljs-title class_">Circle</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_ inherited__">Shape</span> {
+      #radius;
+      
+      <span class="hljs-title function_">constructor</span>(<span class="hljs-params">color, radius</span>) {
+        <span class="hljs-variable language_">super</span>(color);
+        <span class="hljs-variable language_">this</span>.#radius = radius;
+      }
+      
+      <span class="hljs-keyword">get</span> <span class="hljs-title function_">radius</span>() {
+        <span class="hljs-keyword">return</span> <span class="hljs-variable language_">this</span>.#radius;
+      }
+      
+      <span class="hljs-keyword">set</span> <span class="hljs-title function_">radius</span>(<span class="hljs-params">value</span>) {
+        <span class="hljs-keyword">if</span> (value &lt;= <span class="hljs-number">0</span>) {
+          <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Error</span>(<span class="hljs-string">&#x27;Radius must be positive&#x27;</span>);
+        }
+        <span class="hljs-variable language_">this</span>.#radius = value;
+      }
+      
+      <span class="hljs-title function_">area</span>(<span class="hljs-params"></span>) {
+        <span class="hljs-keyword">return</span> <span class="hljs-title class_">Math</span>.<span class="hljs-property">PI</span> * <span class="hljs-variable language_">this</span>.#radius ** <span class="hljs-number">2</span>;
+      }
+      
+      <span class="hljs-title function_">circumference</span>(<span class="hljs-params"></span>) {
+        <span class="hljs-keyword">return</span> <span class="hljs-number">2</span> * <span class="hljs-title class_">Math</span>.<span class="hljs-property">PI</span> * <span class="hljs-variable language_">this</span>.#radius;
+      }
+    }
+    
+    <span class="hljs-keyword">class</span> <span class="hljs-title class_">Rectangle</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_ inherited__">Shape</span> {
+      #width;
+      #height;
+      
+      <span class="hljs-title function_">constructor</span>(<span class="hljs-params">color, width, height</span>) {
+        <span class="hljs-variable language_">super</span>(color);
+        <span class="hljs-variable language_">this</span>.#width = width;
+        <span class="hljs-variable language_">this</span>.#height = height;
+      }
+      
+      <span class="hljs-keyword">get</span> <span class="hljs-title function_">dimensions</span>() {
+        <span class="hljs-keyword">return</span> { <span class="hljs-attr">width</span>: <span class="hljs-variable language_">this</span>.#width, <span class="hljs-attr">height</span>: <span class="hljs-variable language_">this</span>.#height };
+      }
+      
+      <span class="hljs-title function_">area</span>(<span class="hljs-params"></span>) {
+        <span class="hljs-keyword">return</span> <span class="hljs-variable language_">this</span>.#width * <span class="hljs-variable language_">this</span>.#height;
+      }
+      
+      <span class="hljs-title function_">perimeter</span>(<span class="hljs-params"></span>) {
+        <span class="hljs-keyword">return</span> <span class="hljs-number">2</span> * (<span class="hljs-variable language_">this</span>.#width + <span class="hljs-variable language_">this</span>.#height);
+      }
+    }
+    
+    <span class="hljs-keyword">const</span> circle = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Circle</span>(<span class="hljs-string">&#x27;red&#x27;</span>, <span class="hljs-number">5</span>);
+    <span class="hljs-keyword">const</span> rectangle = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Rectangle</span>(<span class="hljs-string">&#x27;blue&#x27;</span>, <span class="hljs-number">4</span>, <span class="hljs-number">6</span>);
+    
+    <span class="hljs-keyword">return</span> {
+      <span class="hljs-attr">circle</span>: {
+        <span class="hljs-attr">info</span>: circle.<span class="hljs-title function_">getInfo</span>(),
+        <span class="hljs-attr">circumference</span>: circle.<span class="hljs-title function_">circumference</span>(),
+        <span class="hljs-attr">id</span>: circle.<span class="hljs-property">id</span>,
+        <span class="hljs-attr">isShape</span>: <span class="hljs-title class_">Shape</span>.<span class="hljs-title function_">isShape</span>(circle)
+      },
+      <span class="hljs-attr">rectangle</span>: {
+        <span class="hljs-attr">info</span>: rectangle.<span class="hljs-title function_">getInfo</span>(),
+        <span class="hljs-attr">perimeter</span>: rectangle.<span class="hljs-title function_">perimeter</span>(),
+        <span class="hljs-attr">dimensions</span>: rectangle.<span class="hljs-property">dimensions</span>,
+        <span class="hljs-attr">isShape</span>: <span class="hljs-title class_">Shape</span>.<span class="hljs-title function_">isShape</span>(rectangle)
+      }
+    };
+  }
+
+  <span class="hljs-comment">// Mixin patterns</span>
+  <span class="hljs-keyword">static</span> <span class="hljs-title function_">demonstrateMixins</span>(<span class="hljs-params"></span>) {
+    <span class="hljs-comment">// Mixin for event handling</span>
+    <span class="hljs-keyword">const</span> <span class="hljs-title class_">EventMixin</span> = {
+      <span class="hljs-title function_">addEventListener</span>(<span class="hljs-params">event, callback</span>) {
+        <span class="hljs-keyword">if</span> (!<span class="hljs-variable language_">this</span>.<span class="hljs-property">_events</span>) <span class="hljs-variable language_">this</span>.<span class="hljs-property">_events</span> = {};
+        <span class="hljs-keyword">if</span> (!<span class="hljs-variable language_">this</span>.<span class="hljs-property">_events</span>[event]) <span class="hljs-variable language_">this</span>.<span class="hljs-property">_events</span>[event] = [];
+        <span class="hljs-variable language_">this</span>.<span class="hljs-property">_events</span>[event].<span class="hljs-title function_">push</span>(callback);
+      },
+      
+      <span class="hljs-title function_">removeEventListener</span>(<span class="hljs-params">event, callback</span>) {
+        <span class="hljs-keyword">if</span> (!<span class="hljs-variable language_">this</span>.<span class="hljs-property">_events</span> || !<span class="hljs-variable language_">this</span>.<span class="hljs-property">_events</span>[event]) <span class="hljs-keyword">return</span>;
+        <span class="hljs-keyword">const</span> index = <span class="hljs-variable language_">this</span>.<span class="hljs-property">_events</span>[event].<span class="hljs-title function_">indexOf</span>(callback);
+        <span class="hljs-keyword">if</span> (index &gt; -<span class="hljs-number">1</span>) {
+          <span class="hljs-variable language_">this</span>.<span class="hljs-property">_events</span>[event].<span class="hljs-title function_">splice</span>(index, <span class="hljs-number">1</span>);
+        }
+      },
+      
+      <span class="hljs-title function_">dispatchEvent</span>(<span class="hljs-params">event, data</span>) {
+        <span class="hljs-keyword">if</span> (!<span class="hljs-variable language_">this</span>.<span class="hljs-property">_events</span> || !<span class="hljs-variable language_">this</span>.<span class="hljs-property">_events</span>[event]) <span class="hljs-keyword">return</span>;
+        <span class="hljs-variable language_">this</span>.<span class="hljs-property">_events</span>[event].<span class="hljs-title function_">forEach</span>(<span class="hljs-function"><span class="hljs-params">callback</span> =&gt;</span> <span class="hljs-title function_">callback</span>(data));
+      }
+    };
+    
+    <span class="hljs-comment">// Mixin for validation</span>
+    <span class="hljs-keyword">const</span> <span class="hljs-title class_">ValidationMixin</span> = {
+      <span class="hljs-title function_">addValidator</span>(<span class="hljs-params">field, validator</span>) {
+        <span class="hljs-keyword">if</span> (!<span class="hljs-variable language_">this</span>.<span class="hljs-property">_validators</span>) <span class="hljs-variable language_">this</span>.<span class="hljs-property">_validators</span> = {};
+        <span class="hljs-keyword">if</span> (!<span class="hljs-variable language_">this</span>.<span class="hljs-property">_validators</span>[field]) <span class="hljs-variable language_">this</span>.<span class="hljs-property">_validators</span>[field] = [];
+        <span class="hljs-variable language_">this</span>.<span class="hljs-property">_validators</span>[field].<span class="hljs-title function_">push</span>(validator);
+      },
+      
+      <span class="hljs-title function_">validate</span>(<span class="hljs-params">data</span>) {
+        <span class="hljs-keyword">if</span> (!<span class="hljs-variable language_">this</span>.<span class="hljs-property">_validators</span>) <span class="hljs-keyword">return</span> { <span class="hljs-attr">valid</span>: <span class="hljs-literal">true</span>, <span class="hljs-attr">errors</span>: {} };
+        
+        <span class="hljs-keyword">const</span> errors = {};
+        <span class="hljs-keyword">let</span> valid = <span class="hljs-literal">true</span>;
+        
+        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">const</span> [field, validators] <span class="hljs-keyword">of</span> <span class="hljs-title class_">Object</span>.<span class="hljs-title function_">entries</span>(<span class="hljs-variable language_">this</span>.<span class="hljs-property">_validators</span>)) {
+          <span class="hljs-keyword">const</span> fieldErrors = [];
+          
+          <span class="hljs-keyword">for</span> (<span class="hljs-keyword">const</span> validator <span class="hljs-keyword">of</span> validators) {
+            <span class="hljs-keyword">const</span> result = <span class="hljs-title function_">validator</span>(data[field]);
+            <span class="hljs-keyword">if</span> (result !== <span class="hljs-literal">true</span>) {
+              fieldErrors.<span class="hljs-title function_">push</span>(result);
+              valid = <span class="hljs-literal">false</span>;
+            }
+          }
+          
+          <span class="hljs-keyword">if</span> (fieldErrors.<span class="hljs-property">length</span> &gt; <span class="hljs-number">0</span>) {
+            errors[field] = fieldErrors;
+          }
+        }
+        
+        <span class="hljs-keyword">return</span> { valid, errors };
+      }
+    };
+    
+    <span class="hljs-comment">// Combine mixins</span>
+    <span class="hljs-keyword">function</span> <span class="hljs-title function_">createUser</span>(<span class="hljs-params">name, email</span>) {
+      <span class="hljs-keyword">const</span> user = {
+        name,
+        email,
+        
+        <span class="hljs-title function_">setName</span>(<span class="hljs-params">newName</span>) {
+          <span class="hljs-keyword">const</span> oldName = <span class="hljs-variable language_">this</span>.<span class="hljs-property">name</span>;
+          <span class="hljs-variable language_">this</span>.<span class="hljs-property">name</span> = newName;
+          <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">dispatchEvent</span>(<span class="hljs-string">&#x27;nameChanged&#x27;</span>, { oldName, newName });
+        },
+        
+        <span class="hljs-title function_">setEmail</span>(<span class="hljs-params">newEmail</span>) {
+          <span class="hljs-keyword">const</span> validation = <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">validate</span>({ <span class="hljs-attr">email</span>: newEmail });
+          <span class="hljs-keyword">if</span> (!validation.<span class="hljs-property">valid</span>) {
+            <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Error</span>(<span class="hljs-string">`Invalid email: <span class="hljs-subst">${validation.errors.email.join(<span class="hljs-string">&#x27;, &#x27;</span>)}</span>`</span>);
+          }
+          
+          <span class="hljs-keyword">const</span> oldEmail = <span class="hljs-variable language_">this</span>.<span class="hljs-property">email</span>;
+          <span class="hljs-variable language_">this</span>.<span class="hljs-property">email</span> = newEmail;
+          <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">dispatchEvent</span>(<span class="hljs-string">&#x27;emailChanged&#x27;</span>, { oldEmail, newEmail });
+        }
+      };
+      
+      <span class="hljs-comment">// Apply mixins</span>
+      <span class="hljs-title class_">Object</span>.<span class="hljs-title function_">assign</span>(user, <span class="hljs-title class_">EventMixin</span>, <span class="hljs-title class_">ValidationMixin</span>);
+      
+      <span class="hljs-comment">// Add email validator</span>
+      user.<span class="hljs-title function_">addValidator</span>(<span class="hljs-string">&#x27;email&#x27;</span>, <span class="hljs-function">(<span class="hljs-params">email</span>) =&gt;</span> {
+        <span class="hljs-keyword">const</span> emailRegex = <span class="hljs-regexp">/^[^\s@]+@[^\s@]+\.[^\s@]+$/</span>;
+        <span class="hljs-keyword">return</span> emailRegex.<span class="hljs-title function_">test</span>(email) || <span class="hljs-string">&#x27;Invalid email format&#x27;</span>;
+      });
+      
+      <span class="hljs-keyword">return</span> user;
+    }
+    
+    <span class="hljs-keyword">const</span> user = <span class="hljs-title function_">createUser</span>(<span class="hljs-string">&#x27;John Doe&#x27;</span>, <span class="hljs-string">&#x27;john@example.com&#x27;</span>);
+    
+    <span class="hljs-comment">// Set up event listeners</span>
+    <span class="hljs-keyword">const</span> events = [];
+    user.<span class="hljs-title function_">addEventListener</span>(<span class="hljs-string">&#x27;nameChanged&#x27;</span>, <span class="hljs-function">(<span class="hljs-params">data</span>) =&gt;</span> {
+      events.<span class="hljs-title function_">push</span>(<span class="hljs-string">`Name changed from <span class="hljs-subst">${data.oldName}</span> to <span class="hljs-subst">${data.newName}</span>`</span>);
+    });
+    
+    user.<span class="hljs-title function_">addEventListener</span>(<span class="hljs-string">&#x27;emailChanged&#x27;</span>, <span class="hljs-function">(<span class="hljs-params">data</span>) =&gt;</span> {
+      events.<span class="hljs-title function_">push</span>(<span class="hljs-string">`Email changed from <span class="hljs-subst">${data.oldEmail}</span> to <span class="hljs-subst">${data.newEmail}</span>`</span>);
+    });
+    
+    <span class="hljs-comment">// Test the user object</span>
+    user.<span class="hljs-title function_">setName</span>(<span class="hljs-string">&#x27;Jane Doe&#x27;</span>);
+    user.<span class="hljs-title function_">setEmail</span>(<span class="hljs-string">&#x27;jane@example.com&#x27;</span>);
+    
+    <span class="hljs-keyword">return</span> {
+      <span class="hljs-attr">user</span>: {
+        <span class="hljs-attr">name</span>: user.<span class="hljs-property">name</span>,
+        <span class="hljs-attr">email</span>: user.<span class="hljs-property">email</span>
+      },
+      events,
+      <span class="hljs-attr">validation</span>: user.<span class="hljs-title function_">validate</span>({ <span class="hljs-attr">email</span>: <span class="hljs-string">&#x27;invalid-email&#x27;</span> })
+    };
+  }
+}
+</code></pre></pre>
+<p>This comprehensive guide covers the fundamental JavaScript concepts that are crucial for frontend interviews, providing both theoretical understanding and practical implementation examples that demonstrate mastery of the language.</p></div></div></main><footer class="sc-kjwdDK hrfQfY"><div class="sc-eVqvcJ dwFHjZ"><div class="sc-bbbBoY kWATso"><div class="sc-cdmAjP fBmmqS"><div class="sc-jytpVa iNKxsb"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-code "><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>Frontend Interview Prep</div><p class="sc-eknHtZ fYhkiV">Comprehensive interview preparation for frontend engineers targeting Big Tech companies.</p><div class="sc-pYNGo eVAQiq"><a href="https://github.com" aria-label="GitHub"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-github "><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"></path><path d="M9 18c-4.51 2-5-2-7-2"></path></svg></a><a href="https://twitter.com" aria-label="Twitter"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-twitter "><path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"></path></svg></a><a href="https://linkedin.com" aria-label="LinkedIn"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-linkedin "><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect width="4" height="12" x="2" y="9"></rect><circle cx="4" cy="4" r="2"></circle></svg></a><a href="mailto:contact@example.com" aria-label="Email"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-mail "><rect width="20" height="16" x="2" y="4" rx="2"></rect><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path></svg></a></div></div><div class="sc-cdmAjP fBmmqS"><h3>Study Materials</h3><ul><li><a href="/algorithms">Algorithms</a></li><li><a href="/react">React &amp; Frontend</a></li><li><a href="/system-design">System Design</a></li><li><a href="/typescript">TypeScript</a></li><li><a href="/performance">Performance</a></li></ul></div><div class="sc-cdmAjP fBmmqS"><h3>Companies</h3><ul><li><a href="/google">Google</a></li><li><a href="/meta">Meta</a></li><li><a href="/amazon">Amazon</a></li><li><a href="/microsoft">Microsoft</a></li><li><a href="/apple">Apple</a></li></ul></div><div class="sc-cdmAjP fBmmqS"><h3>Resources</h3><ul><li><a href="/interview-tips">Interview Tips</a></li><li><a href="/coding-challenges">Coding Challenges</a></li><li><a href="/mock-interviews">Mock Interviews</a></li><li><a href="/blog">Blog</a></li><li><a href="/faq">FAQ</a></li></ul></div></div><div class="sc-cCVJLD fgJmHp"><p class="sc-jYczwO gYGLHT">© 2025 Frontend Interview Prep. All rights reserved.</p><div class="sc-dNFkOE ghBULZ"><a href="/privacy">Privacy Policy</a><a href="/terms">Terms of Service</a><a href="/contact">Contact</a></div></div></div></footer></div><script src="/interview/_next/static/chunks/webpack-be7d7df45533bffc.js" async=""></script><script>(self.__next_f=self.__next_f||[]).push([0]);self.__next_f.push([2,null])</script><script>self.__next_f.push([1,"1:HL[\"/interview/_next/static/media/e4af272ccee01ff0-s.p.woff2\",\"font\",{\"crossOrigin\":\"\",\"type\":\"font/woff2\"}]\n2:HL[\"/interview/_next/static/css/387024c6a2216908.css\",\"style\"]\n"])</script><script>self.__next_f.push([1,"3:I[2846,[],\"\"]\n5:I[5907,[\"918\",\"static/chunks/918-3273b83890f10546.js\",\"930\",\"static/chunks/930-3262a6c9c5acace4.js\",\"687\",\"static/chunks/app/docs/%5B...slug%5D/page-32962e9542d32755.js\"],\"default\"]\n7:I[4707,[],\"\"]\n9:I[6423,[],\"\"]\na:I[2,[\"918\",\"static/chunks/918-3273b83890f10546.js\",\"710\",\"static/chunks/710-dfaa11b4dff08f8e.js\",\"972\",\"static/chunks/972-011bba60ed155615.js\",\"233\",\"static/chunks/233-3e0c1d820a17eca9.js\",\"185\",\"static/chunks/app/layout-333f4adcd11f8f39.js\"],\"default\",1]\nc:I[1060,[],\"\"]\n6:T93e8,"])</script><script>self.__next_f.push([1,"# JavaScript Advanced Fundamentals\n\n## Overview\nDeep understanding of JavaScript fundamentals is crucial for frontend interviews. This guide covers advanced concepts that separate junior from senior developers.\n\n---\n\n## Memory Management \u0026 Garbage Collection\n\n### **Understanding Memory Lifecycle**\n\n```javascript\n// Memory allocation patterns and optimization\nclass MemoryOptimizedDataStructure {\n  constructor() {\n    // Use typed arrays for better memory efficiency\n    this.buffer = new ArrayBuffer(1024);\n    this.view = new Int32Array(this.buffer);\n    this.stringPool = new Map(); // String interning\n    this.objectPool = []; // Object pooling\n    this.weakRefs = new WeakMap(); // Prevent memory leaks\n  }\n\n  // Object pooling to reduce garbage collection pressure\n  createObject(data) {\n    let obj = this.objectPool.pop();\n    if (!obj) {\n      obj = { id: null, data: null, timestamp: null };\n    }\n    \n    obj.id = data.id;\n    obj.data = data.data;\n    obj.timestamp = Date.now();\n    \n    return obj;\n  }\n\n  recycleObject(obj) {\n    // Clear references before pooling\n    obj.id = null;\n    obj.data = null;\n    obj.timestamp = null;\n    \n    this.objectPool.push(obj);\n  }\n\n  // String interning to reduce memory usage\n  internString(str) {\n    if (this.stringPool.has(str)) {\n      return this.stringPool.get(str);\n    }\n    \n    this.stringPool.set(str, str);\n    return str;\n  }\n\n  // WeakMap usage to prevent memory leaks\n  associateMetadata(obj, metadata) {\n    this.weakRefs.set(obj, metadata);\n    // When obj is garbage collected, metadata is automatically removed\n  }\n}\n\n// Demonstrating memory leaks and how to prevent them\nclass MemoryLeakExamples {\n  constructor() {\n    this.listeners = new Set();\n    this.timers = new Set();\n    this.observers = new Set();\n  }\n\n  // ❌ Memory leak: Forgotten event listener\n  addEventListenerBad() {\n    const button = document.getElementById('myButton');\n    button.addEventListener('click', this.handleClick.bind(this));\n    // Listener never removed, creates memory leak\n  }\n\n  // ✅ Proper cleanup\n  addEventListenerGood() {\n    const button = document.getElementById('myButton');\n    const boundHandler = this.handleClick.bind(this);\n    \n    button.addEventListener('click', boundHandler);\n    this.listeners.add({ element: button, event: 'click', handler: boundHandler });\n  }\n\n  // ❌ Memory leak: Forgotten timer\n  startTimerBad() {\n    setInterval(() =\u003e {\n      console.log('Timer running...');\n    }, 1000);\n    // Timer never cleared\n  }\n\n  // ✅ Proper timer management\n  startTimerGood() {\n    const timerId = setInterval(() =\u003e {\n      console.log('Timer running...');\n    }, 1000);\n    \n    this.timers.add(timerId);\n  }\n\n  // ❌ Memory leak: Circular references\n  createCircularReferenceBad() {\n    const obj1 = {};\n    const obj2 = {};\n    \n    obj1.ref = obj2;\n    obj2.ref = obj1; // Circular reference\n    \n    return { obj1, obj2 }; // Both objects cannot be garbage collected\n  }\n\n  // ✅ Using WeakMap to break cycles\n  createCircularReferenceGood() {\n    const obj1 = {};\n    const obj2 = {};\n    const refs = new WeakMap();\n    \n    refs.set(obj1, obj2);\n    refs.set(obj2, obj1);\n    \n    return { obj1, obj2, getRefs: (obj) =\u003e refs.get(obj) };\n  }\n\n  // Cleanup method\n  cleanup() {\n    // Remove all event listeners\n    this.listeners.forEach(({ element, event, handler }) =\u003e {\n      element.removeEventListener(event, handler);\n    });\n    this.listeners.clear();\n\n    // Clear all timers\n    this.timers.forEach(timerId =\u003e clearInterval(timerId));\n    this.timers.clear();\n\n    // Disconnect all observers\n    this.observers.forEach(observer =\u003e observer.disconnect());\n    this.observers.clear();\n  }\n\n  handleClick(event) {\n    console.log('Button clicked');\n  }\n}\n```\n\n### **Understanding Garbage Collection**\n\n```javascript\n// Demonstrating GC behavior and optimization\nclass GarbageCollectionDemo {\n  constructor() {\n    this.largeObjects = [];\n    this.generation = 0;\n  }\n\n  // Force garbage collection (for demonstration in Node.js)\n  forceGC() {\n    if (global.gc) {\n      global.gc();\n    }\n  }\n\n  // Monitor memory usage\n  getMemoryUsage() {\n    if (performance.memory) {\n      return {\n        used: performance.memory.usedJSHeapSize,\n        total: performance.memory.totalJSHeapSize,\n        limit: performance.memory.jsHeapSizeLimit\n      };\n    }\n    return null;\n  }\n\n  // Demonstrate generational GC behavior\n  demonstrateGenerationalGC() {\n    const beforeMemory = this.getMemoryUsage();\n    \n    // Create young generation objects (likely to be collected quickly)\n    for (let i = 0; i \u003c 1000; i++) {\n      const temp = { id: i, data: new Array(100).fill(i) };\n      // These objects become eligible for collection immediately\n    }\n    \n    // Create older generation objects (survive longer)\n    for (let i = 0; i \u003c 100; i++) {\n      this.largeObjects.push({\n        id: i,\n        generation: this.generation,\n        data: new Array(1000).fill(i),\n        created: Date.now()\n      });\n    }\n    \n    this.generation++;\n    \n    const afterMemory = this.getMemoryUsage();\n    \n    return {\n      before: beforeMemory,\n      after: afterMemory,\n      difference: afterMemory ? afterMemory.used - beforeMemory.used : null\n    };\n  }\n\n  // Optimize for mark-and-sweep collector\n  optimizeForMarkSweep() {\n    // Remove circular references\n    this.largeObjects.forEach(obj =\u003e {\n      if (obj.parent) {\n        obj.parent = null;\n      }\n    });\n    \n    // Clear arrays efficiently\n    this.largeObjects.length = 0; // Better than this.largeObjects = []\n  }\n}\n```\n\n---\n\n## Execution Context \u0026 Scope Chain\n\n### **Advanced Scope and Closure Patterns**\n\n{% raw %}\n```javascript\n// Understanding execution context and scope chain\nclass ExecutionContextDemo {\n  constructor() {\n    this.globalVar = 'global';\n  }\n\n  // Demonstrating scope chain resolution\n  demonstrateScopeChain() {\n    const outerVar = 'outer';\n    \n    function outerFunction() {\n      const middleVar = 'middle';\n      \n      function innerFunction() {\n        const innerVar = 'inner';\n        \n        // Scope chain: innerFunction -\u003e outerFunction -\u003e global\n        console.log(innerVar);   // Found in current scope\n        console.log(middleVar);  // Found in outer function scope\n        console.log(outerVar);   // Found in function scope\n        console.log(this.globalVar); // Found in global scope (if bound)\n        \n        // Demonstrate lexical scoping\n        return function deepestFunction() {\n          // Still has access to all outer scopes\n          return { innerVar, middleVar, outerVar };\n        };\n      }\n      \n      return innerFunction;\n    }\n    \n    return outerFunction();\n  }\n\n  // Advanced closure patterns\n  createAdvancedClosure() {\n    let privateCounter = 0;\n    const privateArray = [];\n    \n    // Module pattern with closures\n    return {\n      increment(amount = 1) {\n        privateCounter += amount;\n        privateArray.push(privateCounter);\n        return this; // Method chaining\n      },\n      \n      decrement(amount = 1) {\n        privateCounter -= amount;\n        privateArray.push(privateCounter);\n        return this;\n      },\n      \n      getValue() {\n        return privateCounter;\n      },\n      \n      getHistory() {\n        return [...privateArray]; // Return copy to prevent mutation\n      },\n      \n      reset() {\n        privateCounter = 0;\n        privateArray.length = 0;\n        return this;\n      },\n      \n      // Lazy evaluation with closures\n      createLazyGetter(computeFunc) {\n        let cached = null;\n        let computed = false;\n        \n        return () =\u003e {\n          if (!computed) {\n            cached = computeFunc(privateCounter);\n            computed = true;\n          }\n          return cached;\n        };\n      }\n    };\n  }\n\n  // Temporal Dead Zone demonstration\n  demonstrateTemporalDeadZone() {\n    console.log('Before block');\n    \n    // console.log(letVar); // ReferenceError: Cannot access before initialization\n    // console.log(constVar); // ReferenceError: Cannot access before initialization\n    console.log(varVar); // undefined (hoisted but not initialized)\n    \n    {\n      // Temporal Dead Zone starts here for let and const\n      \n      // console.log(letVar); // ReferenceError\n      // console.log(constVar); // ReferenceError\n      \n      let letVar = 'let value';\n      const constVar = 'const value';\n      var varVar = 'var value';\n      \n      console.log({ letVar, constVar, varVar });\n    }\n    \n    // console.log(letVar); // ReferenceError: letVar is not defined\n    // console.log(constVar); // ReferenceError: constVar is not defined\n    console.log(varVar); // 'var value' (function scoped)\n  }\n\n  // Understanding 'this' binding in different contexts\n  demonstrateThisBinding() {\n    const regularFunction = function() {\n      return this; // Depends on how function is called\n    };\n    \n    const arrowFunction = () =\u003e {\n      return this; // Lexically bound to enclosing scope\n    };\n    \n    const obj = {\n      method: regularFunction,\n      arrowMethod: arrowFunction,\n      \n      // Method with explicit binding\n      boundMethod: regularFunction.bind({ bound: true }),\n      \n      // Method that returns bound function\n      createBoundFunction() {\n        return function() {\n          return this;\n        }.bind(this);\n      }\n    };\n    \n    return {\n      // Different call contexts\n      directCall: regularFunction(), // global object or undefined in strict mode\n      methodCall: obj.method(), // obj\n      arrowCall: obj.arrowMethod(), // lexical this (ExecutionContextDemo instance)\n      boundCall: obj.boundMethod(), // { bound: true }\n      \n      // Call/apply/bind\n      callExample: regularFunction.call({ called: true }),\n      applyExample: regularFunction.apply({ applied: true }),\n      bindExample: regularFunction.bind({ bound: true })(),\n      \n      // Constructor context\n      constructorExample: new (function Constructor() {\n        this.constructed = true;\n        return this;\n      })()\n    };\n  }\n}\n\n// Advanced closure patterns for real-world scenarios\nclass AdvancedClosurePatterns {\n  // Memoization with closures\n  static createMemoizer(func, maxCacheSize = 100) {\n    const cache = new Map();\n    const accessOrder = [];\n    \n    return function memoized(...args) {\n      const key = JSON.stringify(args);\n      \n      if (cache.has(key)) {\n        // Move to end (most recently used)\n        const index = accessOrder.indexOf(key);\n        accessOrder.splice(index, 1);\n        accessOrder.push(key);\n        return cache.get(key);\n      }\n      \n      const result = func.apply(this, args);\n      \n      // Implement LRU cache\n      if (cache.size \u003e= maxCacheSize) {\n        const lru = accessOrder.shift();\n        cache.delete(lru);\n      }\n      \n      cache.set(key, result);\n      accessOrder.push(key);\n      \n      return result;\n    };\n  }\n\n  // Debouncing with closures\n  static createDebouncer(func, delay, immediate = false) {\n    let timeoutId = null;\n    let lastCallTime = 0;\n    \n    return function debounced(...args) {\n      const callNow = immediate \u0026\u0026 !timeoutId;\n      const now = Date.now();\n      \n      clearTimeout(timeoutId);\n      \n      timeoutId = setTimeout(() =\u003e {\n        timeoutId = null;\n        if (!immediate) {\n          func.apply(this, args);\n        }\n      }, delay);\n      \n      if (callNow) {\n        func.apply(this, args);\n      }\n      \n      lastCallTime = now;\n    };\n  }\n\n  // Throttling with closures\n  static createThrottler(func, limit) {\n    let inThrottle = false;\n    let lastFunc = null;\n    let lastRan = null;\n    \n    return function throttled(...args) {\n      if (!inThrottle) {\n        func.apply(this, args);\n        lastRan = Date.now();\n        inThrottle = true;\n      } else {\n        clearTimeout(lastFunc);\n        lastFunc = setTimeout(() =\u003e {\n          if ((Date.now() - lastRan) \u003e= limit) {\n            func.apply(this, args);\n            lastRan = Date.now();\n          }\n        }, limit - (Date.now() - lastRan));\n      }\n    };\n  }\n\n  // State machine with closures\n  static createStateMachine(initialState, transitions) {\n    let currentState = initialState;\n    const stateHistory = [initialState];\n    \n    return {\n      getCurrentState() {\n        return currentState;\n      },\n      \n      getHistory() {\n        return [...stateHistory];\n      },\n      \n      transition(action) {\n        const possibleTransitions = transitions[currentState];\n        \n        if (!possibleTransitions || !possibleTransitions[action]) {\n          throw new Error(`Invalid transition: ${currentState} -\u003e ${action}`);\n        }\n        \n        const newState = possibleTransitions[action];\n        currentState = newState;\n        stateHistory.push(newState);\n        \n        return newState;\n      },\n      \n      canTransition(action) {\n        const possibleTransitions = transitions[currentState];\n        return !!(possibleTransitions \u0026\u0026 possibleTransitions[action]);\n      },\n      \n      reset() {\n        currentState = initialState;\n        stateHistory.length = 1;\n        stateHistory[0] = initialState;\n      }\n    };\n  }\n}\n```\n{% endraw %}\n\n---\n\n## Asynchronous JavaScript Mastery\n\n### **Advanced Promise Patterns**\n\n```javascript\n// Advanced promise patterns and error handling\nclass AdvancedPromisePatterns {\n  // Promise.all with individual error handling\n  static async allSettled(promises) {\n    return Promise.allSettled(promises).then(results =\u003e {\n      const fulfilled = [];\n      const rejected = [];\n      \n      results.forEach((result, index) =\u003e {\n        if (result.status === 'fulfilled') {\n          fulfilled.push({ index, value: result.value });\n        } else {\n          rejected.push({ index, reason: result.reason });\n        }\n      });\n      \n      return { fulfilled, rejected };\n    });\n  }\n\n  // Promise with timeout\n  static withTimeout(promise, timeoutMs, timeoutMessage = 'Operation timed out') {\n    return Promise.race([\n      promise,\n      new Promise((_, reject) =\u003e {\n        setTimeout(() =\u003e reject(new Error(timeoutMessage)), timeoutMs);\n      })\n    ]);\n  }\n\n  // Retry mechanism with exponential backoff\n  static async retryWithBackoff(\n    operation, \n    maxRetries = 3, \n    baseDelay = 1000, \n    maxDelay = 10000,\n    backoffFactor = 2\n  ) {\n    let lastError;\n    \n    for (let attempt = 0; attempt \u003c= maxRetries; attempt++) {\n      try {\n        return await operation();\n      } catch (error) {\n        lastError = error;\n        \n        if (attempt === maxRetries) {\n          throw new Error(`Operation failed after ${maxRetries + 1} attempts: ${error.message}`);\n        }\n        \n        const delay = Math.min(baseDelay * Math.pow(backoffFactor, attempt), maxDelay);\n        await this.delay(delay);\n      }\n    }\n  }\n\n  // Circuit breaker pattern\n  static createCircuitBreaker(operation, threshold = 5, timeout = 60000) {\n    let failures = 0;\n    let lastFailureTime = null;\n    let state = 'CLOSED'; // CLOSED, OPEN, HALF_OPEN\n    \n    return async function circuitBreakerWrapper(...args) {\n      const now = Date.now();\n      \n      // Reset if timeout has passed\n      if (state === 'OPEN' \u0026\u0026 now - lastFailureTime \u003e timeout) {\n        state = 'HALF_OPEN';\n        failures = 0;\n      }\n      \n      if (state === 'OPEN') {\n        throw new Error('Circuit breaker is OPEN');\n      }\n      \n      try {\n        const result = await operation(...args);\n        \n        // Success - reset failure count\n        if (state === 'HALF_OPEN') {\n          state = 'CLOSED';\n        }\n        failures = 0;\n        \n        return result;\n      } catch (error) {\n        failures++;\n        lastFailureTime = now;\n        \n        if (failures \u003e= threshold) {\n          state = 'OPEN';\n        }\n        \n        throw error;\n      }\n    };\n  }\n\n  // Promise queue for rate limiting\n  static createPromiseQueue(concurrency = 1) {\n    const queue = [];\n    let running = 0;\n    \n    async function process() {\n      if (running \u003e= concurrency || queue.length === 0) {\n        return;\n      }\n      \n      running++;\n      const { operation, resolve, reject } = queue.shift();\n      \n      try {\n        const result = await operation();\n        resolve(result);\n      } catch (error) {\n        reject(error);\n      } finally {\n        running--;\n        process(); // Process next item\n      }\n    }\n    \n    return {\n      add(operation) {\n        return new Promise((resolve, reject) =\u003e {\n          queue.push({ operation, resolve, reject });\n          process();\n        });\n      },\n      \n      clear() {\n        queue.length = 0;\n      },\n      \n      size() {\n        return queue.length;\n      },\n      \n      isRunning() {\n        return running \u003e 0;\n      }\n    };\n  }\n\n  // Cancellable promises\n  static createCancellablePromise(operation) {\n    let cancelled = false;\n    let cancelResolve;\n    \n    const cancelPromise = new Promise(resolve =\u003e {\n      cancelResolve = resolve;\n    });\n    \n    const mainPromise = new Promise(async (resolve, reject) =\u003e {\n      try {\n        const result = await Promise.race([\n          operation(),\n          cancelPromise.then(() =\u003e {\n            throw new Error('Operation cancelled');\n          })\n        ]);\n        \n        if (!cancelled) {\n          resolve(result);\n        }\n      } catch (error) {\n        if (!cancelled) {\n          reject(error);\n        }\n      }\n    });\n    \n    return {\n      promise: mainPromise,\n      cancel() {\n        cancelled = true;\n        cancelResolve();\n      },\n      isCancelled() {\n        return cancelled;\n      }\n    };\n  }\n\n  // Utility methods\n  static delay(ms) {\n    return new Promise(resolve =\u003e setTimeout(resolve, ms));\n  }\n\n  // Progressive loading with promises\n  static async loadResourcesProgressively(resources, onProgress) {\n    const results = [];\n    \n    for (let i = 0; i \u003c resources.length; i++) {\n      try {\n        const result = await resources[i]();\n        results.push({ success: true, data: result, index: i });\n        \n        if (onProgress) {\n          onProgress({\n            completed: i + 1,\n            total: resources.length,\n            percentage: ((i + 1) / resources.length) * 100,\n            result\n          });\n        }\n      } catch (error) {\n        results.push({ success: false, error, index: i });\n        \n        if (onProgress) {\n          onProgress({\n            completed: i + 1,\n            total: resources.length,\n            percentage: ((i + 1) / resources.length) * 100,\n            error\n          });\n        }\n      }\n    }\n    \n    return results;\n  }\n}\n\n// Advanced async/await patterns\nclass AsyncAwaitPatterns {\n  // Parallel execution with async/await\n  async executeInParallel(operations) {\n    const startTime = Date.now();\n    \n    try {\n      // Execute all operations in parallel\n      const results = await Promise.all(operations.map(async (op, index) =\u003e {\n        const opStartTime = Date.now();\n        const result = await op();\n        const duration = Date.now() - opStartTime;\n        \n        return { index, result, duration, success: true };\n      }));\n      \n      return {\n        success: true,\n        results,\n        totalDuration: Date.now() - startTime\n      };\n    } catch (error) {\n      return {\n        success: false,\n        error: error.message,\n        totalDuration: Date.now() - startTime\n      };\n    }\n  }\n\n  // Sequential execution with async/await\n  async executeSequentially(operations) {\n    const results = [];\n    const startTime = Date.now();\n    \n    for (let i = 0; i \u003c operations.length; i++) {\n      const opStartTime = Date.now();\n      \n      try {\n        const result = await operations[i]();\n        const duration = Date.now() - opStartTime;\n        \n        results.push({ index: i, result, duration, success: true });\n      } catch (error) {\n        const duration = Date.now() - opStartTime;\n        results.push({ index: i, error: error.message, duration, success: false });\n        \n        // Stop on first error\n        break;\n      }\n    }\n    \n    return {\n      results,\n      totalDuration: Date.now() - startTime,\n      completed: results.length,\n      total: operations.length\n    };\n  }\n\n  // Async iteration patterns\n  async *asyncGenerator(data) {\n    for (const item of data) {\n      // Simulate async processing\n      await AdvancedPromisePatterns.delay(100);\n      yield item * 2;\n    }\n  }\n\n  async processAsyncIterable(iterable) {\n    const results = [];\n    \n    for await (const item of iterable) {\n      results.push(item);\n    }\n    \n    return results;\n  }\n\n  // Error handling patterns\n  async executeWithGracefulFailure(operations, { \n    continueOnError = true, \n    maxErrors = Infinity,\n    errorHandler = null \n  } = {}) {\n    const results = [];\n    const errors = [];\n    let errorCount = 0;\n    \n    for (let i = 0; i \u003c operations.length; i++) {\n      try {\n        const result = await operations[i]();\n        results.push({ index: i, result, success: true });\n      } catch (error) {\n        errorCount++;\n        const errorInfo = { index: i, error: error.message, success: false };\n        \n        errors.push(errorInfo);\n        results.push(errorInfo);\n        \n        if (errorHandler) {\n          await errorHandler(error, i);\n        }\n        \n        if (!continueOnError || errorCount \u003e= maxErrors) {\n          break;\n        }\n      }\n    }\n    \n    return {\n      results,\n      errors,\n      successCount: results.filter(r =\u003e r.success).length,\n      errorCount,\n      completed: results.length,\n      total: operations.length\n    };\n  }\n}\n```\n\n---\n\n## Event Loop \u0026 Microtasks\n\n### **Understanding the Event Loop**\n\n```javascript\n// Event loop demonstration and microtask understanding\nclass EventLoopDemo {\n  constructor() {\n    this.executionOrder = [];\n    this.timers = [];\n  }\n\n  // Demonstrate event loop phases\n  demonstrateEventLoop() {\n    this.executionOrder = [];\n    \n    // 1. Synchronous code\n    this.log('1: Synchronous start');\n    \n    // 2. Macrotask (Timer)\n    setTimeout(() =\u003e {\n      this.log('6: setTimeout (macrotask)');\n    }, 0);\n    \n    // 3. Microtask (Promise)\n    Promise.resolve().then(() =\u003e {\n      this.log('4: Promise.then (microtask)');\n    });\n    \n    // 4. Immediate microtask\n    queueMicrotask(() =\u003e {\n      this.log('5: queueMicrotask');\n    });\n    \n    // 5. More synchronous code\n    this.log('2: Synchronous middle');\n    \n    // 6. Nested microtask\n    Promise.resolve().then(() =\u003e {\n      this.log('3: First Promise');\n      \n      // This microtask runs before macrotasks\n      Promise.resolve().then(() =\u003e {\n        this.log('3.5: Nested Promise (microtask)');\n      });\n    });\n    \n    this.log('3: Synchronous end');\n    \n    // Return promise that resolves after all tasks complete\n    return new Promise(resolve =\u003e {\n      setTimeout(() =\u003e {\n        resolve(this.executionOrder);\n      }, 10);\n    });\n  }\n\n  // Demonstrate microtask vs macrotask priority\n  demonstratePriority() {\n    this.executionOrder = [];\n    \n    // Schedule multiple macrotasks\n    setTimeout(() =\u003e this.log('Timeout 1'), 0);\n    setTimeout(() =\u003e this.log('Timeout 2'), 0);\n    \n    // Schedule multiple microtasks\n    Promise.resolve().then(() =\u003e this.log('Promise 1'));\n    Promise.resolve().then(() =\u003e this.log('Promise 2'));\n    \n    // Immediate execution\n    this.log('Sync code');\n    \n    // More microtasks\n    queueMicrotask(() =\u003e this.log('Microtask 1'));\n    queueMicrotask(() =\u003e this.log('Microtask 2'));\n    \n    return new Promise(resolve =\u003e {\n      setTimeout(() =\u003e resolve(this.executionOrder), 10);\n    });\n  }\n\n  // Complex event loop scenario\n  demonstrateComplexScenario() {\n    this.executionOrder = [];\n    \n    this.log('=== Start ===');\n    \n    setTimeout(() =\u003e {\n      this.log('Timer 1');\n      \n      Promise.resolve().then(() =\u003e {\n        this.log('Promise in Timer 1');\n      });\n      \n      setTimeout(() =\u003e {\n        this.log('Nested Timer in Timer 1');\n      }, 0);\n    }, 0);\n    \n    Promise.resolve().then(() =\u003e {\n      this.log('Promise 1');\n      \n      setTimeout(() =\u003e {\n        this.log('Timer in Promise 1');\n      }, 0);\n      \n      return Promise.resolve();\n    }).then(() =\u003e {\n      this.log('Chained Promise 1');\n    });\n    \n    setTimeout(() =\u003e {\n      this.log('Timer 2');\n    }, 0);\n    \n    Promise.resolve().then(() =\u003e {\n      this.log('Promise 2');\n    });\n    \n    this.log('=== End Sync ===');\n    \n    return new Promise(resolve =\u003e {\n      setTimeout(() =\u003e resolve(this.executionOrder), 50);\n    });\n  }\n\n  // Demonstrate blocking behavior\n  demonstrateBlocking() {\n    this.executionOrder = [];\n    \n    this.log('Before blocking operation');\n    \n    // Simulate CPU-intensive task\n    const start = Date.now();\n    while (Date.now() - start \u003c 100) {\n      // Blocking loop\n    }\n    \n    this.log('After blocking operation');\n    \n    setTimeout(() =\u003e {\n      this.log('This timer was delayed by blocking');\n    }, 0);\n    \n    Promise.resolve().then(() =\u003e {\n      this.log('This microtask runs immediately');\n    });\n    \n    return this.executionOrder;\n  }\n\n  // Non-blocking alternatives\n  demonstrateNonBlocking() {\n    this.executionOrder = [];\n    \n    this.log('Before non-blocking operation');\n    \n    // Break up work into chunks\n    this.performWorkInChunks(100, 10).then(() =\u003e {\n      this.log('Non-blocking work completed');\n    });\n    \n    setTimeout(() =\u003e {\n      this.log('This timer is not blocked');\n    }, 50);\n    \n    return new Promise(resolve =\u003e {\n      setTimeout(() =\u003e resolve(this.executionOrder), 200);\n    });\n  }\n\n  async performWorkInChunks(totalWork, chunkSize) {\n    for (let i = 0; i \u003c totalWork; i += chunkSize) {\n      // Do chunk of work\n      const end = Math.min(i + chunkSize, totalWork);\n      for (let j = i; j \u003c end; j++) {\n        // Simulate work\n        Math.random();\n      }\n      \n      // Yield control back to event loop\n      await new Promise(resolve =\u003e setTimeout(resolve, 0));\n      \n      if (i % 50 === 0) {\n        this.log(`Processed ${i}/${totalWork} items`);\n      }\n    }\n  }\n\n  log(message) {\n    const timestamp = performance.now().toFixed(2);\n    const entry = `${timestamp}ms: ${message}`;\n    this.executionOrder.push(entry);\n    console.log(entry);\n  }\n}\n\n// Web Workers for true parallelism\nclass WebWorkerDemo {\n  constructor() {\n    this.workers = new Map();\n  }\n\n  // Create and manage web workers\n  createWorker(script) {\n    const blob = new Blob([script], { type: 'application/javascript' });\n    const workerUrl = URL.createObjectURL(blob);\n    const worker = new Worker(workerUrl);\n    \n    const workerId = Math.random().toString(36).substr(2, 9);\n    this.workers.set(workerId, worker);\n    \n    // Cleanup\n    worker.addEventListener('error', () =\u003e {\n      URL.revokeObjectURL(workerUrl);\n      this.workers.delete(workerId);\n    });\n    \n    return { worker, workerId };\n  }\n\n  // Heavy computation in web worker\n  performHeavyComputation(data) {\n    const workerScript = `\n      self.onmessage = function(e) {\n        const { data, operation } = e.data;\n        \n        let result;\n        const startTime = Date.now();\n        \n        switch(operation) {\n          case 'fibonacci':\n            result = fibonacci(data);\n            break;\n          case 'primes':\n            result = findPrimes(data);\n            break;\n          case 'sort':\n            result = data.sort((a, b) =\u003e a - b);\n            break;\n          default:\n            result = data;\n        }\n        \n        const duration = Date.now() - startTime;\n        \n        self.postMessage({ result, duration });\n      };\n      \n      function fibonacci(n) {\n        if (n \u003c= 1) return n;\n        return fibonacci(n - 1) + fibonacci(n - 2);\n      }\n      \n      function findPrimes(max) {\n        const primes = [];\n        for (let i = 2; i \u003c= max; i++) {\n          let isPrime = true;\n          for (let j = 2; j \u003c= Math.sqrt(i); j++) {\n            if (i % j === 0) {\n              isPrime = false;\n              break;\n            }\n          }\n          if (isPrime) primes.push(i);\n        }\n        return primes;\n      }\n    `;\n    \n    const { worker, workerId } = this.createWorker(workerScript);\n    \n    return new Promise((resolve, reject) =\u003e {\n      worker.onmessage = (e) =\u003e {\n        resolve(e.data);\n        worker.terminate();\n        this.workers.delete(workerId);\n      };\n      \n      worker.onerror = (error) =\u003e {\n        reject(error);\n        worker.terminate();\n        this.workers.delete(workerId);\n      };\n      \n      worker.postMessage(data);\n    });\n  }\n\n  // Cleanup all workers\n  terminateAllWorkers() {\n    this.workers.forEach(worker =\u003e worker.terminate());\n    this.workers.clear();\n  }\n}\n```\n\n---\n\n## Prototypal Inheritance Deep Dive\n\n### **Advanced Prototype Patterns**\n\n```javascript\n// Understanding prototype chain and inheritance\nclass PrototypeDemo {\n  // Demonstrate prototype chain\n  static demonstratePrototypeChain() {\n    // Create base object\n    const animal = {\n      type: 'Animal',\n      breathe() {\n        return `${this.name} is breathing`;\n      }\n    };\n    \n    // Create mammal that inherits from animal\n    const mammal = Object.create(animal);\n    mammal.type = 'Mammal';\n    mammal.warmBlooded = true;\n    mammal.nurse = function() {\n      return `${this.name} is nursing`;\n    };\n    \n    // Create dog that inherits from mammal\n    const dog = Object.create(mammal);\n    dog.type = 'Dog';\n    dog.bark = function() {\n      return `${this.name} is barking`;\n    };\n    \n    // Create specific dog instance\n    const buddy = Object.create(dog);\n    buddy.name = 'Buddy';\n    buddy.breed = 'Golden Retriever';\n    \n    // Demonstrate prototype chain traversal\n    console.log('Prototype chain for buddy:');\n    let current = buddy;\n    let level = 0;\n    \n    while (current) {\n      console.log(`Level ${level}:`, current);\n      console.log('Own properties:', Object.getOwnPropertyNames(current));\n      current = Object.getPrototypeOf(current);\n      level++;\n      \n      if (level \u003e 10) break; // Prevent infinite loop\n    }\n    \n    return {\n      buddy,\n      chain: {\n        canBreathe: buddy.breathe(),\n        canNurse: buddy.nurse(),\n        canBark: buddy.bark(),\n        properties: {\n          name: buddy.name,\n          breed: buddy.breed,\n          type: buddy.type,\n          warmBlooded: buddy.warmBlooded\n        }\n      }\n    };\n  }\n\n  // Classical inheritance patterns\n  static demonstrateClassicalInheritance() {\n    // Constructor function pattern\n    function Vehicle(make, model) {\n      this.make = make;\n      this.model = model;\n      this.speed = 0;\n    }\n    \n    Vehicle.prototype.accelerate = function(amount) {\n      this.speed += amount;\n      return this;\n    };\n    \n    Vehicle.prototype.brake = function(amount) {\n      this.speed = Math.max(0, this.speed - amount);\n      return this;\n    };\n    \n    Vehicle.prototype.getInfo = function() {\n      return `${this.make} ${this.model} going ${this.speed} mph`;\n    };\n    \n    // Inheritance with constructor functions\n    function Car(make, model, doors) {\n      // Call parent constructor\n      Vehicle.call(this, make, model);\n      this.doors = doors;\n    }\n    \n    // Set up prototype chain\n    Car.prototype = Object.create(Vehicle.prototype);\n    Car.prototype.constructor = Car;\n    \n    // Add car-specific methods\n    Car.prototype.honk = function() {\n      return `${this.make} ${this.model} is honking!`;\n    };\n    \n    // Override parent method\n    Car.prototype.getInfo = function() {\n      return `${this.make} ${this.model} (${this.doors} doors) going ${this.speed} mph`;\n    };\n    \n    const myCar = new Car('Toyota', 'Camry', 4);\n    \n    return {\n      myCar,\n      demo: {\n        initial: myCar.getInfo(),\n        afterAccelerate: myCar.accelerate(30).getInfo(),\n        afterBrake: myCar.brake(10).getInfo(),\n        honk: myCar.honk(),\n        instanceof: {\n          Car: myCar instanceof Car,\n          Vehicle: myCar instanceof Vehicle,\n          Object: myCar instanceof Object\n        }\n      }\n    };\n  }\n\n  // Modern class syntax with private fields\n  static demonstrateModernClasses() {\n    class Shape {\n      #id = Math.random().toString(36).substr(2, 9);\n      \n      constructor(color) {\n        this.color = color;\n      }\n      \n      get id() {\n        return this.#id;\n      }\n      \n      area() {\n        throw new Error('area() must be implemented by subclass');\n      }\n      \n      getInfo() {\n        return `${this.constructor.name} (${this.color}) - Area: ${this.area()}`;\n      }\n      \n      static isShape(obj) {\n        return obj instanceof Shape;\n      }\n    }\n    \n    class Circle extends Shape {\n      #radius;\n      \n      constructor(color, radius) {\n        super(color);\n        this.#radius = radius;\n      }\n      \n      get radius() {\n        return this.#radius;\n      }\n      \n      set radius(value) {\n        if (value \u003c= 0) {\n          throw new Error('Radius must be positive');\n        }\n        this.#radius = value;\n      }\n      \n      area() {\n        return Math.PI * this.#radius ** 2;\n      }\n      \n      circumference() {\n        return 2 * Math.PI * this.#radius;\n      }\n    }\n    \n    class Rectangle extends Shape {\n      #width;\n      #height;\n      \n      constructor(color, width, height) {\n        super(color);\n        this.#width = width;\n        this.#height = height;\n      }\n      \n      get dimensions() {\n        return { width: this.#width, height: this.#height };\n      }\n      \n      area() {\n        return this.#width * this.#height;\n      }\n      \n      perimeter() {\n        return 2 * (this.#width + this.#height);\n      }\n    }\n    \n    const circle = new Circle('red', 5);\n    const rectangle = new Rectangle('blue', 4, 6);\n    \n    return {\n      circle: {\n        info: circle.getInfo(),\n        circumference: circle.circumference(),\n        id: circle.id,\n        isShape: Shape.isShape(circle)\n      },\n      rectangle: {\n        info: rectangle.getInfo(),\n        perimeter: rectangle.perimeter(),\n        dimensions: rectangle.dimensions,\n        isShape: Shape.isShape(rectangle)\n      }\n    };\n  }\n\n  // Mixin patterns\n  static demonstrateMixins() {\n    // Mixin for event handling\n    const EventMixin = {\n      addEventListener(event, callback) {\n        if (!this._events) this._events = {};\n        if (!this._events[event]) this._events[event] = [];\n        this._events[event].push(callback);\n      },\n      \n      removeEventListener(event, callback) {\n        if (!this._events || !this._events[event]) return;\n        const index = this._events[event].indexOf(callback);\n        if (index \u003e -1) {\n          this._events[event].splice(index, 1);\n        }\n      },\n      \n      dispatchEvent(event, data) {\n        if (!this._events || !this._events[event]) return;\n        this._events[event].forEach(callback =\u003e callback(data));\n      }\n    };\n    \n    // Mixin for validation\n    const ValidationMixin = {\n      addValidator(field, validator) {\n        if (!this._validators) this._validators = {};\n        if (!this._validators[field]) this._validators[field] = [];\n        this._validators[field].push(validator);\n      },\n      \n      validate(data) {\n        if (!this._validators) return { valid: true, errors: {} };\n        \n        const errors = {};\n        let valid = true;\n        \n        for (const [field, validators] of Object.entries(this._validators)) {\n          const fieldErrors = [];\n          \n          for (const validator of validators) {\n            const result = validator(data[field]);\n            if (result !== true) {\n              fieldErrors.push(result);\n              valid = false;\n            }\n          }\n          \n          if (fieldErrors.length \u003e 0) {\n            errors[field] = fieldErrors;\n          }\n        }\n        \n        return { valid, errors };\n      }\n    };\n    \n    // Combine mixins\n    function createUser(name, email) {\n      const user = {\n        name,\n        email,\n        \n        setName(newName) {\n          const oldName = this.name;\n          this.name = newName;\n          this.dispatchEvent('nameChanged', { oldName, newName });\n        },\n        \n        setEmail(newEmail) {\n          const validation = this.validate({ email: newEmail });\n          if (!validation.valid) {\n            throw new Error(`Invalid email: ${validation.errors.email.join(', ')}`);\n          }\n          \n          const oldEmail = this.email;\n          this.email = newEmail;\n          this.dispatchEvent('emailChanged', { oldEmail, newEmail });\n        }\n      };\n      \n      // Apply mixins\n      Object.assign(user, EventMixin, ValidationMixin);\n      \n      // Add email validator\n      user.addValidator('email', (email) =\u003e {\n        const emailRegex = /^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/;\n        return emailRegex.test(email) || 'Invalid email format';\n      });\n      \n      return user;\n    }\n    \n    const user = createUser('John Doe', 'john@example.com');\n    \n    // Set up event listeners\n    const events = [];\n    user.addEventListener('nameChanged', (data) =\u003e {\n      events.push(`Name changed from ${data.oldName} to ${data.newName}`);\n    });\n    \n    user.addEventListener('emailChanged', (data) =\u003e {\n      events.push(`Email changed from ${data.oldEmail} to ${data.newEmail}`);\n    });\n    \n    // Test the user object\n    user.setName('Jane Doe');\n    user.setEmail('jane@example.com');\n    \n    return {\n      user: {\n        name: user.name,\n        email: user.email\n      },\n      events,\n      validation: user.validate({ email: 'invalid-email' })\n    };\n  }\n}\n```\n\nThis comprehensive guide covers the fundamental JavaScript concepts that are crucial for frontend interviews, providing both theoretical understanding and practical implementation examples that demonstrate mastery of the language.\n"])</script><script>self.__next_f.push([1,"8:[\"slug\",\"frontend/fundamentals/javascript-advanced-fundamentals\",\"c\"]\nd:[]\n"])</script><script>self.__next_f.push([1,"0:[\"$\",\"$L3\",null,{\"buildId\":\"7uJ7BVaXJTiEOD9iYDv3n\",\"assetPrefix\":\"/interview\",\"urlParts\":[\"\",\"docs\",\"frontend\",\"fundamentals\",\"javascript-advanced-fundamentals\"],\"initialTree\":[\"\",{\"children\":[\"docs\",{\"children\":[[\"slug\",\"frontend/fundamentals/javascript-advanced-fundamentals\",\"c\"],{\"children\":[\"__PAGE__?{\\\"slug\\\":[\\\"frontend\\\",\\\"fundamentals\\\",\\\"javascript-advanced-fundamentals\\\"]}\",{}]}]}]},\"$undefined\",\"$undefined\",true],\"initialSeedData\":[\"\",{\"children\":[\"docs\",{\"children\":[[\"slug\",\"frontend/fundamentals/javascript-advanced-fundamentals\",\"c\"],{\"children\":[\"__PAGE__\",{},[[\"$L4\",[\"$\",\"div\",null,{\"style\":{\"maxWidth\":\"1200px\",\"margin\":\"0 auto\",\"padding\":\"2rem\",\"paddingTop\":\"6rem\"},\"children\":[[\"$\",\"div\",null,{\"style\":{\"marginBottom\":\"2rem\"},\"children\":[[\"$\",\"nav\",null,{\"style\":{\"color\":\"#64748b\",\"fontSize\":\"0.9rem\",\"marginBottom\":\"1rem\"},\"children\":[[\"$\",\"a\",null,{\"href\":\"/\",\"style\":{\"color\":\"#3b82f6\",\"textDecoration\":\"none\"},\"children\":\"Home\"}],\" \u003e \",[\"$\",\"span\",null,{\"children\":\"frontend \u003e fundamentals \u003e javascript-advanced-fundamentals\"}]]}],[\"$\",\"h1\",null,{\"style\":{\"fontSize\":\"2.5rem\",\"fontWeight\":\"800\",\"marginBottom\":\"0.5rem\",\"color\":\"#1e293b\"},\"children\":\"Javascript Advanced Fundamentals\"}],[\"$\",\"div\",null,{\"style\":{\"color\":\"#64748b\",\"fontSize\":\"0.9rem\",\"marginBottom\":\"2rem\"},\"children\":[[\"$\",\"span\",null,{\"children\":[\"📁 \",\"frontend/fundamentals/javascript-advanced-fundamentals.md\"]}],\"$undefined\",\"$undefined\"]}]]}],[\"$\",\"$L5\",null,{\"content\":\"$6\"}]]}],null],null],null]},[null,[\"$\",\"$L7\",null,{\"parallelRouterKey\":\"children\",\"segmentPath\":[\"children\",\"docs\",\"children\",\"$8\",\"children\"],\"error\":\"$undefined\",\"errorStyles\":\"$undefined\",\"errorScripts\":\"$undefined\",\"template\":[\"$\",\"$L9\",null,{}],\"templateStyles\":\"$undefined\",\"templateScripts\":\"$undefined\",\"notFound\":\"$undefined\",\"notFoundStyles\":\"$undefined\"}]],null]},[null,[\"$\",\"$L7\",null,{\"parallelRouterKey\":\"children\",\"segmentPath\":[\"children\",\"docs\",\"children\"],\"error\":\"$undefined\",\"errorStyles\":\"$undefined\",\"errorScripts\":\"$undefined\",\"template\":[\"$\",\"$L9\",null,{}],\"templateStyles\":\"$undefined\",\"templateScripts\":\"$undefined\",\"notFound\":\"$undefined\",\"notFoundStyles\":\"$undefined\"}]],null]},[[[[\"$\",\"link\",\"0\",{\"rel\":\"stylesheet\",\"href\":\"/interview/_next/static/css/387024c6a2216908.css\",\"precedence\":\"next\",\"crossOrigin\":\"$undefined\"}]],[\"$\",\"$La\",null,{\"children\":[\"$\",\"$L7\",null,{\"parallelRouterKey\":\"children\",\"segmentPath\":[\"children\"],\"error\":\"$undefined\",\"errorStyles\":\"$undefined\",\"errorScripts\":\"$undefined\",\"template\":[\"$\",\"$L9\",null,{}],\"templateStyles\":\"$undefined\",\"templateScripts\":\"$undefined\",\"notFound\":[[\"$\",\"title\",null,{\"children\":\"404: This page could not be found.\"}],[\"$\",\"div\",null,{\"style\":{\"fontFamily\":\"system-ui,\\\"Segoe UI\\\",Roboto,Helvetica,Arial,sans-serif,\\\"Apple Color Emoji\\\",\\\"Segoe UI Emoji\\\"\",\"height\":\"100vh\",\"textAlign\":\"center\",\"display\":\"flex\",\"flexDirection\":\"column\",\"alignItems\":\"center\",\"justifyContent\":\"center\"},\"children\":[\"$\",\"div\",null,{\"children\":[[\"$\",\"style\",null,{\"dangerouslySetInnerHTML\":{\"__html\":\"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}\"}}],[\"$\",\"h1\",null,{\"className\":\"next-error-h1\",\"style\":{\"display\":\"inline-block\",\"margin\":\"0 20px 0 0\",\"padding\":\"0 23px 0 0\",\"fontSize\":24,\"fontWeight\":500,\"verticalAlign\":\"top\",\"lineHeight\":\"49px\"},\"children\":\"404\"}],[\"$\",\"div\",null,{\"style\":{\"display\":\"inline-block\"},\"children\":[\"$\",\"h2\",null,{\"style\":{\"fontSize\":14,\"fontWeight\":400,\"lineHeight\":\"49px\",\"margin\":0},\"children\":\"This page could not be found.\"}]}]]}]}]],\"notFoundStyles\":[]}],\"params\":{}}]],null],null],\"couldBeIntercepted\":false,\"initialHead\":[null,\"$Lb\"],\"globalErrorComponent\":\"$c\",\"missingSlots\":\"$Wd\"}]\n"])</script><script>self.__next_f.push([1,"b:[[\"$\",\"meta\",\"0\",{\"name\":\"viewport\",\"content\":\"width=device-width, initial-scale=1\"}],[\"$\",\"meta\",\"1\",{\"charSet\":\"utf-8\"}],[\"$\",\"title\",\"2\",{\"children\":\"Javascript Advanced Fundamentals - Frontend Interview Docs\"}],[\"$\",\"meta\",\"3\",{\"name\":\"description\",\"content\":\"# JavaScript Advanced Fundamentals  ## Overview Deep understanding of JavaScript fundamentals is crucial for frontend interviews. This guide covers advanced con\"}],[\"$\",\"meta\",\"4\",{\"property\":\"og:title\",\"content\":\"Javascript Advanced Fundamentals - Frontend Interview Docs\"}],[\"$\",\"meta\",\"5\",{\"property\":\"og:description\",\"content\":\"# JavaScript Advanced Fundamentals  ## Overview Deep understanding of JavaScript fundamentals is crucial for frontend interviews. This guide covers advanced con\"}],[\"$\",\"meta\",\"6\",{\"property\":\"og:type\",\"content\":\"article\"}],[\"$\",\"meta\",\"7\",{\"name\":\"twitter:card\",\"content\":\"summary\"}],[\"$\",\"meta\",\"8\",{\"name\":\"twitter:title\",\"content\":\"Javascript Advanced Fundamentals - Frontend Interview Docs\"}],[\"$\",\"meta\",\"9\",{\"name\":\"twitter:description\",\"content\":\"# JavaScript Advanced Fundamentals  ## Overview Deep understanding of JavaScript fundamentals is crucial for frontend interviews. This guide covers advanced con\"}],[\"$\",\"meta\",\"10\",{\"name\":\"next-size-adjust\"}]]\n4:null\n"])</script></body></html>

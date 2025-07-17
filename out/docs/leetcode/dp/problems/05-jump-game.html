@@ -1,0 +1,468 @@
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><meta name="viewport" content="width=device-width, initial-scale=1"/><link rel="preload" href="/interview/_next/static/media/e4af272ccee01ff0-s.p.woff2" as="font" crossorigin="" type="font/woff2"/><link rel="stylesheet" href="/interview/_next/static/css/387024c6a2216908.css" data-precedence="next"/><link rel="preload" as="script" fetchPriority="low" href="/interview/_next/static/chunks/webpack-be7d7df45533bffc.js"/><script src="/interview/_next/static/chunks/fd9d1056-6922f449a204c2cc.js" async=""></script><script src="/interview/_next/static/chunks/117-e7ecc085ce9cfab3.js" async=""></script><script src="/interview/_next/static/chunks/main-app-b06be5f3411c20c3.js" async=""></script><script src="/interview/_next/static/chunks/918-3273b83890f10546.js" async=""></script><script src="/interview/_next/static/chunks/930-3262a6c9c5acace4.js" async=""></script><script src="/interview/_next/static/chunks/app/docs/%5B...slug%5D/page-32962e9542d32755.js" async=""></script><script src="/interview/_next/static/chunks/710-dfaa11b4dff08f8e.js" async=""></script><script src="/interview/_next/static/chunks/972-011bba60ed155615.js" async=""></script><script src="/interview/_next/static/chunks/233-3e0c1d820a17eca9.js" async=""></script><script src="/interview/_next/static/chunks/app/layout-333f4adcd11f8f39.js" async=""></script><title>Frontend Interview Prep 2025 - Big Tech Interview Guide</title><meta name="description" content="Comprehensive frontend interview preparation for Big Tech companies including React, TypeScript, algorithms, and system design."/><link rel="icon" href="/favicon.ico"/><meta name="theme-color" content="#1a1a1a"/><meta property="og:title" content="Frontend Interview Prep 2025"/><meta property="og:description" content="Complete guide for frontend engineers targeting Big Tech companies"/><meta property="og:type" content="website"/><link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous"/><title>Jump Game - Frontend Interview Docs</title><meta name="description" content=" # Jump Game    ## Problem Description   *  * You are given an integer array nums. You are initially positioned at the array&#x27;s first  * index, and each element "/><meta property="og:title" content="Jump Game - Frontend Interview Docs"/><meta property="og:description" content=" # Jump Game    ## Problem Description   *  * You are given an integer array nums. You are initially positioned at the array&#x27;s first  * index, and each element "/><meta property="og:type" content="article"/><meta name="twitter:card" content="summary"/><meta name="twitter:title" content="Jump Game - Frontend Interview Docs"/><meta name="twitter:description" content=" # Jump Game    ## Problem Description   *  * You are given an integer array nums. You are initially positioned at the array&#x27;s first  * index, and each element "/><meta name="next-size-adjust"/><script src="/interview/_next/static/chunks/polyfills-42372ed130431b0a.js" noModule=""></script><style data-styled="" data-styled-version="6.1.19">*{margin:0;padding:0;box-sizing:border-box;}/*!sc*/
+html{font-size:16px;line-height:1.5;scroll-behavior:smooth;}/*!sc*/
+body{font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;font-size:1rem;line-height:1.5;color:#1e293b;background-color:#ffffff;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;}/*!sc*/
+h1,h2,h3,h4,h5,h6{font-weight:700;line-height:1.25;margin-bottom:0.5em;}/*!sc*/
+h1{font-size:3rem;}/*!sc*/
+@media (max-width: 768px){h1{font-size:2.25rem;}}/*!sc*/
+h2{font-size:2.25rem;}/*!sc*/
+@media (max-width: 768px){h2{font-size:1.875rem;}}/*!sc*/
+h3{font-size:1.875rem;}/*!sc*/
+@media (max-width: 768px){h3{font-size:1.5rem;}}/*!sc*/
+h4{font-size:1.5rem;}/*!sc*/
+@media (max-width: 768px){h4{font-size:1.25rem;}}/*!sc*/
+h5{font-size:1.25rem;}/*!sc*/
+h6{font-size:1.125rem;}/*!sc*/
+p{margin-bottom:1rem;line-height:1.75;}/*!sc*/
+a{color:#3b82f6;text-decoration:none;transition:color 0.15s ease;}/*!sc*/
+a:hover{color:#2563eb;}/*!sc*/
+a:focus{outline:2px solid #3b82f6;outline-offset:2px;}/*!sc*/
+button{cursor:pointer;border:none;background:none;font-family:inherit;font-size:inherit;}/*!sc*/
+button:disabled{cursor:not-allowed;opacity:0.6;}/*!sc*/
+button:focus{outline:2px solid #3b82f6;outline-offset:2px;}/*!sc*/
+input,textarea,select{font-family:inherit;font-size:inherit;}/*!sc*/
+input:focus,textarea:focus,select:focus{outline:2px solid #3b82f6;outline-offset:2px;}/*!sc*/
+img{max-width:100%;height:auto;}/*!sc*/
+ul,ol{margin-bottom:1rem;padding-left:1.5rem;}/*!sc*/
+li{margin-bottom:0.25rem;}/*!sc*/
+blockquote{margin:1rem 0;padding:1rem;border-left:4px solid #3b82f6;background-color:#f1f5f9;font-style:italic;}/*!sc*/
+code{font-family:SFMono-Regular,Consolas,"Liberation Mono",Menlo,monospace;font-size:0.9em;background-color:#f1f5f9;padding:0.2em 0.4em;border-radius:0.25rem;}/*!sc*/
+pre{background-color:#f1f5f9;padding:1rem;border-radius:0.5rem;overflow-x:auto;margin-bottom:1rem;}/*!sc*/
+pre code{background:none;padding:0;}/*!sc*/
+table{width:100%;border-collapse:collapse;margin-bottom:1rem;}/*!sc*/
+th,td{padding:0.75rem;text-align:left;border-bottom:1px solid #e2e8f0;}/*!sc*/
+th{font-weight:600;background-color:#f1f5f9;}/*!sc*/
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0, 0, 0, 0);white-space:nowrap;border:0;}/*!sc*/
+.skip-link{position:absolute;top:-40px;left:6px;background:#3b82f6;color:white;padding:8px;text-decoration:none;border-radius:4px;z-index:100;}/*!sc*/
+.skip-link:focus{top:6px;}/*!sc*/
+::-webkit-scrollbar{width:8px;height:8px;}/*!sc*/
+::-webkit-scrollbar-track{background:#f1f5f9;}/*!sc*/
+::-webkit-scrollbar-thumb{background:#94a3b8;border-radius:4px;}/*!sc*/
+::-webkit-scrollbar-thumb:hover{background:#64748b;}/*!sc*/
+::selection{background:#3b82f6;color:white;}/*!sc*/
+.focus-visible{outline:2px solid #3b82f6;outline-offset:2px;}/*!sc*/
+.fade-in{opacity:0;animation:fadeIn 0.3s ease forwards;}/*!sc*/
+.slide-up{transform:translateY(20px);opacity:0;animation:slideUp 0.3s ease forwards;}/*!sc*/
+@keyframes fadeIn{to{opacity:1;}}/*!sc*/
+@keyframes slideUp{to{transform:translateY(0);opacity:1;}}/*!sc*/
+@media print{*{background:white!important;color:black!important;box-shadow:none!important;text-shadow:none!important;}a,a:visited{text-decoration:underline;}h1,h2,h3,h4,h5,h6{break-after:avoid;}pre,blockquote{border:1px solid #999;break-inside:avoid;}img{max-width:100%!important;}@page{margin:0.5in;}}/*!sc*/
+data-styled.g31[id="sc-global-kxA-Ddz1"]{content:"sc-global-kxA-Ddz1,"}/*!sc*/
+.hknxvr{position:fixed;top:0;width:100%;z-index:1020;background:transparent;backdrop-filter:blur(10px);border-bottom:1px solid transparent;transition:all 0.3s ease;}/*!sc*/
+data-styled.g32[id="sc-kjwdDK"]{content:"hknxvr,"}/*!sc*/
+.kyNSdY{max-width:1200px;margin:0 auto;padding:0 2rem;display:flex;align-items:center;justify-content:space-between;height:70px;}/*!sc*/
+data-styled.g33[id="sc-eVqvcJ"]{content:"kyNSdY,"}/*!sc*/
+.boGzeT{display:flex;align-items:center;gap:0.5rem;font-size:1.5rem;font-weight:700;color:#3b82f6;text-decoration:none;cursor:pointer;}/*!sc*/
+.boGzeT:hover{color:#2563eb;}/*!sc*/
+data-styled.g34[id="sc-bbbBoY"]{content:"boGzeT,"}/*!sc*/
+.dfWopA{display:flex;align-items:center;gap:2rem;}/*!sc*/
+@media (max-width: 768px){.dfWopA{display:none;}}/*!sc*/
+data-styled.g35[id="sc-cdmAjP"]{content:"dfWopA,"}/*!sc*/
+.QBGbV{color:#1e293b;font-weight:500;text-decoration:none;transition:color 0.15s ease;position:relative;}/*!sc*/
+.QBGbV:hover{color:#3b82f6;}/*!sc*/
+.QBGbV:after{content:'';position:absolute;bottom:-5px;left:0;width:0;height:2px;background:#3b82f6;transition:width 0.15s ease;}/*!sc*/
+.QBGbV:hover:after{width:100%;}/*!sc*/
+data-styled.g36[id="sc-jytpVa"]{content:"QBGbV,"}/*!sc*/
+.iApUGV{display:none;background:none;border:none;color:#1e293b;cursor:pointer;padding:0.5rem;}/*!sc*/
+@media (max-width: 768px){.iApUGV{display:block;}}/*!sc*/
+data-styled.g37[id="sc-eknHtZ"]{content:"iApUGV,"}/*!sc*/
+.iRzASV{display:flex;align-items:center;gap:0.5rem;background:#f1f5f9;border:1px solid #e2e8f0;border-radius:0.5rem;padding:0.5rem 1rem;color:#64748b;font-size:0.9rem;transition:all 0.15s ease;}/*!sc*/
+.iRzASV:hover{background:#ffffff;border-color:#3b82f6;}/*!sc*/
+data-styled.g41[id="sc-dNFkOE"]{content:"iRzASV,"}/*!sc*/
+.eFXxtK{background:#1e293b;color:white;padding:3rem 0 1rem;margin-top:auto;}/*!sc*/
+data-styled.g42[id="sc-fszimp"]{content:"eFXxtK,"}/*!sc*/
+.lgRhNJ{max-width:1200px;margin:0 auto;padding:0 2rem;}/*!sc*/
+data-styled.g43[id="sc-etsjJW"]{content:"lgRhNJ,"}/*!sc*/
+.clXrDw{display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:2rem;margin-bottom:2rem;}/*!sc*/
+@media (max-width: 768px){.clXrDw{grid-template-columns:1fr 1fr;gap:1.5rem;}}/*!sc*/
+@media (max-width: 480px){.clXrDw{grid-template-columns:1fr;}}/*!sc*/
+data-styled.g44[id="sc-fYmhhH"]{content:"clXrDw,"}/*!sc*/
+.eVcCHs h3{font-size:1.1rem;font-weight:600;margin-bottom:1rem;color:white;}/*!sc*/
+.eVcCHs ul{list-style:none;padding:0;margin:0;}/*!sc*/
+.eVcCHs li{margin-bottom:0.5rem;}/*!sc*/
+.eVcCHs a{color:rgba(255, 255, 255, 0.7);text-decoration:none;transition:color 0.15s ease;}/*!sc*/
+.eVcCHs a:hover{color:white;}/*!sc*/
+data-styled.g45[id="sc-koBvLg"]{content:"eVcCHs,"}/*!sc*/
+.erNuOr{display:flex;align-items:center;gap:0.5rem;font-size:1.2rem;font-weight:700;margin-bottom:1rem;color:white;}/*!sc*/
+data-styled.g46[id="sc-DZJJV"]{content:"erNuOr,"}/*!sc*/
+.eFlHp{color:rgba(255, 255, 255, 0.7);line-height:1.6;margin-bottom:1rem;}/*!sc*/
+data-styled.g47[id="sc-kUouGy"]{content:"eFlHp,"}/*!sc*/
+.cKmbMZ{display:flex;gap:1rem;}/*!sc*/
+.cKmbMZ a{display:flex;align-items:center;justify-content:center;width:40px;height:40px;background:rgba(255, 255, 255, 0.1);border-radius:0.5rem;color:rgba(255, 255, 255, 0.7);transition:all 0.15s ease;}/*!sc*/
+.cKmbMZ a:hover{background:rgba(255, 255, 255, 0.2);color:white;}/*!sc*/
+data-styled.g48[id="sc-bjMIFn"]{content:"cKmbMZ,"}/*!sc*/
+.jjzpGQ{border-top:1px solid rgba(255, 255, 255, 0.1);padding-top:2rem;display:flex;justify-content:space-between;align-items:center;}/*!sc*/
+@media (max-width: 768px){.jjzpGQ{flex-direction:column;gap:1rem;text-align:center;}}/*!sc*/
+data-styled.g49[id="sc-dClGHI"]{content:"jjzpGQ,"}/*!sc*/
+.bxgLTO{color:rgba(255, 255, 255, 0.7);margin:0;font-size:0.9rem;}/*!sc*/
+data-styled.g50[id="sc-fhfEft"]{content:"bxgLTO,"}/*!sc*/
+.lnKwnT{display:flex;gap:2rem;}/*!sc*/
+@media (max-width: 480px){.lnKwnT{flex-direction:column;gap:1rem;}}/*!sc*/
+.lnKwnT a{color:rgba(255, 255, 255, 0.7);text-decoration:none;font-size:0.9rem;transition:color 0.15s ease;}/*!sc*/
+.lnKwnT a:hover{color:white;}/*!sc*/
+data-styled.g51[id="sc-bAehkN"]{content:"lnKwnT,"}/*!sc*/
+.iAvhVM{color:#1e293b;line-height:1.6;}/*!sc*/
+.iAvhVM h1,.iAvhVM h2,.iAvhVM h3,.iAvhVM h4,.iAvhVM h5,.iAvhVM h6{color:#1e293b;margin-top:2rem;margin-bottom:1rem;font-weight:600;}/*!sc*/
+.iAvhVM h1{font-size:2rem;border-bottom:2px solid #e2e8f0;padding-bottom:0.5rem;}/*!sc*/
+.iAvhVM h2{font-size:1.5rem;border-bottom:1px solid #e2e8f0;padding-bottom:0.3rem;}/*!sc*/
+.iAvhVM h3{font-size:1.25rem;}/*!sc*/
+.iAvhVM h4{font-size:1.1rem;}/*!sc*/
+.iAvhVM p{margin-bottom:1rem;color:#64748b;}/*!sc*/
+.iAvhVM a{color:#3b82f6;text-decoration:none;}/*!sc*/
+.iAvhVM a:hover{text-decoration:underline;}/*!sc*/
+.iAvhVM ul,.iAvhVM ol{margin-bottom:1rem;padding-left:1.5rem;}/*!sc*/
+.iAvhVM ul li,.iAvhVM ol li{margin-bottom:0.5rem;color:#64748b;}/*!sc*/
+.iAvhVM blockquote{border-left:4px solid #3b82f6;padding-left:1rem;margin:1rem 0;font-style:italic;color:#64748b;background:#f1f5f9;padding:1rem;border-radius:0.5rem;}/*!sc*/
+.iAvhVM code{background:#f1f5f9;padding:0.2rem 0.4rem;border-radius:0.25rem;font-family:SFMono-Regular,Consolas,"Liberation Mono",Menlo,monospace;font-size:0.9em;color:#f59e0b;}/*!sc*/
+.iAvhVM pre{background:#ffffff;border:1px solid #e2e8f0;border-radius:0.5rem;padding:1rem;margin:1rem 0;overflow-x:auto;}/*!sc*/
+.iAvhVM pre code{background:none;padding:0;color:#1e293b;font-size:0.9rem;}/*!sc*/
+.iAvhVM table{width:100%;border-collapse:collapse;margin:1rem 0;}/*!sc*/
+.iAvhVM table th,.iAvhVM table td{border:1px solid #e2e8f0;padding:0.5rem;text-align:left;}/*!sc*/
+.iAvhVM table th{background:#ffffff;font-weight:600;}/*!sc*/
+.iAvhVM table tr:nth-child(even){background:#f1f5f9;}/*!sc*/
+.iAvhVM hr{border:none;height:1px;background:#e2e8f0;margin:2rem 0;}/*!sc*/
+.iAvhVM .highlight{background:#3b82f620;padding:0.2rem 0.4rem;border-radius:0.25rem;font-weight:600;}/*!sc*/
+.iAvhVM .hljs{background:#ffffff;color:#1e293b;}/*!sc*/
+.iAvhVM .hljs-keyword{color:#3b82f6;font-weight:600;}/*!sc*/
+.iAvhVM .hljs-string{color:#10b981;}/*!sc*/
+.iAvhVM .hljs-function{color:#f59e0b;}/*!sc*/
+.iAvhVM .hljs-comment{color:#94a3b8;font-style:italic;}/*!sc*/
+.iAvhVM .hljs-number{color:#f59e0b;}/*!sc*/
+.iAvhVM .hljs-variable{color:#1e293b;}/*!sc*/
+.iAvhVM .hljs-title{color:#f59e0b;font-weight:600;}/*!sc*/
+data-styled.g52[id="sc-gahYZc"]{content:"iAvhVM,"}/*!sc*/
+</style></head><body class="__className_6eac61"><div style="min-height:100vh;display:flex;flex-direction:column"><nav class="sc-kjwdDK hknxvr"><div class="sc-eVqvcJ kyNSdY"><a href="/interview"><a class="sc-bbbBoY boGzeT"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-code "><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>Frontend Interview Prep</a></a><div class="sc-cdmAjP dfWopA"><a href="/interview/problems"><a class="sc-jytpVa QBGbV">Problems</a></a><a href="/interview/learn"><a class="sc-jytpVa QBGbV">Learn</a></a><a href="/interview/study-guide"><a class="sc-jytpVa QBGbV">Study Guide</a></a><a href="/interview/system-design"><a class="sc-jytpVa QBGbV">System Design</a></a><a href="/interview/performance"><a class="sc-jytpVa QBGbV">Performance</a></a><a href="/interview/accessibility"><a class="sc-jytpVa QBGbV">Accessibility</a></a><a href="/interview/interview-tips"><a class="sc-jytpVa QBGbV">Interview Tips</a></a><button class="sc-dNFkOE iRzASV"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-search "><circle cx="11" cy="11" r="8"></circle><path d="m21 21-4.3-4.3"></path></svg>Search</button></div><button class="sc-eknHtZ iApUGV"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-menu "><line x1="4" x2="20" y1="12" y2="12"></line><line x1="4" x2="20" y1="6" y2="6"></line><line x1="4" x2="20" y1="18" y2="18"></line></svg></button></div></nav><main style="flex:1"><div style="max-width:1200px;margin:0 auto;padding:2rem;padding-top:6rem"><div style="margin-bottom:2rem"><nav style="color:#64748b;font-size:0.9rem;margin-bottom:1rem"><a href="/" style="color:#3b82f6;text-decoration:none">Home</a> &gt; <span>leetcode &gt; dp &gt; problems &gt; 05-jump-game</span></nav><h1 style="font-size:2.5rem;font-weight:800;margin-bottom:0.5rem;color:#1e293b">Jump Game</h1><div style="color:#64748b;font-size:0.9rem;margin-bottom:2rem"><span>📁 <!-- -->leetcode/dp/problems/05-jump-game.md</span></div></div><div class="sc-gahYZc iAvhVM"><h1 id="jump-game" node="[object Object]">Jump Game</h1>
+<h2 id="problem-description" node="[object Object]">Problem Description</h2>
+<ul>
+<li>
+<ul>
+<li>You are given an integer array nums. You are initially positioned at the array&#x27;s first  * index, and each element in the array represents your maximum jump length at that position.  *  * Return true if you can reach the last index, or false otherwise.</li>
+</ul>
+</li>
+</ul>
+<h2 id="solutions" node="[object Object]">Solutions</h2>
+<p>{% raw %}
+/**</p>
+<ul>
+<li>Jump Game</li>
+<li></li>
+<li>Problem: <a href="https://leetcode.com/problems/jump-game/" target="_blank" rel="noopener noreferrer" node="[object Object]">https://leetcode.com/problems/jump-game/</a></li>
+<li></li>
+<li>You are given an integer array nums. You are initially positioned at the array&#x27;s first</li>
+<li>index, and each element in the array represents your maximum jump length at that position.</li>
+<li></li>
+<li>Return true if you can reach the last index, or false otherwise.</li>
+<li></li>
+<li>Example 1:</li>
+<li>Input: nums = [2,3,1,1,4]</li>
+<li>Output: true</li>
+<li>Explanation: Jump 1 step from index 0 to 1, then 3 steps to the last index.</li>
+<li></li>
+<li>Example 2:</li>
+<li>Input: nums = [3,2,1,0,4]</li>
+<li>Output: false</li>
+<li>Explanation: You will always arrive at index 3 no matter what. Its maximum jump length</li>
+<li>is 0, which makes it impossible to reach the last index.</li>
+<li></li>
+<li>Constraints:</li>
+<li>
+<ul>
+<li>1 &lt;= nums.length &lt;= 10^4</li>
+</ul>
+</li>
+<li>
+<ul>
+<li>0 &lt;= nums[i] &lt;= 10^5</li>
+</ul>
+</li>
+<li></li>
+<li>Solution Approach:</li>
+<li>
+<ol>
+<li>Greedy approach - track the maximum reachable position</li>
+</ol>
+</li>
+<li>
+<ol start="2">
+<li>At each position, update the maximum reachable position</li>
+</ol>
+</li>
+<li>
+<ol start="3">
+<li>If current position is beyond maximum reachable, return false</li>
+</ol>
+</li>
+<li>
+<ol start="4">
+<li>If maximum reachable position &gt;= last index, return true</li>
+</ol>
+</li>
+<li></li>
+<li>Time Complexity: O(n) where n is the length of nums array</li>
+<li>Space Complexity: O(1) as we only use a constant amount of extra space
+*/</li>
+</ul>
+<p>/**</p>
+<ul>
+<li>Jump Game - Greedy Solution</li>
+<li></li>
+<li>Giải pháp tham lam cho bài toán Trò chơi nhảy</li>
+<li></li>
+<li>@param nums - Mảng độ dài nhảy tối đa tại mỗi vị trí</li>
+<li>@returns true nếu có thể đến được vị trí cuối cùng
+*/
+function canJump(nums: number[]): boolean {
+if (nums.length &lt;= 1) return true;</li>
+</ul>
+<p>let maxReachable = 0; // Vị trí xa nhất có thể đến được</p>
+<p>for (let i = 0; i &lt; nums.length; i++) {
+// Nếu vị trí hiện tại vượt quá vị trí có thể đến được
+if (i &gt; maxReachable) {
+return false;
+}</p>
+<pre><pre><code class="hljs undefined">// Cập nhật vị trí xa nhất có thể đến được
+maxReachable = Math.max(maxReachable, i + nums[i]);
+
+// Nếu đã có thể đến được vị trí cuối cùng
+if (maxReachable &gt;= nums.length - 1) {
+  return true;
+}
+</code></pre></pre>
+<p>}</p>
+<p>return maxReachable &gt;= nums.length - 1;
+}</p>
+<p>/**</p>
+<ul>
+<li>Alternative Solution: Dynamic Programming (Bottom-up)</li>
+<li></li>
+<li>Giải pháp thay thế: Quy hoạch động (từ dưới lên)</li>
+<li></li>
+<li>@param nums - Mảng độ dài nhảy tối đa tại mỗi vị trí</li>
+<li>@returns true nếu có thể đến được vị trí cuối cùng
+*/
+function canJumpDP(nums: number[]): boolean {
+if (nums.length &lt;= 1) return true;</li>
+</ul>
+<p>const dp = new Array(nums.length).fill(false);
+dp[nums.length - 1] = true; // Vị trí cuối cùng luôn có thể đến được</p>
+<p>for (let i = nums.length - 2; i &gt;= 0; i--) {
+const maxJump = nums[i];</p>
+<pre><pre><code class="hljs undefined">// Kiểm tra xem có thể nhảy đến vị trí nào từ vị trí hiện tại
+for (let j = 1; j &lt;= maxJump &amp;&amp; i + j &lt; nums.length; j++) {
+  if (dp[i + j]) {
+    dp[i] = true;
+    break;
+  }
+}
+</code></pre></pre>
+<p>}</p>
+<p>return dp[0];
+}</p>
+<p>/**</p>
+<ul>
+<li>Recursive Solution with Memoization</li>
+<li></li>
+<li>Giải pháp đệ quy với ghi nhớ</li>
+<li></li>
+<li>@param nums - Mảng độ dài nhảy tối đa tại mỗi vị trí</li>
+<li>@returns true nếu có thể đến được vị trí cuối cùng
+*/
+function canJumpRecursive(nums: number[]): boolean {
+const memo = new Map&lt;number, boolean&gt;();</li>
+</ul>
+<p>function canJumpHelper(position: number): boolean {
+// Base case: đã đến vị trí cuối cùng
+if (position &gt;= nums.length - 1) {
+return true;
+}</p>
+<pre><pre><code class="hljs undefined">// Kiểm tra memo
+if (memo.has(position)) {
+  return memo.get(position)!;
+}
+
+const maxJump = nums[position];
+
+// Thử tất cả các bước nhảy có thể
+for (let jump = 1; jump &lt;= maxJump; jump++) {
+  if (canJumpHelper(position + jump)) {
+    memo.set(position, true);
+    return true;
+  }
+}
+
+memo.set(position, false);
+return false;
+</code></pre></pre>
+<p>}</p>
+<p>return canJumpHelper(0);
+}</p>
+<p>/**</p>
+<ul>
+<li>Solution with Path Tracking</li>
+<li></li>
+<li>Giải pháp với theo dõi đường đi</li>
+<li></li>
+<li>@param nums - Mảng độ dài nhảy tối đa tại mỗi vị trí</li>
+<li>@returns Object chứa kết quả và đường đi (nếu có)
+*/
+function canJumpWithPath(nums: number[]): {
+canReach: boolean;
+path: number[];
+} {
+if (nums.length &lt;= 1) {
+return { canReach: true, path: [0] };
+}</li>
+</ul>
+<p>const dp = new Array(nums.length).fill(false);
+const path = new Array(nums.length).fill(-1);</p>
+<p>dp[nums.length - 1] = true;</p>
+<p>for (let i = nums.length - 2; i &gt;= 0; i--) {
+const maxJump = nums[i];</p>
+<pre><pre><code class="hljs undefined">for (let j = 1; j &lt;= maxJump &amp;&amp; i + j &lt; nums.length; j++) {
+  if (dp[i + j]) {
+    dp[i] = true;
+    path[i] = i + j;
+    break;
+  }
+}
+</code></pre></pre>
+<p>}</p>
+<p>// Tạo đường đi nếu có thể đến được
+const resultPath: number[] = [];
+if (dp[0]) {
+let current = 0;
+while (current !== -1) {
+resultPath.push(current);
+current = path[current];
+}
+}</p>
+<p>return { canReach: dp[0], path: resultPath };
+}</p>
+<p>// Test cases / Các trường hợp kiểm thử
+function runTests() {
+console.log(&quot;=== Jump Game Tests ===&quot;);
+console.log(&quot;=== Kiểm thử bài toán Trò chơi nhảy ===\n&quot;);</p>
+<p>const testCases = [
+{
+name: &quot;Example 1: Can reach end&quot;,
+input: [2, 3, 1, 1, 4],
+expected: true,
+description:
+&quot;Jump 1 step from index 0 to 1, then 3 steps to the last index&quot;,
+},
+{
+name: &quot;Example 2: Cannot reach end&quot;,
+input: [3, 2, 1, 0, 4],
+expected: false,
+description: &quot;Will always arrive at index 3, which has jump length 0&quot;,
+},
+{
+name: &quot;Single element&quot;,
+input: [0],
+expected: true,
+description: &quot;Already at the last index&quot;,
+},
+{
+name: &quot;Two elements - can jump&quot;,
+input: [1, 0],
+expected: true,
+description: &quot;Can jump 1 step to reach the end&quot;,
+},
+{
+name: &quot;Two elements - cannot jump&quot;,
+input: [0, 1],
+expected: false,
+description: &quot;Cannot jump from first position&quot;,
+},
+{
+name: &quot;All zeros except last&quot;,
+input: [0, 0, 0, 1],
+expected: false,
+description: &quot;Cannot move from any position&quot;,
+},
+{
+name: &quot;Large jumps&quot;,
+input: [5, 0, 0, 0, 0],
+expected: true,
+description: &quot;Can jump directly to the end&quot;,
+},
+{
+name: &quot;Alternating jumps&quot;,
+input: [1, 0, 1, 0, 1],
+expected: true,
+description: &quot;Can reach the end by jumping every other position&quot;,
+},
+{
+name: &quot;Zero in middle&quot;,
+input: [2, 0, 0],
+expected: true,
+description: &quot;Can jump over the zero&quot;,
+},
+];</p>
+<p>let passedTests = 0;
+const totalTests = testCases.length;</p>
+<p>for (const testCase of testCases) {
+console.log(<pre><code class="hljs undefined">Test: ${testCase.name}</code></pre>);
+console.log(<pre><code class="hljs undefined">Input: [${testCase.input.join(&quot;, &quot;)}]</code></pre>);
+console.log(<pre><code class="hljs undefined">Expected: ${testCase.expected}</code></pre>);
+console.log(<pre><code class="hljs undefined">Description: ${testCase.description}</code></pre>);</p>
+<pre><pre><code class="hljs undefined">const result = canJump(testCase.input);
+const passed = result === testCase.expected;
+
+console.log(`Result: ${result}`);
+console.log(`Status: ${passed ? &quot;✅ PASSED&quot; : &quot;❌ FAILED&quot;}`);
+
+if (passed) {
+  passedTests++;
+} else {
+  console.log(`Expected: ${testCase.expected}, Got: ${result}`);
+}
+
+console.log(&quot;---&quot;);
+</code></pre></pre>
+<p>}</p>
+<p>console.log(<pre><code class="hljs undefined">\nTest Summary: ${passedTests}/${totalTests} tests passed</code></pre>);
+console.log(
+<pre><code class="hljs undefined">Tóm tắt kiểm thử: ${passedTests}/${totalTests} bài kiểm thử đã qua</code></pre>
+);</p>
+<p>// Test with path tracking
+console.log(&quot;\n=== Testing with Path Tracking ===&quot;);
+console.log(&quot;=== Kiểm thử với theo dõi đường đi ===\n&quot;);</p>
+<p>const testArray = [2, 3, 1, 1, 4];
+const resultWithPath = canJumpWithPath(testArray);</p>
+<p>console.log(<pre><code class="hljs undefined">Array: [${testArray.join(&quot;, &quot;)}]</code></pre>);
+console.log(<pre><code class="hljs undefined">Can Reach: ${resultWithPath.canReach}</code></pre>);
+if (resultWithPath.canReach) {
+console.log(<pre><code class="hljs undefined">Path: [${resultWithPath.path.join(&quot; -&gt; &quot;)}]</code></pre>);
+console.log(
+<pre><code class="hljs undefined">Jumps: [${resultWithPath.path         .slice(1)         .map((pos, i) =&gt; pos - resultWithPath.path[i])         .join(&quot;, &quot;)}]</code></pre>
+);
+}</p>
+<p>// Performance comparison
+console.log(&quot;\n=== Performance Comparison ===&quot;);
+console.log(&quot;=== So sánh hiệu suất ===\n&quot;);</p>
+<p>const largeInput = Array.from({ length: 1000 }, () =&gt;
+Math.floor(Math.random() * 10)
+);</p>
+<p>console.log(&quot;Testing with large input (1,000 elements)...&quot;);
+console.log(&quot;Kiểm thử với dữ liệu lớn (1,000 phần tử)...&quot;);</p>
+<p>const start1 = performance.now();
+const result1 = canJump(largeInput);
+const time1 = performance.now() - start1;</p>
+<p>const start2 = performance.now();
+const result2 = canJumpDP(largeInput);
+const time2 = performance.now() - start2;</p>
+<p>const start3 = performance.now();
+const result3 = canJumpRecursive(largeInput);
+const time3 = performance.now() - start3;</p>
+<p>console.log(<pre><code class="hljs undefined">Greedy: ${time1.toFixed(4)}ms</code></pre>);
+console.log(<pre><code class="hljs undefined">DP: ${time2.toFixed(4)}ms</code></pre>);
+console.log(<pre><code class="hljs undefined">Recursive: ${time3.toFixed(4)}ms</code></pre>);
+console.log(
+<pre><code class="hljs undefined">Results match: ${       result1 === result2 &amp;&amp; result2 === result3 ? &quot;✅ Yes&quot; : &quot;❌ No&quot;     }</code></pre>
+);
+}</p>
+<p>// Run tests if this file is executed directly
+if (require.main === module) {
+runTests();
+}</p>
+<p>export { canJump, canJumpDP, canJumpRecursive, canJumpWithPath };
+{% endraw %}</p></div></div></main><footer class="sc-fszimp eFXxtK"><div class="sc-etsjJW lgRhNJ"><div class="sc-fYmhhH clXrDw"><div class="sc-koBvLg eVcCHs"><div class="sc-DZJJV erNuOr"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-code "><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>Frontend Interview Prep</div><p class="sc-kUouGy eFlHp">Comprehensive interview preparation for frontend engineers targeting Big Tech companies.</p><div class="sc-bjMIFn cKmbMZ"><a href="https://github.com" aria-label="GitHub"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-github "><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"></path><path d="M9 18c-4.51 2-5-2-7-2"></path></svg></a><a href="https://twitter.com" aria-label="Twitter"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-twitter "><path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"></path></svg></a><a href="https://linkedin.com" aria-label="LinkedIn"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-linkedin "><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect width="4" height="12" x="2" y="9"></rect><circle cx="4" cy="4" r="2"></circle></svg></a><a href="mailto:contact@example.com" aria-label="Email"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-mail "><rect width="20" height="16" x="2" y="4" rx="2"></rect><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path></svg></a></div></div><div class="sc-koBvLg eVcCHs"><h3>Study Materials</h3><ul><li><a href="/algorithms">Algorithms</a></li><li><a href="/react">React &amp; Frontend</a></li><li><a href="/system-design">System Design</a></li><li><a href="/typescript">TypeScript</a></li><li><a href="/performance">Performance</a></li></ul></div><div class="sc-koBvLg eVcCHs"><h3>Companies</h3><ul><li><a href="/google">Google</a></li><li><a href="/meta">Meta</a></li><li><a href="/amazon">Amazon</a></li><li><a href="/microsoft">Microsoft</a></li><li><a href="/apple">Apple</a></li></ul></div><div class="sc-koBvLg eVcCHs"><h3>Resources</h3><ul><li><a href="/interview-tips">Interview Tips</a></li><li><a href="/coding-challenges">Coding Challenges</a></li><li><a href="/mock-interviews">Mock Interviews</a></li><li><a href="/blog">Blog</a></li><li><a href="/faq">FAQ</a></li></ul></div></div><div class="sc-dClGHI jjzpGQ"><p class="sc-fhfEft bxgLTO">© 2025 Frontend Interview Prep. All rights reserved.</p><div class="sc-bAehkN lnKwnT"><a href="/privacy">Privacy Policy</a><a href="/terms">Terms of Service</a><a href="/contact">Contact</a></div></div></div></footer></div><script src="/interview/_next/static/chunks/webpack-be7d7df45533bffc.js" async=""></script><script>(self.__next_f=self.__next_f||[]).push([0]);self.__next_f.push([2,null])</script><script>self.__next_f.push([1,"1:HL[\"/interview/_next/static/media/e4af272ccee01ff0-s.p.woff2\",\"font\",{\"crossOrigin\":\"\",\"type\":\"font/woff2\"}]\n2:HL[\"/interview/_next/static/css/387024c6a2216908.css\",\"style\"]\n"])</script><script>self.__next_f.push([1,"3:I[2846,[],\"\"]\n5:I[5907,[\"918\",\"static/chunks/918-3273b83890f10546.js\",\"930\",\"static/chunks/930-3262a6c9c5acace4.js\",\"687\",\"static/chunks/app/docs/%5B...slug%5D/page-32962e9542d32755.js\"],\"default\"]\n7:I[4707,[],\"\"]\n9:I[6423,[],\"\"]\na:I[2,[\"918\",\"static/chunks/918-3273b83890f10546.js\",\"710\",\"static/chunks/710-dfaa11b4dff08f8e.js\",\"972\",\"static/chunks/972-011bba60ed155615.js\",\"233\",\"static/chunks/233-3e0c1d820a17eca9.js\",\"185\",\"static/chunks/app/layout-333f4adcd11f8f39.js\"],\"default\",1]\nc:I[1060,[],\"\"]\n6:T2522,"])</script><script>self.__next_f.push([1,"\n# Jump Game\n\n\n\n## Problem Description\n\n *  * You are given an integer array nums. You are initially positioned at the array's first  * index, and each element in the array represents your maximum jump length at that position.  *  * Return true if you can reach the last index, or false otherwise. \n\n## Solutions\n\n{% raw %}\n/**\n * Jump Game\n *\n * Problem: https://leetcode.com/problems/jump-game/\n *\n * You are given an integer array nums. You are initially positioned at the array's first\n * index, and each element in the array represents your maximum jump length at that position.\n *\n * Return true if you can reach the last index, or false otherwise.\n *\n * Example 1:\n * Input: nums = [2,3,1,1,4]\n * Output: true\n * Explanation: Jump 1 step from index 0 to 1, then 3 steps to the last index.\n *\n * Example 2:\n * Input: nums = [3,2,1,0,4]\n * Output: false\n * Explanation: You will always arrive at index 3 no matter what. Its maximum jump length\n * is 0, which makes it impossible to reach the last index.\n *\n * Constraints:\n * - 1 \u003c= nums.length \u003c= 10^4\n * - 0 \u003c= nums[i] \u003c= 10^5\n *\n * Solution Approach:\n * 1. Greedy approach - track the maximum reachable position\n * 2. At each position, update the maximum reachable position\n * 3. If current position is beyond maximum reachable, return false\n * 4. If maximum reachable position \u003e= last index, return true\n *\n * Time Complexity: O(n) where n is the length of nums array\n * Space Complexity: O(1) as we only use a constant amount of extra space\n */\n\n/**\n * Jump Game - Greedy Solution\n *\n * Giải pháp tham lam cho bài toán Trò chơi nhảy\n *\n * @param nums - Mảng độ dài nhảy tối đa tại mỗi vị trí\n * @returns true nếu có thể đến được vị trí cuối cùng\n */\nfunction canJump(nums: number[]): boolean {\n  if (nums.length \u003c= 1) return true;\n\n  let maxReachable = 0; // Vị trí xa nhất có thể đến được\n\n  for (let i = 0; i \u003c nums.length; i++) {\n    // Nếu vị trí hiện tại vượt quá vị trí có thể đến được\n    if (i \u003e maxReachable) {\n      return false;\n    }\n\n    // Cập nhật vị trí xa nhất có thể đến được\n    maxReachable = Math.max(maxReachable, i + nums[i]);\n\n    // Nếu đã có thể đến được vị trí cuối cùng\n    if (maxReachable \u003e= nums.length - 1) {\n      return true;\n    }\n  }\n\n  return maxReachable \u003e= nums.length - 1;\n}\n\n/**\n * Alternative Solution: Dynamic Programming (Bottom-up)\n *\n * Giải pháp thay thế: Quy hoạch động (từ dưới lên)\n *\n * @param nums - Mảng độ dài nhảy tối đa tại mỗi vị trí\n * @returns true nếu có thể đến được vị trí cuối cùng\n */\nfunction canJumpDP(nums: number[]): boolean {\n  if (nums.length \u003c= 1) return true;\n\n  const dp = new Array(nums.length).fill(false);\n  dp[nums.length - 1] = true; // Vị trí cuối cùng luôn có thể đến được\n\n  for (let i = nums.length - 2; i \u003e= 0; i--) {\n    const maxJump = nums[i];\n\n    // Kiểm tra xem có thể nhảy đến vị trí nào từ vị trí hiện tại\n    for (let j = 1; j \u003c= maxJump \u0026\u0026 i + j \u003c nums.length; j++) {\n      if (dp[i + j]) {\n        dp[i] = true;\n        break;\n      }\n    }\n  }\n\n  return dp[0];\n}\n\n/**\n * Recursive Solution with Memoization\n *\n * Giải pháp đệ quy với ghi nhớ\n *\n * @param nums - Mảng độ dài nhảy tối đa tại mỗi vị trí\n * @returns true nếu có thể đến được vị trí cuối cùng\n */\nfunction canJumpRecursive(nums: number[]): boolean {\n  const memo = new Map\u003cnumber, boolean\u003e();\n\n  function canJumpHelper(position: number): boolean {\n    // Base case: đã đến vị trí cuối cùng\n    if (position \u003e= nums.length - 1) {\n      return true;\n    }\n\n    // Kiểm tra memo\n    if (memo.has(position)) {\n      return memo.get(position)!;\n    }\n\n    const maxJump = nums[position];\n\n    // Thử tất cả các bước nhảy có thể\n    for (let jump = 1; jump \u003c= maxJump; jump++) {\n      if (canJumpHelper(position + jump)) {\n        memo.set(position, true);\n        return true;\n      }\n    }\n\n    memo.set(position, false);\n    return false;\n  }\n\n  return canJumpHelper(0);\n}\n\n/**\n * Solution with Path Tracking\n *\n * Giải pháp với theo dõi đường đi\n *\n * @param nums - Mảng độ dài nhảy tối đa tại mỗi vị trí\n * @returns Object chứa kết quả và đường đi (nếu có)\n */\nfunction canJumpWithPath(nums: number[]): {\n  canReach: boolean;\n  path: number[];\n} {\n  if (nums.length \u003c= 1) {\n    return { canReach: true, path: [0] };\n  }\n\n  const dp = new Array(nums.length).fill(false);\n  const path = new Array(nums.length).fill(-1);\n\n  dp[nums.length - 1] = true;\n\n  for (let i = nums.length - 2; i \u003e= 0; i--) {\n    const maxJump = nums[i];\n\n    for (let j = 1; j \u003c= maxJump \u0026\u0026 i + j \u003c nums.length; j++) {\n      if (dp[i + j]) {\n        dp[i] = true;\n        path[i] = i + j;\n        break;\n      }\n    }\n  }\n\n  // Tạo đường đi nếu có thể đến được\n  const resultPath: number[] = [];\n  if (dp[0]) {\n    let current = 0;\n    while (current !== -1) {\n      resultPath.push(current);\n      current = path[current];\n    }\n  }\n\n  return { canReach: dp[0], path: resultPath };\n}\n\n// Test cases / Các trường hợp kiểm thử\nfunction runTests() {\n  console.log(\"=== Jump Game Tests ===\");\n  console.log(\"=== Kiểm thử bài toán Trò chơi nhảy ===\\n\");\n\n  const testCases = [\n    {\n      name: \"Example 1: Can reach end\",\n      input: [2, 3, 1, 1, 4],\n      expected: true,\n      description:\n        \"Jump 1 step from index 0 to 1, then 3 steps to the last index\",\n    },\n    {\n      name: \"Example 2: Cannot reach end\",\n      input: [3, 2, 1, 0, 4],\n      expected: false,\n      description: \"Will always arrive at index 3, which has jump length 0\",\n    },\n    {\n      name: \"Single element\",\n      input: [0],\n      expected: true,\n      description: \"Already at the last index\",\n    },\n    {\n      name: \"Two elements - can jump\",\n      input: [1, 0],\n      expected: true,\n      description: \"Can jump 1 step to reach the end\",\n    },\n    {\n      name: \"Two elements - cannot jump\",\n      input: [0, 1],\n      expected: false,\n      description: \"Cannot jump from first position\",\n    },\n    {\n      name: \"All zeros except last\",\n      input: [0, 0, 0, 1],\n      expected: false,\n      description: \"Cannot move from any position\",\n    },\n    {\n      name: \"Large jumps\",\n      input: [5, 0, 0, 0, 0],\n      expected: true,\n      description: \"Can jump directly to the end\",\n    },\n    {\n      name: \"Alternating jumps\",\n      input: [1, 0, 1, 0, 1],\n      expected: true,\n      description: \"Can reach the end by jumping every other position\",\n    },\n    {\n      name: \"Zero in middle\",\n      input: [2, 0, 0],\n      expected: true,\n      description: \"Can jump over the zero\",\n    },\n  ];\n\n  let passedTests = 0;\n  const totalTests = testCases.length;\n\n  for (const testCase of testCases) {\n    console.log(`Test: ${testCase.name}`);\n    console.log(`Input: [${testCase.input.join(\", \")}]`);\n    console.log(`Expected: ${testCase.expected}`);\n    console.log(`Description: ${testCase.description}`);\n\n    const result = canJump(testCase.input);\n    const passed = result === testCase.expected;\n\n    console.log(`Result: ${result}`);\n    console.log(`Status: ${passed ? \"✅ PASSED\" : \"❌ FAILED\"}`);\n\n    if (passed) {\n      passedTests++;\n    } else {\n      console.log(`Expected: ${testCase.expected}, Got: ${result}`);\n    }\n\n    console.log(\"---\");\n  }\n\n  console.log(`\\nTest Summary: ${passedTests}/${totalTests} tests passed`);\n  console.log(\n    `Tóm tắt kiểm thử: ${passedTests}/${totalTests} bài kiểm thử đã qua`\n  );\n\n  // Test with path tracking\n  console.log(\"\\n=== Testing with Path Tracking ===\");\n  console.log(\"=== Kiểm thử với theo dõi đường đi ===\\n\");\n\n  const testArray = [2, 3, 1, 1, 4];\n  const resultWithPath = canJumpWithPath(testArray);\n\n  console.log(`Array: [${testArray.join(\", \")}]`);\n  console.log(`Can Reach: ${resultWithPath.canReach}`);\n  if (resultWithPath.canReach) {\n    console.log(`Path: [${resultWithPath.path.join(\" -\u003e \")}]`);\n    console.log(\n      `Jumps: [${resultWithPath.path\n        .slice(1)\n        .map((pos, i) =\u003e pos - resultWithPath.path[i])\n        .join(\", \")}]`\n    );\n  }\n\n  // Performance comparison\n  console.log(\"\\n=== Performance Comparison ===\");\n  console.log(\"=== So sánh hiệu suất ===\\n\");\n\n  const largeInput = Array.from({ length: 1000 }, () =\u003e\n    Math.floor(Math.random() * 10)\n  );\n\n  console.log(\"Testing with large input (1,000 elements)...\");\n  console.log(\"Kiểm thử với dữ liệu lớn (1,000 phần tử)...\");\n\n  const start1 = performance.now();\n  const result1 = canJump(largeInput);\n  const time1 = performance.now() - start1;\n\n  const start2 = performance.now();\n  const result2 = canJumpDP(largeInput);\n  const time2 = performance.now() - start2;\n\n  const start3 = performance.now();\n  const result3 = canJumpRecursive(largeInput);\n  const time3 = performance.now() - start3;\n\n  console.log(`Greedy: ${time1.toFixed(4)}ms`);\n  console.log(`DP: ${time2.toFixed(4)}ms`);\n  console.log(`Recursive: ${time3.toFixed(4)}ms`);\n  console.log(\n    `Results match: ${\n      result1 === result2 \u0026\u0026 result2 === result3 ? \"✅ Yes\" : \"❌ No\"\n    }`\n  );\n}\n\n// Run tests if this file is executed directly\nif (require.main === module) {\n  runTests();\n}\n\nexport { canJump, canJumpDP, canJumpRecursive, canJumpWithPath };\n{% endraw %}\n"])</script><script>self.__next_f.push([1,"8:[\"slug\",\"leetcode/dp/problems/05-jump-game\",\"c\"]\nd:[]\n"])</script><script>self.__next_f.push([1,"0:[\"$\",\"$L3\",null,{\"buildId\":\"7uJ7BVaXJTiEOD9iYDv3n\",\"assetPrefix\":\"/interview\",\"urlParts\":[\"\",\"docs\",\"leetcode\",\"dp\",\"problems\",\"05-jump-game\"],\"initialTree\":[\"\",{\"children\":[\"docs\",{\"children\":[[\"slug\",\"leetcode/dp/problems/05-jump-game\",\"c\"],{\"children\":[\"__PAGE__?{\\\"slug\\\":[\\\"leetcode\\\",\\\"dp\\\",\\\"problems\\\",\\\"05-jump-game\\\"]}\",{}]}]}]},\"$undefined\",\"$undefined\",true],\"initialSeedData\":[\"\",{\"children\":[\"docs\",{\"children\":[[\"slug\",\"leetcode/dp/problems/05-jump-game\",\"c\"],{\"children\":[\"__PAGE__\",{},[[\"$L4\",[\"$\",\"div\",null,{\"style\":{\"maxWidth\":\"1200px\",\"margin\":\"0 auto\",\"padding\":\"2rem\",\"paddingTop\":\"6rem\"},\"children\":[[\"$\",\"div\",null,{\"style\":{\"marginBottom\":\"2rem\"},\"children\":[[\"$\",\"nav\",null,{\"style\":{\"color\":\"#64748b\",\"fontSize\":\"0.9rem\",\"marginBottom\":\"1rem\"},\"children\":[[\"$\",\"a\",null,{\"href\":\"/\",\"style\":{\"color\":\"#3b82f6\",\"textDecoration\":\"none\"},\"children\":\"Home\"}],\" \u003e \",[\"$\",\"span\",null,{\"children\":\"leetcode \u003e dp \u003e problems \u003e 05-jump-game\"}]]}],[\"$\",\"h1\",null,{\"style\":{\"fontSize\":\"2.5rem\",\"fontWeight\":\"800\",\"marginBottom\":\"0.5rem\",\"color\":\"#1e293b\"},\"children\":\"Jump Game\"}],[\"$\",\"div\",null,{\"style\":{\"color\":\"#64748b\",\"fontSize\":\"0.9rem\",\"marginBottom\":\"2rem\"},\"children\":[[\"$\",\"span\",null,{\"children\":[\"📁 \",\"leetcode/dp/problems/05-jump-game.md\"]}],\"$undefined\",\"$undefined\"]}]]}],[\"$\",\"$L5\",null,{\"content\":\"$6\"}]]}],null],null],null]},[null,[\"$\",\"$L7\",null,{\"parallelRouterKey\":\"children\",\"segmentPath\":[\"children\",\"docs\",\"children\",\"$8\",\"children\"],\"error\":\"$undefined\",\"errorStyles\":\"$undefined\",\"errorScripts\":\"$undefined\",\"template\":[\"$\",\"$L9\",null,{}],\"templateStyles\":\"$undefined\",\"templateScripts\":\"$undefined\",\"notFound\":\"$undefined\",\"notFoundStyles\":\"$undefined\"}]],null]},[null,[\"$\",\"$L7\",null,{\"parallelRouterKey\":\"children\",\"segmentPath\":[\"children\",\"docs\",\"children\"],\"error\":\"$undefined\",\"errorStyles\":\"$undefined\",\"errorScripts\":\"$undefined\",\"template\":[\"$\",\"$L9\",null,{}],\"templateStyles\":\"$undefined\",\"templateScripts\":\"$undefined\",\"notFound\":\"$undefined\",\"notFoundStyles\":\"$undefined\"}]],null]},[[[[\"$\",\"link\",\"0\",{\"rel\":\"stylesheet\",\"href\":\"/interview/_next/static/css/387024c6a2216908.css\",\"precedence\":\"next\",\"crossOrigin\":\"$undefined\"}]],[\"$\",\"$La\",null,{\"children\":[\"$\",\"$L7\",null,{\"parallelRouterKey\":\"children\",\"segmentPath\":[\"children\"],\"error\":\"$undefined\",\"errorStyles\":\"$undefined\",\"errorScripts\":\"$undefined\",\"template\":[\"$\",\"$L9\",null,{}],\"templateStyles\":\"$undefined\",\"templateScripts\":\"$undefined\",\"notFound\":[[\"$\",\"title\",null,{\"children\":\"404: This page could not be found.\"}],[\"$\",\"div\",null,{\"style\":{\"fontFamily\":\"system-ui,\\\"Segoe UI\\\",Roboto,Helvetica,Arial,sans-serif,\\\"Apple Color Emoji\\\",\\\"Segoe UI Emoji\\\"\",\"height\":\"100vh\",\"textAlign\":\"center\",\"display\":\"flex\",\"flexDirection\":\"column\",\"alignItems\":\"center\",\"justifyContent\":\"center\"},\"children\":[\"$\",\"div\",null,{\"children\":[[\"$\",\"style\",null,{\"dangerouslySetInnerHTML\":{\"__html\":\"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}\"}}],[\"$\",\"h1\",null,{\"className\":\"next-error-h1\",\"style\":{\"display\":\"inline-block\",\"margin\":\"0 20px 0 0\",\"padding\":\"0 23px 0 0\",\"fontSize\":24,\"fontWeight\":500,\"verticalAlign\":\"top\",\"lineHeight\":\"49px\"},\"children\":\"404\"}],[\"$\",\"div\",null,{\"style\":{\"display\":\"inline-block\"},\"children\":[\"$\",\"h2\",null,{\"style\":{\"fontSize\":14,\"fontWeight\":400,\"lineHeight\":\"49px\",\"margin\":0},\"children\":\"This page could not be found.\"}]}]]}]}]],\"notFoundStyles\":[]}],\"params\":{}}]],null],null],\"couldBeIntercepted\":false,\"initialHead\":[null,\"$Lb\"],\"globalErrorComponent\":\"$c\",\"missingSlots\":\"$Wd\"}]\n"])</script><script>self.__next_f.push([1,"b:[[\"$\",\"meta\",\"0\",{\"name\":\"viewport\",\"content\":\"width=device-width, initial-scale=1\"}],[\"$\",\"meta\",\"1\",{\"charSet\":\"utf-8\"}],[\"$\",\"title\",\"2\",{\"children\":\"Jump Game - Frontend Interview Docs\"}],[\"$\",\"meta\",\"3\",{\"name\":\"description\",\"content\":\" # Jump Game    ## Problem Description   *  * You are given an integer array nums. You are initially positioned at the array's first  * index, and each element \"}],[\"$\",\"meta\",\"4\",{\"property\":\"og:title\",\"content\":\"Jump Game - Frontend Interview Docs\"}],[\"$\",\"meta\",\"5\",{\"property\":\"og:description\",\"content\":\" # Jump Game    ## Problem Description   *  * You are given an integer array nums. You are initially positioned at the array's first  * index, and each element \"}],[\"$\",\"meta\",\"6\",{\"property\":\"og:type\",\"content\":\"article\"}],[\"$\",\"meta\",\"7\",{\"name\":\"twitter:card\",\"content\":\"summary\"}],[\"$\",\"meta\",\"8\",{\"name\":\"twitter:title\",\"content\":\"Jump Game - Frontend Interview Docs\"}],[\"$\",\"meta\",\"9\",{\"name\":\"twitter:description\",\"content\":\" # Jump Game    ## Problem Description   *  * You are given an integer array nums. You are initially positioned at the array's first  * index, and each element \"}],[\"$\",\"meta\",\"10\",{\"name\":\"next-size-adjust\"}]]\n4:null\n"])</script></body></html>

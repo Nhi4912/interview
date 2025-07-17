@@ -1,0 +1,335 @@
+2:I[5907,["918","static/chunks/918-3273b83890f10546.js","930","static/chunks/930-3262a6c9c5acace4.js","687","static/chunks/app/docs/%5B...slug%5D/page-32962e9542d32755.js"],"default"]
+4:I[4707,[],""]
+6:I[6423,[],""]
+7:I[2,["918","static/chunks/918-3273b83890f10546.js","710","static/chunks/710-dfaa11b4dff08f8e.js","972","static/chunks/972-011bba60ed155615.js","233","static/chunks/233-3e0c1d820a17eca9.js","185","static/chunks/app/layout-333f4adcd11f8f39.js"],"default",1]
+3:T2491,
+# Shuffle an Array
+
+
+
+## Problem Description
+
+ *  * Given an integer array nums, design an algorithm to randomly shuffle the array.  * All permutations of the array should be equally likely as a result of the shuffling.  *  * Implement the Solution class: 
+
+## Solutions
+
+{% raw %}
+/**
+ * Shuffle an Array
+ *
+ * Problem: https://leetcode.com/problems/shuffle-an-array/
+ *
+ * Given an integer array nums, design an algorithm to randomly shuffle the array.
+ * All permutations of the array should be equally likely as a result of the shuffling.
+ *
+ * Implement the Solution class:
+ * - Solution(int[] nums) Initializes the object with the integer array nums.
+ * - int[] reset() Resets the array to its original configuration and returns it.
+ * - int[] shuffle() Returns a random shuffling of the array.
+ *
+ * Example:
+ * Input: ["Solution", "shuffle", "reset", "shuffle"]
+ * [[[1, 2, 3]], [], [], []]
+ * Output: [null, [3, 1, 2], [1, 2, 3], [1, 3, 2]]
+ *
+ * Explanation:
+ * Solution solution = new Solution([1, 2, 3]);
+ * solution.shuffle();    // Shuffle the array [1,2,3] and return its result. Any permutation of [1,2,3] must be equally likely to be returned. Example: return [3, 1, 2]
+ * solution.reset();      // Resets the array back to its original configuration [1,2,3]. Return [1, 2, 3]
+ * solution.shuffle();    // Returns the random shuffling of array [1,2,3]. Example: return [1, 3, 2]
+ *
+ * Constraints:
+ * - 1 <= nums.length <= 200
+ * - -10^6 <= nums[i] <= 10^6
+ * - All the elements of nums are unique.
+ * - At most 5 * 10^4 calls will be made to reset and shuffle.
+ *
+ * Solution Approach:
+ * 1. Store original array for reset functionality
+ * 2. Use Fisher-Yates shuffle algorithm for unbiased shuffling
+ * 3. Work on a copy of the array to avoid modifying original
+ * 4. Ensure each permutation has equal probability
+ *
+ * Time Complexity: O(n) for shuffle, O(1) for reset
+ * Space Complexity: O(n) to store original array
+ */
+
+/**
+ * Solution class for Shuffle an Array
+ *
+ * Lớp giải pháp cho bài toán Xáo trộn mảng
+ */
+class Solution {
+  private original: number[];
+  private current: number[];
+
+  constructor(nums: number[]) {
+    this.original = [...nums];
+    this.current = [...nums];
+  }
+
+  /**
+   * Reset the array to its original configuration
+   *
+   * Đặt lại mảng về cấu hình ban đầu
+   *
+   * @returns Mảng ban đầu
+   */
+  reset(): number[] {
+    this.current = [...this.original];
+    return this.current;
+  }
+
+  /**
+   * Shuffle the array using Fisher-Yates algorithm
+   *
+   * Xáo trộn mảng sử dụng thuật toán Fisher-Yates
+   *
+   * @returns Mảng đã được xáo trộn
+   */
+  shuffle(): number[] {
+    // Reset to original before shuffling
+    this.current = [...this.original];
+
+    // Fisher-Yates shuffle algorithm
+    for (let i = this.current.length - 1; i > 0; i--) {
+      // Generate random index from 0 to i (inclusive)
+      const j = Math.floor(Math.random() * (i + 1));
+
+      // Swap elements at positions i and j
+      [this.current[i], this.current[j]] = [this.current[j], this.current[i]];
+    }
+
+    return this.current;
+  }
+}
+
+/**
+ * Alternative Implementation: Using Array methods
+ *
+ * Giải pháp thay thế: Sử dụng các phương thức mảng
+ */
+class SolutionAlternative {
+  private original: number[];
+
+  constructor(nums: number[]) {
+    this.original = [...nums];
+  }
+
+  reset(): number[] {
+    return [...this.original];
+  }
+
+  shuffle(): number[] {
+    // Create a copy and shuffle using sort with random comparison
+    return [...this.original].sort(() => Math.random() - 0.5);
+  }
+}
+
+/**
+ * Implementation with Statistics Tracking
+ *
+ * Giải pháp với theo dõi thống kê
+ */
+class SolutionWithStats {
+  private original: number[];
+  private shuffleCount: number = 0;
+  private permutationCounts: Map<string, number> = new Map();
+
+  constructor(nums: number[]) {
+    this.original = [...nums];
+  }
+
+  reset(): number[] {
+    return [...this.original];
+  }
+
+  shuffle(): number[] {
+    this.shuffleCount++;
+
+    const shuffled = [...this.original];
+
+    // Fisher-Yates shuffle
+    for (let i = shuffled.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+    }
+
+    // Track permutation statistics
+    const permutation = shuffled.join(",");
+    this.permutationCounts.set(
+      permutation,
+      (this.permutationCounts.get(permutation) || 0) + 1
+    );
+
+    return shuffled;
+  }
+
+  getStats(): {
+    shuffleCount: number;
+    uniquePermutations: number;
+    distribution: Map<string, number>;
+  } {
+    return {
+      shuffleCount: this.shuffleCount,
+      uniquePermutations: this.permutationCounts.size,
+      distribution: new Map(this.permutationCounts),
+    };
+  }
+}
+
+/**
+ * Test Fisher-Yates Algorithm Implementation
+ *
+ * Kiểm thử thuật toán Fisher-Yates
+ */
+function testFisherYates() {
+  console.log("=== Fisher-Yates Algorithm Test ===");
+  console.log("=== Kiểm thử thuật toán Fisher-Yates ===\n");
+
+  const original = [1, 2, 3, 4, 5];
+  const iterations = 10000;
+  const permutationCounts = new Map<string, number>();
+
+  console.log(`Original array: [${original.join(", ")}]`);
+  console.log(`Testing ${iterations} shuffles...`);
+  console.log(`Kiểm thử ${iterations} lần xáo trộn...\n`);
+
+  for (let i = 0; i < iterations; i++) {
+    const shuffled = [...original];
+
+    // Fisher-Yates shuffle
+    for (let j = shuffled.length - 1; j > 0; j--) {
+      const k = Math.floor(Math.random() * (j + 1));
+      [shuffled[j], shuffled[k]] = [shuffled[k], shuffled[j]];
+    }
+
+    const permutation = shuffled.join(",");
+    permutationCounts.set(
+      permutation,
+      (permutationCounts.get(permutation) || 0) + 1
+    );
+  }
+
+  console.log(`Unique permutations found: ${permutationCounts.size}`);
+  console.log(`Expected permutations: ${factorial(original.length)}`);
+  console.log(`Số hoán vị duy nhất tìm thấy: ${permutationCounts.size}`);
+  console.log(`Số hoán vị mong đợi: ${factorial(original.length)}\n`);
+
+  // Show distribution
+  console.log("Permutation distribution (first 10):");
+  console.log("Phân bố hoán vị (10 đầu tiên):");
+  let count = 0;
+  for (const [permutation, frequency] of permutationCounts) {
+    if (count >= 10) break;
+    const percentage = ((frequency / iterations) * 100).toFixed(2);
+    console.log(`  [${permutation}]: ${frequency} times (${percentage}%)`);
+    count++;
+  }
+}
+
+function factorial(n: number): number {
+  if (n <= 1) return 1;
+  return n * factorial(n - 1);
+}
+
+// Test cases / Các trường hợp kiểm thử
+function runTests() {
+  console.log("=== Shuffle Array Tests ===");
+  console.log("=== Kiểm thử bài toán Xáo trộn mảng ===\n");
+
+  const testCases = [
+    {
+      name: "Example case",
+      input: [1, 2, 3],
+      description: "Basic 3-element array",
+    },
+    {
+      name: "Single element",
+      input: [5],
+      description: "Array with single element",
+    },
+    {
+      name: "Two elements",
+      input: [10, 20],
+      description: "Array with two elements",
+    },
+    {
+      name: "Large array",
+      input: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+      description: "Array with 10 elements",
+    },
+    {
+      name: "Negative numbers",
+      input: [-3, -2, -1, 0, 1, 2, 3],
+      description: "Array with negative and positive numbers",
+    },
+  ];
+
+  for (const testCase of testCases) {
+    console.log(`Test: ${testCase.name}`);
+    console.log(`Input: [${testCase.input.join(", ")}]`);
+    console.log(`Description: ${testCase.description}`);
+
+    const solution = new Solution(testCase.input);
+
+    // Test reset
+    const resetResult = solution.reset();
+    console.log(`Reset: [${resetResult.join(", ")}]`);
+
+    // Test shuffle multiple times
+    console.log("Shuffle results:");
+    console.log("Kết quả xáo trộn:");
+    for (let i = 0; i < 5; i++) {
+      const shuffleResult = solution.shuffle();
+      console.log(`  ${i + 1}. [${shuffleResult.join(", ")}]`);
+    }
+
+    // Test reset again
+    const resetAgain = solution.reset();
+    console.log(`Reset again: [${resetAgain.join(", ")}]`);
+
+    console.log("---");
+  }
+
+  // Test with statistics
+  console.log("\n=== Testing with Statistics ===");
+  console.log("=== Kiểm thử với thống kê ===\n");
+
+  const statsSolution = new SolutionWithStats([1, 2, 3]);
+
+  console.log("Performing 1000 shuffles...");
+  console.log("Thực hiện 1000 lần xáo trộn...");
+
+  for (let i = 0; i < 1000; i++) {
+    statsSolution.shuffle();
+  }
+
+  const stats = statsSolution.getStats();
+  console.log(`Total shuffles: ${stats.shuffleCount}`);
+  console.log(`Unique permutations: ${stats.uniquePermutations}`);
+  console.log(`Expected permutations: ${factorial(3)}`);
+
+  console.log("\nPermutation distribution:");
+  console.log("Phân bố hoán vị:");
+  for (const [permutation, count] of stats.distribution) {
+    const percentage = ((count / stats.shuffleCount) * 100).toFixed(2);
+    console.log(`  [${permutation}]: ${count} times (${percentage}%)`);
+  }
+
+  // Test Fisher-Yates algorithm
+  console.log("\n");
+  testFisherYates();
+}
+
+// Run tests if this file is executed directly
+if (require.main === module) {
+  runTests();
+}
+
+export { Solution, SolutionAlternative, SolutionWithStats, testFisherYates };
+{% endraw %}
+5:["slug","leetcode/design/problems/02-shuffle-an-array","c"]
+0:["7uJ7BVaXJTiEOD9iYDv3n",[[["",{"children":["docs",{"children":[["slug","leetcode/design/problems/02-shuffle-an-array","c"],{"children":["__PAGE__?{\"slug\":[\"leetcode\",\"design\",\"problems\",\"02-shuffle-an-array\"]}",{}]}]}]},"$undefined","$undefined",true],["",{"children":["docs",{"children":[["slug","leetcode/design/problems/02-shuffle-an-array","c"],{"children":["__PAGE__",{},[["$L1",["$","div",null,{"style":{"maxWidth":"1200px","margin":"0 auto","padding":"2rem","paddingTop":"6rem"},"children":[["$","div",null,{"style":{"marginBottom":"2rem"},"children":[["$","nav",null,{"style":{"color":"#64748b","fontSize":"0.9rem","marginBottom":"1rem"},"children":[["$","a",null,{"href":"/","style":{"color":"#3b82f6","textDecoration":"none"},"children":"Home"}]," > ",["$","span",null,{"children":"leetcode > design > problems > 02-shuffle-an-array"}]]}],["$","h1",null,{"style":{"fontSize":"2.5rem","fontWeight":"800","marginBottom":"0.5rem","color":"#1e293b"},"children":"Shuffle an Array"}],["$","div",null,{"style":{"color":"#64748b","fontSize":"0.9rem","marginBottom":"2rem"},"children":[["$","span",null,{"children":["📁 ","leetcode/design/problems/02-shuffle-an-array.md"]}],"$undefined","$undefined"]}]]}],["$","$L2",null,{"content":"$3"}]]}],null],null],null]},[null,["$","$L4",null,{"parallelRouterKey":"children","segmentPath":["children","docs","children","$5","children"],"error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L6",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","notFoundStyles":"$undefined"}]],null]},[null,["$","$L4",null,{"parallelRouterKey":"children","segmentPath":["children","docs","children"],"error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L6",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","notFoundStyles":"$undefined"}]],null]},[[[["$","link","0",{"rel":"stylesheet","href":"/interview/_next/static/css/387024c6a2216908.css","precedence":"next","crossOrigin":"$undefined"}]],["$","$L7",null,{"children":["$","$L4",null,{"parallelRouterKey":"children","segmentPath":["children"],"error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L6",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":{"fontFamily":"system-ui,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\"","height":"100vh","textAlign":"center","display":"flex","flexDirection":"column","alignItems":"center","justifyContent":"center"},"children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":{"display":"inline-block","margin":"0 20px 0 0","padding":"0 23px 0 0","fontSize":24,"fontWeight":500,"verticalAlign":"top","lineHeight":"49px"},"children":"404"}],["$","div",null,{"style":{"display":"inline-block"},"children":["$","h2",null,{"style":{"fontSize":14,"fontWeight":400,"lineHeight":"49px","margin":0},"children":"This page could not be found."}]}]]}]}]],"notFoundStyles":[]}],"params":{}}]],null],null],["$L8",null]]]]
+8:[["$","meta","0",{"name":"viewport","content":"width=device-width, initial-scale=1"}],["$","meta","1",{"charSet":"utf-8"}],["$","title","2",{"children":"Shuffle an Array - Frontend Interview Docs"}],["$","meta","3",{"name":"description","content":" # Shuffle an Array    ## Problem Description   *  * Given an integer array nums, design an algorithm to randomly shuffle the array.  * All permutations of the "}],["$","meta","4",{"property":"og:title","content":"Shuffle an Array - Frontend Interview Docs"}],["$","meta","5",{"property":"og:description","content":" # Shuffle an Array    ## Problem Description   *  * Given an integer array nums, design an algorithm to randomly shuffle the array.  * All permutations of the "}],["$","meta","6",{"property":"og:type","content":"article"}],["$","meta","7",{"name":"twitter:card","content":"summary"}],["$","meta","8",{"name":"twitter:title","content":"Shuffle an Array - Frontend Interview Docs"}],["$","meta","9",{"name":"twitter:description","content":" # Shuffle an Array    ## Problem Description   *  * Given an integer array nums, design an algorithm to randomly shuffle the array.  * All permutations of the "}],["$","meta","10",{"name":"next-size-adjust"}]]
+1:null

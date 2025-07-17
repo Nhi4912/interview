@@ -1,0 +1,707 @@
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><meta name="viewport" content="width=device-width, initial-scale=1"/><link rel="preload" href="/interview/_next/static/media/e4af272ccee01ff0-s.p.woff2" as="font" crossorigin="" type="font/woff2"/><link rel="stylesheet" href="/interview/_next/static/css/387024c6a2216908.css" data-precedence="next"/><link rel="preload" as="script" fetchPriority="low" href="/interview/_next/static/chunks/webpack-be7d7df45533bffc.js"/><script src="/interview/_next/static/chunks/fd9d1056-6922f449a204c2cc.js" async=""></script><script src="/interview/_next/static/chunks/117-e7ecc085ce9cfab3.js" async=""></script><script src="/interview/_next/static/chunks/main-app-b06be5f3411c20c3.js" async=""></script><script src="/interview/_next/static/chunks/918-3273b83890f10546.js" async=""></script><script src="/interview/_next/static/chunks/930-3262a6c9c5acace4.js" async=""></script><script src="/interview/_next/static/chunks/app/docs/%5B...slug%5D/page-32962e9542d32755.js" async=""></script><script src="/interview/_next/static/chunks/710-dfaa11b4dff08f8e.js" async=""></script><script src="/interview/_next/static/chunks/972-011bba60ed155615.js" async=""></script><script src="/interview/_next/static/chunks/233-3e0c1d820a17eca9.js" async=""></script><script src="/interview/_next/static/chunks/app/layout-333f4adcd11f8f39.js" async=""></script><title>Frontend Interview Prep 2025 - Big Tech Interview Guide</title><meta name="description" content="Comprehensive frontend interview preparation for Big Tech companies including React, TypeScript, algorithms, and system design."/><link rel="icon" href="/favicon.ico"/><meta name="theme-color" content="#1a1a1a"/><meta property="og:title" content="Frontend Interview Prep 2025"/><meta property="og:description" content="Complete guide for frontend engineers targeting Big Tech companies"/><meta property="og:type" content="website"/><link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous"/><title>Palindrome Linked List - Frontend Interview Docs</title><meta name="description" content=" # Palindrome Linked List  **LeetCode Problem # * 234. Palindrome Linked List**  ## Problem Description   * Given the head of a singly linked list, return true "/><meta property="og:title" content="Palindrome Linked List - Frontend Interview Docs"/><meta property="og:description" content=" # Palindrome Linked List  **LeetCode Problem # * 234. Palindrome Linked List**  ## Problem Description   * Given the head of a singly linked list, return true "/><meta property="og:type" content="article"/><meta name="twitter:card" content="summary"/><meta name="twitter:title" content="Palindrome Linked List - Frontend Interview Docs"/><meta name="twitter:description" content=" # Palindrome Linked List  **LeetCode Problem # * 234. Palindrome Linked List**  ## Problem Description   * Given the head of a singly linked list, return true "/><meta name="next-size-adjust"/><script src="/interview/_next/static/chunks/polyfills-42372ed130431b0a.js" noModule=""></script><style data-styled="" data-styled-version="6.1.19">*{margin:0;padding:0;box-sizing:border-box;}/*!sc*/
+html{font-size:16px;line-height:1.5;scroll-behavior:smooth;}/*!sc*/
+body{font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;font-size:1rem;line-height:1.5;color:#1e293b;background-color:#ffffff;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;}/*!sc*/
+h1,h2,h3,h4,h5,h6{font-weight:700;line-height:1.25;margin-bottom:0.5em;}/*!sc*/
+h1{font-size:3rem;}/*!sc*/
+@media (max-width: 768px){h1{font-size:2.25rem;}}/*!sc*/
+h2{font-size:2.25rem;}/*!sc*/
+@media (max-width: 768px){h2{font-size:1.875rem;}}/*!sc*/
+h3{font-size:1.875rem;}/*!sc*/
+@media (max-width: 768px){h3{font-size:1.5rem;}}/*!sc*/
+h4{font-size:1.5rem;}/*!sc*/
+@media (max-width: 768px){h4{font-size:1.25rem;}}/*!sc*/
+h5{font-size:1.25rem;}/*!sc*/
+h6{font-size:1.125rem;}/*!sc*/
+p{margin-bottom:1rem;line-height:1.75;}/*!sc*/
+a{color:#3b82f6;text-decoration:none;transition:color 0.15s ease;}/*!sc*/
+a:hover{color:#2563eb;}/*!sc*/
+a:focus{outline:2px solid #3b82f6;outline-offset:2px;}/*!sc*/
+button{cursor:pointer;border:none;background:none;font-family:inherit;font-size:inherit;}/*!sc*/
+button:disabled{cursor:not-allowed;opacity:0.6;}/*!sc*/
+button:focus{outline:2px solid #3b82f6;outline-offset:2px;}/*!sc*/
+input,textarea,select{font-family:inherit;font-size:inherit;}/*!sc*/
+input:focus,textarea:focus,select:focus{outline:2px solid #3b82f6;outline-offset:2px;}/*!sc*/
+img{max-width:100%;height:auto;}/*!sc*/
+ul,ol{margin-bottom:1rem;padding-left:1.5rem;}/*!sc*/
+li{margin-bottom:0.25rem;}/*!sc*/
+blockquote{margin:1rem 0;padding:1rem;border-left:4px solid #3b82f6;background-color:#f1f5f9;font-style:italic;}/*!sc*/
+code{font-family:SFMono-Regular,Consolas,"Liberation Mono",Menlo,monospace;font-size:0.9em;background-color:#f1f5f9;padding:0.2em 0.4em;border-radius:0.25rem;}/*!sc*/
+pre{background-color:#f1f5f9;padding:1rem;border-radius:0.5rem;overflow-x:auto;margin-bottom:1rem;}/*!sc*/
+pre code{background:none;padding:0;}/*!sc*/
+table{width:100%;border-collapse:collapse;margin-bottom:1rem;}/*!sc*/
+th,td{padding:0.75rem;text-align:left;border-bottom:1px solid #e2e8f0;}/*!sc*/
+th{font-weight:600;background-color:#f1f5f9;}/*!sc*/
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0, 0, 0, 0);white-space:nowrap;border:0;}/*!sc*/
+.skip-link{position:absolute;top:-40px;left:6px;background:#3b82f6;color:white;padding:8px;text-decoration:none;border-radius:4px;z-index:100;}/*!sc*/
+.skip-link:focus{top:6px;}/*!sc*/
+::-webkit-scrollbar{width:8px;height:8px;}/*!sc*/
+::-webkit-scrollbar-track{background:#f1f5f9;}/*!sc*/
+::-webkit-scrollbar-thumb{background:#94a3b8;border-radius:4px;}/*!sc*/
+::-webkit-scrollbar-thumb:hover{background:#64748b;}/*!sc*/
+::selection{background:#3b82f6;color:white;}/*!sc*/
+.focus-visible{outline:2px solid #3b82f6;outline-offset:2px;}/*!sc*/
+.fade-in{opacity:0;animation:fadeIn 0.3s ease forwards;}/*!sc*/
+.slide-up{transform:translateY(20px);opacity:0;animation:slideUp 0.3s ease forwards;}/*!sc*/
+@keyframes fadeIn{to{opacity:1;}}/*!sc*/
+@keyframes slideUp{to{transform:translateY(0);opacity:1;}}/*!sc*/
+@media print{*{background:white!important;color:black!important;box-shadow:none!important;text-shadow:none!important;}a,a:visited{text-decoration:underline;}h1,h2,h3,h4,h5,h6{break-after:avoid;}pre,blockquote{border:1px solid #999;break-inside:avoid;}img{max-width:100%!important;}@page{margin:0.5in;}}/*!sc*/
+data-styled.g23[id="sc-global-kxA-Ddz1"]{content:"sc-global-kxA-Ddz1,"}/*!sc*/
+.eKIJjO{position:fixed;top:0;width:100%;z-index:1020;background:transparent;backdrop-filter:blur(10px);border-bottom:1px solid transparent;transition:all 0.3s ease;}/*!sc*/
+data-styled.g24[id="sc-jaXbil"]{content:"eKIJjO,"}/*!sc*/
+.eixvq{max-width:1200px;margin:0 auto;padding:0 2rem;display:flex;align-items:center;justify-content:space-between;height:70px;}/*!sc*/
+data-styled.g25[id="sc-eqNDNG"]{content:"eixvq,"}/*!sc*/
+.hudwVZ{display:flex;align-items:center;gap:0.5rem;font-size:1.5rem;font-weight:700;color:#3b82f6;text-decoration:none;cursor:pointer;}/*!sc*/
+.hudwVZ:hover{color:#2563eb;}/*!sc*/
+data-styled.g26[id="sc-fVHBlr"]{content:"hudwVZ,"}/*!sc*/
+.gHgjnR{display:flex;align-items:center;gap:2rem;}/*!sc*/
+@media (max-width: 768px){.gHgjnR{display:none;}}/*!sc*/
+data-styled.g27[id="sc-gLaqbQ"]{content:"gHgjnR,"}/*!sc*/
+.ejYeRD{color:#1e293b;font-weight:500;text-decoration:none;transition:color 0.15s ease;position:relative;}/*!sc*/
+.ejYeRD:hover{color:#3b82f6;}/*!sc*/
+.ejYeRD:after{content:'';position:absolute;bottom:-5px;left:0;width:0;height:2px;background:#3b82f6;transition:width 0.15s ease;}/*!sc*/
+.ejYeRD:hover:after{width:100%;}/*!sc*/
+data-styled.g28[id="sc-ipUnzB"]{content:"ejYeRD,"}/*!sc*/
+.cwUwRf{display:none;background:none;border:none;color:#1e293b;cursor:pointer;padding:0.5rem;}/*!sc*/
+@media (max-width: 768px){.cwUwRf{display:block;}}/*!sc*/
+data-styled.g29[id="sc-eQwNpu"]{content:"cwUwRf,"}/*!sc*/
+.eotevR{display:flex;align-items:center;gap:0.5rem;background:#f1f5f9;border:1px solid #e2e8f0;border-radius:0.5rem;padding:0.5rem 1rem;color:#64748b;font-size:0.9rem;transition:all 0.15s ease;}/*!sc*/
+.eotevR:hover{background:#ffffff;border-color:#3b82f6;}/*!sc*/
+data-styled.g33[id="sc-eVqvcJ"]{content:"eotevR,"}/*!sc*/
+.fXFPTj{background:#1e293b;color:white;padding:3rem 0 1rem;margin-top:auto;}/*!sc*/
+data-styled.g34[id="sc-bbbBoY"]{content:"fXFPTj,"}/*!sc*/
+.dWUTOl{max-width:1200px;margin:0 auto;padding:0 2rem;}/*!sc*/
+data-styled.g35[id="sc-cdmAjP"]{content:"dWUTOl,"}/*!sc*/
+.kWeZJe{display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:2rem;margin-bottom:2rem;}/*!sc*/
+@media (max-width: 768px){.kWeZJe{grid-template-columns:1fr 1fr;gap:1.5rem;}}/*!sc*/
+@media (max-width: 480px){.kWeZJe{grid-template-columns:1fr;}}/*!sc*/
+data-styled.g36[id="sc-jytpVa"]{content:"kWeZJe,"}/*!sc*/
+.hlQQbN h3{font-size:1.1rem;font-weight:600;margin-bottom:1rem;color:white;}/*!sc*/
+.hlQQbN ul{list-style:none;padding:0;margin:0;}/*!sc*/
+.hlQQbN li{margin-bottom:0.5rem;}/*!sc*/
+.hlQQbN a{color:rgba(255, 255, 255, 0.7);text-decoration:none;transition:color 0.15s ease;}/*!sc*/
+.hlQQbN a:hover{color:white;}/*!sc*/
+data-styled.g37[id="sc-eknHtZ"]{content:"hlQQbN,"}/*!sc*/
+.eUEOfs{display:flex;align-items:center;gap:0.5rem;font-size:1.2rem;font-weight:700;margin-bottom:1rem;color:white;}/*!sc*/
+data-styled.g38[id="sc-pYNGo"]{content:"eUEOfs,"}/*!sc*/
+.FTAbj{color:rgba(255, 255, 255, 0.7);line-height:1.6;margin-bottom:1rem;}/*!sc*/
+data-styled.g39[id="sc-cCVJLD"]{content:"FTAbj,"}/*!sc*/
+.fjvVr{display:flex;gap:1rem;}/*!sc*/
+.fjvVr a{display:flex;align-items:center;justify-content:center;width:40px;height:40px;background:rgba(255, 255, 255, 0.1);border-radius:0.5rem;color:rgba(255, 255, 255, 0.7);transition:all 0.15s ease;}/*!sc*/
+.fjvVr a:hover{background:rgba(255, 255, 255, 0.2);color:white;}/*!sc*/
+data-styled.g40[id="sc-jYczwO"]{content:"fjvVr,"}/*!sc*/
+.jkOcpo{border-top:1px solid rgba(255, 255, 255, 0.1);padding-top:2rem;display:flex;justify-content:space-between;align-items:center;}/*!sc*/
+@media (max-width: 768px){.jkOcpo{flex-direction:column;gap:1rem;text-align:center;}}/*!sc*/
+data-styled.g41[id="sc-dNFkOE"]{content:"jkOcpo,"}/*!sc*/
+.ficqwG{color:rgba(255, 255, 255, 0.7);margin:0;font-size:0.9rem;}/*!sc*/
+data-styled.g42[id="sc-fszimp"]{content:"ficqwG,"}/*!sc*/
+.cAqCWV{display:flex;gap:2rem;}/*!sc*/
+@media (max-width: 480px){.cAqCWV{flex-direction:column;gap:1rem;}}/*!sc*/
+.cAqCWV a{color:rgba(255, 255, 255, 0.7);text-decoration:none;font-size:0.9rem;transition:color 0.15s ease;}/*!sc*/
+.cAqCWV a:hover{color:white;}/*!sc*/
+data-styled.g43[id="sc-etsjJW"]{content:"cAqCWV,"}/*!sc*/
+.dwkWyw{color:#1e293b;line-height:1.6;}/*!sc*/
+.dwkWyw h1,.dwkWyw h2,.dwkWyw h3,.dwkWyw h4,.dwkWyw h5,.dwkWyw h6{color:#1e293b;margin-top:2rem;margin-bottom:1rem;font-weight:600;}/*!sc*/
+.dwkWyw h1{font-size:2rem;border-bottom:2px solid #e2e8f0;padding-bottom:0.5rem;}/*!sc*/
+.dwkWyw h2{font-size:1.5rem;border-bottom:1px solid #e2e8f0;padding-bottom:0.3rem;}/*!sc*/
+.dwkWyw h3{font-size:1.25rem;}/*!sc*/
+.dwkWyw h4{font-size:1.1rem;}/*!sc*/
+.dwkWyw p{margin-bottom:1rem;color:#64748b;}/*!sc*/
+.dwkWyw a{color:#3b82f6;text-decoration:none;}/*!sc*/
+.dwkWyw a:hover{text-decoration:underline;}/*!sc*/
+.dwkWyw ul,.dwkWyw ol{margin-bottom:1rem;padding-left:1.5rem;}/*!sc*/
+.dwkWyw ul li,.dwkWyw ol li{margin-bottom:0.5rem;color:#64748b;}/*!sc*/
+.dwkWyw blockquote{border-left:4px solid #3b82f6;padding-left:1rem;margin:1rem 0;font-style:italic;color:#64748b;background:#f1f5f9;padding:1rem;border-radius:0.5rem;}/*!sc*/
+.dwkWyw code{background:#f1f5f9;padding:0.2rem 0.4rem;border-radius:0.25rem;font-family:SFMono-Regular,Consolas,"Liberation Mono",Menlo,monospace;font-size:0.9em;color:#f59e0b;}/*!sc*/
+.dwkWyw pre{background:#ffffff;border:1px solid #e2e8f0;border-radius:0.5rem;padding:1rem;margin:1rem 0;overflow-x:auto;}/*!sc*/
+.dwkWyw pre code{background:none;padding:0;color:#1e293b;font-size:0.9rem;}/*!sc*/
+.dwkWyw table{width:100%;border-collapse:collapse;margin:1rem 0;}/*!sc*/
+.dwkWyw table th,.dwkWyw table td{border:1px solid #e2e8f0;padding:0.5rem;text-align:left;}/*!sc*/
+.dwkWyw table th{background:#ffffff;font-weight:600;}/*!sc*/
+.dwkWyw table tr:nth-child(even){background:#f1f5f9;}/*!sc*/
+.dwkWyw hr{border:none;height:1px;background:#e2e8f0;margin:2rem 0;}/*!sc*/
+.dwkWyw .highlight{background:#3b82f620;padding:0.2rem 0.4rem;border-radius:0.25rem;font-weight:600;}/*!sc*/
+.dwkWyw .hljs{background:#ffffff;color:#1e293b;}/*!sc*/
+.dwkWyw .hljs-keyword{color:#3b82f6;font-weight:600;}/*!sc*/
+.dwkWyw .hljs-string{color:#10b981;}/*!sc*/
+.dwkWyw .hljs-function{color:#f59e0b;}/*!sc*/
+.dwkWyw .hljs-comment{color:#94a3b8;font-style:italic;}/*!sc*/
+.dwkWyw .hljs-number{color:#f59e0b;}/*!sc*/
+.dwkWyw .hljs-variable{color:#1e293b;}/*!sc*/
+.dwkWyw .hljs-title{color:#f59e0b;font-weight:600;}/*!sc*/
+data-styled.g44[id="sc-fYmhhH"]{content:"dwkWyw,"}/*!sc*/
+</style></head><body class="__className_6eac61"><div style="min-height:100vh;display:flex;flex-direction:column"><nav class="sc-jaXbil eKIJjO"><div class="sc-eqNDNG eixvq"><a href="/interview"><a class="sc-fVHBlr hudwVZ"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-code "><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>Frontend Interview Prep</a></a><div class="sc-gLaqbQ gHgjnR"><a href="/interview/problems"><a class="sc-ipUnzB ejYeRD">Problems</a></a><a href="/interview/learn"><a class="sc-ipUnzB ejYeRD">Learn</a></a><a href="/interview/study-guide"><a class="sc-ipUnzB ejYeRD">Study Guide</a></a><a href="/interview/system-design"><a class="sc-ipUnzB ejYeRD">System Design</a></a><a href="/interview/performance"><a class="sc-ipUnzB ejYeRD">Performance</a></a><a href="/interview/accessibility"><a class="sc-ipUnzB ejYeRD">Accessibility</a></a><a href="/interview/interview-tips"><a class="sc-ipUnzB ejYeRD">Interview Tips</a></a><button class="sc-eVqvcJ eotevR"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-search "><circle cx="11" cy="11" r="8"></circle><path d="m21 21-4.3-4.3"></path></svg>Search</button></div><button class="sc-eQwNpu cwUwRf"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-menu "><line x1="4" x2="20" y1="12" y2="12"></line><line x1="4" x2="20" y1="6" y2="6"></line><line x1="4" x2="20" y1="18" y2="18"></line></svg></button></div></nav><main style="flex:1"><div style="max-width:1200px;margin:0 auto;padding:2rem;padding-top:6rem"><div style="margin-bottom:2rem"><nav style="color:#64748b;font-size:0.9rem;margin-bottom:1rem"><a href="/" style="color:#3b82f6;text-decoration:none">Home</a> &gt; <span>leetcode &gt; linked-list &gt; problems &gt; 03-palindrome-linked-list</span></nav><h1 style="font-size:2.5rem;font-weight:800;margin-bottom:0.5rem;color:#1e293b">Palindrome Linked List</h1><div style="color:#64748b;font-size:0.9rem;margin-bottom:2rem"><span>📁 <!-- -->leetcode/linked-list/problems/03-palindrome-linked-list.md</span></div></div><div class="sc-fYmhhH dwkWyw"><h1 id="palindrome-linked-list" node="[object Object]">Palindrome Linked List</h1>
+<p><strong>LeetCode Problem # * 234. Palindrome Linked List</strong></p>
+<h2 id="problem-description" node="[object Object]">Problem Description</h2>
+<ul>
+<li>Given the head of a singly linked list, return true if it is a palindrome or false otherwise.  *  * Input: head = [1,2,2,1]  * Output: true  *</li>
+</ul>
+<h2 id="solutions" node="[object Object]">Solutions</h2>
+<p>{% raw %}
+/**</p>
+<ul>
+<li>234. Palindrome Linked List</li>
+<li></li>
+<li>Problem:</li>
+<li>Given the head of a singly linked list, return true if it is a palindrome or false otherwise.</li>
+<li></li>
+<li>Example:</li>
+<li>Input: head = [1,2,2,1]</li>
+<li>Output: true</li>
+<li></li>
+<li>Input: head = [1,2]</li>
+<li>Output: false</li>
+<li></li>
+<li>LeetCode: <a href="https://leetcode.com/problems/palindrome-linked-list/" target="_blank" rel="noopener noreferrer" node="[object Object]">https://leetcode.com/problems/palindrome-linked-list/</a>
+*/</li>
+</ul>
+<p>// ListNode class definition
+class ListNode {
+val: number;
+next: ListNode | null;</p>
+<p>constructor(val: number = 0, next: ListNode | null = null) {
+this.val = val;
+this.next = next;
+}
+}</p>
+<p>/**</p>
+<ul>
+<li>Solution 1: Reverse Second Half (Optimal)</li>
+<li></li>
+<li>Approach:</li>
+<li>
+<ul>
+<li>Find middle of linked list using fast/slow pointers</li>
+</ul>
+</li>
+<li>
+<ul>
+<li>Reverse second half</li>
+</ul>
+</li>
+<li>
+<ul>
+<li>Compare first half with reversed second half</li>
+</ul>
+</li>
+<li></li>
+<li>Time Complexity: O(n)</li>
+<li>Space Complexity: O(1)
+*/
+function isPalindrome(head: ListNode | null): boolean {
+if (!head || !head.next) return true;</li>
+</ul>
+<p>// Find middle using fast/slow pointers
+let slow = head;
+let fast = head;</p>
+<p>while (fast.next &amp;&amp; fast.next.next) {
+slow = slow.next!;
+fast = fast.next.next;
+}</p>
+<p>// Reverse second half
+let secondHalf = reverseList(slow.next);
+let firstHalf = head;</p>
+<p>// Compare first half with reversed second half
+while (secondHalf) {
+if (firstHalf.val !== secondHalf.val) {
+return false;
+}
+firstHalf = firstHalf.next!;
+secondHalf = secondHalf.next;
+}</p>
+<p>return true;
+}</p>
+<p>/**</p>
+<ul>
+<li>Solution 2: Using Array</li>
+<li></li>
+<li>Approach:</li>
+<li>
+<ul>
+<li>Convert linked list to array</li>
+</ul>
+</li>
+<li>
+<ul>
+<li>Use two pointers to check palindrome</li>
+</ul>
+</li>
+<li></li>
+<li>Time Complexity: O(n)</li>
+<li>Space Complexity: O(n)
+*/
+function isPalindromeArray(head: ListNode | null): boolean {
+if (!head || !head.next) return true;</li>
+</ul>
+<p>const values: number[] = [];
+let current = head;</p>
+<p>while (current) {
+values.push(current.val);
+current = current.next;
+}</p>
+<p>// Check palindrome using two pointers
+let left = 0;
+let right = values.length - 1;</p>
+<p>while (left &lt; right) {
+if (values[left] !== values[right]) {
+return false;
+}
+left++;
+right--;
+}</p>
+<p>return true;
+}</p>
+<p>/**</p>
+<ul>
+<li>Solution 3: Recursive Approach</li>
+<li></li>
+<li>Approach:</li>
+<li>
+<ul>
+<li>Use recursion to reach end of list</li>
+</ul>
+</li>
+<li>
+<ul>
+<li>Compare with front pointer during backtracking</li>
+</ul>
+</li>
+<li></li>
+<li>Time Complexity: O(n)</li>
+<li>Space Complexity: O(n) - recursion stack
+*/
+function isPalindromeRecursive(head: ListNode | null): boolean {
+let frontPointer = head;</li>
+</ul>
+<p>function recursivelyCheck(currentNode: ListNode | null): boolean {
+if (currentNode) {
+if (!recursivelyCheck(currentNode.next)) {
+return false;
+}
+if (currentNode.val !== frontPointer!.val) {
+return false;
+}
+frontPointer = frontPointer!.next;
+}
+return true;
+}</p>
+<p>return recursivelyCheck(head);
+}</p>
+<p>/**</p>
+<ul>
+<li>Solution 4: Using Stack</li>
+<li></li>
+<li>Approach:</li>
+<li>
+<ul>
+<li>Push all elements to stack</li>
+</ul>
+</li>
+<li>
+<ul>
+<li>Pop and compare with original list</li>
+</ul>
+</li>
+<li></li>
+<li>Time Complexity: O(n)</li>
+<li>Space Complexity: O(n)
+*/
+function isPalindromeStack(head: ListNode | null): boolean {
+if (!head || !head.next) return true;</li>
+</ul>
+<p>const stack: number[] = [];
+let current = head;</p>
+<p>// Push all elements to stack
+while (current) {
+stack.push(current.val);
+current = current.next;
+}</p>
+<p>// Pop and compare
+current = head;
+while (current) {
+if (current.val !== stack.pop()) {
+return false;
+}
+current = current.next;
+}</p>
+<p>return true;
+}</p>
+<p>/**</p>
+<ul>
+<li>Solution 5: Using String Conversion</li>
+<li></li>
+<li>Approach:</li>
+<li>
+<ul>
+<li>Convert linked list to string</li>
+</ul>
+</li>
+<li>
+<ul>
+<li>Check if string is palindrome</li>
+</ul>
+</li>
+<li></li>
+<li>Time Complexity: O(n)</li>
+<li>Space Complexity: O(n)
+*/
+function isPalindromeString(head: ListNode | null): boolean {
+if (!head || !head.next) return true;</li>
+</ul>
+<p>let str = &quot;&quot;;
+let current = head;</p>
+<p>while (current) {
+str += current.val;
+current = current.next;
+}</p>
+<p>// Check if string is palindrome
+return str === str.split(&quot;&quot;).reverse().join(&quot;&quot;);
+}</p>
+<p>/**</p>
+<ul>
+<li>Solution 6: Using Two Pointers with Reversal</li>
+<li></li>
+<li>Approach:</li>
+<li>
+<ul>
+<li>Find middle and reverse first half</li>
+</ul>
+</li>
+<li>
+<ul>
+<li>Compare reversed first half with second half</li>
+</ul>
+</li>
+<li></li>
+<li>Time Complexity: O(n)</li>
+<li>Space Complexity: O(1)
+*/
+function isPalindromeTwoPointers(head: ListNode | null): boolean {
+if (!head || !head.next) return true;</li>
+</ul>
+<p>let prev: ListNode | null = null;
+let slow = head;
+let fast = head;</p>
+<p>// Find middle and reverse first half
+while (fast.next &amp;&amp; fast.next.next) {
+fast = fast.next.next;</p>
+<pre><pre><code class="hljs undefined">// Reverse slow pointer
+const next = slow.next!;
+slow.next = prev;
+prev = slow;
+slow = next;
+</code></pre></pre>
+<p>}</p>
+<p>// Handle odd/even length
+let secondHalf = slow.next;
+if (fast.next) {
+// Even length
+slow.next = prev;
+prev = slow;
+} else {
+// Odd length
+slow.next = prev;
+}</p>
+<p>// Compare first half with second half
+while (prev &amp;&amp; secondHalf) {
+if (prev.val !== secondHalf.val) {
+return false;
+}
+prev = prev.next;
+secondHalf = secondHalf.next;
+}</p>
+<p>return true;
+}</p>
+<p>/**</p>
+<ul>
+<li>Solution 7: Using Generator (Memory efficient)</li>
+<li></li>
+<li>Approach:</li>
+<li>
+<ul>
+<li>Use generator to yield values</li>
+</ul>
+</li>
+<li>
+<ul>
+<li>Compare values in reverse order</li>
+</ul>
+</li>
+<li></li>
+<li>Time Complexity: O(n)</li>
+<li>Space Complexity: O(n)
+<em>/
+function</em> listGenerator(head: ListNode | null): Generator<number> {
+let current = head;
+while (current) {
+yield current.val;
+current = current.next;
+}
+}</number></li>
+</ul>
+<p>function isPalindromeGenerator(head: ListNode | null): boolean {
+if (!head || !head.next) return true;</p>
+<p>const values = Array.from(listGenerator(head));
+const reversed = values.slice().reverse();</p>
+<p>return JSON.stringify(values) === JSON.stringify(reversed);
+}</p>
+<p>/**</p>
+<ul>
+<li>Solution 8: Using Class (Object-oriented)</li>
+<li></li>
+<li>Approach:</li>
+<li>
+<ul>
+<li>Create a LinkedList class with palindrome checking</li>
+</ul>
+</li>
+<li>
+<ul>
+<li>More structured approach</li>
+</ul>
+</li>
+<li></li>
+<li>Time Complexity: O(n)</li>
+<li>Space Complexity: O(1)
+*/
+class LinkedList {
+head: ListNode | null;</li>
+</ul>
+<p>constructor(head: ListNode | null = null) {
+this.head = head;
+}</p>
+<p>isPalindrome(): boolean {
+return isPalindrome(this.head);
+}</p>
+<p>toArray(): number[] {
+const result: number[] = [];
+let current = this.head;</p>
+<pre><pre><code class="hljs undefined">while (current) {
+  result.push(current.val);
+  current = current.next;
+}
+
+return result;
+</code></pre></pre>
+<p>}
+}</p>
+<p>function isPalindromeClass(head: ListNode | null): boolean {
+const list = new LinkedList(head);
+return list.isPalindrome();
+}</p>
+<p>// Helper functions
+function reverseList(head: ListNode | null): ListNode | null {
+let prev: ListNode | null = null;
+let current = head;</p>
+<p>while (current) {
+const next = current.next;
+current.next = prev;
+prev = current;
+current = next;
+}</p>
+<p>return prev;
+}</p>
+<p>function createLinkedList(arr: number[]): ListNode | null {
+if (arr.length === 0) return null;</p>
+<p>const head = new ListNode(arr[0]);
+let current = head;</p>
+<p>for (let i = 1; i &lt; arr.length; i++) {
+current.next = new ListNode(arr[i]);
+current = current.next;
+}</p>
+<p>return head;
+}</p>
+<p>function linkedListToArray(head: ListNode | null): number[] {
+const result: number[] = [];
+let current = head;</p>
+<p>while (current) {
+result.push(current.val);
+current = current.next;
+}</p>
+<p>return result;
+}</p>
+<p>function printLinkedList(head: ListNode | null): string {
+return <pre><code class="hljs undefined">[${linkedListToArray(head).join(&quot; -&gt; &quot;)}]</code></pre>;
+}</p>
+<p>// Test cases
+function testPalindromeLinkedList() {
+console.log(&quot;=== Testing Palindrome Linked List ===\n&quot;);</p>
+<p>const testCases = [
+{
+input: [1, 2, 2, 1],
+expected: true,
+description: &quot;Even length palindrome&quot;,
+},
+{
+input: [1, 2],
+expected: false,
+description: &quot;Not a palindrome&quot;,
+},
+{
+input: [1, 2, 3, 2, 1],
+expected: true,
+description: &quot;Odd length palindrome&quot;,
+},
+{
+input: [1],
+expected: true,
+description: &quot;Single node&quot;,
+},
+{
+input: [],
+expected: true,
+description: &quot;Empty list&quot;,
+},
+{
+input: [1, 1],
+expected: true,
+description: &quot;Two same nodes&quot;,
+},
+{
+input: [1, 2, 3, 4, 5],
+expected: false,
+description: &quot;Not a palindrome&quot;,
+},
+{
+input: [1, 2, 3, 3, 2, 1],
+expected: true,
+description: &quot;Long palindrome&quot;,
+},
+];</p>
+<p>testCases.forEach((testCase, index) =&gt; {
+console.log(<pre><code class="hljs undefined">Test Case ${index + 1}: ${testCase.description}</code></pre>);
+console.log(<pre><code class="hljs undefined">Input: ${printLinkedList(createLinkedList(testCase.input))}</code></pre>);
+console.log(<pre><code class="hljs undefined">Expected: ${testCase.expected}\n</code></pre>);</p>
+<pre><pre><code class="hljs undefined">const head = createLinkedList(testCase.input);
+
+// Test Solution 1 (Reverse Second Half)
+const result1 = isPalindrome(head);
+console.log(
+  `Solution 1 (Reverse Second Half): ${result1} ${
+    result1 === testCase.expected ? &quot;✅&quot; : &quot;❌&quot;
+  }`
+);
+
+// Test Solution 2 (Array)
+const head2 = createLinkedList(testCase.input);
+const result2 = isPalindromeArray(head2);
+console.log(
+  `Solution 2 (Array): ${result2} ${
+    result2 === testCase.expected ? &quot;✅&quot; : &quot;❌&quot;
+  }`
+);
+
+// Test Solution 3 (Recursive)
+const head3 = createLinkedList(testCase.input);
+const result3 = isPalindromeRecursive(head3);
+console.log(
+  `Solution 3 (Recursive): ${result3} ${
+    result3 === testCase.expected ? &quot;✅&quot; : &quot;❌&quot;
+  }`
+);
+
+// Test Solution 4 (Stack)
+const head4 = createLinkedList(testCase.input);
+const result4 = isPalindromeStack(head4);
+console.log(
+  `Solution 4 (Stack): ${result4} ${
+    result4 === testCase.expected ? &quot;✅&quot; : &quot;❌&quot;
+  }`
+);
+
+// Test Solution 5 (String)
+const head5 = createLinkedList(testCase.input);
+const result5 = isPalindromeString(head5);
+console.log(
+  `Solution 5 (String): ${result5} ${
+    result5 === testCase.expected ? &quot;✅&quot; : &quot;❌&quot;
+  }`
+);
+
+// Test Solution 6 (Two Pointers)
+const head6 = createLinkedList(testCase.input);
+const result6 = isPalindromeTwoPointers(head6);
+console.log(
+  `Solution 6 (Two Pointers): ${result6} ${
+    result6 === testCase.expected ? &quot;✅&quot; : &quot;❌&quot;
+  }`
+);
+
+// Test Solution 7 (Generator)
+const head7 = createLinkedList(testCase.input);
+const result7 = isPalindromeGenerator(head7);
+console.log(
+  `Solution 7 (Generator): ${result7} ${
+    result7 === testCase.expected ? &quot;✅&quot; : &quot;❌&quot;
+  }`
+);
+
+// Test Solution 8 (Class)
+const head8 = createLinkedList(testCase.input);
+const result8 = isPalindromeClass(head8);
+console.log(
+  `Solution 8 (Class): ${result8} ${
+    result8 === testCase.expected ? &quot;✅&quot; : &quot;❌&quot;
+  }`
+);
+
+console.log(&quot;\n---\n&quot;);
+</code></pre></pre>
+<p>});
+}</p>
+<p>// Performance comparison
+function performanceComparison() {
+console.log(&quot;=== Performance Comparison ===\n&quot;);</p>
+<p>const testCases = [
+{ name: &quot;Reverse Second Half&quot;, func: isPalindrome },
+{ name: &quot;Array&quot;, func: isPalindromeArray },
+{ name: &quot;Recursive&quot;, func: isPalindromeRecursive },
+{ name: &quot;Stack&quot;, func: isPalindromeStack },
+{ name: &quot;String&quot;, func: isPalindromeString },
+{ name: &quot;Two Pointers&quot;, func: isPalindromeTwoPointers },
+{ name: &quot;Generator&quot;, func: isPalindromeGenerator },
+{ name: &quot;Class&quot;, func: isPalindromeClass },
+];</p>
+<p>// Create test lists
+const palindromeList = createLinkedList([1, 2, 3, 4, 5, 4, 3, 2, 1]);
+const nonPalindromeList = createLinkedList([1, 2, 3, 4, 5, 6, 7, 8, 9]);</p>
+<p>const lists = [
+{ name: &quot;Palindrome&quot;, list: palindromeList },
+{ name: &quot;Non-Palindrome&quot;, list: nonPalindromeList },
+];</p>
+<p>lists.forEach(({ name, list }) =&gt; {
+console.log(<pre><code class="hljs undefined">${name} List:</code></pre>);</p>
+<pre><pre><code class="hljs undefined">testCases.forEach(({ name: funcName, func }) =&gt; {
+  const start = performance.now();
+  const result = func(list);
+  const end = performance.now();
+
+  console.log(`  ${funcName}: ${(end - start).toFixed(2)}ms (${result})`);
+});
+
+console.log(&quot;&quot;);
+</code></pre></pre>
+<p>});
+}</p>
+<p>// Uncomment the following lines to run tests
+// testPalindromeLinkedList();
+// performanceComparison();</p>
+<p>export {
+ListNode,
+isPalindrome,
+isPalindromeArray,
+isPalindromeRecursive,
+isPalindromeStack,
+isPalindromeString,
+isPalindromeTwoPointers,
+isPalindromeGenerator,
+isPalindromeClass,
+LinkedList,
+listGenerator,
+reverseList,
+createLinkedList,
+linkedListToArray,
+printLinkedList,
+testPalindromeLinkedList,
+performanceComparison,
+};
+{% endraw %}</p></div></div></main><footer class="sc-bbbBoY fXFPTj"><div class="sc-cdmAjP dWUTOl"><div class="sc-jytpVa kWeZJe"><div class="sc-eknHtZ hlQQbN"><div class="sc-pYNGo eUEOfs"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-code "><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>Frontend Interview Prep</div><p class="sc-cCVJLD FTAbj">Comprehensive interview preparation for frontend engineers targeting Big Tech companies.</p><div class="sc-jYczwO fjvVr"><a href="https://github.com" aria-label="GitHub"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-github "><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"></path><path d="M9 18c-4.51 2-5-2-7-2"></path></svg></a><a href="https://twitter.com" aria-label="Twitter"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-twitter "><path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"></path></svg></a><a href="https://linkedin.com" aria-label="LinkedIn"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-linkedin "><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect width="4" height="12" x="2" y="9"></rect><circle cx="4" cy="4" r="2"></circle></svg></a><a href="mailto:contact@example.com" aria-label="Email"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-mail "><rect width="20" height="16" x="2" y="4" rx="2"></rect><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path></svg></a></div></div><div class="sc-eknHtZ hlQQbN"><h3>Study Materials</h3><ul><li><a href="/algorithms">Algorithms</a></li><li><a href="/react">React &amp; Frontend</a></li><li><a href="/system-design">System Design</a></li><li><a href="/typescript">TypeScript</a></li><li><a href="/performance">Performance</a></li></ul></div><div class="sc-eknHtZ hlQQbN"><h3>Companies</h3><ul><li><a href="/google">Google</a></li><li><a href="/meta">Meta</a></li><li><a href="/amazon">Amazon</a></li><li><a href="/microsoft">Microsoft</a></li><li><a href="/apple">Apple</a></li></ul></div><div class="sc-eknHtZ hlQQbN"><h3>Resources</h3><ul><li><a href="/interview-tips">Interview Tips</a></li><li><a href="/coding-challenges">Coding Challenges</a></li><li><a href="/mock-interviews">Mock Interviews</a></li><li><a href="/blog">Blog</a></li><li><a href="/faq">FAQ</a></li></ul></div></div><div class="sc-dNFkOE jkOcpo"><p class="sc-fszimp ficqwG">© 2025 Frontend Interview Prep. All rights reserved.</p><div class="sc-etsjJW cAqCWV"><a href="/privacy">Privacy Policy</a><a href="/terms">Terms of Service</a><a href="/contact">Contact</a></div></div></div></footer></div><script src="/interview/_next/static/chunks/webpack-be7d7df45533bffc.js" async=""></script><script>(self.__next_f=self.__next_f||[]).push([0]);self.__next_f.push([2,null])</script><script>self.__next_f.push([1,"1:HL[\"/interview/_next/static/media/e4af272ccee01ff0-s.p.woff2\",\"font\",{\"crossOrigin\":\"\",\"type\":\"font/woff2\"}]\n2:HL[\"/interview/_next/static/css/387024c6a2216908.css\",\"style\"]\n"])</script><script>self.__next_f.push([1,"3:I[2846,[],\"\"]\n5:I[5907,[\"918\",\"static/chunks/918-3273b83890f10546.js\",\"930\",\"static/chunks/930-3262a6c9c5acace4.js\",\"687\",\"static/chunks/app/docs/%5B...slug%5D/page-32962e9542d32755.js\"],\"default\"]\n7:I[4707,[],\"\"]\n9:I[6423,[],\"\"]\na:I[2,[\"918\",\"static/chunks/918-3273b83890f10546.js\",\"710\",\"static/chunks/710-dfaa11b4dff08f8e.js\",\"972\",\"static/chunks/972-011bba60ed155615.js\",\"233\",\"static/chunks/233-3e0c1d820a17eca9.js\",\"185\",\"static/chunks/app/layout-333f4adcd11f8f39.js\"],\"default\",1]\nc:I[1060,[],\"\"]\n6:T309a,"])</script><script>self.__next_f.push([1,"\n# Palindrome Linked List\n\n**LeetCode Problem # * 234. Palindrome Linked List**\n\n## Problem Description\n\n * Given the head of a singly linked list, return true if it is a palindrome or false otherwise.  *  * Input: head = [1,2,2,1]  * Output: true  * \n\n## Solutions\n\n{% raw %}\n/**\n * 234. Palindrome Linked List\n *\n * Problem:\n * Given the head of a singly linked list, return true if it is a palindrome or false otherwise.\n *\n * Example:\n * Input: head = [1,2,2,1]\n * Output: true\n *\n * Input: head = [1,2]\n * Output: false\n *\n * LeetCode: https://leetcode.com/problems/palindrome-linked-list/\n */\n\n// ListNode class definition\nclass ListNode {\n  val: number;\n  next: ListNode | null;\n\n  constructor(val: number = 0, next: ListNode | null = null) {\n    this.val = val;\n    this.next = next;\n  }\n}\n\n/**\n * Solution 1: Reverse Second Half (Optimal)\n *\n * Approach:\n * - Find middle of linked list using fast/slow pointers\n * - Reverse second half\n * - Compare first half with reversed second half\n *\n * Time Complexity: O(n)\n * Space Complexity: O(1)\n */\nfunction isPalindrome(head: ListNode | null): boolean {\n  if (!head || !head.next) return true;\n\n  // Find middle using fast/slow pointers\n  let slow = head;\n  let fast = head;\n\n  while (fast.next \u0026\u0026 fast.next.next) {\n    slow = slow.next!;\n    fast = fast.next.next;\n  }\n\n  // Reverse second half\n  let secondHalf = reverseList(slow.next);\n  let firstHalf = head;\n\n  // Compare first half with reversed second half\n  while (secondHalf) {\n    if (firstHalf.val !== secondHalf.val) {\n      return false;\n    }\n    firstHalf = firstHalf.next!;\n    secondHalf = secondHalf.next;\n  }\n\n  return true;\n}\n\n/**\n * Solution 2: Using Array\n *\n * Approach:\n * - Convert linked list to array\n * - Use two pointers to check palindrome\n *\n * Time Complexity: O(n)\n * Space Complexity: O(n)\n */\nfunction isPalindromeArray(head: ListNode | null): boolean {\n  if (!head || !head.next) return true;\n\n  const values: number[] = [];\n  let current = head;\n\n  while (current) {\n    values.push(current.val);\n    current = current.next;\n  }\n\n  // Check palindrome using two pointers\n  let left = 0;\n  let right = values.length - 1;\n\n  while (left \u003c right) {\n    if (values[left] !== values[right]) {\n      return false;\n    }\n    left++;\n    right--;\n  }\n\n  return true;\n}\n\n/**\n * Solution 3: Recursive Approach\n *\n * Approach:\n * - Use recursion to reach end of list\n * - Compare with front pointer during backtracking\n *\n * Time Complexity: O(n)\n * Space Complexity: O(n) - recursion stack\n */\nfunction isPalindromeRecursive(head: ListNode | null): boolean {\n  let frontPointer = head;\n\n  function recursivelyCheck(currentNode: ListNode | null): boolean {\n    if (currentNode) {\n      if (!recursivelyCheck(currentNode.next)) {\n        return false;\n      }\n      if (currentNode.val !== frontPointer!.val) {\n        return false;\n      }\n      frontPointer = frontPointer!.next;\n    }\n    return true;\n  }\n\n  return recursivelyCheck(head);\n}\n\n/**\n * Solution 4: Using Stack\n *\n * Approach:\n * - Push all elements to stack\n * - Pop and compare with original list\n *\n * Time Complexity: O(n)\n * Space Complexity: O(n)\n */\nfunction isPalindromeStack(head: ListNode | null): boolean {\n  if (!head || !head.next) return true;\n\n  const stack: number[] = [];\n  let current = head;\n\n  // Push all elements to stack\n  while (current) {\n    stack.push(current.val);\n    current = current.next;\n  }\n\n  // Pop and compare\n  current = head;\n  while (current) {\n    if (current.val !== stack.pop()) {\n      return false;\n    }\n    current = current.next;\n  }\n\n  return true;\n}\n\n/**\n * Solution 5: Using String Conversion\n *\n * Approach:\n * - Convert linked list to string\n * - Check if string is palindrome\n *\n * Time Complexity: O(n)\n * Space Complexity: O(n)\n */\nfunction isPalindromeString(head: ListNode | null): boolean {\n  if (!head || !head.next) return true;\n\n  let str = \"\";\n  let current = head;\n\n  while (current) {\n    str += current.val;\n    current = current.next;\n  }\n\n  // Check if string is palindrome\n  return str === str.split(\"\").reverse().join(\"\");\n}\n\n/**\n * Solution 6: Using Two Pointers with Reversal\n *\n * Approach:\n * - Find middle and reverse first half\n * - Compare reversed first half with second half\n *\n * Time Complexity: O(n)\n * Space Complexity: O(1)\n */\nfunction isPalindromeTwoPointers(head: ListNode | null): boolean {\n  if (!head || !head.next) return true;\n\n  let prev: ListNode | null = null;\n  let slow = head;\n  let fast = head;\n\n  // Find middle and reverse first half\n  while (fast.next \u0026\u0026 fast.next.next) {\n    fast = fast.next.next;\n\n    // Reverse slow pointer\n    const next = slow.next!;\n    slow.next = prev;\n    prev = slow;\n    slow = next;\n  }\n\n  // Handle odd/even length\n  let secondHalf = slow.next;\n  if (fast.next) {\n    // Even length\n    slow.next = prev;\n    prev = slow;\n  } else {\n    // Odd length\n    slow.next = prev;\n  }\n\n  // Compare first half with second half\n  while (prev \u0026\u0026 secondHalf) {\n    if (prev.val !== secondHalf.val) {\n      return false;\n    }\n    prev = prev.next;\n    secondHalf = secondHalf.next;\n  }\n\n  return true;\n}\n\n/**\n * Solution 7: Using Generator (Memory efficient)\n *\n * Approach:\n * - Use generator to yield values\n * - Compare values in reverse order\n *\n * Time Complexity: O(n)\n * Space Complexity: O(n)\n */\nfunction* listGenerator(head: ListNode | null): Generator\u003cnumber\u003e {\n  let current = head;\n  while (current) {\n    yield current.val;\n    current = current.next;\n  }\n}\n\nfunction isPalindromeGenerator(head: ListNode | null): boolean {\n  if (!head || !head.next) return true;\n\n  const values = Array.from(listGenerator(head));\n  const reversed = values.slice().reverse();\n\n  return JSON.stringify(values) === JSON.stringify(reversed);\n}\n\n/**\n * Solution 8: Using Class (Object-oriented)\n *\n * Approach:\n * - Create a LinkedList class with palindrome checking\n * - More structured approach\n *\n * Time Complexity: O(n)\n * Space Complexity: O(1)\n */\nclass LinkedList {\n  head: ListNode | null;\n\n  constructor(head: ListNode | null = null) {\n    this.head = head;\n  }\n\n  isPalindrome(): boolean {\n    return isPalindrome(this.head);\n  }\n\n  toArray(): number[] {\n    const result: number[] = [];\n    let current = this.head;\n\n    while (current) {\n      result.push(current.val);\n      current = current.next;\n    }\n\n    return result;\n  }\n}\n\nfunction isPalindromeClass(head: ListNode | null): boolean {\n  const list = new LinkedList(head);\n  return list.isPalindrome();\n}\n\n// Helper functions\nfunction reverseList(head: ListNode | null): ListNode | null {\n  let prev: ListNode | null = null;\n  let current = head;\n\n  while (current) {\n    const next = current.next;\n    current.next = prev;\n    prev = current;\n    current = next;\n  }\n\n  return prev;\n}\n\nfunction createLinkedList(arr: number[]): ListNode | null {\n  if (arr.length === 0) return null;\n\n  const head = new ListNode(arr[0]);\n  let current = head;\n\n  for (let i = 1; i \u003c arr.length; i++) {\n    current.next = new ListNode(arr[i]);\n    current = current.next;\n  }\n\n  return head;\n}\n\nfunction linkedListToArray(head: ListNode | null): number[] {\n  const result: number[] = [];\n  let current = head;\n\n  while (current) {\n    result.push(current.val);\n    current = current.next;\n  }\n\n  return result;\n}\n\nfunction printLinkedList(head: ListNode | null): string {\n  return `[${linkedListToArray(head).join(\" -\u003e \")}]`;\n}\n\n// Test cases\nfunction testPalindromeLinkedList() {\n  console.log(\"=== Testing Palindrome Linked List ===\\n\");\n\n  const testCases = [\n    {\n      input: [1, 2, 2, 1],\n      expected: true,\n      description: \"Even length palindrome\",\n    },\n    {\n      input: [1, 2],\n      expected: false,\n      description: \"Not a palindrome\",\n    },\n    {\n      input: [1, 2, 3, 2, 1],\n      expected: true,\n      description: \"Odd length palindrome\",\n    },\n    {\n      input: [1],\n      expected: true,\n      description: \"Single node\",\n    },\n    {\n      input: [],\n      expected: true,\n      description: \"Empty list\",\n    },\n    {\n      input: [1, 1],\n      expected: true,\n      description: \"Two same nodes\",\n    },\n    {\n      input: [1, 2, 3, 4, 5],\n      expected: false,\n      description: \"Not a palindrome\",\n    },\n    {\n      input: [1, 2, 3, 3, 2, 1],\n      expected: true,\n      description: \"Long palindrome\",\n    },\n  ];\n\n  testCases.forEach((testCase, index) =\u003e {\n    console.log(`Test Case ${index + 1}: ${testCase.description}`);\n    console.log(`Input: ${printLinkedList(createLinkedList(testCase.input))}`);\n    console.log(`Expected: ${testCase.expected}\\n`);\n\n    const head = createLinkedList(testCase.input);\n\n    // Test Solution 1 (Reverse Second Half)\n    const result1 = isPalindrome(head);\n    console.log(\n      `Solution 1 (Reverse Second Half): ${result1} ${\n        result1 === testCase.expected ? \"✅\" : \"❌\"\n      }`\n    );\n\n    // Test Solution 2 (Array)\n    const head2 = createLinkedList(testCase.input);\n    const result2 = isPalindromeArray(head2);\n    console.log(\n      `Solution 2 (Array): ${result2} ${\n        result2 === testCase.expected ? \"✅\" : \"❌\"\n      }`\n    );\n\n    // Test Solution 3 (Recursive)\n    const head3 = createLinkedList(testCase.input);\n    const result3 = isPalindromeRecursive(head3);\n    console.log(\n      `Solution 3 (Recursive): ${result3} ${\n        result3 === testCase.expected ? \"✅\" : \"❌\"\n      }`\n    );\n\n    // Test Solution 4 (Stack)\n    const head4 = createLinkedList(testCase.input);\n    const result4 = isPalindromeStack(head4);\n    console.log(\n      `Solution 4 (Stack): ${result4} ${\n        result4 === testCase.expected ? \"✅\" : \"❌\"\n      }`\n    );\n\n    // Test Solution 5 (String)\n    const head5 = createLinkedList(testCase.input);\n    const result5 = isPalindromeString(head5);\n    console.log(\n      `Solution 5 (String): ${result5} ${\n        result5 === testCase.expected ? \"✅\" : \"❌\"\n      }`\n    );\n\n    // Test Solution 6 (Two Pointers)\n    const head6 = createLinkedList(testCase.input);\n    const result6 = isPalindromeTwoPointers(head6);\n    console.log(\n      `Solution 6 (Two Pointers): ${result6} ${\n        result6 === testCase.expected ? \"✅\" : \"❌\"\n      }`\n    );\n\n    // Test Solution 7 (Generator)\n    const head7 = createLinkedList(testCase.input);\n    const result7 = isPalindromeGenerator(head7);\n    console.log(\n      `Solution 7 (Generator): ${result7} ${\n        result7 === testCase.expected ? \"✅\" : \"❌\"\n      }`\n    );\n\n    // Test Solution 8 (Class)\n    const head8 = createLinkedList(testCase.input);\n    const result8 = isPalindromeClass(head8);\n    console.log(\n      `Solution 8 (Class): ${result8} ${\n        result8 === testCase.expected ? \"✅\" : \"❌\"\n      }`\n    );\n\n    console.log(\"\\n---\\n\");\n  });\n}\n\n// Performance comparison\nfunction performanceComparison() {\n  console.log(\"=== Performance Comparison ===\\n\");\n\n  const testCases = [\n    { name: \"Reverse Second Half\", func: isPalindrome },\n    { name: \"Array\", func: isPalindromeArray },\n    { name: \"Recursive\", func: isPalindromeRecursive },\n    { name: \"Stack\", func: isPalindromeStack },\n    { name: \"String\", func: isPalindromeString },\n    { name: \"Two Pointers\", func: isPalindromeTwoPointers },\n    { name: \"Generator\", func: isPalindromeGenerator },\n    { name: \"Class\", func: isPalindromeClass },\n  ];\n\n  // Create test lists\n  const palindromeList = createLinkedList([1, 2, 3, 4, 5, 4, 3, 2, 1]);\n  const nonPalindromeList = createLinkedList([1, 2, 3, 4, 5, 6, 7, 8, 9]);\n\n  const lists = [\n    { name: \"Palindrome\", list: palindromeList },\n    { name: \"Non-Palindrome\", list: nonPalindromeList },\n  ];\n\n  lists.forEach(({ name, list }) =\u003e {\n    console.log(`${name} List:`);\n\n    testCases.forEach(({ name: funcName, func }) =\u003e {\n      const start = performance.now();\n      const result = func(list);\n      const end = performance.now();\n\n      console.log(`  ${funcName}: ${(end - start).toFixed(2)}ms (${result})`);\n    });\n\n    console.log(\"\");\n  });\n}\n\n// Uncomment the following lines to run tests\n// testPalindromeLinkedList();\n// performanceComparison();\n\nexport {\n  ListNode,\n  isPalindrome,\n  isPalindromeArray,\n  isPalindromeRecursive,\n  isPalindromeStack,\n  isPalindromeString,\n  isPalindromeTwoPointers,\n  isPalindromeGenerator,\n  isPalindromeClass,\n  LinkedList,\n  listGenerator,\n  reverseList,\n  createLinkedList,\n  linkedListToArray,\n  printLinkedList,\n  testPalindromeLinkedList,\n  performanceComparison,\n};\n{% endraw %}\n"])</script><script>self.__next_f.push([1,"8:[\"slug\",\"leetcode/linked-list/problems/03-palindrome-linked-list\",\"c\"]\nd:[]\n"])</script><script>self.__next_f.push([1,"0:[\"$\",\"$L3\",null,{\"buildId\":\"7uJ7BVaXJTiEOD9iYDv3n\",\"assetPrefix\":\"/interview\",\"urlParts\":[\"\",\"docs\",\"leetcode\",\"linked-list\",\"problems\",\"03-palindrome-linked-list\"],\"initialTree\":[\"\",{\"children\":[\"docs\",{\"children\":[[\"slug\",\"leetcode/linked-list/problems/03-palindrome-linked-list\",\"c\"],{\"children\":[\"__PAGE__?{\\\"slug\\\":[\\\"leetcode\\\",\\\"linked-list\\\",\\\"problems\\\",\\\"03-palindrome-linked-list\\\"]}\",{}]}]}]},\"$undefined\",\"$undefined\",true],\"initialSeedData\":[\"\",{\"children\":[\"docs\",{\"children\":[[\"slug\",\"leetcode/linked-list/problems/03-palindrome-linked-list\",\"c\"],{\"children\":[\"__PAGE__\",{},[[\"$L4\",[\"$\",\"div\",null,{\"style\":{\"maxWidth\":\"1200px\",\"margin\":\"0 auto\",\"padding\":\"2rem\",\"paddingTop\":\"6rem\"},\"children\":[[\"$\",\"div\",null,{\"style\":{\"marginBottom\":\"2rem\"},\"children\":[[\"$\",\"nav\",null,{\"style\":{\"color\":\"#64748b\",\"fontSize\":\"0.9rem\",\"marginBottom\":\"1rem\"},\"children\":[[\"$\",\"a\",null,{\"href\":\"/\",\"style\":{\"color\":\"#3b82f6\",\"textDecoration\":\"none\"},\"children\":\"Home\"}],\" \u003e \",[\"$\",\"span\",null,{\"children\":\"leetcode \u003e linked-list \u003e problems \u003e 03-palindrome-linked-list\"}]]}],[\"$\",\"h1\",null,{\"style\":{\"fontSize\":\"2.5rem\",\"fontWeight\":\"800\",\"marginBottom\":\"0.5rem\",\"color\":\"#1e293b\"},\"children\":\"Palindrome Linked List\"}],[\"$\",\"div\",null,{\"style\":{\"color\":\"#64748b\",\"fontSize\":\"0.9rem\",\"marginBottom\":\"2rem\"},\"children\":[[\"$\",\"span\",null,{\"children\":[\"📁 \",\"leetcode/linked-list/problems/03-palindrome-linked-list.md\"]}],\"$undefined\",\"$undefined\"]}]]}],[\"$\",\"$L5\",null,{\"content\":\"$6\"}]]}],null],null],null]},[null,[\"$\",\"$L7\",null,{\"parallelRouterKey\":\"children\",\"segmentPath\":[\"children\",\"docs\",\"children\",\"$8\",\"children\"],\"error\":\"$undefined\",\"errorStyles\":\"$undefined\",\"errorScripts\":\"$undefined\",\"template\":[\"$\",\"$L9\",null,{}],\"templateStyles\":\"$undefined\",\"templateScripts\":\"$undefined\",\"notFound\":\"$undefined\",\"notFoundStyles\":\"$undefined\"}]],null]},[null,[\"$\",\"$L7\",null,{\"parallelRouterKey\":\"children\",\"segmentPath\":[\"children\",\"docs\",\"children\"],\"error\":\"$undefined\",\"errorStyles\":\"$undefined\",\"errorScripts\":\"$undefined\",\"template\":[\"$\",\"$L9\",null,{}],\"templateStyles\":\"$undefined\",\"templateScripts\":\"$undefined\",\"notFound\":\"$undefined\",\"notFoundStyles\":\"$undefined\"}]],null]},[[[[\"$\",\"link\",\"0\",{\"rel\":\"stylesheet\",\"href\":\"/interview/_next/static/css/387024c6a2216908.css\",\"precedence\":\"next\",\"crossOrigin\":\"$undefined\"}]],[\"$\",\"$La\",null,{\"children\":[\"$\",\"$L7\",null,{\"parallelRouterKey\":\"children\",\"segmentPath\":[\"children\"],\"error\":\"$undefined\",\"errorStyles\":\"$undefined\",\"errorScripts\":\"$undefined\",\"template\":[\"$\",\"$L9\",null,{}],\"templateStyles\":\"$undefined\",\"templateScripts\":\"$undefined\",\"notFound\":[[\"$\",\"title\",null,{\"children\":\"404: This page could not be found.\"}],[\"$\",\"div\",null,{\"style\":{\"fontFamily\":\"system-ui,\\\"Segoe UI\\\",Roboto,Helvetica,Arial,sans-serif,\\\"Apple Color Emoji\\\",\\\"Segoe UI Emoji\\\"\",\"height\":\"100vh\",\"textAlign\":\"center\",\"display\":\"flex\",\"flexDirection\":\"column\",\"alignItems\":\"center\",\"justifyContent\":\"center\"},\"children\":[\"$\",\"div\",null,{\"children\":[[\"$\",\"style\",null,{\"dangerouslySetInnerHTML\":{\"__html\":\"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}\"}}],[\"$\",\"h1\",null,{\"className\":\"next-error-h1\",\"style\":{\"display\":\"inline-block\",\"margin\":\"0 20px 0 0\",\"padding\":\"0 23px 0 0\",\"fontSize\":24,\"fontWeight\":500,\"verticalAlign\":\"top\",\"lineHeight\":\"49px\"},\"children\":\"404\"}],[\"$\",\"div\",null,{\"style\":{\"display\":\"inline-block\"},\"children\":[\"$\",\"h2\",null,{\"style\":{\"fontSize\":14,\"fontWeight\":400,\"lineHeight\":\"49px\",\"margin\":0},\"children\":\"This page could not be found.\"}]}]]}]}]],\"notFoundStyles\":[]}],\"params\":{}}]],null],null],\"couldBeIntercepted\":false,\"initialHead\":[null,\"$Lb\"],\"globalErrorComponent\":\"$c\",\"missingSlots\":\"$Wd\"}]\n"])</script><script>self.__next_f.push([1,"b:[[\"$\",\"meta\",\"0\",{\"name\":\"viewport\",\"content\":\"width=device-width, initial-scale=1\"}],[\"$\",\"meta\",\"1\",{\"charSet\":\"utf-8\"}],[\"$\",\"title\",\"2\",{\"children\":\"Palindrome Linked List - Frontend Interview Docs\"}],[\"$\",\"meta\",\"3\",{\"name\":\"description\",\"content\":\" # Palindrome Linked List  **LeetCode Problem # * 234. Palindrome Linked List**  ## Problem Description   * Given the head of a singly linked list, return true \"}],[\"$\",\"meta\",\"4\",{\"property\":\"og:title\",\"content\":\"Palindrome Linked List - Frontend Interview Docs\"}],[\"$\",\"meta\",\"5\",{\"property\":\"og:description\",\"content\":\" # Palindrome Linked List  **LeetCode Problem # * 234. Palindrome Linked List**  ## Problem Description   * Given the head of a singly linked list, return true \"}],[\"$\",\"meta\",\"6\",{\"property\":\"og:type\",\"content\":\"article\"}],[\"$\",\"meta\",\"7\",{\"name\":\"twitter:card\",\"content\":\"summary\"}],[\"$\",\"meta\",\"8\",{\"name\":\"twitter:title\",\"content\":\"Palindrome Linked List - Frontend Interview Docs\"}],[\"$\",\"meta\",\"9\",{\"name\":\"twitter:description\",\"content\":\" # Palindrome Linked List  **LeetCode Problem # * 234. Palindrome Linked List**  ## Problem Description   * Given the head of a singly linked list, return true \"}],[\"$\",\"meta\",\"10\",{\"name\":\"next-size-adjust\"}]]\n4:null\n"])</script></body></html>

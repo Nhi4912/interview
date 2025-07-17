@@ -1,0 +1,1053 @@
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><meta name="viewport" content="width=device-width, initial-scale=1"/><link rel="preload" href="/interview/_next/static/media/e4af272ccee01ff0-s.p.woff2" as="font" crossorigin="" type="font/woff2"/><link rel="stylesheet" href="/interview/_next/static/css/387024c6a2216908.css" data-precedence="next"/><link rel="preload" as="script" fetchPriority="low" href="/interview/_next/static/chunks/webpack-be7d7df45533bffc.js"/><script src="/interview/_next/static/chunks/fd9d1056-6922f449a204c2cc.js" async=""></script><script src="/interview/_next/static/chunks/117-e7ecc085ce9cfab3.js" async=""></script><script src="/interview/_next/static/chunks/main-app-b06be5f3411c20c3.js" async=""></script><script src="/interview/_next/static/chunks/918-3273b83890f10546.js" async=""></script><script src="/interview/_next/static/chunks/930-3262a6c9c5acace4.js" async=""></script><script src="/interview/_next/static/chunks/app/docs/%5B...slug%5D/page-32962e9542d32755.js" async=""></script><script src="/interview/_next/static/chunks/710-dfaa11b4dff08f8e.js" async=""></script><script src="/interview/_next/static/chunks/972-011bba60ed155615.js" async=""></script><script src="/interview/_next/static/chunks/233-3e0c1d820a17eca9.js" async=""></script><script src="/interview/_next/static/chunks/app/layout-333f4adcd11f8f39.js" async=""></script><title>Frontend Interview Prep 2025 - Big Tech Interview Guide</title><meta name="description" content="Comprehensive frontend interview preparation for Big Tech companies including React, TypeScript, algorithms, and system design."/><link rel="icon" href="/favicon.ico"/><meta name="theme-color" content="#1a1a1a"/><meta property="og:title" content="Frontend Interview Prep 2025"/><meta property="og:description" content="Complete guide for frontend engineers targeting Big Tech companies"/><meta property="og:type" content="website"/><link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous"/><title>JavaScript Fundamentals Theory - Deep Conceptual Understanding - Frontend Interview Docs</title><meta name="description" content="Core JavaScript concepts with definitions, interconnections, and theoretical foundations"/><meta property="og:title" content="JavaScript Fundamentals Theory - Deep Conceptual Understanding - Frontend Interview Docs"/><meta property="og:description" content="Core JavaScript concepts with definitions, interconnections, and theoretical foundations"/><meta property="og:type" content="article"/><meta name="twitter:card" content="summary"/><meta name="twitter:title" content="JavaScript Fundamentals Theory - Deep Conceptual Understanding - Frontend Interview Docs"/><meta name="twitter:description" content="Core JavaScript concepts with definitions, interconnections, and theoretical foundations"/><meta name="next-size-adjust"/><script src="/interview/_next/static/chunks/polyfills-42372ed130431b0a.js" noModule=""></script><style data-styled="" data-styled-version="6.1.19">*{margin:0;padding:0;box-sizing:border-box;}/*!sc*/
+html{font-size:16px;line-height:1.5;scroll-behavior:smooth;}/*!sc*/
+body{font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;font-size:1rem;line-height:1.5;color:#1e293b;background-color:#ffffff;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;}/*!sc*/
+h1,h2,h3,h4,h5,h6{font-weight:700;line-height:1.25;margin-bottom:0.5em;}/*!sc*/
+h1{font-size:3rem;}/*!sc*/
+@media (max-width: 768px){h1{font-size:2.25rem;}}/*!sc*/
+h2{font-size:2.25rem;}/*!sc*/
+@media (max-width: 768px){h2{font-size:1.875rem;}}/*!sc*/
+h3{font-size:1.875rem;}/*!sc*/
+@media (max-width: 768px){h3{font-size:1.5rem;}}/*!sc*/
+h4{font-size:1.5rem;}/*!sc*/
+@media (max-width: 768px){h4{font-size:1.25rem;}}/*!sc*/
+h5{font-size:1.25rem;}/*!sc*/
+h6{font-size:1.125rem;}/*!sc*/
+p{margin-bottom:1rem;line-height:1.75;}/*!sc*/
+a{color:#3b82f6;text-decoration:none;transition:color 0.15s ease;}/*!sc*/
+a:hover{color:#2563eb;}/*!sc*/
+a:focus{outline:2px solid #3b82f6;outline-offset:2px;}/*!sc*/
+button{cursor:pointer;border:none;background:none;font-family:inherit;font-size:inherit;}/*!sc*/
+button:disabled{cursor:not-allowed;opacity:0.6;}/*!sc*/
+button:focus{outline:2px solid #3b82f6;outline-offset:2px;}/*!sc*/
+input,textarea,select{font-family:inherit;font-size:inherit;}/*!sc*/
+input:focus,textarea:focus,select:focus{outline:2px solid #3b82f6;outline-offset:2px;}/*!sc*/
+img{max-width:100%;height:auto;}/*!sc*/
+ul,ol{margin-bottom:1rem;padding-left:1.5rem;}/*!sc*/
+li{margin-bottom:0.25rem;}/*!sc*/
+blockquote{margin:1rem 0;padding:1rem;border-left:4px solid #3b82f6;background-color:#f1f5f9;font-style:italic;}/*!sc*/
+code{font-family:SFMono-Regular,Consolas,"Liberation Mono",Menlo,monospace;font-size:0.9em;background-color:#f1f5f9;padding:0.2em 0.4em;border-radius:0.25rem;}/*!sc*/
+pre{background-color:#f1f5f9;padding:1rem;border-radius:0.5rem;overflow-x:auto;margin-bottom:1rem;}/*!sc*/
+pre code{background:none;padding:0;}/*!sc*/
+table{width:100%;border-collapse:collapse;margin-bottom:1rem;}/*!sc*/
+th,td{padding:0.75rem;text-align:left;border-bottom:1px solid #e2e8f0;}/*!sc*/
+th{font-weight:600;background-color:#f1f5f9;}/*!sc*/
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0, 0, 0, 0);white-space:nowrap;border:0;}/*!sc*/
+.skip-link{position:absolute;top:-40px;left:6px;background:#3b82f6;color:white;padding:8px;text-decoration:none;border-radius:4px;z-index:100;}/*!sc*/
+.skip-link:focus{top:6px;}/*!sc*/
+::-webkit-scrollbar{width:8px;height:8px;}/*!sc*/
+::-webkit-scrollbar-track{background:#f1f5f9;}/*!sc*/
+::-webkit-scrollbar-thumb{background:#94a3b8;border-radius:4px;}/*!sc*/
+::-webkit-scrollbar-thumb:hover{background:#64748b;}/*!sc*/
+::selection{background:#3b82f6;color:white;}/*!sc*/
+.focus-visible{outline:2px solid #3b82f6;outline-offset:2px;}/*!sc*/
+.fade-in{opacity:0;animation:fadeIn 0.3s ease forwards;}/*!sc*/
+.slide-up{transform:translateY(20px);opacity:0;animation:slideUp 0.3s ease forwards;}/*!sc*/
+@keyframes fadeIn{to{opacity:1;}}/*!sc*/
+@keyframes slideUp{to{transform:translateY(0);opacity:1;}}/*!sc*/
+@media print{*{background:white!important;color:black!important;box-shadow:none!important;text-shadow:none!important;}a,a:visited{text-decoration:underline;}h1,h2,h3,h4,h5,h6{break-after:avoid;}pre,blockquote{border:1px solid #999;break-inside:avoid;}img{max-width:100%!important;}@page{margin:0.5in;}}/*!sc*/
+data-styled.g65[id="sc-global-kxA-Ddz1"]{content:"sc-global-kxA-Ddz1,"}/*!sc*/
+.cIzzQl{position:fixed;top:0;width:100%;z-index:1020;background:transparent;backdrop-filter:blur(10px);border-bottom:1px solid transparent;transition:all 0.3s ease;}/*!sc*/
+data-styled.g66[id="sc-dTWiOz"]{content:"cIzzQl,"}/*!sc*/
+.cqZxah{max-width:1200px;margin:0 auto;padding:0 2rem;display:flex;align-items:center;justify-content:space-between;height:70px;}/*!sc*/
+data-styled.g67[id="sc-eJoXEY"]{content:"cqZxah,"}/*!sc*/
+.hUlCET{display:flex;align-items:center;gap:0.5rem;font-size:1.5rem;font-weight:700;color:#3b82f6;text-decoration:none;cursor:pointer;}/*!sc*/
+.hUlCET:hover{color:#2563eb;}/*!sc*/
+data-styled.g68[id="sc-goiVcJ"]{content:"hUlCET,"}/*!sc*/
+.fXlING{display:flex;align-items:center;gap:2rem;}/*!sc*/
+@media (max-width: 768px){.fXlING{display:none;}}/*!sc*/
+data-styled.g69[id="sc-gSifMm"]{content:"fXlING,"}/*!sc*/
+.ctmqex{color:#1e293b;font-weight:500;text-decoration:none;transition:color 0.15s ease;position:relative;}/*!sc*/
+.ctmqex:hover{color:#3b82f6;}/*!sc*/
+.ctmqex:after{content:'';position:absolute;bottom:-5px;left:0;width:0;height:2px;background:#3b82f6;transition:width 0.15s ease;}/*!sc*/
+.ctmqex:hover:after{width:100%;}/*!sc*/
+data-styled.g70[id="sc-ixcdjX"]{content:"ctmqex,"}/*!sc*/
+.eTvMgH{display:none;background:none;border:none;color:#1e293b;cursor:pointer;padding:0.5rem;}/*!sc*/
+@media (max-width: 768px){.eTvMgH{display:block;}}/*!sc*/
+data-styled.g71[id="sc-eQaGpr"]{content:"eTvMgH,"}/*!sc*/
+.cRlGRt{display:flex;align-items:center;gap:0.5rem;background:#f1f5f9;border:1px solid #e2e8f0;border-radius:0.5rem;padding:0.5rem 1rem;color:#64748b;font-size:0.9rem;transition:all 0.15s ease;}/*!sc*/
+.cRlGRt:hover{background:#ffffff;border-color:#3b82f6;}/*!sc*/
+data-styled.g75[id="sc-bBhMX"]{content:"cRlGRt,"}/*!sc*/
+.fgAPRO{background:#1e293b;color:white;padding:3rem 0 1rem;margin-top:auto;}/*!sc*/
+data-styled.g76[id="sc-hwHXyi"]{content:"fgAPRO,"}/*!sc*/
+.bQkEEK{max-width:1200px;margin:0 auto;padding:0 2rem;}/*!sc*/
+data-styled.g77[id="sc-ciCoXh"]{content:"bQkEEK,"}/*!sc*/
+.lmmFoJ{display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:2rem;margin-bottom:2rem;}/*!sc*/
+@media (max-width: 768px){.lmmFoJ{grid-template-columns:1fr 1fr;gap:1.5rem;}}/*!sc*/
+@media (max-width: 480px){.lmmFoJ{grid-template-columns:1fr;}}/*!sc*/
+data-styled.g78[id="sc-jDJeIs"]{content:"lmmFoJ,"}/*!sc*/
+.bKIGXv h3{font-size:1.1rem;font-weight:600;margin-bottom:1rem;color:white;}/*!sc*/
+.bKIGXv ul{list-style:none;padding:0;margin:0;}/*!sc*/
+.bKIGXv li{margin-bottom:0.5rem;}/*!sc*/
+.bKIGXv a{color:rgba(255, 255, 255, 0.7);text-decoration:none;transition:color 0.15s ease;}/*!sc*/
+.bKIGXv a:hover{color:white;}/*!sc*/
+data-styled.g79[id="sc-eEHciv"]{content:"bKIGXv,"}/*!sc*/
+.bMtRdQ{display:flex;align-items:center;gap:0.5rem;font-size:1.2rem;font-weight:700;margin-bottom:1rem;color:white;}/*!sc*/
+data-styled.g80[id="sc-KsiuK"]{content:"bMtRdQ,"}/*!sc*/
+.eRTluy{color:rgba(255, 255, 255, 0.7);line-height:1.6;margin-bottom:1rem;}/*!sc*/
+data-styled.g81[id="sc-hqtLyI"]{content:"eRTluy,"}/*!sc*/
+.jlMcom{display:flex;gap:1rem;}/*!sc*/
+.jlMcom a{display:flex;align-items:center;justify-content:center;width:40px;height:40px;background:rgba(255, 255, 255, 0.1);border-radius:0.5rem;color:rgba(255, 255, 255, 0.7);transition:all 0.15s ease;}/*!sc*/
+.jlMcom a:hover{background:rgba(255, 255, 255, 0.2);color:white;}/*!sc*/
+data-styled.g82[id="sc-iVnIWt"]{content:"jlMcom,"}/*!sc*/
+.fuxrZK{border-top:1px solid rgba(255, 255, 255, 0.1);padding-top:2rem;display:flex;justify-content:space-between;align-items:center;}/*!sc*/
+@media (max-width: 768px){.fuxrZK{flex-direction:column;gap:1rem;text-align:center;}}/*!sc*/
+data-styled.g83[id="sc-hWgKua"]{content:"fuxrZK,"}/*!sc*/
+.fMpVBW{color:rgba(255, 255, 255, 0.7);margin:0;font-size:0.9rem;}/*!sc*/
+data-styled.g84[id="sc-jBaHRL"]{content:"fMpVBW,"}/*!sc*/
+.fyWnKB{display:flex;gap:2rem;}/*!sc*/
+@media (max-width: 480px){.fyWnKB{flex-direction:column;gap:1rem;}}/*!sc*/
+.fyWnKB a{color:rgba(255, 255, 255, 0.7);text-decoration:none;font-size:0.9rem;transition:color 0.15s ease;}/*!sc*/
+.fyWnKB a:hover{color:white;}/*!sc*/
+data-styled.g85[id="sc-gFqXPY"]{content:"fyWnKB,"}/*!sc*/
+.gjVgwF{color:#1e293b;line-height:1.6;}/*!sc*/
+.gjVgwF h1,.gjVgwF h2,.gjVgwF h3,.gjVgwF h4,.gjVgwF h5,.gjVgwF h6{color:#1e293b;margin-top:2rem;margin-bottom:1rem;font-weight:600;}/*!sc*/
+.gjVgwF h1{font-size:2rem;border-bottom:2px solid #e2e8f0;padding-bottom:0.5rem;}/*!sc*/
+.gjVgwF h2{font-size:1.5rem;border-bottom:1px solid #e2e8f0;padding-bottom:0.3rem;}/*!sc*/
+.gjVgwF h3{font-size:1.25rem;}/*!sc*/
+.gjVgwF h4{font-size:1.1rem;}/*!sc*/
+.gjVgwF p{margin-bottom:1rem;color:#64748b;}/*!sc*/
+.gjVgwF a{color:#3b82f6;text-decoration:none;}/*!sc*/
+.gjVgwF a:hover{text-decoration:underline;}/*!sc*/
+.gjVgwF ul,.gjVgwF ol{margin-bottom:1rem;padding-left:1.5rem;}/*!sc*/
+.gjVgwF ul li,.gjVgwF ol li{margin-bottom:0.5rem;color:#64748b;}/*!sc*/
+.gjVgwF blockquote{border-left:4px solid #3b82f6;padding-left:1rem;margin:1rem 0;font-style:italic;color:#64748b;background:#f1f5f9;padding:1rem;border-radius:0.5rem;}/*!sc*/
+.gjVgwF code{background:#f1f5f9;padding:0.2rem 0.4rem;border-radius:0.25rem;font-family:SFMono-Regular,Consolas,"Liberation Mono",Menlo,monospace;font-size:0.9em;color:#f59e0b;}/*!sc*/
+.gjVgwF pre{background:#ffffff;border:1px solid #e2e8f0;border-radius:0.5rem;padding:1rem;margin:1rem 0;overflow-x:auto;}/*!sc*/
+.gjVgwF pre code{background:none;padding:0;color:#1e293b;font-size:0.9rem;}/*!sc*/
+.gjVgwF table{width:100%;border-collapse:collapse;margin:1rem 0;}/*!sc*/
+.gjVgwF table th,.gjVgwF table td{border:1px solid #e2e8f0;padding:0.5rem;text-align:left;}/*!sc*/
+.gjVgwF table th{background:#ffffff;font-weight:600;}/*!sc*/
+.gjVgwF table tr:nth-child(even){background:#f1f5f9;}/*!sc*/
+.gjVgwF hr{border:none;height:1px;background:#e2e8f0;margin:2rem 0;}/*!sc*/
+.gjVgwF .highlight{background:#3b82f620;padding:0.2rem 0.4rem;border-radius:0.25rem;font-weight:600;}/*!sc*/
+.gjVgwF .hljs{background:#ffffff;color:#1e293b;}/*!sc*/
+.gjVgwF .hljs-keyword{color:#3b82f6;font-weight:600;}/*!sc*/
+.gjVgwF .hljs-string{color:#10b981;}/*!sc*/
+.gjVgwF .hljs-function{color:#f59e0b;}/*!sc*/
+.gjVgwF .hljs-comment{color:#94a3b8;font-style:italic;}/*!sc*/
+.gjVgwF .hljs-number{color:#f59e0b;}/*!sc*/
+.gjVgwF .hljs-variable{color:#1e293b;}/*!sc*/
+.gjVgwF .hljs-title{color:#f59e0b;font-weight:600;}/*!sc*/
+data-styled.g86[id="sc-ikkVnJ"]{content:"gjVgwF,"}/*!sc*/
+</style></head><body class="__className_6eac61"><div style="min-height:100vh;display:flex;flex-direction:column"><nav class="sc-dTWiOz cIzzQl"><div class="sc-eJoXEY cqZxah"><a href="/interview"><a class="sc-goiVcJ hUlCET"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-code "><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>Frontend Interview Prep</a></a><div class="sc-gSifMm fXlING"><a href="/interview/problems"><a class="sc-ixcdjX ctmqex">Problems</a></a><a href="/interview/learn"><a class="sc-ixcdjX ctmqex">Learn</a></a><a href="/interview/study-guide"><a class="sc-ixcdjX ctmqex">Study Guide</a></a><a href="/interview/system-design"><a class="sc-ixcdjX ctmqex">System Design</a></a><a href="/interview/performance"><a class="sc-ixcdjX ctmqex">Performance</a></a><a href="/interview/accessibility"><a class="sc-ixcdjX ctmqex">Accessibility</a></a><a href="/interview/interview-tips"><a class="sc-ixcdjX ctmqex">Interview Tips</a></a><button class="sc-bBhMX cRlGRt"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-search "><circle cx="11" cy="11" r="8"></circle><path d="m21 21-4.3-4.3"></path></svg>Search</button></div><button class="sc-eQaGpr eTvMgH"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-menu "><line x1="4" x2="20" y1="12" y2="12"></line><line x1="4" x2="20" y1="6" y2="6"></line><line x1="4" x2="20" y1="18" y2="18"></line></svg></button></div></nav><main style="flex:1"><div style="max-width:1200px;margin:0 auto;padding:2rem;padding-top:6rem"><div style="margin-bottom:2rem"><nav style="color:#64748b;font-size:0.9rem;margin-bottom:1rem"><a href="/" style="color:#3b82f6;text-decoration:none">Home</a> &gt; <span>src &gt; content &gt; theory &gt; javascript-fundamentals-theory</span></nav><h1 style="font-size:2.5rem;font-weight:800;margin-bottom:0.5rem;color:#1e293b">JavaScript Fundamentals Theory - Deep Conceptual Understanding</h1><div style="color:#64748b;font-size:0.9rem;margin-bottom:2rem"><span>📁 <!-- -->src/content/theory/javascript-fundamentals-theory.md</span></div></div><div class="sc-ikkVnJ gjVgwF"><h1 id="javascript-fundamentals-theory---deep-conceptual-understanding" node="[object Object]">JavaScript Fundamentals Theory - Deep Conceptual Understanding</h1>
+<h2 id="🧠-core-concept-definitions-&amp;-interconnections" node="[object Object]">🧠 Core Concept Definitions &amp; Interconnections</h2>
+<h3 id="1.-,[object-object]" node="[object Object]">1. <strong>Variables &amp; Memory Model</strong></h3>
+<h4><strong>What is a Variable?</strong></h4>
+<p><strong>Definition:</strong> A variable is a named storage location that holds a reference to a value in memory.</p>
+<p><strong>Why Variables Exist:</strong></p>
+<ul>
+<li><strong>Abstraction</strong>: Hide memory addresses from developers</li>
+<li><strong>Reusability</strong>: Reference the same data multiple times</li>
+<li><strong>Mutability</strong>: Allow data to change over time</li>
+<li><strong>Scope Management</strong>: Control data access and lifetime</li>
+</ul>
+<p><strong>How Variables Work in JavaScript:</strong></p>
+<pre><pre><code class="hljs hljs language-mermaid">graph TB
+    subgraph &quot;Memory Model&quot;
+        A[Stack Memory] --&gt; B[Primitive Values]
+        A --&gt; C[Reference Pointers]
+        
+        D[Heap Memory] --&gt; E[Objects]
+        D --&gt; F[Arrays]
+        D --&gt; G[Functions]
+        
+        C --&gt; E
+        C --&gt; F
+        C --&gt; G
+    end
+
+    subgraph &quot;Variable Types&quot;
+        H[var] --&gt; I[Function Scoped]
+        J[let] --&gt; K[Block Scoped]
+        L[const] --&gt; M[Block Scoped + Immutable Binding]
+    end
+</code></pre></pre>
+<p><strong>Deep Theory:</strong></p>
+<pre><pre><code class="hljs hljs language-javascript"><span class="hljs-comment">// WHAT: Variable declaration creates binding</span>
+<span class="hljs-keyword">let</span> x; <span class="hljs-comment">// Creates binding &#x27;x&#x27; in current scope, value = undefined</span>
+
+<span class="hljs-comment">// WHY: Memory allocation happens at different times</span>
+<span class="hljs-keyword">var</span> a = <span class="hljs-number">1</span>;        <span class="hljs-comment">// Hoisted, allocated at function start</span>
+<span class="hljs-keyword">let</span> b = <span class="hljs-number">2</span>;        <span class="hljs-comment">// Temporal dead zone until declaration</span>
+<span class="hljs-keyword">const</span> c = <span class="hljs-number">3</span>;      <span class="hljs-comment">// Must be initialized, immutable binding</span>
+
+<span class="hljs-comment">// HOW: Different storage mechanisms</span>
+<span class="hljs-keyword">let</span> primitive = <span class="hljs-number">42</span>;           <span class="hljs-comment">// Stored directly in stack</span>
+<span class="hljs-keyword">let</span> reference = { <span class="hljs-attr">value</span>: <span class="hljs-number">42</span> }; <span class="hljs-comment">// Pointer in stack, object in heap</span>
+
+<span class="hljs-comment">// Memory implications</span>
+<span class="hljs-keyword">let</span> obj1 = { <span class="hljs-attr">data</span>: <span class="hljs-string">&#x27;hello&#x27;</span> };
+<span class="hljs-keyword">let</span> obj2 = obj1;              <span class="hljs-comment">// Copies reference, not object</span>
+obj2.<span class="hljs-property">data</span> = <span class="hljs-string">&#x27;world&#x27;</span>;          <span class="hljs-comment">// Modifies shared object</span>
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(obj1.<span class="hljs-property">data</span>);       <span class="hljs-comment">// &#x27;world&#x27; - same object!</span>
+</code></pre></pre>
+<p><strong>Interconnected Concepts:</strong></p>
+<ul>
+<li><strong>Scope Chain</strong>: How variables are resolved</li>
+<li><strong>Hoisting</strong>: When variable bindings are created</li>
+<li><strong>Garbage Collection</strong>: When variable memory is freed</li>
+<li><strong>Closures</strong>: How variables are captured and preserved</li>
+</ul>
+<h3 id="2.-,[object-object]" node="[object Object]">2. <strong>Data Types &amp; Type System</strong></h3>
+<h4><strong>What are Data Types?</strong></h4>
+<p><strong>Definition:</strong> Data types define the kind of data a variable can hold and the operations that can be performed on it.</p>
+<p><strong>Why Type System Matters:</strong></p>
+<ul>
+<li><strong>Memory Optimization</strong>: Different types require different storage</li>
+<li><strong>Operation Safety</strong>: Prevents invalid operations</li>
+<li><strong>Performance</strong>: Enables engine optimizations</li>
+<li><strong>Developer Experience</strong>: Provides predictable behavior</li>
+</ul>
+<p><strong>JavaScript&#x27;s Dual Type System:</strong></p>
+<pre><pre><code class="hljs hljs language-mermaid">graph TB
+    subgraph &quot;Primitive Types&quot;
+        A[number] --&gt; B[64-bit IEEE 754]
+        C[string] --&gt; D[UTF-16 encoding]
+        E[boolean] --&gt; F[true/false]
+        G[undefined] --&gt; H[Uninitialized]
+        I[null] --&gt; J[Intentional absence]
+        K[symbol] --&gt; L[Unique identifier]
+        M[bigint] --&gt; N[Arbitrary precision]
+    end
+
+    subgraph &quot;Reference Types&quot;
+        O[Object] --&gt; P[Property collection]
+        Q[Array] --&gt; R[Indexed collection]
+        S[Function] --&gt; T[Executable code]
+        U[Date] --&gt; V[Time representation]
+        W[RegExp] --&gt; X[Pattern matching]
+    end
+
+    subgraph &quot;Type Coercion&quot;
+        Y[Implicit] --&gt; Z[Automatic conversion]
+        AA[Explicit] --&gt; BB[Manual conversion]
+    end
+</code></pre></pre>
+<p><strong>Deep Theory with Examples:</strong></p>
+<pre><pre><code class="hljs hljs language-javascript"><span class="hljs-comment">// WHAT: Primitive vs Reference behavior</span>
+<span class="hljs-keyword">let</span> a = <span class="hljs-number">5</span>;
+<span class="hljs-keyword">let</span> b = a;        <span class="hljs-comment">// Copies value</span>
+a = <span class="hljs-number">10</span>;
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(b);   <span class="hljs-comment">// Still 5</span>
+
+<span class="hljs-keyword">let</span> obj1 = { <span class="hljs-attr">x</span>: <span class="hljs-number">5</span> };
+<span class="hljs-keyword">let</span> obj2 = obj1;  <span class="hljs-comment">// Copies reference</span>
+obj1.<span class="hljs-property">x</span> = <span class="hljs-number">10</span>;
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(obj2.<span class="hljs-property">x</span>); <span class="hljs-comment">// 10 - same object</span>
+
+<span class="hljs-comment">// WHY: Memory efficiency and performance</span>
+<span class="hljs-comment">// Primitives: Small, fixed size, stack storage</span>
+<span class="hljs-comment">// References: Variable size, heap storage, garbage collected</span>
+
+<span class="hljs-comment">// HOW: Type checking and coercion</span>
+<span class="hljs-keyword">typeof</span> <span class="hljs-number">42</span>;           <span class="hljs-comment">// &quot;number&quot;</span>
+<span class="hljs-keyword">typeof</span> <span class="hljs-string">&quot;hello&quot;</span>;      <span class="hljs-comment">// &quot;string&quot;</span>
+<span class="hljs-keyword">typeof</span> {};           <span class="hljs-comment">// &quot;object&quot;</span>
+<span class="hljs-keyword">typeof</span> <span class="hljs-literal">null</span>;         <span class="hljs-comment">// &quot;object&quot; (historical bug)</span>
+<span class="hljs-keyword">typeof</span> <span class="hljs-literal">undefined</span>;    <span class="hljs-comment">// &quot;undefined&quot;</span>
+
+<span class="hljs-comment">// Type coercion rules (complex but predictable)</span>
+<span class="hljs-string">&quot;5&quot;</span> + <span class="hljs-number">3</span>;            <span class="hljs-comment">// &quot;53&quot; (string concatenation)</span>
+<span class="hljs-string">&quot;5&quot;</span> - <span class="hljs-number">3</span>;            <span class="hljs-comment">// 2 (numeric subtraction)</span>
+<span class="hljs-literal">true</span> + <span class="hljs-number">1</span>;           <span class="hljs-comment">// 2 (boolean to number)</span>
+[] + {};            <span class="hljs-comment">// &quot;[object Object]&quot; (both to string)</span>
+</code></pre></pre>
+<p><strong>Interconnected Concepts:</strong></p>
+<ul>
+<li><strong>Type Coercion</strong>: Automatic type conversion</li>
+<li><strong>Equality Operators</strong>: == vs === behavior</li>
+<li><strong>Truthy/Falsy</strong>: Boolean context evaluation</li>
+<li><strong>Boxing</strong>: Primitive to object conversion</li>
+</ul>
+<h3 id="3.-,[object-object]" node="[object Object]">3. <strong>Functions &amp; Execution Context</strong></h3>
+<h4><strong>What is a Function?</strong></h4>
+<p><strong>Definition:</strong> A function is a reusable block of code that encapsulates logic, can accept parameters, and can return values.</p>
+<p><strong>Why Functions are Fundamental:</strong></p>
+<ul>
+<li><strong>Code Reusability</strong>: Write once, use many times</li>
+<li><strong>Abstraction</strong>: Hide implementation details</li>
+<li><strong>Modularity</strong>: Break complex problems into smaller parts</li>
+<li><strong>Scope Creation</strong>: Create isolated execution environments</li>
+</ul>
+<p><strong>How Functions Create Execution Context:</strong></p>
+<pre><pre><code class="hljs hljs language-mermaid">graph TB
+    subgraph &quot;Execution Context&quot;
+        A[Variable Environment] --&gt; B[Local Variables]
+        A --&gt; C[Parameters]
+        A --&gt; D[Function Declarations]
+        
+        E[Lexical Environment] --&gt; F[Identifier Bindings]
+        E --&gt; G[Outer Reference]
+        
+        H[This Binding] --&gt; I[Context Object]
+    end
+
+    subgraph &quot;Call Stack&quot;
+        J[Global Context] --&gt; K[Function Context 1]
+        K --&gt; L[Function Context 2]
+        L --&gt; M[Function Context 3]
+    end
+
+    subgraph &quot;Function Types&quot;
+        N[Function Declaration] --&gt; O[Hoisted]
+        P[Function Expression] --&gt; Q[Not Hoisted]
+        R[Arrow Function] --&gt; S[Lexical This]
+        T[Method] --&gt; U[Object Context]
+    end
+</code></pre></pre>
+<p><strong>Deep Theory with Examples:</strong></p>
+<pre><pre><code class="hljs hljs language-javascript"><span class="hljs-comment">// WHAT: Different function creation methods</span>
+<span class="hljs-comment">// Function Declaration - hoisted, can be called before definition</span>
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-title function_">add</span>(<span class="hljs-number">2</span>, <span class="hljs-number">3</span>)); <span class="hljs-comment">// Works! Returns 5</span>
+
+<span class="hljs-keyword">function</span> <span class="hljs-title function_">add</span>(<span class="hljs-params">a, b</span>) {
+    <span class="hljs-keyword">return</span> a + b;
+}
+
+<span class="hljs-comment">// Function Expression - not hoisted</span>
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-title function_">multiply</span>(<span class="hljs-number">2</span>, <span class="hljs-number">3</span>)); <span class="hljs-comment">// Error! Cannot access before initialization</span>
+
+<span class="hljs-keyword">const</span> multiply = <span class="hljs-keyword">function</span>(<span class="hljs-params">a, b</span>) {
+    <span class="hljs-keyword">return</span> a * b;
+};
+
+<span class="hljs-comment">// Arrow Function - lexical this binding</span>
+<span class="hljs-keyword">const</span> obj = {
+    <span class="hljs-attr">name</span>: <span class="hljs-string">&#x27;Object&#x27;</span>,
+    <span class="hljs-attr">regularFunction</span>: <span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) {
+        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-variable language_">this</span>.<span class="hljs-property">name</span>); <span class="hljs-comment">// &#x27;Object&#x27;</span>
+        
+        <span class="hljs-keyword">const</span> <span class="hljs-title function_">arrowFunction</span> = (<span class="hljs-params"></span>) =&gt; {
+            <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-variable language_">this</span>.<span class="hljs-property">name</span>); <span class="hljs-comment">// &#x27;Object&#x27; (inherited from outer)</span>
+        };
+        
+        <span class="hljs-keyword">function</span> <span class="hljs-title function_">innerFunction</span>(<span class="hljs-params"></span>) {
+            <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-variable language_">this</span>.<span class="hljs-property">name</span>); <span class="hljs-comment">// undefined (new context)</span>
+        }
+        
+        <span class="hljs-title function_">arrowFunction</span>();
+        <span class="hljs-title function_">innerFunction</span>();
+    }
+};
+
+<span class="hljs-comment">// WHY: Execution context creation</span>
+<span class="hljs-keyword">function</span> <span class="hljs-title function_">outer</span>(<span class="hljs-params">x</span>) {
+    <span class="hljs-keyword">let</span> outerVar = <span class="hljs-string">&#x27;outer&#x27;</span>;
+    
+    <span class="hljs-keyword">function</span> <span class="hljs-title function_">inner</span>(<span class="hljs-params">y</span>) {
+        <span class="hljs-keyword">let</span> innerVar = <span class="hljs-string">&#x27;inner&#x27;</span>;
+        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(x, y, outerVar, innerVar); <span class="hljs-comment">// Access to all scopes</span>
+    }
+    
+    <span class="hljs-keyword">return</span> inner;
+}
+
+<span class="hljs-keyword">const</span> closureFunction = <span class="hljs-title function_">outer</span>(<span class="hljs-string">&#x27;param&#x27;</span>);
+<span class="hljs-title function_">closureFunction</span>(<span class="hljs-string">&#x27;arg&#x27;</span>); <span class="hljs-comment">// &quot;param arg outer inner&quot;</span>
+
+<span class="hljs-comment">// HOW: Scope chain resolution</span>
+<span class="hljs-comment">// 1. Check current execution context</span>
+<span class="hljs-comment">// 2. Check outer lexical environment</span>
+<span class="hljs-comment">// 3. Continue up scope chain</span>
+<span class="hljs-comment">// 4. Reach global scope</span>
+<span class="hljs-comment">// 5. ReferenceError if not found</span>
+</code></pre></pre>
+<p><strong>Interconnected Concepts:</strong></p>
+<ul>
+<li><strong>Closures</strong>: Functions retaining access to outer scope</li>
+<li><strong>Hoisting</strong>: Function declarations vs expressions</li>
+<li><strong>This Binding</strong>: Context determination rules</li>
+<li><strong>Call Stack</strong>: Function execution order</li>
+</ul>
+<h3 id="4.-,[object-object]" node="[object Object]">4. <strong>Scope &amp; Lexical Environment</strong></h3>
+<h4><strong>What is Scope?</strong></h4>
+<p><strong>Definition:</strong> Scope determines the accessibility and lifetime of variables and functions in different parts of code.</p>
+<p><strong>Why Scope Exists:</strong></p>
+<ul>
+<li><strong>Name Collision Prevention</strong>: Same variable names in different contexts</li>
+<li><strong>Memory Management</strong>: Variables can be garbage collected when out of scope</li>
+<li><strong>Encapsulation</strong>: Hide implementation details</li>
+<li><strong>Predictable Behavior</strong>: Clear rules for variable access</li>
+</ul>
+<p><strong>How Lexical Scoping Works:</strong></p>
+<pre><pre><code class="hljs hljs language-mermaid">graph TB
+    subgraph &quot;Scope Chain&quot;
+        A[Global Scope] --&gt; B[Function Scope 1]
+        B --&gt; C[Block Scope 1]
+        B --&gt; D[Function Scope 2]
+        D --&gt; E[Block Scope 2]
+        
+        F[Lexical Environment] --&gt; G[Environment Record]
+        F --&gt; H[Outer Reference]
+        
+        I[Variable Resolution] --&gt; J[Current Scope]
+        J --&gt; K[Parent Scope]
+        K --&gt; L[Global Scope]
+        L --&gt; M[ReferenceError]
+    end
+</code></pre></pre>
+<p><strong>Deep Theory with Examples:</strong></p>
+<pre><pre><code class="hljs hljs language-javascript"><span class="hljs-comment">// WHAT: Different scope types</span>
+<span class="hljs-keyword">var</span> globalVar = <span class="hljs-string">&#x27;global&#x27;</span>;           <span class="hljs-comment">// Global scope</span>
+<span class="hljs-keyword">let</span> globalLet = <span class="hljs-string">&#x27;global let&#x27;</span>;       <span class="hljs-comment">// Global scope</span>
+
+<span class="hljs-keyword">function</span> <span class="hljs-title function_">outerFunction</span>(<span class="hljs-params"></span>) {
+    <span class="hljs-keyword">var</span> functionVar = <span class="hljs-string">&#x27;function&#x27;</span>;   <span class="hljs-comment">// Function scope</span>
+    <span class="hljs-keyword">let</span> functionLet = <span class="hljs-string">&#x27;function let&#x27;</span>; <span class="hljs-comment">// Function scope</span>
+    
+    <span class="hljs-keyword">if</span> (<span class="hljs-literal">true</span>) {
+        <span class="hljs-keyword">var</span> blockVar = <span class="hljs-string">&#x27;block var&#x27;</span>;     <span class="hljs-comment">// Function scope (var ignores blocks)</span>
+        <span class="hljs-keyword">let</span> blockLet = <span class="hljs-string">&#x27;block let&#x27;</span>;     <span class="hljs-comment">// Block scope</span>
+        <span class="hljs-keyword">const</span> blockConst = <span class="hljs-string">&#x27;block const&#x27;</span>; <span class="hljs-comment">// Block scope</span>
+        
+        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(blockLet); <span class="hljs-comment">// Accessible here</span>
+    }
+    
+    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(blockVar);  <span class="hljs-comment">// Accessible (var is function-scoped)</span>
+    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(blockLet);  <span class="hljs-comment">// ReferenceError (let is block-scoped)</span>
+}
+
+<span class="hljs-comment">// WHY: Lexical scoping (determined at compile time)</span>
+<span class="hljs-keyword">function</span> <span class="hljs-title function_">createCounter</span>(<span class="hljs-params"></span>) {
+    <span class="hljs-keyword">let</span> count = <span class="hljs-number">0</span>;
+    
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) {
+        count++; <span class="hljs-comment">// Accesses outer variable</span>
+        <span class="hljs-keyword">return</span> count;
+    };
+}
+
+<span class="hljs-keyword">const</span> counter1 = <span class="hljs-title function_">createCounter</span>();
+<span class="hljs-keyword">const</span> counter2 = <span class="hljs-title function_">createCounter</span>();
+
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-title function_">counter1</span>()); <span class="hljs-comment">// 1</span>
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-title function_">counter1</span>()); <span class="hljs-comment">// 2</span>
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-title function_">counter2</span>()); <span class="hljs-comment">// 1 (separate closure)</span>
+
+<span class="hljs-comment">// HOW: Scope chain traversal</span>
+<span class="hljs-keyword">let</span> x = <span class="hljs-string">&#x27;global x&#x27;</span>;
+
+<span class="hljs-keyword">function</span> <span class="hljs-title function_">level1</span>(<span class="hljs-params"></span>) {
+    <span class="hljs-keyword">let</span> x = <span class="hljs-string">&#x27;level1 x&#x27;</span>;
+    
+    <span class="hljs-keyword">function</span> <span class="hljs-title function_">level2</span>(<span class="hljs-params"></span>) {
+        <span class="hljs-keyword">let</span> x = <span class="hljs-string">&#x27;level2 x&#x27;</span>;
+        
+        <span class="hljs-keyword">function</span> <span class="hljs-title function_">level3</span>(<span class="hljs-params"></span>) {
+            <span class="hljs-comment">// Variable resolution:</span>
+            <span class="hljs-comment">// 1. Check level3 scope - no &#x27;x&#x27;</span>
+            <span class="hljs-comment">// 2. Check level2 scope - found &#x27;x&#x27;</span>
+            <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(x); <span class="hljs-comment">// &#x27;level2 x&#x27;</span>
+        }
+        
+        <span class="hljs-title function_">level3</span>();
+    }
+    
+    <span class="hljs-title function_">level2</span>();
+}
+
+<span class="hljs-title function_">level1</span>();
+</code></pre></pre>
+<p><strong>Interconnected Concepts:</strong></p>
+<ul>
+<li><strong>Closures</strong>: Scope preservation after function returns</li>
+<li><strong>Hoisting</strong>: Variable and function scope behavior</li>
+<li><strong>Temporal Dead Zone</strong>: let/const accessibility rules</li>
+<li><strong>Module Pattern</strong>: Scope-based encapsulation</li>
+</ul>
+<h3 id="5.-,[object-object]" node="[object Object]">5. <strong>Closures &amp; Lexical Environment Preservation</strong></h3>
+<h4><strong>What is a Closure?</strong></h4>
+<p><strong>Definition:</strong> A closure is a function that retains access to variables from its outer (enclosing) scope even after the outer function has returned.</p>
+<p><strong>Why Closures are Powerful:</strong></p>
+<ul>
+<li><strong>Data Privacy</strong>: Create private variables</li>
+<li><strong>State Persistence</strong>: Maintain state between function calls</li>
+<li><strong>Callback Patterns</strong>: Preserve context in asynchronous operations</li>
+<li><strong>Module Pattern</strong>: Encapsulate functionality</li>
+</ul>
+<p><strong>How Closures Work Internally:</strong></p>
+<pre><pre><code class="hljs hljs language-mermaid">graph TB
+    subgraph &quot;Closure Creation&quot;
+        A[Function Definition] --&gt; B[Lexical Environment Capture]
+        B --&gt; C[Variable References Preserved]
+        C --&gt; D[Function Object Created]
+        
+        E[Outer Function Execution] --&gt; F[Inner Function Returned]
+        F --&gt; G[Lexical Environment Persists]
+        G --&gt; H[Variables Remain Accessible]
+    end
+
+    subgraph &quot;Memory Management&quot;
+        I[Closure References] --&gt; J[Prevents Garbage Collection]
+        J --&gt; K[Memory Leak Risk]
+        K --&gt; L[Careful Reference Management]
+    end
+</code></pre></pre>
+<p><strong>Deep Theory with Examples:</strong></p>
+<pre><pre><code class="hljs hljs language-javascript"><span class="hljs-comment">// WHAT: Basic closure mechanism</span>
+<span class="hljs-keyword">function</span> <span class="hljs-title function_">createGreeter</span>(<span class="hljs-params">name</span>) {
+    <span class="hljs-comment">// This variable will be captured in closure</span>
+    <span class="hljs-keyword">const</span> greeting = <span class="hljs-string">`Hello, <span class="hljs-subst">${name}</span>!`</span>;
+    
+    <span class="hljs-comment">// Inner function has access to outer scope</span>
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) {
+        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(greeting); <span class="hljs-comment">// Accesses &#x27;greeting&#x27; from outer scope</span>
+    };
+}
+
+<span class="hljs-keyword">const</span> greetJohn = <span class="hljs-title function_">createGreeter</span>(<span class="hljs-string">&#x27;John&#x27;</span>);
+<span class="hljs-title function_">greetJohn</span>(); <span class="hljs-comment">// &quot;Hello, John!&quot; - &#x27;greeting&#x27; still accessible</span>
+
+<span class="hljs-comment">// WHY: Practical applications</span>
+<span class="hljs-comment">// 1. Data Privacy</span>
+<span class="hljs-keyword">function</span> <span class="hljs-title function_">createBankAccount</span>(<span class="hljs-params">initialBalance</span>) {
+    <span class="hljs-keyword">let</span> balance = initialBalance; <span class="hljs-comment">// Private variable</span>
+    
+    <span class="hljs-keyword">return</span> {
+        <span class="hljs-title function_">deposit</span>(<span class="hljs-params">amount</span>) {
+            balance += amount;
+            <span class="hljs-keyword">return</span> balance;
+        },
+        <span class="hljs-title function_">withdraw</span>(<span class="hljs-params">amount</span>) {
+            <span class="hljs-keyword">if</span> (amount &lt;= balance) {
+                balance -= amount;
+                <span class="hljs-keyword">return</span> balance;
+            }
+            <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Error</span>(<span class="hljs-string">&#x27;Insufficient funds&#x27;</span>);
+        },
+        <span class="hljs-title function_">getBalance</span>(<span class="hljs-params"></span>) {
+            <span class="hljs-keyword">return</span> balance; <span class="hljs-comment">// Controlled access</span>
+        }
+        <span class="hljs-comment">// No direct access to &#x27;balance&#x27; variable</span>
+    };
+}
+
+<span class="hljs-keyword">const</span> account = <span class="hljs-title function_">createBankAccount</span>(<span class="hljs-number">100</span>);
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(account.<span class="hljs-title function_">getBalance</span>()); <span class="hljs-comment">// 100</span>
+account.<span class="hljs-title function_">deposit</span>(<span class="hljs-number">50</span>);               <span class="hljs-comment">// 150</span>
+<span class="hljs-comment">// account.balance = 1000000;      // Cannot access directly!</span>
+
+<span class="hljs-comment">// 2. Callback Context Preservation</span>
+<span class="hljs-keyword">function</span> <span class="hljs-title function_">setupEventHandlers</span>(<span class="hljs-params"></span>) {
+    <span class="hljs-keyword">const</span> data = { <span class="hljs-attr">count</span>: <span class="hljs-number">0</span> };
+    
+    <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">getElementById</span>(<span class="hljs-string">&#x27;button&#x27;</span>).<span class="hljs-title function_">addEventListener</span>(<span class="hljs-string">&#x27;click&#x27;</span>, <span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) {
+        data.<span class="hljs-property">count</span>++; <span class="hljs-comment">// Closure preserves access to &#x27;data&#x27;</span>
+        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">`Clicked <span class="hljs-subst">${data.count}</span> times`</span>);
+    });
+}
+
+<span class="hljs-comment">// 3. Module Pattern</span>
+<span class="hljs-keyword">const</span> <span class="hljs-title class_">Calculator</span> = (<span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) {
+    <span class="hljs-comment">// Private variables and functions</span>
+    <span class="hljs-keyword">let</span> result = <span class="hljs-number">0</span>;
+    
+    <span class="hljs-keyword">function</span> <span class="hljs-title function_">log</span>(<span class="hljs-params">operation, value</span>) {
+        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">`<span class="hljs-subst">${operation}</span>: <span class="hljs-subst">${value}</span>, Result: <span class="hljs-subst">${result}</span>`</span>);
+    }
+    
+    <span class="hljs-comment">// Public API</span>
+    <span class="hljs-keyword">return</span> {
+        <span class="hljs-title function_">add</span>(<span class="hljs-params">value</span>) {
+            result += value;
+            <span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;Add&#x27;</span>, value);
+            <span class="hljs-keyword">return</span> <span class="hljs-variable language_">this</span>;
+        },
+        <span class="hljs-title function_">subtract</span>(<span class="hljs-params">value</span>) {
+            result -= value;
+            <span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;Subtract&#x27;</span>, value);
+            <span class="hljs-keyword">return</span> <span class="hljs-variable language_">this</span>;
+        },
+        <span class="hljs-title function_">getResult</span>(<span class="hljs-params"></span>) {
+            <span class="hljs-keyword">return</span> result;
+        },
+        <span class="hljs-title function_">reset</span>(<span class="hljs-params"></span>) {
+            result = <span class="hljs-number">0</span>;
+            <span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;Reset&#x27;</span>, <span class="hljs-number">0</span>);
+            <span class="hljs-keyword">return</span> <span class="hljs-variable language_">this</span>;
+        }
+    };
+})();
+
+<span class="hljs-title class_">Calculator</span>.<span class="hljs-title function_">add</span>(<span class="hljs-number">10</span>).<span class="hljs-title function_">subtract</span>(<span class="hljs-number">3</span>).<span class="hljs-title function_">add</span>(<span class="hljs-number">5</span>); <span class="hljs-comment">// Method chaining</span>
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-title class_">Calculator</span>.<span class="hljs-title function_">getResult</span>()); <span class="hljs-comment">// 12</span>
+
+<span class="hljs-comment">// HOW: Memory implications</span>
+<span class="hljs-keyword">function</span> <span class="hljs-title function_">createFunctions</span>(<span class="hljs-params"></span>) {
+    <span class="hljs-keyword">const</span> functions = [];
+    
+    <span class="hljs-comment">// Common mistake - all functions share same &#x27;i&#x27;</span>
+    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">3</span>; i++) {
+        functions.<span class="hljs-title function_">push</span>(<span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) {
+            <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(i); <span class="hljs-comment">// All will log 3!</span>
+        });
+    }
+    
+    <span class="hljs-keyword">return</span> functions;
+}
+
+<span class="hljs-comment">// Correct approach - create separate closure for each</span>
+<span class="hljs-keyword">function</span> <span class="hljs-title function_">createFunctionsCorrect</span>(<span class="hljs-params"></span>) {
+    <span class="hljs-keyword">const</span> functions = [];
+    
+    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">3</span>; i++) { <span class="hljs-comment">// &#x27;let&#x27; creates new binding each iteration</span>
+        functions.<span class="hljs-title function_">push</span>(<span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) {
+            <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(i); <span class="hljs-comment">// Each logs its own &#x27;i&#x27;</span>
+        });
+    }
+    
+    <span class="hljs-keyword">return</span> functions;
+}
+
+<span class="hljs-comment">// Alternative with IIFE</span>
+<span class="hljs-keyword">function</span> <span class="hljs-title function_">createFunctionsIIFE</span>(<span class="hljs-params"></span>) {
+    <span class="hljs-keyword">const</span> functions = [];
+    
+    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">3</span>; i++) {
+        functions.<span class="hljs-title function_">push</span>((<span class="hljs-keyword">function</span>(<span class="hljs-params">index</span>) {
+            <span class="hljs-keyword">return</span> <span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) {
+                <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(index); <span class="hljs-comment">// Captures &#x27;index&#x27; parameter</span>
+            };
+        })(i));
+    }
+    
+    <span class="hljs-keyword">return</span> functions;
+}
+</code></pre></pre>
+<p><strong>Interconnected Concepts:</strong></p>
+<ul>
+<li><strong>Lexical Scoping</strong>: Foundation for closure behavior</li>
+<li><strong>Memory Management</strong>: Closure impact on garbage collection</li>
+<li><strong>Event Handling</strong>: Context preservation in callbacks</li>
+<li><strong>Module Systems</strong>: Encapsulation patterns</li>
+</ul>
+<h3 id="6.-,[object-object]" node="[object Object]">6. <strong>Prototypes &amp; Inheritance Chain</strong></h3>
+<h4><strong>What is the Prototype System?</strong></h4>
+<p><strong>Definition:</strong> JavaScript&#x27;s prototype system is a mechanism for object inheritance where objects can inherit properties and methods from other objects.</p>
+<p><strong>Why Prototypes Instead of Classes:</strong></p>
+<ul>
+<li><strong>Dynamic Inheritance</strong>: Objects can change their prototype chain at runtime</li>
+<li><strong>Memory Efficiency</strong>: Methods shared across instances</li>
+<li><strong>Flexibility</strong>: Multiple inheritance patterns possible</li>
+<li><strong>JavaScript&#x27;s Nature</strong>: Fits the dynamic, object-based language design</li>
+</ul>
+<p><strong>How Prototype Chain Works:</strong></p>
+<pre><pre><code class="hljs hljs language-mermaid">graph TB
+    subgraph &quot;Prototype Chain&quot;
+        A[Object Instance] --&gt; B[Constructor.prototype]
+        B --&gt; C[Object.prototype]
+        C --&gt; D[null]
+        
+        E[Property Lookup] --&gt; F[Own Properties]
+        F --&gt; G[Prototype Properties]
+        G --&gt; H[Prototype&#x27;s Prototype]
+        H --&gt; I[Continue Up Chain]
+        I --&gt; J[undefined if not found]
+    end
+
+    subgraph &quot;Constructor Function&quot;
+        K[Function Definition] --&gt; L[Prototype Property]
+        L --&gt; M[Constructor Property]
+        M --&gt; N[Shared Methods]
+    end
+
+    subgraph &quot;Class Syntax (ES6+)&quot;
+        O[Class Declaration] --&gt; P[Constructor Method]
+        P --&gt; Q[Instance Methods]
+        Q --&gt; R[Static Methods]
+    end
+</code></pre></pre>
+<p><strong>Deep Theory with Examples:</strong></p>
+<pre><pre><code class="hljs hljs language-javascript"><span class="hljs-comment">// WHAT: Prototype-based inheritance</span>
+<span class="hljs-keyword">function</span> <span class="hljs-title function_">Animal</span>(<span class="hljs-params">name</span>) {
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">name</span> = name;
+}
+
+<span class="hljs-comment">// Methods on prototype are shared</span>
+<span class="hljs-title class_">Animal</span>.<span class="hljs-property"><span class="hljs-keyword">prototype</span></span>.<span class="hljs-property">speak</span> = <span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) {
+    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">`<span class="hljs-subst">${<span class="hljs-variable language_">this</span>.name}</span> makes a sound`</span>);
+};
+
+<span class="hljs-title class_">Animal</span>.<span class="hljs-property"><span class="hljs-keyword">prototype</span></span>.<span class="hljs-property">eat</span> = <span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) {
+    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">`<span class="hljs-subst">${<span class="hljs-variable language_">this</span>.name}</span> is eating`</span>);
+};
+
+<span class="hljs-keyword">function</span> <span class="hljs-title function_">Dog</span>(<span class="hljs-params">name, breed</span>) {
+    <span class="hljs-title class_">Animal</span>.<span class="hljs-title function_">call</span>(<span class="hljs-variable language_">this</span>, name); <span class="hljs-comment">// Call parent constructor</span>
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">breed</span> = breed;
+}
+
+<span class="hljs-comment">// Set up inheritance</span>
+<span class="hljs-title class_">Dog</span>.<span class="hljs-property"><span class="hljs-keyword">prototype</span></span> = <span class="hljs-title class_">Object</span>.<span class="hljs-title function_">create</span>(<span class="hljs-title class_">Animal</span>.<span class="hljs-property"><span class="hljs-keyword">prototype</span></span>);
+<span class="hljs-title class_">Dog</span>.<span class="hljs-property"><span class="hljs-keyword">prototype</span></span>.<span class="hljs-property">constructor</span> = <span class="hljs-title class_">Dog</span>;
+
+<span class="hljs-comment">// Add dog-specific methods</span>
+<span class="hljs-title class_">Dog</span>.<span class="hljs-property"><span class="hljs-keyword">prototype</span></span>.<span class="hljs-property">bark</span> = <span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) {
+    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">`<span class="hljs-subst">${<span class="hljs-variable language_">this</span>.name}</span> barks: Woof!`</span>);
+};
+
+<span class="hljs-comment">// Override parent method</span>
+<span class="hljs-title class_">Dog</span>.<span class="hljs-property"><span class="hljs-keyword">prototype</span></span>.<span class="hljs-property">speak</span> = <span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) {
+    <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">bark</span>();
+};
+
+<span class="hljs-keyword">const</span> dog = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Dog</span>(<span class="hljs-string">&#x27;Rex&#x27;</span>, <span class="hljs-string">&#x27;German Shepherd&#x27;</span>);
+dog.<span class="hljs-title function_">speak</span>(); <span class="hljs-comment">// &quot;Rex barks: Woof!&quot;</span>
+dog.<span class="hljs-title function_">eat</span>();   <span class="hljs-comment">// &quot;Rex is eating&quot; (inherited)</span>
+
+<span class="hljs-comment">// WHY: Memory efficiency demonstration</span>
+<span class="hljs-keyword">function</span> <span class="hljs-title function_">Person</span>(<span class="hljs-params">name</span>) {
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">name</span> = name;
+    
+    <span class="hljs-comment">// BAD: Each instance gets its own copy</span>
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">greet</span> = <span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) {
+        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">`Hello, I&#x27;m <span class="hljs-subst">${<span class="hljs-variable language_">this</span>.name}</span>`</span>);
+    };
+}
+
+<span class="hljs-keyword">function</span> <span class="hljs-title function_">PersonOptimized</span>(<span class="hljs-params">name</span>) {
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">name</span> = name;
+}
+
+<span class="hljs-comment">// GOOD: Shared across all instances</span>
+<span class="hljs-title class_">PersonOptimized</span>.<span class="hljs-property"><span class="hljs-keyword">prototype</span></span>.<span class="hljs-property">greet</span> = <span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) {
+    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">`Hello, I&#x27;m <span class="hljs-subst">${<span class="hljs-variable language_">this</span>.name}</span>`</span>);
+};
+
+<span class="hljs-keyword">const</span> person1 = <span class="hljs-keyword">new</span> <span class="hljs-title class_">PersonOptimized</span>(<span class="hljs-string">&#x27;Alice&#x27;</span>);
+<span class="hljs-keyword">const</span> person2 = <span class="hljs-keyword">new</span> <span class="hljs-title class_">PersonOptimized</span>(<span class="hljs-string">&#x27;Bob&#x27;</span>);
+
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(person1.<span class="hljs-property">greet</span> === person2.<span class="hljs-property">greet</span>); <span class="hljs-comment">// true - same function</span>
+
+<span class="hljs-comment">// HOW: Prototype chain traversal</span>
+<span class="hljs-keyword">const</span> obj = {
+    <span class="hljs-attr">prop1</span>: <span class="hljs-string">&#x27;value1&#x27;</span>
+};
+
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(obj.<span class="hljs-property">prop1</span>);        <span class="hljs-comment">// &#x27;value1&#x27; (own property)</span>
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(obj.<span class="hljs-property">toString</span>);     <span class="hljs-comment">// function (from Object.prototype)</span>
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(obj.<span class="hljs-property">hasOwnProperty</span>); <span class="hljs-comment">// function (from Object.prototype)</span>
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(obj.<span class="hljs-property">nonExistent</span>);  <span class="hljs-comment">// undefined (not found in chain)</span>
+
+<span class="hljs-comment">// Modern class syntax (syntactic sugar over prototypes)</span>
+<span class="hljs-keyword">class</span> <span class="hljs-title class_">ModernAnimal</span> {
+    <span class="hljs-title function_">constructor</span>(<span class="hljs-params">name</span>) {
+        <span class="hljs-variable language_">this</span>.<span class="hljs-property">name</span> = name;
+    }
+    
+    <span class="hljs-title function_">speak</span>(<span class="hljs-params"></span>) {
+        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">`<span class="hljs-subst">${<span class="hljs-variable language_">this</span>.name}</span> makes a sound`</span>);
+    }
+    
+    <span class="hljs-keyword">static</span> <span class="hljs-title function_">getSpecies</span>(<span class="hljs-params"></span>) {
+        <span class="hljs-keyword">return</span> <span class="hljs-string">&#x27;Unknown species&#x27;</span>;
+    }
+}
+
+<span class="hljs-keyword">class</span> <span class="hljs-title class_">ModernDog</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_ inherited__">ModernAnimal</span> {
+    <span class="hljs-title function_">constructor</span>(<span class="hljs-params">name, breed</span>) {
+        <span class="hljs-variable language_">super</span>(name); <span class="hljs-comment">// Call parent constructor</span>
+        <span class="hljs-variable language_">this</span>.<span class="hljs-property">breed</span> = breed;
+    }
+    
+    <span class="hljs-title function_">speak</span>(<span class="hljs-params"></span>) {
+        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">`<span class="hljs-subst">${<span class="hljs-variable language_">this</span>.name}</span> barks: Woof!`</span>);
+    }
+    
+    <span class="hljs-keyword">static</span> <span class="hljs-title function_">getSpecies</span>(<span class="hljs-params"></span>) {
+        <span class="hljs-keyword">return</span> <span class="hljs-string">&#x27;Canis lupus&#x27;</span>;
+    }
+}
+
+<span class="hljs-comment">// Under the hood, this creates the same prototype chain</span>
+<span class="hljs-keyword">const</span> modernDog = <span class="hljs-keyword">new</span> <span class="hljs-title class_">ModernDog</span>(<span class="hljs-string">&#x27;Buddy&#x27;</span>, <span class="hljs-string">&#x27;Golden Retriever&#x27;</span>);
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(modernDog <span class="hljs-keyword">instanceof</span> <span class="hljs-title class_">ModernDog</span>);    <span class="hljs-comment">// true</span>
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(modernDog <span class="hljs-keyword">instanceof</span> <span class="hljs-title class_">ModernAnimal</span>); <span class="hljs-comment">// true</span>
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(modernDog <span class="hljs-keyword">instanceof</span> <span class="hljs-title class_">Object</span>);       <span class="hljs-comment">// true</span>
+</code></pre></pre>
+<p><strong>Interconnected Concepts:</strong></p>
+<ul>
+<li><strong>Constructor Functions</strong>: Object creation patterns</li>
+<li><strong>instanceof Operator</strong>: Prototype chain checking</li>
+<li><strong>Object.create()</strong>: Direct prototype setting</li>
+<li><strong>Class Syntax</strong>: Modern inheritance syntax</li>
+</ul>
+<h3 id="7.-,[object-object]" node="[object Object]">7. <strong>Asynchronous JavaScript &amp; Event Loop</strong></h3>
+<h4><strong>What is Asynchronous Programming?</strong></h4>
+<p><strong>Definition:</strong> Asynchronous programming allows code execution to continue without waiting for long-running operations to complete.</p>
+<p><strong>Why Asynchronous Programming is Essential:</strong></p>
+<ul>
+<li><strong>Non-blocking UI</strong>: Keep user interface responsive</li>
+<li><strong>I/O Operations</strong>: Handle network requests, file operations</li>
+<li><strong>Performance</strong>: Utilize waiting time for other tasks</li>
+<li><strong>Scalability</strong>: Handle multiple operations concurrently</li>
+</ul>
+<p><strong>How Event Loop Orchestrates Execution:</strong></p>
+<pre><pre><code class="hljs hljs language-mermaid">graph TB
+    subgraph &quot;JavaScript Runtime&quot;
+        A[Call Stack] --&gt; B[Web APIs]
+        B --&gt; C[Callback Queue]
+        C --&gt; D[Event Loop]
+        D --&gt; A
+        
+        E[Microtask Queue] --&gt; F[Event Loop Check]
+        F --&gt; A
+    end
+
+    subgraph &quot;Execution Priority&quot;
+        G[1. Call Stack] --&gt; H[2. Microtasks]
+        H --&gt; I[3. Macrotasks]
+        I --&gt; J[4. Render]
+    end
+
+    subgraph &quot;Async Sources&quot;
+        K[setTimeout/setInterval] --&gt; L[Macrotask Queue]
+        M[Promises] --&gt; N[Microtask Queue]
+        O[DOM Events] --&gt; P[Event Queue]
+        Q[I/O Operations] --&gt; R[Callback Queue]
+    end
+</code></pre></pre>
+<p><strong>Deep Theory with Examples:</strong></p>
+<pre><pre><code class="hljs hljs language-javascript"><span class="hljs-comment">// WHAT: Event loop execution order</span>
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;1&#x27;</span>); <span class="hljs-comment">// Synchronous</span>
+
+<span class="hljs-built_in">setTimeout</span>(<span class="hljs-function">() =&gt;</span> <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;2&#x27;</span>), <span class="hljs-number">0</span>); <span class="hljs-comment">// Macrotask</span>
+
+<span class="hljs-title class_">Promise</span>.<span class="hljs-title function_">resolve</span>().<span class="hljs-title function_">then</span>(<span class="hljs-function">() =&gt;</span> <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;3&#x27;</span>)); <span class="hljs-comment">// Microtask</span>
+
+<span class="hljs-title function_">queueMicrotask</span>(<span class="hljs-function">() =&gt;</span> <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;4&#x27;</span>)); <span class="hljs-comment">// Microtask</span>
+
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;5&#x27;</span>); <span class="hljs-comment">// Synchronous</span>
+
+<span class="hljs-comment">// Output: 1, 5, 3, 4, 2</span>
+<span class="hljs-comment">// Explanation:</span>
+<span class="hljs-comment">// 1. Synchronous code executes first (1, 5)</span>
+<span class="hljs-comment">// 2. Microtasks execute before macrotasks (3, 4)</span>
+<span class="hljs-comment">// 3. Macrotasks execute last (2)</span>
+
+<span class="hljs-comment">// WHY: Asynchronous patterns evolution</span>
+<span class="hljs-comment">// 1. Callbacks (Callback Hell)</span>
+<span class="hljs-keyword">function</span> <span class="hljs-title function_">fetchUserData</span>(<span class="hljs-params">userId, callback</span>) {
+    <span class="hljs-built_in">setTimeout</span>(<span class="hljs-function">() =&gt;</span> {
+        <span class="hljs-keyword">const</span> user = { <span class="hljs-attr">id</span>: userId, <span class="hljs-attr">name</span>: <span class="hljs-string">&#x27;John&#x27;</span> };
+        <span class="hljs-title function_">callback</span>(<span class="hljs-literal">null</span>, user);
+    }, <span class="hljs-number">1000</span>);
+}
+
+<span class="hljs-keyword">function</span> <span class="hljs-title function_">fetchUserPosts</span>(<span class="hljs-params">userId, callback</span>) {
+    <span class="hljs-built_in">setTimeout</span>(<span class="hljs-function">() =&gt;</span> {
+        <span class="hljs-keyword">const</span> posts = [{ <span class="hljs-attr">id</span>: <span class="hljs-number">1</span>, <span class="hljs-attr">title</span>: <span class="hljs-string">&#x27;Post 1&#x27;</span> }];
+        <span class="hljs-title function_">callback</span>(<span class="hljs-literal">null</span>, posts);
+    }, <span class="hljs-number">1000</span>);
+}
+
+<span class="hljs-comment">// Callback hell</span>
+<span class="hljs-title function_">fetchUserData</span>(<span class="hljs-number">1</span>, <span class="hljs-function">(<span class="hljs-params">err, user</span>) =&gt;</span> {
+    <span class="hljs-keyword">if</span> (err) <span class="hljs-keyword">throw</span> err;
+    <span class="hljs-title function_">fetchUserPosts</span>(user.<span class="hljs-property">id</span>, <span class="hljs-function">(<span class="hljs-params">err, posts</span>) =&gt;</span> {
+        <span class="hljs-keyword">if</span> (err) <span class="hljs-keyword">throw</span> err;
+        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;User:&#x27;</span>, user, <span class="hljs-string">&#x27;Posts:&#x27;</span>, posts);
+    });
+});
+
+<span class="hljs-comment">// 2. Promises (Better error handling and chaining)</span>
+<span class="hljs-keyword">function</span> <span class="hljs-title function_">fetchUserDataPromise</span>(<span class="hljs-params">userId</span>) {
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Promise</span>(<span class="hljs-function">(<span class="hljs-params">resolve, reject</span>) =&gt;</span> {
+        <span class="hljs-built_in">setTimeout</span>(<span class="hljs-function">() =&gt;</span> {
+            <span class="hljs-keyword">const</span> user = { <span class="hljs-attr">id</span>: userId, <span class="hljs-attr">name</span>: <span class="hljs-string">&#x27;John&#x27;</span> };
+            <span class="hljs-title function_">resolve</span>(user);
+        }, <span class="hljs-number">1000</span>);
+    });
+}
+
+<span class="hljs-keyword">function</span> <span class="hljs-title function_">fetchUserPostsPromise</span>(<span class="hljs-params">userId</span>) {
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Promise</span>(<span class="hljs-function">(<span class="hljs-params">resolve, reject</span>) =&gt;</span> {
+        <span class="hljs-built_in">setTimeout</span>(<span class="hljs-function">() =&gt;</span> {
+            <span class="hljs-keyword">const</span> posts = [{ <span class="hljs-attr">id</span>: <span class="hljs-number">1</span>, <span class="hljs-attr">title</span>: <span class="hljs-string">&#x27;Post 1&#x27;</span> }];
+            <span class="hljs-title function_">resolve</span>(posts);
+        }, <span class="hljs-number">1000</span>);
+    });
+}
+
+<span class="hljs-comment">// Promise chaining</span>
+<span class="hljs-title function_">fetchUserDataPromise</span>(<span class="hljs-number">1</span>)
+    .<span class="hljs-title function_">then</span>(<span class="hljs-function"><span class="hljs-params">user</span> =&gt;</span> {
+        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;User:&#x27;</span>, user);
+        <span class="hljs-keyword">return</span> <span class="hljs-title function_">fetchUserPostsPromise</span>(user.<span class="hljs-property">id</span>);
+    })
+    .<span class="hljs-title function_">then</span>(<span class="hljs-function"><span class="hljs-params">posts</span> =&gt;</span> {
+        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;Posts:&#x27;</span>, posts);
+    })
+    .<span class="hljs-title function_">catch</span>(<span class="hljs-function"><span class="hljs-params">err</span> =&gt;</span> {
+        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">error</span>(<span class="hljs-string">&#x27;Error:&#x27;</span>, err);
+    });
+
+<span class="hljs-comment">// 3. Async/Await (Synchronous-looking asynchronous code)</span>
+<span class="hljs-keyword">async</span> <span class="hljs-keyword">function</span> <span class="hljs-title function_">fetchUserDataAndPosts</span>(<span class="hljs-params">userId</span>) {
+    <span class="hljs-keyword">try</span> {
+        <span class="hljs-keyword">const</span> user = <span class="hljs-keyword">await</span> <span class="hljs-title function_">fetchUserDataPromise</span>(userId);
+        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;User:&#x27;</span>, user);
+        
+        <span class="hljs-keyword">const</span> posts = <span class="hljs-keyword">await</span> <span class="hljs-title function_">fetchUserPostsPromise</span>(user.<span class="hljs-property">id</span>);
+        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;Posts:&#x27;</span>, posts);
+        
+        <span class="hljs-keyword">return</span> { user, posts };
+    } <span class="hljs-keyword">catch</span> (err) {
+        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">error</span>(<span class="hljs-string">&#x27;Error:&#x27;</span>, err);
+        <span class="hljs-keyword">throw</span> err;
+    }
+}
+
+<span class="hljs-comment">// HOW: Promise internals and states</span>
+<span class="hljs-keyword">class</span> <span class="hljs-title class_">SimplePromise</span> {
+    <span class="hljs-title function_">constructor</span>(<span class="hljs-params">executor</span>) {
+        <span class="hljs-variable language_">this</span>.<span class="hljs-property">state</span> = <span class="hljs-string">&#x27;pending&#x27;</span>;
+        <span class="hljs-variable language_">this</span>.<span class="hljs-property">value</span> = <span class="hljs-literal">undefined</span>;
+        <span class="hljs-variable language_">this</span>.<span class="hljs-property">handlers</span> = [];
+        
+        <span class="hljs-keyword">const</span> <span class="hljs-title function_">resolve</span> = (<span class="hljs-params">value</span>) =&gt; {
+            <span class="hljs-keyword">if</span> (<span class="hljs-variable language_">this</span>.<span class="hljs-property">state</span> === <span class="hljs-string">&#x27;pending&#x27;</span>) {
+                <span class="hljs-variable language_">this</span>.<span class="hljs-property">state</span> = <span class="hljs-string">&#x27;fulfilled&#x27;</span>;
+                <span class="hljs-variable language_">this</span>.<span class="hljs-property">value</span> = value;
+                <span class="hljs-variable language_">this</span>.<span class="hljs-property">handlers</span>.<span class="hljs-title function_">forEach</span>(<span class="hljs-function"><span class="hljs-params">handler</span> =&gt;</span> handler.<span class="hljs-title function_">onFulfilled</span>(value));
+            }
+        };
+        
+        <span class="hljs-keyword">const</span> <span class="hljs-title function_">reject</span> = (<span class="hljs-params">reason</span>) =&gt; {
+            <span class="hljs-keyword">if</span> (<span class="hljs-variable language_">this</span>.<span class="hljs-property">state</span> === <span class="hljs-string">&#x27;pending&#x27;</span>) {
+                <span class="hljs-variable language_">this</span>.<span class="hljs-property">state</span> = <span class="hljs-string">&#x27;rejected&#x27;</span>;
+                <span class="hljs-variable language_">this</span>.<span class="hljs-property">value</span> = reason;
+                <span class="hljs-variable language_">this</span>.<span class="hljs-property">handlers</span>.<span class="hljs-title function_">forEach</span>(<span class="hljs-function"><span class="hljs-params">handler</span> =&gt;</span> handler.<span class="hljs-title function_">onRejected</span>(reason));
+            }
+        };
+        
+        <span class="hljs-keyword">try</span> {
+            <span class="hljs-title function_">executor</span>(resolve, reject);
+        } <span class="hljs-keyword">catch</span> (err) {
+            <span class="hljs-title function_">reject</span>(err);
+        }
+    }
+    
+    <span class="hljs-title function_">then</span>(<span class="hljs-params">onFulfilled, onRejected</span>) {
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">SimplePromise</span>(<span class="hljs-function">(<span class="hljs-params">resolve, reject</span>) =&gt;</span> {
+            <span class="hljs-keyword">const</span> handler = {
+                <span class="hljs-attr">onFulfilled</span>: <span class="hljs-function">(<span class="hljs-params">value</span>) =&gt;</span> {
+                    <span class="hljs-keyword">try</span> {
+                        <span class="hljs-keyword">const</span> result = onFulfilled ? <span class="hljs-title function_">onFulfilled</span>(value) : value;
+                        <span class="hljs-title function_">resolve</span>(result);
+                    } <span class="hljs-keyword">catch</span> (err) {
+                        <span class="hljs-title function_">reject</span>(err);
+                    }
+                },
+                <span class="hljs-attr">onRejected</span>: <span class="hljs-function">(<span class="hljs-params">reason</span>) =&gt;</span> {
+                    <span class="hljs-keyword">try</span> {
+                        <span class="hljs-keyword">const</span> result = onRejected ? <span class="hljs-title function_">onRejected</span>(reason) : reason;
+                        <span class="hljs-title function_">reject</span>(result);
+                    } <span class="hljs-keyword">catch</span> (err) {
+                        <span class="hljs-title function_">reject</span>(err);
+                    }
+                }
+            };
+            
+            <span class="hljs-keyword">if</span> (<span class="hljs-variable language_">this</span>.<span class="hljs-property">state</span> === <span class="hljs-string">&#x27;fulfilled&#x27;</span>) {
+                handler.<span class="hljs-title function_">onFulfilled</span>(<span class="hljs-variable language_">this</span>.<span class="hljs-property">value</span>);
+            } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (<span class="hljs-variable language_">this</span>.<span class="hljs-property">state</span> === <span class="hljs-string">&#x27;rejected&#x27;</span>) {
+                handler.<span class="hljs-title function_">onRejected</span>(<span class="hljs-variable language_">this</span>.<span class="hljs-property">value</span>);
+            } <span class="hljs-keyword">else</span> {
+                <span class="hljs-variable language_">this</span>.<span class="hljs-property">handlers</span>.<span class="hljs-title function_">push</span>(handler);
+            }
+        });
+    }
+}
+
+<span class="hljs-comment">// Advanced async patterns</span>
+<span class="hljs-comment">// Parallel execution</span>
+<span class="hljs-keyword">async</span> <span class="hljs-keyword">function</span> <span class="hljs-title function_">fetchMultipleUsers</span>(<span class="hljs-params">userIds</span>) {
+    <span class="hljs-keyword">const</span> promises = userIds.<span class="hljs-title function_">map</span>(<span class="hljs-function"><span class="hljs-params">id</span> =&gt;</span> <span class="hljs-title function_">fetchUserDataPromise</span>(id));
+    <span class="hljs-keyword">const</span> users = <span class="hljs-keyword">await</span> <span class="hljs-title class_">Promise</span>.<span class="hljs-title function_">all</span>(promises);
+    <span class="hljs-keyword">return</span> users;
+}
+
+<span class="hljs-comment">// Race condition handling</span>
+<span class="hljs-keyword">async</span> <span class="hljs-keyword">function</span> <span class="hljs-title function_">fetchWithTimeout</span>(<span class="hljs-params">promise, timeout</span>) {
+    <span class="hljs-keyword">const</span> timeoutPromise = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Promise</span>(<span class="hljs-function">(<span class="hljs-params">_, reject</span>) =&gt;</span> {
+        <span class="hljs-built_in">setTimeout</span>(<span class="hljs-function">() =&gt;</span> <span class="hljs-title function_">reject</span>(<span class="hljs-keyword">new</span> <span class="hljs-title class_">Error</span>(<span class="hljs-string">&#x27;Timeout&#x27;</span>)), timeout);
+    });
+    
+    <span class="hljs-keyword">return</span> <span class="hljs-title class_">Promise</span>.<span class="hljs-title function_">race</span>([promise, timeoutPromise]);
+}
+
+<span class="hljs-comment">// Sequential execution with error recovery</span>
+<span class="hljs-keyword">async</span> <span class="hljs-keyword">function</span> <span class="hljs-title function_">fetchUsersSequentially</span>(<span class="hljs-params">userIds</span>) {
+    <span class="hljs-keyword">const</span> results = [];
+    
+    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">const</span> id <span class="hljs-keyword">of</span> userIds) {
+        <span class="hljs-keyword">try</span> {
+            <span class="hljs-keyword">const</span> user = <span class="hljs-keyword">await</span> <span class="hljs-title function_">fetchUserDataPromise</span>(id);
+            results.<span class="hljs-title function_">push</span>({ <span class="hljs-attr">success</span>: <span class="hljs-literal">true</span>, <span class="hljs-attr">data</span>: user });
+        } <span class="hljs-keyword">catch</span> (err) {
+            results.<span class="hljs-title function_">push</span>({ <span class="hljs-attr">success</span>: <span class="hljs-literal">false</span>, <span class="hljs-attr">error</span>: err.<span class="hljs-property">message</span> });
+        }
+    }
+    
+    <span class="hljs-keyword">return</span> results;
+}
+</code></pre></pre>
+<p><strong>Interconnected Concepts:</strong></p>
+<ul>
+<li><strong>Call Stack</strong>: Synchronous execution context</li>
+<li><strong>Web APIs</strong>: Browser-provided asynchronous capabilities</li>
+<li><strong>Callback Queue</strong>: Macrotask scheduling</li>
+<li><strong>Microtask Queue</strong>: Promise and queueMicrotask scheduling</li>
+</ul>
+<h2 id="🔗-knowledge-integration-map" node="[object Object]">🔗 Knowledge Integration Map</h2>
+<h3 id="[object-object]" node="[object Object]"><strong>How Concepts Interconnect:</strong></h3>
+<pre><pre><code class="hljs hljs language-mermaid">graph TB
+    subgraph &quot;Core Foundation&quot;
+        A[Variables] --&gt; B[Memory Model]
+        B --&gt; C[Data Types]
+        C --&gt; D[Type Coercion]
+    end
+
+    subgraph &quot;Execution Model&quot;
+        E[Functions] --&gt; F[Execution Context]
+        F --&gt; G[Scope Chain]
+        G --&gt; H[Closures]
+    end
+
+    subgraph &quot;Object Model&quot;
+        I[Objects] --&gt; J[Prototypes]
+        J --&gt; K[Inheritance]
+        K --&gt; L[Constructor Functions]
+    end
+
+    subgraph &quot;Async Model&quot;
+        M[Event Loop] --&gt; N[Callbacks]
+        N --&gt; O[Promises]
+        O --&gt; P[Async/Await]
+    end
+
+    A --&gt; E
+    E --&gt; I
+    I --&gt; M
+    H --&gt; M
+    D --&gt; F
+    L --&gt; K
+</code></pre></pre>
+<h3 id="[object-object]" node="[object Object]"><strong>Interview Success Framework:</strong></h3>
+<ol>
+<li><strong>Start with Definitions</strong>: Always begin with clear, precise definitions</li>
+<li><strong>Explain the Why</strong>: Understand the reasoning behind language design decisions</li>
+<li><strong>Show the How</strong>: Demonstrate with practical, meaningful examples</li>
+<li><strong>Connect Concepts</strong>: Link related topics to show deep understanding</li>
+<li><strong>Discuss Trade-offs</strong>: Analyze pros/cons of different approaches</li>
+</ol>
+<h3 id="[object-object]" node="[object Object]"><strong>Common Interview Patterns:</strong></h3>
+<ul>
+<li><strong>&quot;Explain X&quot;</strong>: Definition → Why it exists → How it works → Examples</li>
+<li><strong>&quot;What&#x27;s the difference between X and Y&quot;</strong>: Compare/contrast with use cases</li>
+<li><strong>&quot;How would you implement X&quot;</strong>: Show understanding of underlying mechanisms</li>
+<li><strong>&quot;What happens when...&quot;</strong>: Trace through execution step by step</li>
+<li><strong>&quot;Why would you use X over Y&quot;</strong>: Discuss trade-offs and appropriate contexts</li>
+</ul>
+<p>This theoretical foundation provides the deep understanding necessary for advanced JavaScript interviews at top-tier companies.</p></div></div></main><footer class="sc-hwHXyi fgAPRO"><div class="sc-ciCoXh bQkEEK"><div class="sc-jDJeIs lmmFoJ"><div class="sc-eEHciv bKIGXv"><div class="sc-KsiuK bMtRdQ"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-code "><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>Frontend Interview Prep</div><p class="sc-hqtLyI eRTluy">Comprehensive interview preparation for frontend engineers targeting Big Tech companies.</p><div class="sc-iVnIWt jlMcom"><a href="https://github.com" aria-label="GitHub"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-github "><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"></path><path d="M9 18c-4.51 2-5-2-7-2"></path></svg></a><a href="https://twitter.com" aria-label="Twitter"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-twitter "><path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"></path></svg></a><a href="https://linkedin.com" aria-label="LinkedIn"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-linkedin "><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect width="4" height="12" x="2" y="9"></rect><circle cx="4" cy="4" r="2"></circle></svg></a><a href="mailto:contact@example.com" aria-label="Email"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-mail "><rect width="20" height="16" x="2" y="4" rx="2"></rect><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path></svg></a></div></div><div class="sc-eEHciv bKIGXv"><h3>Study Materials</h3><ul><li><a href="/algorithms">Algorithms</a></li><li><a href="/react">React &amp; Frontend</a></li><li><a href="/system-design">System Design</a></li><li><a href="/typescript">TypeScript</a></li><li><a href="/performance">Performance</a></li></ul></div><div class="sc-eEHciv bKIGXv"><h3>Companies</h3><ul><li><a href="/google">Google</a></li><li><a href="/meta">Meta</a></li><li><a href="/amazon">Amazon</a></li><li><a href="/microsoft">Microsoft</a></li><li><a href="/apple">Apple</a></li></ul></div><div class="sc-eEHciv bKIGXv"><h3>Resources</h3><ul><li><a href="/interview-tips">Interview Tips</a></li><li><a href="/coding-challenges">Coding Challenges</a></li><li><a href="/mock-interviews">Mock Interviews</a></li><li><a href="/blog">Blog</a></li><li><a href="/faq">FAQ</a></li></ul></div></div><div class="sc-hWgKua fuxrZK"><p class="sc-jBaHRL fMpVBW">© 2025 Frontend Interview Prep. All rights reserved.</p><div class="sc-gFqXPY fyWnKB"><a href="/privacy">Privacy Policy</a><a href="/terms">Terms of Service</a><a href="/contact">Contact</a></div></div></div></footer></div><script src="/interview/_next/static/chunks/webpack-be7d7df45533bffc.js" async=""></script><script>(self.__next_f=self.__next_f||[]).push([0]);self.__next_f.push([2,null])</script><script>self.__next_f.push([1,"1:HL[\"/interview/_next/static/media/e4af272ccee01ff0-s.p.woff2\",\"font\",{\"crossOrigin\":\"\",\"type\":\"font/woff2\"}]\n2:HL[\"/interview/_next/static/css/387024c6a2216908.css\",\"style\"]\n"])</script><script>self.__next_f.push([1,"3:I[2846,[],\"\"]\n5:I[5907,[\"918\",\"static/chunks/918-3273b83890f10546.js\",\"930\",\"static/chunks/930-3262a6c9c5acace4.js\",\"687\",\"static/chunks/app/docs/%5B...slug%5D/page-32962e9542d32755.js\"],\"default\"]\n7:I[4707,[],\"\"]\n9:I[6423,[],\"\"]\na:I[2,[\"918\",\"static/chunks/918-3273b83890f10546.js\",\"710\",\"static/chunks/710-dfaa11b4dff08f8e.js\",\"972\",\"static/chunks/972-011bba60ed155615.js\",\"233\",\"static/chunks/233-3e0c1d820a17eca9.js\",\"185\",\"static/chunks/app/layout-333f4adcd11f8f39.js\"],\"default\",1]\nc:I[1060,[],\"\"]\n6:T6a16,"])</script><script>self.__next_f.push([1,"\n# JavaScript Fundamentals Theory - Deep Conceptual Understanding\n\n## 🧠 Core Concept Definitions \u0026 Interconnections\n\n### 1. **Variables \u0026 Memory Model**\n\n#### **What is a Variable?**\n**Definition:** A variable is a named storage location that holds a reference to a value in memory.\n\n**Why Variables Exist:**\n- **Abstraction**: Hide memory addresses from developers\n- **Reusability**: Reference the same data multiple times\n- **Mutability**: Allow data to change over time\n- **Scope Management**: Control data access and lifetime\n\n**How Variables Work in JavaScript:**\n\n```mermaid\ngraph TB\n    subgraph \"Memory Model\"\n        A[Stack Memory] --\u003e B[Primitive Values]\n        A --\u003e C[Reference Pointers]\n        \n        D[Heap Memory] --\u003e E[Objects]\n        D --\u003e F[Arrays]\n        D --\u003e G[Functions]\n        \n        C --\u003e E\n        C --\u003e F\n        C --\u003e G\n    end\n\n    subgraph \"Variable Types\"\n        H[var] --\u003e I[Function Scoped]\n        J[let] --\u003e K[Block Scoped]\n        L[const] --\u003e M[Block Scoped + Immutable Binding]\n    end\n```\n\n**Deep Theory:**\n```javascript\n// WHAT: Variable declaration creates binding\nlet x; // Creates binding 'x' in current scope, value = undefined\n\n// WHY: Memory allocation happens at different times\nvar a = 1;        // Hoisted, allocated at function start\nlet b = 2;        // Temporal dead zone until declaration\nconst c = 3;      // Must be initialized, immutable binding\n\n// HOW: Different storage mechanisms\nlet primitive = 42;           // Stored directly in stack\nlet reference = { value: 42 }; // Pointer in stack, object in heap\n\n// Memory implications\nlet obj1 = { data: 'hello' };\nlet obj2 = obj1;              // Copies reference, not object\nobj2.data = 'world';          // Modifies shared object\nconsole.log(obj1.data);       // 'world' - same object!\n```\n\n**Interconnected Concepts:**\n- **Scope Chain**: How variables are resolved\n- **Hoisting**: When variable bindings are created\n- **Garbage Collection**: When variable memory is freed\n- **Closures**: How variables are captured and preserved\n\n### 2. **Data Types \u0026 Type System**\n\n#### **What are Data Types?**\n**Definition:** Data types define the kind of data a variable can hold and the operations that can be performed on it.\n\n**Why Type System Matters:**\n- **Memory Optimization**: Different types require different storage\n- **Operation Safety**: Prevents invalid operations\n- **Performance**: Enables engine optimizations\n- **Developer Experience**: Provides predictable behavior\n\n**JavaScript's Dual Type System:**\n\n```mermaid\ngraph TB\n    subgraph \"Primitive Types\"\n        A[number] --\u003e B[64-bit IEEE 754]\n        C[string] --\u003e D[UTF-16 encoding]\n        E[boolean] --\u003e F[true/false]\n        G[undefined] --\u003e H[Uninitialized]\n        I[null] --\u003e J[Intentional absence]\n        K[symbol] --\u003e L[Unique identifier]\n        M[bigint] --\u003e N[Arbitrary precision]\n    end\n\n    subgraph \"Reference Types\"\n        O[Object] --\u003e P[Property collection]\n        Q[Array] --\u003e R[Indexed collection]\n        S[Function] --\u003e T[Executable code]\n        U[Date] --\u003e V[Time representation]\n        W[RegExp] --\u003e X[Pattern matching]\n    end\n\n    subgraph \"Type Coercion\"\n        Y[Implicit] --\u003e Z[Automatic conversion]\n        AA[Explicit] --\u003e BB[Manual conversion]\n    end\n```\n\n**Deep Theory with Examples:**\n```javascript\n// WHAT: Primitive vs Reference behavior\nlet a = 5;\nlet b = a;        // Copies value\na = 10;\nconsole.log(b);   // Still 5\n\nlet obj1 = { x: 5 };\nlet obj2 = obj1;  // Copies reference\nobj1.x = 10;\nconsole.log(obj2.x); // 10 - same object\n\n// WHY: Memory efficiency and performance\n// Primitives: Small, fixed size, stack storage\n// References: Variable size, heap storage, garbage collected\n\n// HOW: Type checking and coercion\ntypeof 42;           // \"number\"\ntypeof \"hello\";      // \"string\"\ntypeof {};           // \"object\"\ntypeof null;         // \"object\" (historical bug)\ntypeof undefined;    // \"undefined\"\n\n// Type coercion rules (complex but predictable)\n\"5\" + 3;            // \"53\" (string concatenation)\n\"5\" - 3;            // 2 (numeric subtraction)\ntrue + 1;           // 2 (boolean to number)\n[] + {};            // \"[object Object]\" (both to string)\n```\n\n**Interconnected Concepts:**\n- **Type Coercion**: Automatic type conversion\n- **Equality Operators**: == vs === behavior\n- **Truthy/Falsy**: Boolean context evaluation\n- **Boxing**: Primitive to object conversion\n\n### 3. **Functions \u0026 Execution Context**\n\n#### **What is a Function?**\n**Definition:** A function is a reusable block of code that encapsulates logic, can accept parameters, and can return values.\n\n**Why Functions are Fundamental:**\n- **Code Reusability**: Write once, use many times\n- **Abstraction**: Hide implementation details\n- **Modularity**: Break complex problems into smaller parts\n- **Scope Creation**: Create isolated execution environments\n\n**How Functions Create Execution Context:**\n\n```mermaid\ngraph TB\n    subgraph \"Execution Context\"\n        A[Variable Environment] --\u003e B[Local Variables]\n        A --\u003e C[Parameters]\n        A --\u003e D[Function Declarations]\n        \n        E[Lexical Environment] --\u003e F[Identifier Bindings]\n        E --\u003e G[Outer Reference]\n        \n        H[This Binding] --\u003e I[Context Object]\n    end\n\n    subgraph \"Call Stack\"\n        J[Global Context] --\u003e K[Function Context 1]\n        K --\u003e L[Function Context 2]\n        L --\u003e M[Function Context 3]\n    end\n\n    subgraph \"Function Types\"\n        N[Function Declaration] --\u003e O[Hoisted]\n        P[Function Expression] --\u003e Q[Not Hoisted]\n        R[Arrow Function] --\u003e S[Lexical This]\n        T[Method] --\u003e U[Object Context]\n    end\n```\n\n**Deep Theory with Examples:**\n```javascript\n// WHAT: Different function creation methods\n// Function Declaration - hoisted, can be called before definition\nconsole.log(add(2, 3)); // Works! Returns 5\n\nfunction add(a, b) {\n    return a + b;\n}\n\n// Function Expression - not hoisted\nconsole.log(multiply(2, 3)); // Error! Cannot access before initialization\n\nconst multiply = function(a, b) {\n    return a * b;\n};\n\n// Arrow Function - lexical this binding\nconst obj = {\n    name: 'Object',\n    regularFunction: function() {\n        console.log(this.name); // 'Object'\n        \n        const arrowFunction = () =\u003e {\n            console.log(this.name); // 'Object' (inherited from outer)\n        };\n        \n        function innerFunction() {\n            console.log(this.name); // undefined (new context)\n        }\n        \n        arrowFunction();\n        innerFunction();\n    }\n};\n\n// WHY: Execution context creation\nfunction outer(x) {\n    let outerVar = 'outer';\n    \n    function inner(y) {\n        let innerVar = 'inner';\n        console.log(x, y, outerVar, innerVar); // Access to all scopes\n    }\n    \n    return inner;\n}\n\nconst closureFunction = outer('param');\nclosureFunction('arg'); // \"param arg outer inner\"\n\n// HOW: Scope chain resolution\n// 1. Check current execution context\n// 2. Check outer lexical environment\n// 3. Continue up scope chain\n// 4. Reach global scope\n// 5. ReferenceError if not found\n```\n\n**Interconnected Concepts:**\n- **Closures**: Functions retaining access to outer scope\n- **Hoisting**: Function declarations vs expressions\n- **This Binding**: Context determination rules\n- **Call Stack**: Function execution order\n\n### 4. **Scope \u0026 Lexical Environment**\n\n#### **What is Scope?**\n**Definition:** Scope determines the accessibility and lifetime of variables and functions in different parts of code.\n\n**Why Scope Exists:**\n- **Name Collision Prevention**: Same variable names in different contexts\n- **Memory Management**: Variables can be garbage collected when out of scope\n- **Encapsulation**: Hide implementation details\n- **Predictable Behavior**: Clear rules for variable access\n\n**How Lexical Scoping Works:**\n\n```mermaid\ngraph TB\n    subgraph \"Scope Chain\"\n        A[Global Scope] --\u003e B[Function Scope 1]\n        B --\u003e C[Block Scope 1]\n        B --\u003e D[Function Scope 2]\n        D --\u003e E[Block Scope 2]\n        \n        F[Lexical Environment] --\u003e G[Environment Record]\n        F --\u003e H[Outer Reference]\n        \n        I[Variable Resolution] --\u003e J[Current Scope]\n        J --\u003e K[Parent Scope]\n        K --\u003e L[Global Scope]\n        L --\u003e M[ReferenceError]\n    end\n```\n\n**Deep Theory with Examples:**\n```javascript\n// WHAT: Different scope types\nvar globalVar = 'global';           // Global scope\nlet globalLet = 'global let';       // Global scope\n\nfunction outerFunction() {\n    var functionVar = 'function';   // Function scope\n    let functionLet = 'function let'; // Function scope\n    \n    if (true) {\n        var blockVar = 'block var';     // Function scope (var ignores blocks)\n        let blockLet = 'block let';     // Block scope\n        const blockConst = 'block const'; // Block scope\n        \n        console.log(blockLet); // Accessible here\n    }\n    \n    console.log(blockVar);  // Accessible (var is function-scoped)\n    console.log(blockLet);  // ReferenceError (let is block-scoped)\n}\n\n// WHY: Lexical scoping (determined at compile time)\nfunction createCounter() {\n    let count = 0;\n    \n    return function() {\n        count++; // Accesses outer variable\n        return count;\n    };\n}\n\nconst counter1 = createCounter();\nconst counter2 = createCounter();\n\nconsole.log(counter1()); // 1\nconsole.log(counter1()); // 2\nconsole.log(counter2()); // 1 (separate closure)\n\n// HOW: Scope chain traversal\nlet x = 'global x';\n\nfunction level1() {\n    let x = 'level1 x';\n    \n    function level2() {\n        let x = 'level2 x';\n        \n        function level3() {\n            // Variable resolution:\n            // 1. Check level3 scope - no 'x'\n            // 2. Check level2 scope - found 'x'\n            console.log(x); // 'level2 x'\n        }\n        \n        level3();\n    }\n    \n    level2();\n}\n\nlevel1();\n```\n\n**Interconnected Concepts:**\n- **Closures**: Scope preservation after function returns\n- **Hoisting**: Variable and function scope behavior\n- **Temporal Dead Zone**: let/const accessibility rules\n- **Module Pattern**: Scope-based encapsulation\n\n### 5. **Closures \u0026 Lexical Environment Preservation**\n\n#### **What is a Closure?**\n**Definition:** A closure is a function that retains access to variables from its outer (enclosing) scope even after the outer function has returned.\n\n**Why Closures are Powerful:**\n- **Data Privacy**: Create private variables\n- **State Persistence**: Maintain state between function calls\n- **Callback Patterns**: Preserve context in asynchronous operations\n- **Module Pattern**: Encapsulate functionality\n\n**How Closures Work Internally:**\n\n```mermaid\ngraph TB\n    subgraph \"Closure Creation\"\n        A[Function Definition] --\u003e B[Lexical Environment Capture]\n        B --\u003e C[Variable References Preserved]\n        C --\u003e D[Function Object Created]\n        \n        E[Outer Function Execution] --\u003e F[Inner Function Returned]\n        F --\u003e G[Lexical Environment Persists]\n        G --\u003e H[Variables Remain Accessible]\n    end\n\n    subgraph \"Memory Management\"\n        I[Closure References] --\u003e J[Prevents Garbage Collection]\n        J --\u003e K[Memory Leak Risk]\n        K --\u003e L[Careful Reference Management]\n    end\n```\n\n**Deep Theory with Examples:**\n```javascript\n// WHAT: Basic closure mechanism\nfunction createGreeter(name) {\n    // This variable will be captured in closure\n    const greeting = `Hello, ${name}!`;\n    \n    // Inner function has access to outer scope\n    return function() {\n        console.log(greeting); // Accesses 'greeting' from outer scope\n    };\n}\n\nconst greetJohn = createGreeter('John');\ngreetJohn(); // \"Hello, John!\" - 'greeting' still accessible\n\n// WHY: Practical applications\n// 1. Data Privacy\nfunction createBankAccount(initialBalance) {\n    let balance = initialBalance; // Private variable\n    \n    return {\n        deposit(amount) {\n            balance += amount;\n            return balance;\n        },\n        withdraw(amount) {\n            if (amount \u003c= balance) {\n                balance -= amount;\n                return balance;\n            }\n            throw new Error('Insufficient funds');\n        },\n        getBalance() {\n            return balance; // Controlled access\n        }\n        // No direct access to 'balance' variable\n    };\n}\n\nconst account = createBankAccount(100);\nconsole.log(account.getBalance()); // 100\naccount.deposit(50);               // 150\n// account.balance = 1000000;      // Cannot access directly!\n\n// 2. Callback Context Preservation\nfunction setupEventHandlers() {\n    const data = { count: 0 };\n    \n    document.getElementById('button').addEventListener('click', function() {\n        data.count++; // Closure preserves access to 'data'\n        console.log(`Clicked ${data.count} times`);\n    });\n}\n\n// 3. Module Pattern\nconst Calculator = (function() {\n    // Private variables and functions\n    let result = 0;\n    \n    function log(operation, value) {\n        console.log(`${operation}: ${value}, Result: ${result}`);\n    }\n    \n    // Public API\n    return {\n        add(value) {\n            result += value;\n            log('Add', value);\n            return this;\n        },\n        subtract(value) {\n            result -= value;\n            log('Subtract', value);\n            return this;\n        },\n        getResult() {\n            return result;\n        },\n        reset() {\n            result = 0;\n            log('Reset', 0);\n            return this;\n        }\n    };\n})();\n\nCalculator.add(10).subtract(3).add(5); // Method chaining\nconsole.log(Calculator.getResult()); // 12\n\n// HOW: Memory implications\nfunction createFunctions() {\n    const functions = [];\n    \n    // Common mistake - all functions share same 'i'\n    for (var i = 0; i \u003c 3; i++) {\n        functions.push(function() {\n            console.log(i); // All will log 3!\n        });\n    }\n    \n    return functions;\n}\n\n// Correct approach - create separate closure for each\nfunction createFunctionsCorrect() {\n    const functions = [];\n    \n    for (let i = 0; i \u003c 3; i++) { // 'let' creates new binding each iteration\n        functions.push(function() {\n            console.log(i); // Each logs its own 'i'\n        });\n    }\n    \n    return functions;\n}\n\n// Alternative with IIFE\nfunction createFunctionsIIFE() {\n    const functions = [];\n    \n    for (var i = 0; i \u003c 3; i++) {\n        functions.push((function(index) {\n            return function() {\n                console.log(index); // Captures 'index' parameter\n            };\n        })(i));\n    }\n    \n    return functions;\n}\n```\n\n**Interconnected Concepts:**\n- **Lexical Scoping**: Foundation for closure behavior\n- **Memory Management**: Closure impact on garbage collection\n- **Event Handling**: Context preservation in callbacks\n- **Module Systems**: Encapsulation patterns\n\n### 6. **Prototypes \u0026 Inheritance Chain**\n\n#### **What is the Prototype System?**\n**Definition:** JavaScript's prototype system is a mechanism for object inheritance where objects can inherit properties and methods from other objects.\n\n**Why Prototypes Instead of Classes:**\n- **Dynamic Inheritance**: Objects can change their prototype chain at runtime\n- **Memory Efficiency**: Methods shared across instances\n- **Flexibility**: Multiple inheritance patterns possible\n- **JavaScript's Nature**: Fits the dynamic, object-based language design\n\n**How Prototype Chain Works:**\n\n```mermaid\ngraph TB\n    subgraph \"Prototype Chain\"\n        A[Object Instance] --\u003e B[Constructor.prototype]\n        B --\u003e C[Object.prototype]\n        C --\u003e D[null]\n        \n        E[Property Lookup] --\u003e F[Own Properties]\n        F --\u003e G[Prototype Properties]\n        G --\u003e H[Prototype's Prototype]\n        H --\u003e I[Continue Up Chain]\n        I --\u003e J[undefined if not found]\n    end\n\n    subgraph \"Constructor Function\"\n        K[Function Definition] --\u003e L[Prototype Property]\n        L --\u003e M[Constructor Property]\n        M --\u003e N[Shared Methods]\n    end\n\n    subgraph \"Class Syntax (ES6+)\"\n        O[Class Declaration] --\u003e P[Constructor Method]\n        P --\u003e Q[Instance Methods]\n        Q --\u003e R[Static Methods]\n    end\n```\n\n**Deep Theory with Examples:**\n```javascript\n// WHAT: Prototype-based inheritance\nfunction Animal(name) {\n    this.name = name;\n}\n\n// Methods on prototype are shared\nAnimal.prototype.speak = function() {\n    console.log(`${this.name} makes a sound`);\n};\n\nAnimal.prototype.eat = function() {\n    console.log(`${this.name} is eating`);\n};\n\nfunction Dog(name, breed) {\n    Animal.call(this, name); // Call parent constructor\n    this.breed = breed;\n}\n\n// Set up inheritance\nDog.prototype = Object.create(Animal.prototype);\nDog.prototype.constructor = Dog;\n\n// Add dog-specific methods\nDog.prototype.bark = function() {\n    console.log(`${this.name} barks: Woof!`);\n};\n\n// Override parent method\nDog.prototype.speak = function() {\n    this.bark();\n};\n\nconst dog = new Dog('Rex', 'German Shepherd');\ndog.speak(); // \"Rex barks: Woof!\"\ndog.eat();   // \"Rex is eating\" (inherited)\n\n// WHY: Memory efficiency demonstration\nfunction Person(name) {\n    this.name = name;\n    \n    // BAD: Each instance gets its own copy\n    this.greet = function() {\n        console.log(`Hello, I'm ${this.name}`);\n    };\n}\n\nfunction PersonOptimized(name) {\n    this.name = name;\n}\n\n// GOOD: Shared across all instances\nPersonOptimized.prototype.greet = function() {\n    console.log(`Hello, I'm ${this.name}`);\n};\n\nconst person1 = new PersonOptimized('Alice');\nconst person2 = new PersonOptimized('Bob');\n\nconsole.log(person1.greet === person2.greet); // true - same function\n\n// HOW: Prototype chain traversal\nconst obj = {\n    prop1: 'value1'\n};\n\nconsole.log(obj.prop1);        // 'value1' (own property)\nconsole.log(obj.toString);     // function (from Object.prototype)\nconsole.log(obj.hasOwnProperty); // function (from Object.prototype)\nconsole.log(obj.nonExistent);  // undefined (not found in chain)\n\n// Modern class syntax (syntactic sugar over prototypes)\nclass ModernAnimal {\n    constructor(name) {\n        this.name = name;\n    }\n    \n    speak() {\n        console.log(`${this.name} makes a sound`);\n    }\n    \n    static getSpecies() {\n        return 'Unknown species';\n    }\n}\n\nclass ModernDog extends ModernAnimal {\n    constructor(name, breed) {\n        super(name); // Call parent constructor\n        this.breed = breed;\n    }\n    \n    speak() {\n        console.log(`${this.name} barks: Woof!`);\n    }\n    \n    static getSpecies() {\n        return 'Canis lupus';\n    }\n}\n\n// Under the hood, this creates the same prototype chain\nconst modernDog = new ModernDog('Buddy', 'Golden Retriever');\nconsole.log(modernDog instanceof ModernDog);    // true\nconsole.log(modernDog instanceof ModernAnimal); // true\nconsole.log(modernDog instanceof Object);       // true\n```\n\n**Interconnected Concepts:**\n- **Constructor Functions**: Object creation patterns\n- **instanceof Operator**: Prototype chain checking\n- **Object.create()**: Direct prototype setting\n- **Class Syntax**: Modern inheritance syntax\n\n### 7. **Asynchronous JavaScript \u0026 Event Loop**\n\n#### **What is Asynchronous Programming?**\n**Definition:** Asynchronous programming allows code execution to continue without waiting for long-running operations to complete.\n\n**Why Asynchronous Programming is Essential:**\n- **Non-blocking UI**: Keep user interface responsive\n- **I/O Operations**: Handle network requests, file operations\n- **Performance**: Utilize waiting time for other tasks\n- **Scalability**: Handle multiple operations concurrently\n\n**How Event Loop Orchestrates Execution:**\n\n```mermaid\ngraph TB\n    subgraph \"JavaScript Runtime\"\n        A[Call Stack] --\u003e B[Web APIs]\n        B --\u003e C[Callback Queue]\n        C --\u003e D[Event Loop]\n        D --\u003e A\n        \n        E[Microtask Queue] --\u003e F[Event Loop Check]\n        F --\u003e A\n    end\n\n    subgraph \"Execution Priority\"\n        G[1. Call Stack] --\u003e H[2. Microtasks]\n        H --\u003e I[3. Macrotasks]\n        I --\u003e J[4. Render]\n    end\n\n    subgraph \"Async Sources\"\n        K[setTimeout/setInterval] --\u003e L[Macrotask Queue]\n        M[Promises] --\u003e N[Microtask Queue]\n        O[DOM Events] --\u003e P[Event Queue]\n        Q[I/O Operations] --\u003e R[Callback Queue]\n    end\n```\n\n**Deep Theory with Examples:**\n```javascript\n// WHAT: Event loop execution order\nconsole.log('1'); // Synchronous\n\nsetTimeout(() =\u003e console.log('2'), 0); // Macrotask\n\nPromise.resolve().then(() =\u003e console.log('3')); // Microtask\n\nqueueMicrotask(() =\u003e console.log('4')); // Microtask\n\nconsole.log('5'); // Synchronous\n\n// Output: 1, 5, 3, 4, 2\n// Explanation:\n// 1. Synchronous code executes first (1, 5)\n// 2. Microtasks execute before macrotasks (3, 4)\n// 3. Macrotasks execute last (2)\n\n// WHY: Asynchronous patterns evolution\n// 1. Callbacks (Callback Hell)\nfunction fetchUserData(userId, callback) {\n    setTimeout(() =\u003e {\n        const user = { id: userId, name: 'John' };\n        callback(null, user);\n    }, 1000);\n}\n\nfunction fetchUserPosts(userId, callback) {\n    setTimeout(() =\u003e {\n        const posts = [{ id: 1, title: 'Post 1' }];\n        callback(null, posts);\n    }, 1000);\n}\n\n// Callback hell\nfetchUserData(1, (err, user) =\u003e {\n    if (err) throw err;\n    fetchUserPosts(user.id, (err, posts) =\u003e {\n        if (err) throw err;\n        console.log('User:', user, 'Posts:', posts);\n    });\n});\n\n// 2. Promises (Better error handling and chaining)\nfunction fetchUserDataPromise(userId) {\n    return new Promise((resolve, reject) =\u003e {\n        setTimeout(() =\u003e {\n            const user = { id: userId, name: 'John' };\n            resolve(user);\n        }, 1000);\n    });\n}\n\nfunction fetchUserPostsPromise(userId) {\n    return new Promise((resolve, reject) =\u003e {\n        setTimeout(() =\u003e {\n            const posts = [{ id: 1, title: 'Post 1' }];\n            resolve(posts);\n        }, 1000);\n    });\n}\n\n// Promise chaining\nfetchUserDataPromise(1)\n    .then(user =\u003e {\n        console.log('User:', user);\n        return fetchUserPostsPromise(user.id);\n    })\n    .then(posts =\u003e {\n        console.log('Posts:', posts);\n    })\n    .catch(err =\u003e {\n        console.error('Error:', err);\n    });\n\n// 3. Async/Await (Synchronous-looking asynchronous code)\nasync function fetchUserDataAndPosts(userId) {\n    try {\n        const user = await fetchUserDataPromise(userId);\n        console.log('User:', user);\n        \n        const posts = await fetchUserPostsPromise(user.id);\n        console.log('Posts:', posts);\n        \n        return { user, posts };\n    } catch (err) {\n        console.error('Error:', err);\n        throw err;\n    }\n}\n\n// HOW: Promise internals and states\nclass SimplePromise {\n    constructor(executor) {\n        this.state = 'pending';\n        this.value = undefined;\n        this.handlers = [];\n        \n        const resolve = (value) =\u003e {\n            if (this.state === 'pending') {\n                this.state = 'fulfilled';\n                this.value = value;\n                this.handlers.forEach(handler =\u003e handler.onFulfilled(value));\n            }\n        };\n        \n        const reject = (reason) =\u003e {\n            if (this.state === 'pending') {\n                this.state = 'rejected';\n                this.value = reason;\n                this.handlers.forEach(handler =\u003e handler.onRejected(reason));\n            }\n        };\n        \n        try {\n            executor(resolve, reject);\n        } catch (err) {\n            reject(err);\n        }\n    }\n    \n    then(onFulfilled, onRejected) {\n        return new SimplePromise((resolve, reject) =\u003e {\n            const handler = {\n                onFulfilled: (value) =\u003e {\n                    try {\n                        const result = onFulfilled ? onFulfilled(value) : value;\n                        resolve(result);\n                    } catch (err) {\n                        reject(err);\n                    }\n                },\n                onRejected: (reason) =\u003e {\n                    try {\n                        const result = onRejected ? onRejected(reason) : reason;\n                        reject(result);\n                    } catch (err) {\n                        reject(err);\n                    }\n                }\n            };\n            \n            if (this.state === 'fulfilled') {\n                handler.onFulfilled(this.value);\n            } else if (this.state === 'rejected') {\n                handler.onRejected(this.value);\n            } else {\n                this.handlers.push(handler);\n            }\n        });\n    }\n}\n\n// Advanced async patterns\n// Parallel execution\nasync function fetchMultipleUsers(userIds) {\n    const promises = userIds.map(id =\u003e fetchUserDataPromise(id));\n    const users = await Promise.all(promises);\n    return users;\n}\n\n// Race condition handling\nasync function fetchWithTimeout(promise, timeout) {\n    const timeoutPromise = new Promise((_, reject) =\u003e {\n        setTimeout(() =\u003e reject(new Error('Timeout')), timeout);\n    });\n    \n    return Promise.race([promise, timeoutPromise]);\n}\n\n// Sequential execution with error recovery\nasync function fetchUsersSequentially(userIds) {\n    const results = [];\n    \n    for (const id of userIds) {\n        try {\n            const user = await fetchUserDataPromise(id);\n            results.push({ success: true, data: user });\n        } catch (err) {\n            results.push({ success: false, error: err.message });\n        }\n    }\n    \n    return results;\n}\n```\n\n**Interconnected Concepts:**\n- **Call Stack**: Synchronous execution context\n- **Web APIs**: Browser-provided asynchronous capabilities\n- **Callback Queue**: Macrotask scheduling\n- **Microtask Queue**: Promise and queueMicrotask scheduling\n\n## 🔗 Knowledge Integration Map\n\n### **How Concepts Interconnect:**\n\n```mermaid\ngraph TB\n    subgraph \"Core Foundation\"\n        A[Variables] --\u003e B[Memory Model]\n        B --\u003e C[Data Types]\n        C --\u003e D[Type Coercion]\n    end\n\n    subgraph \"Execution Model\"\n        E[Functions] --\u003e F[Execution Context]\n        F --\u003e G[Scope Chain]\n        G --\u003e H[Closures]\n    end\n\n    subgraph \"Object Model\"\n        I[Objects] --\u003e J[Prototypes]\n        J --\u003e K[Inheritance]\n        K --\u003e L[Constructor Functions]\n    end\n\n    subgraph \"Async Model\"\n        M[Event Loop] --\u003e N[Callbacks]\n        N --\u003e O[Promises]\n        O --\u003e P[Async/Await]\n    end\n\n    A --\u003e E\n    E --\u003e I\n    I --\u003e M\n    H --\u003e M\n    D --\u003e F\n    L --\u003e K\n```\n\n### **Interview Success Framework:**\n\n1. **Start with Definitions**: Always begin with clear, precise definitions\n2. **Explain the Why**: Understand the reasoning behind language design decisions\n3. **Show the How**: Demonstrate with practical, meaningful examples\n4. **Connect Concepts**: Link related topics to show deep understanding\n5. **Discuss Trade-offs**: Analyze pros/cons of different approaches\n\n### **Common Interview Patterns:**\n\n- **\"Explain X\"**: Definition → Why it exists → How it works → Examples\n- **\"What's the difference between X and Y\"**: Compare/contrast with use cases\n- **\"How would you implement X\"**: Show understanding of underlying mechanisms\n- **\"What happens when...\"**: Trace through execution step by step\n- **\"Why would you use X over Y\"**: Discuss trade-offs and appropriate contexts\n\nThis theoretical foundation provides the deep understanding necessary for advanced JavaScript interviews at top-tier companies."])</script><script>self.__next_f.push([1,"8:[\"slug\",\"src/content/theory/javascript-fundamentals-theory\",\"c\"]\nd:[]\n"])</script><script>self.__next_f.push([1,"0:[\"$\",\"$L3\",null,{\"buildId\":\"7uJ7BVaXJTiEOD9iYDv3n\",\"assetPrefix\":\"/interview\",\"urlParts\":[\"\",\"docs\",\"src\",\"content\",\"theory\",\"javascript-fundamentals-theory\"],\"initialTree\":[\"\",{\"children\":[\"docs\",{\"children\":[[\"slug\",\"src/content/theory/javascript-fundamentals-theory\",\"c\"],{\"children\":[\"__PAGE__?{\\\"slug\\\":[\\\"src\\\",\\\"content\\\",\\\"theory\\\",\\\"javascript-fundamentals-theory\\\"]}\",{}]}]}]},\"$undefined\",\"$undefined\",true],\"initialSeedData\":[\"\",{\"children\":[\"docs\",{\"children\":[[\"slug\",\"src/content/theory/javascript-fundamentals-theory\",\"c\"],{\"children\":[\"__PAGE__\",{},[[\"$L4\",[\"$\",\"div\",null,{\"style\":{\"maxWidth\":\"1200px\",\"margin\":\"0 auto\",\"padding\":\"2rem\",\"paddingTop\":\"6rem\"},\"children\":[[\"$\",\"div\",null,{\"style\":{\"marginBottom\":\"2rem\"},\"children\":[[\"$\",\"nav\",null,{\"style\":{\"color\":\"#64748b\",\"fontSize\":\"0.9rem\",\"marginBottom\":\"1rem\"},\"children\":[[\"$\",\"a\",null,{\"href\":\"/\",\"style\":{\"color\":\"#3b82f6\",\"textDecoration\":\"none\"},\"children\":\"Home\"}],\" \u003e \",[\"$\",\"span\",null,{\"children\":\"src \u003e content \u003e theory \u003e javascript-fundamentals-theory\"}]]}],[\"$\",\"h1\",null,{\"style\":{\"fontSize\":\"2.5rem\",\"fontWeight\":\"800\",\"marginBottom\":\"0.5rem\",\"color\":\"#1e293b\"},\"children\":\"JavaScript Fundamentals Theory - Deep Conceptual Understanding\"}],[\"$\",\"div\",null,{\"style\":{\"color\":\"#64748b\",\"fontSize\":\"0.9rem\",\"marginBottom\":\"2rem\"},\"children\":[[\"$\",\"span\",null,{\"children\":[\"📁 \",\"src/content/theory/javascript-fundamentals-theory.md\"]}],\"$undefined\",\"$undefined\"]}]]}],[\"$\",\"$L5\",null,{\"content\":\"$6\"}]]}],null],null],null]},[null,[\"$\",\"$L7\",null,{\"parallelRouterKey\":\"children\",\"segmentPath\":[\"children\",\"docs\",\"children\",\"$8\",\"children\"],\"error\":\"$undefined\",\"errorStyles\":\"$undefined\",\"errorScripts\":\"$undefined\",\"template\":[\"$\",\"$L9\",null,{}],\"templateStyles\":\"$undefined\",\"templateScripts\":\"$undefined\",\"notFound\":\"$undefined\",\"notFoundStyles\":\"$undefined\"}]],null]},[null,[\"$\",\"$L7\",null,{\"parallelRouterKey\":\"children\",\"segmentPath\":[\"children\",\"docs\",\"children\"],\"error\":\"$undefined\",\"errorStyles\":\"$undefined\",\"errorScripts\":\"$undefined\",\"template\":[\"$\",\"$L9\",null,{}],\"templateStyles\":\"$undefined\",\"templateScripts\":\"$undefined\",\"notFound\":\"$undefined\",\"notFoundStyles\":\"$undefined\"}]],null]},[[[[\"$\",\"link\",\"0\",{\"rel\":\"stylesheet\",\"href\":\"/interview/_next/static/css/387024c6a2216908.css\",\"precedence\":\"next\",\"crossOrigin\":\"$undefined\"}]],[\"$\",\"$La\",null,{\"children\":[\"$\",\"$L7\",null,{\"parallelRouterKey\":\"children\",\"segmentPath\":[\"children\"],\"error\":\"$undefined\",\"errorStyles\":\"$undefined\",\"errorScripts\":\"$undefined\",\"template\":[\"$\",\"$L9\",null,{}],\"templateStyles\":\"$undefined\",\"templateScripts\":\"$undefined\",\"notFound\":[[\"$\",\"title\",null,{\"children\":\"404: This page could not be found.\"}],[\"$\",\"div\",null,{\"style\":{\"fontFamily\":\"system-ui,\\\"Segoe UI\\\",Roboto,Helvetica,Arial,sans-serif,\\\"Apple Color Emoji\\\",\\\"Segoe UI Emoji\\\"\",\"height\":\"100vh\",\"textAlign\":\"center\",\"display\":\"flex\",\"flexDirection\":\"column\",\"alignItems\":\"center\",\"justifyContent\":\"center\"},\"children\":[\"$\",\"div\",null,{\"children\":[[\"$\",\"style\",null,{\"dangerouslySetInnerHTML\":{\"__html\":\"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}\"}}],[\"$\",\"h1\",null,{\"className\":\"next-error-h1\",\"style\":{\"display\":\"inline-block\",\"margin\":\"0 20px 0 0\",\"padding\":\"0 23px 0 0\",\"fontSize\":24,\"fontWeight\":500,\"verticalAlign\":\"top\",\"lineHeight\":\"49px\"},\"children\":\"404\"}],[\"$\",\"div\",null,{\"style\":{\"display\":\"inline-block\"},\"children\":[\"$\",\"h2\",null,{\"style\":{\"fontSize\":14,\"fontWeight\":400,\"lineHeight\":\"49px\",\"margin\":0},\"children\":\"This page could not be found.\"}]}]]}]}]],\"notFoundStyles\":[]}],\"params\":{}}]],null],null],\"couldBeIntercepted\":false,\"initialHead\":[null,\"$Lb\"],\"globalErrorComponent\":\"$c\",\"missingSlots\":\"$Wd\"}]\n"])</script><script>self.__next_f.push([1,"b:[[\"$\",\"meta\",\"0\",{\"name\":\"viewport\",\"content\":\"width=device-width, initial-scale=1\"}],[\"$\",\"meta\",\"1\",{\"charSet\":\"utf-8\"}],[\"$\",\"title\",\"2\",{\"children\":\"JavaScript Fundamentals Theory - Deep Conceptual Understanding - Frontend Interview Docs\"}],[\"$\",\"meta\",\"3\",{\"name\":\"description\",\"content\":\"Core JavaScript concepts with definitions, interconnections, and theoretical foundations\"}],[\"$\",\"meta\",\"4\",{\"property\":\"og:title\",\"content\":\"JavaScript Fundamentals Theory - Deep Conceptual Understanding - Frontend Interview Docs\"}],[\"$\",\"meta\",\"5\",{\"property\":\"og:description\",\"content\":\"Core JavaScript concepts with definitions, interconnections, and theoretical foundations\"}],[\"$\",\"meta\",\"6\",{\"property\":\"og:type\",\"content\":\"article\"}],[\"$\",\"meta\",\"7\",{\"name\":\"twitter:card\",\"content\":\"summary\"}],[\"$\",\"meta\",\"8\",{\"name\":\"twitter:title\",\"content\":\"JavaScript Fundamentals Theory - Deep Conceptual Understanding - Frontend Interview Docs\"}],[\"$\",\"meta\",\"9\",{\"name\":\"twitter:description\",\"content\":\"Core JavaScript concepts with definitions, interconnections, and theoretical foundations\"}],[\"$\",\"meta\",\"10\",{\"name\":\"next-size-adjust\"}]]\n4:null\n"])</script></body></html>

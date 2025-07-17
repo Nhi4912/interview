@@ -1,0 +1,1516 @@
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><meta name="viewport" content="width=device-width, initial-scale=1"/><link rel="preload" href="/interview/_next/static/media/e4af272ccee01ff0-s.p.woff2" as="font" crossorigin="" type="font/woff2"/><link rel="stylesheet" href="/interview/_next/static/css/387024c6a2216908.css" data-precedence="next"/><link rel="preload" as="script" fetchPriority="low" href="/interview/_next/static/chunks/webpack-be7d7df45533bffc.js"/><script src="/interview/_next/static/chunks/fd9d1056-6922f449a204c2cc.js" async=""></script><script src="/interview/_next/static/chunks/117-e7ecc085ce9cfab3.js" async=""></script><script src="/interview/_next/static/chunks/main-app-b06be5f3411c20c3.js" async=""></script><script src="/interview/_next/static/chunks/918-3273b83890f10546.js" async=""></script><script src="/interview/_next/static/chunks/930-3262a6c9c5acace4.js" async=""></script><script src="/interview/_next/static/chunks/app/docs/%5B...slug%5D/page-32962e9542d32755.js" async=""></script><script src="/interview/_next/static/chunks/710-dfaa11b4dff08f8e.js" async=""></script><script src="/interview/_next/static/chunks/972-011bba60ed155615.js" async=""></script><script src="/interview/_next/static/chunks/233-3e0c1d820a17eca9.js" async=""></script><script src="/interview/_next/static/chunks/app/layout-333f4adcd11f8f39.js" async=""></script><title>Frontend Interview Prep 2025 - Big Tech Interview Guide</title><meta name="description" content="Comprehensive frontend interview preparation for Big Tech companies including React, TypeScript, algorithms, and system design."/><link rel="icon" href="/favicon.ico"/><meta name="theme-color" content="#1a1a1a"/><meta property="og:title" content="Frontend Interview Prep 2025"/><meta property="og:description" content="Complete guide for frontend engineers targeting Big Tech companies"/><meta property="og:type" content="website"/><link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous"/><title>Networking Http Fundamentals - Frontend Interview Docs</title><meta name="description" content="# Networking &amp; HTTP Fundamentals for Frontend  ## Overview Understanding networking and HTTP protocols is crucial for building efficient, secure, and scalable f"/><meta property="og:title" content="Networking Http Fundamentals - Frontend Interview Docs"/><meta property="og:description" content="# Networking &amp; HTTP Fundamentals for Frontend  ## Overview Understanding networking and HTTP protocols is crucial for building efficient, secure, and scalable f"/><meta property="og:type" content="article"/><meta name="twitter:card" content="summary"/><meta name="twitter:title" content="Networking Http Fundamentals - Frontend Interview Docs"/><meta name="twitter:description" content="# Networking &amp; HTTP Fundamentals for Frontend  ## Overview Understanding networking and HTTP protocols is crucial for building efficient, secure, and scalable f"/><meta name="next-size-adjust"/><script src="/interview/_next/static/chunks/polyfills-42372ed130431b0a.js" noModule=""></script><style data-styled="" data-styled-version="6.1.19">*{margin:0;padding:0;box-sizing:border-box;}/*!sc*/
+html{font-size:16px;line-height:1.5;scroll-behavior:smooth;}/*!sc*/
+body{font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;font-size:1rem;line-height:1.5;color:#1e293b;background-color:#ffffff;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;}/*!sc*/
+h1,h2,h3,h4,h5,h6{font-weight:700;line-height:1.25;margin-bottom:0.5em;}/*!sc*/
+h1{font-size:3rem;}/*!sc*/
+@media (max-width: 768px){h1{font-size:2.25rem;}}/*!sc*/
+h2{font-size:2.25rem;}/*!sc*/
+@media (max-width: 768px){h2{font-size:1.875rem;}}/*!sc*/
+h3{font-size:1.875rem;}/*!sc*/
+@media (max-width: 768px){h3{font-size:1.5rem;}}/*!sc*/
+h4{font-size:1.5rem;}/*!sc*/
+@media (max-width: 768px){h4{font-size:1.25rem;}}/*!sc*/
+h5{font-size:1.25rem;}/*!sc*/
+h6{font-size:1.125rem;}/*!sc*/
+p{margin-bottom:1rem;line-height:1.75;}/*!sc*/
+a{color:#3b82f6;text-decoration:none;transition:color 0.15s ease;}/*!sc*/
+a:hover{color:#2563eb;}/*!sc*/
+a:focus{outline:2px solid #3b82f6;outline-offset:2px;}/*!sc*/
+button{cursor:pointer;border:none;background:none;font-family:inherit;font-size:inherit;}/*!sc*/
+button:disabled{cursor:not-allowed;opacity:0.6;}/*!sc*/
+button:focus{outline:2px solid #3b82f6;outline-offset:2px;}/*!sc*/
+input,textarea,select{font-family:inherit;font-size:inherit;}/*!sc*/
+input:focus,textarea:focus,select:focus{outline:2px solid #3b82f6;outline-offset:2px;}/*!sc*/
+img{max-width:100%;height:auto;}/*!sc*/
+ul,ol{margin-bottom:1rem;padding-left:1.5rem;}/*!sc*/
+li{margin-bottom:0.25rem;}/*!sc*/
+blockquote{margin:1rem 0;padding:1rem;border-left:4px solid #3b82f6;background-color:#f1f5f9;font-style:italic;}/*!sc*/
+code{font-family:SFMono-Regular,Consolas,"Liberation Mono",Menlo,monospace;font-size:0.9em;background-color:#f1f5f9;padding:0.2em 0.4em;border-radius:0.25rem;}/*!sc*/
+pre{background-color:#f1f5f9;padding:1rem;border-radius:0.5rem;overflow-x:auto;margin-bottom:1rem;}/*!sc*/
+pre code{background:none;padding:0;}/*!sc*/
+table{width:100%;border-collapse:collapse;margin-bottom:1rem;}/*!sc*/
+th,td{padding:0.75rem;text-align:left;border-bottom:1px solid #e2e8f0;}/*!sc*/
+th{font-weight:600;background-color:#f1f5f9;}/*!sc*/
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0, 0, 0, 0);white-space:nowrap;border:0;}/*!sc*/
+.skip-link{position:absolute;top:-40px;left:6px;background:#3b82f6;color:white;padding:8px;text-decoration:none;border-radius:4px;z-index:100;}/*!sc*/
+.skip-link:focus{top:6px;}/*!sc*/
+::-webkit-scrollbar{width:8px;height:8px;}/*!sc*/
+::-webkit-scrollbar-track{background:#f1f5f9;}/*!sc*/
+::-webkit-scrollbar-thumb{background:#94a3b8;border-radius:4px;}/*!sc*/
+::-webkit-scrollbar-thumb:hover{background:#64748b;}/*!sc*/
+::selection{background:#3b82f6;color:white;}/*!sc*/
+.focus-visible{outline:2px solid #3b82f6;outline-offset:2px;}/*!sc*/
+.fade-in{opacity:0;animation:fadeIn 0.3s ease forwards;}/*!sc*/
+.slide-up{transform:translateY(20px);opacity:0;animation:slideUp 0.3s ease forwards;}/*!sc*/
+@keyframes fadeIn{to{opacity:1;}}/*!sc*/
+@keyframes slideUp{to{transform:translateY(0);opacity:1;}}/*!sc*/
+@media print{*{background:white!important;color:black!important;box-shadow:none!important;text-shadow:none!important;}a,a:visited{text-decoration:underline;}h1,h2,h3,h4,h5,h6{break-after:avoid;}pre,blockquote{border:1px solid #999;break-inside:avoid;}img{max-width:100%!important;}@page{margin:0.5in;}}/*!sc*/
+data-styled.g65[id="sc-global-kxA-Ddz1"]{content:"sc-global-kxA-Ddz1,"}/*!sc*/
+.cIzzQl{position:fixed;top:0;width:100%;z-index:1020;background:transparent;backdrop-filter:blur(10px);border-bottom:1px solid transparent;transition:all 0.3s ease;}/*!sc*/
+data-styled.g66[id="sc-dTWiOz"]{content:"cIzzQl,"}/*!sc*/
+.cqZxah{max-width:1200px;margin:0 auto;padding:0 2rem;display:flex;align-items:center;justify-content:space-between;height:70px;}/*!sc*/
+data-styled.g67[id="sc-eJoXEY"]{content:"cqZxah,"}/*!sc*/
+.hUlCET{display:flex;align-items:center;gap:0.5rem;font-size:1.5rem;font-weight:700;color:#3b82f6;text-decoration:none;cursor:pointer;}/*!sc*/
+.hUlCET:hover{color:#2563eb;}/*!sc*/
+data-styled.g68[id="sc-goiVcJ"]{content:"hUlCET,"}/*!sc*/
+.fXlING{display:flex;align-items:center;gap:2rem;}/*!sc*/
+@media (max-width: 768px){.fXlING{display:none;}}/*!sc*/
+data-styled.g69[id="sc-gSifMm"]{content:"fXlING,"}/*!sc*/
+.ctmqex{color:#1e293b;font-weight:500;text-decoration:none;transition:color 0.15s ease;position:relative;}/*!sc*/
+.ctmqex:hover{color:#3b82f6;}/*!sc*/
+.ctmqex:after{content:'';position:absolute;bottom:-5px;left:0;width:0;height:2px;background:#3b82f6;transition:width 0.15s ease;}/*!sc*/
+.ctmqex:hover:after{width:100%;}/*!sc*/
+data-styled.g70[id="sc-ixcdjX"]{content:"ctmqex,"}/*!sc*/
+.eTvMgH{display:none;background:none;border:none;color:#1e293b;cursor:pointer;padding:0.5rem;}/*!sc*/
+@media (max-width: 768px){.eTvMgH{display:block;}}/*!sc*/
+data-styled.g71[id="sc-eQaGpr"]{content:"eTvMgH,"}/*!sc*/
+.cRlGRt{display:flex;align-items:center;gap:0.5rem;background:#f1f5f9;border:1px solid #e2e8f0;border-radius:0.5rem;padding:0.5rem 1rem;color:#64748b;font-size:0.9rem;transition:all 0.15s ease;}/*!sc*/
+.cRlGRt:hover{background:#ffffff;border-color:#3b82f6;}/*!sc*/
+data-styled.g75[id="sc-bBhMX"]{content:"cRlGRt,"}/*!sc*/
+.fgAPRO{background:#1e293b;color:white;padding:3rem 0 1rem;margin-top:auto;}/*!sc*/
+data-styled.g76[id="sc-hwHXyi"]{content:"fgAPRO,"}/*!sc*/
+.bQkEEK{max-width:1200px;margin:0 auto;padding:0 2rem;}/*!sc*/
+data-styled.g77[id="sc-ciCoXh"]{content:"bQkEEK,"}/*!sc*/
+.lmmFoJ{display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:2rem;margin-bottom:2rem;}/*!sc*/
+@media (max-width: 768px){.lmmFoJ{grid-template-columns:1fr 1fr;gap:1.5rem;}}/*!sc*/
+@media (max-width: 480px){.lmmFoJ{grid-template-columns:1fr;}}/*!sc*/
+data-styled.g78[id="sc-jDJeIs"]{content:"lmmFoJ,"}/*!sc*/
+.bKIGXv h3{font-size:1.1rem;font-weight:600;margin-bottom:1rem;color:white;}/*!sc*/
+.bKIGXv ul{list-style:none;padding:0;margin:0;}/*!sc*/
+.bKIGXv li{margin-bottom:0.5rem;}/*!sc*/
+.bKIGXv a{color:rgba(255, 255, 255, 0.7);text-decoration:none;transition:color 0.15s ease;}/*!sc*/
+.bKIGXv a:hover{color:white;}/*!sc*/
+data-styled.g79[id="sc-eEHciv"]{content:"bKIGXv,"}/*!sc*/
+.bMtRdQ{display:flex;align-items:center;gap:0.5rem;font-size:1.2rem;font-weight:700;margin-bottom:1rem;color:white;}/*!sc*/
+data-styled.g80[id="sc-KsiuK"]{content:"bMtRdQ,"}/*!sc*/
+.eRTluy{color:rgba(255, 255, 255, 0.7);line-height:1.6;margin-bottom:1rem;}/*!sc*/
+data-styled.g81[id="sc-hqtLyI"]{content:"eRTluy,"}/*!sc*/
+.jlMcom{display:flex;gap:1rem;}/*!sc*/
+.jlMcom a{display:flex;align-items:center;justify-content:center;width:40px;height:40px;background:rgba(255, 255, 255, 0.1);border-radius:0.5rem;color:rgba(255, 255, 255, 0.7);transition:all 0.15s ease;}/*!sc*/
+.jlMcom a:hover{background:rgba(255, 255, 255, 0.2);color:white;}/*!sc*/
+data-styled.g82[id="sc-iVnIWt"]{content:"jlMcom,"}/*!sc*/
+.fuxrZK{border-top:1px solid rgba(255, 255, 255, 0.1);padding-top:2rem;display:flex;justify-content:space-between;align-items:center;}/*!sc*/
+@media (max-width: 768px){.fuxrZK{flex-direction:column;gap:1rem;text-align:center;}}/*!sc*/
+data-styled.g83[id="sc-hWgKua"]{content:"fuxrZK,"}/*!sc*/
+.fMpVBW{color:rgba(255, 255, 255, 0.7);margin:0;font-size:0.9rem;}/*!sc*/
+data-styled.g84[id="sc-jBaHRL"]{content:"fMpVBW,"}/*!sc*/
+.fyWnKB{display:flex;gap:2rem;}/*!sc*/
+@media (max-width: 480px){.fyWnKB{flex-direction:column;gap:1rem;}}/*!sc*/
+.fyWnKB a{color:rgba(255, 255, 255, 0.7);text-decoration:none;font-size:0.9rem;transition:color 0.15s ease;}/*!sc*/
+.fyWnKB a:hover{color:white;}/*!sc*/
+data-styled.g85[id="sc-gFqXPY"]{content:"fyWnKB,"}/*!sc*/
+.gjVgwF{color:#1e293b;line-height:1.6;}/*!sc*/
+.gjVgwF h1,.gjVgwF h2,.gjVgwF h3,.gjVgwF h4,.gjVgwF h5,.gjVgwF h6{color:#1e293b;margin-top:2rem;margin-bottom:1rem;font-weight:600;}/*!sc*/
+.gjVgwF h1{font-size:2rem;border-bottom:2px solid #e2e8f0;padding-bottom:0.5rem;}/*!sc*/
+.gjVgwF h2{font-size:1.5rem;border-bottom:1px solid #e2e8f0;padding-bottom:0.3rem;}/*!sc*/
+.gjVgwF h3{font-size:1.25rem;}/*!sc*/
+.gjVgwF h4{font-size:1.1rem;}/*!sc*/
+.gjVgwF p{margin-bottom:1rem;color:#64748b;}/*!sc*/
+.gjVgwF a{color:#3b82f6;text-decoration:none;}/*!sc*/
+.gjVgwF a:hover{text-decoration:underline;}/*!sc*/
+.gjVgwF ul,.gjVgwF ol{margin-bottom:1rem;padding-left:1.5rem;}/*!sc*/
+.gjVgwF ul li,.gjVgwF ol li{margin-bottom:0.5rem;color:#64748b;}/*!sc*/
+.gjVgwF blockquote{border-left:4px solid #3b82f6;padding-left:1rem;margin:1rem 0;font-style:italic;color:#64748b;background:#f1f5f9;padding:1rem;border-radius:0.5rem;}/*!sc*/
+.gjVgwF code{background:#f1f5f9;padding:0.2rem 0.4rem;border-radius:0.25rem;font-family:SFMono-Regular,Consolas,"Liberation Mono",Menlo,monospace;font-size:0.9em;color:#f59e0b;}/*!sc*/
+.gjVgwF pre{background:#ffffff;border:1px solid #e2e8f0;border-radius:0.5rem;padding:1rem;margin:1rem 0;overflow-x:auto;}/*!sc*/
+.gjVgwF pre code{background:none;padding:0;color:#1e293b;font-size:0.9rem;}/*!sc*/
+.gjVgwF table{width:100%;border-collapse:collapse;margin:1rem 0;}/*!sc*/
+.gjVgwF table th,.gjVgwF table td{border:1px solid #e2e8f0;padding:0.5rem;text-align:left;}/*!sc*/
+.gjVgwF table th{background:#ffffff;font-weight:600;}/*!sc*/
+.gjVgwF table tr:nth-child(even){background:#f1f5f9;}/*!sc*/
+.gjVgwF hr{border:none;height:1px;background:#e2e8f0;margin:2rem 0;}/*!sc*/
+.gjVgwF .highlight{background:#3b82f620;padding:0.2rem 0.4rem;border-radius:0.25rem;font-weight:600;}/*!sc*/
+.gjVgwF .hljs{background:#ffffff;color:#1e293b;}/*!sc*/
+.gjVgwF .hljs-keyword{color:#3b82f6;font-weight:600;}/*!sc*/
+.gjVgwF .hljs-string{color:#10b981;}/*!sc*/
+.gjVgwF .hljs-function{color:#f59e0b;}/*!sc*/
+.gjVgwF .hljs-comment{color:#94a3b8;font-style:italic;}/*!sc*/
+.gjVgwF .hljs-number{color:#f59e0b;}/*!sc*/
+.gjVgwF .hljs-variable{color:#1e293b;}/*!sc*/
+.gjVgwF .hljs-title{color:#f59e0b;font-weight:600;}/*!sc*/
+data-styled.g86[id="sc-ikkVnJ"]{content:"gjVgwF,"}/*!sc*/
+</style></head><body class="__className_6eac61"><div style="min-height:100vh;display:flex;flex-direction:column"><nav class="sc-dTWiOz cIzzQl"><div class="sc-eJoXEY cqZxah"><a href="/interview"><a class="sc-goiVcJ hUlCET"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-code "><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>Frontend Interview Prep</a></a><div class="sc-gSifMm fXlING"><a href="/interview/problems"><a class="sc-ixcdjX ctmqex">Problems</a></a><a href="/interview/learn"><a class="sc-ixcdjX ctmqex">Learn</a></a><a href="/interview/study-guide"><a class="sc-ixcdjX ctmqex">Study Guide</a></a><a href="/interview/system-design"><a class="sc-ixcdjX ctmqex">System Design</a></a><a href="/interview/performance"><a class="sc-ixcdjX ctmqex">Performance</a></a><a href="/interview/accessibility"><a class="sc-ixcdjX ctmqex">Accessibility</a></a><a href="/interview/interview-tips"><a class="sc-ixcdjX ctmqex">Interview Tips</a></a><button class="sc-bBhMX cRlGRt"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-search "><circle cx="11" cy="11" r="8"></circle><path d="m21 21-4.3-4.3"></path></svg>Search</button></div><button class="sc-eQaGpr eTvMgH"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-menu "><line x1="4" x2="20" y1="12" y2="12"></line><line x1="4" x2="20" y1="6" y2="6"></line><line x1="4" x2="20" y1="18" y2="18"></line></svg></button></div></nav><main style="flex:1"><div style="max-width:1200px;margin:0 auto;padding:2rem;padding-top:6rem"><div style="margin-bottom:2rem"><nav style="color:#64748b;font-size:0.9rem;margin-bottom:1rem"><a href="/" style="color:#3b82f6;text-decoration:none">Home</a> &gt; <span>frontend &gt; fundamentals &gt; networking-http-fundamentals</span></nav><h1 style="font-size:2.5rem;font-weight:800;margin-bottom:0.5rem;color:#1e293b">Networking Http Fundamentals</h1><div style="color:#64748b;font-size:0.9rem;margin-bottom:2rem"><span>📁 <!-- -->frontend/fundamentals/networking-http-fundamentals.md</span></div></div><div class="sc-ikkVnJ gjVgwF"><h1 id="networking-&amp;-http-fundamentals-for-frontend" node="[object Object]">Networking &amp; HTTP Fundamentals for Frontend</h1>
+<h2 id="overview" node="[object Object]">Overview</h2>
+<p>Understanding networking and HTTP protocols is crucial for building efficient, secure, and scalable frontend applications. This guide covers essential networking concepts with practical implementations.</p>
+<hr/>
+<h2 id="http-protocol-deep-dive" node="[object Object]">HTTP Protocol Deep Dive</h2>
+<h3 id="[object-object]" node="[object Object]"><strong>HTTP Methods and Semantic Usage</strong></h3>
+<p>{% raw %}</p>
+<pre><pre><code class="hljs hljs language-javascript"><span class="hljs-comment">// Comprehensive HTTP client with advanced features</span>
+<span class="hljs-keyword">class</span> <span class="hljs-title class_">AdvancedHTTPClient</span> {
+  <span class="hljs-title function_">constructor</span>(<span class="hljs-params">options = {}</span>) {
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">baseURL</span> = options.<span class="hljs-property">baseURL</span> || <span class="hljs-string">&#x27;&#x27;</span>;
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">defaultHeaders</span> = options.<span class="hljs-property">headers</span> || {};
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">timeout</span> = options.<span class="hljs-property">timeout</span> || <span class="hljs-number">30000</span>;
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">retryConfig</span> = options.<span class="hljs-property">retry</span> || { <span class="hljs-attr">maxRetries</span>: <span class="hljs-number">3</span>, <span class="hljs-attr">backoffFactor</span>: <span class="hljs-number">2</span> };
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">interceptors</span> = { <span class="hljs-attr">request</span>: [], <span class="hljs-attr">response</span>: [] };
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">cache</span> = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Map</span>();
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">abortControllers</span> = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Map</span>();
+  }
+
+  <span class="hljs-comment">// HTTP GET with caching and conditional requests</span>
+  <span class="hljs-keyword">async</span> <span class="hljs-title function_">get</span>(<span class="hljs-params">url, options = {}</span>) {
+    <span class="hljs-keyword">const</span> cacheKey = <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">generateCacheKey</span>(<span class="hljs-string">&#x27;GET&#x27;</span>, url, options);
+    <span class="hljs-keyword">const</span> cachedResponse = <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">getFromCache</span>(cacheKey);
+    
+    <span class="hljs-keyword">const</span> headers = {
+      ...<span class="hljs-variable language_">this</span>.<span class="hljs-property">defaultHeaders</span>,
+      ...options.<span class="hljs-property">headers</span>
+    };
+
+    <span class="hljs-comment">// Add conditional headers if cached response exists</span>
+    <span class="hljs-keyword">if</span> (cachedResponse) {
+      <span class="hljs-keyword">if</span> (cachedResponse.<span class="hljs-property">etag</span>) {
+        headers[<span class="hljs-string">&#x27;If-None-Match&#x27;</span>] = cachedResponse.<span class="hljs-property">etag</span>;
+      }
+      <span class="hljs-keyword">if</span> (cachedResponse.<span class="hljs-property">lastModified</span>) {
+        headers[<span class="hljs-string">&#x27;If-Modified-Since&#x27;</span>] = cachedResponse.<span class="hljs-property">lastModified</span>;
+      }
+    }
+
+    <span class="hljs-keyword">const</span> response = <span class="hljs-keyword">await</span> <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">request</span>(<span class="hljs-string">&#x27;GET&#x27;</span>, url, { ...options, headers });
+    
+    <span class="hljs-comment">// Handle 304 Not Modified</span>
+    <span class="hljs-keyword">if</span> (response.<span class="hljs-property">status</span> === <span class="hljs-number">304</span> &amp;&amp; cachedResponse) {
+      <span class="hljs-keyword">return</span> {
+        ...cachedResponse,
+        <span class="hljs-attr">fromCache</span>: <span class="hljs-literal">true</span>,
+        <span class="hljs-attr">cacheHit</span>: <span class="hljs-literal">true</span>
+      };
+    }
+
+    <span class="hljs-comment">// Cache successful responses</span>
+    <span class="hljs-keyword">if</span> (response.<span class="hljs-property">ok</span>) {
+      <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">setCache</span>(cacheKey, response);
+    }
+
+    <span class="hljs-keyword">return</span> response;
+  }
+
+  <span class="hljs-comment">// HTTP POST with request deduplication</span>
+  <span class="hljs-keyword">async</span> <span class="hljs-title function_">post</span>(<span class="hljs-params">url, data, options = {}</span>) {
+    <span class="hljs-keyword">const</span> requestKey = <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">generateRequestKey</span>(<span class="hljs-string">&#x27;POST&#x27;</span>, url, data);
+    
+    <span class="hljs-comment">// Check for duplicate in-flight requests</span>
+    <span class="hljs-keyword">if</span> (<span class="hljs-variable language_">this</span>.<span class="hljs-property">abortControllers</span>.<span class="hljs-title function_">has</span>(requestKey)) {
+      <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Error</span>(<span class="hljs-string">&#x27;Duplicate request in progress&#x27;</span>);
+    }
+
+    <span class="hljs-keyword">return</span> <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">request</span>(<span class="hljs-string">&#x27;POST&#x27;</span>, url, { ...options, <span class="hljs-attr">body</span>: data });
+  }
+
+  <span class="hljs-comment">// HTTP PUT for idempotent updates</span>
+  <span class="hljs-keyword">async</span> <span class="hljs-title function_">put</span>(<span class="hljs-params">url, data, options = {}</span>) {
+    <span class="hljs-keyword">return</span> <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">request</span>(<span class="hljs-string">&#x27;PUT&#x27;</span>, url, { ...options, <span class="hljs-attr">body</span>: data });
+  }
+
+  <span class="hljs-comment">// HTTP PATCH for partial updates</span>
+  <span class="hljs-keyword">async</span> <span class="hljs-title function_">patch</span>(<span class="hljs-params">url, data, options = {}</span>) {
+    <span class="hljs-keyword">const</span> headers = {
+      <span class="hljs-string">&#x27;Content-Type&#x27;</span>: <span class="hljs-string">&#x27;application/json-patch+json&#x27;</span>,
+      ...options.<span class="hljs-property">headers</span>
+    };
+
+    <span class="hljs-comment">// Support JSON Patch format</span>
+    <span class="hljs-keyword">const</span> patchData = <span class="hljs-title class_">Array</span>.<span class="hljs-title function_">isArray</span>(data) ? data : <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">generateJsonPatch</span>(data);
+    
+    <span class="hljs-keyword">return</span> <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">request</span>(<span class="hljs-string">&#x27;PATCH&#x27;</span>, url, { 
+      ...options, 
+      headers,
+      <span class="hljs-attr">body</span>: <span class="hljs-title class_">JSON</span>.<span class="hljs-title function_">stringify</span>(patchData)
+    });
+  }
+
+  <span class="hljs-comment">// HTTP DELETE with confirmation</span>
+  <span class="hljs-keyword">async</span> <span class="hljs-title function_">delete</span>(<span class="hljs-params">url, options = {}</span>) {
+    <span class="hljs-keyword">return</span> <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">request</span>(<span class="hljs-string">&#x27;DELETE&#x27;</span>, url, options);
+  }
+
+  <span class="hljs-comment">// HTTP HEAD for metadata only</span>
+  <span class="hljs-keyword">async</span> <span class="hljs-title function_">head</span>(<span class="hljs-params">url, options = {}</span>) {
+    <span class="hljs-keyword">return</span> <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">request</span>(<span class="hljs-string">&#x27;HEAD&#x27;</span>, url, options);
+  }
+
+  <span class="hljs-comment">// HTTP OPTIONS for CORS preflight</span>
+  <span class="hljs-keyword">async</span> <span class="hljs-title function_">options</span>(<span class="hljs-params">url, options = {}</span>) {
+    <span class="hljs-keyword">return</span> <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">request</span>(<span class="hljs-string">&#x27;OPTIONS&#x27;</span>, url, options);
+  }
+
+  <span class="hljs-comment">// Core request method with comprehensive error handling</span>
+  <span class="hljs-keyword">async</span> <span class="hljs-title function_">request</span>(<span class="hljs-params">method, url, options = {}</span>) {
+    <span class="hljs-keyword">const</span> requestId = <span class="hljs-title class_">Math</span>.<span class="hljs-title function_">random</span>().<span class="hljs-title function_">toString</span>(<span class="hljs-number">36</span>).<span class="hljs-title function_">substr</span>(<span class="hljs-number">2</span>, <span class="hljs-number">9</span>);
+    <span class="hljs-keyword">const</span> fullURL = <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">resolveURL</span>(url);
+    
+    <span class="hljs-keyword">let</span> attempt = <span class="hljs-number">0</span>;
+    <span class="hljs-keyword">let</span> lastError;
+
+    <span class="hljs-keyword">while</span> (attempt &lt;= <span class="hljs-variable language_">this</span>.<span class="hljs-property">retryConfig</span>.<span class="hljs-property">maxRetries</span>) {
+      <span class="hljs-keyword">try</span> {
+        <span class="hljs-keyword">const</span> controller = <span class="hljs-keyword">new</span> <span class="hljs-title class_">AbortController</span>();
+        <span class="hljs-keyword">const</span> requestKey = <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">generateRequestKey</span>(method, url, options.<span class="hljs-property">body</span>);
+        <span class="hljs-variable language_">this</span>.<span class="hljs-property">abortControllers</span>.<span class="hljs-title function_">set</span>(requestKey, controller);
+
+        <span class="hljs-comment">// Apply request interceptors</span>
+        <span class="hljs-keyword">const</span> processedOptions = <span class="hljs-keyword">await</span> <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">applyRequestInterceptors</span>({
+          method,
+          <span class="hljs-attr">url</span>: fullURL,
+          ...options,
+          <span class="hljs-attr">signal</span>: controller.<span class="hljs-property">signal</span>
+        });
+
+        <span class="hljs-comment">// Set timeout</span>
+        <span class="hljs-keyword">const</span> timeoutId = <span class="hljs-built_in">setTimeout</span>(<span class="hljs-function">() =&gt;</span> {
+          controller.<span class="hljs-title function_">abort</span>();
+        }, <span class="hljs-variable language_">this</span>.<span class="hljs-property">timeout</span>);
+
+        <span class="hljs-keyword">try</span> {
+          <span class="hljs-keyword">const</span> response = <span class="hljs-keyword">await</span> <span class="hljs-title function_">fetch</span>(fullURL, processedOptions);
+          <span class="hljs-built_in">clearTimeout</span>(timeoutId);
+          <span class="hljs-variable language_">this</span>.<span class="hljs-property">abortControllers</span>.<span class="hljs-title function_">delete</span>(requestKey);
+
+          <span class="hljs-comment">// Apply response interceptors</span>
+          <span class="hljs-keyword">const</span> processedResponse = <span class="hljs-keyword">await</span> <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">applyResponseInterceptors</span>(response);
+          
+          <span class="hljs-comment">// Handle HTTP errors</span>
+          <span class="hljs-keyword">if</span> (!processedResponse.<span class="hljs-property">ok</span>) {
+            <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">HTTPError</span>(processedResponse);
+          }
+
+          <span class="hljs-keyword">return</span> <span class="hljs-keyword">await</span> <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">parseResponse</span>(processedResponse);
+        } <span class="hljs-keyword">catch</span> (error) {
+          <span class="hljs-built_in">clearTimeout</span>(timeoutId);
+          <span class="hljs-variable language_">this</span>.<span class="hljs-property">abortControllers</span>.<span class="hljs-title function_">delete</span>(requestKey);
+          <span class="hljs-keyword">throw</span> error;
+        }
+
+      } <span class="hljs-keyword">catch</span> (error) {
+        lastError = error;
+        
+        <span class="hljs-comment">// Don&#x27;t retry certain errors</span>
+        <span class="hljs-keyword">if</span> (<span class="hljs-variable language_">this</span>.<span class="hljs-title function_">isNonRetriableError</span>(error) || attempt === <span class="hljs-variable language_">this</span>.<span class="hljs-property">retryConfig</span>.<span class="hljs-property">maxRetries</span>) {
+          <span class="hljs-keyword">throw</span> error;
+        }
+
+        <span class="hljs-comment">// Wait before retry with exponential backoff</span>
+        <span class="hljs-keyword">const</span> delay = <span class="hljs-title class_">Math</span>.<span class="hljs-title function_">pow</span>(<span class="hljs-variable language_">this</span>.<span class="hljs-property">retryConfig</span>.<span class="hljs-property">backoffFactor</span>, attempt) * <span class="hljs-number">1000</span>;
+        <span class="hljs-keyword">await</span> <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">delay</span>(delay);
+        attempt++;
+      }
+    }
+
+    <span class="hljs-keyword">throw</span> lastError;
+  }
+
+  <span class="hljs-comment">// Request/Response interceptors</span>
+  <span class="hljs-title function_">addRequestInterceptor</span>(<span class="hljs-params">interceptor</span>) {
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">interceptors</span>.<span class="hljs-property">request</span>.<span class="hljs-title function_">push</span>(interceptor);
+  }
+
+  <span class="hljs-title function_">addResponseInterceptor</span>(<span class="hljs-params">interceptor</span>) {
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">interceptors</span>.<span class="hljs-property">response</span>.<span class="hljs-title function_">push</span>(interceptor);
+  }
+
+  <span class="hljs-keyword">async</span> <span class="hljs-title function_">applyRequestInterceptors</span>(<span class="hljs-params">config</span>) {
+    <span class="hljs-keyword">let</span> processedConfig = { ...config };
+    
+    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">const</span> interceptor <span class="hljs-keyword">of</span> <span class="hljs-variable language_">this</span>.<span class="hljs-property">interceptors</span>.<span class="hljs-property">request</span>) {
+      processedConfig = <span class="hljs-keyword">await</span> <span class="hljs-title function_">interceptor</span>(processedConfig);
+    }
+    
+    <span class="hljs-keyword">return</span> processedConfig;
+  }
+
+  <span class="hljs-keyword">async</span> <span class="hljs-title function_">applyResponseInterceptors</span>(<span class="hljs-params">response</span>) {
+    <span class="hljs-keyword">let</span> processedResponse = response;
+    
+    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">const</span> interceptor <span class="hljs-keyword">of</span> <span class="hljs-variable language_">this</span>.<span class="hljs-property">interceptors</span>.<span class="hljs-property">response</span>) {
+      processedResponse = <span class="hljs-keyword">await</span> <span class="hljs-title function_">interceptor</span>(processedResponse);
+    }
+    
+    <span class="hljs-keyword">return</span> processedResponse;
+  }
+
+  <span class="hljs-comment">// Advanced caching with TTL and size limits</span>
+  <span class="hljs-title function_">setCache</span>(<span class="hljs-params">key, response, ttl = <span class="hljs-number">300000</span></span>) { <span class="hljs-comment">// 5 minutes default</span>
+    <span class="hljs-keyword">const</span> cacheEntry = {
+      <span class="hljs-attr">data</span>: response,
+      <span class="hljs-attr">timestamp</span>: <span class="hljs-title class_">Date</span>.<span class="hljs-title function_">now</span>(),
+      ttl,
+      <span class="hljs-attr">etag</span>: response.<span class="hljs-property">headers</span>.<span class="hljs-title function_">get</span>(<span class="hljs-string">&#x27;etag&#x27;</span>),
+      <span class="hljs-attr">lastModified</span>: response.<span class="hljs-property">headers</span>.<span class="hljs-title function_">get</span>(<span class="hljs-string">&#x27;last-modified&#x27;</span>),
+      <span class="hljs-attr">size</span>: <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">estimateResponseSize</span>(response)
+    };
+
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">cache</span>.<span class="hljs-title function_">set</span>(key, cacheEntry);
+    <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">evictExpiredCache</span>();
+    <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">enforceMaxCacheSize</span>();
+  }
+
+  <span class="hljs-title function_">getFromCache</span>(<span class="hljs-params">key</span>) {
+    <span class="hljs-keyword">const</span> entry = <span class="hljs-variable language_">this</span>.<span class="hljs-property">cache</span>.<span class="hljs-title function_">get</span>(key);
+    
+    <span class="hljs-keyword">if</span> (!entry) <span class="hljs-keyword">return</span> <span class="hljs-literal">null</span>;
+    
+    <span class="hljs-comment">// Check if expired</span>
+    <span class="hljs-keyword">if</span> (<span class="hljs-title class_">Date</span>.<span class="hljs-title function_">now</span>() - entry.<span class="hljs-property">timestamp</span> &gt; entry.<span class="hljs-property">ttl</span>) {
+      <span class="hljs-variable language_">this</span>.<span class="hljs-property">cache</span>.<span class="hljs-title function_">delete</span>(key);
+      <span class="hljs-keyword">return</span> <span class="hljs-literal">null</span>;
+    }
+    
+    <span class="hljs-keyword">return</span> entry.<span class="hljs-property">data</span>;
+  }
+
+  <span class="hljs-title function_">evictExpiredCache</span>(<span class="hljs-params"></span>) {
+    <span class="hljs-keyword">const</span> now = <span class="hljs-title class_">Date</span>.<span class="hljs-title function_">now</span>();
+    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">const</span> [key, entry] <span class="hljs-keyword">of</span> <span class="hljs-variable language_">this</span>.<span class="hljs-property">cache</span>) {
+      <span class="hljs-keyword">if</span> (now - entry.<span class="hljs-property">timestamp</span> &gt; entry.<span class="hljs-property">ttl</span>) {
+        <span class="hljs-variable language_">this</span>.<span class="hljs-property">cache</span>.<span class="hljs-title function_">delete</span>(key);
+      }
+    }
+  }
+
+  <span class="hljs-title function_">enforceMaxCacheSize</span>(<span class="hljs-params">maxSize = <span class="hljs-number">50</span> * <span class="hljs-number">1024</span> * <span class="hljs-number">1024</span></span>) { <span class="hljs-comment">// 50MB default</span>
+    <span class="hljs-keyword">let</span> totalSize = <span class="hljs-number">0</span>;
+    <span class="hljs-keyword">const</span> entries = <span class="hljs-title class_">Array</span>.<span class="hljs-title function_">from</span>(<span class="hljs-variable language_">this</span>.<span class="hljs-property">cache</span>.<span class="hljs-title function_">entries</span>());
+    
+    <span class="hljs-comment">// Calculate total cache size</span>
+    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">const</span> [, entry] <span class="hljs-keyword">of</span> entries) {
+      totalSize += entry.<span class="hljs-property">size</span>;
+    }
+    
+    <span class="hljs-keyword">if</span> (totalSize &gt; maxSize) {
+      <span class="hljs-comment">// Sort by access time (LRU eviction)</span>
+      entries.<span class="hljs-title function_">sort</span>(<span class="hljs-function">(<span class="hljs-params">[, a], [, b]</span>) =&gt;</span> a.<span class="hljs-property">timestamp</span> - b.<span class="hljs-property">timestamp</span>);
+      
+      <span class="hljs-comment">// Remove oldest entries until under limit</span>
+      <span class="hljs-keyword">for</span> (<span class="hljs-keyword">const</span> [key, entry] <span class="hljs-keyword">of</span> entries) {
+        <span class="hljs-variable language_">this</span>.<span class="hljs-property">cache</span>.<span class="hljs-title function_">delete</span>(key);
+        totalSize -= entry.<span class="hljs-property">size</span>;
+        <span class="hljs-keyword">if</span> (totalSize &lt;= maxSize) <span class="hljs-keyword">break</span>;
+      }
+    }
+  }
+
+  <span class="hljs-comment">// Utility methods</span>
+  <span class="hljs-title function_">generateCacheKey</span>(<span class="hljs-params">method, url, options</span>) {
+    <span class="hljs-keyword">const</span> keyData = {
+      method,
+      url,
+      <span class="hljs-attr">headers</span>: options.<span class="hljs-property">headers</span>,
+      <span class="hljs-attr">searchParams</span>: options.<span class="hljs-property">searchParams</span>
+    };
+    <span class="hljs-keyword">return</span> <span class="hljs-title class_">JSON</span>.<span class="hljs-title function_">stringify</span>(keyData);
+  }
+
+  <span class="hljs-title function_">generateRequestKey</span>(<span class="hljs-params">method, url, body</span>) {
+    <span class="hljs-keyword">return</span> <span class="hljs-string">`<span class="hljs-subst">${method}</span>:<span class="hljs-subst">${url}</span>:<span class="hljs-subst">${<span class="hljs-variable language_">this</span>.hashObject(body)}</span>`</span>;
+  }
+
+  <span class="hljs-title function_">hashObject</span>(<span class="hljs-params">obj</span>) {
+    <span class="hljs-keyword">if</span> (!obj) <span class="hljs-keyword">return</span> <span class="hljs-string">&#x27;&#x27;</span>;
+    <span class="hljs-keyword">return</span> <span class="hljs-title function_">btoa</span>(<span class="hljs-title class_">JSON</span>.<span class="hljs-title function_">stringify</span>(obj)).<span class="hljs-title function_">slice</span>(<span class="hljs-number">0</span>, <span class="hljs-number">16</span>);
+  }
+
+  <span class="hljs-title function_">resolveURL</span>(<span class="hljs-params">url</span>) {
+    <span class="hljs-keyword">if</span> (url.<span class="hljs-title function_">startsWith</span>(<span class="hljs-string">&#x27;http&#x27;</span>)) <span class="hljs-keyword">return</span> url;
+    <span class="hljs-keyword">return</span> <span class="hljs-string">`<span class="hljs-subst">${<span class="hljs-variable language_">this</span>.baseURL}</span><span class="hljs-subst">${url}</span>`</span>;
+  }
+
+  <span class="hljs-title function_">generateJsonPatch</span>(<span class="hljs-params">changes</span>) {
+    <span class="hljs-keyword">const</span> patches = [];
+    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">const</span> [path, value] <span class="hljs-keyword">of</span> <span class="hljs-title class_">Object</span>.<span class="hljs-title function_">entries</span>(changes)) {
+      patches.<span class="hljs-title function_">push</span>({
+        <span class="hljs-attr">op</span>: <span class="hljs-string">&#x27;replace&#x27;</span>,
+        <span class="hljs-attr">path</span>: <span class="hljs-string">`/<span class="hljs-subst">${path}</span>`</span>,
+        value
+      });
+    }
+    <span class="hljs-keyword">return</span> patches;
+  }
+
+  <span class="hljs-title function_">estimateResponseSize</span>(<span class="hljs-params">response</span>) {
+    <span class="hljs-keyword">const</span> contentLength = response.<span class="hljs-property">headers</span>.<span class="hljs-title function_">get</span>(<span class="hljs-string">&#x27;content-length&#x27;</span>);
+    <span class="hljs-keyword">return</span> contentLength ? <span class="hljs-built_in">parseInt</span>(contentLength) : <span class="hljs-number">1024</span>; <span class="hljs-comment">// 1KB default estimate</span>
+  }
+
+  <span class="hljs-title function_">isNonRetriableError</span>(<span class="hljs-params">error</span>) {
+    <span class="hljs-keyword">if</span> (error <span class="hljs-keyword">instanceof</span> <span class="hljs-title class_">HTTPError</span>) {
+      <span class="hljs-keyword">const</span> status = error.<span class="hljs-property">status</span>;
+      <span class="hljs-comment">// Don&#x27;t retry client errors (4xx) except 429 (Too Many Requests)</span>
+      <span class="hljs-keyword">return</span> status &gt;= <span class="hljs-number">400</span> &amp;&amp; status &lt; <span class="hljs-number">500</span> &amp;&amp; status !== <span class="hljs-number">429</span>;
+    }
+    
+    <span class="hljs-comment">// Don&#x27;t retry abort errors</span>
+    <span class="hljs-keyword">return</span> error.<span class="hljs-property">name</span> === <span class="hljs-string">&#x27;AbortError&#x27;</span>;
+  }
+
+  <span class="hljs-keyword">async</span> <span class="hljs-title function_">parseResponse</span>(<span class="hljs-params">response</span>) {
+    <span class="hljs-keyword">const</span> contentType = response.<span class="hljs-property">headers</span>.<span class="hljs-title function_">get</span>(<span class="hljs-string">&#x27;content-type&#x27;</span>) || <span class="hljs-string">&#x27;&#x27;</span>;
+    
+    <span class="hljs-keyword">const</span> result = {
+      <span class="hljs-attr">status</span>: response.<span class="hljs-property">status</span>,
+      <span class="hljs-attr">statusText</span>: response.<span class="hljs-property">statusText</span>,
+      <span class="hljs-attr">headers</span>: <span class="hljs-title class_">Object</span>.<span class="hljs-title function_">fromEntries</span>(response.<span class="hljs-property">headers</span>.<span class="hljs-title function_">entries</span>()),
+      <span class="hljs-attr">ok</span>: response.<span class="hljs-property">ok</span>
+    };
+
+    <span class="hljs-keyword">if</span> (contentType.<span class="hljs-title function_">includes</span>(<span class="hljs-string">&#x27;application/json&#x27;</span>)) {
+      result.<span class="hljs-property">data</span> = <span class="hljs-keyword">await</span> response.<span class="hljs-title function_">json</span>();
+    } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (contentType.<span class="hljs-title function_">includes</span>(<span class="hljs-string">&#x27;text/&#x27;</span>)) {
+      result.<span class="hljs-property">data</span> = <span class="hljs-keyword">await</span> response.<span class="hljs-title function_">text</span>();
+    } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (contentType.<span class="hljs-title function_">includes</span>(<span class="hljs-string">&#x27;application/octet-stream&#x27;</span>)) {
+      result.<span class="hljs-property">data</span> = <span class="hljs-keyword">await</span> response.<span class="hljs-title function_">arrayBuffer</span>();
+    } <span class="hljs-keyword">else</span> {
+      result.<span class="hljs-property">data</span> = <span class="hljs-keyword">await</span> response.<span class="hljs-title function_">blob</span>();
+    }
+
+    <span class="hljs-keyword">return</span> result;
+  }
+
+  <span class="hljs-title function_">delay</span>(<span class="hljs-params">ms</span>) {
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Promise</span>(<span class="hljs-function"><span class="hljs-params">resolve</span> =&gt;</span> <span class="hljs-built_in">setTimeout</span>(resolve, ms));
+  }
+
+  <span class="hljs-comment">// Cancel all pending requests</span>
+  <span class="hljs-title function_">cancelAllRequests</span>(<span class="hljs-params"></span>) {
+    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">const</span> controller <span class="hljs-keyword">of</span> <span class="hljs-variable language_">this</span>.<span class="hljs-property">abortControllers</span>.<span class="hljs-title function_">values</span>()) {
+      controller.<span class="hljs-title function_">abort</span>();
+    }
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">abortControllers</span>.<span class="hljs-title function_">clear</span>();
+  }
+
+  <span class="hljs-comment">// Clear cache</span>
+  <span class="hljs-title function_">clearCache</span>(<span class="hljs-params"></span>) {
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">cache</span>.<span class="hljs-title function_">clear</span>();
+  }
+
+  <span class="hljs-comment">// Get cache statistics</span>
+  <span class="hljs-title function_">getCacheStats</span>(<span class="hljs-params"></span>) {
+    <span class="hljs-keyword">let</span> totalSize = <span class="hljs-number">0</span>;
+    <span class="hljs-keyword">let</span> expiredCount = <span class="hljs-number">0</span>;
+    <span class="hljs-keyword">const</span> now = <span class="hljs-title class_">Date</span>.<span class="hljs-title function_">now</span>();
+
+    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">const</span> entry <span class="hljs-keyword">of</span> <span class="hljs-variable language_">this</span>.<span class="hljs-property">cache</span>.<span class="hljs-title function_">values</span>()) {
+      totalSize += entry.<span class="hljs-property">size</span>;
+      <span class="hljs-keyword">if</span> (now - entry.<span class="hljs-property">timestamp</span> &gt; entry.<span class="hljs-property">ttl</span>) {
+        expiredCount++;
+      }
+    }
+
+    <span class="hljs-keyword">return</span> {
+      <span class="hljs-attr">totalEntries</span>: <span class="hljs-variable language_">this</span>.<span class="hljs-property">cache</span>.<span class="hljs-property">size</span>,
+      totalSize,
+      <span class="hljs-attr">expiredEntries</span>: expiredCount,
+      <span class="hljs-attr">hitRate</span>: <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">calculateHitRate</span>()
+    };
+  }
+
+  <span class="hljs-title function_">calculateHitRate</span>(<span class="hljs-params"></span>) {
+    <span class="hljs-comment">// This would need to be tracked separately in a real implementation</span>
+    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+  }
+}
+
+<span class="hljs-comment">// Custom HTTP Error class</span>
+<span class="hljs-keyword">class</span> <span class="hljs-title class_">HTTPError</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_ inherited__">Error</span> {
+  <span class="hljs-title function_">constructor</span>(<span class="hljs-params">response</span>) {
+    <span class="hljs-variable language_">super</span>(<span class="hljs-string">`HTTP <span class="hljs-subst">${response.status}</span>: <span class="hljs-subst">${response.statusText}</span>`</span>);
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">name</span> = <span class="hljs-string">&#x27;HTTPError&#x27;</span>;
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">status</span> = response.<span class="hljs-property">status</span>;
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">statusText</span> = response.<span class="hljs-property">statusText</span>;
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">response</span> = response;
+  }
+}
+</code></pre></pre>
+<p>{% endraw %}</p>
+<hr/>
+<h2 id="advanced-request/response-handling" node="[object Object]">Advanced Request/Response Handling</h2>
+<h3 id="[object-object]" node="[object Object]"><strong>WebSocket Implementation with Reconnection</strong></h3>
+<pre><pre><code class="hljs hljs language-javascript"><span class="hljs-comment">// Robust WebSocket client with advanced features</span>
+<span class="hljs-keyword">class</span> <span class="hljs-title class_">AdvancedWebSocket</span> {
+  <span class="hljs-title function_">constructor</span>(<span class="hljs-params">url, options = {}</span>) {
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">url</span> = url;
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">protocols</span> = options.<span class="hljs-property">protocols</span>;
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">reconnectAttempts</span> = <span class="hljs-number">0</span>;
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">maxReconnectAttempts</span> = options.<span class="hljs-property">maxReconnectAttempts</span> || <span class="hljs-number">10</span>;
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">reconnectDelay</span> = options.<span class="hljs-property">reconnectDelay</span> || <span class="hljs-number">1000</span>;
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">maxReconnectDelay</span> = options.<span class="hljs-property">maxReconnectDelay</span> || <span class="hljs-number">30000</span>;
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">backoffFactor</span> = options.<span class="hljs-property">backoffFactor</span> || <span class="hljs-number">1.5</span>;
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">heartbeatInterval</span> = options.<span class="hljs-property">heartbeatInterval</span> || <span class="hljs-number">30000</span>;
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">messageQueue</span> = [];
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">eventListeners</span> = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Map</span>();
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">isReconnecting</span> = <span class="hljs-literal">false</span>;
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">shouldReconnect</span> = <span class="hljs-literal">true</span>;
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">connectionId</span> = <span class="hljs-literal">null</span>;
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">lastActivity</span> = <span class="hljs-title class_">Date</span>.<span class="hljs-title function_">now</span>();
+    
+    <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">connect</span>();
+    <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">startHeartbeat</span>();
+  }
+
+  <span class="hljs-title function_">connect</span>(<span class="hljs-params"></span>) {
+    <span class="hljs-keyword">try</span> {
+      <span class="hljs-variable language_">this</span>.<span class="hljs-property">ws</span> = <span class="hljs-keyword">new</span> <span class="hljs-title class_">WebSocket</span>(<span class="hljs-variable language_">this</span>.<span class="hljs-property">url</span>, <span class="hljs-variable language_">this</span>.<span class="hljs-property">protocols</span>);
+      <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">setupEventHandlers</span>();
+    } <span class="hljs-keyword">catch</span> (error) {
+      <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">handleConnectionError</span>(error);
+    }
+  }
+
+  <span class="hljs-title function_">setupEventHandlers</span>(<span class="hljs-params"></span>) {
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">ws</span>.<span class="hljs-property">onopen</span> = <span class="hljs-function">(<span class="hljs-params">event</span>) =&gt;</span> {
+      <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;WebSocket connected&#x27;</span>);
+      <span class="hljs-variable language_">this</span>.<span class="hljs-property">reconnectAttempts</span> = <span class="hljs-number">0</span>;
+      <span class="hljs-variable language_">this</span>.<span class="hljs-property">isReconnecting</span> = <span class="hljs-literal">false</span>;
+      <span class="hljs-variable language_">this</span>.<span class="hljs-property">connectionId</span> = <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">generateConnectionId</span>();
+      <span class="hljs-variable language_">this</span>.<span class="hljs-property">lastActivity</span> = <span class="hljs-title class_">Date</span>.<span class="hljs-title function_">now</span>();
+      
+      <span class="hljs-comment">// Send queued messages</span>
+      <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">flushMessageQueue</span>();
+      
+      <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">emit</span>(<span class="hljs-string">&#x27;open&#x27;</span>, event);
+    };
+
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">ws</span>.<span class="hljs-property">onmessage</span> = <span class="hljs-function">(<span class="hljs-params">event</span>) =&gt;</span> {
+      <span class="hljs-variable language_">this</span>.<span class="hljs-property">lastActivity</span> = <span class="hljs-title class_">Date</span>.<span class="hljs-title function_">now</span>();
+      
+      <span class="hljs-keyword">try</span> {
+        <span class="hljs-keyword">const</span> data = <span class="hljs-title class_">JSON</span>.<span class="hljs-title function_">parse</span>(event.<span class="hljs-property">data</span>);
+        <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">handleMessage</span>(data);
+      } <span class="hljs-keyword">catch</span> (error) {
+        <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">emit</span>(<span class="hljs-string">&#x27;message&#x27;</span>, { <span class="hljs-attr">data</span>: event.<span class="hljs-property">data</span>, <span class="hljs-attr">raw</span>: <span class="hljs-literal">true</span> });
+      }
+    };
+
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">ws</span>.<span class="hljs-property">onclose</span> = <span class="hljs-function">(<span class="hljs-params">event</span>) =&gt;</span> {
+      <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;WebSocket closed:&#x27;</span>, event.<span class="hljs-property">code</span>, event.<span class="hljs-property">reason</span>);
+      <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">emit</span>(<span class="hljs-string">&#x27;close&#x27;</span>, event);
+      
+      <span class="hljs-keyword">if</span> (<span class="hljs-variable language_">this</span>.<span class="hljs-property">shouldReconnect</span> &amp;&amp; !event.<span class="hljs-property">wasClean</span>) {
+        <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">handleReconnection</span>();
+      }
+    };
+
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">ws</span>.<span class="hljs-property">onerror</span> = <span class="hljs-function">(<span class="hljs-params">error</span>) =&gt;</span> {
+      <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">error</span>(<span class="hljs-string">&#x27;WebSocket error:&#x27;</span>, error);
+      <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">emit</span>(<span class="hljs-string">&#x27;error&#x27;</span>, error);
+      <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">handleConnectionError</span>(error);
+    };
+  }
+
+  <span class="hljs-title function_">handleMessage</span>(<span class="hljs-params">data</span>) {
+    <span class="hljs-comment">// Handle different message types</span>
+    <span class="hljs-keyword">switch</span> (data.<span class="hljs-property">type</span>) {
+      <span class="hljs-keyword">case</span> <span class="hljs-string">&#x27;ping&#x27;</span>:
+        <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">send</span>({ <span class="hljs-attr">type</span>: <span class="hljs-string">&#x27;pong&#x27;</span>, <span class="hljs-attr">timestamp</span>: <span class="hljs-title class_">Date</span>.<span class="hljs-title function_">now</span>() });
+        <span class="hljs-keyword">break</span>;
+      <span class="hljs-keyword">case</span> <span class="hljs-string">&#x27;pong&#x27;</span>:
+        <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">handlePong</span>(data);
+        <span class="hljs-keyword">break</span>;
+      <span class="hljs-keyword">case</span> <span class="hljs-string">&#x27;auth_required&#x27;</span>:
+        <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">emit</span>(<span class="hljs-string">&#x27;auth_required&#x27;</span>, data);
+        <span class="hljs-keyword">break</span>;
+      <span class="hljs-keyword">case</span> <span class="hljs-string">&#x27;auth_success&#x27;</span>:
+        <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">emit</span>(<span class="hljs-string">&#x27;auth_success&#x27;</span>, data);
+        <span class="hljs-keyword">break</span>;
+      <span class="hljs-keyword">case</span> <span class="hljs-string">&#x27;auth_failed&#x27;</span>:
+        <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">emit</span>(<span class="hljs-string">&#x27;auth_failed&#x27;</span>, data);
+        <span class="hljs-keyword">break</span>;
+      <span class="hljs-attr">default</span>:
+        <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">emit</span>(<span class="hljs-string">&#x27;message&#x27;</span>, data);
+    }
+  }
+
+  <span class="hljs-title function_">handlePong</span>(<span class="hljs-params">data</span>) {
+    <span class="hljs-keyword">const</span> latency = <span class="hljs-title class_">Date</span>.<span class="hljs-title function_">now</span>() - data.<span class="hljs-property">timestamp</span>;
+    <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">emit</span>(<span class="hljs-string">&#x27;latency&#x27;</span>, { latency, <span class="hljs-attr">timestamp</span>: data.<span class="hljs-property">timestamp</span> });
+  }
+
+  <span class="hljs-title function_">send</span>(<span class="hljs-params">data</span>) {
+    <span class="hljs-keyword">const</span> message = <span class="hljs-keyword">typeof</span> data === <span class="hljs-string">&#x27;string&#x27;</span> ? data : <span class="hljs-title class_">JSON</span>.<span class="hljs-title function_">stringify</span>(data);
+    
+    <span class="hljs-keyword">if</span> (<span class="hljs-variable language_">this</span>.<span class="hljs-property">ws</span>.<span class="hljs-property">readyState</span> === <span class="hljs-title class_">WebSocket</span>.<span class="hljs-property">OPEN</span>) {
+      <span class="hljs-variable language_">this</span>.<span class="hljs-property">ws</span>.<span class="hljs-title function_">send</span>(message);
+      <span class="hljs-variable language_">this</span>.<span class="hljs-property">lastActivity</span> = <span class="hljs-title class_">Date</span>.<span class="hljs-title function_">now</span>();
+    } <span class="hljs-keyword">else</span> {
+      <span class="hljs-comment">// Queue message for later</span>
+      <span class="hljs-variable language_">this</span>.<span class="hljs-property">messageQueue</span>.<span class="hljs-title function_">push</span>(message);
+    }
+  }
+
+  <span class="hljs-title function_">flushMessageQueue</span>(<span class="hljs-params"></span>) {
+    <span class="hljs-keyword">while</span> (<span class="hljs-variable language_">this</span>.<span class="hljs-property">messageQueue</span>.<span class="hljs-property">length</span> &gt; <span class="hljs-number">0</span> &amp;&amp; <span class="hljs-variable language_">this</span>.<span class="hljs-property">ws</span>.<span class="hljs-property">readyState</span> === <span class="hljs-title class_">WebSocket</span>.<span class="hljs-property">OPEN</span>) {
+      <span class="hljs-keyword">const</span> message = <span class="hljs-variable language_">this</span>.<span class="hljs-property">messageQueue</span>.<span class="hljs-title function_">shift</span>();
+      <span class="hljs-variable language_">this</span>.<span class="hljs-property">ws</span>.<span class="hljs-title function_">send</span>(message);
+    }
+  }
+
+  <span class="hljs-title function_">handleReconnection</span>(<span class="hljs-params"></span>) {
+    <span class="hljs-keyword">if</span> (<span class="hljs-variable language_">this</span>.<span class="hljs-property">isReconnecting</span> || <span class="hljs-variable language_">this</span>.<span class="hljs-property">reconnectAttempts</span> &gt;= <span class="hljs-variable language_">this</span>.<span class="hljs-property">maxReconnectAttempts</span>) {
+      <span class="hljs-keyword">return</span>;
+    }
+
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">isReconnecting</span> = <span class="hljs-literal">true</span>;
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">reconnectAttempts</span>++;
+
+    <span class="hljs-keyword">const</span> delay = <span class="hljs-title class_">Math</span>.<span class="hljs-title function_">min</span>(
+      <span class="hljs-variable language_">this</span>.<span class="hljs-property">reconnectDelay</span> * <span class="hljs-title class_">Math</span>.<span class="hljs-title function_">pow</span>(<span class="hljs-variable language_">this</span>.<span class="hljs-property">backoffFactor</span>, <span class="hljs-variable language_">this</span>.<span class="hljs-property">reconnectAttempts</span> - <span class="hljs-number">1</span>),
+      <span class="hljs-variable language_">this</span>.<span class="hljs-property">maxReconnectDelay</span>
+    );
+
+    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">`Reconnecting in <span class="hljs-subst">${delay}</span>ms (attempt <span class="hljs-subst">${<span class="hljs-variable language_">this</span>.reconnectAttempts}</span>)`</span>);
+    <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">emit</span>(<span class="hljs-string">&#x27;reconnecting&#x27;</span>, { <span class="hljs-attr">attempt</span>: <span class="hljs-variable language_">this</span>.<span class="hljs-property">reconnectAttempts</span>, delay });
+
+    <span class="hljs-built_in">setTimeout</span>(<span class="hljs-function">() =&gt;</span> {
+      <span class="hljs-keyword">if</span> (<span class="hljs-variable language_">this</span>.<span class="hljs-property">shouldReconnect</span>) {
+        <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">connect</span>();
+      }
+    }, delay);
+  }
+
+  <span class="hljs-title function_">handleConnectionError</span>(<span class="hljs-params">error</span>) {
+    <span class="hljs-keyword">if</span> (<span class="hljs-variable language_">this</span>.<span class="hljs-property">shouldReconnect</span>) {
+      <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">handleReconnection</span>();
+    }
+  }
+
+  <span class="hljs-title function_">startHeartbeat</span>(<span class="hljs-params"></span>) {
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">heartbeatTimer</span> = <span class="hljs-built_in">setInterval</span>(<span class="hljs-function">() =&gt;</span> {
+      <span class="hljs-keyword">if</span> (<span class="hljs-variable language_">this</span>.<span class="hljs-property">ws</span>.<span class="hljs-property">readyState</span> === <span class="hljs-title class_">WebSocket</span>.<span class="hljs-property">OPEN</span>) {
+        <span class="hljs-keyword">const</span> timeSinceLastActivity = <span class="hljs-title class_">Date</span>.<span class="hljs-title function_">now</span>() - <span class="hljs-variable language_">this</span>.<span class="hljs-property">lastActivity</span>;
+        
+        <span class="hljs-keyword">if</span> (timeSinceLastActivity &gt; <span class="hljs-variable language_">this</span>.<span class="hljs-property">heartbeatInterval</span>) {
+          <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">send</span>({ <span class="hljs-attr">type</span>: <span class="hljs-string">&#x27;ping&#x27;</span>, <span class="hljs-attr">timestamp</span>: <span class="hljs-title class_">Date</span>.<span class="hljs-title function_">now</span>() });
+        }
+      }
+    }, <span class="hljs-variable language_">this</span>.<span class="hljs-property">heartbeatInterval</span>);
+  }
+
+  <span class="hljs-title function_">authenticate</span>(<span class="hljs-params">credentials</span>) {
+    <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">send</span>({
+      <span class="hljs-attr">type</span>: <span class="hljs-string">&#x27;auth&#x27;</span>,
+      credentials,
+      <span class="hljs-attr">connectionId</span>: <span class="hljs-variable language_">this</span>.<span class="hljs-property">connectionId</span>
+    });
+  }
+
+  <span class="hljs-title function_">subscribe</span>(<span class="hljs-params">channel, params = {}</span>) {
+    <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">send</span>({
+      <span class="hljs-attr">type</span>: <span class="hljs-string">&#x27;subscribe&#x27;</span>,
+      channel,
+      params
+    });
+  }
+
+  <span class="hljs-title function_">unsubscribe</span>(<span class="hljs-params">channel</span>) {
+    <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">send</span>({
+      <span class="hljs-attr">type</span>: <span class="hljs-string">&#x27;unsubscribe&#x27;</span>,
+      channel
+    });
+  }
+
+  <span class="hljs-comment">// Event emitter functionality</span>
+  <span class="hljs-title function_">on</span>(<span class="hljs-params">event, listener</span>) {
+    <span class="hljs-keyword">if</span> (!<span class="hljs-variable language_">this</span>.<span class="hljs-property">eventListeners</span>.<span class="hljs-title function_">has</span>(event)) {
+      <span class="hljs-variable language_">this</span>.<span class="hljs-property">eventListeners</span>.<span class="hljs-title function_">set</span>(event, []);
+    }
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">eventListeners</span>.<span class="hljs-title function_">get</span>(event).<span class="hljs-title function_">push</span>(listener);
+  }
+
+  <span class="hljs-title function_">off</span>(<span class="hljs-params">event, listener</span>) {
+    <span class="hljs-keyword">if</span> (<span class="hljs-variable language_">this</span>.<span class="hljs-property">eventListeners</span>.<span class="hljs-title function_">has</span>(event)) {
+      <span class="hljs-keyword">const</span> listeners = <span class="hljs-variable language_">this</span>.<span class="hljs-property">eventListeners</span>.<span class="hljs-title function_">get</span>(event);
+      <span class="hljs-keyword">const</span> index = listeners.<span class="hljs-title function_">indexOf</span>(listener);
+      <span class="hljs-keyword">if</span> (index &gt; -<span class="hljs-number">1</span>) {
+        listeners.<span class="hljs-title function_">splice</span>(index, <span class="hljs-number">1</span>);
+      }
+    }
+  }
+
+  <span class="hljs-title function_">emit</span>(<span class="hljs-params">event, data</span>) {
+    <span class="hljs-keyword">if</span> (<span class="hljs-variable language_">this</span>.<span class="hljs-property">eventListeners</span>.<span class="hljs-title function_">has</span>(event)) {
+      <span class="hljs-keyword">const</span> listeners = <span class="hljs-variable language_">this</span>.<span class="hljs-property">eventListeners</span>.<span class="hljs-title function_">get</span>(event);
+      listeners.<span class="hljs-title function_">forEach</span>(<span class="hljs-function"><span class="hljs-params">listener</span> =&gt;</span> {
+        <span class="hljs-keyword">try</span> {
+          <span class="hljs-title function_">listener</span>(data);
+        } <span class="hljs-keyword">catch</span> (error) {
+          <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">error</span>(<span class="hljs-string">&#x27;Error in event listener:&#x27;</span>, error);
+        }
+      });
+    }
+  }
+
+  <span class="hljs-title function_">close</span>(<span class="hljs-params"></span>) {
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">shouldReconnect</span> = <span class="hljs-literal">false</span>;
+    <span class="hljs-built_in">clearInterval</span>(<span class="hljs-variable language_">this</span>.<span class="hljs-property">heartbeatTimer</span>);
+    
+    <span class="hljs-keyword">if</span> (<span class="hljs-variable language_">this</span>.<span class="hljs-property">ws</span>) {
+      <span class="hljs-variable language_">this</span>.<span class="hljs-property">ws</span>.<span class="hljs-title function_">close</span>(<span class="hljs-number">1000</span>, <span class="hljs-string">&#x27;Client closing connection&#x27;</span>);
+    }
+  }
+
+  <span class="hljs-title function_">getConnectionState</span>(<span class="hljs-params"></span>) {
+    <span class="hljs-keyword">return</span> {
+      <span class="hljs-attr">readyState</span>: <span class="hljs-variable language_">this</span>.<span class="hljs-property">ws</span>?.<span class="hljs-property">readyState</span>,
+      <span class="hljs-attr">connectionId</span>: <span class="hljs-variable language_">this</span>.<span class="hljs-property">connectionId</span>,
+      <span class="hljs-attr">reconnectAttempts</span>: <span class="hljs-variable language_">this</span>.<span class="hljs-property">reconnectAttempts</span>,
+      <span class="hljs-attr">isReconnecting</span>: <span class="hljs-variable language_">this</span>.<span class="hljs-property">isReconnecting</span>,
+      <span class="hljs-attr">messageQueueLength</span>: <span class="hljs-variable language_">this</span>.<span class="hljs-property">messageQueue</span>.<span class="hljs-property">length</span>,
+      <span class="hljs-attr">lastActivity</span>: <span class="hljs-variable language_">this</span>.<span class="hljs-property">lastActivity</span>
+    };
+  }
+
+  <span class="hljs-title function_">generateConnectionId</span>(<span class="hljs-params"></span>) {
+    <span class="hljs-keyword">return</span> <span class="hljs-title class_">Math</span>.<span class="hljs-title function_">random</span>().<span class="hljs-title function_">toString</span>(<span class="hljs-number">36</span>).<span class="hljs-title function_">substr</span>(<span class="hljs-number">2</span>, <span class="hljs-number">9</span>) + <span class="hljs-title class_">Date</span>.<span class="hljs-title function_">now</span>().<span class="hljs-title function_">toString</span>(<span class="hljs-number">36</span>);
+  }
+}
+</code></pre></pre>
+<hr/>
+<h2 id="security-and-cors" node="[object Object]">Security and CORS</h2>
+<h3 id="[object-object]" node="[object Object]"><strong>Advanced CORS and Security Headers</strong></h3>
+<pre><pre><code class="hljs hljs language-javascript"><span class="hljs-comment">// CORS and security utilities for frontend applications</span>
+<span class="hljs-keyword">class</span> <span class="hljs-title class_">NetworkSecurity</span> {
+  
+  <span class="hljs-comment">// CORS preflight request analyzer</span>
+  <span class="hljs-keyword">static</span> <span class="hljs-keyword">async</span> <span class="hljs-title function_">analyzeCORS</span>(<span class="hljs-params">url, method = <span class="hljs-string">&#x27;GET&#x27;</span>, headers = {}</span>) {
+    <span class="hljs-keyword">const</span> analysis = {
+      url,
+      method,
+      headers,
+      <span class="hljs-attr">preflightRequired</span>: <span class="hljs-literal">false</span>,
+      <span class="hljs-attr">preflightResponse</span>: <span class="hljs-literal">null</span>,
+      <span class="hljs-attr">actualRequestAllowed</span>: <span class="hljs-literal">false</span>,
+      <span class="hljs-attr">corsHeaders</span>: {},
+      <span class="hljs-attr">securityHeaders</span>: {},
+      <span class="hljs-attr">warnings</span>: [],
+      <span class="hljs-attr">recommendations</span>: []
+    };
+
+    <span class="hljs-comment">// Check if preflight is required</span>
+    analysis.<span class="hljs-property">preflightRequired</span> = <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">requiresPreflight</span>(method, headers);
+
+    <span class="hljs-keyword">if</span> (analysis.<span class="hljs-property">preflightRequired</span>) {
+      <span class="hljs-keyword">try</span> {
+        <span class="hljs-comment">// Send OPTIONS request</span>
+        <span class="hljs-keyword">const</span> preflightResponse = <span class="hljs-keyword">await</span> <span class="hljs-title function_">fetch</span>(url, {
+          <span class="hljs-attr">method</span>: <span class="hljs-string">&#x27;OPTIONS&#x27;</span>,
+          <span class="hljs-attr">headers</span>: {
+            <span class="hljs-string">&#x27;Origin&#x27;</span>: <span class="hljs-variable language_">window</span>.<span class="hljs-property">location</span>.<span class="hljs-property">origin</span>,
+            <span class="hljs-string">&#x27;Access-Control-Request-Method&#x27;</span>: method,
+            <span class="hljs-string">&#x27;Access-Control-Request-Headers&#x27;</span>: <span class="hljs-title class_">Object</span>.<span class="hljs-title function_">keys</span>(headers).<span class="hljs-title function_">join</span>(<span class="hljs-string">&#x27;, &#x27;</span>)
+          }
+        });
+
+        analysis.<span class="hljs-property">preflightResponse</span> = {
+          <span class="hljs-attr">status</span>: preflightResponse.<span class="hljs-property">status</span>,
+          <span class="hljs-attr">headers</span>: <span class="hljs-title class_">Object</span>.<span class="hljs-title function_">fromEntries</span>(preflightResponse.<span class="hljs-property">headers</span>.<span class="hljs-title function_">entries</span>())
+        };
+
+        <span class="hljs-comment">// Parse CORS headers</span>
+        analysis.<span class="hljs-property">corsHeaders</span> = <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">parseCORSHeaders</span>(preflightResponse.<span class="hljs-property">headers</span>);
+        analysis.<span class="hljs-property">actualRequestAllowed</span> = <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">isRequestAllowed</span>(
+          method, 
+          headers, 
+          analysis.<span class="hljs-property">corsHeaders</span>
+        );
+
+      } <span class="hljs-keyword">catch</span> (error) {
+        analysis.<span class="hljs-property">warnings</span>.<span class="hljs-title function_">push</span>(<span class="hljs-string">`Preflight request failed: <span class="hljs-subst">${error.message}</span>`</span>);
+      }
+    } <span class="hljs-keyword">else</span> {
+      analysis.<span class="hljs-property">actualRequestAllowed</span> = <span class="hljs-literal">true</span>;
+    }
+
+    <span class="hljs-comment">// Security analysis</span>
+    analysis.<span class="hljs-property">securityHeaders</span> = <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">analyzeSecurityHeaders</span>(analysis.<span class="hljs-property">preflightResponse</span>?.<span class="hljs-property">headers</span>);
+    analysis.<span class="hljs-property">recommendations</span> = <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">generateSecurityRecommendations</span>(analysis);
+
+    <span class="hljs-keyword">return</span> analysis;
+  }
+
+  <span class="hljs-keyword">static</span> <span class="hljs-title function_">requiresPreflight</span>(<span class="hljs-params">method, headers</span>) {
+    <span class="hljs-keyword">const</span> simpleMethod = [<span class="hljs-string">&#x27;GET&#x27;</span>, <span class="hljs-string">&#x27;HEAD&#x27;</span>, <span class="hljs-string">&#x27;POST&#x27;</span>].<span class="hljs-title function_">includes</span>(method.<span class="hljs-title function_">toUpperCase</span>());
+    
+    <span class="hljs-keyword">if</span> (!simpleMethod) <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;
+
+    <span class="hljs-keyword">const</span> simpleHeaders = [
+      <span class="hljs-string">&#x27;accept&#x27;</span>,
+      <span class="hljs-string">&#x27;accept-language&#x27;</span>,
+      <span class="hljs-string">&#x27;content-language&#x27;</span>,
+      <span class="hljs-string">&#x27;content-type&#x27;</span>
+    ];
+
+    <span class="hljs-keyword">const</span> hasComplexHeaders = <span class="hljs-title class_">Object</span>.<span class="hljs-title function_">keys</span>(headers).<span class="hljs-title function_">some</span>(<span class="hljs-function"><span class="hljs-params">header</span> =&gt;</span> 
+      !simpleHeaders.<span class="hljs-title function_">includes</span>(header.<span class="hljs-title function_">toLowerCase</span>())
+    );
+
+    <span class="hljs-keyword">if</span> (hasComplexHeaders) <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;
+
+    <span class="hljs-keyword">const</span> contentType = headers[<span class="hljs-string">&#x27;content-type&#x27;</span>] || headers[<span class="hljs-string">&#x27;Content-Type&#x27;</span>];
+    <span class="hljs-keyword">if</span> (contentType) {
+      <span class="hljs-keyword">const</span> simpleContentTypes = [
+        <span class="hljs-string">&#x27;application/x-www-form-urlencoded&#x27;</span>,
+        <span class="hljs-string">&#x27;multipart/form-data&#x27;</span>,
+        <span class="hljs-string">&#x27;text/plain&#x27;</span>
+      ];
+      
+      <span class="hljs-keyword">const</span> isSimpleContentType = simpleContentTypes.<span class="hljs-title function_">some</span>(<span class="hljs-function"><span class="hljs-params">type</span> =&gt;</span> 
+        contentType.<span class="hljs-title function_">includes</span>(type)
+      );
+      
+      <span class="hljs-keyword">if</span> (!isSimpleContentType) <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;
+    }
+
+    <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;
+  }
+
+  <span class="hljs-keyword">static</span> <span class="hljs-title function_">parseCORSHeaders</span>(<span class="hljs-params">headers</span>) {
+    <span class="hljs-keyword">return</span> {
+      <span class="hljs-attr">allowOrigin</span>: headers.<span class="hljs-title function_">get</span>(<span class="hljs-string">&#x27;access-control-allow-origin&#x27;</span>),
+      <span class="hljs-attr">allowMethods</span>: headers.<span class="hljs-title function_">get</span>(<span class="hljs-string">&#x27;access-control-allow-methods&#x27;</span>)?.<span class="hljs-title function_">split</span>(<span class="hljs-string">&#x27;,&#x27;</span>).<span class="hljs-title function_">map</span>(<span class="hljs-function"><span class="hljs-params">m</span> =&gt;</span> m.<span class="hljs-title function_">trim</span>()),
+      <span class="hljs-attr">allowHeaders</span>: headers.<span class="hljs-title function_">get</span>(<span class="hljs-string">&#x27;access-control-allow-headers&#x27;</span>)?.<span class="hljs-title function_">split</span>(<span class="hljs-string">&#x27;,&#x27;</span>).<span class="hljs-title function_">map</span>(<span class="hljs-function"><span class="hljs-params">h</span> =&gt;</span> h.<span class="hljs-title function_">trim</span>()),
+      <span class="hljs-attr">allowCredentials</span>: headers.<span class="hljs-title function_">get</span>(<span class="hljs-string">&#x27;access-control-allow-credentials&#x27;</span>) === <span class="hljs-string">&#x27;true&#x27;</span>,
+      <span class="hljs-attr">exposeHeaders</span>: headers.<span class="hljs-title function_">get</span>(<span class="hljs-string">&#x27;access-control-expose-headers&#x27;</span>)?.<span class="hljs-title function_">split</span>(<span class="hljs-string">&#x27;,&#x27;</span>).<span class="hljs-title function_">map</span>(<span class="hljs-function"><span class="hljs-params">h</span> =&gt;</span> h.<span class="hljs-title function_">trim</span>()),
+      <span class="hljs-attr">maxAge</span>: <span class="hljs-built_in">parseInt</span>(headers.<span class="hljs-title function_">get</span>(<span class="hljs-string">&#x27;access-control-max-age&#x27;</span>)) || <span class="hljs-number">0</span>
+    };
+  }
+
+  <span class="hljs-keyword">static</span> <span class="hljs-title function_">isRequestAllowed</span>(<span class="hljs-params">method, headers, corsHeaders</span>) {
+    <span class="hljs-comment">// Check method</span>
+    <span class="hljs-keyword">if</span> (corsHeaders.<span class="hljs-property">allowMethods</span> &amp;&amp; !corsHeaders.<span class="hljs-property">allowMethods</span>.<span class="hljs-title function_">includes</span>(method)) {
+      <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;
+    }
+
+    <span class="hljs-comment">// Check headers</span>
+    <span class="hljs-keyword">if</span> (corsHeaders.<span class="hljs-property">allowHeaders</span>) {
+      <span class="hljs-keyword">const</span> requestHeaders = <span class="hljs-title class_">Object</span>.<span class="hljs-title function_">keys</span>(headers).<span class="hljs-title function_">map</span>(<span class="hljs-function"><span class="hljs-params">h</span> =&gt;</span> h.<span class="hljs-title function_">toLowerCase</span>());
+      <span class="hljs-keyword">const</span> allowedHeaders = corsHeaders.<span class="hljs-property">allowHeaders</span>.<span class="hljs-title function_">map</span>(<span class="hljs-function"><span class="hljs-params">h</span> =&gt;</span> h.<span class="hljs-title function_">toLowerCase</span>());
+      
+      <span class="hljs-keyword">for</span> (<span class="hljs-keyword">const</span> header <span class="hljs-keyword">of</span> requestHeaders) {
+        <span class="hljs-keyword">if</span> (!allowedHeaders.<span class="hljs-title function_">includes</span>(header)) {
+          <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;
+        }
+      }
+    }
+
+    <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;
+  }
+
+  <span class="hljs-keyword">static</span> <span class="hljs-title function_">analyzeSecurityHeaders</span>(<span class="hljs-params">headers</span>) {
+    <span class="hljs-keyword">if</span> (!headers) <span class="hljs-keyword">return</span> {};
+
+    <span class="hljs-keyword">return</span> {
+      <span class="hljs-attr">contentSecurityPolicy</span>: headers.<span class="hljs-title function_">get</span>(<span class="hljs-string">&#x27;content-security-policy&#x27;</span>),
+      <span class="hljs-attr">strictTransportSecurity</span>: headers.<span class="hljs-title function_">get</span>(<span class="hljs-string">&#x27;strict-transport-security&#x27;</span>),
+      <span class="hljs-attr">xFrameOptions</span>: headers.<span class="hljs-title function_">get</span>(<span class="hljs-string">&#x27;x-frame-options&#x27;</span>),
+      <span class="hljs-attr">xContentTypeOptions</span>: headers.<span class="hljs-title function_">get</span>(<span class="hljs-string">&#x27;x-content-type-options&#x27;</span>),
+      <span class="hljs-attr">xXSSProtection</span>: headers.<span class="hljs-title function_">get</span>(<span class="hljs-string">&#x27;x-xss-protection&#x27;</span>),
+      <span class="hljs-attr">referrerPolicy</span>: headers.<span class="hljs-title function_">get</span>(<span class="hljs-string">&#x27;referrer-policy&#x27;</span>),
+      <span class="hljs-attr">permissionsPolicy</span>: headers.<span class="hljs-title function_">get</span>(<span class="hljs-string">&#x27;permissions-policy&#x27;</span>),
+      <span class="hljs-attr">crossOriginEmbedderPolicy</span>: headers.<span class="hljs-title function_">get</span>(<span class="hljs-string">&#x27;cross-origin-embedder-policy&#x27;</span>),
+      <span class="hljs-attr">crossOriginOpenerPolicy</span>: headers.<span class="hljs-title function_">get</span>(<span class="hljs-string">&#x27;cross-origin-opener-policy&#x27;</span>),
+      <span class="hljs-attr">crossOriginResourcePolicy</span>: headers.<span class="hljs-title function_">get</span>(<span class="hljs-string">&#x27;cross-origin-resource-policy&#x27;</span>)
+    };
+  }
+
+  <span class="hljs-keyword">static</span> <span class="hljs-title function_">generateSecurityRecommendations</span>(<span class="hljs-params">analysis</span>) {
+    <span class="hljs-keyword">const</span> recommendations = [];
+    <span class="hljs-keyword">const</span> { securityHeaders, corsHeaders } = analysis;
+
+    <span class="hljs-comment">// CORS recommendations</span>
+    <span class="hljs-keyword">if</span> (corsHeaders.<span class="hljs-property">allowOrigin</span> === <span class="hljs-string">&#x27;*&#x27;</span> &amp;&amp; corsHeaders.<span class="hljs-property">allowCredentials</span>) {
+      recommendations.<span class="hljs-title function_">push</span>({
+        <span class="hljs-attr">type</span>: <span class="hljs-string">&#x27;security&#x27;</span>,
+        <span class="hljs-attr">severity</span>: <span class="hljs-string">&#x27;high&#x27;</span>,
+        <span class="hljs-attr">message</span>: <span class="hljs-string">&#x27;Wildcard origin with credentials is not allowed&#x27;</span>
+      });
+    }
+
+    <span class="hljs-keyword">if</span> (corsHeaders.<span class="hljs-property">allowOrigin</span> === <span class="hljs-string">&#x27;*&#x27;</span>) {
+      recommendations.<span class="hljs-title function_">push</span>({
+        <span class="hljs-attr">type</span>: <span class="hljs-string">&#x27;security&#x27;</span>,
+        <span class="hljs-attr">severity</span>: <span class="hljs-string">&#x27;medium&#x27;</span>,
+        <span class="hljs-attr">message</span>: <span class="hljs-string">&#x27;Consider restricting allowed origins instead of using wildcard&#x27;</span>
+      });
+    }
+
+    <span class="hljs-comment">// Security headers recommendations</span>
+    <span class="hljs-keyword">if</span> (!securityHeaders.<span class="hljs-property">contentSecurityPolicy</span>) {
+      recommendations.<span class="hljs-title function_">push</span>({
+        <span class="hljs-attr">type</span>: <span class="hljs-string">&#x27;security&#x27;</span>,
+        <span class="hljs-attr">severity</span>: <span class="hljs-string">&#x27;high&#x27;</span>,
+        <span class="hljs-attr">message</span>: <span class="hljs-string">&#x27;Content Security Policy header is missing&#x27;</span>
+      });
+    }
+
+    <span class="hljs-keyword">if</span> (!securityHeaders.<span class="hljs-property">strictTransportSecurity</span>) {
+      recommendations.<span class="hljs-title function_">push</span>({
+        <span class="hljs-attr">type</span>: <span class="hljs-string">&#x27;security&#x27;</span>,
+        <span class="hljs-attr">severity</span>: <span class="hljs-string">&#x27;medium&#x27;</span>,
+        <span class="hljs-attr">message</span>: <span class="hljs-string">&#x27;Strict Transport Security header is missing&#x27;</span>
+      });
+    }
+
+    <span class="hljs-keyword">if</span> (!securityHeaders.<span class="hljs-property">xFrameOptions</span>) {
+      recommendations.<span class="hljs-title function_">push</span>({
+        <span class="hljs-attr">type</span>: <span class="hljs-string">&#x27;security&#x27;</span>,
+        <span class="hljs-attr">severity</span>: <span class="hljs-string">&#x27;medium&#x27;</span>,
+        <span class="hljs-attr">message</span>: <span class="hljs-string">&#x27;X-Frame-Options header is missing&#x27;</span>
+      });
+    }
+
+    <span class="hljs-keyword">if</span> (!securityHeaders.<span class="hljs-property">xContentTypeOptions</span>) {
+      recommendations.<span class="hljs-title function_">push</span>({
+        <span class="hljs-attr">type</span>: <span class="hljs-string">&#x27;security&#x27;</span>,
+        <span class="hljs-attr">severity</span>: <span class="hljs-string">&#x27;low&#x27;</span>,
+        <span class="hljs-attr">message</span>: <span class="hljs-string">&#x27;X-Content-Type-Options header is missing&#x27;</span>
+      });
+    }
+
+    <span class="hljs-keyword">return</span> recommendations;
+  }
+
+  <span class="hljs-comment">// Content Security Policy helper</span>
+  <span class="hljs-keyword">static</span> <span class="hljs-title function_">generateCSP</span>(<span class="hljs-params">config = {}</span>) {
+    <span class="hljs-keyword">const</span> {
+      defaultSrc = [<span class="hljs-string">&quot;&#x27;self&#x27;&quot;</span>],
+      scriptSrc = [<span class="hljs-string">&quot;&#x27;self&#x27;&quot;</span>],
+      styleSrc = [<span class="hljs-string">&quot;&#x27;self&#x27;&quot;</span>, <span class="hljs-string">&quot;&#x27;unsafe-inline&#x27;&quot;</span>],
+      imgSrc = [<span class="hljs-string">&quot;&#x27;self&#x27;&quot;</span>, <span class="hljs-string">&#x27;data:&#x27;</span>, <span class="hljs-string">&#x27;https:&#x27;</span>],
+      fontSrc = [<span class="hljs-string">&quot;&#x27;self&#x27;&quot;</span>],
+      connectSrc = [<span class="hljs-string">&quot;&#x27;self&#x27;&quot;</span>],
+      objectSrc = [<span class="hljs-string">&quot;&#x27;none&#x27;&quot;</span>],
+      mediaSrc = [<span class="hljs-string">&quot;&#x27;self&#x27;&quot;</span>],
+      frameSrc = [<span class="hljs-string">&quot;&#x27;none&#x27;&quot;</span>],
+      reportUri = <span class="hljs-literal">null</span>,
+      reportTo = <span class="hljs-literal">null</span>,
+      upgradeInsecureRequests = <span class="hljs-literal">true</span>
+    } = config;
+
+    <span class="hljs-keyword">const</span> directives = [];
+
+    directives.<span class="hljs-title function_">push</span>(<span class="hljs-string">`default-src <span class="hljs-subst">${defaultSrc.join(<span class="hljs-string">&#x27; &#x27;</span>)}</span>`</span>);
+    directives.<span class="hljs-title function_">push</span>(<span class="hljs-string">`script-src <span class="hljs-subst">${scriptSrc.join(<span class="hljs-string">&#x27; &#x27;</span>)}</span>`</span>);
+    directives.<span class="hljs-title function_">push</span>(<span class="hljs-string">`style-src <span class="hljs-subst">${styleSrc.join(<span class="hljs-string">&#x27; &#x27;</span>)}</span>`</span>);
+    directives.<span class="hljs-title function_">push</span>(<span class="hljs-string">`img-src <span class="hljs-subst">${imgSrc.join(<span class="hljs-string">&#x27; &#x27;</span>)}</span>`</span>);
+    directives.<span class="hljs-title function_">push</span>(<span class="hljs-string">`font-src <span class="hljs-subst">${fontSrc.join(<span class="hljs-string">&#x27; &#x27;</span>)}</span>`</span>);
+    directives.<span class="hljs-title function_">push</span>(<span class="hljs-string">`connect-src <span class="hljs-subst">${connectSrc.join(<span class="hljs-string">&#x27; &#x27;</span>)}</span>`</span>);
+    directives.<span class="hljs-title function_">push</span>(<span class="hljs-string">`object-src <span class="hljs-subst">${objectSrc.join(<span class="hljs-string">&#x27; &#x27;</span>)}</span>`</span>);
+    directives.<span class="hljs-title function_">push</span>(<span class="hljs-string">`media-src <span class="hljs-subst">${mediaSrc.join(<span class="hljs-string">&#x27; &#x27;</span>)}</span>`</span>);
+    directives.<span class="hljs-title function_">push</span>(<span class="hljs-string">`frame-src <span class="hljs-subst">${frameSrc.join(<span class="hljs-string">&#x27; &#x27;</span>)}</span>`</span>);
+
+    <span class="hljs-keyword">if</span> (upgradeInsecureRequests) {
+      directives.<span class="hljs-title function_">push</span>(<span class="hljs-string">&#x27;upgrade-insecure-requests&#x27;</span>);
+    }
+
+    <span class="hljs-keyword">if</span> (reportUri) {
+      directives.<span class="hljs-title function_">push</span>(<span class="hljs-string">`report-uri <span class="hljs-subst">${reportUri}</span>`</span>);
+    }
+
+    <span class="hljs-keyword">if</span> (reportTo) {
+      directives.<span class="hljs-title function_">push</span>(<span class="hljs-string">`report-to <span class="hljs-subst">${reportTo}</span>`</span>);
+    }
+
+    <span class="hljs-keyword">return</span> directives.<span class="hljs-title function_">join</span>(<span class="hljs-string">&#x27;; &#x27;</span>);
+  }
+
+  <span class="hljs-comment">// Validate and sanitize URLs</span>
+  <span class="hljs-keyword">static</span> <span class="hljs-title function_">validateURL</span>(<span class="hljs-params">url, allowedProtocols = [<span class="hljs-string">&#x27;http:&#x27;</span>, <span class="hljs-string">&#x27;https:&#x27;</span>]</span>) {
+    <span class="hljs-keyword">try</span> {
+      <span class="hljs-keyword">const</span> parsedURL = <span class="hljs-keyword">new</span> <span class="hljs-title function_">URL</span>(url);
+      
+      <span class="hljs-keyword">if</span> (!allowedProtocols.<span class="hljs-title function_">includes</span>(parsedURL.<span class="hljs-property">protocol</span>)) {
+        <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Error</span>(<span class="hljs-string">`Protocol <span class="hljs-subst">${parsedURL.protocol}</span> not allowed`</span>);
+      }
+
+      <span class="hljs-comment">// Check for dangerous patterns</span>
+      <span class="hljs-keyword">const</span> dangerousPatterns = [
+        <span class="hljs-regexp">/javascript:/i</span>,
+        <span class="hljs-regexp">/data:/i</span>,
+        <span class="hljs-regexp">/vbscript:/i</span>,
+        <span class="hljs-regexp">/file:/i</span>
+      ];
+
+      <span class="hljs-keyword">for</span> (<span class="hljs-keyword">const</span> pattern <span class="hljs-keyword">of</span> dangerousPatterns) {
+        <span class="hljs-keyword">if</span> (pattern.<span class="hljs-title function_">test</span>(url)) {
+          <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Error</span>(<span class="hljs-string">&#x27;URL contains dangerous pattern&#x27;</span>);
+        }
+      }
+
+      <span class="hljs-keyword">return</span> {
+        <span class="hljs-attr">isValid</span>: <span class="hljs-literal">true</span>,
+        <span class="hljs-attr">url</span>: parsedURL.<span class="hljs-property">href</span>,
+        <span class="hljs-attr">protocol</span>: parsedURL.<span class="hljs-property">protocol</span>,
+        <span class="hljs-attr">hostname</span>: parsedURL.<span class="hljs-property">hostname</span>,
+        <span class="hljs-attr">pathname</span>: parsedURL.<span class="hljs-property">pathname</span>
+      };
+
+    } <span class="hljs-keyword">catch</span> (error) {
+      <span class="hljs-keyword">return</span> {
+        <span class="hljs-attr">isValid</span>: <span class="hljs-literal">false</span>,
+        <span class="hljs-attr">error</span>: error.<span class="hljs-property">message</span>
+      };
+    }
+  }
+
+  <span class="hljs-comment">// Request signing for API authentication</span>
+  <span class="hljs-keyword">static</span> <span class="hljs-title function_">signRequest</span>(<span class="hljs-params">request, secret, algorithm = <span class="hljs-string">&#x27;SHA-256&#x27;</span></span>) {
+    <span class="hljs-keyword">const</span> { method, url, headers, body } = request;
+    
+    <span class="hljs-keyword">const</span> timestamp = <span class="hljs-title class_">Date</span>.<span class="hljs-title function_">now</span>();
+    <span class="hljs-keyword">const</span> nonce = <span class="hljs-title class_">Math</span>.<span class="hljs-title function_">random</span>().<span class="hljs-title function_">toString</span>(<span class="hljs-number">36</span>).<span class="hljs-title function_">substr</span>(<span class="hljs-number">2</span>, <span class="hljs-number">16</span>);
+    
+    <span class="hljs-keyword">const</span> signaturePayload = [
+      method.<span class="hljs-title function_">toUpperCase</span>(),
+      url,
+      timestamp,
+      nonce,
+      <span class="hljs-title class_">JSON</span>.<span class="hljs-title function_">stringify</span>(headers || {}),
+      body || <span class="hljs-string">&#x27;&#x27;</span>
+    ].<span class="hljs-title function_">join</span>(<span class="hljs-string">&#x27;\n&#x27;</span>);
+
+    <span class="hljs-keyword">return</span> {
+      timestamp,
+      nonce,
+      <span class="hljs-attr">signature</span>: <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">hmacSign</span>(signaturePayload, secret, algorithm),
+      <span class="hljs-attr">signatureMethod</span>: algorithm
+    };
+  }
+
+  <span class="hljs-keyword">static</span> <span class="hljs-keyword">async</span> <span class="hljs-title function_">hmacSign</span>(<span class="hljs-params">message, secret, algorithm</span>) {
+    <span class="hljs-keyword">const</span> encoder = <span class="hljs-keyword">new</span> <span class="hljs-title class_">TextEncoder</span>();
+    <span class="hljs-keyword">const</span> key = <span class="hljs-keyword">await</span> crypto.<span class="hljs-property">subtle</span>.<span class="hljs-title function_">importKey</span>(
+      <span class="hljs-string">&#x27;raw&#x27;</span>,
+      encoder.<span class="hljs-title function_">encode</span>(secret),
+      { <span class="hljs-attr">name</span>: <span class="hljs-string">&#x27;HMAC&#x27;</span>, <span class="hljs-attr">hash</span>: algorithm },
+      <span class="hljs-literal">false</span>,
+      [<span class="hljs-string">&#x27;sign&#x27;</span>]
+    );
+
+    <span class="hljs-keyword">const</span> signature = <span class="hljs-keyword">await</span> crypto.<span class="hljs-property">subtle</span>.<span class="hljs-title function_">sign</span>(
+      <span class="hljs-string">&#x27;HMAC&#x27;</span>,
+      key,
+      encoder.<span class="hljs-title function_">encode</span>(message)
+    );
+
+    <span class="hljs-keyword">return</span> <span class="hljs-title class_">Array</span>.<span class="hljs-title function_">from</span>(<span class="hljs-keyword">new</span> <span class="hljs-title class_">Uint8Array</span>(signature))
+      .<span class="hljs-title function_">map</span>(<span class="hljs-function"><span class="hljs-params">b</span> =&gt;</span> b.<span class="hljs-title function_">toString</span>(<span class="hljs-number">16</span>).<span class="hljs-title function_">padStart</span>(<span class="hljs-number">2</span>, <span class="hljs-string">&#x27;0&#x27;</span>))
+      .<span class="hljs-title function_">join</span>(<span class="hljs-string">&#x27;&#x27;</span>);
+  }
+
+  <span class="hljs-comment">// Rate limiting client-side tracking</span>
+  <span class="hljs-keyword">static</span> <span class="hljs-title function_">createRateLimiter</span>(<span class="hljs-params">windowMs = <span class="hljs-number">60000</span>, maxRequests = <span class="hljs-number">100</span></span>) {
+    <span class="hljs-keyword">const</span> requests = [];
+    
+    <span class="hljs-keyword">return</span> {
+      <span class="hljs-title function_">isAllowed</span>(<span class="hljs-params"></span>) {
+        <span class="hljs-keyword">const</span> now = <span class="hljs-title class_">Date</span>.<span class="hljs-title function_">now</span>();
+        
+        <span class="hljs-comment">// Remove old requests outside the window</span>
+        <span class="hljs-keyword">while</span> (requests.<span class="hljs-property">length</span> &gt; <span class="hljs-number">0</span> &amp;&amp; now - requests[<span class="hljs-number">0</span>] &gt; windowMs) {
+          requests.<span class="hljs-title function_">shift</span>();
+        }
+        
+        <span class="hljs-keyword">if</span> (requests.<span class="hljs-property">length</span> &gt;= maxRequests) {
+          <span class="hljs-keyword">return</span> {
+            <span class="hljs-attr">allowed</span>: <span class="hljs-literal">false</span>,
+            <span class="hljs-attr">retryAfter</span>: <span class="hljs-title class_">Math</span>.<span class="hljs-title function_">ceil</span>((requests[<span class="hljs-number">0</span>] + windowMs - now) / <span class="hljs-number">1000</span>)
+          };
+        }
+        
+        requests.<span class="hljs-title function_">push</span>(now);
+        <span class="hljs-keyword">return</span> {
+          <span class="hljs-attr">allowed</span>: <span class="hljs-literal">true</span>,
+          <span class="hljs-attr">remaining</span>: maxRequests - requests.<span class="hljs-property">length</span>
+        };
+      },
+      
+      <span class="hljs-title function_">reset</span>(<span class="hljs-params"></span>) {
+        requests.<span class="hljs-property">length</span> = <span class="hljs-number">0</span>;
+      },
+      
+      <span class="hljs-title function_">getStatus</span>(<span class="hljs-params"></span>) {
+        <span class="hljs-keyword">const</span> now = <span class="hljs-title class_">Date</span>.<span class="hljs-title function_">now</span>();
+        <span class="hljs-keyword">const</span> validRequests = requests.<span class="hljs-title function_">filter</span>(<span class="hljs-function"><span class="hljs-params">time</span> =&gt;</span> now - time &lt;= windowMs);
+        
+        <span class="hljs-keyword">return</span> {
+          <span class="hljs-attr">requestCount</span>: validRequests.<span class="hljs-property">length</span>,
+          maxRequests,
+          windowMs,
+          <span class="hljs-attr">resetTime</span>: validRequests.<span class="hljs-property">length</span> &gt; <span class="hljs-number">0</span> ? validRequests[<span class="hljs-number">0</span>] + windowMs : now
+        };
+      }
+    };
+  }
+}
+</code></pre></pre>
+<hr/>
+<h2 id="network-performance-optimization" node="[object Object]">Network Performance Optimization</h2>
+<h3 id="[object-object]" node="[object Object]"><strong>Connection Optimization Strategies</strong></h3>
+<pre><pre><code class="hljs hljs language-javascript"><span class="hljs-comment">// Network performance optimization utilities</span>
+<span class="hljs-keyword">class</span> <span class="hljs-title class_">NetworkOptimization</span> {
+  
+  <span class="hljs-comment">// Connection monitoring and optimization</span>
+  <span class="hljs-keyword">static</span> <span class="hljs-title function_">monitorConnection</span>(<span class="hljs-params"></span>) {
+    <span class="hljs-keyword">const</span> connection = navigator.<span class="hljs-property">connection</span> || navigator.<span class="hljs-property">mozConnection</span> || navigator.<span class="hljs-property">webkitConnection</span>;
+    
+    <span class="hljs-keyword">if</span> (!connection) {
+      <span class="hljs-keyword">return</span> {
+        <span class="hljs-attr">supported</span>: <span class="hljs-literal">false</span>,
+        <span class="hljs-attr">message</span>: <span class="hljs-string">&#x27;Network Information API not supported&#x27;</span>
+      };
+    }
+
+    <span class="hljs-keyword">const</span> monitor = {
+      <span class="hljs-attr">supported</span>: <span class="hljs-literal">true</span>,
+      <span class="hljs-attr">current</span>: <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">getConnectionInfo</span>(connection),
+      <span class="hljs-attr">history</span>: [],
+      <span class="hljs-attr">listeners</span>: [],
+      
+      <span class="hljs-title function_">onChange</span>(<span class="hljs-params">callback</span>) {
+        <span class="hljs-variable language_">this</span>.<span class="hljs-property">listeners</span>.<span class="hljs-title function_">push</span>(callback);
+        connection.<span class="hljs-title function_">addEventListener</span>(<span class="hljs-string">&#x27;change&#x27;</span>, <span class="hljs-function">() =&gt;</span> {
+          <span class="hljs-keyword">const</span> newInfo = <span class="hljs-title class_">NetworkOptimization</span>.<span class="hljs-title function_">getConnectionInfo</span>(connection);
+          <span class="hljs-variable language_">this</span>.<span class="hljs-property">history</span>.<span class="hljs-title function_">push</span>({
+            ...newInfo,
+            <span class="hljs-attr">timestamp</span>: <span class="hljs-title class_">Date</span>.<span class="hljs-title function_">now</span>()
+          });
+          <span class="hljs-title function_">callback</span>(newInfo);
+        });
+      },
+      
+      <span class="hljs-title function_">getOptimizationStrategy</span>(<span class="hljs-params"></span>) {
+        <span class="hljs-keyword">return</span> <span class="hljs-title class_">NetworkOptimization</span>.<span class="hljs-title function_">getOptimizationStrategy</span>(<span class="hljs-variable language_">this</span>.<span class="hljs-property">current</span>);
+      },
+      
+      <span class="hljs-title function_">shouldOptimizeForLowBandwidth</span>(<span class="hljs-params"></span>) {
+        <span class="hljs-keyword">return</span> <span class="hljs-variable language_">this</span>.<span class="hljs-property">current</span>.<span class="hljs-property">effectiveType</span> === <span class="hljs-string">&#x27;slow-2g&#x27;</span> || 
+               <span class="hljs-variable language_">this</span>.<span class="hljs-property">current</span>.<span class="hljs-property">effectiveType</span> === <span class="hljs-string">&#x27;2g&#x27;</span> ||
+               (<span class="hljs-variable language_">this</span>.<span class="hljs-property">current</span>.<span class="hljs-property">downlink</span> &amp;&amp; <span class="hljs-variable language_">this</span>.<span class="hljs-property">current</span>.<span class="hljs-property">downlink</span> &lt; <span class="hljs-number">1</span>);
+      },
+      
+      <span class="hljs-title function_">shouldPreloadResources</span>(<span class="hljs-params"></span>) {
+        <span class="hljs-keyword">return</span> <span class="hljs-variable language_">this</span>.<span class="hljs-property">current</span>.<span class="hljs-property">effectiveType</span> === <span class="hljs-string">&#x27;4g&#x27;</span> ||
+               (<span class="hljs-variable language_">this</span>.<span class="hljs-property">current</span>.<span class="hljs-property">downlink</span> &amp;&amp; <span class="hljs-variable language_">this</span>.<span class="hljs-property">current</span>.<span class="hljs-property">downlink</span> &gt; <span class="hljs-number">10</span>);
+      }
+    };
+
+    <span class="hljs-keyword">return</span> monitor;
+  }
+
+  <span class="hljs-keyword">static</span> <span class="hljs-title function_">getConnectionInfo</span>(<span class="hljs-params">connection</span>) {
+    <span class="hljs-keyword">return</span> {
+      <span class="hljs-attr">effectiveType</span>: connection.<span class="hljs-property">effectiveType</span>,
+      <span class="hljs-attr">downlink</span>: connection.<span class="hljs-property">downlink</span>,
+      <span class="hljs-attr">downlinkMax</span>: connection.<span class="hljs-property">downlinkMax</span>,
+      <span class="hljs-attr">rtt</span>: connection.<span class="hljs-property">rtt</span>,
+      <span class="hljs-attr">saveData</span>: connection.<span class="hljs-property">saveData</span>,
+      <span class="hljs-attr">type</span>: connection.<span class="hljs-property">type</span>
+    };
+  }
+
+  <span class="hljs-keyword">static</span> <span class="hljs-title function_">getOptimizationStrategy</span>(<span class="hljs-params">connectionInfo</span>) {
+    <span class="hljs-keyword">const</span> { effectiveType, downlink, saveData } = connectionInfo;
+    
+    <span class="hljs-keyword">if</span> (saveData) {
+      <span class="hljs-keyword">return</span> {
+        <span class="hljs-attr">strategy</span>: <span class="hljs-string">&#x27;data-saver&#x27;</span>,
+        <span class="hljs-attr">recommendations</span>: [
+          <span class="hljs-string">&#x27;Enable aggressive compression&#x27;</span>,
+          <span class="hljs-string">&#x27;Reduce image quality&#x27;</span>,
+          <span class="hljs-string">&#x27;Minimize non-essential requests&#x27;</span>,
+          <span class="hljs-string">&#x27;Use text instead of images where possible&#x27;</span>
+        ]
+      };
+    }
+
+    <span class="hljs-keyword">switch</span> (effectiveType) {
+      <span class="hljs-keyword">case</span> <span class="hljs-string">&#x27;slow-2g&#x27;</span>:
+      <span class="hljs-keyword">case</span> <span class="hljs-string">&#x27;2g&#x27;</span>:
+        <span class="hljs-keyword">return</span> {
+          <span class="hljs-attr">strategy</span>: <span class="hljs-string">&#x27;low-bandwidth&#x27;</span>,
+          <span class="hljs-attr">recommendations</span>: [
+            <span class="hljs-string">&#x27;Use critical CSS inline&#x27;</span>,
+            <span class="hljs-string">&#x27;Defer non-critical JavaScript&#x27;</span>,
+            <span class="hljs-string">&#x27;Compress all resources aggressively&#x27;</span>,
+            <span class="hljs-string">&#x27;Use WebP images with low quality&#x27;</span>,
+            <span class="hljs-string">&#x27;Implement aggressive caching&#x27;</span>
+          ]
+        };
+      
+      <span class="hljs-keyword">case</span> <span class="hljs-string">&#x27;3g&#x27;</span>:
+        <span class="hljs-keyword">return</span> {
+          <span class="hljs-attr">strategy</span>: <span class="hljs-string">&#x27;moderate-bandwidth&#x27;</span>,
+          <span class="hljs-attr">recommendations</span>: [
+            <span class="hljs-string">&#x27;Preload critical resources&#x27;</span>,
+            <span class="hljs-string">&#x27;Use responsive images&#x27;</span>,
+            <span class="hljs-string">&#x27;Enable resource hints&#x27;</span>,
+            <span class="hljs-string">&#x27;Implement smart bundling&#x27;</span>
+          ]
+        };
+      
+      <span class="hljs-keyword">case</span> <span class="hljs-string">&#x27;4g&#x27;</span>:
+        <span class="hljs-keyword">return</span> {
+          <span class="hljs-attr">strategy</span>: <span class="hljs-string">&#x27;high-bandwidth&#x27;</span>,
+          <span class="hljs-attr">recommendations</span>: [
+            <span class="hljs-string">&#x27;Preload next page resources&#x27;</span>,
+            <span class="hljs-string">&#x27;Use high-quality images&#x27;</span>,
+            <span class="hljs-string">&#x27;Enable speculative loading&#x27;</span>,
+            <span class="hljs-string">&#x27;Implement aggressive prefetching&#x27;</span>
+          ]
+        };
+      
+      <span class="hljs-attr">default</span>:
+        <span class="hljs-keyword">return</span> {
+          <span class="hljs-attr">strategy</span>: <span class="hljs-string">&#x27;adaptive&#x27;</span>,
+          <span class="hljs-attr">recommendations</span>: [
+            <span class="hljs-string">&#x27;Monitor connection changes&#x27;</span>,
+            <span class="hljs-string">&#x27;Adapt strategy dynamically&#x27;</span>,
+            <span class="hljs-string">&#x27;Use progressive enhancement&#x27;</span>
+          ]
+        };
+    }
+  }
+
+  <span class="hljs-comment">// Resource hints optimization</span>
+  <span class="hljs-keyword">static</span> <span class="hljs-title function_">optimizeResourceHints</span>(<span class="hljs-params">resources, connectionInfo</span>) {
+    <span class="hljs-keyword">const</span> optimized = {
+      <span class="hljs-attr">preload</span>: [],
+      <span class="hljs-attr">prefetch</span>: [],
+      <span class="hljs-attr">preconnect</span>: [],
+      <span class="hljs-attr">dnsPrefetch</span>: []
+    };
+
+    <span class="hljs-keyword">const</span> strategy = <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">getOptimizationStrategy</span>(connectionInfo);
+    
+    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">const</span> resource <span class="hljs-keyword">of</span> resources) {
+      <span class="hljs-keyword">if</span> (resource.<span class="hljs-property">critical</span> &amp;&amp; strategy.<span class="hljs-property">strategy</span> !== <span class="hljs-string">&#x27;low-bandwidth&#x27;</span>) {
+        optimized.<span class="hljs-property">preload</span>.<span class="hljs-title function_">push</span>({
+          <span class="hljs-attr">href</span>: resource.<span class="hljs-property">url</span>,
+          <span class="hljs-attr">as</span>: resource.<span class="hljs-property">type</span>,
+          <span class="hljs-attr">crossorigin</span>: resource.<span class="hljs-property">crossorigin</span>
+        });
+      }
+      
+      <span class="hljs-keyword">if</span> (resource.<span class="hljs-property">nextPage</span> &amp;&amp; strategy.<span class="hljs-property">strategy</span> === <span class="hljs-string">&#x27;high-bandwidth&#x27;</span>) {
+        optimized.<span class="hljs-property">prefetch</span>.<span class="hljs-title function_">push</span>({
+          <span class="hljs-attr">href</span>: resource.<span class="hljs-property">url</span>
+        });
+      }
+      
+      <span class="hljs-keyword">if</span> (resource.<span class="hljs-property">externalDomain</span>) {
+        <span class="hljs-keyword">if</span> (strategy.<span class="hljs-property">strategy</span> === <span class="hljs-string">&#x27;high-bandwidth&#x27;</span>) {
+          optimized.<span class="hljs-property">preconnect</span>.<span class="hljs-title function_">push</span>({
+            <span class="hljs-attr">href</span>: resource.<span class="hljs-property">domain</span>,
+            <span class="hljs-attr">crossorigin</span>: resource.<span class="hljs-property">crossorigin</span>
+          });
+        } <span class="hljs-keyword">else</span> {
+          optimized.<span class="hljs-property">dnsPrefetch</span>.<span class="hljs-title function_">push</span>({
+            <span class="hljs-attr">href</span>: resource.<span class="hljs-property">domain</span>
+          });
+        }
+      }
+    }
+
+    <span class="hljs-keyword">return</span> optimized;
+  }
+
+  <span class="hljs-comment">// HTTP/2 Push optimization</span>
+  <span class="hljs-keyword">static</span> <span class="hljs-title function_">optimizeHTTP2Push</span>(<span class="hljs-params">criticalResources, requestHistory = []</span>) {
+    <span class="hljs-keyword">const</span> pushCandidates = [];
+    <span class="hljs-keyword">const</span> requestMap = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Map</span>();
+    
+    <span class="hljs-comment">// Analyze request patterns</span>
+    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">const</span> request <span class="hljs-keyword">of</span> requestHistory) {
+      <span class="hljs-keyword">const</span> key = <span class="hljs-string">`<span class="hljs-subst">${request.url}</span>:<span class="hljs-subst">${request.referer}</span>`</span>;
+      <span class="hljs-keyword">if</span> (!requestMap.<span class="hljs-title function_">has</span>(key)) {
+        requestMap.<span class="hljs-title function_">set</span>(key, []);
+      }
+      requestMap.<span class="hljs-title function_">get</span>(key).<span class="hljs-title function_">push</span>(request.<span class="hljs-property">timestamp</span>);
+    }
+
+    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">const</span> resource <span class="hljs-keyword">of</span> criticalResources) {
+      <span class="hljs-keyword">const</span> score = <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">calculatePushScore</span>(resource, requestMap);
+      
+      <span class="hljs-keyword">if</span> (score &gt; <span class="hljs-number">0.7</span>) { <span class="hljs-comment">// High confidence threshold</span>
+        pushCandidates.<span class="hljs-title function_">push</span>({
+          ...resource,
+          <span class="hljs-attr">pushScore</span>: score,
+          <span class="hljs-attr">priority</span>: <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">getPushPriority</span>(resource)
+        });
+      }
+    }
+
+    <span class="hljs-comment">// Sort by priority and push score</span>
+    pushCandidates.<span class="hljs-title function_">sort</span>(<span class="hljs-function">(<span class="hljs-params">a, b</span>) =&gt;</span> {
+      <span class="hljs-keyword">if</span> (a.<span class="hljs-property">priority</span> !== b.<span class="hljs-property">priority</span>) {
+        <span class="hljs-keyword">return</span> b.<span class="hljs-property">priority</span> - a.<span class="hljs-property">priority</span>;
+      }
+      <span class="hljs-keyword">return</span> b.<span class="hljs-property">pushScore</span> - a.<span class="hljs-property">pushScore</span>;
+    });
+
+    <span class="hljs-keyword">return</span> pushCandidates.<span class="hljs-title function_">slice</span>(<span class="hljs-number">0</span>, <span class="hljs-number">6</span>); <span class="hljs-comment">// Limit to 6 resources</span>
+  }
+
+  <span class="hljs-keyword">static</span> <span class="hljs-title function_">calculatePushScore</span>(<span class="hljs-params">resource, requestMap</span>) {
+    <span class="hljs-keyword">const</span> key = <span class="hljs-string">`<span class="hljs-subst">${resource.url}</span>:<span class="hljs-subst">${resource.referer}</span>`</span>;
+    <span class="hljs-keyword">const</span> requests = requestMap.<span class="hljs-title function_">get</span>(key) || [];
+    
+    <span class="hljs-keyword">if</span> (requests.<span class="hljs-property">length</span> &lt; <span class="hljs-number">2</span>) <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+    
+    <span class="hljs-comment">// Calculate request frequency</span>
+    <span class="hljs-keyword">const</span> timeSpan = <span class="hljs-title class_">Math</span>.<span class="hljs-title function_">max</span>(...requests) - <span class="hljs-title class_">Math</span>.<span class="hljs-title function_">min</span>(...requests);
+    <span class="hljs-keyword">const</span> frequency = requests.<span class="hljs-property">length</span> / (timeSpan || <span class="hljs-number">1</span>);
+    
+    <span class="hljs-comment">// Calculate consistency (lower variance in timing = higher score)</span>
+    <span class="hljs-keyword">const</span> intervals = [];
+    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">1</span>; i &lt; requests.<span class="hljs-property">length</span>; i++) {
+      intervals.<span class="hljs-title function_">push</span>(requests[i] - requests[i - <span class="hljs-number">1</span>]);
+    }
+    
+    <span class="hljs-keyword">const</span> avgInterval = intervals.<span class="hljs-title function_">reduce</span>(<span class="hljs-function">(<span class="hljs-params">a, b</span>) =&gt;</span> a + b, <span class="hljs-number">0</span>) / intervals.<span class="hljs-property">length</span>;
+    <span class="hljs-keyword">const</span> variance = intervals.<span class="hljs-title function_">reduce</span>(<span class="hljs-function">(<span class="hljs-params">sum, interval</span>) =&gt;</span> {
+      <span class="hljs-keyword">return</span> sum + <span class="hljs-title class_">Math</span>.<span class="hljs-title function_">pow</span>(interval - avgInterval, <span class="hljs-number">2</span>);
+    }, <span class="hljs-number">0</span>) / intervals.<span class="hljs-property">length</span>;
+    
+    <span class="hljs-keyword">const</span> consistency = <span class="hljs-number">1</span> / (<span class="hljs-number">1</span> + <span class="hljs-title class_">Math</span>.<span class="hljs-title function_">sqrt</span>(variance) / avgInterval);
+    
+    <span class="hljs-keyword">return</span> <span class="hljs-title class_">Math</span>.<span class="hljs-title function_">min</span>(frequency * consistency, <span class="hljs-number">1</span>);
+  }
+
+  <span class="hljs-keyword">static</span> <span class="hljs-title function_">getPushPriority</span>(<span class="hljs-params">resource</span>) {
+    <span class="hljs-keyword">const</span> priorityMap = {
+      <span class="hljs-string">&#x27;script&#x27;</span>: <span class="hljs-number">3</span>,
+      <span class="hljs-string">&#x27;style&#x27;</span>: <span class="hljs-number">4</span>,
+      <span class="hljs-string">&#x27;font&#x27;</span>: <span class="hljs-number">2</span>,
+      <span class="hljs-string">&#x27;image&#x27;</span>: <span class="hljs-number">1</span>,
+      <span class="hljs-string">&#x27;document&#x27;</span>: <span class="hljs-number">5</span>
+    };
+    
+    <span class="hljs-keyword">return</span> priorityMap[resource.<span class="hljs-property">type</span>] || <span class="hljs-number">1</span>;
+  }
+
+  <span class="hljs-comment">// Service Worker caching strategy optimizer</span>
+  <span class="hljs-keyword">static</span> <span class="hljs-title function_">optimizeCachingStrategy</span>(<span class="hljs-params">resources, usage = {}</span>) {
+    <span class="hljs-keyword">const</span> strategies = {
+      <span class="hljs-attr">cacheFirst</span>: [],
+      <span class="hljs-attr">networkFirst</span>: [],
+      <span class="hljs-attr">staleWhileRevalidate</span>: [],
+      <span class="hljs-attr">networkOnly</span>: [],
+      <span class="hljs-attr">cacheOnly</span>: []
+    };
+
+    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">const</span> resource <span class="hljs-keyword">of</span> resources) {
+      <span class="hljs-keyword">const</span> strategy = <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">selectCachingStrategy</span>(resource, usage[resource.<span class="hljs-property">url</span>]);
+      strategies[strategy].<span class="hljs-title function_">push</span>(resource);
+    }
+
+    <span class="hljs-keyword">return</span> {
+      strategies,
+      <span class="hljs-attr">swConfig</span>: <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">generateSWConfig</span>(strategies)
+    };
+  }
+
+  <span class="hljs-keyword">static</span> <span class="hljs-title function_">selectCachingStrategy</span>(<span class="hljs-params">resource, usageStats = {}</span>) {
+    <span class="hljs-keyword">const</span> { updateFrequency = <span class="hljs-number">0</span>, accessFrequency = <span class="hljs-number">0</span>, size = <span class="hljs-number">0</span> } = usageStats;
+    
+    <span class="hljs-comment">// Static assets that rarely change</span>
+    <span class="hljs-keyword">if</span> (resource.<span class="hljs-property">type</span> === <span class="hljs-string">&#x27;font&#x27;</span> || resource.<span class="hljs-property">type</span> === <span class="hljs-string">&#x27;image&#x27;</span>) {
+      <span class="hljs-keyword">return</span> <span class="hljs-string">&#x27;cacheFirst&#x27;</span>;
+    }
+    
+    <span class="hljs-comment">// API responses that change frequently</span>
+    <span class="hljs-keyword">if</span> (resource.<span class="hljs-property">type</span> === <span class="hljs-string">&#x27;api&#x27;</span> &amp;&amp; updateFrequency &gt; <span class="hljs-number">0.8</span>) {
+      <span class="hljs-keyword">return</span> <span class="hljs-string">&#x27;networkFirst&#x27;</span>;
+    }
+    
+    <span class="hljs-comment">// Content that&#x27;s acceptable to be stale</span>
+    <span class="hljs-keyword">if</span> (resource.<span class="hljs-property">type</span> === <span class="hljs-string">&#x27;api&#x27;</span> &amp;&amp; updateFrequency &lt; <span class="hljs-number">0.3</span>) {
+      <span class="hljs-keyword">return</span> <span class="hljs-string">&#x27;staleWhileRevalidate&#x27;</span>;
+    }
+    
+    <span class="hljs-comment">// Large files accessed infrequently</span>
+    <span class="hljs-keyword">if</span> (size &gt; <span class="hljs-number">1000000</span> &amp;&amp; accessFrequency &lt; <span class="hljs-number">0.2</span>) {
+      <span class="hljs-keyword">return</span> <span class="hljs-string">&#x27;networkOnly&#x27;</span>;
+    }
+    
+    <span class="hljs-comment">// Default to network first for dynamic content</span>
+    <span class="hljs-keyword">return</span> <span class="hljs-string">&#x27;networkFirst&#x27;</span>;
+  }
+
+  <span class="hljs-keyword">static</span> <span class="hljs-title function_">generateSWConfig</span>(<span class="hljs-params">strategies</span>) {
+    <span class="hljs-keyword">const</span> config = {
+      <span class="hljs-attr">runtimeCaching</span>: []
+    };
+
+    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">const</span> [strategy, resources] <span class="hljs-keyword">of</span> <span class="hljs-title class_">Object</span>.<span class="hljs-title function_">entries</span>(strategies)) {
+      <span class="hljs-keyword">if</span> (resources.<span class="hljs-property">length</span> === <span class="hljs-number">0</span>) <span class="hljs-keyword">continue</span>;
+      
+      <span class="hljs-keyword">const</span> urlPatterns = resources.<span class="hljs-title function_">map</span>(<span class="hljs-function"><span class="hljs-params">r</span> =&gt;</span> r.<span class="hljs-property">pattern</span> || r.<span class="hljs-property">url</span>);
+      
+      config.<span class="hljs-property">runtimeCaching</span>.<span class="hljs-title function_">push</span>({
+        <span class="hljs-attr">urlPattern</span>: <span class="hljs-keyword">new</span> <span class="hljs-title class_">RegExp</span>(urlPatterns.<span class="hljs-title function_">join</span>(<span class="hljs-string">&#x27;|&#x27;</span>)),
+        <span class="hljs-attr">handler</span>: <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">strategyToHandler</span>(strategy),
+        <span class="hljs-attr">options</span>: <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">getStrategyOptions</span>(strategy, resources)
+      });
+    }
+
+    <span class="hljs-keyword">return</span> config;
+  }
+
+  <span class="hljs-keyword">static</span> <span class="hljs-title function_">strategyToHandler</span>(<span class="hljs-params">strategy</span>) {
+    <span class="hljs-keyword">const</span> handlerMap = {
+      <span class="hljs-attr">cacheFirst</span>: <span class="hljs-string">&#x27;CacheFirst&#x27;</span>,
+      <span class="hljs-attr">networkFirst</span>: <span class="hljs-string">&#x27;NetworkFirst&#x27;</span>,
+      <span class="hljs-attr">staleWhileRevalidate</span>: <span class="hljs-string">&#x27;StaleWhileRevalidate&#x27;</span>,
+      <span class="hljs-attr">networkOnly</span>: <span class="hljs-string">&#x27;NetworkOnly&#x27;</span>,
+      <span class="hljs-attr">cacheOnly</span>: <span class="hljs-string">&#x27;CacheOnly&#x27;</span>
+    };
+    
+    <span class="hljs-keyword">return</span> handlerMap[strategy];
+  }
+
+  <span class="hljs-keyword">static</span> <span class="hljs-title function_">getStrategyOptions</span>(<span class="hljs-params">strategy, resources</span>) {
+    <span class="hljs-keyword">const</span> options = {
+      <span class="hljs-attr">cacheName</span>: <span class="hljs-string">`<span class="hljs-subst">${strategy}</span>-cache`</span>,
+      <span class="hljs-attr">cacheKeyWillBeUsed</span>: <span class="hljs-function">(<span class="hljs-params">{ request }</span>) =&gt;</span> {
+        <span class="hljs-comment">// Custom cache key logic</span>
+        <span class="hljs-keyword">return</span> request.<span class="hljs-property">url</span>;
+      }
+    };
+
+    <span class="hljs-keyword">if</span> (strategy === <span class="hljs-string">&#x27;networkFirst&#x27;</span> || strategy === <span class="hljs-string">&#x27;staleWhileRevalidate&#x27;</span>) {
+      options.<span class="hljs-property">networkTimeoutSeconds</span> = <span class="hljs-number">3</span>;
+    }
+
+    <span class="hljs-keyword">if</span> (strategy === <span class="hljs-string">&#x27;cacheFirst&#x27;</span>) {
+      options.<span class="hljs-property">cacheableResponse</span> = {
+        <span class="hljs-attr">statuses</span>: [<span class="hljs-number">0</span>, <span class="hljs-number">200</span>]
+      };
+    }
+
+    <span class="hljs-comment">// Set expiration based on resource type</span>
+    <span class="hljs-keyword">const</span> maxAge = <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">getMaxAge</span>(resources);
+    <span class="hljs-keyword">if</span> (maxAge) {
+      options.<span class="hljs-property">expiration</span> = {
+        <span class="hljs-attr">maxAgeSeconds</span>: maxAge,
+        <span class="hljs-attr">maxEntries</span>: <span class="hljs-number">100</span>
+      };
+    }
+
+    <span class="hljs-keyword">return</span> options;
+  }
+
+  <span class="hljs-keyword">static</span> <span class="hljs-title function_">getMaxAge</span>(<span class="hljs-params">resources</span>) {
+    <span class="hljs-keyword">const</span> types = resources.<span class="hljs-title function_">map</span>(<span class="hljs-function"><span class="hljs-params">r</span> =&gt;</span> r.<span class="hljs-property">type</span>);
+    
+    <span class="hljs-keyword">if</span> (types.<span class="hljs-title function_">includes</span>(<span class="hljs-string">&#x27;font&#x27;</span>)) <span class="hljs-keyword">return</span> <span class="hljs-number">365</span> * <span class="hljs-number">24</span> * <span class="hljs-number">60</span> * <span class="hljs-number">60</span>; <span class="hljs-comment">// 1 year</span>
+    <span class="hljs-keyword">if</span> (types.<span class="hljs-title function_">includes</span>(<span class="hljs-string">&#x27;image&#x27;</span>)) <span class="hljs-keyword">return</span> <span class="hljs-number">30</span> * <span class="hljs-number">24</span> * <span class="hljs-number">60</span> * <span class="hljs-number">60</span>; <span class="hljs-comment">// 30 days</span>
+    <span class="hljs-keyword">if</span> (types.<span class="hljs-title function_">includes</span>(<span class="hljs-string">&#x27;style&#x27;</span>) || types.<span class="hljs-title function_">includes</span>(<span class="hljs-string">&#x27;script&#x27;</span>)) <span class="hljs-keyword">return</span> <span class="hljs-number">7</span> * <span class="hljs-number">24</span> * <span class="hljs-number">60</span> * <span class="hljs-number">60</span>; <span class="hljs-comment">// 7 days</span>
+    <span class="hljs-keyword">if</span> (types.<span class="hljs-title function_">includes</span>(<span class="hljs-string">&#x27;api&#x27;</span>)) <span class="hljs-keyword">return</span> <span class="hljs-number">60</span> * <span class="hljs-number">60</span>; <span class="hljs-comment">// 1 hour</span>
+    
+    <span class="hljs-keyword">return</span> <span class="hljs-number">24</span> * <span class="hljs-number">60</span> * <span class="hljs-number">60</span>; <span class="hljs-comment">// 1 day default</span>
+  }
+}
+</code></pre></pre>
+<p>This comprehensive networking and HTTP fundamentals guide provides the essential knowledge for building secure, performant, and reliable frontend applications that communicate effectively with backend services and handle various network conditions.</p></div></div></main><footer class="sc-hwHXyi fgAPRO"><div class="sc-ciCoXh bQkEEK"><div class="sc-jDJeIs lmmFoJ"><div class="sc-eEHciv bKIGXv"><div class="sc-KsiuK bMtRdQ"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-code "><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>Frontend Interview Prep</div><p class="sc-hqtLyI eRTluy">Comprehensive interview preparation for frontend engineers targeting Big Tech companies.</p><div class="sc-iVnIWt jlMcom"><a href="https://github.com" aria-label="GitHub"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-github "><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"></path><path d="M9 18c-4.51 2-5-2-7-2"></path></svg></a><a href="https://twitter.com" aria-label="Twitter"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-twitter "><path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"></path></svg></a><a href="https://linkedin.com" aria-label="LinkedIn"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-linkedin "><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect width="4" height="12" x="2" y="9"></rect><circle cx="4" cy="4" r="2"></circle></svg></a><a href="mailto:contact@example.com" aria-label="Email"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-mail "><rect width="20" height="16" x="2" y="4" rx="2"></rect><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path></svg></a></div></div><div class="sc-eEHciv bKIGXv"><h3>Study Materials</h3><ul><li><a href="/algorithms">Algorithms</a></li><li><a href="/react">React &amp; Frontend</a></li><li><a href="/system-design">System Design</a></li><li><a href="/typescript">TypeScript</a></li><li><a href="/performance">Performance</a></li></ul></div><div class="sc-eEHciv bKIGXv"><h3>Companies</h3><ul><li><a href="/google">Google</a></li><li><a href="/meta">Meta</a></li><li><a href="/amazon">Amazon</a></li><li><a href="/microsoft">Microsoft</a></li><li><a href="/apple">Apple</a></li></ul></div><div class="sc-eEHciv bKIGXv"><h3>Resources</h3><ul><li><a href="/interview-tips">Interview Tips</a></li><li><a href="/coding-challenges">Coding Challenges</a></li><li><a href="/mock-interviews">Mock Interviews</a></li><li><a href="/blog">Blog</a></li><li><a href="/faq">FAQ</a></li></ul></div></div><div class="sc-hWgKua fuxrZK"><p class="sc-jBaHRL fMpVBW">© 2025 Frontend Interview Prep. All rights reserved.</p><div class="sc-gFqXPY fyWnKB"><a href="/privacy">Privacy Policy</a><a href="/terms">Terms of Service</a><a href="/contact">Contact</a></div></div></div></footer></div><script src="/interview/_next/static/chunks/webpack-be7d7df45533bffc.js" async=""></script><script>(self.__next_f=self.__next_f||[]).push([0]);self.__next_f.push([2,null])</script><script>self.__next_f.push([1,"1:HL[\"/interview/_next/static/media/e4af272ccee01ff0-s.p.woff2\",\"font\",{\"crossOrigin\":\"\",\"type\":\"font/woff2\"}]\n2:HL[\"/interview/_next/static/css/387024c6a2216908.css\",\"style\"]\n"])</script><script>self.__next_f.push([1,"3:I[2846,[],\"\"]\n5:I[5907,[\"918\",\"static/chunks/918-3273b83890f10546.js\",\"930\",\"static/chunks/930-3262a6c9c5acace4.js\",\"687\",\"static/chunks/app/docs/%5B...slug%5D/page-32962e9542d32755.js\"],\"default\"]\n7:I[4707,[],\"\"]\n9:I[6423,[],\"\"]\na:I[2,[\"918\",\"static/chunks/918-3273b83890f10546.js\",\"710\",\"static/chunks/710-dfaa11b4dff08f8e.js\",\"972\",\"static/chunks/972-011bba60ed155615.js\",\"233\",\"static/chunks/233-3e0c1d820a17eca9.js\",\"185\",\"static/chunks/app/layout-333f4adcd11f8f39.js\"],\"default\",1]\nc:I[1060,[],\"\"]\n6:T935e,"])</script><script>self.__next_f.push([1,"# Networking \u0026 HTTP Fundamentals for Frontend\n\n## Overview\nUnderstanding networking and HTTP protocols is crucial for building efficient, secure, and scalable frontend applications. This guide covers essential networking concepts with practical implementations.\n\n---\n\n## HTTP Protocol Deep Dive\n\n### **HTTP Methods and Semantic Usage**\n\n{% raw %}\n```javascript\n// Comprehensive HTTP client with advanced features\nclass AdvancedHTTPClient {\n  constructor(options = {}) {\n    this.baseURL = options.baseURL || '';\n    this.defaultHeaders = options.headers || {};\n    this.timeout = options.timeout || 30000;\n    this.retryConfig = options.retry || { maxRetries: 3, backoffFactor: 2 };\n    this.interceptors = { request: [], response: [] };\n    this.cache = new Map();\n    this.abortControllers = new Map();\n  }\n\n  // HTTP GET with caching and conditional requests\n  async get(url, options = {}) {\n    const cacheKey = this.generateCacheKey('GET', url, options);\n    const cachedResponse = this.getFromCache(cacheKey);\n    \n    const headers = {\n      ...this.defaultHeaders,\n      ...options.headers\n    };\n\n    // Add conditional headers if cached response exists\n    if (cachedResponse) {\n      if (cachedResponse.etag) {\n        headers['If-None-Match'] = cachedResponse.etag;\n      }\n      if (cachedResponse.lastModified) {\n        headers['If-Modified-Since'] = cachedResponse.lastModified;\n      }\n    }\n\n    const response = await this.request('GET', url, { ...options, headers });\n    \n    // Handle 304 Not Modified\n    if (response.status === 304 \u0026\u0026 cachedResponse) {\n      return {\n        ...cachedResponse,\n        fromCache: true,\n        cacheHit: true\n      };\n    }\n\n    // Cache successful responses\n    if (response.ok) {\n      this.setCache(cacheKey, response);\n    }\n\n    return response;\n  }\n\n  // HTTP POST with request deduplication\n  async post(url, data, options = {}) {\n    const requestKey = this.generateRequestKey('POST', url, data);\n    \n    // Check for duplicate in-flight requests\n    if (this.abortControllers.has(requestKey)) {\n      throw new Error('Duplicate request in progress');\n    }\n\n    return this.request('POST', url, { ...options, body: data });\n  }\n\n  // HTTP PUT for idempotent updates\n  async put(url, data, options = {}) {\n    return this.request('PUT', url, { ...options, body: data });\n  }\n\n  // HTTP PATCH for partial updates\n  async patch(url, data, options = {}) {\n    const headers = {\n      'Content-Type': 'application/json-patch+json',\n      ...options.headers\n    };\n\n    // Support JSON Patch format\n    const patchData = Array.isArray(data) ? data : this.generateJsonPatch(data);\n    \n    return this.request('PATCH', url, { \n      ...options, \n      headers,\n      body: JSON.stringify(patchData)\n    });\n  }\n\n  // HTTP DELETE with confirmation\n  async delete(url, options = {}) {\n    return this.request('DELETE', url, options);\n  }\n\n  // HTTP HEAD for metadata only\n  async head(url, options = {}) {\n    return this.request('HEAD', url, options);\n  }\n\n  // HTTP OPTIONS for CORS preflight\n  async options(url, options = {}) {\n    return this.request('OPTIONS', url, options);\n  }\n\n  // Core request method with comprehensive error handling\n  async request(method, url, options = {}) {\n    const requestId = Math.random().toString(36).substr(2, 9);\n    const fullURL = this.resolveURL(url);\n    \n    let attempt = 0;\n    let lastError;\n\n    while (attempt \u003c= this.retryConfig.maxRetries) {\n      try {\n        const controller = new AbortController();\n        const requestKey = this.generateRequestKey(method, url, options.body);\n        this.abortControllers.set(requestKey, controller);\n\n        // Apply request interceptors\n        const processedOptions = await this.applyRequestInterceptors({\n          method,\n          url: fullURL,\n          ...options,\n          signal: controller.signal\n        });\n\n        // Set timeout\n        const timeoutId = setTimeout(() =\u003e {\n          controller.abort();\n        }, this.timeout);\n\n        try {\n          const response = await fetch(fullURL, processedOptions);\n          clearTimeout(timeoutId);\n          this.abortControllers.delete(requestKey);\n\n          // Apply response interceptors\n          const processedResponse = await this.applyResponseInterceptors(response);\n          \n          // Handle HTTP errors\n          if (!processedResponse.ok) {\n            throw new HTTPError(processedResponse);\n          }\n\n          return await this.parseResponse(processedResponse);\n        } catch (error) {\n          clearTimeout(timeoutId);\n          this.abortControllers.delete(requestKey);\n          throw error;\n        }\n\n      } catch (error) {\n        lastError = error;\n        \n        // Don't retry certain errors\n        if (this.isNonRetriableError(error) || attempt === this.retryConfig.maxRetries) {\n          throw error;\n        }\n\n        // Wait before retry with exponential backoff\n        const delay = Math.pow(this.retryConfig.backoffFactor, attempt) * 1000;\n        await this.delay(delay);\n        attempt++;\n      }\n    }\n\n    throw lastError;\n  }\n\n  // Request/Response interceptors\n  addRequestInterceptor(interceptor) {\n    this.interceptors.request.push(interceptor);\n  }\n\n  addResponseInterceptor(interceptor) {\n    this.interceptors.response.push(interceptor);\n  }\n\n  async applyRequestInterceptors(config) {\n    let processedConfig = { ...config };\n    \n    for (const interceptor of this.interceptors.request) {\n      processedConfig = await interceptor(processedConfig);\n    }\n    \n    return processedConfig;\n  }\n\n  async applyResponseInterceptors(response) {\n    let processedResponse = response;\n    \n    for (const interceptor of this.interceptors.response) {\n      processedResponse = await interceptor(processedResponse);\n    }\n    \n    return processedResponse;\n  }\n\n  // Advanced caching with TTL and size limits\n  setCache(key, response, ttl = 300000) { // 5 minutes default\n    const cacheEntry = {\n      data: response,\n      timestamp: Date.now(),\n      ttl,\n      etag: response.headers.get('etag'),\n      lastModified: response.headers.get('last-modified'),\n      size: this.estimateResponseSize(response)\n    };\n\n    this.cache.set(key, cacheEntry);\n    this.evictExpiredCache();\n    this.enforceMaxCacheSize();\n  }\n\n  getFromCache(key) {\n    const entry = this.cache.get(key);\n    \n    if (!entry) return null;\n    \n    // Check if expired\n    if (Date.now() - entry.timestamp \u003e entry.ttl) {\n      this.cache.delete(key);\n      return null;\n    }\n    \n    return entry.data;\n  }\n\n  evictExpiredCache() {\n    const now = Date.now();\n    for (const [key, entry] of this.cache) {\n      if (now - entry.timestamp \u003e entry.ttl) {\n        this.cache.delete(key);\n      }\n    }\n  }\n\n  enforceMaxCacheSize(maxSize = 50 * 1024 * 1024) { // 50MB default\n    let totalSize = 0;\n    const entries = Array.from(this.cache.entries());\n    \n    // Calculate total cache size\n    for (const [, entry] of entries) {\n      totalSize += entry.size;\n    }\n    \n    if (totalSize \u003e maxSize) {\n      // Sort by access time (LRU eviction)\n      entries.sort(([, a], [, b]) =\u003e a.timestamp - b.timestamp);\n      \n      // Remove oldest entries until under limit\n      for (const [key, entry] of entries) {\n        this.cache.delete(key);\n        totalSize -= entry.size;\n        if (totalSize \u003c= maxSize) break;\n      }\n    }\n  }\n\n  // Utility methods\n  generateCacheKey(method, url, options) {\n    const keyData = {\n      method,\n      url,\n      headers: options.headers,\n      searchParams: options.searchParams\n    };\n    return JSON.stringify(keyData);\n  }\n\n  generateRequestKey(method, url, body) {\n    return `${method}:${url}:${this.hashObject(body)}`;\n  }\n\n  hashObject(obj) {\n    if (!obj) return '';\n    return btoa(JSON.stringify(obj)).slice(0, 16);\n  }\n\n  resolveURL(url) {\n    if (url.startsWith('http')) return url;\n    return `${this.baseURL}${url}`;\n  }\n\n  generateJsonPatch(changes) {\n    const patches = [];\n    for (const [path, value] of Object.entries(changes)) {\n      patches.push({\n        op: 'replace',\n        path: `/${path}`,\n        value\n      });\n    }\n    return patches;\n  }\n\n  estimateResponseSize(response) {\n    const contentLength = response.headers.get('content-length');\n    return contentLength ? parseInt(contentLength) : 1024; // 1KB default estimate\n  }\n\n  isNonRetriableError(error) {\n    if (error instanceof HTTPError) {\n      const status = error.status;\n      // Don't retry client errors (4xx) except 429 (Too Many Requests)\n      return status \u003e= 400 \u0026\u0026 status \u003c 500 \u0026\u0026 status !== 429;\n    }\n    \n    // Don't retry abort errors\n    return error.name === 'AbortError';\n  }\n\n  async parseResponse(response) {\n    const contentType = response.headers.get('content-type') || '';\n    \n    const result = {\n      status: response.status,\n      statusText: response.statusText,\n      headers: Object.fromEntries(response.headers.entries()),\n      ok: response.ok\n    };\n\n    if (contentType.includes('application/json')) {\n      result.data = await response.json();\n    } else if (contentType.includes('text/')) {\n      result.data = await response.text();\n    } else if (contentType.includes('application/octet-stream')) {\n      result.data = await response.arrayBuffer();\n    } else {\n      result.data = await response.blob();\n    }\n\n    return result;\n  }\n\n  delay(ms) {\n    return new Promise(resolve =\u003e setTimeout(resolve, ms));\n  }\n\n  // Cancel all pending requests\n  cancelAllRequests() {\n    for (const controller of this.abortControllers.values()) {\n      controller.abort();\n    }\n    this.abortControllers.clear();\n  }\n\n  // Clear cache\n  clearCache() {\n    this.cache.clear();\n  }\n\n  // Get cache statistics\n  getCacheStats() {\n    let totalSize = 0;\n    let expiredCount = 0;\n    const now = Date.now();\n\n    for (const entry of this.cache.values()) {\n      totalSize += entry.size;\n      if (now - entry.timestamp \u003e entry.ttl) {\n        expiredCount++;\n      }\n    }\n\n    return {\n      totalEntries: this.cache.size,\n      totalSize,\n      expiredEntries: expiredCount,\n      hitRate: this.calculateHitRate()\n    };\n  }\n\n  calculateHitRate() {\n    // This would need to be tracked separately in a real implementation\n    return 0;\n  }\n}\n\n// Custom HTTP Error class\nclass HTTPError extends Error {\n  constructor(response) {\n    super(`HTTP ${response.status}: ${response.statusText}`);\n    this.name = 'HTTPError';\n    this.status = response.status;\n    this.statusText = response.statusText;\n    this.response = response;\n  }\n}\n```\n{% endraw %}\n\n---\n\n## Advanced Request/Response Handling\n\n### **WebSocket Implementation with Reconnection**\n\n```javascript\n// Robust WebSocket client with advanced features\nclass AdvancedWebSocket {\n  constructor(url, options = {}) {\n    this.url = url;\n    this.protocols = options.protocols;\n    this.reconnectAttempts = 0;\n    this.maxReconnectAttempts = options.maxReconnectAttempts || 10;\n    this.reconnectDelay = options.reconnectDelay || 1000;\n    this.maxReconnectDelay = options.maxReconnectDelay || 30000;\n    this.backoffFactor = options.backoffFactor || 1.5;\n    this.heartbeatInterval = options.heartbeatInterval || 30000;\n    this.messageQueue = [];\n    this.eventListeners = new Map();\n    this.isReconnecting = false;\n    this.shouldReconnect = true;\n    this.connectionId = null;\n    this.lastActivity = Date.now();\n    \n    this.connect();\n    this.startHeartbeat();\n  }\n\n  connect() {\n    try {\n      this.ws = new WebSocket(this.url, this.protocols);\n      this.setupEventHandlers();\n    } catch (error) {\n      this.handleConnectionError(error);\n    }\n  }\n\n  setupEventHandlers() {\n    this.ws.onopen = (event) =\u003e {\n      console.log('WebSocket connected');\n      this.reconnectAttempts = 0;\n      this.isReconnecting = false;\n      this.connectionId = this.generateConnectionId();\n      this.lastActivity = Date.now();\n      \n      // Send queued messages\n      this.flushMessageQueue();\n      \n      this.emit('open', event);\n    };\n\n    this.ws.onmessage = (event) =\u003e {\n      this.lastActivity = Date.now();\n      \n      try {\n        const data = JSON.parse(event.data);\n        this.handleMessage(data);\n      } catch (error) {\n        this.emit('message', { data: event.data, raw: true });\n      }\n    };\n\n    this.ws.onclose = (event) =\u003e {\n      console.log('WebSocket closed:', event.code, event.reason);\n      this.emit('close', event);\n      \n      if (this.shouldReconnect \u0026\u0026 !event.wasClean) {\n        this.handleReconnection();\n      }\n    };\n\n    this.ws.onerror = (error) =\u003e {\n      console.error('WebSocket error:', error);\n      this.emit('error', error);\n      this.handleConnectionError(error);\n    };\n  }\n\n  handleMessage(data) {\n    // Handle different message types\n    switch (data.type) {\n      case 'ping':\n        this.send({ type: 'pong', timestamp: Date.now() });\n        break;\n      case 'pong':\n        this.handlePong(data);\n        break;\n      case 'auth_required':\n        this.emit('auth_required', data);\n        break;\n      case 'auth_success':\n        this.emit('auth_success', data);\n        break;\n      case 'auth_failed':\n        this.emit('auth_failed', data);\n        break;\n      default:\n        this.emit('message', data);\n    }\n  }\n\n  handlePong(data) {\n    const latency = Date.now() - data.timestamp;\n    this.emit('latency', { latency, timestamp: data.timestamp });\n  }\n\n  send(data) {\n    const message = typeof data === 'string' ? data : JSON.stringify(data);\n    \n    if (this.ws.readyState === WebSocket.OPEN) {\n      this.ws.send(message);\n      this.lastActivity = Date.now();\n    } else {\n      // Queue message for later\n      this.messageQueue.push(message);\n    }\n  }\n\n  flushMessageQueue() {\n    while (this.messageQueue.length \u003e 0 \u0026\u0026 this.ws.readyState === WebSocket.OPEN) {\n      const message = this.messageQueue.shift();\n      this.ws.send(message);\n    }\n  }\n\n  handleReconnection() {\n    if (this.isReconnecting || this.reconnectAttempts \u003e= this.maxReconnectAttempts) {\n      return;\n    }\n\n    this.isReconnecting = true;\n    this.reconnectAttempts++;\n\n    const delay = Math.min(\n      this.reconnectDelay * Math.pow(this.backoffFactor, this.reconnectAttempts - 1),\n      this.maxReconnectDelay\n    );\n\n    console.log(`Reconnecting in ${delay}ms (attempt ${this.reconnectAttempts})`);\n    this.emit('reconnecting', { attempt: this.reconnectAttempts, delay });\n\n    setTimeout(() =\u003e {\n      if (this.shouldReconnect) {\n        this.connect();\n      }\n    }, delay);\n  }\n\n  handleConnectionError(error) {\n    if (this.shouldReconnect) {\n      this.handleReconnection();\n    }\n  }\n\n  startHeartbeat() {\n    this.heartbeatTimer = setInterval(() =\u003e {\n      if (this.ws.readyState === WebSocket.OPEN) {\n        const timeSinceLastActivity = Date.now() - this.lastActivity;\n        \n        if (timeSinceLastActivity \u003e this.heartbeatInterval) {\n          this.send({ type: 'ping', timestamp: Date.now() });\n        }\n      }\n    }, this.heartbeatInterval);\n  }\n\n  authenticate(credentials) {\n    this.send({\n      type: 'auth',\n      credentials,\n      connectionId: this.connectionId\n    });\n  }\n\n  subscribe(channel, params = {}) {\n    this.send({\n      type: 'subscribe',\n      channel,\n      params\n    });\n  }\n\n  unsubscribe(channel) {\n    this.send({\n      type: 'unsubscribe',\n      channel\n    });\n  }\n\n  // Event emitter functionality\n  on(event, listener) {\n    if (!this.eventListeners.has(event)) {\n      this.eventListeners.set(event, []);\n    }\n    this.eventListeners.get(event).push(listener);\n  }\n\n  off(event, listener) {\n    if (this.eventListeners.has(event)) {\n      const listeners = this.eventListeners.get(event);\n      const index = listeners.indexOf(listener);\n      if (index \u003e -1) {\n        listeners.splice(index, 1);\n      }\n    }\n  }\n\n  emit(event, data) {\n    if (this.eventListeners.has(event)) {\n      const listeners = this.eventListeners.get(event);\n      listeners.forEach(listener =\u003e {\n        try {\n          listener(data);\n        } catch (error) {\n          console.error('Error in event listener:', error);\n        }\n      });\n    }\n  }\n\n  close() {\n    this.shouldReconnect = false;\n    clearInterval(this.heartbeatTimer);\n    \n    if (this.ws) {\n      this.ws.close(1000, 'Client closing connection');\n    }\n  }\n\n  getConnectionState() {\n    return {\n      readyState: this.ws?.readyState,\n      connectionId: this.connectionId,\n      reconnectAttempts: this.reconnectAttempts,\n      isReconnecting: this.isReconnecting,\n      messageQueueLength: this.messageQueue.length,\n      lastActivity: this.lastActivity\n    };\n  }\n\n  generateConnectionId() {\n    return Math.random().toString(36).substr(2, 9) + Date.now().toString(36);\n  }\n}\n```\n\n---\n\n## Security and CORS\n\n### **Advanced CORS and Security Headers**\n\n```javascript\n// CORS and security utilities for frontend applications\nclass NetworkSecurity {\n  \n  // CORS preflight request analyzer\n  static async analyzeCORS(url, method = 'GET', headers = {}) {\n    const analysis = {\n      url,\n      method,\n      headers,\n      preflightRequired: false,\n      preflightResponse: null,\n      actualRequestAllowed: false,\n      corsHeaders: {},\n      securityHeaders: {},\n      warnings: [],\n      recommendations: []\n    };\n\n    // Check if preflight is required\n    analysis.preflightRequired = this.requiresPreflight(method, headers);\n\n    if (analysis.preflightRequired) {\n      try {\n        // Send OPTIONS request\n        const preflightResponse = await fetch(url, {\n          method: 'OPTIONS',\n          headers: {\n            'Origin': window.location.origin,\n            'Access-Control-Request-Method': method,\n            'Access-Control-Request-Headers': Object.keys(headers).join(', ')\n          }\n        });\n\n        analysis.preflightResponse = {\n          status: preflightResponse.status,\n          headers: Object.fromEntries(preflightResponse.headers.entries())\n        };\n\n        // Parse CORS headers\n        analysis.corsHeaders = this.parseCORSHeaders(preflightResponse.headers);\n        analysis.actualRequestAllowed = this.isRequestAllowed(\n          method, \n          headers, \n          analysis.corsHeaders\n        );\n\n      } catch (error) {\n        analysis.warnings.push(`Preflight request failed: ${error.message}`);\n      }\n    } else {\n      analysis.actualRequestAllowed = true;\n    }\n\n    // Security analysis\n    analysis.securityHeaders = this.analyzeSecurityHeaders(analysis.preflightResponse?.headers);\n    analysis.recommendations = this.generateSecurityRecommendations(analysis);\n\n    return analysis;\n  }\n\n  static requiresPreflight(method, headers) {\n    const simpleMethod = ['GET', 'HEAD', 'POST'].includes(method.toUpperCase());\n    \n    if (!simpleMethod) return true;\n\n    const simpleHeaders = [\n      'accept',\n      'accept-language',\n      'content-language',\n      'content-type'\n    ];\n\n    const hasComplexHeaders = Object.keys(headers).some(header =\u003e \n      !simpleHeaders.includes(header.toLowerCase())\n    );\n\n    if (hasComplexHeaders) return true;\n\n    const contentType = headers['content-type'] || headers['Content-Type'];\n    if (contentType) {\n      const simpleContentTypes = [\n        'application/x-www-form-urlencoded',\n        'multipart/form-data',\n        'text/plain'\n      ];\n      \n      const isSimpleContentType = simpleContentTypes.some(type =\u003e \n        contentType.includes(type)\n      );\n      \n      if (!isSimpleContentType) return true;\n    }\n\n    return false;\n  }\n\n  static parseCORSHeaders(headers) {\n    return {\n      allowOrigin: headers.get('access-control-allow-origin'),\n      allowMethods: headers.get('access-control-allow-methods')?.split(',').map(m =\u003e m.trim()),\n      allowHeaders: headers.get('access-control-allow-headers')?.split(',').map(h =\u003e h.trim()),\n      allowCredentials: headers.get('access-control-allow-credentials') === 'true',\n      exposeHeaders: headers.get('access-control-expose-headers')?.split(',').map(h =\u003e h.trim()),\n      maxAge: parseInt(headers.get('access-control-max-age')) || 0\n    };\n  }\n\n  static isRequestAllowed(method, headers, corsHeaders) {\n    // Check method\n    if (corsHeaders.allowMethods \u0026\u0026 !corsHeaders.allowMethods.includes(method)) {\n      return false;\n    }\n\n    // Check headers\n    if (corsHeaders.allowHeaders) {\n      const requestHeaders = Object.keys(headers).map(h =\u003e h.toLowerCase());\n      const allowedHeaders = corsHeaders.allowHeaders.map(h =\u003e h.toLowerCase());\n      \n      for (const header of requestHeaders) {\n        if (!allowedHeaders.includes(header)) {\n          return false;\n        }\n      }\n    }\n\n    return true;\n  }\n\n  static analyzeSecurityHeaders(headers) {\n    if (!headers) return {};\n\n    return {\n      contentSecurityPolicy: headers.get('content-security-policy'),\n      strictTransportSecurity: headers.get('strict-transport-security'),\n      xFrameOptions: headers.get('x-frame-options'),\n      xContentTypeOptions: headers.get('x-content-type-options'),\n      xXSSProtection: headers.get('x-xss-protection'),\n      referrerPolicy: headers.get('referrer-policy'),\n      permissionsPolicy: headers.get('permissions-policy'),\n      crossOriginEmbedderPolicy: headers.get('cross-origin-embedder-policy'),\n      crossOriginOpenerPolicy: headers.get('cross-origin-opener-policy'),\n      crossOriginResourcePolicy: headers.get('cross-origin-resource-policy')\n    };\n  }\n\n  static generateSecurityRecommendations(analysis) {\n    const recommendations = [];\n    const { securityHeaders, corsHeaders } = analysis;\n\n    // CORS recommendations\n    if (corsHeaders.allowOrigin === '*' \u0026\u0026 corsHeaders.allowCredentials) {\n      recommendations.push({\n        type: 'security',\n        severity: 'high',\n        message: 'Wildcard origin with credentials is not allowed'\n      });\n    }\n\n    if (corsHeaders.allowOrigin === '*') {\n      recommendations.push({\n        type: 'security',\n        severity: 'medium',\n        message: 'Consider restricting allowed origins instead of using wildcard'\n      });\n    }\n\n    // Security headers recommendations\n    if (!securityHeaders.contentSecurityPolicy) {\n      recommendations.push({\n        type: 'security',\n        severity: 'high',\n        message: 'Content Security Policy header is missing'\n      });\n    }\n\n    if (!securityHeaders.strictTransportSecurity) {\n      recommendations.push({\n        type: 'security',\n        severity: 'medium',\n        message: 'Strict Transport Security header is missing'\n      });\n    }\n\n    if (!securityHeaders.xFrameOptions) {\n      recommendations.push({\n        type: 'security',\n        severity: 'medium',\n        message: 'X-Frame-Options header is missing'\n      });\n    }\n\n    if (!securityHeaders.xContentTypeOptions) {\n      recommendations.push({\n        type: 'security',\n        severity: 'low',\n        message: 'X-Content-Type-Options header is missing'\n      });\n    }\n\n    return recommendations;\n  }\n\n  // Content Security Policy helper\n  static generateCSP(config = {}) {\n    const {\n      defaultSrc = [\"'self'\"],\n      scriptSrc = [\"'self'\"],\n      styleSrc = [\"'self'\", \"'unsafe-inline'\"],\n      imgSrc = [\"'self'\", 'data:', 'https:'],\n      fontSrc = [\"'self'\"],\n      connectSrc = [\"'self'\"],\n      objectSrc = [\"'none'\"],\n      mediaSrc = [\"'self'\"],\n      frameSrc = [\"'none'\"],\n      reportUri = null,\n      reportTo = null,\n      upgradeInsecureRequests = true\n    } = config;\n\n    const directives = [];\n\n    directives.push(`default-src ${defaultSrc.join(' ')}`);\n    directives.push(`script-src ${scriptSrc.join(' ')}`);\n    directives.push(`style-src ${styleSrc.join(' ')}`);\n    directives.push(`img-src ${imgSrc.join(' ')}`);\n    directives.push(`font-src ${fontSrc.join(' ')}`);\n    directives.push(`connect-src ${connectSrc.join(' ')}`);\n    directives.push(`object-src ${objectSrc.join(' ')}`);\n    directives.push(`media-src ${mediaSrc.join(' ')}`);\n    directives.push(`frame-src ${frameSrc.join(' ')}`);\n\n    if (upgradeInsecureRequests) {\n      directives.push('upgrade-insecure-requests');\n    }\n\n    if (reportUri) {\n      directives.push(`report-uri ${reportUri}`);\n    }\n\n    if (reportTo) {\n      directives.push(`report-to ${reportTo}`);\n    }\n\n    return directives.join('; ');\n  }\n\n  // Validate and sanitize URLs\n  static validateURL(url, allowedProtocols = ['http:', 'https:']) {\n    try {\n      const parsedURL = new URL(url);\n      \n      if (!allowedProtocols.includes(parsedURL.protocol)) {\n        throw new Error(`Protocol ${parsedURL.protocol} not allowed`);\n      }\n\n      // Check for dangerous patterns\n      const dangerousPatterns = [\n        /javascript:/i,\n        /data:/i,\n        /vbscript:/i,\n        /file:/i\n      ];\n\n      for (const pattern of dangerousPatterns) {\n        if (pattern.test(url)) {\n          throw new Error('URL contains dangerous pattern');\n        }\n      }\n\n      return {\n        isValid: true,\n        url: parsedURL.href,\n        protocol: parsedURL.protocol,\n        hostname: parsedURL.hostname,\n        pathname: parsedURL.pathname\n      };\n\n    } catch (error) {\n      return {\n        isValid: false,\n        error: error.message\n      };\n    }\n  }\n\n  // Request signing for API authentication\n  static signRequest(request, secret, algorithm = 'SHA-256') {\n    const { method, url, headers, body } = request;\n    \n    const timestamp = Date.now();\n    const nonce = Math.random().toString(36).substr(2, 16);\n    \n    const signaturePayload = [\n      method.toUpperCase(),\n      url,\n      timestamp,\n      nonce,\n      JSON.stringify(headers || {}),\n      body || ''\n    ].join('\\n');\n\n    return {\n      timestamp,\n      nonce,\n      signature: this.hmacSign(signaturePayload, secret, algorithm),\n      signatureMethod: algorithm\n    };\n  }\n\n  static async hmacSign(message, secret, algorithm) {\n    const encoder = new TextEncoder();\n    const key = await crypto.subtle.importKey(\n      'raw',\n      encoder.encode(secret),\n      { name: 'HMAC', hash: algorithm },\n      false,\n      ['sign']\n    );\n\n    const signature = await crypto.subtle.sign(\n      'HMAC',\n      key,\n      encoder.encode(message)\n    );\n\n    return Array.from(new Uint8Array(signature))\n      .map(b =\u003e b.toString(16).padStart(2, '0'))\n      .join('');\n  }\n\n  // Rate limiting client-side tracking\n  static createRateLimiter(windowMs = 60000, maxRequests = 100) {\n    const requests = [];\n    \n    return {\n      isAllowed() {\n        const now = Date.now();\n        \n        // Remove old requests outside the window\n        while (requests.length \u003e 0 \u0026\u0026 now - requests[0] \u003e windowMs) {\n          requests.shift();\n        }\n        \n        if (requests.length \u003e= maxRequests) {\n          return {\n            allowed: false,\n            retryAfter: Math.ceil((requests[0] + windowMs - now) / 1000)\n          };\n        }\n        \n        requests.push(now);\n        return {\n          allowed: true,\n          remaining: maxRequests - requests.length\n        };\n      },\n      \n      reset() {\n        requests.length = 0;\n      },\n      \n      getStatus() {\n        const now = Date.now();\n        const validRequests = requests.filter(time =\u003e now - time \u003c= windowMs);\n        \n        return {\n          requestCount: validRequests.length,\n          maxRequests,\n          windowMs,\n          resetTime: validRequests.length \u003e 0 ? validRequests[0] + windowMs : now\n        };\n      }\n    };\n  }\n}\n```\n\n---\n\n## Network Performance Optimization\n\n### **Connection Optimization Strategies**\n\n```javascript\n// Network performance optimization utilities\nclass NetworkOptimization {\n  \n  // Connection monitoring and optimization\n  static monitorConnection() {\n    const connection = navigator.connection || navigator.mozConnection || navigator.webkitConnection;\n    \n    if (!connection) {\n      return {\n        supported: false,\n        message: 'Network Information API not supported'\n      };\n    }\n\n    const monitor = {\n      supported: true,\n      current: this.getConnectionInfo(connection),\n      history: [],\n      listeners: [],\n      \n      onChange(callback) {\n        this.listeners.push(callback);\n        connection.addEventListener('change', () =\u003e {\n          const newInfo = NetworkOptimization.getConnectionInfo(connection);\n          this.history.push({\n            ...newInfo,\n            timestamp: Date.now()\n          });\n          callback(newInfo);\n        });\n      },\n      \n      getOptimizationStrategy() {\n        return NetworkOptimization.getOptimizationStrategy(this.current);\n      },\n      \n      shouldOptimizeForLowBandwidth() {\n        return this.current.effectiveType === 'slow-2g' || \n               this.current.effectiveType === '2g' ||\n               (this.current.downlink \u0026\u0026 this.current.downlink \u003c 1);\n      },\n      \n      shouldPreloadResources() {\n        return this.current.effectiveType === '4g' ||\n               (this.current.downlink \u0026\u0026 this.current.downlink \u003e 10);\n      }\n    };\n\n    return monitor;\n  }\n\n  static getConnectionInfo(connection) {\n    return {\n      effectiveType: connection.effectiveType,\n      downlink: connection.downlink,\n      downlinkMax: connection.downlinkMax,\n      rtt: connection.rtt,\n      saveData: connection.saveData,\n      type: connection.type\n    };\n  }\n\n  static getOptimizationStrategy(connectionInfo) {\n    const { effectiveType, downlink, saveData } = connectionInfo;\n    \n    if (saveData) {\n      return {\n        strategy: 'data-saver',\n        recommendations: [\n          'Enable aggressive compression',\n          'Reduce image quality',\n          'Minimize non-essential requests',\n          'Use text instead of images where possible'\n        ]\n      };\n    }\n\n    switch (effectiveType) {\n      case 'slow-2g':\n      case '2g':\n        return {\n          strategy: 'low-bandwidth',\n          recommendations: [\n            'Use critical CSS inline',\n            'Defer non-critical JavaScript',\n            'Compress all resources aggressively',\n            'Use WebP images with low quality',\n            'Implement aggressive caching'\n          ]\n        };\n      \n      case '3g':\n        return {\n          strategy: 'moderate-bandwidth',\n          recommendations: [\n            'Preload critical resources',\n            'Use responsive images',\n            'Enable resource hints',\n            'Implement smart bundling'\n          ]\n        };\n      \n      case '4g':\n        return {\n          strategy: 'high-bandwidth',\n          recommendations: [\n            'Preload next page resources',\n            'Use high-quality images',\n            'Enable speculative loading',\n            'Implement aggressive prefetching'\n          ]\n        };\n      \n      default:\n        return {\n          strategy: 'adaptive',\n          recommendations: [\n            'Monitor connection changes',\n            'Adapt strategy dynamically',\n            'Use progressive enhancement'\n          ]\n        };\n    }\n  }\n\n  // Resource hints optimization\n  static optimizeResourceHints(resources, connectionInfo) {\n    const optimized = {\n      preload: [],\n      prefetch: [],\n      preconnect: [],\n      dnsPrefetch: []\n    };\n\n    const strategy = this.getOptimizationStrategy(connectionInfo);\n    \n    for (const resource of resources) {\n      if (resource.critical \u0026\u0026 strategy.strategy !== 'low-bandwidth') {\n        optimized.preload.push({\n          href: resource.url,\n          as: resource.type,\n          crossorigin: resource.crossorigin\n        });\n      }\n      \n      if (resource.nextPage \u0026\u0026 strategy.strategy === 'high-bandwidth') {\n        optimized.prefetch.push({\n          href: resource.url\n        });\n      }\n      \n      if (resource.externalDomain) {\n        if (strategy.strategy === 'high-bandwidth') {\n          optimized.preconnect.push({\n            href: resource.domain,\n            crossorigin: resource.crossorigin\n          });\n        } else {\n          optimized.dnsPrefetch.push({\n            href: resource.domain\n          });\n        }\n      }\n    }\n\n    return optimized;\n  }\n\n  // HTTP/2 Push optimization\n  static optimizeHTTP2Push(criticalResources, requestHistory = []) {\n    const pushCandidates = [];\n    const requestMap = new Map();\n    \n    // Analyze request patterns\n    for (const request of requestHistory) {\n      const key = `${request.url}:${request.referer}`;\n      if (!requestMap.has(key)) {\n        requestMap.set(key, []);\n      }\n      requestMap.get(key).push(request.timestamp);\n    }\n\n    for (const resource of criticalResources) {\n      const score = this.calculatePushScore(resource, requestMap);\n      \n      if (score \u003e 0.7) { // High confidence threshold\n        pushCandidates.push({\n          ...resource,\n          pushScore: score,\n          priority: this.getPushPriority(resource)\n        });\n      }\n    }\n\n    // Sort by priority and push score\n    pushCandidates.sort((a, b) =\u003e {\n      if (a.priority !== b.priority) {\n        return b.priority - a.priority;\n      }\n      return b.pushScore - a.pushScore;\n    });\n\n    return pushCandidates.slice(0, 6); // Limit to 6 resources\n  }\n\n  static calculatePushScore(resource, requestMap) {\n    const key = `${resource.url}:${resource.referer}`;\n    const requests = requestMap.get(key) || [];\n    \n    if (requests.length \u003c 2) return 0;\n    \n    // Calculate request frequency\n    const timeSpan = Math.max(...requests) - Math.min(...requests);\n    const frequency = requests.length / (timeSpan || 1);\n    \n    // Calculate consistency (lower variance in timing = higher score)\n    const intervals = [];\n    for (let i = 1; i \u003c requests.length; i++) {\n      intervals.push(requests[i] - requests[i - 1]);\n    }\n    \n    const avgInterval = intervals.reduce((a, b) =\u003e a + b, 0) / intervals.length;\n    const variance = intervals.reduce((sum, interval) =\u003e {\n      return sum + Math.pow(interval - avgInterval, 2);\n    }, 0) / intervals.length;\n    \n    const consistency = 1 / (1 + Math.sqrt(variance) / avgInterval);\n    \n    return Math.min(frequency * consistency, 1);\n  }\n\n  static getPushPriority(resource) {\n    const priorityMap = {\n      'script': 3,\n      'style': 4,\n      'font': 2,\n      'image': 1,\n      'document': 5\n    };\n    \n    return priorityMap[resource.type] || 1;\n  }\n\n  // Service Worker caching strategy optimizer\n  static optimizeCachingStrategy(resources, usage = {}) {\n    const strategies = {\n      cacheFirst: [],\n      networkFirst: [],\n      staleWhileRevalidate: [],\n      networkOnly: [],\n      cacheOnly: []\n    };\n\n    for (const resource of resources) {\n      const strategy = this.selectCachingStrategy(resource, usage[resource.url]);\n      strategies[strategy].push(resource);\n    }\n\n    return {\n      strategies,\n      swConfig: this.generateSWConfig(strategies)\n    };\n  }\n\n  static selectCachingStrategy(resource, usageStats = {}) {\n    const { updateFrequency = 0, accessFrequency = 0, size = 0 } = usageStats;\n    \n    // Static assets that rarely change\n    if (resource.type === 'font' || resource.type === 'image') {\n      return 'cacheFirst';\n    }\n    \n    // API responses that change frequently\n    if (resource.type === 'api' \u0026\u0026 updateFrequency \u003e 0.8) {\n      return 'networkFirst';\n    }\n    \n    // Content that's acceptable to be stale\n    if (resource.type === 'api' \u0026\u0026 updateFrequency \u003c 0.3) {\n      return 'staleWhileRevalidate';\n    }\n    \n    // Large files accessed infrequently\n    if (size \u003e 1000000 \u0026\u0026 accessFrequency \u003c 0.2) {\n      return 'networkOnly';\n    }\n    \n    // Default to network first for dynamic content\n    return 'networkFirst';\n  }\n\n  static generateSWConfig(strategies) {\n    const config = {\n      runtimeCaching: []\n    };\n\n    for (const [strategy, resources] of Object.entries(strategies)) {\n      if (resources.length === 0) continue;\n      \n      const urlPatterns = resources.map(r =\u003e r.pattern || r.url);\n      \n      config.runtimeCaching.push({\n        urlPattern: new RegExp(urlPatterns.join('|')),\n        handler: this.strategyToHandler(strategy),\n        options: this.getStrategyOptions(strategy, resources)\n      });\n    }\n\n    return config;\n  }\n\n  static strategyToHandler(strategy) {\n    const handlerMap = {\n      cacheFirst: 'CacheFirst',\n      networkFirst: 'NetworkFirst',\n      staleWhileRevalidate: 'StaleWhileRevalidate',\n      networkOnly: 'NetworkOnly',\n      cacheOnly: 'CacheOnly'\n    };\n    \n    return handlerMap[strategy];\n  }\n\n  static getStrategyOptions(strategy, resources) {\n    const options = {\n      cacheName: `${strategy}-cache`,\n      cacheKeyWillBeUsed: ({ request }) =\u003e {\n        // Custom cache key logic\n        return request.url;\n      }\n    };\n\n    if (strategy === 'networkFirst' || strategy === 'staleWhileRevalidate') {\n      options.networkTimeoutSeconds = 3;\n    }\n\n    if (strategy === 'cacheFirst') {\n      options.cacheableResponse = {\n        statuses: [0, 200]\n      };\n    }\n\n    // Set expiration based on resource type\n    const maxAge = this.getMaxAge(resources);\n    if (maxAge) {\n      options.expiration = {\n        maxAgeSeconds: maxAge,\n        maxEntries: 100\n      };\n    }\n\n    return options;\n  }\n\n  static getMaxAge(resources) {\n    const types = resources.map(r =\u003e r.type);\n    \n    if (types.includes('font')) return 365 * 24 * 60 * 60; // 1 year\n    if (types.includes('image')) return 30 * 24 * 60 * 60; // 30 days\n    if (types.includes('style') || types.includes('script')) return 7 * 24 * 60 * 60; // 7 days\n    if (types.includes('api')) return 60 * 60; // 1 hour\n    \n    return 24 * 60 * 60; // 1 day default\n  }\n}\n```\n\nThis comprehensive networking and HTTP fundamentals guide provides the essential knowledge for building secure, performant, and reliable frontend applications that communicate effectively with backend services and handle various network conditions."])</script><script>self.__next_f.push([1,"8:[\"slug\",\"frontend/fundamentals/networking-http-fundamentals\",\"c\"]\nd:[]\n"])</script><script>self.__next_f.push([1,"0:[\"$\",\"$L3\",null,{\"buildId\":\"7uJ7BVaXJTiEOD9iYDv3n\",\"assetPrefix\":\"/interview\",\"urlParts\":[\"\",\"docs\",\"frontend\",\"fundamentals\",\"networking-http-fundamentals\"],\"initialTree\":[\"\",{\"children\":[\"docs\",{\"children\":[[\"slug\",\"frontend/fundamentals/networking-http-fundamentals\",\"c\"],{\"children\":[\"__PAGE__?{\\\"slug\\\":[\\\"frontend\\\",\\\"fundamentals\\\",\\\"networking-http-fundamentals\\\"]}\",{}]}]}]},\"$undefined\",\"$undefined\",true],\"initialSeedData\":[\"\",{\"children\":[\"docs\",{\"children\":[[\"slug\",\"frontend/fundamentals/networking-http-fundamentals\",\"c\"],{\"children\":[\"__PAGE__\",{},[[\"$L4\",[\"$\",\"div\",null,{\"style\":{\"maxWidth\":\"1200px\",\"margin\":\"0 auto\",\"padding\":\"2rem\",\"paddingTop\":\"6rem\"},\"children\":[[\"$\",\"div\",null,{\"style\":{\"marginBottom\":\"2rem\"},\"children\":[[\"$\",\"nav\",null,{\"style\":{\"color\":\"#64748b\",\"fontSize\":\"0.9rem\",\"marginBottom\":\"1rem\"},\"children\":[[\"$\",\"a\",null,{\"href\":\"/\",\"style\":{\"color\":\"#3b82f6\",\"textDecoration\":\"none\"},\"children\":\"Home\"}],\" \u003e \",[\"$\",\"span\",null,{\"children\":\"frontend \u003e fundamentals \u003e networking-http-fundamentals\"}]]}],[\"$\",\"h1\",null,{\"style\":{\"fontSize\":\"2.5rem\",\"fontWeight\":\"800\",\"marginBottom\":\"0.5rem\",\"color\":\"#1e293b\"},\"children\":\"Networking Http Fundamentals\"}],[\"$\",\"div\",null,{\"style\":{\"color\":\"#64748b\",\"fontSize\":\"0.9rem\",\"marginBottom\":\"2rem\"},\"children\":[[\"$\",\"span\",null,{\"children\":[\"📁 \",\"frontend/fundamentals/networking-http-fundamentals.md\"]}],\"$undefined\",\"$undefined\"]}]]}],[\"$\",\"$L5\",null,{\"content\":\"$6\"}]]}],null],null],null]},[null,[\"$\",\"$L7\",null,{\"parallelRouterKey\":\"children\",\"segmentPath\":[\"children\",\"docs\",\"children\",\"$8\",\"children\"],\"error\":\"$undefined\",\"errorStyles\":\"$undefined\",\"errorScripts\":\"$undefined\",\"template\":[\"$\",\"$L9\",null,{}],\"templateStyles\":\"$undefined\",\"templateScripts\":\"$undefined\",\"notFound\":\"$undefined\",\"notFoundStyles\":\"$undefined\"}]],null]},[null,[\"$\",\"$L7\",null,{\"parallelRouterKey\":\"children\",\"segmentPath\":[\"children\",\"docs\",\"children\"],\"error\":\"$undefined\",\"errorStyles\":\"$undefined\",\"errorScripts\":\"$undefined\",\"template\":[\"$\",\"$L9\",null,{}],\"templateStyles\":\"$undefined\",\"templateScripts\":\"$undefined\",\"notFound\":\"$undefined\",\"notFoundStyles\":\"$undefined\"}]],null]},[[[[\"$\",\"link\",\"0\",{\"rel\":\"stylesheet\",\"href\":\"/interview/_next/static/css/387024c6a2216908.css\",\"precedence\":\"next\",\"crossOrigin\":\"$undefined\"}]],[\"$\",\"$La\",null,{\"children\":[\"$\",\"$L7\",null,{\"parallelRouterKey\":\"children\",\"segmentPath\":[\"children\"],\"error\":\"$undefined\",\"errorStyles\":\"$undefined\",\"errorScripts\":\"$undefined\",\"template\":[\"$\",\"$L9\",null,{}],\"templateStyles\":\"$undefined\",\"templateScripts\":\"$undefined\",\"notFound\":[[\"$\",\"title\",null,{\"children\":\"404: This page could not be found.\"}],[\"$\",\"div\",null,{\"style\":{\"fontFamily\":\"system-ui,\\\"Segoe UI\\\",Roboto,Helvetica,Arial,sans-serif,\\\"Apple Color Emoji\\\",\\\"Segoe UI Emoji\\\"\",\"height\":\"100vh\",\"textAlign\":\"center\",\"display\":\"flex\",\"flexDirection\":\"column\",\"alignItems\":\"center\",\"justifyContent\":\"center\"},\"children\":[\"$\",\"div\",null,{\"children\":[[\"$\",\"style\",null,{\"dangerouslySetInnerHTML\":{\"__html\":\"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}\"}}],[\"$\",\"h1\",null,{\"className\":\"next-error-h1\",\"style\":{\"display\":\"inline-block\",\"margin\":\"0 20px 0 0\",\"padding\":\"0 23px 0 0\",\"fontSize\":24,\"fontWeight\":500,\"verticalAlign\":\"top\",\"lineHeight\":\"49px\"},\"children\":\"404\"}],[\"$\",\"div\",null,{\"style\":{\"display\":\"inline-block\"},\"children\":[\"$\",\"h2\",null,{\"style\":{\"fontSize\":14,\"fontWeight\":400,\"lineHeight\":\"49px\",\"margin\":0},\"children\":\"This page could not be found.\"}]}]]}]}]],\"notFoundStyles\":[]}],\"params\":{}}]],null],null],\"couldBeIntercepted\":false,\"initialHead\":[null,\"$Lb\"],\"globalErrorComponent\":\"$c\",\"missingSlots\":\"$Wd\"}]\n"])</script><script>self.__next_f.push([1,"b:[[\"$\",\"meta\",\"0\",{\"name\":\"viewport\",\"content\":\"width=device-width, initial-scale=1\"}],[\"$\",\"meta\",\"1\",{\"charSet\":\"utf-8\"}],[\"$\",\"title\",\"2\",{\"children\":\"Networking Http Fundamentals - Frontend Interview Docs\"}],[\"$\",\"meta\",\"3\",{\"name\":\"description\",\"content\":\"# Networking \u0026 HTTP Fundamentals for Frontend  ## Overview Understanding networking and HTTP protocols is crucial for building efficient, secure, and scalable f\"}],[\"$\",\"meta\",\"4\",{\"property\":\"og:title\",\"content\":\"Networking Http Fundamentals - Frontend Interview Docs\"}],[\"$\",\"meta\",\"5\",{\"property\":\"og:description\",\"content\":\"# Networking \u0026 HTTP Fundamentals for Frontend  ## Overview Understanding networking and HTTP protocols is crucial for building efficient, secure, and scalable f\"}],[\"$\",\"meta\",\"6\",{\"property\":\"og:type\",\"content\":\"article\"}],[\"$\",\"meta\",\"7\",{\"name\":\"twitter:card\",\"content\":\"summary\"}],[\"$\",\"meta\",\"8\",{\"name\":\"twitter:title\",\"content\":\"Networking Http Fundamentals - Frontend Interview Docs\"}],[\"$\",\"meta\",\"9\",{\"name\":\"twitter:description\",\"content\":\"# Networking \u0026 HTTP Fundamentals for Frontend  ## Overview Understanding networking and HTTP protocols is crucial for building efficient, secure, and scalable f\"}],[\"$\",\"meta\",\"10\",{\"name\":\"next-size-adjust\"}]]\n4:null\n"])</script></body></html>

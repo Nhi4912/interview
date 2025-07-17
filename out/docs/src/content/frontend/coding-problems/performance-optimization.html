@@ -1,0 +1,781 @@
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><meta name="viewport" content="width=device-width, initial-scale=1"/><link rel="preload" href="/interview/_next/static/media/e4af272ccee01ff0-s.p.woff2" as="font" crossorigin="" type="font/woff2"/><link rel="stylesheet" href="/interview/_next/static/css/387024c6a2216908.css" data-precedence="next"/><link rel="preload" as="script" fetchPriority="low" href="/interview/_next/static/chunks/webpack-be7d7df45533bffc.js"/><script src="/interview/_next/static/chunks/fd9d1056-6922f449a204c2cc.js" async=""></script><script src="/interview/_next/static/chunks/117-e7ecc085ce9cfab3.js" async=""></script><script src="/interview/_next/static/chunks/main-app-b06be5f3411c20c3.js" async=""></script><script src="/interview/_next/static/chunks/918-3273b83890f10546.js" async=""></script><script src="/interview/_next/static/chunks/930-3262a6c9c5acace4.js" async=""></script><script src="/interview/_next/static/chunks/app/docs/%5B...slug%5D/page-32962e9542d32755.js" async=""></script><script src="/interview/_next/static/chunks/710-dfaa11b4dff08f8e.js" async=""></script><script src="/interview/_next/static/chunks/972-011bba60ed155615.js" async=""></script><script src="/interview/_next/static/chunks/233-3e0c1d820a17eca9.js" async=""></script><script src="/interview/_next/static/chunks/app/layout-333f4adcd11f8f39.js" async=""></script><title>Frontend Interview Prep 2025 - Big Tech Interview Guide</title><meta name="description" content="Comprehensive frontend interview preparation for Big Tech companies including React, TypeScript, algorithms, and system design."/><link rel="icon" href="/favicon.ico"/><meta name="theme-color" content="#1a1a1a"/><meta property="og:title" content="Frontend Interview Prep 2025"/><meta property="og:description" content="Complete guide for frontend engineers targeting Big Tech companies"/><meta property="og:type" content="website"/><link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous"/><title>Performance Optimization - Frontend Interview Docs</title><meta name="description" content="# Frontend Performance Optimization Problems  ## Problem 1: Virtual Scrolling Implementation  ### Problem Description  Implement virtual scrolling for a large l"/><meta property="og:title" content="Performance Optimization - Frontend Interview Docs"/><meta property="og:description" content="# Frontend Performance Optimization Problems  ## Problem 1: Virtual Scrolling Implementation  ### Problem Description  Implement virtual scrolling for a large l"/><meta property="og:type" content="article"/><meta name="twitter:card" content="summary"/><meta name="twitter:title" content="Performance Optimization - Frontend Interview Docs"/><meta name="twitter:description" content="# Frontend Performance Optimization Problems  ## Problem 1: Virtual Scrolling Implementation  ### Problem Description  Implement virtual scrolling for a large l"/><meta name="next-size-adjust"/><script src="/interview/_next/static/chunks/polyfills-42372ed130431b0a.js" noModule=""></script><style data-styled="" data-styled-version="6.1.19">*{margin:0;padding:0;box-sizing:border-box;}/*!sc*/
+html{font-size:16px;line-height:1.5;scroll-behavior:smooth;}/*!sc*/
+body{font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;font-size:1rem;line-height:1.5;color:#1e293b;background-color:#ffffff;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;}/*!sc*/
+h1,h2,h3,h4,h5,h6{font-weight:700;line-height:1.25;margin-bottom:0.5em;}/*!sc*/
+h1{font-size:3rem;}/*!sc*/
+@media (max-width: 768px){h1{font-size:2.25rem;}}/*!sc*/
+h2{font-size:2.25rem;}/*!sc*/
+@media (max-width: 768px){h2{font-size:1.875rem;}}/*!sc*/
+h3{font-size:1.875rem;}/*!sc*/
+@media (max-width: 768px){h3{font-size:1.5rem;}}/*!sc*/
+h4{font-size:1.5rem;}/*!sc*/
+@media (max-width: 768px){h4{font-size:1.25rem;}}/*!sc*/
+h5{font-size:1.25rem;}/*!sc*/
+h6{font-size:1.125rem;}/*!sc*/
+p{margin-bottom:1rem;line-height:1.75;}/*!sc*/
+a{color:#3b82f6;text-decoration:none;transition:color 0.15s ease;}/*!sc*/
+a:hover{color:#2563eb;}/*!sc*/
+a:focus{outline:2px solid #3b82f6;outline-offset:2px;}/*!sc*/
+button{cursor:pointer;border:none;background:none;font-family:inherit;font-size:inherit;}/*!sc*/
+button:disabled{cursor:not-allowed;opacity:0.6;}/*!sc*/
+button:focus{outline:2px solid #3b82f6;outline-offset:2px;}/*!sc*/
+input,textarea,select{font-family:inherit;font-size:inherit;}/*!sc*/
+input:focus,textarea:focus,select:focus{outline:2px solid #3b82f6;outline-offset:2px;}/*!sc*/
+img{max-width:100%;height:auto;}/*!sc*/
+ul,ol{margin-bottom:1rem;padding-left:1.5rem;}/*!sc*/
+li{margin-bottom:0.25rem;}/*!sc*/
+blockquote{margin:1rem 0;padding:1rem;border-left:4px solid #3b82f6;background-color:#f1f5f9;font-style:italic;}/*!sc*/
+code{font-family:SFMono-Regular,Consolas,"Liberation Mono",Menlo,monospace;font-size:0.9em;background-color:#f1f5f9;padding:0.2em 0.4em;border-radius:0.25rem;}/*!sc*/
+pre{background-color:#f1f5f9;padding:1rem;border-radius:0.5rem;overflow-x:auto;margin-bottom:1rem;}/*!sc*/
+pre code{background:none;padding:0;}/*!sc*/
+table{width:100%;border-collapse:collapse;margin-bottom:1rem;}/*!sc*/
+th,td{padding:0.75rem;text-align:left;border-bottom:1px solid #e2e8f0;}/*!sc*/
+th{font-weight:600;background-color:#f1f5f9;}/*!sc*/
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0, 0, 0, 0);white-space:nowrap;border:0;}/*!sc*/
+.skip-link{position:absolute;top:-40px;left:6px;background:#3b82f6;color:white;padding:8px;text-decoration:none;border-radius:4px;z-index:100;}/*!sc*/
+.skip-link:focus{top:6px;}/*!sc*/
+::-webkit-scrollbar{width:8px;height:8px;}/*!sc*/
+::-webkit-scrollbar-track{background:#f1f5f9;}/*!sc*/
+::-webkit-scrollbar-thumb{background:#94a3b8;border-radius:4px;}/*!sc*/
+::-webkit-scrollbar-thumb:hover{background:#64748b;}/*!sc*/
+::selection{background:#3b82f6;color:white;}/*!sc*/
+.focus-visible{outline:2px solid #3b82f6;outline-offset:2px;}/*!sc*/
+.fade-in{opacity:0;animation:fadeIn 0.3s ease forwards;}/*!sc*/
+.slide-up{transform:translateY(20px);opacity:0;animation:slideUp 0.3s ease forwards;}/*!sc*/
+@keyframes fadeIn{to{opacity:1;}}/*!sc*/
+@keyframes slideUp{to{transform:translateY(0);opacity:1;}}/*!sc*/
+@media print{*{background:white!important;color:black!important;box-shadow:none!important;text-shadow:none!important;}a,a:visited{text-decoration:underline;}h1,h2,h3,h4,h5,h6{break-after:avoid;}pre,blockquote{border:1px solid #999;break-inside:avoid;}img{max-width:100%!important;}@page{margin:0.5in;}}/*!sc*/
+data-styled.g21[id="sc-global-kxA-Ddz1"]{content:"sc-global-kxA-Ddz1,"}/*!sc*/
+.iIQwfN{position:fixed;top:0;width:100%;z-index:1020;background:transparent;backdrop-filter:blur(10px);border-bottom:1px solid transparent;transition:all 0.3s ease;}/*!sc*/
+data-styled.g22[id="sc-gGKoUb"]{content:"iIQwfN,"}/*!sc*/
+.cEuiWg{max-width:1200px;margin:0 auto;padding:0 2rem;display:flex;align-items:center;justify-content:space-between;height:70px;}/*!sc*/
+data-styled.g23[id="sc-hwddKA"]{content:"cEuiWg,"}/*!sc*/
+.bqPomF{display:flex;align-items:center;gap:0.5rem;font-size:1.5rem;font-weight:700;color:#3b82f6;text-decoration:none;cursor:pointer;}/*!sc*/
+.bqPomF:hover{color:#2563eb;}/*!sc*/
+data-styled.g24[id="sc-jaXbil"]{content:"bqPomF,"}/*!sc*/
+.iwwpNe{display:flex;align-items:center;gap:2rem;}/*!sc*/
+@media (max-width: 768px){.iwwpNe{display:none;}}/*!sc*/
+data-styled.g25[id="sc-eqNDNG"]{content:"iwwpNe,"}/*!sc*/
+.iuGltB{color:#1e293b;font-weight:500;text-decoration:none;transition:color 0.15s ease;position:relative;}/*!sc*/
+.iuGltB:hover{color:#3b82f6;}/*!sc*/
+.iuGltB:after{content:'';position:absolute;bottom:-5px;left:0;width:0;height:2px;background:#3b82f6;transition:width 0.15s ease;}/*!sc*/
+.iuGltB:hover:after{width:100%;}/*!sc*/
+data-styled.g26[id="sc-fVHBlr"]{content:"iuGltB,"}/*!sc*/
+.lmsDAj{display:none;background:none;border:none;color:#1e293b;cursor:pointer;padding:0.5rem;}/*!sc*/
+@media (max-width: 768px){.lmsDAj{display:block;}}/*!sc*/
+data-styled.g27[id="sc-gLaqbQ"]{content:"lmsDAj,"}/*!sc*/
+.keTsRT{display:flex;align-items:center;gap:0.5rem;background:#f1f5f9;border:1px solid #e2e8f0;border-radius:0.5rem;padding:0.5rem 1rem;color:#64748b;font-size:0.9rem;transition:all 0.15s ease;}/*!sc*/
+.keTsRT:hover{background:#ffffff;border-color:#3b82f6;}/*!sc*/
+data-styled.g31[id="sc-cOpnSz"]{content:"keTsRT,"}/*!sc*/
+.hrfQfY{background:#1e293b;color:white;padding:3rem 0 1rem;margin-top:auto;}/*!sc*/
+data-styled.g32[id="sc-kjwdDK"]{content:"hrfQfY,"}/*!sc*/
+.dwFHjZ{max-width:1200px;margin:0 auto;padding:0 2rem;}/*!sc*/
+data-styled.g33[id="sc-eVqvcJ"]{content:"dwFHjZ,"}/*!sc*/
+.kWATso{display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:2rem;margin-bottom:2rem;}/*!sc*/
+@media (max-width: 768px){.kWATso{grid-template-columns:1fr 1fr;gap:1.5rem;}}/*!sc*/
+@media (max-width: 480px){.kWATso{grid-template-columns:1fr;}}/*!sc*/
+data-styled.g34[id="sc-bbbBoY"]{content:"kWATso,"}/*!sc*/
+.fBmmqS h3{font-size:1.1rem;font-weight:600;margin-bottom:1rem;color:white;}/*!sc*/
+.fBmmqS ul{list-style:none;padding:0;margin:0;}/*!sc*/
+.fBmmqS li{margin-bottom:0.5rem;}/*!sc*/
+.fBmmqS a{color:rgba(255, 255, 255, 0.7);text-decoration:none;transition:color 0.15s ease;}/*!sc*/
+.fBmmqS a:hover{color:white;}/*!sc*/
+data-styled.g35[id="sc-cdmAjP"]{content:"fBmmqS,"}/*!sc*/
+.iNKxsb{display:flex;align-items:center;gap:0.5rem;font-size:1.2rem;font-weight:700;margin-bottom:1rem;color:white;}/*!sc*/
+data-styled.g36[id="sc-jytpVa"]{content:"iNKxsb,"}/*!sc*/
+.fYhkiV{color:rgba(255, 255, 255, 0.7);line-height:1.6;margin-bottom:1rem;}/*!sc*/
+data-styled.g37[id="sc-eknHtZ"]{content:"fYhkiV,"}/*!sc*/
+.eVAQiq{display:flex;gap:1rem;}/*!sc*/
+.eVAQiq a{display:flex;align-items:center;justify-content:center;width:40px;height:40px;background:rgba(255, 255, 255, 0.1);border-radius:0.5rem;color:rgba(255, 255, 255, 0.7);transition:all 0.15s ease;}/*!sc*/
+.eVAQiq a:hover{background:rgba(255, 255, 255, 0.2);color:white;}/*!sc*/
+data-styled.g38[id="sc-pYNGo"]{content:"eVAQiq,"}/*!sc*/
+.fgJmHp{border-top:1px solid rgba(255, 255, 255, 0.1);padding-top:2rem;display:flex;justify-content:space-between;align-items:center;}/*!sc*/
+@media (max-width: 768px){.fgJmHp{flex-direction:column;gap:1rem;text-align:center;}}/*!sc*/
+data-styled.g39[id="sc-cCVJLD"]{content:"fgJmHp,"}/*!sc*/
+.gYGLHT{color:rgba(255, 255, 255, 0.7);margin:0;font-size:0.9rem;}/*!sc*/
+data-styled.g40[id="sc-jYczwO"]{content:"gYGLHT,"}/*!sc*/
+.ghBULZ{display:flex;gap:2rem;}/*!sc*/
+@media (max-width: 480px){.ghBULZ{flex-direction:column;gap:1rem;}}/*!sc*/
+.ghBULZ a{color:rgba(255, 255, 255, 0.7);text-decoration:none;font-size:0.9rem;transition:color 0.15s ease;}/*!sc*/
+.ghBULZ a:hover{color:white;}/*!sc*/
+data-styled.g41[id="sc-dNFkOE"]{content:"ghBULZ,"}/*!sc*/
+.fUIuKh{color:#1e293b;line-height:1.6;}/*!sc*/
+.fUIuKh h1,.fUIuKh h2,.fUIuKh h3,.fUIuKh h4,.fUIuKh h5,.fUIuKh h6{color:#1e293b;margin-top:2rem;margin-bottom:1rem;font-weight:600;}/*!sc*/
+.fUIuKh h1{font-size:2rem;border-bottom:2px solid #e2e8f0;padding-bottom:0.5rem;}/*!sc*/
+.fUIuKh h2{font-size:1.5rem;border-bottom:1px solid #e2e8f0;padding-bottom:0.3rem;}/*!sc*/
+.fUIuKh h3{font-size:1.25rem;}/*!sc*/
+.fUIuKh h4{font-size:1.1rem;}/*!sc*/
+.fUIuKh p{margin-bottom:1rem;color:#64748b;}/*!sc*/
+.fUIuKh a{color:#3b82f6;text-decoration:none;}/*!sc*/
+.fUIuKh a:hover{text-decoration:underline;}/*!sc*/
+.fUIuKh ul,.fUIuKh ol{margin-bottom:1rem;padding-left:1.5rem;}/*!sc*/
+.fUIuKh ul li,.fUIuKh ol li{margin-bottom:0.5rem;color:#64748b;}/*!sc*/
+.fUIuKh blockquote{border-left:4px solid #3b82f6;padding-left:1rem;margin:1rem 0;font-style:italic;color:#64748b;background:#f1f5f9;padding:1rem;border-radius:0.5rem;}/*!sc*/
+.fUIuKh code{background:#f1f5f9;padding:0.2rem 0.4rem;border-radius:0.25rem;font-family:SFMono-Regular,Consolas,"Liberation Mono",Menlo,monospace;font-size:0.9em;color:#f59e0b;}/*!sc*/
+.fUIuKh pre{background:#ffffff;border:1px solid #e2e8f0;border-radius:0.5rem;padding:1rem;margin:1rem 0;overflow-x:auto;}/*!sc*/
+.fUIuKh pre code{background:none;padding:0;color:#1e293b;font-size:0.9rem;}/*!sc*/
+.fUIuKh table{width:100%;border-collapse:collapse;margin:1rem 0;}/*!sc*/
+.fUIuKh table th,.fUIuKh table td{border:1px solid #e2e8f0;padding:0.5rem;text-align:left;}/*!sc*/
+.fUIuKh table th{background:#ffffff;font-weight:600;}/*!sc*/
+.fUIuKh table tr:nth-child(even){background:#f1f5f9;}/*!sc*/
+.fUIuKh hr{border:none;height:1px;background:#e2e8f0;margin:2rem 0;}/*!sc*/
+.fUIuKh .highlight{background:#3b82f620;padding:0.2rem 0.4rem;border-radius:0.25rem;font-weight:600;}/*!sc*/
+.fUIuKh .hljs{background:#ffffff;color:#1e293b;}/*!sc*/
+.fUIuKh .hljs-keyword{color:#3b82f6;font-weight:600;}/*!sc*/
+.fUIuKh .hljs-string{color:#10b981;}/*!sc*/
+.fUIuKh .hljs-function{color:#f59e0b;}/*!sc*/
+.fUIuKh .hljs-comment{color:#94a3b8;font-style:italic;}/*!sc*/
+.fUIuKh .hljs-number{color:#f59e0b;}/*!sc*/
+.fUIuKh .hljs-variable{color:#1e293b;}/*!sc*/
+.fUIuKh .hljs-title{color:#f59e0b;font-weight:600;}/*!sc*/
+data-styled.g42[id="sc-fszimp"]{content:"fUIuKh,"}/*!sc*/
+</style></head><body class="__className_6eac61"><div style="min-height:100vh;display:flex;flex-direction:column"><nav class="sc-gGKoUb iIQwfN"><div class="sc-hwddKA cEuiWg"><a href="/interview"><a class="sc-jaXbil bqPomF"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-code "><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>Frontend Interview Prep</a></a><div class="sc-eqNDNG iwwpNe"><a href="/interview/problems"><a class="sc-fVHBlr iuGltB">Problems</a></a><a href="/interview/learn"><a class="sc-fVHBlr iuGltB">Learn</a></a><a href="/interview/study-guide"><a class="sc-fVHBlr iuGltB">Study Guide</a></a><a href="/interview/system-design"><a class="sc-fVHBlr iuGltB">System Design</a></a><a href="/interview/performance"><a class="sc-fVHBlr iuGltB">Performance</a></a><a href="/interview/accessibility"><a class="sc-fVHBlr iuGltB">Accessibility</a></a><a href="/interview/interview-tips"><a class="sc-fVHBlr iuGltB">Interview Tips</a></a><button class="sc-cOpnSz keTsRT"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-search "><circle cx="11" cy="11" r="8"></circle><path d="m21 21-4.3-4.3"></path></svg>Search</button></div><button class="sc-gLaqbQ lmsDAj"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-menu "><line x1="4" x2="20" y1="12" y2="12"></line><line x1="4" x2="20" y1="6" y2="6"></line><line x1="4" x2="20" y1="18" y2="18"></line></svg></button></div></nav><main style="flex:1"><div style="max-width:1200px;margin:0 auto;padding:2rem;padding-top:6rem"><div style="margin-bottom:2rem"><nav style="color:#64748b;font-size:0.9rem;margin-bottom:1rem"><a href="/" style="color:#3b82f6;text-decoration:none">Home</a> &gt; <span>src &gt; content &gt; frontend &gt; coding-problems &gt; performance-optimization</span></nav><h1 style="font-size:2.5rem;font-weight:800;margin-bottom:0.5rem;color:#1e293b">Performance Optimization</h1><div style="color:#64748b;font-size:0.9rem;margin-bottom:2rem"><span>📁 <!-- -->src/content/frontend/coding-problems/performance-optimization.md</span></div></div><div class="sc-fszimp fUIuKh"><h1 id="frontend-performance-optimization-problems" node="[object Object]">Frontend Performance Optimization Problems</h1>
+<h2 id="problem-1:-virtual-scrolling-implementation" node="[object Object]">Problem 1: Virtual Scrolling Implementation</h2>
+<h3 id="problem-description" node="[object Object]">Problem Description</h3>
+<p>Implement virtual scrolling for a large list of items to improve performance.</p>
+<h3 id="requirements" node="[object Object]">Requirements</h3>
+<ul>
+<li>Handle thousands of items efficiently</li>
+<li>Maintain smooth scrolling</li>
+<li>Support dynamic item heights</li>
+<li>Implement proper recycling</li>
+<li>Handle scroll events optimally</li>
+</ul>
+<h3 id="solution" node="[object Object]">Solution</h3>
+<p>{% raw %}</p>
+<pre><pre><code class="hljs hljs language-javascript"><span class="hljs-keyword">class</span> <span class="hljs-title class_">VirtualScroller</span> {
+  <span class="hljs-title function_">constructor</span>(<span class="hljs-params">container, options = {}</span>) {
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">container</span> = container;
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">itemHeight</span> = options.<span class="hljs-property">itemHeight</span> || <span class="hljs-number">50</span>;
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">overscan</span> = options.<span class="hljs-property">overscan</span> || <span class="hljs-number">5</span>;
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">items</span> = [];
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">visibleItems</span> = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Map</span>();
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">scrollTop</span> = <span class="hljs-number">0</span>;
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">containerHeight</span> = <span class="hljs-number">0</span>;
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">totalHeight</span> = <span class="hljs-number">0</span>;
+
+    <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">init</span>();
+  }
+
+  <span class="hljs-title function_">init</span>(<span class="hljs-params"></span>) {
+    <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">setupContainer</span>();
+    <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">attachEventListeners</span>();
+    <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">updateDimensions</span>();
+  }
+
+  <span class="hljs-title function_">setupContainer</span>(<span class="hljs-params"></span>) {
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">container</span>.<span class="hljs-property">innerHTML</span> = <span class="hljs-string">`
+      &lt;div class=&quot;virtual-scroller&quot;&gt;
+        &lt;div class=&quot;virtual-scroller-content&quot;&gt;&lt;/div&gt;
+        &lt;div class=&quot;virtual-scroller-spacer&quot;&gt;&lt;/div&gt;
+      &lt;/div&gt;
+    `</span>;
+
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">content</span> = <span class="hljs-variable language_">this</span>.<span class="hljs-property">container</span>.<span class="hljs-title function_">querySelector</span>(<span class="hljs-string">&quot;.virtual-scroller-content&quot;</span>);
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">spacer</span> = <span class="hljs-variable language_">this</span>.<span class="hljs-property">container</span>.<span class="hljs-title function_">querySelector</span>(<span class="hljs-string">&quot;.virtual-scroller-spacer&quot;</span>);
+  }
+
+  <span class="hljs-title function_">attachEventListeners</span>(<span class="hljs-params"></span>) {
+    <span class="hljs-keyword">let</span> ticking = <span class="hljs-literal">false</span>;
+
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">container</span>.<span class="hljs-title function_">addEventListener</span>(<span class="hljs-string">&quot;scroll&quot;</span>, <span class="hljs-function">() =&gt;</span> {
+      <span class="hljs-keyword">if</span> (!ticking) {
+        <span class="hljs-title function_">requestAnimationFrame</span>(<span class="hljs-function">() =&gt;</span> {
+          <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">handleScroll</span>();
+          ticking = <span class="hljs-literal">false</span>;
+        });
+        ticking = <span class="hljs-literal">true</span>;
+      }
+    });
+
+    <span class="hljs-variable language_">window</span>.<span class="hljs-title function_">addEventListener</span>(<span class="hljs-string">&quot;resize&quot;</span>, <span class="hljs-function">() =&gt;</span> {
+      <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">updateDimensions</span>();
+      <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">render</span>();
+    });
+  }
+
+  <span class="hljs-title function_">handleScroll</span>(<span class="hljs-params"></span>) {
+    <span class="hljs-keyword">const</span> newScrollTop = <span class="hljs-variable language_">this</span>.<span class="hljs-property">container</span>.<span class="hljs-property">scrollTop</span>;
+    <span class="hljs-keyword">if</span> (<span class="hljs-title class_">Math</span>.<span class="hljs-title function_">abs</span>(newScrollTop - <span class="hljs-variable language_">this</span>.<span class="hljs-property">scrollTop</span>) &gt; <span class="hljs-variable language_">this</span>.<span class="hljs-property">itemHeight</span> / <span class="hljs-number">2</span>) {
+      <span class="hljs-variable language_">this</span>.<span class="hljs-property">scrollTop</span> = newScrollTop;
+      <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">render</span>();
+    }
+  }
+
+  <span class="hljs-title function_">updateDimensions</span>(<span class="hljs-params"></span>) {
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">containerHeight</span> = <span class="hljs-variable language_">this</span>.<span class="hljs-property">container</span>.<span class="hljs-property">clientHeight</span>;
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">totalHeight</span> = <span class="hljs-variable language_">this</span>.<span class="hljs-property">items</span>.<span class="hljs-property">length</span> * <span class="hljs-variable language_">this</span>.<span class="hljs-property">itemHeight</span>;
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">spacer</span>.<span class="hljs-property">style</span>.<span class="hljs-property">height</span> = <span class="hljs-string">`<span class="hljs-subst">${<span class="hljs-variable language_">this</span>.totalHeight}</span>px`</span>;
+  }
+
+  <span class="hljs-title function_">setItems</span>(<span class="hljs-params">items</span>) {
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">items</span> = items;
+    <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">updateDimensions</span>();
+    <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">render</span>();
+  }
+
+  <span class="hljs-title function_">render</span>(<span class="hljs-params"></span>) {
+    <span class="hljs-keyword">const</span> startIndex = <span class="hljs-title class_">Math</span>.<span class="hljs-title function_">floor</span>(<span class="hljs-variable language_">this</span>.<span class="hljs-property">scrollTop</span> / <span class="hljs-variable language_">this</span>.<span class="hljs-property">itemHeight</span>);
+    <span class="hljs-keyword">const</span> endIndex = <span class="hljs-title class_">Math</span>.<span class="hljs-title function_">min</span>(
+      startIndex +
+        <span class="hljs-title class_">Math</span>.<span class="hljs-title function_">ceil</span>(<span class="hljs-variable language_">this</span>.<span class="hljs-property">containerHeight</span> / <span class="hljs-variable language_">this</span>.<span class="hljs-property">itemHeight</span>) +
+        <span class="hljs-variable language_">this</span>.<span class="hljs-property">overscan</span>,
+      <span class="hljs-variable language_">this</span>.<span class="hljs-property">items</span>.<span class="hljs-property">length</span>
+    );
+
+    <span class="hljs-keyword">const</span> startIndexWithOverscan = <span class="hljs-title class_">Math</span>.<span class="hljs-title function_">max</span>(<span class="hljs-number">0</span>, startIndex - <span class="hljs-variable language_">this</span>.<span class="hljs-property">overscan</span>);
+    <span class="hljs-keyword">const</span> endIndexWithOverscan = <span class="hljs-title class_">Math</span>.<span class="hljs-title function_">min</span>(
+      <span class="hljs-variable language_">this</span>.<span class="hljs-property">items</span>.<span class="hljs-property">length</span>,
+      endIndex + <span class="hljs-variable language_">this</span>.<span class="hljs-property">overscan</span>
+    );
+
+    <span class="hljs-comment">// Remove items that are no longer visible</span>
+    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">const</span> [index, element] <span class="hljs-keyword">of</span> <span class="hljs-variable language_">this</span>.<span class="hljs-property">visibleItems</span>) {
+      <span class="hljs-keyword">if</span> (index &lt; startIndexWithOverscan || index &gt;= endIndexWithOverscan) {
+        element.<span class="hljs-title function_">remove</span>();
+        <span class="hljs-variable language_">this</span>.<span class="hljs-property">visibleItems</span>.<span class="hljs-title function_">delete</span>(index);
+      }
+    }
+
+    <span class="hljs-comment">// Add new visible items</span>
+    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = startIndexWithOverscan; i &lt; endIndexWithOverscan; i++) {
+      <span class="hljs-keyword">if</span> (!<span class="hljs-variable language_">this</span>.<span class="hljs-property">visibleItems</span>.<span class="hljs-title function_">has</span>(i)) {
+        <span class="hljs-keyword">const</span> element = <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">renderItem</span>(<span class="hljs-variable language_">this</span>.<span class="hljs-property">items</span>[i], i);
+        element.<span class="hljs-property">style</span>.<span class="hljs-property">position</span> = <span class="hljs-string">&quot;absolute&quot;</span>;
+        element.<span class="hljs-property">style</span>.<span class="hljs-property">top</span> = <span class="hljs-string">`<span class="hljs-subst">${i * <span class="hljs-variable language_">this</span>.itemHeight}</span>px`</span>;
+        element.<span class="hljs-property">style</span>.<span class="hljs-property">width</span> = <span class="hljs-string">&quot;100%&quot;</span>;
+        element.<span class="hljs-property">style</span>.<span class="hljs-property">height</span> = <span class="hljs-string">`<span class="hljs-subst">${<span class="hljs-variable language_">this</span>.itemHeight}</span>px`</span>;
+
+        <span class="hljs-variable language_">this</span>.<span class="hljs-property">content</span>.<span class="hljs-title function_">appendChild</span>(element);
+        <span class="hljs-variable language_">this</span>.<span class="hljs-property">visibleItems</span>.<span class="hljs-title function_">set</span>(i, element);
+      }
+    }
+  }
+
+  <span class="hljs-title function_">renderItem</span>(<span class="hljs-params">item, index</span>) {
+    <span class="hljs-keyword">const</span> element = <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">createElement</span>(<span class="hljs-string">&quot;div&quot;</span>);
+    element.<span class="hljs-property">className</span> = <span class="hljs-string">&quot;virtual-item&quot;</span>;
+    element.<span class="hljs-property">innerHTML</span> = <span class="hljs-string">`
+      &lt;div class=&quot;item-content&quot;&gt;
+        &lt;span class=&quot;item-index&quot;&gt;<span class="hljs-subst">${index + <span class="hljs-number">1</span>}</span>&lt;/span&gt;
+        &lt;span class=&quot;item-text&quot;&gt;<span class="hljs-subst">${item.text}</span>&lt;/span&gt;
+      &lt;/div&gt;
+    `</span>;
+    <span class="hljs-keyword">return</span> element;
+  }
+
+  <span class="hljs-title function_">scrollToIndex</span>(<span class="hljs-params">index</span>) {
+    <span class="hljs-keyword">const</span> scrollTop = index * <span class="hljs-variable language_">this</span>.<span class="hljs-property">itemHeight</span>;
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">container</span>.<span class="hljs-property">scrollTop</span> = scrollTop;
+  }
+
+  <span class="hljs-title function_">getVisibleRange</span>(<span class="hljs-params"></span>) {
+    <span class="hljs-keyword">const</span> startIndex = <span class="hljs-title class_">Math</span>.<span class="hljs-title function_">floor</span>(<span class="hljs-variable language_">this</span>.<span class="hljs-property">scrollTop</span> / <span class="hljs-variable language_">this</span>.<span class="hljs-property">itemHeight</span>);
+    <span class="hljs-keyword">const</span> endIndex = <span class="hljs-title class_">Math</span>.<span class="hljs-title function_">min</span>(
+      startIndex + <span class="hljs-title class_">Math</span>.<span class="hljs-title function_">ceil</span>(<span class="hljs-variable language_">this</span>.<span class="hljs-property">containerHeight</span> / <span class="hljs-variable language_">this</span>.<span class="hljs-property">itemHeight</span>),
+      <span class="hljs-variable language_">this</span>.<span class="hljs-property">items</span>.<span class="hljs-property">length</span>
+    );
+    <span class="hljs-keyword">return</span> { startIndex, endIndex };
+  }
+}
+
+<span class="hljs-comment">// Usage</span>
+<span class="hljs-keyword">const</span> container = <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">getElementById</span>(<span class="hljs-string">&quot;virtual-scroll-container&quot;</span>);
+<span class="hljs-keyword">const</span> virtualScroller = <span class="hljs-keyword">new</span> <span class="hljs-title class_">VirtualScroller</span>(container, {
+  <span class="hljs-attr">itemHeight</span>: <span class="hljs-number">60</span>,
+  <span class="hljs-attr">overscan</span>: <span class="hljs-number">10</span>,
+});
+
+<span class="hljs-comment">// Generate large dataset</span>
+<span class="hljs-keyword">const</span> items = <span class="hljs-title class_">Array</span>.<span class="hljs-title function_">from</span>({ <span class="hljs-attr">length</span>: <span class="hljs-number">10000</span> }, <span class="hljs-function">(<span class="hljs-params">_, i</span>) =&gt;</span> ({
+  <span class="hljs-attr">id</span>: i,
+  <span class="hljs-attr">text</span>: <span class="hljs-string">`Item <span class="hljs-subst">${
+    i + <span class="hljs-number">1</span>
+  }</span> - Lorem ipsum dolor sit amet, consectetur adipiscing elit.`</span>,
+}));
+
+virtualScroller.<span class="hljs-title function_">setItems</span>(items);
+</code></pre></pre>
+<p>{% endraw %}</p>
+<pre><pre><code class="hljs hljs language-css"><span class="hljs-selector-class">.virtual-scroller</span> {
+  <span class="hljs-attribute">position</span>: relative;
+  <span class="hljs-attribute">height</span>: <span class="hljs-number">100%</span>;
+  <span class="hljs-attribute">overflow</span>: hidden;
+}
+
+<span class="hljs-selector-class">.virtual-scroller-content</span> {
+  <span class="hljs-attribute">position</span>: relative;
+  <span class="hljs-attribute">width</span>: <span class="hljs-number">100%</span>;
+}
+
+<span class="hljs-selector-class">.virtual-scroller-spacer</span> {
+  <span class="hljs-attribute">width</span>: <span class="hljs-number">100%</span>;
+}
+
+<span class="hljs-selector-class">.virtual-item</span> {
+  <span class="hljs-attribute">border-bottom</span>: <span class="hljs-number">1px</span> solid <span class="hljs-number">#eee</span>;
+  <span class="hljs-attribute">background</span>: white;
+  <span class="hljs-attribute">transition</span>: background-color <span class="hljs-number">0.2s</span>;
+}
+
+<span class="hljs-selector-class">.virtual-item</span><span class="hljs-selector-pseudo">:hover</span> {
+  <span class="hljs-attribute">background-color</span>: <span class="hljs-number">#f8f9fa</span>;
+}
+
+<span class="hljs-selector-class">.item-content</span> {
+  <span class="hljs-attribute">padding</span>: <span class="hljs-number">16px</span>;
+  <span class="hljs-attribute">display</span>: flex;
+  <span class="hljs-attribute">align-items</span>: center;
+  <span class="hljs-attribute">gap</span>: <span class="hljs-number">12px</span>;
+}
+
+<span class="hljs-selector-class">.item-index</span> {
+  <span class="hljs-attribute">font-weight</span>: <span class="hljs-number">600</span>;
+  <span class="hljs-attribute">color</span>: <span class="hljs-number">#007bff</span>;
+  <span class="hljs-attribute">min-width</span>: <span class="hljs-number">40px</span>;
+}
+
+<span class="hljs-selector-class">.item-text</span> {
+  <span class="hljs-attribute">color</span>: <span class="hljs-number">#333</span>;
+  <span class="hljs-attribute">line-height</span>: <span class="hljs-number">1.4</span>;
+}
+</code></pre></pre>
+<h2 id="problem-2:-image-lazy-loading" node="[object Object]">Problem 2: Image Lazy Loading</h2>
+<h3 id="problem-description" node="[object Object]">Problem Description</h3>
+<p>Implement efficient lazy loading for images with intersection observer.</p>
+<h3 id="requirements" node="[object Object]">Requirements</h3>
+<ul>
+<li>Load images only when they&#x27;re about to enter viewport</li>
+<li>Support multiple image formats</li>
+<li>Handle loading states</li>
+<li>Implement error handling</li>
+<li>Support responsive images</li>
+</ul>
+<h3 id="solution" node="[object Object]">Solution</h3>
+<pre><pre><code class="hljs hljs language-javascript"><span class="hljs-keyword">class</span> <span class="hljs-title class_">LazyImageLoader</span> {
+  <span class="hljs-title function_">constructor</span>(<span class="hljs-params">options = {}</span>) {
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">options</span> = {
+      <span class="hljs-attr">rootMargin</span>: <span class="hljs-string">&quot;50px&quot;</span>,
+      <span class="hljs-attr">threshold</span>: <span class="hljs-number">0.1</span>,
+      <span class="hljs-attr">placeholder</span>:
+        <span class="hljs-string">&quot;data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgZmlsbD0iI2Y4ZjlmYSIvPjwvc3ZnPg==&quot;</span>,
+      ...options,
+    };
+
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">observer</span> = <span class="hljs-literal">null</span>;
+    <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">init</span>();
+  }
+
+  <span class="hljs-title function_">init</span>(<span class="hljs-params"></span>) {
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">observer</span> = <span class="hljs-keyword">new</span> <span class="hljs-title class_">IntersectionObserver</span>(
+      <span class="hljs-variable language_">this</span>.<span class="hljs-property">handleIntersection</span>.<span class="hljs-title function_">bind</span>(<span class="hljs-variable language_">this</span>),
+      <span class="hljs-variable language_">this</span>.<span class="hljs-property">options</span>
+    );
+  }
+
+  <span class="hljs-title function_">handleIntersection</span>(<span class="hljs-params">entries</span>) {
+    entries.<span class="hljs-title function_">forEach</span>(<span class="hljs-function">(<span class="hljs-params">entry</span>) =&gt;</span> {
+      <span class="hljs-keyword">if</span> (entry.<span class="hljs-property">isIntersecting</span>) {
+        <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">loadImage</span>(entry.<span class="hljs-property">target</span>);
+        <span class="hljs-variable language_">this</span>.<span class="hljs-property">observer</span>.<span class="hljs-title function_">unobserve</span>(entry.<span class="hljs-property">target</span>);
+      }
+    });
+  }
+
+  <span class="hljs-title function_">loadImage</span>(<span class="hljs-params">imgElement</span>) {
+    <span class="hljs-keyword">const</span> src = imgElement.<span class="hljs-property">dataset</span>.<span class="hljs-property">src</span>;
+    <span class="hljs-keyword">const</span> srcset = imgElement.<span class="hljs-property">dataset</span>.<span class="hljs-property">srcset</span>;
+
+    <span class="hljs-keyword">if</span> (!src) <span class="hljs-keyword">return</span>;
+
+    <span class="hljs-comment">// Create a new image to preload</span>
+    <span class="hljs-keyword">const</span> tempImage = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Image</span>();
+
+    tempImage.<span class="hljs-property">onload</span> = <span class="hljs-function">() =&gt;</span> {
+      imgElement.<span class="hljs-property">src</span> = src;
+      <span class="hljs-keyword">if</span> (srcset) {
+        imgElement.<span class="hljs-property">srcset</span> = srcset;
+      }
+      imgElement.<span class="hljs-property">classList</span>.<span class="hljs-title function_">remove</span>(<span class="hljs-string">&quot;lazy&quot;</span>);
+      imgElement.<span class="hljs-property">classList</span>.<span class="hljs-title function_">add</span>(<span class="hljs-string">&quot;loaded&quot;</span>);
+    };
+
+    tempImage.<span class="hljs-property">onerror</span> = <span class="hljs-function">() =&gt;</span> {
+      imgElement.<span class="hljs-property">classList</span>.<span class="hljs-title function_">add</span>(<span class="hljs-string">&quot;error&quot;</span>);
+      imgElement.<span class="hljs-property">src</span> = <span class="hljs-variable language_">this</span>.<span class="hljs-property">options</span>.<span class="hljs-property">errorImage</span> || <span class="hljs-variable language_">this</span>.<span class="hljs-property">options</span>.<span class="hljs-property">placeholder</span>;
+    };
+
+    tempImage.<span class="hljs-property">src</span> = src;
+  }
+
+  <span class="hljs-title function_">observe</span>(<span class="hljs-params">element</span>) {
+    <span class="hljs-keyword">if</span> (element.<span class="hljs-property">tagName</span> === <span class="hljs-string">&quot;IMG&quot;</span>) {
+      <span class="hljs-variable language_">this</span>.<span class="hljs-property">observer</span>.<span class="hljs-title function_">observe</span>(element);
+    } <span class="hljs-keyword">else</span> {
+      <span class="hljs-keyword">const</span> images = element.<span class="hljs-title function_">querySelectorAll</span>(<span class="hljs-string">&quot;img[data-src]&quot;</span>);
+      images.<span class="hljs-title function_">forEach</span>(<span class="hljs-function">(<span class="hljs-params">img</span>) =&gt;</span> <span class="hljs-variable language_">this</span>.<span class="hljs-property">observer</span>.<span class="hljs-title function_">observe</span>(img));
+    }
+  }
+
+  <span class="hljs-title function_">unobserve</span>(<span class="hljs-params">element</span>) {
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">observer</span>.<span class="hljs-title function_">unobserve</span>(element);
+  }
+
+  <span class="hljs-title function_">disconnect</span>(<span class="hljs-params"></span>) {
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">observer</span>.<span class="hljs-title function_">disconnect</span>();
+  }
+}
+
+<span class="hljs-comment">// Usage</span>
+<span class="hljs-keyword">const</span> lazyLoader = <span class="hljs-keyword">new</span> <span class="hljs-title class_">LazyImageLoader</span>({
+  <span class="hljs-attr">rootMargin</span>: <span class="hljs-string">&quot;100px&quot;</span>,
+  <span class="hljs-attr">threshold</span>: <span class="hljs-number">0.1</span>,
+});
+
+<span class="hljs-comment">// Observe all lazy images</span>
+<span class="hljs-variable language_">document</span>.<span class="hljs-title function_">addEventListener</span>(<span class="hljs-string">&quot;DOMContentLoaded&quot;</span>, <span class="hljs-function">() =&gt;</span> {
+  lazyLoader.<span class="hljs-title function_">observe</span>(<span class="hljs-variable language_">document</span>.<span class="hljs-property">body</span>);
+});
+
+<span class="hljs-comment">// Example HTML</span>
+<span class="hljs-keyword">const</span> imageGallery = <span class="hljs-string">`
+  &lt;div class=&quot;image-gallery&quot;&gt;
+    &lt;img 
+      class=&quot;lazy&quot; 
+      data-src=&quot;https://picsum.photos/400/300?random=1&quot; 
+      src=&quot;data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgZmlsbD0iI2Y4ZjlmYSIvPjwvc3ZnPg==&quot; 
+      alt=&quot;Image 1&quot;
+    /&gt;
+    &lt;img 
+      class=&quot;lazy&quot; 
+      data-src=&quot;https://picsum.photos/400/300?random=2&quot; 
+      src=&quot;data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgZmlsbD0iI2Y4ZjlmYSIvPjwvc3ZnPg==&quot; 
+      alt=&quot;Image 2&quot;
+    /&gt;
+    &lt;img 
+      class=&quot;lazy&quot; 
+      data-src=&quot;https://picsum.photos/400/300?random=3&quot; 
+      src=&quot;data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgZmlsbD0iI2Y4ZjlmYSIvPjwvc3ZnPg==&quot; 
+      alt=&quot;Image 3&quot;
+    /&gt;
+  &lt;/div&gt;
+`</span>;
+</code></pre></pre>
+<pre><pre><code class="hljs hljs language-css"><span class="hljs-selector-class">.image-gallery</span> {
+  <span class="hljs-attribute">display</span>: grid;
+  <span class="hljs-attribute">grid-template-columns</span>: <span class="hljs-built_in">repeat</span>(auto-fill, <span class="hljs-built_in">minmax</span>(<span class="hljs-number">300px</span>, <span class="hljs-number">1</span>fr));
+  <span class="hljs-attribute">gap</span>: <span class="hljs-number">20px</span>;
+  <span class="hljs-attribute">padding</span>: <span class="hljs-number">20px</span>;
+}
+
+<span class="hljs-selector-class">.lazy</span> {
+  <span class="hljs-attribute">width</span>: <span class="hljs-number">100%</span>;
+  <span class="hljs-attribute">height</span>: <span class="hljs-number">300px</span>;
+  <span class="hljs-attribute">object-fit</span>: cover;
+  <span class="hljs-attribute">border-radius</span>: <span class="hljs-number">8px</span>;
+  <span class="hljs-attribute">transition</span>: opacity <span class="hljs-number">0.3s</span> ease;
+  <span class="hljs-attribute">opacity</span>: <span class="hljs-number">0.7</span>;
+}
+
+<span class="hljs-selector-class">.lazy</span><span class="hljs-selector-class">.loaded</span> {
+  <span class="hljs-attribute">opacity</span>: <span class="hljs-number">1</span>;
+}
+
+<span class="hljs-selector-class">.lazy</span><span class="hljs-selector-class">.error</span> {
+  <span class="hljs-attribute">opacity</span>: <span class="hljs-number">0.5</span>;
+  <span class="hljs-attribute">filter</span>: <span class="hljs-built_in">grayscale</span>(<span class="hljs-number">1</span>);
+}
+
+<span class="hljs-comment">/* Loading animation */</span>
+<span class="hljs-selector-class">.lazy</span><span class="hljs-selector-pseudo">:not</span>(<span class="hljs-selector-class">.loaded</span>)<span class="hljs-selector-pseudo">:not</span>(<span class="hljs-selector-class">.error</span>) {
+  <span class="hljs-attribute">background</span>: <span class="hljs-built_in">linear-gradient</span>(<span class="hljs-number">90deg</span>, <span class="hljs-number">#f0f0f0</span> <span class="hljs-number">25%</span>, <span class="hljs-number">#e0e0e0</span> <span class="hljs-number">50%</span>, <span class="hljs-number">#f0f0f0</span> <span class="hljs-number">75%</span>);
+  <span class="hljs-attribute">background-size</span>: <span class="hljs-number">200%</span> <span class="hljs-number">100%</span>;
+  <span class="hljs-attribute">animation</span>: loading <span class="hljs-number">1.5s</span> infinite;
+}
+
+<span class="hljs-keyword">@keyframes</span> loading {
+  <span class="hljs-number">0%</span> {
+    <span class="hljs-attribute">background-position</span>: <span class="hljs-number">200%</span> <span class="hljs-number">0</span>;
+  }
+  <span class="hljs-number">100%</span> {
+    <span class="hljs-attribute">background-position</span>: -<span class="hljs-number">200%</span> <span class="hljs-number">0</span>;
+  }
+}
+</code></pre></pre>
+<h2 id="problem-3:-debounced-search-with-cache" node="[object Object]">Problem 3: Debounced Search with Cache</h2>
+<h3 id="problem-description" node="[object Object]">Problem Description</h3>
+<p>Implement a search functionality with debouncing and caching for better performance.</p>
+<h3 id="requirements" node="[object Object]">Requirements</h3>
+<ul>
+<li>Debounce search input</li>
+<li>Cache search results</li>
+<li>Handle loading states</li>
+<li>Implement cache invalidation</li>
+<li>Support pagination</li>
+</ul>
+<h3 id="solution" node="[object Object]">Solution</h3>
+<pre><pre><code class="hljs hljs language-javascript"><span class="hljs-keyword">class</span> <span class="hljs-title class_">SearchManager</span> {
+  <span class="hljs-title function_">constructor</span>(<span class="hljs-params">options = {}</span>) {
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">options</span> = {
+      <span class="hljs-attr">debounceDelay</span>: <span class="hljs-number">300</span>,
+      <span class="hljs-attr">cacheSize</span>: <span class="hljs-number">100</span>,
+      <span class="hljs-attr">maxResults</span>: <span class="hljs-number">50</span>,
+      ...options,
+    };
+
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">cache</span> = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Map</span>();
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">pendingRequests</span> = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Map</span>();
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">debounceTimers</span> = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Map</span>();
+
+    <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">init</span>();
+  }
+
+  <span class="hljs-title function_">init</span>(<span class="hljs-params"></span>) {
+    <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">setupEventListeners</span>();
+  }
+
+  <span class="hljs-title function_">setupEventListeners</span>(<span class="hljs-params"></span>) {
+    <span class="hljs-keyword">const</span> searchInput = <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">getElementById</span>(<span class="hljs-string">&quot;search-input&quot;</span>);
+    <span class="hljs-keyword">if</span> (searchInput) {
+      searchInput.<span class="hljs-title function_">addEventListener</span>(<span class="hljs-string">&quot;input&quot;</span>, <span class="hljs-function">(<span class="hljs-params">e</span>) =&gt;</span> {
+        <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">debouncedSearch</span>(e.<span class="hljs-property">target</span>.<span class="hljs-property">value</span>);
+      });
+    }
+  }
+
+  <span class="hljs-title function_">debouncedSearch</span>(<span class="hljs-params">query</span>) {
+    <span class="hljs-keyword">const</span> key = <span class="hljs-string">`search_<span class="hljs-subst">${query}</span>`</span>;
+
+    <span class="hljs-comment">// Clear existing timer</span>
+    <span class="hljs-keyword">if</span> (<span class="hljs-variable language_">this</span>.<span class="hljs-property">debounceTimers</span>.<span class="hljs-title function_">has</span>(key)) {
+      <span class="hljs-built_in">clearTimeout</span>(<span class="hljs-variable language_">this</span>.<span class="hljs-property">debounceTimers</span>.<span class="hljs-title function_">get</span>(key));
+    }
+
+    <span class="hljs-comment">// Set new timer</span>
+    <span class="hljs-keyword">const</span> timer = <span class="hljs-built_in">setTimeout</span>(<span class="hljs-function">() =&gt;</span> {
+      <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">performSearch</span>(query);
+    }, <span class="hljs-variable language_">this</span>.<span class="hljs-property">options</span>.<span class="hljs-property">debounceDelay</span>);
+
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">debounceTimers</span>.<span class="hljs-title function_">set</span>(key, timer);
+  }
+
+  <span class="hljs-keyword">async</span> <span class="hljs-title function_">performSearch</span>(<span class="hljs-params">query</span>) {
+    <span class="hljs-keyword">if</span> (!query.<span class="hljs-title function_">trim</span>()) {
+      <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">displayResults</span>([]);
+      <span class="hljs-keyword">return</span>;
+    }
+
+    <span class="hljs-comment">// Check cache first</span>
+    <span class="hljs-keyword">const</span> cached = <span class="hljs-variable language_">this</span>.<span class="hljs-property">cache</span>.<span class="hljs-title function_">get</span>(query);
+    <span class="hljs-keyword">if</span> (cached) {
+      <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">displayResults</span>(cached);
+      <span class="hljs-keyword">return</span>;
+    }
+
+    <span class="hljs-comment">// Check if request is already pending</span>
+    <span class="hljs-keyword">if</span> (<span class="hljs-variable language_">this</span>.<span class="hljs-property">pendingRequests</span>.<span class="hljs-title function_">has</span>(query)) {
+      <span class="hljs-keyword">return</span> <span class="hljs-variable language_">this</span>.<span class="hljs-property">pendingRequests</span>.<span class="hljs-title function_">get</span>(query);
+    }
+
+    <span class="hljs-comment">// Show loading state</span>
+    <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">showLoading</span>(<span class="hljs-literal">true</span>);
+
+    <span class="hljs-comment">// Create new request</span>
+    <span class="hljs-keyword">const</span> request = <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">fetchSearchResults</span>(query);
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">pendingRequests</span>.<span class="hljs-title function_">set</span>(query, request);
+
+    <span class="hljs-keyword">try</span> {
+      <span class="hljs-keyword">const</span> results = <span class="hljs-keyword">await</span> request;
+
+      <span class="hljs-comment">// Cache results</span>
+      <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">cacheResults</span>(query, results);
+
+      <span class="hljs-comment">// Display results</span>
+      <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">displayResults</span>(results);
+    } <span class="hljs-keyword">catch</span> (error) {
+      <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">error</span>(<span class="hljs-string">&quot;Search error:&quot;</span>, error);
+      <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">showError</span>(<span class="hljs-string">&quot;Search failed. Please try again.&quot;</span>);
+    } <span class="hljs-keyword">finally</span> {
+      <span class="hljs-variable language_">this</span>.<span class="hljs-property">pendingRequests</span>.<span class="hljs-title function_">delete</span>(query);
+      <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">showLoading</span>(<span class="hljs-literal">false</span>);
+    }
+  }
+
+  <span class="hljs-keyword">async</span> <span class="hljs-title function_">fetchSearchResults</span>(<span class="hljs-params">query</span>) {
+    <span class="hljs-comment">// Simulate API call</span>
+    <span class="hljs-keyword">await</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Promise</span>(<span class="hljs-function">(<span class="hljs-params">resolve</span>) =&gt;</span> <span class="hljs-built_in">setTimeout</span>(resolve, <span class="hljs-number">500</span>));
+
+    <span class="hljs-keyword">const</span> results = <span class="hljs-title class_">Array</span>.<span class="hljs-title function_">from</span>({ <span class="hljs-attr">length</span>: <span class="hljs-number">20</span> }, <span class="hljs-function">(<span class="hljs-params">_, i</span>) =&gt;</span> ({
+      <span class="hljs-attr">id</span>: i,
+      <span class="hljs-attr">title</span>: <span class="hljs-string">`Result <span class="hljs-subst">${i + <span class="hljs-number">1</span>}</span> for &quot;<span class="hljs-subst">${query}</span>&quot;`</span>,
+      <span class="hljs-attr">description</span>: <span class="hljs-string">`This is a search result for &quot;<span class="hljs-subst">${query}</span>&quot;. It contains relevant information.`</span>,
+      <span class="hljs-attr">score</span>: <span class="hljs-title class_">Math</span>.<span class="hljs-title function_">random</span>() * <span class="hljs-number">100</span>,
+    })).<span class="hljs-title function_">sort</span>(<span class="hljs-function">(<span class="hljs-params">a, b</span>) =&gt;</span> b.<span class="hljs-property">score</span> - a.<span class="hljs-property">score</span>);
+
+    <span class="hljs-keyword">return</span> results.<span class="hljs-title function_">slice</span>(<span class="hljs-number">0</span>, <span class="hljs-variable language_">this</span>.<span class="hljs-property">options</span>.<span class="hljs-property">maxResults</span>);
+  }
+
+  <span class="hljs-title function_">cacheResults</span>(<span class="hljs-params">query, results</span>) {
+    <span class="hljs-comment">// Implement LRU cache</span>
+    <span class="hljs-keyword">if</span> (<span class="hljs-variable language_">this</span>.<span class="hljs-property">cache</span>.<span class="hljs-property">size</span> &gt;= <span class="hljs-variable language_">this</span>.<span class="hljs-property">options</span>.<span class="hljs-property">cacheSize</span>) {
+      <span class="hljs-keyword">const</span> firstKey = <span class="hljs-variable language_">this</span>.<span class="hljs-property">cache</span>.<span class="hljs-title function_">keys</span>().<span class="hljs-title function_">next</span>().<span class="hljs-property">value</span>;
+      <span class="hljs-variable language_">this</span>.<span class="hljs-property">cache</span>.<span class="hljs-title function_">delete</span>(firstKey);
+    }
+
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">cache</span>.<span class="hljs-title function_">set</span>(query, results);
+  }
+
+  <span class="hljs-title function_">displayResults</span>(<span class="hljs-params">results</span>) {
+    <span class="hljs-keyword">const</span> resultsContainer = <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">getElementById</span>(<span class="hljs-string">&quot;search-results&quot;</span>);
+    <span class="hljs-keyword">if</span> (!resultsContainer) <span class="hljs-keyword">return</span>;
+
+    <span class="hljs-keyword">if</span> (results.<span class="hljs-property">length</span> === <span class="hljs-number">0</span>) {
+      resultsContainer.<span class="hljs-property">innerHTML</span> =
+        <span class="hljs-string">&#x27;&lt;div class=&quot;no-results&quot;&gt;No results found&lt;/div&gt;&#x27;</span>;
+      <span class="hljs-keyword">return</span>;
+    }
+
+    <span class="hljs-keyword">const</span> resultsHTML = results
+      .<span class="hljs-title function_">map</span>(
+        <span class="hljs-function">(<span class="hljs-params">result</span>) =&gt;</span> <span class="hljs-string">`
+      &lt;div class=&quot;search-result&quot; data-id=&quot;<span class="hljs-subst">${result.id}</span>&quot;&gt;
+        &lt;h3 class=&quot;result-title&quot;&gt;<span class="hljs-subst">${result.title}</span>&lt;/h3&gt;
+        &lt;p class=&quot;result-description&quot;&gt;<span class="hljs-subst">${result.description}</span>&lt;/p&gt;
+        &lt;span class=&quot;result-score&quot;&gt;<span class="hljs-subst">${result.score.toFixed(<span class="hljs-number">1</span>)}</span>%&lt;/span&gt;
+      &lt;/div&gt;
+    `</span>
+      )
+      .<span class="hljs-title function_">join</span>(<span class="hljs-string">&quot;&quot;</span>);
+
+    resultsContainer.<span class="hljs-property">innerHTML</span> = resultsHTML;
+  }
+
+  <span class="hljs-title function_">showLoading</span>(<span class="hljs-params">show</span>) {
+    <span class="hljs-keyword">const</span> loadingElement = <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">getElementById</span>(<span class="hljs-string">&quot;loading-indicator&quot;</span>);
+    <span class="hljs-keyword">if</span> (loadingElement) {
+      loadingElement.<span class="hljs-property">style</span>.<span class="hljs-property">display</span> = show ? <span class="hljs-string">&quot;block&quot;</span> : <span class="hljs-string">&quot;none&quot;</span>;
+    }
+  }
+
+  <span class="hljs-title function_">showError</span>(<span class="hljs-params">message</span>) {
+    <span class="hljs-keyword">const</span> errorElement = <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">getElementById</span>(<span class="hljs-string">&quot;error-message&quot;</span>);
+    <span class="hljs-keyword">if</span> (errorElement) {
+      errorElement.<span class="hljs-property">textContent</span> = message;
+      errorElement.<span class="hljs-property">style</span>.<span class="hljs-property">display</span> = <span class="hljs-string">&quot;block&quot;</span>;
+
+      <span class="hljs-built_in">setTimeout</span>(<span class="hljs-function">() =&gt;</span> {
+        errorElement.<span class="hljs-property">style</span>.<span class="hljs-property">display</span> = <span class="hljs-string">&quot;none&quot;</span>;
+      }, <span class="hljs-number">3000</span>);
+    }
+  }
+
+  <span class="hljs-title function_">clearCache</span>(<span class="hljs-params"></span>) {
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">cache</span>.<span class="hljs-title function_">clear</span>();
+  }
+
+  <span class="hljs-title function_">getCacheStats</span>(<span class="hljs-params"></span>) {
+    <span class="hljs-keyword">return</span> {
+      <span class="hljs-attr">size</span>: <span class="hljs-variable language_">this</span>.<span class="hljs-property">cache</span>.<span class="hljs-property">size</span>,
+      <span class="hljs-attr">keys</span>: <span class="hljs-title class_">Array</span>.<span class="hljs-title function_">from</span>(<span class="hljs-variable language_">this</span>.<span class="hljs-property">cache</span>.<span class="hljs-title function_">keys</span>()),
+    };
+  }
+}
+
+<span class="hljs-comment">// Usage</span>
+<span class="hljs-keyword">const</span> searchManager = <span class="hljs-keyword">new</span> <span class="hljs-title class_">SearchManager</span>({
+  <span class="hljs-attr">debounceDelay</span>: <span class="hljs-number">400</span>,
+  <span class="hljs-attr">cacheSize</span>: <span class="hljs-number">50</span>,
+  <span class="hljs-attr">maxResults</span>: <span class="hljs-number">30</span>,
+});
+</code></pre></pre>
+<pre><pre><code class="hljs hljs language-css"><span class="hljs-selector-class">.search-container</span> {
+  <span class="hljs-attribute">max-width</span>: <span class="hljs-number">800px</span>;
+  <span class="hljs-attribute">margin</span>: <span class="hljs-number">0</span> auto;
+  <span class="hljs-attribute">padding</span>: <span class="hljs-number">20px</span>;
+}
+
+<span class="hljs-selector-class">.search-input</span> {
+  <span class="hljs-attribute">width</span>: <span class="hljs-number">100%</span>;
+  <span class="hljs-attribute">padding</span>: <span class="hljs-number">12px</span> <span class="hljs-number">16px</span>;
+  <span class="hljs-attribute">border</span>: <span class="hljs-number">2px</span> solid <span class="hljs-number">#ddd</span>;
+  <span class="hljs-attribute">border-radius</span>: <span class="hljs-number">8px</span>;
+  <span class="hljs-attribute">font-size</span>: <span class="hljs-number">16px</span>;
+  <span class="hljs-attribute">transition</span>: border-color <span class="hljs-number">0.3s</span>;
+}
+
+<span class="hljs-selector-class">.search-input</span><span class="hljs-selector-pseudo">:focus</span> {
+  <span class="hljs-attribute">outline</span>: none;
+  <span class="hljs-attribute">border-color</span>: <span class="hljs-number">#007bff</span>;
+}
+
+<span class="hljs-selector-class">.search-results</span> {
+  <span class="hljs-attribute">margin-top</span>: <span class="hljs-number">20px</span>;
+}
+
+<span class="hljs-selector-class">.search-result</span> {
+  <span class="hljs-attribute">padding</span>: <span class="hljs-number">16px</span>;
+  <span class="hljs-attribute">border</span>: <span class="hljs-number">1px</span> solid <span class="hljs-number">#eee</span>;
+  <span class="hljs-attribute">border-radius</span>: <span class="hljs-number">8px</span>;
+  <span class="hljs-attribute">margin-bottom</span>: <span class="hljs-number">12px</span>;
+  <span class="hljs-attribute">background</span>: white;
+  <span class="hljs-attribute">transition</span>: transform <span class="hljs-number">0.2s</span>, box-shadow <span class="hljs-number">0.2s</span>;
+}
+
+<span class="hljs-selector-class">.search-result</span><span class="hljs-selector-pseudo">:hover</span> {
+  <span class="hljs-attribute">transform</span>: <span class="hljs-built_in">translateY</span>(-<span class="hljs-number">2px</span>);
+  <span class="hljs-attribute">box-shadow</span>: <span class="hljs-number">0</span> <span class="hljs-number">4px</span> <span class="hljs-number">12px</span> <span class="hljs-built_in">rgba</span>(<span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0.1</span>);
+}
+
+<span class="hljs-selector-class">.result-title</span> {
+  <span class="hljs-attribute">margin</span>: <span class="hljs-number">0</span> <span class="hljs-number">0</span> <span class="hljs-number">8px</span> <span class="hljs-number">0</span>;
+  <span class="hljs-attribute">color</span>: <span class="hljs-number">#2c3e50</span>;
+  <span class="hljs-attribute">font-size</span>: <span class="hljs-number">18px</span>;
+}
+
+<span class="hljs-selector-class">.result-description</span> {
+  <span class="hljs-attribute">margin</span>: <span class="hljs-number">0</span> <span class="hljs-number">0</span> <span class="hljs-number">8px</span> <span class="hljs-number">0</span>;
+  <span class="hljs-attribute">color</span>: <span class="hljs-number">#666</span>;
+  <span class="hljs-attribute">line-height</span>: <span class="hljs-number">1.5</span>;
+}
+
+<span class="hljs-selector-class">.result-score</span> {
+  <span class="hljs-attribute">color</span>: <span class="hljs-number">#007bff</span>;
+  <span class="hljs-attribute">font-weight</span>: <span class="hljs-number">600</span>;
+  <span class="hljs-attribute">font-size</span>: <span class="hljs-number">14px</span>;
+}
+
+<span class="hljs-selector-class">.loading-indicator</span> {
+  <span class="hljs-attribute">display</span>: none;
+  <span class="hljs-attribute">text-align</span>: center;
+  <span class="hljs-attribute">padding</span>: <span class="hljs-number">20px</span>;
+  <span class="hljs-attribute">color</span>: <span class="hljs-number">#666</span>;
+}
+
+<span class="hljs-selector-class">.error-message</span> {
+  <span class="hljs-attribute">display</span>: none;
+  <span class="hljs-attribute">background</span>: <span class="hljs-number">#f8d7da</span>;
+  <span class="hljs-attribute">color</span>: <span class="hljs-number">#721c24</span>;
+  <span class="hljs-attribute">padding</span>: <span class="hljs-number">12px</span>;
+  <span class="hljs-attribute">border-radius</span>: <span class="hljs-number">4px</span>;
+  <span class="hljs-attribute">margin</span>: <span class="hljs-number">10px</span> <span class="hljs-number">0</span>;
+  <span class="hljs-attribute">text-align</span>: center;
+}
+
+<span class="hljs-selector-class">.no-results</span> {
+  <span class="hljs-attribute">text-align</span>: center;
+  <span class="hljs-attribute">padding</span>: <span class="hljs-number">40px</span>;
+  <span class="hljs-attribute">color</span>: <span class="hljs-number">#666</span>;
+  <span class="hljs-attribute">font-style</span>: italic;
+}
+</code></pre></pre>
+<h2 id="key-performance-features" node="[object Object]">Key Performance Features</h2>
+<ol>
+<li><strong>Virtual Scrolling</strong>: Efficient rendering of large lists</li>
+<li><strong>Lazy Loading</strong>: Images load only when needed</li>
+<li><strong>Debouncing</strong>: Reduces unnecessary API calls</li>
+<li><strong>Caching</strong>: Stores results to avoid repeated requests</li>
+<li><strong>Request Deduplication</strong>: Prevents duplicate requests</li>
+<li><strong>Memory Management</strong>: LRU cache with size limits</li>
+<li><strong>Loading States</strong>: Clear user feedback</li>
+<li><strong>Error Handling</strong>: Graceful error recovery</li>
+</ol></div></div></main><footer class="sc-kjwdDK hrfQfY"><div class="sc-eVqvcJ dwFHjZ"><div class="sc-bbbBoY kWATso"><div class="sc-cdmAjP fBmmqS"><div class="sc-jytpVa iNKxsb"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-code "><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>Frontend Interview Prep</div><p class="sc-eknHtZ fYhkiV">Comprehensive interview preparation for frontend engineers targeting Big Tech companies.</p><div class="sc-pYNGo eVAQiq"><a href="https://github.com" aria-label="GitHub"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-github "><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"></path><path d="M9 18c-4.51 2-5-2-7-2"></path></svg></a><a href="https://twitter.com" aria-label="Twitter"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-twitter "><path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"></path></svg></a><a href="https://linkedin.com" aria-label="LinkedIn"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-linkedin "><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect width="4" height="12" x="2" y="9"></rect><circle cx="4" cy="4" r="2"></circle></svg></a><a href="mailto:contact@example.com" aria-label="Email"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-mail "><rect width="20" height="16" x="2" y="4" rx="2"></rect><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path></svg></a></div></div><div class="sc-cdmAjP fBmmqS"><h3>Study Materials</h3><ul><li><a href="/algorithms">Algorithms</a></li><li><a href="/react">React &amp; Frontend</a></li><li><a href="/system-design">System Design</a></li><li><a href="/typescript">TypeScript</a></li><li><a href="/performance">Performance</a></li></ul></div><div class="sc-cdmAjP fBmmqS"><h3>Companies</h3><ul><li><a href="/google">Google</a></li><li><a href="/meta">Meta</a></li><li><a href="/amazon">Amazon</a></li><li><a href="/microsoft">Microsoft</a></li><li><a href="/apple">Apple</a></li></ul></div><div class="sc-cdmAjP fBmmqS"><h3>Resources</h3><ul><li><a href="/interview-tips">Interview Tips</a></li><li><a href="/coding-challenges">Coding Challenges</a></li><li><a href="/mock-interviews">Mock Interviews</a></li><li><a href="/blog">Blog</a></li><li><a href="/faq">FAQ</a></li></ul></div></div><div class="sc-cCVJLD fgJmHp"><p class="sc-jYczwO gYGLHT">© 2025 Frontend Interview Prep. All rights reserved.</p><div class="sc-dNFkOE ghBULZ"><a href="/privacy">Privacy Policy</a><a href="/terms">Terms of Service</a><a href="/contact">Contact</a></div></div></div></footer></div><script src="/interview/_next/static/chunks/webpack-be7d7df45533bffc.js" async=""></script><script>(self.__next_f=self.__next_f||[]).push([0]);self.__next_f.push([2,null])</script><script>self.__next_f.push([1,"1:HL[\"/interview/_next/static/media/e4af272ccee01ff0-s.p.woff2\",\"font\",{\"crossOrigin\":\"\",\"type\":\"font/woff2\"}]\n2:HL[\"/interview/_next/static/css/387024c6a2216908.css\",\"style\"]\n"])</script><script>self.__next_f.push([1,"3:I[2846,[],\"\"]\n5:I[5907,[\"918\",\"static/chunks/918-3273b83890f10546.js\",\"930\",\"static/chunks/930-3262a6c9c5acace4.js\",\"687\",\"static/chunks/app/docs/%5B...slug%5D/page-32962e9542d32755.js\"],\"default\"]\n7:I[4707,[],\"\"]\n9:I[6423,[],\"\"]\na:I[2,[\"918\",\"static/chunks/918-3273b83890f10546.js\",\"710\",\"static/chunks/710-dfaa11b4dff08f8e.js\",\"972\",\"static/chunks/972-011bba60ed155615.js\",\"233\",\"static/chunks/233-3e0c1d820a17eca9.js\",\"185\",\"static/chunks/app/layout-333f4adcd11f8f39.js\"],\"default\",1]\nc:I[1060,[],\"\"]\n6:T3b1c,"])</script><script>self.__next_f.push([1,"# Frontend Performance Optimization Problems\n\n## Problem 1: Virtual Scrolling Implementation\n\n### Problem Description\n\nImplement virtual scrolling for a large list of items to improve performance.\n\n### Requirements\n\n- Handle thousands of items efficiently\n- Maintain smooth scrolling\n- Support dynamic item heights\n- Implement proper recycling\n- Handle scroll events optimally\n\n### Solution\n\n{% raw %}\n```javascript\nclass VirtualScroller {\n  constructor(container, options = {}) {\n    this.container = container;\n    this.itemHeight = options.itemHeight || 50;\n    this.overscan = options.overscan || 5;\n    this.items = [];\n    this.visibleItems = new Map();\n    this.scrollTop = 0;\n    this.containerHeight = 0;\n    this.totalHeight = 0;\n\n    this.init();\n  }\n\n  init() {\n    this.setupContainer();\n    this.attachEventListeners();\n    this.updateDimensions();\n  }\n\n  setupContainer() {\n    this.container.innerHTML = `\n      \u003cdiv class=\"virtual-scroller\"\u003e\n        \u003cdiv class=\"virtual-scroller-content\"\u003e\u003c/div\u003e\n        \u003cdiv class=\"virtual-scroller-spacer\"\u003e\u003c/div\u003e\n      \u003c/div\u003e\n    `;\n\n    this.content = this.container.querySelector(\".virtual-scroller-content\");\n    this.spacer = this.container.querySelector(\".virtual-scroller-spacer\");\n  }\n\n  attachEventListeners() {\n    let ticking = false;\n\n    this.container.addEventListener(\"scroll\", () =\u003e {\n      if (!ticking) {\n        requestAnimationFrame(() =\u003e {\n          this.handleScroll();\n          ticking = false;\n        });\n        ticking = true;\n      }\n    });\n\n    window.addEventListener(\"resize\", () =\u003e {\n      this.updateDimensions();\n      this.render();\n    });\n  }\n\n  handleScroll() {\n    const newScrollTop = this.container.scrollTop;\n    if (Math.abs(newScrollTop - this.scrollTop) \u003e this.itemHeight / 2) {\n      this.scrollTop = newScrollTop;\n      this.render();\n    }\n  }\n\n  updateDimensions() {\n    this.containerHeight = this.container.clientHeight;\n    this.totalHeight = this.items.length * this.itemHeight;\n    this.spacer.style.height = `${this.totalHeight}px`;\n  }\n\n  setItems(items) {\n    this.items = items;\n    this.updateDimensions();\n    this.render();\n  }\n\n  render() {\n    const startIndex = Math.floor(this.scrollTop / this.itemHeight);\n    const endIndex = Math.min(\n      startIndex +\n        Math.ceil(this.containerHeight / this.itemHeight) +\n        this.overscan,\n      this.items.length\n    );\n\n    const startIndexWithOverscan = Math.max(0, startIndex - this.overscan);\n    const endIndexWithOverscan = Math.min(\n      this.items.length,\n      endIndex + this.overscan\n    );\n\n    // Remove items that are no longer visible\n    for (const [index, element] of this.visibleItems) {\n      if (index \u003c startIndexWithOverscan || index \u003e= endIndexWithOverscan) {\n        element.remove();\n        this.visibleItems.delete(index);\n      }\n    }\n\n    // Add new visible items\n    for (let i = startIndexWithOverscan; i \u003c endIndexWithOverscan; i++) {\n      if (!this.visibleItems.has(i)) {\n        const element = this.renderItem(this.items[i], i);\n        element.style.position = \"absolute\";\n        element.style.top = `${i * this.itemHeight}px`;\n        element.style.width = \"100%\";\n        element.style.height = `${this.itemHeight}px`;\n\n        this.content.appendChild(element);\n        this.visibleItems.set(i, element);\n      }\n    }\n  }\n\n  renderItem(item, index) {\n    const element = document.createElement(\"div\");\n    element.className = \"virtual-item\";\n    element.innerHTML = `\n      \u003cdiv class=\"item-content\"\u003e\n        \u003cspan class=\"item-index\"\u003e${index + 1}\u003c/span\u003e\n        \u003cspan class=\"item-text\"\u003e${item.text}\u003c/span\u003e\n      \u003c/div\u003e\n    `;\n    return element;\n  }\n\n  scrollToIndex(index) {\n    const scrollTop = index * this.itemHeight;\n    this.container.scrollTop = scrollTop;\n  }\n\n  getVisibleRange() {\n    const startIndex = Math.floor(this.scrollTop / this.itemHeight);\n    const endIndex = Math.min(\n      startIndex + Math.ceil(this.containerHeight / this.itemHeight),\n      this.items.length\n    );\n    return { startIndex, endIndex };\n  }\n}\n\n// Usage\nconst container = document.getElementById(\"virtual-scroll-container\");\nconst virtualScroller = new VirtualScroller(container, {\n  itemHeight: 60,\n  overscan: 10,\n});\n\n// Generate large dataset\nconst items = Array.from({ length: 10000 }, (_, i) =\u003e ({\n  id: i,\n  text: `Item ${\n    i + 1\n  } - Lorem ipsum dolor sit amet, consectetur adipiscing elit.`,\n}));\n\nvirtualScroller.setItems(items);\n```\n{% endraw %}\n\n```css\n.virtual-scroller {\n  position: relative;\n  height: 100%;\n  overflow: hidden;\n}\n\n.virtual-scroller-content {\n  position: relative;\n  width: 100%;\n}\n\n.virtual-scroller-spacer {\n  width: 100%;\n}\n\n.virtual-item {\n  border-bottom: 1px solid #eee;\n  background: white;\n  transition: background-color 0.2s;\n}\n\n.virtual-item:hover {\n  background-color: #f8f9fa;\n}\n\n.item-content {\n  padding: 16px;\n  display: flex;\n  align-items: center;\n  gap: 12px;\n}\n\n.item-index {\n  font-weight: 600;\n  color: #007bff;\n  min-width: 40px;\n}\n\n.item-text {\n  color: #333;\n  line-height: 1.4;\n}\n```\n\n## Problem 2: Image Lazy Loading\n\n### Problem Description\n\nImplement efficient lazy loading for images with intersection observer.\n\n### Requirements\n\n- Load images only when they're about to enter viewport\n- Support multiple image formats\n- Handle loading states\n- Implement error handling\n- Support responsive images\n\n### Solution\n\n```javascript\nclass LazyImageLoader {\n  constructor(options = {}) {\n    this.options = {\n      rootMargin: \"50px\",\n      threshold: 0.1,\n      placeholder:\n        \"data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgZmlsbD0iI2Y4ZjlmYSIvPjwvc3ZnPg==\",\n      ...options,\n    };\n\n    this.observer = null;\n    this.init();\n  }\n\n  init() {\n    this.observer = new IntersectionObserver(\n      this.handleIntersection.bind(this),\n      this.options\n    );\n  }\n\n  handleIntersection(entries) {\n    entries.forEach((entry) =\u003e {\n      if (entry.isIntersecting) {\n        this.loadImage(entry.target);\n        this.observer.unobserve(entry.target);\n      }\n    });\n  }\n\n  loadImage(imgElement) {\n    const src = imgElement.dataset.src;\n    const srcset = imgElement.dataset.srcset;\n\n    if (!src) return;\n\n    // Create a new image to preload\n    const tempImage = new Image();\n\n    tempImage.onload = () =\u003e {\n      imgElement.src = src;\n      if (srcset) {\n        imgElement.srcset = srcset;\n      }\n      imgElement.classList.remove(\"lazy\");\n      imgElement.classList.add(\"loaded\");\n    };\n\n    tempImage.onerror = () =\u003e {\n      imgElement.classList.add(\"error\");\n      imgElement.src = this.options.errorImage || this.options.placeholder;\n    };\n\n    tempImage.src = src;\n  }\n\n  observe(element) {\n    if (element.tagName === \"IMG\") {\n      this.observer.observe(element);\n    } else {\n      const images = element.querySelectorAll(\"img[data-src]\");\n      images.forEach((img) =\u003e this.observer.observe(img));\n    }\n  }\n\n  unobserve(element) {\n    this.observer.unobserve(element);\n  }\n\n  disconnect() {\n    this.observer.disconnect();\n  }\n}\n\n// Usage\nconst lazyLoader = new LazyImageLoader({\n  rootMargin: \"100px\",\n  threshold: 0.1,\n});\n\n// Observe all lazy images\ndocument.addEventListener(\"DOMContentLoaded\", () =\u003e {\n  lazyLoader.observe(document.body);\n});\n\n// Example HTML\nconst imageGallery = `\n  \u003cdiv class=\"image-gallery\"\u003e\n    \u003cimg \n      class=\"lazy\" \n      data-src=\"https://picsum.photos/400/300?random=1\" \n      src=\"data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgZmlsbD0iI2Y4ZjlmYSIvPjwvc3ZnPg==\" \n      alt=\"Image 1\"\n    /\u003e\n    \u003cimg \n      class=\"lazy\" \n      data-src=\"https://picsum.photos/400/300?random=2\" \n      src=\"data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgZmlsbD0iI2Y4ZjlmYSIvPjwvc3ZnPg==\" \n      alt=\"Image 2\"\n    /\u003e\n    \u003cimg \n      class=\"lazy\" \n      data-src=\"https://picsum.photos/400/300?random=3\" \n      src=\"data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgZmlsbD0iI2Y4ZjlmYSIvPjwvc3ZnPg==\" \n      alt=\"Image 3\"\n    /\u003e\n  \u003c/div\u003e\n`;\n```\n\n```css\n.image-gallery {\n  display: grid;\n  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));\n  gap: 20px;\n  padding: 20px;\n}\n\n.lazy {\n  width: 100%;\n  height: 300px;\n  object-fit: cover;\n  border-radius: 8px;\n  transition: opacity 0.3s ease;\n  opacity: 0.7;\n}\n\n.lazy.loaded {\n  opacity: 1;\n}\n\n.lazy.error {\n  opacity: 0.5;\n  filter: grayscale(1);\n}\n\n/* Loading animation */\n.lazy:not(.loaded):not(.error) {\n  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);\n  background-size: 200% 100%;\n  animation: loading 1.5s infinite;\n}\n\n@keyframes loading {\n  0% {\n    background-position: 200% 0;\n  }\n  100% {\n    background-position: -200% 0;\n  }\n}\n```\n\n## Problem 3: Debounced Search with Cache\n\n### Problem Description\n\nImplement a search functionality with debouncing and caching for better performance.\n\n### Requirements\n\n- Debounce search input\n- Cache search results\n- Handle loading states\n- Implement cache invalidation\n- Support pagination\n\n### Solution\n\n```javascript\nclass SearchManager {\n  constructor(options = {}) {\n    this.options = {\n      debounceDelay: 300,\n      cacheSize: 100,\n      maxResults: 50,\n      ...options,\n    };\n\n    this.cache = new Map();\n    this.pendingRequests = new Map();\n    this.debounceTimers = new Map();\n\n    this.init();\n  }\n\n  init() {\n    this.setupEventListeners();\n  }\n\n  setupEventListeners() {\n    const searchInput = document.getElementById(\"search-input\");\n    if (searchInput) {\n      searchInput.addEventListener(\"input\", (e) =\u003e {\n        this.debouncedSearch(e.target.value);\n      });\n    }\n  }\n\n  debouncedSearch(query) {\n    const key = `search_${query}`;\n\n    // Clear existing timer\n    if (this.debounceTimers.has(key)) {\n      clearTimeout(this.debounceTimers.get(key));\n    }\n\n    // Set new timer\n    const timer = setTimeout(() =\u003e {\n      this.performSearch(query);\n    }, this.options.debounceDelay);\n\n    this.debounceTimers.set(key, timer);\n  }\n\n  async performSearch(query) {\n    if (!query.trim()) {\n      this.displayResults([]);\n      return;\n    }\n\n    // Check cache first\n    const cached = this.cache.get(query);\n    if (cached) {\n      this.displayResults(cached);\n      return;\n    }\n\n    // Check if request is already pending\n    if (this.pendingRequests.has(query)) {\n      return this.pendingRequests.get(query);\n    }\n\n    // Show loading state\n    this.showLoading(true);\n\n    // Create new request\n    const request = this.fetchSearchResults(query);\n    this.pendingRequests.set(query, request);\n\n    try {\n      const results = await request;\n\n      // Cache results\n      this.cacheResults(query, results);\n\n      // Display results\n      this.displayResults(results);\n    } catch (error) {\n      console.error(\"Search error:\", error);\n      this.showError(\"Search failed. Please try again.\");\n    } finally {\n      this.pendingRequests.delete(query);\n      this.showLoading(false);\n    }\n  }\n\n  async fetchSearchResults(query) {\n    // Simulate API call\n    await new Promise((resolve) =\u003e setTimeout(resolve, 500));\n\n    const results = Array.from({ length: 20 }, (_, i) =\u003e ({\n      id: i,\n      title: `Result ${i + 1} for \"${query}\"`,\n      description: `This is a search result for \"${query}\". It contains relevant information.`,\n      score: Math.random() * 100,\n    })).sort((a, b) =\u003e b.score - a.score);\n\n    return results.slice(0, this.options.maxResults);\n  }\n\n  cacheResults(query, results) {\n    // Implement LRU cache\n    if (this.cache.size \u003e= this.options.cacheSize) {\n      const firstKey = this.cache.keys().next().value;\n      this.cache.delete(firstKey);\n    }\n\n    this.cache.set(query, results);\n  }\n\n  displayResults(results) {\n    const resultsContainer = document.getElementById(\"search-results\");\n    if (!resultsContainer) return;\n\n    if (results.length === 0) {\n      resultsContainer.innerHTML =\n        '\u003cdiv class=\"no-results\"\u003eNo results found\u003c/div\u003e';\n      return;\n    }\n\n    const resultsHTML = results\n      .map(\n        (result) =\u003e `\n      \u003cdiv class=\"search-result\" data-id=\"${result.id}\"\u003e\n        \u003ch3 class=\"result-title\"\u003e${result.title}\u003c/h3\u003e\n        \u003cp class=\"result-description\"\u003e${result.description}\u003c/p\u003e\n        \u003cspan class=\"result-score\"\u003e${result.score.toFixed(1)}%\u003c/span\u003e\n      \u003c/div\u003e\n    `\n      )\n      .join(\"\");\n\n    resultsContainer.innerHTML = resultsHTML;\n  }\n\n  showLoading(show) {\n    const loadingElement = document.getElementById(\"loading-indicator\");\n    if (loadingElement) {\n      loadingElement.style.display = show ? \"block\" : \"none\";\n    }\n  }\n\n  showError(message) {\n    const errorElement = document.getElementById(\"error-message\");\n    if (errorElement) {\n      errorElement.textContent = message;\n      errorElement.style.display = \"block\";\n\n      setTimeout(() =\u003e {\n        errorElement.style.display = \"none\";\n      }, 3000);\n    }\n  }\n\n  clearCache() {\n    this.cache.clear();\n  }\n\n  getCacheStats() {\n    return {\n      size: this.cache.size,\n      keys: Array.from(this.cache.keys()),\n    };\n  }\n}\n\n// Usage\nconst searchManager = new SearchManager({\n  debounceDelay: 400,\n  cacheSize: 50,\n  maxResults: 30,\n});\n```\n\n```css\n.search-container {\n  max-width: 800px;\n  margin: 0 auto;\n  padding: 20px;\n}\n\n.search-input {\n  width: 100%;\n  padding: 12px 16px;\n  border: 2px solid #ddd;\n  border-radius: 8px;\n  font-size: 16px;\n  transition: border-color 0.3s;\n}\n\n.search-input:focus {\n  outline: none;\n  border-color: #007bff;\n}\n\n.search-results {\n  margin-top: 20px;\n}\n\n.search-result {\n  padding: 16px;\n  border: 1px solid #eee;\n  border-radius: 8px;\n  margin-bottom: 12px;\n  background: white;\n  transition: transform 0.2s, box-shadow 0.2s;\n}\n\n.search-result:hover {\n  transform: translateY(-2px);\n  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);\n}\n\n.result-title {\n  margin: 0 0 8px 0;\n  color: #2c3e50;\n  font-size: 18px;\n}\n\n.result-description {\n  margin: 0 0 8px 0;\n  color: #666;\n  line-height: 1.5;\n}\n\n.result-score {\n  color: #007bff;\n  font-weight: 600;\n  font-size: 14px;\n}\n\n.loading-indicator {\n  display: none;\n  text-align: center;\n  padding: 20px;\n  color: #666;\n}\n\n.error-message {\n  display: none;\n  background: #f8d7da;\n  color: #721c24;\n  padding: 12px;\n  border-radius: 4px;\n  margin: 10px 0;\n  text-align: center;\n}\n\n.no-results {\n  text-align: center;\n  padding: 40px;\n  color: #666;\n  font-style: italic;\n}\n```\n\n## Key Performance Features\n\n1. **Virtual Scrolling**: Efficient rendering of large lists\n2. **Lazy Loading**: Images load only when needed\n3. **Debouncing**: Reduces unnecessary API calls\n4. **Caching**: Stores results to avoid repeated requests\n5. **Request Deduplication**: Prevents duplicate requests\n6. **Memory Management**: LRU cache with size limits\n7. **Loading States**: Clear user feedback\n8. **Error Handling**: Graceful error recovery\n"])</script><script>self.__next_f.push([1,"8:[\"slug\",\"src/content/frontend/coding-problems/performance-optimization\",\"c\"]\nd:[]\n"])</script><script>self.__next_f.push([1,"0:[\"$\",\"$L3\",null,{\"buildId\":\"7uJ7BVaXJTiEOD9iYDv3n\",\"assetPrefix\":\"/interview\",\"urlParts\":[\"\",\"docs\",\"src\",\"content\",\"frontend\",\"coding-problems\",\"performance-optimization\"],\"initialTree\":[\"\",{\"children\":[\"docs\",{\"children\":[[\"slug\",\"src/content/frontend/coding-problems/performance-optimization\",\"c\"],{\"children\":[\"__PAGE__?{\\\"slug\\\":[\\\"src\\\",\\\"content\\\",\\\"frontend\\\",\\\"coding-problems\\\",\\\"performance-optimization\\\"]}\",{}]}]}]},\"$undefined\",\"$undefined\",true],\"initialSeedData\":[\"\",{\"children\":[\"docs\",{\"children\":[[\"slug\",\"src/content/frontend/coding-problems/performance-optimization\",\"c\"],{\"children\":[\"__PAGE__\",{},[[\"$L4\",[\"$\",\"div\",null,{\"style\":{\"maxWidth\":\"1200px\",\"margin\":\"0 auto\",\"padding\":\"2rem\",\"paddingTop\":\"6rem\"},\"children\":[[\"$\",\"div\",null,{\"style\":{\"marginBottom\":\"2rem\"},\"children\":[[\"$\",\"nav\",null,{\"style\":{\"color\":\"#64748b\",\"fontSize\":\"0.9rem\",\"marginBottom\":\"1rem\"},\"children\":[[\"$\",\"a\",null,{\"href\":\"/\",\"style\":{\"color\":\"#3b82f6\",\"textDecoration\":\"none\"},\"children\":\"Home\"}],\" \u003e \",[\"$\",\"span\",null,{\"children\":\"src \u003e content \u003e frontend \u003e coding-problems \u003e performance-optimization\"}]]}],[\"$\",\"h1\",null,{\"style\":{\"fontSize\":\"2.5rem\",\"fontWeight\":\"800\",\"marginBottom\":\"0.5rem\",\"color\":\"#1e293b\"},\"children\":\"Performance Optimization\"}],[\"$\",\"div\",null,{\"style\":{\"color\":\"#64748b\",\"fontSize\":\"0.9rem\",\"marginBottom\":\"2rem\"},\"children\":[[\"$\",\"span\",null,{\"children\":[\"📁 \",\"src/content/frontend/coding-problems/performance-optimization.md\"]}],\"$undefined\",\"$undefined\"]}]]}],[\"$\",\"$L5\",null,{\"content\":\"$6\"}]]}],null],null],null]},[null,[\"$\",\"$L7\",null,{\"parallelRouterKey\":\"children\",\"segmentPath\":[\"children\",\"docs\",\"children\",\"$8\",\"children\"],\"error\":\"$undefined\",\"errorStyles\":\"$undefined\",\"errorScripts\":\"$undefined\",\"template\":[\"$\",\"$L9\",null,{}],\"templateStyles\":\"$undefined\",\"templateScripts\":\"$undefined\",\"notFound\":\"$undefined\",\"notFoundStyles\":\"$undefined\"}]],null]},[null,[\"$\",\"$L7\",null,{\"parallelRouterKey\":\"children\",\"segmentPath\":[\"children\",\"docs\",\"children\"],\"error\":\"$undefined\",\"errorStyles\":\"$undefined\",\"errorScripts\":\"$undefined\",\"template\":[\"$\",\"$L9\",null,{}],\"templateStyles\":\"$undefined\",\"templateScripts\":\"$undefined\",\"notFound\":\"$undefined\",\"notFoundStyles\":\"$undefined\"}]],null]},[[[[\"$\",\"link\",\"0\",{\"rel\":\"stylesheet\",\"href\":\"/interview/_next/static/css/387024c6a2216908.css\",\"precedence\":\"next\",\"crossOrigin\":\"$undefined\"}]],[\"$\",\"$La\",null,{\"children\":[\"$\",\"$L7\",null,{\"parallelRouterKey\":\"children\",\"segmentPath\":[\"children\"],\"error\":\"$undefined\",\"errorStyles\":\"$undefined\",\"errorScripts\":\"$undefined\",\"template\":[\"$\",\"$L9\",null,{}],\"templateStyles\":\"$undefined\",\"templateScripts\":\"$undefined\",\"notFound\":[[\"$\",\"title\",null,{\"children\":\"404: This page could not be found.\"}],[\"$\",\"div\",null,{\"style\":{\"fontFamily\":\"system-ui,\\\"Segoe UI\\\",Roboto,Helvetica,Arial,sans-serif,\\\"Apple Color Emoji\\\",\\\"Segoe UI Emoji\\\"\",\"height\":\"100vh\",\"textAlign\":\"center\",\"display\":\"flex\",\"flexDirection\":\"column\",\"alignItems\":\"center\",\"justifyContent\":\"center\"},\"children\":[\"$\",\"div\",null,{\"children\":[[\"$\",\"style\",null,{\"dangerouslySetInnerHTML\":{\"__html\":\"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}\"}}],[\"$\",\"h1\",null,{\"className\":\"next-error-h1\",\"style\":{\"display\":\"inline-block\",\"margin\":\"0 20px 0 0\",\"padding\":\"0 23px 0 0\",\"fontSize\":24,\"fontWeight\":500,\"verticalAlign\":\"top\",\"lineHeight\":\"49px\"},\"children\":\"404\"}],[\"$\",\"div\",null,{\"style\":{\"display\":\"inline-block\"},\"children\":[\"$\",\"h2\",null,{\"style\":{\"fontSize\":14,\"fontWeight\":400,\"lineHeight\":\"49px\",\"margin\":0},\"children\":\"This page could not be found.\"}]}]]}]}]],\"notFoundStyles\":[]}],\"params\":{}}]],null],null],\"couldBeIntercepted\":false,\"initialHead\":[null,\"$Lb\"],\"globalErrorComponent\":\"$c\",\"missingSlots\":\"$Wd\"}]\n"])</script><script>self.__next_f.push([1,"b:[[\"$\",\"meta\",\"0\",{\"name\":\"viewport\",\"content\":\"width=device-width, initial-scale=1\"}],[\"$\",\"meta\",\"1\",{\"charSet\":\"utf-8\"}],[\"$\",\"title\",\"2\",{\"children\":\"Performance Optimization - Frontend Interview Docs\"}],[\"$\",\"meta\",\"3\",{\"name\":\"description\",\"content\":\"# Frontend Performance Optimization Problems  ## Problem 1: Virtual Scrolling Implementation  ### Problem Description  Implement virtual scrolling for a large l\"}],[\"$\",\"meta\",\"4\",{\"property\":\"og:title\",\"content\":\"Performance Optimization - Frontend Interview Docs\"}],[\"$\",\"meta\",\"5\",{\"property\":\"og:description\",\"content\":\"# Frontend Performance Optimization Problems  ## Problem 1: Virtual Scrolling Implementation  ### Problem Description  Implement virtual scrolling for a large l\"}],[\"$\",\"meta\",\"6\",{\"property\":\"og:type\",\"content\":\"article\"}],[\"$\",\"meta\",\"7\",{\"name\":\"twitter:card\",\"content\":\"summary\"}],[\"$\",\"meta\",\"8\",{\"name\":\"twitter:title\",\"content\":\"Performance Optimization - Frontend Interview Docs\"}],[\"$\",\"meta\",\"9\",{\"name\":\"twitter:description\",\"content\":\"# Frontend Performance Optimization Problems  ## Problem 1: Virtual Scrolling Implementation  ### Problem Description  Implement virtual scrolling for a large l\"}],[\"$\",\"meta\",\"10\",{\"name\":\"next-size-adjust\"}]]\n4:null\n"])</script></body></html>

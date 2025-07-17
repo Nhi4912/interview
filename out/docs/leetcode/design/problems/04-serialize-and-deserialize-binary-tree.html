@@ -1,0 +1,698 @@
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><meta name="viewport" content="width=device-width, initial-scale=1"/><link rel="preload" href="/interview/_next/static/media/e4af272ccee01ff0-s.p.woff2" as="font" crossorigin="" type="font/woff2"/><link rel="stylesheet" href="/interview/_next/static/css/387024c6a2216908.css" data-precedence="next"/><link rel="preload" as="script" fetchPriority="low" href="/interview/_next/static/chunks/webpack-be7d7df45533bffc.js"/><script src="/interview/_next/static/chunks/fd9d1056-6922f449a204c2cc.js" async=""></script><script src="/interview/_next/static/chunks/117-e7ecc085ce9cfab3.js" async=""></script><script src="/interview/_next/static/chunks/main-app-b06be5f3411c20c3.js" async=""></script><script src="/interview/_next/static/chunks/918-3273b83890f10546.js" async=""></script><script src="/interview/_next/static/chunks/930-3262a6c9c5acace4.js" async=""></script><script src="/interview/_next/static/chunks/app/docs/%5B...slug%5D/page-32962e9542d32755.js" async=""></script><script src="/interview/_next/static/chunks/710-dfaa11b4dff08f8e.js" async=""></script><script src="/interview/_next/static/chunks/972-011bba60ed155615.js" async=""></script><script src="/interview/_next/static/chunks/233-3e0c1d820a17eca9.js" async=""></script><script src="/interview/_next/static/chunks/app/layout-333f4adcd11f8f39.js" async=""></script><title>Frontend Interview Prep 2025 - Big Tech Interview Guide</title><meta name="description" content="Comprehensive frontend interview preparation for Big Tech companies including React, TypeScript, algorithms, and system design."/><link rel="icon" href="/favicon.ico"/><meta name="theme-color" content="#1a1a1a"/><meta property="og:title" content="Frontend Interview Prep 2025"/><meta property="og:description" content="Complete guide for frontend engineers targeting Big Tech companies"/><meta property="og:type" content="website"/><link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous"/><title>Serialize and Deserialize Binary Tree - Frontend Interview Docs</title><meta name="description" content=" # Serialize and Deserialize Binary Tree    ## Problem Description   *  * Serialization is the process of converting a data structure or object into a sequence "/><meta property="og:title" content="Serialize and Deserialize Binary Tree - Frontend Interview Docs"/><meta property="og:description" content=" # Serialize and Deserialize Binary Tree    ## Problem Description   *  * Serialization is the process of converting a data structure or object into a sequence "/><meta property="og:type" content="article"/><meta name="twitter:card" content="summary"/><meta name="twitter:title" content="Serialize and Deserialize Binary Tree - Frontend Interview Docs"/><meta name="twitter:description" content=" # Serialize and Deserialize Binary Tree    ## Problem Description   *  * Serialization is the process of converting a data structure or object into a sequence "/><meta name="next-size-adjust"/><script src="/interview/_next/static/chunks/polyfills-42372ed130431b0a.js" noModule=""></script><style data-styled="" data-styled-version="6.1.19">*{margin:0;padding:0;box-sizing:border-box;}/*!sc*/
+html{font-size:16px;line-height:1.5;scroll-behavior:smooth;}/*!sc*/
+body{font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;font-size:1rem;line-height:1.5;color:#1e293b;background-color:#ffffff;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;}/*!sc*/
+h1,h2,h3,h4,h5,h6{font-weight:700;line-height:1.25;margin-bottom:0.5em;}/*!sc*/
+h1{font-size:3rem;}/*!sc*/
+@media (max-width: 768px){h1{font-size:2.25rem;}}/*!sc*/
+h2{font-size:2.25rem;}/*!sc*/
+@media (max-width: 768px){h2{font-size:1.875rem;}}/*!sc*/
+h3{font-size:1.875rem;}/*!sc*/
+@media (max-width: 768px){h3{font-size:1.5rem;}}/*!sc*/
+h4{font-size:1.5rem;}/*!sc*/
+@media (max-width: 768px){h4{font-size:1.25rem;}}/*!sc*/
+h5{font-size:1.25rem;}/*!sc*/
+h6{font-size:1.125rem;}/*!sc*/
+p{margin-bottom:1rem;line-height:1.75;}/*!sc*/
+a{color:#3b82f6;text-decoration:none;transition:color 0.15s ease;}/*!sc*/
+a:hover{color:#2563eb;}/*!sc*/
+a:focus{outline:2px solid #3b82f6;outline-offset:2px;}/*!sc*/
+button{cursor:pointer;border:none;background:none;font-family:inherit;font-size:inherit;}/*!sc*/
+button:disabled{cursor:not-allowed;opacity:0.6;}/*!sc*/
+button:focus{outline:2px solid #3b82f6;outline-offset:2px;}/*!sc*/
+input,textarea,select{font-family:inherit;font-size:inherit;}/*!sc*/
+input:focus,textarea:focus,select:focus{outline:2px solid #3b82f6;outline-offset:2px;}/*!sc*/
+img{max-width:100%;height:auto;}/*!sc*/
+ul,ol{margin-bottom:1rem;padding-left:1.5rem;}/*!sc*/
+li{margin-bottom:0.25rem;}/*!sc*/
+blockquote{margin:1rem 0;padding:1rem;border-left:4px solid #3b82f6;background-color:#f1f5f9;font-style:italic;}/*!sc*/
+code{font-family:SFMono-Regular,Consolas,"Liberation Mono",Menlo,monospace;font-size:0.9em;background-color:#f1f5f9;padding:0.2em 0.4em;border-radius:0.25rem;}/*!sc*/
+pre{background-color:#f1f5f9;padding:1rem;border-radius:0.5rem;overflow-x:auto;margin-bottom:1rem;}/*!sc*/
+pre code{background:none;padding:0;}/*!sc*/
+table{width:100%;border-collapse:collapse;margin-bottom:1rem;}/*!sc*/
+th,td{padding:0.75rem;text-align:left;border-bottom:1px solid #e2e8f0;}/*!sc*/
+th{font-weight:600;background-color:#f1f5f9;}/*!sc*/
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0, 0, 0, 0);white-space:nowrap;border:0;}/*!sc*/
+.skip-link{position:absolute;top:-40px;left:6px;background:#3b82f6;color:white;padding:8px;text-decoration:none;border-radius:4px;z-index:100;}/*!sc*/
+.skip-link:focus{top:6px;}/*!sc*/
+::-webkit-scrollbar{width:8px;height:8px;}/*!sc*/
+::-webkit-scrollbar-track{background:#f1f5f9;}/*!sc*/
+::-webkit-scrollbar-thumb{background:#94a3b8;border-radius:4px;}/*!sc*/
+::-webkit-scrollbar-thumb:hover{background:#64748b;}/*!sc*/
+::selection{background:#3b82f6;color:white;}/*!sc*/
+.focus-visible{outline:2px solid #3b82f6;outline-offset:2px;}/*!sc*/
+.fade-in{opacity:0;animation:fadeIn 0.3s ease forwards;}/*!sc*/
+.slide-up{transform:translateY(20px);opacity:0;animation:slideUp 0.3s ease forwards;}/*!sc*/
+@keyframes fadeIn{to{opacity:1;}}/*!sc*/
+@keyframes slideUp{to{transform:translateY(0);opacity:1;}}/*!sc*/
+@media print{*{background:white!important;color:black!important;box-shadow:none!important;text-shadow:none!important;}a,a:visited{text-decoration:underline;}h1,h2,h3,h4,h5,h6{break-after:avoid;}pre,blockquote{border:1px solid #999;break-inside:avoid;}img{max-width:100%!important;}@page{margin:0.5in;}}/*!sc*/
+data-styled.g21[id="sc-global-kxA-Ddz1"]{content:"sc-global-kxA-Ddz1,"}/*!sc*/
+.iIQwfN{position:fixed;top:0;width:100%;z-index:1020;background:transparent;backdrop-filter:blur(10px);border-bottom:1px solid transparent;transition:all 0.3s ease;}/*!sc*/
+data-styled.g22[id="sc-gGKoUb"]{content:"iIQwfN,"}/*!sc*/
+.cEuiWg{max-width:1200px;margin:0 auto;padding:0 2rem;display:flex;align-items:center;justify-content:space-between;height:70px;}/*!sc*/
+data-styled.g23[id="sc-hwddKA"]{content:"cEuiWg,"}/*!sc*/
+.bqPomF{display:flex;align-items:center;gap:0.5rem;font-size:1.5rem;font-weight:700;color:#3b82f6;text-decoration:none;cursor:pointer;}/*!sc*/
+.bqPomF:hover{color:#2563eb;}/*!sc*/
+data-styled.g24[id="sc-jaXbil"]{content:"bqPomF,"}/*!sc*/
+.iwwpNe{display:flex;align-items:center;gap:2rem;}/*!sc*/
+@media (max-width: 768px){.iwwpNe{display:none;}}/*!sc*/
+data-styled.g25[id="sc-eqNDNG"]{content:"iwwpNe,"}/*!sc*/
+.iuGltB{color:#1e293b;font-weight:500;text-decoration:none;transition:color 0.15s ease;position:relative;}/*!sc*/
+.iuGltB:hover{color:#3b82f6;}/*!sc*/
+.iuGltB:after{content:'';position:absolute;bottom:-5px;left:0;width:0;height:2px;background:#3b82f6;transition:width 0.15s ease;}/*!sc*/
+.iuGltB:hover:after{width:100%;}/*!sc*/
+data-styled.g26[id="sc-fVHBlr"]{content:"iuGltB,"}/*!sc*/
+.lmsDAj{display:none;background:none;border:none;color:#1e293b;cursor:pointer;padding:0.5rem;}/*!sc*/
+@media (max-width: 768px){.lmsDAj{display:block;}}/*!sc*/
+data-styled.g27[id="sc-gLaqbQ"]{content:"lmsDAj,"}/*!sc*/
+.keTsRT{display:flex;align-items:center;gap:0.5rem;background:#f1f5f9;border:1px solid #e2e8f0;border-radius:0.5rem;padding:0.5rem 1rem;color:#64748b;font-size:0.9rem;transition:all 0.15s ease;}/*!sc*/
+.keTsRT:hover{background:#ffffff;border-color:#3b82f6;}/*!sc*/
+data-styled.g31[id="sc-cOpnSz"]{content:"keTsRT,"}/*!sc*/
+.hrfQfY{background:#1e293b;color:white;padding:3rem 0 1rem;margin-top:auto;}/*!sc*/
+data-styled.g32[id="sc-kjwdDK"]{content:"hrfQfY,"}/*!sc*/
+.dwFHjZ{max-width:1200px;margin:0 auto;padding:0 2rem;}/*!sc*/
+data-styled.g33[id="sc-eVqvcJ"]{content:"dwFHjZ,"}/*!sc*/
+.kWATso{display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:2rem;margin-bottom:2rem;}/*!sc*/
+@media (max-width: 768px){.kWATso{grid-template-columns:1fr 1fr;gap:1.5rem;}}/*!sc*/
+@media (max-width: 480px){.kWATso{grid-template-columns:1fr;}}/*!sc*/
+data-styled.g34[id="sc-bbbBoY"]{content:"kWATso,"}/*!sc*/
+.fBmmqS h3{font-size:1.1rem;font-weight:600;margin-bottom:1rem;color:white;}/*!sc*/
+.fBmmqS ul{list-style:none;padding:0;margin:0;}/*!sc*/
+.fBmmqS li{margin-bottom:0.5rem;}/*!sc*/
+.fBmmqS a{color:rgba(255, 255, 255, 0.7);text-decoration:none;transition:color 0.15s ease;}/*!sc*/
+.fBmmqS a:hover{color:white;}/*!sc*/
+data-styled.g35[id="sc-cdmAjP"]{content:"fBmmqS,"}/*!sc*/
+.iNKxsb{display:flex;align-items:center;gap:0.5rem;font-size:1.2rem;font-weight:700;margin-bottom:1rem;color:white;}/*!sc*/
+data-styled.g36[id="sc-jytpVa"]{content:"iNKxsb,"}/*!sc*/
+.fYhkiV{color:rgba(255, 255, 255, 0.7);line-height:1.6;margin-bottom:1rem;}/*!sc*/
+data-styled.g37[id="sc-eknHtZ"]{content:"fYhkiV,"}/*!sc*/
+.eVAQiq{display:flex;gap:1rem;}/*!sc*/
+.eVAQiq a{display:flex;align-items:center;justify-content:center;width:40px;height:40px;background:rgba(255, 255, 255, 0.1);border-radius:0.5rem;color:rgba(255, 255, 255, 0.7);transition:all 0.15s ease;}/*!sc*/
+.eVAQiq a:hover{background:rgba(255, 255, 255, 0.2);color:white;}/*!sc*/
+data-styled.g38[id="sc-pYNGo"]{content:"eVAQiq,"}/*!sc*/
+.fgJmHp{border-top:1px solid rgba(255, 255, 255, 0.1);padding-top:2rem;display:flex;justify-content:space-between;align-items:center;}/*!sc*/
+@media (max-width: 768px){.fgJmHp{flex-direction:column;gap:1rem;text-align:center;}}/*!sc*/
+data-styled.g39[id="sc-cCVJLD"]{content:"fgJmHp,"}/*!sc*/
+.gYGLHT{color:rgba(255, 255, 255, 0.7);margin:0;font-size:0.9rem;}/*!sc*/
+data-styled.g40[id="sc-jYczwO"]{content:"gYGLHT,"}/*!sc*/
+.ghBULZ{display:flex;gap:2rem;}/*!sc*/
+@media (max-width: 480px){.ghBULZ{flex-direction:column;gap:1rem;}}/*!sc*/
+.ghBULZ a{color:rgba(255, 255, 255, 0.7);text-decoration:none;font-size:0.9rem;transition:color 0.15s ease;}/*!sc*/
+.ghBULZ a:hover{color:white;}/*!sc*/
+data-styled.g41[id="sc-dNFkOE"]{content:"ghBULZ,"}/*!sc*/
+.fUIuKh{color:#1e293b;line-height:1.6;}/*!sc*/
+.fUIuKh h1,.fUIuKh h2,.fUIuKh h3,.fUIuKh h4,.fUIuKh h5,.fUIuKh h6{color:#1e293b;margin-top:2rem;margin-bottom:1rem;font-weight:600;}/*!sc*/
+.fUIuKh h1{font-size:2rem;border-bottom:2px solid #e2e8f0;padding-bottom:0.5rem;}/*!sc*/
+.fUIuKh h2{font-size:1.5rem;border-bottom:1px solid #e2e8f0;padding-bottom:0.3rem;}/*!sc*/
+.fUIuKh h3{font-size:1.25rem;}/*!sc*/
+.fUIuKh h4{font-size:1.1rem;}/*!sc*/
+.fUIuKh p{margin-bottom:1rem;color:#64748b;}/*!sc*/
+.fUIuKh a{color:#3b82f6;text-decoration:none;}/*!sc*/
+.fUIuKh a:hover{text-decoration:underline;}/*!sc*/
+.fUIuKh ul,.fUIuKh ol{margin-bottom:1rem;padding-left:1.5rem;}/*!sc*/
+.fUIuKh ul li,.fUIuKh ol li{margin-bottom:0.5rem;color:#64748b;}/*!sc*/
+.fUIuKh blockquote{border-left:4px solid #3b82f6;padding-left:1rem;margin:1rem 0;font-style:italic;color:#64748b;background:#f1f5f9;padding:1rem;border-radius:0.5rem;}/*!sc*/
+.fUIuKh code{background:#f1f5f9;padding:0.2rem 0.4rem;border-radius:0.25rem;font-family:SFMono-Regular,Consolas,"Liberation Mono",Menlo,monospace;font-size:0.9em;color:#f59e0b;}/*!sc*/
+.fUIuKh pre{background:#ffffff;border:1px solid #e2e8f0;border-radius:0.5rem;padding:1rem;margin:1rem 0;overflow-x:auto;}/*!sc*/
+.fUIuKh pre code{background:none;padding:0;color:#1e293b;font-size:0.9rem;}/*!sc*/
+.fUIuKh table{width:100%;border-collapse:collapse;margin:1rem 0;}/*!sc*/
+.fUIuKh table th,.fUIuKh table td{border:1px solid #e2e8f0;padding:0.5rem;text-align:left;}/*!sc*/
+.fUIuKh table th{background:#ffffff;font-weight:600;}/*!sc*/
+.fUIuKh table tr:nth-child(even){background:#f1f5f9;}/*!sc*/
+.fUIuKh hr{border:none;height:1px;background:#e2e8f0;margin:2rem 0;}/*!sc*/
+.fUIuKh .highlight{background:#3b82f620;padding:0.2rem 0.4rem;border-radius:0.25rem;font-weight:600;}/*!sc*/
+.fUIuKh .hljs{background:#ffffff;color:#1e293b;}/*!sc*/
+.fUIuKh .hljs-keyword{color:#3b82f6;font-weight:600;}/*!sc*/
+.fUIuKh .hljs-string{color:#10b981;}/*!sc*/
+.fUIuKh .hljs-function{color:#f59e0b;}/*!sc*/
+.fUIuKh .hljs-comment{color:#94a3b8;font-style:italic;}/*!sc*/
+.fUIuKh .hljs-number{color:#f59e0b;}/*!sc*/
+.fUIuKh .hljs-variable{color:#1e293b;}/*!sc*/
+.fUIuKh .hljs-title{color:#f59e0b;font-weight:600;}/*!sc*/
+data-styled.g42[id="sc-fszimp"]{content:"fUIuKh,"}/*!sc*/
+</style></head><body class="__className_6eac61"><div style="min-height:100vh;display:flex;flex-direction:column"><nav class="sc-gGKoUb iIQwfN"><div class="sc-hwddKA cEuiWg"><a href="/interview"><a class="sc-jaXbil bqPomF"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-code "><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>Frontend Interview Prep</a></a><div class="sc-eqNDNG iwwpNe"><a href="/interview/problems"><a class="sc-fVHBlr iuGltB">Problems</a></a><a href="/interview/learn"><a class="sc-fVHBlr iuGltB">Learn</a></a><a href="/interview/study-guide"><a class="sc-fVHBlr iuGltB">Study Guide</a></a><a href="/interview/system-design"><a class="sc-fVHBlr iuGltB">System Design</a></a><a href="/interview/performance"><a class="sc-fVHBlr iuGltB">Performance</a></a><a href="/interview/accessibility"><a class="sc-fVHBlr iuGltB">Accessibility</a></a><a href="/interview/interview-tips"><a class="sc-fVHBlr iuGltB">Interview Tips</a></a><button class="sc-cOpnSz keTsRT"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-search "><circle cx="11" cy="11" r="8"></circle><path d="m21 21-4.3-4.3"></path></svg>Search</button></div><button class="sc-gLaqbQ lmsDAj"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-menu "><line x1="4" x2="20" y1="12" y2="12"></line><line x1="4" x2="20" y1="6" y2="6"></line><line x1="4" x2="20" y1="18" y2="18"></line></svg></button></div></nav><main style="flex:1"><div style="max-width:1200px;margin:0 auto;padding:2rem;padding-top:6rem"><div style="margin-bottom:2rem"><nav style="color:#64748b;font-size:0.9rem;margin-bottom:1rem"><a href="/" style="color:#3b82f6;text-decoration:none">Home</a> &gt; <span>leetcode &gt; design &gt; problems &gt; 04-serialize-and-deserialize-binary-tree</span></nav><h1 style="font-size:2.5rem;font-weight:800;margin-bottom:0.5rem;color:#1e293b">Serialize and Deserialize Binary Tree</h1><div style="color:#64748b;font-size:0.9rem;margin-bottom:2rem"><span>📁 <!-- -->leetcode/design/problems/04-serialize-and-deserialize-binary-tree.md</span></div></div><div class="sc-fszimp fUIuKh"><h1 id="serialize-and-deserialize-binary-tree" node="[object Object]">Serialize and Deserialize Binary Tree</h1>
+<h2 id="problem-description" node="[object Object]">Problem Description</h2>
+<ul>
+<li>
+<ul>
+<li>Serialization is the process of converting a data structure or object into a sequence  * of bits so that it can be stored in a file or memory buffer, or transmitted across a  * network connection link to be reconstructed later in the same or another computer environment.  *</li>
+</ul>
+</li>
+</ul>
+<h2 id="solutions" node="[object Object]">Solutions</h2>
+<p>{% raw %}
+/**</p>
+<ul>
+<li>Serialize and Deserialize Binary Tree</li>
+<li></li>
+<li>Problem: <a href="https://leetcode.com/problems/serialize-and-deserialize-binary-tree/" target="_blank" rel="noopener noreferrer" node="[object Object]">https://leetcode.com/problems/serialize-and-deserialize-binary-tree/</a></li>
+<li></li>
+<li>Serialization is the process of converting a data structure or object into a sequence</li>
+<li>of bits so that it can be stored in a file or memory buffer, or transmitted across a</li>
+<li>network connection link to be reconstructed later in the same or another computer environment.</li>
+<li></li>
+<li>Design an algorithm to serialize and deserialize a binary tree. There is no restriction</li>
+<li>on how your serialization/deserialization algorithm should work. You just need to ensure</li>
+<li>that a binary tree can be serialized to a string and this string can be deserialized to</li>
+<li>the original tree structure.</li>
+<li></li>
+<li>Example 1:</li>
+<li>Input: root = [1,2,3,null,null,4,5]</li>
+<li>Output: [1,2,3,null,null,4,5]</li>
+<li></li>
+<li>Example 2:</li>
+<li>Input: root = []</li>
+<li>Output: []</li>
+<li></li>
+<li>Constraints:</li>
+<li>
+<ul>
+<li>The number of nodes in the tree is in the range [0, 10^4].</li>
+</ul>
+</li>
+<li>
+<ul>
+<li>-1000 &lt;= Node.val &lt;= 1000</li>
+</ul>
+</li>
+<li></li>
+<li>Solution Approach:</li>
+<li>
+<ol>
+<li>Preorder traversal with null markers</li>
+</ol>
+</li>
+<li>
+<ol start="2">
+<li>Level-order traversal (BFS) with null markers</li>
+</ol>
+</li>
+<li>
+<ol start="3">
+<li>Use special characters to represent null nodes</li>
+</ol>
+</li>
+<li>
+<ol start="4">
+<li>Parse the string back to reconstruct the tree</li>
+</ol>
+</li>
+<li></li>
+<li>Time Complexity: O(n) for both serialization and deserialization</li>
+<li>Space Complexity: O(n) for storing the serialized string
+*/</li>
+</ul>
+<p>/**</p>
+<ul>
+<li>TreeNode class definition</li>
+<li></li>
+<li>Định nghĩa lớp TreeNode
+*/
+class TreeNode {
+val: number;
+left: TreeNode | null;
+right: TreeNode | null;</li>
+</ul>
+<p>constructor(
+val: number = 0,
+left: TreeNode | null = null,
+right: TreeNode | null = null
+) {
+this.val = val;
+this.left = left;
+this.right = right;
+}
+}</p>
+<p>/**</p>
+<ul>
+<li>
+<p>Serialize and Deserialize Binary Tree - Preorder Solution</p>
+</li>
+<li></li>
+<li>
+<p>Giải pháp duyệt tiền thứ tự cho bài toán Tuần tự hóa và giải tuần tự hóa cây nhị phân
+<em>/
+class Codec {
+/</em>*</p>
+<ul>
+<li>Serialize a binary tree to a string using preorder traversal</li>
+<li></li>
+<li>Tuần tự hóa cây nhị phân thành chuỗi sử dụng duyệt tiền thứ tự</li>
+<li></li>
+<li>@param root - Root of the binary tree</li>
+<li>@returns Serialized string representation
+*/
+serialize(root: TreeNode | null): string {
+if (!root) return &quot;null&quot;;</li>
+</ul>
+<p>const left = this.serialize(root.left);
+const right = this.serialize(root.right);</p>
+<p>return <pre><code class="hljs undefined">${root.val},${left},${right}</code></pre>;
+}</p>
+</li>
+</ul>
+<p>/**</p>
+<ul>
+<li>Deserialize a string back to a binary tree</li>
+<li></li>
+<li>Giải tuần tự hóa chuỗi về cây nhị phân</li>
+<li></li>
+<li>@param data - Serialized string</li>
+<li>@returns Root of the reconstructed binary tree
+*/
+deserialize(data: string): TreeNode | null {
+const values = data.split(&quot;,&quot;);
+let index = 0;</li>
+</ul>
+<pre><pre><code class="hljs undefined">function deserializeHelper(): TreeNode | null {
+</code></pre></pre>
+<pre><pre><code class="hljs undefined">  if (index &gt;= values.length || values[index] === &quot;null&quot;) {
+    index++;
+    return null;
+  }
+
+  const val = parseInt(values[index]);
+  index++;
+
+  const node = new TreeNode(val);
+  node.left = deserializeHelper();
+  node.right = deserializeHelper();
+
+  return node;
+}
+
+return deserializeHelper();
+</code></pre></pre>
+<p>}
+}</p>
+<p>/**</p>
+<ul>
+<li>
+<p>Alternative Solution: Level-order (BFS) Serialization</p>
+</li>
+<li></li>
+<li>
+<p>Giải pháp thay thế: Tuần tự hóa theo thứ tự mức (BFS)
+*/
+class CodecBFS {
+serialize(root: TreeNode | null): string {
+if (!root) return &quot;[]&quot;;</p>
+<p>const queue: (TreeNode | null)[] = [root];
+const result: (number | null)[] = [];</p>
+<p>while (queue.length &gt; 0) {
+const node = queue.shift()!;</p>
+<p>if (node === null) {
+result.push(null);
+} else {
+result.push(node.val);
+queue.push(node.left);
+queue.push(node.right);
+}
+}</p>
+<p>// Remove trailing nulls
+while (result.length &gt; 0 &amp;&amp; result[result.length - 1] === null) {
+result.pop();
+}</p>
+<p>return JSON.stringify(result);
+}</p>
+</li>
+</ul>
+<p>deserialize(data: string): TreeNode | null {
+if (data === &quot;[]&quot;) return null;</p>
+<pre><pre><code class="hljs undefined">const values: (number | null)[] = JSON.parse(data);
+if (values.length === 0) return null;
+
+const root = new TreeNode(values[0]!);
+const queue: TreeNode[] = [root];
+let i = 1;
+
+while (queue.length &gt; 0 &amp;&amp; i &lt; values.length) {
+  const node = queue.shift()!;
+
+  // Left child
+  if (i &lt; values.length &amp;&amp; values[i] !== null) {
+    node.left = new TreeNode(values[i]!);
+    queue.push(node.left);
+  }
+  i++;
+
+  // Right child
+  if (i &lt; values.length &amp;&amp; values[i] !== null) {
+    node.right = new TreeNode(values[i]!);
+    queue.push(node.right);
+  }
+  i++;
+}
+
+return root;
+</code></pre></pre>
+<p>}
+}</p>
+<p>/**</p>
+<ul>
+<li>
+<p>Solution with Compact Representation</p>
+</li>
+<li></li>
+<li>
+<p>Giải pháp với biểu diễn gọn
+*/
+class CodecCompact {
+serialize(root: TreeNode | null): string {
+if (!root) return &quot;#&quot;;</p>
+<p>const left = this.serialize(root.left);
+const right = this.serialize(root.right);</p>
+<p>return <pre><code class="hljs undefined">${root.val}(${left})(${right})</code></pre>;
+}</p>
+</li>
+</ul>
+<p>deserialize(data: string): TreeNode | null {
+if (data === &quot;#&quot;) return null;</p>
+<pre><pre><code class="hljs undefined">let index = 0;
+
+function parseValue(): number {
+  let value = &quot;&quot;;
+  while (index &lt; data.length &amp;&amp; data[index] !== &quot;(&quot;) {
+    value += data[index];
+    index++;
+  }
+  return parseInt(value);
+}
+
+function parseSubtree(): TreeNode | null {
+  if (data[index] === &quot;#&quot;) {
+    index++;
+    return null;
+  }
+
+  const val = parseValue();
+  const node = new TreeNode(val);
+
+  if (data[index] === &quot;(&quot;) {
+    index++; // skip &#x27;(&#x27;
+    node.left = parseSubtree();
+    index++; // skip &#x27;)&#x27;
+
+    index++; // skip &#x27;(&#x27;
+    node.right = parseSubtree();
+    index++; // skip &#x27;)&#x27;
+  }
+
+  return node;
+}
+
+return parseSubtree();
+</code></pre></pre>
+<p>}
+}</p>
+<p>/**</p>
+<ul>
+<li>Solution with Tree Visualization</li>
+<li></li>
+<li>Giải pháp với hiển thị cây
+*/
+class CodecWithVisualization {
+serialize(root: TreeNode | null): string {
+return new Codec().serialize(root);
+}</li>
+</ul>
+<p>deserialize(data: string): TreeNode | null {
+return new Codec().deserialize(data);
+}</p>
+<p>/**</p>
+<ul>
+<li>Visualize the tree structure</li>
+<li></li>
+<li>Hiển thị cấu trúc cây</li>
+<li></li>
+<li>@param root - Root of the tree</li>
+<li>@returns String representation of the tree
+*/
+visualizeTree(root: TreeNode | null): string {
+if (!root) return &quot;Empty tree&quot;;</li>
+</ul>
+<pre><pre><code class="hljs undefined">const result: string[] = [];
+</code></pre></pre>
+<pre><pre><code class="hljs undefined">function visualizeHelper(
+  node: TreeNode | null,
+  prefix: string,
+  isLeft: boolean
+): void {
+  if (!node) return;
+
+  result.push(`${prefix}${isLeft ? &quot;├── &quot; : &quot;└── &quot;}${node.val}`);
+
+  const newPrefix = prefix + (isLeft ? &quot;│   &quot; : &quot;    &quot;);
+
+  if (node.left || node.right) {
+    if (node.left) {
+      visualizeHelper(node.left, newPrefix, true);
+    }
+    if (node.right) {
+      visualizeHelper(node.right, newPrefix, false);
+    }
+  }
+}
+
+result.push(`${root.val}`);
+if (root.left) visualizeHelper(root.left, &quot;&quot;, true);
+if (root.right) visualizeHelper(root.right, &quot;&quot;, false);
+
+return result.join(&quot;\n&quot;);
+</code></pre></pre>
+<p>}</p>
+<p>/**</p>
+<ul>
+<li>Compare two trees for equality</li>
+<li></li>
+<li>So sánh hai cây có bằng nhau không</li>
+<li></li>
+<li>@param tree1 - First tree</li>
+<li>@param tree2 - Second tree</li>
+<li>@returns true if trees are equal
+*/
+areTreesEqual(tree1: TreeNode | null, tree2: TreeNode | null): boolean {
+if (!tree1 &amp;&amp; !tree2) return true;
+if (!tree1 || !tree2) return false;</li>
+</ul>
+<pre><pre><code class="hljs undefined">return (
+</code></pre></pre>
+<pre><pre><code class="hljs undefined">  tree1.val === tree2.val &amp;&amp;
+  this.areTreesEqual(tree1.left, tree2.left) &amp;&amp;
+  this.areTreesEqual(tree1.right, tree2.right)
+);
+</code></pre></pre>
+<p>}
+}</p>
+<p>/**</p>
+<ul>
+<li>Utility function to create a binary tree from array</li>
+<li></li>
+<li>Hàm tiện ích để tạo cây nhị phân từ mảng</li>
+<li></li>
+<li>@param arr - Array representation of the tree</li>
+<li>@returns Root of the created tree
+*/
+function createTreeFromArray(arr: (number | null)[]): TreeNode | null {
+if (arr.length === 0 || arr[0] === null) return null;</li>
+</ul>
+<p>const root = new TreeNode(arr[0]!);
+const queue: TreeNode[] = [root];
+let i = 1;</p>
+<p>while (queue.length &gt; 0 &amp;&amp; i &lt; arr.length) {
+const node = queue.shift()!;</p>
+<pre><pre><code class="hljs undefined">// Left child
+if (i &lt; arr.length &amp;&amp; arr[i] !== null) {
+  node.left = new TreeNode(arr[i]!);
+  queue.push(node.left);
+}
+i++;
+
+// Right child
+if (i &lt; arr.length &amp;&amp; arr[i] !== null) {
+  node.right = new TreeNode(arr[i]!);
+  queue.push(node.right);
+}
+i++;
+</code></pre></pre>
+<p>}</p>
+<p>return root;
+}</p>
+<p>/**</p>
+<ul>
+<li>Utility function to convert tree to array</li>
+<li></li>
+<li>Hàm tiện ích để chuyển cây thành mảng</li>
+<li></li>
+<li>@param root - Root of the tree</li>
+<li>@returns Array representation of the tree
+*/
+function treeToArray(root: TreeNode | null): (number | null)[] {
+if (!root) return [];</li>
+</ul>
+<p>const result: (number | null)[] = [];
+const queue: (TreeNode | null)[] = [root];</p>
+<p>while (queue.length &gt; 0) {
+const node = queue.shift()!;</p>
+<pre><pre><code class="hljs undefined">if (node === null) {
+  result.push(null);
+} else {
+  result.push(node.val);
+  queue.push(node.left);
+  queue.push(node.right);
+}
+</code></pre></pre>
+<p>}</p>
+<p>// Remove trailing nulls
+while (result.length &gt; 0 &amp;&amp; result[result.length - 1] === null) {
+result.pop();
+}</p>
+<p>return result;
+}</p>
+<p>// Test cases / Các trường hợp kiểm thử
+function runTests() {
+console.log(&quot;=== Serialize and Deserialize Binary Tree Tests ===&quot;);
+console.log(
+&quot;=== Kiểm thử bài toán Tuần tự hóa và giải tuần tự hóa cây nhị phân ===\n&quot;
+);</p>
+<p>const testCases = [
+{
+name: &quot;Example 1: Standard tree&quot;,
+input: [1, 2, 3, null, null, 4, 5],
+description: &quot;Tree with 5 nodes&quot;,
+},
+{
+name: &quot;Example 2: Empty tree&quot;,
+input: [],
+description: &quot;Empty tree&quot;,
+},
+{
+name: &quot;Single node&quot;,
+input: [1],
+description: &quot;Tree with single node&quot;,
+},
+{
+name: &quot;Left-skewed tree&quot;,
+input: [1, 2, null, 3, null, 4],
+description: &quot;Tree skewed to the left&quot;,
+},
+{
+name: &quot;Right-skewed tree&quot;,
+input: [1, null, 2, null, 3, null, 4],
+description: &quot;Tree skewed to the right&quot;,
+},
+{
+name: &quot;Complete binary tree&quot;,
+input: [1, 2, 3, 4, 5, 6, 7],
+description: &quot;Complete binary tree&quot;,
+},
+{
+name: &quot;Tree with negative values&quot;,
+input: [-1, -2, -3, null, null, -4, -5],
+description: &quot;Tree with negative values&quot;,
+},
+];</p>
+<p>const codec = new Codec();
+const codecBFS = new CodecBFS();
+const codecCompact = new CodecCompact();
+const codecViz = new CodecWithVisualization();</p>
+<p>for (const testCase of testCases) {
+console.log(<pre><code class="hljs undefined">Test: ${testCase.name}</code></pre>);
+console.log(<pre><code class="hljs undefined">Input: [${testCase.input.join(&quot;, &quot;)}]</code></pre>);
+console.log(<pre><code class="hljs undefined">Description: ${testCase.description}</code></pre>);</p>
+<pre><pre><code class="hljs undefined">// Create original tree
+const originalTree = createTreeFromArray(testCase.input);
+
+// Test preorder serialization
+const serialized = codec.serialize(originalTree);
+const deserialized = codec.deserialize(serialized);
+
+console.log(`Serialized (preorder): ${serialized}`);
+console.log(
+  `Deserialized array: [${treeToArray(deserialized).join(&quot;, &quot;)}]`
+);
+
+// Test BFS serialization
+const serializedBFS = codecBFS.serialize(originalTree);
+const deserializedBFS = codecBFS.deserialize(serializedBFS);
+
+console.log(`Serialized (BFS): ${serializedBFS}`);
+
+// Test compact serialization
+const serializedCompact = codecCompact.serialize(originalTree);
+const deserializedCompact = codecCompact.deserialize(serializedCompact);
+
+console.log(`Serialized (compact): ${serializedCompact}`);
+
+// Verify all methods produce same result
+const originalArray = treeToArray(originalTree);
+const deserializedArray = treeToArray(deserialized);
+const deserializedBFSArray = treeToArray(deserializedBFS);
+const deserializedCompactArray = treeToArray(deserializedCompact);
+
+const allMatch =
+  JSON.stringify(originalArray) === JSON.stringify(deserializedArray) &amp;&amp;
+  JSON.stringify(deserializedArray) ===
+    JSON.stringify(deserializedBFSArray) &amp;&amp;
+  JSON.stringify(deserializedBFSArray) ===
+    JSON.stringify(deserializedCompactArray);
+
+console.log(`All methods match: ${allMatch ? &quot;✅ Yes&quot; : &quot;❌ No&quot;}`);
+
+// Show tree visualization
+if (originalTree) {
+  console.log(&quot;Tree visualization:&quot;);
+  console.log(codecViz.visualizeTree(originalTree));
+}
+
+console.log(&quot;---&quot;);
+</code></pre></pre>
+<p>}</p>
+<p>// Performance comparison
+console.log(&quot;\n=== Performance Comparison ===&quot;);
+console.log(&quot;=== So sánh hiệu suất ===\n&quot;);</p>
+<p>// Create a large tree
+const largeTreeArray: (number | null)[] = [];
+for (let i = 0; i &lt; 1000; i++) {
+largeTreeArray.push(i);
+}</p>
+<p>const largeTree = createTreeFromArray(largeTreeArray);</p>
+<p>console.log(&quot;Testing with large tree (1000 nodes)...&quot;);
+console.log(&quot;Kiểm thử với cây lớn (1000 nút)...&quot;);</p>
+<p>const start1 = performance.now();
+const serialized1 = codec.serialize(largeTree);
+const deserialized1 = codec.deserialize(serialized1);
+const time1 = performance.now() - start1;</p>
+<p>const start2 = performance.now();
+const serialized2 = codecBFS.serialize(largeTree);
+const deserialized2 = codecBFS.deserialize(serialized2);
+const time2 = performance.now() - start2;</p>
+<p>const start3 = performance.now();
+const serialized3 = codecCompact.serialize(largeTree);
+const deserialized3 = codecCompact.deserialize(serialized3);
+const time3 = performance.now() - start3;</p>
+<p>console.log(
+<pre><code class="hljs undefined">Preorder: ${time1.toFixed(4)}ms, Size: ${serialized1.length} chars</code></pre>
+);
+console.log(<pre><code class="hljs undefined">BFS: ${time2.toFixed(4)}ms, Size: ${serialized2.length} chars</code></pre>);
+console.log(
+<pre><code class="hljs undefined">Compact: ${time3.toFixed(4)}ms, Size: ${serialized3.length} chars</code></pre>
+);</p>
+<p>const resultsMatch =
+codecViz.areTreesEqual(deserialized1, deserialized2) &amp;&amp;
+codecViz.areTreesEqual(deserialized2, deserialized3);
+console.log(<pre><code class="hljs undefined">Results match: ${resultsMatch ? &quot;✅ Yes&quot; : &quot;❌ No&quot;}</code></pre>);
+}</p>
+<p>// Run tests if this file is executed directly
+if (require.main === module) {
+runTests();
+}</p>
+<p>export {
+TreeNode,
+Codec,
+CodecBFS,
+CodecCompact,
+CodecWithVisualization,
+createTreeFromArray,
+treeToArray,
+};
+{% endraw %}</p></div></div></main><footer class="sc-kjwdDK hrfQfY"><div class="sc-eVqvcJ dwFHjZ"><div class="sc-bbbBoY kWATso"><div class="sc-cdmAjP fBmmqS"><div class="sc-jytpVa iNKxsb"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-code "><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>Frontend Interview Prep</div><p class="sc-eknHtZ fYhkiV">Comprehensive interview preparation for frontend engineers targeting Big Tech companies.</p><div class="sc-pYNGo eVAQiq"><a href="https://github.com" aria-label="GitHub"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-github "><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"></path><path d="M9 18c-4.51 2-5-2-7-2"></path></svg></a><a href="https://twitter.com" aria-label="Twitter"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-twitter "><path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"></path></svg></a><a href="https://linkedin.com" aria-label="LinkedIn"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-linkedin "><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect width="4" height="12" x="2" y="9"></rect><circle cx="4" cy="4" r="2"></circle></svg></a><a href="mailto:contact@example.com" aria-label="Email"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-mail "><rect width="20" height="16" x="2" y="4" rx="2"></rect><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path></svg></a></div></div><div class="sc-cdmAjP fBmmqS"><h3>Study Materials</h3><ul><li><a href="/algorithms">Algorithms</a></li><li><a href="/react">React &amp; Frontend</a></li><li><a href="/system-design">System Design</a></li><li><a href="/typescript">TypeScript</a></li><li><a href="/performance">Performance</a></li></ul></div><div class="sc-cdmAjP fBmmqS"><h3>Companies</h3><ul><li><a href="/google">Google</a></li><li><a href="/meta">Meta</a></li><li><a href="/amazon">Amazon</a></li><li><a href="/microsoft">Microsoft</a></li><li><a href="/apple">Apple</a></li></ul></div><div class="sc-cdmAjP fBmmqS"><h3>Resources</h3><ul><li><a href="/interview-tips">Interview Tips</a></li><li><a href="/coding-challenges">Coding Challenges</a></li><li><a href="/mock-interviews">Mock Interviews</a></li><li><a href="/blog">Blog</a></li><li><a href="/faq">FAQ</a></li></ul></div></div><div class="sc-cCVJLD fgJmHp"><p class="sc-jYczwO gYGLHT">© 2025 Frontend Interview Prep. All rights reserved.</p><div class="sc-dNFkOE ghBULZ"><a href="/privacy">Privacy Policy</a><a href="/terms">Terms of Service</a><a href="/contact">Contact</a></div></div></div></footer></div><script src="/interview/_next/static/chunks/webpack-be7d7df45533bffc.js" async=""></script><script>(self.__next_f=self.__next_f||[]).push([0]);self.__next_f.push([2,null])</script><script>self.__next_f.push([1,"1:HL[\"/interview/_next/static/media/e4af272ccee01ff0-s.p.woff2\",\"font\",{\"crossOrigin\":\"\",\"type\":\"font/woff2\"}]\n2:HL[\"/interview/_next/static/css/387024c6a2216908.css\",\"style\"]\n"])</script><script>self.__next_f.push([1,"3:I[2846,[],\"\"]\n5:I[5907,[\"918\",\"static/chunks/918-3273b83890f10546.js\",\"930\",\"static/chunks/930-3262a6c9c5acace4.js\",\"687\",\"static/chunks/app/docs/%5B...slug%5D/page-32962e9542d32755.js\"],\"default\"]\n7:I[4707,[],\"\"]\n9:I[6423,[],\"\"]\na:I[2,[\"918\",\"static/chunks/918-3273b83890f10546.js\",\"710\",\"static/chunks/710-dfaa11b4dff08f8e.js\",\"972\",\"static/chunks/972-011bba60ed155615.js\",\"233\",\"static/chunks/233-3e0c1d820a17eca9.js\",\"185\",\"static/chunks/app/layout-333f4adcd11f8f39.js\"],\"default\",1]\nc:I[1060,[],\"\"]\n6:T385e,"])</script><script>self.__next_f.push([1,"\n# Serialize and Deserialize Binary Tree\n\n\n\n## Problem Description\n\n *  * Serialization is the process of converting a data structure or object into a sequence  * of bits so that it can be stored in a file or memory buffer, or transmitted across a  * network connection link to be reconstructed later in the same or another computer environment.  * \n\n## Solutions\n\n{% raw %}\n/**\n * Serialize and Deserialize Binary Tree\n *\n * Problem: https://leetcode.com/problems/serialize-and-deserialize-binary-tree/\n *\n * Serialization is the process of converting a data structure or object into a sequence\n * of bits so that it can be stored in a file or memory buffer, or transmitted across a\n * network connection link to be reconstructed later in the same or another computer environment.\n *\n * Design an algorithm to serialize and deserialize a binary tree. There is no restriction\n * on how your serialization/deserialization algorithm should work. You just need to ensure\n * that a binary tree can be serialized to a string and this string can be deserialized to\n * the original tree structure.\n *\n * Example 1:\n * Input: root = [1,2,3,null,null,4,5]\n * Output: [1,2,3,null,null,4,5]\n *\n * Example 2:\n * Input: root = []\n * Output: []\n *\n * Constraints:\n * - The number of nodes in the tree is in the range [0, 10^4].\n * - -1000 \u003c= Node.val \u003c= 1000\n *\n * Solution Approach:\n * 1. Preorder traversal with null markers\n * 2. Level-order traversal (BFS) with null markers\n * 3. Use special characters to represent null nodes\n * 4. Parse the string back to reconstruct the tree\n *\n * Time Complexity: O(n) for both serialization and deserialization\n * Space Complexity: O(n) for storing the serialized string\n */\n\n/**\n * TreeNode class definition\n *\n * Định nghĩa lớp TreeNode\n */\nclass TreeNode {\n  val: number;\n  left: TreeNode | null;\n  right: TreeNode | null;\n\n  constructor(\n    val: number = 0,\n    left: TreeNode | null = null,\n    right: TreeNode | null = null\n  ) {\n    this.val = val;\n    this.left = left;\n    this.right = right;\n  }\n}\n\n/**\n * Serialize and Deserialize Binary Tree - Preorder Solution\n *\n * Giải pháp duyệt tiền thứ tự cho bài toán Tuần tự hóa và giải tuần tự hóa cây nhị phân\n */\nclass Codec {\n  /**\n   * Serialize a binary tree to a string using preorder traversal\n   *\n   * Tuần tự hóa cây nhị phân thành chuỗi sử dụng duyệt tiền thứ tự\n   *\n   * @param root - Root of the binary tree\n   * @returns Serialized string representation\n   */\n  serialize(root: TreeNode | null): string {\n    if (!root) return \"null\";\n\n    const left = this.serialize(root.left);\n    const right = this.serialize(root.right);\n\n    return `${root.val},${left},${right}`;\n  }\n\n  /**\n   * Deserialize a string back to a binary tree\n   *\n   * Giải tuần tự hóa chuỗi về cây nhị phân\n   *\n   * @param data - Serialized string\n   * @returns Root of the reconstructed binary tree\n   */\n  deserialize(data: string): TreeNode | null {\n    const values = data.split(\",\");\n    let index = 0;\n\n    function deserializeHelper(): TreeNode | null {\n      if (index \u003e= values.length || values[index] === \"null\") {\n        index++;\n        return null;\n      }\n\n      const val = parseInt(values[index]);\n      index++;\n\n      const node = new TreeNode(val);\n      node.left = deserializeHelper();\n      node.right = deserializeHelper();\n\n      return node;\n    }\n\n    return deserializeHelper();\n  }\n}\n\n/**\n * Alternative Solution: Level-order (BFS) Serialization\n *\n * Giải pháp thay thế: Tuần tự hóa theo thứ tự mức (BFS)\n */\nclass CodecBFS {\n  serialize(root: TreeNode | null): string {\n    if (!root) return \"[]\";\n\n    const queue: (TreeNode | null)[] = [root];\n    const result: (number | null)[] = [];\n\n    while (queue.length \u003e 0) {\n      const node = queue.shift()!;\n\n      if (node === null) {\n        result.push(null);\n      } else {\n        result.push(node.val);\n        queue.push(node.left);\n        queue.push(node.right);\n      }\n    }\n\n    // Remove trailing nulls\n    while (result.length \u003e 0 \u0026\u0026 result[result.length - 1] === null) {\n      result.pop();\n    }\n\n    return JSON.stringify(result);\n  }\n\n  deserialize(data: string): TreeNode | null {\n    if (data === \"[]\") return null;\n\n    const values: (number | null)[] = JSON.parse(data);\n    if (values.length === 0) return null;\n\n    const root = new TreeNode(values[0]!);\n    const queue: TreeNode[] = [root];\n    let i = 1;\n\n    while (queue.length \u003e 0 \u0026\u0026 i \u003c values.length) {\n      const node = queue.shift()!;\n\n      // Left child\n      if (i \u003c values.length \u0026\u0026 values[i] !== null) {\n        node.left = new TreeNode(values[i]!);\n        queue.push(node.left);\n      }\n      i++;\n\n      // Right child\n      if (i \u003c values.length \u0026\u0026 values[i] !== null) {\n        node.right = new TreeNode(values[i]!);\n        queue.push(node.right);\n      }\n      i++;\n    }\n\n    return root;\n  }\n}\n\n/**\n * Solution with Compact Representation\n *\n * Giải pháp với biểu diễn gọn\n */\nclass CodecCompact {\n  serialize(root: TreeNode | null): string {\n    if (!root) return \"#\";\n\n    const left = this.serialize(root.left);\n    const right = this.serialize(root.right);\n\n    return `${root.val}(${left})(${right})`;\n  }\n\n  deserialize(data: string): TreeNode | null {\n    if (data === \"#\") return null;\n\n    let index = 0;\n\n    function parseValue(): number {\n      let value = \"\";\n      while (index \u003c data.length \u0026\u0026 data[index] !== \"(\") {\n        value += data[index];\n        index++;\n      }\n      return parseInt(value);\n    }\n\n    function parseSubtree(): TreeNode | null {\n      if (data[index] === \"#\") {\n        index++;\n        return null;\n      }\n\n      const val = parseValue();\n      const node = new TreeNode(val);\n\n      if (data[index] === \"(\") {\n        index++; // skip '('\n        node.left = parseSubtree();\n        index++; // skip ')'\n\n        index++; // skip '('\n        node.right = parseSubtree();\n        index++; // skip ')'\n      }\n\n      return node;\n    }\n\n    return parseSubtree();\n  }\n}\n\n/**\n * Solution with Tree Visualization\n *\n * Giải pháp với hiển thị cây\n */\nclass CodecWithVisualization {\n  serialize(root: TreeNode | null): string {\n    return new Codec().serialize(root);\n  }\n\n  deserialize(data: string): TreeNode | null {\n    return new Codec().deserialize(data);\n  }\n\n  /**\n   * Visualize the tree structure\n   *\n   * Hiển thị cấu trúc cây\n   *\n   * @param root - Root of the tree\n   * @returns String representation of the tree\n   */\n  visualizeTree(root: TreeNode | null): string {\n    if (!root) return \"Empty tree\";\n\n    const result: string[] = [];\n\n    function visualizeHelper(\n      node: TreeNode | null,\n      prefix: string,\n      isLeft: boolean\n    ): void {\n      if (!node) return;\n\n      result.push(`${prefix}${isLeft ? \"├── \" : \"└── \"}${node.val}`);\n\n      const newPrefix = prefix + (isLeft ? \"│   \" : \"    \");\n\n      if (node.left || node.right) {\n        if (node.left) {\n          visualizeHelper(node.left, newPrefix, true);\n        }\n        if (node.right) {\n          visualizeHelper(node.right, newPrefix, false);\n        }\n      }\n    }\n\n    result.push(`${root.val}`);\n    if (root.left) visualizeHelper(root.left, \"\", true);\n    if (root.right) visualizeHelper(root.right, \"\", false);\n\n    return result.join(\"\\n\");\n  }\n\n  /**\n   * Compare two trees for equality\n   *\n   * So sánh hai cây có bằng nhau không\n   *\n   * @param tree1 - First tree\n   * @param tree2 - Second tree\n   * @returns true if trees are equal\n   */\n  areTreesEqual(tree1: TreeNode | null, tree2: TreeNode | null): boolean {\n    if (!tree1 \u0026\u0026 !tree2) return true;\n    if (!tree1 || !tree2) return false;\n\n    return (\n      tree1.val === tree2.val \u0026\u0026\n      this.areTreesEqual(tree1.left, tree2.left) \u0026\u0026\n      this.areTreesEqual(tree1.right, tree2.right)\n    );\n  }\n}\n\n/**\n * Utility function to create a binary tree from array\n *\n * Hàm tiện ích để tạo cây nhị phân từ mảng\n *\n * @param arr - Array representation of the tree\n * @returns Root of the created tree\n */\nfunction createTreeFromArray(arr: (number | null)[]): TreeNode | null {\n  if (arr.length === 0 || arr[0] === null) return null;\n\n  const root = new TreeNode(arr[0]!);\n  const queue: TreeNode[] = [root];\n  let i = 1;\n\n  while (queue.length \u003e 0 \u0026\u0026 i \u003c arr.length) {\n    const node = queue.shift()!;\n\n    // Left child\n    if (i \u003c arr.length \u0026\u0026 arr[i] !== null) {\n      node.left = new TreeNode(arr[i]!);\n      queue.push(node.left);\n    }\n    i++;\n\n    // Right child\n    if (i \u003c arr.length \u0026\u0026 arr[i] !== null) {\n      node.right = new TreeNode(arr[i]!);\n      queue.push(node.right);\n    }\n    i++;\n  }\n\n  return root;\n}\n\n/**\n * Utility function to convert tree to array\n *\n * Hàm tiện ích để chuyển cây thành mảng\n *\n * @param root - Root of the tree\n * @returns Array representation of the tree\n */\nfunction treeToArray(root: TreeNode | null): (number | null)[] {\n  if (!root) return [];\n\n  const result: (number | null)[] = [];\n  const queue: (TreeNode | null)[] = [root];\n\n  while (queue.length \u003e 0) {\n    const node = queue.shift()!;\n\n    if (node === null) {\n      result.push(null);\n    } else {\n      result.push(node.val);\n      queue.push(node.left);\n      queue.push(node.right);\n    }\n  }\n\n  // Remove trailing nulls\n  while (result.length \u003e 0 \u0026\u0026 result[result.length - 1] === null) {\n    result.pop();\n  }\n\n  return result;\n}\n\n// Test cases / Các trường hợp kiểm thử\nfunction runTests() {\n  console.log(\"=== Serialize and Deserialize Binary Tree Tests ===\");\n  console.log(\n    \"=== Kiểm thử bài toán Tuần tự hóa và giải tuần tự hóa cây nhị phân ===\\n\"\n  );\n\n  const testCases = [\n    {\n      name: \"Example 1: Standard tree\",\n      input: [1, 2, 3, null, null, 4, 5],\n      description: \"Tree with 5 nodes\",\n    },\n    {\n      name: \"Example 2: Empty tree\",\n      input: [],\n      description: \"Empty tree\",\n    },\n    {\n      name: \"Single node\",\n      input: [1],\n      description: \"Tree with single node\",\n    },\n    {\n      name: \"Left-skewed tree\",\n      input: [1, 2, null, 3, null, 4],\n      description: \"Tree skewed to the left\",\n    },\n    {\n      name: \"Right-skewed tree\",\n      input: [1, null, 2, null, 3, null, 4],\n      description: \"Tree skewed to the right\",\n    },\n    {\n      name: \"Complete binary tree\",\n      input: [1, 2, 3, 4, 5, 6, 7],\n      description: \"Complete binary tree\",\n    },\n    {\n      name: \"Tree with negative values\",\n      input: [-1, -2, -3, null, null, -4, -5],\n      description: \"Tree with negative values\",\n    },\n  ];\n\n  const codec = new Codec();\n  const codecBFS = new CodecBFS();\n  const codecCompact = new CodecCompact();\n  const codecViz = new CodecWithVisualization();\n\n  for (const testCase of testCases) {\n    console.log(`Test: ${testCase.name}`);\n    console.log(`Input: [${testCase.input.join(\", \")}]`);\n    console.log(`Description: ${testCase.description}`);\n\n    // Create original tree\n    const originalTree = createTreeFromArray(testCase.input);\n\n    // Test preorder serialization\n    const serialized = codec.serialize(originalTree);\n    const deserialized = codec.deserialize(serialized);\n\n    console.log(`Serialized (preorder): ${serialized}`);\n    console.log(\n      `Deserialized array: [${treeToArray(deserialized).join(\", \")}]`\n    );\n\n    // Test BFS serialization\n    const serializedBFS = codecBFS.serialize(originalTree);\n    const deserializedBFS = codecBFS.deserialize(serializedBFS);\n\n    console.log(`Serialized (BFS): ${serializedBFS}`);\n\n    // Test compact serialization\n    const serializedCompact = codecCompact.serialize(originalTree);\n    const deserializedCompact = codecCompact.deserialize(serializedCompact);\n\n    console.log(`Serialized (compact): ${serializedCompact}`);\n\n    // Verify all methods produce same result\n    const originalArray = treeToArray(originalTree);\n    const deserializedArray = treeToArray(deserialized);\n    const deserializedBFSArray = treeToArray(deserializedBFS);\n    const deserializedCompactArray = treeToArray(deserializedCompact);\n\n    const allMatch =\n      JSON.stringify(originalArray) === JSON.stringify(deserializedArray) \u0026\u0026\n      JSON.stringify(deserializedArray) ===\n        JSON.stringify(deserializedBFSArray) \u0026\u0026\n      JSON.stringify(deserializedBFSArray) ===\n        JSON.stringify(deserializedCompactArray);\n\n    console.log(`All methods match: ${allMatch ? \"✅ Yes\" : \"❌ No\"}`);\n\n    // Show tree visualization\n    if (originalTree) {\n      console.log(\"Tree visualization:\");\n      console.log(codecViz.visualizeTree(originalTree));\n    }\n\n    console.log(\"---\");\n  }\n\n  // Performance comparison\n  console.log(\"\\n=== Performance Comparison ===\");\n  console.log(\"=== So sánh hiệu suất ===\\n\");\n\n  // Create a large tree\n  const largeTreeArray: (number | null)[] = [];\n  for (let i = 0; i \u003c 1000; i++) {\n    largeTreeArray.push(i);\n  }\n\n  const largeTree = createTreeFromArray(largeTreeArray);\n\n  console.log(\"Testing with large tree (1000 nodes)...\");\n  console.log(\"Kiểm thử với cây lớn (1000 nút)...\");\n\n  const start1 = performance.now();\n  const serialized1 = codec.serialize(largeTree);\n  const deserialized1 = codec.deserialize(serialized1);\n  const time1 = performance.now() - start1;\n\n  const start2 = performance.now();\n  const serialized2 = codecBFS.serialize(largeTree);\n  const deserialized2 = codecBFS.deserialize(serialized2);\n  const time2 = performance.now() - start2;\n\n  const start3 = performance.now();\n  const serialized3 = codecCompact.serialize(largeTree);\n  const deserialized3 = codecCompact.deserialize(serialized3);\n  const time3 = performance.now() - start3;\n\n  console.log(\n    `Preorder: ${time1.toFixed(4)}ms, Size: ${serialized1.length} chars`\n  );\n  console.log(`BFS: ${time2.toFixed(4)}ms, Size: ${serialized2.length} chars`);\n  console.log(\n    `Compact: ${time3.toFixed(4)}ms, Size: ${serialized3.length} chars`\n  );\n\n  const resultsMatch =\n    codecViz.areTreesEqual(deserialized1, deserialized2) \u0026\u0026\n    codecViz.areTreesEqual(deserialized2, deserialized3);\n  console.log(`Results match: ${resultsMatch ? \"✅ Yes\" : \"❌ No\"}`);\n}\n\n// Run tests if this file is executed directly\nif (require.main === module) {\n  runTests();\n}\n\nexport {\n  TreeNode,\n  Codec,\n  CodecBFS,\n  CodecCompact,\n  CodecWithVisualization,\n  createTreeFromArray,\n  treeToArray,\n};\n{% endraw %}\n"])</script><script>self.__next_f.push([1,"8:[\"slug\",\"leetcode/design/problems/04-serialize-and-deserialize-binary-tree\",\"c\"]\nd:[]\n"])</script><script>self.__next_f.push([1,"0:[\"$\",\"$L3\",null,{\"buildId\":\"7uJ7BVaXJTiEOD9iYDv3n\",\"assetPrefix\":\"/interview\",\"urlParts\":[\"\",\"docs\",\"leetcode\",\"design\",\"problems\",\"04-serialize-and-deserialize-binary-tree\"],\"initialTree\":[\"\",{\"children\":[\"docs\",{\"children\":[[\"slug\",\"leetcode/design/problems/04-serialize-and-deserialize-binary-tree\",\"c\"],{\"children\":[\"__PAGE__?{\\\"slug\\\":[\\\"leetcode\\\",\\\"design\\\",\\\"problems\\\",\\\"04-serialize-and-deserialize-binary-tree\\\"]}\",{}]}]}]},\"$undefined\",\"$undefined\",true],\"initialSeedData\":[\"\",{\"children\":[\"docs\",{\"children\":[[\"slug\",\"leetcode/design/problems/04-serialize-and-deserialize-binary-tree\",\"c\"],{\"children\":[\"__PAGE__\",{},[[\"$L4\",[\"$\",\"div\",null,{\"style\":{\"maxWidth\":\"1200px\",\"margin\":\"0 auto\",\"padding\":\"2rem\",\"paddingTop\":\"6rem\"},\"children\":[[\"$\",\"div\",null,{\"style\":{\"marginBottom\":\"2rem\"},\"children\":[[\"$\",\"nav\",null,{\"style\":{\"color\":\"#64748b\",\"fontSize\":\"0.9rem\",\"marginBottom\":\"1rem\"},\"children\":[[\"$\",\"a\",null,{\"href\":\"/\",\"style\":{\"color\":\"#3b82f6\",\"textDecoration\":\"none\"},\"children\":\"Home\"}],\" \u003e \",[\"$\",\"span\",null,{\"children\":\"leetcode \u003e design \u003e problems \u003e 04-serialize-and-deserialize-binary-tree\"}]]}],[\"$\",\"h1\",null,{\"style\":{\"fontSize\":\"2.5rem\",\"fontWeight\":\"800\",\"marginBottom\":\"0.5rem\",\"color\":\"#1e293b\"},\"children\":\"Serialize and Deserialize Binary Tree\"}],[\"$\",\"div\",null,{\"style\":{\"color\":\"#64748b\",\"fontSize\":\"0.9rem\",\"marginBottom\":\"2rem\"},\"children\":[[\"$\",\"span\",null,{\"children\":[\"📁 \",\"leetcode/design/problems/04-serialize-and-deserialize-binary-tree.md\"]}],\"$undefined\",\"$undefined\"]}]]}],[\"$\",\"$L5\",null,{\"content\":\"$6\"}]]}],null],null],null]},[null,[\"$\",\"$L7\",null,{\"parallelRouterKey\":\"children\",\"segmentPath\":[\"children\",\"docs\",\"children\",\"$8\",\"children\"],\"error\":\"$undefined\",\"errorStyles\":\"$undefined\",\"errorScripts\":\"$undefined\",\"template\":[\"$\",\"$L9\",null,{}],\"templateStyles\":\"$undefined\",\"templateScripts\":\"$undefined\",\"notFound\":\"$undefined\",\"notFoundStyles\":\"$undefined\"}]],null]},[null,[\"$\",\"$L7\",null,{\"parallelRouterKey\":\"children\",\"segmentPath\":[\"children\",\"docs\",\"children\"],\"error\":\"$undefined\",\"errorStyles\":\"$undefined\",\"errorScripts\":\"$undefined\",\"template\":[\"$\",\"$L9\",null,{}],\"templateStyles\":\"$undefined\",\"templateScripts\":\"$undefined\",\"notFound\":\"$undefined\",\"notFoundStyles\":\"$undefined\"}]],null]},[[[[\"$\",\"link\",\"0\",{\"rel\":\"stylesheet\",\"href\":\"/interview/_next/static/css/387024c6a2216908.css\",\"precedence\":\"next\",\"crossOrigin\":\"$undefined\"}]],[\"$\",\"$La\",null,{\"children\":[\"$\",\"$L7\",null,{\"parallelRouterKey\":\"children\",\"segmentPath\":[\"children\"],\"error\":\"$undefined\",\"errorStyles\":\"$undefined\",\"errorScripts\":\"$undefined\",\"template\":[\"$\",\"$L9\",null,{}],\"templateStyles\":\"$undefined\",\"templateScripts\":\"$undefined\",\"notFound\":[[\"$\",\"title\",null,{\"children\":\"404: This page could not be found.\"}],[\"$\",\"div\",null,{\"style\":{\"fontFamily\":\"system-ui,\\\"Segoe UI\\\",Roboto,Helvetica,Arial,sans-serif,\\\"Apple Color Emoji\\\",\\\"Segoe UI Emoji\\\"\",\"height\":\"100vh\",\"textAlign\":\"center\",\"display\":\"flex\",\"flexDirection\":\"column\",\"alignItems\":\"center\",\"justifyContent\":\"center\"},\"children\":[\"$\",\"div\",null,{\"children\":[[\"$\",\"style\",null,{\"dangerouslySetInnerHTML\":{\"__html\":\"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}\"}}],[\"$\",\"h1\",null,{\"className\":\"next-error-h1\",\"style\":{\"display\":\"inline-block\",\"margin\":\"0 20px 0 0\",\"padding\":\"0 23px 0 0\",\"fontSize\":24,\"fontWeight\":500,\"verticalAlign\":\"top\",\"lineHeight\":\"49px\"},\"children\":\"404\"}],[\"$\",\"div\",null,{\"style\":{\"display\":\"inline-block\"},\"children\":[\"$\",\"h2\",null,{\"style\":{\"fontSize\":14,\"fontWeight\":400,\"lineHeight\":\"49px\",\"margin\":0},\"children\":\"This page could not be found.\"}]}]]}]}]],\"notFoundStyles\":[]}],\"params\":{}}]],null],null],\"couldBeIntercepted\":false,\"initialHead\":[null,\"$Lb\"],\"globalErrorComponent\":\"$c\",\"missingSlots\":\"$Wd\"}]\n"])</script><script>self.__next_f.push([1,"b:[[\"$\",\"meta\",\"0\",{\"name\":\"viewport\",\"content\":\"width=device-width, initial-scale=1\"}],[\"$\",\"meta\",\"1\",{\"charSet\":\"utf-8\"}],[\"$\",\"title\",\"2\",{\"children\":\"Serialize and Deserialize Binary Tree - Frontend Interview Docs\"}],[\"$\",\"meta\",\"3\",{\"name\":\"description\",\"content\":\" # Serialize and Deserialize Binary Tree    ## Problem Description   *  * Serialization is the process of converting a data structure or object into a sequence \"}],[\"$\",\"meta\",\"4\",{\"property\":\"og:title\",\"content\":\"Serialize and Deserialize Binary Tree - Frontend Interview Docs\"}],[\"$\",\"meta\",\"5\",{\"property\":\"og:description\",\"content\":\" # Serialize and Deserialize Binary Tree    ## Problem Description   *  * Serialization is the process of converting a data structure or object into a sequence \"}],[\"$\",\"meta\",\"6\",{\"property\":\"og:type\",\"content\":\"article\"}],[\"$\",\"meta\",\"7\",{\"name\":\"twitter:card\",\"content\":\"summary\"}],[\"$\",\"meta\",\"8\",{\"name\":\"twitter:title\",\"content\":\"Serialize and Deserialize Binary Tree - Frontend Interview Docs\"}],[\"$\",\"meta\",\"9\",{\"name\":\"twitter:description\",\"content\":\" # Serialize and Deserialize Binary Tree    ## Problem Description   *  * Serialization is the process of converting a data structure or object into a sequence \"}],[\"$\",\"meta\",\"10\",{\"name\":\"next-size-adjust\"}]]\n4:null\n"])</script></body></html>

@@ -1,0 +1,814 @@
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><meta name="viewport" content="width=device-width, initial-scale=1"/><link rel="preload" href="/interview/_next/static/media/e4af272ccee01ff0-s.p.woff2" as="font" crossorigin="" type="font/woff2"/><link rel="stylesheet" href="/interview/_next/static/css/387024c6a2216908.css" data-precedence="next"/><link rel="preload" as="script" fetchPriority="low" href="/interview/_next/static/chunks/webpack-be7d7df45533bffc.js"/><script src="/interview/_next/static/chunks/fd9d1056-6922f449a204c2cc.js" async=""></script><script src="/interview/_next/static/chunks/117-e7ecc085ce9cfab3.js" async=""></script><script src="/interview/_next/static/chunks/main-app-b06be5f3411c20c3.js" async=""></script><script src="/interview/_next/static/chunks/918-3273b83890f10546.js" async=""></script><script src="/interview/_next/static/chunks/930-3262a6c9c5acace4.js" async=""></script><script src="/interview/_next/static/chunks/app/docs/%5B...slug%5D/page-32962e9542d32755.js" async=""></script><script src="/interview/_next/static/chunks/710-dfaa11b4dff08f8e.js" async=""></script><script src="/interview/_next/static/chunks/972-011bba60ed155615.js" async=""></script><script src="/interview/_next/static/chunks/233-3e0c1d820a17eca9.js" async=""></script><script src="/interview/_next/static/chunks/app/layout-333f4adcd11f8f39.js" async=""></script><title>Frontend Interview Prep 2025 - Big Tech Interview Guide</title><meta name="description" content="Comprehensive frontend interview preparation for Big Tech companies including React, TypeScript, algorithms, and system design."/><link rel="icon" href="/favicon.ico"/><meta name="theme-color" content="#1a1a1a"/><meta property="og:title" content="Frontend Interview Prep 2025"/><meta property="og:description" content="Complete guide for frontend engineers targeting Big Tech companies"/><meta property="og:type" content="website"/><link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous"/><title>Sqrt(x) - Frontend Interview Docs</title><meta name="description" content=" # Sqrt(x)  **LeetCode Problem # * 69. Sqrt(x)**  ## Problem Description  LeetCode problem solution with multiple approaches and explanations.  ## Solutions  {%"/><meta property="og:title" content="Sqrt(x) - Frontend Interview Docs"/><meta property="og:description" content=" # Sqrt(x)  **LeetCode Problem # * 69. Sqrt(x)**  ## Problem Description  LeetCode problem solution with multiple approaches and explanations.  ## Solutions  {%"/><meta property="og:type" content="article"/><meta name="twitter:card" content="summary"/><meta name="twitter:title" content="Sqrt(x) - Frontend Interview Docs"/><meta name="twitter:description" content=" # Sqrt(x)  **LeetCode Problem # * 69. Sqrt(x)**  ## Problem Description  LeetCode problem solution with multiple approaches and explanations.  ## Solutions  {%"/><meta name="next-size-adjust"/><script src="/interview/_next/static/chunks/polyfills-42372ed130431b0a.js" noModule=""></script><style data-styled="" data-styled-version="6.1.19">*{margin:0;padding:0;box-sizing:border-box;}/*!sc*/
+html{font-size:16px;line-height:1.5;scroll-behavior:smooth;}/*!sc*/
+body{font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;font-size:1rem;line-height:1.5;color:#1e293b;background-color:#ffffff;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;}/*!sc*/
+h1,h2,h3,h4,h5,h6{font-weight:700;line-height:1.25;margin-bottom:0.5em;}/*!sc*/
+h1{font-size:3rem;}/*!sc*/
+@media (max-width: 768px){h1{font-size:2.25rem;}}/*!sc*/
+h2{font-size:2.25rem;}/*!sc*/
+@media (max-width: 768px){h2{font-size:1.875rem;}}/*!sc*/
+h3{font-size:1.875rem;}/*!sc*/
+@media (max-width: 768px){h3{font-size:1.5rem;}}/*!sc*/
+h4{font-size:1.5rem;}/*!sc*/
+@media (max-width: 768px){h4{font-size:1.25rem;}}/*!sc*/
+h5{font-size:1.25rem;}/*!sc*/
+h6{font-size:1.125rem;}/*!sc*/
+p{margin-bottom:1rem;line-height:1.75;}/*!sc*/
+a{color:#3b82f6;text-decoration:none;transition:color 0.15s ease;}/*!sc*/
+a:hover{color:#2563eb;}/*!sc*/
+a:focus{outline:2px solid #3b82f6;outline-offset:2px;}/*!sc*/
+button{cursor:pointer;border:none;background:none;font-family:inherit;font-size:inherit;}/*!sc*/
+button:disabled{cursor:not-allowed;opacity:0.6;}/*!sc*/
+button:focus{outline:2px solid #3b82f6;outline-offset:2px;}/*!sc*/
+input,textarea,select{font-family:inherit;font-size:inherit;}/*!sc*/
+input:focus,textarea:focus,select:focus{outline:2px solid #3b82f6;outline-offset:2px;}/*!sc*/
+img{max-width:100%;height:auto;}/*!sc*/
+ul,ol{margin-bottom:1rem;padding-left:1.5rem;}/*!sc*/
+li{margin-bottom:0.25rem;}/*!sc*/
+blockquote{margin:1rem 0;padding:1rem;border-left:4px solid #3b82f6;background-color:#f1f5f9;font-style:italic;}/*!sc*/
+code{font-family:SFMono-Regular,Consolas,"Liberation Mono",Menlo,monospace;font-size:0.9em;background-color:#f1f5f9;padding:0.2em 0.4em;border-radius:0.25rem;}/*!sc*/
+pre{background-color:#f1f5f9;padding:1rem;border-radius:0.5rem;overflow-x:auto;margin-bottom:1rem;}/*!sc*/
+pre code{background:none;padding:0;}/*!sc*/
+table{width:100%;border-collapse:collapse;margin-bottom:1rem;}/*!sc*/
+th,td{padding:0.75rem;text-align:left;border-bottom:1px solid #e2e8f0;}/*!sc*/
+th{font-weight:600;background-color:#f1f5f9;}/*!sc*/
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0, 0, 0, 0);white-space:nowrap;border:0;}/*!sc*/
+.skip-link{position:absolute;top:-40px;left:6px;background:#3b82f6;color:white;padding:8px;text-decoration:none;border-radius:4px;z-index:100;}/*!sc*/
+.skip-link:focus{top:6px;}/*!sc*/
+::-webkit-scrollbar{width:8px;height:8px;}/*!sc*/
+::-webkit-scrollbar-track{background:#f1f5f9;}/*!sc*/
+::-webkit-scrollbar-thumb{background:#94a3b8;border-radius:4px;}/*!sc*/
+::-webkit-scrollbar-thumb:hover{background:#64748b;}/*!sc*/
+::selection{background:#3b82f6;color:white;}/*!sc*/
+.focus-visible{outline:2px solid #3b82f6;outline-offset:2px;}/*!sc*/
+.fade-in{opacity:0;animation:fadeIn 0.3s ease forwards;}/*!sc*/
+.slide-up{transform:translateY(20px);opacity:0;animation:slideUp 0.3s ease forwards;}/*!sc*/
+@keyframes fadeIn{to{opacity:1;}}/*!sc*/
+@keyframes slideUp{to{transform:translateY(0);opacity:1;}}/*!sc*/
+@media print{*{background:white!important;color:black!important;box-shadow:none!important;text-shadow:none!important;}a,a:visited{text-decoration:underline;}h1,h2,h3,h4,h5,h6{break-after:avoid;}pre,blockquote{border:1px solid #999;break-inside:avoid;}img{max-width:100%!important;}@page{margin:0.5in;}}/*!sc*/
+data-styled.g19[id="sc-global-kxA-Ddz1"]{content:"sc-global-kxA-Ddz1,"}/*!sc*/
+.hNPaTO{position:fixed;top:0;width:100%;z-index:1020;background:transparent;backdrop-filter:blur(10px);border-bottom:1px solid transparent;transition:all 0.3s ease;}/*!sc*/
+data-styled.g20[id="sc-dNdcvo"]{content:"hNPaTO,"}/*!sc*/
+.jJxjWc{max-width:1200px;margin:0 auto;padding:0 2rem;display:flex;align-items:center;justify-content:space-between;height:70px;}/*!sc*/
+data-styled.g21[id="sc-fbQrwq"]{content:"jJxjWc,"}/*!sc*/
+.jwmRwa{display:flex;align-items:center;gap:0.5rem;font-size:1.5rem;font-weight:700;color:#3b82f6;text-decoration:none;cursor:pointer;}/*!sc*/
+.jwmRwa:hover{color:#2563eb;}/*!sc*/
+data-styled.g22[id="sc-gGKoUb"]{content:"jwmRwa,"}/*!sc*/
+.KQdZw{display:flex;align-items:center;gap:2rem;}/*!sc*/
+@media (max-width: 768px){.KQdZw{display:none;}}/*!sc*/
+data-styled.g23[id="sc-hwddKA"]{content:"KQdZw,"}/*!sc*/
+.ETszJ{color:#1e293b;font-weight:500;text-decoration:none;transition:color 0.15s ease;position:relative;}/*!sc*/
+.ETszJ:hover{color:#3b82f6;}/*!sc*/
+.ETszJ:after{content:'';position:absolute;bottom:-5px;left:0;width:0;height:2px;background:#3b82f6;transition:width 0.15s ease;}/*!sc*/
+.ETszJ:hover:after{width:100%;}/*!sc*/
+data-styled.g24[id="sc-jaXbil"]{content:"ETszJ,"}/*!sc*/
+.foClcg{display:none;background:none;border:none;color:#1e293b;cursor:pointer;padding:0.5rem;}/*!sc*/
+@media (max-width: 768px){.foClcg{display:block;}}/*!sc*/
+data-styled.g25[id="sc-eqNDNG"]{content:"foClcg,"}/*!sc*/
+.kBjfBo{display:flex;align-items:center;gap:0.5rem;background:#f1f5f9;border:1px solid #e2e8f0;border-radius:0.5rem;padding:0.5rem 1rem;color:#64748b;font-size:0.9rem;transition:all 0.15s ease;}/*!sc*/
+.kBjfBo:hover{background:#ffffff;border-color:#3b82f6;}/*!sc*/
+data-styled.g29[id="sc-eQwNpu"]{content:"kBjfBo,"}/*!sc*/
+.booJNS{background:#1e293b;color:white;padding:3rem 0 1rem;margin-top:auto;}/*!sc*/
+data-styled.g30[id="sc-gvqKNf"]{content:"booJNS,"}/*!sc*/
+.fVoYcP{max-width:1200px;margin:0 auto;padding:0 2rem;}/*!sc*/
+data-styled.g31[id="sc-cOpnSz"]{content:"fVoYcP,"}/*!sc*/
+.kKfrkv{display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:2rem;margin-bottom:2rem;}/*!sc*/
+@media (max-width: 768px){.kKfrkv{grid-template-columns:1fr 1fr;gap:1.5rem;}}/*!sc*/
+@media (max-width: 480px){.kKfrkv{grid-template-columns:1fr;}}/*!sc*/
+data-styled.g32[id="sc-kjwdDK"]{content:"kKfrkv,"}/*!sc*/
+.inEXDm h3{font-size:1.1rem;font-weight:600;margin-bottom:1rem;color:white;}/*!sc*/
+.inEXDm ul{list-style:none;padding:0;margin:0;}/*!sc*/
+.inEXDm li{margin-bottom:0.5rem;}/*!sc*/
+.inEXDm a{color:rgba(255, 255, 255, 0.7);text-decoration:none;transition:color 0.15s ease;}/*!sc*/
+.inEXDm a:hover{color:white;}/*!sc*/
+data-styled.g33[id="sc-eVqvcJ"]{content:"inEXDm,"}/*!sc*/
+.hWhopJ{display:flex;align-items:center;gap:0.5rem;font-size:1.2rem;font-weight:700;margin-bottom:1rem;color:white;}/*!sc*/
+data-styled.g34[id="sc-bbbBoY"]{content:"hWhopJ,"}/*!sc*/
+.exeTne{color:rgba(255, 255, 255, 0.7);line-height:1.6;margin-bottom:1rem;}/*!sc*/
+data-styled.g35[id="sc-cdmAjP"]{content:"exeTne,"}/*!sc*/
+.cgXMuV{display:flex;gap:1rem;}/*!sc*/
+.cgXMuV a{display:flex;align-items:center;justify-content:center;width:40px;height:40px;background:rgba(255, 255, 255, 0.1);border-radius:0.5rem;color:rgba(255, 255, 255, 0.7);transition:all 0.15s ease;}/*!sc*/
+.cgXMuV a:hover{background:rgba(255, 255, 255, 0.2);color:white;}/*!sc*/
+data-styled.g36[id="sc-jytpVa"]{content:"cgXMuV,"}/*!sc*/
+.iQqwrD{border-top:1px solid rgba(255, 255, 255, 0.1);padding-top:2rem;display:flex;justify-content:space-between;align-items:center;}/*!sc*/
+@media (max-width: 768px){.iQqwrD{flex-direction:column;gap:1rem;text-align:center;}}/*!sc*/
+data-styled.g37[id="sc-eknHtZ"]{content:"iQqwrD,"}/*!sc*/
+.gObJRG{color:rgba(255, 255, 255, 0.7);margin:0;font-size:0.9rem;}/*!sc*/
+data-styled.g38[id="sc-pYNGo"]{content:"gObJRG,"}/*!sc*/
+.eBqBtc{display:flex;gap:2rem;}/*!sc*/
+@media (max-width: 480px){.eBqBtc{flex-direction:column;gap:1rem;}}/*!sc*/
+.eBqBtc a{color:rgba(255, 255, 255, 0.7);text-decoration:none;font-size:0.9rem;transition:color 0.15s ease;}/*!sc*/
+.eBqBtc a:hover{color:white;}/*!sc*/
+data-styled.g39[id="sc-cCVJLD"]{content:"eBqBtc,"}/*!sc*/
+.kmsQDA{color:#1e293b;line-height:1.6;}/*!sc*/
+.kmsQDA h1,.kmsQDA h2,.kmsQDA h3,.kmsQDA h4,.kmsQDA h5,.kmsQDA h6{color:#1e293b;margin-top:2rem;margin-bottom:1rem;font-weight:600;}/*!sc*/
+.kmsQDA h1{font-size:2rem;border-bottom:2px solid #e2e8f0;padding-bottom:0.5rem;}/*!sc*/
+.kmsQDA h2{font-size:1.5rem;border-bottom:1px solid #e2e8f0;padding-bottom:0.3rem;}/*!sc*/
+.kmsQDA h3{font-size:1.25rem;}/*!sc*/
+.kmsQDA h4{font-size:1.1rem;}/*!sc*/
+.kmsQDA p{margin-bottom:1rem;color:#64748b;}/*!sc*/
+.kmsQDA a{color:#3b82f6;text-decoration:none;}/*!sc*/
+.kmsQDA a:hover{text-decoration:underline;}/*!sc*/
+.kmsQDA ul,.kmsQDA ol{margin-bottom:1rem;padding-left:1.5rem;}/*!sc*/
+.kmsQDA ul li,.kmsQDA ol li{margin-bottom:0.5rem;color:#64748b;}/*!sc*/
+.kmsQDA blockquote{border-left:4px solid #3b82f6;padding-left:1rem;margin:1rem 0;font-style:italic;color:#64748b;background:#f1f5f9;padding:1rem;border-radius:0.5rem;}/*!sc*/
+.kmsQDA code{background:#f1f5f9;padding:0.2rem 0.4rem;border-radius:0.25rem;font-family:SFMono-Regular,Consolas,"Liberation Mono",Menlo,monospace;font-size:0.9em;color:#f59e0b;}/*!sc*/
+.kmsQDA pre{background:#ffffff;border:1px solid #e2e8f0;border-radius:0.5rem;padding:1rem;margin:1rem 0;overflow-x:auto;}/*!sc*/
+.kmsQDA pre code{background:none;padding:0;color:#1e293b;font-size:0.9rem;}/*!sc*/
+.kmsQDA table{width:100%;border-collapse:collapse;margin:1rem 0;}/*!sc*/
+.kmsQDA table th,.kmsQDA table td{border:1px solid #e2e8f0;padding:0.5rem;text-align:left;}/*!sc*/
+.kmsQDA table th{background:#ffffff;font-weight:600;}/*!sc*/
+.kmsQDA table tr:nth-child(even){background:#f1f5f9;}/*!sc*/
+.kmsQDA hr{border:none;height:1px;background:#e2e8f0;margin:2rem 0;}/*!sc*/
+.kmsQDA .highlight{background:#3b82f620;padding:0.2rem 0.4rem;border-radius:0.25rem;font-weight:600;}/*!sc*/
+.kmsQDA .hljs{background:#ffffff;color:#1e293b;}/*!sc*/
+.kmsQDA .hljs-keyword{color:#3b82f6;font-weight:600;}/*!sc*/
+.kmsQDA .hljs-string{color:#10b981;}/*!sc*/
+.kmsQDA .hljs-function{color:#f59e0b;}/*!sc*/
+.kmsQDA .hljs-comment{color:#94a3b8;font-style:italic;}/*!sc*/
+.kmsQDA .hljs-number{color:#f59e0b;}/*!sc*/
+.kmsQDA .hljs-variable{color:#1e293b;}/*!sc*/
+.kmsQDA .hljs-title{color:#f59e0b;font-weight:600;}/*!sc*/
+data-styled.g40[id="sc-jYczwO"]{content:"kmsQDA,"}/*!sc*/
+</style></head><body class="__className_6eac61"><div style="min-height:100vh;display:flex;flex-direction:column"><nav class="sc-dNdcvo hNPaTO"><div class="sc-fbQrwq jJxjWc"><a href="/interview"><a class="sc-gGKoUb jwmRwa"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-code "><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>Frontend Interview Prep</a></a><div class="sc-hwddKA KQdZw"><a href="/interview/problems"><a class="sc-jaXbil ETszJ">Problems</a></a><a href="/interview/learn"><a class="sc-jaXbil ETszJ">Learn</a></a><a href="/interview/study-guide"><a class="sc-jaXbil ETszJ">Study Guide</a></a><a href="/interview/system-design"><a class="sc-jaXbil ETszJ">System Design</a></a><a href="/interview/performance"><a class="sc-jaXbil ETszJ">Performance</a></a><a href="/interview/accessibility"><a class="sc-jaXbil ETszJ">Accessibility</a></a><a href="/interview/interview-tips"><a class="sc-jaXbil ETszJ">Interview Tips</a></a><button class="sc-eQwNpu kBjfBo"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-search "><circle cx="11" cy="11" r="8"></circle><path d="m21 21-4.3-4.3"></path></svg>Search</button></div><button class="sc-eqNDNG foClcg"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-menu "><line x1="4" x2="20" y1="12" y2="12"></line><line x1="4" x2="20" y1="6" y2="6"></line><line x1="4" x2="20" y1="18" y2="18"></line></svg></button></div></nav><main style="flex:1"><div style="max-width:1200px;margin:0 auto;padding:2rem;padding-top:6rem"><div style="margin-bottom:2rem"><nav style="color:#64748b;font-size:0.9rem;margin-bottom:1rem"><a href="/" style="color:#3b82f6;text-decoration:none">Home</a> &gt; <span>leetcode &gt; math &gt; problems &gt; 03-sqrt-x</span></nav><h1 style="font-size:2.5rem;font-weight:800;margin-bottom:0.5rem;color:#1e293b">Sqrt(x)</h1><div style="color:#64748b;font-size:0.9rem;margin-bottom:2rem"><span>📁 <!-- -->leetcode/math/problems/03-sqrt-x.md</span></div></div><div class="sc-jYczwO kmsQDA"><h1 id="sqrt(x)" node="[object Object]">Sqrt(x)</h1>
+<p><strong>LeetCode Problem # * 69. Sqrt(x)</strong></p>
+<h2 id="problem-description" node="[object Object]">Problem Description</h2>
+<p>LeetCode problem solution with multiple approaches and explanations.</p>
+<h2 id="solutions" node="[object Object]">Solutions</h2>
+<p>{% raw %}
+/**</p>
+<ul>
+<li>69. Sqrt(x)</li>
+<li></li>
+<li>Given a non-negative integer x, return the square root of x rounded down to the nearest integer.</li>
+<li>The returned integer should be non-negative as well.</li>
+<li></li>
+<li>You must not use any built-in exponent function or operator.</li>
+<li>For example, do not use pow(x, 0.5) in c++ or x ** 0.5 in python.</li>
+<li></li>
+<li>Example 1:</li>
+<li>Input: x = 4</li>
+<li>Output: 2</li>
+<li>Explanation: The square root of 4 is 2, so we return 2.</li>
+<li></li>
+<li>Example 2:</li>
+<li>Input: x = 8</li>
+<li>Output: 2</li>
+<li>Explanation: The square root of 8 is 2.82842..., and since we round it down to the nearest integer, 2 is returned.</li>
+<li></li>
+<li>Constraints:</li>
+<li>
+<ul>
+<li>0 &lt;= x &lt;= 2^31 - 1
+*/</li>
+</ul>
+</li>
+</ul>
+<p>// Solution 1: Binary Search (Optimal)
+// Time: O(log x), Space: O(1)
+export function mySqrt1(x: number): number {
+if (x &lt; 2) return x;</p>
+<pre><pre><code class="hljs undefined">let left = 1;
+let right = Math.floor(x / 2) + 1; // sqrt(x) &lt;= x/2 for x &gt;= 4
+
+while (left &lt;= right) {
+    const mid = Math.floor((left + right) / 2);
+    const square = mid * mid;
+    
+    if (square === x) {
+        return mid;
+    } else if (square &lt; x) {
+        left = mid + 1;
+    } else {
+        right = mid - 1;
+    }
+}
+
+return right; // right is the largest integer whose square &lt;= x
+</code></pre></pre>
+<p>}</p>
+<p>// Solution 2: Newton&#x27;s Method (Babylonian Method)
+// Time: O(log x), Space: O(1)
+export function mySqrt2(x: number): number {
+if (x &lt; 2) return x;</p>
+<pre><pre><code class="hljs undefined">let guess = x;
+
+while (guess * guess &gt; x) {
+    guess = Math.floor((guess + Math.floor(x / guess)) / 2);
+}
+
+return guess;
+</code></pre></pre>
+<p>}</p>
+<p>// Solution 3: Bit Manipulation
+// Time: O(log x), Space: O(1)
+export function mySqrt3(x: number): number {
+if (x &lt; 2) return x;</p>
+<pre><pre><code class="hljs undefined">// Find the highest bit position where result can have 1
+let bit = 1;
+while (bit * bit &lt;= x) {
+    bit &lt;&lt;= 1;
+}
+bit &gt;&gt;= 1; // Step back to valid position
+
+let result = 0;
+
+// Try setting each bit from highest to lowest
+while (bit &gt; 0) {
+    const candidate = result | bit;
+    if (candidate * candidate &lt;= x) {
+        result = candidate;
+    }
+    bit &gt;&gt;= 1;
+}
+
+return result;
+</code></pre></pre>
+<p>}</p>
+<p>// Solution 4: Linear Search (Brute Force)
+// Time: O(sqrt(x)), Space: O(1)
+export function mySqrt4(x: number): number {
+if (x &lt; 2) return x;</p>
+<pre><pre><code class="hljs undefined">let i = 1;
+while (i * i &lt;= x) {
+    i++;
+}
+
+return i - 1;
+</code></pre></pre>
+<p>}</p>
+<p>// Solution 5: Exponential Search + Binary Search
+// Time: O(log x), Space: O(1)
+export function mySqrt5(x: number): number {
+if (x &lt; 2) return x;</p>
+<pre><pre><code class="hljs undefined">// Exponential search to find the range
+let bound = 1;
+while (bound * bound &lt;= x) {
+    bound &lt;&lt;= 1;
+}
+
+// Binary search in the range [bound/2, bound]
+let left = bound &gt;&gt; 1;
+let right = bound;
+
+while (left &lt;= right) {
+    const mid = Math.floor((left + right) / 2);
+    const square = mid * mid;
+    
+    if (square === x) {
+        return mid;
+    } else if (square &lt; x) {
+        left = mid + 1;
+    } else {
+        right = mid - 1;
+    }
+}
+
+return right;
+</code></pre></pre>
+<p>}</p>
+<p>// Solution 6: Mathematical Optimization
+// Time: O(log x), Space: O(1)
+export function mySqrt6(x: number): number {
+if (x &lt; 2) return x;</p>
+<pre><pre><code class="hljs undefined">// Use the fact that sqrt(x) is approximately x/2 for small x
+// and use this as a better starting point
+let guess = x &gt; 10000 ? Math.floor(x / 100) : Math.floor(x / 2);
+
+while (true) {
+    const square = guess * guess;
+    const nextGuess = guess + 1;
+    const nextSquare = nextGuess * nextGuess;
+    
+    if (square &lt;= x &amp;&amp; nextSquare &gt; x) {
+        return guess;
+    } else if (square &gt; x) {
+        guess = Math.floor((guess + Math.floor(x / guess)) / 2);
+    } else {
+        guess++;
+    }
+}
+</code></pre></pre>
+<p>}</p>
+<p>// Solution 7: Digit by Digit Calculation
+// Time: O(log x), Space: O(1)
+export function mySqrt7(x: number): number {
+if (x &lt; 2) return x;</p>
+<pre><pre><code class="hljs undefined">let result = 0;
+let remainder = 0;
+
+// Process digits from left to right
+let shift = 0;
+let temp = x;
+while (temp &gt; 0) {
+    temp = Math.floor(temp / 100);
+    shift++;
+}
+
+for (let i = shift - 1; i &gt;= 0; i--) {
+    remainder = remainder * 100 + Math.floor(x / Math.pow(100, i)) % 100;
+    result *= 10;
+    
+    let digit = 0;
+    while ((2 * result + digit + 1) * (digit + 1) &lt;= remainder) {
+        digit++;
+    }
+    
+    remainder -= (2 * result + digit) * digit;
+    result += digit;
+}
+
+return result;
+</code></pre></pre>
+<p>}</p>
+<p>// Test cases
+export function testMySqrt() {
+console.log(&quot;Testing Sqrt(x):&quot;);</p>
+<pre><pre><code class="hljs undefined">const testCases = [
+    { x: 0, expected: 0 },
+    { x: 1, expected: 1 },
+    { x: 4, expected: 2 },
+    { x: 8, expected: 2 },
+    { x: 9, expected: 3 },
+    { x: 15, expected: 3 },
+    { x: 16, expected: 4 },
+    { x: 25, expected: 5 },
+    { x: 100, expected: 10 },
+    { x: 121, expected: 11 },
+    { x: 144, expected: 12 },
+    { x: 2147395600, expected: 46340 }, // Large test case
+    { x: 2147483647, expected: 46340 }  // Maximum int32
+];
+
+const solutions = [
+    { name: &quot;Binary Search&quot;, fn: mySqrt1 },
+    { name: &quot;Newton&#x27;s Method&quot;, fn: mySqrt2 },
+    { name: &quot;Bit Manipulation&quot;, fn: mySqrt3 },
+    { name: &quot;Linear Search&quot;, fn: mySqrt4 },
+    { name: &quot;Exponential + Binary Search&quot;, fn: mySqrt5 },
+    { name: &quot;Mathematical Optimization&quot;, fn: mySqrt6 },
+    { name: &quot;Digit by Digit&quot;, fn: mySqrt7 }
+];
+
+solutions.forEach(solution =&gt; {
+    console.log(`\n${solution.name}:`);
+    testCases.forEach((test, i) =&gt; {
+        const result = solution.fn(test.x);
+        const passed = result === test.expected;
+        console.log(`  Test ${i + 1}: ${passed ? &#x27;PASS&#x27; : &#x27;FAIL&#x27;}`);
+        if (!passed) {
+            console.log(`    Input: x=${test.x}`);
+            console.log(`    Expected: ${test.expected}`);
+            console.log(`    Got: ${result}`);
+        }
+    });
+});
+</code></pre></pre>
+<p>}</p>
+<p>/**</p>
+<ul>
+<li>Key Insights:</li>
+<li></li>
+<li>
+<ol>
+<li><strong>Problem Understanding</strong>:</li>
+</ol>
+</li>
+<li>
+<ul>
+<li>Find floor(sqrt(x)) without using built-in functions</li>
+</ul>
+</li>
+<li>
+<ul>
+<li>Return largest integer n such that n² ≤ x</li>
+</ul>
+</li>
+<li>
+<ul>
+<li>Handle edge cases: 0, 1, perfect squares</li>
+</ul>
+</li>
+<li></li>
+<li>
+<ol start="2">
+<li><strong>Binary Search Approach</strong>:</li>
+</ol>
+</li>
+<li>
+<ul>
+<li>Search space: [1, x/2] for x ≥ 4</li>
+</ul>
+</li>
+<li>
+<ul>
+<li>Optimization: sqrt(x) ≤ x/2 for x ≥ 4</li>
+</ul>
+</li>
+<li>
+<ul>
+<li>Find largest mid where mid² ≤ x</li>
+</ul>
+</li>
+<li></li>
+<li>
+<ol start="3">
+<li><strong>Newton&#x27;s Method (Babylonian)</strong>:</li>
+</ol>
+</li>
+<li>
+<ul>
+<li>Iterative formula: x_{n+1} = (x_n + a/x_n) / 2</li>
+</ul>
+</li>
+<li>
+<ul>
+<li>Converges quadratically to sqrt(a)</li>
+</ul>
+</li>
+<li>
+<ul>
+<li>Very efficient in practice</li>
+</ul>
+</li>
+<li></li>
+<li>
+<ol start="4">
+<li><strong>Bit Manipulation Strategy</strong>:</li>
+</ol>
+</li>
+<li>
+<ul>
+<li>Build result bit by bit from most significant</li>
+</ul>
+</li>
+<li>
+<ul>
+<li>Check if setting each bit keeps square ≤ x</li>
+</ul>
+</li>
+<li>
+<ul>
+<li>Leverages binary representation properties</li>
+</ul>
+</li>
+<li></li>
+<li>
+<ol start="5">
+<li><strong>Time Complexity Analysis</strong>:</li>
+</ol>
+</li>
+<li>
+<ul>
+<li>Binary Search: O(log x)</li>
+</ul>
+</li>
+<li>
+<ul>
+<li>Newton&#x27;s Method: O(log x)</li>
+</ul>
+</li>
+<li>
+<ul>
+<li>Bit Manipulation: O(log x)</li>
+</ul>
+</li>
+<li>
+<ul>
+<li>Linear Search: O(sqrt(x))</li>
+</ul>
+</li>
+<li></li>
+<li>
+<ol start="6">
+<li><strong>Space Complexity</strong>: O(1)</li>
+</ol>
+</li>
+<li>
+<ul>
+<li>All approaches use constant extra space</li>
+</ul>
+</li>
+<li>
+<ul>
+<li>No recursion or additional data structures</li>
+</ul>
+</li>
+<li>
+<ul>
+<li>Optimal space usage</li>
+</ul>
+</li>
+<li></li>
+<li>
+<ol start="7">
+<li><strong>Newton&#x27;s Method Derivation</strong>:</li>
+</ol>
+</li>
+<li>
+<ul>
+<li>Want to solve f(y) = y² - x = 0</li>
+</ul>
+</li>
+<li>
+<ul>
+<li>Newton&#x27;s formula: y_{n+1} = y_n - f(y_n)/f&#x27;(y_n)</li>
+</ul>
+</li>
+<li>
+<ul>
+<li>f&#x27;(y) = 2y, so y_{n+1} = y_n - (y_n² - x)/(2y_n)</li>
+</ul>
+</li>
+<li>
+<ul>
+<li>Simplifies to y_{n+1} = (y_n + x/y_n) / 2</li>
+</ul>
+</li>
+<li></li>
+<li>
+<ol start="8">
+<li><strong>Binary Search Optimization</strong>:</li>
+</ol>
+</li>
+<li>
+<ul>
+<li>Use x/2 as upper bound instead of x</li>
+</ul>
+</li>
+<li>
+<ul>
+<li>For x ≥ 4: if sqrt(x) &gt; x/2, then x &gt; (x/2)² = x²/4, so x &gt; x²/4</li>
+</ul>
+</li>
+<li>
+<ul>
+<li>This implies 4 &gt; x, contradiction for x ≥ 4</li>
+</ul>
+</li>
+<li></li>
+<li>
+<ol start="9">
+<li><strong>Edge Cases</strong>:</li>
+</ol>
+</li>
+<li>
+<ul>
+<li>x = 0: return 0</li>
+</ul>
+</li>
+<li>
+<ul>
+<li>x = 1: return 1</li>
+</ul>
+</li>
+<li>
+<ul>
+<li>Perfect squares: exact result</li>
+</ul>
+</li>
+<li>
+<ul>
+<li>Large numbers: avoid overflow</li>
+</ul>
+</li>
+<li></li>
+<li>
+<ol start="10">
+<li><strong>Interview Strategy</strong>:</li>
+</ol>
+</li>
+<li>
+<pre><pre><code class="hljs undefined">- Start with binary search approach
+</code></pre></pre>
+</li>
+<li>
+<pre><pre><code class="hljs undefined">- Explain the search space optimization
+</code></pre></pre>
+</li>
+<li>
+<pre><pre><code class="hljs undefined">- Mention Newton&#x27;s method as advanced technique
+</code></pre></pre>
+</li>
+<li>
+<pre><pre><code class="hljs undefined">- Handle edge cases properly
+</code></pre></pre>
+</li>
+<li></li>
+<li>
+<ol start="11">
+<li><strong>Precision Considerations</strong>:</li>
+</ol>
+</li>
+<li>
+<pre><pre><code class="hljs undefined">- Integer arithmetic only (no floating point)
+</code></pre></pre>
+</li>
+<li>
+<pre><pre><code class="hljs undefined">- Avoid overflow when computing mid² 
+</code></pre></pre>
+</li>
+<li>
+<pre><pre><code class="hljs undefined">- Use mid = left + (right - left) / 2 for large values
+</code></pre></pre>
+</li>
+<li></li>
+<li>
+<ol start="12">
+<li><strong>Common Mistakes</strong>:</li>
+</ol>
+</li>
+<li>
+<pre><pre><code class="hljs undefined">- Not handling overflow in mid * mid
+</code></pre></pre>
+</li>
+<li>
+<pre><pre><code class="hljs undefined">- Wrong search space boundaries
+</code></pre></pre>
+</li>
+<li>
+<pre><pre><code class="hljs undefined">- Incorrect termination condition
+</code></pre></pre>
+</li>
+<li>
+<pre><pre><code class="hljs undefined">- Not considering edge cases
+</code></pre></pre>
+</li>
+<li></li>
+<li>
+<ol start="13">
+<li><strong>Optimization Techniques</strong>:</li>
+</ol>
+</li>
+<li>
+<pre><pre><code class="hljs undefined">- Better initial guess for Newton&#x27;s method
+</code></pre></pre>
+</li>
+<li>
+<pre><pre><code class="hljs undefined">- Early termination for perfect squares
+</code></pre></pre>
+</li>
+<li>
+<pre><pre><code class="hljs undefined">- Exponential search for very large numbers
+</code></pre></pre>
+</li>
+<li>
+<pre><pre><code class="hljs undefined">- Bit manipulation for constant factor improvement
+</code></pre></pre>
+</li>
+<li></li>
+<li>
+<ol start="14">
+<li><strong>Big Tech Variations</strong>:</li>
+</ol>
+</li>
+<li>
+<pre><pre><code class="hljs undefined">- Google: Nth root calculation
+</code></pre></pre>
+</li>
+<li>
+<pre><pre><code class="hljs undefined">- Meta: Square root with specific precision
+</code></pre></pre>
+</li>
+<li>
+<pre><pre><code class="hljs undefined">- Amazon: Floating point square root
+</code></pre></pre>
+</li>
+<li>
+<pre><pre><code class="hljs undefined">- Microsoft: Fast inverse square root
+</code></pre></pre>
+</li>
+<li></li>
+<li>
+<ol start="15">
+<li><strong>Follow-up Questions</strong>:</li>
+</ol>
+</li>
+<li>
+<pre><pre><code class="hljs undefined">- Implement floating point square root
+</code></pre></pre>
+</li>
+<li>
+<pre><pre><code class="hljs undefined">- Calculate nth root of a number
+</code></pre></pre>
+</li>
+<li>
+<pre><pre><code class="hljs undefined">- Find square root with specific precision
+</code></pre></pre>
+</li>
+<li>
+<pre><pre><code class="hljs undefined">- Implement fast inverse square root
+</code></pre></pre>
+</li>
+<li></li>
+<li>
+<ol start="16">
+<li><strong>Real-world Applications</strong>:</li>
+</ol>
+</li>
+<li>
+<pre><pre><code class="hljs undefined">- Computer graphics (distance calculations)
+</code></pre></pre>
+</li>
+<li>
+<pre><pre><code class="hljs undefined">- Scientific computing (numerical methods)
+</code></pre></pre>
+</li>
+<li>
+<pre><pre><code class="hljs undefined">- Game development (physics engines)
+</code></pre></pre>
+</li>
+<li>
+<pre><pre><code class="hljs undefined">- Signal processing (magnitude calculations)
+</code></pre></pre>
+</li>
+<li>
+<pre><pre><code class="hljs undefined">- Machine learning (norm calculations)
+</code></pre></pre>
+</li>
+<li></li>
+<li>
+<ol start="17">
+<li><strong>Mathematical Properties</strong>:</li>
+</ol>
+</li>
+<li>
+<pre><pre><code class="hljs undefined">- sqrt(a * b) = sqrt(a) * sqrt(b)
+</code></pre></pre>
+</li>
+<li>
+<pre><pre><code class="hljs undefined">- sqrt(a²) = |a|
+</code></pre></pre>
+</li>
+<li>
+<pre><pre><code class="hljs undefined">- Monotonic function: a &lt; b ⟹ sqrt(a) &lt; sqrt(b)
+</code></pre></pre>
+</li>
+<li></li>
+<li>
+<ol start="18">
+<li><strong>Pattern Recognition</strong>:</li>
+</ol>
+</li>
+<li>
+<pre><pre><code class="hljs undefined">- Binary search on answer space
+</code></pre></pre>
+</li>
+<li>
+<pre><pre><code class="hljs undefined">- Newton&#x27;s method for root finding
+</code></pre></pre>
+</li>
+<li>
+<pre><pre><code class="hljs undefined">- Bit manipulation for number construction
+</code></pre></pre>
+</li>
+<li>
+<pre><pre><code class="hljs undefined">- Iterative approximation methods
+</code></pre></pre>
+</li>
+<li></li>
+<li>
+<ol start="19">
+<li><strong>Performance Comparison</strong>:</li>
+</ol>
+</li>
+<li>
+<pre><pre><code class="hljs undefined">- Newton&#x27;s method: fastest convergence
+</code></pre></pre>
+</li>
+<li>
+<pre><pre><code class="hljs undefined">- Binary search: predictable performance
+</code></pre></pre>
+</li>
+<li>
+<pre><pre><code class="hljs undefined">- Bit manipulation: good for small numbers
+</code></pre></pre>
+</li>
+<li>
+<pre><pre><code class="hljs undefined">- Linear search: simplest but slowest
+</code></pre></pre>
+</li>
+<li></li>
+<li>
+<ol start="20">
+<li><strong>Implementation Tips</strong>:</li>
+</ol>
+</li>
+<li>
+<pre><pre><code class="hljs undefined">- Use integer arithmetic only
+</code></pre></pre>
+</li>
+<li>
+<pre><pre><code class="hljs undefined">- Check for overflow carefully
+</code></pre></pre>
+</li>
+<li>
+<pre><pre><code class="hljs undefined">- Handle boundary conditions properly
+</code></pre></pre>
+</li>
+<li>
+<pre><pre><code class="hljs undefined">- Test with edge cases and large values
+</code></pre></pre>
+</li>
+</ul>
+<p>*/
+{% endraw %}</p></div></div></main><footer class="sc-gvqKNf booJNS"><div class="sc-cOpnSz fVoYcP"><div class="sc-kjwdDK kKfrkv"><div class="sc-eVqvcJ inEXDm"><div class="sc-bbbBoY hWhopJ"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-code "><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>Frontend Interview Prep</div><p class="sc-cdmAjP exeTne">Comprehensive interview preparation for frontend engineers targeting Big Tech companies.</p><div class="sc-jytpVa cgXMuV"><a href="https://github.com" aria-label="GitHub"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-github "><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"></path><path d="M9 18c-4.51 2-5-2-7-2"></path></svg></a><a href="https://twitter.com" aria-label="Twitter"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-twitter "><path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"></path></svg></a><a href="https://linkedin.com" aria-label="LinkedIn"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-linkedin "><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect width="4" height="12" x="2" y="9"></rect><circle cx="4" cy="4" r="2"></circle></svg></a><a href="mailto:contact@example.com" aria-label="Email"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-mail "><rect width="20" height="16" x="2" y="4" rx="2"></rect><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path></svg></a></div></div><div class="sc-eVqvcJ inEXDm"><h3>Study Materials</h3><ul><li><a href="/algorithms">Algorithms</a></li><li><a href="/react">React &amp; Frontend</a></li><li><a href="/system-design">System Design</a></li><li><a href="/typescript">TypeScript</a></li><li><a href="/performance">Performance</a></li></ul></div><div class="sc-eVqvcJ inEXDm"><h3>Companies</h3><ul><li><a href="/google">Google</a></li><li><a href="/meta">Meta</a></li><li><a href="/amazon">Amazon</a></li><li><a href="/microsoft">Microsoft</a></li><li><a href="/apple">Apple</a></li></ul></div><div class="sc-eVqvcJ inEXDm"><h3>Resources</h3><ul><li><a href="/interview-tips">Interview Tips</a></li><li><a href="/coding-challenges">Coding Challenges</a></li><li><a href="/mock-interviews">Mock Interviews</a></li><li><a href="/blog">Blog</a></li><li><a href="/faq">FAQ</a></li></ul></div></div><div class="sc-eknHtZ iQqwrD"><p class="sc-pYNGo gObJRG">© 2025 Frontend Interview Prep. All rights reserved.</p><div class="sc-cCVJLD eBqBtc"><a href="/privacy">Privacy Policy</a><a href="/terms">Terms of Service</a><a href="/contact">Contact</a></div></div></div></footer></div><script src="/interview/_next/static/chunks/webpack-be7d7df45533bffc.js" async=""></script><script>(self.__next_f=self.__next_f||[]).push([0]);self.__next_f.push([2,null])</script><script>self.__next_f.push([1,"1:HL[\"/interview/_next/static/media/e4af272ccee01ff0-s.p.woff2\",\"font\",{\"crossOrigin\":\"\",\"type\":\"font/woff2\"}]\n2:HL[\"/interview/_next/static/css/387024c6a2216908.css\",\"style\"]\n"])</script><script>self.__next_f.push([1,"3:I[2846,[],\"\"]\n5:I[5907,[\"918\",\"static/chunks/918-3273b83890f10546.js\",\"930\",\"static/chunks/930-3262a6c9c5acace4.js\",\"687\",\"static/chunks/app/docs/%5B...slug%5D/page-32962e9542d32755.js\"],\"default\"]\n7:I[4707,[],\"\"]\n9:I[6423,[],\"\"]\na:I[2,[\"918\",\"static/chunks/918-3273b83890f10546.js\",\"710\",\"static/chunks/710-dfaa11b4dff08f8e.js\",\"972\",\"static/chunks/972-011bba60ed155615.js\",\"233\",\"static/chunks/233-3e0c1d820a17eca9.js\",\"185\",\"static/chunks/app/layout-333f4adcd11f8f39.js\"],\"default\",1]\nc:I[1060,[],\"\"]\n6:T2896,"])</script><script>self.__next_f.push([1,"\n# Sqrt(x)\n\n**LeetCode Problem # * 69. Sqrt(x)**\n\n## Problem Description\n\nLeetCode problem solution with multiple approaches and explanations.\n\n## Solutions\n\n{% raw %}\n/**\n * 69. Sqrt(x)\n * \n * Given a non-negative integer x, return the square root of x rounded down to the nearest integer. \n * The returned integer should be non-negative as well.\n * \n * You must not use any built-in exponent function or operator.\n * For example, do not use pow(x, 0.5) in c++ or x ** 0.5 in python.\n * \n * Example 1:\n * Input: x = 4\n * Output: 2\n * Explanation: The square root of 4 is 2, so we return 2.\n * \n * Example 2:\n * Input: x = 8\n * Output: 2\n * Explanation: The square root of 8 is 2.82842..., and since we round it down to the nearest integer, 2 is returned.\n * \n * Constraints:\n * - 0 \u003c= x \u003c= 2^31 - 1\n */\n\n// Solution 1: Binary Search (Optimal)\n// Time: O(log x), Space: O(1)\nexport function mySqrt1(x: number): number {\n    if (x \u003c 2) return x;\n    \n    let left = 1;\n    let right = Math.floor(x / 2) + 1; // sqrt(x) \u003c= x/2 for x \u003e= 4\n    \n    while (left \u003c= right) {\n        const mid = Math.floor((left + right) / 2);\n        const square = mid * mid;\n        \n        if (square === x) {\n            return mid;\n        } else if (square \u003c x) {\n            left = mid + 1;\n        } else {\n            right = mid - 1;\n        }\n    }\n    \n    return right; // right is the largest integer whose square \u003c= x\n}\n\n// Solution 2: Newton's Method (Babylonian Method)\n// Time: O(log x), Space: O(1)\nexport function mySqrt2(x: number): number {\n    if (x \u003c 2) return x;\n    \n    let guess = x;\n    \n    while (guess * guess \u003e x) {\n        guess = Math.floor((guess + Math.floor(x / guess)) / 2);\n    }\n    \n    return guess;\n}\n\n// Solution 3: Bit Manipulation\n// Time: O(log x), Space: O(1)\nexport function mySqrt3(x: number): number {\n    if (x \u003c 2) return x;\n    \n    // Find the highest bit position where result can have 1\n    let bit = 1;\n    while (bit * bit \u003c= x) {\n        bit \u003c\u003c= 1;\n    }\n    bit \u003e\u003e= 1; // Step back to valid position\n    \n    let result = 0;\n    \n    // Try setting each bit from highest to lowest\n    while (bit \u003e 0) {\n        const candidate = result | bit;\n        if (candidate * candidate \u003c= x) {\n            result = candidate;\n        }\n        bit \u003e\u003e= 1;\n    }\n    \n    return result;\n}\n\n// Solution 4: Linear Search (Brute Force)\n// Time: O(sqrt(x)), Space: O(1)\nexport function mySqrt4(x: number): number {\n    if (x \u003c 2) return x;\n    \n    let i = 1;\n    while (i * i \u003c= x) {\n        i++;\n    }\n    \n    return i - 1;\n}\n\n// Solution 5: Exponential Search + Binary Search\n// Time: O(log x), Space: O(1)\nexport function mySqrt5(x: number): number {\n    if (x \u003c 2) return x;\n    \n    // Exponential search to find the range\n    let bound = 1;\n    while (bound * bound \u003c= x) {\n        bound \u003c\u003c= 1;\n    }\n    \n    // Binary search in the range [bound/2, bound]\n    let left = bound \u003e\u003e 1;\n    let right = bound;\n    \n    while (left \u003c= right) {\n        const mid = Math.floor((left + right) / 2);\n        const square = mid * mid;\n        \n        if (square === x) {\n            return mid;\n        } else if (square \u003c x) {\n            left = mid + 1;\n        } else {\n            right = mid - 1;\n        }\n    }\n    \n    return right;\n}\n\n// Solution 6: Mathematical Optimization\n// Time: O(log x), Space: O(1)\nexport function mySqrt6(x: number): number {\n    if (x \u003c 2) return x;\n    \n    // Use the fact that sqrt(x) is approximately x/2 for small x\n    // and use this as a better starting point\n    let guess = x \u003e 10000 ? Math.floor(x / 100) : Math.floor(x / 2);\n    \n    while (true) {\n        const square = guess * guess;\n        const nextGuess = guess + 1;\n        const nextSquare = nextGuess * nextGuess;\n        \n        if (square \u003c= x \u0026\u0026 nextSquare \u003e x) {\n            return guess;\n        } else if (square \u003e x) {\n            guess = Math.floor((guess + Math.floor(x / guess)) / 2);\n        } else {\n            guess++;\n        }\n    }\n}\n\n// Solution 7: Digit by Digit Calculation\n// Time: O(log x), Space: O(1)\nexport function mySqrt7(x: number): number {\n    if (x \u003c 2) return x;\n    \n    let result = 0;\n    let remainder = 0;\n    \n    // Process digits from left to right\n    let shift = 0;\n    let temp = x;\n    while (temp \u003e 0) {\n        temp = Math.floor(temp / 100);\n        shift++;\n    }\n    \n    for (let i = shift - 1; i \u003e= 0; i--) {\n        remainder = remainder * 100 + Math.floor(x / Math.pow(100, i)) % 100;\n        result *= 10;\n        \n        let digit = 0;\n        while ((2 * result + digit + 1) * (digit + 1) \u003c= remainder) {\n            digit++;\n        }\n        \n        remainder -= (2 * result + digit) * digit;\n        result += digit;\n    }\n    \n    return result;\n}\n\n// Test cases\nexport function testMySqrt() {\n    console.log(\"Testing Sqrt(x):\");\n    \n    const testCases = [\n        { x: 0, expected: 0 },\n        { x: 1, expected: 1 },\n        { x: 4, expected: 2 },\n        { x: 8, expected: 2 },\n        { x: 9, expected: 3 },\n        { x: 15, expected: 3 },\n        { x: 16, expected: 4 },\n        { x: 25, expected: 5 },\n        { x: 100, expected: 10 },\n        { x: 121, expected: 11 },\n        { x: 144, expected: 12 },\n        { x: 2147395600, expected: 46340 }, // Large test case\n        { x: 2147483647, expected: 46340 }  // Maximum int32\n    ];\n    \n    const solutions = [\n        { name: \"Binary Search\", fn: mySqrt1 },\n        { name: \"Newton's Method\", fn: mySqrt2 },\n        { name: \"Bit Manipulation\", fn: mySqrt3 },\n        { name: \"Linear Search\", fn: mySqrt4 },\n        { name: \"Exponential + Binary Search\", fn: mySqrt5 },\n        { name: \"Mathematical Optimization\", fn: mySqrt6 },\n        { name: \"Digit by Digit\", fn: mySqrt7 }\n    ];\n    \n    solutions.forEach(solution =\u003e {\n        console.log(`\\n${solution.name}:`);\n        testCases.forEach((test, i) =\u003e {\n            const result = solution.fn(test.x);\n            const passed = result === test.expected;\n            console.log(`  Test ${i + 1}: ${passed ? 'PASS' : 'FAIL'}`);\n            if (!passed) {\n                console.log(`    Input: x=${test.x}`);\n                console.log(`    Expected: ${test.expected}`);\n                console.log(`    Got: ${result}`);\n            }\n        });\n    });\n}\n\n/**\n * Key Insights:\n * \n * 1. **Problem Understanding**:\n *    - Find floor(sqrt(x)) without using built-in functions\n *    - Return largest integer n such that n² ≤ x\n *    - Handle edge cases: 0, 1, perfect squares\n * \n * 2. **Binary Search Approach**:\n *    - Search space: [1, x/2] for x ≥ 4\n *    - Optimization: sqrt(x) ≤ x/2 for x ≥ 4\n *    - Find largest mid where mid² ≤ x\n * \n * 3. **Newton's Method (Babylonian)**:\n *    - Iterative formula: x_{n+1} = (x_n + a/x_n) / 2\n *    - Converges quadratically to sqrt(a)\n *    - Very efficient in practice\n * \n * 4. **Bit Manipulation Strategy**:\n *    - Build result bit by bit from most significant\n *    - Check if setting each bit keeps square ≤ x\n *    - Leverages binary representation properties\n * \n * 5. **Time Complexity Analysis**:\n *    - Binary Search: O(log x)\n *    - Newton's Method: O(log x)\n *    - Bit Manipulation: O(log x)\n *    - Linear Search: O(sqrt(x))\n * \n * 6. **Space Complexity**: O(1)\n *    - All approaches use constant extra space\n *    - No recursion or additional data structures\n *    - Optimal space usage\n * \n * 7. **Newton's Method Derivation**:\n *    - Want to solve f(y) = y² - x = 0\n *    - Newton's formula: y_{n+1} = y_n - f(y_n)/f'(y_n)\n *    - f'(y) = 2y, so y_{n+1} = y_n - (y_n² - x)/(2y_n)\n *    - Simplifies to y_{n+1} = (y_n + x/y_n) / 2\n * \n * 8. **Binary Search Optimization**:\n *    - Use x/2 as upper bound instead of x\n *    - For x ≥ 4: if sqrt(x) \u003e x/2, then x \u003e (x/2)² = x²/4, so x \u003e x²/4\n *    - This implies 4 \u003e x, contradiction for x ≥ 4\n * \n * 9. **Edge Cases**:\n *    - x = 0: return 0\n *    - x = 1: return 1\n *    - Perfect squares: exact result\n *    - Large numbers: avoid overflow\n * \n * 10. **Interview Strategy**:\n *     - Start with binary search approach\n *     - Explain the search space optimization\n *     - Mention Newton's method as advanced technique\n *     - Handle edge cases properly\n * \n * 11. **Precision Considerations**:\n *     - Integer arithmetic only (no floating point)\n *     - Avoid overflow when computing mid² \n *     - Use mid = left + (right - left) / 2 for large values\n * \n * 12. **Common Mistakes**:\n *     - Not handling overflow in mid * mid\n *     - Wrong search space boundaries\n *     - Incorrect termination condition\n *     - Not considering edge cases\n * \n * 13. **Optimization Techniques**:\n *     - Better initial guess for Newton's method\n *     - Early termination for perfect squares\n *     - Exponential search for very large numbers\n *     - Bit manipulation for constant factor improvement\n * \n * 14. **Big Tech Variations**:\n *     - Google: Nth root calculation\n *     - Meta: Square root with specific precision\n *     - Amazon: Floating point square root\n *     - Microsoft: Fast inverse square root\n * \n * 15. **Follow-up Questions**:\n *     - Implement floating point square root\n *     - Calculate nth root of a number\n *     - Find square root with specific precision\n *     - Implement fast inverse square root\n * \n * 16. **Real-world Applications**:\n *     - Computer graphics (distance calculations)\n *     - Scientific computing (numerical methods)\n *     - Game development (physics engines)\n *     - Signal processing (magnitude calculations)\n *     - Machine learning (norm calculations)\n * \n * 17. **Mathematical Properties**:\n *     - sqrt(a * b) = sqrt(a) * sqrt(b)\n *     - sqrt(a²) = |a|\n *     - Monotonic function: a \u003c b ⟹ sqrt(a) \u003c sqrt(b)\n * \n * 18. **Pattern Recognition**:\n *     - Binary search on answer space\n *     - Newton's method for root finding\n *     - Bit manipulation for number construction\n *     - Iterative approximation methods\n * \n * 19. **Performance Comparison**:\n *     - Newton's method: fastest convergence\n *     - Binary search: predictable performance\n *     - Bit manipulation: good for small numbers\n *     - Linear search: simplest but slowest\n * \n * 20. **Implementation Tips**:\n *     - Use integer arithmetic only\n *     - Check for overflow carefully\n *     - Handle boundary conditions properly\n *     - Test with edge cases and large values\n */\n{% endraw %}\n"])</script><script>self.__next_f.push([1,"8:[\"slug\",\"leetcode/math/problems/03-sqrt-x\",\"c\"]\nd:[]\n"])</script><script>self.__next_f.push([1,"0:[\"$\",\"$L3\",null,{\"buildId\":\"7uJ7BVaXJTiEOD9iYDv3n\",\"assetPrefix\":\"/interview\",\"urlParts\":[\"\",\"docs\",\"leetcode\",\"math\",\"problems\",\"03-sqrt-x\"],\"initialTree\":[\"\",{\"children\":[\"docs\",{\"children\":[[\"slug\",\"leetcode/math/problems/03-sqrt-x\",\"c\"],{\"children\":[\"__PAGE__?{\\\"slug\\\":[\\\"leetcode\\\",\\\"math\\\",\\\"problems\\\",\\\"03-sqrt-x\\\"]}\",{}]}]}]},\"$undefined\",\"$undefined\",true],\"initialSeedData\":[\"\",{\"children\":[\"docs\",{\"children\":[[\"slug\",\"leetcode/math/problems/03-sqrt-x\",\"c\"],{\"children\":[\"__PAGE__\",{},[[\"$L4\",[\"$\",\"div\",null,{\"style\":{\"maxWidth\":\"1200px\",\"margin\":\"0 auto\",\"padding\":\"2rem\",\"paddingTop\":\"6rem\"},\"children\":[[\"$\",\"div\",null,{\"style\":{\"marginBottom\":\"2rem\"},\"children\":[[\"$\",\"nav\",null,{\"style\":{\"color\":\"#64748b\",\"fontSize\":\"0.9rem\",\"marginBottom\":\"1rem\"},\"children\":[[\"$\",\"a\",null,{\"href\":\"/\",\"style\":{\"color\":\"#3b82f6\",\"textDecoration\":\"none\"},\"children\":\"Home\"}],\" \u003e \",[\"$\",\"span\",null,{\"children\":\"leetcode \u003e math \u003e problems \u003e 03-sqrt-x\"}]]}],[\"$\",\"h1\",null,{\"style\":{\"fontSize\":\"2.5rem\",\"fontWeight\":\"800\",\"marginBottom\":\"0.5rem\",\"color\":\"#1e293b\"},\"children\":\"Sqrt(x)\"}],[\"$\",\"div\",null,{\"style\":{\"color\":\"#64748b\",\"fontSize\":\"0.9rem\",\"marginBottom\":\"2rem\"},\"children\":[[\"$\",\"span\",null,{\"children\":[\"📁 \",\"leetcode/math/problems/03-sqrt-x.md\"]}],\"$undefined\",\"$undefined\"]}]]}],[\"$\",\"$L5\",null,{\"content\":\"$6\"}]]}],null],null],null]},[null,[\"$\",\"$L7\",null,{\"parallelRouterKey\":\"children\",\"segmentPath\":[\"children\",\"docs\",\"children\",\"$8\",\"children\"],\"error\":\"$undefined\",\"errorStyles\":\"$undefined\",\"errorScripts\":\"$undefined\",\"template\":[\"$\",\"$L9\",null,{}],\"templateStyles\":\"$undefined\",\"templateScripts\":\"$undefined\",\"notFound\":\"$undefined\",\"notFoundStyles\":\"$undefined\"}]],null]},[null,[\"$\",\"$L7\",null,{\"parallelRouterKey\":\"children\",\"segmentPath\":[\"children\",\"docs\",\"children\"],\"error\":\"$undefined\",\"errorStyles\":\"$undefined\",\"errorScripts\":\"$undefined\",\"template\":[\"$\",\"$L9\",null,{}],\"templateStyles\":\"$undefined\",\"templateScripts\":\"$undefined\",\"notFound\":\"$undefined\",\"notFoundStyles\":\"$undefined\"}]],null]},[[[[\"$\",\"link\",\"0\",{\"rel\":\"stylesheet\",\"href\":\"/interview/_next/static/css/387024c6a2216908.css\",\"precedence\":\"next\",\"crossOrigin\":\"$undefined\"}]],[\"$\",\"$La\",null,{\"children\":[\"$\",\"$L7\",null,{\"parallelRouterKey\":\"children\",\"segmentPath\":[\"children\"],\"error\":\"$undefined\",\"errorStyles\":\"$undefined\",\"errorScripts\":\"$undefined\",\"template\":[\"$\",\"$L9\",null,{}],\"templateStyles\":\"$undefined\",\"templateScripts\":\"$undefined\",\"notFound\":[[\"$\",\"title\",null,{\"children\":\"404: This page could not be found.\"}],[\"$\",\"div\",null,{\"style\":{\"fontFamily\":\"system-ui,\\\"Segoe UI\\\",Roboto,Helvetica,Arial,sans-serif,\\\"Apple Color Emoji\\\",\\\"Segoe UI Emoji\\\"\",\"height\":\"100vh\",\"textAlign\":\"center\",\"display\":\"flex\",\"flexDirection\":\"column\",\"alignItems\":\"center\",\"justifyContent\":\"center\"},\"children\":[\"$\",\"div\",null,{\"children\":[[\"$\",\"style\",null,{\"dangerouslySetInnerHTML\":{\"__html\":\"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}\"}}],[\"$\",\"h1\",null,{\"className\":\"next-error-h1\",\"style\":{\"display\":\"inline-block\",\"margin\":\"0 20px 0 0\",\"padding\":\"0 23px 0 0\",\"fontSize\":24,\"fontWeight\":500,\"verticalAlign\":\"top\",\"lineHeight\":\"49px\"},\"children\":\"404\"}],[\"$\",\"div\",null,{\"style\":{\"display\":\"inline-block\"},\"children\":[\"$\",\"h2\",null,{\"style\":{\"fontSize\":14,\"fontWeight\":400,\"lineHeight\":\"49px\",\"margin\":0},\"children\":\"This page could not be found.\"}]}]]}]}]],\"notFoundStyles\":[]}],\"params\":{}}]],null],null],\"couldBeIntercepted\":false,\"initialHead\":[null,\"$Lb\"],\"globalErrorComponent\":\"$c\",\"missingSlots\":\"$Wd\"}]\n"])</script><script>self.__next_f.push([1,"b:[[\"$\",\"meta\",\"0\",{\"name\":\"viewport\",\"content\":\"width=device-width, initial-scale=1\"}],[\"$\",\"meta\",\"1\",{\"charSet\":\"utf-8\"}],[\"$\",\"title\",\"2\",{\"children\":\"Sqrt(x) - Frontend Interview Docs\"}],[\"$\",\"meta\",\"3\",{\"name\":\"description\",\"content\":\" # Sqrt(x)  **LeetCode Problem # * 69. Sqrt(x)**  ## Problem Description  LeetCode problem solution with multiple approaches and explanations.  ## Solutions  {%\"}],[\"$\",\"meta\",\"4\",{\"property\":\"og:title\",\"content\":\"Sqrt(x) - Frontend Interview Docs\"}],[\"$\",\"meta\",\"5\",{\"property\":\"og:description\",\"content\":\" # Sqrt(x)  **LeetCode Problem # * 69. Sqrt(x)**  ## Problem Description  LeetCode problem solution with multiple approaches and explanations.  ## Solutions  {%\"}],[\"$\",\"meta\",\"6\",{\"property\":\"og:type\",\"content\":\"article\"}],[\"$\",\"meta\",\"7\",{\"name\":\"twitter:card\",\"content\":\"summary\"}],[\"$\",\"meta\",\"8\",{\"name\":\"twitter:title\",\"content\":\"Sqrt(x) - Frontend Interview Docs\"}],[\"$\",\"meta\",\"9\",{\"name\":\"twitter:description\",\"content\":\" # Sqrt(x)  **LeetCode Problem # * 69. Sqrt(x)**  ## Problem Description  LeetCode problem solution with multiple approaches and explanations.  ## Solutions  {%\"}],[\"$\",\"meta\",\"10\",{\"name\":\"next-size-adjust\"}]]\n4:null\n"])</script></body></html>

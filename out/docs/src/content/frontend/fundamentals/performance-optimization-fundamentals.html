@@ -1,0 +1,1355 @@
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><meta name="viewport" content="width=device-width, initial-scale=1"/><link rel="preload" href="/interview/_next/static/media/e4af272ccee01ff0-s.p.woff2" as="font" crossorigin="" type="font/woff2"/><link rel="stylesheet" href="/interview/_next/static/css/387024c6a2216908.css" data-precedence="next"/><link rel="preload" as="script" fetchPriority="low" href="/interview/_next/static/chunks/webpack-be7d7df45533bffc.js"/><script src="/interview/_next/static/chunks/fd9d1056-6922f449a204c2cc.js" async=""></script><script src="/interview/_next/static/chunks/117-e7ecc085ce9cfab3.js" async=""></script><script src="/interview/_next/static/chunks/main-app-b06be5f3411c20c3.js" async=""></script><script src="/interview/_next/static/chunks/918-3273b83890f10546.js" async=""></script><script src="/interview/_next/static/chunks/930-3262a6c9c5acace4.js" async=""></script><script src="/interview/_next/static/chunks/app/docs/%5B...slug%5D/page-32962e9542d32755.js" async=""></script><script src="/interview/_next/static/chunks/710-dfaa11b4dff08f8e.js" async=""></script><script src="/interview/_next/static/chunks/972-011bba60ed155615.js" async=""></script><script src="/interview/_next/static/chunks/233-3e0c1d820a17eca9.js" async=""></script><script src="/interview/_next/static/chunks/app/layout-333f4adcd11f8f39.js" async=""></script><title>Frontend Interview Prep 2025 - Big Tech Interview Guide</title><meta name="description" content="Comprehensive frontend interview preparation for Big Tech companies including React, TypeScript, algorithms, and system design."/><link rel="icon" href="/favicon.ico"/><meta name="theme-color" content="#1a1a1a"/><meta property="og:title" content="Frontend Interview Prep 2025"/><meta property="og:description" content="Complete guide for frontend engineers targeting Big Tech companies"/><meta property="og:type" content="website"/><link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous"/><title>Performance Optimization Fundamentals - Frontend Interview Docs</title><meta name="description" content="# Performance Optimization Fundamentals  ## Overview Performance optimization is critical for frontend applications, especially at Big Tech companies where scal"/><meta property="og:title" content="Performance Optimization Fundamentals - Frontend Interview Docs"/><meta property="og:description" content="# Performance Optimization Fundamentals  ## Overview Performance optimization is critical for frontend applications, especially at Big Tech companies where scal"/><meta property="og:type" content="article"/><meta name="twitter:card" content="summary"/><meta name="twitter:title" content="Performance Optimization Fundamentals - Frontend Interview Docs"/><meta name="twitter:description" content="# Performance Optimization Fundamentals  ## Overview Performance optimization is critical for frontend applications, especially at Big Tech companies where scal"/><meta name="next-size-adjust"/><script src="/interview/_next/static/chunks/polyfills-42372ed130431b0a.js" noModule=""></script><style data-styled="" data-styled-version="6.1.19">*{margin:0;padding:0;box-sizing:border-box;}/*!sc*/
+html{font-size:16px;line-height:1.5;scroll-behavior:smooth;}/*!sc*/
+body{font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;font-size:1rem;line-height:1.5;color:#1e293b;background-color:#ffffff;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;}/*!sc*/
+h1,h2,h3,h4,h5,h6{font-weight:700;line-height:1.25;margin-bottom:0.5em;}/*!sc*/
+h1{font-size:3rem;}/*!sc*/
+@media (max-width: 768px){h1{font-size:2.25rem;}}/*!sc*/
+h2{font-size:2.25rem;}/*!sc*/
+@media (max-width: 768px){h2{font-size:1.875rem;}}/*!sc*/
+h3{font-size:1.875rem;}/*!sc*/
+@media (max-width: 768px){h3{font-size:1.5rem;}}/*!sc*/
+h4{font-size:1.5rem;}/*!sc*/
+@media (max-width: 768px){h4{font-size:1.25rem;}}/*!sc*/
+h5{font-size:1.25rem;}/*!sc*/
+h6{font-size:1.125rem;}/*!sc*/
+p{margin-bottom:1rem;line-height:1.75;}/*!sc*/
+a{color:#3b82f6;text-decoration:none;transition:color 0.15s ease;}/*!sc*/
+a:hover{color:#2563eb;}/*!sc*/
+a:focus{outline:2px solid #3b82f6;outline-offset:2px;}/*!sc*/
+button{cursor:pointer;border:none;background:none;font-family:inherit;font-size:inherit;}/*!sc*/
+button:disabled{cursor:not-allowed;opacity:0.6;}/*!sc*/
+button:focus{outline:2px solid #3b82f6;outline-offset:2px;}/*!sc*/
+input,textarea,select{font-family:inherit;font-size:inherit;}/*!sc*/
+input:focus,textarea:focus,select:focus{outline:2px solid #3b82f6;outline-offset:2px;}/*!sc*/
+img{max-width:100%;height:auto;}/*!sc*/
+ul,ol{margin-bottom:1rem;padding-left:1.5rem;}/*!sc*/
+li{margin-bottom:0.25rem;}/*!sc*/
+blockquote{margin:1rem 0;padding:1rem;border-left:4px solid #3b82f6;background-color:#f1f5f9;font-style:italic;}/*!sc*/
+code{font-family:SFMono-Regular,Consolas,"Liberation Mono",Menlo,monospace;font-size:0.9em;background-color:#f1f5f9;padding:0.2em 0.4em;border-radius:0.25rem;}/*!sc*/
+pre{background-color:#f1f5f9;padding:1rem;border-radius:0.5rem;overflow-x:auto;margin-bottom:1rem;}/*!sc*/
+pre code{background:none;padding:0;}/*!sc*/
+table{width:100%;border-collapse:collapse;margin-bottom:1rem;}/*!sc*/
+th,td{padding:0.75rem;text-align:left;border-bottom:1px solid #e2e8f0;}/*!sc*/
+th{font-weight:600;background-color:#f1f5f9;}/*!sc*/
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0, 0, 0, 0);white-space:nowrap;border:0;}/*!sc*/
+.skip-link{position:absolute;top:-40px;left:6px;background:#3b82f6;color:white;padding:8px;text-decoration:none;border-radius:4px;z-index:100;}/*!sc*/
+.skip-link:focus{top:6px;}/*!sc*/
+::-webkit-scrollbar{width:8px;height:8px;}/*!sc*/
+::-webkit-scrollbar-track{background:#f1f5f9;}/*!sc*/
+::-webkit-scrollbar-thumb{background:#94a3b8;border-radius:4px;}/*!sc*/
+::-webkit-scrollbar-thumb:hover{background:#64748b;}/*!sc*/
+::selection{background:#3b82f6;color:white;}/*!sc*/
+.focus-visible{outline:2px solid #3b82f6;outline-offset:2px;}/*!sc*/
+.fade-in{opacity:0;animation:fadeIn 0.3s ease forwards;}/*!sc*/
+.slide-up{transform:translateY(20px);opacity:0;animation:slideUp 0.3s ease forwards;}/*!sc*/
+@keyframes fadeIn{to{opacity:1;}}/*!sc*/
+@keyframes slideUp{to{transform:translateY(0);opacity:1;}}/*!sc*/
+@media print{*{background:white!important;color:black!important;box-shadow:none!important;text-shadow:none!important;}a,a:visited{text-decoration:underline;}h1,h2,h3,h4,h5,h6{break-after:avoid;}pre,blockquote{border:1px solid #999;break-inside:avoid;}img{max-width:100%!important;}@page{margin:0.5in;}}/*!sc*/
+data-styled.g21[id="sc-global-kxA-Ddz1"]{content:"sc-global-kxA-Ddz1,"}/*!sc*/
+.iIQwfN{position:fixed;top:0;width:100%;z-index:1020;background:transparent;backdrop-filter:blur(10px);border-bottom:1px solid transparent;transition:all 0.3s ease;}/*!sc*/
+data-styled.g22[id="sc-gGKoUb"]{content:"iIQwfN,"}/*!sc*/
+.cEuiWg{max-width:1200px;margin:0 auto;padding:0 2rem;display:flex;align-items:center;justify-content:space-between;height:70px;}/*!sc*/
+data-styled.g23[id="sc-hwddKA"]{content:"cEuiWg,"}/*!sc*/
+.bqPomF{display:flex;align-items:center;gap:0.5rem;font-size:1.5rem;font-weight:700;color:#3b82f6;text-decoration:none;cursor:pointer;}/*!sc*/
+.bqPomF:hover{color:#2563eb;}/*!sc*/
+data-styled.g24[id="sc-jaXbil"]{content:"bqPomF,"}/*!sc*/
+.iwwpNe{display:flex;align-items:center;gap:2rem;}/*!sc*/
+@media (max-width: 768px){.iwwpNe{display:none;}}/*!sc*/
+data-styled.g25[id="sc-eqNDNG"]{content:"iwwpNe,"}/*!sc*/
+.iuGltB{color:#1e293b;font-weight:500;text-decoration:none;transition:color 0.15s ease;position:relative;}/*!sc*/
+.iuGltB:hover{color:#3b82f6;}/*!sc*/
+.iuGltB:after{content:'';position:absolute;bottom:-5px;left:0;width:0;height:2px;background:#3b82f6;transition:width 0.15s ease;}/*!sc*/
+.iuGltB:hover:after{width:100%;}/*!sc*/
+data-styled.g26[id="sc-fVHBlr"]{content:"iuGltB,"}/*!sc*/
+.lmsDAj{display:none;background:none;border:none;color:#1e293b;cursor:pointer;padding:0.5rem;}/*!sc*/
+@media (max-width: 768px){.lmsDAj{display:block;}}/*!sc*/
+data-styled.g27[id="sc-gLaqbQ"]{content:"lmsDAj,"}/*!sc*/
+.keTsRT{display:flex;align-items:center;gap:0.5rem;background:#f1f5f9;border:1px solid #e2e8f0;border-radius:0.5rem;padding:0.5rem 1rem;color:#64748b;font-size:0.9rem;transition:all 0.15s ease;}/*!sc*/
+.keTsRT:hover{background:#ffffff;border-color:#3b82f6;}/*!sc*/
+data-styled.g31[id="sc-cOpnSz"]{content:"keTsRT,"}/*!sc*/
+.hrfQfY{background:#1e293b;color:white;padding:3rem 0 1rem;margin-top:auto;}/*!sc*/
+data-styled.g32[id="sc-kjwdDK"]{content:"hrfQfY,"}/*!sc*/
+.dwFHjZ{max-width:1200px;margin:0 auto;padding:0 2rem;}/*!sc*/
+data-styled.g33[id="sc-eVqvcJ"]{content:"dwFHjZ,"}/*!sc*/
+.kWATso{display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:2rem;margin-bottom:2rem;}/*!sc*/
+@media (max-width: 768px){.kWATso{grid-template-columns:1fr 1fr;gap:1.5rem;}}/*!sc*/
+@media (max-width: 480px){.kWATso{grid-template-columns:1fr;}}/*!sc*/
+data-styled.g34[id="sc-bbbBoY"]{content:"kWATso,"}/*!sc*/
+.fBmmqS h3{font-size:1.1rem;font-weight:600;margin-bottom:1rem;color:white;}/*!sc*/
+.fBmmqS ul{list-style:none;padding:0;margin:0;}/*!sc*/
+.fBmmqS li{margin-bottom:0.5rem;}/*!sc*/
+.fBmmqS a{color:rgba(255, 255, 255, 0.7);text-decoration:none;transition:color 0.15s ease;}/*!sc*/
+.fBmmqS a:hover{color:white;}/*!sc*/
+data-styled.g35[id="sc-cdmAjP"]{content:"fBmmqS,"}/*!sc*/
+.iNKxsb{display:flex;align-items:center;gap:0.5rem;font-size:1.2rem;font-weight:700;margin-bottom:1rem;color:white;}/*!sc*/
+data-styled.g36[id="sc-jytpVa"]{content:"iNKxsb,"}/*!sc*/
+.fYhkiV{color:rgba(255, 255, 255, 0.7);line-height:1.6;margin-bottom:1rem;}/*!sc*/
+data-styled.g37[id="sc-eknHtZ"]{content:"fYhkiV,"}/*!sc*/
+.eVAQiq{display:flex;gap:1rem;}/*!sc*/
+.eVAQiq a{display:flex;align-items:center;justify-content:center;width:40px;height:40px;background:rgba(255, 255, 255, 0.1);border-radius:0.5rem;color:rgba(255, 255, 255, 0.7);transition:all 0.15s ease;}/*!sc*/
+.eVAQiq a:hover{background:rgba(255, 255, 255, 0.2);color:white;}/*!sc*/
+data-styled.g38[id="sc-pYNGo"]{content:"eVAQiq,"}/*!sc*/
+.fgJmHp{border-top:1px solid rgba(255, 255, 255, 0.1);padding-top:2rem;display:flex;justify-content:space-between;align-items:center;}/*!sc*/
+@media (max-width: 768px){.fgJmHp{flex-direction:column;gap:1rem;text-align:center;}}/*!sc*/
+data-styled.g39[id="sc-cCVJLD"]{content:"fgJmHp,"}/*!sc*/
+.gYGLHT{color:rgba(255, 255, 255, 0.7);margin:0;font-size:0.9rem;}/*!sc*/
+data-styled.g40[id="sc-jYczwO"]{content:"gYGLHT,"}/*!sc*/
+.ghBULZ{display:flex;gap:2rem;}/*!sc*/
+@media (max-width: 480px){.ghBULZ{flex-direction:column;gap:1rem;}}/*!sc*/
+.ghBULZ a{color:rgba(255, 255, 255, 0.7);text-decoration:none;font-size:0.9rem;transition:color 0.15s ease;}/*!sc*/
+.ghBULZ a:hover{color:white;}/*!sc*/
+data-styled.g41[id="sc-dNFkOE"]{content:"ghBULZ,"}/*!sc*/
+.fUIuKh{color:#1e293b;line-height:1.6;}/*!sc*/
+.fUIuKh h1,.fUIuKh h2,.fUIuKh h3,.fUIuKh h4,.fUIuKh h5,.fUIuKh h6{color:#1e293b;margin-top:2rem;margin-bottom:1rem;font-weight:600;}/*!sc*/
+.fUIuKh h1{font-size:2rem;border-bottom:2px solid #e2e8f0;padding-bottom:0.5rem;}/*!sc*/
+.fUIuKh h2{font-size:1.5rem;border-bottom:1px solid #e2e8f0;padding-bottom:0.3rem;}/*!sc*/
+.fUIuKh h3{font-size:1.25rem;}/*!sc*/
+.fUIuKh h4{font-size:1.1rem;}/*!sc*/
+.fUIuKh p{margin-bottom:1rem;color:#64748b;}/*!sc*/
+.fUIuKh a{color:#3b82f6;text-decoration:none;}/*!sc*/
+.fUIuKh a:hover{text-decoration:underline;}/*!sc*/
+.fUIuKh ul,.fUIuKh ol{margin-bottom:1rem;padding-left:1.5rem;}/*!sc*/
+.fUIuKh ul li,.fUIuKh ol li{margin-bottom:0.5rem;color:#64748b;}/*!sc*/
+.fUIuKh blockquote{border-left:4px solid #3b82f6;padding-left:1rem;margin:1rem 0;font-style:italic;color:#64748b;background:#f1f5f9;padding:1rem;border-radius:0.5rem;}/*!sc*/
+.fUIuKh code{background:#f1f5f9;padding:0.2rem 0.4rem;border-radius:0.25rem;font-family:SFMono-Regular,Consolas,"Liberation Mono",Menlo,monospace;font-size:0.9em;color:#f59e0b;}/*!sc*/
+.fUIuKh pre{background:#ffffff;border:1px solid #e2e8f0;border-radius:0.5rem;padding:1rem;margin:1rem 0;overflow-x:auto;}/*!sc*/
+.fUIuKh pre code{background:none;padding:0;color:#1e293b;font-size:0.9rem;}/*!sc*/
+.fUIuKh table{width:100%;border-collapse:collapse;margin:1rem 0;}/*!sc*/
+.fUIuKh table th,.fUIuKh table td{border:1px solid #e2e8f0;padding:0.5rem;text-align:left;}/*!sc*/
+.fUIuKh table th{background:#ffffff;font-weight:600;}/*!sc*/
+.fUIuKh table tr:nth-child(even){background:#f1f5f9;}/*!sc*/
+.fUIuKh hr{border:none;height:1px;background:#e2e8f0;margin:2rem 0;}/*!sc*/
+.fUIuKh .highlight{background:#3b82f620;padding:0.2rem 0.4rem;border-radius:0.25rem;font-weight:600;}/*!sc*/
+.fUIuKh .hljs{background:#ffffff;color:#1e293b;}/*!sc*/
+.fUIuKh .hljs-keyword{color:#3b82f6;font-weight:600;}/*!sc*/
+.fUIuKh .hljs-string{color:#10b981;}/*!sc*/
+.fUIuKh .hljs-function{color:#f59e0b;}/*!sc*/
+.fUIuKh .hljs-comment{color:#94a3b8;font-style:italic;}/*!sc*/
+.fUIuKh .hljs-number{color:#f59e0b;}/*!sc*/
+.fUIuKh .hljs-variable{color:#1e293b;}/*!sc*/
+.fUIuKh .hljs-title{color:#f59e0b;font-weight:600;}/*!sc*/
+data-styled.g42[id="sc-fszimp"]{content:"fUIuKh,"}/*!sc*/
+</style></head><body class="__className_6eac61"><div style="min-height:100vh;display:flex;flex-direction:column"><nav class="sc-gGKoUb iIQwfN"><div class="sc-hwddKA cEuiWg"><a href="/interview"><a class="sc-jaXbil bqPomF"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-code "><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>Frontend Interview Prep</a></a><div class="sc-eqNDNG iwwpNe"><a href="/interview/problems"><a class="sc-fVHBlr iuGltB">Problems</a></a><a href="/interview/learn"><a class="sc-fVHBlr iuGltB">Learn</a></a><a href="/interview/study-guide"><a class="sc-fVHBlr iuGltB">Study Guide</a></a><a href="/interview/system-design"><a class="sc-fVHBlr iuGltB">System Design</a></a><a href="/interview/performance"><a class="sc-fVHBlr iuGltB">Performance</a></a><a href="/interview/accessibility"><a class="sc-fVHBlr iuGltB">Accessibility</a></a><a href="/interview/interview-tips"><a class="sc-fVHBlr iuGltB">Interview Tips</a></a><button class="sc-cOpnSz keTsRT"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-search "><circle cx="11" cy="11" r="8"></circle><path d="m21 21-4.3-4.3"></path></svg>Search</button></div><button class="sc-gLaqbQ lmsDAj"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-menu "><line x1="4" x2="20" y1="12" y2="12"></line><line x1="4" x2="20" y1="6" y2="6"></line><line x1="4" x2="20" y1="18" y2="18"></line></svg></button></div></nav><main style="flex:1"><div style="max-width:1200px;margin:0 auto;padding:2rem;padding-top:6rem"><div style="margin-bottom:2rem"><nav style="color:#64748b;font-size:0.9rem;margin-bottom:1rem"><a href="/" style="color:#3b82f6;text-decoration:none">Home</a> &gt; <span>src &gt; content &gt; frontend &gt; fundamentals &gt; performance-optimization-fundamentals</span></nav><h1 style="font-size:2.5rem;font-weight:800;margin-bottom:0.5rem;color:#1e293b">Performance Optimization Fundamentals</h1><div style="color:#64748b;font-size:0.9rem;margin-bottom:2rem"><span>📁 <!-- -->src/content/frontend/fundamentals/performance-optimization-fundamentals.md</span></div></div><div class="sc-fszimp fUIuKh"><h1 id="performance-optimization-fundamentals" node="[object Object]">Performance Optimization Fundamentals</h1>
+<h2 id="overview" node="[object Object]">Overview</h2>
+<p>Performance optimization is critical for frontend applications, especially at Big Tech companies where scale and user experience are paramount. This guide covers essential performance concepts, measurement techniques, and optimization strategies.</p>
+<hr/>
+<h2 id="core-web-vitals-&amp;-performance-metrics" node="[object Object]">Core Web Vitals &amp; Performance Metrics</h2>
+<h3 id="[object-object]" node="[object Object]"><strong>Comprehensive Performance Monitoring</strong></h3>
+<p>{% raw %}</p>
+<pre><pre><code class="hljs hljs language-javascript"><span class="hljs-comment">// Advanced performance monitoring system</span>
+<span class="hljs-keyword">class</span> <span class="hljs-title class_">PerformanceMonitor</span> {
+  <span class="hljs-title function_">constructor</span>(<span class="hljs-params">options = {}</span>) {
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">config</span> = {
+      <span class="hljs-attr">enableCLS</span>: <span class="hljs-literal">true</span>,
+      <span class="hljs-attr">enableFCP</span>: <span class="hljs-literal">true</span>,
+      <span class="hljs-attr">enableFID</span>: <span class="hljs-literal">true</span>,
+      <span class="hljs-attr">enableLCP</span>: <span class="hljs-literal">true</span>,
+      <span class="hljs-attr">enableTTFB</span>: <span class="hljs-literal">true</span>,
+      <span class="hljs-attr">enableINP</span>: <span class="hljs-literal">true</span>,
+      <span class="hljs-attr">reportingEndpoint</span>: <span class="hljs-string">&#x27;/api/performance&#x27;</span>,
+      <span class="hljs-attr">samplingRate</span>: options.<span class="hljs-property">samplingRate</span> || <span class="hljs-number">0.1</span>,
+      ...options
+    };
+    
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">metrics</span> = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Map</span>();
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">observers</span> = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Map</span>();
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">reportQueue</span> = [];
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">sessionId</span> = <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">generateSessionId</span>();
+    
+    <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">setupObservers</span>();
+    <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">setupReporting</span>();
+  }
+
+  <span class="hljs-title function_">setupObservers</span>(<span class="hljs-params"></span>) {
+    <span class="hljs-comment">// Largest Contentful Paint</span>
+    <span class="hljs-keyword">if</span> (<span class="hljs-variable language_">this</span>.<span class="hljs-property">config</span>.<span class="hljs-property">enableLCP</span> &amp;&amp; <span class="hljs-string">&#x27;PerformanceObserver&#x27;</span> <span class="hljs-keyword">in</span> <span class="hljs-variable language_">window</span>) {
+      <span class="hljs-keyword">const</span> lcpObserver = <span class="hljs-keyword">new</span> <span class="hljs-title class_">PerformanceObserver</span>(<span class="hljs-function">(<span class="hljs-params">list</span>) =&gt;</span> {
+        <span class="hljs-keyword">const</span> entries = list.<span class="hljs-title function_">getEntries</span>();
+        <span class="hljs-keyword">const</span> lastEntry = entries[entries.<span class="hljs-property">length</span> - <span class="hljs-number">1</span>];
+        
+        <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">recordMetric</span>(<span class="hljs-string">&#x27;LCP&#x27;</span>, {
+          <span class="hljs-attr">value</span>: lastEntry.<span class="hljs-property">startTime</span>,
+          <span class="hljs-attr">element</span>: <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">getElementSelector</span>(lastEntry.<span class="hljs-property">element</span>),
+          <span class="hljs-attr">size</span>: lastEntry.<span class="hljs-property">size</span>,
+          <span class="hljs-attr">url</span>: lastEntry.<span class="hljs-property">url</span> || <span class="hljs-literal">null</span>,
+          <span class="hljs-attr">timestamp</span>: <span class="hljs-title class_">Date</span>.<span class="hljs-title function_">now</span>()
+        });
+      });
+      
+      lcpObserver.<span class="hljs-title function_">observe</span>({ <span class="hljs-attr">type</span>: <span class="hljs-string">&#x27;largest-contentful-paint&#x27;</span>, <span class="hljs-attr">buffered</span>: <span class="hljs-literal">true</span> });
+      <span class="hljs-variable language_">this</span>.<span class="hljs-property">observers</span>.<span class="hljs-title function_">set</span>(<span class="hljs-string">&#x27;lcp&#x27;</span>, lcpObserver);
+    }
+
+    <span class="hljs-comment">// First Input Delay</span>
+    <span class="hljs-keyword">if</span> (<span class="hljs-variable language_">this</span>.<span class="hljs-property">config</span>.<span class="hljs-property">enableFID</span> &amp;&amp; <span class="hljs-string">&#x27;PerformanceObserver&#x27;</span> <span class="hljs-keyword">in</span> <span class="hljs-variable language_">window</span>) {
+      <span class="hljs-keyword">const</span> fidObserver = <span class="hljs-keyword">new</span> <span class="hljs-title class_">PerformanceObserver</span>(<span class="hljs-function">(<span class="hljs-params">list</span>) =&gt;</span> {
+        <span class="hljs-keyword">const</span> entries = list.<span class="hljs-title function_">getEntries</span>();
+        entries.<span class="hljs-title function_">forEach</span>(<span class="hljs-function"><span class="hljs-params">entry</span> =&gt;</span> {
+          <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">recordMetric</span>(<span class="hljs-string">&#x27;FID&#x27;</span>, {
+            <span class="hljs-attr">value</span>: entry.<span class="hljs-property">processingStart</span> - entry.<span class="hljs-property">startTime</span>,
+            <span class="hljs-attr">eventType</span>: entry.<span class="hljs-property">name</span>,
+            <span class="hljs-attr">target</span>: <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">getElementSelector</span>(entry.<span class="hljs-property">target</span>),
+            <span class="hljs-attr">timestamp</span>: <span class="hljs-title class_">Date</span>.<span class="hljs-title function_">now</span>()
+          });
+        });
+      });
+      
+      fidObserver.<span class="hljs-title function_">observe</span>({ <span class="hljs-attr">type</span>: <span class="hljs-string">&#x27;first-input&#x27;</span>, <span class="hljs-attr">buffered</span>: <span class="hljs-literal">true</span> });
+      <span class="hljs-variable language_">this</span>.<span class="hljs-property">observers</span>.<span class="hljs-title function_">set</span>(<span class="hljs-string">&#x27;fid&#x27;</span>, fidObserver);
+    }
+
+    <span class="hljs-comment">// Cumulative Layout Shift</span>
+    <span class="hljs-keyword">if</span> (<span class="hljs-variable language_">this</span>.<span class="hljs-property">config</span>.<span class="hljs-property">enableCLS</span> &amp;&amp; <span class="hljs-string">&#x27;PerformanceObserver&#x27;</span> <span class="hljs-keyword">in</span> <span class="hljs-variable language_">window</span>) {
+      <span class="hljs-keyword">let</span> clsValue = <span class="hljs-number">0</span>;
+      <span class="hljs-keyword">let</span> clsEntries = [];
+      
+      <span class="hljs-keyword">const</span> clsObserver = <span class="hljs-keyword">new</span> <span class="hljs-title class_">PerformanceObserver</span>(<span class="hljs-function">(<span class="hljs-params">list</span>) =&gt;</span> {
+        <span class="hljs-keyword">const</span> entries = list.<span class="hljs-title function_">getEntries</span>();
+        
+        entries.<span class="hljs-title function_">forEach</span>(<span class="hljs-function"><span class="hljs-params">entry</span> =&gt;</span> {
+          <span class="hljs-keyword">if</span> (!entry.<span class="hljs-property">hadRecentInput</span>) {
+            clsValue += entry.<span class="hljs-property">value</span>;
+            clsEntries.<span class="hljs-title function_">push</span>({
+              <span class="hljs-attr">value</span>: entry.<span class="hljs-property">value</span>,
+              <span class="hljs-attr">sources</span>: entry.<span class="hljs-property">sources</span>?.<span class="hljs-title function_">map</span>(<span class="hljs-function"><span class="hljs-params">source</span> =&gt;</span> ({
+                <span class="hljs-attr">element</span>: <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">getElementSelector</span>(source.<span class="hljs-property">node</span>),
+                <span class="hljs-attr">previousRect</span>: source.<span class="hljs-property">previousRect</span>,
+                <span class="hljs-attr">currentRect</span>: source.<span class="hljs-property">currentRect</span>
+              })) || [],
+              <span class="hljs-attr">timestamp</span>: entry.<span class="hljs-property">startTime</span>
+            });
+          }
+        });
+        
+        <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">recordMetric</span>(<span class="hljs-string">&#x27;CLS&#x27;</span>, {
+          <span class="hljs-attr">value</span>: clsValue,
+          <span class="hljs-attr">entries</span>: clsEntries,
+          <span class="hljs-attr">timestamp</span>: <span class="hljs-title class_">Date</span>.<span class="hljs-title function_">now</span>()
+        });
+      });
+      
+      clsObserver.<span class="hljs-title function_">observe</span>({ <span class="hljs-attr">type</span>: <span class="hljs-string">&#x27;layout-shift&#x27;</span>, <span class="hljs-attr">buffered</span>: <span class="hljs-literal">true</span> });
+      <span class="hljs-variable language_">this</span>.<span class="hljs-property">observers</span>.<span class="hljs-title function_">set</span>(<span class="hljs-string">&#x27;cls&#x27;</span>, clsObserver);
+    }
+
+    <span class="hljs-comment">// First Contentful Paint</span>
+    <span class="hljs-keyword">if</span> (<span class="hljs-variable language_">this</span>.<span class="hljs-property">config</span>.<span class="hljs-property">enableFCP</span> &amp;&amp; <span class="hljs-string">&#x27;PerformanceObserver&#x27;</span> <span class="hljs-keyword">in</span> <span class="hljs-variable language_">window</span>) {
+      <span class="hljs-keyword">const</span> fcpObserver = <span class="hljs-keyword">new</span> <span class="hljs-title class_">PerformanceObserver</span>(<span class="hljs-function">(<span class="hljs-params">list</span>) =&gt;</span> {
+        <span class="hljs-keyword">const</span> entries = list.<span class="hljs-title function_">getEntries</span>();
+        entries.<span class="hljs-title function_">forEach</span>(<span class="hljs-function"><span class="hljs-params">entry</span> =&gt;</span> {
+          <span class="hljs-keyword">if</span> (entry.<span class="hljs-property">name</span> === <span class="hljs-string">&#x27;first-contentful-paint&#x27;</span>) {
+            <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">recordMetric</span>(<span class="hljs-string">&#x27;FCP&#x27;</span>, {
+              <span class="hljs-attr">value</span>: entry.<span class="hljs-property">startTime</span>,
+              <span class="hljs-attr">timestamp</span>: <span class="hljs-title class_">Date</span>.<span class="hljs-title function_">now</span>()
+            });
+          }
+        });
+      });
+      
+      fcpObserver.<span class="hljs-title function_">observe</span>({ <span class="hljs-attr">type</span>: <span class="hljs-string">&#x27;paint&#x27;</span>, <span class="hljs-attr">buffered</span>: <span class="hljs-literal">true</span> });
+      <span class="hljs-variable language_">this</span>.<span class="hljs-property">observers</span>.<span class="hljs-title function_">set</span>(<span class="hljs-string">&#x27;fcp&#x27;</span>, fcpObserver);
+    }
+
+    <span class="hljs-comment">// Time to First Byte</span>
+    <span class="hljs-keyword">if</span> (<span class="hljs-variable language_">this</span>.<span class="hljs-property">config</span>.<span class="hljs-property">enableTTFB</span> &amp;&amp; <span class="hljs-string">&#x27;PerformanceObserver&#x27;</span> <span class="hljs-keyword">in</span> <span class="hljs-variable language_">window</span>) {
+      <span class="hljs-keyword">const</span> navigationObserver = <span class="hljs-keyword">new</span> <span class="hljs-title class_">PerformanceObserver</span>(<span class="hljs-function">(<span class="hljs-params">list</span>) =&gt;</span> {
+        <span class="hljs-keyword">const</span> entries = list.<span class="hljs-title function_">getEntries</span>();
+        entries.<span class="hljs-title function_">forEach</span>(<span class="hljs-function"><span class="hljs-params">entry</span> =&gt;</span> {
+          <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">recordMetric</span>(<span class="hljs-string">&#x27;TTFB&#x27;</span>, {
+            <span class="hljs-attr">value</span>: entry.<span class="hljs-property">responseStart</span> - entry.<span class="hljs-property">requestStart</span>,
+            <span class="hljs-attr">dnsTime</span>: entry.<span class="hljs-property">domainLookupEnd</span> - entry.<span class="hljs-property">domainLookupStart</span>,
+            <span class="hljs-attr">tcpTime</span>: entry.<span class="hljs-property">connectEnd</span> - entry.<span class="hljs-property">connectStart</span>,
+            <span class="hljs-attr">tlsTime</span>: entry.<span class="hljs-property">secureConnectionStart</span> &gt; <span class="hljs-number">0</span> ? 
+              entry.<span class="hljs-property">connectEnd</span> - entry.<span class="hljs-property">secureConnectionStart</span> : <span class="hljs-number">0</span>,
+            <span class="hljs-attr">timestamp</span>: <span class="hljs-title class_">Date</span>.<span class="hljs-title function_">now</span>()
+          });
+        });
+      });
+      
+      navigationObserver.<span class="hljs-title function_">observe</span>({ <span class="hljs-attr">type</span>: <span class="hljs-string">&#x27;navigation&#x27;</span>, <span class="hljs-attr">buffered</span>: <span class="hljs-literal">true</span> });
+      <span class="hljs-variable language_">this</span>.<span class="hljs-property">observers</span>.<span class="hljs-title function_">set</span>(<span class="hljs-string">&#x27;navigation&#x27;</span>, navigationObserver);
+    }
+
+    <span class="hljs-comment">// Interaction to Next Paint (replacing FID)</span>
+    <span class="hljs-keyword">if</span> (<span class="hljs-variable language_">this</span>.<span class="hljs-property">config</span>.<span class="hljs-property">enableINP</span> &amp;&amp; <span class="hljs-string">&#x27;PerformanceObserver&#x27;</span> <span class="hljs-keyword">in</span> <span class="hljs-variable language_">window</span>) {
+      <span class="hljs-keyword">const</span> inpObserver = <span class="hljs-keyword">new</span> <span class="hljs-title class_">PerformanceObserver</span>(<span class="hljs-function">(<span class="hljs-params">list</span>) =&gt;</span> {
+        <span class="hljs-keyword">const</span> entries = list.<span class="hljs-title function_">getEntries</span>();
+        entries.<span class="hljs-title function_">forEach</span>(<span class="hljs-function"><span class="hljs-params">entry</span> =&gt;</span> {
+          <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">recordMetric</span>(<span class="hljs-string">&#x27;INP&#x27;</span>, {
+            <span class="hljs-attr">value</span>: entry.<span class="hljs-property">processingEnd</span> - entry.<span class="hljs-property">startTime</span>,
+            <span class="hljs-attr">eventType</span>: entry.<span class="hljs-property">name</span>,
+            <span class="hljs-attr">target</span>: <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">getElementSelector</span>(entry.<span class="hljs-property">target</span>),
+            <span class="hljs-attr">interactionId</span>: entry.<span class="hljs-property">interactionId</span>,
+            <span class="hljs-attr">timestamp</span>: <span class="hljs-title class_">Date</span>.<span class="hljs-title function_">now</span>()
+          });
+        });
+      });
+      
+      <span class="hljs-keyword">try</span> {
+        inpObserver.<span class="hljs-title function_">observe</span>({ <span class="hljs-attr">type</span>: <span class="hljs-string">&#x27;event&#x27;</span>, <span class="hljs-attr">buffered</span>: <span class="hljs-literal">true</span> });
+        <span class="hljs-variable language_">this</span>.<span class="hljs-property">observers</span>.<span class="hljs-title function_">set</span>(<span class="hljs-string">&#x27;inp&#x27;</span>, inpObserver);
+      } <span class="hljs-keyword">catch</span> (e) {
+        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;INP observer not supported&#x27;</span>);
+      }
+    }
+  }
+
+  <span class="hljs-comment">// Custom performance measurements</span>
+  <span class="hljs-title function_">measureCustomMetric</span>(<span class="hljs-params">name, startMark, endMark</span>) {
+    <span class="hljs-keyword">try</span> {
+      performance.<span class="hljs-title function_">measure</span>(name, startMark, endMark);
+      <span class="hljs-keyword">const</span> measure = performance.<span class="hljs-title function_">getEntriesByName</span>(name, <span class="hljs-string">&#x27;measure&#x27;</span>)[<span class="hljs-number">0</span>];
+      
+      <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">recordMetric</span>(<span class="hljs-string">&#x27;CUSTOM&#x27;</span>, {
+        name,
+        <span class="hljs-attr">value</span>: measure.<span class="hljs-property">duration</span>,
+        <span class="hljs-attr">startTime</span>: measure.<span class="hljs-property">startTime</span>,
+        <span class="hljs-attr">timestamp</span>: <span class="hljs-title class_">Date</span>.<span class="hljs-title function_">now</span>()
+      });
+      
+      <span class="hljs-keyword">return</span> measure.<span class="hljs-property">duration</span>;
+    } <span class="hljs-keyword">catch</span> (error) {
+      <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">error</span>(<span class="hljs-string">&#x27;Error measuring custom metric:&#x27;</span>, error);
+      <span class="hljs-keyword">return</span> <span class="hljs-literal">null</span>;
+    }
+  }
+
+  <span class="hljs-comment">// Resource performance analysis</span>
+  <span class="hljs-title function_">analyzeResourcePerformance</span>(<span class="hljs-params"></span>) {
+    <span class="hljs-keyword">const</span> resources = performance.<span class="hljs-title function_">getEntriesByType</span>(<span class="hljs-string">&#x27;resource&#x27;</span>);
+    <span class="hljs-keyword">const</span> analysis = {
+      <span class="hljs-attr">totalResources</span>: resources.<span class="hljs-property">length</span>,
+      <span class="hljs-attr">totalSize</span>: <span class="hljs-number">0</span>,
+      <span class="hljs-attr">totalTime</span>: <span class="hljs-number">0</span>,
+      <span class="hljs-attr">byType</span>: <span class="hljs-keyword">new</span> <span class="hljs-title class_">Map</span>(),
+      <span class="hljs-attr">slowest</span>: [],
+      <span class="hljs-attr">largest</span>: [],
+      <span class="hljs-attr">renderBlocking</span>: []
+    };
+
+    resources.<span class="hljs-title function_">forEach</span>(<span class="hljs-function"><span class="hljs-params">resource</span> =&gt;</span> {
+      <span class="hljs-keyword">const</span> type = <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">getResourceType</span>(resource);
+      <span class="hljs-keyword">const</span> size = resource.<span class="hljs-property">transferSize</span> || <span class="hljs-number">0</span>;
+      <span class="hljs-keyword">const</span> duration = resource.<span class="hljs-property">responseEnd</span> - resource.<span class="hljs-property">startTime</span>;
+
+      analysis.<span class="hljs-property">totalSize</span> += size;
+      analysis.<span class="hljs-property">totalTime</span> += duration;
+
+      <span class="hljs-keyword">if</span> (!analysis.<span class="hljs-property">byType</span>.<span class="hljs-title function_">has</span>(type)) {
+        analysis.<span class="hljs-property">byType</span>.<span class="hljs-title function_">set</span>(type, {
+          <span class="hljs-attr">count</span>: <span class="hljs-number">0</span>,
+          <span class="hljs-attr">totalSize</span>: <span class="hljs-number">0</span>,
+          <span class="hljs-attr">totalTime</span>: <span class="hljs-number">0</span>,
+          <span class="hljs-attr">resources</span>: []
+        });
+      }
+
+      <span class="hljs-keyword">const</span> typeData = analysis.<span class="hljs-property">byType</span>.<span class="hljs-title function_">get</span>(type);
+      typeData.<span class="hljs-property">count</span>++;
+      typeData.<span class="hljs-property">totalSize</span> += size;
+      typeData.<span class="hljs-property">totalTime</span> += duration;
+      typeData.<span class="hljs-property">resources</span>.<span class="hljs-title function_">push</span>({
+        <span class="hljs-attr">name</span>: resource.<span class="hljs-property">name</span>,
+        size,
+        duration,
+        <span class="hljs-attr">renderBlockingStatus</span>: resource.<span class="hljs-property">renderBlockingStatus</span>
+      });
+
+      <span class="hljs-comment">// Track render-blocking resources</span>
+      <span class="hljs-keyword">if</span> (resource.<span class="hljs-property">renderBlockingStatus</span> === <span class="hljs-string">&#x27;blocking&#x27;</span>) {
+        analysis.<span class="hljs-property">renderBlocking</span>.<span class="hljs-title function_">push</span>({
+          <span class="hljs-attr">name</span>: resource.<span class="hljs-property">name</span>,
+          type,
+          duration,
+          size
+        });
+      }
+    });
+
+    <span class="hljs-comment">// Find slowest and largest resources</span>
+    analysis.<span class="hljs-property">slowest</span> = resources
+      .<span class="hljs-title function_">map</span>(<span class="hljs-function"><span class="hljs-params">r</span> =&gt;</span> ({
+        <span class="hljs-attr">name</span>: r.<span class="hljs-property">name</span>,
+        <span class="hljs-attr">duration</span>: r.<span class="hljs-property">responseEnd</span> - r.<span class="hljs-property">startTime</span>,
+        <span class="hljs-attr">type</span>: <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">getResourceType</span>(r)
+      }))
+      .<span class="hljs-title function_">sort</span>(<span class="hljs-function">(<span class="hljs-params">a, b</span>) =&gt;</span> b.<span class="hljs-property">duration</span> - a.<span class="hljs-property">duration</span>)
+      .<span class="hljs-title function_">slice</span>(<span class="hljs-number">0</span>, <span class="hljs-number">10</span>);
+
+    analysis.<span class="hljs-property">largest</span> = resources
+      .<span class="hljs-title function_">filter</span>(<span class="hljs-function"><span class="hljs-params">r</span> =&gt;</span> r.<span class="hljs-property">transferSize</span> &gt; <span class="hljs-number">0</span>)
+      .<span class="hljs-title function_">map</span>(<span class="hljs-function"><span class="hljs-params">r</span> =&gt;</span> ({
+        <span class="hljs-attr">name</span>: r.<span class="hljs-property">name</span>,
+        <span class="hljs-attr">size</span>: r.<span class="hljs-property">transferSize</span>,
+        <span class="hljs-attr">type</span>: <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">getResourceType</span>(r)
+      }))
+      .<span class="hljs-title function_">sort</span>(<span class="hljs-function">(<span class="hljs-params">a, b</span>) =&gt;</span> b.<span class="hljs-property">size</span> - a.<span class="hljs-property">size</span>)
+      .<span class="hljs-title function_">slice</span>(<span class="hljs-number">0</span>, <span class="hljs-number">10</span>);
+
+    <span class="hljs-keyword">return</span> analysis;
+  }
+
+  <span class="hljs-comment">// Memory performance monitoring</span>
+  <span class="hljs-title function_">monitorMemoryUsage</span>(<span class="hljs-params"></span>) {
+    <span class="hljs-keyword">if</span> (!(<span class="hljs-string">&#x27;memory&#x27;</span> <span class="hljs-keyword">in</span> performance)) {
+      <span class="hljs-keyword">return</span> <span class="hljs-literal">null</span>;
+    }
+
+    <span class="hljs-keyword">const</span> memory = performance.<span class="hljs-property">memory</span>;
+    <span class="hljs-keyword">const</span> memoryInfo = {
+      <span class="hljs-attr">usedJSHeapSize</span>: memory.<span class="hljs-property">usedJSHeapSize</span>,
+      <span class="hljs-attr">totalJSHeapSize</span>: memory.<span class="hljs-property">totalJSHeapSize</span>,
+      <span class="hljs-attr">jsHeapSizeLimit</span>: memory.<span class="hljs-property">jsHeapSizeLimit</span>,
+      <span class="hljs-attr">usagePercentage</span>: (memory.<span class="hljs-property">usedJSHeapSize</span> / memory.<span class="hljs-property">jsHeapSizeLimit</span>) * <span class="hljs-number">100</span>,
+      <span class="hljs-attr">timestamp</span>: <span class="hljs-title class_">Date</span>.<span class="hljs-title function_">now</span>()
+    };
+
+    <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">recordMetric</span>(<span class="hljs-string">&#x27;MEMORY&#x27;</span>, memoryInfo);
+    <span class="hljs-keyword">return</span> memoryInfo;
+  }
+
+  <span class="hljs-comment">// Long task monitoring</span>
+  <span class="hljs-title function_">monitorLongTasks</span>(<span class="hljs-params"></span>) {
+    <span class="hljs-keyword">if</span> (<span class="hljs-string">&#x27;PerformanceObserver&#x27;</span> <span class="hljs-keyword">in</span> <span class="hljs-variable language_">window</span>) {
+      <span class="hljs-keyword">const</span> longTaskObserver = <span class="hljs-keyword">new</span> <span class="hljs-title class_">PerformanceObserver</span>(<span class="hljs-function">(<span class="hljs-params">list</span>) =&gt;</span> {
+        <span class="hljs-keyword">const</span> entries = list.<span class="hljs-title function_">getEntries</span>();
+        entries.<span class="hljs-title function_">forEach</span>(<span class="hljs-function"><span class="hljs-params">entry</span> =&gt;</span> {
+          <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">recordMetric</span>(<span class="hljs-string">&#x27;LONG_TASK&#x27;</span>, {
+            <span class="hljs-attr">duration</span>: entry.<span class="hljs-property">duration</span>,
+            <span class="hljs-attr">startTime</span>: entry.<span class="hljs-property">startTime</span>,
+            <span class="hljs-attr">attribution</span>: entry.<span class="hljs-property">attribution</span>?.<span class="hljs-title function_">map</span>(<span class="hljs-function"><span class="hljs-params">attr</span> =&gt;</span> ({
+              <span class="hljs-attr">name</span>: attr.<span class="hljs-property">name</span>,
+              <span class="hljs-attr">containerType</span>: attr.<span class="hljs-property">containerType</span>,
+              <span class="hljs-attr">containerSrc</span>: attr.<span class="hljs-property">containerSrc</span>,
+              <span class="hljs-attr">containerId</span>: attr.<span class="hljs-property">containerId</span>,
+              <span class="hljs-attr">containerName</span>: attr.<span class="hljs-property">containerName</span>
+            })) || [],
+            <span class="hljs-attr">timestamp</span>: <span class="hljs-title class_">Date</span>.<span class="hljs-title function_">now</span>()
+          });
+        });
+      });
+
+      <span class="hljs-keyword">try</span> {
+        longTaskObserver.<span class="hljs-title function_">observe</span>({ <span class="hljs-attr">type</span>: <span class="hljs-string">&#x27;longtask&#x27;</span>, <span class="hljs-attr">buffered</span>: <span class="hljs-literal">true</span> });
+        <span class="hljs-variable language_">this</span>.<span class="hljs-property">observers</span>.<span class="hljs-title function_">set</span>(<span class="hljs-string">&#x27;longtask&#x27;</span>, longTaskObserver);
+      } <span class="hljs-keyword">catch</span> (e) {
+        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;Long task observer not supported&#x27;</span>);
+      }
+    }
+  }
+
+  <span class="hljs-comment">// User timing API integration</span>
+  <span class="hljs-title function_">startTiming</span>(<span class="hljs-params">name</span>) {
+    performance.<span class="hljs-title function_">mark</span>(<span class="hljs-string">`<span class="hljs-subst">${name}</span>-start`</span>);
+    <span class="hljs-keyword">return</span> {
+      <span class="hljs-attr">end</span>: <span class="hljs-function">() =&gt;</span> {
+        performance.<span class="hljs-title function_">mark</span>(<span class="hljs-string">`<span class="hljs-subst">${name}</span>-end`</span>);
+        <span class="hljs-keyword">return</span> <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">measureCustomMetric</span>(name, <span class="hljs-string">`<span class="hljs-subst">${name}</span>-start`</span>, <span class="hljs-string">`<span class="hljs-subst">${name}</span>-end`</span>);
+      }
+    };
+  }
+
+  <span class="hljs-title function_">recordMetric</span>(<span class="hljs-params">type, data</span>) {
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">metrics</span>.<span class="hljs-title function_">set</span>(<span class="hljs-string">`<span class="hljs-subst">${type}</span>-<span class="hljs-subst">${<span class="hljs-built_in">Date</span>.now()}</span>`</span>, {
+      type,
+      data,
+      <span class="hljs-attr">sessionId</span>: <span class="hljs-variable language_">this</span>.<span class="hljs-property">sessionId</span>,
+      <span class="hljs-attr">url</span>: <span class="hljs-variable language_">window</span>.<span class="hljs-property">location</span>.<span class="hljs-property">href</span>,
+      <span class="hljs-attr">userAgent</span>: navigator.<span class="hljs-property">userAgent</span>,
+      <span class="hljs-attr">timestamp</span>: <span class="hljs-title class_">Date</span>.<span class="hljs-title function_">now</span>()
+    });
+
+    <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">queueForReporting</span>(type, data);
+  }
+
+  <span class="hljs-title function_">queueForReporting</span>(<span class="hljs-params">type, data</span>) {
+    <span class="hljs-comment">// Sample based on configuration</span>
+    <span class="hljs-keyword">if</span> (<span class="hljs-title class_">Math</span>.<span class="hljs-title function_">random</span>() &gt; <span class="hljs-variable language_">this</span>.<span class="hljs-property">config</span>.<span class="hljs-property">samplingRate</span>) {
+      <span class="hljs-keyword">return</span>;
+    }
+
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">reportQueue</span>.<span class="hljs-title function_">push</span>({
+      type,
+      data,
+      <span class="hljs-attr">sessionId</span>: <span class="hljs-variable language_">this</span>.<span class="hljs-property">sessionId</span>,
+      <span class="hljs-attr">timestamp</span>: <span class="hljs-title class_">Date</span>.<span class="hljs-title function_">now</span>()
+    });
+
+    <span class="hljs-comment">// Batch reporting to reduce network overhead</span>
+    <span class="hljs-keyword">if</span> (<span class="hljs-variable language_">this</span>.<span class="hljs-property">reportQueue</span>.<span class="hljs-property">length</span> &gt;= <span class="hljs-number">10</span>) {
+      <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">flushReports</span>();
+    }
+  }
+
+  <span class="hljs-title function_">setupReporting</span>(<span class="hljs-params"></span>) {
+    <span class="hljs-comment">// Report on page visibility change</span>
+    <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">addEventListener</span>(<span class="hljs-string">&#x27;visibilitychange&#x27;</span>, <span class="hljs-function">() =&gt;</span> {
+      <span class="hljs-keyword">if</span> (<span class="hljs-variable language_">document</span>.<span class="hljs-property">visibilityState</span> === <span class="hljs-string">&#x27;hidden&#x27;</span>) {
+        <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">flushReports</span>();
+      }
+    });
+
+    <span class="hljs-comment">// Report on page unload</span>
+    <span class="hljs-variable language_">window</span>.<span class="hljs-title function_">addEventListener</span>(<span class="hljs-string">&#x27;beforeunload&#x27;</span>, <span class="hljs-function">() =&gt;</span> {
+      <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">flushReports</span>();
+    });
+
+    <span class="hljs-comment">// Periodic reporting</span>
+    <span class="hljs-built_in">setInterval</span>(<span class="hljs-function">() =&gt;</span> {
+      <span class="hljs-keyword">if</span> (<span class="hljs-variable language_">this</span>.<span class="hljs-property">reportQueue</span>.<span class="hljs-property">length</span> &gt; <span class="hljs-number">0</span>) {
+        <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">flushReports</span>();
+      }
+    }, <span class="hljs-number">30000</span>); <span class="hljs-comment">// Every 30 seconds</span>
+  }
+
+  <span class="hljs-keyword">async</span> <span class="hljs-title function_">flushReports</span>(<span class="hljs-params"></span>) {
+    <span class="hljs-keyword">if</span> (<span class="hljs-variable language_">this</span>.<span class="hljs-property">reportQueue</span>.<span class="hljs-property">length</span> === <span class="hljs-number">0</span>) <span class="hljs-keyword">return</span>;
+
+    <span class="hljs-keyword">const</span> reports = [...<span class="hljs-variable language_">this</span>.<span class="hljs-property">reportQueue</span>];
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">reportQueue</span> = [];
+
+    <span class="hljs-keyword">try</span> {
+      <span class="hljs-comment">// Use sendBeacon for reliability</span>
+      <span class="hljs-keyword">if</span> (<span class="hljs-string">&#x27;sendBeacon&#x27;</span> <span class="hljs-keyword">in</span> navigator) {
+        <span class="hljs-keyword">const</span> success = navigator.<span class="hljs-title function_">sendBeacon</span>(
+          <span class="hljs-variable language_">this</span>.<span class="hljs-property">config</span>.<span class="hljs-property">reportingEndpoint</span>,
+          <span class="hljs-title class_">JSON</span>.<span class="hljs-title function_">stringify</span>({
+            reports,
+            <span class="hljs-attr">metadata</span>: {
+              <span class="hljs-attr">url</span>: <span class="hljs-variable language_">window</span>.<span class="hljs-property">location</span>.<span class="hljs-property">href</span>,
+              <span class="hljs-attr">timestamp</span>: <span class="hljs-title class_">Date</span>.<span class="hljs-title function_">now</span>(),
+              <span class="hljs-attr">sessionId</span>: <span class="hljs-variable language_">this</span>.<span class="hljs-property">sessionId</span>
+            }
+          })
+        );
+
+        <span class="hljs-keyword">if</span> (!success) {
+          <span class="hljs-comment">// Fallback to fetch</span>
+          <span class="hljs-keyword">await</span> <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">sendViaFetch</span>(reports);
+        }
+      } <span class="hljs-keyword">else</span> {
+        <span class="hljs-keyword">await</span> <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">sendViaFetch</span>(reports);
+      }
+    } <span class="hljs-keyword">catch</span> (error) {
+      <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">error</span>(<span class="hljs-string">&#x27;Failed to send performance reports:&#x27;</span>, error);
+      <span class="hljs-comment">// Re-queue failed reports</span>
+      <span class="hljs-variable language_">this</span>.<span class="hljs-property">reportQueue</span>.<span class="hljs-title function_">unshift</span>(...reports);
+    }
+  }
+
+  <span class="hljs-keyword">async</span> <span class="hljs-title function_">sendViaFetch</span>(<span class="hljs-params">reports</span>) {
+    <span class="hljs-keyword">await</span> <span class="hljs-title function_">fetch</span>(<span class="hljs-variable language_">this</span>.<span class="hljs-property">config</span>.<span class="hljs-property">reportingEndpoint</span>, {
+      <span class="hljs-attr">method</span>: <span class="hljs-string">&#x27;POST&#x27;</span>,
+      <span class="hljs-attr">headers</span>: {
+        <span class="hljs-string">&#x27;Content-Type&#x27;</span>: <span class="hljs-string">&#x27;application/json&#x27;</span>,
+      },
+      <span class="hljs-attr">body</span>: <span class="hljs-title class_">JSON</span>.<span class="hljs-title function_">stringify</span>({
+        reports,
+        <span class="hljs-attr">metadata</span>: {
+          <span class="hljs-attr">url</span>: <span class="hljs-variable language_">window</span>.<span class="hljs-property">location</span>.<span class="hljs-property">href</span>,
+          <span class="hljs-attr">timestamp</span>: <span class="hljs-title class_">Date</span>.<span class="hljs-title function_">now</span>(),
+          <span class="hljs-attr">sessionId</span>: <span class="hljs-variable language_">this</span>.<span class="hljs-property">sessionId</span>
+        }
+      }),
+      <span class="hljs-attr">keepalive</span>: <span class="hljs-literal">true</span>
+    });
+  }
+
+  <span class="hljs-comment">// Performance budget validation</span>
+  <span class="hljs-title function_">validatePerformanceBudget</span>(<span class="hljs-params">budget</span>) {
+    <span class="hljs-keyword">const</span> violations = [];
+    <span class="hljs-keyword">const</span> currentMetrics = <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">getCurrentMetrics</span>();
+
+    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">const</span> [metric, threshold] <span class="hljs-keyword">of</span> <span class="hljs-title class_">Object</span>.<span class="hljs-title function_">entries</span>(budget)) {
+      <span class="hljs-keyword">const</span> current = currentMetrics[metric];
+      <span class="hljs-keyword">if</span> (current &amp;&amp; current.<span class="hljs-property">value</span> &gt; threshold) {
+        violations.<span class="hljs-title function_">push</span>({
+          metric,
+          <span class="hljs-attr">current</span>: current.<span class="hljs-property">value</span>,
+          threshold,
+          <span class="hljs-attr">excess</span>: current.<span class="hljs-property">value</span> - threshold
+        });
+      }
+    }
+
+    <span class="hljs-keyword">return</span> {
+      <span class="hljs-attr">isValid</span>: violations.<span class="hljs-property">length</span> === <span class="hljs-number">0</span>,
+      violations,
+      <span class="hljs-attr">score</span>: <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">calculatePerformanceScore</span>(currentMetrics, budget)
+    };
+  }
+
+  <span class="hljs-title function_">calculatePerformanceScore</span>(<span class="hljs-params">metrics, budget</span>) {
+    <span class="hljs-keyword">let</span> totalScore = <span class="hljs-number">0</span>;
+    <span class="hljs-keyword">let</span> metricCount = <span class="hljs-number">0</span>;
+
+    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">const</span> [metric, threshold] <span class="hljs-keyword">of</span> <span class="hljs-title class_">Object</span>.<span class="hljs-title function_">entries</span>(budget)) {
+      <span class="hljs-keyword">const</span> current = metrics[metric];
+      <span class="hljs-keyword">if</span> (current) {
+        <span class="hljs-keyword">const</span> score = <span class="hljs-title class_">Math</span>.<span class="hljs-title function_">max</span>(<span class="hljs-number">0</span>, <span class="hljs-title class_">Math</span>.<span class="hljs-title function_">min</span>(<span class="hljs-number">100</span>, 
+          <span class="hljs-number">100</span> - ((current.<span class="hljs-property">value</span> / threshold) * <span class="hljs-number">100</span>)
+        ));
+        totalScore += score;
+        metricCount++;
+      }
+    }
+
+    <span class="hljs-keyword">return</span> metricCount &gt; <span class="hljs-number">0</span> ? totalScore / metricCount : <span class="hljs-number">0</span>;
+  }
+
+  <span class="hljs-title function_">getCurrentMetrics</span>(<span class="hljs-params"></span>) {
+    <span class="hljs-keyword">const</span> current = {};
+    
+    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">const</span> [key, metric] <span class="hljs-keyword">of</span> <span class="hljs-variable language_">this</span>.<span class="hljs-property">metrics</span>) {
+      <span class="hljs-keyword">if</span> (!current[metric.<span class="hljs-property">type</span>] || 
+          metric.<span class="hljs-property">timestamp</span> &gt; current[metric.<span class="hljs-property">type</span>].<span class="hljs-property">timestamp</span>) {
+        current[metric.<span class="hljs-property">type</span>] = metric;
+      }
+    }
+    
+    <span class="hljs-keyword">return</span> current;
+  }
+
+  <span class="hljs-title function_">getElementSelector</span>(<span class="hljs-params">element</span>) {
+    <span class="hljs-keyword">if</span> (!element) <span class="hljs-keyword">return</span> <span class="hljs-literal">null</span>;
+    
+    <span class="hljs-comment">// Build a CSS selector for the element</span>
+    <span class="hljs-keyword">const</span> path = [];
+    <span class="hljs-keyword">let</span> current = element;
+    
+    <span class="hljs-keyword">while</span> (current &amp;&amp; current.<span class="hljs-property">nodeType</span> === <span class="hljs-title class_">Node</span>.<span class="hljs-property">ELEMENT_NODE</span>) {
+      <span class="hljs-keyword">let</span> selector = current.<span class="hljs-property">tagName</span>.<span class="hljs-title function_">toLowerCase</span>();
+      
+      <span class="hljs-keyword">if</span> (current.<span class="hljs-property">id</span>) {
+        selector += <span class="hljs-string">`#<span class="hljs-subst">${current.id}</span>`</span>;
+        path.<span class="hljs-title function_">unshift</span>(selector);
+        <span class="hljs-keyword">break</span>;
+      }
+      
+      <span class="hljs-keyword">if</span> (current.<span class="hljs-property">className</span>) {
+        <span class="hljs-keyword">const</span> classes = current.<span class="hljs-property">className</span>.<span class="hljs-title function_">trim</span>().<span class="hljs-title function_">split</span>(<span class="hljs-regexp">/\s+/</span>).<span class="hljs-title function_">slice</span>(<span class="hljs-number">0</span>, <span class="hljs-number">2</span>);
+        selector += <span class="hljs-string">`.<span class="hljs-subst">${classes.join(<span class="hljs-string">&#x27;.&#x27;</span>)}</span>`</span>;
+      }
+      
+      path.<span class="hljs-title function_">unshift</span>(selector);
+      current = current.<span class="hljs-property">parentElement</span>;
+      
+      <span class="hljs-keyword">if</span> (path.<span class="hljs-property">length</span> &gt; <span class="hljs-number">4</span>) <span class="hljs-keyword">break</span>; <span class="hljs-comment">// Limit depth</span>
+    }
+    
+    <span class="hljs-keyword">return</span> path.<span class="hljs-title function_">join</span>(<span class="hljs-string">&#x27; &gt; &#x27;</span>);
+  }
+
+  <span class="hljs-title function_">getResourceType</span>(<span class="hljs-params">resource</span>) {
+    <span class="hljs-keyword">const</span> url = resource.<span class="hljs-property">name</span>;
+    <span class="hljs-keyword">const</span> initiatorType = resource.<span class="hljs-property">initiatorType</span>;
+    
+    <span class="hljs-keyword">if</span> (initiatorType === <span class="hljs-string">&#x27;img&#x27;</span> || <span class="hljs-regexp">/\.(jpg|jpeg|png|gif|webp|svg)$/i</span>.<span class="hljs-title function_">test</span>(url)) {
+      <span class="hljs-keyword">return</span> <span class="hljs-string">&#x27;image&#x27;</span>;
+    }
+    <span class="hljs-keyword">if</span> (initiatorType === <span class="hljs-string">&#x27;script&#x27;</span> || <span class="hljs-regexp">/\.js$/i</span>.<span class="hljs-title function_">test</span>(url)) {
+      <span class="hljs-keyword">return</span> <span class="hljs-string">&#x27;script&#x27;</span>;
+    }
+    <span class="hljs-keyword">if</span> (initiatorType === <span class="hljs-string">&#x27;css&#x27;</span> || <span class="hljs-regexp">/\.css$/i</span>.<span class="hljs-title function_">test</span>(url)) {
+      <span class="hljs-keyword">return</span> <span class="hljs-string">&#x27;stylesheet&#x27;</span>;
+    }
+    <span class="hljs-keyword">if</span> (initiatorType === <span class="hljs-string">&#x27;xmlhttprequest&#x27;</span> || initiatorType === <span class="hljs-string">&#x27;fetch&#x27;</span>) {
+      <span class="hljs-keyword">return</span> <span class="hljs-string">&#x27;xhr&#x27;</span>;
+    }
+    <span class="hljs-keyword">if</span> (<span class="hljs-regexp">/\.(woff|woff2|ttf|otf|eot)$/i</span>.<span class="hljs-title function_">test</span>(url)) {
+      <span class="hljs-keyword">return</span> <span class="hljs-string">&#x27;font&#x27;</span>;
+    }
+    <span class="hljs-keyword">if</span> (<span class="hljs-regexp">/\.(mp4|webm|ogg|mp3|wav)$/i</span>.<span class="hljs-title function_">test</span>(url)) {
+      <span class="hljs-keyword">return</span> <span class="hljs-string">&#x27;media&#x27;</span>;
+    }
+    
+    <span class="hljs-keyword">return</span> initiatorType || <span class="hljs-string">&#x27;other&#x27;</span>;
+  }
+
+  <span class="hljs-title function_">generateSessionId</span>(<span class="hljs-params"></span>) {
+    <span class="hljs-keyword">return</span> <span class="hljs-string">`<span class="hljs-subst">${<span class="hljs-built_in">Date</span>.now()}</span>-<span class="hljs-subst">${<span class="hljs-built_in">Math</span>.random().toString(<span class="hljs-number">36</span>).substr(<span class="hljs-number">2</span>, <span class="hljs-number">9</span>)}</span>`</span>;
+  }
+
+  <span class="hljs-comment">// Generate performance report</span>
+  <span class="hljs-title function_">generateReport</span>(<span class="hljs-params"></span>) {
+    <span class="hljs-keyword">const</span> metrics = <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">getCurrentMetrics</span>();
+    <span class="hljs-keyword">const</span> resourceAnalysis = <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">analyzeResourcePerformance</span>();
+    <span class="hljs-keyword">const</span> memoryInfo = <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">monitorMemoryUsage</span>();
+
+    <span class="hljs-keyword">return</span> {
+      <span class="hljs-attr">sessionId</span>: <span class="hljs-variable language_">this</span>.<span class="hljs-property">sessionId</span>,
+      <span class="hljs-attr">timestamp</span>: <span class="hljs-title class_">Date</span>.<span class="hljs-title function_">now</span>(),
+      <span class="hljs-attr">url</span>: <span class="hljs-variable language_">window</span>.<span class="hljs-property">location</span>.<span class="hljs-property">href</span>,
+      metrics,
+      <span class="hljs-attr">resources</span>: resourceAnalysis,
+      <span class="hljs-attr">memory</span>: memoryInfo,
+      <span class="hljs-attr">recommendations</span>: <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">generateRecommendations</span>(metrics, resourceAnalysis)
+    };
+  }
+
+  <span class="hljs-title function_">generateRecommendations</span>(<span class="hljs-params">metrics, resourceAnalysis</span>) {
+    <span class="hljs-keyword">const</span> recommendations = [];
+
+    <span class="hljs-comment">// LCP recommendations</span>
+    <span class="hljs-keyword">if</span> (metrics.<span class="hljs-property">LCP</span> &amp;&amp; metrics.<span class="hljs-property">LCP</span>.<span class="hljs-property">data</span>.<span class="hljs-property">value</span> &gt; <span class="hljs-number">2500</span>) {
+      recommendations.<span class="hljs-title function_">push</span>({
+        <span class="hljs-attr">type</span>: <span class="hljs-string">&#x27;LCP&#x27;</span>,
+        <span class="hljs-attr">priority</span>: <span class="hljs-string">&#x27;high&#x27;</span>,
+        <span class="hljs-attr">message</span>: <span class="hljs-string">&#x27;Largest Contentful Paint is slow&#x27;</span>,
+        <span class="hljs-attr">suggestions</span>: [
+          <span class="hljs-string">&#x27;Optimize the LCP element (images, text)&#x27;</span>,
+          <span class="hljs-string">&#x27;Reduce server response times&#x27;</span>,
+          <span class="hljs-string">&#x27;Remove render-blocking resources&#x27;</span>,
+          <span class="hljs-string">&#x27;Preload important resources&#x27;</span>
+        ]
+      });
+    }
+
+    <span class="hljs-comment">// FID/INP recommendations</span>
+    <span class="hljs-keyword">if</span> ((metrics.<span class="hljs-property">FID</span> &amp;&amp; metrics.<span class="hljs-property">FID</span>.<span class="hljs-property">data</span>.<span class="hljs-property">value</span> &gt; <span class="hljs-number">100</span>) || 
+        (metrics.<span class="hljs-property">INP</span> &amp;&amp; metrics.<span class="hljs-property">INP</span>.<span class="hljs-property">data</span>.<span class="hljs-property">value</span> &gt; <span class="hljs-number">200</span>)) {
+      recommendations.<span class="hljs-title function_">push</span>({
+        <span class="hljs-attr">type</span>: <span class="hljs-string">&#x27;Responsiveness&#x27;</span>,
+        <span class="hljs-attr">priority</span>: <span class="hljs-string">&#x27;high&#x27;</span>,
+        <span class="hljs-attr">message</span>: <span class="hljs-string">&#x27;Poor input responsiveness&#x27;</span>,
+        <span class="hljs-attr">suggestions</span>: [
+          <span class="hljs-string">&#x27;Break up long tasks&#x27;</span>,
+          <span class="hljs-string">&#x27;Use web workers for heavy computation&#x27;</span>,
+          <span class="hljs-string">&#x27;Optimize JavaScript execution&#x27;</span>,
+          <span class="hljs-string">&#x27;Implement code splitting&#x27;</span>
+        ]
+      });
+    }
+
+    <span class="hljs-comment">// CLS recommendations</span>
+    <span class="hljs-keyword">if</span> (metrics.<span class="hljs-property">CLS</span> &amp;&amp; metrics.<span class="hljs-property">CLS</span>.<span class="hljs-property">data</span>.<span class="hljs-property">value</span> &gt; <span class="hljs-number">0.1</span>) {
+      recommendations.<span class="hljs-title function_">push</span>({
+        <span class="hljs-attr">type</span>: <span class="hljs-string">&#x27;CLS&#x27;</span>,
+        <span class="hljs-attr">priority</span>: <span class="hljs-string">&#x27;high&#x27;</span>,
+        <span class="hljs-attr">message</span>: <span class="hljs-string">&#x27;Cumulative Layout Shift is poor&#x27;</span>,
+        <span class="hljs-attr">suggestions</span>: [
+          <span class="hljs-string">&#x27;Set explicit dimensions for images and videos&#x27;</span>,
+          <span class="hljs-string">&#x27;Reserve space for ads&#x27;</span>,
+          <span class="hljs-string">&#x27;Avoid inserting content above existing content&#x27;</span>,
+          <span class="hljs-string">&#x27;Use CSS transform for animations&#x27;</span>
+        ]
+      });
+    }
+
+    <span class="hljs-comment">// Resource recommendations</span>
+    <span class="hljs-keyword">if</span> (resourceAnalysis.<span class="hljs-property">renderBlocking</span>.<span class="hljs-property">length</span> &gt; <span class="hljs-number">0</span>) {
+      recommendations.<span class="hljs-title function_">push</span>({
+        <span class="hljs-attr">type</span>: <span class="hljs-string">&#x27;Resources&#x27;</span>,
+        <span class="hljs-attr">priority</span>: <span class="hljs-string">&#x27;medium&#x27;</span>,
+        <span class="hljs-attr">message</span>: <span class="hljs-string">&#x27;Render-blocking resources detected&#x27;</span>,
+        <span class="hljs-attr">suggestions</span>: [
+          <span class="hljs-string">&#x27;Inline critical CSS&#x27;</span>,
+          <span class="hljs-string">&#x27;Defer non-critical JavaScript&#x27;</span>,
+          <span class="hljs-string">&#x27;Use resource hints&#x27;</span>,
+          <span class="hljs-string">&#x27;Optimize CSS delivery&#x27;</span>
+        ]
+      });
+    }
+
+    <span class="hljs-keyword">return</span> recommendations;
+  }
+
+  <span class="hljs-title function_">destroy</span>(<span class="hljs-params"></span>) {
+    <span class="hljs-comment">// Clean up observers</span>
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">observers</span>.<span class="hljs-title function_">forEach</span>(<span class="hljs-function"><span class="hljs-params">observer</span> =&gt;</span> observer.<span class="hljs-title function_">disconnect</span>());
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">observers</span>.<span class="hljs-title function_">clear</span>();
+    
+    <span class="hljs-comment">// Flush any remaining reports</span>
+    <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">flushReports</span>();
+  }
+}
+</code></pre></pre>
+<p>{% endraw %}</p>
+<hr/>
+<h2 id="rendering-optimization" node="[object Object]">Rendering Optimization</h2>
+<h3 id="[object-object]" node="[object Object]"><strong>Advanced Rendering Techniques</strong></h3>
+<pre><pre><code class="hljs hljs language-javascript"><span class="hljs-comment">// Rendering optimization utilities</span>
+<span class="hljs-keyword">class</span> <span class="hljs-title class_">RenderingOptimizer</span> {
+  
+  <span class="hljs-comment">// Virtual DOM-like optimization for vanilla JS</span>
+  <span class="hljs-keyword">static</span> <span class="hljs-title function_">createVirtualDOM</span>(<span class="hljs-params"></span>) {
+    <span class="hljs-keyword">return</span> {
+      <span class="hljs-title function_">createElement</span>(<span class="hljs-params">type, props = {}, ...children</span>) {
+        <span class="hljs-keyword">return</span> {
+          type,
+          <span class="hljs-attr">props</span>: { ...props, <span class="hljs-attr">children</span>: children.<span class="hljs-title function_">flat</span>() },
+          <span class="hljs-attr">key</span>: props.<span class="hljs-property">key</span> || <span class="hljs-literal">null</span>
+        };
+      },
+
+      <span class="hljs-title function_">render</span>(<span class="hljs-params">vnode, container</span>) {
+        <span class="hljs-keyword">if</span> (<span class="hljs-keyword">typeof</span> vnode === <span class="hljs-string">&#x27;string&#x27;</span> || <span class="hljs-keyword">typeof</span> vnode === <span class="hljs-string">&#x27;number&#x27;</span>) {
+          <span class="hljs-keyword">return</span> <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">createTextNode</span>(vnode);
+        }
+
+        <span class="hljs-keyword">const</span> element = <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">createElement</span>(vnode.<span class="hljs-property">type</span>);
+        
+        <span class="hljs-comment">// Set properties</span>
+        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">const</span> [key, value] <span class="hljs-keyword">of</span> <span class="hljs-title class_">Object</span>.<span class="hljs-title function_">entries</span>(vnode.<span class="hljs-property">props</span>)) {
+          <span class="hljs-keyword">if</span> (key === <span class="hljs-string">&#x27;children&#x27;</span>) <span class="hljs-keyword">continue</span>;
+          
+          <span class="hljs-keyword">if</span> (key.<span class="hljs-title function_">startsWith</span>(<span class="hljs-string">&#x27;on&#x27;</span>) &amp;&amp; <span class="hljs-keyword">typeof</span> value === <span class="hljs-string">&#x27;function&#x27;</span>) {
+            element.<span class="hljs-title function_">addEventListener</span>(key.<span class="hljs-title function_">slice</span>(<span class="hljs-number">2</span>).<span class="hljs-title function_">toLowerCase</span>(), value);
+          } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (key === <span class="hljs-string">&#x27;className&#x27;</span>) {
+            element.<span class="hljs-property">className</span> = value;
+          } <span class="hljs-keyword">else</span> {
+            element.<span class="hljs-title function_">setAttribute</span>(key, value);
+          }
+        }
+
+        <span class="hljs-comment">// Render children</span>
+        <span class="hljs-keyword">if</span> (vnode.<span class="hljs-property">props</span>.<span class="hljs-property">children</span>) {
+          vnode.<span class="hljs-property">props</span>.<span class="hljs-property">children</span>.<span class="hljs-title function_">forEach</span>(<span class="hljs-function"><span class="hljs-params">child</span> =&gt;</span> {
+            <span class="hljs-keyword">const</span> childElement = <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">render</span>(child, element);
+            <span class="hljs-keyword">if</span> (childElement) {
+              element.<span class="hljs-title function_">appendChild</span>(childElement);
+            }
+          });
+        }
+
+        <span class="hljs-keyword">if</span> (container) {
+          container.<span class="hljs-title function_">appendChild</span>(element);
+        }
+
+        <span class="hljs-keyword">return</span> element;
+      },
+
+      <span class="hljs-title function_">diff</span>(<span class="hljs-params">oldVNode, newVNode, container, index = <span class="hljs-number">0</span></span>) {
+        <span class="hljs-comment">// Handle removal</span>
+        <span class="hljs-keyword">if</span> (!newVNode) {
+          container.<span class="hljs-title function_">removeChild</span>(container.<span class="hljs-property">childNodes</span>[index]);
+          <span class="hljs-keyword">return</span>;
+        }
+
+        <span class="hljs-comment">// Handle addition</span>
+        <span class="hljs-keyword">if</span> (!oldVNode) {
+          <span class="hljs-keyword">const</span> newElement = <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">render</span>(newVNode);
+          container.<span class="hljs-title function_">appendChild</span>(newElement);
+          <span class="hljs-keyword">return</span>;
+        }
+
+        <span class="hljs-comment">// Handle text nodes</span>
+        <span class="hljs-keyword">if</span> (<span class="hljs-keyword">typeof</span> oldVNode === <span class="hljs-string">&#x27;string&#x27;</span> || <span class="hljs-keyword">typeof</span> newVNode === <span class="hljs-string">&#x27;string&#x27;</span>) {
+          <span class="hljs-keyword">if</span> (oldVNode !== newVNode) {
+            container.<span class="hljs-title function_">replaceChild</span>(
+              <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">render</span>(newVNode),
+              container.<span class="hljs-property">childNodes</span>[index]
+            );
+          }
+          <span class="hljs-keyword">return</span>;
+        }
+
+        <span class="hljs-comment">// Handle different types</span>
+        <span class="hljs-keyword">if</span> (oldVNode.<span class="hljs-property">type</span> !== newVNode.<span class="hljs-property">type</span>) {
+          container.<span class="hljs-title function_">replaceChild</span>(
+            <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">render</span>(newVNode),
+            container.<span class="hljs-property">childNodes</span>[index]
+          );
+          <span class="hljs-keyword">return</span>;
+        }
+
+        <span class="hljs-comment">// Update properties</span>
+        <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">updateElement</span>(
+          container.<span class="hljs-property">childNodes</span>[index],
+          oldVNode.<span class="hljs-property">props</span>,
+          newVNode.<span class="hljs-property">props</span>
+        );
+
+        <span class="hljs-comment">// Diff children</span>
+        <span class="hljs-keyword">const</span> oldChildren = oldVNode.<span class="hljs-property">props</span>.<span class="hljs-property">children</span> || [];
+        <span class="hljs-keyword">const</span> newChildren = newVNode.<span class="hljs-property">props</span>.<span class="hljs-property">children</span> || [];
+        <span class="hljs-keyword">const</span> maxLength = <span class="hljs-title class_">Math</span>.<span class="hljs-title function_">max</span>(oldChildren.<span class="hljs-property">length</span>, newChildren.<span class="hljs-property">length</span>);
+
+        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>; i &lt; maxLength; i++) {
+          <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">diff</span>(
+            oldChildren[i],
+            newChildren[i],
+            container.<span class="hljs-property">childNodes</span>[index],
+            i
+          );
+        }
+      },
+
+      <span class="hljs-title function_">updateElement</span>(<span class="hljs-params">element, oldProps, newProps</span>) {
+        <span class="hljs-comment">// Remove old properties</span>
+        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">const</span> key <span class="hljs-keyword">in</span> oldProps) {
+          <span class="hljs-keyword">if</span> (!(key <span class="hljs-keyword">in</span> newProps)) {
+            <span class="hljs-keyword">if</span> (key.<span class="hljs-title function_">startsWith</span>(<span class="hljs-string">&#x27;on&#x27;</span>)) {
+              element.<span class="hljs-title function_">removeEventListener</span>(key.<span class="hljs-title function_">slice</span>(<span class="hljs-number">2</span>).<span class="hljs-title function_">toLowerCase</span>(), oldProps[key]);
+            } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (key === <span class="hljs-string">&#x27;className&#x27;</span>) {
+              element.<span class="hljs-property">className</span> = <span class="hljs-string">&#x27;&#x27;</span>;
+            } <span class="hljs-keyword">else</span> {
+              element.<span class="hljs-title function_">removeAttribute</span>(key);
+            }
+          }
+        }
+
+        <span class="hljs-comment">// Add/update new properties</span>
+        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">const</span> key <span class="hljs-keyword">in</span> newProps) {
+          <span class="hljs-keyword">if</span> (oldProps[key] !== newProps[key]) {
+            <span class="hljs-keyword">if</span> (key.<span class="hljs-title function_">startsWith</span>(<span class="hljs-string">&#x27;on&#x27;</span>)) {
+              <span class="hljs-keyword">if</span> (oldProps[key]) {
+                element.<span class="hljs-title function_">removeEventListener</span>(key.<span class="hljs-title function_">slice</span>(<span class="hljs-number">2</span>).<span class="hljs-title function_">toLowerCase</span>(), oldProps[key]);
+              }
+              element.<span class="hljs-title function_">addEventListener</span>(key.<span class="hljs-title function_">slice</span>(<span class="hljs-number">2</span>).<span class="hljs-title function_">toLowerCase</span>(), newProps[key]);
+            } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (key === <span class="hljs-string">&#x27;className&#x27;</span>) {
+              element.<span class="hljs-property">className</span> = newProps[key];
+            } <span class="hljs-keyword">else</span> {
+              element.<span class="hljs-title function_">setAttribute</span>(key, newProps[key]);
+            }
+          }
+        }
+      }
+    };
+  }
+
+  <span class="hljs-comment">// Optimized list rendering with recycling</span>
+  <span class="hljs-keyword">static</span> <span class="hljs-title function_">createListRenderer</span>(<span class="hljs-params">container, itemRenderer</span>) {
+    <span class="hljs-keyword">let</span> items = [];
+    <span class="hljs-keyword">let</span> renderedElements = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Map</span>();
+    <span class="hljs-keyword">let</span> recycledElements = [];
+    <span class="hljs-keyword">let</span> scrollPosition = <span class="hljs-number">0</span>;
+    <span class="hljs-keyword">let</span> containerHeight = container.<span class="hljs-property">clientHeight</span>;
+    <span class="hljs-keyword">let</span> itemHeight = <span class="hljs-number">50</span>; <span class="hljs-comment">// Default, will be measured</span>
+
+    <span class="hljs-keyword">const</span> recycler = {
+      <span class="hljs-title function_">setData</span>(<span class="hljs-params">newItems</span>) {
+        items = newItems;
+        <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">render</span>();
+      },
+
+      <span class="hljs-title function_">render</span>(<span class="hljs-params"></span>) {
+        <span class="hljs-keyword">const</span> viewportStart = <span class="hljs-title class_">Math</span>.<span class="hljs-title function_">floor</span>(scrollPosition / itemHeight);
+        <span class="hljs-keyword">const</span> viewportEnd = <span class="hljs-title class_">Math</span>.<span class="hljs-title function_">min</span>(
+          items.<span class="hljs-property">length</span>,
+          viewportStart + <span class="hljs-title class_">Math</span>.<span class="hljs-title function_">ceil</span>(containerHeight / itemHeight) + <span class="hljs-number">5</span> <span class="hljs-comment">// Buffer</span>
+        );
+
+        <span class="hljs-comment">// Hide elements outside viewport</span>
+        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">const</span> [index, element] <span class="hljs-keyword">of</span> renderedElements) {
+          <span class="hljs-keyword">if</span> (index &lt; viewportStart || index &gt;= viewportEnd) {
+            element.<span class="hljs-property">style</span>.<span class="hljs-property">display</span> = <span class="hljs-string">&#x27;none&#x27;</span>;
+            recycledElements.<span class="hljs-title function_">push</span>({ element, index });
+            renderedElements.<span class="hljs-title function_">delete</span>(index);
+          }
+        }
+
+        <span class="hljs-comment">// Render visible items</span>
+        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = viewportStart; i &lt; viewportEnd; i++) {
+          <span class="hljs-keyword">if</span> (!renderedElements.<span class="hljs-title function_">has</span>(i)) {
+            <span class="hljs-keyword">const</span> element = <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">getOrCreateElement</span>(i);
+            <span class="hljs-title function_">itemRenderer</span>(element, items[i], i);
+            element.<span class="hljs-property">style</span>.<span class="hljs-property">transform</span> = <span class="hljs-string">`translateY(<span class="hljs-subst">${i * itemHeight}</span>px)`</span>;
+            element.<span class="hljs-property">style</span>.<span class="hljs-property">display</span> = <span class="hljs-string">&#x27;block&#x27;</span>;
+            renderedElements.<span class="hljs-title function_">set</span>(i, element);
+          }
+        }
+      },
+
+      <span class="hljs-title function_">getOrCreateElement</span>(<span class="hljs-params">index</span>) {
+        <span class="hljs-comment">// Try to recycle an element</span>
+        <span class="hljs-keyword">if</span> (recycledElements.<span class="hljs-property">length</span> &gt; <span class="hljs-number">0</span>) {
+          <span class="hljs-keyword">const</span> recycled = recycledElements.<span class="hljs-title function_">pop</span>();
+          <span class="hljs-keyword">return</span> recycled.<span class="hljs-property">element</span>;
+        }
+
+        <span class="hljs-comment">// Create new element</span>
+        <span class="hljs-keyword">const</span> element = <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">createElement</span>(<span class="hljs-string">&#x27;div&#x27;</span>);
+        element.<span class="hljs-property">className</span> = <span class="hljs-string">&#x27;list-item&#x27;</span>;
+        element.<span class="hljs-property">style</span>.<span class="hljs-property">position</span> = <span class="hljs-string">&#x27;absolute&#x27;</span>;
+        element.<span class="hljs-property">style</span>.<span class="hljs-property">width</span> = <span class="hljs-string">&#x27;100%&#x27;</span>;
+        element.<span class="hljs-property">style</span>.<span class="hljs-property">height</span> = <span class="hljs-string">`<span class="hljs-subst">${itemHeight}</span>px`</span>;
+        container.<span class="hljs-title function_">appendChild</span>(element);
+
+        <span class="hljs-keyword">return</span> element;
+      },
+
+      <span class="hljs-title function_">handleScroll</span>(<span class="hljs-params">newScrollPosition</span>) {
+        scrollPosition = newScrollPosition;
+        <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">render</span>();
+      },
+
+      <span class="hljs-title function_">updateItemHeight</span>(<span class="hljs-params">height</span>) {
+        itemHeight = height;
+        container.<span class="hljs-property">style</span>.<span class="hljs-property">height</span> = <span class="hljs-string">`<span class="hljs-subst">${items.length * itemHeight}</span>px`</span>;
+        <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">render</span>();
+      },
+
+      <span class="hljs-title function_">destroy</span>(<span class="hljs-params"></span>) {
+        renderedElements.<span class="hljs-title function_">clear</span>();
+        recycledElements = [];
+        container.<span class="hljs-property">innerHTML</span> = <span class="hljs-string">&#x27;&#x27;</span>;
+      }
+    };
+
+    <span class="hljs-keyword">return</span> recycler;
+  }
+
+  <span class="hljs-comment">// Frame-based animation optimization</span>
+  <span class="hljs-keyword">static</span> <span class="hljs-title function_">createAnimationScheduler</span>(<span class="hljs-params"></span>) {
+    <span class="hljs-keyword">let</span> tasks = [];
+    <span class="hljs-keyword">let</span> isRunning = <span class="hljs-literal">false</span>;
+    <span class="hljs-keyword">let</span> frameId = <span class="hljs-literal">null</span>;
+
+    <span class="hljs-keyword">const</span> scheduler = {
+      <span class="hljs-title function_">schedule</span>(<span class="hljs-params">task, priority = <span class="hljs-string">&#x27;normal&#x27;</span></span>) {
+        tasks.<span class="hljs-title function_">push</span>({ task, priority, <span class="hljs-attr">timestamp</span>: <span class="hljs-title class_">Date</span>.<span class="hljs-title function_">now</span>() });
+        tasks.<span class="hljs-title function_">sort</span>(<span class="hljs-function">(<span class="hljs-params">a, b</span>) =&gt;</span> {
+          <span class="hljs-keyword">const</span> priorityOrder = { <span class="hljs-attr">high</span>: <span class="hljs-number">3</span>, <span class="hljs-attr">normal</span>: <span class="hljs-number">2</span>, <span class="hljs-attr">low</span>: <span class="hljs-number">1</span> };
+          <span class="hljs-keyword">return</span> priorityOrder[b.<span class="hljs-property">priority</span>] - priorityOrder[a.<span class="hljs-property">priority</span>];
+        });
+
+        <span class="hljs-keyword">if</span> (!isRunning) {
+          <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">start</span>();
+        }
+      },
+
+      <span class="hljs-title function_">start</span>(<span class="hljs-params"></span>) {
+        <span class="hljs-keyword">if</span> (isRunning) <span class="hljs-keyword">return</span>;
+        isRunning = <span class="hljs-literal">true</span>;
+        <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">tick</span>();
+      },
+
+      <span class="hljs-title function_">tick</span>(<span class="hljs-params"></span>) {
+        <span class="hljs-keyword">const</span> frameStart = performance.<span class="hljs-title function_">now</span>();
+        <span class="hljs-keyword">const</span> frameTimeLimit = <span class="hljs-number">16.67</span>; <span class="hljs-comment">// ~60fps</span>
+
+        <span class="hljs-keyword">while</span> (tasks.<span class="hljs-property">length</span> &gt; <span class="hljs-number">0</span> &amp;&amp; (performance.<span class="hljs-title function_">now</span>() - frameStart) &lt; frameTimeLimit) {
+          <span class="hljs-keyword">const</span> { task } = tasks.<span class="hljs-title function_">shift</span>();
+          <span class="hljs-keyword">try</span> {
+            <span class="hljs-title function_">task</span>();
+          } <span class="hljs-keyword">catch</span> (error) {
+            <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">error</span>(<span class="hljs-string">&#x27;Animation task error:&#x27;</span>, error);
+          }
+        }
+
+        <span class="hljs-keyword">if</span> (tasks.<span class="hljs-property">length</span> &gt; <span class="hljs-number">0</span>) {
+          frameId = <span class="hljs-title function_">requestAnimationFrame</span>(<span class="hljs-function">() =&gt;</span> <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">tick</span>());
+        } <span class="hljs-keyword">else</span> {
+          isRunning = <span class="hljs-literal">false</span>;
+        }
+      },
+
+      <span class="hljs-title function_">cancel</span>(<span class="hljs-params"></span>) {
+        <span class="hljs-keyword">if</span> (frameId) {
+          <span class="hljs-title function_">cancelAnimationFrame</span>(frameId);
+          frameId = <span class="hljs-literal">null</span>;
+        }
+        isRunning = <span class="hljs-literal">false</span>;
+        tasks = [];
+      },
+
+      <span class="hljs-title function_">getCurrentLoad</span>(<span class="hljs-params"></span>) {
+        <span class="hljs-keyword">return</span> tasks.<span class="hljs-property">length</span>;
+      }
+    };
+
+    <span class="hljs-keyword">return</span> scheduler;
+  }
+
+  <span class="hljs-comment">// Layout thrashing prevention</span>
+  <span class="hljs-keyword">static</span> <span class="hljs-title function_">createLayoutBatcher</span>(<span class="hljs-params"></span>) {
+    <span class="hljs-keyword">let</span> readOperations = [];
+    <span class="hljs-keyword">let</span> writeOperations = [];
+    <span class="hljs-keyword">let</span> scheduled = <span class="hljs-literal">false</span>;
+
+    <span class="hljs-keyword">return</span> {
+      <span class="hljs-title function_">read</span>(<span class="hljs-params">fn</span>) {
+        readOperations.<span class="hljs-title function_">push</span>(fn);
+        <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">schedule</span>();
+      },
+
+      <span class="hljs-title function_">write</span>(<span class="hljs-params">fn</span>) {
+        writeOperations.<span class="hljs-title function_">push</span>(fn);
+        <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">schedule</span>();
+      },
+
+      <span class="hljs-title function_">schedule</span>(<span class="hljs-params"></span>) {
+        <span class="hljs-keyword">if</span> (scheduled) <span class="hljs-keyword">return</span>;
+        scheduled = <span class="hljs-literal">true</span>;
+
+        <span class="hljs-title function_">requestAnimationFrame</span>(<span class="hljs-function">() =&gt;</span> {
+          <span class="hljs-comment">// Batch all reads first</span>
+          <span class="hljs-keyword">const</span> readResults = readOperations.<span class="hljs-title function_">map</span>(<span class="hljs-function"><span class="hljs-params">fn</span> =&gt;</span> {
+            <span class="hljs-keyword">try</span> {
+              <span class="hljs-keyword">return</span> <span class="hljs-title function_">fn</span>();
+            } <span class="hljs-keyword">catch</span> (error) {
+              <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">error</span>(<span class="hljs-string">&#x27;Read operation error:&#x27;</span>, error);
+              <span class="hljs-keyword">return</span> <span class="hljs-literal">null</span>;
+            }
+          });
+
+          <span class="hljs-comment">// Then batch all writes</span>
+          writeOperations.<span class="hljs-title function_">forEach</span>(<span class="hljs-function">(<span class="hljs-params">fn, index</span>) =&gt;</span> {
+            <span class="hljs-keyword">try</span> {
+              <span class="hljs-title function_">fn</span>(readResults[index]);
+            } <span class="hljs-keyword">catch</span> (error) {
+              <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">error</span>(<span class="hljs-string">&#x27;Write operation error:&#x27;</span>, error);
+            }
+          });
+
+          <span class="hljs-comment">// Reset for next batch</span>
+          readOperations = [];
+          writeOperations = [];
+          scheduled = <span class="hljs-literal">false</span>;
+        });
+      },
+
+      <span class="hljs-title function_">measureElement</span>(<span class="hljs-params">element, callback</span>) {
+        <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">read</span>(<span class="hljs-function">() =&gt;</span> {
+          <span class="hljs-keyword">const</span> rect = element.<span class="hljs-title function_">getBoundingClientRect</span>();
+          <span class="hljs-keyword">const</span> computedStyle = <span class="hljs-variable language_">window</span>.<span class="hljs-title function_">getComputedStyle</span>(element);
+          <span class="hljs-keyword">return</span> { rect, computedStyle };
+        });
+
+        <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">write</span>(<span class="hljs-function">(<span class="hljs-params">measurements</span>) =&gt;</span> {
+          <span class="hljs-keyword">if</span> (measurements &amp;&amp; callback) {
+            <span class="hljs-title function_">callback</span>(measurements);
+          }
+        });
+      }
+    };
+  }
+
+  <span class="hljs-comment">// Image loading optimization</span>
+  <span class="hljs-keyword">static</span> <span class="hljs-title function_">createImageLoader</span>(<span class="hljs-params"></span>) {
+    <span class="hljs-keyword">const</span> observer = <span class="hljs-keyword">new</span> <span class="hljs-title class_">IntersectionObserver</span>(<span class="hljs-function">(<span class="hljs-params">entries</span>) =&gt;</span> {
+      entries.<span class="hljs-title function_">forEach</span>(<span class="hljs-function"><span class="hljs-params">entry</span> =&gt;</span> {
+        <span class="hljs-keyword">if</span> (entry.<span class="hljs-property">isIntersecting</span>) {
+          <span class="hljs-keyword">const</span> img = entry.<span class="hljs-property">target</span>;
+          <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">loadImage</span>(img);
+          observer.<span class="hljs-title function_">unobserve</span>(img);
+        }
+      });
+    }, {
+      <span class="hljs-attr">rootMargin</span>: <span class="hljs-string">&#x27;100px&#x27;</span> <span class="hljs-comment">// Start loading 100px before entering viewport</span>
+    });
+
+    <span class="hljs-keyword">return</span> {
+      <span class="hljs-title function_">observeImage</span>(<span class="hljs-params">img</span>) {
+        observer.<span class="hljs-title function_">observe</span>(img);
+      },
+
+      <span class="hljs-title function_">loadImage</span>(<span class="hljs-params">img</span>) {
+        <span class="hljs-keyword">const</span> src = img.<span class="hljs-property">dataset</span>.<span class="hljs-property">src</span>;
+        <span class="hljs-keyword">if</span> (!src) <span class="hljs-keyword">return</span>;
+
+        <span class="hljs-comment">// Create a new image to preload</span>
+        <span class="hljs-keyword">const</span> newImg = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Image</span>();
+        
+        newImg.<span class="hljs-property">onload</span> = <span class="hljs-function">() =&gt;</span> {
+          <span class="hljs-comment">// Smooth transition</span>
+          img.<span class="hljs-property">style</span>.<span class="hljs-property">opacity</span> = <span class="hljs-string">&#x27;0&#x27;</span>;
+          img.<span class="hljs-property">src</span> = src;
+          img.<span class="hljs-property">onload</span> = <span class="hljs-function">() =&gt;</span> {
+            img.<span class="hljs-property">style</span>.<span class="hljs-property">transition</span> = <span class="hljs-string">&#x27;opacity 0.3s&#x27;</span>;
+            img.<span class="hljs-property">style</span>.<span class="hljs-property">opacity</span> = <span class="hljs-string">&#x27;1&#x27;</span>;
+          };
+        };
+
+        newImg.<span class="hljs-property">onerror</span> = <span class="hljs-function">() =&gt;</span> {
+          img.<span class="hljs-property">src</span> = img.<span class="hljs-property">dataset</span>.<span class="hljs-property">fallback</span> || <span class="hljs-string">&#x27;/images/placeholder.jpg&#x27;</span>;
+        };
+
+        newImg.<span class="hljs-property">src</span> = src;
+      },
+
+      <span class="hljs-title function_">preloadImages</span>(<span class="hljs-params">urls</span>) {
+        <span class="hljs-keyword">return</span> <span class="hljs-title class_">Promise</span>.<span class="hljs-title function_">all</span>(urls.<span class="hljs-title function_">map</span>(<span class="hljs-function"><span class="hljs-params">url</span> =&gt;</span> {
+          <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Promise</span>(<span class="hljs-function">(<span class="hljs-params">resolve, reject</span>) =&gt;</span> {
+            <span class="hljs-keyword">const</span> img = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Image</span>();
+            img.<span class="hljs-property">onload</span> = resolve;
+            img.<span class="hljs-property">onerror</span> = reject;
+            img.<span class="hljs-property">src</span> = url;
+          });
+        }));
+      },
+
+      <span class="hljs-title function_">createResponsiveImage</span>(<span class="hljs-params">src, sizes = []</span>) {
+        <span class="hljs-keyword">const</span> img = <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">createElement</span>(<span class="hljs-string">&#x27;img&#x27;</span>);
+        
+        <span class="hljs-keyword">if</span> (sizes.<span class="hljs-property">length</span> &gt; <span class="hljs-number">0</span>) {
+          img.<span class="hljs-property">srcset</span> = sizes.<span class="hljs-title function_">map</span>(<span class="hljs-function"><span class="hljs-params">size</span> =&gt;</span> 
+            <span class="hljs-string">`<span class="hljs-subst">${src}</span>?w=<span class="hljs-subst">${size.width}</span> <span class="hljs-subst">${size.width}</span>w`</span>
+          ).<span class="hljs-title function_">join</span>(<span class="hljs-string">&#x27;, &#x27;</span>);
+          
+          img.<span class="hljs-property">sizes</span> = sizes.<span class="hljs-title function_">map</span>(<span class="hljs-function"><span class="hljs-params">size</span> =&gt;</span> 
+            <span class="hljs-string">`(max-width: <span class="hljs-subst">${size.breakpoint}</span>px) <span class="hljs-subst">${size.width}</span>px`</span>
+          ).<span class="hljs-title function_">join</span>(<span class="hljs-string">&#x27;, &#x27;</span>);
+        }
+        
+        img.<span class="hljs-property">src</span> = src;
+        img.<span class="hljs-property">loading</span> = <span class="hljs-string">&#x27;lazy&#x27;</span>;
+        img.<span class="hljs-property">decoding</span> = <span class="hljs-string">&#x27;async&#x27;</span>;
+        
+        <span class="hljs-keyword">return</span> img;
+      }
+    };
+  }
+
+  <span class="hljs-comment">// Font loading optimization</span>
+  <span class="hljs-keyword">static</span> <span class="hljs-title function_">optimizeFontLoading</span>(<span class="hljs-params"></span>) {
+    <span class="hljs-keyword">return</span> {
+      <span class="hljs-title function_">preloadFonts</span>(<span class="hljs-params">fonts</span>) {
+        fonts.<span class="hljs-title function_">forEach</span>(<span class="hljs-function"><span class="hljs-params">font</span> =&gt;</span> {
+          <span class="hljs-keyword">const</span> link = <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">createElement</span>(<span class="hljs-string">&#x27;link&#x27;</span>);
+          link.<span class="hljs-property">rel</span> = <span class="hljs-string">&#x27;preload&#x27;</span>;
+          link.<span class="hljs-property">as</span> = <span class="hljs-string">&#x27;font&#x27;</span>;
+          link.<span class="hljs-property">href</span> = font.<span class="hljs-property">url</span>;
+          link.<span class="hljs-property">type</span> = font.<span class="hljs-property">type</span> || <span class="hljs-string">&#x27;font/woff2&#x27;</span>;
+          link.<span class="hljs-property">crossOrigin</span> = <span class="hljs-string">&#x27;anonymous&#x27;</span>;
+          <span class="hljs-variable language_">document</span>.<span class="hljs-property">head</span>.<span class="hljs-title function_">appendChild</span>(link);
+        });
+      },
+
+      <span class="hljs-title function_">loadFontFace</span>(<span class="hljs-params">fontFamily, url, options = {}</span>) {
+        <span class="hljs-keyword">const</span> fontFace = <span class="hljs-keyword">new</span> <span class="hljs-title class_">FontFace</span>(fontFamily, <span class="hljs-string">`url(<span class="hljs-subst">${url}</span>)`</span>, {
+          <span class="hljs-attr">weight</span>: options.<span class="hljs-property">weight</span> || <span class="hljs-string">&#x27;normal&#x27;</span>,
+          <span class="hljs-attr">style</span>: options.<span class="hljs-property">style</span> || <span class="hljs-string">&#x27;normal&#x27;</span>,
+          <span class="hljs-attr">display</span>: options.<span class="hljs-property">display</span> || <span class="hljs-string">&#x27;swap&#x27;</span>
+        });
+
+        <span class="hljs-keyword">return</span> fontFace.<span class="hljs-title function_">load</span>().<span class="hljs-title function_">then</span>(<span class="hljs-function"><span class="hljs-params">loadedFace</span> =&gt;</span> {
+          <span class="hljs-variable language_">document</span>.<span class="hljs-property">fonts</span>.<span class="hljs-title function_">add</span>(loadedFace);
+          <span class="hljs-keyword">return</span> loadedFace;
+        });
+      },
+
+      <span class="hljs-title function_">optimizeWebFonts</span>(<span class="hljs-params"></span>) {
+        <span class="hljs-comment">// Add font-display: swap to all @font-face rules</span>
+        <span class="hljs-keyword">const</span> styleSheets = <span class="hljs-title class_">Array</span>.<span class="hljs-title function_">from</span>(<span class="hljs-variable language_">document</span>.<span class="hljs-property">styleSheets</span>);
+        
+        styleSheets.<span class="hljs-title function_">forEach</span>(<span class="hljs-function"><span class="hljs-params">sheet</span> =&gt;</span> {
+          <span class="hljs-keyword">try</span> {
+            <span class="hljs-keyword">const</span> rules = <span class="hljs-title class_">Array</span>.<span class="hljs-title function_">from</span>(sheet.<span class="hljs-property">cssRules</span>);
+            rules.<span class="hljs-title function_">forEach</span>(<span class="hljs-function"><span class="hljs-params">rule</span> =&gt;</span> {
+              <span class="hljs-keyword">if</span> (rule.<span class="hljs-property">type</span> === <span class="hljs-title class_">CSSRule</span>.<span class="hljs-property">FONT_FACE_RULE</span>) {
+                <span class="hljs-keyword">if</span> (!rule.<span class="hljs-property">style</span>.<span class="hljs-property">fontDisplay</span>) {
+                  rule.<span class="hljs-property">style</span>.<span class="hljs-property">fontDisplay</span> = <span class="hljs-string">&#x27;swap&#x27;</span>;
+                }
+              }
+            });
+          } <span class="hljs-keyword">catch</span> (e) {
+            <span class="hljs-comment">// Can&#x27;t access cross-origin stylesheets</span>
+          }
+        });
+      },
+
+      <span class="hljs-title function_">createFontLoadingStrategy</span>(<span class="hljs-params">fonts</span>) {
+        <span class="hljs-keyword">const</span> criticalFonts = fonts.<span class="hljs-title function_">filter</span>(<span class="hljs-function"><span class="hljs-params">f</span> =&gt;</span> f.<span class="hljs-property">critical</span>);
+        <span class="hljs-keyword">const</span> nonCriticalFonts = fonts.<span class="hljs-title function_">filter</span>(<span class="hljs-function"><span class="hljs-params">f</span> =&gt;</span> !f.<span class="hljs-property">critical</span>);
+
+        <span class="hljs-comment">// Load critical fonts immediately</span>
+        <span class="hljs-keyword">const</span> criticalPromises = criticalFonts.<span class="hljs-title function_">map</span>(<span class="hljs-function"><span class="hljs-params">font</span> =&gt;</span> 
+          <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">loadFontFace</span>(font.<span class="hljs-property">family</span>, font.<span class="hljs-property">url</span>, font.<span class="hljs-property">options</span>)
+        );
+
+        <span class="hljs-comment">// Load non-critical fonts after page load</span>
+        <span class="hljs-keyword">if</span> (<span class="hljs-variable language_">document</span>.<span class="hljs-property">readyState</span> === <span class="hljs-string">&#x27;complete&#x27;</span>) {
+          <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">loadNonCriticalFonts</span>(nonCriticalFonts);
+        } <span class="hljs-keyword">else</span> {
+          <span class="hljs-variable language_">window</span>.<span class="hljs-title function_">addEventListener</span>(<span class="hljs-string">&#x27;load&#x27;</span>, <span class="hljs-function">() =&gt;</span> {
+            <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">loadNonCriticalFonts</span>(nonCriticalFonts);
+          });
+        }
+
+        <span class="hljs-keyword">return</span> <span class="hljs-title class_">Promise</span>.<span class="hljs-title function_">all</span>(criticalPromises);
+      },
+
+      <span class="hljs-title function_">loadNonCriticalFonts</span>(<span class="hljs-params">fonts</span>) {
+        <span class="hljs-comment">// Use requestIdleCallback if available</span>
+        <span class="hljs-keyword">const</span> <span class="hljs-title function_">loadFonts</span> = (<span class="hljs-params"></span>) =&gt; {
+          fonts.<span class="hljs-title function_">forEach</span>(<span class="hljs-function"><span class="hljs-params">font</span> =&gt;</span> {
+            <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">loadFontFace</span>(font.<span class="hljs-property">family</span>, font.<span class="hljs-property">url</span>, font.<span class="hljs-property">options</span>);
+          });
+        };
+
+        <span class="hljs-keyword">if</span> (<span class="hljs-string">&#x27;requestIdleCallback&#x27;</span> <span class="hljs-keyword">in</span> <span class="hljs-variable language_">window</span>) {
+          <span class="hljs-title function_">requestIdleCallback</span>(loadFonts);
+        } <span class="hljs-keyword">else</span> {
+          <span class="hljs-built_in">setTimeout</span>(loadFonts, <span class="hljs-number">0</span>);
+        }
+      }
+    };
+  }
+
+  <span class="hljs-comment">// Critical rendering path optimization</span>
+  <span class="hljs-keyword">static</span> <span class="hljs-title function_">optimizeCriticalRenderingPath</span>(<span class="hljs-params"></span>) {
+    <span class="hljs-keyword">return</span> {
+      <span class="hljs-title function_">inlineCriticalCSS</span>(<span class="hljs-params">css</span>) {
+        <span class="hljs-keyword">const</span> style = <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">createElement</span>(<span class="hljs-string">&#x27;style&#x27;</span>);
+        style.<span class="hljs-property">textContent</span> = css;
+        style.<span class="hljs-title function_">setAttribute</span>(<span class="hljs-string">&#x27;data-critical&#x27;</span>, <span class="hljs-string">&#x27;true&#x27;</span>);
+        <span class="hljs-variable language_">document</span>.<span class="hljs-property">head</span>.<span class="hljs-title function_">appendChild</span>(style);
+      },
+
+      <span class="hljs-title function_">loadNonCriticalCSS</span>(<span class="hljs-params">href</span>) {
+        <span class="hljs-keyword">const</span> link = <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">createElement</span>(<span class="hljs-string">&#x27;link&#x27;</span>);
+        link.<span class="hljs-property">rel</span> = <span class="hljs-string">&#x27;stylesheet&#x27;</span>;
+        link.<span class="hljs-property">href</span> = href;
+        link.<span class="hljs-property">media</span> = <span class="hljs-string">&#x27;print&#x27;</span>;
+        link.<span class="hljs-property">onload</span> = <span class="hljs-function">() =&gt;</span> {
+          link.<span class="hljs-property">media</span> = <span class="hljs-string">&#x27;all&#x27;</span>;
+        };
+        <span class="hljs-variable language_">document</span>.<span class="hljs-property">head</span>.<span class="hljs-title function_">appendChild</span>(link);
+      },
+
+      <span class="hljs-title function_">deferNonCriticalJS</span>(<span class="hljs-params">scripts</span>) {
+        <span class="hljs-keyword">if</span> (<span class="hljs-variable language_">document</span>.<span class="hljs-property">readyState</span> === <span class="hljs-string">&#x27;complete&#x27;</span>) {
+          <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">loadScripts</span>(scripts);
+        } <span class="hljs-keyword">else</span> {
+          <span class="hljs-variable language_">window</span>.<span class="hljs-title function_">addEventListener</span>(<span class="hljs-string">&#x27;load&#x27;</span>, <span class="hljs-function">() =&gt;</span> {
+            <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">loadScripts</span>(scripts);
+          });
+        }
+      },
+
+      <span class="hljs-title function_">loadScripts</span>(<span class="hljs-params">scripts</span>) {
+        scripts.<span class="hljs-title function_">forEach</span>(<span class="hljs-function">(<span class="hljs-params">src, index</span>) =&gt;</span> {
+          <span class="hljs-built_in">setTimeout</span>(<span class="hljs-function">() =&gt;</span> {
+            <span class="hljs-keyword">const</span> script = <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">createElement</span>(<span class="hljs-string">&#x27;script&#x27;</span>);
+            script.<span class="hljs-property">src</span> = src;
+            script.<span class="hljs-property">async</span> = <span class="hljs-literal">true</span>;
+            <span class="hljs-variable language_">document</span>.<span class="hljs-property">body</span>.<span class="hljs-title function_">appendChild</span>(script);
+          }, index * <span class="hljs-number">100</span>); <span class="hljs-comment">// Stagger loading</span>
+        });
+      },
+
+      <span class="hljs-title function_">optimizeResourceHints</span>(<span class="hljs-params">resources</span>) {
+        resources.<span class="hljs-title function_">forEach</span>(<span class="hljs-function"><span class="hljs-params">resource</span> =&gt;</span> {
+          <span class="hljs-keyword">const</span> link = <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">createElement</span>(<span class="hljs-string">&#x27;link&#x27;</span>);
+          
+          <span class="hljs-keyword">switch</span> (resource.<span class="hljs-property">hint</span>) {
+            <span class="hljs-keyword">case</span> <span class="hljs-string">&#x27;preload&#x27;</span>:
+              link.<span class="hljs-property">rel</span> = <span class="hljs-string">&#x27;preload&#x27;</span>;
+              link.<span class="hljs-property">as</span> = resource.<span class="hljs-property">as</span>;
+              <span class="hljs-keyword">break</span>;
+            <span class="hljs-keyword">case</span> <span class="hljs-string">&#x27;prefetch&#x27;</span>:
+              link.<span class="hljs-property">rel</span> = <span class="hljs-string">&#x27;prefetch&#x27;</span>;
+              <span class="hljs-keyword">break</span>;
+            <span class="hljs-keyword">case</span> <span class="hljs-string">&#x27;preconnect&#x27;</span>:
+              link.<span class="hljs-property">rel</span> = <span class="hljs-string">&#x27;preconnect&#x27;</span>;
+              <span class="hljs-keyword">break</span>;
+            <span class="hljs-keyword">case</span> <span class="hljs-string">&#x27;dns-prefetch&#x27;</span>:
+              link.<span class="hljs-property">rel</span> = <span class="hljs-string">&#x27;dns-prefetch&#x27;</span>;
+              <span class="hljs-keyword">break</span>;
+          }
+          
+          link.<span class="hljs-property">href</span> = resource.<span class="hljs-property">href</span>;
+          <span class="hljs-keyword">if</span> (resource.<span class="hljs-property">crossOrigin</span>) {
+            link.<span class="hljs-property">crossOrigin</span> = resource.<span class="hljs-property">crossOrigin</span>;
+          }
+          
+          <span class="hljs-variable language_">document</span>.<span class="hljs-property">head</span>.<span class="hljs-title function_">appendChild</span>(link);
+        });
+      }
+    };
+  }
+}
+</code></pre></pre>
+<p>This comprehensive performance optimization guide provides the essential tools and techniques for building high-performance frontend applications that meet the demanding standards of Big Tech companies, covering everything from measurement and monitoring to advanced rendering optimizations.</p></div></div></main><footer class="sc-kjwdDK hrfQfY"><div class="sc-eVqvcJ dwFHjZ"><div class="sc-bbbBoY kWATso"><div class="sc-cdmAjP fBmmqS"><div class="sc-jytpVa iNKxsb"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-code "><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>Frontend Interview Prep</div><p class="sc-eknHtZ fYhkiV">Comprehensive interview preparation for frontend engineers targeting Big Tech companies.</p><div class="sc-pYNGo eVAQiq"><a href="https://github.com" aria-label="GitHub"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-github "><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"></path><path d="M9 18c-4.51 2-5-2-7-2"></path></svg></a><a href="https://twitter.com" aria-label="Twitter"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-twitter "><path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"></path></svg></a><a href="https://linkedin.com" aria-label="LinkedIn"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-linkedin "><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect width="4" height="12" x="2" y="9"></rect><circle cx="4" cy="4" r="2"></circle></svg></a><a href="mailto:contact@example.com" aria-label="Email"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-mail "><rect width="20" height="16" x="2" y="4" rx="2"></rect><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path></svg></a></div></div><div class="sc-cdmAjP fBmmqS"><h3>Study Materials</h3><ul><li><a href="/algorithms">Algorithms</a></li><li><a href="/react">React &amp; Frontend</a></li><li><a href="/system-design">System Design</a></li><li><a href="/typescript">TypeScript</a></li><li><a href="/performance">Performance</a></li></ul></div><div class="sc-cdmAjP fBmmqS"><h3>Companies</h3><ul><li><a href="/google">Google</a></li><li><a href="/meta">Meta</a></li><li><a href="/amazon">Amazon</a></li><li><a href="/microsoft">Microsoft</a></li><li><a href="/apple">Apple</a></li></ul></div><div class="sc-cdmAjP fBmmqS"><h3>Resources</h3><ul><li><a href="/interview-tips">Interview Tips</a></li><li><a href="/coding-challenges">Coding Challenges</a></li><li><a href="/mock-interviews">Mock Interviews</a></li><li><a href="/blog">Blog</a></li><li><a href="/faq">FAQ</a></li></ul></div></div><div class="sc-cCVJLD fgJmHp"><p class="sc-jYczwO gYGLHT">© 2025 Frontend Interview Prep. All rights reserved.</p><div class="sc-dNFkOE ghBULZ"><a href="/privacy">Privacy Policy</a><a href="/terms">Terms of Service</a><a href="/contact">Contact</a></div></div></div></footer></div><script src="/interview/_next/static/chunks/webpack-be7d7df45533bffc.js" async=""></script><script>(self.__next_f=self.__next_f||[]).push([0]);self.__next_f.push([2,null])</script><script>self.__next_f.push([1,"1:HL[\"/interview/_next/static/media/e4af272ccee01ff0-s.p.woff2\",\"font\",{\"crossOrigin\":\"\",\"type\":\"font/woff2\"}]\n2:HL[\"/interview/_next/static/css/387024c6a2216908.css\",\"style\"]\n"])</script><script>self.__next_f.push([1,"3:I[2846,[],\"\"]\n5:I[5907,[\"918\",\"static/chunks/918-3273b83890f10546.js\",\"930\",\"static/chunks/930-3262a6c9c5acace4.js\",\"687\",\"static/chunks/app/docs/%5B...slug%5D/page-32962e9542d32755.js\"],\"default\"]\n7:I[4707,[],\"\"]\n9:I[6423,[],\"\"]\na:I[2,[\"918\",\"static/chunks/918-3273b83890f10546.js\",\"710\",\"static/chunks/710-dfaa11b4dff08f8e.js\",\"972\",\"static/chunks/972-011bba60ed155615.js\",\"233\",\"static/chunks/233-3e0c1d820a17eca9.js\",\"185\",\"static/chunks/app/layout-333f4adcd11f8f39.js\"],\"default\",1]\nc:I[1060,[],\"\"]\n6:T85bf,"])</script><script>self.__next_f.push([1,"# Performance Optimization Fundamentals\n\n## Overview\nPerformance optimization is critical for frontend applications, especially at Big Tech companies where scale and user experience are paramount. This guide covers essential performance concepts, measurement techniques, and optimization strategies.\n\n---\n\n## Core Web Vitals \u0026 Performance Metrics\n\n### **Comprehensive Performance Monitoring**\n\n{% raw %}\n```javascript\n// Advanced performance monitoring system\nclass PerformanceMonitor {\n  constructor(options = {}) {\n    this.config = {\n      enableCLS: true,\n      enableFCP: true,\n      enableFID: true,\n      enableLCP: true,\n      enableTTFB: true,\n      enableINP: true,\n      reportingEndpoint: '/api/performance',\n      samplingRate: options.samplingRate || 0.1,\n      ...options\n    };\n    \n    this.metrics = new Map();\n    this.observers = new Map();\n    this.reportQueue = [];\n    this.sessionId = this.generateSessionId();\n    \n    this.setupObservers();\n    this.setupReporting();\n  }\n\n  setupObservers() {\n    // Largest Contentful Paint\n    if (this.config.enableLCP \u0026\u0026 'PerformanceObserver' in window) {\n      const lcpObserver = new PerformanceObserver((list) =\u003e {\n        const entries = list.getEntries();\n        const lastEntry = entries[entries.length - 1];\n        \n        this.recordMetric('LCP', {\n          value: lastEntry.startTime,\n          element: this.getElementSelector(lastEntry.element),\n          size: lastEntry.size,\n          url: lastEntry.url || null,\n          timestamp: Date.now()\n        });\n      });\n      \n      lcpObserver.observe({ type: 'largest-contentful-paint', buffered: true });\n      this.observers.set('lcp', lcpObserver);\n    }\n\n    // First Input Delay\n    if (this.config.enableFID \u0026\u0026 'PerformanceObserver' in window) {\n      const fidObserver = new PerformanceObserver((list) =\u003e {\n        const entries = list.getEntries();\n        entries.forEach(entry =\u003e {\n          this.recordMetric('FID', {\n            value: entry.processingStart - entry.startTime,\n            eventType: entry.name,\n            target: this.getElementSelector(entry.target),\n            timestamp: Date.now()\n          });\n        });\n      });\n      \n      fidObserver.observe({ type: 'first-input', buffered: true });\n      this.observers.set('fid', fidObserver);\n    }\n\n    // Cumulative Layout Shift\n    if (this.config.enableCLS \u0026\u0026 'PerformanceObserver' in window) {\n      let clsValue = 0;\n      let clsEntries = [];\n      \n      const clsObserver = new PerformanceObserver((list) =\u003e {\n        const entries = list.getEntries();\n        \n        entries.forEach(entry =\u003e {\n          if (!entry.hadRecentInput) {\n            clsValue += entry.value;\n            clsEntries.push({\n              value: entry.value,\n              sources: entry.sources?.map(source =\u003e ({\n                element: this.getElementSelector(source.node),\n                previousRect: source.previousRect,\n                currentRect: source.currentRect\n              })) || [],\n              timestamp: entry.startTime\n            });\n          }\n        });\n        \n        this.recordMetric('CLS', {\n          value: clsValue,\n          entries: clsEntries,\n          timestamp: Date.now()\n        });\n      });\n      \n      clsObserver.observe({ type: 'layout-shift', buffered: true });\n      this.observers.set('cls', clsObserver);\n    }\n\n    // First Contentful Paint\n    if (this.config.enableFCP \u0026\u0026 'PerformanceObserver' in window) {\n      const fcpObserver = new PerformanceObserver((list) =\u003e {\n        const entries = list.getEntries();\n        entries.forEach(entry =\u003e {\n          if (entry.name === 'first-contentful-paint') {\n            this.recordMetric('FCP', {\n              value: entry.startTime,\n              timestamp: Date.now()\n            });\n          }\n        });\n      });\n      \n      fcpObserver.observe({ type: 'paint', buffered: true });\n      this.observers.set('fcp', fcpObserver);\n    }\n\n    // Time to First Byte\n    if (this.config.enableTTFB \u0026\u0026 'PerformanceObserver' in window) {\n      const navigationObserver = new PerformanceObserver((list) =\u003e {\n        const entries = list.getEntries();\n        entries.forEach(entry =\u003e {\n          this.recordMetric('TTFB', {\n            value: entry.responseStart - entry.requestStart,\n            dnsTime: entry.domainLookupEnd - entry.domainLookupStart,\n            tcpTime: entry.connectEnd - entry.connectStart,\n            tlsTime: entry.secureConnectionStart \u003e 0 ? \n              entry.connectEnd - entry.secureConnectionStart : 0,\n            timestamp: Date.now()\n          });\n        });\n      });\n      \n      navigationObserver.observe({ type: 'navigation', buffered: true });\n      this.observers.set('navigation', navigationObserver);\n    }\n\n    // Interaction to Next Paint (replacing FID)\n    if (this.config.enableINP \u0026\u0026 'PerformanceObserver' in window) {\n      const inpObserver = new PerformanceObserver((list) =\u003e {\n        const entries = list.getEntries();\n        entries.forEach(entry =\u003e {\n          this.recordMetric('INP', {\n            value: entry.processingEnd - entry.startTime,\n            eventType: entry.name,\n            target: this.getElementSelector(entry.target),\n            interactionId: entry.interactionId,\n            timestamp: Date.now()\n          });\n        });\n      });\n      \n      try {\n        inpObserver.observe({ type: 'event', buffered: true });\n        this.observers.set('inp', inpObserver);\n      } catch (e) {\n        console.log('INP observer not supported');\n      }\n    }\n  }\n\n  // Custom performance measurements\n  measureCustomMetric(name, startMark, endMark) {\n    try {\n      performance.measure(name, startMark, endMark);\n      const measure = performance.getEntriesByName(name, 'measure')[0];\n      \n      this.recordMetric('CUSTOM', {\n        name,\n        value: measure.duration,\n        startTime: measure.startTime,\n        timestamp: Date.now()\n      });\n      \n      return measure.duration;\n    } catch (error) {\n      console.error('Error measuring custom metric:', error);\n      return null;\n    }\n  }\n\n  // Resource performance analysis\n  analyzeResourcePerformance() {\n    const resources = performance.getEntriesByType('resource');\n    const analysis = {\n      totalResources: resources.length,\n      totalSize: 0,\n      totalTime: 0,\n      byType: new Map(),\n      slowest: [],\n      largest: [],\n      renderBlocking: []\n    };\n\n    resources.forEach(resource =\u003e {\n      const type = this.getResourceType(resource);\n      const size = resource.transferSize || 0;\n      const duration = resource.responseEnd - resource.startTime;\n\n      analysis.totalSize += size;\n      analysis.totalTime += duration;\n\n      if (!analysis.byType.has(type)) {\n        analysis.byType.set(type, {\n          count: 0,\n          totalSize: 0,\n          totalTime: 0,\n          resources: []\n        });\n      }\n\n      const typeData = analysis.byType.get(type);\n      typeData.count++;\n      typeData.totalSize += size;\n      typeData.totalTime += duration;\n      typeData.resources.push({\n        name: resource.name,\n        size,\n        duration,\n        renderBlockingStatus: resource.renderBlockingStatus\n      });\n\n      // Track render-blocking resources\n      if (resource.renderBlockingStatus === 'blocking') {\n        analysis.renderBlocking.push({\n          name: resource.name,\n          type,\n          duration,\n          size\n        });\n      }\n    });\n\n    // Find slowest and largest resources\n    analysis.slowest = resources\n      .map(r =\u003e ({\n        name: r.name,\n        duration: r.responseEnd - r.startTime,\n        type: this.getResourceType(r)\n      }))\n      .sort((a, b) =\u003e b.duration - a.duration)\n      .slice(0, 10);\n\n    analysis.largest = resources\n      .filter(r =\u003e r.transferSize \u003e 0)\n      .map(r =\u003e ({\n        name: r.name,\n        size: r.transferSize,\n        type: this.getResourceType(r)\n      }))\n      .sort((a, b) =\u003e b.size - a.size)\n      .slice(0, 10);\n\n    return analysis;\n  }\n\n  // Memory performance monitoring\n  monitorMemoryUsage() {\n    if (!('memory' in performance)) {\n      return null;\n    }\n\n    const memory = performance.memory;\n    const memoryInfo = {\n      usedJSHeapSize: memory.usedJSHeapSize,\n      totalJSHeapSize: memory.totalJSHeapSize,\n      jsHeapSizeLimit: memory.jsHeapSizeLimit,\n      usagePercentage: (memory.usedJSHeapSize / memory.jsHeapSizeLimit) * 100,\n      timestamp: Date.now()\n    };\n\n    this.recordMetric('MEMORY', memoryInfo);\n    return memoryInfo;\n  }\n\n  // Long task monitoring\n  monitorLongTasks() {\n    if ('PerformanceObserver' in window) {\n      const longTaskObserver = new PerformanceObserver((list) =\u003e {\n        const entries = list.getEntries();\n        entries.forEach(entry =\u003e {\n          this.recordMetric('LONG_TASK', {\n            duration: entry.duration,\n            startTime: entry.startTime,\n            attribution: entry.attribution?.map(attr =\u003e ({\n              name: attr.name,\n              containerType: attr.containerType,\n              containerSrc: attr.containerSrc,\n              containerId: attr.containerId,\n              containerName: attr.containerName\n            })) || [],\n            timestamp: Date.now()\n          });\n        });\n      });\n\n      try {\n        longTaskObserver.observe({ type: 'longtask', buffered: true });\n        this.observers.set('longtask', longTaskObserver);\n      } catch (e) {\n        console.log('Long task observer not supported');\n      }\n    }\n  }\n\n  // User timing API integration\n  startTiming(name) {\n    performance.mark(`${name}-start`);\n    return {\n      end: () =\u003e {\n        performance.mark(`${name}-end`);\n        return this.measureCustomMetric(name, `${name}-start`, `${name}-end`);\n      }\n    };\n  }\n\n  recordMetric(type, data) {\n    this.metrics.set(`${type}-${Date.now()}`, {\n      type,\n      data,\n      sessionId: this.sessionId,\n      url: window.location.href,\n      userAgent: navigator.userAgent,\n      timestamp: Date.now()\n    });\n\n    this.queueForReporting(type, data);\n  }\n\n  queueForReporting(type, data) {\n    // Sample based on configuration\n    if (Math.random() \u003e this.config.samplingRate) {\n      return;\n    }\n\n    this.reportQueue.push({\n      type,\n      data,\n      sessionId: this.sessionId,\n      timestamp: Date.now()\n    });\n\n    // Batch reporting to reduce network overhead\n    if (this.reportQueue.length \u003e= 10) {\n      this.flushReports();\n    }\n  }\n\n  setupReporting() {\n    // Report on page visibility change\n    document.addEventListener('visibilitychange', () =\u003e {\n      if (document.visibilityState === 'hidden') {\n        this.flushReports();\n      }\n    });\n\n    // Report on page unload\n    window.addEventListener('beforeunload', () =\u003e {\n      this.flushReports();\n    });\n\n    // Periodic reporting\n    setInterval(() =\u003e {\n      if (this.reportQueue.length \u003e 0) {\n        this.flushReports();\n      }\n    }, 30000); // Every 30 seconds\n  }\n\n  async flushReports() {\n    if (this.reportQueue.length === 0) return;\n\n    const reports = [...this.reportQueue];\n    this.reportQueue = [];\n\n    try {\n      // Use sendBeacon for reliability\n      if ('sendBeacon' in navigator) {\n        const success = navigator.sendBeacon(\n          this.config.reportingEndpoint,\n          JSON.stringify({\n            reports,\n            metadata: {\n              url: window.location.href,\n              timestamp: Date.now(),\n              sessionId: this.sessionId\n            }\n          })\n        );\n\n        if (!success) {\n          // Fallback to fetch\n          await this.sendViaFetch(reports);\n        }\n      } else {\n        await this.sendViaFetch(reports);\n      }\n    } catch (error) {\n      console.error('Failed to send performance reports:', error);\n      // Re-queue failed reports\n      this.reportQueue.unshift(...reports);\n    }\n  }\n\n  async sendViaFetch(reports) {\n    await fetch(this.config.reportingEndpoint, {\n      method: 'POST',\n      headers: {\n        'Content-Type': 'application/json',\n      },\n      body: JSON.stringify({\n        reports,\n        metadata: {\n          url: window.location.href,\n          timestamp: Date.now(),\n          sessionId: this.sessionId\n        }\n      }),\n      keepalive: true\n    });\n  }\n\n  // Performance budget validation\n  validatePerformanceBudget(budget) {\n    const violations = [];\n    const currentMetrics = this.getCurrentMetrics();\n\n    for (const [metric, threshold] of Object.entries(budget)) {\n      const current = currentMetrics[metric];\n      if (current \u0026\u0026 current.value \u003e threshold) {\n        violations.push({\n          metric,\n          current: current.value,\n          threshold,\n          excess: current.value - threshold\n        });\n      }\n    }\n\n    return {\n      isValid: violations.length === 0,\n      violations,\n      score: this.calculatePerformanceScore(currentMetrics, budget)\n    };\n  }\n\n  calculatePerformanceScore(metrics, budget) {\n    let totalScore = 0;\n    let metricCount = 0;\n\n    for (const [metric, threshold] of Object.entries(budget)) {\n      const current = metrics[metric];\n      if (current) {\n        const score = Math.max(0, Math.min(100, \n          100 - ((current.value / threshold) * 100)\n        ));\n        totalScore += score;\n        metricCount++;\n      }\n    }\n\n    return metricCount \u003e 0 ? totalScore / metricCount : 0;\n  }\n\n  getCurrentMetrics() {\n    const current = {};\n    \n    for (const [key, metric] of this.metrics) {\n      if (!current[metric.type] || \n          metric.timestamp \u003e current[metric.type].timestamp) {\n        current[metric.type] = metric;\n      }\n    }\n    \n    return current;\n  }\n\n  getElementSelector(element) {\n    if (!element) return null;\n    \n    // Build a CSS selector for the element\n    const path = [];\n    let current = element;\n    \n    while (current \u0026\u0026 current.nodeType === Node.ELEMENT_NODE) {\n      let selector = current.tagName.toLowerCase();\n      \n      if (current.id) {\n        selector += `#${current.id}`;\n        path.unshift(selector);\n        break;\n      }\n      \n      if (current.className) {\n        const classes = current.className.trim().split(/\\s+/).slice(0, 2);\n        selector += `.${classes.join('.')}`;\n      }\n      \n      path.unshift(selector);\n      current = current.parentElement;\n      \n      if (path.length \u003e 4) break; // Limit depth\n    }\n    \n    return path.join(' \u003e ');\n  }\n\n  getResourceType(resource) {\n    const url = resource.name;\n    const initiatorType = resource.initiatorType;\n    \n    if (initiatorType === 'img' || /\\.(jpg|jpeg|png|gif|webp|svg)$/i.test(url)) {\n      return 'image';\n    }\n    if (initiatorType === 'script' || /\\.js$/i.test(url)) {\n      return 'script';\n    }\n    if (initiatorType === 'css' || /\\.css$/i.test(url)) {\n      return 'stylesheet';\n    }\n    if (initiatorType === 'xmlhttprequest' || initiatorType === 'fetch') {\n      return 'xhr';\n    }\n    if (/\\.(woff|woff2|ttf|otf|eot)$/i.test(url)) {\n      return 'font';\n    }\n    if (/\\.(mp4|webm|ogg|mp3|wav)$/i.test(url)) {\n      return 'media';\n    }\n    \n    return initiatorType || 'other';\n  }\n\n  generateSessionId() {\n    return `${Date.now()}-${Math.random().toString(36).substr(2, 9)}`;\n  }\n\n  // Generate performance report\n  generateReport() {\n    const metrics = this.getCurrentMetrics();\n    const resourceAnalysis = this.analyzeResourcePerformance();\n    const memoryInfo = this.monitorMemoryUsage();\n\n    return {\n      sessionId: this.sessionId,\n      timestamp: Date.now(),\n      url: window.location.href,\n      metrics,\n      resources: resourceAnalysis,\n      memory: memoryInfo,\n      recommendations: this.generateRecommendations(metrics, resourceAnalysis)\n    };\n  }\n\n  generateRecommendations(metrics, resourceAnalysis) {\n    const recommendations = [];\n\n    // LCP recommendations\n    if (metrics.LCP \u0026\u0026 metrics.LCP.data.value \u003e 2500) {\n      recommendations.push({\n        type: 'LCP',\n        priority: 'high',\n        message: 'Largest Contentful Paint is slow',\n        suggestions: [\n          'Optimize the LCP element (images, text)',\n          'Reduce server response times',\n          'Remove render-blocking resources',\n          'Preload important resources'\n        ]\n      });\n    }\n\n    // FID/INP recommendations\n    if ((metrics.FID \u0026\u0026 metrics.FID.data.value \u003e 100) || \n        (metrics.INP \u0026\u0026 metrics.INP.data.value \u003e 200)) {\n      recommendations.push({\n        type: 'Responsiveness',\n        priority: 'high',\n        message: 'Poor input responsiveness',\n        suggestions: [\n          'Break up long tasks',\n          'Use web workers for heavy computation',\n          'Optimize JavaScript execution',\n          'Implement code splitting'\n        ]\n      });\n    }\n\n    // CLS recommendations\n    if (metrics.CLS \u0026\u0026 metrics.CLS.data.value \u003e 0.1) {\n      recommendations.push({\n        type: 'CLS',\n        priority: 'high',\n        message: 'Cumulative Layout Shift is poor',\n        suggestions: [\n          'Set explicit dimensions for images and videos',\n          'Reserve space for ads',\n          'Avoid inserting content above existing content',\n          'Use CSS transform for animations'\n        ]\n      });\n    }\n\n    // Resource recommendations\n    if (resourceAnalysis.renderBlocking.length \u003e 0) {\n      recommendations.push({\n        type: 'Resources',\n        priority: 'medium',\n        message: 'Render-blocking resources detected',\n        suggestions: [\n          'Inline critical CSS',\n          'Defer non-critical JavaScript',\n          'Use resource hints',\n          'Optimize CSS delivery'\n        ]\n      });\n    }\n\n    return recommendations;\n  }\n\n  destroy() {\n    // Clean up observers\n    this.observers.forEach(observer =\u003e observer.disconnect());\n    this.observers.clear();\n    \n    // Flush any remaining reports\n    this.flushReports();\n  }\n}\n```\n{% endraw %}\n\n---\n\n## Rendering Optimization\n\n### **Advanced Rendering Techniques**\n\n```javascript\n// Rendering optimization utilities\nclass RenderingOptimizer {\n  \n  // Virtual DOM-like optimization for vanilla JS\n  static createVirtualDOM() {\n    return {\n      createElement(type, props = {}, ...children) {\n        return {\n          type,\n          props: { ...props, children: children.flat() },\n          key: props.key || null\n        };\n      },\n\n      render(vnode, container) {\n        if (typeof vnode === 'string' || typeof vnode === 'number') {\n          return document.createTextNode(vnode);\n        }\n\n        const element = document.createElement(vnode.type);\n        \n        // Set properties\n        for (const [key, value] of Object.entries(vnode.props)) {\n          if (key === 'children') continue;\n          \n          if (key.startsWith('on') \u0026\u0026 typeof value === 'function') {\n            element.addEventListener(key.slice(2).toLowerCase(), value);\n          } else if (key === 'className') {\n            element.className = value;\n          } else {\n            element.setAttribute(key, value);\n          }\n        }\n\n        // Render children\n        if (vnode.props.children) {\n          vnode.props.children.forEach(child =\u003e {\n            const childElement = this.render(child, element);\n            if (childElement) {\n              element.appendChild(childElement);\n            }\n          });\n        }\n\n        if (container) {\n          container.appendChild(element);\n        }\n\n        return element;\n      },\n\n      diff(oldVNode, newVNode, container, index = 0) {\n        // Handle removal\n        if (!newVNode) {\n          container.removeChild(container.childNodes[index]);\n          return;\n        }\n\n        // Handle addition\n        if (!oldVNode) {\n          const newElement = this.render(newVNode);\n          container.appendChild(newElement);\n          return;\n        }\n\n        // Handle text nodes\n        if (typeof oldVNode === 'string' || typeof newVNode === 'string') {\n          if (oldVNode !== newVNode) {\n            container.replaceChild(\n              this.render(newVNode),\n              container.childNodes[index]\n            );\n          }\n          return;\n        }\n\n        // Handle different types\n        if (oldVNode.type !== newVNode.type) {\n          container.replaceChild(\n            this.render(newVNode),\n            container.childNodes[index]\n          );\n          return;\n        }\n\n        // Update properties\n        this.updateElement(\n          container.childNodes[index],\n          oldVNode.props,\n          newVNode.props\n        );\n\n        // Diff children\n        const oldChildren = oldVNode.props.children || [];\n        const newChildren = newVNode.props.children || [];\n        const maxLength = Math.max(oldChildren.length, newChildren.length);\n\n        for (let i = 0; i \u003c maxLength; i++) {\n          this.diff(\n            oldChildren[i],\n            newChildren[i],\n            container.childNodes[index],\n            i\n          );\n        }\n      },\n\n      updateElement(element, oldProps, newProps) {\n        // Remove old properties\n        for (const key in oldProps) {\n          if (!(key in newProps)) {\n            if (key.startsWith('on')) {\n              element.removeEventListener(key.slice(2).toLowerCase(), oldProps[key]);\n            } else if (key === 'className') {\n              element.className = '';\n            } else {\n              element.removeAttribute(key);\n            }\n          }\n        }\n\n        // Add/update new properties\n        for (const key in newProps) {\n          if (oldProps[key] !== newProps[key]) {\n            if (key.startsWith('on')) {\n              if (oldProps[key]) {\n                element.removeEventListener(key.slice(2).toLowerCase(), oldProps[key]);\n              }\n              element.addEventListener(key.slice(2).toLowerCase(), newProps[key]);\n            } else if (key === 'className') {\n              element.className = newProps[key];\n            } else {\n              element.setAttribute(key, newProps[key]);\n            }\n          }\n        }\n      }\n    };\n  }\n\n  // Optimized list rendering with recycling\n  static createListRenderer(container, itemRenderer) {\n    let items = [];\n    let renderedElements = new Map();\n    let recycledElements = [];\n    let scrollPosition = 0;\n    let containerHeight = container.clientHeight;\n    let itemHeight = 50; // Default, will be measured\n\n    const recycler = {\n      setData(newItems) {\n        items = newItems;\n        this.render();\n      },\n\n      render() {\n        const viewportStart = Math.floor(scrollPosition / itemHeight);\n        const viewportEnd = Math.min(\n          items.length,\n          viewportStart + Math.ceil(containerHeight / itemHeight) + 5 // Buffer\n        );\n\n        // Hide elements outside viewport\n        for (const [index, element] of renderedElements) {\n          if (index \u003c viewportStart || index \u003e= viewportEnd) {\n            element.style.display = 'none';\n            recycledElements.push({ element, index });\n            renderedElements.delete(index);\n          }\n        }\n\n        // Render visible items\n        for (let i = viewportStart; i \u003c viewportEnd; i++) {\n          if (!renderedElements.has(i)) {\n            const element = this.getOrCreateElement(i);\n            itemRenderer(element, items[i], i);\n            element.style.transform = `translateY(${i * itemHeight}px)`;\n            element.style.display = 'block';\n            renderedElements.set(i, element);\n          }\n        }\n      },\n\n      getOrCreateElement(index) {\n        // Try to recycle an element\n        if (recycledElements.length \u003e 0) {\n          const recycled = recycledElements.pop();\n          return recycled.element;\n        }\n\n        // Create new element\n        const element = document.createElement('div');\n        element.className = 'list-item';\n        element.style.position = 'absolute';\n        element.style.width = '100%';\n        element.style.height = `${itemHeight}px`;\n        container.appendChild(element);\n\n        return element;\n      },\n\n      handleScroll(newScrollPosition) {\n        scrollPosition = newScrollPosition;\n        this.render();\n      },\n\n      updateItemHeight(height) {\n        itemHeight = height;\n        container.style.height = `${items.length * itemHeight}px`;\n        this.render();\n      },\n\n      destroy() {\n        renderedElements.clear();\n        recycledElements = [];\n        container.innerHTML = '';\n      }\n    };\n\n    return recycler;\n  }\n\n  // Frame-based animation optimization\n  static createAnimationScheduler() {\n    let tasks = [];\n    let isRunning = false;\n    let frameId = null;\n\n    const scheduler = {\n      schedule(task, priority = 'normal') {\n        tasks.push({ task, priority, timestamp: Date.now() });\n        tasks.sort((a, b) =\u003e {\n          const priorityOrder = { high: 3, normal: 2, low: 1 };\n          return priorityOrder[b.priority] - priorityOrder[a.priority];\n        });\n\n        if (!isRunning) {\n          this.start();\n        }\n      },\n\n      start() {\n        if (isRunning) return;\n        isRunning = true;\n        this.tick();\n      },\n\n      tick() {\n        const frameStart = performance.now();\n        const frameTimeLimit = 16.67; // ~60fps\n\n        while (tasks.length \u003e 0 \u0026\u0026 (performance.now() - frameStart) \u003c frameTimeLimit) {\n          const { task } = tasks.shift();\n          try {\n            task();\n          } catch (error) {\n            console.error('Animation task error:', error);\n          }\n        }\n\n        if (tasks.length \u003e 0) {\n          frameId = requestAnimationFrame(() =\u003e this.tick());\n        } else {\n          isRunning = false;\n        }\n      },\n\n      cancel() {\n        if (frameId) {\n          cancelAnimationFrame(frameId);\n          frameId = null;\n        }\n        isRunning = false;\n        tasks = [];\n      },\n\n      getCurrentLoad() {\n        return tasks.length;\n      }\n    };\n\n    return scheduler;\n  }\n\n  // Layout thrashing prevention\n  static createLayoutBatcher() {\n    let readOperations = [];\n    let writeOperations = [];\n    let scheduled = false;\n\n    return {\n      read(fn) {\n        readOperations.push(fn);\n        this.schedule();\n      },\n\n      write(fn) {\n        writeOperations.push(fn);\n        this.schedule();\n      },\n\n      schedule() {\n        if (scheduled) return;\n        scheduled = true;\n\n        requestAnimationFrame(() =\u003e {\n          // Batch all reads first\n          const readResults = readOperations.map(fn =\u003e {\n            try {\n              return fn();\n            } catch (error) {\n              console.error('Read operation error:', error);\n              return null;\n            }\n          });\n\n          // Then batch all writes\n          writeOperations.forEach((fn, index) =\u003e {\n            try {\n              fn(readResults[index]);\n            } catch (error) {\n              console.error('Write operation error:', error);\n            }\n          });\n\n          // Reset for next batch\n          readOperations = [];\n          writeOperations = [];\n          scheduled = false;\n        });\n      },\n\n      measureElement(element, callback) {\n        this.read(() =\u003e {\n          const rect = element.getBoundingClientRect();\n          const computedStyle = window.getComputedStyle(element);\n          return { rect, computedStyle };\n        });\n\n        this.write((measurements) =\u003e {\n          if (measurements \u0026\u0026 callback) {\n            callback(measurements);\n          }\n        });\n      }\n    };\n  }\n\n  // Image loading optimization\n  static createImageLoader() {\n    const observer = new IntersectionObserver((entries) =\u003e {\n      entries.forEach(entry =\u003e {\n        if (entry.isIntersecting) {\n          const img = entry.target;\n          this.loadImage(img);\n          observer.unobserve(img);\n        }\n      });\n    }, {\n      rootMargin: '100px' // Start loading 100px before entering viewport\n    });\n\n    return {\n      observeImage(img) {\n        observer.observe(img);\n      },\n\n      loadImage(img) {\n        const src = img.dataset.src;\n        if (!src) return;\n\n        // Create a new image to preload\n        const newImg = new Image();\n        \n        newImg.onload = () =\u003e {\n          // Smooth transition\n          img.style.opacity = '0';\n          img.src = src;\n          img.onload = () =\u003e {\n            img.style.transition = 'opacity 0.3s';\n            img.style.opacity = '1';\n          };\n        };\n\n        newImg.onerror = () =\u003e {\n          img.src = img.dataset.fallback || '/images/placeholder.jpg';\n        };\n\n        newImg.src = src;\n      },\n\n      preloadImages(urls) {\n        return Promise.all(urls.map(url =\u003e {\n          return new Promise((resolve, reject) =\u003e {\n            const img = new Image();\n            img.onload = resolve;\n            img.onerror = reject;\n            img.src = url;\n          });\n        }));\n      },\n\n      createResponsiveImage(src, sizes = []) {\n        const img = document.createElement('img');\n        \n        if (sizes.length \u003e 0) {\n          img.srcset = sizes.map(size =\u003e \n            `${src}?w=${size.width} ${size.width}w`\n          ).join(', ');\n          \n          img.sizes = sizes.map(size =\u003e \n            `(max-width: ${size.breakpoint}px) ${size.width}px`\n          ).join(', ');\n        }\n        \n        img.src = src;\n        img.loading = 'lazy';\n        img.decoding = 'async';\n        \n        return img;\n      }\n    };\n  }\n\n  // Font loading optimization\n  static optimizeFontLoading() {\n    return {\n      preloadFonts(fonts) {\n        fonts.forEach(font =\u003e {\n          const link = document.createElement('link');\n          link.rel = 'preload';\n          link.as = 'font';\n          link.href = font.url;\n          link.type = font.type || 'font/woff2';\n          link.crossOrigin = 'anonymous';\n          document.head.appendChild(link);\n        });\n      },\n\n      loadFontFace(fontFamily, url, options = {}) {\n        const fontFace = new FontFace(fontFamily, `url(${url})`, {\n          weight: options.weight || 'normal',\n          style: options.style || 'normal',\n          display: options.display || 'swap'\n        });\n\n        return fontFace.load().then(loadedFace =\u003e {\n          document.fonts.add(loadedFace);\n          return loadedFace;\n        });\n      },\n\n      optimizeWebFonts() {\n        // Add font-display: swap to all @font-face rules\n        const styleSheets = Array.from(document.styleSheets);\n        \n        styleSheets.forEach(sheet =\u003e {\n          try {\n            const rules = Array.from(sheet.cssRules);\n            rules.forEach(rule =\u003e {\n              if (rule.type === CSSRule.FONT_FACE_RULE) {\n                if (!rule.style.fontDisplay) {\n                  rule.style.fontDisplay = 'swap';\n                }\n              }\n            });\n          } catch (e) {\n            // Can't access cross-origin stylesheets\n          }\n        });\n      },\n\n      createFontLoadingStrategy(fonts) {\n        const criticalFonts = fonts.filter(f =\u003e f.critical);\n        const nonCriticalFonts = fonts.filter(f =\u003e !f.critical);\n\n        // Load critical fonts immediately\n        const criticalPromises = criticalFonts.map(font =\u003e \n          this.loadFontFace(font.family, font.url, font.options)\n        );\n\n        // Load non-critical fonts after page load\n        if (document.readyState === 'complete') {\n          this.loadNonCriticalFonts(nonCriticalFonts);\n        } else {\n          window.addEventListener('load', () =\u003e {\n            this.loadNonCriticalFonts(nonCriticalFonts);\n          });\n        }\n\n        return Promise.all(criticalPromises);\n      },\n\n      loadNonCriticalFonts(fonts) {\n        // Use requestIdleCallback if available\n        const loadFonts = () =\u003e {\n          fonts.forEach(font =\u003e {\n            this.loadFontFace(font.family, font.url, font.options);\n          });\n        };\n\n        if ('requestIdleCallback' in window) {\n          requestIdleCallback(loadFonts);\n        } else {\n          setTimeout(loadFonts, 0);\n        }\n      }\n    };\n  }\n\n  // Critical rendering path optimization\n  static optimizeCriticalRenderingPath() {\n    return {\n      inlineCriticalCSS(css) {\n        const style = document.createElement('style');\n        style.textContent = css;\n        style.setAttribute('data-critical', 'true');\n        document.head.appendChild(style);\n      },\n\n      loadNonCriticalCSS(href) {\n        const link = document.createElement('link');\n        link.rel = 'stylesheet';\n        link.href = href;\n        link.media = 'print';\n        link.onload = () =\u003e {\n          link.media = 'all';\n        };\n        document.head.appendChild(link);\n      },\n\n      deferNonCriticalJS(scripts) {\n        if (document.readyState === 'complete') {\n          this.loadScripts(scripts);\n        } else {\n          window.addEventListener('load', () =\u003e {\n            this.loadScripts(scripts);\n          });\n        }\n      },\n\n      loadScripts(scripts) {\n        scripts.forEach((src, index) =\u003e {\n          setTimeout(() =\u003e {\n            const script = document.createElement('script');\n            script.src = src;\n            script.async = true;\n            document.body.appendChild(script);\n          }, index * 100); // Stagger loading\n        });\n      },\n\n      optimizeResourceHints(resources) {\n        resources.forEach(resource =\u003e {\n          const link = document.createElement('link');\n          \n          switch (resource.hint) {\n            case 'preload':\n              link.rel = 'preload';\n              link.as = resource.as;\n              break;\n            case 'prefetch':\n              link.rel = 'prefetch';\n              break;\n            case 'preconnect':\n              link.rel = 'preconnect';\n              break;\n            case 'dns-prefetch':\n              link.rel = 'dns-prefetch';\n              break;\n          }\n          \n          link.href = resource.href;\n          if (resource.crossOrigin) {\n            link.crossOrigin = resource.crossOrigin;\n          }\n          \n          document.head.appendChild(link);\n        });\n      }\n    };\n  }\n}\n```\n\nThis comprehensive performance optimization guide provides the essential tools and techniques for building high-performance frontend applications that meet the demanding standards of Big Tech companies, covering everything from measurement and monitoring to advanced rendering optimizations."])</script><script>self.__next_f.push([1,"8:[\"slug\",\"src/content/frontend/fundamentals/performance-optimization-fundamentals\",\"c\"]\nd:[]\n"])</script><script>self.__next_f.push([1,"0:[\"$\",\"$L3\",null,{\"buildId\":\"7uJ7BVaXJTiEOD9iYDv3n\",\"assetPrefix\":\"/interview\",\"urlParts\":[\"\",\"docs\",\"src\",\"content\",\"frontend\",\"fundamentals\",\"performance-optimization-fundamentals\"],\"initialTree\":[\"\",{\"children\":[\"docs\",{\"children\":[[\"slug\",\"src/content/frontend/fundamentals/performance-optimization-fundamentals\",\"c\"],{\"children\":[\"__PAGE__?{\\\"slug\\\":[\\\"src\\\",\\\"content\\\",\\\"frontend\\\",\\\"fundamentals\\\",\\\"performance-optimization-fundamentals\\\"]}\",{}]}]}]},\"$undefined\",\"$undefined\",true],\"initialSeedData\":[\"\",{\"children\":[\"docs\",{\"children\":[[\"slug\",\"src/content/frontend/fundamentals/performance-optimization-fundamentals\",\"c\"],{\"children\":[\"__PAGE__\",{},[[\"$L4\",[\"$\",\"div\",null,{\"style\":{\"maxWidth\":\"1200px\",\"margin\":\"0 auto\",\"padding\":\"2rem\",\"paddingTop\":\"6rem\"},\"children\":[[\"$\",\"div\",null,{\"style\":{\"marginBottom\":\"2rem\"},\"children\":[[\"$\",\"nav\",null,{\"style\":{\"color\":\"#64748b\",\"fontSize\":\"0.9rem\",\"marginBottom\":\"1rem\"},\"children\":[[\"$\",\"a\",null,{\"href\":\"/\",\"style\":{\"color\":\"#3b82f6\",\"textDecoration\":\"none\"},\"children\":\"Home\"}],\" \u003e \",[\"$\",\"span\",null,{\"children\":\"src \u003e content \u003e frontend \u003e fundamentals \u003e performance-optimization-fundamentals\"}]]}],[\"$\",\"h1\",null,{\"style\":{\"fontSize\":\"2.5rem\",\"fontWeight\":\"800\",\"marginBottom\":\"0.5rem\",\"color\":\"#1e293b\"},\"children\":\"Performance Optimization Fundamentals\"}],[\"$\",\"div\",null,{\"style\":{\"color\":\"#64748b\",\"fontSize\":\"0.9rem\",\"marginBottom\":\"2rem\"},\"children\":[[\"$\",\"span\",null,{\"children\":[\"📁 \",\"src/content/frontend/fundamentals/performance-optimization-fundamentals.md\"]}],\"$undefined\",\"$undefined\"]}]]}],[\"$\",\"$L5\",null,{\"content\":\"$6\"}]]}],null],null],null]},[null,[\"$\",\"$L7\",null,{\"parallelRouterKey\":\"children\",\"segmentPath\":[\"children\",\"docs\",\"children\",\"$8\",\"children\"],\"error\":\"$undefined\",\"errorStyles\":\"$undefined\",\"errorScripts\":\"$undefined\",\"template\":[\"$\",\"$L9\",null,{}],\"templateStyles\":\"$undefined\",\"templateScripts\":\"$undefined\",\"notFound\":\"$undefined\",\"notFoundStyles\":\"$undefined\"}]],null]},[null,[\"$\",\"$L7\",null,{\"parallelRouterKey\":\"children\",\"segmentPath\":[\"children\",\"docs\",\"children\"],\"error\":\"$undefined\",\"errorStyles\":\"$undefined\",\"errorScripts\":\"$undefined\",\"template\":[\"$\",\"$L9\",null,{}],\"templateStyles\":\"$undefined\",\"templateScripts\":\"$undefined\",\"notFound\":\"$undefined\",\"notFoundStyles\":\"$undefined\"}]],null]},[[[[\"$\",\"link\",\"0\",{\"rel\":\"stylesheet\",\"href\":\"/interview/_next/static/css/387024c6a2216908.css\",\"precedence\":\"next\",\"crossOrigin\":\"$undefined\"}]],[\"$\",\"$La\",null,{\"children\":[\"$\",\"$L7\",null,{\"parallelRouterKey\":\"children\",\"segmentPath\":[\"children\"],\"error\":\"$undefined\",\"errorStyles\":\"$undefined\",\"errorScripts\":\"$undefined\",\"template\":[\"$\",\"$L9\",null,{}],\"templateStyles\":\"$undefined\",\"templateScripts\":\"$undefined\",\"notFound\":[[\"$\",\"title\",null,{\"children\":\"404: This page could not be found.\"}],[\"$\",\"div\",null,{\"style\":{\"fontFamily\":\"system-ui,\\\"Segoe UI\\\",Roboto,Helvetica,Arial,sans-serif,\\\"Apple Color Emoji\\\",\\\"Segoe UI Emoji\\\"\",\"height\":\"100vh\",\"textAlign\":\"center\",\"display\":\"flex\",\"flexDirection\":\"column\",\"alignItems\":\"center\",\"justifyContent\":\"center\"},\"children\":[\"$\",\"div\",null,{\"children\":[[\"$\",\"style\",null,{\"dangerouslySetInnerHTML\":{\"__html\":\"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}\"}}],[\"$\",\"h1\",null,{\"className\":\"next-error-h1\",\"style\":{\"display\":\"inline-block\",\"margin\":\"0 20px 0 0\",\"padding\":\"0 23px 0 0\",\"fontSize\":24,\"fontWeight\":500,\"verticalAlign\":\"top\",\"lineHeight\":\"49px\"},\"children\":\"404\"}],[\"$\",\"div\",null,{\"style\":{\"display\":\"inline-block\"},\"children\":[\"$\",\"h2\",null,{\"style\":{\"fontSize\":14,\"fontWeight\":400,\"lineHeight\":\"49px\",\"margin\":0},\"children\":\"This page could not be found.\"}]}]]}]}]],\"notFoundStyles\":[]}],\"params\":{}}]],null],null],\"couldBeIntercepted\":false,\"initialHead\":[null,\"$Lb\"],\"globalErrorComponent\":\"$c\",\"missingSlots\":\"$Wd\"}]\n"])</script><script>self.__next_f.push([1,"b:[[\"$\",\"meta\",\"0\",{\"name\":\"viewport\",\"content\":\"width=device-width, initial-scale=1\"}],[\"$\",\"meta\",\"1\",{\"charSet\":\"utf-8\"}],[\"$\",\"title\",\"2\",{\"children\":\"Performance Optimization Fundamentals - Frontend Interview Docs\"}],[\"$\",\"meta\",\"3\",{\"name\":\"description\",\"content\":\"# Performance Optimization Fundamentals  ## Overview Performance optimization is critical for frontend applications, especially at Big Tech companies where scal\"}],[\"$\",\"meta\",\"4\",{\"property\":\"og:title\",\"content\":\"Performance Optimization Fundamentals - Frontend Interview Docs\"}],[\"$\",\"meta\",\"5\",{\"property\":\"og:description\",\"content\":\"# Performance Optimization Fundamentals  ## Overview Performance optimization is critical for frontend applications, especially at Big Tech companies where scal\"}],[\"$\",\"meta\",\"6\",{\"property\":\"og:type\",\"content\":\"article\"}],[\"$\",\"meta\",\"7\",{\"name\":\"twitter:card\",\"content\":\"summary\"}],[\"$\",\"meta\",\"8\",{\"name\":\"twitter:title\",\"content\":\"Performance Optimization Fundamentals - Frontend Interview Docs\"}],[\"$\",\"meta\",\"9\",{\"name\":\"twitter:description\",\"content\":\"# Performance Optimization Fundamentals  ## Overview Performance optimization is critical for frontend applications, especially at Big Tech companies where scal\"}],[\"$\",\"meta\",\"10\",{\"name\":\"next-size-adjust\"}]]\n4:null\n"])</script></body></html>

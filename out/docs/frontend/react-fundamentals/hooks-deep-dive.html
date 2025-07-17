@@ -1,0 +1,820 @@
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><meta name="viewport" content="width=device-width, initial-scale=1"/><link rel="preload" href="/interview/_next/static/media/e4af272ccee01ff0-s.p.woff2" as="font" crossorigin="" type="font/woff2"/><link rel="stylesheet" href="/interview/_next/static/css/387024c6a2216908.css" data-precedence="next"/><link rel="preload" as="script" fetchPriority="low" href="/interview/_next/static/chunks/webpack-be7d7df45533bffc.js"/><script src="/interview/_next/static/chunks/fd9d1056-6922f449a204c2cc.js" async=""></script><script src="/interview/_next/static/chunks/117-e7ecc085ce9cfab3.js" async=""></script><script src="/interview/_next/static/chunks/main-app-b06be5f3411c20c3.js" async=""></script><script src="/interview/_next/static/chunks/918-3273b83890f10546.js" async=""></script><script src="/interview/_next/static/chunks/930-3262a6c9c5acace4.js" async=""></script><script src="/interview/_next/static/chunks/app/docs/%5B...slug%5D/page-32962e9542d32755.js" async=""></script><script src="/interview/_next/static/chunks/710-dfaa11b4dff08f8e.js" async=""></script><script src="/interview/_next/static/chunks/972-011bba60ed155615.js" async=""></script><script src="/interview/_next/static/chunks/233-3e0c1d820a17eca9.js" async=""></script><script src="/interview/_next/static/chunks/app/layout-333f4adcd11f8f39.js" async=""></script><title>Frontend Interview Prep 2025 - Big Tech Interview Guide</title><meta name="description" content="Comprehensive frontend interview preparation for Big Tech companies including React, TypeScript, algorithms, and system design."/><link rel="icon" href="/favicon.ico"/><meta name="theme-color" content="#1a1a1a"/><meta property="og:title" content="Frontend Interview Prep 2025"/><meta property="og:description" content="Complete guide for frontend engineers targeting Big Tech companies"/><meta property="og:type" content="website"/><link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous"/><title>React Hooks Deep Dive - Advanced Patterns and Internals - Frontend Interview Docs</title><meta name="description" content="Comprehensive understanding of React Hooks, custom hooks, and advanced patterns for state management and side effects"/><meta property="og:title" content="React Hooks Deep Dive - Advanced Patterns and Internals - Frontend Interview Docs"/><meta property="og:description" content="Comprehensive understanding of React Hooks, custom hooks, and advanced patterns for state management and side effects"/><meta property="og:type" content="article"/><meta name="twitter:card" content="summary"/><meta name="twitter:title" content="React Hooks Deep Dive - Advanced Patterns and Internals - Frontend Interview Docs"/><meta name="twitter:description" content="Comprehensive understanding of React Hooks, custom hooks, and advanced patterns for state management and side effects"/><meta name="next-size-adjust"/><script src="/interview/_next/static/chunks/polyfills-42372ed130431b0a.js" noModule=""></script><style data-styled="" data-styled-version="6.1.19">*{margin:0;padding:0;box-sizing:border-box;}/*!sc*/
+html{font-size:16px;line-height:1.5;scroll-behavior:smooth;}/*!sc*/
+body{font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;font-size:1rem;line-height:1.5;color:#1e293b;background-color:#ffffff;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;}/*!sc*/
+h1,h2,h3,h4,h5,h6{font-weight:700;line-height:1.25;margin-bottom:0.5em;}/*!sc*/
+h1{font-size:3rem;}/*!sc*/
+@media (max-width: 768px){h1{font-size:2.25rem;}}/*!sc*/
+h2{font-size:2.25rem;}/*!sc*/
+@media (max-width: 768px){h2{font-size:1.875rem;}}/*!sc*/
+h3{font-size:1.875rem;}/*!sc*/
+@media (max-width: 768px){h3{font-size:1.5rem;}}/*!sc*/
+h4{font-size:1.5rem;}/*!sc*/
+@media (max-width: 768px){h4{font-size:1.25rem;}}/*!sc*/
+h5{font-size:1.25rem;}/*!sc*/
+h6{font-size:1.125rem;}/*!sc*/
+p{margin-bottom:1rem;line-height:1.75;}/*!sc*/
+a{color:#3b82f6;text-decoration:none;transition:color 0.15s ease;}/*!sc*/
+a:hover{color:#2563eb;}/*!sc*/
+a:focus{outline:2px solid #3b82f6;outline-offset:2px;}/*!sc*/
+button{cursor:pointer;border:none;background:none;font-family:inherit;font-size:inherit;}/*!sc*/
+button:disabled{cursor:not-allowed;opacity:0.6;}/*!sc*/
+button:focus{outline:2px solid #3b82f6;outline-offset:2px;}/*!sc*/
+input,textarea,select{font-family:inherit;font-size:inherit;}/*!sc*/
+input:focus,textarea:focus,select:focus{outline:2px solid #3b82f6;outline-offset:2px;}/*!sc*/
+img{max-width:100%;height:auto;}/*!sc*/
+ul,ol{margin-bottom:1rem;padding-left:1.5rem;}/*!sc*/
+li{margin-bottom:0.25rem;}/*!sc*/
+blockquote{margin:1rem 0;padding:1rem;border-left:4px solid #3b82f6;background-color:#f1f5f9;font-style:italic;}/*!sc*/
+code{font-family:SFMono-Regular,Consolas,"Liberation Mono",Menlo,monospace;font-size:0.9em;background-color:#f1f5f9;padding:0.2em 0.4em;border-radius:0.25rem;}/*!sc*/
+pre{background-color:#f1f5f9;padding:1rem;border-radius:0.5rem;overflow-x:auto;margin-bottom:1rem;}/*!sc*/
+pre code{background:none;padding:0;}/*!sc*/
+table{width:100%;border-collapse:collapse;margin-bottom:1rem;}/*!sc*/
+th,td{padding:0.75rem;text-align:left;border-bottom:1px solid #e2e8f0;}/*!sc*/
+th{font-weight:600;background-color:#f1f5f9;}/*!sc*/
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0, 0, 0, 0);white-space:nowrap;border:0;}/*!sc*/
+.skip-link{position:absolute;top:-40px;left:6px;background:#3b82f6;color:white;padding:8px;text-decoration:none;border-radius:4px;z-index:100;}/*!sc*/
+.skip-link:focus{top:6px;}/*!sc*/
+::-webkit-scrollbar{width:8px;height:8px;}/*!sc*/
+::-webkit-scrollbar-track{background:#f1f5f9;}/*!sc*/
+::-webkit-scrollbar-thumb{background:#94a3b8;border-radius:4px;}/*!sc*/
+::-webkit-scrollbar-thumb:hover{background:#64748b;}/*!sc*/
+::selection{background:#3b82f6;color:white;}/*!sc*/
+.focus-visible{outline:2px solid #3b82f6;outline-offset:2px;}/*!sc*/
+.fade-in{opacity:0;animation:fadeIn 0.3s ease forwards;}/*!sc*/
+.slide-up{transform:translateY(20px);opacity:0;animation:slideUp 0.3s ease forwards;}/*!sc*/
+@keyframes fadeIn{to{opacity:1;}}/*!sc*/
+@keyframes slideUp{to{transform:translateY(0);opacity:1;}}/*!sc*/
+@media print{*{background:white!important;color:black!important;box-shadow:none!important;text-shadow:none!important;}a,a:visited{text-decoration:underline;}h1,h2,h3,h4,h5,h6{break-after:avoid;}pre,blockquote{border:1px solid #999;break-inside:avoid;}img{max-width:100%!important;}@page{margin:0.5in;}}/*!sc*/
+data-styled.g23[id="sc-global-kxA-Ddz1"]{content:"sc-global-kxA-Ddz1,"}/*!sc*/
+.eKIJjO{position:fixed;top:0;width:100%;z-index:1020;background:transparent;backdrop-filter:blur(10px);border-bottom:1px solid transparent;transition:all 0.3s ease;}/*!sc*/
+data-styled.g24[id="sc-jaXbil"]{content:"eKIJjO,"}/*!sc*/
+.eixvq{max-width:1200px;margin:0 auto;padding:0 2rem;display:flex;align-items:center;justify-content:space-between;height:70px;}/*!sc*/
+data-styled.g25[id="sc-eqNDNG"]{content:"eixvq,"}/*!sc*/
+.hudwVZ{display:flex;align-items:center;gap:0.5rem;font-size:1.5rem;font-weight:700;color:#3b82f6;text-decoration:none;cursor:pointer;}/*!sc*/
+.hudwVZ:hover{color:#2563eb;}/*!sc*/
+data-styled.g26[id="sc-fVHBlr"]{content:"hudwVZ,"}/*!sc*/
+.gHgjnR{display:flex;align-items:center;gap:2rem;}/*!sc*/
+@media (max-width: 768px){.gHgjnR{display:none;}}/*!sc*/
+data-styled.g27[id="sc-gLaqbQ"]{content:"gHgjnR,"}/*!sc*/
+.ejYeRD{color:#1e293b;font-weight:500;text-decoration:none;transition:color 0.15s ease;position:relative;}/*!sc*/
+.ejYeRD:hover{color:#3b82f6;}/*!sc*/
+.ejYeRD:after{content:'';position:absolute;bottom:-5px;left:0;width:0;height:2px;background:#3b82f6;transition:width 0.15s ease;}/*!sc*/
+.ejYeRD:hover:after{width:100%;}/*!sc*/
+data-styled.g28[id="sc-ipUnzB"]{content:"ejYeRD,"}/*!sc*/
+.cwUwRf{display:none;background:none;border:none;color:#1e293b;cursor:pointer;padding:0.5rem;}/*!sc*/
+@media (max-width: 768px){.cwUwRf{display:block;}}/*!sc*/
+data-styled.g29[id="sc-eQwNpu"]{content:"cwUwRf,"}/*!sc*/
+.eotevR{display:flex;align-items:center;gap:0.5rem;background:#f1f5f9;border:1px solid #e2e8f0;border-radius:0.5rem;padding:0.5rem 1rem;color:#64748b;font-size:0.9rem;transition:all 0.15s ease;}/*!sc*/
+.eotevR:hover{background:#ffffff;border-color:#3b82f6;}/*!sc*/
+data-styled.g33[id="sc-eVqvcJ"]{content:"eotevR,"}/*!sc*/
+.fXFPTj{background:#1e293b;color:white;padding:3rem 0 1rem;margin-top:auto;}/*!sc*/
+data-styled.g34[id="sc-bbbBoY"]{content:"fXFPTj,"}/*!sc*/
+.dWUTOl{max-width:1200px;margin:0 auto;padding:0 2rem;}/*!sc*/
+data-styled.g35[id="sc-cdmAjP"]{content:"dWUTOl,"}/*!sc*/
+.kWeZJe{display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:2rem;margin-bottom:2rem;}/*!sc*/
+@media (max-width: 768px){.kWeZJe{grid-template-columns:1fr 1fr;gap:1.5rem;}}/*!sc*/
+@media (max-width: 480px){.kWeZJe{grid-template-columns:1fr;}}/*!sc*/
+data-styled.g36[id="sc-jytpVa"]{content:"kWeZJe,"}/*!sc*/
+.hlQQbN h3{font-size:1.1rem;font-weight:600;margin-bottom:1rem;color:white;}/*!sc*/
+.hlQQbN ul{list-style:none;padding:0;margin:0;}/*!sc*/
+.hlQQbN li{margin-bottom:0.5rem;}/*!sc*/
+.hlQQbN a{color:rgba(255, 255, 255, 0.7);text-decoration:none;transition:color 0.15s ease;}/*!sc*/
+.hlQQbN a:hover{color:white;}/*!sc*/
+data-styled.g37[id="sc-eknHtZ"]{content:"hlQQbN,"}/*!sc*/
+.eUEOfs{display:flex;align-items:center;gap:0.5rem;font-size:1.2rem;font-weight:700;margin-bottom:1rem;color:white;}/*!sc*/
+data-styled.g38[id="sc-pYNGo"]{content:"eUEOfs,"}/*!sc*/
+.FTAbj{color:rgba(255, 255, 255, 0.7);line-height:1.6;margin-bottom:1rem;}/*!sc*/
+data-styled.g39[id="sc-cCVJLD"]{content:"FTAbj,"}/*!sc*/
+.fjvVr{display:flex;gap:1rem;}/*!sc*/
+.fjvVr a{display:flex;align-items:center;justify-content:center;width:40px;height:40px;background:rgba(255, 255, 255, 0.1);border-radius:0.5rem;color:rgba(255, 255, 255, 0.7);transition:all 0.15s ease;}/*!sc*/
+.fjvVr a:hover{background:rgba(255, 255, 255, 0.2);color:white;}/*!sc*/
+data-styled.g40[id="sc-jYczwO"]{content:"fjvVr,"}/*!sc*/
+.jkOcpo{border-top:1px solid rgba(255, 255, 255, 0.1);padding-top:2rem;display:flex;justify-content:space-between;align-items:center;}/*!sc*/
+@media (max-width: 768px){.jkOcpo{flex-direction:column;gap:1rem;text-align:center;}}/*!sc*/
+data-styled.g41[id="sc-dNFkOE"]{content:"jkOcpo,"}/*!sc*/
+.ficqwG{color:rgba(255, 255, 255, 0.7);margin:0;font-size:0.9rem;}/*!sc*/
+data-styled.g42[id="sc-fszimp"]{content:"ficqwG,"}/*!sc*/
+.cAqCWV{display:flex;gap:2rem;}/*!sc*/
+@media (max-width: 480px){.cAqCWV{flex-direction:column;gap:1rem;}}/*!sc*/
+.cAqCWV a{color:rgba(255, 255, 255, 0.7);text-decoration:none;font-size:0.9rem;transition:color 0.15s ease;}/*!sc*/
+.cAqCWV a:hover{color:white;}/*!sc*/
+data-styled.g43[id="sc-etsjJW"]{content:"cAqCWV,"}/*!sc*/
+.dwkWyw{color:#1e293b;line-height:1.6;}/*!sc*/
+.dwkWyw h1,.dwkWyw h2,.dwkWyw h3,.dwkWyw h4,.dwkWyw h5,.dwkWyw h6{color:#1e293b;margin-top:2rem;margin-bottom:1rem;font-weight:600;}/*!sc*/
+.dwkWyw h1{font-size:2rem;border-bottom:2px solid #e2e8f0;padding-bottom:0.5rem;}/*!sc*/
+.dwkWyw h2{font-size:1.5rem;border-bottom:1px solid #e2e8f0;padding-bottom:0.3rem;}/*!sc*/
+.dwkWyw h3{font-size:1.25rem;}/*!sc*/
+.dwkWyw h4{font-size:1.1rem;}/*!sc*/
+.dwkWyw p{margin-bottom:1rem;color:#64748b;}/*!sc*/
+.dwkWyw a{color:#3b82f6;text-decoration:none;}/*!sc*/
+.dwkWyw a:hover{text-decoration:underline;}/*!sc*/
+.dwkWyw ul,.dwkWyw ol{margin-bottom:1rem;padding-left:1.5rem;}/*!sc*/
+.dwkWyw ul li,.dwkWyw ol li{margin-bottom:0.5rem;color:#64748b;}/*!sc*/
+.dwkWyw blockquote{border-left:4px solid #3b82f6;padding-left:1rem;margin:1rem 0;font-style:italic;color:#64748b;background:#f1f5f9;padding:1rem;border-radius:0.5rem;}/*!sc*/
+.dwkWyw code{background:#f1f5f9;padding:0.2rem 0.4rem;border-radius:0.25rem;font-family:SFMono-Regular,Consolas,"Liberation Mono",Menlo,monospace;font-size:0.9em;color:#f59e0b;}/*!sc*/
+.dwkWyw pre{background:#ffffff;border:1px solid #e2e8f0;border-radius:0.5rem;padding:1rem;margin:1rem 0;overflow-x:auto;}/*!sc*/
+.dwkWyw pre code{background:none;padding:0;color:#1e293b;font-size:0.9rem;}/*!sc*/
+.dwkWyw table{width:100%;border-collapse:collapse;margin:1rem 0;}/*!sc*/
+.dwkWyw table th,.dwkWyw table td{border:1px solid #e2e8f0;padding:0.5rem;text-align:left;}/*!sc*/
+.dwkWyw table th{background:#ffffff;font-weight:600;}/*!sc*/
+.dwkWyw table tr:nth-child(even){background:#f1f5f9;}/*!sc*/
+.dwkWyw hr{border:none;height:1px;background:#e2e8f0;margin:2rem 0;}/*!sc*/
+.dwkWyw .highlight{background:#3b82f620;padding:0.2rem 0.4rem;border-radius:0.25rem;font-weight:600;}/*!sc*/
+.dwkWyw .hljs{background:#ffffff;color:#1e293b;}/*!sc*/
+.dwkWyw .hljs-keyword{color:#3b82f6;font-weight:600;}/*!sc*/
+.dwkWyw .hljs-string{color:#10b981;}/*!sc*/
+.dwkWyw .hljs-function{color:#f59e0b;}/*!sc*/
+.dwkWyw .hljs-comment{color:#94a3b8;font-style:italic;}/*!sc*/
+.dwkWyw .hljs-number{color:#f59e0b;}/*!sc*/
+.dwkWyw .hljs-variable{color:#1e293b;}/*!sc*/
+.dwkWyw .hljs-title{color:#f59e0b;font-weight:600;}/*!sc*/
+data-styled.g44[id="sc-fYmhhH"]{content:"dwkWyw,"}/*!sc*/
+</style></head><body class="__className_6eac61"><div style="min-height:100vh;display:flex;flex-direction:column"><nav class="sc-jaXbil eKIJjO"><div class="sc-eqNDNG eixvq"><a href="/interview"><a class="sc-fVHBlr hudwVZ"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-code "><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>Frontend Interview Prep</a></a><div class="sc-gLaqbQ gHgjnR"><a href="/interview/problems"><a class="sc-ipUnzB ejYeRD">Problems</a></a><a href="/interview/learn"><a class="sc-ipUnzB ejYeRD">Learn</a></a><a href="/interview/study-guide"><a class="sc-ipUnzB ejYeRD">Study Guide</a></a><a href="/interview/system-design"><a class="sc-ipUnzB ejYeRD">System Design</a></a><a href="/interview/performance"><a class="sc-ipUnzB ejYeRD">Performance</a></a><a href="/interview/accessibility"><a class="sc-ipUnzB ejYeRD">Accessibility</a></a><a href="/interview/interview-tips"><a class="sc-ipUnzB ejYeRD">Interview Tips</a></a><button class="sc-eVqvcJ eotevR"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-search "><circle cx="11" cy="11" r="8"></circle><path d="m21 21-4.3-4.3"></path></svg>Search</button></div><button class="sc-eQwNpu cwUwRf"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-menu "><line x1="4" x2="20" y1="12" y2="12"></line><line x1="4" x2="20" y1="6" y2="6"></line><line x1="4" x2="20" y1="18" y2="18"></line></svg></button></div></nav><main style="flex:1"><div style="max-width:1200px;margin:0 auto;padding:2rem;padding-top:6rem"><div style="margin-bottom:2rem"><nav style="color:#64748b;font-size:0.9rem;margin-bottom:1rem"><a href="/" style="color:#3b82f6;text-decoration:none">Home</a> &gt; <span>frontend &gt; react-fundamentals &gt; hooks-deep-dive</span></nav><h1 style="font-size:2.5rem;font-weight:800;margin-bottom:0.5rem;color:#1e293b">React Hooks Deep Dive - Advanced Patterns and Internals</h1><div style="color:#64748b;font-size:0.9rem;margin-bottom:2rem"><span>📁 <!-- -->frontend/react-fundamentals/hooks-deep-dive.md</span></div></div><div class="sc-fYmhhH dwkWyw"><h1 id="react-hooks-deep-dive---advanced-patterns-and-internals" node="[object Object]">React Hooks Deep Dive - Advanced Patterns and Internals</h1>
+<h2 id="🎣-usestate-deep-theory" node="[object Object]">🎣 useState Deep Theory</h2>
+<h3 id="[object-object]" node="[object Object]"><strong>What is useState Internally?</strong></h3>
+<p><strong>Definition:</strong> useState is a React Hook that allows functional components to have local state. Internally, it uses a fiber node&#x27;s memoizedState to store state values and update functions.</p>
+<p><strong>Why useState Works:</strong></p>
+<ul>
+<li><strong>Fiber Architecture</strong>: React&#x27;s reconciliation algorithm tracks state per component instance</li>
+<li><strong>Closure Mechanism</strong>: State updater functions capture the current fiber context</li>
+<li><strong>Batching</strong>: Multiple setState calls are batched for performance</li>
+<li><strong>Immutability</strong>: State updates trigger re-renders through reference comparison</li>
+</ul>
+<p><strong>How useState Works Internally:</strong></p>
+<pre><pre><code class="hljs hljs language-mermaid">graph TB
+    subgraph &quot;useState Internal Mechanism&quot;
+        A[Component Render] --&gt; B[Hook Index Tracking]
+        B --&gt; C[Fiber Node State]
+        C --&gt; D[Memoized State Array]
+        
+        E[setState Call] --&gt; F[Update Queue]
+        F --&gt; G[Schedule Re-render]
+        G --&gt; H[Reconciliation]
+        H --&gt; I[Component Re-render]
+    end
+
+    subgraph &quot;State Update Lifecycle&quot;
+        J[User Action] --&gt; K[setState(newValue)]
+        K --&gt; L[Create Update Object]
+        L --&gt; M[Enqueue Update]
+        M --&gt; N[Schedule Work]
+        N --&gt; O[Process Updates]
+        O --&gt; P[Calculate New State]
+        P --&gt; Q[Trigger Re-render]
+    end
+
+    subgraph &quot;Batching Mechanism&quot;
+        R[Multiple setState] --&gt; S[Update Queue]
+        S --&gt; T[Batch Processing]
+        T --&gt; U[Single Re-render]
+        
+        V[Automatic Batching] --&gt; W[React 18+]
+        W --&gt; X[All Updates Batched]
+    end
+</code></pre></pre>
+<p><strong>Deep Theory with Advanced Examples:</strong></p>
+<pre><pre><code class="hljs hljs language-javascript"><span class="hljs-comment">// WHAT: useState internal behavior simulation</span>
+<span class="hljs-keyword">class</span> <span class="hljs-title class_">UseStateSimulator</span> {
+    <span class="hljs-title function_">constructor</span>(<span class="hljs-params"></span>) {
+        <span class="hljs-variable language_">this</span>.<span class="hljs-property">currentHookIndex</span> = <span class="hljs-number">0</span>;
+        <span class="hljs-variable language_">this</span>.<span class="hljs-property">hooks</span> = [];
+        <span class="hljs-variable language_">this</span>.<span class="hljs-property">isRendering</span> = <span class="hljs-literal">false</span>;
+        <span class="hljs-variable language_">this</span>.<span class="hljs-property">updateQueue</span> = [];
+        <span class="hljs-variable language_">this</span>.<span class="hljs-property">batchedUpdates</span> = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Set</span>();
+    }
+    
+    <span class="hljs-comment">// Simulate useState hook</span>
+    <span class="hljs-title function_">useState</span>(<span class="hljs-params">initialValue</span>) {
+        <span class="hljs-keyword">const</span> hookIndex = <span class="hljs-variable language_">this</span>.<span class="hljs-property">currentHookIndex</span>++;
+        
+        <span class="hljs-comment">// Initialize hook if first render</span>
+        <span class="hljs-keyword">if</span> (!<span class="hljs-variable language_">this</span>.<span class="hljs-property">hooks</span>[hookIndex]) {
+            <span class="hljs-variable language_">this</span>.<span class="hljs-property">hooks</span>[hookIndex] = {
+                <span class="hljs-attr">state</span>: <span class="hljs-keyword">typeof</span> initialValue === <span class="hljs-string">&#x27;function&#x27;</span> ? <span class="hljs-title function_">initialValue</span>() : initialValue,
+                <span class="hljs-attr">queue</span>: [],
+                <span class="hljs-attr">dispatch</span>: <span class="hljs-literal">null</span>
+            };
+        }
+        
+        <span class="hljs-keyword">const</span> hook = <span class="hljs-variable language_">this</span>.<span class="hljs-property">hooks</span>[hookIndex];
+        
+        <span class="hljs-comment">// Process queued updates</span>
+        <span class="hljs-keyword">if</span> (hook.<span class="hljs-property">queue</span>.<span class="hljs-property">length</span> &gt; <span class="hljs-number">0</span>) {
+            <span class="hljs-keyword">let</span> newState = hook.<span class="hljs-property">state</span>;
+            
+            hook.<span class="hljs-property">queue</span>.<span class="hljs-title function_">forEach</span>(<span class="hljs-function"><span class="hljs-params">update</span> =&gt;</span> {
+                <span class="hljs-keyword">if</span> (<span class="hljs-keyword">typeof</span> update === <span class="hljs-string">&#x27;function&#x27;</span>) {
+                    newState = <span class="hljs-title function_">update</span>(newState);
+                } <span class="hljs-keyword">else</span> {
+                    newState = update;
+                }
+            });
+            
+            hook.<span class="hljs-property">state</span> = newState;
+            hook.<span class="hljs-property">queue</span> = [];
+        }
+        
+        <span class="hljs-comment">// Create dispatch function</span>
+        <span class="hljs-keyword">const</span> <span class="hljs-title function_">dispatch</span> = (<span class="hljs-params">action</span>) =&gt; {
+            <span class="hljs-keyword">const</span> update = {
+                action,
+                hookIndex,
+                <span class="hljs-attr">timestamp</span>: <span class="hljs-title class_">Date</span>.<span class="hljs-title function_">now</span>()
+            };
+            
+            <span class="hljs-comment">// Add to update queue</span>
+            hook.<span class="hljs-property">queue</span>.<span class="hljs-title function_">push</span>(action);
+            <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">scheduleUpdate</span>(update);
+        };
+        
+        hook.<span class="hljs-property">dispatch</span> = dispatch;
+        
+        <span class="hljs-keyword">return</span> [hook.<span class="hljs-property">state</span>, dispatch];
+    }
+    
+    <span class="hljs-title function_">scheduleUpdate</span>(<span class="hljs-params">update</span>) {
+        <span class="hljs-variable language_">this</span>.<span class="hljs-property">updateQueue</span>.<span class="hljs-title function_">push</span>(update);
+        
+        <span class="hljs-comment">// Batch updates (simulate React&#x27;s batching)</span>
+        <span class="hljs-keyword">if</span> (!<span class="hljs-variable language_">this</span>.<span class="hljs-property">isRendering</span>) {
+            <span class="hljs-variable language_">this</span>.<span class="hljs-property">batchedUpdates</span>.<span class="hljs-title function_">add</span>(update);
+            
+            <span class="hljs-comment">// Process batched updates in next tick</span>
+            <span class="hljs-title class_">Promise</span>.<span class="hljs-title function_">resolve</span>().<span class="hljs-title function_">then</span>(<span class="hljs-function">() =&gt;</span> {
+                <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">processBatchedUpdates</span>();
+            });
+        }
+    }
+    
+    <span class="hljs-title function_">processBatchedUpdates</span>(<span class="hljs-params"></span>) {
+        <span class="hljs-keyword">if</span> (<span class="hljs-variable language_">this</span>.<span class="hljs-property">batchedUpdates</span>.<span class="hljs-property">size</span> === <span class="hljs-number">0</span>) <span class="hljs-keyword">return</span>;
+        
+        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">`Processing <span class="hljs-subst">${<span class="hljs-variable language_">this</span>.batchedUpdates.size}</span> batched updates`</span>);
+        
+        <span class="hljs-variable language_">this</span>.<span class="hljs-property">isRendering</span> = <span class="hljs-literal">true</span>;
+        <span class="hljs-variable language_">this</span>.<span class="hljs-property">currentHookIndex</span> = <span class="hljs-number">0</span>;
+        
+        <span class="hljs-comment">// Simulate component re-render</span>
+        <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">render</span>();
+        
+        <span class="hljs-variable language_">this</span>.<span class="hljs-property">batchedUpdates</span>.<span class="hljs-title function_">clear</span>();
+        <span class="hljs-variable language_">this</span>.<span class="hljs-property">isRendering</span> = <span class="hljs-literal">false</span>;
+    }
+    
+    <span class="hljs-title function_">render</span>(<span class="hljs-params"></span>) {
+        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;Component re-rendering...&#x27;</span>);
+        <span class="hljs-comment">// Reset hook index for next render</span>
+        <span class="hljs-variable language_">this</span>.<span class="hljs-property">currentHookIndex</span> = <span class="hljs-number">0</span>;
+    }
+}
+
+<span class="hljs-comment">// WHY: Advanced useState patterns</span>
+<span class="hljs-keyword">function</span> <span class="hljs-title function_">advancedUseStatePatterns</span>(<span class="hljs-params"></span>) {
+    <span class="hljs-comment">// 1. Functional updates for complex state</span>
+    <span class="hljs-keyword">const</span> [state, setState] = <span class="hljs-title function_">useState</span>({ <span class="hljs-attr">count</span>: <span class="hljs-number">0</span>, <span class="hljs-attr">name</span>: <span class="hljs-string">&#x27;&#x27;</span>, <span class="hljs-attr">items</span>: [] });
+    
+    <span class="hljs-comment">// Functional update prevents stale closure issues</span>
+    <span class="hljs-keyword">const</span> incrementCount = <span class="hljs-title function_">useCallback</span>(<span class="hljs-function">() =&gt;</span> {
+        <span class="hljs-title function_">setState</span>(<span class="hljs-function"><span class="hljs-params">prevState</span> =&gt;</span> ({
+            ...prevState,
+            <span class="hljs-attr">count</span>: prevState.<span class="hljs-property">count</span> + <span class="hljs-number">1</span>
+        }));
+    }, []);
+    
+    <span class="hljs-comment">// 2. Lazy initial state for expensive computations</span>
+    <span class="hljs-keyword">const</span> [expensiveState, setExpensiveState] = <span class="hljs-title function_">useState</span>(<span class="hljs-function">() =&gt;</span> {
+        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;Expensive computation only runs once&#x27;</span>);
+        <span class="hljs-keyword">return</span> <span class="hljs-title class_">Array</span>.<span class="hljs-title function_">from</span>({ <span class="hljs-attr">length</span>: <span class="hljs-number">10000</span> }, <span class="hljs-function">(<span class="hljs-params">_, i</span>) =&gt;</span> i * i);
+    });
+    
+    <span class="hljs-comment">// 3. State reducer pattern with useState</span>
+    <span class="hljs-keyword">const</span> [complexState, setComplexState] = <span class="hljs-title function_">useState</span>({
+        <span class="hljs-attr">loading</span>: <span class="hljs-literal">false</span>,
+        <span class="hljs-attr">data</span>: <span class="hljs-literal">null</span>,
+        <span class="hljs-attr">error</span>: <span class="hljs-literal">null</span>
+    });
+    
+    <span class="hljs-keyword">const</span> stateReducer = <span class="hljs-title function_">useCallback</span>(<span class="hljs-function">(<span class="hljs-params">action</span>) =&gt;</span> {
+        <span class="hljs-title function_">setComplexState</span>(<span class="hljs-function"><span class="hljs-params">prevState</span> =&gt;</span> {
+            <span class="hljs-keyword">switch</span> (action.<span class="hljs-property">type</span>) {
+                <span class="hljs-keyword">case</span> <span class="hljs-string">&#x27;FETCH_START&#x27;</span>:
+                    <span class="hljs-keyword">return</span> { ...prevState, <span class="hljs-attr">loading</span>: <span class="hljs-literal">true</span>, <span class="hljs-attr">error</span>: <span class="hljs-literal">null</span> };
+                <span class="hljs-keyword">case</span> <span class="hljs-string">&#x27;FETCH_SUCCESS&#x27;</span>:
+                    <span class="hljs-keyword">return</span> { <span class="hljs-attr">loading</span>: <span class="hljs-literal">false</span>, <span class="hljs-attr">data</span>: action.<span class="hljs-property">payload</span>, <span class="hljs-attr">error</span>: <span class="hljs-literal">null</span> };
+                <span class="hljs-keyword">case</span> <span class="hljs-string">&#x27;FETCH_ERROR&#x27;</span>:
+                    <span class="hljs-keyword">return</span> { <span class="hljs-attr">loading</span>: <span class="hljs-literal">false</span>, <span class="hljs-attr">data</span>: <span class="hljs-literal">null</span>, <span class="hljs-attr">error</span>: action.<span class="hljs-property">payload</span> };
+                <span class="hljs-attr">default</span>:
+                    <span class="hljs-keyword">return</span> prevState;
+            }
+        });
+    }, []);
+    
+    <span class="hljs-comment">// 4. Optimistic updates pattern</span>
+    <span class="hljs-keyword">const</span> [optimisticState, setOptimisticState] = <span class="hljs-title function_">useState</span>([]);
+    
+    <span class="hljs-keyword">const</span> addItemOptimistically = <span class="hljs-title function_">useCallback</span>(<span class="hljs-title function_">async</span> (newItem) =&gt; {
+        <span class="hljs-keyword">const</span> tempId = <span class="hljs-title class_">Date</span>.<span class="hljs-title function_">now</span>();
+        <span class="hljs-keyword">const</span> optimisticItem = { ...newItem, <span class="hljs-attr">id</span>: tempId, <span class="hljs-attr">pending</span>: <span class="hljs-literal">true</span> };
+        
+        <span class="hljs-comment">// Optimistically add item</span>
+        <span class="hljs-title function_">setOptimisticState</span>(<span class="hljs-function"><span class="hljs-params">prev</span> =&gt;</span> [...prev, optimisticItem]);
+        
+        <span class="hljs-keyword">try</span> {
+            <span class="hljs-keyword">const</span> savedItem = <span class="hljs-keyword">await</span> api.<span class="hljs-title function_">saveItem</span>(newItem);
+            
+            <span class="hljs-comment">// Replace optimistic item with real item</span>
+            <span class="hljs-title function_">setOptimisticState</span>(<span class="hljs-function"><span class="hljs-params">prev</span> =&gt;</span> 
+                prev.<span class="hljs-title function_">map</span>(<span class="hljs-function"><span class="hljs-params">item</span> =&gt;</span> 
+                    item.<span class="hljs-property">id</span> === tempId ? savedItem : item
+                )
+            );
+        } <span class="hljs-keyword">catch</span> (error) {
+            <span class="hljs-comment">// Remove optimistic item on error</span>
+            <span class="hljs-title function_">setOptimisticState</span>(<span class="hljs-function"><span class="hljs-params">prev</span> =&gt;</span> 
+                prev.<span class="hljs-title function_">filter</span>(<span class="hljs-function"><span class="hljs-params">item</span> =&gt;</span> item.<span class="hljs-property">id</span> !== tempId)
+            );
+            <span class="hljs-keyword">throw</span> error;
+        }
+    }, []);
+    
+    <span class="hljs-keyword">return</span> {
+        state,
+        incrementCount,
+        expensiveState,
+        stateReducer,
+        addItemOptimistically
+    };
+}
+
+<span class="hljs-comment">// HOW: Custom hooks for advanced state management</span>
+<span class="hljs-keyword">function</span> <span class="hljs-title function_">useAdvancedState</span>(<span class="hljs-params">initialState, options = {}</span>) {
+    <span class="hljs-keyword">const</span> {
+        serialize = <span class="hljs-title class_">JSON</span>.<span class="hljs-property">stringify</span>,
+        deserialize = <span class="hljs-title class_">JSON</span>.<span class="hljs-property">parse</span>,
+        storage = <span class="hljs-variable language_">localStorage</span>,
+        key = <span class="hljs-literal">null</span>,
+        validator = <span class="hljs-literal">null</span>,
+        middleware = []
+    } = options;
+    
+    <span class="hljs-comment">// Initialize state with persistence</span>
+    <span class="hljs-keyword">const</span> [state, setState] = <span class="hljs-title function_">useState</span>(<span class="hljs-function">() =&gt;</span> {
+        <span class="hljs-keyword">if</span> (key &amp;&amp; storage) {
+            <span class="hljs-keyword">try</span> {
+                <span class="hljs-keyword">const</span> stored = storage.<span class="hljs-title function_">getItem</span>(key);
+                <span class="hljs-keyword">if</span> (stored) {
+                    <span class="hljs-keyword">const</span> parsed = <span class="hljs-title function_">deserialize</span>(stored);
+                    <span class="hljs-keyword">return</span> validator ? <span class="hljs-title function_">validator</span>(parsed) ? parsed : initialState : parsed;
+                }
+            } <span class="hljs-keyword">catch</span> (error) {
+                <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">warn</span>(<span class="hljs-string">&#x27;Failed to load state from storage:&#x27;</span>, error);
+            }
+        }
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">typeof</span> initialState === <span class="hljs-string">&#x27;function&#x27;</span> ? <span class="hljs-title function_">initialState</span>() : initialState;
+    });
+    
+    <span class="hljs-comment">// Enhanced setState with middleware and persistence</span>
+    <span class="hljs-keyword">const</span> enhancedSetState = <span class="hljs-title function_">useCallback</span>(<span class="hljs-function">(<span class="hljs-params">action</span>) =&gt;</span> {
+        <span class="hljs-title function_">setState</span>(<span class="hljs-function"><span class="hljs-params">prevState</span> =&gt;</span> {
+            <span class="hljs-keyword">let</span> newState;
+            
+            <span class="hljs-keyword">if</span> (<span class="hljs-keyword">typeof</span> action === <span class="hljs-string">&#x27;function&#x27;</span>) {
+                newState = <span class="hljs-title function_">action</span>(prevState);
+            } <span class="hljs-keyword">else</span> {
+                newState = action;
+            }
+            
+            <span class="hljs-comment">// Apply middleware</span>
+            middleware.<span class="hljs-title function_">forEach</span>(<span class="hljs-function"><span class="hljs-params">mw</span> =&gt;</span> {
+                newState = <span class="hljs-title function_">mw</span>(newState, prevState);
+            });
+            
+            <span class="hljs-comment">// Persist to storage</span>
+            <span class="hljs-keyword">if</span> (key &amp;&amp; storage) {
+                <span class="hljs-keyword">try</span> {
+                    storage.<span class="hljs-title function_">setItem</span>(key, <span class="hljs-title function_">serialize</span>(newState));
+                } <span class="hljs-keyword">catch</span> (error) {
+                    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">warn</span>(<span class="hljs-string">&#x27;Failed to persist state:&#x27;</span>, error);
+                }
+            }
+            
+            <span class="hljs-keyword">return</span> newState;
+        });
+    }, [key, storage, serialize, middleware]);
+    
+    <span class="hljs-comment">// Clear persisted state</span>
+    <span class="hljs-keyword">const</span> clearPersistedState = <span class="hljs-title function_">useCallback</span>(<span class="hljs-function">() =&gt;</span> {
+        <span class="hljs-keyword">if</span> (key &amp;&amp; storage) {
+            storage.<span class="hljs-title function_">removeItem</span>(key);
+        }
+    }, [key, storage]);
+    
+    <span class="hljs-keyword">return</span> [state, enhancedSetState, { clearPersistedState }];
+}
+
+<span class="hljs-comment">// Advanced state synchronization hook</span>
+<span class="hljs-keyword">function</span> <span class="hljs-title function_">useSharedState</span>(<span class="hljs-params">key, initialValue</span>) {
+    <span class="hljs-keyword">const</span> [state, setState] = <span class="hljs-title function_">useState</span>(initialValue);
+    <span class="hljs-keyword">const</span> listeners = <span class="hljs-title function_">useRef</span>(<span class="hljs-keyword">new</span> <span class="hljs-title class_">Set</span>());
+    
+    <span class="hljs-comment">// Subscribe to state changes</span>
+    <span class="hljs-title function_">useEffect</span>(<span class="hljs-function">() =&gt;</span> {
+        <span class="hljs-keyword">const</span> <span class="hljs-title function_">handleStorageChange</span> = (<span class="hljs-params">e</span>) =&gt; {
+            <span class="hljs-keyword">if</span> (e.<span class="hljs-property">key</span> === key &amp;&amp; e.<span class="hljs-property">newValue</span>) {
+                <span class="hljs-keyword">try</span> {
+                    <span class="hljs-keyword">const</span> newValue = <span class="hljs-title class_">JSON</span>.<span class="hljs-title function_">parse</span>(e.<span class="hljs-property">newValue</span>);
+                    <span class="hljs-title function_">setState</span>(newValue);
+                } <span class="hljs-keyword">catch</span> (error) {
+                    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">warn</span>(<span class="hljs-string">&#x27;Failed to parse shared state:&#x27;</span>, error);
+                }
+            }
+        };
+        
+        <span class="hljs-variable language_">window</span>.<span class="hljs-title function_">addEventListener</span>(<span class="hljs-string">&#x27;storage&#x27;</span>, handleStorageChange);
+        <span class="hljs-keyword">return</span> <span class="hljs-function">() =&gt;</span> <span class="hljs-variable language_">window</span>.<span class="hljs-title function_">removeEventListener</span>(<span class="hljs-string">&#x27;storage&#x27;</span>, handleStorageChange);
+    }, [key]);
+    
+    <span class="hljs-comment">// Enhanced setState that broadcasts changes</span>
+    <span class="hljs-keyword">const</span> setSharedState = <span class="hljs-title function_">useCallback</span>(<span class="hljs-function">(<span class="hljs-params">action</span>) =&gt;</span> {
+        <span class="hljs-title function_">setState</span>(<span class="hljs-function"><span class="hljs-params">prevState</span> =&gt;</span> {
+            <span class="hljs-keyword">const</span> newState = <span class="hljs-keyword">typeof</span> action === <span class="hljs-string">&#x27;function&#x27;</span> ? <span class="hljs-title function_">action</span>(prevState) : action;
+            
+            <span class="hljs-comment">// Broadcast to other tabs/windows</span>
+            <span class="hljs-keyword">try</span> {
+                <span class="hljs-variable language_">localStorage</span>.<span class="hljs-title function_">setItem</span>(key, <span class="hljs-title class_">JSON</span>.<span class="hljs-title function_">stringify</span>(newState));
+                
+                <span class="hljs-comment">// Notify local listeners</span>
+                listeners.<span class="hljs-property">current</span>.<span class="hljs-title function_">forEach</span>(<span class="hljs-function"><span class="hljs-params">listener</span> =&gt;</span> {
+                    <span class="hljs-title function_">listener</span>(newState, prevState);
+                });
+            } <span class="hljs-keyword">catch</span> (error) {
+                <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">warn</span>(<span class="hljs-string">&#x27;Failed to broadcast state change:&#x27;</span>, error);
+            }
+            
+            <span class="hljs-keyword">return</span> newState;
+        });
+    }, [key]);
+    
+    <span class="hljs-comment">// Subscribe to state changes</span>
+    <span class="hljs-keyword">const</span> subscribe = <span class="hljs-title function_">useCallback</span>(<span class="hljs-function">(<span class="hljs-params">listener</span>) =&gt;</span> {
+        listeners.<span class="hljs-property">current</span>.<span class="hljs-title function_">add</span>(listener);
+        
+        <span class="hljs-keyword">return</span> <span class="hljs-function">() =&gt;</span> {
+            listeners.<span class="hljs-property">current</span>.<span class="hljs-title function_">delete</span>(listener);
+        };
+    }, []);
+    
+    <span class="hljs-keyword">return</span> [state, setSharedState, { subscribe }];
+}
+</code></pre></pre>
+<h2 id="⚡-useeffect-deep-theory" node="[object Object]">⚡ useEffect Deep Theory</h2>
+<h3 id="[object-object]" node="[object Object]"><strong>What is useEffect Internally?</strong></h3>
+<p><strong>Definition:</strong> useEffect is a Hook that lets you perform side effects in functional components. It serves the same purpose as componentDidMount, componentDidUpdate, and componentWillUnmount combined.</p>
+<p><strong>Why useEffect is Powerful:</strong></p>
+<ul>
+<li><strong>Unified Lifecycle</strong>: Combines multiple lifecycle methods into one API</li>
+<li><strong>Dependency Tracking</strong>: Automatically optimizes when effects should run</li>
+<li><strong>Cleanup Management</strong>: Handles resource cleanup automatically</li>
+<li><strong>Concurrent Safe</strong>: Works with React&#x27;s concurrent features</li>
+</ul>
+<p><strong>How useEffect Works Internally:</strong></p>
+<pre><pre><code class="hljs hljs language-mermaid">graph TB
+    subgraph &quot;useEffect Lifecycle&quot;
+        A[Component Mount] --&gt; B[Run Effect]
+        B --&gt; C[Store Cleanup Function]
+        
+        D[Component Update] --&gt; E[Compare Dependencies]
+        E --&gt; F{Dependencies Changed?}
+        F --&gt;|Yes| G[Run Cleanup]
+        F --&gt;|No| H[Skip Effect]
+        G --&gt; I[Run New Effect]
+        I --&gt; J[Store New Cleanup]
+        
+        K[Component Unmount] --&gt; L[Run Final Cleanup]
+    end
+
+    subgraph &quot;Dependency Array Behavior&quot;
+        M[No Deps Array] --&gt; N[Run Every Render]
+        O[Empty Deps Array] --&gt; P[Run Once on Mount]
+        Q[Deps Array with Values] --&gt; R[Run When Deps Change]
+    end
+
+    subgraph &quot;Effect Scheduling&quot;
+        S[Effect Queue] --&gt; T[Passive Effects]
+        T --&gt; U[Layout Effects]
+        U --&gt; V[Mutation Effects]
+        
+        W[useEffect] --&gt; X[Passive Phase]
+        Y[useLayoutEffect] --&gt; Z[Layout Phase]
+    end
+</code></pre></pre>
+<p><strong>Deep Theory with Advanced Examples:</strong></p>
+<pre><pre><code class="hljs hljs language-javascript"><span class="hljs-comment">// WHAT: useEffect internal behavior patterns</span>
+<span class="hljs-keyword">function</span> <span class="hljs-title function_">useEffectDeepDive</span>(<span class="hljs-params"></span>) {
+    <span class="hljs-keyword">const</span> [count, setCount] = <span class="hljs-title function_">useState</span>(<span class="hljs-number">0</span>);
+    <span class="hljs-keyword">const</span> [name, setName] = <span class="hljs-title function_">useState</span>(<span class="hljs-string">&#x27;&#x27;</span>);
+    <span class="hljs-keyword">const</span> [data, setData] = <span class="hljs-title function_">useState</span>(<span class="hljs-literal">null</span>);
+    
+    <span class="hljs-comment">// 1. Effect without dependencies (runs every render)</span>
+    <span class="hljs-title function_">useEffect</span>(<span class="hljs-function">() =&gt;</span> {
+        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;Runs on every render&#x27;</span>);
+        <span class="hljs-variable language_">document</span>.<span class="hljs-property">title</span> = <span class="hljs-string">`Count: <span class="hljs-subst">${count}</span>, Name: <span class="hljs-subst">${name}</span>`</span>;
+    });
+    
+    <span class="hljs-comment">// 2. Effect with empty dependencies (runs once on mount)</span>
+    <span class="hljs-title function_">useEffect</span>(<span class="hljs-function">() =&gt;</span> {
+        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;Runs once on mount&#x27;</span>);
+        
+        <span class="hljs-keyword">const</span> <span class="hljs-title function_">handleResize</span> = (<span class="hljs-params"></span>) =&gt; {
+            <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;Window resized&#x27;</span>);
+        };
+        
+        <span class="hljs-variable language_">window</span>.<span class="hljs-title function_">addEventListener</span>(<span class="hljs-string">&#x27;resize&#x27;</span>, handleResize);
+        
+        <span class="hljs-comment">// Cleanup function</span>
+        <span class="hljs-keyword">return</span> <span class="hljs-function">() =&gt;</span> {
+            <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;Cleanup on unmount&#x27;</span>);
+            <span class="hljs-variable language_">window</span>.<span class="hljs-title function_">removeEventListener</span>(<span class="hljs-string">&#x27;resize&#x27;</span>, handleResize);
+        };
+    }, []); <span class="hljs-comment">// Empty dependency array</span>
+    
+    <span class="hljs-comment">// 3. Effect with specific dependencies</span>
+    <span class="hljs-title function_">useEffect</span>(<span class="hljs-function">() =&gt;</span> {
+        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;Runs when count changes&#x27;</span>);
+        
+        <span class="hljs-keyword">if</span> (count &gt; <span class="hljs-number">0</span>) {
+            <span class="hljs-keyword">const</span> timer = <span class="hljs-built_in">setTimeout</span>(<span class="hljs-function">() =&gt;</span> {
+                <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">`Count is <span class="hljs-subst">${count}</span>`</span>);
+            }, <span class="hljs-number">1000</span>);
+            
+            <span class="hljs-comment">// Cleanup previous timer</span>
+            <span class="hljs-keyword">return</span> <span class="hljs-function">() =&gt;</span> {
+                <span class="hljs-built_in">clearTimeout</span>(timer);
+            };
+        }
+    }, [count]); <span class="hljs-comment">// Only runs when count changes</span>
+    
+    <span class="hljs-comment">// 4. Complex effect with multiple dependencies</span>
+    <span class="hljs-title function_">useEffect</span>(<span class="hljs-function">() =&gt;</span> {
+        <span class="hljs-keyword">let</span> isCancelled = <span class="hljs-literal">false</span>;
+        
+        <span class="hljs-keyword">async</span> <span class="hljs-keyword">function</span> <span class="hljs-title function_">fetchData</span>(<span class="hljs-params"></span>) {
+            <span class="hljs-keyword">if</span> (!name) <span class="hljs-keyword">return</span>;
+            
+            <span class="hljs-keyword">try</span> {
+                <span class="hljs-title function_">setData</span>({ <span class="hljs-attr">loading</span>: <span class="hljs-literal">true</span>, <span class="hljs-attr">error</span>: <span class="hljs-literal">null</span>, <span class="hljs-attr">result</span>: <span class="hljs-literal">null</span> });
+                
+                <span class="hljs-keyword">const</span> response = <span class="hljs-keyword">await</span> <span class="hljs-title function_">fetch</span>(<span class="hljs-string">`/api/users/<span class="hljs-subst">${name}</span>`</span>);
+                <span class="hljs-keyword">const</span> result = <span class="hljs-keyword">await</span> response.<span class="hljs-title function_">json</span>();
+                
+                <span class="hljs-keyword">if</span> (!isCancelled) {
+                    <span class="hljs-title function_">setData</span>({ <span class="hljs-attr">loading</span>: <span class="hljs-literal">false</span>, <span class="hljs-attr">error</span>: <span class="hljs-literal">null</span>, result });
+                }
+            } <span class="hljs-keyword">catch</span> (error) {
+                <span class="hljs-keyword">if</span> (!isCancelled) {
+                    <span class="hljs-title function_">setData</span>({ <span class="hljs-attr">loading</span>: <span class="hljs-literal">false</span>, <span class="hljs-attr">error</span>: error.<span class="hljs-property">message</span>, <span class="hljs-attr">result</span>: <span class="hljs-literal">null</span> });
+                }
+            }
+        }
+        
+        <span class="hljs-title function_">fetchData</span>();
+        
+        <span class="hljs-keyword">return</span> <span class="hljs-function">() =&gt;</span> {
+            isCancelled = <span class="hljs-literal">true</span>;
+        };
+    }, [name]); <span class="hljs-comment">// Runs when name changes</span>
+    
+    <span class="hljs-keyword">return</span> { count, setCount, name, setName, data };
+}
+
+<span class="hljs-comment">// WHY: Advanced useEffect patterns</span>
+<span class="hljs-keyword">function</span> <span class="hljs-title function_">advancedUseEffectPatterns</span>(<span class="hljs-params"></span>) {
+    <span class="hljs-comment">// 1. Debounced effect</span>
+    <span class="hljs-keyword">function</span> <span class="hljs-title function_">useDebounceEffect</span>(<span class="hljs-params">callback, dependencies, delay</span>) {
+        <span class="hljs-title function_">useEffect</span>(<span class="hljs-function">() =&gt;</span> {
+            <span class="hljs-keyword">const</span> timer = <span class="hljs-built_in">setTimeout</span>(callback, delay);
+            <span class="hljs-keyword">return</span> <span class="hljs-function">() =&gt;</span> <span class="hljs-built_in">clearTimeout</span>(timer);
+        }, [...dependencies, delay]);
+    }
+    
+    <span class="hljs-comment">// 2. Previous value tracking</span>
+    <span class="hljs-keyword">function</span> <span class="hljs-title function_">usePrevious</span>(<span class="hljs-params">value</span>) {
+        <span class="hljs-keyword">const</span> ref = <span class="hljs-title function_">useRef</span>();
+        
+        <span class="hljs-title function_">useEffect</span>(<span class="hljs-function">() =&gt;</span> {
+            ref.<span class="hljs-property">current</span> = value;
+        });
+        
+        <span class="hljs-keyword">return</span> ref.<span class="hljs-property">current</span>;
+    }
+    
+    <span class="hljs-comment">// 3. Async effect with cleanup</span>
+    <span class="hljs-keyword">function</span> <span class="hljs-title function_">useAsyncEffect</span>(<span class="hljs-params">asyncFunction, dependencies</span>) {
+        <span class="hljs-title function_">useEffect</span>(<span class="hljs-function">() =&gt;</span> {
+            <span class="hljs-keyword">let</span> isCancelled = <span class="hljs-literal">false</span>;
+            
+            <span class="hljs-keyword">const</span> <span class="hljs-title function_">runAsync</span> = <span class="hljs-keyword">async</span> (<span class="hljs-params"></span>) =&gt; {
+                <span class="hljs-keyword">try</span> {
+                    <span class="hljs-keyword">await</span> <span class="hljs-title function_">asyncFunction</span>(<span class="hljs-function">() =&gt;</span> isCancelled);
+                } <span class="hljs-keyword">catch</span> (error) {
+                    <span class="hljs-keyword">if</span> (!isCancelled) {
+                        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">error</span>(<span class="hljs-string">&#x27;Async effect error:&#x27;</span>, error);
+                    }
+                }
+            };
+            
+            <span class="hljs-title function_">runAsync</span>();
+            
+            <span class="hljs-keyword">return</span> <span class="hljs-function">() =&gt;</span> {
+                isCancelled = <span class="hljs-literal">true</span>;
+            };
+        }, dependencies);
+    }
+    
+    <span class="hljs-comment">// 4. Interval effect with dynamic delay</span>
+    <span class="hljs-keyword">function</span> <span class="hljs-title function_">useInterval</span>(<span class="hljs-params">callback, delay</span>) {
+        <span class="hljs-keyword">const</span> savedCallback = <span class="hljs-title function_">useRef</span>(callback);
+        
+        <span class="hljs-comment">// Remember the latest callback</span>
+        <span class="hljs-title function_">useEffect</span>(<span class="hljs-function">() =&gt;</span> {
+            savedCallback.<span class="hljs-property">current</span> = callback;
+        }, [callback]);
+        
+        <span class="hljs-comment">// Set up the interval</span>
+        <span class="hljs-title function_">useEffect</span>(<span class="hljs-function">() =&gt;</span> {
+            <span class="hljs-keyword">if</span> (delay === <span class="hljs-literal">null</span>) <span class="hljs-keyword">return</span>;
+            
+            <span class="hljs-keyword">const</span> <span class="hljs-title function_">tick</span> = (<span class="hljs-params"></span>) =&gt; savedCallback.<span class="hljs-title function_">current</span>();
+            <span class="hljs-keyword">const</span> id = <span class="hljs-built_in">setInterval</span>(tick, delay);
+            
+            <span class="hljs-keyword">return</span> <span class="hljs-function">() =&gt;</span> <span class="hljs-built_in">clearInterval</span>(id);
+        }, [delay]);
+    }
+    
+    <span class="hljs-comment">// 5. Effect with error boundary</span>
+    <span class="hljs-keyword">function</span> <span class="hljs-title function_">useEffectWithErrorBoundary</span>(<span class="hljs-params">effect, dependencies, onError</span>) {
+        <span class="hljs-title function_">useEffect</span>(<span class="hljs-function">() =&gt;</span> {
+            <span class="hljs-keyword">try</span> {
+                <span class="hljs-keyword">const</span> cleanup = <span class="hljs-title function_">effect</span>();
+                <span class="hljs-keyword">return</span> cleanup;
+            } <span class="hljs-keyword">catch</span> (error) {
+                onError?.(error);
+                <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">error</span>(<span class="hljs-string">&#x27;Effect error:&#x27;</span>, error);
+            }
+        }, dependencies);
+    }
+    
+    <span class="hljs-keyword">return</span> {
+        useDebounceEffect,
+        usePrevious,
+        useAsyncEffect,
+        useInterval,
+        useEffectWithErrorBoundary
+    };
+}
+
+<span class="hljs-comment">// HOW: Custom hooks combining useState and useEffect</span>
+<span class="hljs-keyword">function</span> <span class="hljs-title function_">useAdvancedAsyncState</span>(<span class="hljs-params">asyncFunction, dependencies = []</span>) {
+    <span class="hljs-keyword">const</span> [state, setState] = <span class="hljs-title function_">useState</span>({
+        <span class="hljs-attr">data</span>: <span class="hljs-literal">null</span>,
+        <span class="hljs-attr">loading</span>: <span class="hljs-literal">false</span>,
+        <span class="hljs-attr">error</span>: <span class="hljs-literal">null</span>
+    });
+    
+    <span class="hljs-keyword">const</span> execute = <span class="hljs-title function_">useCallback</span>(<span class="hljs-title function_">async</span> (...args) =&gt; {
+        <span class="hljs-title function_">setState</span>(<span class="hljs-function"><span class="hljs-params">prev</span> =&gt;</span> ({ ...prev, <span class="hljs-attr">loading</span>: <span class="hljs-literal">true</span>, <span class="hljs-attr">error</span>: <span class="hljs-literal">null</span> }));
+        
+        <span class="hljs-keyword">try</span> {
+            <span class="hljs-keyword">const</span> data = <span class="hljs-keyword">await</span> <span class="hljs-title function_">asyncFunction</span>(...args);
+            <span class="hljs-title function_">setState</span>({ data, <span class="hljs-attr">loading</span>: <span class="hljs-literal">false</span>, <span class="hljs-attr">error</span>: <span class="hljs-literal">null</span> });
+            <span class="hljs-keyword">return</span> data;
+        } <span class="hljs-keyword">catch</span> (error) {
+            <span class="hljs-title function_">setState</span>({ <span class="hljs-attr">data</span>: <span class="hljs-literal">null</span>, <span class="hljs-attr">loading</span>: <span class="hljs-literal">false</span>, error });
+            <span class="hljs-keyword">throw</span> error;
+        }
+    }, dependencies);
+    
+    <span class="hljs-comment">// Auto-execute on mount if no arguments needed</span>
+    <span class="hljs-title function_">useEffect</span>(<span class="hljs-function">() =&gt;</span> {
+        <span class="hljs-keyword">if</span> (asyncFunction.<span class="hljs-property">length</span> === <span class="hljs-number">0</span>) {
+            <span class="hljs-title function_">execute</span>();
+        }
+    }, [execute]);
+    
+    <span class="hljs-keyword">return</span> { ...state, execute };
+}
+
+<span class="hljs-comment">// Resource management hook</span>
+<span class="hljs-keyword">function</span> <span class="hljs-title function_">useResource</span>(<span class="hljs-params">createResource, dependencies = []</span>) {
+    <span class="hljs-keyword">const</span> [resource, setResource] = <span class="hljs-title function_">useState</span>(<span class="hljs-literal">null</span>);
+    <span class="hljs-keyword">const</span> [error, setError] = <span class="hljs-title function_">useState</span>(<span class="hljs-literal">null</span>);
+    
+    <span class="hljs-title function_">useEffect</span>(<span class="hljs-function">() =&gt;</span> {
+        <span class="hljs-keyword">let</span> currentResource = <span class="hljs-literal">null</span>;
+        
+        <span class="hljs-keyword">const</span> <span class="hljs-title function_">initResource</span> = <span class="hljs-keyword">async</span> (<span class="hljs-params"></span>) =&gt; {
+            <span class="hljs-keyword">try</span> {
+                <span class="hljs-title function_">setError</span>(<span class="hljs-literal">null</span>);
+                currentResource = <span class="hljs-keyword">await</span> <span class="hljs-title function_">createResource</span>();
+                <span class="hljs-title function_">setResource</span>(currentResource);
+            } <span class="hljs-keyword">catch</span> (err) {
+                <span class="hljs-title function_">setError</span>(err);
+                <span class="hljs-title function_">setResource</span>(<span class="hljs-literal">null</span>);
+            }
+        };
+        
+        <span class="hljs-title function_">initResource</span>();
+        
+        <span class="hljs-keyword">return</span> <span class="hljs-function">() =&gt;</span> {
+            <span class="hljs-keyword">if</span> (currentResource &amp;&amp; <span class="hljs-keyword">typeof</span> currentResource.<span class="hljs-property">cleanup</span> === <span class="hljs-string">&#x27;function&#x27;</span>) {
+                currentResource.<span class="hljs-title function_">cleanup</span>();
+            }
+        };
+    }, dependencies);
+    
+    <span class="hljs-keyword">return</span> { resource, error };
+}
+
+<span class="hljs-comment">// WebSocket hook with automatic reconnection</span>
+<span class="hljs-keyword">function</span> <span class="hljs-title function_">useWebSocket</span>(<span class="hljs-params">url, options = {}</span>) {
+    <span class="hljs-keyword">const</span> {
+        onMessage,
+        onError,
+        onOpen,
+        onClose,
+        reconnectAttempts = <span class="hljs-number">5</span>,
+        reconnectInterval = <span class="hljs-number">1000</span>
+    } = options;
+    
+    <span class="hljs-keyword">const</span> [socket, setSocket] = <span class="hljs-title function_">useState</span>(<span class="hljs-literal">null</span>);
+    <span class="hljs-keyword">const</span> [connectionStatus, setConnectionStatus] = <span class="hljs-title function_">useState</span>(<span class="hljs-string">&#x27;Disconnected&#x27;</span>);
+    <span class="hljs-keyword">const</span> reconnectCount = <span class="hljs-title function_">useRef</span>(<span class="hljs-number">0</span>);
+    
+    <span class="hljs-title function_">useEffect</span>(<span class="hljs-function">() =&gt;</span> {
+        <span class="hljs-keyword">let</span> ws = <span class="hljs-literal">null</span>;
+        <span class="hljs-keyword">let</span> reconnectTimer = <span class="hljs-literal">null</span>;
+        
+        <span class="hljs-keyword">const</span> <span class="hljs-title function_">connect</span> = (<span class="hljs-params"></span>) =&gt; {
+            <span class="hljs-keyword">try</span> {
+                ws = <span class="hljs-keyword">new</span> <span class="hljs-title class_">WebSocket</span>(url);
+                <span class="hljs-title function_">setSocket</span>(ws);
+                
+                ws.<span class="hljs-property">onopen</span> = <span class="hljs-function">(<span class="hljs-params">event</span>) =&gt;</span> {
+                    <span class="hljs-title function_">setConnectionStatus</span>(<span class="hljs-string">&#x27;Connected&#x27;</span>);
+                    reconnectCount.<span class="hljs-property">current</span> = <span class="hljs-number">0</span>;
+                    onOpen?.(event);
+                };
+                
+                ws.<span class="hljs-property">onmessage</span> = <span class="hljs-function">(<span class="hljs-params">event</span>) =&gt;</span> {
+                    onMessage?.(event);
+                };
+                
+                ws.<span class="hljs-property">onerror</span> = <span class="hljs-function">(<span class="hljs-params">event</span>) =&gt;</span> {
+                    <span class="hljs-title function_">setConnectionStatus</span>(<span class="hljs-string">&#x27;Error&#x27;</span>);
+                    onError?.(event);
+                };
+                
+                ws.<span class="hljs-property">onclose</span> = <span class="hljs-function">(<span class="hljs-params">event</span>) =&gt;</span> {
+                    <span class="hljs-title function_">setConnectionStatus</span>(<span class="hljs-string">&#x27;Disconnected&#x27;</span>);
+                    onClose?.(event);
+                    
+                    <span class="hljs-comment">// Attempt reconnection</span>
+                    <span class="hljs-keyword">if</span> (reconnectCount.<span class="hljs-property">current</span> &lt; reconnectAttempts) {
+                        reconnectCount.<span class="hljs-property">current</span>++;
+                        <span class="hljs-title function_">setConnectionStatus</span>(<span class="hljs-string">`Reconnecting (<span class="hljs-subst">${reconnectCount.current}</span>/<span class="hljs-subst">${reconnectAttempts}</span>)`</span>);
+                        
+                        reconnectTimer = <span class="hljs-built_in">setTimeout</span>(<span class="hljs-function">() =&gt;</span> {
+                            <span class="hljs-title function_">connect</span>();
+                        }, reconnectInterval * reconnectCount.<span class="hljs-property">current</span>);
+                    }
+                };
+            } <span class="hljs-keyword">catch</span> (error) {
+                <span class="hljs-title function_">setConnectionStatus</span>(<span class="hljs-string">&#x27;Error&#x27;</span>);
+                onError?.(error);
+            }
+        };
+        
+        <span class="hljs-title function_">connect</span>();
+        
+        <span class="hljs-keyword">return</span> <span class="hljs-function">() =&gt;</span> {
+            <span class="hljs-keyword">if</span> (reconnectTimer) {
+                <span class="hljs-built_in">clearTimeout</span>(reconnectTimer);
+            }
+            <span class="hljs-keyword">if</span> (ws) {
+                ws.<span class="hljs-title function_">close</span>();
+            }
+        };
+    }, [url, onMessage, onError, onOpen, onClose, reconnectAttempts, reconnectInterval]);
+    
+    <span class="hljs-keyword">const</span> sendMessage = <span class="hljs-title function_">useCallback</span>(<span class="hljs-function">(<span class="hljs-params">message</span>) =&gt;</span> {
+        <span class="hljs-keyword">if</span> (socket &amp;&amp; socket.<span class="hljs-property">readyState</span> === <span class="hljs-title class_">WebSocket</span>.<span class="hljs-property">OPEN</span>) {
+            socket.<span class="hljs-title function_">send</span>(<span class="hljs-keyword">typeof</span> message === <span class="hljs-string">&#x27;string&#x27;</span> ? message : <span class="hljs-title class_">JSON</span>.<span class="hljs-title function_">stringify</span>(message));
+        } <span class="hljs-keyword">else</span> {
+            <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">warn</span>(<span class="hljs-string">&#x27;WebSocket is not connected&#x27;</span>);
+        }
+    }, [socket]);
+    
+    <span class="hljs-keyword">return</span> { socket, connectionStatus, sendMessage };
+}
+</code></pre></pre>
+<p>This comprehensive deep dive into React Hooks provides the theoretical foundation and practical patterns needed for advanced React development and technical interviews.</p></div></div></main><footer class="sc-bbbBoY fXFPTj"><div class="sc-cdmAjP dWUTOl"><div class="sc-jytpVa kWeZJe"><div class="sc-eknHtZ hlQQbN"><div class="sc-pYNGo eUEOfs"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-code "><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>Frontend Interview Prep</div><p class="sc-cCVJLD FTAbj">Comprehensive interview preparation for frontend engineers targeting Big Tech companies.</p><div class="sc-jYczwO fjvVr"><a href="https://github.com" aria-label="GitHub"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-github "><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"></path><path d="M9 18c-4.51 2-5-2-7-2"></path></svg></a><a href="https://twitter.com" aria-label="Twitter"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-twitter "><path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"></path></svg></a><a href="https://linkedin.com" aria-label="LinkedIn"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-linkedin "><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect width="4" height="12" x="2" y="9"></rect><circle cx="4" cy="4" r="2"></circle></svg></a><a href="mailto:contact@example.com" aria-label="Email"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-mail "><rect width="20" height="16" x="2" y="4" rx="2"></rect><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path></svg></a></div></div><div class="sc-eknHtZ hlQQbN"><h3>Study Materials</h3><ul><li><a href="/algorithms">Algorithms</a></li><li><a href="/react">React &amp; Frontend</a></li><li><a href="/system-design">System Design</a></li><li><a href="/typescript">TypeScript</a></li><li><a href="/performance">Performance</a></li></ul></div><div class="sc-eknHtZ hlQQbN"><h3>Companies</h3><ul><li><a href="/google">Google</a></li><li><a href="/meta">Meta</a></li><li><a href="/amazon">Amazon</a></li><li><a href="/microsoft">Microsoft</a></li><li><a href="/apple">Apple</a></li></ul></div><div class="sc-eknHtZ hlQQbN"><h3>Resources</h3><ul><li><a href="/interview-tips">Interview Tips</a></li><li><a href="/coding-challenges">Coding Challenges</a></li><li><a href="/mock-interviews">Mock Interviews</a></li><li><a href="/blog">Blog</a></li><li><a href="/faq">FAQ</a></li></ul></div></div><div class="sc-dNFkOE jkOcpo"><p class="sc-fszimp ficqwG">© 2025 Frontend Interview Prep. All rights reserved.</p><div class="sc-etsjJW cAqCWV"><a href="/privacy">Privacy Policy</a><a href="/terms">Terms of Service</a><a href="/contact">Contact</a></div></div></div></footer></div><script src="/interview/_next/static/chunks/webpack-be7d7df45533bffc.js" async=""></script><script>(self.__next_f=self.__next_f||[]).push([0]);self.__next_f.push([2,null])</script><script>self.__next_f.push([1,"1:HL[\"/interview/_next/static/media/e4af272ccee01ff0-s.p.woff2\",\"font\",{\"crossOrigin\":\"\",\"type\":\"font/woff2\"}]\n2:HL[\"/interview/_next/static/css/387024c6a2216908.css\",\"style\"]\n"])</script><script>self.__next_f.push([1,"3:I[2846,[],\"\"]\n5:I[5907,[\"918\",\"static/chunks/918-3273b83890f10546.js\",\"930\",\"static/chunks/930-3262a6c9c5acace4.js\",\"687\",\"static/chunks/app/docs/%5B...slug%5D/page-32962e9542d32755.js\"],\"default\"]\n7:I[4707,[],\"\"]\n9:I[6423,[],\"\"]\na:I[2,[\"918\",\"static/chunks/918-3273b83890f10546.js\",\"710\",\"static/chunks/710-dfaa11b4dff08f8e.js\",\"972\",\"static/chunks/972-011bba60ed155615.js\",\"233\",\"static/chunks/233-3e0c1d820a17eca9.js\",\"185\",\"static/chunks/app/layout-333f4adcd11f8f39.js\"],\"default\",1]\nc:I[1060,[],\"\"]\n6:T544d,"])</script><script>self.__next_f.push([1,"\n# React Hooks Deep Dive - Advanced Patterns and Internals\n\n## 🎣 useState Deep Theory\n\n### **What is useState Internally?**\n**Definition:** useState is a React Hook that allows functional components to have local state. Internally, it uses a fiber node's memoizedState to store state values and update functions.\n\n**Why useState Works:**\n- **Fiber Architecture**: React's reconciliation algorithm tracks state per component instance\n- **Closure Mechanism**: State updater functions capture the current fiber context\n- **Batching**: Multiple setState calls are batched for performance\n- **Immutability**: State updates trigger re-renders through reference comparison\n\n**How useState Works Internally:**\n\n```mermaid\ngraph TB\n    subgraph \"useState Internal Mechanism\"\n        A[Component Render] --\u003e B[Hook Index Tracking]\n        B --\u003e C[Fiber Node State]\n        C --\u003e D[Memoized State Array]\n        \n        E[setState Call] --\u003e F[Update Queue]\n        F --\u003e G[Schedule Re-render]\n        G --\u003e H[Reconciliation]\n        H --\u003e I[Component Re-render]\n    end\n\n    subgraph \"State Update Lifecycle\"\n        J[User Action] --\u003e K[setState(newValue)]\n        K --\u003e L[Create Update Object]\n        L --\u003e M[Enqueue Update]\n        M --\u003e N[Schedule Work]\n        N --\u003e O[Process Updates]\n        O --\u003e P[Calculate New State]\n        P --\u003e Q[Trigger Re-render]\n    end\n\n    subgraph \"Batching Mechanism\"\n        R[Multiple setState] --\u003e S[Update Queue]\n        S --\u003e T[Batch Processing]\n        T --\u003e U[Single Re-render]\n        \n        V[Automatic Batching] --\u003e W[React 18+]\n        W --\u003e X[All Updates Batched]\n    end\n```\n\n**Deep Theory with Advanced Examples:**\n```javascript\n// WHAT: useState internal behavior simulation\nclass UseStateSimulator {\n    constructor() {\n        this.currentHookIndex = 0;\n        this.hooks = [];\n        this.isRendering = false;\n        this.updateQueue = [];\n        this.batchedUpdates = new Set();\n    }\n    \n    // Simulate useState hook\n    useState(initialValue) {\n        const hookIndex = this.currentHookIndex++;\n        \n        // Initialize hook if first render\n        if (!this.hooks[hookIndex]) {\n            this.hooks[hookIndex] = {\n                state: typeof initialValue === 'function' ? initialValue() : initialValue,\n                queue: [],\n                dispatch: null\n            };\n        }\n        \n        const hook = this.hooks[hookIndex];\n        \n        // Process queued updates\n        if (hook.queue.length \u003e 0) {\n            let newState = hook.state;\n            \n            hook.queue.forEach(update =\u003e {\n                if (typeof update === 'function') {\n                    newState = update(newState);\n                } else {\n                    newState = update;\n                }\n            });\n            \n            hook.state = newState;\n            hook.queue = [];\n        }\n        \n        // Create dispatch function\n        const dispatch = (action) =\u003e {\n            const update = {\n                action,\n                hookIndex,\n                timestamp: Date.now()\n            };\n            \n            // Add to update queue\n            hook.queue.push(action);\n            this.scheduleUpdate(update);\n        };\n        \n        hook.dispatch = dispatch;\n        \n        return [hook.state, dispatch];\n    }\n    \n    scheduleUpdate(update) {\n        this.updateQueue.push(update);\n        \n        // Batch updates (simulate React's batching)\n        if (!this.isRendering) {\n            this.batchedUpdates.add(update);\n            \n            // Process batched updates in next tick\n            Promise.resolve().then(() =\u003e {\n                this.processBatchedUpdates();\n            });\n        }\n    }\n    \n    processBatchedUpdates() {\n        if (this.batchedUpdates.size === 0) return;\n        \n        console.log(`Processing ${this.batchedUpdates.size} batched updates`);\n        \n        this.isRendering = true;\n        this.currentHookIndex = 0;\n        \n        // Simulate component re-render\n        this.render();\n        \n        this.batchedUpdates.clear();\n        this.isRendering = false;\n    }\n    \n    render() {\n        console.log('Component re-rendering...');\n        // Reset hook index for next render\n        this.currentHookIndex = 0;\n    }\n}\n\n// WHY: Advanced useState patterns\nfunction advancedUseStatePatterns() {\n    // 1. Functional updates for complex state\n    const [state, setState] = useState({ count: 0, name: '', items: [] });\n    \n    // Functional update prevents stale closure issues\n    const incrementCount = useCallback(() =\u003e {\n        setState(prevState =\u003e ({\n            ...prevState,\n            count: prevState.count + 1\n        }));\n    }, []);\n    \n    // 2. Lazy initial state for expensive computations\n    const [expensiveState, setExpensiveState] = useState(() =\u003e {\n        console.log('Expensive computation only runs once');\n        return Array.from({ length: 10000 }, (_, i) =\u003e i * i);\n    });\n    \n    // 3. State reducer pattern with useState\n    const [complexState, setComplexState] = useState({\n        loading: false,\n        data: null,\n        error: null\n    });\n    \n    const stateReducer = useCallback((action) =\u003e {\n        setComplexState(prevState =\u003e {\n            switch (action.type) {\n                case 'FETCH_START':\n                    return { ...prevState, loading: true, error: null };\n                case 'FETCH_SUCCESS':\n                    return { loading: false, data: action.payload, error: null };\n                case 'FETCH_ERROR':\n                    return { loading: false, data: null, error: action.payload };\n                default:\n                    return prevState;\n            }\n        });\n    }, []);\n    \n    // 4. Optimistic updates pattern\n    const [optimisticState, setOptimisticState] = useState([]);\n    \n    const addItemOptimistically = useCallback(async (newItem) =\u003e {\n        const tempId = Date.now();\n        const optimisticItem = { ...newItem, id: tempId, pending: true };\n        \n        // Optimistically add item\n        setOptimisticState(prev =\u003e [...prev, optimisticItem]);\n        \n        try {\n            const savedItem = await api.saveItem(newItem);\n            \n            // Replace optimistic item with real item\n            setOptimisticState(prev =\u003e \n                prev.map(item =\u003e \n                    item.id === tempId ? savedItem : item\n                )\n            );\n        } catch (error) {\n            // Remove optimistic item on error\n            setOptimisticState(prev =\u003e \n                prev.filter(item =\u003e item.id !== tempId)\n            );\n            throw error;\n        }\n    }, []);\n    \n    return {\n        state,\n        incrementCount,\n        expensiveState,\n        stateReducer,\n        addItemOptimistically\n    };\n}\n\n// HOW: Custom hooks for advanced state management\nfunction useAdvancedState(initialState, options = {}) {\n    const {\n        serialize = JSON.stringify,\n        deserialize = JSON.parse,\n        storage = localStorage,\n        key = null,\n        validator = null,\n        middleware = []\n    } = options;\n    \n    // Initialize state with persistence\n    const [state, setState] = useState(() =\u003e {\n        if (key \u0026\u0026 storage) {\n            try {\n                const stored = storage.getItem(key);\n                if (stored) {\n                    const parsed = deserialize(stored);\n                    return validator ? validator(parsed) ? parsed : initialState : parsed;\n                }\n            } catch (error) {\n                console.warn('Failed to load state from storage:', error);\n            }\n        }\n        return typeof initialState === 'function' ? initialState() : initialState;\n    });\n    \n    // Enhanced setState with middleware and persistence\n    const enhancedSetState = useCallback((action) =\u003e {\n        setState(prevState =\u003e {\n            let newState;\n            \n            if (typeof action === 'function') {\n                newState = action(prevState);\n            } else {\n                newState = action;\n            }\n            \n            // Apply middleware\n            middleware.forEach(mw =\u003e {\n                newState = mw(newState, prevState);\n            });\n            \n            // Persist to storage\n            if (key \u0026\u0026 storage) {\n                try {\n                    storage.setItem(key, serialize(newState));\n                } catch (error) {\n                    console.warn('Failed to persist state:', error);\n                }\n            }\n            \n            return newState;\n        });\n    }, [key, storage, serialize, middleware]);\n    \n    // Clear persisted state\n    const clearPersistedState = useCallback(() =\u003e {\n        if (key \u0026\u0026 storage) {\n            storage.removeItem(key);\n        }\n    }, [key, storage]);\n    \n    return [state, enhancedSetState, { clearPersistedState }];\n}\n\n// Advanced state synchronization hook\nfunction useSharedState(key, initialValue) {\n    const [state, setState] = useState(initialValue);\n    const listeners = useRef(new Set());\n    \n    // Subscribe to state changes\n    useEffect(() =\u003e {\n        const handleStorageChange = (e) =\u003e {\n            if (e.key === key \u0026\u0026 e.newValue) {\n                try {\n                    const newValue = JSON.parse(e.newValue);\n                    setState(newValue);\n                } catch (error) {\n                    console.warn('Failed to parse shared state:', error);\n                }\n            }\n        };\n        \n        window.addEventListener('storage', handleStorageChange);\n        return () =\u003e window.removeEventListener('storage', handleStorageChange);\n    }, [key]);\n    \n    // Enhanced setState that broadcasts changes\n    const setSharedState = useCallback((action) =\u003e {\n        setState(prevState =\u003e {\n            const newState = typeof action === 'function' ? action(prevState) : action;\n            \n            // Broadcast to other tabs/windows\n            try {\n                localStorage.setItem(key, JSON.stringify(newState));\n                \n                // Notify local listeners\n                listeners.current.forEach(listener =\u003e {\n                    listener(newState, prevState);\n                });\n            } catch (error) {\n                console.warn('Failed to broadcast state change:', error);\n            }\n            \n            return newState;\n        });\n    }, [key]);\n    \n    // Subscribe to state changes\n    const subscribe = useCallback((listener) =\u003e {\n        listeners.current.add(listener);\n        \n        return () =\u003e {\n            listeners.current.delete(listener);\n        };\n    }, []);\n    \n    return [state, setSharedState, { subscribe }];\n}\n```\n\n## ⚡ useEffect Deep Theory\n\n### **What is useEffect Internally?**\n**Definition:** useEffect is a Hook that lets you perform side effects in functional components. It serves the same purpose as componentDidMount, componentDidUpdate, and componentWillUnmount combined.\n\n**Why useEffect is Powerful:**\n- **Unified Lifecycle**: Combines multiple lifecycle methods into one API\n- **Dependency Tracking**: Automatically optimizes when effects should run\n- **Cleanup Management**: Handles resource cleanup automatically\n- **Concurrent Safe**: Works with React's concurrent features\n\n**How useEffect Works Internally:**\n\n```mermaid\ngraph TB\n    subgraph \"useEffect Lifecycle\"\n        A[Component Mount] --\u003e B[Run Effect]\n        B --\u003e C[Store Cleanup Function]\n        \n        D[Component Update] --\u003e E[Compare Dependencies]\n        E --\u003e F{Dependencies Changed?}\n        F --\u003e|Yes| G[Run Cleanup]\n        F --\u003e|No| H[Skip Effect]\n        G --\u003e I[Run New Effect]\n        I --\u003e J[Store New Cleanup]\n        \n        K[Component Unmount] --\u003e L[Run Final Cleanup]\n    end\n\n    subgraph \"Dependency Array Behavior\"\n        M[No Deps Array] --\u003e N[Run Every Render]\n        O[Empty Deps Array] --\u003e P[Run Once on Mount]\n        Q[Deps Array with Values] --\u003e R[Run When Deps Change]\n    end\n\n    subgraph \"Effect Scheduling\"\n        S[Effect Queue] --\u003e T[Passive Effects]\n        T --\u003e U[Layout Effects]\n        U --\u003e V[Mutation Effects]\n        \n        W[useEffect] --\u003e X[Passive Phase]\n        Y[useLayoutEffect] --\u003e Z[Layout Phase]\n    end\n```\n\n**Deep Theory with Advanced Examples:**\n```javascript\n// WHAT: useEffect internal behavior patterns\nfunction useEffectDeepDive() {\n    const [count, setCount] = useState(0);\n    const [name, setName] = useState('');\n    const [data, setData] = useState(null);\n    \n    // 1. Effect without dependencies (runs every render)\n    useEffect(() =\u003e {\n        console.log('Runs on every render');\n        document.title = `Count: ${count}, Name: ${name}`;\n    });\n    \n    // 2. Effect with empty dependencies (runs once on mount)\n    useEffect(() =\u003e {\n        console.log('Runs once on mount');\n        \n        const handleResize = () =\u003e {\n            console.log('Window resized');\n        };\n        \n        window.addEventListener('resize', handleResize);\n        \n        // Cleanup function\n        return () =\u003e {\n            console.log('Cleanup on unmount');\n            window.removeEventListener('resize', handleResize);\n        };\n    }, []); // Empty dependency array\n    \n    // 3. Effect with specific dependencies\n    useEffect(() =\u003e {\n        console.log('Runs when count changes');\n        \n        if (count \u003e 0) {\n            const timer = setTimeout(() =\u003e {\n                console.log(`Count is ${count}`);\n            }, 1000);\n            \n            // Cleanup previous timer\n            return () =\u003e {\n                clearTimeout(timer);\n            };\n        }\n    }, [count]); // Only runs when count changes\n    \n    // 4. Complex effect with multiple dependencies\n    useEffect(() =\u003e {\n        let isCancelled = false;\n        \n        async function fetchData() {\n            if (!name) return;\n            \n            try {\n                setData({ loading: true, error: null, result: null });\n                \n                const response = await fetch(`/api/users/${name}`);\n                const result = await response.json();\n                \n                if (!isCancelled) {\n                    setData({ loading: false, error: null, result });\n                }\n            } catch (error) {\n                if (!isCancelled) {\n                    setData({ loading: false, error: error.message, result: null });\n                }\n            }\n        }\n        \n        fetchData();\n        \n        return () =\u003e {\n            isCancelled = true;\n        };\n    }, [name]); // Runs when name changes\n    \n    return { count, setCount, name, setName, data };\n}\n\n// WHY: Advanced useEffect patterns\nfunction advancedUseEffectPatterns() {\n    // 1. Debounced effect\n    function useDebounceEffect(callback, dependencies, delay) {\n        useEffect(() =\u003e {\n            const timer = setTimeout(callback, delay);\n            return () =\u003e clearTimeout(timer);\n        }, [...dependencies, delay]);\n    }\n    \n    // 2. Previous value tracking\n    function usePrevious(value) {\n        const ref = useRef();\n        \n        useEffect(() =\u003e {\n            ref.current = value;\n        });\n        \n        return ref.current;\n    }\n    \n    // 3. Async effect with cleanup\n    function useAsyncEffect(asyncFunction, dependencies) {\n        useEffect(() =\u003e {\n            let isCancelled = false;\n            \n            const runAsync = async () =\u003e {\n                try {\n                    await asyncFunction(() =\u003e isCancelled);\n                } catch (error) {\n                    if (!isCancelled) {\n                        console.error('Async effect error:', error);\n                    }\n                }\n            };\n            \n            runAsync();\n            \n            return () =\u003e {\n                isCancelled = true;\n            };\n        }, dependencies);\n    }\n    \n    // 4. Interval effect with dynamic delay\n    function useInterval(callback, delay) {\n        const savedCallback = useRef(callback);\n        \n        // Remember the latest callback\n        useEffect(() =\u003e {\n            savedCallback.current = callback;\n        }, [callback]);\n        \n        // Set up the interval\n        useEffect(() =\u003e {\n            if (delay === null) return;\n            \n            const tick = () =\u003e savedCallback.current();\n            const id = setInterval(tick, delay);\n            \n            return () =\u003e clearInterval(id);\n        }, [delay]);\n    }\n    \n    // 5. Effect with error boundary\n    function useEffectWithErrorBoundary(effect, dependencies, onError) {\n        useEffect(() =\u003e {\n            try {\n                const cleanup = effect();\n                return cleanup;\n            } catch (error) {\n                onError?.(error);\n                console.error('Effect error:', error);\n            }\n        }, dependencies);\n    }\n    \n    return {\n        useDebounceEffect,\n        usePrevious,\n        useAsyncEffect,\n        useInterval,\n        useEffectWithErrorBoundary\n    };\n}\n\n// HOW: Custom hooks combining useState and useEffect\nfunction useAdvancedAsyncState(asyncFunction, dependencies = []) {\n    const [state, setState] = useState({\n        data: null,\n        loading: false,\n        error: null\n    });\n    \n    const execute = useCallback(async (...args) =\u003e {\n        setState(prev =\u003e ({ ...prev, loading: true, error: null }));\n        \n        try {\n            const data = await asyncFunction(...args);\n            setState({ data, loading: false, error: null });\n            return data;\n        } catch (error) {\n            setState({ data: null, loading: false, error });\n            throw error;\n        }\n    }, dependencies);\n    \n    // Auto-execute on mount if no arguments needed\n    useEffect(() =\u003e {\n        if (asyncFunction.length === 0) {\n            execute();\n        }\n    }, [execute]);\n    \n    return { ...state, execute };\n}\n\n// Resource management hook\nfunction useResource(createResource, dependencies = []) {\n    const [resource, setResource] = useState(null);\n    const [error, setError] = useState(null);\n    \n    useEffect(() =\u003e {\n        let currentResource = null;\n        \n        const initResource = async () =\u003e {\n            try {\n                setError(null);\n                currentResource = await createResource();\n                setResource(currentResource);\n            } catch (err) {\n                setError(err);\n                setResource(null);\n            }\n        };\n        \n        initResource();\n        \n        return () =\u003e {\n            if (currentResource \u0026\u0026 typeof currentResource.cleanup === 'function') {\n                currentResource.cleanup();\n            }\n        };\n    }, dependencies);\n    \n    return { resource, error };\n}\n\n// WebSocket hook with automatic reconnection\nfunction useWebSocket(url, options = {}) {\n    const {\n        onMessage,\n        onError,\n        onOpen,\n        onClose,\n        reconnectAttempts = 5,\n        reconnectInterval = 1000\n    } = options;\n    \n    const [socket, setSocket] = useState(null);\n    const [connectionStatus, setConnectionStatus] = useState('Disconnected');\n    const reconnectCount = useRef(0);\n    \n    useEffect(() =\u003e {\n        let ws = null;\n        let reconnectTimer = null;\n        \n        const connect = () =\u003e {\n            try {\n                ws = new WebSocket(url);\n                setSocket(ws);\n                \n                ws.onopen = (event) =\u003e {\n                    setConnectionStatus('Connected');\n                    reconnectCount.current = 0;\n                    onOpen?.(event);\n                };\n                \n                ws.onmessage = (event) =\u003e {\n                    onMessage?.(event);\n                };\n                \n                ws.onerror = (event) =\u003e {\n                    setConnectionStatus('Error');\n                    onError?.(event);\n                };\n                \n                ws.onclose = (event) =\u003e {\n                    setConnectionStatus('Disconnected');\n                    onClose?.(event);\n                    \n                    // Attempt reconnection\n                    if (reconnectCount.current \u003c reconnectAttempts) {\n                        reconnectCount.current++;\n                        setConnectionStatus(`Reconnecting (${reconnectCount.current}/${reconnectAttempts})`);\n                        \n                        reconnectTimer = setTimeout(() =\u003e {\n                            connect();\n                        }, reconnectInterval * reconnectCount.current);\n                    }\n                };\n            } catch (error) {\n                setConnectionStatus('Error');\n                onError?.(error);\n            }\n        };\n        \n        connect();\n        \n        return () =\u003e {\n            if (reconnectTimer) {\n                clearTimeout(reconnectTimer);\n            }\n            if (ws) {\n                ws.close();\n            }\n        };\n    }, [url, onMessage, onError, onOpen, onClose, reconnectAttempts, reconnectInterval]);\n    \n    const sendMessage = useCallback((message) =\u003e {\n        if (socket \u0026\u0026 socket.readyState === WebSocket.OPEN) {\n            socket.send(typeof message === 'string' ? message : JSON.stringify(message));\n        } else {\n            console.warn('WebSocket is not connected');\n        }\n    }, [socket]);\n    \n    return { socket, connectionStatus, sendMessage };\n}\n```\n\nThis comprehensive deep dive into React Hooks provides the theoretical foundation and practical patterns needed for advanced React development and technical interviews."])</script><script>self.__next_f.push([1,"8:[\"slug\",\"frontend/react-fundamentals/hooks-deep-dive\",\"c\"]\nd:[]\n"])</script><script>self.__next_f.push([1,"0:[\"$\",\"$L3\",null,{\"buildId\":\"7uJ7BVaXJTiEOD9iYDv3n\",\"assetPrefix\":\"/interview\",\"urlParts\":[\"\",\"docs\",\"frontend\",\"react-fundamentals\",\"hooks-deep-dive\"],\"initialTree\":[\"\",{\"children\":[\"docs\",{\"children\":[[\"slug\",\"frontend/react-fundamentals/hooks-deep-dive\",\"c\"],{\"children\":[\"__PAGE__?{\\\"slug\\\":[\\\"frontend\\\",\\\"react-fundamentals\\\",\\\"hooks-deep-dive\\\"]}\",{}]}]}]},\"$undefined\",\"$undefined\",true],\"initialSeedData\":[\"\",{\"children\":[\"docs\",{\"children\":[[\"slug\",\"frontend/react-fundamentals/hooks-deep-dive\",\"c\"],{\"children\":[\"__PAGE__\",{},[[\"$L4\",[\"$\",\"div\",null,{\"style\":{\"maxWidth\":\"1200px\",\"margin\":\"0 auto\",\"padding\":\"2rem\",\"paddingTop\":\"6rem\"},\"children\":[[\"$\",\"div\",null,{\"style\":{\"marginBottom\":\"2rem\"},\"children\":[[\"$\",\"nav\",null,{\"style\":{\"color\":\"#64748b\",\"fontSize\":\"0.9rem\",\"marginBottom\":\"1rem\"},\"children\":[[\"$\",\"a\",null,{\"href\":\"/\",\"style\":{\"color\":\"#3b82f6\",\"textDecoration\":\"none\"},\"children\":\"Home\"}],\" \u003e \",[\"$\",\"span\",null,{\"children\":\"frontend \u003e react-fundamentals \u003e hooks-deep-dive\"}]]}],[\"$\",\"h1\",null,{\"style\":{\"fontSize\":\"2.5rem\",\"fontWeight\":\"800\",\"marginBottom\":\"0.5rem\",\"color\":\"#1e293b\"},\"children\":\"React Hooks Deep Dive - Advanced Patterns and Internals\"}],[\"$\",\"div\",null,{\"style\":{\"color\":\"#64748b\",\"fontSize\":\"0.9rem\",\"marginBottom\":\"2rem\"},\"children\":[[\"$\",\"span\",null,{\"children\":[\"📁 \",\"frontend/react-fundamentals/hooks-deep-dive.md\"]}],\"$undefined\",\"$undefined\"]}]]}],[\"$\",\"$L5\",null,{\"content\":\"$6\"}]]}],null],null],null]},[null,[\"$\",\"$L7\",null,{\"parallelRouterKey\":\"children\",\"segmentPath\":[\"children\",\"docs\",\"children\",\"$8\",\"children\"],\"error\":\"$undefined\",\"errorStyles\":\"$undefined\",\"errorScripts\":\"$undefined\",\"template\":[\"$\",\"$L9\",null,{}],\"templateStyles\":\"$undefined\",\"templateScripts\":\"$undefined\",\"notFound\":\"$undefined\",\"notFoundStyles\":\"$undefined\"}]],null]},[null,[\"$\",\"$L7\",null,{\"parallelRouterKey\":\"children\",\"segmentPath\":[\"children\",\"docs\",\"children\"],\"error\":\"$undefined\",\"errorStyles\":\"$undefined\",\"errorScripts\":\"$undefined\",\"template\":[\"$\",\"$L9\",null,{}],\"templateStyles\":\"$undefined\",\"templateScripts\":\"$undefined\",\"notFound\":\"$undefined\",\"notFoundStyles\":\"$undefined\"}]],null]},[[[[\"$\",\"link\",\"0\",{\"rel\":\"stylesheet\",\"href\":\"/interview/_next/static/css/387024c6a2216908.css\",\"precedence\":\"next\",\"crossOrigin\":\"$undefined\"}]],[\"$\",\"$La\",null,{\"children\":[\"$\",\"$L7\",null,{\"parallelRouterKey\":\"children\",\"segmentPath\":[\"children\"],\"error\":\"$undefined\",\"errorStyles\":\"$undefined\",\"errorScripts\":\"$undefined\",\"template\":[\"$\",\"$L9\",null,{}],\"templateStyles\":\"$undefined\",\"templateScripts\":\"$undefined\",\"notFound\":[[\"$\",\"title\",null,{\"children\":\"404: This page could not be found.\"}],[\"$\",\"div\",null,{\"style\":{\"fontFamily\":\"system-ui,\\\"Segoe UI\\\",Roboto,Helvetica,Arial,sans-serif,\\\"Apple Color Emoji\\\",\\\"Segoe UI Emoji\\\"\",\"height\":\"100vh\",\"textAlign\":\"center\",\"display\":\"flex\",\"flexDirection\":\"column\",\"alignItems\":\"center\",\"justifyContent\":\"center\"},\"children\":[\"$\",\"div\",null,{\"children\":[[\"$\",\"style\",null,{\"dangerouslySetInnerHTML\":{\"__html\":\"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}\"}}],[\"$\",\"h1\",null,{\"className\":\"next-error-h1\",\"style\":{\"display\":\"inline-block\",\"margin\":\"0 20px 0 0\",\"padding\":\"0 23px 0 0\",\"fontSize\":24,\"fontWeight\":500,\"verticalAlign\":\"top\",\"lineHeight\":\"49px\"},\"children\":\"404\"}],[\"$\",\"div\",null,{\"style\":{\"display\":\"inline-block\"},\"children\":[\"$\",\"h2\",null,{\"style\":{\"fontSize\":14,\"fontWeight\":400,\"lineHeight\":\"49px\",\"margin\":0},\"children\":\"This page could not be found.\"}]}]]}]}]],\"notFoundStyles\":[]}],\"params\":{}}]],null],null],\"couldBeIntercepted\":false,\"initialHead\":[null,\"$Lb\"],\"globalErrorComponent\":\"$c\",\"missingSlots\":\"$Wd\"}]\n"])</script><script>self.__next_f.push([1,"b:[[\"$\",\"meta\",\"0\",{\"name\":\"viewport\",\"content\":\"width=device-width, initial-scale=1\"}],[\"$\",\"meta\",\"1\",{\"charSet\":\"utf-8\"}],[\"$\",\"title\",\"2\",{\"children\":\"React Hooks Deep Dive - Advanced Patterns and Internals - Frontend Interview Docs\"}],[\"$\",\"meta\",\"3\",{\"name\":\"description\",\"content\":\"Comprehensive understanding of React Hooks, custom hooks, and advanced patterns for state management and side effects\"}],[\"$\",\"meta\",\"4\",{\"property\":\"og:title\",\"content\":\"React Hooks Deep Dive - Advanced Patterns and Internals - Frontend Interview Docs\"}],[\"$\",\"meta\",\"5\",{\"property\":\"og:description\",\"content\":\"Comprehensive understanding of React Hooks, custom hooks, and advanced patterns for state management and side effects\"}],[\"$\",\"meta\",\"6\",{\"property\":\"og:type\",\"content\":\"article\"}],[\"$\",\"meta\",\"7\",{\"name\":\"twitter:card\",\"content\":\"summary\"}],[\"$\",\"meta\",\"8\",{\"name\":\"twitter:title\",\"content\":\"React Hooks Deep Dive - Advanced Patterns and Internals - Frontend Interview Docs\"}],[\"$\",\"meta\",\"9\",{\"name\":\"twitter:description\",\"content\":\"Comprehensive understanding of React Hooks, custom hooks, and advanced patterns for state management and side effects\"}],[\"$\",\"meta\",\"10\",{\"name\":\"next-size-adjust\"}]]\n4:null\n"])</script></body></html>

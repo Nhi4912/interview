@@ -1,0 +1,1002 @@
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><meta name="viewport" content="width=device-width, initial-scale=1"/><link rel="preload" href="/interview/_next/static/media/e4af272ccee01ff0-s.p.woff2" as="font" crossorigin="" type="font/woff2"/><link rel="stylesheet" href="/interview/_next/static/css/387024c6a2216908.css" data-precedence="next"/><link rel="preload" as="script" fetchPriority="low" href="/interview/_next/static/chunks/webpack-be7d7df45533bffc.js"/><script src="/interview/_next/static/chunks/fd9d1056-6922f449a204c2cc.js" async=""></script><script src="/interview/_next/static/chunks/117-e7ecc085ce9cfab3.js" async=""></script><script src="/interview/_next/static/chunks/main-app-b06be5f3411c20c3.js" async=""></script><script src="/interview/_next/static/chunks/918-3273b83890f10546.js" async=""></script><script src="/interview/_next/static/chunks/930-3262a6c9c5acace4.js" async=""></script><script src="/interview/_next/static/chunks/app/docs/%5B...slug%5D/page-32962e9542d32755.js" async=""></script><script src="/interview/_next/static/chunks/710-dfaa11b4dff08f8e.js" async=""></script><script src="/interview/_next/static/chunks/972-011bba60ed155615.js" async=""></script><script src="/interview/_next/static/chunks/233-3e0c1d820a17eca9.js" async=""></script><script src="/interview/_next/static/chunks/app/layout-333f4adcd11f8f39.js" async=""></script><title>Frontend Interview Prep 2025 - Big Tech Interview Guide</title><meta name="description" content="Comprehensive frontend interview preparation for Big Tech companies including React, TypeScript, algorithms, and system design."/><link rel="icon" href="/favicon.ico"/><meta name="theme-color" content="#1a1a1a"/><meta property="og:title" content="Frontend Interview Prep 2025"/><meta property="og:description" content="Complete guide for frontend engineers targeting Big Tech companies"/><meta property="og:type" content="website"/><link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous"/><title>WebGL &amp; Canvas Advanced Challenges - Frontend Interview Docs</title><meta name="description" content=" # WebGL &amp; Canvas Advanced Challenges  ## Overview Advanced visual programming challenges using Canvas 2D and WebGL, commonly asked at companies like Google, Me"/><meta property="og:title" content="WebGL &amp; Canvas Advanced Challenges - Frontend Interview Docs"/><meta property="og:description" content=" # WebGL &amp; Canvas Advanced Challenges  ## Overview Advanced visual programming challenges using Canvas 2D and WebGL, commonly asked at companies like Google, Me"/><meta property="og:type" content="article"/><meta name="twitter:card" content="summary"/><meta name="twitter:title" content="WebGL &amp; Canvas Advanced Challenges - Frontend Interview Docs"/><meta name="twitter:description" content=" # WebGL &amp; Canvas Advanced Challenges  ## Overview Advanced visual programming challenges using Canvas 2D and WebGL, commonly asked at companies like Google, Me"/><meta name="next-size-adjust"/><script src="/interview/_next/static/chunks/polyfills-42372ed130431b0a.js" noModule=""></script><style data-styled="" data-styled-version="6.1.19">*{margin:0;padding:0;box-sizing:border-box;}/*!sc*/
+html{font-size:16px;line-height:1.5;scroll-behavior:smooth;}/*!sc*/
+body{font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;font-size:1rem;line-height:1.5;color:#1e293b;background-color:#ffffff;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;}/*!sc*/
+h1,h2,h3,h4,h5,h6{font-weight:700;line-height:1.25;margin-bottom:0.5em;}/*!sc*/
+h1{font-size:3rem;}/*!sc*/
+@media (max-width: 768px){h1{font-size:2.25rem;}}/*!sc*/
+h2{font-size:2.25rem;}/*!sc*/
+@media (max-width: 768px){h2{font-size:1.875rem;}}/*!sc*/
+h3{font-size:1.875rem;}/*!sc*/
+@media (max-width: 768px){h3{font-size:1.5rem;}}/*!sc*/
+h4{font-size:1.5rem;}/*!sc*/
+@media (max-width: 768px){h4{font-size:1.25rem;}}/*!sc*/
+h5{font-size:1.25rem;}/*!sc*/
+h6{font-size:1.125rem;}/*!sc*/
+p{margin-bottom:1rem;line-height:1.75;}/*!sc*/
+a{color:#3b82f6;text-decoration:none;transition:color 0.15s ease;}/*!sc*/
+a:hover{color:#2563eb;}/*!sc*/
+a:focus{outline:2px solid #3b82f6;outline-offset:2px;}/*!sc*/
+button{cursor:pointer;border:none;background:none;font-family:inherit;font-size:inherit;}/*!sc*/
+button:disabled{cursor:not-allowed;opacity:0.6;}/*!sc*/
+button:focus{outline:2px solid #3b82f6;outline-offset:2px;}/*!sc*/
+input,textarea,select{font-family:inherit;font-size:inherit;}/*!sc*/
+input:focus,textarea:focus,select:focus{outline:2px solid #3b82f6;outline-offset:2px;}/*!sc*/
+img{max-width:100%;height:auto;}/*!sc*/
+ul,ol{margin-bottom:1rem;padding-left:1.5rem;}/*!sc*/
+li{margin-bottom:0.25rem;}/*!sc*/
+blockquote{margin:1rem 0;padding:1rem;border-left:4px solid #3b82f6;background-color:#f1f5f9;font-style:italic;}/*!sc*/
+code{font-family:SFMono-Regular,Consolas,"Liberation Mono",Menlo,monospace;font-size:0.9em;background-color:#f1f5f9;padding:0.2em 0.4em;border-radius:0.25rem;}/*!sc*/
+pre{background-color:#f1f5f9;padding:1rem;border-radius:0.5rem;overflow-x:auto;margin-bottom:1rem;}/*!sc*/
+pre code{background:none;padding:0;}/*!sc*/
+table{width:100%;border-collapse:collapse;margin-bottom:1rem;}/*!sc*/
+th,td{padding:0.75rem;text-align:left;border-bottom:1px solid #e2e8f0;}/*!sc*/
+th{font-weight:600;background-color:#f1f5f9;}/*!sc*/
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0, 0, 0, 0);white-space:nowrap;border:0;}/*!sc*/
+.skip-link{position:absolute;top:-40px;left:6px;background:#3b82f6;color:white;padding:8px;text-decoration:none;border-radius:4px;z-index:100;}/*!sc*/
+.skip-link:focus{top:6px;}/*!sc*/
+::-webkit-scrollbar{width:8px;height:8px;}/*!sc*/
+::-webkit-scrollbar-track{background:#f1f5f9;}/*!sc*/
+::-webkit-scrollbar-thumb{background:#94a3b8;border-radius:4px;}/*!sc*/
+::-webkit-scrollbar-thumb:hover{background:#64748b;}/*!sc*/
+::selection{background:#3b82f6;color:white;}/*!sc*/
+.focus-visible{outline:2px solid #3b82f6;outline-offset:2px;}/*!sc*/
+.fade-in{opacity:0;animation:fadeIn 0.3s ease forwards;}/*!sc*/
+.slide-up{transform:translateY(20px);opacity:0;animation:slideUp 0.3s ease forwards;}/*!sc*/
+@keyframes fadeIn{to{opacity:1;}}/*!sc*/
+@keyframes slideUp{to{transform:translateY(0);opacity:1;}}/*!sc*/
+@media print{*{background:white!important;color:black!important;box-shadow:none!important;text-shadow:none!important;}a,a:visited{text-decoration:underline;}h1,h2,h3,h4,h5,h6{break-after:avoid;}pre,blockquote{border:1px solid #999;break-inside:avoid;}img{max-width:100%!important;}@page{margin:0.5in;}}/*!sc*/
+data-styled.g1[id="sc-global-kxA-Ddz1"]{content:"sc-global-kxA-Ddz1,"}/*!sc*/
+.wbMrm{position:fixed;top:0;width:100%;z-index:1020;background:transparent;backdrop-filter:blur(10px);border-bottom:1px solid transparent;transition:all 0.3s ease;}/*!sc*/
+data-styled.g2[id="sc-bRKDuR"]{content:"wbMrm,"}/*!sc*/
+.kDxBNU{max-width:1200px;margin:0 auto;padding:0 2rem;display:flex;align-items:center;justify-content:space-between;height:70px;}/*!sc*/
+data-styled.g3[id="sc-hvigdm"]{content:"kDxBNU,"}/*!sc*/
+.cvsJZg{display:flex;align-items:center;gap:0.5rem;font-size:1.5rem;font-weight:700;color:#3b82f6;text-decoration:none;cursor:pointer;}/*!sc*/
+.cvsJZg:hover{color:#2563eb;}/*!sc*/
+data-styled.g4[id="sc-fhHczv"]{content:"cvsJZg,"}/*!sc*/
+.lfYVIv{display:flex;align-items:center;gap:2rem;}/*!sc*/
+@media (max-width: 768px){.lfYVIv{display:none;}}/*!sc*/
+data-styled.g5[id="sc-ggWZvA"]{content:"lfYVIv,"}/*!sc*/
+.bhKRhV{color:#1e293b;font-weight:500;text-decoration:none;transition:color 0.15s ease;position:relative;}/*!sc*/
+.bhKRhV:hover{color:#3b82f6;}/*!sc*/
+.bhKRhV:after{content:'';position:absolute;bottom:-5px;left:0;width:0;height:2px;background:#3b82f6;transition:width 0.15s ease;}/*!sc*/
+.bhKRhV:hover:after{width:100%;}/*!sc*/
+data-styled.g6[id="sc-dTvVRJ"]{content:"bhKRhV,"}/*!sc*/
+.gpUImn{display:none;background:none;border:none;color:#1e293b;cursor:pointer;padding:0.5rem;}/*!sc*/
+@media (max-width: 768px){.gpUImn{display:block;}}/*!sc*/
+data-styled.g7[id="sc-jwTyAe"]{content:"gpUImn,"}/*!sc*/
+.hpKWkw{display:flex;align-items:center;gap:0.5rem;background:#f1f5f9;border:1px solid #e2e8f0;border-radius:0.5rem;padding:0.5rem 1rem;color:#64748b;font-size:0.9rem;transition:all 0.15s ease;}/*!sc*/
+.hpKWkw:hover{background:#ffffff;border-color:#3b82f6;}/*!sc*/
+data-styled.g11[id="sc-kNOymR"]{content:"hpKWkw,"}/*!sc*/
+.cJzheU{background:#1e293b;color:white;padding:3rem 0 1rem;margin-top:auto;}/*!sc*/
+data-styled.g12[id="sc-dYwGCk"]{content:"cJzheU,"}/*!sc*/
+.hJUFeT{max-width:1200px;margin:0 auto;padding:0 2rem;}/*!sc*/
+data-styled.g13[id="sc-lgpSej"]{content:"hJUFeT,"}/*!sc*/
+.mSxwd{display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:2rem;margin-bottom:2rem;}/*!sc*/
+@media (max-width: 768px){.mSxwd{grid-template-columns:1fr 1fr;gap:1.5rem;}}/*!sc*/
+@media (max-width: 480px){.mSxwd{grid-template-columns:1fr;}}/*!sc*/
+data-styled.g14[id="sc-eqYatC"]{content:"mSxwd,"}/*!sc*/
+.cmBIup h3{font-size:1.1rem;font-weight:600;margin-bottom:1rem;color:white;}/*!sc*/
+.cmBIup ul{list-style:none;padding:0;margin:0;}/*!sc*/
+.cmBIup li{margin-bottom:0.5rem;}/*!sc*/
+.cmBIup a{color:rgba(255, 255, 255, 0.7);text-decoration:none;transition:color 0.15s ease;}/*!sc*/
+.cmBIup a:hover{color:white;}/*!sc*/
+data-styled.g15[id="sc-kcLKEh"]{content:"cmBIup,"}/*!sc*/
+.bAsNIP{display:flex;align-items:center;gap:0.5rem;font-size:1.2rem;font-weight:700;margin-bottom:1rem;color:white;}/*!sc*/
+data-styled.g16[id="sc-dntSTA"]{content:"bAsNIP,"}/*!sc*/
+.gWXMDV{color:rgba(255, 255, 255, 0.7);line-height:1.6;margin-bottom:1rem;}/*!sc*/
+data-styled.g17[id="sc-kvnevz"]{content:"gWXMDV,"}/*!sc*/
+.jCoOHQ{display:flex;gap:1rem;}/*!sc*/
+.jCoOHQ a{display:flex;align-items:center;justify-content:center;width:40px;height:40px;background:rgba(255, 255, 255, 0.1);border-radius:0.5rem;color:rgba(255, 255, 255, 0.7);transition:all 0.15s ease;}/*!sc*/
+.jCoOHQ a:hover{background:rgba(255, 255, 255, 0.2);color:white;}/*!sc*/
+data-styled.g18[id="sc-dFVmKS"]{content:"jCoOHQ,"}/*!sc*/
+.crUaYh{border-top:1px solid rgba(255, 255, 255, 0.1);padding-top:2rem;display:flex;justify-content:space-between;align-items:center;}/*!sc*/
+@media (max-width: 768px){.crUaYh{flex-direction:column;gap:1rem;text-align:center;}}/*!sc*/
+data-styled.g19[id="sc-kCuUfV"]{content:"crUaYh,"}/*!sc*/
+.esMlQF{color:rgba(255, 255, 255, 0.7);margin:0;font-size:0.9rem;}/*!sc*/
+data-styled.g20[id="sc-dNdcvo"]{content:"esMlQF,"}/*!sc*/
+.eHcrXx{display:flex;gap:2rem;}/*!sc*/
+@media (max-width: 480px){.eHcrXx{flex-direction:column;gap:1rem;}}/*!sc*/
+.eHcrXx a{color:rgba(255, 255, 255, 0.7);text-decoration:none;font-size:0.9rem;transition:color 0.15s ease;}/*!sc*/
+.eHcrXx a:hover{color:white;}/*!sc*/
+data-styled.g21[id="sc-fbQrwq"]{content:"eHcrXx,"}/*!sc*/
+.dAQFGp{color:#1e293b;line-height:1.6;}/*!sc*/
+.dAQFGp h1,.dAQFGp h2,.dAQFGp h3,.dAQFGp h4,.dAQFGp h5,.dAQFGp h6{color:#1e293b;margin-top:2rem;margin-bottom:1rem;font-weight:600;}/*!sc*/
+.dAQFGp h1{font-size:2rem;border-bottom:2px solid #e2e8f0;padding-bottom:0.5rem;}/*!sc*/
+.dAQFGp h2{font-size:1.5rem;border-bottom:1px solid #e2e8f0;padding-bottom:0.3rem;}/*!sc*/
+.dAQFGp h3{font-size:1.25rem;}/*!sc*/
+.dAQFGp h4{font-size:1.1rem;}/*!sc*/
+.dAQFGp p{margin-bottom:1rem;color:#64748b;}/*!sc*/
+.dAQFGp a{color:#3b82f6;text-decoration:none;}/*!sc*/
+.dAQFGp a:hover{text-decoration:underline;}/*!sc*/
+.dAQFGp ul,.dAQFGp ol{margin-bottom:1rem;padding-left:1.5rem;}/*!sc*/
+.dAQFGp ul li,.dAQFGp ol li{margin-bottom:0.5rem;color:#64748b;}/*!sc*/
+.dAQFGp blockquote{border-left:4px solid #3b82f6;padding-left:1rem;margin:1rem 0;font-style:italic;color:#64748b;background:#f1f5f9;padding:1rem;border-radius:0.5rem;}/*!sc*/
+.dAQFGp code{background:#f1f5f9;padding:0.2rem 0.4rem;border-radius:0.25rem;font-family:SFMono-Regular,Consolas,"Liberation Mono",Menlo,monospace;font-size:0.9em;color:#f59e0b;}/*!sc*/
+.dAQFGp pre{background:#ffffff;border:1px solid #e2e8f0;border-radius:0.5rem;padding:1rem;margin:1rem 0;overflow-x:auto;}/*!sc*/
+.dAQFGp pre code{background:none;padding:0;color:#1e293b;font-size:0.9rem;}/*!sc*/
+.dAQFGp table{width:100%;border-collapse:collapse;margin:1rem 0;}/*!sc*/
+.dAQFGp table th,.dAQFGp table td{border:1px solid #e2e8f0;padding:0.5rem;text-align:left;}/*!sc*/
+.dAQFGp table th{background:#ffffff;font-weight:600;}/*!sc*/
+.dAQFGp table tr:nth-child(even){background:#f1f5f9;}/*!sc*/
+.dAQFGp hr{border:none;height:1px;background:#e2e8f0;margin:2rem 0;}/*!sc*/
+.dAQFGp .highlight{background:#3b82f620;padding:0.2rem 0.4rem;border-radius:0.25rem;font-weight:600;}/*!sc*/
+.dAQFGp .hljs{background:#ffffff;color:#1e293b;}/*!sc*/
+.dAQFGp .hljs-keyword{color:#3b82f6;font-weight:600;}/*!sc*/
+.dAQFGp .hljs-string{color:#10b981;}/*!sc*/
+.dAQFGp .hljs-function{color:#f59e0b;}/*!sc*/
+.dAQFGp .hljs-comment{color:#94a3b8;font-style:italic;}/*!sc*/
+.dAQFGp .hljs-number{color:#f59e0b;}/*!sc*/
+.dAQFGp .hljs-variable{color:#1e293b;}/*!sc*/
+.dAQFGp .hljs-title{color:#f59e0b;font-weight:600;}/*!sc*/
+data-styled.g22[id="sc-gGKoUb"]{content:"dAQFGp,"}/*!sc*/
+</style></head><body class="__className_6eac61"><div style="min-height:100vh;display:flex;flex-direction:column"><nav class="sc-bRKDuR wbMrm"><div class="sc-hvigdm kDxBNU"><a href="/interview"><a class="sc-fhHczv cvsJZg"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-code "><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>Frontend Interview Prep</a></a><div class="sc-ggWZvA lfYVIv"><a href="/interview/problems"><a class="sc-dTvVRJ bhKRhV">Problems</a></a><a href="/interview/learn"><a class="sc-dTvVRJ bhKRhV">Learn</a></a><a href="/interview/study-guide"><a class="sc-dTvVRJ bhKRhV">Study Guide</a></a><a href="/interview/system-design"><a class="sc-dTvVRJ bhKRhV">System Design</a></a><a href="/interview/performance"><a class="sc-dTvVRJ bhKRhV">Performance</a></a><a href="/interview/accessibility"><a class="sc-dTvVRJ bhKRhV">Accessibility</a></a><a href="/interview/interview-tips"><a class="sc-dTvVRJ bhKRhV">Interview Tips</a></a><button class="sc-kNOymR hpKWkw"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-search "><circle cx="11" cy="11" r="8"></circle><path d="m21 21-4.3-4.3"></path></svg>Search</button></div><button class="sc-jwTyAe gpUImn"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-menu "><line x1="4" x2="20" y1="12" y2="12"></line><line x1="4" x2="20" y1="6" y2="6"></line><line x1="4" x2="20" y1="18" y2="18"></line></svg></button></div></nav><main style="flex:1"><div style="max-width:1200px;margin:0 auto;padding:2rem;padding-top:6rem"><div style="margin-bottom:2rem"><nav style="color:#64748b;font-size:0.9rem;margin-bottom:1rem"><a href="/" style="color:#3b82f6;text-decoration:none">Home</a> &gt; <span>src &gt; content &gt; frontend &gt; coding-problems &gt; 18-webgl-canvas-challenges</span></nav><h1 style="font-size:2.5rem;font-weight:800;margin-bottom:0.5rem;color:#1e293b">WebGL &amp; Canvas Advanced Challenges</h1><div style="color:#64748b;font-size:0.9rem;margin-bottom:2rem"><span>📁 <!-- -->src/content/frontend/coding-problems/18-webgl-canvas-challenges.md</span></div></div><div class="sc-gGKoUb dAQFGp"><h1 id="webgl-&amp;-canvas-advanced-challenges" node="[object Object]">WebGL &amp; Canvas Advanced Challenges</h1>
+<h2 id="overview" node="[object Object]">Overview</h2>
+<p>Advanced visual programming challenges using Canvas 2D and WebGL, commonly asked at companies like Google, Meta, and Apple for frontend positions requiring graphics knowledge.</p>
+<hr/>
+<h2 id="challenge-1:-interactive-particle-system" node="[object Object]">Challenge 1: Interactive Particle System</h2>
+<h3 id="problem-statement" node="[object Object]">Problem Statement</h3>
+<p>Create a particle system that responds to mouse interaction with realistic physics simulation.</p>
+<h3 id="requirements" node="[object Object]">Requirements</h3>
+<ul>
+<li>500+ particles with different behaviors</li>
+<li>Mouse attraction/repulsion forces</li>
+<li>Collision detection between particles</li>
+<li>Performance optimization (60 FPS)</li>
+<li>Configurable particle properties</li>
+</ul>
+<h3 id="solution" node="[object Object]">Solution</h3>
+<p>{% raw %}</p>
+<pre><pre><code class="hljs hljs language-typescript"><span class="hljs-keyword">interface</span> <span class="hljs-title class_">Particle</span> {
+  <span class="hljs-attr">x</span>: <span class="hljs-built_in">number</span>;
+  <span class="hljs-attr">y</span>: <span class="hljs-built_in">number</span>;
+  <span class="hljs-attr">vx</span>: <span class="hljs-built_in">number</span>;
+  <span class="hljs-attr">vy</span>: <span class="hljs-built_in">number</span>;
+  <span class="hljs-attr">radius</span>: <span class="hljs-built_in">number</span>;
+  <span class="hljs-attr">color</span>: <span class="hljs-built_in">string</span>;
+  <span class="hljs-attr">mass</span>: <span class="hljs-built_in">number</span>;
+  <span class="hljs-attr">life</span>: <span class="hljs-built_in">number</span>;
+  <span class="hljs-attr">maxLife</span>: <span class="hljs-built_in">number</span>;
+}
+
+<span class="hljs-keyword">class</span> <span class="hljs-title class_">ParticleSystem</span> {
+  <span class="hljs-keyword">private</span> <span class="hljs-attr">canvas</span>: <span class="hljs-title class_">HTMLCanvasElement</span>;
+  <span class="hljs-keyword">private</span> <span class="hljs-attr">ctx</span>: <span class="hljs-title class_">CanvasRenderingContext2D</span>;
+  <span class="hljs-keyword">private</span> <span class="hljs-attr">particles</span>: <span class="hljs-title class_">Particle</span>[] = [];
+  <span class="hljs-keyword">private</span> mouse = { <span class="hljs-attr">x</span>: <span class="hljs-number">0</span>, <span class="hljs-attr">y</span>: <span class="hljs-number">0</span>, <span class="hljs-attr">isDown</span>: <span class="hljs-literal">false</span> };
+  <span class="hljs-keyword">private</span> <span class="hljs-attr">animationFrame</span>: <span class="hljs-built_in">number</span> = <span class="hljs-number">0</span>;
+
+  <span class="hljs-title function_">constructor</span>(<span class="hljs-params"><span class="hljs-attr">canvas</span>: <span class="hljs-title class_">HTMLCanvasElement</span></span>) {
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">canvas</span> = canvas;
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">ctx</span> = canvas.<span class="hljs-title function_">getContext</span>(<span class="hljs-string">&#x27;2d&#x27;</span>)!;
+    <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">setupEventListeners</span>();
+    <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">initParticles</span>();
+    <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">animate</span>();
+  }
+
+  <span class="hljs-keyword">private</span> <span class="hljs-title function_">initParticles</span>(): <span class="hljs-built_in">void</span> {
+    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">500</span>; i++) {
+      <span class="hljs-variable language_">this</span>.<span class="hljs-property">particles</span>.<span class="hljs-title function_">push</span>({
+        <span class="hljs-attr">x</span>: <span class="hljs-title class_">Math</span>.<span class="hljs-title function_">random</span>() * <span class="hljs-variable language_">this</span>.<span class="hljs-property">canvas</span>.<span class="hljs-property">width</span>,
+        <span class="hljs-attr">y</span>: <span class="hljs-title class_">Math</span>.<span class="hljs-title function_">random</span>() * <span class="hljs-variable language_">this</span>.<span class="hljs-property">canvas</span>.<span class="hljs-property">height</span>,
+        <span class="hljs-attr">vx</span>: (<span class="hljs-title class_">Math</span>.<span class="hljs-title function_">random</span>() - <span class="hljs-number">0.5</span>) * <span class="hljs-number">2</span>,
+        <span class="hljs-attr">vy</span>: (<span class="hljs-title class_">Math</span>.<span class="hljs-title function_">random</span>() - <span class="hljs-number">0.5</span>) * <span class="hljs-number">2</span>,
+        <span class="hljs-attr">radius</span>: <span class="hljs-title class_">Math</span>.<span class="hljs-title function_">random</span>() * <span class="hljs-number">3</span> + <span class="hljs-number">1</span>,
+        <span class="hljs-attr">color</span>: <span class="hljs-string">`hsl(<span class="hljs-subst">${<span class="hljs-built_in">Math</span>.random() * <span class="hljs-number">360</span>}</span>, 70%, 60%)`</span>,
+        <span class="hljs-attr">mass</span>: <span class="hljs-title class_">Math</span>.<span class="hljs-title function_">random</span>() * <span class="hljs-number">5</span> + <span class="hljs-number">1</span>,
+        <span class="hljs-attr">life</span>: <span class="hljs-number">1</span>,
+        <span class="hljs-attr">maxLife</span>: <span class="hljs-title class_">Math</span>.<span class="hljs-title function_">random</span>() * <span class="hljs-number">300</span> + <span class="hljs-number">200</span>
+      });
+    }
+  }
+
+  <span class="hljs-keyword">private</span> <span class="hljs-title function_">setupEventListeners</span>(): <span class="hljs-built_in">void</span> {
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">canvas</span>.<span class="hljs-title function_">addEventListener</span>(<span class="hljs-string">&#x27;mousemove&#x27;</span>, <span class="hljs-function">(<span class="hljs-params">e</span>) =&gt;</span> {
+      <span class="hljs-keyword">const</span> rect = <span class="hljs-variable language_">this</span>.<span class="hljs-property">canvas</span>.<span class="hljs-title function_">getBoundingClientRect</span>();
+      <span class="hljs-variable language_">this</span>.<span class="hljs-property">mouse</span>.<span class="hljs-property">x</span> = e.<span class="hljs-property">clientX</span> - rect.<span class="hljs-property">left</span>;
+      <span class="hljs-variable language_">this</span>.<span class="hljs-property">mouse</span>.<span class="hljs-property">y</span> = e.<span class="hljs-property">clientY</span> - rect.<span class="hljs-property">top</span>;
+    });
+
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">canvas</span>.<span class="hljs-title function_">addEventListener</span>(<span class="hljs-string">&#x27;mousedown&#x27;</span>, <span class="hljs-function">() =&gt;</span> {
+      <span class="hljs-variable language_">this</span>.<span class="hljs-property">mouse</span>.<span class="hljs-property">isDown</span> = <span class="hljs-literal">true</span>;
+    });
+
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">canvas</span>.<span class="hljs-title function_">addEventListener</span>(<span class="hljs-string">&#x27;mouseup&#x27;</span>, <span class="hljs-function">() =&gt;</span> {
+      <span class="hljs-variable language_">this</span>.<span class="hljs-property">mouse</span>.<span class="hljs-property">isDown</span> = <span class="hljs-literal">false</span>;
+    });
+  }
+
+  <span class="hljs-keyword">private</span> <span class="hljs-title function_">updateParticles</span>(): <span class="hljs-built_in">void</span> {
+    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-variable language_">this</span>.<span class="hljs-property">particles</span>.<span class="hljs-property">length</span> - <span class="hljs-number">1</span>; i &gt;= <span class="hljs-number">0</span>; i--) {
+      <span class="hljs-keyword">const</span> particle = <span class="hljs-variable language_">this</span>.<span class="hljs-property">particles</span>[i];
+      
+      <span class="hljs-comment">// Mouse interaction</span>
+      <span class="hljs-keyword">const</span> dx = <span class="hljs-variable language_">this</span>.<span class="hljs-property">mouse</span>.<span class="hljs-property">x</span> - particle.<span class="hljs-property">x</span>;
+      <span class="hljs-keyword">const</span> dy = <span class="hljs-variable language_">this</span>.<span class="hljs-property">mouse</span>.<span class="hljs-property">y</span> - particle.<span class="hljs-property">y</span>;
+      <span class="hljs-keyword">const</span> distance = <span class="hljs-title class_">Math</span>.<span class="hljs-title function_">sqrt</span>(dx * dx + dy * dy);
+      
+      <span class="hljs-keyword">if</span> (distance &lt; <span class="hljs-number">100</span>) {
+        <span class="hljs-keyword">const</span> force = <span class="hljs-variable language_">this</span>.<span class="hljs-property">mouse</span>.<span class="hljs-property">isDown</span> ? <span class="hljs-number">0.5</span> : -<span class="hljs-number">0.3</span>;
+        <span class="hljs-keyword">const</span> normalizedDx = dx / distance;
+        <span class="hljs-keyword">const</span> normalizedDy = dy / distance;
+        
+        particle.<span class="hljs-property">vx</span> += normalizedDx * force / particle.<span class="hljs-property">mass</span>;
+        particle.<span class="hljs-property">vy</span> += normalizedDy * force / particle.<span class="hljs-property">mass</span>;
+      }
+
+      <span class="hljs-comment">// Physics update</span>
+      particle.<span class="hljs-property">x</span> += particle.<span class="hljs-property">vx</span>;
+      particle.<span class="hljs-property">y</span> += particle.<span class="hljs-property">vy</span>;
+      
+      <span class="hljs-comment">// Boundary collision</span>
+      <span class="hljs-keyword">if</span> (particle.<span class="hljs-property">x</span> &lt; particle.<span class="hljs-property">radius</span> || particle.<span class="hljs-property">x</span> &gt; <span class="hljs-variable language_">this</span>.<span class="hljs-property">canvas</span>.<span class="hljs-property">width</span> - particle.<span class="hljs-property">radius</span>) {
+        particle.<span class="hljs-property">vx</span> *= -<span class="hljs-number">0.8</span>;
+        particle.<span class="hljs-property">x</span> = <span class="hljs-title class_">Math</span>.<span class="hljs-title function_">max</span>(particle.<span class="hljs-property">radius</span>, <span class="hljs-title class_">Math</span>.<span class="hljs-title function_">min</span>(<span class="hljs-variable language_">this</span>.<span class="hljs-property">canvas</span>.<span class="hljs-property">width</span> - particle.<span class="hljs-property">radius</span>, particle.<span class="hljs-property">x</span>));
+      }
+      
+      <span class="hljs-keyword">if</span> (particle.<span class="hljs-property">y</span> &lt; particle.<span class="hljs-property">radius</span> || particle.<span class="hljs-property">y</span> &gt; <span class="hljs-variable language_">this</span>.<span class="hljs-property">canvas</span>.<span class="hljs-property">height</span> - particle.<span class="hljs-property">radius</span>) {
+        particle.<span class="hljs-property">vy</span> *= -<span class="hljs-number">0.8</span>;
+        particle.<span class="hljs-property">y</span> = <span class="hljs-title class_">Math</span>.<span class="hljs-title function_">max</span>(particle.<span class="hljs-property">radius</span>, <span class="hljs-title class_">Math</span>.<span class="hljs-title function_">min</span>(<span class="hljs-variable language_">this</span>.<span class="hljs-property">canvas</span>.<span class="hljs-property">height</span> - particle.<span class="hljs-property">radius</span>, particle.<span class="hljs-property">y</span>));
+      }
+
+      <span class="hljs-comment">// Friction</span>
+      particle.<span class="hljs-property">vx</span> *= <span class="hljs-number">0.99</span>;
+      particle.<span class="hljs-property">vy</span> *= <span class="hljs-number">0.99</span>;
+
+      <span class="hljs-comment">// Life cycle</span>
+      particle.<span class="hljs-property">life</span>--;
+      <span class="hljs-keyword">if</span> (particle.<span class="hljs-property">life</span> &lt;= <span class="hljs-number">0</span>) {
+        <span class="hljs-variable language_">this</span>.<span class="hljs-property">particles</span>.<span class="hljs-title function_">splice</span>(i, <span class="hljs-number">1</span>);
+        <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">spawnParticle</span>();
+      }
+    }
+  }
+
+  <span class="hljs-keyword">private</span> <span class="hljs-title function_">spawnParticle</span>(): <span class="hljs-built_in">void</span> {
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">particles</span>.<span class="hljs-title function_">push</span>({
+      <span class="hljs-attr">x</span>: <span class="hljs-title class_">Math</span>.<span class="hljs-title function_">random</span>() * <span class="hljs-variable language_">this</span>.<span class="hljs-property">canvas</span>.<span class="hljs-property">width</span>,
+      <span class="hljs-attr">y</span>: <span class="hljs-title class_">Math</span>.<span class="hljs-title function_">random</span>() * <span class="hljs-variable language_">this</span>.<span class="hljs-property">canvas</span>.<span class="hljs-property">height</span>,
+      <span class="hljs-attr">vx</span>: (<span class="hljs-title class_">Math</span>.<span class="hljs-title function_">random</span>() - <span class="hljs-number">0.5</span>) * <span class="hljs-number">2</span>,
+      <span class="hljs-attr">vy</span>: (<span class="hljs-title class_">Math</span>.<span class="hljs-title function_">random</span>() - <span class="hljs-number">0.5</span>) * <span class="hljs-number">2</span>,
+      <span class="hljs-attr">radius</span>: <span class="hljs-title class_">Math</span>.<span class="hljs-title function_">random</span>() * <span class="hljs-number">3</span> + <span class="hljs-number">1</span>,
+      <span class="hljs-attr">color</span>: <span class="hljs-string">`hsl(<span class="hljs-subst">${<span class="hljs-built_in">Math</span>.random() * <span class="hljs-number">360</span>}</span>, 70%, 60%)`</span>,
+      <span class="hljs-attr">mass</span>: <span class="hljs-title class_">Math</span>.<span class="hljs-title function_">random</span>() * <span class="hljs-number">5</span> + <span class="hljs-number">1</span>,
+      <span class="hljs-attr">life</span>: <span class="hljs-number">1</span>,
+      <span class="hljs-attr">maxLife</span>: <span class="hljs-title class_">Math</span>.<span class="hljs-title function_">random</span>() * <span class="hljs-number">300</span> + <span class="hljs-number">200</span>
+    });
+  }
+
+  <span class="hljs-keyword">private</span> <span class="hljs-title function_">render</span>(): <span class="hljs-built_in">void</span> {
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">ctx</span>.<span class="hljs-property">fillStyle</span> = <span class="hljs-string">&#x27;rgba(0, 0, 0, 0.1)&#x27;</span>;
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">ctx</span>.<span class="hljs-title function_">fillRect</span>(<span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-variable language_">this</span>.<span class="hljs-property">canvas</span>.<span class="hljs-property">width</span>, <span class="hljs-variable language_">this</span>.<span class="hljs-property">canvas</span>.<span class="hljs-property">height</span>);
+
+    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">const</span> particle <span class="hljs-keyword">of</span> <span class="hljs-variable language_">this</span>.<span class="hljs-property">particles</span>) {
+      <span class="hljs-keyword">const</span> alpha = particle.<span class="hljs-property">life</span> / particle.<span class="hljs-property">maxLife</span>;
+      <span class="hljs-variable language_">this</span>.<span class="hljs-property">ctx</span>.<span class="hljs-property">globalAlpha</span> = alpha;
+      <span class="hljs-variable language_">this</span>.<span class="hljs-property">ctx</span>.<span class="hljs-property">fillStyle</span> = particle.<span class="hljs-property">color</span>;
+      <span class="hljs-variable language_">this</span>.<span class="hljs-property">ctx</span>.<span class="hljs-title function_">beginPath</span>();
+      <span class="hljs-variable language_">this</span>.<span class="hljs-property">ctx</span>.<span class="hljs-title function_">arc</span>(particle.<span class="hljs-property">x</span>, particle.<span class="hljs-property">y</span>, particle.<span class="hljs-property">radius</span>, <span class="hljs-number">0</span>, <span class="hljs-title class_">Math</span>.<span class="hljs-property">PI</span> * <span class="hljs-number">2</span>);
+      <span class="hljs-variable language_">this</span>.<span class="hljs-property">ctx</span>.<span class="hljs-title function_">fill</span>();
+    }
+    
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">ctx</span>.<span class="hljs-property">globalAlpha</span> = <span class="hljs-number">1</span>;
+  }
+
+  <span class="hljs-keyword">private</span> animate = (): <span class="hljs-function"><span class="hljs-params">void</span> =&gt;</span> {
+    <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">updateParticles</span>();
+    <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">render</span>();
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">animationFrame</span> = <span class="hljs-title function_">requestAnimationFrame</span>(<span class="hljs-variable language_">this</span>.<span class="hljs-property">animate</span>);
+  };
+
+  <span class="hljs-keyword">public</span> <span class="hljs-title function_">destroy</span>(): <span class="hljs-built_in">void</span> {
+    <span class="hljs-title function_">cancelAnimationFrame</span>(<span class="hljs-variable language_">this</span>.<span class="hljs-property">animationFrame</span>);
+  }
+}
+
+<span class="hljs-comment">// Usage</span>
+<span class="hljs-keyword">const</span> canvas = <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">getElementById</span>(<span class="hljs-string">&#x27;particleCanvas&#x27;</span>) <span class="hljs-keyword">as</span> <span class="hljs-title class_">HTMLCanvasElement</span>;
+canvas.<span class="hljs-property">width</span> = <span class="hljs-variable language_">window</span>.<span class="hljs-property">innerWidth</span>;
+canvas.<span class="hljs-property">height</span> = <span class="hljs-variable language_">window</span>.<span class="hljs-property">innerHeight</span>;
+
+<span class="hljs-keyword">const</span> particleSystem = <span class="hljs-keyword">new</span> <span class="hljs-title class_">ParticleSystem</span>(canvas);
+</code></pre></pre>
+<p>{% endraw %}</p>
+<hr/>
+<h2 id="challenge-2:-real-time-data-visualization" node="[object Object]">Challenge 2: Real-time Data Visualization</h2>
+<h3 id="problem-statement" node="[object Object]">Problem Statement</h3>
+<p>Create a real-time chart that can handle 10,000+ data points with smooth animations and interactive features.</p>
+<h3 id="requirements" node="[object Object]">Requirements</h3>
+<ul>
+<li>Line chart with multiple series</li>
+<li>Real-time data streaming</li>
+<li>Zoom and pan functionality</li>
+<li>Crosshair with data labels</li>
+<li>Performance optimization</li>
+</ul>
+<h3 id="solution" node="[object Object]">Solution</h3>
+<pre><pre><code class="hljs hljs language-typescript"><span class="hljs-keyword">interface</span> <span class="hljs-title class_">DataPoint</span> {
+  <span class="hljs-attr">timestamp</span>: <span class="hljs-built_in">number</span>;
+  <span class="hljs-attr">value</span>: <span class="hljs-built_in">number</span>;
+  <span class="hljs-attr">series</span>: <span class="hljs-built_in">string</span>;
+}
+
+<span class="hljs-keyword">interface</span> <span class="hljs-title class_">ChartSeries</span> {
+  <span class="hljs-attr">name</span>: <span class="hljs-built_in">string</span>;
+  <span class="hljs-attr">color</span>: <span class="hljs-built_in">string</span>;
+  <span class="hljs-attr">data</span>: <span class="hljs-title class_">DataPoint</span>[];
+}
+
+<span class="hljs-keyword">class</span> <span class="hljs-title class_">RealTimeChart</span> {
+  <span class="hljs-keyword">private</span> <span class="hljs-attr">canvas</span>: <span class="hljs-title class_">HTMLCanvasElement</span>;
+  <span class="hljs-keyword">private</span> <span class="hljs-attr">ctx</span>: <span class="hljs-title class_">CanvasRenderingContext2D</span>;
+  <span class="hljs-keyword">private</span> <span class="hljs-attr">series</span>: <span class="hljs-title class_">ChartSeries</span>[] = [];
+  <span class="hljs-keyword">private</span> viewport = { <span class="hljs-attr">x</span>: <span class="hljs-number">0</span>, <span class="hljs-attr">y</span>: <span class="hljs-number">0</span>, <span class="hljs-attr">width</span>: <span class="hljs-number">0</span>, <span class="hljs-attr">height</span>: <span class="hljs-number">0</span>, <span class="hljs-attr">scale</span>: <span class="hljs-number">1</span> };
+  <span class="hljs-keyword">private</span> mouse = { <span class="hljs-attr">x</span>: <span class="hljs-number">0</span>, <span class="hljs-attr">y</span>: <span class="hljs-number">0</span>, <span class="hljs-attr">isDown</span>: <span class="hljs-literal">false</span>, <span class="hljs-attr">startX</span>: <span class="hljs-number">0</span>, <span class="hljs-attr">startY</span>: <span class="hljs-number">0</span> };
+  <span class="hljs-keyword">private</span> crosshair = { <span class="hljs-attr">x</span>: <span class="hljs-number">0</span>, <span class="hljs-attr">y</span>: <span class="hljs-number">0</span>, <span class="hljs-attr">visible</span>: <span class="hljs-literal">false</span> };
+
+  <span class="hljs-title function_">constructor</span>(<span class="hljs-params"><span class="hljs-attr">canvas</span>: <span class="hljs-title class_">HTMLCanvasElement</span></span>) {
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">canvas</span> = canvas;
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">ctx</span> = canvas.<span class="hljs-title function_">getContext</span>(<span class="hljs-string">&#x27;2d&#x27;</span>)!;
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">viewport</span>.<span class="hljs-property">width</span> = canvas.<span class="hljs-property">width</span>;
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">viewport</span>.<span class="hljs-property">height</span> = canvas.<span class="hljs-property">height</span>;
+    <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">setupEventListeners</span>();
+    <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">animate</span>();
+  }
+
+  <span class="hljs-keyword">public</span> <span class="hljs-title function_">addSeries</span>(<span class="hljs-attr">name</span>: <span class="hljs-built_in">string</span>, <span class="hljs-attr">color</span>: <span class="hljs-built_in">string</span>): <span class="hljs-built_in">void</span> {
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">series</span>.<span class="hljs-title function_">push</span>({ name, color, <span class="hljs-attr">data</span>: [] });
+  }
+
+  <span class="hljs-keyword">public</span> <span class="hljs-title function_">addDataPoint</span>(<span class="hljs-attr">seriesName</span>: <span class="hljs-built_in">string</span>, <span class="hljs-attr">value</span>: <span class="hljs-built_in">number</span>): <span class="hljs-built_in">void</span> {
+    <span class="hljs-keyword">const</span> series = <span class="hljs-variable language_">this</span>.<span class="hljs-property">series</span>.<span class="hljs-title function_">find</span>(<span class="hljs-function"><span class="hljs-params">s</span> =&gt;</span> s.<span class="hljs-property">name</span> === seriesName);
+    <span class="hljs-keyword">if</span> (series) {
+      <span class="hljs-keyword">const</span> timestamp = <span class="hljs-title class_">Date</span>.<span class="hljs-title function_">now</span>();
+      series.<span class="hljs-property">data</span>.<span class="hljs-title function_">push</span>({ timestamp, value, <span class="hljs-attr">series</span>: seriesName });
+      
+      <span class="hljs-comment">// Keep only last 10000 points for performance</span>
+      <span class="hljs-keyword">if</span> (series.<span class="hljs-property">data</span>.<span class="hljs-property">length</span> &gt; <span class="hljs-number">10000</span>) {
+        series.<span class="hljs-property">data</span>.<span class="hljs-title function_">shift</span>();
+      }
+      
+      <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">updateViewport</span>();
+    }
+  }
+
+  <span class="hljs-keyword">private</span> <span class="hljs-title function_">setupEventListeners</span>(): <span class="hljs-built_in">void</span> {
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">canvas</span>.<span class="hljs-title function_">addEventListener</span>(<span class="hljs-string">&#x27;mousemove&#x27;</span>, <span class="hljs-function">(<span class="hljs-params">e</span>) =&gt;</span> {
+      <span class="hljs-keyword">const</span> rect = <span class="hljs-variable language_">this</span>.<span class="hljs-property">canvas</span>.<span class="hljs-title function_">getBoundingClientRect</span>();
+      <span class="hljs-variable language_">this</span>.<span class="hljs-property">mouse</span>.<span class="hljs-property">x</span> = e.<span class="hljs-property">clientX</span> - rect.<span class="hljs-property">left</span>;
+      <span class="hljs-variable language_">this</span>.<span class="hljs-property">mouse</span>.<span class="hljs-property">y</span> = e.<span class="hljs-property">clientY</span> - rect.<span class="hljs-property">top</span>;
+      
+      <span class="hljs-keyword">if</span> (<span class="hljs-variable language_">this</span>.<span class="hljs-property">mouse</span>.<span class="hljs-property">isDown</span>) {
+        <span class="hljs-keyword">const</span> deltaX = <span class="hljs-variable language_">this</span>.<span class="hljs-property">mouse</span>.<span class="hljs-property">x</span> - <span class="hljs-variable language_">this</span>.<span class="hljs-property">mouse</span>.<span class="hljs-property">startX</span>;
+        <span class="hljs-keyword">const</span> deltaY = <span class="hljs-variable language_">this</span>.<span class="hljs-property">mouse</span>.<span class="hljs-property">y</span> - <span class="hljs-variable language_">this</span>.<span class="hljs-property">mouse</span>.<span class="hljs-property">startY</span>;
+        <span class="hljs-variable language_">this</span>.<span class="hljs-property">viewport</span>.<span class="hljs-property">x</span> -= deltaX / <span class="hljs-variable language_">this</span>.<span class="hljs-property">viewport</span>.<span class="hljs-property">scale</span>;
+        <span class="hljs-variable language_">this</span>.<span class="hljs-property">viewport</span>.<span class="hljs-property">y</span> -= deltaY / <span class="hljs-variable language_">this</span>.<span class="hljs-property">viewport</span>.<span class="hljs-property">scale</span>;
+        <span class="hljs-variable language_">this</span>.<span class="hljs-property">mouse</span>.<span class="hljs-property">startX</span> = <span class="hljs-variable language_">this</span>.<span class="hljs-property">mouse</span>.<span class="hljs-property">x</span>;
+        <span class="hljs-variable language_">this</span>.<span class="hljs-property">mouse</span>.<span class="hljs-property">startY</span> = <span class="hljs-variable language_">this</span>.<span class="hljs-property">mouse</span>.<span class="hljs-property">y</span>;
+      } <span class="hljs-keyword">else</span> {
+        <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">updateCrosshair</span>();
+      }
+    });
+
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">canvas</span>.<span class="hljs-title function_">addEventListener</span>(<span class="hljs-string">&#x27;mousedown&#x27;</span>, <span class="hljs-function">(<span class="hljs-params">e</span>) =&gt;</span> {
+      <span class="hljs-variable language_">this</span>.<span class="hljs-property">mouse</span>.<span class="hljs-property">isDown</span> = <span class="hljs-literal">true</span>;
+      <span class="hljs-variable language_">this</span>.<span class="hljs-property">mouse</span>.<span class="hljs-property">startX</span> = <span class="hljs-variable language_">this</span>.<span class="hljs-property">mouse</span>.<span class="hljs-property">x</span>;
+      <span class="hljs-variable language_">this</span>.<span class="hljs-property">mouse</span>.<span class="hljs-property">startY</span> = <span class="hljs-variable language_">this</span>.<span class="hljs-property">mouse</span>.<span class="hljs-property">y</span>;
+    });
+
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">canvas</span>.<span class="hljs-title function_">addEventListener</span>(<span class="hljs-string">&#x27;mouseup&#x27;</span>, <span class="hljs-function">() =&gt;</span> {
+      <span class="hljs-variable language_">this</span>.<span class="hljs-property">mouse</span>.<span class="hljs-property">isDown</span> = <span class="hljs-literal">false</span>;
+    });
+
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">canvas</span>.<span class="hljs-title function_">addEventListener</span>(<span class="hljs-string">&#x27;wheel&#x27;</span>, <span class="hljs-function">(<span class="hljs-params">e</span>) =&gt;</span> {
+      e.<span class="hljs-title function_">preventDefault</span>();
+      <span class="hljs-keyword">const</span> zoomFactor = e.<span class="hljs-property">deltaY</span> &gt; <span class="hljs-number">0</span> ? <span class="hljs-number">0.9</span> : <span class="hljs-number">1.1</span>;
+      <span class="hljs-variable language_">this</span>.<span class="hljs-property">viewport</span>.<span class="hljs-property">scale</span> *= zoomFactor;
+      <span class="hljs-variable language_">this</span>.<span class="hljs-property">viewport</span>.<span class="hljs-property">scale</span> = <span class="hljs-title class_">Math</span>.<span class="hljs-title function_">max</span>(<span class="hljs-number">0.1</span>, <span class="hljs-title class_">Math</span>.<span class="hljs-title function_">min</span>(<span class="hljs-number">10</span>, <span class="hljs-variable language_">this</span>.<span class="hljs-property">viewport</span>.<span class="hljs-property">scale</span>));
+    });
+
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">canvas</span>.<span class="hljs-title function_">addEventListener</span>(<span class="hljs-string">&#x27;mouseenter&#x27;</span>, <span class="hljs-function">() =&gt;</span> {
+      <span class="hljs-variable language_">this</span>.<span class="hljs-property">crosshair</span>.<span class="hljs-property">visible</span> = <span class="hljs-literal">true</span>;
+    });
+
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">canvas</span>.<span class="hljs-title function_">addEventListener</span>(<span class="hljs-string">&#x27;mouseleave&#x27;</span>, <span class="hljs-function">() =&gt;</span> {
+      <span class="hljs-variable language_">this</span>.<span class="hljs-property">crosshair</span>.<span class="hljs-property">visible</span> = <span class="hljs-literal">false</span>;
+    });
+  }
+
+  <span class="hljs-keyword">private</span> <span class="hljs-title function_">updateViewport</span>(): <span class="hljs-built_in">void</span> {
+    <span class="hljs-keyword">if</span> (<span class="hljs-variable language_">this</span>.<span class="hljs-property">series</span>.<span class="hljs-property">length</span> === <span class="hljs-number">0</span>) <span class="hljs-keyword">return</span>;
+    
+    <span class="hljs-keyword">let</span> minTime = <span class="hljs-title class_">Infinity</span>, maxTime = -<span class="hljs-title class_">Infinity</span>;
+    <span class="hljs-keyword">let</span> minValue = <span class="hljs-title class_">Infinity</span>, maxValue = -<span class="hljs-title class_">Infinity</span>;
+    
+    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">const</span> series <span class="hljs-keyword">of</span> <span class="hljs-variable language_">this</span>.<span class="hljs-property">series</span>) {
+      <span class="hljs-keyword">for</span> (<span class="hljs-keyword">const</span> point <span class="hljs-keyword">of</span> series.<span class="hljs-property">data</span>) {
+        minTime = <span class="hljs-title class_">Math</span>.<span class="hljs-title function_">min</span>(minTime, point.<span class="hljs-property">timestamp</span>);
+        maxTime = <span class="hljs-title class_">Math</span>.<span class="hljs-title function_">max</span>(maxTime, point.<span class="hljs-property">timestamp</span>);
+        minValue = <span class="hljs-title class_">Math</span>.<span class="hljs-title function_">min</span>(minValue, point.<span class="hljs-property">value</span>);
+        maxValue = <span class="hljs-title class_">Math</span>.<span class="hljs-title function_">max</span>(maxValue, point.<span class="hljs-property">value</span>);
+      }
+    }
+    
+    <span class="hljs-comment">// Auto-follow latest data</span>
+    <span class="hljs-keyword">const</span> timeRange = maxTime - minTime;
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">viewport</span>.<span class="hljs-property">x</span> = maxTime - timeRange * <span class="hljs-number">0.8</span>;
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">viewport</span>.<span class="hljs-property">width</span> = timeRange;
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">viewport</span>.<span class="hljs-property">y</span> = minValue;
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">viewport</span>.<span class="hljs-property">height</span> = maxValue - minValue;
+  }
+
+  <span class="hljs-keyword">private</span> <span class="hljs-title function_">worldToScreen</span>(<span class="hljs-attr">x</span>: <span class="hljs-built_in">number</span>, <span class="hljs-attr">y</span>: <span class="hljs-built_in">number</span>): { <span class="hljs-attr">x</span>: <span class="hljs-built_in">number</span>, <span class="hljs-attr">y</span>: <span class="hljs-built_in">number</span> } {
+    <span class="hljs-keyword">return</span> {
+      <span class="hljs-attr">x</span>: ((x - <span class="hljs-variable language_">this</span>.<span class="hljs-property">viewport</span>.<span class="hljs-property">x</span>) / <span class="hljs-variable language_">this</span>.<span class="hljs-property">viewport</span>.<span class="hljs-property">width</span>) * <span class="hljs-variable language_">this</span>.<span class="hljs-property">canvas</span>.<span class="hljs-property">width</span> * <span class="hljs-variable language_">this</span>.<span class="hljs-property">viewport</span>.<span class="hljs-property">scale</span>,
+      <span class="hljs-attr">y</span>: <span class="hljs-variable language_">this</span>.<span class="hljs-property">canvas</span>.<span class="hljs-property">height</span> - ((y - <span class="hljs-variable language_">this</span>.<span class="hljs-property">viewport</span>.<span class="hljs-property">y</span>) / <span class="hljs-variable language_">this</span>.<span class="hljs-property">viewport</span>.<span class="hljs-property">height</span>) * <span class="hljs-variable language_">this</span>.<span class="hljs-property">canvas</span>.<span class="hljs-property">height</span> * <span class="hljs-variable language_">this</span>.<span class="hljs-property">viewport</span>.<span class="hljs-property">scale</span>
+    };
+  }
+
+  <span class="hljs-keyword">private</span> <span class="hljs-title function_">screenToWorld</span>(<span class="hljs-attr">x</span>: <span class="hljs-built_in">number</span>, <span class="hljs-attr">y</span>: <span class="hljs-built_in">number</span>): { <span class="hljs-attr">x</span>: <span class="hljs-built_in">number</span>, <span class="hljs-attr">y</span>: <span class="hljs-built_in">number</span> } {
+    <span class="hljs-keyword">return</span> {
+      <span class="hljs-attr">x</span>: <span class="hljs-variable language_">this</span>.<span class="hljs-property">viewport</span>.<span class="hljs-property">x</span> + (x / (<span class="hljs-variable language_">this</span>.<span class="hljs-property">canvas</span>.<span class="hljs-property">width</span> * <span class="hljs-variable language_">this</span>.<span class="hljs-property">viewport</span>.<span class="hljs-property">scale</span>)) * <span class="hljs-variable language_">this</span>.<span class="hljs-property">viewport</span>.<span class="hljs-property">width</span>,
+      <span class="hljs-attr">y</span>: <span class="hljs-variable language_">this</span>.<span class="hljs-property">viewport</span>.<span class="hljs-property">y</span> + ((<span class="hljs-variable language_">this</span>.<span class="hljs-property">canvas</span>.<span class="hljs-property">height</span> - y) / (<span class="hljs-variable language_">this</span>.<span class="hljs-property">canvas</span>.<span class="hljs-property">height</span> * <span class="hljs-variable language_">this</span>.<span class="hljs-property">viewport</span>.<span class="hljs-property">scale</span>)) * <span class="hljs-variable language_">this</span>.<span class="hljs-property">viewport</span>.<span class="hljs-property">height</span>
+    };
+  }
+
+  <span class="hljs-keyword">private</span> <span class="hljs-title function_">updateCrosshair</span>(): <span class="hljs-built_in">void</span> {
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">crosshair</span>.<span class="hljs-property">x</span> = <span class="hljs-variable language_">this</span>.<span class="hljs-property">mouse</span>.<span class="hljs-property">x</span>;
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">crosshair</span>.<span class="hljs-property">y</span> = <span class="hljs-variable language_">this</span>.<span class="hljs-property">mouse</span>.<span class="hljs-property">y</span>;
+  }
+
+  <span class="hljs-keyword">private</span> <span class="hljs-title function_">render</span>(): <span class="hljs-built_in">void</span> {
+    <span class="hljs-comment">// Clear canvas</span>
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">ctx</span>.<span class="hljs-property">fillStyle</span> = <span class="hljs-string">&#x27;#1a1a1a&#x27;</span>;
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">ctx</span>.<span class="hljs-title function_">fillRect</span>(<span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-variable language_">this</span>.<span class="hljs-property">canvas</span>.<span class="hljs-property">width</span>, <span class="hljs-variable language_">this</span>.<span class="hljs-property">canvas</span>.<span class="hljs-property">height</span>);
+
+    <span class="hljs-comment">// Draw grid</span>
+    <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">drawGrid</span>();
+
+    <span class="hljs-comment">// Draw series</span>
+    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">const</span> series <span class="hljs-keyword">of</span> <span class="hljs-variable language_">this</span>.<span class="hljs-property">series</span>) {
+      <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">drawSeries</span>(series);
+    }
+
+    <span class="hljs-comment">// Draw crosshair and labels</span>
+    <span class="hljs-keyword">if</span> (<span class="hljs-variable language_">this</span>.<span class="hljs-property">crosshair</span>.<span class="hljs-property">visible</span>) {
+      <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">drawCrosshair</span>();
+    }
+  }
+
+  <span class="hljs-keyword">private</span> <span class="hljs-title function_">drawGrid</span>(): <span class="hljs-built_in">void</span> {
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">ctx</span>.<span class="hljs-property">strokeStyle</span> = <span class="hljs-string">&#x27;#333&#x27;</span>;
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">ctx</span>.<span class="hljs-property">lineWidth</span> = <span class="hljs-number">1</span>;
+    
+    <span class="hljs-keyword">const</span> gridSpacing = <span class="hljs-number">50</span>;
+    
+    <span class="hljs-comment">// Vertical lines</span>
+    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> x = <span class="hljs-number">0</span>; x &lt; <span class="hljs-variable language_">this</span>.<span class="hljs-property">canvas</span>.<span class="hljs-property">width</span>; x += gridSpacing) {
+      <span class="hljs-variable language_">this</span>.<span class="hljs-property">ctx</span>.<span class="hljs-title function_">beginPath</span>();
+      <span class="hljs-variable language_">this</span>.<span class="hljs-property">ctx</span>.<span class="hljs-title function_">moveTo</span>(x, <span class="hljs-number">0</span>);
+      <span class="hljs-variable language_">this</span>.<span class="hljs-property">ctx</span>.<span class="hljs-title function_">lineTo</span>(x, <span class="hljs-variable language_">this</span>.<span class="hljs-property">canvas</span>.<span class="hljs-property">height</span>);
+      <span class="hljs-variable language_">this</span>.<span class="hljs-property">ctx</span>.<span class="hljs-title function_">stroke</span>();
+    }
+    
+    <span class="hljs-comment">// Horizontal lines</span>
+    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> y = <span class="hljs-number">0</span>; y &lt; <span class="hljs-variable language_">this</span>.<span class="hljs-property">canvas</span>.<span class="hljs-property">height</span>; y += gridSpacing) {
+      <span class="hljs-variable language_">this</span>.<span class="hljs-property">ctx</span>.<span class="hljs-title function_">beginPath</span>();
+      <span class="hljs-variable language_">this</span>.<span class="hljs-property">ctx</span>.<span class="hljs-title function_">moveTo</span>(<span class="hljs-number">0</span>, y);
+      <span class="hljs-variable language_">this</span>.<span class="hljs-property">ctx</span>.<span class="hljs-title function_">lineTo</span>(<span class="hljs-variable language_">this</span>.<span class="hljs-property">canvas</span>.<span class="hljs-property">width</span>, y);
+      <span class="hljs-variable language_">this</span>.<span class="hljs-property">ctx</span>.<span class="hljs-title function_">stroke</span>();
+    }
+  }
+
+  <span class="hljs-keyword">private</span> <span class="hljs-title function_">drawSeries</span>(<span class="hljs-attr">series</span>: <span class="hljs-title class_">ChartSeries</span>): <span class="hljs-built_in">void</span> {
+    <span class="hljs-keyword">if</span> (series.<span class="hljs-property">data</span>.<span class="hljs-property">length</span> &lt; <span class="hljs-number">2</span>) <span class="hljs-keyword">return</span>;
+
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">ctx</span>.<span class="hljs-property">strokeStyle</span> = series.<span class="hljs-property">color</span>;
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">ctx</span>.<span class="hljs-property">lineWidth</span> = <span class="hljs-number">2</span>;
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">ctx</span>.<span class="hljs-title function_">beginPath</span>();
+
+    <span class="hljs-keyword">let</span> isFirst = <span class="hljs-literal">true</span>;
+    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">const</span> point <span class="hljs-keyword">of</span> series.<span class="hljs-property">data</span>) {
+      <span class="hljs-keyword">const</span> screen = <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">worldToScreen</span>(point.<span class="hljs-property">timestamp</span>, point.<span class="hljs-property">value</span>);
+      
+      <span class="hljs-keyword">if</span> (isFirst) {
+        <span class="hljs-variable language_">this</span>.<span class="hljs-property">ctx</span>.<span class="hljs-title function_">moveTo</span>(screen.<span class="hljs-property">x</span>, screen.<span class="hljs-property">y</span>);
+        isFirst = <span class="hljs-literal">false</span>;
+      } <span class="hljs-keyword">else</span> {
+        <span class="hljs-variable language_">this</span>.<span class="hljs-property">ctx</span>.<span class="hljs-title function_">lineTo</span>(screen.<span class="hljs-property">x</span>, screen.<span class="hljs-property">y</span>);
+      }
+    }
+    
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">ctx</span>.<span class="hljs-title function_">stroke</span>();
+  }
+
+  <span class="hljs-keyword">private</span> <span class="hljs-title function_">drawCrosshair</span>(): <span class="hljs-built_in">void</span> {
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">ctx</span>.<span class="hljs-property">strokeStyle</span> = <span class="hljs-string">&#x27;#fff&#x27;</span>;
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">ctx</span>.<span class="hljs-property">lineWidth</span> = <span class="hljs-number">1</span>;
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">ctx</span>.<span class="hljs-title function_">setLineDash</span>([<span class="hljs-number">5</span>, <span class="hljs-number">5</span>]);
+    
+    <span class="hljs-comment">// Vertical line</span>
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">ctx</span>.<span class="hljs-title function_">beginPath</span>();
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">ctx</span>.<span class="hljs-title function_">moveTo</span>(<span class="hljs-variable language_">this</span>.<span class="hljs-property">crosshair</span>.<span class="hljs-property">x</span>, <span class="hljs-number">0</span>);
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">ctx</span>.<span class="hljs-title function_">lineTo</span>(<span class="hljs-variable language_">this</span>.<span class="hljs-property">crosshair</span>.<span class="hljs-property">x</span>, <span class="hljs-variable language_">this</span>.<span class="hljs-property">canvas</span>.<span class="hljs-property">height</span>);
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">ctx</span>.<span class="hljs-title function_">stroke</span>();
+    
+    <span class="hljs-comment">// Horizontal line</span>
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">ctx</span>.<span class="hljs-title function_">beginPath</span>();
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">ctx</span>.<span class="hljs-title function_">moveTo</span>(<span class="hljs-number">0</span>, <span class="hljs-variable language_">this</span>.<span class="hljs-property">crosshair</span>.<span class="hljs-property">y</span>);
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">ctx</span>.<span class="hljs-title function_">lineTo</span>(<span class="hljs-variable language_">this</span>.<span class="hljs-property">canvas</span>.<span class="hljs-property">width</span>, <span class="hljs-variable language_">this</span>.<span class="hljs-property">crosshair</span>.<span class="hljs-property">y</span>);
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">ctx</span>.<span class="hljs-title function_">stroke</span>();
+    
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">ctx</span>.<span class="hljs-title function_">setLineDash</span>([]);
+    
+    <span class="hljs-comment">// Draw data labels</span>
+    <span class="hljs-keyword">const</span> worldPos = <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">screenToWorld</span>(<span class="hljs-variable language_">this</span>.<span class="hljs-property">crosshair</span>.<span class="hljs-property">x</span>, <span class="hljs-variable language_">this</span>.<span class="hljs-property">crosshair</span>.<span class="hljs-property">y</span>);
+    <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">drawDataLabels</span>(worldPos.<span class="hljs-property">x</span>, worldPos.<span class="hljs-property">y</span>);
+  }
+
+  <span class="hljs-keyword">private</span> <span class="hljs-title function_">drawDataLabels</span>(<span class="hljs-attr">timestamp</span>: <span class="hljs-built_in">number</span>, <span class="hljs-attr">value</span>: <span class="hljs-built_in">number</span>): <span class="hljs-built_in">void</span> {
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">ctx</span>.<span class="hljs-property">fillStyle</span> = <span class="hljs-string">&#x27;rgba(0, 0, 0, 0.8)&#x27;</span>;
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">ctx</span>.<span class="hljs-title function_">fillRect</span>(<span class="hljs-variable language_">this</span>.<span class="hljs-property">crosshair</span>.<span class="hljs-property">x</span> + <span class="hljs-number">10</span>, <span class="hljs-variable language_">this</span>.<span class="hljs-property">crosshair</span>.<span class="hljs-property">y</span> - <span class="hljs-number">40</span>, <span class="hljs-number">200</span>, <span class="hljs-number">60</span>);
+    
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">ctx</span>.<span class="hljs-property">fillStyle</span> = <span class="hljs-string">&#x27;#fff&#x27;</span>;
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">ctx</span>.<span class="hljs-property">font</span> = <span class="hljs-string">&#x27;12px Arial&#x27;</span>;
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">ctx</span>.<span class="hljs-title function_">fillText</span>(<span class="hljs-string">`Time: <span class="hljs-subst">${<span class="hljs-keyword">new</span> <span class="hljs-built_in">Date</span>(timestamp).toLocaleTimeString()}</span>`</span>, <span class="hljs-variable language_">this</span>.<span class="hljs-property">crosshair</span>.<span class="hljs-property">x</span> + <span class="hljs-number">15</span>, <span class="hljs-variable language_">this</span>.<span class="hljs-property">crosshair</span>.<span class="hljs-property">y</span> - <span class="hljs-number">20</span>);
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">ctx</span>.<span class="hljs-title function_">fillText</span>(<span class="hljs-string">`Value: <span class="hljs-subst">${value.toFixed(<span class="hljs-number">2</span>)}</span>`</span>, <span class="hljs-variable language_">this</span>.<span class="hljs-property">crosshair</span>.<span class="hljs-property">x</span> + <span class="hljs-number">15</span>, <span class="hljs-variable language_">this</span>.<span class="hljs-property">crosshair</span>.<span class="hljs-property">y</span> - <span class="hljs-number">5</span>);
+  }
+
+  <span class="hljs-keyword">private</span> animate = (): <span class="hljs-function"><span class="hljs-params">void</span> =&gt;</span> {
+    <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">render</span>();
+    <span class="hljs-title function_">requestAnimationFrame</span>(<span class="hljs-variable language_">this</span>.<span class="hljs-property">animate</span>);
+  };
+}
+
+<span class="hljs-comment">// Usage</span>
+<span class="hljs-keyword">const</span> canvas = <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">getElementById</span>(<span class="hljs-string">&#x27;chartCanvas&#x27;</span>) <span class="hljs-keyword">as</span> <span class="hljs-title class_">HTMLCanvasElement</span>;
+canvas.<span class="hljs-property">width</span> = <span class="hljs-number">800</span>;
+canvas.<span class="hljs-property">height</span> = <span class="hljs-number">400</span>;
+
+<span class="hljs-keyword">const</span> chart = <span class="hljs-keyword">new</span> <span class="hljs-title class_">RealTimeChart</span>(canvas);
+chart.<span class="hljs-title function_">addSeries</span>(<span class="hljs-string">&#x27;CPU Usage&#x27;</span>, <span class="hljs-string">&#x27;#ff6b6b&#x27;</span>);
+chart.<span class="hljs-title function_">addSeries</span>(<span class="hljs-string">&#x27;Memory Usage&#x27;</span>, <span class="hljs-string">&#x27;#4ecdc4&#x27;</span>);
+
+<span class="hljs-comment">// Simulate real-time data</span>
+<span class="hljs-built_in">setInterval</span>(<span class="hljs-function">() =&gt;</span> {
+  chart.<span class="hljs-title function_">addDataPoint</span>(<span class="hljs-string">&#x27;CPU Usage&#x27;</span>, <span class="hljs-title class_">Math</span>.<span class="hljs-title function_">random</span>() * <span class="hljs-number">100</span>);
+  chart.<span class="hljs-title function_">addDataPoint</span>(<span class="hljs-string">&#x27;Memory Usage&#x27;</span>, <span class="hljs-title class_">Math</span>.<span class="hljs-title function_">random</span>() * <span class="hljs-number">100</span>);
+}, <span class="hljs-number">100</span>);
+</code></pre></pre>
+<hr/>
+<h2 id="challenge-3:-3d-model-viewer-with-webgl" node="[object Object]">Challenge 3: 3D Model Viewer with WebGL</h2>
+<h3 id="problem-statement" node="[object Object]">Problem Statement</h3>
+<p>Create a 3D model viewer that can load and display OBJ files with lighting, materials, and camera controls.</p>
+<h3 id="requirements" node="[object Object]">Requirements</h3>
+<ul>
+<li>Load and parse OBJ files</li>
+<li>Perspective camera with orbit controls</li>
+<li>Phong lighting model</li>
+<li>Texture mapping support</li>
+<li>Smooth performance (60 FPS)</li>
+</ul>
+<h3 id="solution" node="[object Object]">Solution</h3>
+<pre><pre><code class="hljs hljs language-typescript"><span class="hljs-keyword">interface</span> <span class="hljs-title class_">Vertex</span> {
+  <span class="hljs-attr">position</span>: [<span class="hljs-built_in">number</span>, <span class="hljs-built_in">number</span>, <span class="hljs-built_in">number</span>];
+  <span class="hljs-attr">normal</span>: [<span class="hljs-built_in">number</span>, <span class="hljs-built_in">number</span>, <span class="hljs-built_in">number</span>];
+  <span class="hljs-attr">texCoord</span>: [<span class="hljs-built_in">number</span>, <span class="hljs-built_in">number</span>];
+}
+
+<span class="hljs-keyword">interface</span> <span class="hljs-title class_">Mesh</span> {
+  <span class="hljs-attr">vertices</span>: <span class="hljs-title class_">Vertex</span>[];
+  <span class="hljs-attr">indices</span>: <span class="hljs-built_in">number</span>[];
+  <span class="hljs-attr">texture</span>?: <span class="hljs-title class_">WebGLTexture</span>;
+}
+
+<span class="hljs-keyword">class</span> <span class="hljs-title class_">Model3DViewer</span> {
+  <span class="hljs-keyword">private</span> <span class="hljs-attr">canvas</span>: <span class="hljs-title class_">HTMLCanvasElement</span>;
+  <span class="hljs-keyword">private</span> <span class="hljs-attr">gl</span>: <span class="hljs-title class_">WebGLRenderingContext</span>;
+  <span class="hljs-keyword">private</span> <span class="hljs-attr">shaderProgram</span>: <span class="hljs-title class_">WebGLProgram</span>;
+  <span class="hljs-keyword">private</span> <span class="hljs-attr">mesh</span>: <span class="hljs-title class_">Mesh</span> | <span class="hljs-literal">null</span> = <span class="hljs-literal">null</span>;
+  <span class="hljs-keyword">private</span> camera = {
+    <span class="hljs-attr">position</span>: [<span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">5</span>],
+    <span class="hljs-attr">target</span>: [<span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>],
+    <span class="hljs-attr">up</span>: [<span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">0</span>],
+    <span class="hljs-attr">fov</span>: <span class="hljs-number">45</span>,
+    <span class="hljs-attr">aspect</span>: <span class="hljs-number">1</span>,
+    <span class="hljs-attr">near</span>: <span class="hljs-number">0.1</span>,
+    <span class="hljs-attr">far</span>: <span class="hljs-number">100</span>
+  };
+  <span class="hljs-keyword">private</span> mouse = { <span class="hljs-attr">x</span>: <span class="hljs-number">0</span>, <span class="hljs-attr">y</span>: <span class="hljs-number">0</span>, <span class="hljs-attr">isDown</span>: <span class="hljs-literal">false</span>, <span class="hljs-attr">lastX</span>: <span class="hljs-number">0</span>, <span class="hljs-attr">lastY</span>: <span class="hljs-number">0</span> };
+  <span class="hljs-keyword">private</span> rotation = { <span class="hljs-attr">x</span>: <span class="hljs-number">0</span>, <span class="hljs-attr">y</span>: <span class="hljs-number">0</span> };
+
+  <span class="hljs-title function_">constructor</span>(<span class="hljs-params"><span class="hljs-attr">canvas</span>: <span class="hljs-title class_">HTMLCanvasElement</span></span>) {
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">canvas</span> = canvas;
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">gl</span> = canvas.<span class="hljs-title function_">getContext</span>(<span class="hljs-string">&#x27;webgl&#x27;</span>)!;
+    
+    <span class="hljs-keyword">if</span> (!<span class="hljs-variable language_">this</span>.<span class="hljs-property">gl</span>) {
+      <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Error</span>(<span class="hljs-string">&#x27;WebGL not supported&#x27;</span>);
+    }
+
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">camera</span>.<span class="hljs-property">aspect</span> = canvas.<span class="hljs-property">width</span> / canvas.<span class="hljs-property">height</span>;
+    <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">initShaders</span>();
+    <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">setupEventListeners</span>();
+    <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">render</span>();
+  }
+
+  <span class="hljs-keyword">private</span> <span class="hljs-title function_">initShaders</span>(): <span class="hljs-built_in">void</span> {
+    <span class="hljs-keyword">const</span> vertexShaderSource = <span class="hljs-string">`
+      attribute vec3 aPosition;
+      attribute vec3 aNormal;
+      attribute vec2 aTexCoord;
+      
+      uniform mat4 uModelMatrix;
+      uniform mat4 uViewMatrix;
+      uniform mat4 uProjectionMatrix;
+      uniform mat4 uNormalMatrix;
+      
+      varying vec3 vNormal;
+      varying vec3 vPosition;
+      varying vec2 vTexCoord;
+      
+      void main() {
+        vec4 worldPosition = uModelMatrix * vec4(aPosition, 1.0);
+        vPosition = worldPosition.xyz;
+        vNormal = (uNormalMatrix * vec4(aNormal, 0.0)).xyz;
+        vTexCoord = aTexCoord;
+        
+        gl_Position = uProjectionMatrix * uViewMatrix * worldPosition;
+      }
+    `</span>;
+
+    <span class="hljs-keyword">const</span> fragmentShaderSource = <span class="hljs-string">`
+      precision mediump float;
+      
+      uniform vec3 uLightPosition;
+      uniform vec3 uLightColor;
+      uniform vec3 uViewPosition;
+      uniform sampler2D uTexture;
+      uniform bool uHasTexture;
+      
+      varying vec3 vNormal;
+      varying vec3 vPosition;
+      varying vec2 vTexCoord;
+      
+      void main() {
+        vec3 normal = normalize(vNormal);
+        vec3 lightDir = normalize(uLightPosition - vPosition);
+        vec3 viewDir = normalize(uViewPosition - vPosition);
+        vec3 reflectDir = reflect(-lightDir, normal);
+        
+        // Ambient
+        vec3 ambient = 0.1 * uLightColor;
+        
+        // Diffuse
+        float diff = max(dot(normal, lightDir), 0.0);
+        vec3 diffuse = diff * uLightColor;
+        
+        // Specular
+        float spec = pow(max(dot(viewDir, reflectDir), 0.0), 64.0);
+        vec3 specular = spec * uLightColor;
+        
+        vec3 color;
+        if (uHasTexture) {
+          color = texture2D(uTexture, vTexCoord).rgb;
+        } else {
+          color = vec3(0.7, 0.7, 0.7);
+        }
+        
+        vec3 result = (ambient + diffuse + specular) * color;
+        gl_FragColor = vec4(result, 1.0);
+      }
+    `</span>;
+
+    <span class="hljs-keyword">const</span> vertexShader = <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">createShader</span>(<span class="hljs-variable language_">this</span>.<span class="hljs-property">gl</span>.<span class="hljs-property">VERTEX_SHADER</span>, vertexShaderSource);
+    <span class="hljs-keyword">const</span> fragmentShader = <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">createShader</span>(<span class="hljs-variable language_">this</span>.<span class="hljs-property">gl</span>.<span class="hljs-property">FRAGMENT_SHADER</span>, fragmentShaderSource);
+    
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">shaderProgram</span> = <span class="hljs-variable language_">this</span>.<span class="hljs-property">gl</span>.<span class="hljs-title function_">createProgram</span>()!;
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">gl</span>.<span class="hljs-title function_">attachShader</span>(<span class="hljs-variable language_">this</span>.<span class="hljs-property">shaderProgram</span>, vertexShader);
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">gl</span>.<span class="hljs-title function_">attachShader</span>(<span class="hljs-variable language_">this</span>.<span class="hljs-property">shaderProgram</span>, fragmentShader);
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">gl</span>.<span class="hljs-title function_">linkProgram</span>(<span class="hljs-variable language_">this</span>.<span class="hljs-property">shaderProgram</span>);
+    
+    <span class="hljs-keyword">if</span> (!<span class="hljs-variable language_">this</span>.<span class="hljs-property">gl</span>.<span class="hljs-title function_">getProgramParameter</span>(<span class="hljs-variable language_">this</span>.<span class="hljs-property">shaderProgram</span>, <span class="hljs-variable language_">this</span>.<span class="hljs-property">gl</span>.<span class="hljs-property">LINK_STATUS</span>)) {
+      <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Error</span>(<span class="hljs-string">&#x27;Shader program failed to link&#x27;</span>);
+    }
+  }
+
+  <span class="hljs-keyword">private</span> <span class="hljs-title function_">createShader</span>(<span class="hljs-attr">type</span>: <span class="hljs-built_in">number</span>, <span class="hljs-attr">source</span>: <span class="hljs-built_in">string</span>): <span class="hljs-title class_">WebGLShader</span> {
+    <span class="hljs-keyword">const</span> shader = <span class="hljs-variable language_">this</span>.<span class="hljs-property">gl</span>.<span class="hljs-title function_">createShader</span>(<span class="hljs-keyword">type</span>)!;
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">gl</span>.<span class="hljs-title function_">shaderSource</span>(shader, source);
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">gl</span>.<span class="hljs-title function_">compileShader</span>(shader);
+    
+    <span class="hljs-keyword">if</span> (!<span class="hljs-variable language_">this</span>.<span class="hljs-property">gl</span>.<span class="hljs-title function_">getShaderParameter</span>(shader, <span class="hljs-variable language_">this</span>.<span class="hljs-property">gl</span>.<span class="hljs-property">COMPILE_STATUS</span>)) {
+      <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Error</span>(<span class="hljs-string">`Shader compilation error: <span class="hljs-subst">${<span class="hljs-variable language_">this</span>.gl.getShaderInfoLog(shader)}</span>`</span>);
+    }
+    
+    <span class="hljs-keyword">return</span> shader;
+  }
+
+  <span class="hljs-keyword">public</span> <span class="hljs-keyword">async</span> <span class="hljs-title function_">loadOBJ</span>(<span class="hljs-attr">url</span>: <span class="hljs-built_in">string</span>): <span class="hljs-title class_">Promise</span>&lt;<span class="hljs-built_in">void</span>&gt; {
+    <span class="hljs-keyword">const</span> response = <span class="hljs-keyword">await</span> <span class="hljs-title function_">fetch</span>(url);
+    <span class="hljs-keyword">const</span> text = <span class="hljs-keyword">await</span> response.<span class="hljs-title function_">text</span>();
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">mesh</span> = <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">parseOBJ</span>(text);
+    <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">createBuffers</span>();
+  }
+
+  <span class="hljs-keyword">private</span> <span class="hljs-title function_">parseOBJ</span>(<span class="hljs-attr">text</span>: <span class="hljs-built_in">string</span>): <span class="hljs-title class_">Mesh</span> {
+    <span class="hljs-keyword">const</span> lines = text.<span class="hljs-title function_">split</span>(<span class="hljs-string">&#x27;\n&#x27;</span>);
+    <span class="hljs-keyword">const</span> <span class="hljs-attr">positions</span>: [<span class="hljs-built_in">number</span>, <span class="hljs-built_in">number</span>, <span class="hljs-built_in">number</span>][] = [];
+    <span class="hljs-keyword">const</span> <span class="hljs-attr">normals</span>: [<span class="hljs-built_in">number</span>, <span class="hljs-built_in">number</span>, <span class="hljs-built_in">number</span>][] = [];
+    <span class="hljs-keyword">const</span> <span class="hljs-attr">texCoords</span>: [<span class="hljs-built_in">number</span>, <span class="hljs-built_in">number</span>][] = [];
+    <span class="hljs-keyword">const</span> <span class="hljs-attr">vertices</span>: <span class="hljs-title class_">Vertex</span>[] = [];
+    <span class="hljs-keyword">const</span> <span class="hljs-attr">indices</span>: <span class="hljs-built_in">number</span>[] = [];
+    
+    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">const</span> line <span class="hljs-keyword">of</span> lines) {
+      <span class="hljs-keyword">const</span> parts = line.<span class="hljs-title function_">trim</span>().<span class="hljs-title function_">split</span>(<span class="hljs-regexp">/\s+/</span>);
+      
+      <span class="hljs-keyword">switch</span> (parts[<span class="hljs-number">0</span>]) {
+        <span class="hljs-keyword">case</span> <span class="hljs-string">&#x27;v&#x27;</span>:
+          positions.<span class="hljs-title function_">push</span>([<span class="hljs-built_in">parseFloat</span>(parts[<span class="hljs-number">1</span>]), <span class="hljs-built_in">parseFloat</span>(parts[<span class="hljs-number">2</span>]), <span class="hljs-built_in">parseFloat</span>(parts[<span class="hljs-number">3</span>])]);
+          <span class="hljs-keyword">break</span>;
+        <span class="hljs-keyword">case</span> <span class="hljs-string">&#x27;vn&#x27;</span>:
+          normals.<span class="hljs-title function_">push</span>([<span class="hljs-built_in">parseFloat</span>(parts[<span class="hljs-number">1</span>]), <span class="hljs-built_in">parseFloat</span>(parts[<span class="hljs-number">2</span>]), <span class="hljs-built_in">parseFloat</span>(parts[<span class="hljs-number">3</span>])]);
+          <span class="hljs-keyword">break</span>;
+        <span class="hljs-keyword">case</span> <span class="hljs-string">&#x27;vt&#x27;</span>:
+          texCoords.<span class="hljs-title function_">push</span>([<span class="hljs-built_in">parseFloat</span>(parts[<span class="hljs-number">1</span>]), <span class="hljs-built_in">parseFloat</span>(parts[<span class="hljs-number">2</span>])]);
+          <span class="hljs-keyword">break</span>;
+        <span class="hljs-keyword">case</span> <span class="hljs-string">&#x27;f&#x27;</span>:
+          <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">parseFace</span>(parts.<span class="hljs-title function_">slice</span>(<span class="hljs-number">1</span>), positions, normals, texCoords, vertices, indices);
+          <span class="hljs-keyword">break</span>;
+      }
+    }
+    
+    <span class="hljs-keyword">return</span> { vertices, indices };
+  }
+
+  <span class="hljs-keyword">private</span> <span class="hljs-title function_">parseFace</span>(
+    <span class="hljs-attr">faceData</span>: <span class="hljs-built_in">string</span>[],
+    <span class="hljs-attr">positions</span>: [<span class="hljs-built_in">number</span>, <span class="hljs-built_in">number</span>, <span class="hljs-built_in">number</span>][],
+    <span class="hljs-attr">normals</span>: [<span class="hljs-built_in">number</span>, <span class="hljs-built_in">number</span>, <span class="hljs-built_in">number</span>][],
+    <span class="hljs-attr">texCoords</span>: [<span class="hljs-built_in">number</span>, <span class="hljs-built_in">number</span>][],
+    <span class="hljs-attr">vertices</span>: <span class="hljs-title class_">Vertex</span>[],
+    <span class="hljs-attr">indices</span>: <span class="hljs-built_in">number</span>[]
+  ): <span class="hljs-built_in">void</span> {
+    <span class="hljs-keyword">const</span> <span class="hljs-attr">faceVertices</span>: <span class="hljs-built_in">number</span>[] = [];
+    
+    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">const</span> vertexData <span class="hljs-keyword">of</span> faceData) {
+      <span class="hljs-keyword">const</span> [posIndex, texIndex, normalIndex] = vertexData.<span class="hljs-title function_">split</span>(<span class="hljs-string">&#x27;/&#x27;</span>).<span class="hljs-title function_">map</span>(<span class="hljs-function"><span class="hljs-params">x</span> =&gt;</span> <span class="hljs-built_in">parseInt</span>(x) - <span class="hljs-number">1</span>);
+      
+      <span class="hljs-keyword">const</span> <span class="hljs-attr">vertex</span>: <span class="hljs-title class_">Vertex</span> = {
+        <span class="hljs-attr">position</span>: positions[posIndex] || [<span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>],
+        <span class="hljs-attr">normal</span>: normals[normalIndex] || [<span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">0</span>],
+        <span class="hljs-attr">texCoord</span>: texCoords[texIndex] || [<span class="hljs-number">0</span>, <span class="hljs-number">0</span>]
+      };
+      
+      vertices.<span class="hljs-title function_">push</span>(vertex);
+      faceVertices.<span class="hljs-title function_">push</span>(vertices.<span class="hljs-property">length</span> - <span class="hljs-number">1</span>);
+    }
+    
+    <span class="hljs-comment">// Triangulate face (assuming convex)</span>
+    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">1</span>; i &lt; faceVertices.<span class="hljs-property">length</span> - <span class="hljs-number">1</span>; i++) {
+      indices.<span class="hljs-title function_">push</span>(faceVertices[<span class="hljs-number">0</span>], faceVertices[i], faceVertices[i + <span class="hljs-number">1</span>]);
+    }
+  }
+
+  <span class="hljs-keyword">private</span> <span class="hljs-title function_">createBuffers</span>(): <span class="hljs-built_in">void</span> {
+    <span class="hljs-keyword">if</span> (!<span class="hljs-variable language_">this</span>.<span class="hljs-property">mesh</span>) <span class="hljs-keyword">return</span>;
+
+    <span class="hljs-keyword">const</span> <span class="hljs-attr">vertexData</span>: <span class="hljs-built_in">number</span>[] = [];
+    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">const</span> vertex <span class="hljs-keyword">of</span> <span class="hljs-variable language_">this</span>.<span class="hljs-property">mesh</span>.<span class="hljs-property">vertices</span>) {
+      vertexData.<span class="hljs-title function_">push</span>(...vertex.<span class="hljs-property">position</span>, ...vertex.<span class="hljs-property">normal</span>, ...vertex.<span class="hljs-property">texCoord</span>);
+    }
+
+    <span class="hljs-keyword">const</span> vertexBuffer = <span class="hljs-variable language_">this</span>.<span class="hljs-property">gl</span>.<span class="hljs-title function_">createBuffer</span>();
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">gl</span>.<span class="hljs-title function_">bindBuffer</span>(<span class="hljs-variable language_">this</span>.<span class="hljs-property">gl</span>.<span class="hljs-property">ARRAY_BUFFER</span>, vertexBuffer);
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">gl</span>.<span class="hljs-title function_">bufferData</span>(<span class="hljs-variable language_">this</span>.<span class="hljs-property">gl</span>.<span class="hljs-property">ARRAY_BUFFER</span>, <span class="hljs-keyword">new</span> <span class="hljs-title class_">Float32Array</span>(vertexData), <span class="hljs-variable language_">this</span>.<span class="hljs-property">gl</span>.<span class="hljs-property">STATIC_DRAW</span>);
+
+    <span class="hljs-keyword">const</span> indexBuffer = <span class="hljs-variable language_">this</span>.<span class="hljs-property">gl</span>.<span class="hljs-title function_">createBuffer</span>();
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">gl</span>.<span class="hljs-title function_">bindBuffer</span>(<span class="hljs-variable language_">this</span>.<span class="hljs-property">gl</span>.<span class="hljs-property">ELEMENT_ARRAY_BUFFER</span>, indexBuffer);
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">gl</span>.<span class="hljs-title function_">bufferData</span>(<span class="hljs-variable language_">this</span>.<span class="hljs-property">gl</span>.<span class="hljs-property">ELEMENT_ARRAY_BUFFER</span>, <span class="hljs-keyword">new</span> <span class="hljs-title class_">Uint16Array</span>(<span class="hljs-variable language_">this</span>.<span class="hljs-property">mesh</span>.<span class="hljs-property">indices</span>), <span class="hljs-variable language_">this</span>.<span class="hljs-property">gl</span>.<span class="hljs-property">STATIC_DRAW</span>);
+  }
+
+  <span class="hljs-keyword">private</span> <span class="hljs-title function_">setupEventListeners</span>(): <span class="hljs-built_in">void</span> {
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">canvas</span>.<span class="hljs-title function_">addEventListener</span>(<span class="hljs-string">&#x27;mousedown&#x27;</span>, <span class="hljs-function">(<span class="hljs-params">e</span>) =&gt;</span> {
+      <span class="hljs-variable language_">this</span>.<span class="hljs-property">mouse</span>.<span class="hljs-property">isDown</span> = <span class="hljs-literal">true</span>;
+      <span class="hljs-variable language_">this</span>.<span class="hljs-property">mouse</span>.<span class="hljs-property">lastX</span> = e.<span class="hljs-property">clientX</span>;
+      <span class="hljs-variable language_">this</span>.<span class="hljs-property">mouse</span>.<span class="hljs-property">lastY</span> = e.<span class="hljs-property">clientY</span>;
+    });
+
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">canvas</span>.<span class="hljs-title function_">addEventListener</span>(<span class="hljs-string">&#x27;mousemove&#x27;</span>, <span class="hljs-function">(<span class="hljs-params">e</span>) =&gt;</span> {
+      <span class="hljs-keyword">if</span> (<span class="hljs-variable language_">this</span>.<span class="hljs-property">mouse</span>.<span class="hljs-property">isDown</span>) {
+        <span class="hljs-keyword">const</span> deltaX = e.<span class="hljs-property">clientX</span> - <span class="hljs-variable language_">this</span>.<span class="hljs-property">mouse</span>.<span class="hljs-property">lastX</span>;
+        <span class="hljs-keyword">const</span> deltaY = e.<span class="hljs-property">clientY</span> - <span class="hljs-variable language_">this</span>.<span class="hljs-property">mouse</span>.<span class="hljs-property">lastY</span>;
+        
+        <span class="hljs-variable language_">this</span>.<span class="hljs-property">rotation</span>.<span class="hljs-property">y</span> += deltaX * <span class="hljs-number">0.01</span>;
+        <span class="hljs-variable language_">this</span>.<span class="hljs-property">rotation</span>.<span class="hljs-property">x</span> += deltaY * <span class="hljs-number">0.01</span>;
+        
+        <span class="hljs-variable language_">this</span>.<span class="hljs-property">mouse</span>.<span class="hljs-property">lastX</span> = e.<span class="hljs-property">clientX</span>;
+        <span class="hljs-variable language_">this</span>.<span class="hljs-property">mouse</span>.<span class="hljs-property">lastY</span> = e.<span class="hljs-property">clientY</span>;
+      }
+    });
+
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">canvas</span>.<span class="hljs-title function_">addEventListener</span>(<span class="hljs-string">&#x27;mouseup&#x27;</span>, <span class="hljs-function">() =&gt;</span> {
+      <span class="hljs-variable language_">this</span>.<span class="hljs-property">mouse</span>.<span class="hljs-property">isDown</span> = <span class="hljs-literal">false</span>;
+    });
+
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">canvas</span>.<span class="hljs-title function_">addEventListener</span>(<span class="hljs-string">&#x27;wheel&#x27;</span>, <span class="hljs-function">(<span class="hljs-params">e</span>) =&gt;</span> {
+      e.<span class="hljs-title function_">preventDefault</span>();
+      <span class="hljs-variable language_">this</span>.<span class="hljs-property">camera</span>.<span class="hljs-property">position</span>[<span class="hljs-number">2</span>] += e.<span class="hljs-property">deltaY</span> * <span class="hljs-number">0.01</span>;
+      <span class="hljs-variable language_">this</span>.<span class="hljs-property">camera</span>.<span class="hljs-property">position</span>[<span class="hljs-number">2</span>] = <span class="hljs-title class_">Math</span>.<span class="hljs-title function_">max</span>(<span class="hljs-number">0.5</span>, <span class="hljs-title class_">Math</span>.<span class="hljs-title function_">min</span>(<span class="hljs-number">20</span>, <span class="hljs-variable language_">this</span>.<span class="hljs-property">camera</span>.<span class="hljs-property">position</span>[<span class="hljs-number">2</span>]));
+    });
+  }
+
+  <span class="hljs-keyword">private</span> render = (): <span class="hljs-function"><span class="hljs-params">void</span> =&gt;</span> {
+    <span class="hljs-keyword">if</span> (!<span class="hljs-variable language_">this</span>.<span class="hljs-property">mesh</span>) {
+      <span class="hljs-title function_">requestAnimationFrame</span>(<span class="hljs-variable language_">this</span>.<span class="hljs-property">render</span>);
+      <span class="hljs-keyword">return</span>;
+    }
+
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">gl</span>.<span class="hljs-title function_">viewport</span>(<span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-variable language_">this</span>.<span class="hljs-property">canvas</span>.<span class="hljs-property">width</span>, <span class="hljs-variable language_">this</span>.<span class="hljs-property">canvas</span>.<span class="hljs-property">height</span>);
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">gl</span>.<span class="hljs-title function_">clear</span>(<span class="hljs-variable language_">this</span>.<span class="hljs-property">gl</span>.<span class="hljs-property">COLOR_BUFFER_BIT</span> | <span class="hljs-variable language_">this</span>.<span class="hljs-property">gl</span>.<span class="hljs-property">DEPTH_BUFFER_BIT</span>);
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">gl</span>.<span class="hljs-title function_">enable</span>(<span class="hljs-variable language_">this</span>.<span class="hljs-property">gl</span>.<span class="hljs-property">DEPTH_TEST</span>);
+
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">gl</span>.<span class="hljs-title function_">useProgram</span>(<span class="hljs-variable language_">this</span>.<span class="hljs-property">shaderProgram</span>);
+
+    <span class="hljs-comment">// Set up matrices</span>
+    <span class="hljs-keyword">const</span> modelMatrix = <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">createRotationMatrix</span>(<span class="hljs-variable language_">this</span>.<span class="hljs-property">rotation</span>.<span class="hljs-property">x</span>, <span class="hljs-variable language_">this</span>.<span class="hljs-property">rotation</span>.<span class="hljs-property">y</span>);
+    <span class="hljs-keyword">const</span> viewMatrix = <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">createViewMatrix</span>();
+    <span class="hljs-keyword">const</span> projectionMatrix = <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">createProjectionMatrix</span>();
+    <span class="hljs-keyword">const</span> normalMatrix = <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">createNormalMatrix</span>(modelMatrix);
+
+    <span class="hljs-comment">// Set uniforms</span>
+    <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">setMatrix4Uniform</span>(<span class="hljs-string">&#x27;uModelMatrix&#x27;</span>, modelMatrix);
+    <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">setMatrix4Uniform</span>(<span class="hljs-string">&#x27;uViewMatrix&#x27;</span>, viewMatrix);
+    <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">setMatrix4Uniform</span>(<span class="hljs-string">&#x27;uProjectionMatrix&#x27;</span>, projectionMatrix);
+    <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">setMatrix4Uniform</span>(<span class="hljs-string">&#x27;uNormalMatrix&#x27;</span>, normalMatrix);
+    <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">setVector3Uniform</span>(<span class="hljs-string">&#x27;uLightPosition&#x27;</span>, [<span class="hljs-number">2</span>, <span class="hljs-number">2</span>, <span class="hljs-number">2</span>]);
+    <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">setVector3Uniform</span>(<span class="hljs-string">&#x27;uLightColor&#x27;</span>, [<span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>]);
+    <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">setVector3Uniform</span>(<span class="hljs-string">&#x27;uViewPosition&#x27;</span>, <span class="hljs-variable language_">this</span>.<span class="hljs-property">camera</span>.<span class="hljs-property">position</span>);
+
+    <span class="hljs-comment">// Set up vertex attributes</span>
+    <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">setupVertexAttributes</span>();
+
+    <span class="hljs-comment">// Draw</span>
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">gl</span>.<span class="hljs-title function_">drawElements</span>(<span class="hljs-variable language_">this</span>.<span class="hljs-property">gl</span>.<span class="hljs-property">TRIANGLES</span>, <span class="hljs-variable language_">this</span>.<span class="hljs-property">mesh</span>.<span class="hljs-property">indices</span>.<span class="hljs-property">length</span>, <span class="hljs-variable language_">this</span>.<span class="hljs-property">gl</span>.<span class="hljs-property">UNSIGNED_SHORT</span>, <span class="hljs-number">0</span>);
+
+    <span class="hljs-title function_">requestAnimationFrame</span>(<span class="hljs-variable language_">this</span>.<span class="hljs-property">render</span>);
+  };
+
+  <span class="hljs-keyword">private</span> <span class="hljs-title function_">createRotationMatrix</span>(<span class="hljs-attr">x</span>: <span class="hljs-built_in">number</span>, <span class="hljs-attr">y</span>: <span class="hljs-built_in">number</span>): <span class="hljs-title class_">Float32Array</span> {
+    <span class="hljs-keyword">const</span> cosX = <span class="hljs-title class_">Math</span>.<span class="hljs-title function_">cos</span>(x), sinX = <span class="hljs-title class_">Math</span>.<span class="hljs-title function_">sin</span>(x);
+    <span class="hljs-keyword">const</span> cosY = <span class="hljs-title class_">Math</span>.<span class="hljs-title function_">cos</span>(y), sinY = <span class="hljs-title class_">Math</span>.<span class="hljs-title function_">sin</span>(y);
+    
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Float32Array</span>([
+      cosY, sinX * sinY, cosX * sinY, <span class="hljs-number">0</span>,
+      <span class="hljs-number">0</span>, cosX, -sinX, <span class="hljs-number">0</span>,
+      -sinY, sinX * cosY, cosX * cosY, <span class="hljs-number">0</span>,
+      <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>
+    ]);
+  }
+
+  <span class="hljs-keyword">private</span> <span class="hljs-title function_">createViewMatrix</span>(): <span class="hljs-title class_">Float32Array</span> {
+    <span class="hljs-comment">// Simple lookAt implementation</span>
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Float32Array</span>([
+      <span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>,
+      <span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>,
+      <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>, -<span class="hljs-variable language_">this</span>.<span class="hljs-property">camera</span>.<span class="hljs-property">position</span>[<span class="hljs-number">2</span>],
+      <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>
+    ]);
+  }
+
+  <span class="hljs-keyword">private</span> <span class="hljs-title function_">createProjectionMatrix</span>(): <span class="hljs-title class_">Float32Array</span> {
+    <span class="hljs-keyword">const</span> f = <span class="hljs-number">1.0</span> / <span class="hljs-title class_">Math</span>.<span class="hljs-title function_">tan</span>(<span class="hljs-variable language_">this</span>.<span class="hljs-property">camera</span>.<span class="hljs-property">fov</span> * <span class="hljs-title class_">Math</span>.<span class="hljs-property">PI</span> / <span class="hljs-number">360</span>);
+    <span class="hljs-keyword">const</span> rangeInv = <span class="hljs-number">1</span> / (<span class="hljs-variable language_">this</span>.<span class="hljs-property">camera</span>.<span class="hljs-property">near</span> - <span class="hljs-variable language_">this</span>.<span class="hljs-property">camera</span>.<span class="hljs-property">far</span>);
+    
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Float32Array</span>([
+      f / <span class="hljs-variable language_">this</span>.<span class="hljs-property">camera</span>.<span class="hljs-property">aspect</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>,
+      <span class="hljs-number">0</span>, f, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>,
+      <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, (<span class="hljs-variable language_">this</span>.<span class="hljs-property">camera</span>.<span class="hljs-property">near</span> + <span class="hljs-variable language_">this</span>.<span class="hljs-property">camera</span>.<span class="hljs-property">far</span>) * rangeInv, -<span class="hljs-number">1</span>,
+      <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-variable language_">this</span>.<span class="hljs-property">camera</span>.<span class="hljs-property">near</span> * <span class="hljs-variable language_">this</span>.<span class="hljs-property">camera</span>.<span class="hljs-property">far</span> * rangeInv * <span class="hljs-number">2</span>, <span class="hljs-number">0</span>
+    ]);
+  }
+
+  <span class="hljs-keyword">private</span> <span class="hljs-title function_">createNormalMatrix</span>(<span class="hljs-attr">modelMatrix</span>: <span class="hljs-title class_">Float32Array</span>): <span class="hljs-title class_">Float32Array</span> {
+    <span class="hljs-comment">// Simplified normal matrix (assuming uniform scaling)</span>
+    <span class="hljs-keyword">return</span> modelMatrix;
+  }
+
+  <span class="hljs-keyword">private</span> <span class="hljs-title function_">setMatrix4Uniform</span>(<span class="hljs-attr">name</span>: <span class="hljs-built_in">string</span>, <span class="hljs-attr">matrix</span>: <span class="hljs-title class_">Float32Array</span>): <span class="hljs-built_in">void</span> {
+    <span class="hljs-keyword">const</span> location = <span class="hljs-variable language_">this</span>.<span class="hljs-property">gl</span>.<span class="hljs-title function_">getUniformLocation</span>(<span class="hljs-variable language_">this</span>.<span class="hljs-property">shaderProgram</span>, name);
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">gl</span>.<span class="hljs-title function_">uniformMatrix4fv</span>(location, <span class="hljs-literal">false</span>, matrix);
+  }
+
+  <span class="hljs-keyword">private</span> <span class="hljs-title function_">setVector3Uniform</span>(<span class="hljs-attr">name</span>: <span class="hljs-built_in">string</span>, <span class="hljs-attr">vector</span>: <span class="hljs-built_in">number</span>[]): <span class="hljs-built_in">void</span> {
+    <span class="hljs-keyword">const</span> location = <span class="hljs-variable language_">this</span>.<span class="hljs-property">gl</span>.<span class="hljs-title function_">getUniformLocation</span>(<span class="hljs-variable language_">this</span>.<span class="hljs-property">shaderProgram</span>, name);
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">gl</span>.<span class="hljs-title function_">uniform3fv</span>(location, vector);
+  }
+
+  <span class="hljs-keyword">private</span> <span class="hljs-title function_">setupVertexAttributes</span>(): <span class="hljs-built_in">void</span> {
+    <span class="hljs-keyword">const</span> stride = <span class="hljs-number">8</span> * <span class="hljs-number">4</span>; <span class="hljs-comment">// 8 floats per vertex</span>
+    
+    <span class="hljs-keyword">const</span> positionLocation = <span class="hljs-variable language_">this</span>.<span class="hljs-property">gl</span>.<span class="hljs-title function_">getAttribLocation</span>(<span class="hljs-variable language_">this</span>.<span class="hljs-property">shaderProgram</span>, <span class="hljs-string">&#x27;aPosition&#x27;</span>);
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">gl</span>.<span class="hljs-title function_">enableVertexAttribArray</span>(positionLocation);
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">gl</span>.<span class="hljs-title function_">vertexAttribPointer</span>(positionLocation, <span class="hljs-number">3</span>, <span class="hljs-variable language_">this</span>.<span class="hljs-property">gl</span>.<span class="hljs-property">FLOAT</span>, <span class="hljs-literal">false</span>, stride, <span class="hljs-number">0</span>);
+    
+    <span class="hljs-keyword">const</span> normalLocation = <span class="hljs-variable language_">this</span>.<span class="hljs-property">gl</span>.<span class="hljs-title function_">getAttribLocation</span>(<span class="hljs-variable language_">this</span>.<span class="hljs-property">shaderProgram</span>, <span class="hljs-string">&#x27;aNormal&#x27;</span>);
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">gl</span>.<span class="hljs-title function_">enableVertexAttribArray</span>(normalLocation);
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">gl</span>.<span class="hljs-title function_">vertexAttribPointer</span>(normalLocation, <span class="hljs-number">3</span>, <span class="hljs-variable language_">this</span>.<span class="hljs-property">gl</span>.<span class="hljs-property">FLOAT</span>, <span class="hljs-literal">false</span>, stride, <span class="hljs-number">3</span> * <span class="hljs-number">4</span>);
+    
+    <span class="hljs-keyword">const</span> texCoordLocation = <span class="hljs-variable language_">this</span>.<span class="hljs-property">gl</span>.<span class="hljs-title function_">getAttribLocation</span>(<span class="hljs-variable language_">this</span>.<span class="hljs-property">shaderProgram</span>, <span class="hljs-string">&#x27;aTexCoord&#x27;</span>);
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">gl</span>.<span class="hljs-title function_">enableVertexAttribArray</span>(texCoordLocation);
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">gl</span>.<span class="hljs-title function_">vertexAttribPointer</span>(texCoordLocation, <span class="hljs-number">2</span>, <span class="hljs-variable language_">this</span>.<span class="hljs-property">gl</span>.<span class="hljs-property">FLOAT</span>, <span class="hljs-literal">false</span>, stride, <span class="hljs-number">6</span> * <span class="hljs-number">4</span>);
+  }
+}
+
+<span class="hljs-comment">// Usage</span>
+<span class="hljs-keyword">const</span> canvas = <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">getElementById</span>(<span class="hljs-string">&#x27;modelCanvas&#x27;</span>) <span class="hljs-keyword">as</span> <span class="hljs-title class_">HTMLCanvasElement</span>;
+canvas.<span class="hljs-property">width</span> = <span class="hljs-number">800</span>;
+canvas.<span class="hljs-property">height</span> = <span class="hljs-number">600</span>;
+
+<span class="hljs-keyword">const</span> viewer = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Model3DViewer</span>(canvas);
+viewer.<span class="hljs-title function_">loadOBJ</span>(<span class="hljs-string">&#x27;/models/teapot.obj&#x27;</span>);
+</code></pre></pre>
+<h3 id="css-styling" node="[object Object]">CSS Styling</h3>
+<pre><pre><code class="hljs hljs language-css"><span class="hljs-selector-class">.webgl-container</span> {
+  <span class="hljs-attribute">display</span>: flex;
+  <span class="hljs-attribute">flex-direction</span>: column;
+  <span class="hljs-attribute">align-items</span>: center;
+  <span class="hljs-attribute">padding</span>: <span class="hljs-number">20px</span>;
+  <span class="hljs-attribute">background</span>: <span class="hljs-number">#1a1a1a</span>;
+  <span class="hljs-attribute">color</span>: white;
+}
+
+<span class="hljs-selector-class">.canvas-wrapper</span> {
+  <span class="hljs-attribute">position</span>: relative;
+  <span class="hljs-attribute">border</span>: <span class="hljs-number">2px</span> solid <span class="hljs-number">#333</span>;
+  <span class="hljs-attribute">border-radius</span>: <span class="hljs-number">8px</span>;
+  <span class="hljs-attribute">overflow</span>: hidden;
+}
+
+<span class="hljs-selector-class">.controls</span> {
+  <span class="hljs-attribute">margin-top</span>: <span class="hljs-number">20px</span>;
+  <span class="hljs-attribute">display</span>: flex;
+  <span class="hljs-attribute">gap</span>: <span class="hljs-number">10px</span>;
+  <span class="hljs-attribute">flex-wrap</span>: wrap;
+}
+
+<span class="hljs-selector-class">.control-button</span> {
+  <span class="hljs-attribute">padding</span>: <span class="hljs-number">8px</span> <span class="hljs-number">16px</span>;
+  <span class="hljs-attribute">background</span>: <span class="hljs-number">#333</span>;
+  <span class="hljs-attribute">color</span>: white;
+  <span class="hljs-attribute">border</span>: none;
+  <span class="hljs-attribute">border-radius</span>: <span class="hljs-number">4px</span>;
+  <span class="hljs-attribute">cursor</span>: pointer;
+  <span class="hljs-attribute">transition</span>: background <span class="hljs-number">0.2s</span>;
+}
+
+<span class="hljs-selector-class">.control-button</span><span class="hljs-selector-pseudo">:hover</span> {
+  <span class="hljs-attribute">background</span>: <span class="hljs-number">#555</span>;
+}
+
+<span class="hljs-selector-class">.info-panel</span> {
+  <span class="hljs-attribute">margin-top</span>: <span class="hljs-number">20px</span>;
+  <span class="hljs-attribute">padding</span>: <span class="hljs-number">15px</span>;
+  <span class="hljs-attribute">background</span>: <span class="hljs-number">#2a2a2a</span>;
+  <span class="hljs-attribute">border-radius</span>: <span class="hljs-number">8px</span>;
+  <span class="hljs-attribute">font-family</span>: monospace;
+  <span class="hljs-attribute">font-size</span>: <span class="hljs-number">12px</span>;
+}
+</code></pre></pre>
+<h2 id="interview-follow-up-questions" node="[object Object]">Interview Follow-up Questions</h2>
+<ol>
+<li><strong>Performance Optimization</strong>: How would you optimize these examples for mobile devices?</li>
+<li><strong>Memory Management</strong>: How do you prevent memory leaks in Canvas/WebGL applications?</li>
+<li><strong>Error Handling</strong>: What error handling strategies would you implement?</li>
+<li><strong>Testing</strong>: How would you unit test WebGL components?</li>
+<li><strong>Accessibility</strong>: How would you make these visualizations accessible?</li>
+</ol>
+<h2 id="time-complexity-analysis" node="[object Object]">Time Complexity Analysis</h2>
+<ul>
+<li><strong>Particle System</strong>: O(n) for n particles per frame</li>
+<li><strong>Real-time Chart</strong>: O(m) for m data points rendering</li>
+<li><strong>3D Model</strong>: O(v) for v vertices per frame</li>
+</ul>
+<p>These challenges test advanced graphics programming skills essential for roles at companies building complex visual interfaces.</p></div></div></main><footer class="sc-dYwGCk cJzheU"><div class="sc-lgpSej hJUFeT"><div class="sc-eqYatC mSxwd"><div class="sc-kcLKEh cmBIup"><div class="sc-dntSTA bAsNIP"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-code "><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>Frontend Interview Prep</div><p class="sc-kvnevz gWXMDV">Comprehensive interview preparation for frontend engineers targeting Big Tech companies.</p><div class="sc-dFVmKS jCoOHQ"><a href="https://github.com" aria-label="GitHub"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-github "><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"></path><path d="M9 18c-4.51 2-5-2-7-2"></path></svg></a><a href="https://twitter.com" aria-label="Twitter"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-twitter "><path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"></path></svg></a><a href="https://linkedin.com" aria-label="LinkedIn"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-linkedin "><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect width="4" height="12" x="2" y="9"></rect><circle cx="4" cy="4" r="2"></circle></svg></a><a href="mailto:contact@example.com" aria-label="Email"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-mail "><rect width="20" height="16" x="2" y="4" rx="2"></rect><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path></svg></a></div></div><div class="sc-kcLKEh cmBIup"><h3>Study Materials</h3><ul><li><a href="/algorithms">Algorithms</a></li><li><a href="/react">React &amp; Frontend</a></li><li><a href="/system-design">System Design</a></li><li><a href="/typescript">TypeScript</a></li><li><a href="/performance">Performance</a></li></ul></div><div class="sc-kcLKEh cmBIup"><h3>Companies</h3><ul><li><a href="/google">Google</a></li><li><a href="/meta">Meta</a></li><li><a href="/amazon">Amazon</a></li><li><a href="/microsoft">Microsoft</a></li><li><a href="/apple">Apple</a></li></ul></div><div class="sc-kcLKEh cmBIup"><h3>Resources</h3><ul><li><a href="/interview-tips">Interview Tips</a></li><li><a href="/coding-challenges">Coding Challenges</a></li><li><a href="/mock-interviews">Mock Interviews</a></li><li><a href="/blog">Blog</a></li><li><a href="/faq">FAQ</a></li></ul></div></div><div class="sc-kCuUfV crUaYh"><p class="sc-dNdcvo esMlQF">© 2025 Frontend Interview Prep. All rights reserved.</p><div class="sc-fbQrwq eHcrXx"><a href="/privacy">Privacy Policy</a><a href="/terms">Terms of Service</a><a href="/contact">Contact</a></div></div></div></footer></div><script src="/interview/_next/static/chunks/webpack-be7d7df45533bffc.js" async=""></script><script>(self.__next_f=self.__next_f||[]).push([0]);self.__next_f.push([2,null])</script><script>self.__next_f.push([1,"1:HL[\"/interview/_next/static/media/e4af272ccee01ff0-s.p.woff2\",\"font\",{\"crossOrigin\":\"\",\"type\":\"font/woff2\"}]\n2:HL[\"/interview/_next/static/css/387024c6a2216908.css\",\"style\"]\n"])</script><script>self.__next_f.push([1,"3:I[2846,[],\"\"]\n5:I[5907,[\"918\",\"static/chunks/918-3273b83890f10546.js\",\"930\",\"static/chunks/930-3262a6c9c5acace4.js\",\"687\",\"static/chunks/app/docs/%5B...slug%5D/page-32962e9542d32755.js\"],\"default\"]\n7:I[4707,[],\"\"]\n9:I[6423,[],\"\"]\na:I[2,[\"918\",\"static/chunks/918-3273b83890f10546.js\",\"710\",\"static/chunks/710-dfaa11b4dff08f8e.js\",\"972\",\"static/chunks/972-011bba60ed155615.js\",\"233\",\"static/chunks/233-3e0c1d820a17eca9.js\",\"185\",\"static/chunks/app/layout-333f4adcd11f8f39.js\"],\"default\",1]\nc:I[1060,[],\"\"]\n6:T651b,"])</script><script>self.__next_f.push([1,"\n# WebGL \u0026 Canvas Advanced Challenges\n\n## Overview\nAdvanced visual programming challenges using Canvas 2D and WebGL, commonly asked at companies like Google, Meta, and Apple for frontend positions requiring graphics knowledge.\n\n---\n\n## Challenge 1: Interactive Particle System\n\n### Problem Statement\nCreate a particle system that responds to mouse interaction with realistic physics simulation.\n\n### Requirements\n- 500+ particles with different behaviors\n- Mouse attraction/repulsion forces\n- Collision detection between particles\n- Performance optimization (60 FPS)\n- Configurable particle properties\n\n### Solution\n\n{% raw %}\n```typescript\ninterface Particle {\n  x: number;\n  y: number;\n  vx: number;\n  vy: number;\n  radius: number;\n  color: string;\n  mass: number;\n  life: number;\n  maxLife: number;\n}\n\nclass ParticleSystem {\n  private canvas: HTMLCanvasElement;\n  private ctx: CanvasRenderingContext2D;\n  private particles: Particle[] = [];\n  private mouse = { x: 0, y: 0, isDown: false };\n  private animationFrame: number = 0;\n\n  constructor(canvas: HTMLCanvasElement) {\n    this.canvas = canvas;\n    this.ctx = canvas.getContext('2d')!;\n    this.setupEventListeners();\n    this.initParticles();\n    this.animate();\n  }\n\n  private initParticles(): void {\n    for (let i = 0; i \u003c 500; i++) {\n      this.particles.push({\n        x: Math.random() * this.canvas.width,\n        y: Math.random() * this.canvas.height,\n        vx: (Math.random() - 0.5) * 2,\n        vy: (Math.random() - 0.5) * 2,\n        radius: Math.random() * 3 + 1,\n        color: `hsl(${Math.random() * 360}, 70%, 60%)`,\n        mass: Math.random() * 5 + 1,\n        life: 1,\n        maxLife: Math.random() * 300 + 200\n      });\n    }\n  }\n\n  private setupEventListeners(): void {\n    this.canvas.addEventListener('mousemove', (e) =\u003e {\n      const rect = this.canvas.getBoundingClientRect();\n      this.mouse.x = e.clientX - rect.left;\n      this.mouse.y = e.clientY - rect.top;\n    });\n\n    this.canvas.addEventListener('mousedown', () =\u003e {\n      this.mouse.isDown = true;\n    });\n\n    this.canvas.addEventListener('mouseup', () =\u003e {\n      this.mouse.isDown = false;\n    });\n  }\n\n  private updateParticles(): void {\n    for (let i = this.particles.length - 1; i \u003e= 0; i--) {\n      const particle = this.particles[i];\n      \n      // Mouse interaction\n      const dx = this.mouse.x - particle.x;\n      const dy = this.mouse.y - particle.y;\n      const distance = Math.sqrt(dx * dx + dy * dy);\n      \n      if (distance \u003c 100) {\n        const force = this.mouse.isDown ? 0.5 : -0.3;\n        const normalizedDx = dx / distance;\n        const normalizedDy = dy / distance;\n        \n        particle.vx += normalizedDx * force / particle.mass;\n        particle.vy += normalizedDy * force / particle.mass;\n      }\n\n      // Physics update\n      particle.x += particle.vx;\n      particle.y += particle.vy;\n      \n      // Boundary collision\n      if (particle.x \u003c particle.radius || particle.x \u003e this.canvas.width - particle.radius) {\n        particle.vx *= -0.8;\n        particle.x = Math.max(particle.radius, Math.min(this.canvas.width - particle.radius, particle.x));\n      }\n      \n      if (particle.y \u003c particle.radius || particle.y \u003e this.canvas.height - particle.radius) {\n        particle.vy *= -0.8;\n        particle.y = Math.max(particle.radius, Math.min(this.canvas.height - particle.radius, particle.y));\n      }\n\n      // Friction\n      particle.vx *= 0.99;\n      particle.vy *= 0.99;\n\n      // Life cycle\n      particle.life--;\n      if (particle.life \u003c= 0) {\n        this.particles.splice(i, 1);\n        this.spawnParticle();\n      }\n    }\n  }\n\n  private spawnParticle(): void {\n    this.particles.push({\n      x: Math.random() * this.canvas.width,\n      y: Math.random() * this.canvas.height,\n      vx: (Math.random() - 0.5) * 2,\n      vy: (Math.random() - 0.5) * 2,\n      radius: Math.random() * 3 + 1,\n      color: `hsl(${Math.random() * 360}, 70%, 60%)`,\n      mass: Math.random() * 5 + 1,\n      life: 1,\n      maxLife: Math.random() * 300 + 200\n    });\n  }\n\n  private render(): void {\n    this.ctx.fillStyle = 'rgba(0, 0, 0, 0.1)';\n    this.ctx.fillRect(0, 0, this.canvas.width, this.canvas.height);\n\n    for (const particle of this.particles) {\n      const alpha = particle.life / particle.maxLife;\n      this.ctx.globalAlpha = alpha;\n      this.ctx.fillStyle = particle.color;\n      this.ctx.beginPath();\n      this.ctx.arc(particle.x, particle.y, particle.radius, 0, Math.PI * 2);\n      this.ctx.fill();\n    }\n    \n    this.ctx.globalAlpha = 1;\n  }\n\n  private animate = (): void =\u003e {\n    this.updateParticles();\n    this.render();\n    this.animationFrame = requestAnimationFrame(this.animate);\n  };\n\n  public destroy(): void {\n    cancelAnimationFrame(this.animationFrame);\n  }\n}\n\n// Usage\nconst canvas = document.getElementById('particleCanvas') as HTMLCanvasElement;\ncanvas.width = window.innerWidth;\ncanvas.height = window.innerHeight;\n\nconst particleSystem = new ParticleSystem(canvas);\n```\n{% endraw %}\n\n---\n\n## Challenge 2: Real-time Data Visualization\n\n### Problem Statement\nCreate a real-time chart that can handle 10,000+ data points with smooth animations and interactive features.\n\n### Requirements\n- Line chart with multiple series\n- Real-time data streaming\n- Zoom and pan functionality\n- Crosshair with data labels\n- Performance optimization\n\n### Solution\n\n```typescript\ninterface DataPoint {\n  timestamp: number;\n  value: number;\n  series: string;\n}\n\ninterface ChartSeries {\n  name: string;\n  color: string;\n  data: DataPoint[];\n}\n\nclass RealTimeChart {\n  private canvas: HTMLCanvasElement;\n  private ctx: CanvasRenderingContext2D;\n  private series: ChartSeries[] = [];\n  private viewport = { x: 0, y: 0, width: 0, height: 0, scale: 1 };\n  private mouse = { x: 0, y: 0, isDown: false, startX: 0, startY: 0 };\n  private crosshair = { x: 0, y: 0, visible: false };\n\n  constructor(canvas: HTMLCanvasElement) {\n    this.canvas = canvas;\n    this.ctx = canvas.getContext('2d')!;\n    this.viewport.width = canvas.width;\n    this.viewport.height = canvas.height;\n    this.setupEventListeners();\n    this.animate();\n  }\n\n  public addSeries(name: string, color: string): void {\n    this.series.push({ name, color, data: [] });\n  }\n\n  public addDataPoint(seriesName: string, value: number): void {\n    const series = this.series.find(s =\u003e s.name === seriesName);\n    if (series) {\n      const timestamp = Date.now();\n      series.data.push({ timestamp, value, series: seriesName });\n      \n      // Keep only last 10000 points for performance\n      if (series.data.length \u003e 10000) {\n        series.data.shift();\n      }\n      \n      this.updateViewport();\n    }\n  }\n\n  private setupEventListeners(): void {\n    this.canvas.addEventListener('mousemove', (e) =\u003e {\n      const rect = this.canvas.getBoundingClientRect();\n      this.mouse.x = e.clientX - rect.left;\n      this.mouse.y = e.clientY - rect.top;\n      \n      if (this.mouse.isDown) {\n        const deltaX = this.mouse.x - this.mouse.startX;\n        const deltaY = this.mouse.y - this.mouse.startY;\n        this.viewport.x -= deltaX / this.viewport.scale;\n        this.viewport.y -= deltaY / this.viewport.scale;\n        this.mouse.startX = this.mouse.x;\n        this.mouse.startY = this.mouse.y;\n      } else {\n        this.updateCrosshair();\n      }\n    });\n\n    this.canvas.addEventListener('mousedown', (e) =\u003e {\n      this.mouse.isDown = true;\n      this.mouse.startX = this.mouse.x;\n      this.mouse.startY = this.mouse.y;\n    });\n\n    this.canvas.addEventListener('mouseup', () =\u003e {\n      this.mouse.isDown = false;\n    });\n\n    this.canvas.addEventListener('wheel', (e) =\u003e {\n      e.preventDefault();\n      const zoomFactor = e.deltaY \u003e 0 ? 0.9 : 1.1;\n      this.viewport.scale *= zoomFactor;\n      this.viewport.scale = Math.max(0.1, Math.min(10, this.viewport.scale));\n    });\n\n    this.canvas.addEventListener('mouseenter', () =\u003e {\n      this.crosshair.visible = true;\n    });\n\n    this.canvas.addEventListener('mouseleave', () =\u003e {\n      this.crosshair.visible = false;\n    });\n  }\n\n  private updateViewport(): void {\n    if (this.series.length === 0) return;\n    \n    let minTime = Infinity, maxTime = -Infinity;\n    let minValue = Infinity, maxValue = -Infinity;\n    \n    for (const series of this.series) {\n      for (const point of series.data) {\n        minTime = Math.min(minTime, point.timestamp);\n        maxTime = Math.max(maxTime, point.timestamp);\n        minValue = Math.min(minValue, point.value);\n        maxValue = Math.max(maxValue, point.value);\n      }\n    }\n    \n    // Auto-follow latest data\n    const timeRange = maxTime - minTime;\n    this.viewport.x = maxTime - timeRange * 0.8;\n    this.viewport.width = timeRange;\n    this.viewport.y = minValue;\n    this.viewport.height = maxValue - minValue;\n  }\n\n  private worldToScreen(x: number, y: number): { x: number, y: number } {\n    return {\n      x: ((x - this.viewport.x) / this.viewport.width) * this.canvas.width * this.viewport.scale,\n      y: this.canvas.height - ((y - this.viewport.y) / this.viewport.height) * this.canvas.height * this.viewport.scale\n    };\n  }\n\n  private screenToWorld(x: number, y: number): { x: number, y: number } {\n    return {\n      x: this.viewport.x + (x / (this.canvas.width * this.viewport.scale)) * this.viewport.width,\n      y: this.viewport.y + ((this.canvas.height - y) / (this.canvas.height * this.viewport.scale)) * this.viewport.height\n    };\n  }\n\n  private updateCrosshair(): void {\n    this.crosshair.x = this.mouse.x;\n    this.crosshair.y = this.mouse.y;\n  }\n\n  private render(): void {\n    // Clear canvas\n    this.ctx.fillStyle = '#1a1a1a';\n    this.ctx.fillRect(0, 0, this.canvas.width, this.canvas.height);\n\n    // Draw grid\n    this.drawGrid();\n\n    // Draw series\n    for (const series of this.series) {\n      this.drawSeries(series);\n    }\n\n    // Draw crosshair and labels\n    if (this.crosshair.visible) {\n      this.drawCrosshair();\n    }\n  }\n\n  private drawGrid(): void {\n    this.ctx.strokeStyle = '#333';\n    this.ctx.lineWidth = 1;\n    \n    const gridSpacing = 50;\n    \n    // Vertical lines\n    for (let x = 0; x \u003c this.canvas.width; x += gridSpacing) {\n      this.ctx.beginPath();\n      this.ctx.moveTo(x, 0);\n      this.ctx.lineTo(x, this.canvas.height);\n      this.ctx.stroke();\n    }\n    \n    // Horizontal lines\n    for (let y = 0; y \u003c this.canvas.height; y += gridSpacing) {\n      this.ctx.beginPath();\n      this.ctx.moveTo(0, y);\n      this.ctx.lineTo(this.canvas.width, y);\n      this.ctx.stroke();\n    }\n  }\n\n  private drawSeries(series: ChartSeries): void {\n    if (series.data.length \u003c 2) return;\n\n    this.ctx.strokeStyle = series.color;\n    this.ctx.lineWidth = 2;\n    this.ctx.beginPath();\n\n    let isFirst = true;\n    for (const point of series.data) {\n      const screen = this.worldToScreen(point.timestamp, point.value);\n      \n      if (isFirst) {\n        this.ctx.moveTo(screen.x, screen.y);\n        isFirst = false;\n      } else {\n        this.ctx.lineTo(screen.x, screen.y);\n      }\n    }\n    \n    this.ctx.stroke();\n  }\n\n  private drawCrosshair(): void {\n    this.ctx.strokeStyle = '#fff';\n    this.ctx.lineWidth = 1;\n    this.ctx.setLineDash([5, 5]);\n    \n    // Vertical line\n    this.ctx.beginPath();\n    this.ctx.moveTo(this.crosshair.x, 0);\n    this.ctx.lineTo(this.crosshair.x, this.canvas.height);\n    this.ctx.stroke();\n    \n    // Horizontal line\n    this.ctx.beginPath();\n    this.ctx.moveTo(0, this.crosshair.y);\n    this.ctx.lineTo(this.canvas.width, this.crosshair.y);\n    this.ctx.stroke();\n    \n    this.ctx.setLineDash([]);\n    \n    // Draw data labels\n    const worldPos = this.screenToWorld(this.crosshair.x, this.crosshair.y);\n    this.drawDataLabels(worldPos.x, worldPos.y);\n  }\n\n  private drawDataLabels(timestamp: number, value: number): void {\n    this.ctx.fillStyle = 'rgba(0, 0, 0, 0.8)';\n    this.ctx.fillRect(this.crosshair.x + 10, this.crosshair.y - 40, 200, 60);\n    \n    this.ctx.fillStyle = '#fff';\n    this.ctx.font = '12px Arial';\n    this.ctx.fillText(`Time: ${new Date(timestamp).toLocaleTimeString()}`, this.crosshair.x + 15, this.crosshair.y - 20);\n    this.ctx.fillText(`Value: ${value.toFixed(2)}`, this.crosshair.x + 15, this.crosshair.y - 5);\n  }\n\n  private animate = (): void =\u003e {\n    this.render();\n    requestAnimationFrame(this.animate);\n  };\n}\n\n// Usage\nconst canvas = document.getElementById('chartCanvas') as HTMLCanvasElement;\ncanvas.width = 800;\ncanvas.height = 400;\n\nconst chart = new RealTimeChart(canvas);\nchart.addSeries('CPU Usage', '#ff6b6b');\nchart.addSeries('Memory Usage', '#4ecdc4');\n\n// Simulate real-time data\nsetInterval(() =\u003e {\n  chart.addDataPoint('CPU Usage', Math.random() * 100);\n  chart.addDataPoint('Memory Usage', Math.random() * 100);\n}, 100);\n```\n\n---\n\n## Challenge 3: 3D Model Viewer with WebGL\n\n### Problem Statement\nCreate a 3D model viewer that can load and display OBJ files with lighting, materials, and camera controls.\n\n### Requirements\n- Load and parse OBJ files\n- Perspective camera with orbit controls\n- Phong lighting model\n- Texture mapping support\n- Smooth performance (60 FPS)\n\n### Solution\n\n```typescript\ninterface Vertex {\n  position: [number, number, number];\n  normal: [number, number, number];\n  texCoord: [number, number];\n}\n\ninterface Mesh {\n  vertices: Vertex[];\n  indices: number[];\n  texture?: WebGLTexture;\n}\n\nclass Model3DViewer {\n  private canvas: HTMLCanvasElement;\n  private gl: WebGLRenderingContext;\n  private shaderProgram: WebGLProgram;\n  private mesh: Mesh | null = null;\n  private camera = {\n    position: [0, 0, 5],\n    target: [0, 0, 0],\n    up: [0, 1, 0],\n    fov: 45,\n    aspect: 1,\n    near: 0.1,\n    far: 100\n  };\n  private mouse = { x: 0, y: 0, isDown: false, lastX: 0, lastY: 0 };\n  private rotation = { x: 0, y: 0 };\n\n  constructor(canvas: HTMLCanvasElement) {\n    this.canvas = canvas;\n    this.gl = canvas.getContext('webgl')!;\n    \n    if (!this.gl) {\n      throw new Error('WebGL not supported');\n    }\n\n    this.camera.aspect = canvas.width / canvas.height;\n    this.initShaders();\n    this.setupEventListeners();\n    this.render();\n  }\n\n  private initShaders(): void {\n    const vertexShaderSource = `\n      attribute vec3 aPosition;\n      attribute vec3 aNormal;\n      attribute vec2 aTexCoord;\n      \n      uniform mat4 uModelMatrix;\n      uniform mat4 uViewMatrix;\n      uniform mat4 uProjectionMatrix;\n      uniform mat4 uNormalMatrix;\n      \n      varying vec3 vNormal;\n      varying vec3 vPosition;\n      varying vec2 vTexCoord;\n      \n      void main() {\n        vec4 worldPosition = uModelMatrix * vec4(aPosition, 1.0);\n        vPosition = worldPosition.xyz;\n        vNormal = (uNormalMatrix * vec4(aNormal, 0.0)).xyz;\n        vTexCoord = aTexCoord;\n        \n        gl_Position = uProjectionMatrix * uViewMatrix * worldPosition;\n      }\n    `;\n\n    const fragmentShaderSource = `\n      precision mediump float;\n      \n      uniform vec3 uLightPosition;\n      uniform vec3 uLightColor;\n      uniform vec3 uViewPosition;\n      uniform sampler2D uTexture;\n      uniform bool uHasTexture;\n      \n      varying vec3 vNormal;\n      varying vec3 vPosition;\n      varying vec2 vTexCoord;\n      \n      void main() {\n        vec3 normal = normalize(vNormal);\n        vec3 lightDir = normalize(uLightPosition - vPosition);\n        vec3 viewDir = normalize(uViewPosition - vPosition);\n        vec3 reflectDir = reflect(-lightDir, normal);\n        \n        // Ambient\n        vec3 ambient = 0.1 * uLightColor;\n        \n        // Diffuse\n        float diff = max(dot(normal, lightDir), 0.0);\n        vec3 diffuse = diff * uLightColor;\n        \n        // Specular\n        float spec = pow(max(dot(viewDir, reflectDir), 0.0), 64.0);\n        vec3 specular = spec * uLightColor;\n        \n        vec3 color;\n        if (uHasTexture) {\n          color = texture2D(uTexture, vTexCoord).rgb;\n        } else {\n          color = vec3(0.7, 0.7, 0.7);\n        }\n        \n        vec3 result = (ambient + diffuse + specular) * color;\n        gl_FragColor = vec4(result, 1.0);\n      }\n    `;\n\n    const vertexShader = this.createShader(this.gl.VERTEX_SHADER, vertexShaderSource);\n    const fragmentShader = this.createShader(this.gl.FRAGMENT_SHADER, fragmentShaderSource);\n    \n    this.shaderProgram = this.gl.createProgram()!;\n    this.gl.attachShader(this.shaderProgram, vertexShader);\n    this.gl.attachShader(this.shaderProgram, fragmentShader);\n    this.gl.linkProgram(this.shaderProgram);\n    \n    if (!this.gl.getProgramParameter(this.shaderProgram, this.gl.LINK_STATUS)) {\n      throw new Error('Shader program failed to link');\n    }\n  }\n\n  private createShader(type: number, source: string): WebGLShader {\n    const shader = this.gl.createShader(type)!;\n    this.gl.shaderSource(shader, source);\n    this.gl.compileShader(shader);\n    \n    if (!this.gl.getShaderParameter(shader, this.gl.COMPILE_STATUS)) {\n      throw new Error(`Shader compilation error: ${this.gl.getShaderInfoLog(shader)}`);\n    }\n    \n    return shader;\n  }\n\n  public async loadOBJ(url: string): Promise\u003cvoid\u003e {\n    const response = await fetch(url);\n    const text = await response.text();\n    this.mesh = this.parseOBJ(text);\n    this.createBuffers();\n  }\n\n  private parseOBJ(text: string): Mesh {\n    const lines = text.split('\\n');\n    const positions: [number, number, number][] = [];\n    const normals: [number, number, number][] = [];\n    const texCoords: [number, number][] = [];\n    const vertices: Vertex[] = [];\n    const indices: number[] = [];\n    \n    for (const line of lines) {\n      const parts = line.trim().split(/\\s+/);\n      \n      switch (parts[0]) {\n        case 'v':\n          positions.push([parseFloat(parts[1]), parseFloat(parts[2]), parseFloat(parts[3])]);\n          break;\n        case 'vn':\n          normals.push([parseFloat(parts[1]), parseFloat(parts[2]), parseFloat(parts[3])]);\n          break;\n        case 'vt':\n          texCoords.push([parseFloat(parts[1]), parseFloat(parts[2])]);\n          break;\n        case 'f':\n          this.parseFace(parts.slice(1), positions, normals, texCoords, vertices, indices);\n          break;\n      }\n    }\n    \n    return { vertices, indices };\n  }\n\n  private parseFace(\n    faceData: string[],\n    positions: [number, number, number][],\n    normals: [number, number, number][],\n    texCoords: [number, number][],\n    vertices: Vertex[],\n    indices: number[]\n  ): void {\n    const faceVertices: number[] = [];\n    \n    for (const vertexData of faceData) {\n      const [posIndex, texIndex, normalIndex] = vertexData.split('/').map(x =\u003e parseInt(x) - 1);\n      \n      const vertex: Vertex = {\n        position: positions[posIndex] || [0, 0, 0],\n        normal: normals[normalIndex] || [0, 1, 0],\n        texCoord: texCoords[texIndex] || [0, 0]\n      };\n      \n      vertices.push(vertex);\n      faceVertices.push(vertices.length - 1);\n    }\n    \n    // Triangulate face (assuming convex)\n    for (let i = 1; i \u003c faceVertices.length - 1; i++) {\n      indices.push(faceVertices[0], faceVertices[i], faceVertices[i + 1]);\n    }\n  }\n\n  private createBuffers(): void {\n    if (!this.mesh) return;\n\n    const vertexData: number[] = [];\n    for (const vertex of this.mesh.vertices) {\n      vertexData.push(...vertex.position, ...vertex.normal, ...vertex.texCoord);\n    }\n\n    const vertexBuffer = this.gl.createBuffer();\n    this.gl.bindBuffer(this.gl.ARRAY_BUFFER, vertexBuffer);\n    this.gl.bufferData(this.gl.ARRAY_BUFFER, new Float32Array(vertexData), this.gl.STATIC_DRAW);\n\n    const indexBuffer = this.gl.createBuffer();\n    this.gl.bindBuffer(this.gl.ELEMENT_ARRAY_BUFFER, indexBuffer);\n    this.gl.bufferData(this.gl.ELEMENT_ARRAY_BUFFER, new Uint16Array(this.mesh.indices), this.gl.STATIC_DRAW);\n  }\n\n  private setupEventListeners(): void {\n    this.canvas.addEventListener('mousedown', (e) =\u003e {\n      this.mouse.isDown = true;\n      this.mouse.lastX = e.clientX;\n      this.mouse.lastY = e.clientY;\n    });\n\n    this.canvas.addEventListener('mousemove', (e) =\u003e {\n      if (this.mouse.isDown) {\n        const deltaX = e.clientX - this.mouse.lastX;\n        const deltaY = e.clientY - this.mouse.lastY;\n        \n        this.rotation.y += deltaX * 0.01;\n        this.rotation.x += deltaY * 0.01;\n        \n        this.mouse.lastX = e.clientX;\n        this.mouse.lastY = e.clientY;\n      }\n    });\n\n    this.canvas.addEventListener('mouseup', () =\u003e {\n      this.mouse.isDown = false;\n    });\n\n    this.canvas.addEventListener('wheel', (e) =\u003e {\n      e.preventDefault();\n      this.camera.position[2] += e.deltaY * 0.01;\n      this.camera.position[2] = Math.max(0.5, Math.min(20, this.camera.position[2]));\n    });\n  }\n\n  private render = (): void =\u003e {\n    if (!this.mesh) {\n      requestAnimationFrame(this.render);\n      return;\n    }\n\n    this.gl.viewport(0, 0, this.canvas.width, this.canvas.height);\n    this.gl.clear(this.gl.COLOR_BUFFER_BIT | this.gl.DEPTH_BUFFER_BIT);\n    this.gl.enable(this.gl.DEPTH_TEST);\n\n    this.gl.useProgram(this.shaderProgram);\n\n    // Set up matrices\n    const modelMatrix = this.createRotationMatrix(this.rotation.x, this.rotation.y);\n    const viewMatrix = this.createViewMatrix();\n    const projectionMatrix = this.createProjectionMatrix();\n    const normalMatrix = this.createNormalMatrix(modelMatrix);\n\n    // Set uniforms\n    this.setMatrix4Uniform('uModelMatrix', modelMatrix);\n    this.setMatrix4Uniform('uViewMatrix', viewMatrix);\n    this.setMatrix4Uniform('uProjectionMatrix', projectionMatrix);\n    this.setMatrix4Uniform('uNormalMatrix', normalMatrix);\n    this.setVector3Uniform('uLightPosition', [2, 2, 2]);\n    this.setVector3Uniform('uLightColor', [1, 1, 1]);\n    this.setVector3Uniform('uViewPosition', this.camera.position);\n\n    // Set up vertex attributes\n    this.setupVertexAttributes();\n\n    // Draw\n    this.gl.drawElements(this.gl.TRIANGLES, this.mesh.indices.length, this.gl.UNSIGNED_SHORT, 0);\n\n    requestAnimationFrame(this.render);\n  };\n\n  private createRotationMatrix(x: number, y: number): Float32Array {\n    const cosX = Math.cos(x), sinX = Math.sin(x);\n    const cosY = Math.cos(y), sinY = Math.sin(y);\n    \n    return new Float32Array([\n      cosY, sinX * sinY, cosX * sinY, 0,\n      0, cosX, -sinX, 0,\n      -sinY, sinX * cosY, cosX * cosY, 0,\n      0, 0, 0, 1\n    ]);\n  }\n\n  private createViewMatrix(): Float32Array {\n    // Simple lookAt implementation\n    return new Float32Array([\n      1, 0, 0, 0,\n      0, 1, 0, 0,\n      0, 0, 1, -this.camera.position[2],\n      0, 0, 0, 1\n    ]);\n  }\n\n  private createProjectionMatrix(): Float32Array {\n    const f = 1.0 / Math.tan(this.camera.fov * Math.PI / 360);\n    const rangeInv = 1 / (this.camera.near - this.camera.far);\n    \n    return new Float32Array([\n      f / this.camera.aspect, 0, 0, 0,\n      0, f, 0, 0,\n      0, 0, (this.camera.near + this.camera.far) * rangeInv, -1,\n      0, 0, this.camera.near * this.camera.far * rangeInv * 2, 0\n    ]);\n  }\n\n  private createNormalMatrix(modelMatrix: Float32Array): Float32Array {\n    // Simplified normal matrix (assuming uniform scaling)\n    return modelMatrix;\n  }\n\n  private setMatrix4Uniform(name: string, matrix: Float32Array): void {\n    const location = this.gl.getUniformLocation(this.shaderProgram, name);\n    this.gl.uniformMatrix4fv(location, false, matrix);\n  }\n\n  private setVector3Uniform(name: string, vector: number[]): void {\n    const location = this.gl.getUniformLocation(this.shaderProgram, name);\n    this.gl.uniform3fv(location, vector);\n  }\n\n  private setupVertexAttributes(): void {\n    const stride = 8 * 4; // 8 floats per vertex\n    \n    const positionLocation = this.gl.getAttribLocation(this.shaderProgram, 'aPosition');\n    this.gl.enableVertexAttribArray(positionLocation);\n    this.gl.vertexAttribPointer(positionLocation, 3, this.gl.FLOAT, false, stride, 0);\n    \n    const normalLocation = this.gl.getAttribLocation(this.shaderProgram, 'aNormal');\n    this.gl.enableVertexAttribArray(normalLocation);\n    this.gl.vertexAttribPointer(normalLocation, 3, this.gl.FLOAT, false, stride, 3 * 4);\n    \n    const texCoordLocation = this.gl.getAttribLocation(this.shaderProgram, 'aTexCoord');\n    this.gl.enableVertexAttribArray(texCoordLocation);\n    this.gl.vertexAttribPointer(texCoordLocation, 2, this.gl.FLOAT, false, stride, 6 * 4);\n  }\n}\n\n// Usage\nconst canvas = document.getElementById('modelCanvas') as HTMLCanvasElement;\ncanvas.width = 800;\ncanvas.height = 600;\n\nconst viewer = new Model3DViewer(canvas);\nviewer.loadOBJ('/models/teapot.obj');\n```\n\n### CSS Styling\n\n```css\n.webgl-container {\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n  padding: 20px;\n  background: #1a1a1a;\n  color: white;\n}\n\n.canvas-wrapper {\n  position: relative;\n  border: 2px solid #333;\n  border-radius: 8px;\n  overflow: hidden;\n}\n\n.controls {\n  margin-top: 20px;\n  display: flex;\n  gap: 10px;\n  flex-wrap: wrap;\n}\n\n.control-button {\n  padding: 8px 16px;\n  background: #333;\n  color: white;\n  border: none;\n  border-radius: 4px;\n  cursor: pointer;\n  transition: background 0.2s;\n}\n\n.control-button:hover {\n  background: #555;\n}\n\n.info-panel {\n  margin-top: 20px;\n  padding: 15px;\n  background: #2a2a2a;\n  border-radius: 8px;\n  font-family: monospace;\n  font-size: 12px;\n}\n```\n\n## Interview Follow-up Questions\n\n1. **Performance Optimization**: How would you optimize these examples for mobile devices?\n2. **Memory Management**: How do you prevent memory leaks in Canvas/WebGL applications?\n3. **Error Handling**: What error handling strategies would you implement?\n4. **Testing**: How would you unit test WebGL components?\n5. **Accessibility**: How would you make these visualizations accessible?\n\n## Time Complexity Analysis\n\n- **Particle System**: O(n) for n particles per frame\n- **Real-time Chart**: O(m) for m data points rendering\n- **3D Model**: O(v) for v vertices per frame\n\nThese challenges test advanced graphics programming skills essential for roles at companies building complex visual interfaces.\n"])</script><script>self.__next_f.push([1,"8:[\"slug\",\"src/content/frontend/coding-problems/18-webgl-canvas-challenges\",\"c\"]\nd:[]\n"])</script><script>self.__next_f.push([1,"0:[\"$\",\"$L3\",null,{\"buildId\":\"7uJ7BVaXJTiEOD9iYDv3n\",\"assetPrefix\":\"/interview\",\"urlParts\":[\"\",\"docs\",\"src\",\"content\",\"frontend\",\"coding-problems\",\"18-webgl-canvas-challenges\"],\"initialTree\":[\"\",{\"children\":[\"docs\",{\"children\":[[\"slug\",\"src/content/frontend/coding-problems/18-webgl-canvas-challenges\",\"c\"],{\"children\":[\"__PAGE__?{\\\"slug\\\":[\\\"src\\\",\\\"content\\\",\\\"frontend\\\",\\\"coding-problems\\\",\\\"18-webgl-canvas-challenges\\\"]}\",{}]}]}]},\"$undefined\",\"$undefined\",true],\"initialSeedData\":[\"\",{\"children\":[\"docs\",{\"children\":[[\"slug\",\"src/content/frontend/coding-problems/18-webgl-canvas-challenges\",\"c\"],{\"children\":[\"__PAGE__\",{},[[\"$L4\",[\"$\",\"div\",null,{\"style\":{\"maxWidth\":\"1200px\",\"margin\":\"0 auto\",\"padding\":\"2rem\",\"paddingTop\":\"6rem\"},\"children\":[[\"$\",\"div\",null,{\"style\":{\"marginBottom\":\"2rem\"},\"children\":[[\"$\",\"nav\",null,{\"style\":{\"color\":\"#64748b\",\"fontSize\":\"0.9rem\",\"marginBottom\":\"1rem\"},\"children\":[[\"$\",\"a\",null,{\"href\":\"/\",\"style\":{\"color\":\"#3b82f6\",\"textDecoration\":\"none\"},\"children\":\"Home\"}],\" \u003e \",[\"$\",\"span\",null,{\"children\":\"src \u003e content \u003e frontend \u003e coding-problems \u003e 18-webgl-canvas-challenges\"}]]}],[\"$\",\"h1\",null,{\"style\":{\"fontSize\":\"2.5rem\",\"fontWeight\":\"800\",\"marginBottom\":\"0.5rem\",\"color\":\"#1e293b\"},\"children\":\"WebGL \u0026 Canvas Advanced Challenges\"}],[\"$\",\"div\",null,{\"style\":{\"color\":\"#64748b\",\"fontSize\":\"0.9rem\",\"marginBottom\":\"2rem\"},\"children\":[[\"$\",\"span\",null,{\"children\":[\"📁 \",\"src/content/frontend/coding-problems/18-webgl-canvas-challenges.md\"]}],\"$undefined\",\"$undefined\"]}]]}],[\"$\",\"$L5\",null,{\"content\":\"$6\"}]]}],null],null],null]},[null,[\"$\",\"$L7\",null,{\"parallelRouterKey\":\"children\",\"segmentPath\":[\"children\",\"docs\",\"children\",\"$8\",\"children\"],\"error\":\"$undefined\",\"errorStyles\":\"$undefined\",\"errorScripts\":\"$undefined\",\"template\":[\"$\",\"$L9\",null,{}],\"templateStyles\":\"$undefined\",\"templateScripts\":\"$undefined\",\"notFound\":\"$undefined\",\"notFoundStyles\":\"$undefined\"}]],null]},[null,[\"$\",\"$L7\",null,{\"parallelRouterKey\":\"children\",\"segmentPath\":[\"children\",\"docs\",\"children\"],\"error\":\"$undefined\",\"errorStyles\":\"$undefined\",\"errorScripts\":\"$undefined\",\"template\":[\"$\",\"$L9\",null,{}],\"templateStyles\":\"$undefined\",\"templateScripts\":\"$undefined\",\"notFound\":\"$undefined\",\"notFoundStyles\":\"$undefined\"}]],null]},[[[[\"$\",\"link\",\"0\",{\"rel\":\"stylesheet\",\"href\":\"/interview/_next/static/css/387024c6a2216908.css\",\"precedence\":\"next\",\"crossOrigin\":\"$undefined\"}]],[\"$\",\"$La\",null,{\"children\":[\"$\",\"$L7\",null,{\"parallelRouterKey\":\"children\",\"segmentPath\":[\"children\"],\"error\":\"$undefined\",\"errorStyles\":\"$undefined\",\"errorScripts\":\"$undefined\",\"template\":[\"$\",\"$L9\",null,{}],\"templateStyles\":\"$undefined\",\"templateScripts\":\"$undefined\",\"notFound\":[[\"$\",\"title\",null,{\"children\":\"404: This page could not be found.\"}],[\"$\",\"div\",null,{\"style\":{\"fontFamily\":\"system-ui,\\\"Segoe UI\\\",Roboto,Helvetica,Arial,sans-serif,\\\"Apple Color Emoji\\\",\\\"Segoe UI Emoji\\\"\",\"height\":\"100vh\",\"textAlign\":\"center\",\"display\":\"flex\",\"flexDirection\":\"column\",\"alignItems\":\"center\",\"justifyContent\":\"center\"},\"children\":[\"$\",\"div\",null,{\"children\":[[\"$\",\"style\",null,{\"dangerouslySetInnerHTML\":{\"__html\":\"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}\"}}],[\"$\",\"h1\",null,{\"className\":\"next-error-h1\",\"style\":{\"display\":\"inline-block\",\"margin\":\"0 20px 0 0\",\"padding\":\"0 23px 0 0\",\"fontSize\":24,\"fontWeight\":500,\"verticalAlign\":\"top\",\"lineHeight\":\"49px\"},\"children\":\"404\"}],[\"$\",\"div\",null,{\"style\":{\"display\":\"inline-block\"},\"children\":[\"$\",\"h2\",null,{\"style\":{\"fontSize\":14,\"fontWeight\":400,\"lineHeight\":\"49px\",\"margin\":0},\"children\":\"This page could not be found.\"}]}]]}]}]],\"notFoundStyles\":[]}],\"params\":{}}]],null],null],\"couldBeIntercepted\":false,\"initialHead\":[null,\"$Lb\"],\"globalErrorComponent\":\"$c\",\"missingSlots\":\"$Wd\"}]\n"])</script><script>self.__next_f.push([1,"b:[[\"$\",\"meta\",\"0\",{\"name\":\"viewport\",\"content\":\"width=device-width, initial-scale=1\"}],[\"$\",\"meta\",\"1\",{\"charSet\":\"utf-8\"}],[\"$\",\"title\",\"2\",{\"children\":\"WebGL \u0026 Canvas Advanced Challenges - Frontend Interview Docs\"}],[\"$\",\"meta\",\"3\",{\"name\":\"description\",\"content\":\" # WebGL \u0026 Canvas Advanced Challenges  ## Overview Advanced visual programming challenges using Canvas 2D and WebGL, commonly asked at companies like Google, Me\"}],[\"$\",\"meta\",\"4\",{\"property\":\"og:title\",\"content\":\"WebGL \u0026 Canvas Advanced Challenges - Frontend Interview Docs\"}],[\"$\",\"meta\",\"5\",{\"property\":\"og:description\",\"content\":\" # WebGL \u0026 Canvas Advanced Challenges  ## Overview Advanced visual programming challenges using Canvas 2D and WebGL, commonly asked at companies like Google, Me\"}],[\"$\",\"meta\",\"6\",{\"property\":\"og:type\",\"content\":\"article\"}],[\"$\",\"meta\",\"7\",{\"name\":\"twitter:card\",\"content\":\"summary\"}],[\"$\",\"meta\",\"8\",{\"name\":\"twitter:title\",\"content\":\"WebGL \u0026 Canvas Advanced Challenges - Frontend Interview Docs\"}],[\"$\",\"meta\",\"9\",{\"name\":\"twitter:description\",\"content\":\" # WebGL \u0026 Canvas Advanced Challenges  ## Overview Advanced visual programming challenges using Canvas 2D and WebGL, commonly asked at companies like Google, Me\"}],[\"$\",\"meta\",\"10\",{\"name\":\"next-size-adjust\"}]]\n4:null\n"])</script></body></html>

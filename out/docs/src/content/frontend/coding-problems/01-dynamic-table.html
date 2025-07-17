@@ -1,0 +1,720 @@
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><meta name="viewport" content="width=device-width, initial-scale=1"/><link rel="preload" href="/interview/_next/static/media/e4af272ccee01ff0-s.p.woff2" as="font" crossorigin="" type="font/woff2"/><link rel="stylesheet" href="/interview/_next/static/css/387024c6a2216908.css" data-precedence="next"/><link rel="preload" as="script" fetchPriority="low" href="/interview/_next/static/chunks/webpack-be7d7df45533bffc.js"/><script src="/interview/_next/static/chunks/fd9d1056-6922f449a204c2cc.js" async=""></script><script src="/interview/_next/static/chunks/117-e7ecc085ce9cfab3.js" async=""></script><script src="/interview/_next/static/chunks/main-app-b06be5f3411c20c3.js" async=""></script><script src="/interview/_next/static/chunks/918-3273b83890f10546.js" async=""></script><script src="/interview/_next/static/chunks/930-3262a6c9c5acace4.js" async=""></script><script src="/interview/_next/static/chunks/app/docs/%5B...slug%5D/page-32962e9542d32755.js" async=""></script><script src="/interview/_next/static/chunks/710-dfaa11b4dff08f8e.js" async=""></script><script src="/interview/_next/static/chunks/972-011bba60ed155615.js" async=""></script><script src="/interview/_next/static/chunks/233-3e0c1d820a17eca9.js" async=""></script><script src="/interview/_next/static/chunks/app/layout-333f4adcd11f8f39.js" async=""></script><title>Frontend Interview Prep 2025 - Big Tech Interview Guide</title><meta name="description" content="Comprehensive frontend interview preparation for Big Tech companies including React, TypeScript, algorithms, and system design."/><link rel="icon" href="/favicon.ico"/><meta name="theme-color" content="#1a1a1a"/><meta property="og:title" content="Frontend Interview Prep 2025"/><meta property="og:description" content="Complete guide for frontend engineers targeting Big Tech companies"/><meta property="og:type" content="website"/><link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous"/><title>Dynamic Table Generator - Frontend Interview Docs</title><meta name="description" content=" # Problem 1: Dynamic Table Generator  ## Problem Description  Create a function that generates a dynamic table from an array of objects with sorting and filter"/><meta property="og:title" content="Dynamic Table Generator - Frontend Interview Docs"/><meta property="og:description" content=" # Problem 1: Dynamic Table Generator  ## Problem Description  Create a function that generates a dynamic table from an array of objects with sorting and filter"/><meta property="og:type" content="article"/><meta name="twitter:card" content="summary"/><meta name="twitter:title" content="Dynamic Table Generator - Frontend Interview Docs"/><meta name="twitter:description" content=" # Problem 1: Dynamic Table Generator  ## Problem Description  Create a function that generates a dynamic table from an array of objects with sorting and filter"/><meta name="next-size-adjust"/><script src="/interview/_next/static/chunks/polyfills-42372ed130431b0a.js" noModule=""></script><style data-styled="" data-styled-version="6.1.19">*{margin:0;padding:0;box-sizing:border-box;}/*!sc*/
+html{font-size:16px;line-height:1.5;scroll-behavior:smooth;}/*!sc*/
+body{font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;font-size:1rem;line-height:1.5;color:#1e293b;background-color:#ffffff;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;}/*!sc*/
+h1,h2,h3,h4,h5,h6{font-weight:700;line-height:1.25;margin-bottom:0.5em;}/*!sc*/
+h1{font-size:3rem;}/*!sc*/
+@media (max-width: 768px){h1{font-size:2.25rem;}}/*!sc*/
+h2{font-size:2.25rem;}/*!sc*/
+@media (max-width: 768px){h2{font-size:1.875rem;}}/*!sc*/
+h3{font-size:1.875rem;}/*!sc*/
+@media (max-width: 768px){h3{font-size:1.5rem;}}/*!sc*/
+h4{font-size:1.5rem;}/*!sc*/
+@media (max-width: 768px){h4{font-size:1.25rem;}}/*!sc*/
+h5{font-size:1.25rem;}/*!sc*/
+h6{font-size:1.125rem;}/*!sc*/
+p{margin-bottom:1rem;line-height:1.75;}/*!sc*/
+a{color:#3b82f6;text-decoration:none;transition:color 0.15s ease;}/*!sc*/
+a:hover{color:#2563eb;}/*!sc*/
+a:focus{outline:2px solid #3b82f6;outline-offset:2px;}/*!sc*/
+button{cursor:pointer;border:none;background:none;font-family:inherit;font-size:inherit;}/*!sc*/
+button:disabled{cursor:not-allowed;opacity:0.6;}/*!sc*/
+button:focus{outline:2px solid #3b82f6;outline-offset:2px;}/*!sc*/
+input,textarea,select{font-family:inherit;font-size:inherit;}/*!sc*/
+input:focus,textarea:focus,select:focus{outline:2px solid #3b82f6;outline-offset:2px;}/*!sc*/
+img{max-width:100%;height:auto;}/*!sc*/
+ul,ol{margin-bottom:1rem;padding-left:1.5rem;}/*!sc*/
+li{margin-bottom:0.25rem;}/*!sc*/
+blockquote{margin:1rem 0;padding:1rem;border-left:4px solid #3b82f6;background-color:#f1f5f9;font-style:italic;}/*!sc*/
+code{font-family:SFMono-Regular,Consolas,"Liberation Mono",Menlo,monospace;font-size:0.9em;background-color:#f1f5f9;padding:0.2em 0.4em;border-radius:0.25rem;}/*!sc*/
+pre{background-color:#f1f5f9;padding:1rem;border-radius:0.5rem;overflow-x:auto;margin-bottom:1rem;}/*!sc*/
+pre code{background:none;padding:0;}/*!sc*/
+table{width:100%;border-collapse:collapse;margin-bottom:1rem;}/*!sc*/
+th,td{padding:0.75rem;text-align:left;border-bottom:1px solid #e2e8f0;}/*!sc*/
+th{font-weight:600;background-color:#f1f5f9;}/*!sc*/
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0, 0, 0, 0);white-space:nowrap;border:0;}/*!sc*/
+.skip-link{position:absolute;top:-40px;left:6px;background:#3b82f6;color:white;padding:8px;text-decoration:none;border-radius:4px;z-index:100;}/*!sc*/
+.skip-link:focus{top:6px;}/*!sc*/
+::-webkit-scrollbar{width:8px;height:8px;}/*!sc*/
+::-webkit-scrollbar-track{background:#f1f5f9;}/*!sc*/
+::-webkit-scrollbar-thumb{background:#94a3b8;border-radius:4px;}/*!sc*/
+::-webkit-scrollbar-thumb:hover{background:#64748b;}/*!sc*/
+::selection{background:#3b82f6;color:white;}/*!sc*/
+.focus-visible{outline:2px solid #3b82f6;outline-offset:2px;}/*!sc*/
+.fade-in{opacity:0;animation:fadeIn 0.3s ease forwards;}/*!sc*/
+.slide-up{transform:translateY(20px);opacity:0;animation:slideUp 0.3s ease forwards;}/*!sc*/
+@keyframes fadeIn{to{opacity:1;}}/*!sc*/
+@keyframes slideUp{to{transform:translateY(0);opacity:1;}}/*!sc*/
+@media print{*{background:white!important;color:black!important;box-shadow:none!important;text-shadow:none!important;}a,a:visited{text-decoration:underline;}h1,h2,h3,h4,h5,h6{break-after:avoid;}pre,blockquote{border:1px solid #999;break-inside:avoid;}img{max-width:100%!important;}@page{margin:0.5in;}}/*!sc*/
+data-styled.g1[id="sc-global-kxA-Ddz1"]{content:"sc-global-kxA-Ddz1,"}/*!sc*/
+.wbMrm{position:fixed;top:0;width:100%;z-index:1020;background:transparent;backdrop-filter:blur(10px);border-bottom:1px solid transparent;transition:all 0.3s ease;}/*!sc*/
+data-styled.g2[id="sc-bRKDuR"]{content:"wbMrm,"}/*!sc*/
+.kDxBNU{max-width:1200px;margin:0 auto;padding:0 2rem;display:flex;align-items:center;justify-content:space-between;height:70px;}/*!sc*/
+data-styled.g3[id="sc-hvigdm"]{content:"kDxBNU,"}/*!sc*/
+.cvsJZg{display:flex;align-items:center;gap:0.5rem;font-size:1.5rem;font-weight:700;color:#3b82f6;text-decoration:none;cursor:pointer;}/*!sc*/
+.cvsJZg:hover{color:#2563eb;}/*!sc*/
+data-styled.g4[id="sc-fhHczv"]{content:"cvsJZg,"}/*!sc*/
+.lfYVIv{display:flex;align-items:center;gap:2rem;}/*!sc*/
+@media (max-width: 768px){.lfYVIv{display:none;}}/*!sc*/
+data-styled.g5[id="sc-ggWZvA"]{content:"lfYVIv,"}/*!sc*/
+.bhKRhV{color:#1e293b;font-weight:500;text-decoration:none;transition:color 0.15s ease;position:relative;}/*!sc*/
+.bhKRhV:hover{color:#3b82f6;}/*!sc*/
+.bhKRhV:after{content:'';position:absolute;bottom:-5px;left:0;width:0;height:2px;background:#3b82f6;transition:width 0.15s ease;}/*!sc*/
+.bhKRhV:hover:after{width:100%;}/*!sc*/
+data-styled.g6[id="sc-dTvVRJ"]{content:"bhKRhV,"}/*!sc*/
+.gpUImn{display:none;background:none;border:none;color:#1e293b;cursor:pointer;padding:0.5rem;}/*!sc*/
+@media (max-width: 768px){.gpUImn{display:block;}}/*!sc*/
+data-styled.g7[id="sc-jwTyAe"]{content:"gpUImn,"}/*!sc*/
+.hpKWkw{display:flex;align-items:center;gap:0.5rem;background:#f1f5f9;border:1px solid #e2e8f0;border-radius:0.5rem;padding:0.5rem 1rem;color:#64748b;font-size:0.9rem;transition:all 0.15s ease;}/*!sc*/
+.hpKWkw:hover{background:#ffffff;border-color:#3b82f6;}/*!sc*/
+data-styled.g11[id="sc-kNOymR"]{content:"hpKWkw,"}/*!sc*/
+.cJzheU{background:#1e293b;color:white;padding:3rem 0 1rem;margin-top:auto;}/*!sc*/
+data-styled.g12[id="sc-dYwGCk"]{content:"cJzheU,"}/*!sc*/
+.hJUFeT{max-width:1200px;margin:0 auto;padding:0 2rem;}/*!sc*/
+data-styled.g13[id="sc-lgpSej"]{content:"hJUFeT,"}/*!sc*/
+.mSxwd{display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:2rem;margin-bottom:2rem;}/*!sc*/
+@media (max-width: 768px){.mSxwd{grid-template-columns:1fr 1fr;gap:1.5rem;}}/*!sc*/
+@media (max-width: 480px){.mSxwd{grid-template-columns:1fr;}}/*!sc*/
+data-styled.g14[id="sc-eqYatC"]{content:"mSxwd,"}/*!sc*/
+.cmBIup h3{font-size:1.1rem;font-weight:600;margin-bottom:1rem;color:white;}/*!sc*/
+.cmBIup ul{list-style:none;padding:0;margin:0;}/*!sc*/
+.cmBIup li{margin-bottom:0.5rem;}/*!sc*/
+.cmBIup a{color:rgba(255, 255, 255, 0.7);text-decoration:none;transition:color 0.15s ease;}/*!sc*/
+.cmBIup a:hover{color:white;}/*!sc*/
+data-styled.g15[id="sc-kcLKEh"]{content:"cmBIup,"}/*!sc*/
+.bAsNIP{display:flex;align-items:center;gap:0.5rem;font-size:1.2rem;font-weight:700;margin-bottom:1rem;color:white;}/*!sc*/
+data-styled.g16[id="sc-dntSTA"]{content:"bAsNIP,"}/*!sc*/
+.gWXMDV{color:rgba(255, 255, 255, 0.7);line-height:1.6;margin-bottom:1rem;}/*!sc*/
+data-styled.g17[id="sc-kvnevz"]{content:"gWXMDV,"}/*!sc*/
+.jCoOHQ{display:flex;gap:1rem;}/*!sc*/
+.jCoOHQ a{display:flex;align-items:center;justify-content:center;width:40px;height:40px;background:rgba(255, 255, 255, 0.1);border-radius:0.5rem;color:rgba(255, 255, 255, 0.7);transition:all 0.15s ease;}/*!sc*/
+.jCoOHQ a:hover{background:rgba(255, 255, 255, 0.2);color:white;}/*!sc*/
+data-styled.g18[id="sc-dFVmKS"]{content:"jCoOHQ,"}/*!sc*/
+.crUaYh{border-top:1px solid rgba(255, 255, 255, 0.1);padding-top:2rem;display:flex;justify-content:space-between;align-items:center;}/*!sc*/
+@media (max-width: 768px){.crUaYh{flex-direction:column;gap:1rem;text-align:center;}}/*!sc*/
+data-styled.g19[id="sc-kCuUfV"]{content:"crUaYh,"}/*!sc*/
+.esMlQF{color:rgba(255, 255, 255, 0.7);margin:0;font-size:0.9rem;}/*!sc*/
+data-styled.g20[id="sc-dNdcvo"]{content:"esMlQF,"}/*!sc*/
+.eHcrXx{display:flex;gap:2rem;}/*!sc*/
+@media (max-width: 480px){.eHcrXx{flex-direction:column;gap:1rem;}}/*!sc*/
+.eHcrXx a{color:rgba(255, 255, 255, 0.7);text-decoration:none;font-size:0.9rem;transition:color 0.15s ease;}/*!sc*/
+.eHcrXx a:hover{color:white;}/*!sc*/
+data-styled.g21[id="sc-fbQrwq"]{content:"eHcrXx,"}/*!sc*/
+.dAQFGp{color:#1e293b;line-height:1.6;}/*!sc*/
+.dAQFGp h1,.dAQFGp h2,.dAQFGp h3,.dAQFGp h4,.dAQFGp h5,.dAQFGp h6{color:#1e293b;margin-top:2rem;margin-bottom:1rem;font-weight:600;}/*!sc*/
+.dAQFGp h1{font-size:2rem;border-bottom:2px solid #e2e8f0;padding-bottom:0.5rem;}/*!sc*/
+.dAQFGp h2{font-size:1.5rem;border-bottom:1px solid #e2e8f0;padding-bottom:0.3rem;}/*!sc*/
+.dAQFGp h3{font-size:1.25rem;}/*!sc*/
+.dAQFGp h4{font-size:1.1rem;}/*!sc*/
+.dAQFGp p{margin-bottom:1rem;color:#64748b;}/*!sc*/
+.dAQFGp a{color:#3b82f6;text-decoration:none;}/*!sc*/
+.dAQFGp a:hover{text-decoration:underline;}/*!sc*/
+.dAQFGp ul,.dAQFGp ol{margin-bottom:1rem;padding-left:1.5rem;}/*!sc*/
+.dAQFGp ul li,.dAQFGp ol li{margin-bottom:0.5rem;color:#64748b;}/*!sc*/
+.dAQFGp blockquote{border-left:4px solid #3b82f6;padding-left:1rem;margin:1rem 0;font-style:italic;color:#64748b;background:#f1f5f9;padding:1rem;border-radius:0.5rem;}/*!sc*/
+.dAQFGp code{background:#f1f5f9;padding:0.2rem 0.4rem;border-radius:0.25rem;font-family:SFMono-Regular,Consolas,"Liberation Mono",Menlo,monospace;font-size:0.9em;color:#f59e0b;}/*!sc*/
+.dAQFGp pre{background:#ffffff;border:1px solid #e2e8f0;border-radius:0.5rem;padding:1rem;margin:1rem 0;overflow-x:auto;}/*!sc*/
+.dAQFGp pre code{background:none;padding:0;color:#1e293b;font-size:0.9rem;}/*!sc*/
+.dAQFGp table{width:100%;border-collapse:collapse;margin:1rem 0;}/*!sc*/
+.dAQFGp table th,.dAQFGp table td{border:1px solid #e2e8f0;padding:0.5rem;text-align:left;}/*!sc*/
+.dAQFGp table th{background:#ffffff;font-weight:600;}/*!sc*/
+.dAQFGp table tr:nth-child(even){background:#f1f5f9;}/*!sc*/
+.dAQFGp hr{border:none;height:1px;background:#e2e8f0;margin:2rem 0;}/*!sc*/
+.dAQFGp .highlight{background:#3b82f620;padding:0.2rem 0.4rem;border-radius:0.25rem;font-weight:600;}/*!sc*/
+.dAQFGp .hljs{background:#ffffff;color:#1e293b;}/*!sc*/
+.dAQFGp .hljs-keyword{color:#3b82f6;font-weight:600;}/*!sc*/
+.dAQFGp .hljs-string{color:#10b981;}/*!sc*/
+.dAQFGp .hljs-function{color:#f59e0b;}/*!sc*/
+.dAQFGp .hljs-comment{color:#94a3b8;font-style:italic;}/*!sc*/
+.dAQFGp .hljs-number{color:#f59e0b;}/*!sc*/
+.dAQFGp .hljs-variable{color:#1e293b;}/*!sc*/
+.dAQFGp .hljs-title{color:#f59e0b;font-weight:600;}/*!sc*/
+data-styled.g22[id="sc-gGKoUb"]{content:"dAQFGp,"}/*!sc*/
+</style></head><body class="__className_6eac61"><div style="min-height:100vh;display:flex;flex-direction:column"><nav class="sc-bRKDuR wbMrm"><div class="sc-hvigdm kDxBNU"><a href="/interview"><a class="sc-fhHczv cvsJZg"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-code "><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>Frontend Interview Prep</a></a><div class="sc-ggWZvA lfYVIv"><a href="/interview/problems"><a class="sc-dTvVRJ bhKRhV">Problems</a></a><a href="/interview/learn"><a class="sc-dTvVRJ bhKRhV">Learn</a></a><a href="/interview/study-guide"><a class="sc-dTvVRJ bhKRhV">Study Guide</a></a><a href="/interview/system-design"><a class="sc-dTvVRJ bhKRhV">System Design</a></a><a href="/interview/performance"><a class="sc-dTvVRJ bhKRhV">Performance</a></a><a href="/interview/accessibility"><a class="sc-dTvVRJ bhKRhV">Accessibility</a></a><a href="/interview/interview-tips"><a class="sc-dTvVRJ bhKRhV">Interview Tips</a></a><button class="sc-kNOymR hpKWkw"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-search "><circle cx="11" cy="11" r="8"></circle><path d="m21 21-4.3-4.3"></path></svg>Search</button></div><button class="sc-jwTyAe gpUImn"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-menu "><line x1="4" x2="20" y1="12" y2="12"></line><line x1="4" x2="20" y1="6" y2="6"></line><line x1="4" x2="20" y1="18" y2="18"></line></svg></button></div></nav><main style="flex:1"><div style="max-width:1200px;margin:0 auto;padding:2rem;padding-top:6rem"><div style="margin-bottom:2rem"><nav style="color:#64748b;font-size:0.9rem;margin-bottom:1rem"><a href="/" style="color:#3b82f6;text-decoration:none">Home</a> &gt; <span>src &gt; content &gt; frontend &gt; coding-problems &gt; 01-dynamic-table</span></nav><h1 style="font-size:2.5rem;font-weight:800;margin-bottom:0.5rem;color:#1e293b">Dynamic Table Generator</h1><div style="color:#64748b;font-size:0.9rem;margin-bottom:2rem"><span>📁 <!-- -->src/content/frontend/coding-problems/01-dynamic-table.md</span></div></div><div class="sc-gGKoUb dAQFGp"><h1 id="problem-1:-dynamic-table-generator" node="[object Object]">Problem 1: Dynamic Table Generator</h1>
+<h2 id="problem-description" node="[object Object]">Problem Description</h2>
+<p>Create a function that generates a dynamic table from an array of objects with sorting and filtering capabilities.</p>
+<h2 id="requirements" node="[object Object]">Requirements</h2>
+<ul>
+<li>Accept array of objects as input</li>
+<li>Generate table headers automatically from object keys</li>
+<li>Support sorting by any column</li>
+<li>Support filtering by any column</li>
+<li>Make it responsive</li>
+</ul>
+<h2 id="solution" node="[object Object]">Solution</h2>
+<p>{% raw %}</p>
+<pre><pre><code class="hljs hljs language-javascript"><span class="hljs-keyword">class</span> <span class="hljs-title class_">DynamicTable</span> {
+  <span class="hljs-title function_">constructor</span>(<span class="hljs-params">containerId, data</span>) {
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">container</span> = <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">getElementById</span>(containerId);
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">data</span> = data;
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">currentSort</span> = { <span class="hljs-attr">column</span>: <span class="hljs-literal">null</span>, <span class="hljs-attr">direction</span>: <span class="hljs-string">&quot;asc&quot;</span> };
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">filters</span> = {};
+    <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">init</span>();
+  }
+
+  <span class="hljs-title function_">init</span>(<span class="hljs-params"></span>) {
+    <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">render</span>();
+    <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">attachEventListeners</span>();
+  }
+
+  <span class="hljs-title function_">render</span>(<span class="hljs-params"></span>) {
+    <span class="hljs-keyword">if</span> (!<span class="hljs-variable language_">this</span>.<span class="hljs-property">data</span>.<span class="hljs-property">length</span>) {
+      <span class="hljs-variable language_">this</span>.<span class="hljs-property">container</span>.<span class="hljs-property">innerHTML</span> = <span class="hljs-string">&quot;&lt;p&gt;No data available&lt;/p&gt;&quot;</span>;
+      <span class="hljs-keyword">return</span>;
+    }
+
+    <span class="hljs-keyword">const</span> headers = <span class="hljs-title class_">Object</span>.<span class="hljs-title function_">keys</span>(<span class="hljs-variable language_">this</span>.<span class="hljs-property">data</span>[<span class="hljs-number">0</span>]);
+    <span class="hljs-keyword">const</span> filteredData = <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">getFilteredData</span>();
+    <span class="hljs-keyword">const</span> sortedData = <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">getSortedData</span>(filteredData);
+
+    <span class="hljs-keyword">const</span> tableHTML = <span class="hljs-string">`
+      &lt;div class=&quot;table-controls&quot;&gt;
+        &lt;div class=&quot;filters&quot;&gt;
+          <span class="hljs-subst">${headers
+            .map(
+              (header) =&gt; <span class="hljs-string">`
+            &lt;input 
+              type=&quot;text&quot; 
+              placeholder=&quot;Filter <span class="hljs-subst">${header}</span>...&quot;
+              data-filter=&quot;<span class="hljs-subst">${header}</span>&quot;
+              class=&quot;filter-input&quot;
+            &gt;
+          `</span>
+            )
+            .join(<span class="hljs-string">&quot;&quot;</span>)}</span>
+        &lt;/div&gt;
+      &lt;/div&gt;
+      &lt;table class=&quot;dynamic-table&quot;&gt;
+        &lt;thead&gt;
+          &lt;tr&gt;
+            <span class="hljs-subst">${headers
+              .map(
+                (header) =&gt; <span class="hljs-string">`
+              &lt;th data-sort=&quot;<span class="hljs-subst">${header}</span>&quot; class=&quot;sortable&quot;&gt;
+                <span class="hljs-subst">${header}</span>
+                &lt;span class=&quot;sort-indicator&quot;&gt;&lt;/span&gt;
+              &lt;/th&gt;
+            `</span>
+              )
+              .join(<span class="hljs-string">&quot;&quot;</span>)}</span>
+          &lt;/tr&gt;
+        &lt;/thead&gt;
+        &lt;tbody&gt;
+          <span class="hljs-subst">${sortedData
+            .map(
+              (row) =&gt; <span class="hljs-string">`
+            &lt;tr&gt;
+              <span class="hljs-subst">${headers
+                .map(
+                  (header) =&gt; <span class="hljs-string">`
+                &lt;td&gt;<span class="hljs-subst">${row[header]}</span>&lt;/td&gt;
+              `</span>
+                )
+                .join(<span class="hljs-string">&quot;&quot;</span>)}</span>
+            &lt;/tr&gt;
+          `</span>
+            )
+            .join(<span class="hljs-string">&quot;&quot;</span>)}</span>
+        &lt;/tbody&gt;
+      &lt;/table&gt;
+    `</span>;
+
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">container</span>.<span class="hljs-property">innerHTML</span> = tableHTML;
+  }
+
+  <span class="hljs-title function_">getFilteredData</span>(<span class="hljs-params"></span>) {
+    <span class="hljs-keyword">return</span> <span class="hljs-variable language_">this</span>.<span class="hljs-property">data</span>.<span class="hljs-title function_">filter</span>(<span class="hljs-function">(<span class="hljs-params">row</span>) =&gt;</span> {
+      <span class="hljs-keyword">return</span> <span class="hljs-title class_">Object</span>.<span class="hljs-title function_">keys</span>(<span class="hljs-variable language_">this</span>.<span class="hljs-property">filters</span>).<span class="hljs-title function_">every</span>(<span class="hljs-function">(<span class="hljs-params">filterKey</span>) =&gt;</span> {
+        <span class="hljs-keyword">const</span> filterValue = <span class="hljs-variable language_">this</span>.<span class="hljs-property">filters</span>[filterKey].<span class="hljs-title function_">toLowerCase</span>();
+        <span class="hljs-keyword">const</span> cellValue = <span class="hljs-title class_">String</span>(row[filterKey]).<span class="hljs-title function_">toLowerCase</span>();
+        <span class="hljs-keyword">return</span> cellValue.<span class="hljs-title function_">includes</span>(filterValue);
+      });
+    });
+  }
+
+  <span class="hljs-title function_">getSortedData</span>(<span class="hljs-params">data</span>) {
+    <span class="hljs-keyword">if</span> (!<span class="hljs-variable language_">this</span>.<span class="hljs-property">currentSort</span>.<span class="hljs-property">column</span>) <span class="hljs-keyword">return</span> data;
+
+    <span class="hljs-keyword">return</span> [...data].<span class="hljs-title function_">sort</span>(<span class="hljs-function">(<span class="hljs-params">a, b</span>) =&gt;</span> {
+      <span class="hljs-keyword">const</span> aVal = a[<span class="hljs-variable language_">this</span>.<span class="hljs-property">currentSort</span>.<span class="hljs-property">column</span>];
+      <span class="hljs-keyword">const</span> bVal = b[<span class="hljs-variable language_">this</span>.<span class="hljs-property">currentSort</span>.<span class="hljs-property">column</span>];
+
+      <span class="hljs-keyword">if</span> (<span class="hljs-keyword">typeof</span> aVal === <span class="hljs-string">&quot;string&quot;</span>) {
+        <span class="hljs-keyword">return</span> <span class="hljs-variable language_">this</span>.<span class="hljs-property">currentSort</span>.<span class="hljs-property">direction</span> === <span class="hljs-string">&quot;asc&quot;</span>
+          ? aVal.<span class="hljs-title function_">localeCompare</span>(bVal)
+          : bVal.<span class="hljs-title function_">localeCompare</span>(aVal);
+      }
+
+      <span class="hljs-keyword">return</span> <span class="hljs-variable language_">this</span>.<span class="hljs-property">currentSort</span>.<span class="hljs-property">direction</span> === <span class="hljs-string">&quot;asc&quot;</span> ? aVal - bVal : bVal - aVal;
+    });
+  }
+
+  <span class="hljs-title function_">attachEventListeners</span>(<span class="hljs-params"></span>) {
+    <span class="hljs-comment">// Sort event listeners</span>
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">container</span>.<span class="hljs-title function_">addEventListener</span>(<span class="hljs-string">&quot;click&quot;</span>, <span class="hljs-function">(<span class="hljs-params">e</span>) =&gt;</span> {
+      <span class="hljs-keyword">if</span> (e.<span class="hljs-property">target</span>.<span class="hljs-title function_">closest</span>(<span class="hljs-string">&quot;.sortable&quot;</span>)) {
+        <span class="hljs-keyword">const</span> header = e.<span class="hljs-property">target</span>.<span class="hljs-title function_">closest</span>(<span class="hljs-string">&quot;.sortable&quot;</span>);
+        <span class="hljs-keyword">const</span> column = header.<span class="hljs-property">dataset</span>.<span class="hljs-property">sort</span>;
+
+        <span class="hljs-keyword">if</span> (<span class="hljs-variable language_">this</span>.<span class="hljs-property">currentSort</span>.<span class="hljs-property">column</span> === column) {
+          <span class="hljs-variable language_">this</span>.<span class="hljs-property">currentSort</span>.<span class="hljs-property">direction</span> =
+            <span class="hljs-variable language_">this</span>.<span class="hljs-property">currentSort</span>.<span class="hljs-property">direction</span> === <span class="hljs-string">&quot;asc&quot;</span> ? <span class="hljs-string">&quot;desc&quot;</span> : <span class="hljs-string">&quot;asc&quot;</span>;
+        } <span class="hljs-keyword">else</span> {
+          <span class="hljs-variable language_">this</span>.<span class="hljs-property">currentSort</span>.<span class="hljs-property">column</span> = column;
+          <span class="hljs-variable language_">this</span>.<span class="hljs-property">currentSort</span>.<span class="hljs-property">direction</span> = <span class="hljs-string">&quot;asc&quot;</span>;
+        }
+
+        <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">render</span>();
+      }
+    });
+
+    <span class="hljs-comment">// Filter event listeners</span>
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">container</span>.<span class="hljs-title function_">addEventListener</span>(<span class="hljs-string">&quot;input&quot;</span>, <span class="hljs-function">(<span class="hljs-params">e</span>) =&gt;</span> {
+      <span class="hljs-keyword">if</span> (e.<span class="hljs-property">target</span>.<span class="hljs-property">classList</span>.<span class="hljs-title function_">contains</span>(<span class="hljs-string">&quot;filter-input&quot;</span>)) {
+        <span class="hljs-keyword">const</span> filterKey = e.<span class="hljs-property">target</span>.<span class="hljs-property">dataset</span>.<span class="hljs-property">filter</span>;
+        <span class="hljs-keyword">const</span> filterValue = e.<span class="hljs-property">target</span>.<span class="hljs-property">value</span>;
+
+        <span class="hljs-keyword">if</span> (filterValue) {
+          <span class="hljs-variable language_">this</span>.<span class="hljs-property">filters</span>[filterKey] = filterValue;
+        } <span class="hljs-keyword">else</span> {
+          <span class="hljs-keyword">delete</span> <span class="hljs-variable language_">this</span>.<span class="hljs-property">filters</span>[filterKey];
+        }
+
+        <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">render</span>();
+      }
+    });
+  }
+}
+
+<span class="hljs-comment">// Usage</span>
+<span class="hljs-keyword">const</span> sampleData = [
+  { <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;John&quot;</span>, <span class="hljs-attr">age</span>: <span class="hljs-number">25</span>, <span class="hljs-attr">city</span>: <span class="hljs-string">&quot;New York&quot;</span>, <span class="hljs-attr">salary</span>: <span class="hljs-number">50000</span> },
+  { <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;Jane&quot;</span>, <span class="hljs-attr">age</span>: <span class="hljs-number">30</span>, <span class="hljs-attr">city</span>: <span class="hljs-string">&quot;Los Angeles&quot;</span>, <span class="hljs-attr">salary</span>: <span class="hljs-number">60000</span> },
+  { <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;Bob&quot;</span>, <span class="hljs-attr">age</span>: <span class="hljs-number">35</span>, <span class="hljs-attr">city</span>: <span class="hljs-string">&quot;Chicago&quot;</span>, <span class="hljs-attr">salary</span>: <span class="hljs-number">55000</span> },
+  { <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;Alice&quot;</span>, <span class="hljs-attr">age</span>: <span class="hljs-number">28</span>, <span class="hljs-attr">city</span>: <span class="hljs-string">&quot;Boston&quot;</span>, <span class="hljs-attr">salary</span>: <span class="hljs-number">65000</span> },
+];
+
+<span class="hljs-keyword">const</span> table = <span class="hljs-keyword">new</span> <span class="hljs-title class_">DynamicTable</span>(<span class="hljs-string">&quot;table-container&quot;</span>, sampleData);
+</code></pre></pre>
+<p>{% endraw %}</p>
+<h2 id="css-styling" node="[object Object]">CSS Styling</h2>
+<pre><pre><code class="hljs hljs language-css"><span class="hljs-selector-class">.dynamic-table</span> {
+  <span class="hljs-attribute">width</span>: <span class="hljs-number">100%</span>;
+  <span class="hljs-attribute">border-collapse</span>: collapse;
+  <span class="hljs-attribute">margin-top</span>: <span class="hljs-number">20px</span>;
+}
+
+<span class="hljs-selector-class">.dynamic-table</span> <span class="hljs-selector-tag">th</span>,
+<span class="hljs-selector-class">.dynamic-table</span> <span class="hljs-selector-tag">td</span> {
+  <span class="hljs-attribute">padding</span>: <span class="hljs-number">12px</span>;
+  <span class="hljs-attribute">text-align</span>: left;
+  <span class="hljs-attribute">border-bottom</span>: <span class="hljs-number">1px</span> solid <span class="hljs-number">#ddd</span>;
+}
+
+<span class="hljs-selector-class">.dynamic-table</span> <span class="hljs-selector-tag">th</span> {
+  <span class="hljs-attribute">background-color</span>: <span class="hljs-number">#f5f5f5</span>;
+  <span class="hljs-attribute">font-weight</span>: bold;
+  <span class="hljs-attribute">cursor</span>: pointer;
+  <span class="hljs-attribute">user-select</span>: none;
+}
+
+<span class="hljs-selector-class">.dynamic-table</span> <span class="hljs-selector-tag">th</span><span class="hljs-selector-pseudo">:hover</span> {
+  <span class="hljs-attribute">background-color</span>: <span class="hljs-number">#e9e9e9</span>;
+}
+
+<span class="hljs-selector-class">.sortable</span> {
+  <span class="hljs-attribute">position</span>: relative;
+}
+
+<span class="hljs-selector-class">.sort-indicator</span><span class="hljs-selector-pseudo">::after</span> {
+  <span class="hljs-attribute">content</span>: <span class="hljs-string">&quot;↕&quot;</span>;
+  <span class="hljs-attribute">position</span>: absolute;
+  <span class="hljs-attribute">right</span>: <span class="hljs-number">8px</span>;
+  <span class="hljs-attribute">color</span>: <span class="hljs-number">#999</span>;
+}
+
+<span class="hljs-selector-class">.sortable</span><span class="hljs-selector-attr">[data-sort=<span class="hljs-string">&quot;name&quot;</span>]</span><span class="hljs-selector-class">.asc</span> <span class="hljs-selector-class">.sort-indicator</span><span class="hljs-selector-pseudo">::after</span> {
+  <span class="hljs-attribute">content</span>: <span class="hljs-string">&quot;↑&quot;</span>;
+  <span class="hljs-attribute">color</span>: <span class="hljs-number">#007bff</span>;
+}
+
+<span class="hljs-selector-class">.sortable</span><span class="hljs-selector-attr">[data-sort=<span class="hljs-string">&quot;name&quot;</span>]</span><span class="hljs-selector-class">.desc</span> <span class="hljs-selector-class">.sort-indicator</span><span class="hljs-selector-pseudo">::after</span> {
+  <span class="hljs-attribute">content</span>: <span class="hljs-string">&quot;↓&quot;</span>;
+  <span class="hljs-attribute">color</span>: <span class="hljs-number">#007bff</span>;
+}
+
+<span class="hljs-selector-class">.table-controls</span> {
+  <span class="hljs-attribute">margin-bottom</span>: <span class="hljs-number">20px</span>;
+}
+
+<span class="hljs-selector-class">.filters</span> {
+  <span class="hljs-attribute">display</span>: flex;
+  <span class="hljs-attribute">gap</span>: <span class="hljs-number">10px</span>;
+  <span class="hljs-attribute">flex-wrap</span>: wrap;
+}
+
+<span class="hljs-selector-class">.filter-input</span> {
+  <span class="hljs-attribute">padding</span>: <span class="hljs-number">8px</span> <span class="hljs-number">12px</span>;
+  <span class="hljs-attribute">border</span>: <span class="hljs-number">1px</span> solid <span class="hljs-number">#ddd</span>;
+  <span class="hljs-attribute">border-radius</span>: <span class="hljs-number">4px</span>;
+  <span class="hljs-attribute">font-size</span>: <span class="hljs-number">14px</span>;
+}
+
+<span class="hljs-keyword">@media</span> (<span class="hljs-attribute">max-width</span>: <span class="hljs-number">768px</span>) {
+  <span class="hljs-selector-class">.dynamic-table</span> {
+    <span class="hljs-attribute">font-size</span>: <span class="hljs-number">14px</span>;
+  }
+
+  <span class="hljs-selector-class">.dynamic-table</span> <span class="hljs-selector-tag">th</span>,
+  <span class="hljs-selector-class">.dynamic-table</span> <span class="hljs-selector-tag">td</span> {
+    <span class="hljs-attribute">padding</span>: <span class="hljs-number">8px</span> <span class="hljs-number">6px</span>;
+  }
+
+  <span class="hljs-selector-class">.filters</span> {
+    <span class="hljs-attribute">flex-direction</span>: column;
+  }
+}
+</code></pre></pre>
+<h2 id="key-features" node="[object Object]">Key Features</h2>
+<ol>
+<li><strong>Automatic Header Generation</strong>: Creates headers from object keys</li>
+<li><strong>Sorting</strong>: Click headers to sort by column</li>
+<li><strong>Filtering</strong>: Real-time filtering by any column</li>
+<li><strong>Responsive Design</strong>: Adapts to different screen sizes</li>
+<li><strong>Performance</strong>: Efficient rendering and event handling</li>
+<li><strong>Accessibility</strong>: Proper semantic HTML and keyboard navigation</li>
+</ol>
+<h2 id="advanced-usage" node="[object Object]">Advanced Usage</h2>
+<pre><pre><code class="hljs hljs language-javascript"><span class="hljs-comment">// With custom styling</span>
+<span class="hljs-keyword">const</span> customTable = <span class="hljs-keyword">new</span> <span class="hljs-title class_">DynamicTable</span>(<span class="hljs-string">&quot;custom-table&quot;</span>, data);
+
+<span class="hljs-comment">// With custom cell renderers</span>
+<span class="hljs-keyword">class</span> <span class="hljs-title class_">CustomTable</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_ inherited__">DynamicTable</span> {
+  <span class="hljs-title function_">renderCell</span>(<span class="hljs-params">value, column</span>) {
+    <span class="hljs-keyword">if</span> (column === <span class="hljs-string">&quot;salary&quot;</span>) {
+      <span class="hljs-keyword">return</span> <span class="hljs-string">`$<span class="hljs-subst">${value.toLocaleString()}</span>`</span>;
+    }
+    <span class="hljs-keyword">if</span> (column === <span class="hljs-string">&quot;age&quot;</span>) {
+      <span class="hljs-keyword">return</span> <span class="hljs-string">`<span class="hljs-subst">${value}</span> years`</span>;
+    }
+    <span class="hljs-keyword">return</span> value;
+  }
+}
+</code></pre></pre>
+<h2 id="interview-deep-dive:-dynamic-table" node="[object Object]">Interview Deep Dive: Dynamic Table</h2>
+<h3 id="follow-up-questions" node="[object Object]">Follow-up Questions</h3>
+<ol>
+<li>
+<p><strong>How would you add keyboard navigation for accessibility?</strong></p>
+<ul>
+<li>Use <pre><code class="hljs undefined">tabindex=&quot;0&quot;</code></pre> on rows and headers.</li>
+<li>Add keyboard event listeners for arrow keys, Enter, and Escape.</li>
+<li>Use ARIA roles: <pre><code class="hljs undefined">role=&quot;table&quot;</code></pre>, <pre><code class="hljs undefined">role=&quot;row&quot;</code></pre>, <pre><code class="hljs undefined">role=&quot;columnheader&quot;</code></pre>, <pre><code class="hljs undefined">role=&quot;cell&quot;</code></pre>.</li>
+</ul>
+</li>
+<li>
+<p><strong>How would you handle large datasets (10,000+ rows)?</strong></p>
+<ul>
+<li>Implement virtual scrolling (windowing) using libraries like <pre><code class="hljs undefined">react-window</code></pre> or custom logic.</li>
+<li>Only render visible rows to improve performance.</li>
+</ul>
+</li>
+<li>
+<p><strong>How would you support custom cell rendering (e.g., links, buttons, icons)?</strong></p>
+<ul>
+<li>Allow passing a <pre><code class="hljs undefined">renderCell</code></pre> function as a prop or method override.</li>
+<li>Example: <pre><code class="hljs undefined">renderCell(value, column, row)</code></pre></li>
+</ul>
+</li>
+<li>
+<p><strong>How would you make the table accessible for screen readers?</strong></p>
+<ul>
+<li>Use semantic HTML: <pre><code class="hljs undefined">&lt;table&gt;</code></pre>, <pre><code class="hljs undefined">&lt;thead&gt;</code></pre>, <pre><code class="hljs undefined">&lt;tbody&gt;</code></pre>, <pre><code class="hljs undefined">&lt;th&gt;</code></pre>, <pre><code class="hljs undefined">&lt;td&gt;</code></pre>.</li>
+<li>Add <pre><code class="hljs undefined">scope=&quot;col&quot;</code></pre> to header cells.</li>
+<li>Provide captions and summaries if needed.</li>
+</ul>
+</li>
+</ol>
+<hr/>
+<h3 id="diagram:-table-rendering-flow" node="[object Object]">Diagram: Table Rendering Flow</h3>
+<pre><pre><code class="hljs hljs language-mermaid">flowchart TD
+  A[Input Data Array] --&gt; B[Generate Headers]
+  B --&gt; C[Render Filters]
+  C --&gt; D[Apply Filters]
+  D --&gt; E[Sort Data]
+  E --&gt; F[Render Table Rows]
+</code></pre></pre>
+<hr/>
+<h3 id="advanced-problem:-virtualized-dynamic-table-(react)" node="[object Object]">Advanced Problem: Virtualized Dynamic Table (React)</h3>
+<p><strong>Challenge:</strong> Implement a dynamic table with virtual scrolling for large datasets in React.</p>
+<p><strong>Solution Outline:</strong></p>
+<ul>
+<li>Use <pre><code class="hljs undefined">react-window</code></pre> or similar for windowing.</li>
+<li>Only render visible rows.</li>
+<li>Keep sorting/filtering logic in parent component.</li>
+</ul>
+<p><strong>Sample Implementation:</strong></p>
+<pre><pre><code class="hljs hljs language-jsx"><span class="hljs-keyword">import</span> { <span class="hljs-title class_">FixedSizeList</span> <span class="hljs-keyword">as</span> <span class="hljs-title class_">List</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;react-window&quot;</span>;
+
+<span class="hljs-keyword">function</span> <span class="hljs-title function_">VirtualizedTable</span>(<span class="hljs-params">{ data, height, rowHeight }</span>) {
+  <span class="hljs-keyword">const</span> headers = <span class="hljs-title class_">Object</span>.<span class="hljs-title function_">keys</span>(data[<span class="hljs-number">0</span>] || {});
+
+  <span class="hljs-keyword">return</span> (
+    <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">style</span>=<span class="hljs-string">{%</span> <span class="hljs-attr">raw</span> %}{{ <span class="hljs-attr">width:</span> &quot;<span class="hljs-attr">100</span>%&quot; }}{% <span class="hljs-attr">endraw</span> %}&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">table</span> <span class="hljs-attr">className</span>=<span class="hljs-string">&quot;dynamic-table&quot;</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">thead</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">tr</span>&gt;</span>
+            {headers.map((header) =&gt; (
+              <span class="hljs-tag">&lt;<span class="hljs-name">th</span> <span class="hljs-attr">key</span>=<span class="hljs-string">{header}</span>&gt;</span>{header}<span class="hljs-tag">&lt;/<span class="hljs-name">th</span>&gt;</span>
+            ))}
+          <span class="hljs-tag">&lt;/<span class="hljs-name">tr</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">thead</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">table</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">List</span>
+        <span class="hljs-attr">height</span>=<span class="hljs-string">{height}</span>
+        <span class="hljs-attr">itemCount</span>=<span class="hljs-string">{data.length}</span>
+        <span class="hljs-attr">itemSize</span>=<span class="hljs-string">{rowHeight}</span>
+        <span class="hljs-attr">width</span>=<span class="hljs-string">&quot;100%&quot;</span>
+      &gt;</span>
+        {({ index, style }) =&gt; (
+          <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">style</span>=<span class="hljs-string">{style}</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">table</span> <span class="hljs-attr">className</span>=<span class="hljs-string">&quot;dynamic-table&quot;</span>&gt;</span>
+              <span class="hljs-tag">&lt;<span class="hljs-name">tbody</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">tr</span>&gt;</span>
+                  {headers.map((header) =&gt; (
+                    <span class="hljs-tag">&lt;<span class="hljs-name">td</span> <span class="hljs-attr">key</span>=<span class="hljs-string">{header}</span>&gt;</span>{data[index][header]}<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+                  ))}
+                <span class="hljs-tag">&lt;/<span class="hljs-name">tr</span>&gt;</span>
+              <span class="hljs-tag">&lt;/<span class="hljs-name">tbody</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">table</span>&gt;</span>
+          <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+        )}
+      <span class="hljs-tag">&lt;/<span class="hljs-name">List</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span>
+  );
+}
+</code></pre></pre>
+<hr/>
+<h3 id="system-design:-table-component-api" node="[object Object]">System Design: Table Component API</h3>
+<ul>
+<li><pre><code class="hljs undefined">data</code></pre>: Array of objects</li>
+<li><pre><code class="hljs undefined">columns</code></pre>: Optional array of column configs (label, key, sortable, filterable, renderCell)</li>
+<li><pre><code class="hljs undefined">onSort</code></pre>: Callback for sort changes</li>
+<li><pre><code class="hljs undefined">onFilter</code></pre>: Callback for filter changes</li>
+<li><pre><code class="hljs undefined">rowKey</code></pre>: Function or string for unique row id</li>
+</ul>
+<hr/>
+<h2 id="more-dynamic-table-interview-problems" node="[object Object]">More Dynamic Table Interview Problems</h2>
+<h3 id="problem-2:-editable-table-cells" node="[object Object]">Problem 2: Editable Table Cells</h3>
+<p><strong>Question:</strong> How would you allow users to edit table cells inline and save changes?</p>
+<p><strong>Solution Outline:</strong></p>
+<ul>
+<li>Render each cell as a text input or select when in edit mode.</li>
+<li>Track editing state (row/column).</li>
+<li>Save changes on blur or Enter, revert on Escape.</li>
+</ul>
+<p><strong>Sample Implementation (JS):</strong></p>
+<pre><pre><code class="hljs hljs language-js"><span class="hljs-comment">// In your DynamicTable class, add editing state and handlers</span>
+<span class="hljs-comment">// Pseudocode for cell rendering:</span>
+<span class="hljs-title function_">renderCell</span>(<span class="hljs-params">value, rowIdx, colKey</span>) {
+  <span class="hljs-keyword">if</span> (<span class="hljs-variable language_">this</span>.<span class="hljs-property">editing</span> &amp;&amp; <span class="hljs-variable language_">this</span>.<span class="hljs-property">editing</span>.<span class="hljs-property">row</span> === rowIdx &amp;&amp; <span class="hljs-variable language_">this</span>.<span class="hljs-property">editing</span>.<span class="hljs-property">col</span> === colKey) {
+    <span class="hljs-keyword">return</span> <span class="hljs-string">`&lt;input value=&quot;<span class="hljs-subst">${value}</span>&quot; onblur=&quot;saveEdit()&quot; onkeydown=&quot;handleKey(event)&quot; /&gt;`</span>;
+  }
+  <span class="hljs-keyword">return</span> <span class="hljs-string">`&lt;span ondblclick=&quot;startEdit(<span class="hljs-subst">${rowIdx}</span>, &#x27;<span class="hljs-subst">${colKey}</span>&#x27;)&quot;&gt;<span class="hljs-subst">${value}</span>&lt;/span&gt;`</span>;
+}
+</code></pre></pre>
+<hr/>
+<h3 id="problem-3:-row-selection-and-bulk-actions" node="[object Object]">Problem 3: Row Selection and Bulk Actions</h3>
+<p><strong>Question:</strong> How would you implement row selection (single/multi) and bulk actions (delete, export)?</p>
+<p><strong>Solution Outline:</strong></p>
+<ul>
+<li>Add a checkbox to each row and a master checkbox in the header.</li>
+<li>Track selected row IDs in state.</li>
+<li>Provide bulk action buttons (e.g., Delete Selected, Export Selected).</li>
+</ul>
+<p><strong>Sample Implementation (JS):</strong></p>
+<pre><pre><code class="hljs hljs language-js"><span class="hljs-comment">// Add a &#x27;selected&#x27; property to each row or track selected IDs in a Set</span>
+<span class="hljs-comment">// Render checkboxes in the first column</span>
+<span class="hljs-comment">// Add event listeners for bulk action buttons</span>
+</code></pre></pre>
+<hr/>
+<h3 id="problem-4:-column-reordering" node="[object Object]">Problem 4: Column Reordering</h3>
+<p><strong>Question:</strong> How would you allow users to reorder columns via drag-and-drop?</p>
+<p><strong>Solution Outline:</strong></p>
+<ul>
+<li>Use HTML5 Drag and Drop API or a library (e.g., react-beautiful-dnd).</li>
+<li>Update the columns order in state on drop.</li>
+<li>Re-render table with new column order.</li>
+</ul>
+<p><strong>Sample Implementation (React):</strong></p>
+<pre><pre><code class="hljs hljs language-jsx"><span class="hljs-comment">// Use react-beautiful-dnd&#x27;s &lt;DragDropContext&gt; and &lt;Droppable&gt; for columns</span>
+<span class="hljs-comment">// On drag end, update columns array order</span>
+</code></pre></pre>
+<hr/>
+<h3 id="problem-5:-server-side-pagination-and-filtering" node="[object Object]">Problem 5: Server-Side Pagination and Filtering</h3>
+<p><strong>Question:</strong> How would you handle tables with millions of rows (server-side pagination/filtering)?</p>
+<p><strong>Solution Outline:</strong></p>
+<ul>
+<li>Fetch only the current page of data from the server.</li>
+<li>Send filter/sort params in API requests.</li>
+<li>Show loading indicators and handle errors.</li>
+</ul>
+<p><strong>Sample API Call:</strong></p>
+<pre><pre><code class="hljs hljs language-js"><span class="hljs-title function_">fetch</span>(<span class="hljs-string">`/api/table?page=2&amp;pageSize=50&amp;sort=age&amp;filter=city:Boston`</span>)
+  .<span class="hljs-title function_">then</span>(<span class="hljs-function">(<span class="hljs-params">res</span>) =&gt;</span> res.<span class="hljs-title function_">json</span>())
+  .<span class="hljs-title function_">then</span>(<span class="hljs-function">(<span class="hljs-params">data</span>) =&gt;</span> <span class="hljs-title function_">updateTable</span>(data));
+</code></pre></pre>
+<hr/>
+<h3 id="problem-6:-accessibility-for-dynamic-tables" node="[object Object]">Problem 6: Accessibility for Dynamic Tables</h3>
+<p><strong>Question:</strong> What are the key accessibility considerations for dynamic tables?</p>
+<p><strong>Answer:</strong></p>
+<ul>
+<li>Use semantic HTML (<pre><code class="hljs undefined">&lt;table&gt;</code></pre>, <pre><code class="hljs undefined">&lt;thead&gt;</code></pre>, <pre><code class="hljs undefined">&lt;tbody&gt;</code></pre>, <pre><code class="hljs undefined">&lt;th&gt;</code></pre>, <pre><code class="hljs undefined">&lt;td&gt;</code></pre>)</li>
+<li>Add ARIA roles and properties as needed</li>
+<li>Ensure keyboard navigation (tab, arrow keys)</li>
+<li>Provide visible focus indicators</li>
+<li>Announce changes to screen readers (e.g., row added/removed)</li>
+</ul>
+<hr/>
+<p><em>These additional problems cover editing, selection, column reordering, server-side data, and accessibility—key areas for dynamic table interviews. Practice implementing and discussing these features!</em></p>
+<hr/>
+<h3 id="diagram:-table-rendering-flow" node="[object Object]">Diagram: Table Rendering Flow</h3>
+<pre><pre><code class="hljs hljs language-mermaid">flowchart TD
+  A[Input Data Array] --&gt; B[Generate Headers]
+  B --&gt; C[Render Filters]
+  C --&gt; D[Apply Filters]
+  D --&gt; E[Sort Data]
+  E --&gt; F[Render Table Rows]
+</code></pre></pre>
+<hr/>
+<h3 id="advanced-problem:-virtualized-dynamic-table-(react)" node="[object Object]">Advanced Problem: Virtualized Dynamic Table (React)</h3>
+<p><strong>Challenge:</strong> Implement a dynamic table with virtual scrolling for large datasets in React.</p>
+<p><strong>Solution Outline:</strong></p>
+<ul>
+<li>Use <pre><code class="hljs undefined">react-window</code></pre> or similar for windowing.</li>
+<li>Only render visible rows.</li>
+<li>Keep sorting/filtering logic in parent component.</li>
+</ul>
+<p><strong>Sample Implementation:</strong></p>
+<pre><pre><code class="hljs hljs language-jsx"><span class="hljs-keyword">import</span> { <span class="hljs-title class_">FixedSizeList</span> <span class="hljs-keyword">as</span> <span class="hljs-title class_">List</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;react-window&quot;</span>;
+
+<span class="hljs-keyword">function</span> <span class="hljs-title function_">VirtualizedTable</span>(<span class="hljs-params">{ data, height, rowHeight }</span>) {
+  <span class="hljs-keyword">const</span> headers = <span class="hljs-title class_">Object</span>.<span class="hljs-title function_">keys</span>(data[<span class="hljs-number">0</span>] || {});
+
+  <span class="hljs-keyword">return</span> (
+    <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">style</span>=<span class="hljs-string">{%</span> <span class="hljs-attr">raw</span> %}{{ <span class="hljs-attr">width:</span> &quot;<span class="hljs-attr">100</span>%&quot; }}{% <span class="hljs-attr">endraw</span> %}&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">table</span> <span class="hljs-attr">className</span>=<span class="hljs-string">&quot;dynamic-table&quot;</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">thead</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">tr</span>&gt;</span>
+            {headers.map((header) =&gt; (
+              <span class="hljs-tag">&lt;<span class="hljs-name">th</span> <span class="hljs-attr">key</span>=<span class="hljs-string">{header}</span>&gt;</span>{header}<span class="hljs-tag">&lt;/<span class="hljs-name">th</span>&gt;</span>
+            ))}
+          <span class="hljs-tag">&lt;/<span class="hljs-name">tr</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">thead</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">table</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">List</span>
+        <span class="hljs-attr">height</span>=<span class="hljs-string">{height}</span>
+        <span class="hljs-attr">itemCount</span>=<span class="hljs-string">{data.length}</span>
+        <span class="hljs-attr">itemSize</span>=<span class="hljs-string">{rowHeight}</span>
+        <span class="hljs-attr">width</span>=<span class="hljs-string">&quot;100%&quot;</span>
+      &gt;</span>
+        {({ index, style }) =&gt; (
+          <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">style</span>=<span class="hljs-string">{style}</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">table</span> <span class="hljs-attr">className</span>=<span class="hljs-string">&quot;dynamic-table&quot;</span>&gt;</span>
+              <span class="hljs-tag">&lt;<span class="hljs-name">tbody</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">tr</span>&gt;</span>
+                  {headers.map((header) =&gt; (
+                    <span class="hljs-tag">&lt;<span class="hljs-name">td</span> <span class="hljs-attr">key</span>=<span class="hljs-string">{header}</span>&gt;</span>{data[index][header]}<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+                  ))}
+                <span class="hljs-tag">&lt;/<span class="hljs-name">tr</span>&gt;</span>
+              <span class="hljs-tag">&lt;/<span class="hljs-name">tbody</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">table</span>&gt;</span>
+          <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+        )}
+      <span class="hljs-tag">&lt;/<span class="hljs-name">List</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span>
+  );
+}
+</code></pre></pre>
+<hr/>
+<h3 id="system-design:-table-component-api" node="[object Object]">System Design: Table Component API</h3>
+<ul>
+<li><pre><code class="hljs undefined">data</code></pre>: Array of objects</li>
+<li><pre><code class="hljs undefined">columns</code></pre>: Optional array of column configs (label, key, sortable, filterable, renderCell)</li>
+<li><pre><code class="hljs undefined">onSort</code></pre>: Callback for sort changes</li>
+<li><pre><code class="hljs undefined">onFilter</code></pre>: Callback for filter changes</li>
+<li><pre><code class="hljs undefined">rowKey</code></pre>: Function or string for unique row id</li>
+</ul>
+<hr/>
+<h2 id="more-dynamic-table-interview-problems" node="[object Object]">More Dynamic Table Interview Problems</h2>
+<h3 id="problem-2:-editable-table-cells" node="[object Object]">Problem 2: Editable Table Cells</h3>
+<p><strong>Question:</strong> How would you allow users to edit table cells inline and save changes?</p>
+<p><strong>Solution Outline:</strong></p>
+<ul>
+<li>Render each cell as a text input or select when in edit mode.</li>
+<li>Track editing state (row/column).</li>
+<li>Save changes on blur or Enter, revert on Escape.</li>
+</ul>
+<p><strong>Sample Implementation (JS):</strong></p>
+<pre><pre><code class="hljs hljs language-js"><span class="hljs-comment">// In your DynamicTable class, add editing state and handlers</span>
+<span class="hljs-comment">// Pseudocode for cell rendering:</span>
+<span class="hljs-title function_">renderCell</span>(<span class="hljs-params">value, rowIdx, colKey</span>) {
+  <span class="hljs-keyword">if</span> (<span class="hljs-variable language_">this</span>.<span class="hljs-property">editing</span> &amp;&amp; <span class="hljs-variable language_">this</span>.<span class="hljs-property">editing</span>.<span class="hljs-property">row</span> === rowIdx &amp;&amp; <span class="hljs-variable language_">this</span>.<span class="hljs-property">editing</span>.<span class="hljs-property">col</span> === colKey) {
+    <span class="hljs-keyword">return</span> <span class="hljs-string">`&lt;input value=&quot;<span class="hljs-subst">${value}</span>&quot; onblur=&quot;saveEdit()&quot; onkeydown=&quot;handleKey(event)&quot; /&gt;`</span>;
+  }
+  <span class="hljs-keyword">return</span> <span class="hljs-string">`&lt;span ondblclick=&quot;startEdit(<span class="hljs-subst">${rowIdx}</span>, &#x27;<span class="hljs-subst">${colKey}</span>&#x27;)&quot;&gt;<span class="hljs-subst">${value}</span>&lt;/span&gt;`</span>;
+}
+</code></pre></pre>
+<hr/>
+<h3 id="problem-3:-row-selection-and-bulk-actions" node="[object Object]">Problem 3: Row Selection and Bulk Actions</h3>
+<p><strong>Question:</strong> How would you implement row selection (single/multi) and bulk actions (delete, export)?</p>
+<p><strong>Solution Outline:</strong></p>
+<ul>
+<li>Add a checkbox to each row and a master checkbox in the header.</li>
+<li>Track selected row IDs in state.</li>
+<li>Provide bulk action buttons (e.g., Delete Selected, Export Selected).</li>
+</ul>
+<p><strong>Sample Implementation (JS):</strong></p>
+<pre><pre><code class="hljs hljs language-js"><span class="hljs-comment">// Add a &#x27;selected&#x27; property to each row or track selected IDs in a Set</span>
+<span class="hljs-comment">// Render checkboxes in the first column</span>
+<span class="hljs-comment">// Add event listeners for bulk action buttons</span>
+</code></pre></pre>
+<hr/>
+<h3 id="problem-4:-column-reordering" node="[object Object]">Problem 4: Column Reordering</h3>
+<p><strong>Question:</strong> How would you allow users to reorder columns via drag-and-drop?</p>
+<p><strong>Solution Outline:</strong></p>
+<ul>
+<li>Use HTML5 Drag and Drop API or a library (e.g., react-beautiful-dnd).</li>
+<li>Update the columns order in state on drop.</li>
+<li>Re-render table with new column order.</li>
+</ul>
+<p><strong>Sample Implementation (React):</strong></p>
+<pre><pre><code class="hljs hljs language-jsx"><span class="hljs-comment">// Use react-beautiful-dnd&#x27;s &lt;DragDropContext&gt; and &lt;Droppable&gt; for columns</span>
+<span class="hljs-comment">// On drag end, update columns array order</span>
+</code></pre></pre>
+<hr/>
+<h3 id="problem-5:-server-side-pagination-and-filtering" node="[object Object]">Problem 5: Server-Side Pagination and Filtering</h3>
+<p><strong>Question:</strong> How would you handle tables with millions of rows (server-side pagination/filtering)?</p>
+<p><strong>Solution Outline:</strong></p>
+<ul>
+<li>Fetch only the current page of data from the server.</li>
+<li>Send filter/sort params in API requests.</li>
+<li>Show loading indicators and handle errors.</li>
+</ul>
+<p><strong>Sample API Call:</strong></p>
+<pre><pre><code class="hljs hljs language-js"><span class="hljs-title function_">fetch</span>(<span class="hljs-string">`/api/table?page=2&amp;pageSize=50&amp;sort=age&amp;filter=city:Boston`</span>)
+  .<span class="hljs-title function_">then</span>(<span class="hljs-function">(<span class="hljs-params">res</span>) =&gt;</span> res.<span class="hljs-title function_">json</span>())
+  .<span class="hljs-title function_">then</span>(<span class="hljs-function">(<span class="hljs-params">data</span>) =&gt;</span> <span class="hljs-title function_">updateTable</span>(data));
+</code></pre></pre>
+<hr/>
+<h3 id="problem-6:-accessibility-for-dynamic-tables" node="[object Object]">Problem 6: Accessibility for Dynamic Tables</h3>
+<p><strong>Question:</strong> What are the key accessibility considerations for dynamic tables?</p>
+<p><strong>Answer:</strong></p>
+<ul>
+<li>Use semantic HTML (<pre><code class="hljs undefined">&lt;table&gt;</code></pre>, <pre><code class="hljs undefined">&lt;thead&gt;</code></pre>, <pre><code class="hljs undefined">&lt;tbody&gt;</code></pre>, <pre><code class="hljs undefined">&lt;th&gt;</code></pre>, <pre><code class="hljs undefined">&lt;td&gt;</code></pre>)</li>
+<li>Add ARIA roles and properties as needed</li>
+<li>Ensure keyboard navigation (tab, arrow keys)</li>
+<li>Provide visible focus indicators</li>
+<li>Announce changes to screen readers (e.g., row added/removed)</li>
+</ul>
+<hr/>
+<p><em>These additional problems cover editing, selection, column reordering, server-side data, and accessibility—key areas for dynamic table interviews. Practice implementing and discussing these features!</em></p></div></div></main><footer class="sc-dYwGCk cJzheU"><div class="sc-lgpSej hJUFeT"><div class="sc-eqYatC mSxwd"><div class="sc-kcLKEh cmBIup"><div class="sc-dntSTA bAsNIP"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-code "><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>Frontend Interview Prep</div><p class="sc-kvnevz gWXMDV">Comprehensive interview preparation for frontend engineers targeting Big Tech companies.</p><div class="sc-dFVmKS jCoOHQ"><a href="https://github.com" aria-label="GitHub"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-github "><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"></path><path d="M9 18c-4.51 2-5-2-7-2"></path></svg></a><a href="https://twitter.com" aria-label="Twitter"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-twitter "><path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"></path></svg></a><a href="https://linkedin.com" aria-label="LinkedIn"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-linkedin "><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect width="4" height="12" x="2" y="9"></rect><circle cx="4" cy="4" r="2"></circle></svg></a><a href="mailto:contact@example.com" aria-label="Email"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-mail "><rect width="20" height="16" x="2" y="4" rx="2"></rect><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path></svg></a></div></div><div class="sc-kcLKEh cmBIup"><h3>Study Materials</h3><ul><li><a href="/algorithms">Algorithms</a></li><li><a href="/react">React &amp; Frontend</a></li><li><a href="/system-design">System Design</a></li><li><a href="/typescript">TypeScript</a></li><li><a href="/performance">Performance</a></li></ul></div><div class="sc-kcLKEh cmBIup"><h3>Companies</h3><ul><li><a href="/google">Google</a></li><li><a href="/meta">Meta</a></li><li><a href="/amazon">Amazon</a></li><li><a href="/microsoft">Microsoft</a></li><li><a href="/apple">Apple</a></li></ul></div><div class="sc-kcLKEh cmBIup"><h3>Resources</h3><ul><li><a href="/interview-tips">Interview Tips</a></li><li><a href="/coding-challenges">Coding Challenges</a></li><li><a href="/mock-interviews">Mock Interviews</a></li><li><a href="/blog">Blog</a></li><li><a href="/faq">FAQ</a></li></ul></div></div><div class="sc-kCuUfV crUaYh"><p class="sc-dNdcvo esMlQF">© 2025 Frontend Interview Prep. All rights reserved.</p><div class="sc-fbQrwq eHcrXx"><a href="/privacy">Privacy Policy</a><a href="/terms">Terms of Service</a><a href="/contact">Contact</a></div></div></div></footer></div><script src="/interview/_next/static/chunks/webpack-be7d7df45533bffc.js" async=""></script><script>(self.__next_f=self.__next_f||[]).push([0]);self.__next_f.push([2,null])</script><script>self.__next_f.push([1,"1:HL[\"/interview/_next/static/media/e4af272ccee01ff0-s.p.woff2\",\"font\",{\"crossOrigin\":\"\",\"type\":\"font/woff2\"}]\n2:HL[\"/interview/_next/static/css/387024c6a2216908.css\",\"style\"]\n"])</script><script>self.__next_f.push([1,"3:I[2846,[],\"\"]\n5:I[5907,[\"918\",\"static/chunks/918-3273b83890f10546.js\",\"930\",\"static/chunks/930-3262a6c9c5acace4.js\",\"687\",\"static/chunks/app/docs/%5B...slug%5D/page-32962e9542d32755.js\"],\"default\"]\n7:I[4707,[],\"\"]\n9:I[6423,[],\"\"]\na:I[2,[\"918\",\"static/chunks/918-3273b83890f10546.js\",\"710\",\"static/chunks/710-dfaa11b4dff08f8e.js\",\"972\",\"static/chunks/972-011bba60ed155615.js\",\"233\",\"static/chunks/233-3e0c1d820a17eca9.js\",\"185\",\"static/chunks/app/layout-333f4adcd11f8f39.js\"],\"default\",1]\nc:I[1060,[],\"\"]\n6:T4173,"])</script><script>self.__next_f.push([1,"\n# Problem 1: Dynamic Table Generator\n\n## Problem Description\n\nCreate a function that generates a dynamic table from an array of objects with sorting and filtering capabilities.\n\n## Requirements\n\n- Accept array of objects as input\n- Generate table headers automatically from object keys\n- Support sorting by any column\n- Support filtering by any column\n- Make it responsive\n\n## Solution\n\n{% raw %}\n\n```javascript\nclass DynamicTable {\n  constructor(containerId, data) {\n    this.container = document.getElementById(containerId);\n    this.data = data;\n    this.currentSort = { column: null, direction: \"asc\" };\n    this.filters = {};\n    this.init();\n  }\n\n  init() {\n    this.render();\n    this.attachEventListeners();\n  }\n\n  render() {\n    if (!this.data.length) {\n      this.container.innerHTML = \"\u003cp\u003eNo data available\u003c/p\u003e\";\n      return;\n    }\n\n    const headers = Object.keys(this.data[0]);\n    const filteredData = this.getFilteredData();\n    const sortedData = this.getSortedData(filteredData);\n\n    const tableHTML = `\n      \u003cdiv class=\"table-controls\"\u003e\n        \u003cdiv class=\"filters\"\u003e\n          ${headers\n            .map(\n              (header) =\u003e `\n            \u003cinput \n              type=\"text\" \n              placeholder=\"Filter ${header}...\"\n              data-filter=\"${header}\"\n              class=\"filter-input\"\n            \u003e\n          `\n            )\n            .join(\"\")}\n        \u003c/div\u003e\n      \u003c/div\u003e\n      \u003ctable class=\"dynamic-table\"\u003e\n        \u003cthead\u003e\n          \u003ctr\u003e\n            ${headers\n              .map(\n                (header) =\u003e `\n              \u003cth data-sort=\"${header}\" class=\"sortable\"\u003e\n                ${header}\n                \u003cspan class=\"sort-indicator\"\u003e\u003c/span\u003e\n              \u003c/th\u003e\n            `\n              )\n              .join(\"\")}\n          \u003c/tr\u003e\n        \u003c/thead\u003e\n        \u003ctbody\u003e\n          ${sortedData\n            .map(\n              (row) =\u003e `\n            \u003ctr\u003e\n              ${headers\n                .map(\n                  (header) =\u003e `\n                \u003ctd\u003e${row[header]}\u003c/td\u003e\n              `\n                )\n                .join(\"\")}\n            \u003c/tr\u003e\n          `\n            )\n            .join(\"\")}\n        \u003c/tbody\u003e\n      \u003c/table\u003e\n    `;\n\n    this.container.innerHTML = tableHTML;\n  }\n\n  getFilteredData() {\n    return this.data.filter((row) =\u003e {\n      return Object.keys(this.filters).every((filterKey) =\u003e {\n        const filterValue = this.filters[filterKey].toLowerCase();\n        const cellValue = String(row[filterKey]).toLowerCase();\n        return cellValue.includes(filterValue);\n      });\n    });\n  }\n\n  getSortedData(data) {\n    if (!this.currentSort.column) return data;\n\n    return [...data].sort((a, b) =\u003e {\n      const aVal = a[this.currentSort.column];\n      const bVal = b[this.currentSort.column];\n\n      if (typeof aVal === \"string\") {\n        return this.currentSort.direction === \"asc\"\n          ? aVal.localeCompare(bVal)\n          : bVal.localeCompare(aVal);\n      }\n\n      return this.currentSort.direction === \"asc\" ? aVal - bVal : bVal - aVal;\n    });\n  }\n\n  attachEventListeners() {\n    // Sort event listeners\n    this.container.addEventListener(\"click\", (e) =\u003e {\n      if (e.target.closest(\".sortable\")) {\n        const header = e.target.closest(\".sortable\");\n        const column = header.dataset.sort;\n\n        if (this.currentSort.column === column) {\n          this.currentSort.direction =\n            this.currentSort.direction === \"asc\" ? \"desc\" : \"asc\";\n        } else {\n          this.currentSort.column = column;\n          this.currentSort.direction = \"asc\";\n        }\n\n        this.render();\n      }\n    });\n\n    // Filter event listeners\n    this.container.addEventListener(\"input\", (e) =\u003e {\n      if (e.target.classList.contains(\"filter-input\")) {\n        const filterKey = e.target.dataset.filter;\n        const filterValue = e.target.value;\n\n        if (filterValue) {\n          this.filters[filterKey] = filterValue;\n        } else {\n          delete this.filters[filterKey];\n        }\n\n        this.render();\n      }\n    });\n  }\n}\n\n// Usage\nconst sampleData = [\n  { name: \"John\", age: 25, city: \"New York\", salary: 50000 },\n  { name: \"Jane\", age: 30, city: \"Los Angeles\", salary: 60000 },\n  { name: \"Bob\", age: 35, city: \"Chicago\", salary: 55000 },\n  { name: \"Alice\", age: 28, city: \"Boston\", salary: 65000 },\n];\n\nconst table = new DynamicTable(\"table-container\", sampleData);\n```\n\n{% endraw %}\n\n## CSS Styling\n\n```css\n.dynamic-table {\n  width: 100%;\n  border-collapse: collapse;\n  margin-top: 20px;\n}\n\n.dynamic-table th,\n.dynamic-table td {\n  padding: 12px;\n  text-align: left;\n  border-bottom: 1px solid #ddd;\n}\n\n.dynamic-table th {\n  background-color: #f5f5f5;\n  font-weight: bold;\n  cursor: pointer;\n  user-select: none;\n}\n\n.dynamic-table th:hover {\n  background-color: #e9e9e9;\n}\n\n.sortable {\n  position: relative;\n}\n\n.sort-indicator::after {\n  content: \"↕\";\n  position: absolute;\n  right: 8px;\n  color: #999;\n}\n\n.sortable[data-sort=\"name\"].asc .sort-indicator::after {\n  content: \"↑\";\n  color: #007bff;\n}\n\n.sortable[data-sort=\"name\"].desc .sort-indicator::after {\n  content: \"↓\";\n  color: #007bff;\n}\n\n.table-controls {\n  margin-bottom: 20px;\n}\n\n.filters {\n  display: flex;\n  gap: 10px;\n  flex-wrap: wrap;\n}\n\n.filter-input {\n  padding: 8px 12px;\n  border: 1px solid #ddd;\n  border-radius: 4px;\n  font-size: 14px;\n}\n\n@media (max-width: 768px) {\n  .dynamic-table {\n    font-size: 14px;\n  }\n\n  .dynamic-table th,\n  .dynamic-table td {\n    padding: 8px 6px;\n  }\n\n  .filters {\n    flex-direction: column;\n  }\n}\n```\n\n## Key Features\n\n1. **Automatic Header Generation**: Creates headers from object keys\n2. **Sorting**: Click headers to sort by column\n3. **Filtering**: Real-time filtering by any column\n4. **Responsive Design**: Adapts to different screen sizes\n5. **Performance**: Efficient rendering and event handling\n6. **Accessibility**: Proper semantic HTML and keyboard navigation\n\n## Advanced Usage\n\n```javascript\n// With custom styling\nconst customTable = new DynamicTable(\"custom-table\", data);\n\n// With custom cell renderers\nclass CustomTable extends DynamicTable {\n  renderCell(value, column) {\n    if (column === \"salary\") {\n      return `$${value.toLocaleString()}`;\n    }\n    if (column === \"age\") {\n      return `${value} years`;\n    }\n    return value;\n  }\n}\n```\n\n## Interview Deep Dive: Dynamic Table\n\n### Follow-up Questions\n\n1. **How would you add keyboard navigation for accessibility?**\n\n   - Use `tabindex=\"0\"` on rows and headers.\n   - Add keyboard event listeners for arrow keys, Enter, and Escape.\n   - Use ARIA roles: `role=\"table\"`, `role=\"row\"`, `role=\"columnheader\"`, `role=\"cell\"`.\n\n2. **How would you handle large datasets (10,000+ rows)?**\n\n   - Implement virtual scrolling (windowing) using libraries like `react-window` or custom logic.\n   - Only render visible rows to improve performance.\n\n3. **How would you support custom cell rendering (e.g., links, buttons, icons)?**\n\n   - Allow passing a `renderCell` function as a prop or method override.\n   - Example: `renderCell(value, column, row)`\n\n4. **How would you make the table accessible for screen readers?**\n   - Use semantic HTML: `\u003ctable\u003e`, `\u003cthead\u003e`, `\u003ctbody\u003e`, `\u003cth\u003e`, `\u003ctd\u003e`.\n   - Add `scope=\"col\"` to header cells.\n   - Provide captions and summaries if needed.\n\n---\n\n### Diagram: Table Rendering Flow\n\n```mermaid\nflowchart TD\n  A[Input Data Array] --\u003e B[Generate Headers]\n  B --\u003e C[Render Filters]\n  C --\u003e D[Apply Filters]\n  D --\u003e E[Sort Data]\n  E --\u003e F[Render Table Rows]\n```\n\n---\n\n### Advanced Problem: Virtualized Dynamic Table (React)\n\n**Challenge:** Implement a dynamic table with virtual scrolling for large datasets in React.\n\n**Solution Outline:**\n\n- Use `react-window` or similar for windowing.\n- Only render visible rows.\n- Keep sorting/filtering logic in parent component.\n\n**Sample Implementation:**\n\n```jsx\nimport { FixedSizeList as List } from \"react-window\";\n\nfunction VirtualizedTable({ data, height, rowHeight }) {\n  const headers = Object.keys(data[0] || {});\n\n  return (\n    \u003cdiv style={% raw %}{{ width: \"100%\" }}{% endraw %}\u003e\n      \u003ctable className=\"dynamic-table\"\u003e\n        \u003cthead\u003e\n          \u003ctr\u003e\n            {headers.map((header) =\u003e (\n              \u003cth key={header}\u003e{header}\u003c/th\u003e\n            ))}\n          \u003c/tr\u003e\n        \u003c/thead\u003e\n      \u003c/table\u003e\n      \u003cList\n        height={height}\n        itemCount={data.length}\n        itemSize={rowHeight}\n        width=\"100%\"\n      \u003e\n        {({ index, style }) =\u003e (\n          \u003cdiv style={style}\u003e\n            \u003ctable className=\"dynamic-table\"\u003e\n              \u003ctbody\u003e\n                \u003ctr\u003e\n                  {headers.map((header) =\u003e (\n                    \u003ctd key={header}\u003e{data[index][header]}\u003c/td\u003e\n                  ))}\n                \u003c/tr\u003e\n              \u003c/tbody\u003e\n            \u003c/table\u003e\n          \u003c/div\u003e\n        )}\n      \u003c/List\u003e\n    \u003c/div\u003e\n  );\n}\n```\n\n---\n\n### System Design: Table Component API\n\n- `data`: Array of objects\n- `columns`: Optional array of column configs (label, key, sortable, filterable, renderCell)\n- `onSort`: Callback for sort changes\n- `onFilter`: Callback for filter changes\n- `rowKey`: Function or string for unique row id\n\n---\n\n## More Dynamic Table Interview Problems\n\n### Problem 2: Editable Table Cells\n\n**Question:** How would you allow users to edit table cells inline and save changes?\n\n**Solution Outline:**\n\n- Render each cell as a text input or select when in edit mode.\n- Track editing state (row/column).\n- Save changes on blur or Enter, revert on Escape.\n\n**Sample Implementation (JS):**\n\n```js\n// In your DynamicTable class, add editing state and handlers\n// Pseudocode for cell rendering:\nrenderCell(value, rowIdx, colKey) {\n  if (this.editing \u0026\u0026 this.editing.row === rowIdx \u0026\u0026 this.editing.col === colKey) {\n    return `\u003cinput value=\"${value}\" onblur=\"saveEdit()\" onkeydown=\"handleKey(event)\" /\u003e`;\n  }\n  return `\u003cspan ondblclick=\"startEdit(${rowIdx}, '${colKey}')\"\u003e${value}\u003c/span\u003e`;\n}\n```\n\n---\n\n### Problem 3: Row Selection and Bulk Actions\n\n**Question:** How would you implement row selection (single/multi) and bulk actions (delete, export)?\n\n**Solution Outline:**\n\n- Add a checkbox to each row and a master checkbox in the header.\n- Track selected row IDs in state.\n- Provide bulk action buttons (e.g., Delete Selected, Export Selected).\n\n**Sample Implementation (JS):**\n\n```js\n// Add a 'selected' property to each row or track selected IDs in a Set\n// Render checkboxes in the first column\n// Add event listeners for bulk action buttons\n```\n\n---\n\n### Problem 4: Column Reordering\n\n**Question:** How would you allow users to reorder columns via drag-and-drop?\n\n**Solution Outline:**\n\n- Use HTML5 Drag and Drop API or a library (e.g., react-beautiful-dnd).\n- Update the columns order in state on drop.\n- Re-render table with new column order.\n\n**Sample Implementation (React):**\n\n```jsx\n// Use react-beautiful-dnd's \u003cDragDropContext\u003e and \u003cDroppable\u003e for columns\n// On drag end, update columns array order\n```\n\n---\n\n### Problem 5: Server-Side Pagination and Filtering\n\n**Question:** How would you handle tables with millions of rows (server-side pagination/filtering)?\n\n**Solution Outline:**\n\n- Fetch only the current page of data from the server.\n- Send filter/sort params in API requests.\n- Show loading indicators and handle errors.\n\n**Sample API Call:**\n\n```js\nfetch(`/api/table?page=2\u0026pageSize=50\u0026sort=age\u0026filter=city:Boston`)\n  .then((res) =\u003e res.json())\n  .then((data) =\u003e updateTable(data));\n```\n\n---\n\n### Problem 6: Accessibility for Dynamic Tables\n\n**Question:** What are the key accessibility considerations for dynamic tables?\n\n**Answer:**\n\n- Use semantic HTML (`\u003ctable\u003e`, `\u003cthead\u003e`, `\u003ctbody\u003e`, `\u003cth\u003e`, `\u003ctd\u003e`)\n- Add ARIA roles and properties as needed\n- Ensure keyboard navigation (tab, arrow keys)\n- Provide visible focus indicators\n- Announce changes to screen readers (e.g., row added/removed)\n\n---\n\n_These additional problems cover editing, selection, column reordering, server-side data, and accessibility—key areas for dynamic table interviews. Practice implementing and discussing these features!_\n\n---\n\n### Diagram: Table Rendering Flow\n\n```mermaid\nflowchart TD\n  A[Input Data Array] --\u003e B[Generate Headers]\n  B --\u003e C[Render Filters]\n  C --\u003e D[Apply Filters]\n  D --\u003e E[Sort Data]\n  E --\u003e F[Render Table Rows]\n```\n\n---\n\n### Advanced Problem: Virtualized Dynamic Table (React)\n\n**Challenge:** Implement a dynamic table with virtual scrolling for large datasets in React.\n\n**Solution Outline:**\n\n- Use `react-window` or similar for windowing.\n- Only render visible rows.\n- Keep sorting/filtering logic in parent component.\n\n**Sample Implementation:**\n\n```jsx\nimport { FixedSizeList as List } from \"react-window\";\n\nfunction VirtualizedTable({ data, height, rowHeight }) {\n  const headers = Object.keys(data[0] || {});\n\n  return (\n    \u003cdiv style={% raw %}{{ width: \"100%\" }}{% endraw %}\u003e\n      \u003ctable className=\"dynamic-table\"\u003e\n        \u003cthead\u003e\n          \u003ctr\u003e\n            {headers.map((header) =\u003e (\n              \u003cth key={header}\u003e{header}\u003c/th\u003e\n            ))}\n          \u003c/tr\u003e\n        \u003c/thead\u003e\n      \u003c/table\u003e\n      \u003cList\n        height={height}\n        itemCount={data.length}\n        itemSize={rowHeight}\n        width=\"100%\"\n      \u003e\n        {({ index, style }) =\u003e (\n          \u003cdiv style={style}\u003e\n            \u003ctable className=\"dynamic-table\"\u003e\n              \u003ctbody\u003e\n                \u003ctr\u003e\n                  {headers.map((header) =\u003e (\n                    \u003ctd key={header}\u003e{data[index][header]}\u003c/td\u003e\n                  ))}\n                \u003c/tr\u003e\n              \u003c/tbody\u003e\n            \u003c/table\u003e\n          \u003c/div\u003e\n        )}\n      \u003c/List\u003e\n    \u003c/div\u003e\n  );\n}\n```\n\n---\n\n### System Design: Table Component API\n\n- `data`: Array of objects\n- `columns`: Optional array of column configs (label, key, sortable, filterable, renderCell)\n- `onSort`: Callback for sort changes\n- `onFilter`: Callback for filter changes\n- `rowKey`: Function or string for unique row id\n\n---\n\n## More Dynamic Table Interview Problems\n\n### Problem 2: Editable Table Cells\n\n**Question:** How would you allow users to edit table cells inline and save changes?\n\n**Solution Outline:**\n\n- Render each cell as a text input or select when in edit mode.\n- Track editing state (row/column).\n- Save changes on blur or Enter, revert on Escape.\n\n**Sample Implementation (JS):**\n\n```js\n// In your DynamicTable class, add editing state and handlers\n// Pseudocode for cell rendering:\nrenderCell(value, rowIdx, colKey) {\n  if (this.editing \u0026\u0026 this.editing.row === rowIdx \u0026\u0026 this.editing.col === colKey) {\n    return `\u003cinput value=\"${value}\" onblur=\"saveEdit()\" onkeydown=\"handleKey(event)\" /\u003e`;\n  }\n  return `\u003cspan ondblclick=\"startEdit(${rowIdx}, '${colKey}')\"\u003e${value}\u003c/span\u003e`;\n}\n```\n\n---\n\n### Problem 3: Row Selection and Bulk Actions\n\n**Question:** How would you implement row selection (single/multi) and bulk actions (delete, export)?\n\n**Solution Outline:**\n\n- Add a checkbox to each row and a master checkbox in the header.\n- Track selected row IDs in state.\n- Provide bulk action buttons (e.g., Delete Selected, Export Selected).\n\n**Sample Implementation (JS):**\n\n```js\n// Add a 'selected' property to each row or track selected IDs in a Set\n// Render checkboxes in the first column\n// Add event listeners for bulk action buttons\n```\n\n---\n\n### Problem 4: Column Reordering\n\n**Question:** How would you allow users to reorder columns via drag-and-drop?\n\n**Solution Outline:**\n\n- Use HTML5 Drag and Drop API or a library (e.g., react-beautiful-dnd).\n- Update the columns order in state on drop.\n- Re-render table with new column order.\n\n**Sample Implementation (React):**\n\n```jsx\n// Use react-beautiful-dnd's \u003cDragDropContext\u003e and \u003cDroppable\u003e for columns\n// On drag end, update columns array order\n```\n\n---\n\n### Problem 5: Server-Side Pagination and Filtering\n\n**Question:** How would you handle tables with millions of rows (server-side pagination/filtering)?\n\n**Solution Outline:**\n\n- Fetch only the current page of data from the server.\n- Send filter/sort params in API requests.\n- Show loading indicators and handle errors.\n\n**Sample API Call:**\n\n```js\nfetch(`/api/table?page=2\u0026pageSize=50\u0026sort=age\u0026filter=city:Boston`)\n  .then((res) =\u003e res.json())\n  .then((data) =\u003e updateTable(data));\n```\n\n---\n\n### Problem 6: Accessibility for Dynamic Tables\n\n**Question:** What are the key accessibility considerations for dynamic tables?\n\n**Answer:**\n\n- Use semantic HTML (`\u003ctable\u003e`, `\u003cthead\u003e`, `\u003ctbody\u003e`, `\u003cth\u003e`, `\u003ctd\u003e`)\n- Add ARIA roles and properties as needed\n- Ensure keyboard navigation (tab, arrow keys)\n- Provide visible focus indicators\n- Announce changes to screen readers (e.g., row added/removed)\n\n---\n\n_These additional problems cover editing, selection, column reordering, server-side data, and accessibility—key areas for dynamic table interviews. Practice implementing and discussing these features!_\n"])</script><script>self.__next_f.push([1,"8:[\"slug\",\"src/content/frontend/coding-problems/01-dynamic-table\",\"c\"]\nd:[]\n"])</script><script>self.__next_f.push([1,"0:[\"$\",\"$L3\",null,{\"buildId\":\"7uJ7BVaXJTiEOD9iYDv3n\",\"assetPrefix\":\"/interview\",\"urlParts\":[\"\",\"docs\",\"src\",\"content\",\"frontend\",\"coding-problems\",\"01-dynamic-table\"],\"initialTree\":[\"\",{\"children\":[\"docs\",{\"children\":[[\"slug\",\"src/content/frontend/coding-problems/01-dynamic-table\",\"c\"],{\"children\":[\"__PAGE__?{\\\"slug\\\":[\\\"src\\\",\\\"content\\\",\\\"frontend\\\",\\\"coding-problems\\\",\\\"01-dynamic-table\\\"]}\",{}]}]}]},\"$undefined\",\"$undefined\",true],\"initialSeedData\":[\"\",{\"children\":[\"docs\",{\"children\":[[\"slug\",\"src/content/frontend/coding-problems/01-dynamic-table\",\"c\"],{\"children\":[\"__PAGE__\",{},[[\"$L4\",[\"$\",\"div\",null,{\"style\":{\"maxWidth\":\"1200px\",\"margin\":\"0 auto\",\"padding\":\"2rem\",\"paddingTop\":\"6rem\"},\"children\":[[\"$\",\"div\",null,{\"style\":{\"marginBottom\":\"2rem\"},\"children\":[[\"$\",\"nav\",null,{\"style\":{\"color\":\"#64748b\",\"fontSize\":\"0.9rem\",\"marginBottom\":\"1rem\"},\"children\":[[\"$\",\"a\",null,{\"href\":\"/\",\"style\":{\"color\":\"#3b82f6\",\"textDecoration\":\"none\"},\"children\":\"Home\"}],\" \u003e \",[\"$\",\"span\",null,{\"children\":\"src \u003e content \u003e frontend \u003e coding-problems \u003e 01-dynamic-table\"}]]}],[\"$\",\"h1\",null,{\"style\":{\"fontSize\":\"2.5rem\",\"fontWeight\":\"800\",\"marginBottom\":\"0.5rem\",\"color\":\"#1e293b\"},\"children\":\"Dynamic Table Generator\"}],[\"$\",\"div\",null,{\"style\":{\"color\":\"#64748b\",\"fontSize\":\"0.9rem\",\"marginBottom\":\"2rem\"},\"children\":[[\"$\",\"span\",null,{\"children\":[\"📁 \",\"src/content/frontend/coding-problems/01-dynamic-table.md\"]}],\"$undefined\",\"$undefined\"]}]]}],[\"$\",\"$L5\",null,{\"content\":\"$6\"}]]}],null],null],null]},[null,[\"$\",\"$L7\",null,{\"parallelRouterKey\":\"children\",\"segmentPath\":[\"children\",\"docs\",\"children\",\"$8\",\"children\"],\"error\":\"$undefined\",\"errorStyles\":\"$undefined\",\"errorScripts\":\"$undefined\",\"template\":[\"$\",\"$L9\",null,{}],\"templateStyles\":\"$undefined\",\"templateScripts\":\"$undefined\",\"notFound\":\"$undefined\",\"notFoundStyles\":\"$undefined\"}]],null]},[null,[\"$\",\"$L7\",null,{\"parallelRouterKey\":\"children\",\"segmentPath\":[\"children\",\"docs\",\"children\"],\"error\":\"$undefined\",\"errorStyles\":\"$undefined\",\"errorScripts\":\"$undefined\",\"template\":[\"$\",\"$L9\",null,{}],\"templateStyles\":\"$undefined\",\"templateScripts\":\"$undefined\",\"notFound\":\"$undefined\",\"notFoundStyles\":\"$undefined\"}]],null]},[[[[\"$\",\"link\",\"0\",{\"rel\":\"stylesheet\",\"href\":\"/interview/_next/static/css/387024c6a2216908.css\",\"precedence\":\"next\",\"crossOrigin\":\"$undefined\"}]],[\"$\",\"$La\",null,{\"children\":[\"$\",\"$L7\",null,{\"parallelRouterKey\":\"children\",\"segmentPath\":[\"children\"],\"error\":\"$undefined\",\"errorStyles\":\"$undefined\",\"errorScripts\":\"$undefined\",\"template\":[\"$\",\"$L9\",null,{}],\"templateStyles\":\"$undefined\",\"templateScripts\":\"$undefined\",\"notFound\":[[\"$\",\"title\",null,{\"children\":\"404: This page could not be found.\"}],[\"$\",\"div\",null,{\"style\":{\"fontFamily\":\"system-ui,\\\"Segoe UI\\\",Roboto,Helvetica,Arial,sans-serif,\\\"Apple Color Emoji\\\",\\\"Segoe UI Emoji\\\"\",\"height\":\"100vh\",\"textAlign\":\"center\",\"display\":\"flex\",\"flexDirection\":\"column\",\"alignItems\":\"center\",\"justifyContent\":\"center\"},\"children\":[\"$\",\"div\",null,{\"children\":[[\"$\",\"style\",null,{\"dangerouslySetInnerHTML\":{\"__html\":\"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}\"}}],[\"$\",\"h1\",null,{\"className\":\"next-error-h1\",\"style\":{\"display\":\"inline-block\",\"margin\":\"0 20px 0 0\",\"padding\":\"0 23px 0 0\",\"fontSize\":24,\"fontWeight\":500,\"verticalAlign\":\"top\",\"lineHeight\":\"49px\"},\"children\":\"404\"}],[\"$\",\"div\",null,{\"style\":{\"display\":\"inline-block\"},\"children\":[\"$\",\"h2\",null,{\"style\":{\"fontSize\":14,\"fontWeight\":400,\"lineHeight\":\"49px\",\"margin\":0},\"children\":\"This page could not be found.\"}]}]]}]}]],\"notFoundStyles\":[]}],\"params\":{}}]],null],null],\"couldBeIntercepted\":false,\"initialHead\":[null,\"$Lb\"],\"globalErrorComponent\":\"$c\",\"missingSlots\":\"$Wd\"}]\n"])</script><script>self.__next_f.push([1,"b:[[\"$\",\"meta\",\"0\",{\"name\":\"viewport\",\"content\":\"width=device-width, initial-scale=1\"}],[\"$\",\"meta\",\"1\",{\"charSet\":\"utf-8\"}],[\"$\",\"title\",\"2\",{\"children\":\"Dynamic Table Generator - Frontend Interview Docs\"}],[\"$\",\"meta\",\"3\",{\"name\":\"description\",\"content\":\" # Problem 1: Dynamic Table Generator  ## Problem Description  Create a function that generates a dynamic table from an array of objects with sorting and filter\"}],[\"$\",\"meta\",\"4\",{\"property\":\"og:title\",\"content\":\"Dynamic Table Generator - Frontend Interview Docs\"}],[\"$\",\"meta\",\"5\",{\"property\":\"og:description\",\"content\":\" # Problem 1: Dynamic Table Generator  ## Problem Description  Create a function that generates a dynamic table from an array of objects with sorting and filter\"}],[\"$\",\"meta\",\"6\",{\"property\":\"og:type\",\"content\":\"article\"}],[\"$\",\"meta\",\"7\",{\"name\":\"twitter:card\",\"content\":\"summary\"}],[\"$\",\"meta\",\"8\",{\"name\":\"twitter:title\",\"content\":\"Dynamic Table Generator - Frontend Interview Docs\"}],[\"$\",\"meta\",\"9\",{\"name\":\"twitter:description\",\"content\":\" # Problem 1: Dynamic Table Generator  ## Problem Description  Create a function that generates a dynamic table from an array of objects with sorting and filter\"}],[\"$\",\"meta\",\"10\",{\"name\":\"next-size-adjust\"}]]\n4:null\n"])</script></body></html>

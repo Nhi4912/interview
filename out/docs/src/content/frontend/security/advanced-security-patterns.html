@@ -1,0 +1,1342 @@
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><meta name="viewport" content="width=device-width, initial-scale=1"/><link rel="preload" href="/interview/_next/static/media/e4af272ccee01ff0-s.p.woff2" as="font" crossorigin="" type="font/woff2"/><link rel="stylesheet" href="/interview/_next/static/css/387024c6a2216908.css" data-precedence="next"/><link rel="preload" as="script" fetchPriority="low" href="/interview/_next/static/chunks/webpack-be7d7df45533bffc.js"/><script src="/interview/_next/static/chunks/fd9d1056-6922f449a204c2cc.js" async=""></script><script src="/interview/_next/static/chunks/117-e7ecc085ce9cfab3.js" async=""></script><script src="/interview/_next/static/chunks/main-app-b06be5f3411c20c3.js" async=""></script><script src="/interview/_next/static/chunks/918-3273b83890f10546.js" async=""></script><script src="/interview/_next/static/chunks/930-3262a6c9c5acace4.js" async=""></script><script src="/interview/_next/static/chunks/app/docs/%5B...slug%5D/page-32962e9542d32755.js" async=""></script><script src="/interview/_next/static/chunks/710-dfaa11b4dff08f8e.js" async=""></script><script src="/interview/_next/static/chunks/972-011bba60ed155615.js" async=""></script><script src="/interview/_next/static/chunks/233-3e0c1d820a17eca9.js" async=""></script><script src="/interview/_next/static/chunks/app/layout-333f4adcd11f8f39.js" async=""></script><title>Frontend Interview Prep 2025 - Big Tech Interview Guide</title><meta name="description" content="Comprehensive frontend interview preparation for Big Tech companies including React, TypeScript, algorithms, and system design."/><link rel="icon" href="/favicon.ico"/><meta name="theme-color" content="#1a1a1a"/><meta property="og:title" content="Frontend Interview Prep 2025"/><meta property="og:description" content="Complete guide for frontend engineers targeting Big Tech companies"/><meta property="og:type" content="website"/><link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous"/><title>Advanced Security Patterns - Frontend Interview Docs</title><meta name="description" content="# Advanced Frontend Security Patterns  ## Overview Modern frontend applications face sophisticated security threats. Big Tech companies expect deep understandin"/><meta property="og:title" content="Advanced Security Patterns - Frontend Interview Docs"/><meta property="og:description" content="# Advanced Frontend Security Patterns  ## Overview Modern frontend applications face sophisticated security threats. Big Tech companies expect deep understandin"/><meta property="og:type" content="article"/><meta name="twitter:card" content="summary"/><meta name="twitter:title" content="Advanced Security Patterns - Frontend Interview Docs"/><meta name="twitter:description" content="# Advanced Frontend Security Patterns  ## Overview Modern frontend applications face sophisticated security threats. Big Tech companies expect deep understandin"/><meta name="next-size-adjust"/><script src="/interview/_next/static/chunks/polyfills-42372ed130431b0a.js" noModule=""></script><style data-styled="" data-styled-version="6.1.19">*{margin:0;padding:0;box-sizing:border-box;}/*!sc*/
+html{font-size:16px;line-height:1.5;scroll-behavior:smooth;}/*!sc*/
+body{font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;font-size:1rem;line-height:1.5;color:#1e293b;background-color:#ffffff;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;}/*!sc*/
+h1,h2,h3,h4,h5,h6{font-weight:700;line-height:1.25;margin-bottom:0.5em;}/*!sc*/
+h1{font-size:3rem;}/*!sc*/
+@media (max-width: 768px){h1{font-size:2.25rem;}}/*!sc*/
+h2{font-size:2.25rem;}/*!sc*/
+@media (max-width: 768px){h2{font-size:1.875rem;}}/*!sc*/
+h3{font-size:1.875rem;}/*!sc*/
+@media (max-width: 768px){h3{font-size:1.5rem;}}/*!sc*/
+h4{font-size:1.5rem;}/*!sc*/
+@media (max-width: 768px){h4{font-size:1.25rem;}}/*!sc*/
+h5{font-size:1.25rem;}/*!sc*/
+h6{font-size:1.125rem;}/*!sc*/
+p{margin-bottom:1rem;line-height:1.75;}/*!sc*/
+a{color:#3b82f6;text-decoration:none;transition:color 0.15s ease;}/*!sc*/
+a:hover{color:#2563eb;}/*!sc*/
+a:focus{outline:2px solid #3b82f6;outline-offset:2px;}/*!sc*/
+button{cursor:pointer;border:none;background:none;font-family:inherit;font-size:inherit;}/*!sc*/
+button:disabled{cursor:not-allowed;opacity:0.6;}/*!sc*/
+button:focus{outline:2px solid #3b82f6;outline-offset:2px;}/*!sc*/
+input,textarea,select{font-family:inherit;font-size:inherit;}/*!sc*/
+input:focus,textarea:focus,select:focus{outline:2px solid #3b82f6;outline-offset:2px;}/*!sc*/
+img{max-width:100%;height:auto;}/*!sc*/
+ul,ol{margin-bottom:1rem;padding-left:1.5rem;}/*!sc*/
+li{margin-bottom:0.25rem;}/*!sc*/
+blockquote{margin:1rem 0;padding:1rem;border-left:4px solid #3b82f6;background-color:#f1f5f9;font-style:italic;}/*!sc*/
+code{font-family:SFMono-Regular,Consolas,"Liberation Mono",Menlo,monospace;font-size:0.9em;background-color:#f1f5f9;padding:0.2em 0.4em;border-radius:0.25rem;}/*!sc*/
+pre{background-color:#f1f5f9;padding:1rem;border-radius:0.5rem;overflow-x:auto;margin-bottom:1rem;}/*!sc*/
+pre code{background:none;padding:0;}/*!sc*/
+table{width:100%;border-collapse:collapse;margin-bottom:1rem;}/*!sc*/
+th,td{padding:0.75rem;text-align:left;border-bottom:1px solid #e2e8f0;}/*!sc*/
+th{font-weight:600;background-color:#f1f5f9;}/*!sc*/
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0, 0, 0, 0);white-space:nowrap;border:0;}/*!sc*/
+.skip-link{position:absolute;top:-40px;left:6px;background:#3b82f6;color:white;padding:8px;text-decoration:none;border-radius:4px;z-index:100;}/*!sc*/
+.skip-link:focus{top:6px;}/*!sc*/
+::-webkit-scrollbar{width:8px;height:8px;}/*!sc*/
+::-webkit-scrollbar-track{background:#f1f5f9;}/*!sc*/
+::-webkit-scrollbar-thumb{background:#94a3b8;border-radius:4px;}/*!sc*/
+::-webkit-scrollbar-thumb:hover{background:#64748b;}/*!sc*/
+::selection{background:#3b82f6;color:white;}/*!sc*/
+.focus-visible{outline:2px solid #3b82f6;outline-offset:2px;}/*!sc*/
+.fade-in{opacity:0;animation:fadeIn 0.3s ease forwards;}/*!sc*/
+.slide-up{transform:translateY(20px);opacity:0;animation:slideUp 0.3s ease forwards;}/*!sc*/
+@keyframes fadeIn{to{opacity:1;}}/*!sc*/
+@keyframes slideUp{to{transform:translateY(0);opacity:1;}}/*!sc*/
+@media print{*{background:white!important;color:black!important;box-shadow:none!important;text-shadow:none!important;}a,a:visited{text-decoration:underline;}h1,h2,h3,h4,h5,h6{break-after:avoid;}pre,blockquote{border:1px solid #999;break-inside:avoid;}img{max-width:100%!important;}@page{margin:0.5in;}}/*!sc*/
+data-styled.g19[id="sc-global-kxA-Ddz1"]{content:"sc-global-kxA-Ddz1,"}/*!sc*/
+.hNPaTO{position:fixed;top:0;width:100%;z-index:1020;background:transparent;backdrop-filter:blur(10px);border-bottom:1px solid transparent;transition:all 0.3s ease;}/*!sc*/
+data-styled.g20[id="sc-dNdcvo"]{content:"hNPaTO,"}/*!sc*/
+.jJxjWc{max-width:1200px;margin:0 auto;padding:0 2rem;display:flex;align-items:center;justify-content:space-between;height:70px;}/*!sc*/
+data-styled.g21[id="sc-fbQrwq"]{content:"jJxjWc,"}/*!sc*/
+.jwmRwa{display:flex;align-items:center;gap:0.5rem;font-size:1.5rem;font-weight:700;color:#3b82f6;text-decoration:none;cursor:pointer;}/*!sc*/
+.jwmRwa:hover{color:#2563eb;}/*!sc*/
+data-styled.g22[id="sc-gGKoUb"]{content:"jwmRwa,"}/*!sc*/
+.KQdZw{display:flex;align-items:center;gap:2rem;}/*!sc*/
+@media (max-width: 768px){.KQdZw{display:none;}}/*!sc*/
+data-styled.g23[id="sc-hwddKA"]{content:"KQdZw,"}/*!sc*/
+.ETszJ{color:#1e293b;font-weight:500;text-decoration:none;transition:color 0.15s ease;position:relative;}/*!sc*/
+.ETszJ:hover{color:#3b82f6;}/*!sc*/
+.ETszJ:after{content:'';position:absolute;bottom:-5px;left:0;width:0;height:2px;background:#3b82f6;transition:width 0.15s ease;}/*!sc*/
+.ETszJ:hover:after{width:100%;}/*!sc*/
+data-styled.g24[id="sc-jaXbil"]{content:"ETszJ,"}/*!sc*/
+.foClcg{display:none;background:none;border:none;color:#1e293b;cursor:pointer;padding:0.5rem;}/*!sc*/
+@media (max-width: 768px){.foClcg{display:block;}}/*!sc*/
+data-styled.g25[id="sc-eqNDNG"]{content:"foClcg,"}/*!sc*/
+.kBjfBo{display:flex;align-items:center;gap:0.5rem;background:#f1f5f9;border:1px solid #e2e8f0;border-radius:0.5rem;padding:0.5rem 1rem;color:#64748b;font-size:0.9rem;transition:all 0.15s ease;}/*!sc*/
+.kBjfBo:hover{background:#ffffff;border-color:#3b82f6;}/*!sc*/
+data-styled.g29[id="sc-eQwNpu"]{content:"kBjfBo,"}/*!sc*/
+.booJNS{background:#1e293b;color:white;padding:3rem 0 1rem;margin-top:auto;}/*!sc*/
+data-styled.g30[id="sc-gvqKNf"]{content:"booJNS,"}/*!sc*/
+.fVoYcP{max-width:1200px;margin:0 auto;padding:0 2rem;}/*!sc*/
+data-styled.g31[id="sc-cOpnSz"]{content:"fVoYcP,"}/*!sc*/
+.kKfrkv{display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:2rem;margin-bottom:2rem;}/*!sc*/
+@media (max-width: 768px){.kKfrkv{grid-template-columns:1fr 1fr;gap:1.5rem;}}/*!sc*/
+@media (max-width: 480px){.kKfrkv{grid-template-columns:1fr;}}/*!sc*/
+data-styled.g32[id="sc-kjwdDK"]{content:"kKfrkv,"}/*!sc*/
+.inEXDm h3{font-size:1.1rem;font-weight:600;margin-bottom:1rem;color:white;}/*!sc*/
+.inEXDm ul{list-style:none;padding:0;margin:0;}/*!sc*/
+.inEXDm li{margin-bottom:0.5rem;}/*!sc*/
+.inEXDm a{color:rgba(255, 255, 255, 0.7);text-decoration:none;transition:color 0.15s ease;}/*!sc*/
+.inEXDm a:hover{color:white;}/*!sc*/
+data-styled.g33[id="sc-eVqvcJ"]{content:"inEXDm,"}/*!sc*/
+.hWhopJ{display:flex;align-items:center;gap:0.5rem;font-size:1.2rem;font-weight:700;margin-bottom:1rem;color:white;}/*!sc*/
+data-styled.g34[id="sc-bbbBoY"]{content:"hWhopJ,"}/*!sc*/
+.exeTne{color:rgba(255, 255, 255, 0.7);line-height:1.6;margin-bottom:1rem;}/*!sc*/
+data-styled.g35[id="sc-cdmAjP"]{content:"exeTne,"}/*!sc*/
+.cgXMuV{display:flex;gap:1rem;}/*!sc*/
+.cgXMuV a{display:flex;align-items:center;justify-content:center;width:40px;height:40px;background:rgba(255, 255, 255, 0.1);border-radius:0.5rem;color:rgba(255, 255, 255, 0.7);transition:all 0.15s ease;}/*!sc*/
+.cgXMuV a:hover{background:rgba(255, 255, 255, 0.2);color:white;}/*!sc*/
+data-styled.g36[id="sc-jytpVa"]{content:"cgXMuV,"}/*!sc*/
+.iQqwrD{border-top:1px solid rgba(255, 255, 255, 0.1);padding-top:2rem;display:flex;justify-content:space-between;align-items:center;}/*!sc*/
+@media (max-width: 768px){.iQqwrD{flex-direction:column;gap:1rem;text-align:center;}}/*!sc*/
+data-styled.g37[id="sc-eknHtZ"]{content:"iQqwrD,"}/*!sc*/
+.gObJRG{color:rgba(255, 255, 255, 0.7);margin:0;font-size:0.9rem;}/*!sc*/
+data-styled.g38[id="sc-pYNGo"]{content:"gObJRG,"}/*!sc*/
+.eBqBtc{display:flex;gap:2rem;}/*!sc*/
+@media (max-width: 480px){.eBqBtc{flex-direction:column;gap:1rem;}}/*!sc*/
+.eBqBtc a{color:rgba(255, 255, 255, 0.7);text-decoration:none;font-size:0.9rem;transition:color 0.15s ease;}/*!sc*/
+.eBqBtc a:hover{color:white;}/*!sc*/
+data-styled.g39[id="sc-cCVJLD"]{content:"eBqBtc,"}/*!sc*/
+.kmsQDA{color:#1e293b;line-height:1.6;}/*!sc*/
+.kmsQDA h1,.kmsQDA h2,.kmsQDA h3,.kmsQDA h4,.kmsQDA h5,.kmsQDA h6{color:#1e293b;margin-top:2rem;margin-bottom:1rem;font-weight:600;}/*!sc*/
+.kmsQDA h1{font-size:2rem;border-bottom:2px solid #e2e8f0;padding-bottom:0.5rem;}/*!sc*/
+.kmsQDA h2{font-size:1.5rem;border-bottom:1px solid #e2e8f0;padding-bottom:0.3rem;}/*!sc*/
+.kmsQDA h3{font-size:1.25rem;}/*!sc*/
+.kmsQDA h4{font-size:1.1rem;}/*!sc*/
+.kmsQDA p{margin-bottom:1rem;color:#64748b;}/*!sc*/
+.kmsQDA a{color:#3b82f6;text-decoration:none;}/*!sc*/
+.kmsQDA a:hover{text-decoration:underline;}/*!sc*/
+.kmsQDA ul,.kmsQDA ol{margin-bottom:1rem;padding-left:1.5rem;}/*!sc*/
+.kmsQDA ul li,.kmsQDA ol li{margin-bottom:0.5rem;color:#64748b;}/*!sc*/
+.kmsQDA blockquote{border-left:4px solid #3b82f6;padding-left:1rem;margin:1rem 0;font-style:italic;color:#64748b;background:#f1f5f9;padding:1rem;border-radius:0.5rem;}/*!sc*/
+.kmsQDA code{background:#f1f5f9;padding:0.2rem 0.4rem;border-radius:0.25rem;font-family:SFMono-Regular,Consolas,"Liberation Mono",Menlo,monospace;font-size:0.9em;color:#f59e0b;}/*!sc*/
+.kmsQDA pre{background:#ffffff;border:1px solid #e2e8f0;border-radius:0.5rem;padding:1rem;margin:1rem 0;overflow-x:auto;}/*!sc*/
+.kmsQDA pre code{background:none;padding:0;color:#1e293b;font-size:0.9rem;}/*!sc*/
+.kmsQDA table{width:100%;border-collapse:collapse;margin:1rem 0;}/*!sc*/
+.kmsQDA table th,.kmsQDA table td{border:1px solid #e2e8f0;padding:0.5rem;text-align:left;}/*!sc*/
+.kmsQDA table th{background:#ffffff;font-weight:600;}/*!sc*/
+.kmsQDA table tr:nth-child(even){background:#f1f5f9;}/*!sc*/
+.kmsQDA hr{border:none;height:1px;background:#e2e8f0;margin:2rem 0;}/*!sc*/
+.kmsQDA .highlight{background:#3b82f620;padding:0.2rem 0.4rem;border-radius:0.25rem;font-weight:600;}/*!sc*/
+.kmsQDA .hljs{background:#ffffff;color:#1e293b;}/*!sc*/
+.kmsQDA .hljs-keyword{color:#3b82f6;font-weight:600;}/*!sc*/
+.kmsQDA .hljs-string{color:#10b981;}/*!sc*/
+.kmsQDA .hljs-function{color:#f59e0b;}/*!sc*/
+.kmsQDA .hljs-comment{color:#94a3b8;font-style:italic;}/*!sc*/
+.kmsQDA .hljs-number{color:#f59e0b;}/*!sc*/
+.kmsQDA .hljs-variable{color:#1e293b;}/*!sc*/
+.kmsQDA .hljs-title{color:#f59e0b;font-weight:600;}/*!sc*/
+data-styled.g40[id="sc-jYczwO"]{content:"kmsQDA,"}/*!sc*/
+</style></head><body class="__className_6eac61"><div style="min-height:100vh;display:flex;flex-direction:column"><nav class="sc-dNdcvo hNPaTO"><div class="sc-fbQrwq jJxjWc"><a href="/interview"><a class="sc-gGKoUb jwmRwa"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-code "><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>Frontend Interview Prep</a></a><div class="sc-hwddKA KQdZw"><a href="/interview/problems"><a class="sc-jaXbil ETszJ">Problems</a></a><a href="/interview/learn"><a class="sc-jaXbil ETszJ">Learn</a></a><a href="/interview/study-guide"><a class="sc-jaXbil ETszJ">Study Guide</a></a><a href="/interview/system-design"><a class="sc-jaXbil ETszJ">System Design</a></a><a href="/interview/performance"><a class="sc-jaXbil ETszJ">Performance</a></a><a href="/interview/accessibility"><a class="sc-jaXbil ETszJ">Accessibility</a></a><a href="/interview/interview-tips"><a class="sc-jaXbil ETszJ">Interview Tips</a></a><button class="sc-eQwNpu kBjfBo"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-search "><circle cx="11" cy="11" r="8"></circle><path d="m21 21-4.3-4.3"></path></svg>Search</button></div><button class="sc-eqNDNG foClcg"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-menu "><line x1="4" x2="20" y1="12" y2="12"></line><line x1="4" x2="20" y1="6" y2="6"></line><line x1="4" x2="20" y1="18" y2="18"></line></svg></button></div></nav><main style="flex:1"><div style="max-width:1200px;margin:0 auto;padding:2rem;padding-top:6rem"><div style="margin-bottom:2rem"><nav style="color:#64748b;font-size:0.9rem;margin-bottom:1rem"><a href="/" style="color:#3b82f6;text-decoration:none">Home</a> &gt; <span>src &gt; content &gt; frontend &gt; security &gt; advanced-security-patterns</span></nav><h1 style="font-size:2.5rem;font-weight:800;margin-bottom:0.5rem;color:#1e293b">Advanced Security Patterns</h1><div style="color:#64748b;font-size:0.9rem;margin-bottom:2rem"><span>📁 <!-- -->src/content/frontend/security/advanced-security-patterns.md</span></div></div><div class="sc-jYczwO kmsQDA"><h1 id="advanced-frontend-security-patterns" node="[object Object]">Advanced Frontend Security Patterns</h1>
+<h2 id="overview" node="[object Object]">Overview</h2>
+<p>Modern frontend applications face sophisticated security threats. Big Tech companies expect deep understanding of security patterns, threat modeling, and defensive programming techniques.</p>
+<hr/>
+<h2 id="advanced-xss-prevention-patterns" node="[object Object]">Advanced XSS Prevention Patterns</h2>
+<h3 id="[object-object]" node="[object Object]"><strong>Content Security Policy (CSP) Implementation</strong></h3>
+<p>{% raw %}</p>
+<pre><pre><code class="hljs hljs language-typescript"><span class="hljs-comment">// csp-manager.ts</span>
+<span class="hljs-keyword">interface</span> <span class="hljs-title class_">CSPDirective</span> {
+  [<span class="hljs-attr">key</span>: <span class="hljs-built_in">string</span>]: <span class="hljs-built_in">string</span>[] | <span class="hljs-built_in">string</span>;
+}
+
+<span class="hljs-keyword">interface</span> <span class="hljs-title class_">CSPReport</span> {
+  <span class="hljs-string">&#x27;csp-report&#x27;</span>: {
+    <span class="hljs-string">&#x27;document-uri&#x27;</span>: <span class="hljs-built_in">string</span>;
+    <span class="hljs-string">&#x27;violated-directive&#x27;</span>: <span class="hljs-built_in">string</span>;
+    <span class="hljs-string">&#x27;blocked-uri&#x27;</span>: <span class="hljs-built_in">string</span>;
+    <span class="hljs-string">&#x27;source-file&#x27;</span>: <span class="hljs-built_in">string</span>;
+    <span class="hljs-string">&#x27;line-number&#x27;</span>: <span class="hljs-built_in">number</span>;
+    <span class="hljs-string">&#x27;column-number&#x27;</span>: <span class="hljs-built_in">number</span>;
+  };
+}
+
+<span class="hljs-keyword">class</span> <span class="hljs-title class_">CSPManager</span> {
+  <span class="hljs-keyword">private</span> <span class="hljs-attr">directives</span>: <span class="hljs-title class_">CSPDirective</span> = {
+    <span class="hljs-string">&#x27;default-src&#x27;</span>: [<span class="hljs-string">&quot;&#x27;self&#x27;&quot;</span>],
+    <span class="hljs-string">&#x27;script-src&#x27;</span>: [<span class="hljs-string">&quot;&#x27;self&#x27;&quot;</span>],
+    <span class="hljs-string">&#x27;style-src&#x27;</span>: [<span class="hljs-string">&quot;&#x27;self&#x27;&quot;</span>, <span class="hljs-string">&quot;&#x27;unsafe-inline&#x27;&quot;</span>],
+    <span class="hljs-string">&#x27;img-src&#x27;</span>: [<span class="hljs-string">&quot;&#x27;self&#x27;&quot;</span>, <span class="hljs-string">&#x27;data:&#x27;</span>, <span class="hljs-string">&#x27;https:&#x27;</span>],
+    <span class="hljs-string">&#x27;font-src&#x27;</span>: [<span class="hljs-string">&quot;&#x27;self&#x27;&quot;</span>, <span class="hljs-string">&#x27;https://fonts.gstatic.com&#x27;</span>],
+    <span class="hljs-string">&#x27;connect-src&#x27;</span>: [<span class="hljs-string">&quot;&#x27;self&#x27;&quot;</span>],
+    <span class="hljs-string">&#x27;object-src&#x27;</span>: [<span class="hljs-string">&quot;&#x27;none&#x27;&quot;</span>],
+    <span class="hljs-string">&#x27;base-uri&#x27;</span>: [<span class="hljs-string">&quot;&#x27;self&#x27;&quot;</span>],
+    <span class="hljs-string">&#x27;form-action&#x27;</span>: [<span class="hljs-string">&quot;&#x27;self&#x27;&quot;</span>],
+    <span class="hljs-string">&#x27;frame-ancestors&#x27;</span>: [<span class="hljs-string">&quot;&#x27;none&#x27;&quot;</span>],
+    <span class="hljs-string">&#x27;upgrade-insecure-requests&#x27;</span>: []
+  };
+
+  <span class="hljs-keyword">private</span> <span class="hljs-attr">nonces</span>: <span class="hljs-title class_">Map</span>&lt;<span class="hljs-built_in">string</span>, <span class="hljs-built_in">string</span>&gt; = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Map</span>();
+  <span class="hljs-keyword">private</span> <span class="hljs-attr">allowedDomains</span>: <span class="hljs-title class_">Set</span>&lt;<span class="hljs-built_in">string</span>&gt; = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Set</span>();
+
+  <span class="hljs-comment">// Generate cryptographically secure nonce</span>
+  <span class="hljs-title function_">generateNonce</span>(): <span class="hljs-built_in">string</span> {
+    <span class="hljs-keyword">const</span> array = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Uint8Array</span>(<span class="hljs-number">16</span>);
+    crypto.<span class="hljs-title function_">getRandomValues</span>(array);
+    <span class="hljs-keyword">const</span> nonce = <span class="hljs-title function_">btoa</span>(<span class="hljs-title class_">String</span>.<span class="hljs-title function_">fromCharCode</span>(...array));
+    
+    <span class="hljs-comment">// Store nonce for validation</span>
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">nonces</span>.<span class="hljs-title function_">set</span>(nonce, <span class="hljs-keyword">new</span> <span class="hljs-title class_">Date</span>().<span class="hljs-title function_">toISOString</span>());
+    
+    <span class="hljs-comment">// Clean up old nonces (older than 1 hour)</span>
+    <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">cleanupOldNonces</span>();
+    
+    <span class="hljs-keyword">return</span> nonce;
+  }
+
+  <span class="hljs-comment">// Add script with nonce</span>
+  <span class="hljs-title function_">addScriptWithNonce</span>(<span class="hljs-attr">scriptContent</span>: <span class="hljs-built_in">string</span>, <span class="hljs-attr">nonce</span>?: <span class="hljs-built_in">string</span>): <span class="hljs-title class_">HTMLScriptElement</span> {
+    <span class="hljs-keyword">const</span> script = <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">createElement</span>(<span class="hljs-string">&#x27;script&#x27;</span>);
+    <span class="hljs-keyword">const</span> scriptNonce = nonce || <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">generateNonce</span>();
+    
+    script.<span class="hljs-property">nonce</span> = scriptNonce;
+    script.<span class="hljs-property">textContent</span> = scriptContent;
+    
+    <span class="hljs-comment">// Validate nonce before execution</span>
+    <span class="hljs-keyword">if</span> (<span class="hljs-variable language_">this</span>.<span class="hljs-title function_">validateNonce</span>(scriptNonce)) {
+      <span class="hljs-variable language_">document</span>.<span class="hljs-property">head</span>.<span class="hljs-title function_">appendChild</span>(script);
+    } <span class="hljs-keyword">else</span> {
+      <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">error</span>(<span class="hljs-string">&#x27;Invalid nonce, script execution blocked&#x27;</span>);
+      <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Error</span>(<span class="hljs-string">&#x27;CSP violation: Invalid nonce&#x27;</span>);
+    }
+    
+    <span class="hljs-keyword">return</span> script;
+  }
+
+  <span class="hljs-comment">// Dynamic CSP policy adjustment</span>
+  <span class="hljs-title function_">adjustPolicyForThirdParty</span>(<span class="hljs-attr">domain</span>: <span class="hljs-built_in">string</span>, <span class="hljs-attr">directives</span>: <span class="hljs-built_in">string</span>[]): <span class="hljs-built_in">void</span> {
+    <span class="hljs-keyword">if</span> (!<span class="hljs-variable language_">this</span>.<span class="hljs-title function_">isAllowedDomain</span>(domain)) {
+      <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">warn</span>(<span class="hljs-string">`Attempting to add untrusted domain: <span class="hljs-subst">${domain}</span>`</span>);
+      <span class="hljs-keyword">return</span>;
+    }
+
+    directives.<span class="hljs-title function_">forEach</span>(<span class="hljs-function"><span class="hljs-params">directive</span> =&gt;</span> {
+      <span class="hljs-keyword">if</span> (!<span class="hljs-variable language_">this</span>.<span class="hljs-property">directives</span>[directive]) {
+        <span class="hljs-variable language_">this</span>.<span class="hljs-property">directives</span>[directive] = [];
+      }
+      
+      <span class="hljs-keyword">if</span> (<span class="hljs-title class_">Array</span>.<span class="hljs-title function_">isArray</span>(<span class="hljs-variable language_">this</span>.<span class="hljs-property">directives</span>[directive])) {
+        (<span class="hljs-variable language_">this</span>.<span class="hljs-property">directives</span>[directive] <span class="hljs-keyword">as</span> <span class="hljs-built_in">string</span>[]).<span class="hljs-title function_">push</span>(domain);
+      }
+    });
+
+    <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">updateCSPHeader</span>();
+  }
+
+  <span class="hljs-comment">// Strict CSP for high-security environments</span>
+  <span class="hljs-title function_">enableStrictCSP</span>(): <span class="hljs-built_in">void</span> {
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">directives</span> = {
+      <span class="hljs-string">&#x27;default-src&#x27;</span>: [<span class="hljs-string">&quot;&#x27;none&#x27;&quot;</span>],
+      <span class="hljs-string">&#x27;script-src&#x27;</span>: [<span class="hljs-string">&quot;&#x27;strict-dynamic&#x27;&quot;</span>],
+      <span class="hljs-string">&#x27;style-src&#x27;</span>: [<span class="hljs-string">&quot;&#x27;self&#x27;&quot;</span>],
+      <span class="hljs-string">&#x27;img-src&#x27;</span>: [<span class="hljs-string">&quot;&#x27;self&#x27;&quot;</span>],
+      <span class="hljs-string">&#x27;font-src&#x27;</span>: [<span class="hljs-string">&quot;&#x27;self&#x27;&quot;</span>],
+      <span class="hljs-string">&#x27;connect-src&#x27;</span>: [<span class="hljs-string">&quot;&#x27;self&#x27;&quot;</span>],
+      <span class="hljs-string">&#x27;object-src&#x27;</span>: [<span class="hljs-string">&quot;&#x27;none&#x27;&quot;</span>],
+      <span class="hljs-string">&#x27;base-uri&#x27;</span>: [<span class="hljs-string">&quot;&#x27;none&#x27;&quot;</span>],
+      <span class="hljs-string">&#x27;require-trusted-types-for&#x27;</span>: [<span class="hljs-string">&quot;&#x27;script&#x27;&quot;</span>],
+      <span class="hljs-string">&#x27;trusted-types&#x27;</span>: [<span class="hljs-string">&#x27;default&#x27;</span>]
+    };
+
+    <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">updateCSPHeader</span>();
+  }
+
+  <span class="hljs-comment">// CSP violation reporting</span>
+  <span class="hljs-title function_">setupViolationReporting</span>(): <span class="hljs-built_in">void</span> {
+    <span class="hljs-comment">// Set up reporting endpoint</span>
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">directives</span>[<span class="hljs-string">&#x27;report-uri&#x27;</span>] = <span class="hljs-string">&#x27;/api/csp-violations&#x27;</span>;
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">directives</span>[<span class="hljs-string">&#x27;report-to&#x27;</span>] = <span class="hljs-string">&#x27;csp-endpoint&#x27;</span>;
+
+    <span class="hljs-comment">// Handle CSP violations</span>
+    <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">addEventListener</span>(<span class="hljs-string">&#x27;securitypolicyviolation&#x27;</span>, <span class="hljs-function">(<span class="hljs-params">event</span>) =&gt;</span> {
+      <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">handleCSPViolation</span>(event);
+    });
+
+    <span class="hljs-comment">// Set up Reporting API endpoint</span>
+    <span class="hljs-keyword">if</span> (<span class="hljs-string">&#x27;ReportingObserver&#x27;</span> <span class="hljs-keyword">in</span> <span class="hljs-variable language_">window</span>) {
+      <span class="hljs-keyword">const</span> observer = <span class="hljs-keyword">new</span> <span class="hljs-title class_">ReportingObserver</span>(<span class="hljs-function">(<span class="hljs-params">reports</span>) =&gt;</span> {
+        reports.<span class="hljs-title function_">forEach</span>(<span class="hljs-function"><span class="hljs-params">report</span> =&gt;</span> {
+          <span class="hljs-keyword">if</span> (report.<span class="hljs-property">type</span> === <span class="hljs-string">&#x27;csp-violation&#x27;</span>) {
+            <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">logCSPViolation</span>(report.<span class="hljs-property">body</span>);
+          }
+        });
+      });
+      
+      observer.<span class="hljs-title function_">observe</span>();
+    }
+  }
+
+  <span class="hljs-keyword">private</span> <span class="hljs-title function_">validateNonce</span>(<span class="hljs-attr">nonce</span>: <span class="hljs-built_in">string</span>): <span class="hljs-built_in">boolean</span> {
+    <span class="hljs-keyword">return</span> <span class="hljs-variable language_">this</span>.<span class="hljs-property">nonces</span>.<span class="hljs-title function_">has</span>(nonce);
+  }
+
+  <span class="hljs-keyword">private</span> <span class="hljs-title function_">cleanupOldNonces</span>(): <span class="hljs-built_in">void</span> {
+    <span class="hljs-keyword">const</span> oneHourAgo = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Date</span>(<span class="hljs-title class_">Date</span>.<span class="hljs-title function_">now</span>() - <span class="hljs-number">60</span> * <span class="hljs-number">60</span> * <span class="hljs-number">1000</span>);
+    
+    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">const</span> [nonce, timestamp] <span class="hljs-keyword">of</span> <span class="hljs-variable language_">this</span>.<span class="hljs-property">nonces</span>.<span class="hljs-title function_">entries</span>()) {
+      <span class="hljs-keyword">if</span> (<span class="hljs-keyword">new</span> <span class="hljs-title class_">Date</span>(timestamp) &lt; oneHourAgo) {
+        <span class="hljs-variable language_">this</span>.<span class="hljs-property">nonces</span>.<span class="hljs-title function_">delete</span>(nonce);
+      }
+    }
+  }
+
+  <span class="hljs-keyword">private</span> <span class="hljs-title function_">isAllowedDomain</span>(<span class="hljs-attr">domain</span>: <span class="hljs-built_in">string</span>): <span class="hljs-built_in">boolean</span> {
+    <span class="hljs-comment">// Implement domain validation logic</span>
+    <span class="hljs-keyword">const</span> allowedPatterns = [
+      <span class="hljs-regexp">/^https:\/\/.*\.googleapis\.com$/</span>,
+      <span class="hljs-regexp">/^https:\/\/.*\.gstatic\.com$/</span>,
+      <span class="hljs-regexp">/^https:\/\/cdnjs\.cloudflare\.com$/</span>
+    ];
+
+    <span class="hljs-keyword">return</span> allowedPatterns.<span class="hljs-title function_">some</span>(<span class="hljs-function"><span class="hljs-params">pattern</span> =&gt;</span> pattern.<span class="hljs-title function_">test</span>(domain));
+  }
+
+  <span class="hljs-keyword">private</span> <span class="hljs-title function_">handleCSPViolation</span>(<span class="hljs-attr">event</span>: <span class="hljs-title class_">SecurityPolicyViolationEvent</span>): <span class="hljs-built_in">void</span> {
+    <span class="hljs-keyword">const</span> violation = {
+      <span class="hljs-attr">documentURI</span>: event.<span class="hljs-property">documentURI</span>,
+      <span class="hljs-attr">violatedDirective</span>: event.<span class="hljs-property">violatedDirective</span>,
+      <span class="hljs-attr">blockedURI</span>: event.<span class="hljs-property">blockedURI</span>,
+      <span class="hljs-attr">sourceFile</span>: event.<span class="hljs-property">sourceFile</span>,
+      <span class="hljs-attr">lineNumber</span>: event.<span class="hljs-property">lineNumber</span>,
+      <span class="hljs-attr">columnNumber</span>: event.<span class="hljs-property">columnNumber</span>,
+      <span class="hljs-attr">originalPolicy</span>: event.<span class="hljs-property">originalPolicy</span>,
+      <span class="hljs-attr">timestamp</span>: <span class="hljs-keyword">new</span> <span class="hljs-title class_">Date</span>().<span class="hljs-title function_">toISOString</span>(),
+      <span class="hljs-attr">userAgent</span>: navigator.<span class="hljs-property">userAgent</span>
+    };
+
+    <span class="hljs-comment">// Send to security monitoring system</span>
+    <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">reportViolation</span>(violation);
+    
+    <span class="hljs-comment">// Log for debugging in development</span>
+    <span class="hljs-keyword">if</span> (process.<span class="hljs-property">env</span>.<span class="hljs-property">NODE_ENV</span> === <span class="hljs-string">&#x27;development&#x27;</span>) {
+      <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">warn</span>(<span class="hljs-string">&#x27;CSP Violation:&#x27;</span>, violation);
+    }
+  }
+
+  <span class="hljs-keyword">private</span> <span class="hljs-keyword">async</span> <span class="hljs-title function_">reportViolation</span>(<span class="hljs-attr">violation</span>: <span class="hljs-built_in">any</span>): <span class="hljs-title class_">Promise</span>&lt;<span class="hljs-built_in">void</span>&gt; {
+    <span class="hljs-keyword">try</span> {
+      <span class="hljs-keyword">await</span> <span class="hljs-title function_">fetch</span>(<span class="hljs-string">&#x27;/api/security/csp-violations&#x27;</span>, {
+        <span class="hljs-attr">method</span>: <span class="hljs-string">&#x27;POST&#x27;</span>,
+        <span class="hljs-attr">headers</span>: {
+          <span class="hljs-string">&#x27;Content-Type&#x27;</span>: <span class="hljs-string">&#x27;application/json&#x27;</span>,
+        },
+        <span class="hljs-attr">body</span>: <span class="hljs-title class_">JSON</span>.<span class="hljs-title function_">stringify</span>(violation)
+      });
+    } <span class="hljs-keyword">catch</span> (error) {
+      <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">error</span>(<span class="hljs-string">&#x27;Failed to report CSP violation:&#x27;</span>, error);
+    }
+  }
+
+  <span class="hljs-keyword">private</span> <span class="hljs-title function_">updateCSPHeader</span>(): <span class="hljs-built_in">void</span> {
+    <span class="hljs-keyword">const</span> policy = <span class="hljs-title class_">Object</span>.<span class="hljs-title function_">entries</span>(<span class="hljs-variable language_">this</span>.<span class="hljs-property">directives</span>)
+      .<span class="hljs-title function_">map</span>(<span class="hljs-function">(<span class="hljs-params">[key, value]</span>) =&gt;</span> {
+        <span class="hljs-keyword">if</span> (<span class="hljs-title class_">Array</span>.<span class="hljs-title function_">isArray</span>(value)) {
+          <span class="hljs-keyword">return</span> <span class="hljs-string">`<span class="hljs-subst">${key}</span> <span class="hljs-subst">${value.join(<span class="hljs-string">&#x27; &#x27;</span>)}</span>`</span>;
+        }
+        <span class="hljs-keyword">return</span> key;
+      })
+      .<span class="hljs-title function_">join</span>(<span class="hljs-string">&#x27;; &#x27;</span>);
+
+    <span class="hljs-comment">// Update meta tag (fallback)</span>
+    <span class="hljs-keyword">let</span> metaTag = <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">querySelector</span>(<span class="hljs-string">&#x27;meta[http-equiv=&quot;Content-Security-Policy&quot;]&#x27;</span>) <span class="hljs-keyword">as</span> <span class="hljs-title class_">HTMLMetaElement</span>;
+    <span class="hljs-keyword">if</span> (!metaTag) {
+      metaTag = <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">createElement</span>(<span class="hljs-string">&#x27;meta&#x27;</span>);
+      metaTag.<span class="hljs-property">httpEquiv</span> = <span class="hljs-string">&#x27;Content-Security-Policy&#x27;</span>;
+      <span class="hljs-variable language_">document</span>.<span class="hljs-property">head</span>.<span class="hljs-title function_">appendChild</span>(metaTag);
+    }
+    metaTag.<span class="hljs-property">content</span> = policy;
+  }
+
+  <span class="hljs-title function_">generateCSPHeader</span>(): <span class="hljs-built_in">string</span> {
+    <span class="hljs-keyword">return</span> <span class="hljs-title class_">Object</span>.<span class="hljs-title function_">entries</span>(<span class="hljs-variable language_">this</span>.<span class="hljs-property">directives</span>)
+      .<span class="hljs-title function_">map</span>(<span class="hljs-function">(<span class="hljs-params">[key, value]</span>) =&gt;</span> {
+        <span class="hljs-keyword">if</span> (<span class="hljs-title class_">Array</span>.<span class="hljs-title function_">isArray</span>(value)) {
+          <span class="hljs-keyword">return</span> <span class="hljs-string">`<span class="hljs-subst">${key}</span> <span class="hljs-subst">${value.join(<span class="hljs-string">&#x27; &#x27;</span>)}</span>`</span>;
+        }
+        <span class="hljs-keyword">return</span> key;
+      })
+      .<span class="hljs-title function_">join</span>(<span class="hljs-string">&#x27;; &#x27;</span>);
+  }
+}
+</code></pre></pre>
+<p>{% endraw %}</p>
+<h3 id="[object-object]" node="[object Object]"><strong>Trusted Types Implementation</strong></h3>
+<pre><pre><code class="hljs hljs language-typescript"><span class="hljs-comment">// trusted-types.ts</span>
+<span class="hljs-keyword">interface</span> <span class="hljs-title class_">TrustedTypesPolicy</span> {
+  <span class="hljs-title function_">createHTML</span>(<span class="hljs-attr">input</span>: <span class="hljs-built_in">string</span>): <span class="hljs-title class_">TrustedHTML</span>;
+  <span class="hljs-title function_">createScript</span>(<span class="hljs-attr">input</span>: <span class="hljs-built_in">string</span>): <span class="hljs-title class_">TrustedScript</span>;
+  <span class="hljs-title function_">createScriptURL</span>(<span class="hljs-attr">input</span>: <span class="hljs-built_in">string</span>): <span class="hljs-title class_">TrustedScriptURL</span>;
+}
+
+<span class="hljs-keyword">class</span> <span class="hljs-title class_">TrustedTypesManager</span> {
+  <span class="hljs-keyword">private</span> <span class="hljs-attr">policies</span>: <span class="hljs-title class_">Map</span>&lt;<span class="hljs-built_in">string</span>, <span class="hljs-title class_">TrustedTypesPolicy</span>&gt; = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Map</span>();
+  <span class="hljs-keyword">private</span> <span class="hljs-attr">sanitizer</span>: <span class="hljs-title class_">HTMLSanitizer</span>;
+
+  <span class="hljs-title function_">constructor</span>(<span class="hljs-params"></span>) {
+    <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">initializeTrustedTypes</span>();
+    <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">setupHTMLSanitizer</span>();
+  }
+
+  <span class="hljs-keyword">private</span> <span class="hljs-title function_">initializeTrustedTypes</span>(): <span class="hljs-built_in">void</span> {
+    <span class="hljs-keyword">if</span> (<span class="hljs-string">&#x27;trustedTypes&#x27;</span> <span class="hljs-keyword">in</span> <span class="hljs-variable language_">window</span>) {
+      <span class="hljs-comment">// Create default policy for backward compatibility</span>
+      <span class="hljs-keyword">const</span> defaultPolicy = trustedTypes.<span class="hljs-title function_">createPolicy</span>(<span class="hljs-string">&#x27;default&#x27;</span>, {
+        <span class="hljs-attr">createHTML</span>: <span class="hljs-function">(<span class="hljs-params"><span class="hljs-attr">input</span>: <span class="hljs-built_in">string</span></span>) =&gt;</span> {
+          <span class="hljs-keyword">return</span> <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">sanitizeHTML</span>(input);
+        },
+        <span class="hljs-attr">createScript</span>: <span class="hljs-function">(<span class="hljs-params"><span class="hljs-attr">input</span>: <span class="hljs-built_in">string</span></span>) =&gt;</span> {
+          <span class="hljs-keyword">return</span> <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">sanitizeScript</span>(input);
+        },
+        <span class="hljs-attr">createScriptURL</span>: <span class="hljs-function">(<span class="hljs-params"><span class="hljs-attr">input</span>: <span class="hljs-built_in">string</span></span>) =&gt;</span> {
+          <span class="hljs-keyword">return</span> <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">sanitizeScriptURL</span>(input);
+        }
+      });
+
+      <span class="hljs-comment">// Create strict policy for sensitive operations</span>
+      <span class="hljs-keyword">const</span> strictPolicy = trustedTypes.<span class="hljs-title function_">createPolicy</span>(<span class="hljs-string">&#x27;strict&#x27;</span>, {
+        <span class="hljs-attr">createHTML</span>: <span class="hljs-function">(<span class="hljs-params"><span class="hljs-attr">input</span>: <span class="hljs-built_in">string</span></span>) =&gt;</span> {
+          <span class="hljs-comment">// Only allow very limited HTML</span>
+          <span class="hljs-keyword">return</span> <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">strictSanitizeHTML</span>(input);
+        },
+        <span class="hljs-attr">createScript</span>: <span class="hljs-function">(<span class="hljs-params"><span class="hljs-attr">input</span>: <span class="hljs-built_in">string</span></span>) =&gt;</span> {
+          <span class="hljs-comment">// Block all dynamic script creation</span>
+          <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Error</span>(<span class="hljs-string">&#x27;Dynamic script creation not allowed in strict mode&#x27;</span>);
+        },
+        <span class="hljs-attr">createScriptURL</span>: <span class="hljs-function">(<span class="hljs-params"><span class="hljs-attr">input</span>: <span class="hljs-built_in">string</span></span>) =&gt;</span> {
+          <span class="hljs-comment">// Only allow same-origin scripts</span>
+          <span class="hljs-keyword">if</span> (!<span class="hljs-variable language_">this</span>.<span class="hljs-title function_">isSameOrigin</span>(input)) {
+            <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Error</span>(<span class="hljs-string">&#x27;Cross-origin scripts not allowed in strict mode&#x27;</span>);
+          }
+          <span class="hljs-keyword">return</span> input;
+        }
+      });
+
+      <span class="hljs-variable language_">this</span>.<span class="hljs-property">policies</span>.<span class="hljs-title function_">set</span>(<span class="hljs-string">&#x27;default&#x27;</span>, defaultPolicy);
+      <span class="hljs-variable language_">this</span>.<span class="hljs-property">policies</span>.<span class="hljs-title function_">set</span>(<span class="hljs-string">&#x27;strict&#x27;</span>, strictPolicy);
+    }
+  }
+
+  <span class="hljs-keyword">private</span> <span class="hljs-title function_">setupHTMLSanitizer</span>(): <span class="hljs-built_in">void</span> {
+    <span class="hljs-comment">// Use the new Sanitizer API when available</span>
+    <span class="hljs-keyword">if</span> (<span class="hljs-string">&#x27;Sanitizer&#x27;</span> <span class="hljs-keyword">in</span> <span class="hljs-variable language_">window</span>) {
+      <span class="hljs-variable language_">this</span>.<span class="hljs-property">sanitizer</span> = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Sanitizer</span>({
+        <span class="hljs-attr">allowElements</span>: [
+          <span class="hljs-string">&#x27;div&#x27;</span>, <span class="hljs-string">&#x27;span&#x27;</span>, <span class="hljs-string">&#x27;p&#x27;</span>, <span class="hljs-string">&#x27;br&#x27;</span>, <span class="hljs-string">&#x27;strong&#x27;</span>, <span class="hljs-string">&#x27;em&#x27;</span>, <span class="hljs-string">&#x27;u&#x27;</span>, <span class="hljs-string">&#x27;i&#x27;</span>, <span class="hljs-string">&#x27;b&#x27;</span>,
+          <span class="hljs-string">&#x27;h1&#x27;</span>, <span class="hljs-string">&#x27;h2&#x27;</span>, <span class="hljs-string">&#x27;h3&#x27;</span>, <span class="hljs-string">&#x27;h4&#x27;</span>, <span class="hljs-string">&#x27;h5&#x27;</span>, <span class="hljs-string">&#x27;h6&#x27;</span>,
+          <span class="hljs-string">&#x27;ul&#x27;</span>, <span class="hljs-string">&#x27;ol&#x27;</span>, <span class="hljs-string">&#x27;li&#x27;</span>,
+          <span class="hljs-string">&#x27;a&#x27;</span>, <span class="hljs-string">&#x27;img&#x27;</span>
+        ],
+        <span class="hljs-attr">allowAttributes</span>: {
+          <span class="hljs-string">&#x27;a&#x27;</span>: [<span class="hljs-string">&#x27;href&#x27;</span>, <span class="hljs-string">&#x27;title&#x27;</span>],
+          <span class="hljs-string">&#x27;img&#x27;</span>: [<span class="hljs-string">&#x27;src&#x27;</span>, <span class="hljs-string">&#x27;alt&#x27;</span>, <span class="hljs-string">&#x27;title&#x27;</span>, <span class="hljs-string">&#x27;width&#x27;</span>, <span class="hljs-string">&#x27;height&#x27;</span>],
+          <span class="hljs-string">&#x27;*&#x27;</span>: [<span class="hljs-string">&#x27;class&#x27;</span>, <span class="hljs-string">&#x27;id&#x27;</span>]
+        },
+        <span class="hljs-attr">allowCustomElements</span>: <span class="hljs-literal">false</span>
+      });
+    }
+  }
+
+  <span class="hljs-comment">// Safe HTML creation with sanitization</span>
+  <span class="hljs-title function_">createSafeHTML</span>(<span class="hljs-attr">input</span>: <span class="hljs-built_in">string</span>, policyName = <span class="hljs-string">&#x27;default&#x27;</span>): <span class="hljs-title class_">TrustedHTML</span> {
+    <span class="hljs-keyword">const</span> policy = <span class="hljs-variable language_">this</span>.<span class="hljs-property">policies</span>.<span class="hljs-title function_">get</span>(policyName);
+    <span class="hljs-keyword">if</span> (!policy) {
+      <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Error</span>(<span class="hljs-string">`Unknown policy: <span class="hljs-subst">${policyName}</span>`</span>);
+    }
+
+    <span class="hljs-keyword">return</span> policy.<span class="hljs-title function_">createHTML</span>(input);
+  }
+
+  <span class="hljs-comment">// Safe script creation with validation</span>
+  <span class="hljs-title function_">createSafeScript</span>(<span class="hljs-attr">input</span>: <span class="hljs-built_in">string</span>, policyName = <span class="hljs-string">&#x27;default&#x27;</span>): <span class="hljs-title class_">TrustedScript</span> {
+    <span class="hljs-keyword">const</span> policy = <span class="hljs-variable language_">this</span>.<span class="hljs-property">policies</span>.<span class="hljs-title function_">get</span>(policyName);
+    <span class="hljs-keyword">if</span> (!policy) {
+      <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Error</span>(<span class="hljs-string">`Unknown policy: <span class="hljs-subst">${policyName}</span>`</span>);
+    }
+
+    <span class="hljs-comment">// Additional validation</span>
+    <span class="hljs-keyword">if</span> (<span class="hljs-variable language_">this</span>.<span class="hljs-title function_">containsSuspiciousPatterns</span>(input)) {
+      <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Error</span>(<span class="hljs-string">&#x27;Script contains suspicious patterns&#x27;</span>);
+    }
+
+    <span class="hljs-keyword">return</span> policy.<span class="hljs-title function_">createScript</span>(input);
+  }
+
+  <span class="hljs-comment">// Safe script URL creation</span>
+  <span class="hljs-title function_">createSafeScriptURL</span>(<span class="hljs-attr">input</span>: <span class="hljs-built_in">string</span>, policyName = <span class="hljs-string">&#x27;default&#x27;</span>): <span class="hljs-title class_">TrustedScriptURL</span> {
+    <span class="hljs-keyword">const</span> policy = <span class="hljs-variable language_">this</span>.<span class="hljs-property">policies</span>.<span class="hljs-title function_">get</span>(policyName);
+    <span class="hljs-keyword">if</span> (!policy) {
+      <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Error</span>(<span class="hljs-string">`Unknown policy: <span class="hljs-subst">${policyName}</span>`</span>);
+    }
+
+    <span class="hljs-keyword">return</span> policy.<span class="hljs-title function_">createScriptURL</span>(input);
+  }
+
+  <span class="hljs-comment">// Advanced HTML sanitization</span>
+  <span class="hljs-keyword">private</span> <span class="hljs-title function_">sanitizeHTML</span>(<span class="hljs-attr">input</span>: <span class="hljs-built_in">string</span>): <span class="hljs-built_in">string</span> {
+    <span class="hljs-keyword">if</span> (<span class="hljs-variable language_">this</span>.<span class="hljs-property">sanitizer</span>) {
+      <span class="hljs-comment">// Use native Sanitizer API</span>
+      <span class="hljs-keyword">const</span> fragment = <span class="hljs-variable language_">this</span>.<span class="hljs-property">sanitizer</span>.<span class="hljs-title function_">sanitizeFor</span>(<span class="hljs-string">&#x27;div&#x27;</span>, input);
+      <span class="hljs-keyword">return</span> fragment.<span class="hljs-property">innerHTML</span>;
+    }
+
+    <span class="hljs-comment">// Fallback to DOMPurify-like sanitization</span>
+    <span class="hljs-keyword">return</span> <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">fallbackSanitize</span>(input);
+  }
+
+  <span class="hljs-keyword">private</span> <span class="hljs-title function_">strictSanitizeHTML</span>(<span class="hljs-attr">input</span>: <span class="hljs-built_in">string</span>): <span class="hljs-built_in">string</span> {
+    <span class="hljs-comment">// Only allow plain text and basic formatting</span>
+    <span class="hljs-keyword">const</span> allowedTags = [<span class="hljs-string">&#x27;strong&#x27;</span>, <span class="hljs-string">&#x27;em&#x27;</span>, <span class="hljs-string">&#x27;br&#x27;</span>];
+    <span class="hljs-keyword">const</span> doc = <span class="hljs-keyword">new</span> <span class="hljs-title class_">DOMParser</span>().<span class="hljs-title function_">parseFromString</span>(input, <span class="hljs-string">&#x27;text/html&#x27;</span>);
+    
+    <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">removeDisallowedElements</span>(doc.<span class="hljs-property">body</span>, allowedTags);
+    <span class="hljs-keyword">return</span> doc.<span class="hljs-property">body</span>.<span class="hljs-property">innerHTML</span>;
+  }
+
+  <span class="hljs-keyword">private</span> <span class="hljs-title function_">sanitizeScript</span>(<span class="hljs-attr">input</span>: <span class="hljs-built_in">string</span>): <span class="hljs-built_in">string</span> {
+    <span class="hljs-comment">// Validate script content</span>
+    <span class="hljs-keyword">if</span> (<span class="hljs-variable language_">this</span>.<span class="hljs-title function_">containsMaliciousPatterns</span>(input)) {
+      <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Error</span>(<span class="hljs-string">&#x27;Script contains malicious patterns&#x27;</span>);
+    }
+
+    <span class="hljs-comment">// Remove dangerous functions</span>
+    <span class="hljs-keyword">const</span> dangerousFunctions = [
+      <span class="hljs-string">&#x27;eval&#x27;</span>, <span class="hljs-string">&#x27;Function&#x27;</span>, <span class="hljs-string">&#x27;setTimeout&#x27;</span>, <span class="hljs-string">&#x27;setInterval&#x27;</span>,
+      <span class="hljs-string">&#x27;document.write&#x27;</span>, <span class="hljs-string">&#x27;document.writeln&#x27;</span>
+    ];
+
+    <span class="hljs-keyword">let</span> sanitized = input;
+    dangerousFunctions.<span class="hljs-title function_">forEach</span>(<span class="hljs-function"><span class="hljs-params">func</span> =&gt;</span> {
+      <span class="hljs-keyword">const</span> regex = <span class="hljs-keyword">new</span> <span class="hljs-title class_">RegExp</span>(<span class="hljs-string">`\\b<span class="hljs-subst">${func}</span>\\s*\\(`</span>, <span class="hljs-string">&#x27;gi&#x27;</span>);
+      <span class="hljs-keyword">if</span> (regex.<span class="hljs-title function_">test</span>(sanitized)) {
+        <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Error</span>(<span class="hljs-string">`Dangerous function detected: <span class="hljs-subst">${func}</span>`</span>);
+      }
+    });
+
+    <span class="hljs-keyword">return</span> sanitized;
+  }
+
+  <span class="hljs-keyword">private</span> <span class="hljs-title function_">sanitizeScriptURL</span>(<span class="hljs-attr">input</span>: <span class="hljs-built_in">string</span>): <span class="hljs-built_in">string</span> {
+    <span class="hljs-keyword">try</span> {
+      <span class="hljs-keyword">const</span> url = <span class="hljs-keyword">new</span> <span class="hljs-title function_">URL</span>(input);
+      
+      <span class="hljs-comment">// Only allow HTTPS and same-origin</span>
+      <span class="hljs-keyword">if</span> (url.<span class="hljs-property">protocol</span> !== <span class="hljs-string">&#x27;https:&#x27;</span> &amp;&amp; !<span class="hljs-variable language_">this</span>.<span class="hljs-title function_">isSameOrigin</span>(input)) {
+        <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Error</span>(<span class="hljs-string">&#x27;Only HTTPS and same-origin URLs allowed&#x27;</span>);
+      }
+
+      <span class="hljs-comment">// Check against allowlist</span>
+      <span class="hljs-keyword">if</span> (!<span class="hljs-variable language_">this</span>.<span class="hljs-title function_">isAllowedScriptSource</span>(url.<span class="hljs-property">hostname</span>)) {
+        <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Error</span>(<span class="hljs-string">`Script source not allowed: <span class="hljs-subst">${url.hostname}</span>`</span>);
+      }
+
+      <span class="hljs-keyword">return</span> input;
+    } <span class="hljs-keyword">catch</span> (error) {
+      <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Error</span>(<span class="hljs-string">`Invalid script URL: <span class="hljs-subst">${input}</span>`</span>);
+    }
+  }
+
+  <span class="hljs-keyword">private</span> <span class="hljs-title function_">containsSuspiciousPatterns</span>(<span class="hljs-attr">script</span>: <span class="hljs-built_in">string</span>): <span class="hljs-built_in">boolean</span> {
+    <span class="hljs-keyword">const</span> suspiciousPatterns = [
+      <span class="hljs-regexp">/javascript:/i</span>,
+      <span class="hljs-regexp">/data:/i</span>,
+      <span class="hljs-regexp">/vbscript:/i</span>,
+      <span class="hljs-regexp">/onload\s*=/i</span>,
+      <span class="hljs-regexp">/onerror\s*=/i</span>,
+      <span class="hljs-regexp">/onclick\s*=/i</span>,
+      <span class="hljs-regexp">/&lt;script/i</span>,
+      <span class="hljs-regexp">/&lt;iframe/i</span>,
+      <span class="hljs-regexp">/document\.cookie/i</span>,
+      <span class="hljs-regexp">/localStorage/i</span>,
+      <span class="hljs-regexp">/sessionStorage/i</span>
+    ];
+
+    <span class="hljs-keyword">return</span> suspiciousPatterns.<span class="hljs-title function_">some</span>(<span class="hljs-function"><span class="hljs-params">pattern</span> =&gt;</span> pattern.<span class="hljs-title function_">test</span>(script));
+  }
+
+  <span class="hljs-keyword">private</span> <span class="hljs-title function_">containsMaliciousPatterns</span>(<span class="hljs-attr">script</span>: <span class="hljs-built_in">string</span>): <span class="hljs-built_in">boolean</span> {
+    <span class="hljs-keyword">const</span> maliciousPatterns = [
+      <span class="hljs-regexp">/eval\s*\(/i</span>,
+      <span class="hljs-regexp">/Function\s*\(/i</span>,
+      <span class="hljs-regexp">/document\.write/i</span>,
+      <span class="hljs-regexp">/innerHTML\s*=/i</span>,
+      <span class="hljs-regexp">/outerHTML\s*=/i</span>,
+      <span class="hljs-regexp">/insertAdjacentHTML/i</span>,
+      <span class="hljs-regexp">/location\s*=/i</span>,
+      <span class="hljs-regexp">/window\.open/i</span>
+    ];
+
+    <span class="hljs-keyword">return</span> maliciousPatterns.<span class="hljs-title function_">some</span>(<span class="hljs-function"><span class="hljs-params">pattern</span> =&gt;</span> pattern.<span class="hljs-title function_">test</span>(script));
+  }
+
+  <span class="hljs-keyword">private</span> <span class="hljs-title function_">isSameOrigin</span>(<span class="hljs-attr">url</span>: <span class="hljs-built_in">string</span>): <span class="hljs-built_in">boolean</span> {
+    <span class="hljs-keyword">try</span> {
+      <span class="hljs-keyword">const</span> urlObj = <span class="hljs-keyword">new</span> <span class="hljs-title function_">URL</span>(url);
+      <span class="hljs-keyword">return</span> urlObj.<span class="hljs-property">origin</span> === <span class="hljs-variable language_">window</span>.<span class="hljs-property">location</span>.<span class="hljs-property">origin</span>;
+    } <span class="hljs-keyword">catch</span> {
+      <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;
+    }
+  }
+
+  <span class="hljs-keyword">private</span> <span class="hljs-title function_">isAllowedScriptSource</span>(<span class="hljs-attr">hostname</span>: <span class="hljs-built_in">string</span>): <span class="hljs-built_in">boolean</span> {
+    <span class="hljs-keyword">const</span> allowedHosts = [
+      <span class="hljs-string">&#x27;cdnjs.cloudflare.com&#x27;</span>,
+      <span class="hljs-string">&#x27;unpkg.com&#x27;</span>,
+      <span class="hljs-string">&#x27;cdn.jsdelivr.net&#x27;</span>,
+      <span class="hljs-string">&#x27;ajax.googleapis.com&#x27;</span>
+    ];
+
+    <span class="hljs-keyword">return</span> allowedHosts.<span class="hljs-title function_">includes</span>(hostname) || hostname === <span class="hljs-variable language_">window</span>.<span class="hljs-property">location</span>.<span class="hljs-property">hostname</span>;
+  }
+
+  <span class="hljs-keyword">private</span> <span class="hljs-title function_">removeDisallowedElements</span>(<span class="hljs-attr">element</span>: <span class="hljs-title class_">Element</span>, <span class="hljs-attr">allowedTags</span>: <span class="hljs-built_in">string</span>[]): <span class="hljs-built_in">void</span> {
+    <span class="hljs-keyword">const</span> children = <span class="hljs-title class_">Array</span>.<span class="hljs-title function_">from</span>(element.<span class="hljs-property">children</span>);
+    
+    children.<span class="hljs-title function_">forEach</span>(<span class="hljs-function"><span class="hljs-params">child</span> =&gt;</span> {
+      <span class="hljs-keyword">if</span> (!allowedTags.<span class="hljs-title function_">includes</span>(child.<span class="hljs-property">tagName</span>.<span class="hljs-title function_">toLowerCase</span>())) {
+        <span class="hljs-comment">// Replace with text content</span>
+        <span class="hljs-keyword">const</span> textNode = <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">createTextNode</span>(child.<span class="hljs-property">textContent</span> || <span class="hljs-string">&#x27;&#x27;</span>);
+        child.<span class="hljs-property">parentNode</span>?.<span class="hljs-title function_">replaceChild</span>(textNode, child);
+      } <span class="hljs-keyword">else</span> {
+        <span class="hljs-comment">// Recursively clean child elements</span>
+        <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">removeDisallowedElements</span>(child, allowedTags);
+      }
+    });
+  }
+
+  <span class="hljs-keyword">private</span> <span class="hljs-title function_">fallbackSanitize</span>(<span class="hljs-attr">input</span>: <span class="hljs-built_in">string</span>): <span class="hljs-built_in">string</span> {
+    <span class="hljs-comment">// Basic sanitization without external library</span>
+    <span class="hljs-keyword">const</span> div = <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">createElement</span>(<span class="hljs-string">&#x27;div&#x27;</span>);
+    div.<span class="hljs-property">textContent</span> = input;
+    
+    <span class="hljs-comment">// Allow basic HTML tags</span>
+    <span class="hljs-keyword">let</span> sanitized = div.<span class="hljs-property">innerHTML</span>;
+    
+    <span class="hljs-comment">// Remove script tags and event handlers</span>
+    sanitized = sanitized.<span class="hljs-title function_">replace</span>(<span class="hljs-regexp">/&lt;script\b[^&lt;]*(?:(?!&lt;\/script&gt;)&lt;[^&lt;]*)*&lt;\/script&gt;/gi</span>, <span class="hljs-string">&#x27;&#x27;</span>);
+    sanitized = sanitized.<span class="hljs-title function_">replace</span>(<span class="hljs-regexp">/on\w+\s*=\s*[&quot;&#x27;][^&quot;&#x27;]*[&quot;&#x27;]/gi</span>, <span class="hljs-string">&#x27;&#x27;</span>);
+    sanitized = sanitized.<span class="hljs-title function_">replace</span>(<span class="hljs-regexp">/javascript:/gi</span>, <span class="hljs-string">&#x27;&#x27;</span>);
+    
+    <span class="hljs-keyword">return</span> sanitized;
+  }
+}
+</code></pre></pre>
+<hr/>
+<h2 id="advanced-authentication-&amp;-authorization" node="[object Object]">Advanced Authentication &amp; Authorization</h2>
+<h3 id="[object-object]" node="[object Object]"><strong>JWT Security Implementation</strong></h3>
+<pre><pre><code class="hljs hljs language-typescript"><span class="hljs-comment">// jwt-security.ts</span>
+<span class="hljs-keyword">interface</span> <span class="hljs-title class_">JWTHeader</span> {
+  <span class="hljs-attr">alg</span>: <span class="hljs-built_in">string</span>;
+  <span class="hljs-attr">typ</span>: <span class="hljs-built_in">string</span>;
+  <span class="hljs-attr">kid</span>?: <span class="hljs-built_in">string</span>;
+}
+
+<span class="hljs-keyword">interface</span> <span class="hljs-title class_">JWTPayload</span> {
+  <span class="hljs-attr">sub</span>: <span class="hljs-built_in">string</span>;
+  <span class="hljs-attr">iat</span>: <span class="hljs-built_in">number</span>;
+  <span class="hljs-attr">exp</span>: <span class="hljs-built_in">number</span>;
+  <span class="hljs-attr">aud</span>: <span class="hljs-built_in">string</span>;
+  <span class="hljs-attr">iss</span>: <span class="hljs-built_in">string</span>;
+  <span class="hljs-attr">scope</span>?: <span class="hljs-built_in">string</span>[];
+  <span class="hljs-attr">permissions</span>?: <span class="hljs-built_in">string</span>[];
+}
+
+<span class="hljs-keyword">interface</span> <span class="hljs-title class_">SecurityConfig</span> {
+  <span class="hljs-attr">allowedAlgorithms</span>: <span class="hljs-built_in">string</span>[];
+  <span class="hljs-attr">maxTokenAge</span>: <span class="hljs-built_in">number</span>;
+  <span class="hljs-attr">clockSkew</span>: <span class="hljs-built_in">number</span>;
+  <span class="hljs-attr">issuerWhitelist</span>: <span class="hljs-built_in">string</span>[];
+  <span class="hljs-attr">audienceWhitelist</span>: <span class="hljs-built_in">string</span>[];
+}
+
+<span class="hljs-keyword">class</span> <span class="hljs-title class_">JWTSecurityManager</span> {
+  <span class="hljs-keyword">private</span> <span class="hljs-attr">config</span>: <span class="hljs-title class_">SecurityConfig</span> = {
+    <span class="hljs-attr">allowedAlgorithms</span>: [<span class="hljs-string">&#x27;RS256&#x27;</span>, <span class="hljs-string">&#x27;ES256&#x27;</span>],
+    <span class="hljs-attr">maxTokenAge</span>: <span class="hljs-number">3600</span>, <span class="hljs-comment">// 1 hour</span>
+    <span class="hljs-attr">clockSkew</span>: <span class="hljs-number">300</span>, <span class="hljs-comment">// 5 minutes</span>
+    <span class="hljs-attr">issuerWhitelist</span>: [<span class="hljs-string">&#x27;https://auth.company.com&#x27;</span>, <span class="hljs-string">&#x27;https://auth.staging.company.com&#x27;</span>],
+    <span class="hljs-attr">audienceWhitelist</span>: [<span class="hljs-string">&#x27;https://app.company.com&#x27;</span>, <span class="hljs-string">&#x27;https://api.company.com&#x27;</span>]
+  };
+
+  <span class="hljs-keyword">private</span> <span class="hljs-attr">publicKeys</span>: <span class="hljs-title class_">Map</span>&lt;<span class="hljs-built_in">string</span>, <span class="hljs-title class_">CryptoKey</span>&gt; = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Map</span>();
+  <span class="hljs-keyword">private</span> <span class="hljs-attr">tokenBlacklist</span>: <span class="hljs-title class_">Set</span>&lt;<span class="hljs-built_in">string</span>&gt; = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Set</span>();
+  <span class="hljs-keyword">private</span> <span class="hljs-attr">rateLimiter</span>: <span class="hljs-title class_">Map</span>&lt;<span class="hljs-built_in">string</span>, <span class="hljs-built_in">number</span>[]&gt; = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Map</span>();
+
+  <span class="hljs-keyword">async</span> <span class="hljs-title function_">validateToken</span>(<span class="hljs-attr">token</span>: <span class="hljs-built_in">string</span>): <span class="hljs-title class_">Promise</span>&lt;<span class="hljs-title class_">JWTPayload</span>&gt; {
+    <span class="hljs-keyword">try</span> {
+      <span class="hljs-comment">// 1. Parse token structure</span>
+      <span class="hljs-keyword">const</span> { header, payload, signature } = <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">parseJWT</span>(token);
+
+      <span class="hljs-comment">// 2. Validate header</span>
+      <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">validateHeader</span>(header);
+
+      <span class="hljs-comment">// 3. Check token blacklist</span>
+      <span class="hljs-keyword">if</span> (<span class="hljs-variable language_">this</span>.<span class="hljs-title function_">isTokenBlacklisted</span>(token)) {
+        <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Error</span>(<span class="hljs-string">&#x27;Token is blacklisted&#x27;</span>);
+      }
+
+      <span class="hljs-comment">// 4. Validate payload</span>
+      <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">validatePayload</span>(payload);
+
+      <span class="hljs-comment">// 5. Verify signature</span>
+      <span class="hljs-keyword">await</span> <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">verifySignature</span>(token, header, payload);
+
+      <span class="hljs-comment">// 6. Check rate limiting</span>
+      <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">checkRateLimit</span>(payload.<span class="hljs-property">sub</span>);
+
+      <span class="hljs-keyword">return</span> payload;
+    } <span class="hljs-keyword">catch</span> (error) {
+      <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">logSecurityEvent</span>(<span class="hljs-string">&#x27;JWT_VALIDATION_FAILED&#x27;</span>, { 
+        <span class="hljs-attr">error</span>: error.<span class="hljs-property">message</span>, 
+        <span class="hljs-attr">token</span>: <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">hashToken</span>(token) 
+      });
+      <span class="hljs-keyword">throw</span> error;
+    }
+  }
+
+  <span class="hljs-keyword">private</span> <span class="hljs-title function_">parseJWT</span>(<span class="hljs-attr">token</span>: <span class="hljs-built_in">string</span>): { <span class="hljs-attr">header</span>: <span class="hljs-title class_">JWTHeader</span>; <span class="hljs-attr">payload</span>: <span class="hljs-title class_">JWTPayload</span>; <span class="hljs-attr">signature</span>: <span class="hljs-built_in">string</span> } {
+    <span class="hljs-keyword">const</span> parts = token.<span class="hljs-title function_">split</span>(<span class="hljs-string">&#x27;.&#x27;</span>);
+    <span class="hljs-keyword">if</span> (parts.<span class="hljs-property">length</span> !== <span class="hljs-number">3</span>) {
+      <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Error</span>(<span class="hljs-string">&#x27;Invalid JWT format&#x27;</span>);
+    }
+
+    <span class="hljs-keyword">try</span> {
+      <span class="hljs-keyword">const</span> header = <span class="hljs-title class_">JSON</span>.<span class="hljs-title function_">parse</span>(<span class="hljs-variable language_">this</span>.<span class="hljs-title function_">base64UrlDecode</span>(parts[<span class="hljs-number">0</span>]));
+      <span class="hljs-keyword">const</span> payload = <span class="hljs-title class_">JSON</span>.<span class="hljs-title function_">parse</span>(<span class="hljs-variable language_">this</span>.<span class="hljs-title function_">base64UrlDecode</span>(parts[<span class="hljs-number">1</span>]));
+      <span class="hljs-keyword">const</span> signature = parts[<span class="hljs-number">2</span>];
+
+      <span class="hljs-keyword">return</span> { header, payload, signature };
+    } <span class="hljs-keyword">catch</span> (error) {
+      <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Error</span>(<span class="hljs-string">&#x27;Invalid JWT encoding&#x27;</span>);
+    }
+  }
+
+  <span class="hljs-keyword">private</span> <span class="hljs-title function_">validateHeader</span>(<span class="hljs-attr">header</span>: <span class="hljs-title class_">JWTHeader</span>): <span class="hljs-built_in">void</span> {
+    <span class="hljs-comment">// Check algorithm</span>
+    <span class="hljs-keyword">if</span> (!<span class="hljs-variable language_">this</span>.<span class="hljs-property">config</span>.<span class="hljs-property">allowedAlgorithms</span>.<span class="hljs-title function_">includes</span>(header.<span class="hljs-property">alg</span>)) {
+      <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Error</span>(<span class="hljs-string">`Algorithm not allowed: <span class="hljs-subst">${header.alg}</span>`</span>);
+    }
+
+    <span class="hljs-comment">// Ensure typ is JWT</span>
+    <span class="hljs-keyword">if</span> (header.<span class="hljs-property">typ</span> &amp;&amp; header.<span class="hljs-property">typ</span> !== <span class="hljs-string">&#x27;JWT&#x27;</span>) {
+      <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Error</span>(<span class="hljs-string">`Invalid token type: <span class="hljs-subst">${header.typ}</span>`</span>);
+    }
+
+    <span class="hljs-comment">// Check for algorithm confusion attacks</span>
+    <span class="hljs-keyword">if</span> (header.<span class="hljs-property">alg</span> === <span class="hljs-string">&#x27;none&#x27;</span>) {
+      <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Error</span>(<span class="hljs-string">&#x27;Algorithm &quot;none&quot; not allowed&#x27;</span>);
+    }
+  }
+
+  <span class="hljs-keyword">private</span> <span class="hljs-title function_">validatePayload</span>(<span class="hljs-attr">payload</span>: <span class="hljs-title class_">JWTPayload</span>): <span class="hljs-built_in">void</span> {
+    <span class="hljs-keyword">const</span> now = <span class="hljs-title class_">Math</span>.<span class="hljs-title function_">floor</span>(<span class="hljs-title class_">Date</span>.<span class="hljs-title function_">now</span>() / <span class="hljs-number">1000</span>);
+
+    <span class="hljs-comment">// Check expiration</span>
+    <span class="hljs-keyword">if</span> (!payload.<span class="hljs-property">exp</span> || payload.<span class="hljs-property">exp</span> &lt; now - <span class="hljs-variable language_">this</span>.<span class="hljs-property">config</span>.<span class="hljs-property">clockSkew</span>) {
+      <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Error</span>(<span class="hljs-string">&#x27;Token expired&#x27;</span>);
+    }
+
+    <span class="hljs-comment">// Check not before</span>
+    <span class="hljs-keyword">if</span> (payload.<span class="hljs-property">iat</span> &amp;&amp; payload.<span class="hljs-property">iat</span> &gt; now + <span class="hljs-variable language_">this</span>.<span class="hljs-property">config</span>.<span class="hljs-property">clockSkew</span>) {
+      <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Error</span>(<span class="hljs-string">&#x27;Token not yet valid&#x27;</span>);
+    }
+
+    <span class="hljs-comment">// Check max age</span>
+    <span class="hljs-keyword">if</span> (payload.<span class="hljs-property">iat</span> &amp;&amp; (now - payload.<span class="hljs-property">iat</span>) &gt; <span class="hljs-variable language_">this</span>.<span class="hljs-property">config</span>.<span class="hljs-property">maxTokenAge</span>) {
+      <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Error</span>(<span class="hljs-string">&#x27;Token too old&#x27;</span>);
+    }
+
+    <span class="hljs-comment">// Validate issuer</span>
+    <span class="hljs-keyword">if</span> (!payload.<span class="hljs-property">iss</span> || !<span class="hljs-variable language_">this</span>.<span class="hljs-property">config</span>.<span class="hljs-property">issuerWhitelist</span>.<span class="hljs-title function_">includes</span>(payload.<span class="hljs-property">iss</span>)) {
+      <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Error</span>(<span class="hljs-string">`Invalid issuer: <span class="hljs-subst">${payload.iss}</span>`</span>);
+    }
+
+    <span class="hljs-comment">// Validate audience</span>
+    <span class="hljs-keyword">if</span> (!payload.<span class="hljs-property">aud</span> || !<span class="hljs-variable language_">this</span>.<span class="hljs-property">config</span>.<span class="hljs-property">audienceWhitelist</span>.<span class="hljs-title function_">includes</span>(payload.<span class="hljs-property">aud</span>)) {
+      <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Error</span>(<span class="hljs-string">`Invalid audience: <span class="hljs-subst">${payload.aud}</span>`</span>);
+    }
+
+    <span class="hljs-comment">// Check required claims</span>
+    <span class="hljs-keyword">if</span> (!payload.<span class="hljs-property">sub</span>) {
+      <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Error</span>(<span class="hljs-string">&#x27;Missing subject claim&#x27;</span>);
+    }
+  }
+
+  <span class="hljs-keyword">private</span> <span class="hljs-keyword">async</span> <span class="hljs-title function_">verifySignature</span>(<span class="hljs-attr">token</span>: <span class="hljs-built_in">string</span>, <span class="hljs-attr">header</span>: <span class="hljs-title class_">JWTHeader</span>, <span class="hljs-attr">payload</span>: <span class="hljs-title class_">JWTPayload</span>): <span class="hljs-title class_">Promise</span>&lt;<span class="hljs-built_in">void</span>&gt; {
+    <span class="hljs-keyword">const</span> parts = token.<span class="hljs-title function_">split</span>(<span class="hljs-string">&#x27;.&#x27;</span>);
+    <span class="hljs-keyword">const</span> signedData = <span class="hljs-string">`<span class="hljs-subst">${parts[<span class="hljs-number">0</span>]}</span>.<span class="hljs-subst">${parts[<span class="hljs-number">1</span>]}</span>`</span>;
+    <span class="hljs-keyword">const</span> signature = <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">base64UrlDecodeToUint8Array</span>(parts[<span class="hljs-number">2</span>]);
+
+    <span class="hljs-comment">// Get public key</span>
+    <span class="hljs-keyword">const</span> publicKey = <span class="hljs-keyword">await</span> <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">getPublicKey</span>(header.<span class="hljs-property">kid</span> || <span class="hljs-string">&#x27;default&#x27;</span>, payload.<span class="hljs-property">iss</span>);
+
+    <span class="hljs-comment">// Verify signature</span>
+    <span class="hljs-keyword">const</span> algorithm = <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">getWebCryptoAlgorithm</span>(header.<span class="hljs-property">alg</span>);
+    <span class="hljs-keyword">const</span> encoder = <span class="hljs-keyword">new</span> <span class="hljs-title class_">TextEncoder</span>();
+    <span class="hljs-keyword">const</span> data = encoder.<span class="hljs-title function_">encode</span>(signedData);
+
+    <span class="hljs-keyword">const</span> isValid = <span class="hljs-keyword">await</span> crypto.<span class="hljs-property">subtle</span>.<span class="hljs-title function_">verify</span>(
+      algorithm,
+      publicKey,
+      signature,
+      data
+    );
+
+    <span class="hljs-keyword">if</span> (!isValid) {
+      <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Error</span>(<span class="hljs-string">&#x27;Invalid signature&#x27;</span>);
+    }
+  }
+
+  <span class="hljs-keyword">private</span> <span class="hljs-keyword">async</span> <span class="hljs-title function_">getPublicKey</span>(<span class="hljs-attr">keyId</span>: <span class="hljs-built_in">string</span>, <span class="hljs-attr">issuer</span>: <span class="hljs-built_in">string</span>): <span class="hljs-title class_">Promise</span>&lt;<span class="hljs-title class_">CryptoKey</span>&gt; {
+    <span class="hljs-keyword">const</span> cacheKey = <span class="hljs-string">`<span class="hljs-subst">${issuer}</span>:<span class="hljs-subst">${keyId}</span>`</span>;
+    
+    <span class="hljs-comment">// Check cache first</span>
+    <span class="hljs-keyword">if</span> (<span class="hljs-variable language_">this</span>.<span class="hljs-property">publicKeys</span>.<span class="hljs-title function_">has</span>(cacheKey)) {
+      <span class="hljs-keyword">return</span> <span class="hljs-variable language_">this</span>.<span class="hljs-property">publicKeys</span>.<span class="hljs-title function_">get</span>(cacheKey)!;
+    }
+
+    <span class="hljs-comment">// Fetch from JWKS endpoint</span>
+    <span class="hljs-keyword">const</span> jwksUrl = <span class="hljs-string">`<span class="hljs-subst">${issuer}</span>/.well-known/jwks.json`</span>;
+    <span class="hljs-keyword">const</span> response = <span class="hljs-keyword">await</span> <span class="hljs-title function_">fetch</span>(jwksUrl);
+    
+    <span class="hljs-keyword">if</span> (!response.<span class="hljs-property">ok</span>) {
+      <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Error</span>(<span class="hljs-string">`Failed to fetch JWKS: <span class="hljs-subst">${response.status}</span>`</span>);
+    }
+
+    <span class="hljs-keyword">const</span> jwks = <span class="hljs-keyword">await</span> response.<span class="hljs-title function_">json</span>();
+    <span class="hljs-keyword">const</span> key = jwks.<span class="hljs-property">keys</span>.<span class="hljs-title function_">find</span>(<span class="hljs-function">(<span class="hljs-params"><span class="hljs-attr">k</span>: <span class="hljs-built_in">any</span></span>) =&gt;</span> k.<span class="hljs-property">kid</span> === keyId);
+    
+    <span class="hljs-keyword">if</span> (!key) {
+      <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Error</span>(<span class="hljs-string">`Key not found: <span class="hljs-subst">${keyId}</span>`</span>);
+    }
+
+    <span class="hljs-comment">// Import public key</span>
+    <span class="hljs-keyword">const</span> publicKey = <span class="hljs-keyword">await</span> crypto.<span class="hljs-property">subtle</span>.<span class="hljs-title function_">importKey</span>(
+      <span class="hljs-string">&#x27;jwk&#x27;</span>,
+      key,
+      <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">getWebCryptoAlgorithm</span>(key.<span class="hljs-property">alg</span>),
+      <span class="hljs-literal">false</span>,
+      [<span class="hljs-string">&#x27;verify&#x27;</span>]
+    );
+
+    <span class="hljs-comment">// Cache the key</span>
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">publicKeys</span>.<span class="hljs-title function_">set</span>(cacheKey, publicKey);
+    
+    <span class="hljs-keyword">return</span> publicKey;
+  }
+
+  <span class="hljs-keyword">private</span> <span class="hljs-title function_">getWebCryptoAlgorithm</span>(<span class="hljs-attr">alg</span>: <span class="hljs-built_in">string</span>): <span class="hljs-title class_">AlgorithmIdentifier</span> {
+    <span class="hljs-keyword">switch</span> (alg) {
+      <span class="hljs-keyword">case</span> <span class="hljs-string">&#x27;RS256&#x27;</span>:
+        <span class="hljs-keyword">return</span> { <span class="hljs-attr">name</span>: <span class="hljs-string">&#x27;RSASSA-PKCS1-v1_5&#x27;</span>, <span class="hljs-attr">hash</span>: <span class="hljs-string">&#x27;SHA-256&#x27;</span> };
+      <span class="hljs-keyword">case</span> <span class="hljs-string">&#x27;ES256&#x27;</span>:
+        <span class="hljs-keyword">return</span> { <span class="hljs-attr">name</span>: <span class="hljs-string">&#x27;ECDSA&#x27;</span>, <span class="hljs-attr">hash</span>: <span class="hljs-string">&#x27;SHA-256&#x27;</span> };
+      <span class="hljs-attr">default</span>:
+        <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Error</span>(<span class="hljs-string">`Unsupported algorithm: <span class="hljs-subst">${alg}</span>`</span>);
+    }
+  }
+
+  <span class="hljs-keyword">private</span> <span class="hljs-title function_">checkRateLimit</span>(<span class="hljs-attr">userId</span>: <span class="hljs-built_in">string</span>): <span class="hljs-built_in">void</span> {
+    <span class="hljs-keyword">const</span> now = <span class="hljs-title class_">Date</span>.<span class="hljs-title function_">now</span>();
+    <span class="hljs-keyword">const</span> windowMs = <span class="hljs-number">60</span> * <span class="hljs-number">1000</span>; <span class="hljs-comment">// 1 minute</span>
+    <span class="hljs-keyword">const</span> maxRequests = <span class="hljs-number">100</span>;
+
+    <span class="hljs-keyword">if</span> (!<span class="hljs-variable language_">this</span>.<span class="hljs-property">rateLimiter</span>.<span class="hljs-title function_">has</span>(userId)) {
+      <span class="hljs-variable language_">this</span>.<span class="hljs-property">rateLimiter</span>.<span class="hljs-title function_">set</span>(userId, []);
+    }
+
+    <span class="hljs-keyword">const</span> requests = <span class="hljs-variable language_">this</span>.<span class="hljs-property">rateLimiter</span>.<span class="hljs-title function_">get</span>(userId)!;
+    
+    <span class="hljs-comment">// Remove old requests</span>
+    <span class="hljs-keyword">const</span> validRequests = requests.<span class="hljs-title function_">filter</span>(<span class="hljs-function"><span class="hljs-params">timestamp</span> =&gt;</span> now - timestamp &lt; windowMs);
+    
+    <span class="hljs-keyword">if</span> (validRequests.<span class="hljs-property">length</span> &gt;= maxRequests) {
+      <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Error</span>(<span class="hljs-string">&#x27;Rate limit exceeded&#x27;</span>);
+    }
+
+    <span class="hljs-comment">// Add current request</span>
+    validRequests.<span class="hljs-title function_">push</span>(now);
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">rateLimiter</span>.<span class="hljs-title function_">set</span>(userId, validRequests);
+  }
+
+  <span class="hljs-comment">// Token revocation</span>
+  <span class="hljs-title function_">revokeToken</span>(<span class="hljs-attr">token</span>: <span class="hljs-built_in">string</span>): <span class="hljs-built_in">void</span> {
+    <span class="hljs-keyword">const</span> tokenHash = <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">hashToken</span>(token);
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">tokenBlacklist</span>.<span class="hljs-title function_">add</span>(tokenHash);
+    
+    <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">logSecurityEvent</span>(<span class="hljs-string">&#x27;TOKEN_REVOKED&#x27;</span>, { tokenHash });
+  }
+
+  <span class="hljs-keyword">private</span> <span class="hljs-title function_">isTokenBlacklisted</span>(<span class="hljs-attr">token</span>: <span class="hljs-built_in">string</span>): <span class="hljs-built_in">boolean</span> {
+    <span class="hljs-keyword">const</span> tokenHash = <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">hashToken</span>(token);
+    <span class="hljs-keyword">return</span> <span class="hljs-variable language_">this</span>.<span class="hljs-property">tokenBlacklist</span>.<span class="hljs-title function_">has</span>(tokenHash);
+  }
+
+  <span class="hljs-keyword">private</span> <span class="hljs-title function_">hashToken</span>(<span class="hljs-attr">token</span>: <span class="hljs-built_in">string</span>): <span class="hljs-built_in">string</span> {
+    <span class="hljs-keyword">const</span> encoder = <span class="hljs-keyword">new</span> <span class="hljs-title class_">TextEncoder</span>();
+    <span class="hljs-keyword">const</span> data = encoder.<span class="hljs-title function_">encode</span>(token);
+    
+    <span class="hljs-comment">// Use subtle crypto for consistent hashing</span>
+    <span class="hljs-keyword">return</span> crypto.<span class="hljs-property">subtle</span>.<span class="hljs-title function_">digest</span>(<span class="hljs-string">&#x27;SHA-256&#x27;</span>, data).<span class="hljs-title function_">then</span>(<span class="hljs-function"><span class="hljs-params">hash</span> =&gt;</span> {
+      <span class="hljs-keyword">return</span> <span class="hljs-title class_">Array</span>.<span class="hljs-title function_">from</span>(<span class="hljs-keyword">new</span> <span class="hljs-title class_">Uint8Array</span>(hash))
+        .<span class="hljs-title function_">map</span>(<span class="hljs-function"><span class="hljs-params">b</span> =&gt;</span> b.<span class="hljs-title function_">toString</span>(<span class="hljs-number">16</span>).<span class="hljs-title function_">padStart</span>(<span class="hljs-number">2</span>, <span class="hljs-string">&#x27;0&#x27;</span>))
+        .<span class="hljs-title function_">join</span>(<span class="hljs-string">&#x27;&#x27;</span>);
+    });
+  }
+
+  <span class="hljs-comment">// Secure token storage</span>
+  <span class="hljs-title function_">storeToken</span>(<span class="hljs-attr">token</span>: <span class="hljs-built_in">string</span>): <span class="hljs-built_in">void</span> {
+    <span class="hljs-comment">// Use secure storage mechanisms</span>
+    <span class="hljs-keyword">if</span> (<span class="hljs-variable language_">this</span>.<span class="hljs-title function_">isSecureContext</span>()) {
+      <span class="hljs-comment">// Store in secure HTTP-only cookie via API call</span>
+      <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">storeInSecureCookie</span>(token);
+    } <span class="hljs-keyword">else</span> {
+      <span class="hljs-comment">// Fallback to sessionStorage with encryption</span>
+      <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">storeInSessionStorage</span>(token);
+    }
+  }
+
+  <span class="hljs-keyword">private</span> <span class="hljs-title function_">isSecureContext</span>(): <span class="hljs-built_in">boolean</span> {
+    <span class="hljs-keyword">return</span> <span class="hljs-variable language_">window</span>.<span class="hljs-property">isSecureContext</span> &amp;&amp; <span class="hljs-variable language_">window</span>.<span class="hljs-property">location</span>.<span class="hljs-property">protocol</span> === <span class="hljs-string">&#x27;https:&#x27;</span>;
+  }
+
+  <span class="hljs-keyword">private</span> <span class="hljs-keyword">async</span> <span class="hljs-title function_">storeInSecureCookie</span>(<span class="hljs-attr">token</span>: <span class="hljs-built_in">string</span>): <span class="hljs-title class_">Promise</span>&lt;<span class="hljs-built_in">void</span>&gt; {
+    <span class="hljs-keyword">await</span> <span class="hljs-title function_">fetch</span>(<span class="hljs-string">&#x27;/api/auth/store-token&#x27;</span>, {
+      <span class="hljs-attr">method</span>: <span class="hljs-string">&#x27;POST&#x27;</span>,
+      <span class="hljs-attr">headers</span>: {
+        <span class="hljs-string">&#x27;Content-Type&#x27;</span>: <span class="hljs-string">&#x27;application/json&#x27;</span>,
+      },
+      <span class="hljs-attr">body</span>: <span class="hljs-title class_">JSON</span>.<span class="hljs-title function_">stringify</span>({ token }),
+      <span class="hljs-attr">credentials</span>: <span class="hljs-string">&#x27;include&#x27;</span>
+    });
+  }
+
+  <span class="hljs-keyword">private</span> <span class="hljs-title function_">storeInSessionStorage</span>(<span class="hljs-attr">token</span>: <span class="hljs-built_in">string</span>): <span class="hljs-built_in">void</span> {
+    <span class="hljs-comment">// Encrypt token before storing</span>
+    <span class="hljs-keyword">const</span> encryptedToken = <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">encryptToken</span>(token);
+    <span class="hljs-variable language_">sessionStorage</span>.<span class="hljs-title function_">setItem</span>(<span class="hljs-string">&#x27;auth_token&#x27;</span>, encryptedToken);
+  }
+
+  <span class="hljs-keyword">private</span> <span class="hljs-title function_">encryptToken</span>(<span class="hljs-attr">token</span>: <span class="hljs-built_in">string</span>): <span class="hljs-built_in">string</span> {
+    <span class="hljs-comment">// Simple XOR encryption (use proper encryption in production)</span>
+    <span class="hljs-keyword">const</span> key = <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">generateSessionKey</span>();
+    <span class="hljs-keyword">const</span> encrypted = token.<span class="hljs-title function_">split</span>(<span class="hljs-string">&#x27;&#x27;</span>).<span class="hljs-title function_">map</span>(<span class="hljs-function">(<span class="hljs-params">char, i</span>) =&gt;</span> 
+      <span class="hljs-title class_">String</span>.<span class="hljs-title function_">fromCharCode</span>(char.<span class="hljs-title function_">charCodeAt</span>(<span class="hljs-number">0</span>) ^ key.<span class="hljs-title function_">charCodeAt</span>(i % key.<span class="hljs-property">length</span>))
+    ).<span class="hljs-title function_">join</span>(<span class="hljs-string">&#x27;&#x27;</span>);
+    
+    <span class="hljs-keyword">return</span> <span class="hljs-title function_">btoa</span>(encrypted);
+  }
+
+  <span class="hljs-keyword">private</span> <span class="hljs-title function_">generateSessionKey</span>(): <span class="hljs-built_in">string</span> {
+    <span class="hljs-keyword">return</span> <span class="hljs-variable language_">sessionStorage</span>.<span class="hljs-title function_">getItem</span>(<span class="hljs-string">&#x27;session_key&#x27;</span>) || 
+           (<span class="hljs-function">() =&gt;</span> {
+             <span class="hljs-keyword">const</span> key = <span class="hljs-title class_">Math</span>.<span class="hljs-title function_">random</span>().<span class="hljs-title function_">toString</span>(<span class="hljs-number">36</span>).<span class="hljs-title function_">substring</span>(<span class="hljs-number">2</span>);
+             <span class="hljs-variable language_">sessionStorage</span>.<span class="hljs-title function_">setItem</span>(<span class="hljs-string">&#x27;session_key&#x27;</span>, key);
+             <span class="hljs-keyword">return</span> key;
+           })();
+  }
+
+  <span class="hljs-keyword">private</span> <span class="hljs-title function_">base64UrlDecode</span>(<span class="hljs-attr">str</span>: <span class="hljs-built_in">string</span>): <span class="hljs-built_in">string</span> {
+    <span class="hljs-comment">// Convert base64url to base64</span>
+    str = str.<span class="hljs-title function_">replace</span>(<span class="hljs-regexp">/-/g</span>, <span class="hljs-string">&#x27;+&#x27;</span>).<span class="hljs-title function_">replace</span>(<span class="hljs-regexp">/_/g</span>, <span class="hljs-string">&#x27;/&#x27;</span>);
+    
+    <span class="hljs-comment">// Add padding if needed</span>
+    <span class="hljs-keyword">while</span> (str.<span class="hljs-property">length</span> % <span class="hljs-number">4</span>) {
+      str += <span class="hljs-string">&#x27;=&#x27;</span>;
+    }
+    
+    <span class="hljs-keyword">return</span> <span class="hljs-title function_">atob</span>(str);
+  }
+
+  <span class="hljs-keyword">private</span> <span class="hljs-title function_">base64UrlDecodeToUint8Array</span>(<span class="hljs-attr">str</span>: <span class="hljs-built_in">string</span>): <span class="hljs-title class_">Uint8Array</span> {
+    <span class="hljs-keyword">const</span> decoded = <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">base64UrlDecode</span>(str);
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Uint8Array</span>(decoded.<span class="hljs-title function_">split</span>(<span class="hljs-string">&#x27;&#x27;</span>).<span class="hljs-title function_">map</span>(<span class="hljs-function"><span class="hljs-params">char</span> =&gt;</span> char.<span class="hljs-title function_">charCodeAt</span>(<span class="hljs-number">0</span>)));
+  }
+
+  <span class="hljs-keyword">private</span> <span class="hljs-title function_">logSecurityEvent</span>(<span class="hljs-attr">event</span>: <span class="hljs-built_in">string</span>, <span class="hljs-attr">data</span>: <span class="hljs-built_in">any</span>): <span class="hljs-built_in">void</span> {
+    <span class="hljs-keyword">const</span> logEntry = {
+      <span class="hljs-attr">timestamp</span>: <span class="hljs-keyword">new</span> <span class="hljs-title class_">Date</span>().<span class="hljs-title function_">toISOString</span>(),
+      event,
+      data,
+      <span class="hljs-attr">userAgent</span>: navigator.<span class="hljs-property">userAgent</span>,
+      <span class="hljs-attr">ip</span>: <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">getClientIP</span>(),
+      <span class="hljs-attr">sessionId</span>: <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">getSessionId</span>()
+    };
+
+    <span class="hljs-comment">// Send to security monitoring system</span>
+    <span class="hljs-title function_">fetch</span>(<span class="hljs-string">&#x27;/api/security/events&#x27;</span>, {
+      <span class="hljs-attr">method</span>: <span class="hljs-string">&#x27;POST&#x27;</span>,
+      <span class="hljs-attr">headers</span>: {
+        <span class="hljs-string">&#x27;Content-Type&#x27;</span>: <span class="hljs-string">&#x27;application/json&#x27;</span>,
+      },
+      <span class="hljs-attr">body</span>: <span class="hljs-title class_">JSON</span>.<span class="hljs-title function_">stringify</span>(logEntry)
+    }).<span class="hljs-title function_">catch</span>(<span class="hljs-function"><span class="hljs-params">error</span> =&gt;</span> {
+      <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">error</span>(<span class="hljs-string">&#x27;Failed to log security event:&#x27;</span>, error);
+    });
+  }
+
+  <span class="hljs-keyword">private</span> <span class="hljs-title function_">getClientIP</span>(): <span class="hljs-built_in">string</span> {
+    <span class="hljs-comment">// This would typically be handled by the server</span>
+    <span class="hljs-keyword">return</span> <span class="hljs-string">&#x27;unknown&#x27;</span>;
+  }
+
+  <span class="hljs-keyword">private</span> <span class="hljs-title function_">getSessionId</span>(): <span class="hljs-built_in">string</span> {
+    <span class="hljs-keyword">return</span> <span class="hljs-variable language_">sessionStorage</span>.<span class="hljs-title function_">getItem</span>(<span class="hljs-string">&#x27;session_id&#x27;</span>) || <span class="hljs-string">&#x27;unknown&#x27;</span>;
+  }
+}
+</code></pre></pre>
+<hr/>
+<h2 id="input-validation-&amp;-sanitization" node="[object Object]">Input Validation &amp; Sanitization</h2>
+<h3 id="[object-object]" node="[object Object]"><strong>Advanced Input Validation Framework</strong></h3>
+<pre><pre><code class="hljs hljs language-typescript"><span class="hljs-comment">// input-validator.ts</span>
+<span class="hljs-keyword">interface</span> <span class="hljs-title class_">ValidationRule</span> {
+  <span class="hljs-attr">type</span>: <span class="hljs-string">&#x27;string&#x27;</span> | <span class="hljs-string">&#x27;number&#x27;</span> | <span class="hljs-string">&#x27;email&#x27;</span> | <span class="hljs-string">&#x27;url&#x27;</span> | <span class="hljs-string">&#x27;date&#x27;</span> | <span class="hljs-string">&#x27;custom&#x27;</span>;
+  <span class="hljs-attr">required</span>?: <span class="hljs-built_in">boolean</span>;
+  <span class="hljs-attr">minLength</span>?: <span class="hljs-built_in">number</span>;
+  <span class="hljs-attr">maxLength</span>?: <span class="hljs-built_in">number</span>;
+  <span class="hljs-attr">min</span>?: <span class="hljs-built_in">number</span>;
+  <span class="hljs-attr">max</span>?: <span class="hljs-built_in">number</span>;
+  <span class="hljs-attr">pattern</span>?: <span class="hljs-title class_">RegExp</span>;
+  <span class="hljs-attr">allowedValues</span>?: <span class="hljs-built_in">any</span>[];
+  <span class="hljs-attr">customValidator</span>?: <span class="hljs-function">(<span class="hljs-params"><span class="hljs-attr">value</span>: <span class="hljs-built_in">any</span></span>) =&gt;</span> <span class="hljs-built_in">boolean</span> | <span class="hljs-built_in">string</span>;
+  <span class="hljs-attr">sanitizer</span>?: <span class="hljs-function">(<span class="hljs-params"><span class="hljs-attr">value</span>: <span class="hljs-built_in">any</span></span>) =&gt;</span> <span class="hljs-built_in">any</span>;
+}
+
+<span class="hljs-keyword">interface</span> <span class="hljs-title class_">ValidationResult</span> {
+  <span class="hljs-attr">isValid</span>: <span class="hljs-built_in">boolean</span>;
+  <span class="hljs-attr">errors</span>: <span class="hljs-built_in">string</span>[];
+  <span class="hljs-attr">sanitizedValue</span>?: <span class="hljs-built_in">any</span>;
+}
+
+<span class="hljs-keyword">class</span> <span class="hljs-title class_">SecureInputValidator</span> {
+  <span class="hljs-keyword">private</span> commonPatterns = {
+    <span class="hljs-attr">email</span>: <span class="hljs-regexp">/^[a-zA-Z0-9.!#$%&amp;&#x27;*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/</span>,
+    <span class="hljs-attr">phone</span>: <span class="hljs-regexp">/^\+?[\d\s\-\(\)]+$/</span>,
+    <span class="hljs-attr">url</span>: <span class="hljs-regexp">/^https?:\/\/(?:[-\w.])+(?:\:[0-9]+)?(?:\/(?:[\w/_.])*(?:\?(?:[\w&amp;=%.])*)?(?:\#(?:[\w.])*)?)?$/</span>,
+    <span class="hljs-attr">creditCard</span>: <span class="hljs-regexp">/^(?:4[0-9]{12}(?:[0-9]{3})?|5[1-5][0-9]{14}|3[47][0-9]{13}|3[0-9]{13}|6(?:011|5[0-9]{2})[0-9]{12})$/</span>,
+    <span class="hljs-attr">ssn</span>: <span class="hljs-regexp">/^\d{3}-\d{2}-\d{4}$/</span>,
+    <span class="hljs-attr">ipAddress</span>: <span class="hljs-regexp">/^(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$/</span>
+  };
+
+  <span class="hljs-keyword">private</span> dangerousPatterns = [
+    <span class="hljs-regexp">/&lt;script\b[^&lt;]*(?:(?!&lt;\/script&gt;)&lt;[^&lt;]*)*&lt;\/script&gt;/gi</span>,
+    <span class="hljs-regexp">/javascript:/gi</span>,
+    <span class="hljs-regexp">/vbscript:/gi</span>,
+    <span class="hljs-regexp">/onload\s*=/gi</span>,
+    <span class="hljs-regexp">/onerror\s*=/gi</span>,
+    <span class="hljs-regexp">/onclick\s*=/gi</span>,
+    <span class="hljs-regexp">/data:text\/html/gi</span>,
+    <span class="hljs-regexp">/eval\s*\(/gi</span>,
+    <span class="hljs-regexp">/expression\s*\(/gi</span>
+  ];
+
+  <span class="hljs-title function_">validate</span>(<span class="hljs-attr">input</span>: <span class="hljs-built_in">any</span>, <span class="hljs-attr">rules</span>: <span class="hljs-title class_">ValidationRule</span>): <span class="hljs-title class_">ValidationResult</span> {
+    <span class="hljs-keyword">const</span> <span class="hljs-attr">result</span>: <span class="hljs-title class_">ValidationResult</span> = {
+      <span class="hljs-attr">isValid</span>: <span class="hljs-literal">true</span>,
+      <span class="hljs-attr">errors</span>: []
+    };
+
+    <span class="hljs-keyword">try</span> {
+      <span class="hljs-comment">// Check if required</span>
+      <span class="hljs-keyword">if</span> (rules.<span class="hljs-property">required</span> &amp;&amp; <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">isEmpty</span>(input)) {
+        result.<span class="hljs-property">isValid</span> = <span class="hljs-literal">false</span>;
+        result.<span class="hljs-property">errors</span>.<span class="hljs-title function_">push</span>(<span class="hljs-string">&#x27;Field is required&#x27;</span>);
+        <span class="hljs-keyword">return</span> result;
+      }
+
+      <span class="hljs-comment">// Skip validation for empty optional fields</span>
+      <span class="hljs-keyword">if</span> (!rules.<span class="hljs-property">required</span> &amp;&amp; <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">isEmpty</span>(input)) {
+        result.<span class="hljs-property">sanitizedValue</span> = input;
+        <span class="hljs-keyword">return</span> result;
+      }
+
+      <span class="hljs-comment">// Sanitize input first</span>
+      <span class="hljs-keyword">let</span> sanitizedValue = rules.<span class="hljs-property">sanitizer</span> ? rules.<span class="hljs-title function_">sanitizer</span>(input) : input;
+      
+      <span class="hljs-comment">// Detect and block malicious patterns</span>
+      <span class="hljs-keyword">if</span> (<span class="hljs-keyword">typeof</span> sanitizedValue === <span class="hljs-string">&#x27;string&#x27;</span> &amp;&amp; <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">containsMaliciousPatterns</span>(sanitizedValue)) {
+        result.<span class="hljs-property">isValid</span> = <span class="hljs-literal">false</span>;
+        result.<span class="hljs-property">errors</span>.<span class="hljs-title function_">push</span>(<span class="hljs-string">&#x27;Input contains potentially malicious content&#x27;</span>);
+        <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">logSecurityThreat</span>(<span class="hljs-string">&#x27;MALICIOUS_INPUT_DETECTED&#x27;</span>, { <span class="hljs-attr">input</span>: <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">hashSensitiveData</span>(input) });
+        <span class="hljs-keyword">return</span> result;
+      }
+
+      <span class="hljs-comment">// Type-specific validation</span>
+      <span class="hljs-keyword">const</span> typeValidation = <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">validateType</span>(sanitizedValue, rules);
+      <span class="hljs-keyword">if</span> (!typeValidation.<span class="hljs-property">isValid</span>) {
+        result.<span class="hljs-property">isValid</span> = <span class="hljs-literal">false</span>;
+        result.<span class="hljs-property">errors</span>.<span class="hljs-title function_">push</span>(...typeValidation.<span class="hljs-property">errors</span>);
+      }
+
+      <span class="hljs-comment">// Length validation</span>
+      <span class="hljs-keyword">if</span> (<span class="hljs-keyword">typeof</span> sanitizedValue === <span class="hljs-string">&#x27;string&#x27;</span>) {
+        <span class="hljs-keyword">if</span> (rules.<span class="hljs-property">minLength</span> &amp;&amp; sanitizedValue.<span class="hljs-property">length</span> &lt; rules.<span class="hljs-property">minLength</span>) {
+          result.<span class="hljs-property">isValid</span> = <span class="hljs-literal">false</span>;
+          result.<span class="hljs-property">errors</span>.<span class="hljs-title function_">push</span>(<span class="hljs-string">`Minimum length is <span class="hljs-subst">${rules.minLength}</span>`</span>);
+        }
+        
+        <span class="hljs-keyword">if</span> (rules.<span class="hljs-property">maxLength</span> &amp;&amp; sanitizedValue.<span class="hljs-property">length</span> &gt; rules.<span class="hljs-property">maxLength</span>) {
+          result.<span class="hljs-property">isValid</span> = <span class="hljs-literal">false</span>;
+          result.<span class="hljs-property">errors</span>.<span class="hljs-title function_">push</span>(<span class="hljs-string">`Maximum length is <span class="hljs-subst">${rules.maxLength}</span>`</span>);
+        }
+      }
+
+      <span class="hljs-comment">// Numeric range validation</span>
+      <span class="hljs-keyword">if</span> (<span class="hljs-keyword">typeof</span> sanitizedValue === <span class="hljs-string">&#x27;number&#x27;</span>) {
+        <span class="hljs-keyword">if</span> (rules.<span class="hljs-property">min</span> !== <span class="hljs-literal">undefined</span> &amp;&amp; sanitizedValue &lt; rules.<span class="hljs-property">min</span>) {
+          result.<span class="hljs-property">isValid</span> = <span class="hljs-literal">false</span>;
+          result.<span class="hljs-property">errors</span>.<span class="hljs-title function_">push</span>(<span class="hljs-string">`Minimum value is <span class="hljs-subst">${rules.min}</span>`</span>);
+        }
+        
+        <span class="hljs-keyword">if</span> (rules.<span class="hljs-property">max</span> !== <span class="hljs-literal">undefined</span> &amp;&amp; sanitizedValue &gt; rules.<span class="hljs-property">max</span>) {
+          result.<span class="hljs-property">isValid</span> = <span class="hljs-literal">false</span>;
+          result.<span class="hljs-property">errors</span>.<span class="hljs-title function_">push</span>(<span class="hljs-string">`Maximum value is <span class="hljs-subst">${rules.max}</span>`</span>);
+        }
+      }
+
+      <span class="hljs-comment">// Pattern validation</span>
+      <span class="hljs-keyword">if</span> (rules.<span class="hljs-property">pattern</span> &amp;&amp; <span class="hljs-keyword">typeof</span> sanitizedValue === <span class="hljs-string">&#x27;string&#x27;</span>) {
+        <span class="hljs-keyword">if</span> (!rules.<span class="hljs-property">pattern</span>.<span class="hljs-title function_">test</span>(sanitizedValue)) {
+          result.<span class="hljs-property">isValid</span> = <span class="hljs-literal">false</span>;
+          result.<span class="hljs-property">errors</span>.<span class="hljs-title function_">push</span>(<span class="hljs-string">&#x27;Input format is invalid&#x27;</span>);
+        }
+      }
+
+      <span class="hljs-comment">// Allowed values validation</span>
+      <span class="hljs-keyword">if</span> (rules.<span class="hljs-property">allowedValues</span> &amp;&amp; !rules.<span class="hljs-property">allowedValues</span>.<span class="hljs-title function_">includes</span>(sanitizedValue)) {
+        result.<span class="hljs-property">isValid</span> = <span class="hljs-literal">false</span>;
+        result.<span class="hljs-property">errors</span>.<span class="hljs-title function_">push</span>(<span class="hljs-string">&#x27;Value is not allowed&#x27;</span>);
+      }
+
+      <span class="hljs-comment">// Custom validation</span>
+      <span class="hljs-keyword">if</span> (rules.<span class="hljs-property">customValidator</span>) {
+        <span class="hljs-keyword">const</span> customResult = rules.<span class="hljs-title function_">customValidator</span>(sanitizedValue);
+        <span class="hljs-keyword">if</span> (customResult !== <span class="hljs-literal">true</span>) {
+          result.<span class="hljs-property">isValid</span> = <span class="hljs-literal">false</span>;
+          result.<span class="hljs-property">errors</span>.<span class="hljs-title function_">push</span>(<span class="hljs-keyword">typeof</span> customResult === <span class="hljs-string">&#x27;string&#x27;</span> ? customResult : <span class="hljs-string">&#x27;Custom validation failed&#x27;</span>);
+        }
+      }
+
+      result.<span class="hljs-property">sanitizedValue</span> = sanitizedValue;
+      <span class="hljs-keyword">return</span> result;
+
+    } <span class="hljs-keyword">catch</span> (error) {
+      result.<span class="hljs-property">isValid</span> = <span class="hljs-literal">false</span>;
+      result.<span class="hljs-property">errors</span>.<span class="hljs-title function_">push</span>(<span class="hljs-string">&#x27;Validation error occurred&#x27;</span>);
+      <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">logSecurityThreat</span>(<span class="hljs-string">&#x27;VALIDATION_ERROR&#x27;</span>, { <span class="hljs-attr">error</span>: error.<span class="hljs-property">message</span> });
+      <span class="hljs-keyword">return</span> result;
+    }
+  }
+
+  <span class="hljs-comment">// Comprehensive form validation</span>
+  <span class="hljs-title function_">validateForm</span>(<span class="hljs-attr">formData</span>: <span class="hljs-title class_">Record</span>&lt;<span class="hljs-built_in">string</span>, <span class="hljs-built_in">any</span>&gt;, <span class="hljs-attr">schema</span>: <span class="hljs-title class_">Record</span>&lt;<span class="hljs-built_in">string</span>, <span class="hljs-title class_">ValidationRule</span>&gt;): {
+    <span class="hljs-attr">isValid</span>: <span class="hljs-built_in">boolean</span>;
+    <span class="hljs-attr">errors</span>: <span class="hljs-title class_">Record</span>&lt;<span class="hljs-built_in">string</span>, <span class="hljs-built_in">string</span>[]&gt;;
+    <span class="hljs-attr">sanitizedData</span>: <span class="hljs-title class_">Record</span>&lt;<span class="hljs-built_in">string</span>, <span class="hljs-built_in">any</span>&gt;;
+  } {
+    <span class="hljs-keyword">const</span> <span class="hljs-attr">errors</span>: <span class="hljs-title class_">Record</span>&lt;<span class="hljs-built_in">string</span>, <span class="hljs-built_in">string</span>[]&gt; = {};
+    <span class="hljs-keyword">const</span> <span class="hljs-attr">sanitizedData</span>: <span class="hljs-title class_">Record</span>&lt;<span class="hljs-built_in">string</span>, <span class="hljs-built_in">any</span>&gt; = {};
+    <span class="hljs-keyword">let</span> isValid = <span class="hljs-literal">true</span>;
+
+    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">const</span> [field, rules] <span class="hljs-keyword">of</span> <span class="hljs-title class_">Object</span>.<span class="hljs-title function_">entries</span>(schema)) {
+      <span class="hljs-keyword">const</span> result = <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">validate</span>(formData[field], rules);
+      
+      <span class="hljs-keyword">if</span> (!result.<span class="hljs-property">isValid</span>) {
+        errors[field] = result.<span class="hljs-property">errors</span>;
+        isValid = <span class="hljs-literal">false</span>;
+      } <span class="hljs-keyword">else</span> {
+        sanitizedData[field] = result.<span class="hljs-property">sanitizedValue</span>;
+      }
+    }
+
+    <span class="hljs-comment">// Cross-field validation</span>
+    <span class="hljs-keyword">const</span> crossFieldErrors = <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">validateCrossFields</span>(sanitizedData, schema);
+    <span class="hljs-keyword">if</span> (crossFieldErrors.<span class="hljs-property">length</span> &gt; <span class="hljs-number">0</span>) {
+      errors[<span class="hljs-string">&#x27;_form&#x27;</span>] = crossFieldErrors;
+      isValid = <span class="hljs-literal">false</span>;
+    }
+
+    <span class="hljs-keyword">return</span> { isValid, errors, sanitizedData };
+  }
+
+  <span class="hljs-keyword">private</span> <span class="hljs-title function_">validateType</span>(<span class="hljs-attr">value</span>: <span class="hljs-built_in">any</span>, <span class="hljs-attr">rules</span>: <span class="hljs-title class_">ValidationRule</span>): <span class="hljs-title class_">ValidationResult</span> {
+    <span class="hljs-keyword">const</span> <span class="hljs-attr">result</span>: <span class="hljs-title class_">ValidationResult</span> = { <span class="hljs-attr">isValid</span>: <span class="hljs-literal">true</span>, <span class="hljs-attr">errors</span>: [] };
+
+    <span class="hljs-keyword">switch</span> (rules.<span class="hljs-property">type</span>) {
+      <span class="hljs-keyword">case</span> <span class="hljs-string">&#x27;string&#x27;</span>:
+        <span class="hljs-keyword">if</span> (<span class="hljs-keyword">typeof</span> value !== <span class="hljs-string">&#x27;string&#x27;</span>) {
+          result.<span class="hljs-property">isValid</span> = <span class="hljs-literal">false</span>;
+          result.<span class="hljs-property">errors</span>.<span class="hljs-title function_">push</span>(<span class="hljs-string">&#x27;Must be a string&#x27;</span>);
+        }
+        <span class="hljs-keyword">break</span>;
+
+      <span class="hljs-keyword">case</span> <span class="hljs-string">&#x27;number&#x27;</span>:
+        <span class="hljs-keyword">const</span> numValue = <span class="hljs-title class_">Number</span>(value);
+        <span class="hljs-keyword">if</span> (<span class="hljs-built_in">isNaN</span>(numValue) || !<span class="hljs-built_in">isFinite</span>(numValue)) {
+          result.<span class="hljs-property">isValid</span> = <span class="hljs-literal">false</span>;
+          result.<span class="hljs-property">errors</span>.<span class="hljs-title function_">push</span>(<span class="hljs-string">&#x27;Must be a valid number&#x27;</span>);
+        }
+        <span class="hljs-keyword">break</span>;
+
+      <span class="hljs-keyword">case</span> <span class="hljs-string">&#x27;email&#x27;</span>:
+        <span class="hljs-keyword">if</span> (<span class="hljs-keyword">typeof</span> value !== <span class="hljs-string">&#x27;string&#x27;</span> || !<span class="hljs-variable language_">this</span>.<span class="hljs-property">commonPatterns</span>.<span class="hljs-property">email</span>.<span class="hljs-title function_">test</span>(value)) {
+          result.<span class="hljs-property">isValid</span> = <span class="hljs-literal">false</span>;
+          result.<span class="hljs-property">errors</span>.<span class="hljs-title function_">push</span>(<span class="hljs-string">&#x27;Must be a valid email address&#x27;</span>);
+        }
+        <span class="hljs-keyword">break</span>;
+
+      <span class="hljs-keyword">case</span> <span class="hljs-string">&#x27;url&#x27;</span>:
+        <span class="hljs-keyword">if</span> (<span class="hljs-keyword">typeof</span> value !== <span class="hljs-string">&#x27;string&#x27;</span> || !<span class="hljs-variable language_">this</span>.<span class="hljs-title function_">isValidURL</span>(value)) {
+          result.<span class="hljs-property">isValid</span> = <span class="hljs-literal">false</span>;
+          result.<span class="hljs-property">errors</span>.<span class="hljs-title function_">push</span>(<span class="hljs-string">&#x27;Must be a valid URL&#x27;</span>);
+        }
+        <span class="hljs-keyword">break</span>;
+
+      <span class="hljs-keyword">case</span> <span class="hljs-string">&#x27;date&#x27;</span>:
+        <span class="hljs-keyword">const</span> date = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Date</span>(value);
+        <span class="hljs-keyword">if</span> (<span class="hljs-built_in">isNaN</span>(date.<span class="hljs-title function_">getTime</span>())) {
+          result.<span class="hljs-property">isValid</span> = <span class="hljs-literal">false</span>;
+          result.<span class="hljs-property">errors</span>.<span class="hljs-title function_">push</span>(<span class="hljs-string">&#x27;Must be a valid date&#x27;</span>);
+        }
+        <span class="hljs-keyword">break</span>;
+    }
+
+    <span class="hljs-keyword">return</span> result;
+  }
+
+  <span class="hljs-keyword">private</span> <span class="hljs-title function_">isValidURL</span>(<span class="hljs-attr">string</span>: <span class="hljs-built_in">string</span>): <span class="hljs-built_in">boolean</span> {
+    <span class="hljs-keyword">try</span> {
+      <span class="hljs-keyword">const</span> url = <span class="hljs-keyword">new</span> <span class="hljs-title function_">URL</span>(<span class="hljs-built_in">string</span>);
+      <span class="hljs-comment">// Only allow HTTP and HTTPS protocols</span>
+      <span class="hljs-keyword">return</span> [<span class="hljs-string">&#x27;http:&#x27;</span>, <span class="hljs-string">&#x27;https:&#x27;</span>].<span class="hljs-title function_">includes</span>(url.<span class="hljs-property">protocol</span>);
+    } <span class="hljs-keyword">catch</span> {
+      <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;
+    }
+  }
+
+  <span class="hljs-keyword">private</span> <span class="hljs-title function_">containsMaliciousPatterns</span>(<span class="hljs-attr">input</span>: <span class="hljs-built_in">string</span>): <span class="hljs-built_in">boolean</span> {
+    <span class="hljs-keyword">return</span> <span class="hljs-variable language_">this</span>.<span class="hljs-property">dangerousPatterns</span>.<span class="hljs-title function_">some</span>(<span class="hljs-function"><span class="hljs-params">pattern</span> =&gt;</span> pattern.<span class="hljs-title function_">test</span>(input));
+  }
+
+  <span class="hljs-keyword">private</span> <span class="hljs-title function_">isEmpty</span>(<span class="hljs-attr">value</span>: <span class="hljs-built_in">any</span>): <span class="hljs-built_in">boolean</span> {
+    <span class="hljs-keyword">return</span> value === <span class="hljs-literal">null</span> || value === <span class="hljs-literal">undefined</span> || 
+           (<span class="hljs-keyword">typeof</span> value === <span class="hljs-string">&#x27;string&#x27;</span> &amp;&amp; value.<span class="hljs-title function_">trim</span>() === <span class="hljs-string">&#x27;&#x27;</span>) ||
+           (<span class="hljs-title class_">Array</span>.<span class="hljs-title function_">isArray</span>(value) &amp;&amp; value.<span class="hljs-property">length</span> === <span class="hljs-number">0</span>);
+  }
+
+  <span class="hljs-keyword">private</span> <span class="hljs-title function_">validateCrossFields</span>(<span class="hljs-attr">data</span>: <span class="hljs-title class_">Record</span>&lt;<span class="hljs-built_in">string</span>, <span class="hljs-built_in">any</span>&gt;, <span class="hljs-attr">schema</span>: <span class="hljs-title class_">Record</span>&lt;<span class="hljs-built_in">string</span>, <span class="hljs-title class_">ValidationRule</span>&gt;): <span class="hljs-built_in">string</span>[] {
+    <span class="hljs-keyword">const</span> <span class="hljs-attr">errors</span>: <span class="hljs-built_in">string</span>[] = [];
+
+    <span class="hljs-comment">// Password confirmation validation</span>
+    <span class="hljs-keyword">if</span> (data.<span class="hljs-property">password</span> &amp;&amp; data.<span class="hljs-property">confirmPassword</span> &amp;&amp; data.<span class="hljs-property">password</span> !== data.<span class="hljs-property">confirmPassword</span>) {
+      errors.<span class="hljs-title function_">push</span>(<span class="hljs-string">&#x27;Passwords do not match&#x27;</span>);
+    }
+
+    <span class="hljs-comment">// Date range validation</span>
+    <span class="hljs-keyword">if</span> (data.<span class="hljs-property">startDate</span> &amp;&amp; data.<span class="hljs-property">endDate</span>) {
+      <span class="hljs-keyword">const</span> start = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Date</span>(data.<span class="hljs-property">startDate</span>);
+      <span class="hljs-keyword">const</span> end = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Date</span>(data.<span class="hljs-property">endDate</span>);
+      <span class="hljs-keyword">if</span> (start &gt;= end) {
+        errors.<span class="hljs-title function_">push</span>(<span class="hljs-string">&#x27;End date must be after start date&#x27;</span>);
+      }
+    }
+
+    <span class="hljs-comment">// Business rule validations</span>
+    <span class="hljs-keyword">if</span> (data.<span class="hljs-property">age</span> &amp;&amp; data.<span class="hljs-property">age</span> &lt; <span class="hljs-number">18</span> &amp;&amp; data.<span class="hljs-property">requiresParentalConsent</span> !== <span class="hljs-literal">true</span>) {
+      errors.<span class="hljs-title function_">push</span>(<span class="hljs-string">&#x27;Parental consent required for users under 18&#x27;</span>);
+    }
+
+    <span class="hljs-keyword">return</span> errors;
+  }
+
+  <span class="hljs-comment">// Advanced sanitization</span>
+  <span class="hljs-title function_">sanitizeHTML</span>(<span class="hljs-attr">input</span>: <span class="hljs-built_in">string</span>): <span class="hljs-built_in">string</span> {
+    <span class="hljs-comment">// Remove script tags and event handlers</span>
+    <span class="hljs-keyword">let</span> sanitized = input
+      .<span class="hljs-title function_">replace</span>(<span class="hljs-regexp">/&lt;script\b[^&lt;]*(?:(?!&lt;\/script&gt;)&lt;[^&lt;]*)*&lt;\/script&gt;/gi</span>, <span class="hljs-string">&#x27;&#x27;</span>)
+      .<span class="hljs-title function_">replace</span>(<span class="hljs-regexp">/on\w+\s*=\s*[&quot;&#x27;][^&quot;&#x27;]*[&quot;&#x27;]/gi</span>, <span class="hljs-string">&#x27;&#x27;</span>)
+      .<span class="hljs-title function_">replace</span>(<span class="hljs-regexp">/javascript:/gi</span>, <span class="hljs-string">&#x27;&#x27;</span>)
+      .<span class="hljs-title function_">replace</span>(<span class="hljs-regexp">/vbscript:/gi</span>, <span class="hljs-string">&#x27;&#x27;</span>)
+      .<span class="hljs-title function_">replace</span>(<span class="hljs-regexp">/data:text\/html/gi</span>, <span class="hljs-string">&#x27;&#x27;</span>);
+
+    <span class="hljs-comment">// Encode special characters</span>
+    <span class="hljs-keyword">const</span> div = <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">createElement</span>(<span class="hljs-string">&#x27;div&#x27;</span>);
+    div.<span class="hljs-property">textContent</span> = sanitized;
+    <span class="hljs-keyword">return</span> div.<span class="hljs-property">innerHTML</span>;
+  }
+
+  <span class="hljs-title function_">sanitizeSQL</span>(<span class="hljs-attr">input</span>: <span class="hljs-built_in">string</span>): <span class="hljs-built_in">string</span> {
+    <span class="hljs-comment">// Basic SQL injection prevention</span>
+    <span class="hljs-keyword">return</span> input
+      .<span class="hljs-title function_">replace</span>(<span class="hljs-regexp">/[&#x27;&quot;;\\]/g</span>, <span class="hljs-string">&#x27;&#x27;</span>) <span class="hljs-comment">// Remove dangerous characters</span>
+      .<span class="hljs-title function_">replace</span>(<span class="hljs-regexp">/\b(DROP|DELETE|INSERT|UPDATE|EXEC|EXECUTE|UNION|SELECT)\b/gi</span>, <span class="hljs-string">&#x27;&#x27;</span>) <span class="hljs-comment">// Remove SQL keywords</span>
+      .<span class="hljs-title function_">trim</span>();
+  }
+
+  <span class="hljs-comment">// Security monitoring</span>
+  <span class="hljs-keyword">private</span> <span class="hljs-title function_">logSecurityThreat</span>(<span class="hljs-attr">threat</span>: <span class="hljs-built_in">string</span>, <span class="hljs-attr">data</span>: <span class="hljs-built_in">any</span>): <span class="hljs-built_in">void</span> {
+    <span class="hljs-keyword">const</span> event = {
+      <span class="hljs-attr">timestamp</span>: <span class="hljs-keyword">new</span> <span class="hljs-title class_">Date</span>().<span class="hljs-title function_">toISOString</span>(),
+      threat,
+      data,
+      <span class="hljs-attr">userAgent</span>: navigator.<span class="hljs-property">userAgent</span>,
+      <span class="hljs-attr">url</span>: <span class="hljs-variable language_">window</span>.<span class="hljs-property">location</span>.<span class="hljs-property">href</span>,
+      <span class="hljs-attr">sessionId</span>: <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">getSessionId</span>()
+    };
+
+    <span class="hljs-title function_">fetch</span>(<span class="hljs-string">&#x27;/api/security/threats&#x27;</span>, {
+      <span class="hljs-attr">method</span>: <span class="hljs-string">&#x27;POST&#x27;</span>,
+      <span class="hljs-attr">headers</span>: {
+        <span class="hljs-string">&#x27;Content-Type&#x27;</span>: <span class="hljs-string">&#x27;application/json&#x27;</span>,
+      },
+      <span class="hljs-attr">body</span>: <span class="hljs-title class_">JSON</span>.<span class="hljs-title function_">stringify</span>(event)
+    }).<span class="hljs-title function_">catch</span>(<span class="hljs-function"><span class="hljs-params">error</span> =&gt;</span> {
+      <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">error</span>(<span class="hljs-string">&#x27;Failed to log security threat:&#x27;</span>, error);
+    });
+  }
+
+  <span class="hljs-keyword">private</span> <span class="hljs-title function_">hashSensitiveData</span>(<span class="hljs-attr">data</span>: <span class="hljs-built_in">string</span>): <span class="hljs-built_in">string</span> {
+    <span class="hljs-comment">// Hash sensitive data for logging</span>
+    <span class="hljs-keyword">const</span> encoder = <span class="hljs-keyword">new</span> <span class="hljs-title class_">TextEncoder</span>();
+    <span class="hljs-keyword">const</span> dataArray = encoder.<span class="hljs-title function_">encode</span>(data);
+    
+    <span class="hljs-keyword">return</span> crypto.<span class="hljs-property">subtle</span>.<span class="hljs-title function_">digest</span>(<span class="hljs-string">&#x27;SHA-256&#x27;</span>, dataArray).<span class="hljs-title function_">then</span>(<span class="hljs-function"><span class="hljs-params">hash</span> =&gt;</span> {
+      <span class="hljs-keyword">return</span> <span class="hljs-title class_">Array</span>.<span class="hljs-title function_">from</span>(<span class="hljs-keyword">new</span> <span class="hljs-title class_">Uint8Array</span>(hash))
+        .<span class="hljs-title function_">map</span>(<span class="hljs-function"><span class="hljs-params">b</span> =&gt;</span> b.<span class="hljs-title function_">toString</span>(<span class="hljs-number">16</span>).<span class="hljs-title function_">padStart</span>(<span class="hljs-number">2</span>, <span class="hljs-string">&#x27;0&#x27;</span>))
+        .<span class="hljs-title function_">join</span>(<span class="hljs-string">&#x27;&#x27;</span>);
+    });
+  }
+
+  <span class="hljs-keyword">private</span> <span class="hljs-title function_">getSessionId</span>(): <span class="hljs-built_in">string</span> {
+    <span class="hljs-keyword">return</span> <span class="hljs-variable language_">sessionStorage</span>.<span class="hljs-title function_">getItem</span>(<span class="hljs-string">&#x27;session_id&#x27;</span>) || <span class="hljs-string">&#x27;unknown&#x27;</span>;
+  }
+}
+
+<span class="hljs-comment">// Usage example with React</span>
+<span class="hljs-keyword">const</span> <span class="hljs-title function_">useSecureForm</span> = (<span class="hljs-params"><span class="hljs-attr">schema</span>: <span class="hljs-title class_">Record</span>&lt;<span class="hljs-built_in">string</span>, <span class="hljs-title class_">ValidationRule</span>&gt;</span>) =&gt; {
+  <span class="hljs-keyword">const</span> validator = <span class="hljs-keyword">new</span> <span class="hljs-title class_">SecureInputValidator</span>();
+  <span class="hljs-keyword">const</span> [errors, setErrors] = useState&lt;<span class="hljs-title class_">Record</span>&lt;<span class="hljs-built_in">string</span>, <span class="hljs-built_in">string</span>[]&gt;&gt;({});
+  <span class="hljs-keyword">const</span> [isValid, setIsValid] = <span class="hljs-title function_">useState</span>(<span class="hljs-literal">false</span>);
+
+  <span class="hljs-keyword">const</span> validateField = <span class="hljs-title function_">useCallback</span>(<span class="hljs-function">(<span class="hljs-params"><span class="hljs-attr">name</span>: <span class="hljs-built_in">string</span>, <span class="hljs-attr">value</span>: <span class="hljs-built_in">any</span></span>) =&gt;</span> {
+    <span class="hljs-keyword">const</span> result = validator.<span class="hljs-title function_">validate</span>(value, schema[name]);
+    
+    <span class="hljs-title function_">setErrors</span>(<span class="hljs-function"><span class="hljs-params">prev</span> =&gt;</span> ({
+      ...prev,
+      [name]: result.<span class="hljs-property">isValid</span> ? [] : result.<span class="hljs-property">errors</span>
+    }));
+
+    <span class="hljs-keyword">return</span> result;
+  }, [schema, validator]);
+
+  <span class="hljs-keyword">const</span> validateForm = <span class="hljs-title function_">useCallback</span>(<span class="hljs-function">(<span class="hljs-params"><span class="hljs-attr">formData</span>: <span class="hljs-title class_">Record</span>&lt;<span class="hljs-built_in">string</span>, <span class="hljs-built_in">any</span>&gt;</span>) =&gt;</span> {
+    <span class="hljs-keyword">const</span> result = validator.<span class="hljs-title function_">validateForm</span>(formData, schema);
+    <span class="hljs-title function_">setErrors</span>(result.<span class="hljs-property">errors</span>);
+    <span class="hljs-title function_">setIsValid</span>(result.<span class="hljs-property">isValid</span>);
+    <span class="hljs-keyword">return</span> result;
+  }, [schema, validator]);
+
+  <span class="hljs-keyword">return</span> { validateField, validateForm, errors, isValid };
+};
+</code></pre></pre>
+<p>This comprehensive security framework provides defense-in-depth protection against common frontend vulnerabilities while maintaining usability and performance. The patterns demonstrated here are essential for building secure applications in enterprise environments.</p></div></div></main><footer class="sc-gvqKNf booJNS"><div class="sc-cOpnSz fVoYcP"><div class="sc-kjwdDK kKfrkv"><div class="sc-eVqvcJ inEXDm"><div class="sc-bbbBoY hWhopJ"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-code "><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>Frontend Interview Prep</div><p class="sc-cdmAjP exeTne">Comprehensive interview preparation for frontend engineers targeting Big Tech companies.</p><div class="sc-jytpVa cgXMuV"><a href="https://github.com" aria-label="GitHub"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-github "><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"></path><path d="M9 18c-4.51 2-5-2-7-2"></path></svg></a><a href="https://twitter.com" aria-label="Twitter"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-twitter "><path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"></path></svg></a><a href="https://linkedin.com" aria-label="LinkedIn"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-linkedin "><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect width="4" height="12" x="2" y="9"></rect><circle cx="4" cy="4" r="2"></circle></svg></a><a href="mailto:contact@example.com" aria-label="Email"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-mail "><rect width="20" height="16" x="2" y="4" rx="2"></rect><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path></svg></a></div></div><div class="sc-eVqvcJ inEXDm"><h3>Study Materials</h3><ul><li><a href="/algorithms">Algorithms</a></li><li><a href="/react">React &amp; Frontend</a></li><li><a href="/system-design">System Design</a></li><li><a href="/typescript">TypeScript</a></li><li><a href="/performance">Performance</a></li></ul></div><div class="sc-eVqvcJ inEXDm"><h3>Companies</h3><ul><li><a href="/google">Google</a></li><li><a href="/meta">Meta</a></li><li><a href="/amazon">Amazon</a></li><li><a href="/microsoft">Microsoft</a></li><li><a href="/apple">Apple</a></li></ul></div><div class="sc-eVqvcJ inEXDm"><h3>Resources</h3><ul><li><a href="/interview-tips">Interview Tips</a></li><li><a href="/coding-challenges">Coding Challenges</a></li><li><a href="/mock-interviews">Mock Interviews</a></li><li><a href="/blog">Blog</a></li><li><a href="/faq">FAQ</a></li></ul></div></div><div class="sc-eknHtZ iQqwrD"><p class="sc-pYNGo gObJRG">© 2025 Frontend Interview Prep. All rights reserved.</p><div class="sc-cCVJLD eBqBtc"><a href="/privacy">Privacy Policy</a><a href="/terms">Terms of Service</a><a href="/contact">Contact</a></div></div></div></footer></div><script src="/interview/_next/static/chunks/webpack-be7d7df45533bffc.js" async=""></script><script>(self.__next_f=self.__next_f||[]).push([0]);self.__next_f.push([2,null])</script><script>self.__next_f.push([1,"1:HL[\"/interview/_next/static/media/e4af272ccee01ff0-s.p.woff2\",\"font\",{\"crossOrigin\":\"\",\"type\":\"font/woff2\"}]\n2:HL[\"/interview/_next/static/css/387024c6a2216908.css\",\"style\"]\n"])</script><script>self.__next_f.push([1,"3:I[2846,[],\"\"]\n5:I[5907,[\"918\",\"static/chunks/918-3273b83890f10546.js\",\"930\",\"static/chunks/930-3262a6c9c5acace4.js\",\"687\",\"static/chunks/app/docs/%5B...slug%5D/page-32962e9542d32755.js\"],\"default\"]\n7:I[4707,[],\"\"]\n9:I[6423,[],\"\"]\na:I[2,[\"918\",\"static/chunks/918-3273b83890f10546.js\",\"710\",\"static/chunks/710-dfaa11b4dff08f8e.js\",\"972\",\"static/chunks/972-011bba60ed155615.js\",\"233\",\"static/chunks/233-3e0c1d820a17eca9.js\",\"185\",\"static/chunks/app/layout-333f4adcd11f8f39.js\"],\"default\",1]\nc:I[1060,[],\"\"]\n6:T8a44,"])</script><script>self.__next_f.push([1,"# Advanced Frontend Security Patterns\n\n## Overview\nModern frontend applications face sophisticated security threats. Big Tech companies expect deep understanding of security patterns, threat modeling, and defensive programming techniques.\n\n---\n\n## Advanced XSS Prevention Patterns\n\n### **Content Security Policy (CSP) Implementation**\n\n{% raw %}\n```typescript\n// csp-manager.ts\ninterface CSPDirective {\n  [key: string]: string[] | string;\n}\n\ninterface CSPReport {\n  'csp-report': {\n    'document-uri': string;\n    'violated-directive': string;\n    'blocked-uri': string;\n    'source-file': string;\n    'line-number': number;\n    'column-number': number;\n  };\n}\n\nclass CSPManager {\n  private directives: CSPDirective = {\n    'default-src': [\"'self'\"],\n    'script-src': [\"'self'\"],\n    'style-src': [\"'self'\", \"'unsafe-inline'\"],\n    'img-src': [\"'self'\", 'data:', 'https:'],\n    'font-src': [\"'self'\", 'https://fonts.gstatic.com'],\n    'connect-src': [\"'self'\"],\n    'object-src': [\"'none'\"],\n    'base-uri': [\"'self'\"],\n    'form-action': [\"'self'\"],\n    'frame-ancestors': [\"'none'\"],\n    'upgrade-insecure-requests': []\n  };\n\n  private nonces: Map\u003cstring, string\u003e = new Map();\n  private allowedDomains: Set\u003cstring\u003e = new Set();\n\n  // Generate cryptographically secure nonce\n  generateNonce(): string {\n    const array = new Uint8Array(16);\n    crypto.getRandomValues(array);\n    const nonce = btoa(String.fromCharCode(...array));\n    \n    // Store nonce for validation\n    this.nonces.set(nonce, new Date().toISOString());\n    \n    // Clean up old nonces (older than 1 hour)\n    this.cleanupOldNonces();\n    \n    return nonce;\n  }\n\n  // Add script with nonce\n  addScriptWithNonce(scriptContent: string, nonce?: string): HTMLScriptElement {\n    const script = document.createElement('script');\n    const scriptNonce = nonce || this.generateNonce();\n    \n    script.nonce = scriptNonce;\n    script.textContent = scriptContent;\n    \n    // Validate nonce before execution\n    if (this.validateNonce(scriptNonce)) {\n      document.head.appendChild(script);\n    } else {\n      console.error('Invalid nonce, script execution blocked');\n      throw new Error('CSP violation: Invalid nonce');\n    }\n    \n    return script;\n  }\n\n  // Dynamic CSP policy adjustment\n  adjustPolicyForThirdParty(domain: string, directives: string[]): void {\n    if (!this.isAllowedDomain(domain)) {\n      console.warn(`Attempting to add untrusted domain: ${domain}`);\n      return;\n    }\n\n    directives.forEach(directive =\u003e {\n      if (!this.directives[directive]) {\n        this.directives[directive] = [];\n      }\n      \n      if (Array.isArray(this.directives[directive])) {\n        (this.directives[directive] as string[]).push(domain);\n      }\n    });\n\n    this.updateCSPHeader();\n  }\n\n  // Strict CSP for high-security environments\n  enableStrictCSP(): void {\n    this.directives = {\n      'default-src': [\"'none'\"],\n      'script-src': [\"'strict-dynamic'\"],\n      'style-src': [\"'self'\"],\n      'img-src': [\"'self'\"],\n      'font-src': [\"'self'\"],\n      'connect-src': [\"'self'\"],\n      'object-src': [\"'none'\"],\n      'base-uri': [\"'none'\"],\n      'require-trusted-types-for': [\"'script'\"],\n      'trusted-types': ['default']\n    };\n\n    this.updateCSPHeader();\n  }\n\n  // CSP violation reporting\n  setupViolationReporting(): void {\n    // Set up reporting endpoint\n    this.directives['report-uri'] = '/api/csp-violations';\n    this.directives['report-to'] = 'csp-endpoint';\n\n    // Handle CSP violations\n    document.addEventListener('securitypolicyviolation', (event) =\u003e {\n      this.handleCSPViolation(event);\n    });\n\n    // Set up Reporting API endpoint\n    if ('ReportingObserver' in window) {\n      const observer = new ReportingObserver((reports) =\u003e {\n        reports.forEach(report =\u003e {\n          if (report.type === 'csp-violation') {\n            this.logCSPViolation(report.body);\n          }\n        });\n      });\n      \n      observer.observe();\n    }\n  }\n\n  private validateNonce(nonce: string): boolean {\n    return this.nonces.has(nonce);\n  }\n\n  private cleanupOldNonces(): void {\n    const oneHourAgo = new Date(Date.now() - 60 * 60 * 1000);\n    \n    for (const [nonce, timestamp] of this.nonces.entries()) {\n      if (new Date(timestamp) \u003c oneHourAgo) {\n        this.nonces.delete(nonce);\n      }\n    }\n  }\n\n  private isAllowedDomain(domain: string): boolean {\n    // Implement domain validation logic\n    const allowedPatterns = [\n      /^https:\\/\\/.*\\.googleapis\\.com$/,\n      /^https:\\/\\/.*\\.gstatic\\.com$/,\n      /^https:\\/\\/cdnjs\\.cloudflare\\.com$/\n    ];\n\n    return allowedPatterns.some(pattern =\u003e pattern.test(domain));\n  }\n\n  private handleCSPViolation(event: SecurityPolicyViolationEvent): void {\n    const violation = {\n      documentURI: event.documentURI,\n      violatedDirective: event.violatedDirective,\n      blockedURI: event.blockedURI,\n      sourceFile: event.sourceFile,\n      lineNumber: event.lineNumber,\n      columnNumber: event.columnNumber,\n      originalPolicy: event.originalPolicy,\n      timestamp: new Date().toISOString(),\n      userAgent: navigator.userAgent\n    };\n\n    // Send to security monitoring system\n    this.reportViolation(violation);\n    \n    // Log for debugging in development\n    if (process.env.NODE_ENV === 'development') {\n      console.warn('CSP Violation:', violation);\n    }\n  }\n\n  private async reportViolation(violation: any): Promise\u003cvoid\u003e {\n    try {\n      await fetch('/api/security/csp-violations', {\n        method: 'POST',\n        headers: {\n          'Content-Type': 'application/json',\n        },\n        body: JSON.stringify(violation)\n      });\n    } catch (error) {\n      console.error('Failed to report CSP violation:', error);\n    }\n  }\n\n  private updateCSPHeader(): void {\n    const policy = Object.entries(this.directives)\n      .map(([key, value]) =\u003e {\n        if (Array.isArray(value)) {\n          return `${key} ${value.join(' ')}`;\n        }\n        return key;\n      })\n      .join('; ');\n\n    // Update meta tag (fallback)\n    let metaTag = document.querySelector('meta[http-equiv=\"Content-Security-Policy\"]') as HTMLMetaElement;\n    if (!metaTag) {\n      metaTag = document.createElement('meta');\n      metaTag.httpEquiv = 'Content-Security-Policy';\n      document.head.appendChild(metaTag);\n    }\n    metaTag.content = policy;\n  }\n\n  generateCSPHeader(): string {\n    return Object.entries(this.directives)\n      .map(([key, value]) =\u003e {\n        if (Array.isArray(value)) {\n          return `${key} ${value.join(' ')}`;\n        }\n        return key;\n      })\n      .join('; ');\n  }\n}\n```\n{% endraw %}\n\n### **Trusted Types Implementation**\n\n```typescript\n// trusted-types.ts\ninterface TrustedTypesPolicy {\n  createHTML(input: string): TrustedHTML;\n  createScript(input: string): TrustedScript;\n  createScriptURL(input: string): TrustedScriptURL;\n}\n\nclass TrustedTypesManager {\n  private policies: Map\u003cstring, TrustedTypesPolicy\u003e = new Map();\n  private sanitizer: HTMLSanitizer;\n\n  constructor() {\n    this.initializeTrustedTypes();\n    this.setupHTMLSanitizer();\n  }\n\n  private initializeTrustedTypes(): void {\n    if ('trustedTypes' in window) {\n      // Create default policy for backward compatibility\n      const defaultPolicy = trustedTypes.createPolicy('default', {\n        createHTML: (input: string) =\u003e {\n          return this.sanitizeHTML(input);\n        },\n        createScript: (input: string) =\u003e {\n          return this.sanitizeScript(input);\n        },\n        createScriptURL: (input: string) =\u003e {\n          return this.sanitizeScriptURL(input);\n        }\n      });\n\n      // Create strict policy for sensitive operations\n      const strictPolicy = trustedTypes.createPolicy('strict', {\n        createHTML: (input: string) =\u003e {\n          // Only allow very limited HTML\n          return this.strictSanitizeHTML(input);\n        },\n        createScript: (input: string) =\u003e {\n          // Block all dynamic script creation\n          throw new Error('Dynamic script creation not allowed in strict mode');\n        },\n        createScriptURL: (input: string) =\u003e {\n          // Only allow same-origin scripts\n          if (!this.isSameOrigin(input)) {\n            throw new Error('Cross-origin scripts not allowed in strict mode');\n          }\n          return input;\n        }\n      });\n\n      this.policies.set('default', defaultPolicy);\n      this.policies.set('strict', strictPolicy);\n    }\n  }\n\n  private setupHTMLSanitizer(): void {\n    // Use the new Sanitizer API when available\n    if ('Sanitizer' in window) {\n      this.sanitizer = new Sanitizer({\n        allowElements: [\n          'div', 'span', 'p', 'br', 'strong', 'em', 'u', 'i', 'b',\n          'h1', 'h2', 'h3', 'h4', 'h5', 'h6',\n          'ul', 'ol', 'li',\n          'a', 'img'\n        ],\n        allowAttributes: {\n          'a': ['href', 'title'],\n          'img': ['src', 'alt', 'title', 'width', 'height'],\n          '*': ['class', 'id']\n        },\n        allowCustomElements: false\n      });\n    }\n  }\n\n  // Safe HTML creation with sanitization\n  createSafeHTML(input: string, policyName = 'default'): TrustedHTML {\n    const policy = this.policies.get(policyName);\n    if (!policy) {\n      throw new Error(`Unknown policy: ${policyName}`);\n    }\n\n    return policy.createHTML(input);\n  }\n\n  // Safe script creation with validation\n  createSafeScript(input: string, policyName = 'default'): TrustedScript {\n    const policy = this.policies.get(policyName);\n    if (!policy) {\n      throw new Error(`Unknown policy: ${policyName}`);\n    }\n\n    // Additional validation\n    if (this.containsSuspiciousPatterns(input)) {\n      throw new Error('Script contains suspicious patterns');\n    }\n\n    return policy.createScript(input);\n  }\n\n  // Safe script URL creation\n  createSafeScriptURL(input: string, policyName = 'default'): TrustedScriptURL {\n    const policy = this.policies.get(policyName);\n    if (!policy) {\n      throw new Error(`Unknown policy: ${policyName}`);\n    }\n\n    return policy.createScriptURL(input);\n  }\n\n  // Advanced HTML sanitization\n  private sanitizeHTML(input: string): string {\n    if (this.sanitizer) {\n      // Use native Sanitizer API\n      const fragment = this.sanitizer.sanitizeFor('div', input);\n      return fragment.innerHTML;\n    }\n\n    // Fallback to DOMPurify-like sanitization\n    return this.fallbackSanitize(input);\n  }\n\n  private strictSanitizeHTML(input: string): string {\n    // Only allow plain text and basic formatting\n    const allowedTags = ['strong', 'em', 'br'];\n    const doc = new DOMParser().parseFromString(input, 'text/html');\n    \n    this.removeDisallowedElements(doc.body, allowedTags);\n    return doc.body.innerHTML;\n  }\n\n  private sanitizeScript(input: string): string {\n    // Validate script content\n    if (this.containsMaliciousPatterns(input)) {\n      throw new Error('Script contains malicious patterns');\n    }\n\n    // Remove dangerous functions\n    const dangerousFunctions = [\n      'eval', 'Function', 'setTimeout', 'setInterval',\n      'document.write', 'document.writeln'\n    ];\n\n    let sanitized = input;\n    dangerousFunctions.forEach(func =\u003e {\n      const regex = new RegExp(`\\\\b${func}\\\\s*\\\\(`, 'gi');\n      if (regex.test(sanitized)) {\n        throw new Error(`Dangerous function detected: ${func}`);\n      }\n    });\n\n    return sanitized;\n  }\n\n  private sanitizeScriptURL(input: string): string {\n    try {\n      const url = new URL(input);\n      \n      // Only allow HTTPS and same-origin\n      if (url.protocol !== 'https:' \u0026\u0026 !this.isSameOrigin(input)) {\n        throw new Error('Only HTTPS and same-origin URLs allowed');\n      }\n\n      // Check against allowlist\n      if (!this.isAllowedScriptSource(url.hostname)) {\n        throw new Error(`Script source not allowed: ${url.hostname}`);\n      }\n\n      return input;\n    } catch (error) {\n      throw new Error(`Invalid script URL: ${input}`);\n    }\n  }\n\n  private containsSuspiciousPatterns(script: string): boolean {\n    const suspiciousPatterns = [\n      /javascript:/i,\n      /data:/i,\n      /vbscript:/i,\n      /onload\\s*=/i,\n      /onerror\\s*=/i,\n      /onclick\\s*=/i,\n      /\u003cscript/i,\n      /\u003ciframe/i,\n      /document\\.cookie/i,\n      /localStorage/i,\n      /sessionStorage/i\n    ];\n\n    return suspiciousPatterns.some(pattern =\u003e pattern.test(script));\n  }\n\n  private containsMaliciousPatterns(script: string): boolean {\n    const maliciousPatterns = [\n      /eval\\s*\\(/i,\n      /Function\\s*\\(/i,\n      /document\\.write/i,\n      /innerHTML\\s*=/i,\n      /outerHTML\\s*=/i,\n      /insertAdjacentHTML/i,\n      /location\\s*=/i,\n      /window\\.open/i\n    ];\n\n    return maliciousPatterns.some(pattern =\u003e pattern.test(script));\n  }\n\n  private isSameOrigin(url: string): boolean {\n    try {\n      const urlObj = new URL(url);\n      return urlObj.origin === window.location.origin;\n    } catch {\n      return false;\n    }\n  }\n\n  private isAllowedScriptSource(hostname: string): boolean {\n    const allowedHosts = [\n      'cdnjs.cloudflare.com',\n      'unpkg.com',\n      'cdn.jsdelivr.net',\n      'ajax.googleapis.com'\n    ];\n\n    return allowedHosts.includes(hostname) || hostname === window.location.hostname;\n  }\n\n  private removeDisallowedElements(element: Element, allowedTags: string[]): void {\n    const children = Array.from(element.children);\n    \n    children.forEach(child =\u003e {\n      if (!allowedTags.includes(child.tagName.toLowerCase())) {\n        // Replace with text content\n        const textNode = document.createTextNode(child.textContent || '');\n        child.parentNode?.replaceChild(textNode, child);\n      } else {\n        // Recursively clean child elements\n        this.removeDisallowedElements(child, allowedTags);\n      }\n    });\n  }\n\n  private fallbackSanitize(input: string): string {\n    // Basic sanitization without external library\n    const div = document.createElement('div');\n    div.textContent = input;\n    \n    // Allow basic HTML tags\n    let sanitized = div.innerHTML;\n    \n    // Remove script tags and event handlers\n    sanitized = sanitized.replace(/\u003cscript\\b[^\u003c]*(?:(?!\u003c\\/script\u003e)\u003c[^\u003c]*)*\u003c\\/script\u003e/gi, '');\n    sanitized = sanitized.replace(/on\\w+\\s*=\\s*[\"'][^\"']*[\"']/gi, '');\n    sanitized = sanitized.replace(/javascript:/gi, '');\n    \n    return sanitized;\n  }\n}\n```\n\n---\n\n## Advanced Authentication \u0026 Authorization\n\n### **JWT Security Implementation**\n\n```typescript\n// jwt-security.ts\ninterface JWTHeader {\n  alg: string;\n  typ: string;\n  kid?: string;\n}\n\ninterface JWTPayload {\n  sub: string;\n  iat: number;\n  exp: number;\n  aud: string;\n  iss: string;\n  scope?: string[];\n  permissions?: string[];\n}\n\ninterface SecurityConfig {\n  allowedAlgorithms: string[];\n  maxTokenAge: number;\n  clockSkew: number;\n  issuerWhitelist: string[];\n  audienceWhitelist: string[];\n}\n\nclass JWTSecurityManager {\n  private config: SecurityConfig = {\n    allowedAlgorithms: ['RS256', 'ES256'],\n    maxTokenAge: 3600, // 1 hour\n    clockSkew: 300, // 5 minutes\n    issuerWhitelist: ['https://auth.company.com', 'https://auth.staging.company.com'],\n    audienceWhitelist: ['https://app.company.com', 'https://api.company.com']\n  };\n\n  private publicKeys: Map\u003cstring, CryptoKey\u003e = new Map();\n  private tokenBlacklist: Set\u003cstring\u003e = new Set();\n  private rateLimiter: Map\u003cstring, number[]\u003e = new Map();\n\n  async validateToken(token: string): Promise\u003cJWTPayload\u003e {\n    try {\n      // 1. Parse token structure\n      const { header, payload, signature } = this.parseJWT(token);\n\n      // 2. Validate header\n      this.validateHeader(header);\n\n      // 3. Check token blacklist\n      if (this.isTokenBlacklisted(token)) {\n        throw new Error('Token is blacklisted');\n      }\n\n      // 4. Validate payload\n      this.validatePayload(payload);\n\n      // 5. Verify signature\n      await this.verifySignature(token, header, payload);\n\n      // 6. Check rate limiting\n      this.checkRateLimit(payload.sub);\n\n      return payload;\n    } catch (error) {\n      this.logSecurityEvent('JWT_VALIDATION_FAILED', { \n        error: error.message, \n        token: this.hashToken(token) \n      });\n      throw error;\n    }\n  }\n\n  private parseJWT(token: string): { header: JWTHeader; payload: JWTPayload; signature: string } {\n    const parts = token.split('.');\n    if (parts.length !== 3) {\n      throw new Error('Invalid JWT format');\n    }\n\n    try {\n      const header = JSON.parse(this.base64UrlDecode(parts[0]));\n      const payload = JSON.parse(this.base64UrlDecode(parts[1]));\n      const signature = parts[2];\n\n      return { header, payload, signature };\n    } catch (error) {\n      throw new Error('Invalid JWT encoding');\n    }\n  }\n\n  private validateHeader(header: JWTHeader): void {\n    // Check algorithm\n    if (!this.config.allowedAlgorithms.includes(header.alg)) {\n      throw new Error(`Algorithm not allowed: ${header.alg}`);\n    }\n\n    // Ensure typ is JWT\n    if (header.typ \u0026\u0026 header.typ !== 'JWT') {\n      throw new Error(`Invalid token type: ${header.typ}`);\n    }\n\n    // Check for algorithm confusion attacks\n    if (header.alg === 'none') {\n      throw new Error('Algorithm \"none\" not allowed');\n    }\n  }\n\n  private validatePayload(payload: JWTPayload): void {\n    const now = Math.floor(Date.now() / 1000);\n\n    // Check expiration\n    if (!payload.exp || payload.exp \u003c now - this.config.clockSkew) {\n      throw new Error('Token expired');\n    }\n\n    // Check not before\n    if (payload.iat \u0026\u0026 payload.iat \u003e now + this.config.clockSkew) {\n      throw new Error('Token not yet valid');\n    }\n\n    // Check max age\n    if (payload.iat \u0026\u0026 (now - payload.iat) \u003e this.config.maxTokenAge) {\n      throw new Error('Token too old');\n    }\n\n    // Validate issuer\n    if (!payload.iss || !this.config.issuerWhitelist.includes(payload.iss)) {\n      throw new Error(`Invalid issuer: ${payload.iss}`);\n    }\n\n    // Validate audience\n    if (!payload.aud || !this.config.audienceWhitelist.includes(payload.aud)) {\n      throw new Error(`Invalid audience: ${payload.aud}`);\n    }\n\n    // Check required claims\n    if (!payload.sub) {\n      throw new Error('Missing subject claim');\n    }\n  }\n\n  private async verifySignature(token: string, header: JWTHeader, payload: JWTPayload): Promise\u003cvoid\u003e {\n    const parts = token.split('.');\n    const signedData = `${parts[0]}.${parts[1]}`;\n    const signature = this.base64UrlDecodeToUint8Array(parts[2]);\n\n    // Get public key\n    const publicKey = await this.getPublicKey(header.kid || 'default', payload.iss);\n\n    // Verify signature\n    const algorithm = this.getWebCryptoAlgorithm(header.alg);\n    const encoder = new TextEncoder();\n    const data = encoder.encode(signedData);\n\n    const isValid = await crypto.subtle.verify(\n      algorithm,\n      publicKey,\n      signature,\n      data\n    );\n\n    if (!isValid) {\n      throw new Error('Invalid signature');\n    }\n  }\n\n  private async getPublicKey(keyId: string, issuer: string): Promise\u003cCryptoKey\u003e {\n    const cacheKey = `${issuer}:${keyId}`;\n    \n    // Check cache first\n    if (this.publicKeys.has(cacheKey)) {\n      return this.publicKeys.get(cacheKey)!;\n    }\n\n    // Fetch from JWKS endpoint\n    const jwksUrl = `${issuer}/.well-known/jwks.json`;\n    const response = await fetch(jwksUrl);\n    \n    if (!response.ok) {\n      throw new Error(`Failed to fetch JWKS: ${response.status}`);\n    }\n\n    const jwks = await response.json();\n    const key = jwks.keys.find((k: any) =\u003e k.kid === keyId);\n    \n    if (!key) {\n      throw new Error(`Key not found: ${keyId}`);\n    }\n\n    // Import public key\n    const publicKey = await crypto.subtle.importKey(\n      'jwk',\n      key,\n      this.getWebCryptoAlgorithm(key.alg),\n      false,\n      ['verify']\n    );\n\n    // Cache the key\n    this.publicKeys.set(cacheKey, publicKey);\n    \n    return publicKey;\n  }\n\n  private getWebCryptoAlgorithm(alg: string): AlgorithmIdentifier {\n    switch (alg) {\n      case 'RS256':\n        return { name: 'RSASSA-PKCS1-v1_5', hash: 'SHA-256' };\n      case 'ES256':\n        return { name: 'ECDSA', hash: 'SHA-256' };\n      default:\n        throw new Error(`Unsupported algorithm: ${alg}`);\n    }\n  }\n\n  private checkRateLimit(userId: string): void {\n    const now = Date.now();\n    const windowMs = 60 * 1000; // 1 minute\n    const maxRequests = 100;\n\n    if (!this.rateLimiter.has(userId)) {\n      this.rateLimiter.set(userId, []);\n    }\n\n    const requests = this.rateLimiter.get(userId)!;\n    \n    // Remove old requests\n    const validRequests = requests.filter(timestamp =\u003e now - timestamp \u003c windowMs);\n    \n    if (validRequests.length \u003e= maxRequests) {\n      throw new Error('Rate limit exceeded');\n    }\n\n    // Add current request\n    validRequests.push(now);\n    this.rateLimiter.set(userId, validRequests);\n  }\n\n  // Token revocation\n  revokeToken(token: string): void {\n    const tokenHash = this.hashToken(token);\n    this.tokenBlacklist.add(tokenHash);\n    \n    this.logSecurityEvent('TOKEN_REVOKED', { tokenHash });\n  }\n\n  private isTokenBlacklisted(token: string): boolean {\n    const tokenHash = this.hashToken(token);\n    return this.tokenBlacklist.has(tokenHash);\n  }\n\n  private hashToken(token: string): string {\n    const encoder = new TextEncoder();\n    const data = encoder.encode(token);\n    \n    // Use subtle crypto for consistent hashing\n    return crypto.subtle.digest('SHA-256', data).then(hash =\u003e {\n      return Array.from(new Uint8Array(hash))\n        .map(b =\u003e b.toString(16).padStart(2, '0'))\n        .join('');\n    });\n  }\n\n  // Secure token storage\n  storeToken(token: string): void {\n    // Use secure storage mechanisms\n    if (this.isSecureContext()) {\n      // Store in secure HTTP-only cookie via API call\n      this.storeInSecureCookie(token);\n    } else {\n      // Fallback to sessionStorage with encryption\n      this.storeInSessionStorage(token);\n    }\n  }\n\n  private isSecureContext(): boolean {\n    return window.isSecureContext \u0026\u0026 window.location.protocol === 'https:';\n  }\n\n  private async storeInSecureCookie(token: string): Promise\u003cvoid\u003e {\n    await fetch('/api/auth/store-token', {\n      method: 'POST',\n      headers: {\n        'Content-Type': 'application/json',\n      },\n      body: JSON.stringify({ token }),\n      credentials: 'include'\n    });\n  }\n\n  private storeInSessionStorage(token: string): void {\n    // Encrypt token before storing\n    const encryptedToken = this.encryptToken(token);\n    sessionStorage.setItem('auth_token', encryptedToken);\n  }\n\n  private encryptToken(token: string): string {\n    // Simple XOR encryption (use proper encryption in production)\n    const key = this.generateSessionKey();\n    const encrypted = token.split('').map((char, i) =\u003e \n      String.fromCharCode(char.charCodeAt(0) ^ key.charCodeAt(i % key.length))\n    ).join('');\n    \n    return btoa(encrypted);\n  }\n\n  private generateSessionKey(): string {\n    return sessionStorage.getItem('session_key') || \n           (() =\u003e {\n             const key = Math.random().toString(36).substring(2);\n             sessionStorage.setItem('session_key', key);\n             return key;\n           })();\n  }\n\n  private base64UrlDecode(str: string): string {\n    // Convert base64url to base64\n    str = str.replace(/-/g, '+').replace(/_/g, '/');\n    \n    // Add padding if needed\n    while (str.length % 4) {\n      str += '=';\n    }\n    \n    return atob(str);\n  }\n\n  private base64UrlDecodeToUint8Array(str: string): Uint8Array {\n    const decoded = this.base64UrlDecode(str);\n    return new Uint8Array(decoded.split('').map(char =\u003e char.charCodeAt(0)));\n  }\n\n  private logSecurityEvent(event: string, data: any): void {\n    const logEntry = {\n      timestamp: new Date().toISOString(),\n      event,\n      data,\n      userAgent: navigator.userAgent,\n      ip: this.getClientIP(),\n      sessionId: this.getSessionId()\n    };\n\n    // Send to security monitoring system\n    fetch('/api/security/events', {\n      method: 'POST',\n      headers: {\n        'Content-Type': 'application/json',\n      },\n      body: JSON.stringify(logEntry)\n    }).catch(error =\u003e {\n      console.error('Failed to log security event:', error);\n    });\n  }\n\n  private getClientIP(): string {\n    // This would typically be handled by the server\n    return 'unknown';\n  }\n\n  private getSessionId(): string {\n    return sessionStorage.getItem('session_id') || 'unknown';\n  }\n}\n```\n\n---\n\n## Input Validation \u0026 Sanitization\n\n### **Advanced Input Validation Framework**\n\n```typescript\n// input-validator.ts\ninterface ValidationRule {\n  type: 'string' | 'number' | 'email' | 'url' | 'date' | 'custom';\n  required?: boolean;\n  minLength?: number;\n  maxLength?: number;\n  min?: number;\n  max?: number;\n  pattern?: RegExp;\n  allowedValues?: any[];\n  customValidator?: (value: any) =\u003e boolean | string;\n  sanitizer?: (value: any) =\u003e any;\n}\n\ninterface ValidationResult {\n  isValid: boolean;\n  errors: string[];\n  sanitizedValue?: any;\n}\n\nclass SecureInputValidator {\n  private commonPatterns = {\n    email: /^[a-zA-Z0-9.!#$%\u0026'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/,\n    phone: /^\\+?[\\d\\s\\-\\(\\)]+$/,\n    url: /^https?:\\/\\/(?:[-\\w.])+(?:\\:[0-9]+)?(?:\\/(?:[\\w/_.])*(?:\\?(?:[\\w\u0026=%.])*)?(?:\\#(?:[\\w.])*)?)?$/,\n    creditCard: /^(?:4[0-9]{12}(?:[0-9]{3})?|5[1-5][0-9]{14}|3[47][0-9]{13}|3[0-9]{13}|6(?:011|5[0-9]{2})[0-9]{12})$/,\n    ssn: /^\\d{3}-\\d{2}-\\d{4}$/,\n    ipAddress: /^(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$/\n  };\n\n  private dangerousPatterns = [\n    /\u003cscript\\b[^\u003c]*(?:(?!\u003c\\/script\u003e)\u003c[^\u003c]*)*\u003c\\/script\u003e/gi,\n    /javascript:/gi,\n    /vbscript:/gi,\n    /onload\\s*=/gi,\n    /onerror\\s*=/gi,\n    /onclick\\s*=/gi,\n    /data:text\\/html/gi,\n    /eval\\s*\\(/gi,\n    /expression\\s*\\(/gi\n  ];\n\n  validate(input: any, rules: ValidationRule): ValidationResult {\n    const result: ValidationResult = {\n      isValid: true,\n      errors: []\n    };\n\n    try {\n      // Check if required\n      if (rules.required \u0026\u0026 this.isEmpty(input)) {\n        result.isValid = false;\n        result.errors.push('Field is required');\n        return result;\n      }\n\n      // Skip validation for empty optional fields\n      if (!rules.required \u0026\u0026 this.isEmpty(input)) {\n        result.sanitizedValue = input;\n        return result;\n      }\n\n      // Sanitize input first\n      let sanitizedValue = rules.sanitizer ? rules.sanitizer(input) : input;\n      \n      // Detect and block malicious patterns\n      if (typeof sanitizedValue === 'string' \u0026\u0026 this.containsMaliciousPatterns(sanitizedValue)) {\n        result.isValid = false;\n        result.errors.push('Input contains potentially malicious content');\n        this.logSecurityThreat('MALICIOUS_INPUT_DETECTED', { input: this.hashSensitiveData(input) });\n        return result;\n      }\n\n      // Type-specific validation\n      const typeValidation = this.validateType(sanitizedValue, rules);\n      if (!typeValidation.isValid) {\n        result.isValid = false;\n        result.errors.push(...typeValidation.errors);\n      }\n\n      // Length validation\n      if (typeof sanitizedValue === 'string') {\n        if (rules.minLength \u0026\u0026 sanitizedValue.length \u003c rules.minLength) {\n          result.isValid = false;\n          result.errors.push(`Minimum length is ${rules.minLength}`);\n        }\n        \n        if (rules.maxLength \u0026\u0026 sanitizedValue.length \u003e rules.maxLength) {\n          result.isValid = false;\n          result.errors.push(`Maximum length is ${rules.maxLength}`);\n        }\n      }\n\n      // Numeric range validation\n      if (typeof sanitizedValue === 'number') {\n        if (rules.min !== undefined \u0026\u0026 sanitizedValue \u003c rules.min) {\n          result.isValid = false;\n          result.errors.push(`Minimum value is ${rules.min}`);\n        }\n        \n        if (rules.max !== undefined \u0026\u0026 sanitizedValue \u003e rules.max) {\n          result.isValid = false;\n          result.errors.push(`Maximum value is ${rules.max}`);\n        }\n      }\n\n      // Pattern validation\n      if (rules.pattern \u0026\u0026 typeof sanitizedValue === 'string') {\n        if (!rules.pattern.test(sanitizedValue)) {\n          result.isValid = false;\n          result.errors.push('Input format is invalid');\n        }\n      }\n\n      // Allowed values validation\n      if (rules.allowedValues \u0026\u0026 !rules.allowedValues.includes(sanitizedValue)) {\n        result.isValid = false;\n        result.errors.push('Value is not allowed');\n      }\n\n      // Custom validation\n      if (rules.customValidator) {\n        const customResult = rules.customValidator(sanitizedValue);\n        if (customResult !== true) {\n          result.isValid = false;\n          result.errors.push(typeof customResult === 'string' ? customResult : 'Custom validation failed');\n        }\n      }\n\n      result.sanitizedValue = sanitizedValue;\n      return result;\n\n    } catch (error) {\n      result.isValid = false;\n      result.errors.push('Validation error occurred');\n      this.logSecurityThreat('VALIDATION_ERROR', { error: error.message });\n      return result;\n    }\n  }\n\n  // Comprehensive form validation\n  validateForm(formData: Record\u003cstring, any\u003e, schema: Record\u003cstring, ValidationRule\u003e): {\n    isValid: boolean;\n    errors: Record\u003cstring, string[]\u003e;\n    sanitizedData: Record\u003cstring, any\u003e;\n  } {\n    const errors: Record\u003cstring, string[]\u003e = {};\n    const sanitizedData: Record\u003cstring, any\u003e = {};\n    let isValid = true;\n\n    for (const [field, rules] of Object.entries(schema)) {\n      const result = this.validate(formData[field], rules);\n      \n      if (!result.isValid) {\n        errors[field] = result.errors;\n        isValid = false;\n      } else {\n        sanitizedData[field] = result.sanitizedValue;\n      }\n    }\n\n    // Cross-field validation\n    const crossFieldErrors = this.validateCrossFields(sanitizedData, schema);\n    if (crossFieldErrors.length \u003e 0) {\n      errors['_form'] = crossFieldErrors;\n      isValid = false;\n    }\n\n    return { isValid, errors, sanitizedData };\n  }\n\n  private validateType(value: any, rules: ValidationRule): ValidationResult {\n    const result: ValidationResult = { isValid: true, errors: [] };\n\n    switch (rules.type) {\n      case 'string':\n        if (typeof value !== 'string') {\n          result.isValid = false;\n          result.errors.push('Must be a string');\n        }\n        break;\n\n      case 'number':\n        const numValue = Number(value);\n        if (isNaN(numValue) || !isFinite(numValue)) {\n          result.isValid = false;\n          result.errors.push('Must be a valid number');\n        }\n        break;\n\n      case 'email':\n        if (typeof value !== 'string' || !this.commonPatterns.email.test(value)) {\n          result.isValid = false;\n          result.errors.push('Must be a valid email address');\n        }\n        break;\n\n      case 'url':\n        if (typeof value !== 'string' || !this.isValidURL(value)) {\n          result.isValid = false;\n          result.errors.push('Must be a valid URL');\n        }\n        break;\n\n      case 'date':\n        const date = new Date(value);\n        if (isNaN(date.getTime())) {\n          result.isValid = false;\n          result.errors.push('Must be a valid date');\n        }\n        break;\n    }\n\n    return result;\n  }\n\n  private isValidURL(string: string): boolean {\n    try {\n      const url = new URL(string);\n      // Only allow HTTP and HTTPS protocols\n      return ['http:', 'https:'].includes(url.protocol);\n    } catch {\n      return false;\n    }\n  }\n\n  private containsMaliciousPatterns(input: string): boolean {\n    return this.dangerousPatterns.some(pattern =\u003e pattern.test(input));\n  }\n\n  private isEmpty(value: any): boolean {\n    return value === null || value === undefined || \n           (typeof value === 'string' \u0026\u0026 value.trim() === '') ||\n           (Array.isArray(value) \u0026\u0026 value.length === 0);\n  }\n\n  private validateCrossFields(data: Record\u003cstring, any\u003e, schema: Record\u003cstring, ValidationRule\u003e): string[] {\n    const errors: string[] = [];\n\n    // Password confirmation validation\n    if (data.password \u0026\u0026 data.confirmPassword \u0026\u0026 data.password !== data.confirmPassword) {\n      errors.push('Passwords do not match');\n    }\n\n    // Date range validation\n    if (data.startDate \u0026\u0026 data.endDate) {\n      const start = new Date(data.startDate);\n      const end = new Date(data.endDate);\n      if (start \u003e= end) {\n        errors.push('End date must be after start date');\n      }\n    }\n\n    // Business rule validations\n    if (data.age \u0026\u0026 data.age \u003c 18 \u0026\u0026 data.requiresParentalConsent !== true) {\n      errors.push('Parental consent required for users under 18');\n    }\n\n    return errors;\n  }\n\n  // Advanced sanitization\n  sanitizeHTML(input: string): string {\n    // Remove script tags and event handlers\n    let sanitized = input\n      .replace(/\u003cscript\\b[^\u003c]*(?:(?!\u003c\\/script\u003e)\u003c[^\u003c]*)*\u003c\\/script\u003e/gi, '')\n      .replace(/on\\w+\\s*=\\s*[\"'][^\"']*[\"']/gi, '')\n      .replace(/javascript:/gi, '')\n      .replace(/vbscript:/gi, '')\n      .replace(/data:text\\/html/gi, '');\n\n    // Encode special characters\n    const div = document.createElement('div');\n    div.textContent = sanitized;\n    return div.innerHTML;\n  }\n\n  sanitizeSQL(input: string): string {\n    // Basic SQL injection prevention\n    return input\n      .replace(/['\";\\\\]/g, '') // Remove dangerous characters\n      .replace(/\\b(DROP|DELETE|INSERT|UPDATE|EXEC|EXECUTE|UNION|SELECT)\\b/gi, '') // Remove SQL keywords\n      .trim();\n  }\n\n  // Security monitoring\n  private logSecurityThreat(threat: string, data: any): void {\n    const event = {\n      timestamp: new Date().toISOString(),\n      threat,\n      data,\n      userAgent: navigator.userAgent,\n      url: window.location.href,\n      sessionId: this.getSessionId()\n    };\n\n    fetch('/api/security/threats', {\n      method: 'POST',\n      headers: {\n        'Content-Type': 'application/json',\n      },\n      body: JSON.stringify(event)\n    }).catch(error =\u003e {\n      console.error('Failed to log security threat:', error);\n    });\n  }\n\n  private hashSensitiveData(data: string): string {\n    // Hash sensitive data for logging\n    const encoder = new TextEncoder();\n    const dataArray = encoder.encode(data);\n    \n    return crypto.subtle.digest('SHA-256', dataArray).then(hash =\u003e {\n      return Array.from(new Uint8Array(hash))\n        .map(b =\u003e b.toString(16).padStart(2, '0'))\n        .join('');\n    });\n  }\n\n  private getSessionId(): string {\n    return sessionStorage.getItem('session_id') || 'unknown';\n  }\n}\n\n// Usage example with React\nconst useSecureForm = (schema: Record\u003cstring, ValidationRule\u003e) =\u003e {\n  const validator = new SecureInputValidator();\n  const [errors, setErrors] = useState\u003cRecord\u003cstring, string[]\u003e\u003e({});\n  const [isValid, setIsValid] = useState(false);\n\n  const validateField = useCallback((name: string, value: any) =\u003e {\n    const result = validator.validate(value, schema[name]);\n    \n    setErrors(prev =\u003e ({\n      ...prev,\n      [name]: result.isValid ? [] : result.errors\n    }));\n\n    return result;\n  }, [schema, validator]);\n\n  const validateForm = useCallback((formData: Record\u003cstring, any\u003e) =\u003e {\n    const result = validator.validateForm(formData, schema);\n    setErrors(result.errors);\n    setIsValid(result.isValid);\n    return result;\n  }, [schema, validator]);\n\n  return { validateField, validateForm, errors, isValid };\n};\n```\n\nThis comprehensive security framework provides defense-in-depth protection against common frontend vulnerabilities while maintaining usability and performance. The patterns demonstrated here are essential for building secure applications in enterprise environments.\n"])</script><script>self.__next_f.push([1,"8:[\"slug\",\"src/content/frontend/security/advanced-security-patterns\",\"c\"]\nd:[]\n"])</script><script>self.__next_f.push([1,"0:[\"$\",\"$L3\",null,{\"buildId\":\"7uJ7BVaXJTiEOD9iYDv3n\",\"assetPrefix\":\"/interview\",\"urlParts\":[\"\",\"docs\",\"src\",\"content\",\"frontend\",\"security\",\"advanced-security-patterns\"],\"initialTree\":[\"\",{\"children\":[\"docs\",{\"children\":[[\"slug\",\"src/content/frontend/security/advanced-security-patterns\",\"c\"],{\"children\":[\"__PAGE__?{\\\"slug\\\":[\\\"src\\\",\\\"content\\\",\\\"frontend\\\",\\\"security\\\",\\\"advanced-security-patterns\\\"]}\",{}]}]}]},\"$undefined\",\"$undefined\",true],\"initialSeedData\":[\"\",{\"children\":[\"docs\",{\"children\":[[\"slug\",\"src/content/frontend/security/advanced-security-patterns\",\"c\"],{\"children\":[\"__PAGE__\",{},[[\"$L4\",[\"$\",\"div\",null,{\"style\":{\"maxWidth\":\"1200px\",\"margin\":\"0 auto\",\"padding\":\"2rem\",\"paddingTop\":\"6rem\"},\"children\":[[\"$\",\"div\",null,{\"style\":{\"marginBottom\":\"2rem\"},\"children\":[[\"$\",\"nav\",null,{\"style\":{\"color\":\"#64748b\",\"fontSize\":\"0.9rem\",\"marginBottom\":\"1rem\"},\"children\":[[\"$\",\"a\",null,{\"href\":\"/\",\"style\":{\"color\":\"#3b82f6\",\"textDecoration\":\"none\"},\"children\":\"Home\"}],\" \u003e \",[\"$\",\"span\",null,{\"children\":\"src \u003e content \u003e frontend \u003e security \u003e advanced-security-patterns\"}]]}],[\"$\",\"h1\",null,{\"style\":{\"fontSize\":\"2.5rem\",\"fontWeight\":\"800\",\"marginBottom\":\"0.5rem\",\"color\":\"#1e293b\"},\"children\":\"Advanced Security Patterns\"}],[\"$\",\"div\",null,{\"style\":{\"color\":\"#64748b\",\"fontSize\":\"0.9rem\",\"marginBottom\":\"2rem\"},\"children\":[[\"$\",\"span\",null,{\"children\":[\"📁 \",\"src/content/frontend/security/advanced-security-patterns.md\"]}],\"$undefined\",\"$undefined\"]}]]}],[\"$\",\"$L5\",null,{\"content\":\"$6\"}]]}],null],null],null]},[null,[\"$\",\"$L7\",null,{\"parallelRouterKey\":\"children\",\"segmentPath\":[\"children\",\"docs\",\"children\",\"$8\",\"children\"],\"error\":\"$undefined\",\"errorStyles\":\"$undefined\",\"errorScripts\":\"$undefined\",\"template\":[\"$\",\"$L9\",null,{}],\"templateStyles\":\"$undefined\",\"templateScripts\":\"$undefined\",\"notFound\":\"$undefined\",\"notFoundStyles\":\"$undefined\"}]],null]},[null,[\"$\",\"$L7\",null,{\"parallelRouterKey\":\"children\",\"segmentPath\":[\"children\",\"docs\",\"children\"],\"error\":\"$undefined\",\"errorStyles\":\"$undefined\",\"errorScripts\":\"$undefined\",\"template\":[\"$\",\"$L9\",null,{}],\"templateStyles\":\"$undefined\",\"templateScripts\":\"$undefined\",\"notFound\":\"$undefined\",\"notFoundStyles\":\"$undefined\"}]],null]},[[[[\"$\",\"link\",\"0\",{\"rel\":\"stylesheet\",\"href\":\"/interview/_next/static/css/387024c6a2216908.css\",\"precedence\":\"next\",\"crossOrigin\":\"$undefined\"}]],[\"$\",\"$La\",null,{\"children\":[\"$\",\"$L7\",null,{\"parallelRouterKey\":\"children\",\"segmentPath\":[\"children\"],\"error\":\"$undefined\",\"errorStyles\":\"$undefined\",\"errorScripts\":\"$undefined\",\"template\":[\"$\",\"$L9\",null,{}],\"templateStyles\":\"$undefined\",\"templateScripts\":\"$undefined\",\"notFound\":[[\"$\",\"title\",null,{\"children\":\"404: This page could not be found.\"}],[\"$\",\"div\",null,{\"style\":{\"fontFamily\":\"system-ui,\\\"Segoe UI\\\",Roboto,Helvetica,Arial,sans-serif,\\\"Apple Color Emoji\\\",\\\"Segoe UI Emoji\\\"\",\"height\":\"100vh\",\"textAlign\":\"center\",\"display\":\"flex\",\"flexDirection\":\"column\",\"alignItems\":\"center\",\"justifyContent\":\"center\"},\"children\":[\"$\",\"div\",null,{\"children\":[[\"$\",\"style\",null,{\"dangerouslySetInnerHTML\":{\"__html\":\"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}\"}}],[\"$\",\"h1\",null,{\"className\":\"next-error-h1\",\"style\":{\"display\":\"inline-block\",\"margin\":\"0 20px 0 0\",\"padding\":\"0 23px 0 0\",\"fontSize\":24,\"fontWeight\":500,\"verticalAlign\":\"top\",\"lineHeight\":\"49px\"},\"children\":\"404\"}],[\"$\",\"div\",null,{\"style\":{\"display\":\"inline-block\"},\"children\":[\"$\",\"h2\",null,{\"style\":{\"fontSize\":14,\"fontWeight\":400,\"lineHeight\":\"49px\",\"margin\":0},\"children\":\"This page could not be found.\"}]}]]}]}]],\"notFoundStyles\":[]}],\"params\":{}}]],null],null],\"couldBeIntercepted\":false,\"initialHead\":[null,\"$Lb\"],\"globalErrorComponent\":\"$c\",\"missingSlots\":\"$Wd\"}]\n"])</script><script>self.__next_f.push([1,"b:[[\"$\",\"meta\",\"0\",{\"name\":\"viewport\",\"content\":\"width=device-width, initial-scale=1\"}],[\"$\",\"meta\",\"1\",{\"charSet\":\"utf-8\"}],[\"$\",\"title\",\"2\",{\"children\":\"Advanced Security Patterns - Frontend Interview Docs\"}],[\"$\",\"meta\",\"3\",{\"name\":\"description\",\"content\":\"# Advanced Frontend Security Patterns  ## Overview Modern frontend applications face sophisticated security threats. Big Tech companies expect deep understandin\"}],[\"$\",\"meta\",\"4\",{\"property\":\"og:title\",\"content\":\"Advanced Security Patterns - Frontend Interview Docs\"}],[\"$\",\"meta\",\"5\",{\"property\":\"og:description\",\"content\":\"# Advanced Frontend Security Patterns  ## Overview Modern frontend applications face sophisticated security threats. Big Tech companies expect deep understandin\"}],[\"$\",\"meta\",\"6\",{\"property\":\"og:type\",\"content\":\"article\"}],[\"$\",\"meta\",\"7\",{\"name\":\"twitter:card\",\"content\":\"summary\"}],[\"$\",\"meta\",\"8\",{\"name\":\"twitter:title\",\"content\":\"Advanced Security Patterns - Frontend Interview Docs\"}],[\"$\",\"meta\",\"9\",{\"name\":\"twitter:description\",\"content\":\"# Advanced Frontend Security Patterns  ## Overview Modern frontend applications face sophisticated security threats. Big Tech companies expect deep understandin\"}],[\"$\",\"meta\",\"10\",{\"name\":\"next-size-adjust\"}]]\n4:null\n"])</script></body></html>

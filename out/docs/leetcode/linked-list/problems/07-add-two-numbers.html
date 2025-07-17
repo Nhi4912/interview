@@ -1,0 +1,1017 @@
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><meta name="viewport" content="width=device-width, initial-scale=1"/><link rel="preload" href="/interview/_next/static/media/e4af272ccee01ff0-s.p.woff2" as="font" crossorigin="" type="font/woff2"/><link rel="stylesheet" href="/interview/_next/static/css/387024c6a2216908.css" data-precedence="next"/><link rel="preload" as="script" fetchPriority="low" href="/interview/_next/static/chunks/webpack-be7d7df45533bffc.js"/><script src="/interview/_next/static/chunks/fd9d1056-6922f449a204c2cc.js" async=""></script><script src="/interview/_next/static/chunks/117-e7ecc085ce9cfab3.js" async=""></script><script src="/interview/_next/static/chunks/main-app-b06be5f3411c20c3.js" async=""></script><script src="/interview/_next/static/chunks/918-3273b83890f10546.js" async=""></script><script src="/interview/_next/static/chunks/930-3262a6c9c5acace4.js" async=""></script><script src="/interview/_next/static/chunks/app/docs/%5B...slug%5D/page-32962e9542d32755.js" async=""></script><script src="/interview/_next/static/chunks/710-dfaa11b4dff08f8e.js" async=""></script><script src="/interview/_next/static/chunks/972-011bba60ed155615.js" async=""></script><script src="/interview/_next/static/chunks/233-3e0c1d820a17eca9.js" async=""></script><script src="/interview/_next/static/chunks/app/layout-333f4adcd11f8f39.js" async=""></script><title>Frontend Interview Prep 2025 - Big Tech Interview Guide</title><meta name="description" content="Comprehensive frontend interview preparation for Big Tech companies including React, TypeScript, algorithms, and system design."/><link rel="icon" href="/favicon.ico"/><meta name="theme-color" content="#1a1a1a"/><meta property="og:title" content="Frontend Interview Prep 2025"/><meta property="og:description" content="Complete guide for frontend engineers targeting Big Tech companies"/><meta property="og:type" content="website"/><link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous"/><title>Add Two Number - Frontend Interview Docs</title><meta name="description" content=" # Add Two Number  **LeetCode Problem # * 2. Add Two Numbers**  ## Problem Description   * You are given two non-empty linked lists representing two non-negativ"/><meta property="og:title" content="Add Two Number - Frontend Interview Docs"/><meta property="og:description" content=" # Add Two Number  **LeetCode Problem # * 2. Add Two Numbers**  ## Problem Description   * You are given two non-empty linked lists representing two non-negativ"/><meta property="og:type" content="article"/><meta name="twitter:card" content="summary"/><meta name="twitter:title" content="Add Two Number - Frontend Interview Docs"/><meta name="twitter:description" content=" # Add Two Number  **LeetCode Problem # * 2. Add Two Numbers**  ## Problem Description   * You are given two non-empty linked lists representing two non-negativ"/><meta name="next-size-adjust"/><script src="/interview/_next/static/chunks/polyfills-42372ed130431b0a.js" noModule=""></script><style data-styled="" data-styled-version="6.1.19">*{margin:0;padding:0;box-sizing:border-box;}/*!sc*/
+html{font-size:16px;line-height:1.5;scroll-behavior:smooth;}/*!sc*/
+body{font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;font-size:1rem;line-height:1.5;color:#1e293b;background-color:#ffffff;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;}/*!sc*/
+h1,h2,h3,h4,h5,h6{font-weight:700;line-height:1.25;margin-bottom:0.5em;}/*!sc*/
+h1{font-size:3rem;}/*!sc*/
+@media (max-width: 768px){h1{font-size:2.25rem;}}/*!sc*/
+h2{font-size:2.25rem;}/*!sc*/
+@media (max-width: 768px){h2{font-size:1.875rem;}}/*!sc*/
+h3{font-size:1.875rem;}/*!sc*/
+@media (max-width: 768px){h3{font-size:1.5rem;}}/*!sc*/
+h4{font-size:1.5rem;}/*!sc*/
+@media (max-width: 768px){h4{font-size:1.25rem;}}/*!sc*/
+h5{font-size:1.25rem;}/*!sc*/
+h6{font-size:1.125rem;}/*!sc*/
+p{margin-bottom:1rem;line-height:1.75;}/*!sc*/
+a{color:#3b82f6;text-decoration:none;transition:color 0.15s ease;}/*!sc*/
+a:hover{color:#2563eb;}/*!sc*/
+a:focus{outline:2px solid #3b82f6;outline-offset:2px;}/*!sc*/
+button{cursor:pointer;border:none;background:none;font-family:inherit;font-size:inherit;}/*!sc*/
+button:disabled{cursor:not-allowed;opacity:0.6;}/*!sc*/
+button:focus{outline:2px solid #3b82f6;outline-offset:2px;}/*!sc*/
+input,textarea,select{font-family:inherit;font-size:inherit;}/*!sc*/
+input:focus,textarea:focus,select:focus{outline:2px solid #3b82f6;outline-offset:2px;}/*!sc*/
+img{max-width:100%;height:auto;}/*!sc*/
+ul,ol{margin-bottom:1rem;padding-left:1.5rem;}/*!sc*/
+li{margin-bottom:0.25rem;}/*!sc*/
+blockquote{margin:1rem 0;padding:1rem;border-left:4px solid #3b82f6;background-color:#f1f5f9;font-style:italic;}/*!sc*/
+code{font-family:SFMono-Regular,Consolas,"Liberation Mono",Menlo,monospace;font-size:0.9em;background-color:#f1f5f9;padding:0.2em 0.4em;border-radius:0.25rem;}/*!sc*/
+pre{background-color:#f1f5f9;padding:1rem;border-radius:0.5rem;overflow-x:auto;margin-bottom:1rem;}/*!sc*/
+pre code{background:none;padding:0;}/*!sc*/
+table{width:100%;border-collapse:collapse;margin-bottom:1rem;}/*!sc*/
+th,td{padding:0.75rem;text-align:left;border-bottom:1px solid #e2e8f0;}/*!sc*/
+th{font-weight:600;background-color:#f1f5f9;}/*!sc*/
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0, 0, 0, 0);white-space:nowrap;border:0;}/*!sc*/
+.skip-link{position:absolute;top:-40px;left:6px;background:#3b82f6;color:white;padding:8px;text-decoration:none;border-radius:4px;z-index:100;}/*!sc*/
+.skip-link:focus{top:6px;}/*!sc*/
+::-webkit-scrollbar{width:8px;height:8px;}/*!sc*/
+::-webkit-scrollbar-track{background:#f1f5f9;}/*!sc*/
+::-webkit-scrollbar-thumb{background:#94a3b8;border-radius:4px;}/*!sc*/
+::-webkit-scrollbar-thumb:hover{background:#64748b;}/*!sc*/
+::selection{background:#3b82f6;color:white;}/*!sc*/
+.focus-visible{outline:2px solid #3b82f6;outline-offset:2px;}/*!sc*/
+.fade-in{opacity:0;animation:fadeIn 0.3s ease forwards;}/*!sc*/
+.slide-up{transform:translateY(20px);opacity:0;animation:slideUp 0.3s ease forwards;}/*!sc*/
+@keyframes fadeIn{to{opacity:1;}}/*!sc*/
+@keyframes slideUp{to{transform:translateY(0);opacity:1;}}/*!sc*/
+@media print{*{background:white!important;color:black!important;box-shadow:none!important;text-shadow:none!important;}a,a:visited{text-decoration:underline;}h1,h2,h3,h4,h5,h6{break-after:avoid;}pre,blockquote{border:1px solid #999;break-inside:avoid;}img{max-width:100%!important;}@page{margin:0.5in;}}/*!sc*/
+data-styled.g1[id="sc-global-kxA-Ddz1"]{content:"sc-global-kxA-Ddz1,"}/*!sc*/
+.wbMrm{position:fixed;top:0;width:100%;z-index:1020;background:transparent;backdrop-filter:blur(10px);border-bottom:1px solid transparent;transition:all 0.3s ease;}/*!sc*/
+data-styled.g2[id="sc-bRKDuR"]{content:"wbMrm,"}/*!sc*/
+.kDxBNU{max-width:1200px;margin:0 auto;padding:0 2rem;display:flex;align-items:center;justify-content:space-between;height:70px;}/*!sc*/
+data-styled.g3[id="sc-hvigdm"]{content:"kDxBNU,"}/*!sc*/
+.cvsJZg{display:flex;align-items:center;gap:0.5rem;font-size:1.5rem;font-weight:700;color:#3b82f6;text-decoration:none;cursor:pointer;}/*!sc*/
+.cvsJZg:hover{color:#2563eb;}/*!sc*/
+data-styled.g4[id="sc-fhHczv"]{content:"cvsJZg,"}/*!sc*/
+.lfYVIv{display:flex;align-items:center;gap:2rem;}/*!sc*/
+@media (max-width: 768px){.lfYVIv{display:none;}}/*!sc*/
+data-styled.g5[id="sc-ggWZvA"]{content:"lfYVIv,"}/*!sc*/
+.bhKRhV{color:#1e293b;font-weight:500;text-decoration:none;transition:color 0.15s ease;position:relative;}/*!sc*/
+.bhKRhV:hover{color:#3b82f6;}/*!sc*/
+.bhKRhV:after{content:'';position:absolute;bottom:-5px;left:0;width:0;height:2px;background:#3b82f6;transition:width 0.15s ease;}/*!sc*/
+.bhKRhV:hover:after{width:100%;}/*!sc*/
+data-styled.g6[id="sc-dTvVRJ"]{content:"bhKRhV,"}/*!sc*/
+.gpUImn{display:none;background:none;border:none;color:#1e293b;cursor:pointer;padding:0.5rem;}/*!sc*/
+@media (max-width: 768px){.gpUImn{display:block;}}/*!sc*/
+data-styled.g7[id="sc-jwTyAe"]{content:"gpUImn,"}/*!sc*/
+.hpKWkw{display:flex;align-items:center;gap:0.5rem;background:#f1f5f9;border:1px solid #e2e8f0;border-radius:0.5rem;padding:0.5rem 1rem;color:#64748b;font-size:0.9rem;transition:all 0.15s ease;}/*!sc*/
+.hpKWkw:hover{background:#ffffff;border-color:#3b82f6;}/*!sc*/
+data-styled.g11[id="sc-kNOymR"]{content:"hpKWkw,"}/*!sc*/
+.cJzheU{background:#1e293b;color:white;padding:3rem 0 1rem;margin-top:auto;}/*!sc*/
+data-styled.g12[id="sc-dYwGCk"]{content:"cJzheU,"}/*!sc*/
+.hJUFeT{max-width:1200px;margin:0 auto;padding:0 2rem;}/*!sc*/
+data-styled.g13[id="sc-lgpSej"]{content:"hJUFeT,"}/*!sc*/
+.mSxwd{display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:2rem;margin-bottom:2rem;}/*!sc*/
+@media (max-width: 768px){.mSxwd{grid-template-columns:1fr 1fr;gap:1.5rem;}}/*!sc*/
+@media (max-width: 480px){.mSxwd{grid-template-columns:1fr;}}/*!sc*/
+data-styled.g14[id="sc-eqYatC"]{content:"mSxwd,"}/*!sc*/
+.cmBIup h3{font-size:1.1rem;font-weight:600;margin-bottom:1rem;color:white;}/*!sc*/
+.cmBIup ul{list-style:none;padding:0;margin:0;}/*!sc*/
+.cmBIup li{margin-bottom:0.5rem;}/*!sc*/
+.cmBIup a{color:rgba(255, 255, 255, 0.7);text-decoration:none;transition:color 0.15s ease;}/*!sc*/
+.cmBIup a:hover{color:white;}/*!sc*/
+data-styled.g15[id="sc-kcLKEh"]{content:"cmBIup,"}/*!sc*/
+.bAsNIP{display:flex;align-items:center;gap:0.5rem;font-size:1.2rem;font-weight:700;margin-bottom:1rem;color:white;}/*!sc*/
+data-styled.g16[id="sc-dntSTA"]{content:"bAsNIP,"}/*!sc*/
+.gWXMDV{color:rgba(255, 255, 255, 0.7);line-height:1.6;margin-bottom:1rem;}/*!sc*/
+data-styled.g17[id="sc-kvnevz"]{content:"gWXMDV,"}/*!sc*/
+.jCoOHQ{display:flex;gap:1rem;}/*!sc*/
+.jCoOHQ a{display:flex;align-items:center;justify-content:center;width:40px;height:40px;background:rgba(255, 255, 255, 0.1);border-radius:0.5rem;color:rgba(255, 255, 255, 0.7);transition:all 0.15s ease;}/*!sc*/
+.jCoOHQ a:hover{background:rgba(255, 255, 255, 0.2);color:white;}/*!sc*/
+data-styled.g18[id="sc-dFVmKS"]{content:"jCoOHQ,"}/*!sc*/
+.crUaYh{border-top:1px solid rgba(255, 255, 255, 0.1);padding-top:2rem;display:flex;justify-content:space-between;align-items:center;}/*!sc*/
+@media (max-width: 768px){.crUaYh{flex-direction:column;gap:1rem;text-align:center;}}/*!sc*/
+data-styled.g19[id="sc-kCuUfV"]{content:"crUaYh,"}/*!sc*/
+.esMlQF{color:rgba(255, 255, 255, 0.7);margin:0;font-size:0.9rem;}/*!sc*/
+data-styled.g20[id="sc-dNdcvo"]{content:"esMlQF,"}/*!sc*/
+.eHcrXx{display:flex;gap:2rem;}/*!sc*/
+@media (max-width: 480px){.eHcrXx{flex-direction:column;gap:1rem;}}/*!sc*/
+.eHcrXx a{color:rgba(255, 255, 255, 0.7);text-decoration:none;font-size:0.9rem;transition:color 0.15s ease;}/*!sc*/
+.eHcrXx a:hover{color:white;}/*!sc*/
+data-styled.g21[id="sc-fbQrwq"]{content:"eHcrXx,"}/*!sc*/
+.dAQFGp{color:#1e293b;line-height:1.6;}/*!sc*/
+.dAQFGp h1,.dAQFGp h2,.dAQFGp h3,.dAQFGp h4,.dAQFGp h5,.dAQFGp h6{color:#1e293b;margin-top:2rem;margin-bottom:1rem;font-weight:600;}/*!sc*/
+.dAQFGp h1{font-size:2rem;border-bottom:2px solid #e2e8f0;padding-bottom:0.5rem;}/*!sc*/
+.dAQFGp h2{font-size:1.5rem;border-bottom:1px solid #e2e8f0;padding-bottom:0.3rem;}/*!sc*/
+.dAQFGp h3{font-size:1.25rem;}/*!sc*/
+.dAQFGp h4{font-size:1.1rem;}/*!sc*/
+.dAQFGp p{margin-bottom:1rem;color:#64748b;}/*!sc*/
+.dAQFGp a{color:#3b82f6;text-decoration:none;}/*!sc*/
+.dAQFGp a:hover{text-decoration:underline;}/*!sc*/
+.dAQFGp ul,.dAQFGp ol{margin-bottom:1rem;padding-left:1.5rem;}/*!sc*/
+.dAQFGp ul li,.dAQFGp ol li{margin-bottom:0.5rem;color:#64748b;}/*!sc*/
+.dAQFGp blockquote{border-left:4px solid #3b82f6;padding-left:1rem;margin:1rem 0;font-style:italic;color:#64748b;background:#f1f5f9;padding:1rem;border-radius:0.5rem;}/*!sc*/
+.dAQFGp code{background:#f1f5f9;padding:0.2rem 0.4rem;border-radius:0.25rem;font-family:SFMono-Regular,Consolas,"Liberation Mono",Menlo,monospace;font-size:0.9em;color:#f59e0b;}/*!sc*/
+.dAQFGp pre{background:#ffffff;border:1px solid #e2e8f0;border-radius:0.5rem;padding:1rem;margin:1rem 0;overflow-x:auto;}/*!sc*/
+.dAQFGp pre code{background:none;padding:0;color:#1e293b;font-size:0.9rem;}/*!sc*/
+.dAQFGp table{width:100%;border-collapse:collapse;margin:1rem 0;}/*!sc*/
+.dAQFGp table th,.dAQFGp table td{border:1px solid #e2e8f0;padding:0.5rem;text-align:left;}/*!sc*/
+.dAQFGp table th{background:#ffffff;font-weight:600;}/*!sc*/
+.dAQFGp table tr:nth-child(even){background:#f1f5f9;}/*!sc*/
+.dAQFGp hr{border:none;height:1px;background:#e2e8f0;margin:2rem 0;}/*!sc*/
+.dAQFGp .highlight{background:#3b82f620;padding:0.2rem 0.4rem;border-radius:0.25rem;font-weight:600;}/*!sc*/
+.dAQFGp .hljs{background:#ffffff;color:#1e293b;}/*!sc*/
+.dAQFGp .hljs-keyword{color:#3b82f6;font-weight:600;}/*!sc*/
+.dAQFGp .hljs-string{color:#10b981;}/*!sc*/
+.dAQFGp .hljs-function{color:#f59e0b;}/*!sc*/
+.dAQFGp .hljs-comment{color:#94a3b8;font-style:italic;}/*!sc*/
+.dAQFGp .hljs-number{color:#f59e0b;}/*!sc*/
+.dAQFGp .hljs-variable{color:#1e293b;}/*!sc*/
+.dAQFGp .hljs-title{color:#f59e0b;font-weight:600;}/*!sc*/
+data-styled.g22[id="sc-gGKoUb"]{content:"dAQFGp,"}/*!sc*/
+</style></head><body class="__className_6eac61"><div style="min-height:100vh;display:flex;flex-direction:column"><nav class="sc-bRKDuR wbMrm"><div class="sc-hvigdm kDxBNU"><a href="/interview"><a class="sc-fhHczv cvsJZg"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-code "><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>Frontend Interview Prep</a></a><div class="sc-ggWZvA lfYVIv"><a href="/interview/problems"><a class="sc-dTvVRJ bhKRhV">Problems</a></a><a href="/interview/learn"><a class="sc-dTvVRJ bhKRhV">Learn</a></a><a href="/interview/study-guide"><a class="sc-dTvVRJ bhKRhV">Study Guide</a></a><a href="/interview/system-design"><a class="sc-dTvVRJ bhKRhV">System Design</a></a><a href="/interview/performance"><a class="sc-dTvVRJ bhKRhV">Performance</a></a><a href="/interview/accessibility"><a class="sc-dTvVRJ bhKRhV">Accessibility</a></a><a href="/interview/interview-tips"><a class="sc-dTvVRJ bhKRhV">Interview Tips</a></a><button class="sc-kNOymR hpKWkw"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-search "><circle cx="11" cy="11" r="8"></circle><path d="m21 21-4.3-4.3"></path></svg>Search</button></div><button class="sc-jwTyAe gpUImn"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-menu "><line x1="4" x2="20" y1="12" y2="12"></line><line x1="4" x2="20" y1="6" y2="6"></line><line x1="4" x2="20" y1="18" y2="18"></line></svg></button></div></nav><main style="flex:1"><div style="max-width:1200px;margin:0 auto;padding:2rem;padding-top:6rem"><div style="margin-bottom:2rem"><nav style="color:#64748b;font-size:0.9rem;margin-bottom:1rem"><a href="/" style="color:#3b82f6;text-decoration:none">Home</a> &gt; <span>leetcode &gt; linked-list &gt; problems &gt; 07-add-two-numbers</span></nav><h1 style="font-size:2.5rem;font-weight:800;margin-bottom:0.5rem;color:#1e293b">Add Two Number</h1><div style="color:#64748b;font-size:0.9rem;margin-bottom:2rem"><span>📁 <!-- -->leetcode/linked-list/problems/07-add-two-numbers.md</span></div></div><div class="sc-gGKoUb dAQFGp"><h1 id="add-two-number" node="[object Object]">Add Two Number</h1>
+<p><strong>LeetCode Problem # * 2. Add Two Numbers</strong></p>
+<h2 id="problem-description" node="[object Object]">Problem Description</h2>
+<ul>
+<li>You are given two non-empty linked lists representing two non-negative integers.  * The digits are stored in reverse order, and each of their nodes contains a single digit.  * Add the two numbers and return the sum as a linked list.  *  * You may assume the two numbers do not contain any leading zero, except the number 0 itself.</li>
+</ul>
+<h2 id="solutions" node="[object Object]">Solutions</h2>
+<p>{% raw %}
+/**</p>
+<ul>
+<li>2. Add Two Numbers</li>
+<li></li>
+<li>Problem:</li>
+<li>You are given two non-empty linked lists representing two non-negative integers.</li>
+<li>The digits are stored in reverse order, and each of their nodes contains a single digit.</li>
+<li>Add the two numbers and return the sum as a linked list.</li>
+<li></li>
+<li>You may assume the two numbers do not contain any leading zero, except the number 0 itself.</li>
+<li></li>
+<li>Example:</li>
+<li>Input: l1 = [2,4,3], l2 = [5,6,4]</li>
+<li>Output: [7,0,8]</li>
+<li>Explanation: 342 + 465 = 807.</li>
+<li></li>
+<li>Input: l1 = [0], l2 = [0]</li>
+<li>Output: [0]</li>
+<li></li>
+<li>Input: l1 = [9,9,9,9,9,9,9], l2 = [9,9,9,9]</li>
+<li>Output: [8,9,9,9,0,0,0,1]</li>
+<li></li>
+<li>LeetCode: <a href="https://leetcode.com/problems/add-two-numbers/" target="_blank" rel="noopener noreferrer" node="[object Object]">https://leetcode.com/problems/add-two-numbers/</a>
+*/</li>
+</ul>
+<p>// Definition for singly-linked list
+class ListNode {
+val: number;
+next: ListNode | null;
+constructor(val?: number, next?: ListNode | null) {
+this.val = val === undefined ? 0 : val;
+this.next = next === undefined ? null : next;
+}
+}</p>
+<p>/**</p>
+<ul>
+<li>Solution 1: Iterative Addition (Optimal)</li>
+<li></li>
+<li>Approach:</li>
+<li>
+<ul>
+<li>Add digits from both lists simultaneously</li>
+</ul>
+</li>
+<li>
+<ul>
+<li>Handle carry and create new nodes</li>
+</ul>
+</li>
+<li>
+<ul>
+<li>Use dummy head for easier list construction</li>
+</ul>
+</li>
+<li></li>
+<li>Time Complexity: O(max(m, n))</li>
+<li>Space Complexity: O(max(m, n))
+*/
+function addTwoNumbers(
+l1: ListNode | null,
+l2: ListNode | null
+): ListNode | null {
+const dummy = new ListNode(0);
+let current = dummy;
+let carry = 0;</li>
+</ul>
+<p>while (l1 || l2 || carry) {
+const val1 = l1 ? l1.val : 0;
+const val2 = l2 ? l2.val : 0;</p>
+<pre><pre><code class="hljs undefined">const sum = val1 + val2 + carry;
+carry = Math.floor(sum / 10);
+
+current.next = new ListNode(sum % 10);
+current = current.next;
+
+if (l1) l1 = l1.next;
+if (l2) l2 = l2.next;
+</code></pre></pre>
+<p>}</p>
+<p>return dummy.next;
+}</p>
+<p>/**</p>
+<ul>
+<li>
+<p>Solution 2: Recursive Approach</p>
+</li>
+<li></li>
+<li>
+<p>Approach:</p>
+</li>
+<li>
+<ul>
+<li>Use recursion to add digits</li>
+</ul>
+</li>
+<li>
+<ul>
+<li>Pass carry as parameter</li>
+</ul>
+</li>
+<li>
+<ul>
+<li>Build result list recursively</li>
+</ul>
+</li>
+<li></li>
+<li>
+<p>Time Complexity: O(max(m, n))</p>
+</li>
+<li>
+<p>Space Complexity: O(max(m, n)) - recursion stack
+*/
+function addTwoNumbersRecursive(
+l1: ListNode | null,
+l2: ListNode | null
+): ListNode | null {
+function add(
+l1: ListNode | null,
+l2: ListNode | null,
+carry: number
+): ListNode | null {
+if (!l1 &amp;&amp; !l2 &amp;&amp; carry === 0) {
+return null;
+}</p>
+<p>const val1 = l1 ? l1.val : 0;
+const val2 = l2 ? l2.val : 0;</p>
+<p>const sum = val1 + val2 + carry;
+const newCarry = Math.floor(sum / 10);</p>
+<p>const node = new ListNode(sum % 10);
+node.next = add(l1?.next || null, l2?.next || null, newCarry);</p>
+<p>return node;
+}</p>
+</li>
+</ul>
+<p>return add(l1, l2, 0);
+}</p>
+<p>/**</p>
+<ul>
+<li>
+<p>Solution 3: Using Stack</p>
+</li>
+<li></li>
+<li>
+<p>Approach:</p>
+</li>
+<li>
+<ul>
+<li>Convert lists to numbers, add them, then convert back</li>
+</ul>
+</li>
+<li>
+<ul>
+<li>Use stack to handle large numbers</li>
+</ul>
+</li>
+<li>
+<ul>
+<li>More intuitive but less efficient for large numbers</li>
+</ul>
+</li>
+<li></li>
+<li>
+<p>Time Complexity: O(max(m, n))</p>
+</li>
+<li>
+<p>Space Complexity: O(max(m, n))
+*/
+function addTwoNumbersStack(
+l1: ListNode | null,
+l2: ListNode | null
+): ListNode | null {
+function listToNumber(head: ListNode | null): number {
+let num = 0;
+let multiplier = 1;
+let current = head;</p>
+<p>while (current) {
+num += current.val * multiplier;
+multiplier *= 10;
+current = current.next;
+}</p>
+<p>return num;
+}</p>
+</li>
+</ul>
+<p>function numberToList(num: number): ListNode | null {
+if (num === 0) return new ListNode(0);</p>
+<pre><pre><code class="hljs undefined">const dummy = new ListNode(0);
+let current = dummy;
+
+while (num &gt; 0) {
+  const digit = num % 10;
+  current.next = new ListNode(digit);
+  current = current.next;
+  num = Math.floor(num / 10);
+}
+
+return dummy.next;
+</code></pre></pre>
+<p>}</p>
+<p>const num1 = listToNumber(l1);
+const num2 = listToNumber(l2);
+const sum = num1 + num2;</p>
+<p>return numberToList(sum);
+}</p>
+<p>/**</p>
+<ul>
+<li>
+<p>Solution 4: Using Array</p>
+</li>
+<li></li>
+<li>
+<p>Approach:</p>
+</li>
+<li>
+<ul>
+<li>Convert lists to arrays, add arrays, then convert back</li>
+</ul>
+</li>
+<li>
+<ul>
+<li>More explicit digit-by-digit handling</li>
+</ul>
+</li>
+<li></li>
+<li>
+<p>Time Complexity: O(max(m, n))</p>
+</li>
+<li>
+<p>Space Complexity: O(max(m, n))
+*/
+function addTwoNumbersArray(
+l1: ListNode | null,
+l2: ListNode | null
+): ListNode | null {
+function listToArray(head: ListNode | null): number[] {
+const arr: number[] = [];
+let current = head;</p>
+<p>while (current) {
+arr.push(current.val);
+current = current.next;
+}</p>
+<p>return arr;
+}</p>
+</li>
+</ul>
+<p>function arrayToList(arr: number[]): ListNode | null {
+if (arr.length === 0) return null;</p>
+<pre><pre><code class="hljs undefined">const dummy = new ListNode(0);
+let current = dummy;
+
+for (const digit of arr) {
+  current.next = new ListNode(digit);
+  current = current.next;
+}
+
+return dummy.next;
+</code></pre></pre>
+<p>}</p>
+<p>const arr1 = listToArray(l1);
+const arr2 = listToArray(l2);
+const maxLen = Math.max(arr1.length, arr2.length);</p>
+<p>const result: number[] = [];
+let carry = 0;</p>
+<p>for (let i = 0; i &lt; maxLen || carry; i++) {
+const val1 = i &lt; arr1.length ? arr1[i] : 0;
+const val2 = i &lt; arr2.length ? arr2[i] : 0;</p>
+<pre><pre><code class="hljs undefined">const sum = val1 + val2 + carry;
+result.push(sum % 10);
+carry = Math.floor(sum / 10);
+</code></pre></pre>
+<p>}</p>
+<p>return arrayToList(result);
+}</p>
+<p>/**</p>
+<ul>
+<li>Solution 5: Using Class (Object-oriented)</li>
+<li></li>
+<li>Approach:</li>
+<li>
+<ul>
+<li>Create an Adder class</li>
+</ul>
+</li>
+<li>
+<ul>
+<li>Encapsulate the addition logic</li>
+</ul>
+</li>
+<li></li>
+<li>Time Complexity: O(max(m, n))</li>
+<li>Space Complexity: O(max(m, n))
+*/
+class NumberAdder {
+private l1: ListNode | null;
+private l2: ListNode | null;</li>
+</ul>
+<p>constructor(l1: ListNode | null, l2: ListNode | null) {
+this.l1 = l1;
+this.l2 = l2;
+}</p>
+<p>add(): ListNode | null {
+const dummy = new ListNode(0);
+let current = dummy;
+let carry = 0;
+let list1 = this.l1;
+let list2 = this.l2;</p>
+<pre><pre><code class="hljs undefined">while (list1 || list2 || carry) {
+  const val1 = list1 ? list1.val : 0;
+  const val2 = list2 ? list2.val : 0;
+
+  const sum = val1 + val2 + carry;
+  carry = Math.floor(sum / 10);
+
+  current.next = new ListNode(sum % 10);
+  current = current.next;
+
+  if (list1) list1 = list1.next;
+  if (list2) list2 = list2.next;
+}
+
+return dummy.next;
+</code></pre></pre>
+<p>}</p>
+<p>getLists(): { l1: ListNode | null; l2: ListNode | null } {
+return { l1: this.l1, l2: this.l2 };
+}
+}</p>
+<p>function addTwoNumbersClass(
+l1: ListNode | null,
+l2: ListNode | null
+): ListNode | null {
+const adder = new NumberAdder(l1, l2);
+return adder.add();
+}</p>
+<p>/**</p>
+<ul>
+<li>Solution 6: Using Generator (Memory efficient)</li>
+<li></li>
+<li>Approach:</li>
+<li>
+<ul>
+<li>Use generator to yield digits</li>
+</ul>
+</li>
+<li>
+<ul>
+<li>Memory efficient for large numbers</li>
+</ul>
+</li>
+<li></li>
+<li>Time Complexity: O(max(m, n))</li>
+<li>Space Complexity: O(1)
+<em>/
+function</em> addTwoNumbersGenerator(
+l1: ListNode | null,
+l2: ListNode | null
+): Generator<number> {
+let carry = 0;
+let list1 = l1;
+let list2 = l2;</number></li>
+</ul>
+<p>while (list1 || list2 || carry) {
+const val1 = list1 ? list1.val : 0;
+const val2 = list2 ? list2.val : 0;</p>
+<pre><pre><code class="hljs undefined">const sum = val1 + val2 + carry;
+carry = Math.floor(sum / 10);
+
+yield sum % 10;
+
+if (list1) list1 = list1.next;
+if (list2) list2 = list2.next;
+</code></pre></pre>
+<p>}
+}</p>
+<p>function addTwoNumbersWithGenerator(
+l1: ListNode | null,
+l2: ListNode | null
+): ListNode | null {
+const dummy = new ListNode(0);
+let current = dummy;</p>
+<p>for (const digit of addTwoNumbersGenerator(l1, l2)) {
+current.next = new ListNode(digit);
+current = current.next;
+}</p>
+<p>return dummy.next;
+}</p>
+<p>/**</p>
+<ul>
+<li>
+<p>Solution 7: Using Functional Approach</p>
+</li>
+<li></li>
+<li>
+<p>Approach:</p>
+</li>
+<li>
+<ul>
+<li>Use functional programming concepts</li>
+</ul>
+</li>
+<li>
+<ul>
+<li>More declarative style</li>
+</ul>
+</li>
+<li></li>
+<li>
+<p>Time Complexity: O(max(m, n))</p>
+</li>
+<li>
+<p>Space Complexity: O(max(m, n))
+*/
+function addTwoNumbersFunctional(
+l1: ListNode | null,
+l2: ListNode | null
+): ListNode | null {
+function addDigits(
+l1: ListNode | null,
+l2: ListNode | null,
+carry: number
+): ListNode | null {
+if (!l1 &amp;&amp; !l2 &amp;&amp; carry === 0) return null;</p>
+<p>const val1 = l1?.val || 0;
+const val2 = l2?.val || 0;
+const sum = val1 + val2 + carry;</p>
+<p>return new ListNode(
+sum % 10,
+addDigits(l1?.next || null, l2?.next || null, Math.floor(sum / 10))
+);
+}</p>
+</li>
+</ul>
+<p>return addDigits(l1, l2, 0);
+}</p>
+<p>/**</p>
+<ul>
+<li>Solution 8: Using Two Pointers</li>
+<li></li>
+<li>Approach:</li>
+<li>
+<ul>
+<li>Use two pointers to traverse both lists</li>
+</ul>
+</li>
+<li>
+<ul>
+<li>More explicit pointer manipulation</li>
+</ul>
+</li>
+<li></li>
+<li>Time Complexity: O(max(m, n))</li>
+<li>Space Complexity: O(max(m, n))
+*/
+function addTwoNumbersTwoPointers(
+l1: ListNode | null,
+l2: ListNode | null
+): ListNode | null {
+const dummy = new ListNode(0);
+let current = dummy;
+let carry = 0;
+let p1 = l1;
+let p2 = l2;</li>
+</ul>
+<p>while (p1 || p2 || carry) {
+const val1 = p1 ? p1.val : 0;
+const val2 = p2 ? p2.val : 0;</p>
+<pre><pre><code class="hljs undefined">const sum = val1 + val2 + carry;
+carry = Math.floor(sum / 10);
+
+current.next = new ListNode(sum % 10);
+current = current.next;
+
+if (p1) p1 = p1.next;
+if (p2) p2 = p2.next;
+</code></pre></pre>
+<p>}</p>
+<p>return dummy.next;
+}</p>
+<p>/**</p>
+<ul>
+<li>
+<p>Solution 9: Using String Conversion</p>
+</li>
+<li></li>
+<li>
+<p>Approach:</p>
+</li>
+<li>
+<ul>
+<li>Convert lists to strings, add strings, then convert back</li>
+</ul>
+</li>
+<li>
+<ul>
+<li>Handle large numbers as strings</li>
+</ul>
+</li>
+<li></li>
+<li>
+<p>Time Complexity: O(max(m, n))</p>
+</li>
+<li>
+<p>Space Complexity: O(max(m, n))
+*/
+function addTwoNumbersString(
+l1: ListNode | null,
+l2: ListNode | null
+): ListNode | null {
+function listToString(head: ListNode | null): string {
+let str = &quot;&quot;;
+let current = head;</p>
+<p>while (current) {
+str = current.val + str; // Reverse order
+current = current.next;
+}</p>
+<p>return str || &quot;0&quot;;
+}</p>
+</li>
+</ul>
+<p>function stringToList(str: string): ListNode | null {
+const dummy = new ListNode(0);
+let current = dummy;</p>
+<pre><pre><code class="hljs undefined">for (let i = str.length - 1; i &gt;= 0; i--) {
+  current.next = new ListNode(parseInt(str[i]));
+  current = current.next;
+}
+
+return dummy.next;
+</code></pre></pre>
+<p>}</p>
+<p>function addStrings(num1: string, num2: string): string {
+let result = &quot;&quot;;
+let carry = 0;
+let i = num1.length - 1;
+let j = num2.length - 1;</p>
+<pre><pre><code class="hljs undefined">while (i &gt;= 0 || j &gt;= 0 || carry) {
+  const digit1 = i &gt;= 0 ? parseInt(num1[i]) : 0;
+  const digit2 = j &gt;= 0 ? parseInt(num2[j]) : 0;
+
+  const sum = digit1 + digit2 + carry;
+  result = (sum % 10) + result;
+  carry = Math.floor(sum / 10);
+
+  i--;
+  j--;
+}
+
+return result;
+</code></pre></pre>
+<p>}</p>
+<p>const str1 = listToString(l1);
+const str2 = listToString(l2);
+const sumStr = addStrings(str1, str2);</p>
+<p>return stringToList(sumStr);
+}</p>
+<p>/**</p>
+<ul>
+<li>
+<p>Solution 10: Using BigInt (for very large numbers)</p>
+</li>
+<li></li>
+<li>
+<p>Approach:</p>
+</li>
+<li>
+<ul>
+<li>Use BigInt for handling very large numbers</li>
+</ul>
+</li>
+<li>
+<ul>
+<li>Convert lists to BigInt, add, then convert back</li>
+</ul>
+</li>
+<li></li>
+<li>
+<p>Time Complexity: O(max(m, n))</p>
+</li>
+<li>
+<p>Space Complexity: O(max(m, n))
+*/
+function addTwoNumbersBigInt(
+l1: ListNode | null,
+l2: ListNode | null
+): ListNode | null {
+function listToBigInt(head: ListNode | null): bigint {
+let num = 0n;
+let multiplier = 1n;
+let current = head;</p>
+<p>while (current) {
+num += BigInt(current.val) * multiplier;
+multiplier *= 10n;
+current = current.next;
+}</p>
+<p>return num;
+}</p>
+</li>
+</ul>
+<p>function bigIntToList(num: bigint): ListNode | null {
+if (num === 0n) return new ListNode(0);</p>
+<pre><pre><code class="hljs undefined">const dummy = new ListNode(0);
+let current = dummy;
+
+while (num &gt; 0n) {
+  const digit = Number(num % 10n);
+  current.next = new ListNode(digit);
+  current = current.next;
+  num = num / 10n;
+}
+
+return dummy.next;
+</code></pre></pre>
+<p>}</p>
+<p>const num1 = listToBigInt(l1);
+const num2 = listToBigInt(l2);
+const sum = num1 + num2;</p>
+<p>return bigIntToList(sum);
+}</p>
+<p>// Helper function to create a linked list from array
+function createLinkedList(values: number[]): ListNode | null {
+if (values.length === 0) return null;</p>
+<p>const head = new ListNode(values[0]);
+let current = head;</p>
+<p>for (let i = 1; i &lt; values.length; i++) {
+current.next = new ListNode(values[i]);
+current = current.next;
+}</p>
+<p>return head;
+}</p>
+<p>// Helper function to convert linked list to array
+function listToArray(head: ListNode | null): number[] {
+const arr: number[] = [];
+let current = head;</p>
+<p>while (current) {
+arr.push(current.val);
+current = current.next;
+}</p>
+<p>return arr;
+}</p>
+<p>// Test cases
+function testAddTwoNumbers() {
+console.log(&quot;=== Testing Add Two Numbers ===\n&quot;);</p>
+<p>const testCases = [
+{
+l1: [2, 4, 3],
+l2: [5, 6, 4],
+expected: [7, 0, 8],
+description: &quot;Basic addition&quot;,
+},
+{
+l1: [0],
+l2: [0],
+expected: [0],
+description: &quot;Zero addition&quot;,
+},
+{
+l1: [9, 9, 9, 9, 9, 9, 9],
+l2: [9, 9, 9, 9],
+expected: [8, 9, 9, 9, 0, 0, 0, 1],
+description: &quot;Large numbers with carry&quot;,
+},
+{
+l1: [1, 2, 3],
+l2: [4, 5],
+expected: [5, 7, 3],
+description: &quot;Different lengths&quot;,
+},
+{
+l1: [1],
+l2: [9, 9],
+expected: [0, 0, 1],
+description: &quot;Single digit with carry&quot;,
+},
+];</p>
+<p>testCases.forEach((testCase, index) =&gt; {
+console.log(<pre><code class="hljs undefined">Test Case ${index + 1}: ${testCase.description}</code></pre>);
+console.log(<pre><code class="hljs undefined">l1: [${testCase.l1.join(&quot;, &quot;)}]</code></pre>);
+console.log(<pre><code class="hljs undefined">l2: [${testCase.l2.join(&quot;, &quot;)}]</code></pre>);
+console.log(<pre><code class="hljs undefined">Expected: [${testCase.expected.join(&quot;, &quot;)}]\n</code></pre>);</p>
+<pre><pre><code class="hljs undefined">const list1 = createLinkedList(testCase.l1);
+const list2 = createLinkedList(testCase.l2);
+
+// Test Solution 1 (Iterative)
+const result1 = addTwoNumbers(list1, list2);
+const arr1 = listToArray(result1);
+console.log(
+  `Solution 1 (Iterative): [${arr1.join(&quot;, &quot;)}] ${
+    JSON.stringify(arr1) === JSON.stringify(testCase.expected) ? &quot;✅&quot; : &quot;❌&quot;
+  }`
+);
+
+// Test Solution 2 (Recursive)
+const result2 = addTwoNumbersRecursive(
+  createLinkedList(testCase.l1),
+  createLinkedList(testCase.l2)
+);
+const arr2 = listToArray(result2);
+console.log(
+  `Solution 2 (Recursive): [${arr2.join(&quot;, &quot;)}] ${
+    JSON.stringify(arr2) === JSON.stringify(testCase.expected) ? &quot;✅&quot; : &quot;❌&quot;
+  }`
+);
+
+// Test Solution 3 (Stack)
+const result3 = addTwoNumbersStack(
+  createLinkedList(testCase.l1),
+  createLinkedList(testCase.l2)
+);
+const arr3 = listToArray(result3);
+console.log(
+  `Solution 3 (Stack): [${arr3.join(&quot;, &quot;)}] ${
+    JSON.stringify(arr3) === JSON.stringify(testCase.expected) ? &quot;✅&quot; : &quot;❌&quot;
+  }`
+);
+
+// Test Solution 4 (Array)
+const result4 = addTwoNumbersArray(
+  createLinkedList(testCase.l1),
+  createLinkedList(testCase.l2)
+);
+const arr4 = listToArray(result4);
+console.log(
+  `Solution 4 (Array): [${arr4.join(&quot;, &quot;)}] ${
+    JSON.stringify(arr4) === JSON.stringify(testCase.expected) ? &quot;✅&quot; : &quot;❌&quot;
+  }`
+);
+
+// Test Solution 5 (Class)
+const result5 = addTwoNumbersClass(
+  createLinkedList(testCase.l1),
+  createLinkedList(testCase.l2)
+);
+const arr5 = listToArray(result5);
+console.log(
+  `Solution 5 (Class): [${arr5.join(&quot;, &quot;)}] ${
+    JSON.stringify(arr5) === JSON.stringify(testCase.expected) ? &quot;✅&quot; : &quot;❌&quot;
+  }`
+);
+
+// Test Solution 6 (Generator)
+const result6 = addTwoNumbersWithGenerator(
+  createLinkedList(testCase.l1),
+  createLinkedList(testCase.l2)
+);
+const arr6 = listToArray(result6);
+console.log(
+  `Solution 6 (Generator): [${arr6.join(&quot;, &quot;)}] ${
+    JSON.stringify(arr6) === JSON.stringify(testCase.expected) ? &quot;✅&quot; : &quot;❌&quot;
+  }`
+);
+
+// Test Solution 7 (Functional)
+const result7 = addTwoNumbersFunctional(
+  createLinkedList(testCase.l1),
+  createLinkedList(testCase.l2)
+);
+const arr7 = listToArray(result7);
+console.log(
+  `Solution 7 (Functional): [${arr7.join(&quot;, &quot;)}] ${
+    JSON.stringify(arr7) === JSON.stringify(testCase.expected) ? &quot;✅&quot; : &quot;❌&quot;
+  }`
+);
+
+// Test Solution 8 (Two Pointers)
+const result8 = addTwoNumbersTwoPointers(
+  createLinkedList(testCase.l1),
+  createLinkedList(testCase.l2)
+);
+const arr8 = listToArray(result8);
+console.log(
+  `Solution 8 (Two Pointers): [${arr8.join(&quot;, &quot;)}] ${
+    JSON.stringify(arr8) === JSON.stringify(testCase.expected) ? &quot;✅&quot; : &quot;❌&quot;
+  }`
+);
+
+// Test Solution 9 (String)
+const result9 = addTwoNumbersString(
+  createLinkedList(testCase.l1),
+  createLinkedList(testCase.l2)
+);
+const arr9 = listToArray(result9);
+console.log(
+  `Solution 9 (String): [${arr9.join(&quot;, &quot;)}] ${
+    JSON.stringify(arr9) === JSON.stringify(testCase.expected) ? &quot;✅&quot; : &quot;❌&quot;
+  }`
+);
+
+// Test Solution 10 (BigInt)
+const result10 = addTwoNumbersBigInt(
+  createLinkedList(testCase.l1),
+  createLinkedList(testCase.l2)
+);
+const arr10 = listToArray(result10);
+console.log(
+  `Solution 10 (BigInt): [${arr10.join(&quot;, &quot;)}] ${
+    JSON.stringify(arr10) === JSON.stringify(testCase.expected)
+      ? &quot;✅&quot;
+      : &quot;❌&quot;
+  }`
+);
+
+console.log(&quot;\n---\n&quot;);
+</code></pre></pre>
+<p>});
+}</p>
+<p>// Performance comparison
+function performanceComparison() {
+console.log(&quot;=== Performance Comparison ===\n&quot;);</p>
+<p>const testCases = [
+{ name: &quot;Iterative&quot;, func: addTwoNumbers },
+{ name: &quot;Recursive&quot;, func: addTwoNumbersRecursive },
+{ name: &quot;Stack&quot;, func: addTwoNumbersStack },
+{ name: &quot;Array&quot;, func: addTwoNumbersArray },
+{ name: &quot;Class&quot;, func: addTwoNumbersClass },
+{ name: &quot;Generator&quot;, func: addTwoNumbersWithGenerator },
+{ name: &quot;Functional&quot;, func: addTwoNumbersFunctional },
+{ name: &quot;Two Pointers&quot;, func: addTwoNumbersTwoPointers },
+{ name: &quot;String&quot;, func: addTwoNumbersString },
+{ name: &quot;BigInt&quot;, func: addTwoNumbersBigInt },
+];</p>
+<p>// Create test cases
+const smallCase = {
+l1: createLinkedList([1, 2, 3]),
+l2: createLinkedList([4, 5, 6]),
+};
+const mediumCase = {
+l1: createLinkedList(Array.from({ length: 100 }, (<em>, i) =&gt; i % 10)),
+l2: createLinkedList(Array.from({ length: 100 }, (</em>, i) =&gt; (i + 5) % 10)),
+};
+const largeCase = {
+l1: createLinkedList(Array.from({ length: 1000 }, (<em>, i) =&gt; i % 10)),
+l2: createLinkedList(Array.from({ length: 1000 }, (</em>, i) =&gt; (i + 5) % 10)),
+};</p>
+<p>const cases = [
+{ name: &quot;Small&quot;, case: smallCase },
+{ name: &quot;Medium&quot;, case: mediumCase },
+{ name: &quot;Large&quot;, case: largeCase },
+];</p>
+<p>cases.forEach(({ name, case: testCase }) =&gt; {
+console.log(<pre><code class="hljs undefined">${name} Case:</code></pre>);</p>
+<pre><pre><code class="hljs undefined">testCases.forEach(({ name: funcName, func }) =&gt; {
+  const start = performance.now();
+  const result = func(testCase.l1, testCase.l2);
+  const end = performance.now();
+
+  const resultLength = listToArray(result).length;
+  console.log(
+    `  ${funcName}: ${(end - start).toFixed(2)}ms (length: ${resultLength})`
+  );
+});
+
+console.log(&quot;&quot;);
+</code></pre></pre>
+<p>});
+}</p>
+<p>// Uncomment the following lines to run tests
+// testAddTwoNumbers();
+// performanceComparison();</p>
+<p>export {
+addTwoNumbers,
+addTwoNumbersRecursive,
+addTwoNumbersStack,
+addTwoNumbersArray,
+addTwoNumbersClass,
+addTwoNumbersWithGenerator,
+addTwoNumbersFunctional,
+addTwoNumbersTwoPointers,
+addTwoNumbersString,
+addTwoNumbersBigInt,
+NumberAdder,
+addTwoNumbersGenerator,
+ListNode,
+createLinkedList,
+listToArray,
+testAddTwoNumbers,
+performanceComparison,
+};
+{% endraw %}</p></div></div></main><footer class="sc-dYwGCk cJzheU"><div class="sc-lgpSej hJUFeT"><div class="sc-eqYatC mSxwd"><div class="sc-kcLKEh cmBIup"><div class="sc-dntSTA bAsNIP"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-code "><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>Frontend Interview Prep</div><p class="sc-kvnevz gWXMDV">Comprehensive interview preparation for frontend engineers targeting Big Tech companies.</p><div class="sc-dFVmKS jCoOHQ"><a href="https://github.com" aria-label="GitHub"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-github "><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"></path><path d="M9 18c-4.51 2-5-2-7-2"></path></svg></a><a href="https://twitter.com" aria-label="Twitter"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-twitter "><path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"></path></svg></a><a href="https://linkedin.com" aria-label="LinkedIn"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-linkedin "><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect width="4" height="12" x="2" y="9"></rect><circle cx="4" cy="4" r="2"></circle></svg></a><a href="mailto:contact@example.com" aria-label="Email"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-mail "><rect width="20" height="16" x="2" y="4" rx="2"></rect><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path></svg></a></div></div><div class="sc-kcLKEh cmBIup"><h3>Study Materials</h3><ul><li><a href="/algorithms">Algorithms</a></li><li><a href="/react">React &amp; Frontend</a></li><li><a href="/system-design">System Design</a></li><li><a href="/typescript">TypeScript</a></li><li><a href="/performance">Performance</a></li></ul></div><div class="sc-kcLKEh cmBIup"><h3>Companies</h3><ul><li><a href="/google">Google</a></li><li><a href="/meta">Meta</a></li><li><a href="/amazon">Amazon</a></li><li><a href="/microsoft">Microsoft</a></li><li><a href="/apple">Apple</a></li></ul></div><div class="sc-kcLKEh cmBIup"><h3>Resources</h3><ul><li><a href="/interview-tips">Interview Tips</a></li><li><a href="/coding-challenges">Coding Challenges</a></li><li><a href="/mock-interviews">Mock Interviews</a></li><li><a href="/blog">Blog</a></li><li><a href="/faq">FAQ</a></li></ul></div></div><div class="sc-kCuUfV crUaYh"><p class="sc-dNdcvo esMlQF">© 2025 Frontend Interview Prep. All rights reserved.</p><div class="sc-fbQrwq eHcrXx"><a href="/privacy">Privacy Policy</a><a href="/terms">Terms of Service</a><a href="/contact">Contact</a></div></div></div></footer></div><script src="/interview/_next/static/chunks/webpack-be7d7df45533bffc.js" async=""></script><script>(self.__next_f=self.__next_f||[]).push([0]);self.__next_f.push([2,null])</script><script>self.__next_f.push([1,"1:HL[\"/interview/_next/static/media/e4af272ccee01ff0-s.p.woff2\",\"font\",{\"crossOrigin\":\"\",\"type\":\"font/woff2\"}]\n2:HL[\"/interview/_next/static/css/387024c6a2216908.css\",\"style\"]\n"])</script><script>self.__next_f.push([1,"3:I[2846,[],\"\"]\n5:I[5907,[\"918\",\"static/chunks/918-3273b83890f10546.js\",\"930\",\"static/chunks/930-3262a6c9c5acace4.js\",\"687\",\"static/chunks/app/docs/%5B...slug%5D/page-32962e9542d32755.js\"],\"default\"]\n7:I[4707,[],\"\"]\n9:I[6423,[],\"\"]\na:I[2,[\"918\",\"static/chunks/918-3273b83890f10546.js\",\"710\",\"static/chunks/710-dfaa11b4dff08f8e.js\",\"972\",\"static/chunks/972-011bba60ed155615.js\",\"233\",\"static/chunks/233-3e0c1d820a17eca9.js\",\"185\",\"static/chunks/app/layout-333f4adcd11f8f39.js\"],\"default\",1]\nc:I[1060,[],\"\"]\n6:T4b0b,"])</script><script>self.__next_f.push([1,"\n# Add Two Number\n\n**LeetCode Problem # * 2. Add Two Numbers**\n\n## Problem Description\n\n * You are given two non-empty linked lists representing two non-negative integers.  * The digits are stored in reverse order, and each of their nodes contains a single digit.  * Add the two numbers and return the sum as a linked list.  *  * You may assume the two numbers do not contain any leading zero, except the number 0 itself. \n\n## Solutions\n\n{% raw %}\n/**\n * 2. Add Two Numbers\n *\n * Problem:\n * You are given two non-empty linked lists representing two non-negative integers.\n * The digits are stored in reverse order, and each of their nodes contains a single digit.\n * Add the two numbers and return the sum as a linked list.\n *\n * You may assume the two numbers do not contain any leading zero, except the number 0 itself.\n *\n * Example:\n * Input: l1 = [2,4,3], l2 = [5,6,4]\n * Output: [7,0,8]\n * Explanation: 342 + 465 = 807.\n *\n * Input: l1 = [0], l2 = [0]\n * Output: [0]\n *\n * Input: l1 = [9,9,9,9,9,9,9], l2 = [9,9,9,9]\n * Output: [8,9,9,9,0,0,0,1]\n *\n * LeetCode: https://leetcode.com/problems/add-two-numbers/\n */\n\n// Definition for singly-linked list\nclass ListNode {\n  val: number;\n  next: ListNode | null;\n  constructor(val?: number, next?: ListNode | null) {\n    this.val = val === undefined ? 0 : val;\n    this.next = next === undefined ? null : next;\n  }\n}\n\n/**\n * Solution 1: Iterative Addition (Optimal)\n *\n * Approach:\n * - Add digits from both lists simultaneously\n * - Handle carry and create new nodes\n * - Use dummy head for easier list construction\n *\n * Time Complexity: O(max(m, n))\n * Space Complexity: O(max(m, n))\n */\nfunction addTwoNumbers(\n  l1: ListNode | null,\n  l2: ListNode | null\n): ListNode | null {\n  const dummy = new ListNode(0);\n  let current = dummy;\n  let carry = 0;\n\n  while (l1 || l2 || carry) {\n    const val1 = l1 ? l1.val : 0;\n    const val2 = l2 ? l2.val : 0;\n\n    const sum = val1 + val2 + carry;\n    carry = Math.floor(sum / 10);\n\n    current.next = new ListNode(sum % 10);\n    current = current.next;\n\n    if (l1) l1 = l1.next;\n    if (l2) l2 = l2.next;\n  }\n\n  return dummy.next;\n}\n\n/**\n * Solution 2: Recursive Approach\n *\n * Approach:\n * - Use recursion to add digits\n * - Pass carry as parameter\n * - Build result list recursively\n *\n * Time Complexity: O(max(m, n))\n * Space Complexity: O(max(m, n)) - recursion stack\n */\nfunction addTwoNumbersRecursive(\n  l1: ListNode | null,\n  l2: ListNode | null\n): ListNode | null {\n  function add(\n    l1: ListNode | null,\n    l2: ListNode | null,\n    carry: number\n  ): ListNode | null {\n    if (!l1 \u0026\u0026 !l2 \u0026\u0026 carry === 0) {\n      return null;\n    }\n\n    const val1 = l1 ? l1.val : 0;\n    const val2 = l2 ? l2.val : 0;\n\n    const sum = val1 + val2 + carry;\n    const newCarry = Math.floor(sum / 10);\n\n    const node = new ListNode(sum % 10);\n    node.next = add(l1?.next || null, l2?.next || null, newCarry);\n\n    return node;\n  }\n\n  return add(l1, l2, 0);\n}\n\n/**\n * Solution 3: Using Stack\n *\n * Approach:\n * - Convert lists to numbers, add them, then convert back\n * - Use stack to handle large numbers\n * - More intuitive but less efficient for large numbers\n *\n * Time Complexity: O(max(m, n))\n * Space Complexity: O(max(m, n))\n */\nfunction addTwoNumbersStack(\n  l1: ListNode | null,\n  l2: ListNode | null\n): ListNode | null {\n  function listToNumber(head: ListNode | null): number {\n    let num = 0;\n    let multiplier = 1;\n    let current = head;\n\n    while (current) {\n      num += current.val * multiplier;\n      multiplier *= 10;\n      current = current.next;\n    }\n\n    return num;\n  }\n\n  function numberToList(num: number): ListNode | null {\n    if (num === 0) return new ListNode(0);\n\n    const dummy = new ListNode(0);\n    let current = dummy;\n\n    while (num \u003e 0) {\n      const digit = num % 10;\n      current.next = new ListNode(digit);\n      current = current.next;\n      num = Math.floor(num / 10);\n    }\n\n    return dummy.next;\n  }\n\n  const num1 = listToNumber(l1);\n  const num2 = listToNumber(l2);\n  const sum = num1 + num2;\n\n  return numberToList(sum);\n}\n\n/**\n * Solution 4: Using Array\n *\n * Approach:\n * - Convert lists to arrays, add arrays, then convert back\n * - More explicit digit-by-digit handling\n *\n * Time Complexity: O(max(m, n))\n * Space Complexity: O(max(m, n))\n */\nfunction addTwoNumbersArray(\n  l1: ListNode | null,\n  l2: ListNode | null\n): ListNode | null {\n  function listToArray(head: ListNode | null): number[] {\n    const arr: number[] = [];\n    let current = head;\n\n    while (current) {\n      arr.push(current.val);\n      current = current.next;\n    }\n\n    return arr;\n  }\n\n  function arrayToList(arr: number[]): ListNode | null {\n    if (arr.length === 0) return null;\n\n    const dummy = new ListNode(0);\n    let current = dummy;\n\n    for (const digit of arr) {\n      current.next = new ListNode(digit);\n      current = current.next;\n    }\n\n    return dummy.next;\n  }\n\n  const arr1 = listToArray(l1);\n  const arr2 = listToArray(l2);\n  const maxLen = Math.max(arr1.length, arr2.length);\n\n  const result: number[] = [];\n  let carry = 0;\n\n  for (let i = 0; i \u003c maxLen || carry; i++) {\n    const val1 = i \u003c arr1.length ? arr1[i] : 0;\n    const val2 = i \u003c arr2.length ? arr2[i] : 0;\n\n    const sum = val1 + val2 + carry;\n    result.push(sum % 10);\n    carry = Math.floor(sum / 10);\n  }\n\n  return arrayToList(result);\n}\n\n/**\n * Solution 5: Using Class (Object-oriented)\n *\n * Approach:\n * - Create an Adder class\n * - Encapsulate the addition logic\n *\n * Time Complexity: O(max(m, n))\n * Space Complexity: O(max(m, n))\n */\nclass NumberAdder {\n  private l1: ListNode | null;\n  private l2: ListNode | null;\n\n  constructor(l1: ListNode | null, l2: ListNode | null) {\n    this.l1 = l1;\n    this.l2 = l2;\n  }\n\n  add(): ListNode | null {\n    const dummy = new ListNode(0);\n    let current = dummy;\n    let carry = 0;\n    let list1 = this.l1;\n    let list2 = this.l2;\n\n    while (list1 || list2 || carry) {\n      const val1 = list1 ? list1.val : 0;\n      const val2 = list2 ? list2.val : 0;\n\n      const sum = val1 + val2 + carry;\n      carry = Math.floor(sum / 10);\n\n      current.next = new ListNode(sum % 10);\n      current = current.next;\n\n      if (list1) list1 = list1.next;\n      if (list2) list2 = list2.next;\n    }\n\n    return dummy.next;\n  }\n\n  getLists(): { l1: ListNode | null; l2: ListNode | null } {\n    return { l1: this.l1, l2: this.l2 };\n  }\n}\n\nfunction addTwoNumbersClass(\n  l1: ListNode | null,\n  l2: ListNode | null\n): ListNode | null {\n  const adder = new NumberAdder(l1, l2);\n  return adder.add();\n}\n\n/**\n * Solution 6: Using Generator (Memory efficient)\n *\n * Approach:\n * - Use generator to yield digits\n * - Memory efficient for large numbers\n *\n * Time Complexity: O(max(m, n))\n * Space Complexity: O(1)\n */\nfunction* addTwoNumbersGenerator(\n  l1: ListNode | null,\n  l2: ListNode | null\n): Generator\u003cnumber\u003e {\n  let carry = 0;\n  let list1 = l1;\n  let list2 = l2;\n\n  while (list1 || list2 || carry) {\n    const val1 = list1 ? list1.val : 0;\n    const val2 = list2 ? list2.val : 0;\n\n    const sum = val1 + val2 + carry;\n    carry = Math.floor(sum / 10);\n\n    yield sum % 10;\n\n    if (list1) list1 = list1.next;\n    if (list2) list2 = list2.next;\n  }\n}\n\nfunction addTwoNumbersWithGenerator(\n  l1: ListNode | null,\n  l2: ListNode | null\n): ListNode | null {\n  const dummy = new ListNode(0);\n  let current = dummy;\n\n  for (const digit of addTwoNumbersGenerator(l1, l2)) {\n    current.next = new ListNode(digit);\n    current = current.next;\n  }\n\n  return dummy.next;\n}\n\n/**\n * Solution 7: Using Functional Approach\n *\n * Approach:\n * - Use functional programming concepts\n * - More declarative style\n *\n * Time Complexity: O(max(m, n))\n * Space Complexity: O(max(m, n))\n */\nfunction addTwoNumbersFunctional(\n  l1: ListNode | null,\n  l2: ListNode | null\n): ListNode | null {\n  function addDigits(\n    l1: ListNode | null,\n    l2: ListNode | null,\n    carry: number\n  ): ListNode | null {\n    if (!l1 \u0026\u0026 !l2 \u0026\u0026 carry === 0) return null;\n\n    const val1 = l1?.val || 0;\n    const val2 = l2?.val || 0;\n    const sum = val1 + val2 + carry;\n\n    return new ListNode(\n      sum % 10,\n      addDigits(l1?.next || null, l2?.next || null, Math.floor(sum / 10))\n    );\n  }\n\n  return addDigits(l1, l2, 0);\n}\n\n/**\n * Solution 8: Using Two Pointers\n *\n * Approach:\n * - Use two pointers to traverse both lists\n * - More explicit pointer manipulation\n *\n * Time Complexity: O(max(m, n))\n * Space Complexity: O(max(m, n))\n */\nfunction addTwoNumbersTwoPointers(\n  l1: ListNode | null,\n  l2: ListNode | null\n): ListNode | null {\n  const dummy = new ListNode(0);\n  let current = dummy;\n  let carry = 0;\n  let p1 = l1;\n  let p2 = l2;\n\n  while (p1 || p2 || carry) {\n    const val1 = p1 ? p1.val : 0;\n    const val2 = p2 ? p2.val : 0;\n\n    const sum = val1 + val2 + carry;\n    carry = Math.floor(sum / 10);\n\n    current.next = new ListNode(sum % 10);\n    current = current.next;\n\n    if (p1) p1 = p1.next;\n    if (p2) p2 = p2.next;\n  }\n\n  return dummy.next;\n}\n\n/**\n * Solution 9: Using String Conversion\n *\n * Approach:\n * - Convert lists to strings, add strings, then convert back\n * - Handle large numbers as strings\n *\n * Time Complexity: O(max(m, n))\n * Space Complexity: O(max(m, n))\n */\nfunction addTwoNumbersString(\n  l1: ListNode | null,\n  l2: ListNode | null\n): ListNode | null {\n  function listToString(head: ListNode | null): string {\n    let str = \"\";\n    let current = head;\n\n    while (current) {\n      str = current.val + str; // Reverse order\n      current = current.next;\n    }\n\n    return str || \"0\";\n  }\n\n  function stringToList(str: string): ListNode | null {\n    const dummy = new ListNode(0);\n    let current = dummy;\n\n    for (let i = str.length - 1; i \u003e= 0; i--) {\n      current.next = new ListNode(parseInt(str[i]));\n      current = current.next;\n    }\n\n    return dummy.next;\n  }\n\n  function addStrings(num1: string, num2: string): string {\n    let result = \"\";\n    let carry = 0;\n    let i = num1.length - 1;\n    let j = num2.length - 1;\n\n    while (i \u003e= 0 || j \u003e= 0 || carry) {\n      const digit1 = i \u003e= 0 ? parseInt(num1[i]) : 0;\n      const digit2 = j \u003e= 0 ? parseInt(num2[j]) : 0;\n\n      const sum = digit1 + digit2 + carry;\n      result = (sum % 10) + result;\n      carry = Math.floor(sum / 10);\n\n      i--;\n      j--;\n    }\n\n    return result;\n  }\n\n  const str1 = listToString(l1);\n  const str2 = listToString(l2);\n  const sumStr = addStrings(str1, str2);\n\n  return stringToList(sumStr);\n}\n\n/**\n * Solution 10: Using BigInt (for very large numbers)\n *\n * Approach:\n * - Use BigInt for handling very large numbers\n * - Convert lists to BigInt, add, then convert back\n *\n * Time Complexity: O(max(m, n))\n * Space Complexity: O(max(m, n))\n */\nfunction addTwoNumbersBigInt(\n  l1: ListNode | null,\n  l2: ListNode | null\n): ListNode | null {\n  function listToBigInt(head: ListNode | null): bigint {\n    let num = 0n;\n    let multiplier = 1n;\n    let current = head;\n\n    while (current) {\n      num += BigInt(current.val) * multiplier;\n      multiplier *= 10n;\n      current = current.next;\n    }\n\n    return num;\n  }\n\n  function bigIntToList(num: bigint): ListNode | null {\n    if (num === 0n) return new ListNode(0);\n\n    const dummy = new ListNode(0);\n    let current = dummy;\n\n    while (num \u003e 0n) {\n      const digit = Number(num % 10n);\n      current.next = new ListNode(digit);\n      current = current.next;\n      num = num / 10n;\n    }\n\n    return dummy.next;\n  }\n\n  const num1 = listToBigInt(l1);\n  const num2 = listToBigInt(l2);\n  const sum = num1 + num2;\n\n  return bigIntToList(sum);\n}\n\n// Helper function to create a linked list from array\nfunction createLinkedList(values: number[]): ListNode | null {\n  if (values.length === 0) return null;\n\n  const head = new ListNode(values[0]);\n  let current = head;\n\n  for (let i = 1; i \u003c values.length; i++) {\n    current.next = new ListNode(values[i]);\n    current = current.next;\n  }\n\n  return head;\n}\n\n// Helper function to convert linked list to array\nfunction listToArray(head: ListNode | null): number[] {\n  const arr: number[] = [];\n  let current = head;\n\n  while (current) {\n    arr.push(current.val);\n    current = current.next;\n  }\n\n  return arr;\n}\n\n// Test cases\nfunction testAddTwoNumbers() {\n  console.log(\"=== Testing Add Two Numbers ===\\n\");\n\n  const testCases = [\n    {\n      l1: [2, 4, 3],\n      l2: [5, 6, 4],\n      expected: [7, 0, 8],\n      description: \"Basic addition\",\n    },\n    {\n      l1: [0],\n      l2: [0],\n      expected: [0],\n      description: \"Zero addition\",\n    },\n    {\n      l1: [9, 9, 9, 9, 9, 9, 9],\n      l2: [9, 9, 9, 9],\n      expected: [8, 9, 9, 9, 0, 0, 0, 1],\n      description: \"Large numbers with carry\",\n    },\n    {\n      l1: [1, 2, 3],\n      l2: [4, 5],\n      expected: [5, 7, 3],\n      description: \"Different lengths\",\n    },\n    {\n      l1: [1],\n      l2: [9, 9],\n      expected: [0, 0, 1],\n      description: \"Single digit with carry\",\n    },\n  ];\n\n  testCases.forEach((testCase, index) =\u003e {\n    console.log(`Test Case ${index + 1}: ${testCase.description}`);\n    console.log(`l1: [${testCase.l1.join(\", \")}]`);\n    console.log(`l2: [${testCase.l2.join(\", \")}]`);\n    console.log(`Expected: [${testCase.expected.join(\", \")}]\\n`);\n\n    const list1 = createLinkedList(testCase.l1);\n    const list2 = createLinkedList(testCase.l2);\n\n    // Test Solution 1 (Iterative)\n    const result1 = addTwoNumbers(list1, list2);\n    const arr1 = listToArray(result1);\n    console.log(\n      `Solution 1 (Iterative): [${arr1.join(\", \")}] ${\n        JSON.stringify(arr1) === JSON.stringify(testCase.expected) ? \"✅\" : \"❌\"\n      }`\n    );\n\n    // Test Solution 2 (Recursive)\n    const result2 = addTwoNumbersRecursive(\n      createLinkedList(testCase.l1),\n      createLinkedList(testCase.l2)\n    );\n    const arr2 = listToArray(result2);\n    console.log(\n      `Solution 2 (Recursive): [${arr2.join(\", \")}] ${\n        JSON.stringify(arr2) === JSON.stringify(testCase.expected) ? \"✅\" : \"❌\"\n      }`\n    );\n\n    // Test Solution 3 (Stack)\n    const result3 = addTwoNumbersStack(\n      createLinkedList(testCase.l1),\n      createLinkedList(testCase.l2)\n    );\n    const arr3 = listToArray(result3);\n    console.log(\n      `Solution 3 (Stack): [${arr3.join(\", \")}] ${\n        JSON.stringify(arr3) === JSON.stringify(testCase.expected) ? \"✅\" : \"❌\"\n      }`\n    );\n\n    // Test Solution 4 (Array)\n    const result4 = addTwoNumbersArray(\n      createLinkedList(testCase.l1),\n      createLinkedList(testCase.l2)\n    );\n    const arr4 = listToArray(result4);\n    console.log(\n      `Solution 4 (Array): [${arr4.join(\", \")}] ${\n        JSON.stringify(arr4) === JSON.stringify(testCase.expected) ? \"✅\" : \"❌\"\n      }`\n    );\n\n    // Test Solution 5 (Class)\n    const result5 = addTwoNumbersClass(\n      createLinkedList(testCase.l1),\n      createLinkedList(testCase.l2)\n    );\n    const arr5 = listToArray(result5);\n    console.log(\n      `Solution 5 (Class): [${arr5.join(\", \")}] ${\n        JSON.stringify(arr5) === JSON.stringify(testCase.expected) ? \"✅\" : \"❌\"\n      }`\n    );\n\n    // Test Solution 6 (Generator)\n    const result6 = addTwoNumbersWithGenerator(\n      createLinkedList(testCase.l1),\n      createLinkedList(testCase.l2)\n    );\n    const arr6 = listToArray(result6);\n    console.log(\n      `Solution 6 (Generator): [${arr6.join(\", \")}] ${\n        JSON.stringify(arr6) === JSON.stringify(testCase.expected) ? \"✅\" : \"❌\"\n      }`\n    );\n\n    // Test Solution 7 (Functional)\n    const result7 = addTwoNumbersFunctional(\n      createLinkedList(testCase.l1),\n      createLinkedList(testCase.l2)\n    );\n    const arr7 = listToArray(result7);\n    console.log(\n      `Solution 7 (Functional): [${arr7.join(\", \")}] ${\n        JSON.stringify(arr7) === JSON.stringify(testCase.expected) ? \"✅\" : \"❌\"\n      }`\n    );\n\n    // Test Solution 8 (Two Pointers)\n    const result8 = addTwoNumbersTwoPointers(\n      createLinkedList(testCase.l1),\n      createLinkedList(testCase.l2)\n    );\n    const arr8 = listToArray(result8);\n    console.log(\n      `Solution 8 (Two Pointers): [${arr8.join(\", \")}] ${\n        JSON.stringify(arr8) === JSON.stringify(testCase.expected) ? \"✅\" : \"❌\"\n      }`\n    );\n\n    // Test Solution 9 (String)\n    const result9 = addTwoNumbersString(\n      createLinkedList(testCase.l1),\n      createLinkedList(testCase.l2)\n    );\n    const arr9 = listToArray(result9);\n    console.log(\n      `Solution 9 (String): [${arr9.join(\", \")}] ${\n        JSON.stringify(arr9) === JSON.stringify(testCase.expected) ? \"✅\" : \"❌\"\n      }`\n    );\n\n    // Test Solution 10 (BigInt)\n    const result10 = addTwoNumbersBigInt(\n      createLinkedList(testCase.l1),\n      createLinkedList(testCase.l2)\n    );\n    const arr10 = listToArray(result10);\n    console.log(\n      `Solution 10 (BigInt): [${arr10.join(\", \")}] ${\n        JSON.stringify(arr10) === JSON.stringify(testCase.expected)\n          ? \"✅\"\n          : \"❌\"\n      }`\n    );\n\n    console.log(\"\\n---\\n\");\n  });\n}\n\n// Performance comparison\nfunction performanceComparison() {\n  console.log(\"=== Performance Comparison ===\\n\");\n\n  const testCases = [\n    { name: \"Iterative\", func: addTwoNumbers },\n    { name: \"Recursive\", func: addTwoNumbersRecursive },\n    { name: \"Stack\", func: addTwoNumbersStack },\n    { name: \"Array\", func: addTwoNumbersArray },\n    { name: \"Class\", func: addTwoNumbersClass },\n    { name: \"Generator\", func: addTwoNumbersWithGenerator },\n    { name: \"Functional\", func: addTwoNumbersFunctional },\n    { name: \"Two Pointers\", func: addTwoNumbersTwoPointers },\n    { name: \"String\", func: addTwoNumbersString },\n    { name: \"BigInt\", func: addTwoNumbersBigInt },\n  ];\n\n  // Create test cases\n  const smallCase = {\n    l1: createLinkedList([1, 2, 3]),\n    l2: createLinkedList([4, 5, 6]),\n  };\n  const mediumCase = {\n    l1: createLinkedList(Array.from({ length: 100 }, (_, i) =\u003e i % 10)),\n    l2: createLinkedList(Array.from({ length: 100 }, (_, i) =\u003e (i + 5) % 10)),\n  };\n  const largeCase = {\n    l1: createLinkedList(Array.from({ length: 1000 }, (_, i) =\u003e i % 10)),\n    l2: createLinkedList(Array.from({ length: 1000 }, (_, i) =\u003e (i + 5) % 10)),\n  };\n\n  const cases = [\n    { name: \"Small\", case: smallCase },\n    { name: \"Medium\", case: mediumCase },\n    { name: \"Large\", case: largeCase },\n  ];\n\n  cases.forEach(({ name, case: testCase }) =\u003e {\n    console.log(`${name} Case:`);\n\n    testCases.forEach(({ name: funcName, func }) =\u003e {\n      const start = performance.now();\n      const result = func(testCase.l1, testCase.l2);\n      const end = performance.now();\n\n      const resultLength = listToArray(result).length;\n      console.log(\n        `  ${funcName}: ${(end - start).toFixed(2)}ms (length: ${resultLength})`\n      );\n    });\n\n    console.log(\"\");\n  });\n}\n\n// Uncomment the following lines to run tests\n// testAddTwoNumbers();\n// performanceComparison();\n\nexport {\n  addTwoNumbers,\n  addTwoNumbersRecursive,\n  addTwoNumbersStack,\n  addTwoNumbersArray,\n  addTwoNumbersClass,\n  addTwoNumbersWithGenerator,\n  addTwoNumbersFunctional,\n  addTwoNumbersTwoPointers,\n  addTwoNumbersString,\n  addTwoNumbersBigInt,\n  NumberAdder,\n  addTwoNumbersGenerator,\n  ListNode,\n  createLinkedList,\n  listToArray,\n  testAddTwoNumbers,\n  performanceComparison,\n};\n{% endraw %}\n"])</script><script>self.__next_f.push([1,"8:[\"slug\",\"leetcode/linked-list/problems/07-add-two-numbers\",\"c\"]\nd:[]\n"])</script><script>self.__next_f.push([1,"0:[\"$\",\"$L3\",null,{\"buildId\":\"7uJ7BVaXJTiEOD9iYDv3n\",\"assetPrefix\":\"/interview\",\"urlParts\":[\"\",\"docs\",\"leetcode\",\"linked-list\",\"problems\",\"07-add-two-numbers\"],\"initialTree\":[\"\",{\"children\":[\"docs\",{\"children\":[[\"slug\",\"leetcode/linked-list/problems/07-add-two-numbers\",\"c\"],{\"children\":[\"__PAGE__?{\\\"slug\\\":[\\\"leetcode\\\",\\\"linked-list\\\",\\\"problems\\\",\\\"07-add-two-numbers\\\"]}\",{}]}]}]},\"$undefined\",\"$undefined\",true],\"initialSeedData\":[\"\",{\"children\":[\"docs\",{\"children\":[[\"slug\",\"leetcode/linked-list/problems/07-add-two-numbers\",\"c\"],{\"children\":[\"__PAGE__\",{},[[\"$L4\",[\"$\",\"div\",null,{\"style\":{\"maxWidth\":\"1200px\",\"margin\":\"0 auto\",\"padding\":\"2rem\",\"paddingTop\":\"6rem\"},\"children\":[[\"$\",\"div\",null,{\"style\":{\"marginBottom\":\"2rem\"},\"children\":[[\"$\",\"nav\",null,{\"style\":{\"color\":\"#64748b\",\"fontSize\":\"0.9rem\",\"marginBottom\":\"1rem\"},\"children\":[[\"$\",\"a\",null,{\"href\":\"/\",\"style\":{\"color\":\"#3b82f6\",\"textDecoration\":\"none\"},\"children\":\"Home\"}],\" \u003e \",[\"$\",\"span\",null,{\"children\":\"leetcode \u003e linked-list \u003e problems \u003e 07-add-two-numbers\"}]]}],[\"$\",\"h1\",null,{\"style\":{\"fontSize\":\"2.5rem\",\"fontWeight\":\"800\",\"marginBottom\":\"0.5rem\",\"color\":\"#1e293b\"},\"children\":\"Add Two Number\"}],[\"$\",\"div\",null,{\"style\":{\"color\":\"#64748b\",\"fontSize\":\"0.9rem\",\"marginBottom\":\"2rem\"},\"children\":[[\"$\",\"span\",null,{\"children\":[\"📁 \",\"leetcode/linked-list/problems/07-add-two-numbers.md\"]}],\"$undefined\",\"$undefined\"]}]]}],[\"$\",\"$L5\",null,{\"content\":\"$6\"}]]}],null],null],null]},[null,[\"$\",\"$L7\",null,{\"parallelRouterKey\":\"children\",\"segmentPath\":[\"children\",\"docs\",\"children\",\"$8\",\"children\"],\"error\":\"$undefined\",\"errorStyles\":\"$undefined\",\"errorScripts\":\"$undefined\",\"template\":[\"$\",\"$L9\",null,{}],\"templateStyles\":\"$undefined\",\"templateScripts\":\"$undefined\",\"notFound\":\"$undefined\",\"notFoundStyles\":\"$undefined\"}]],null]},[null,[\"$\",\"$L7\",null,{\"parallelRouterKey\":\"children\",\"segmentPath\":[\"children\",\"docs\",\"children\"],\"error\":\"$undefined\",\"errorStyles\":\"$undefined\",\"errorScripts\":\"$undefined\",\"template\":[\"$\",\"$L9\",null,{}],\"templateStyles\":\"$undefined\",\"templateScripts\":\"$undefined\",\"notFound\":\"$undefined\",\"notFoundStyles\":\"$undefined\"}]],null]},[[[[\"$\",\"link\",\"0\",{\"rel\":\"stylesheet\",\"href\":\"/interview/_next/static/css/387024c6a2216908.css\",\"precedence\":\"next\",\"crossOrigin\":\"$undefined\"}]],[\"$\",\"$La\",null,{\"children\":[\"$\",\"$L7\",null,{\"parallelRouterKey\":\"children\",\"segmentPath\":[\"children\"],\"error\":\"$undefined\",\"errorStyles\":\"$undefined\",\"errorScripts\":\"$undefined\",\"template\":[\"$\",\"$L9\",null,{}],\"templateStyles\":\"$undefined\",\"templateScripts\":\"$undefined\",\"notFound\":[[\"$\",\"title\",null,{\"children\":\"404: This page could not be found.\"}],[\"$\",\"div\",null,{\"style\":{\"fontFamily\":\"system-ui,\\\"Segoe UI\\\",Roboto,Helvetica,Arial,sans-serif,\\\"Apple Color Emoji\\\",\\\"Segoe UI Emoji\\\"\",\"height\":\"100vh\",\"textAlign\":\"center\",\"display\":\"flex\",\"flexDirection\":\"column\",\"alignItems\":\"center\",\"justifyContent\":\"center\"},\"children\":[\"$\",\"div\",null,{\"children\":[[\"$\",\"style\",null,{\"dangerouslySetInnerHTML\":{\"__html\":\"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}\"}}],[\"$\",\"h1\",null,{\"className\":\"next-error-h1\",\"style\":{\"display\":\"inline-block\",\"margin\":\"0 20px 0 0\",\"padding\":\"0 23px 0 0\",\"fontSize\":24,\"fontWeight\":500,\"verticalAlign\":\"top\",\"lineHeight\":\"49px\"},\"children\":\"404\"}],[\"$\",\"div\",null,{\"style\":{\"display\":\"inline-block\"},\"children\":[\"$\",\"h2\",null,{\"style\":{\"fontSize\":14,\"fontWeight\":400,\"lineHeight\":\"49px\",\"margin\":0},\"children\":\"This page could not be found.\"}]}]]}]}]],\"notFoundStyles\":[]}],\"params\":{}}]],null],null],\"couldBeIntercepted\":false,\"initialHead\":[null,\"$Lb\"],\"globalErrorComponent\":\"$c\",\"missingSlots\":\"$Wd\"}]\n"])</script><script>self.__next_f.push([1,"b:[[\"$\",\"meta\",\"0\",{\"name\":\"viewport\",\"content\":\"width=device-width, initial-scale=1\"}],[\"$\",\"meta\",\"1\",{\"charSet\":\"utf-8\"}],[\"$\",\"title\",\"2\",{\"children\":\"Add Two Number - Frontend Interview Docs\"}],[\"$\",\"meta\",\"3\",{\"name\":\"description\",\"content\":\" # Add Two Number  **LeetCode Problem # * 2. Add Two Numbers**  ## Problem Description   * You are given two non-empty linked lists representing two non-negativ\"}],[\"$\",\"meta\",\"4\",{\"property\":\"og:title\",\"content\":\"Add Two Number - Frontend Interview Docs\"}],[\"$\",\"meta\",\"5\",{\"property\":\"og:description\",\"content\":\" # Add Two Number  **LeetCode Problem # * 2. Add Two Numbers**  ## Problem Description   * You are given two non-empty linked lists representing two non-negativ\"}],[\"$\",\"meta\",\"6\",{\"property\":\"og:type\",\"content\":\"article\"}],[\"$\",\"meta\",\"7\",{\"name\":\"twitter:card\",\"content\":\"summary\"}],[\"$\",\"meta\",\"8\",{\"name\":\"twitter:title\",\"content\":\"Add Two Number - Frontend Interview Docs\"}],[\"$\",\"meta\",\"9\",{\"name\":\"twitter:description\",\"content\":\" # Add Two Number  **LeetCode Problem # * 2. Add Two Numbers**  ## Problem Description   * You are given two non-empty linked lists representing two non-negativ\"}],[\"$\",\"meta\",\"10\",{\"name\":\"next-size-adjust\"}]]\n4:null\n"])</script></body></html>

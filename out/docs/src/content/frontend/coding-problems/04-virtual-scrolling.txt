@@ -1,0 +1,467 @@
+2:I[5907,["918","static/chunks/918-3273b83890f10546.js","930","static/chunks/930-3262a6c9c5acace4.js","687","static/chunks/app/docs/%5B...slug%5D/page-32962e9542d32755.js"],"default"]
+4:I[4707,[],""]
+6:I[6423,[],""]
+7:I[2,["918","static/chunks/918-3273b83890f10546.js","710","static/chunks/710-dfaa11b4dff08f8e.js","972","static/chunks/972-011bba60ed155615.js","233","static/chunks/233-3e0c1d820a17eca9.js","185","static/chunks/app/layout-333f4adcd11f8f39.js"],"default",1]
+3:T2d40,
+# Problem 4: Virtual Scrolling Implementation
+
+## Problem Description
+
+Implement virtual scrolling for a large list of items to improve performance when dealing with thousands of records.
+
+## Requirements
+
+- Handle thousands of items efficiently
+- Maintain smooth scrolling
+- Support dynamic item heights
+- Implement proper recycling
+- Handle scroll events optimally
+
+## Solution
+
+{% raw %}
+```javascript
+class VirtualScroller {
+  constructor(container, options = {}) {
+    this.container = container;
+    this.itemHeight = options.itemHeight || 50;
+    this.overscan = options.overscan || 5;
+    this.items = [];
+    this.visibleItems = new Map();
+    this.scrollTop = 0;
+    this.containerHeight = 0;
+    this.totalHeight = 0;
+
+    this.init();
+  }
+
+  init() {
+    this.setupContainer();
+    this.attachEventListeners();
+    this.updateDimensions();
+  }
+
+  setupContainer() {
+    this.container.innerHTML = `
+      <div class="virtual-scroller">
+        <div class="virtual-scroller-content"></div>
+        <div class="virtual-scroller-spacer"></div>
+      </div>
+    `;
+
+    this.content = this.container.querySelector(".virtual-scroller-content");
+    this.spacer = this.container.querySelector(".virtual-scroller-spacer");
+  }
+
+  attachEventListeners() {
+    let ticking = false;
+
+    this.container.addEventListener("scroll", () => {
+      if (!ticking) {
+        requestAnimationFrame(() => {
+          this.handleScroll();
+          ticking = false;
+        });
+        ticking = true;
+      }
+    });
+
+    window.addEventListener("resize", () => {
+      this.updateDimensions();
+      this.render();
+    });
+  }
+
+  handleScroll() {
+    const newScrollTop = this.container.scrollTop;
+    if (Math.abs(newScrollTop - this.scrollTop) > this.itemHeight / 2) {
+      this.scrollTop = newScrollTop;
+      this.render();
+    }
+  }
+
+  updateDimensions() {
+    this.containerHeight = this.container.clientHeight;
+    this.totalHeight = this.items.length * this.itemHeight;
+    this.spacer.style.height = `${this.totalHeight}px`;
+  }
+
+  setItems(items) {
+    this.items = items;
+    this.updateDimensions();
+    this.render();
+  }
+
+  render() {
+    const startIndex = Math.floor(this.scrollTop / this.itemHeight);
+    const endIndex = Math.min(
+      startIndex +
+        Math.ceil(this.containerHeight / this.itemHeight) +
+        this.overscan,
+      this.items.length
+    );
+
+    const startIndexWithOverscan = Math.max(0, startIndex - this.overscan);
+    const endIndexWithOverscan = Math.min(
+      this.items.length,
+      endIndex + this.overscan
+    );
+
+    // Remove items that are no longer visible
+    for (const [index, element] of this.visibleItems) {
+      if (index < startIndexWithOverscan || index >= endIndexWithOverscan) {
+        element.remove();
+        this.visibleItems.delete(index);
+      }
+    }
+
+    // Add new visible items
+    for (let i = startIndexWithOverscan; i < endIndexWithOverscan; i++) {
+      if (!this.visibleItems.has(i)) {
+        const element = this.renderItem(this.items[i], i);
+        element.style.position = "absolute";
+        element.style.top = `${i * this.itemHeight}px`;
+        element.style.width = "100%";
+        element.style.height = `${this.itemHeight}px`;
+
+        this.content.appendChild(element);
+        this.visibleItems.set(i, element);
+      }
+    }
+  }
+
+  renderItem(item, index) {
+    const element = document.createElement("div");
+    element.className = "virtual-item";
+    element.innerHTML = `
+      <div class="item-content">
+        <span class="item-index">${index + 1}</span>
+        <span class="item-text">${item.text}</span>
+      </div>
+    `;
+    return element;
+  }
+
+  scrollToIndex(index) {
+    const scrollTop = index * this.itemHeight;
+    this.container.scrollTop = scrollTop;
+  }
+
+  getVisibleRange() {
+    const startIndex = Math.floor(this.scrollTop / this.itemHeight);
+    const endIndex = Math.min(
+      startIndex + Math.ceil(this.containerHeight / this.itemHeight),
+      this.items.length
+    );
+    return { startIndex, endIndex };
+  }
+}
+
+// Usage
+const container = document.getElementById("virtual-scroll-container");
+const virtualScroller = new VirtualScroller(container, {
+  itemHeight: 60,
+  overscan: 10,
+});
+
+// Generate large dataset
+const items = Array.from({ length: 10000 }, (_, i) => ({
+  id: i,
+  text: `Item ${
+    i + 1
+  } - Lorem ipsum dolor sit amet, consectetur adipiscing elit.`,
+}));
+
+virtualScroller.setItems(items);
+```
+{% endraw %}
+
+## CSS Styling
+
+```css
+.virtual-scroller {
+  position: relative;
+  height: 100%;
+  overflow: hidden;
+}
+
+.virtual-scroller-content {
+  position: relative;
+  width: 100%;
+}
+
+.virtual-scroller-spacer {
+  width: 100%;
+}
+
+.virtual-item {
+  border-bottom: 1px solid #eee;
+  background: white;
+  transition: background-color 0.2s;
+}
+
+.virtual-item:hover {
+  background-color: #f8f9fa;
+}
+
+.item-content {
+  padding: 16px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.item-index {
+  font-weight: 600;
+  color: #007bff;
+  min-width: 40px;
+}
+
+.item-text {
+  color: #333;
+  line-height: 1.4;
+}
+```
+
+## Advanced Features
+
+### Dynamic Height Support
+
+```javascript
+class DynamicVirtualScroller extends VirtualScroller {
+  constructor(container, options = {}) {
+    super(container, options);
+    this.itemHeights = new Map();
+    this.estimatedHeight = options.estimatedHeight || 50;
+  }
+
+  updateItemHeight(index, height) {
+    this.itemHeights.set(index, height);
+    this.updateTotalHeight();
+    this.render();
+  }
+
+  updateTotalHeight() {
+    this.totalHeight = Array.from(
+      { length: this.items.length },
+      (_, i) => this.itemHeights.get(i) || this.estimatedHeight
+    ).reduce((sum, height) => sum + height, 0);
+
+    this.spacer.style.height = `${this.totalHeight}px`;
+  }
+
+  getItemTop(index) {
+    let top = 0;
+    for (let i = 0; i < index; i++) {
+      top += this.itemHeights.get(i) || this.estimatedHeight;
+    }
+    return top;
+  }
+
+  render() {
+    const visibleRange = this.getVisibleRange();
+    const startIndex = Math.max(0, visibleRange.startIndex - this.overscan);
+    const endIndex = Math.min(
+      this.items.length,
+      visibleRange.endIndex + this.overscan
+    );
+
+    // Remove items that are no longer visible
+    for (const [index, element] of this.visibleItems) {
+      if (index < startIndex || index >= endIndex) {
+        element.remove();
+        this.visibleItems.delete(index);
+      }
+    }
+
+    // Add new visible items
+    for (let i = startIndex; i < endIndex; i++) {
+      if (!this.visibleItems.has(i)) {
+        const element = this.renderItem(this.items[i], i);
+        element.style.position = "absolute";
+        element.style.top = `${this.getItemTop(i)}px`;
+        element.style.width = "100%";
+
+        this.content.appendChild(element);
+        this.visibleItems.set(i, element);
+      }
+    }
+  }
+}
+```
+
+### Search and Filter Support
+
+```javascript
+class SearchableVirtualScroller extends VirtualScroller {
+  constructor(container, options = {}) {
+    super(container, options);
+    this.filteredItems = [];
+    this.searchTerm = "";
+  }
+
+  search(term) {
+    this.searchTerm = term.toLowerCase();
+    this.filteredItems = this.items.filter((item) =>
+      item.text.toLowerCase().includes(this.searchTerm)
+    );
+    this.updateDimensions();
+    this.render();
+  }
+
+  updateDimensions() {
+    this.containerHeight = this.container.clientHeight;
+    this.totalHeight = this.filteredItems.length * this.itemHeight;
+    this.spacer.style.height = `${this.totalHeight}px`;
+  }
+
+  render() {
+    const startIndex = Math.floor(this.scrollTop / this.itemHeight);
+    const endIndex = Math.min(
+      startIndex +
+        Math.ceil(this.containerHeight / this.itemHeight) +
+        this.overscan,
+      this.filteredItems.length
+    );
+
+    const startIndexWithOverscan = Math.max(0, startIndex - this.overscan);
+    const endIndexWithOverscan = Math.min(
+      this.filteredItems.length,
+      endIndex + this.overscan
+    );
+
+    // Remove items that are no longer visible
+    for (const [index, element] of this.visibleItems) {
+      if (index < startIndexWithOverscan || index >= endIndexWithOverscan) {
+        element.remove();
+        this.visibleItems.delete(index);
+      }
+    }
+
+    // Add new visible items
+    for (let i = startIndexWithOverscan; i < endIndexWithOverscan; i++) {
+      if (!this.visibleItems.has(i)) {
+        const element = this.renderItem(this.filteredItems[i], i);
+        element.style.position = "absolute";
+        element.style.top = `${i * this.itemHeight}px`;
+        element.style.width = "100%";
+        element.style.height = `${this.itemHeight}px`;
+
+        this.content.appendChild(element);
+        this.visibleItems.set(i, element);
+      }
+    }
+  }
+}
+```
+
+## Performance Optimizations
+
+### Memory Management
+
+```javascript
+class OptimizedVirtualScroller extends VirtualScroller {
+  constructor(container, options = {}) {
+    super(container, options);
+    this.elementPool = [];
+    this.maxPoolSize = options.maxPoolSize || 100;
+  }
+
+  getElementFromPool() {
+    if (this.elementPool.length > 0) {
+      return this.elementPool.pop();
+    }
+    return document.createElement("div");
+  }
+
+  returnElementToPool(element) {
+    if (this.elementPool.length < this.maxPoolSize) {
+      element.innerHTML = "";
+      element.className = "";
+      element.style.cssText = "";
+      this.elementPool.push(element);
+    }
+  }
+
+  render() {
+    // Implementation with element recycling
+    const visibleRange = this.getVisibleRange();
+
+    // Remove invisible items and return to pool
+    for (const [index, element] of this.visibleItems) {
+      if (
+        index < visibleRange.startIndex - this.overscan ||
+        index >= visibleRange.endIndex + this.overscan
+      ) {
+        this.returnElementToPool(element);
+        this.visibleItems.delete(index);
+      }
+    }
+
+    // Add visible items
+    for (
+      let i = visibleRange.startIndex - this.overscan;
+      i < visibleRange.endIndex + this.overscan;
+      i++
+    ) {
+      if (i >= 0 && i < this.items.length && !this.visibleItems.has(i)) {
+        const element = this.getElementFromPool();
+        this.renderItem(this.items[i], i, element);
+        element.style.position = "absolute";
+        element.style.top = `${i * this.itemHeight}px`;
+        element.style.width = "100%";
+        element.style.height = `${this.itemHeight}px`;
+
+        this.content.appendChild(element);
+        this.visibleItems.set(i, element);
+      }
+    }
+  }
+}
+```
+
+## Key Features
+
+1. **Efficient Rendering**: Only renders visible items plus overscan
+2. **Smooth Scrolling**: Uses requestAnimationFrame for optimal performance
+3. **Memory Management**: Recycles DOM elements to reduce memory usage
+4. **Dynamic Heights**: Support for variable item heights
+5. **Search Integration**: Filter items while maintaining performance
+6. **Responsive Design**: Adapts to container size changes
+7. **Accessibility**: Maintains proper focus management
+8. **Error Handling**: Graceful handling of edge cases
+
+## Usage Examples
+
+```javascript
+// Basic usage
+const basicScroller = new VirtualScroller(container, {
+  itemHeight: 60,
+  overscan: 10,
+});
+
+// With search
+const searchableScroller = new SearchableVirtualScroller(container, {
+  itemHeight: 60,
+  overscan: 10,
+});
+
+searchableScroller.search("lorem");
+
+// With dynamic heights
+const dynamicScroller = new DynamicVirtualScroller(container, {
+  estimatedHeight: 50,
+  overscan: 10,
+});
+
+// With optimization
+const optimizedScroller = new OptimizedVirtualScroller(container, {
+  itemHeight: 60,
+  overscan: 10,
+  maxPoolSize: 100,
+});
+```
+5:["slug","src/content/frontend/coding-problems/04-virtual-scrolling","c"]
+0:["7uJ7BVaXJTiEOD9iYDv3n",[[["",{"children":["docs",{"children":[["slug","src/content/frontend/coding-problems/04-virtual-scrolling","c"],{"children":["__PAGE__?{\"slug\":[\"src\",\"content\",\"frontend\",\"coding-problems\",\"04-virtual-scrolling\"]}",{}]}]}]},"$undefined","$undefined",true],["",{"children":["docs",{"children":[["slug","src/content/frontend/coding-problems/04-virtual-scrolling","c"],{"children":["__PAGE__",{},[["$L1",["$","div",null,{"style":{"maxWidth":"1200px","margin":"0 auto","padding":"2rem","paddingTop":"6rem"},"children":[["$","div",null,{"style":{"marginBottom":"2rem"},"children":[["$","nav",null,{"style":{"color":"#64748b","fontSize":"0.9rem","marginBottom":"1rem"},"children":[["$","a",null,{"href":"/","style":{"color":"#3b82f6","textDecoration":"none"},"children":"Home"}]," > ",["$","span",null,{"children":"src > content > frontend > coding-problems > 04-virtual-scrolling"}]]}],["$","h1",null,{"style":{"fontSize":"2.5rem","fontWeight":"800","marginBottom":"0.5rem","color":"#1e293b"},"children":"Virtual Scrolling Implementation"}],["$","div",null,{"style":{"color":"#64748b","fontSize":"0.9rem","marginBottom":"2rem"},"children":[["$","span",null,{"children":["📁 ","src/content/frontend/coding-problems/04-virtual-scrolling.md"]}],"$undefined","$undefined"]}]]}],["$","$L2",null,{"content":"$3"}]]}],null],null],null]},[null,["$","$L4",null,{"parallelRouterKey":"children","segmentPath":["children","docs","children","$5","children"],"error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L6",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","notFoundStyles":"$undefined"}]],null]},[null,["$","$L4",null,{"parallelRouterKey":"children","segmentPath":["children","docs","children"],"error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L6",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","notFoundStyles":"$undefined"}]],null]},[[[["$","link","0",{"rel":"stylesheet","href":"/interview/_next/static/css/387024c6a2216908.css","precedence":"next","crossOrigin":"$undefined"}]],["$","$L7",null,{"children":["$","$L4",null,{"parallelRouterKey":"children","segmentPath":["children"],"error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L6",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":{"fontFamily":"system-ui,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\"","height":"100vh","textAlign":"center","display":"flex","flexDirection":"column","alignItems":"center","justifyContent":"center"},"children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":{"display":"inline-block","margin":"0 20px 0 0","padding":"0 23px 0 0","fontSize":24,"fontWeight":500,"verticalAlign":"top","lineHeight":"49px"},"children":"404"}],["$","div",null,{"style":{"display":"inline-block"},"children":["$","h2",null,{"style":{"fontSize":14,"fontWeight":400,"lineHeight":"49px","margin":0},"children":"This page could not be found."}]}]]}]}]],"notFoundStyles":[]}],"params":{}}]],null],null],["$L8",null]]]]
+8:[["$","meta","0",{"name":"viewport","content":"width=device-width, initial-scale=1"}],["$","meta","1",{"charSet":"utf-8"}],["$","title","2",{"children":"Virtual Scrolling Implementation - Frontend Interview Docs"}],["$","meta","3",{"name":"description","content":" # Problem 4: Virtual Scrolling Implementation  ## Problem Description  Implement virtual scrolling for a large list of items to improve performance when dealin"}],["$","meta","4",{"property":"og:title","content":"Virtual Scrolling Implementation - Frontend Interview Docs"}],["$","meta","5",{"property":"og:description","content":" # Problem 4: Virtual Scrolling Implementation  ## Problem Description  Implement virtual scrolling for a large list of items to improve performance when dealin"}],["$","meta","6",{"property":"og:type","content":"article"}],["$","meta","7",{"name":"twitter:card","content":"summary"}],["$","meta","8",{"name":"twitter:title","content":"Virtual Scrolling Implementation - Frontend Interview Docs"}],["$","meta","9",{"name":"twitter:description","content":" # Problem 4: Virtual Scrolling Implementation  ## Problem Description  Implement virtual scrolling for a large list of items to improve performance when dealin"}],["$","meta","10",{"name":"next-size-adjust"}]]
+1:null

@@ -1,0 +1,670 @@
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><meta name="viewport" content="width=device-width, initial-scale=1"/><link rel="preload" href="/interview/_next/static/media/e4af272ccee01ff0-s.p.woff2" as="font" crossorigin="" type="font/woff2"/><link rel="stylesheet" href="/interview/_next/static/css/387024c6a2216908.css" data-precedence="next"/><link rel="preload" as="script" fetchPriority="low" href="/interview/_next/static/chunks/webpack-be7d7df45533bffc.js"/><script src="/interview/_next/static/chunks/fd9d1056-6922f449a204c2cc.js" async=""></script><script src="/interview/_next/static/chunks/117-e7ecc085ce9cfab3.js" async=""></script><script src="/interview/_next/static/chunks/main-app-b06be5f3411c20c3.js" async=""></script><script src="/interview/_next/static/chunks/918-3273b83890f10546.js" async=""></script><script src="/interview/_next/static/chunks/930-3262a6c9c5acace4.js" async=""></script><script src="/interview/_next/static/chunks/app/docs/%5B...slug%5D/page-32962e9542d32755.js" async=""></script><script src="/interview/_next/static/chunks/710-dfaa11b4dff08f8e.js" async=""></script><script src="/interview/_next/static/chunks/972-011bba60ed155615.js" async=""></script><script src="/interview/_next/static/chunks/233-3e0c1d820a17eca9.js" async=""></script><script src="/interview/_next/static/chunks/app/layout-333f4adcd11f8f39.js" async=""></script><title>Frontend Interview Prep 2025 - Big Tech Interview Guide</title><meta name="description" content="Comprehensive frontend interview preparation for Big Tech companies including React, TypeScript, algorithms, and system design."/><link rel="icon" href="/favicon.ico"/><meta name="theme-color" content="#1a1a1a"/><meta property="og:title" content="Frontend Interview Prep 2025"/><meta property="og:description" content="Complete guide for frontend engineers targeting Big Tech companies"/><meta property="og:type" content="website"/><link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous"/><title>Merge Sorted Array - Frontend Interview Docs</title><meta name="description" content=" # Merge Sorted Array  **LeetCode Problem # * 88. Merge Sorted Array**  ## Problem Description   * You are given two integer arrays nums1 and nums2, sorted in n"/><meta property="og:title" content="Merge Sorted Array - Frontend Interview Docs"/><meta property="og:description" content=" # Merge Sorted Array  **LeetCode Problem # * 88. Merge Sorted Array**  ## Problem Description   * You are given two integer arrays nums1 and nums2, sorted in n"/><meta property="og:type" content="article"/><meta name="twitter:card" content="summary"/><meta name="twitter:title" content="Merge Sorted Array - Frontend Interview Docs"/><meta name="twitter:description" content=" # Merge Sorted Array  **LeetCode Problem # * 88. Merge Sorted Array**  ## Problem Description   * You are given two integer arrays nums1 and nums2, sorted in n"/><meta name="next-size-adjust"/><script src="/interview/_next/static/chunks/polyfills-42372ed130431b0a.js" noModule=""></script><style data-styled="" data-styled-version="6.1.19">*{margin:0;padding:0;box-sizing:border-box;}/*!sc*/
+html{font-size:16px;line-height:1.5;scroll-behavior:smooth;}/*!sc*/
+body{font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;font-size:1rem;line-height:1.5;color:#1e293b;background-color:#ffffff;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;}/*!sc*/
+h1,h2,h3,h4,h5,h6{font-weight:700;line-height:1.25;margin-bottom:0.5em;}/*!sc*/
+h1{font-size:3rem;}/*!sc*/
+@media (max-width: 768px){h1{font-size:2.25rem;}}/*!sc*/
+h2{font-size:2.25rem;}/*!sc*/
+@media (max-width: 768px){h2{font-size:1.875rem;}}/*!sc*/
+h3{font-size:1.875rem;}/*!sc*/
+@media (max-width: 768px){h3{font-size:1.5rem;}}/*!sc*/
+h4{font-size:1.5rem;}/*!sc*/
+@media (max-width: 768px){h4{font-size:1.25rem;}}/*!sc*/
+h5{font-size:1.25rem;}/*!sc*/
+h6{font-size:1.125rem;}/*!sc*/
+p{margin-bottom:1rem;line-height:1.75;}/*!sc*/
+a{color:#3b82f6;text-decoration:none;transition:color 0.15s ease;}/*!sc*/
+a:hover{color:#2563eb;}/*!sc*/
+a:focus{outline:2px solid #3b82f6;outline-offset:2px;}/*!sc*/
+button{cursor:pointer;border:none;background:none;font-family:inherit;font-size:inherit;}/*!sc*/
+button:disabled{cursor:not-allowed;opacity:0.6;}/*!sc*/
+button:focus{outline:2px solid #3b82f6;outline-offset:2px;}/*!sc*/
+input,textarea,select{font-family:inherit;font-size:inherit;}/*!sc*/
+input:focus,textarea:focus,select:focus{outline:2px solid #3b82f6;outline-offset:2px;}/*!sc*/
+img{max-width:100%;height:auto;}/*!sc*/
+ul,ol{margin-bottom:1rem;padding-left:1.5rem;}/*!sc*/
+li{margin-bottom:0.25rem;}/*!sc*/
+blockquote{margin:1rem 0;padding:1rem;border-left:4px solid #3b82f6;background-color:#f1f5f9;font-style:italic;}/*!sc*/
+code{font-family:SFMono-Regular,Consolas,"Liberation Mono",Menlo,monospace;font-size:0.9em;background-color:#f1f5f9;padding:0.2em 0.4em;border-radius:0.25rem;}/*!sc*/
+pre{background-color:#f1f5f9;padding:1rem;border-radius:0.5rem;overflow-x:auto;margin-bottom:1rem;}/*!sc*/
+pre code{background:none;padding:0;}/*!sc*/
+table{width:100%;border-collapse:collapse;margin-bottom:1rem;}/*!sc*/
+th,td{padding:0.75rem;text-align:left;border-bottom:1px solid #e2e8f0;}/*!sc*/
+th{font-weight:600;background-color:#f1f5f9;}/*!sc*/
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0, 0, 0, 0);white-space:nowrap;border:0;}/*!sc*/
+.skip-link{position:absolute;top:-40px;left:6px;background:#3b82f6;color:white;padding:8px;text-decoration:none;border-radius:4px;z-index:100;}/*!sc*/
+.skip-link:focus{top:6px;}/*!sc*/
+::-webkit-scrollbar{width:8px;height:8px;}/*!sc*/
+::-webkit-scrollbar-track{background:#f1f5f9;}/*!sc*/
+::-webkit-scrollbar-thumb{background:#94a3b8;border-radius:4px;}/*!sc*/
+::-webkit-scrollbar-thumb:hover{background:#64748b;}/*!sc*/
+::selection{background:#3b82f6;color:white;}/*!sc*/
+.focus-visible{outline:2px solid #3b82f6;outline-offset:2px;}/*!sc*/
+.fade-in{opacity:0;animation:fadeIn 0.3s ease forwards;}/*!sc*/
+.slide-up{transform:translateY(20px);opacity:0;animation:slideUp 0.3s ease forwards;}/*!sc*/
+@keyframes fadeIn{to{opacity:1;}}/*!sc*/
+@keyframes slideUp{to{transform:translateY(0);opacity:1;}}/*!sc*/
+@media print{*{background:white!important;color:black!important;box-shadow:none!important;text-shadow:none!important;}a,a:visited{text-decoration:underline;}h1,h2,h3,h4,h5,h6{break-after:avoid;}pre,blockquote{border:1px solid #999;break-inside:avoid;}img{max-width:100%!important;}@page{margin:0.5in;}}/*!sc*/
+data-styled.g1[id="sc-global-kxA-Ddz1"]{content:"sc-global-kxA-Ddz1,"}/*!sc*/
+.wbMrm{position:fixed;top:0;width:100%;z-index:1020;background:transparent;backdrop-filter:blur(10px);border-bottom:1px solid transparent;transition:all 0.3s ease;}/*!sc*/
+data-styled.g2[id="sc-bRKDuR"]{content:"wbMrm,"}/*!sc*/
+.kDxBNU{max-width:1200px;margin:0 auto;padding:0 2rem;display:flex;align-items:center;justify-content:space-between;height:70px;}/*!sc*/
+data-styled.g3[id="sc-hvigdm"]{content:"kDxBNU,"}/*!sc*/
+.cvsJZg{display:flex;align-items:center;gap:0.5rem;font-size:1.5rem;font-weight:700;color:#3b82f6;text-decoration:none;cursor:pointer;}/*!sc*/
+.cvsJZg:hover{color:#2563eb;}/*!sc*/
+data-styled.g4[id="sc-fhHczv"]{content:"cvsJZg,"}/*!sc*/
+.lfYVIv{display:flex;align-items:center;gap:2rem;}/*!sc*/
+@media (max-width: 768px){.lfYVIv{display:none;}}/*!sc*/
+data-styled.g5[id="sc-ggWZvA"]{content:"lfYVIv,"}/*!sc*/
+.bhKRhV{color:#1e293b;font-weight:500;text-decoration:none;transition:color 0.15s ease;position:relative;}/*!sc*/
+.bhKRhV:hover{color:#3b82f6;}/*!sc*/
+.bhKRhV:after{content:'';position:absolute;bottom:-5px;left:0;width:0;height:2px;background:#3b82f6;transition:width 0.15s ease;}/*!sc*/
+.bhKRhV:hover:after{width:100%;}/*!sc*/
+data-styled.g6[id="sc-dTvVRJ"]{content:"bhKRhV,"}/*!sc*/
+.gpUImn{display:none;background:none;border:none;color:#1e293b;cursor:pointer;padding:0.5rem;}/*!sc*/
+@media (max-width: 768px){.gpUImn{display:block;}}/*!sc*/
+data-styled.g7[id="sc-jwTyAe"]{content:"gpUImn,"}/*!sc*/
+.hpKWkw{display:flex;align-items:center;gap:0.5rem;background:#f1f5f9;border:1px solid #e2e8f0;border-radius:0.5rem;padding:0.5rem 1rem;color:#64748b;font-size:0.9rem;transition:all 0.15s ease;}/*!sc*/
+.hpKWkw:hover{background:#ffffff;border-color:#3b82f6;}/*!sc*/
+data-styled.g11[id="sc-kNOymR"]{content:"hpKWkw,"}/*!sc*/
+.cJzheU{background:#1e293b;color:white;padding:3rem 0 1rem;margin-top:auto;}/*!sc*/
+data-styled.g12[id="sc-dYwGCk"]{content:"cJzheU,"}/*!sc*/
+.hJUFeT{max-width:1200px;margin:0 auto;padding:0 2rem;}/*!sc*/
+data-styled.g13[id="sc-lgpSej"]{content:"hJUFeT,"}/*!sc*/
+.mSxwd{display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:2rem;margin-bottom:2rem;}/*!sc*/
+@media (max-width: 768px){.mSxwd{grid-template-columns:1fr 1fr;gap:1.5rem;}}/*!sc*/
+@media (max-width: 480px){.mSxwd{grid-template-columns:1fr;}}/*!sc*/
+data-styled.g14[id="sc-eqYatC"]{content:"mSxwd,"}/*!sc*/
+.cmBIup h3{font-size:1.1rem;font-weight:600;margin-bottom:1rem;color:white;}/*!sc*/
+.cmBIup ul{list-style:none;padding:0;margin:0;}/*!sc*/
+.cmBIup li{margin-bottom:0.5rem;}/*!sc*/
+.cmBIup a{color:rgba(255, 255, 255, 0.7);text-decoration:none;transition:color 0.15s ease;}/*!sc*/
+.cmBIup a:hover{color:white;}/*!sc*/
+data-styled.g15[id="sc-kcLKEh"]{content:"cmBIup,"}/*!sc*/
+.bAsNIP{display:flex;align-items:center;gap:0.5rem;font-size:1.2rem;font-weight:700;margin-bottom:1rem;color:white;}/*!sc*/
+data-styled.g16[id="sc-dntSTA"]{content:"bAsNIP,"}/*!sc*/
+.gWXMDV{color:rgba(255, 255, 255, 0.7);line-height:1.6;margin-bottom:1rem;}/*!sc*/
+data-styled.g17[id="sc-kvnevz"]{content:"gWXMDV,"}/*!sc*/
+.jCoOHQ{display:flex;gap:1rem;}/*!sc*/
+.jCoOHQ a{display:flex;align-items:center;justify-content:center;width:40px;height:40px;background:rgba(255, 255, 255, 0.1);border-radius:0.5rem;color:rgba(255, 255, 255, 0.7);transition:all 0.15s ease;}/*!sc*/
+.jCoOHQ a:hover{background:rgba(255, 255, 255, 0.2);color:white;}/*!sc*/
+data-styled.g18[id="sc-dFVmKS"]{content:"jCoOHQ,"}/*!sc*/
+.crUaYh{border-top:1px solid rgba(255, 255, 255, 0.1);padding-top:2rem;display:flex;justify-content:space-between;align-items:center;}/*!sc*/
+@media (max-width: 768px){.crUaYh{flex-direction:column;gap:1rem;text-align:center;}}/*!sc*/
+data-styled.g19[id="sc-kCuUfV"]{content:"crUaYh,"}/*!sc*/
+.esMlQF{color:rgba(255, 255, 255, 0.7);margin:0;font-size:0.9rem;}/*!sc*/
+data-styled.g20[id="sc-dNdcvo"]{content:"esMlQF,"}/*!sc*/
+.eHcrXx{display:flex;gap:2rem;}/*!sc*/
+@media (max-width: 480px){.eHcrXx{flex-direction:column;gap:1rem;}}/*!sc*/
+.eHcrXx a{color:rgba(255, 255, 255, 0.7);text-decoration:none;font-size:0.9rem;transition:color 0.15s ease;}/*!sc*/
+.eHcrXx a:hover{color:white;}/*!sc*/
+data-styled.g21[id="sc-fbQrwq"]{content:"eHcrXx,"}/*!sc*/
+.dAQFGp{color:#1e293b;line-height:1.6;}/*!sc*/
+.dAQFGp h1,.dAQFGp h2,.dAQFGp h3,.dAQFGp h4,.dAQFGp h5,.dAQFGp h6{color:#1e293b;margin-top:2rem;margin-bottom:1rem;font-weight:600;}/*!sc*/
+.dAQFGp h1{font-size:2rem;border-bottom:2px solid #e2e8f0;padding-bottom:0.5rem;}/*!sc*/
+.dAQFGp h2{font-size:1.5rem;border-bottom:1px solid #e2e8f0;padding-bottom:0.3rem;}/*!sc*/
+.dAQFGp h3{font-size:1.25rem;}/*!sc*/
+.dAQFGp h4{font-size:1.1rem;}/*!sc*/
+.dAQFGp p{margin-bottom:1rem;color:#64748b;}/*!sc*/
+.dAQFGp a{color:#3b82f6;text-decoration:none;}/*!sc*/
+.dAQFGp a:hover{text-decoration:underline;}/*!sc*/
+.dAQFGp ul,.dAQFGp ol{margin-bottom:1rem;padding-left:1.5rem;}/*!sc*/
+.dAQFGp ul li,.dAQFGp ol li{margin-bottom:0.5rem;color:#64748b;}/*!sc*/
+.dAQFGp blockquote{border-left:4px solid #3b82f6;padding-left:1rem;margin:1rem 0;font-style:italic;color:#64748b;background:#f1f5f9;padding:1rem;border-radius:0.5rem;}/*!sc*/
+.dAQFGp code{background:#f1f5f9;padding:0.2rem 0.4rem;border-radius:0.25rem;font-family:SFMono-Regular,Consolas,"Liberation Mono",Menlo,monospace;font-size:0.9em;color:#f59e0b;}/*!sc*/
+.dAQFGp pre{background:#ffffff;border:1px solid #e2e8f0;border-radius:0.5rem;padding:1rem;margin:1rem 0;overflow-x:auto;}/*!sc*/
+.dAQFGp pre code{background:none;padding:0;color:#1e293b;font-size:0.9rem;}/*!sc*/
+.dAQFGp table{width:100%;border-collapse:collapse;margin:1rem 0;}/*!sc*/
+.dAQFGp table th,.dAQFGp table td{border:1px solid #e2e8f0;padding:0.5rem;text-align:left;}/*!sc*/
+.dAQFGp table th{background:#ffffff;font-weight:600;}/*!sc*/
+.dAQFGp table tr:nth-child(even){background:#f1f5f9;}/*!sc*/
+.dAQFGp hr{border:none;height:1px;background:#e2e8f0;margin:2rem 0;}/*!sc*/
+.dAQFGp .highlight{background:#3b82f620;padding:0.2rem 0.4rem;border-radius:0.25rem;font-weight:600;}/*!sc*/
+.dAQFGp .hljs{background:#ffffff;color:#1e293b;}/*!sc*/
+.dAQFGp .hljs-keyword{color:#3b82f6;font-weight:600;}/*!sc*/
+.dAQFGp .hljs-string{color:#10b981;}/*!sc*/
+.dAQFGp .hljs-function{color:#f59e0b;}/*!sc*/
+.dAQFGp .hljs-comment{color:#94a3b8;font-style:italic;}/*!sc*/
+.dAQFGp .hljs-number{color:#f59e0b;}/*!sc*/
+.dAQFGp .hljs-variable{color:#1e293b;}/*!sc*/
+.dAQFGp .hljs-title{color:#f59e0b;font-weight:600;}/*!sc*/
+data-styled.g22[id="sc-gGKoUb"]{content:"dAQFGp,"}/*!sc*/
+</style></head><body class="__className_6eac61"><div style="min-height:100vh;display:flex;flex-direction:column"><nav class="sc-bRKDuR wbMrm"><div class="sc-hvigdm kDxBNU"><a href="/interview"><a class="sc-fhHczv cvsJZg"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-code "><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>Frontend Interview Prep</a></a><div class="sc-ggWZvA lfYVIv"><a href="/interview/problems"><a class="sc-dTvVRJ bhKRhV">Problems</a></a><a href="/interview/learn"><a class="sc-dTvVRJ bhKRhV">Learn</a></a><a href="/interview/study-guide"><a class="sc-dTvVRJ bhKRhV">Study Guide</a></a><a href="/interview/system-design"><a class="sc-dTvVRJ bhKRhV">System Design</a></a><a href="/interview/performance"><a class="sc-dTvVRJ bhKRhV">Performance</a></a><a href="/interview/accessibility"><a class="sc-dTvVRJ bhKRhV">Accessibility</a></a><a href="/interview/interview-tips"><a class="sc-dTvVRJ bhKRhV">Interview Tips</a></a><button class="sc-kNOymR hpKWkw"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-search "><circle cx="11" cy="11" r="8"></circle><path d="m21 21-4.3-4.3"></path></svg>Search</button></div><button class="sc-jwTyAe gpUImn"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-menu "><line x1="4" x2="20" y1="12" y2="12"></line><line x1="4" x2="20" y1="6" y2="6"></line><line x1="4" x2="20" y1="18" y2="18"></line></svg></button></div></nav><main style="flex:1"><div style="max-width:1200px;margin:0 auto;padding:2rem;padding-top:6rem"><div style="margin-bottom:2rem"><nav style="color:#64748b;font-size:0.9rem;margin-bottom:1rem"><a href="/" style="color:#3b82f6;text-decoration:none">Home</a> &gt; <span>leetcode &gt; sorting-searching &gt; problems &gt; 01-merge-sorted-array</span></nav><h1 style="font-size:2.5rem;font-weight:800;margin-bottom:0.5rem;color:#1e293b">Merge Sorted Array</h1><div style="color:#64748b;font-size:0.9rem;margin-bottom:2rem"><span>📁 <!-- -->leetcode/sorting-searching/problems/01-merge-sorted-array.md</span></div></div><div class="sc-gGKoUb dAQFGp"><h1 id="merge-sorted-array" node="[object Object]">Merge Sorted Array</h1>
+<p><strong>LeetCode Problem # * 88. Merge Sorted Array</strong></p>
+<h2 id="problem-description" node="[object Object]">Problem Description</h2>
+<ul>
+<li>You are given two integer arrays nums1 and nums2, sorted in non-decreasing order,  * and two integers m and n, representing the number of elements in nums1 and nums2 respectively.  *  * Merge nums1 and nums2 into a single array sorted in non-decreasing order.  * The final sorted array should not be returned by the function, but instead be stored</li>
+</ul>
+<h2 id="solutions" node="[object Object]">Solutions</h2>
+<p>{% raw %}
+/**</p>
+<ul>
+<li>88. Merge Sorted Array</li>
+<li></li>
+<li>Problem:</li>
+<li>You are given two integer arrays nums1 and nums2, sorted in non-decreasing order,</li>
+<li>and two integers m and n, representing the number of elements in nums1 and nums2 respectively.</li>
+<li></li>
+<li>Merge nums1 and nums2 into a single array sorted in non-decreasing order.</li>
+<li>The final sorted array should not be returned by the function, but instead be stored</li>
+<li>inside the array nums1. To accommodate this, nums1 has a length of m + n, where the</li>
+<li>first m elements denote the elements that should be merged, and the last n elements</li>
+<li>are set to 0 and should be ignored. nums2 has a length of n.</li>
+<li></li>
+<li>Example:</li>
+<li>Input: nums1 = [1,2,3,0,0,0], m = 3, nums2 = [2,5,6], n = 3</li>
+<li>Output: [1,2,2,3,5,6]</li>
+<li></li>
+<li>Input: nums1 = [1], m = 1, nums2 = [], n = 0</li>
+<li>Output: [1]</li>
+<li></li>
+<li>LeetCode: <a href="https://leetcode.com/problems/merge-sorted-array/" target="_blank" rel="noopener noreferrer" node="[object Object]">https://leetcode.com/problems/merge-sorted-array/</a>
+*/</li>
+</ul>
+<p>/**</p>
+<ul>
+<li>Solution 1: Merge from End (Optimal)</li>
+<li></li>
+<li>Approach:</li>
+<li>
+<ul>
+<li>Start from the end of both arrays</li>
+</ul>
+</li>
+<li>
+<ul>
+<li>Compare elements and place larger one at the end of nums1</li>
+</ul>
+</li>
+<li>
+<ul>
+<li>This avoids overwriting elements in nums1</li>
+</ul>
+</li>
+<li></li>
+<li>Time Complexity: O(m + n)</li>
+<li>Space Complexity: O(1) - in-place modification
+*/
+function merge(nums1: number[], m: number, nums2: number[], n: number): void {
+let p1 = m - 1; // Pointer for nums1
+let p2 = n - 1; // Pointer for nums2
+let p = m + n - 1; // Pointer for merged array</li>
+</ul>
+<p>// Compare elements from end and place larger one
+while (p1 &gt;= 0 &amp;&amp; p2 &gt;= 0) {
+if (nums1[p1] &gt; nums2[p2]) {
+nums1[p] = nums1[p1];
+p1--;
+} else {
+nums1[p] = nums2[p2];
+p2--;
+}
+p--;
+}</p>
+<p>// If there are remaining elements in nums2, copy them
+while (p2 &gt;= 0) {
+nums1[p] = nums2[p2];
+p2--;
+p--;
+}</p>
+<p>// Note: If there are remaining elements in nums1, they&#x27;re already in place
+}</p>
+<p>/**</p>
+<ul>
+<li>Solution 2: Merge from Start (Using Extra Space)</li>
+<li></li>
+<li>Approach:</li>
+<li>
+<ul>
+<li>Create a copy of nums1</li>
+</ul>
+</li>
+<li>
+<ul>
+<li>Merge into the copy, then copy back to nums1</li>
+</ul>
+</li>
+<li></li>
+<li>Time Complexity: O(m + n)</li>
+<li>Space Complexity: O(m) - extra space for copy
+*/
+function mergeWithExtraSpace(
+nums1: number[],
+m: number,
+nums2: number[],
+n: number
+): void {
+const nums1Copy = nums1.slice(0, m);
+let p1 = 0; // Pointer for nums1Copy
+let p2 = 0; // Pointer for nums2
+let p = 0; // Pointer for nums1</li>
+</ul>
+<p>while (p1 &lt; m &amp;&amp; p2 &lt; n) {
+if (nums1Copy[p1] &lt;= nums2[p2]) {
+nums1[p] = nums1Copy[p1];
+p1++;
+} else {
+nums1[p] = nums2[p2];
+p2++;
+}
+p++;
+}</p>
+<p>// Copy remaining elements from nums1Copy
+while (p1 &lt; m) {
+nums1[p] = nums1Copy[p1];
+p1++;
+p++;
+}</p>
+<p>// Copy remaining elements from nums2
+while (p2 &lt; n) {
+nums1[p] = nums2[p2];
+p2++;
+p++;
+}
+}</p>
+<p>/**</p>
+<ul>
+<li>Solution 3: Using Array Methods (Not in-place)</li>
+<li></li>
+<li>Approach:</li>
+<li>
+<ul>
+<li>Use concat and sort methods</li>
+</ul>
+</li>
+<li>
+<ul>
+<li>Simple but not in-place</li>
+</ul>
+</li>
+<li></li>
+<li>Time Complexity: O((m + n) log(m + n)) - due to sorting</li>
+<li>Space Complexity: O(m + n) - creates new array
+*/
+function mergeWithArrayMethods(
+nums1: number[],
+m: number,
+nums2: number[],
+n: number
+): void {
+const merged = nums1
+.slice(0, m)
+.concat(nums2)
+.sort((a, b) =&gt; a - b);</li>
+</ul>
+<p>for (let i = 0; i &lt; merged.length; i++) {
+nums1[i] = merged[i];
+}
+}</p>
+<p>/**</p>
+<ul>
+<li>Solution 4: Two Pointers with Gap Method</li>
+<li></li>
+<li>Approach:</li>
+<li>
+<ul>
+<li>Use gap method for merging</li>
+</ul>
+</li>
+<li>
+<ul>
+<li>More complex but shows different approach</li>
+</ul>
+</li>
+<li></li>
+<li>Time Complexity: O(m + n)</li>
+<li>Space Complexity: O(1)
+*/
+function mergeWithGap(
+nums1: number[],
+m: number,
+nums2: number[],
+n: number
+): void {
+// First, copy nums2 to the end of nums1
+for (let i = 0; i &lt; n; i++) {
+nums1[m + i] = nums2[i];
+}</li>
+</ul>
+<p>// Now merge using gap method
+let gap = Math.ceil((m + n) / 2);</p>
+<p>while (gap &gt; 0) {
+let i = 0;
+let j = gap;</p>
+<pre><pre><code class="hljs undefined">while (j &lt; m + n) {
+  if (nums1[i] &gt; nums1[j]) {
+    [nums1[i], nums1[j]] = [nums1[j], nums1[i]];
+  }
+  i++;
+  j++;
+}
+
+if (gap === 1) break;
+gap = Math.ceil(gap / 2);
+</code></pre></pre>
+<p>}
+}</p>
+<p>/**</p>
+<ul>
+<li>Solution 5: Using Priority Queue (Overkill but educational)</li>
+<li></li>
+<li>Approach:</li>
+<li>
+<ul>
+<li>Use min heap to merge arrays</li>
+</ul>
+</li>
+<li>
+<ul>
+<li>Shows heap data structure usage</li>
+</ul>
+</li>
+<li></li>
+<li>Time Complexity: O((m + n) log(m + n))</li>
+<li>Space Complexity: O(m + n)
+*/
+class MinHeap {
+private heap: number[] = [];</li>
+</ul>
+<p>insert(value: number): void {
+this.heap.push(value);
+this.heapifyUp();
+}</p>
+<p>extractMin(): number {
+if (this.heap.length === 0) throw new Error(&quot;Heap is empty&quot;);</p>
+<pre><pre><code class="hljs undefined">const min = this.heap[0];
+const last = this.heap.pop()!;
+
+if (this.heap.length &gt; 0) {
+  this.heap[0] = last;
+  this.heapifyDown();
+}
+
+return min;
+</code></pre></pre>
+<p>}</p>
+<p>private heapifyUp(): void {
+let index = this.heap.length - 1;
+while (index &gt; 0) {
+const parentIndex = Math.floor((index - 1) / 2);
+if (this.heap[parentIndex] &lt;= this.heap[index]) break;</p>
+<pre><pre><code class="hljs undefined">  [this.heap[parentIndex], this.heap[index]] = [
+    this.heap[index],
+    this.heap[parentIndex],
+  ];
+  index = parentIndex;
+}
+</code></pre></pre>
+<p>}</p>
+<p>private heapifyDown(): void {
+let index = 0;
+while (true) {
+let smallest = index;
+const leftChild = 2 * index + 1;
+const rightChild = 2 * index + 2;</p>
+<pre><pre><code class="hljs undefined">  if (
+    leftChild &lt; this.heap.length &amp;&amp;
+    this.heap[leftChild] &lt; this.heap[smallest]
+  ) {
+    smallest = leftChild;
+  }
+
+  if (
+    rightChild &lt; this.heap.length &amp;&amp;
+    this.heap[rightChild] &lt; this.heap[smallest]
+  ) {
+    smallest = rightChild;
+  }
+
+  if (smallest === index) break;
+
+  [this.heap[index], this.heap[smallest]] = [
+    this.heap[smallest],
+    this.heap[index],
+  ];
+  index = smallest;
+}
+</code></pre></pre>
+<p>}</p>
+<p>isEmpty(): boolean {
+return this.heap.length === 0;
+}
+}</p>
+<p>function mergeWithHeap(
+nums1: number[],
+m: number,
+nums2: number[],
+n: number
+): void {
+const heap = new MinHeap();</p>
+<p>// Insert all elements into heap
+for (let i = 0; i &lt; m; i++) {
+heap.insert(nums1[i]);
+}</p>
+<p>for (let i = 0; i &lt; n; i++) {
+heap.insert(nums2[i]);
+}</p>
+<p>// Extract elements in sorted order
+for (let i = 0; i &lt; m + n; i++) {
+nums1[i] = heap.extractMin();
+}
+}</p>
+<p>/**</p>
+<ul>
+<li>
+<p>Solution 6: Recursive Merge (Educational)</p>
+</li>
+<li></li>
+<li>
+<p>Approach:</p>
+</li>
+<li>
+<ul>
+<li>Use recursion to merge arrays</li>
+</ul>
+</li>
+<li>
+<ul>
+<li>Shows recursive thinking</li>
+</ul>
+</li>
+<li></li>
+<li>
+<p>Time Complexity: O(m + n)</p>
+</li>
+<li>
+<p>Space Complexity: O(m + n) - recursion stack
+*/
+function mergeRecursive(
+nums1: number[],
+m: number,
+nums2: number[],
+n: number
+): void {
+function mergeHelper(p1: number, p2: number, p: number): void {
+if (p2 &lt; 0) return; // nums2 is exhausted</p>
+<p>if (p1 &gt;= 0 &amp;&amp; nums1[p1] &gt; nums2[p2]) {
+nums1[p] = nums1[p1];
+mergeHelper(p1 - 1, p2, p - 1);
+} else {
+nums1[p] = nums2[p2];
+mergeHelper(p1, p2 - 1, p - 1);
+}
+}</p>
+</li>
+</ul>
+<p>mergeHelper(m - 1, n - 1, m + n - 1);
+}</p>
+<p>// Test cases
+function testMergeSortedArray() {
+console.log(&quot;=== Testing Merge Sorted Array ===\n&quot;);</p>
+<p>const testCases = [
+{
+nums1: [1, 2, 3, 0, 0, 0],
+m: 3,
+nums2: [2, 5, 6],
+n: 3,
+expected: [1, 2, 2, 3, 5, 6],
+description: &quot;Basic merge&quot;,
+},
+{
+nums1: [1],
+m: 1,
+nums2: [],
+n: 0,
+expected: [1],
+description: &quot;Single element&quot;,
+},
+{
+nums1: [0],
+m: 0,
+nums2: [1],
+n: 1,
+expected: [1],
+description: &quot;Empty nums1&quot;,
+},
+{
+nums1: [4, 5, 6, 0, 0, 0],
+m: 3,
+nums2: [1, 2, 3],
+n: 3,
+expected: [1, 2, 3, 4, 5, 6],
+description: &quot;nums2 smaller than nums1&quot;,
+},
+{
+nums1: [1, 2, 3, 4, 5, 0, 0, 0],
+m: 5,
+nums2: [6, 7, 8],
+n: 3,
+expected: [1, 2, 3, 4, 5, 6, 7, 8],
+description: &quot;nums2 larger than nums1&quot;,
+},
+];</p>
+<p>testCases.forEach((testCase, index) =&gt; {
+console.log(<pre><code class="hljs undefined">Test Case ${index + 1}: ${testCase.description}</code></pre>);
+console.log(
+<pre><code class="hljs undefined">Input: nums1 = [${testCase.nums1}], m = ${testCase.m}, nums2 = [${testCase.nums2}], n = ${testCase.n}</code></pre>
+);
+console.log(<pre><code class="hljs undefined">Expected: [${testCase.expected}]\n</code></pre>);</p>
+<pre><pre><code class="hljs undefined">// Test Solution 1 (Merge from End)
+const nums1_1 = [...testCase.nums1];
+merge(nums1_1, testCase.m, testCase.nums2, testCase.n);
+console.log(
+  `Solution 1 (Merge from End): [${nums1_1}] ${
+    JSON.stringify(nums1_1) === JSON.stringify(testCase.expected)
+      ? &quot;✅&quot;
+      : &quot;❌&quot;
+  }`
+);
+
+// Test Solution 2 (Extra Space)
+const nums1_2 = [...testCase.nums1];
+mergeWithExtraSpace(nums1_2, testCase.m, testCase.nums2, testCase.n);
+console.log(
+  `Solution 2 (Extra Space): [${nums1_2}] ${
+    JSON.stringify(nums1_2) === JSON.stringify(testCase.expected)
+      ? &quot;✅&quot;
+      : &quot;❌&quot;
+  }`
+);
+
+// Test Solution 3 (Array Methods)
+const nums1_3 = [...testCase.nums1];
+mergeWithArrayMethods(nums1_3, testCase.m, testCase.nums2, testCase.n);
+console.log(
+  `Solution 3 (Array Methods): [${nums1_3}] ${
+    JSON.stringify(nums1_3) === JSON.stringify(testCase.expected)
+      ? &quot;✅&quot;
+      : &quot;❌&quot;
+  }`
+);
+
+// Test Solution 4 (Gap Method)
+const nums1_4 = [...testCase.nums1];
+mergeWithGap(nums1_4, testCase.m, testCase.nums2, testCase.n);
+console.log(
+  `Solution 4 (Gap Method): [${nums1_4}] ${
+    JSON.stringify(nums1_4) === JSON.stringify(testCase.expected)
+      ? &quot;✅&quot;
+      : &quot;❌&quot;
+  }`
+);
+
+// Test Solution 5 (Heap)
+const nums1_5 = [...testCase.nums1];
+mergeWithHeap(nums1_5, testCase.m, testCase.nums2, testCase.n);
+console.log(
+  `Solution 5 (Heap): [${nums1_5}] ${
+    JSON.stringify(nums1_5) === JSON.stringify(testCase.expected)
+      ? &quot;✅&quot;
+      : &quot;❌&quot;
+  }`
+);
+
+// Test Solution 6 (Recursive)
+const nums1_6 = [...testCase.nums1];
+mergeRecursive(nums1_6, testCase.m, testCase.nums2, testCase.n);
+console.log(
+  `Solution 6 (Recursive): [${nums1_6}] ${
+    JSON.stringify(nums1_6) === JSON.stringify(testCase.expected)
+      ? &quot;✅&quot;
+      : &quot;❌&quot;
+  }`
+);
+
+console.log(&quot;\n---\n&quot;);
+</code></pre></pre>
+<p>});
+}</p>
+<p>// Performance comparison
+function performanceComparison() {
+console.log(&quot;=== Performance Comparison ===\n&quot;);</p>
+<p>const testCases = [
+{ name: &quot;Merge from End&quot;, func: merge },
+{ name: &quot;Extra Space&quot;, func: mergeWithExtraSpace },
+{ name: &quot;Array Methods&quot;, func: mergeWithArrayMethods },
+{ name: &quot;Gap Method&quot;, func: mergeWithGap },
+{ name: &quot;Heap&quot;, func: mergeWithHeap },
+{ name: &quot;Recursive&quot;, func: mergeRecursive },
+];</p>
+<p>// Create large arrays
+const m = 50000;
+const n = 50000;
+const nums1 = Array.from({ length: m + n }, (<em>, i) =&gt; (i &lt; m ? i * 2 : 0));
+const nums2 = Array.from({ length: n }, (</em>, i) =&gt; i * 2 + 1);</p>
+<p>testCases.forEach(({ name, func }) =&gt; {
+const testNums1 = [...nums1];
+const testNums2 = [...nums2];</p>
+<pre><pre><code class="hljs undefined">const start = performance.now();
+func(testNums1, m, testNums2, n);
+const end = performance.now();
+
+console.log(`${name}:`);
+console.log(`  Time: ${(end - start).toFixed(2)}ms`);
+console.log(
+  `  Memory: ${
+    name === &quot;Extra Space&quot;
+      ? &quot;O(m)&quot;
+      : name === &quot;Array Methods&quot; || name === &quot;Heap&quot;
+      ? &quot;O(m+n)&quot;
+      : &quot;O(1)&quot;
+  }\n`
+);
+</code></pre></pre>
+<p>});
+}</p>
+<p>// Uncomment the following lines to run tests
+// testMergeSortedArray();
+// performanceComparison();</p>
+<p>export {
+merge,
+mergeWithExtraSpace,
+mergeWithArrayMethods,
+mergeWithGap,
+mergeWithHeap,
+mergeRecursive,
+MinHeap,
+testMergeSortedArray,
+performanceComparison,
+};
+{% endraw %}</p></div></div></main><footer class="sc-dYwGCk cJzheU"><div class="sc-lgpSej hJUFeT"><div class="sc-eqYatC mSxwd"><div class="sc-kcLKEh cmBIup"><div class="sc-dntSTA bAsNIP"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-code "><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>Frontend Interview Prep</div><p class="sc-kvnevz gWXMDV">Comprehensive interview preparation for frontend engineers targeting Big Tech companies.</p><div class="sc-dFVmKS jCoOHQ"><a href="https://github.com" aria-label="GitHub"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-github "><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"></path><path d="M9 18c-4.51 2-5-2-7-2"></path></svg></a><a href="https://twitter.com" aria-label="Twitter"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-twitter "><path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"></path></svg></a><a href="https://linkedin.com" aria-label="LinkedIn"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-linkedin "><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect width="4" height="12" x="2" y="9"></rect><circle cx="4" cy="4" r="2"></circle></svg></a><a href="mailto:contact@example.com" aria-label="Email"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-mail "><rect width="20" height="16" x="2" y="4" rx="2"></rect><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path></svg></a></div></div><div class="sc-kcLKEh cmBIup"><h3>Study Materials</h3><ul><li><a href="/algorithms">Algorithms</a></li><li><a href="/react">React &amp; Frontend</a></li><li><a href="/system-design">System Design</a></li><li><a href="/typescript">TypeScript</a></li><li><a href="/performance">Performance</a></li></ul></div><div class="sc-kcLKEh cmBIup"><h3>Companies</h3><ul><li><a href="/google">Google</a></li><li><a href="/meta">Meta</a></li><li><a href="/amazon">Amazon</a></li><li><a href="/microsoft">Microsoft</a></li><li><a href="/apple">Apple</a></li></ul></div><div class="sc-kcLKEh cmBIup"><h3>Resources</h3><ul><li><a href="/interview-tips">Interview Tips</a></li><li><a href="/coding-challenges">Coding Challenges</a></li><li><a href="/mock-interviews">Mock Interviews</a></li><li><a href="/blog">Blog</a></li><li><a href="/faq">FAQ</a></li></ul></div></div><div class="sc-kCuUfV crUaYh"><p class="sc-dNdcvo esMlQF">© 2025 Frontend Interview Prep. All rights reserved.</p><div class="sc-fbQrwq eHcrXx"><a href="/privacy">Privacy Policy</a><a href="/terms">Terms of Service</a><a href="/contact">Contact</a></div></div></div></footer></div><script src="/interview/_next/static/chunks/webpack-be7d7df45533bffc.js" async=""></script><script>(self.__next_f=self.__next_f||[]).push([0]);self.__next_f.push([2,null])</script><script>self.__next_f.push([1,"1:HL[\"/interview/_next/static/media/e4af272ccee01ff0-s.p.woff2\",\"font\",{\"crossOrigin\":\"\",\"type\":\"font/woff2\"}]\n2:HL[\"/interview/_next/static/css/387024c6a2216908.css\",\"style\"]\n"])</script><script>self.__next_f.push([1,"3:I[2846,[],\"\"]\n5:I[5907,[\"918\",\"static/chunks/918-3273b83890f10546.js\",\"930\",\"static/chunks/930-3262a6c9c5acace4.js\",\"687\",\"static/chunks/app/docs/%5B...slug%5D/page-32962e9542d32755.js\"],\"default\"]\n7:I[4707,[],\"\"]\n9:I[6423,[],\"\"]\na:I[2,[\"918\",\"static/chunks/918-3273b83890f10546.js\",\"710\",\"static/chunks/710-dfaa11b4dff08f8e.js\",\"972\",\"static/chunks/972-011bba60ed155615.js\",\"233\",\"static/chunks/233-3e0c1d820a17eca9.js\",\"185\",\"static/chunks/app/layout-333f4adcd11f8f39.js\"],\"default\",1]\nc:I[1060,[],\"\"]\n6:T2ecf,"])</script><script>self.__next_f.push([1,"\n# Merge Sorted Array\n\n**LeetCode Problem # * 88. Merge Sorted Array**\n\n## Problem Description\n\n * You are given two integer arrays nums1 and nums2, sorted in non-decreasing order,  * and two integers m and n, representing the number of elements in nums1 and nums2 respectively.  *  * Merge nums1 and nums2 into a single array sorted in non-decreasing order.  * The final sorted array should not be returned by the function, but instead be stored \n\n## Solutions\n\n{% raw %}\n/**\n * 88. Merge Sorted Array\n *\n * Problem:\n * You are given two integer arrays nums1 and nums2, sorted in non-decreasing order,\n * and two integers m and n, representing the number of elements in nums1 and nums2 respectively.\n *\n * Merge nums1 and nums2 into a single array sorted in non-decreasing order.\n * The final sorted array should not be returned by the function, but instead be stored\n * inside the array nums1. To accommodate this, nums1 has a length of m + n, where the\n * first m elements denote the elements that should be merged, and the last n elements\n * are set to 0 and should be ignored. nums2 has a length of n.\n *\n * Example:\n * Input: nums1 = [1,2,3,0,0,0], m = 3, nums2 = [2,5,6], n = 3\n * Output: [1,2,2,3,5,6]\n *\n * Input: nums1 = [1], m = 1, nums2 = [], n = 0\n * Output: [1]\n *\n * LeetCode: https://leetcode.com/problems/merge-sorted-array/\n */\n\n/**\n * Solution 1: Merge from End (Optimal)\n *\n * Approach:\n * - Start from the end of both arrays\n * - Compare elements and place larger one at the end of nums1\n * - This avoids overwriting elements in nums1\n *\n * Time Complexity: O(m + n)\n * Space Complexity: O(1) - in-place modification\n */\nfunction merge(nums1: number[], m: number, nums2: number[], n: number): void {\n  let p1 = m - 1; // Pointer for nums1\n  let p2 = n - 1; // Pointer for nums2\n  let p = m + n - 1; // Pointer for merged array\n\n  // Compare elements from end and place larger one\n  while (p1 \u003e= 0 \u0026\u0026 p2 \u003e= 0) {\n    if (nums1[p1] \u003e nums2[p2]) {\n      nums1[p] = nums1[p1];\n      p1--;\n    } else {\n      nums1[p] = nums2[p2];\n      p2--;\n    }\n    p--;\n  }\n\n  // If there are remaining elements in nums2, copy them\n  while (p2 \u003e= 0) {\n    nums1[p] = nums2[p2];\n    p2--;\n    p--;\n  }\n\n  // Note: If there are remaining elements in nums1, they're already in place\n}\n\n/**\n * Solution 2: Merge from Start (Using Extra Space)\n *\n * Approach:\n * - Create a copy of nums1\n * - Merge into the copy, then copy back to nums1\n *\n * Time Complexity: O(m + n)\n * Space Complexity: O(m) - extra space for copy\n */\nfunction mergeWithExtraSpace(\n  nums1: number[],\n  m: number,\n  nums2: number[],\n  n: number\n): void {\n  const nums1Copy = nums1.slice(0, m);\n  let p1 = 0; // Pointer for nums1Copy\n  let p2 = 0; // Pointer for nums2\n  let p = 0; // Pointer for nums1\n\n  while (p1 \u003c m \u0026\u0026 p2 \u003c n) {\n    if (nums1Copy[p1] \u003c= nums2[p2]) {\n      nums1[p] = nums1Copy[p1];\n      p1++;\n    } else {\n      nums1[p] = nums2[p2];\n      p2++;\n    }\n    p++;\n  }\n\n  // Copy remaining elements from nums1Copy\n  while (p1 \u003c m) {\n    nums1[p] = nums1Copy[p1];\n    p1++;\n    p++;\n  }\n\n  // Copy remaining elements from nums2\n  while (p2 \u003c n) {\n    nums1[p] = nums2[p2];\n    p2++;\n    p++;\n  }\n}\n\n/**\n * Solution 3: Using Array Methods (Not in-place)\n *\n * Approach:\n * - Use concat and sort methods\n * - Simple but not in-place\n *\n * Time Complexity: O((m + n) log(m + n)) - due to sorting\n * Space Complexity: O(m + n) - creates new array\n */\nfunction mergeWithArrayMethods(\n  nums1: number[],\n  m: number,\n  nums2: number[],\n  n: number\n): void {\n  const merged = nums1\n    .slice(0, m)\n    .concat(nums2)\n    .sort((a, b) =\u003e a - b);\n\n  for (let i = 0; i \u003c merged.length; i++) {\n    nums1[i] = merged[i];\n  }\n}\n\n/**\n * Solution 4: Two Pointers with Gap Method\n *\n * Approach:\n * - Use gap method for merging\n * - More complex but shows different approach\n *\n * Time Complexity: O(m + n)\n * Space Complexity: O(1)\n */\nfunction mergeWithGap(\n  nums1: number[],\n  m: number,\n  nums2: number[],\n  n: number\n): void {\n  // First, copy nums2 to the end of nums1\n  for (let i = 0; i \u003c n; i++) {\n    nums1[m + i] = nums2[i];\n  }\n\n  // Now merge using gap method\n  let gap = Math.ceil((m + n) / 2);\n\n  while (gap \u003e 0) {\n    let i = 0;\n    let j = gap;\n\n    while (j \u003c m + n) {\n      if (nums1[i] \u003e nums1[j]) {\n        [nums1[i], nums1[j]] = [nums1[j], nums1[i]];\n      }\n      i++;\n      j++;\n    }\n\n    if (gap === 1) break;\n    gap = Math.ceil(gap / 2);\n  }\n}\n\n/**\n * Solution 5: Using Priority Queue (Overkill but educational)\n *\n * Approach:\n * - Use min heap to merge arrays\n * - Shows heap data structure usage\n *\n * Time Complexity: O((m + n) log(m + n))\n * Space Complexity: O(m + n)\n */\nclass MinHeap {\n  private heap: number[] = [];\n\n  insert(value: number): void {\n    this.heap.push(value);\n    this.heapifyUp();\n  }\n\n  extractMin(): number {\n    if (this.heap.length === 0) throw new Error(\"Heap is empty\");\n\n    const min = this.heap[0];\n    const last = this.heap.pop()!;\n\n    if (this.heap.length \u003e 0) {\n      this.heap[0] = last;\n      this.heapifyDown();\n    }\n\n    return min;\n  }\n\n  private heapifyUp(): void {\n    let index = this.heap.length - 1;\n    while (index \u003e 0) {\n      const parentIndex = Math.floor((index - 1) / 2);\n      if (this.heap[parentIndex] \u003c= this.heap[index]) break;\n\n      [this.heap[parentIndex], this.heap[index]] = [\n        this.heap[index],\n        this.heap[parentIndex],\n      ];\n      index = parentIndex;\n    }\n  }\n\n  private heapifyDown(): void {\n    let index = 0;\n    while (true) {\n      let smallest = index;\n      const leftChild = 2 * index + 1;\n      const rightChild = 2 * index + 2;\n\n      if (\n        leftChild \u003c this.heap.length \u0026\u0026\n        this.heap[leftChild] \u003c this.heap[smallest]\n      ) {\n        smallest = leftChild;\n      }\n\n      if (\n        rightChild \u003c this.heap.length \u0026\u0026\n        this.heap[rightChild] \u003c this.heap[smallest]\n      ) {\n        smallest = rightChild;\n      }\n\n      if (smallest === index) break;\n\n      [this.heap[index], this.heap[smallest]] = [\n        this.heap[smallest],\n        this.heap[index],\n      ];\n      index = smallest;\n    }\n  }\n\n  isEmpty(): boolean {\n    return this.heap.length === 0;\n  }\n}\n\nfunction mergeWithHeap(\n  nums1: number[],\n  m: number,\n  nums2: number[],\n  n: number\n): void {\n  const heap = new MinHeap();\n\n  // Insert all elements into heap\n  for (let i = 0; i \u003c m; i++) {\n    heap.insert(nums1[i]);\n  }\n\n  for (let i = 0; i \u003c n; i++) {\n    heap.insert(nums2[i]);\n  }\n\n  // Extract elements in sorted order\n  for (let i = 0; i \u003c m + n; i++) {\n    nums1[i] = heap.extractMin();\n  }\n}\n\n/**\n * Solution 6: Recursive Merge (Educational)\n *\n * Approach:\n * - Use recursion to merge arrays\n * - Shows recursive thinking\n *\n * Time Complexity: O(m + n)\n * Space Complexity: O(m + n) - recursion stack\n */\nfunction mergeRecursive(\n  nums1: number[],\n  m: number,\n  nums2: number[],\n  n: number\n): void {\n  function mergeHelper(p1: number, p2: number, p: number): void {\n    if (p2 \u003c 0) return; // nums2 is exhausted\n\n    if (p1 \u003e= 0 \u0026\u0026 nums1[p1] \u003e nums2[p2]) {\n      nums1[p] = nums1[p1];\n      mergeHelper(p1 - 1, p2, p - 1);\n    } else {\n      nums1[p] = nums2[p2];\n      mergeHelper(p1, p2 - 1, p - 1);\n    }\n  }\n\n  mergeHelper(m - 1, n - 1, m + n - 1);\n}\n\n// Test cases\nfunction testMergeSortedArray() {\n  console.log(\"=== Testing Merge Sorted Array ===\\n\");\n\n  const testCases = [\n    {\n      nums1: [1, 2, 3, 0, 0, 0],\n      m: 3,\n      nums2: [2, 5, 6],\n      n: 3,\n      expected: [1, 2, 2, 3, 5, 6],\n      description: \"Basic merge\",\n    },\n    {\n      nums1: [1],\n      m: 1,\n      nums2: [],\n      n: 0,\n      expected: [1],\n      description: \"Single element\",\n    },\n    {\n      nums1: [0],\n      m: 0,\n      nums2: [1],\n      n: 1,\n      expected: [1],\n      description: \"Empty nums1\",\n    },\n    {\n      nums1: [4, 5, 6, 0, 0, 0],\n      m: 3,\n      nums2: [1, 2, 3],\n      n: 3,\n      expected: [1, 2, 3, 4, 5, 6],\n      description: \"nums2 smaller than nums1\",\n    },\n    {\n      nums1: [1, 2, 3, 4, 5, 0, 0, 0],\n      m: 5,\n      nums2: [6, 7, 8],\n      n: 3,\n      expected: [1, 2, 3, 4, 5, 6, 7, 8],\n      description: \"nums2 larger than nums1\",\n    },\n  ];\n\n  testCases.forEach((testCase, index) =\u003e {\n    console.log(`Test Case ${index + 1}: ${testCase.description}`);\n    console.log(\n      `Input: nums1 = [${testCase.nums1}], m = ${testCase.m}, nums2 = [${testCase.nums2}], n = ${testCase.n}`\n    );\n    console.log(`Expected: [${testCase.expected}]\\n`);\n\n    // Test Solution 1 (Merge from End)\n    const nums1_1 = [...testCase.nums1];\n    merge(nums1_1, testCase.m, testCase.nums2, testCase.n);\n    console.log(\n      `Solution 1 (Merge from End): [${nums1_1}] ${\n        JSON.stringify(nums1_1) === JSON.stringify(testCase.expected)\n          ? \"✅\"\n          : \"❌\"\n      }`\n    );\n\n    // Test Solution 2 (Extra Space)\n    const nums1_2 = [...testCase.nums1];\n    mergeWithExtraSpace(nums1_2, testCase.m, testCase.nums2, testCase.n);\n    console.log(\n      `Solution 2 (Extra Space): [${nums1_2}] ${\n        JSON.stringify(nums1_2) === JSON.stringify(testCase.expected)\n          ? \"✅\"\n          : \"❌\"\n      }`\n    );\n\n    // Test Solution 3 (Array Methods)\n    const nums1_3 = [...testCase.nums1];\n    mergeWithArrayMethods(nums1_3, testCase.m, testCase.nums2, testCase.n);\n    console.log(\n      `Solution 3 (Array Methods): [${nums1_3}] ${\n        JSON.stringify(nums1_3) === JSON.stringify(testCase.expected)\n          ? \"✅\"\n          : \"❌\"\n      }`\n    );\n\n    // Test Solution 4 (Gap Method)\n    const nums1_4 = [...testCase.nums1];\n    mergeWithGap(nums1_4, testCase.m, testCase.nums2, testCase.n);\n    console.log(\n      `Solution 4 (Gap Method): [${nums1_4}] ${\n        JSON.stringify(nums1_4) === JSON.stringify(testCase.expected)\n          ? \"✅\"\n          : \"❌\"\n      }`\n    );\n\n    // Test Solution 5 (Heap)\n    const nums1_5 = [...testCase.nums1];\n    mergeWithHeap(nums1_5, testCase.m, testCase.nums2, testCase.n);\n    console.log(\n      `Solution 5 (Heap): [${nums1_5}] ${\n        JSON.stringify(nums1_5) === JSON.stringify(testCase.expected)\n          ? \"✅\"\n          : \"❌\"\n      }`\n    );\n\n    // Test Solution 6 (Recursive)\n    const nums1_6 = [...testCase.nums1];\n    mergeRecursive(nums1_6, testCase.m, testCase.nums2, testCase.n);\n    console.log(\n      `Solution 6 (Recursive): [${nums1_6}] ${\n        JSON.stringify(nums1_6) === JSON.stringify(testCase.expected)\n          ? \"✅\"\n          : \"❌\"\n      }`\n    );\n\n    console.log(\"\\n---\\n\");\n  });\n}\n\n// Performance comparison\nfunction performanceComparison() {\n  console.log(\"=== Performance Comparison ===\\n\");\n\n  const testCases = [\n    { name: \"Merge from End\", func: merge },\n    { name: \"Extra Space\", func: mergeWithExtraSpace },\n    { name: \"Array Methods\", func: mergeWithArrayMethods },\n    { name: \"Gap Method\", func: mergeWithGap },\n    { name: \"Heap\", func: mergeWithHeap },\n    { name: \"Recursive\", func: mergeRecursive },\n  ];\n\n  // Create large arrays\n  const m = 50000;\n  const n = 50000;\n  const nums1 = Array.from({ length: m + n }, (_, i) =\u003e (i \u003c m ? i * 2 : 0));\n  const nums2 = Array.from({ length: n }, (_, i) =\u003e i * 2 + 1);\n\n  testCases.forEach(({ name, func }) =\u003e {\n    const testNums1 = [...nums1];\n    const testNums2 = [...nums2];\n\n    const start = performance.now();\n    func(testNums1, m, testNums2, n);\n    const end = performance.now();\n\n    console.log(`${name}:`);\n    console.log(`  Time: ${(end - start).toFixed(2)}ms`);\n    console.log(\n      `  Memory: ${\n        name === \"Extra Space\"\n          ? \"O(m)\"\n          : name === \"Array Methods\" || name === \"Heap\"\n          ? \"O(m+n)\"\n          : \"O(1)\"\n      }\\n`\n    );\n  });\n}\n\n// Uncomment the following lines to run tests\n// testMergeSortedArray();\n// performanceComparison();\n\nexport {\n  merge,\n  mergeWithExtraSpace,\n  mergeWithArrayMethods,\n  mergeWithGap,\n  mergeWithHeap,\n  mergeRecursive,\n  MinHeap,\n  testMergeSortedArray,\n  performanceComparison,\n};\n{% endraw %}\n"])</script><script>self.__next_f.push([1,"8:[\"slug\",\"leetcode/sorting-searching/problems/01-merge-sorted-array\",\"c\"]\nd:[]\n"])</script><script>self.__next_f.push([1,"0:[\"$\",\"$L3\",null,{\"buildId\":\"7uJ7BVaXJTiEOD9iYDv3n\",\"assetPrefix\":\"/interview\",\"urlParts\":[\"\",\"docs\",\"leetcode\",\"sorting-searching\",\"problems\",\"01-merge-sorted-array\"],\"initialTree\":[\"\",{\"children\":[\"docs\",{\"children\":[[\"slug\",\"leetcode/sorting-searching/problems/01-merge-sorted-array\",\"c\"],{\"children\":[\"__PAGE__?{\\\"slug\\\":[\\\"leetcode\\\",\\\"sorting-searching\\\",\\\"problems\\\",\\\"01-merge-sorted-array\\\"]}\",{}]}]}]},\"$undefined\",\"$undefined\",true],\"initialSeedData\":[\"\",{\"children\":[\"docs\",{\"children\":[[\"slug\",\"leetcode/sorting-searching/problems/01-merge-sorted-array\",\"c\"],{\"children\":[\"__PAGE__\",{},[[\"$L4\",[\"$\",\"div\",null,{\"style\":{\"maxWidth\":\"1200px\",\"margin\":\"0 auto\",\"padding\":\"2rem\",\"paddingTop\":\"6rem\"},\"children\":[[\"$\",\"div\",null,{\"style\":{\"marginBottom\":\"2rem\"},\"children\":[[\"$\",\"nav\",null,{\"style\":{\"color\":\"#64748b\",\"fontSize\":\"0.9rem\",\"marginBottom\":\"1rem\"},\"children\":[[\"$\",\"a\",null,{\"href\":\"/\",\"style\":{\"color\":\"#3b82f6\",\"textDecoration\":\"none\"},\"children\":\"Home\"}],\" \u003e \",[\"$\",\"span\",null,{\"children\":\"leetcode \u003e sorting-searching \u003e problems \u003e 01-merge-sorted-array\"}]]}],[\"$\",\"h1\",null,{\"style\":{\"fontSize\":\"2.5rem\",\"fontWeight\":\"800\",\"marginBottom\":\"0.5rem\",\"color\":\"#1e293b\"},\"children\":\"Merge Sorted Array\"}],[\"$\",\"div\",null,{\"style\":{\"color\":\"#64748b\",\"fontSize\":\"0.9rem\",\"marginBottom\":\"2rem\"},\"children\":[[\"$\",\"span\",null,{\"children\":[\"📁 \",\"leetcode/sorting-searching/problems/01-merge-sorted-array.md\"]}],\"$undefined\",\"$undefined\"]}]]}],[\"$\",\"$L5\",null,{\"content\":\"$6\"}]]}],null],null],null]},[null,[\"$\",\"$L7\",null,{\"parallelRouterKey\":\"children\",\"segmentPath\":[\"children\",\"docs\",\"children\",\"$8\",\"children\"],\"error\":\"$undefined\",\"errorStyles\":\"$undefined\",\"errorScripts\":\"$undefined\",\"template\":[\"$\",\"$L9\",null,{}],\"templateStyles\":\"$undefined\",\"templateScripts\":\"$undefined\",\"notFound\":\"$undefined\",\"notFoundStyles\":\"$undefined\"}]],null]},[null,[\"$\",\"$L7\",null,{\"parallelRouterKey\":\"children\",\"segmentPath\":[\"children\",\"docs\",\"children\"],\"error\":\"$undefined\",\"errorStyles\":\"$undefined\",\"errorScripts\":\"$undefined\",\"template\":[\"$\",\"$L9\",null,{}],\"templateStyles\":\"$undefined\",\"templateScripts\":\"$undefined\",\"notFound\":\"$undefined\",\"notFoundStyles\":\"$undefined\"}]],null]},[[[[\"$\",\"link\",\"0\",{\"rel\":\"stylesheet\",\"href\":\"/interview/_next/static/css/387024c6a2216908.css\",\"precedence\":\"next\",\"crossOrigin\":\"$undefined\"}]],[\"$\",\"$La\",null,{\"children\":[\"$\",\"$L7\",null,{\"parallelRouterKey\":\"children\",\"segmentPath\":[\"children\"],\"error\":\"$undefined\",\"errorStyles\":\"$undefined\",\"errorScripts\":\"$undefined\",\"template\":[\"$\",\"$L9\",null,{}],\"templateStyles\":\"$undefined\",\"templateScripts\":\"$undefined\",\"notFound\":[[\"$\",\"title\",null,{\"children\":\"404: This page could not be found.\"}],[\"$\",\"div\",null,{\"style\":{\"fontFamily\":\"system-ui,\\\"Segoe UI\\\",Roboto,Helvetica,Arial,sans-serif,\\\"Apple Color Emoji\\\",\\\"Segoe UI Emoji\\\"\",\"height\":\"100vh\",\"textAlign\":\"center\",\"display\":\"flex\",\"flexDirection\":\"column\",\"alignItems\":\"center\",\"justifyContent\":\"center\"},\"children\":[\"$\",\"div\",null,{\"children\":[[\"$\",\"style\",null,{\"dangerouslySetInnerHTML\":{\"__html\":\"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}\"}}],[\"$\",\"h1\",null,{\"className\":\"next-error-h1\",\"style\":{\"display\":\"inline-block\",\"margin\":\"0 20px 0 0\",\"padding\":\"0 23px 0 0\",\"fontSize\":24,\"fontWeight\":500,\"verticalAlign\":\"top\",\"lineHeight\":\"49px\"},\"children\":\"404\"}],[\"$\",\"div\",null,{\"style\":{\"display\":\"inline-block\"},\"children\":[\"$\",\"h2\",null,{\"style\":{\"fontSize\":14,\"fontWeight\":400,\"lineHeight\":\"49px\",\"margin\":0},\"children\":\"This page could not be found.\"}]}]]}]}]],\"notFoundStyles\":[]}],\"params\":{}}]],null],null],\"couldBeIntercepted\":false,\"initialHead\":[null,\"$Lb\"],\"globalErrorComponent\":\"$c\",\"missingSlots\":\"$Wd\"}]\n"])</script><script>self.__next_f.push([1,"b:[[\"$\",\"meta\",\"0\",{\"name\":\"viewport\",\"content\":\"width=device-width, initial-scale=1\"}],[\"$\",\"meta\",\"1\",{\"charSet\":\"utf-8\"}],[\"$\",\"title\",\"2\",{\"children\":\"Merge Sorted Array - Frontend Interview Docs\"}],[\"$\",\"meta\",\"3\",{\"name\":\"description\",\"content\":\" # Merge Sorted Array  **LeetCode Problem # * 88. Merge Sorted Array**  ## Problem Description   * You are given two integer arrays nums1 and nums2, sorted in n\"}],[\"$\",\"meta\",\"4\",{\"property\":\"og:title\",\"content\":\"Merge Sorted Array - Frontend Interview Docs\"}],[\"$\",\"meta\",\"5\",{\"property\":\"og:description\",\"content\":\" # Merge Sorted Array  **LeetCode Problem # * 88. Merge Sorted Array**  ## Problem Description   * You are given two integer arrays nums1 and nums2, sorted in n\"}],[\"$\",\"meta\",\"6\",{\"property\":\"og:type\",\"content\":\"article\"}],[\"$\",\"meta\",\"7\",{\"name\":\"twitter:card\",\"content\":\"summary\"}],[\"$\",\"meta\",\"8\",{\"name\":\"twitter:title\",\"content\":\"Merge Sorted Array - Frontend Interview Docs\"}],[\"$\",\"meta\",\"9\",{\"name\":\"twitter:description\",\"content\":\" # Merge Sorted Array  **LeetCode Problem # * 88. Merge Sorted Array**  ## Problem Description   * You are given two integer arrays nums1 and nums2, sorted in n\"}],[\"$\",\"meta\",\"10\",{\"name\":\"next-size-adjust\"}]]\n4:null\n"])</script></body></html>
