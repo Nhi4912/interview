@@ -1,153 +1,22 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import styled from 'styled-components';
 import { motion, AnimatePresence } from 'framer-motion';
 import Link from 'next/link';
-import { Menu, X, Search, BookOpen, Code, Users, Award, Brain, Activity, Eye, Zap } from 'lucide-react';
+import { usePathname } from 'next/navigation';
+import { Menu, X, Search, BookOpen, Code, Users, Award, Brain, Activity, Eye, Zap, ChevronRight, Home } from 'lucide-react';
+import ThemeToggle from './ThemeToggle';
+import SearchModal from './SearchModal';
 
-const Nav = styled.nav<{ isScrolled: boolean }>`
-  position: fixed;
-  top: 0;
-  width: 100%;
-  z-index: ${props => props.theme.zIndex.sticky};
-  background: ${props => props.isScrolled ? 'rgba(255, 255, 255, 0.95)' : 'transparent'};
-  backdrop-filter: blur(10px);
-  border-bottom: 1px solid ${props => props.isScrolled ? props.theme.colors.border : 'transparent'};
-  transition: all ${props => props.theme.animation.transition.normal};
-`;
+interface BreadcrumbItem {
+  name: string;
+  href: string;
+}
 
-const NavContainer = styled.div`
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 2rem;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  height: 70px;
-`;
-
-const Logo = styled.a`
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  font-size: 1.5rem;
-  font-weight: 700;
-  color: ${props => props.theme.colors.primary};
-  text-decoration: none;
-  cursor: pointer;
-  
-  &:hover {
-    color: ${props => props.theme.colors.primaryDark};
-  }
-`;
-
-const NavLinks = styled.div`
-  display: flex;
-  align-items: center;
-  gap: 2rem;
-  
-  @media (max-width: ${props => props.theme.breakpoints.tablet}) {
-    display: none;
-  }
-`;
-
-const NavLink = styled.a`
-  color: ${props => props.theme.colors.text};
-  font-weight: 500;
-  text-decoration: none;
-  transition: color ${props => props.theme.animation.transition.fast};
-  position: relative;
-  
-  &:hover {
-    color: ${props => props.theme.colors.primary};
-  }
-  
-  &:after {
-    content: '';
-    position: absolute;
-    bottom: -5px;
-    left: 0;
-    width: 0;
-    height: 2px;
-    background: ${props => props.theme.colors.primary};
-    transition: width ${props => props.theme.animation.transition.fast};
-  }
-  
-  &:hover:after {
-    width: 100%;
-  }
-`;
-
-const MobileMenuButton = styled.button`
-  display: none;
-  background: none;
-  border: none;
-  color: ${props => props.theme.colors.text};
-  cursor: pointer;
-  padding: 0.5rem;
-  
-  @media (max-width: ${props => props.theme.breakpoints.tablet}) {
-    display: block;
-  }
-`;
-
-const MobileMenu = styled(motion.div)`
-  position: fixed;
-  top: 70px;
-  left: 0;
-  right: 0;
-  background: white;
-  border-bottom: 1px solid ${props => props.theme.colors.border};
-  box-shadow: ${props => props.theme.shadows.lg};
-  padding: 1rem 0;
-  
-  @media (min-width: ${props => props.theme.breakpoints.tablet}) {
-    display: none;
-  }
-`;
-
-const MobileNavLinks = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-  padding: 0 2rem;
-`;
-
-const MobileNavLink = styled.a`
-  color: ${props => props.theme.colors.text};
-  font-weight: 500;
-  text-decoration: none;
-  padding: 0.75rem 0;
-  border-bottom: 1px solid ${props => props.theme.colors.border};
-  transition: color ${props => props.theme.animation.transition.fast};
-  
-  &:hover {
-    color: ${props => props.theme.colors.primary};
-  }
-  
-  &:last-child {
-    border-bottom: none;
-  }
-`;
-
-const SearchButton = styled.button`
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  background: ${props => props.theme.colors.surfaceLight};
-  border: 1px solid ${props => props.theme.colors.border};
-  border-radius: ${props => props.theme.borderRadius.md};
-  padding: 0.5rem 1rem;
-  color: ${props => props.theme.colors.textSecondary};
-  font-size: 0.9rem;
-  transition: all ${props => props.theme.animation.transition.fast};
-  
-  &:hover {
-    background: ${props => props.theme.colors.surface};
-    border-color: ${props => props.theme.colors.primary};
-  }
-`;
+interface NavigationProps {
+  showSidebar?: boolean;
+  sidebarContent?: React.ReactNode;
+}
 
 const navigationItems = [
   { name: 'Problems', href: '/problems', icon: <Code size={16} /> },
@@ -159,9 +28,77 @@ const navigationItems = [
   { name: 'Interview Tips', href: '/interview-tips', icon: <Award size={16} /> },
 ];
 
-export default function Navigation() {
+const Breadcrumb = ({ items }: { items: BreadcrumbItem[] }) => {
+  return (
+    <nav aria-label="Breadcrumb" className="flex items-center space-x-2 text-sm text-secondary-600 dark:text-secondary-400">
+      <Link href="/" className="hover:text-primary-600 dark:hover:text-primary-400 transition-colors">
+        <Home size={16} />
+      </Link>
+      {items.map((item, index) => (
+        <React.Fragment key={item.href}>
+          <ChevronRight size={16} className="text-secondary-400" />
+          {index === items.length - 1 ? (
+            <span className="text-secondary-900 dark:text-secondary-100 font-medium">{item.name}</span>
+          ) : (
+            <Link 
+              href={item.href} 
+              className="hover:text-primary-600 dark:hover:text-primary-400 transition-colors"
+            >
+              {item.name}
+            </Link>
+          )}
+        </React.Fragment>
+      ))}
+    </nav>
+  );
+};
+
+const Sidebar = ({ children, isOpen, onClose }: { children: React.ReactNode; isOpen: boolean; onClose: () => void }) => {
+  return (
+    <>
+      {/* Overlay */}
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 bg-black/50 z-40 lg:hidden"
+            onClick={onClose}
+          />
+        )}
+      </AnimatePresence>
+      
+      {/* Sidebar */}
+      <motion.aside
+        initial={{ x: -300 }}
+        animate={{ x: isOpen ? 0 : -300 }}
+        transition={{ type: 'spring', stiffness: 300, damping: 30 }}
+        className="fixed top-0 left-0 z-50 w-64 h-full bg-white dark:bg-secondary-900 border-r border-secondary-200 dark:border-secondary-700 lg:translate-x-0 lg:static lg:z-auto"
+      >
+        <div className="flex items-center justify-between p-4 border-b border-secondary-200 dark:border-secondary-700">
+          <h2 className="text-lg font-semibold text-secondary-900 dark:text-secondary-100">Navigation</h2>
+          <button
+            onClick={onClose}
+            className="p-1 lg:hidden hover:bg-secondary-100 dark:hover:bg-secondary-800 rounded-md"
+          >
+            <X size={20} />
+          </button>
+        </div>
+        <div className="p-4 overflow-y-auto">
+          {children}
+        </div>
+      </motion.aside>
+    </>
+  );
+};
+
+export default function Navigation({ showSidebar = false, sidebarContent }: NavigationProps) {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  const [isSearchOpen, setIsSearchOpen] = useState(false);
+  const pathname = usePathname();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -176,61 +113,176 @@ export default function Navigation() {
     setIsMobileMenuOpen(!isMobileMenuOpen);
   };
 
+  const toggleSidebar = () => {
+    setIsSidebarOpen(!isSidebarOpen);
+  };
+
+  const openSearch = () => {
+    setIsSearchOpen(true);
+  };
+
+  const closeSearch = () => {
+    setIsSearchOpen(false);
+  };
+
+  // Handle keyboard shortcuts
+  useEffect(() => {
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if ((event.metaKey || event.ctrlKey) && event.key === 'k') {
+        event.preventDefault();
+        openSearch();
+      }
+    };
+
+    document.addEventListener('keydown', handleKeyDown);
+    return () => document.removeEventListener('keydown', handleKeyDown);
+  }, []);
+
+  const getBreadcrumbItems = (): BreadcrumbItem[] => {
+    const pathSegments = pathname.split('/').filter(Boolean);
+    const items: BreadcrumbItem[] = [];
+    
+    pathSegments.forEach((segment, index) => {
+      const href = '/' + pathSegments.slice(0, index + 1).join('/');
+      const name = segment.charAt(0).toUpperCase() + segment.slice(1).replace(/-/g, ' ');
+      items.push({ name, href });
+    });
+    
+    return items;
+  };
+
+  const isActiveLink = (href: string) => {
+    return pathname === href || pathname.startsWith(href + '/');
+  };
+
   return (
     <>
-      <Nav isScrolled={isScrolled}>
-        <NavContainer>
-          <Link href="/" passHref>
-            <Logo>
-              <Code size={24} />
-              Frontend Interview Prep
-            </Logo>
-          </Link>
-          
-          <NavLinks>
-            {navigationItems.map((item) => (
-              <Link key={item.name} href={item.href} passHref>
-                <NavLink>
-                  {item.name}
-                </NavLink>
+      <nav className={`fixed top-0 w-full z-50 transition-all duration-300 ${
+        isScrolled 
+          ? 'bg-white/95 dark:bg-secondary-900/95 backdrop-blur-md border-b border-secondary-200 dark:border-secondary-700' 
+          : 'bg-transparent'
+      }`}>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex items-center justify-between h-16">
+            {/* Logo */}
+            <div className="flex items-center">
+              {showSidebar && (
+                <button
+                  onClick={toggleSidebar}
+                  className="p-2 mr-2 lg:hidden hover:bg-secondary-100 dark:hover:bg-secondary-800 rounded-md"
+                >
+                  <Menu size={20} />
+                </button>
+              )}
+              <Link href="/" className="flex items-center space-x-2 text-xl font-bold text-primary-600 dark:text-primary-400 hover:text-primary-700 dark:hover:text-primary-300 transition-colors">
+                <Code size={24} />
+                <span className="hidden sm:block">Frontend Interview Prep</span>
+                <span className="sm:hidden">FIP</span>
               </Link>
-            ))}
-            <SearchButton>
-              <Search size={16} />
-              Search
-            </SearchButton>
-          </NavLinks>
-          
-          <MobileMenuButton onClick={toggleMobileMenu}>
-            {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
-          </MobileMenuButton>
-        </NavContainer>
-      </Nav>
-      
+            </div>
+
+            {/* Desktop Navigation */}
+            <div className="hidden md:flex items-center space-x-8">
+              {navigationItems.map((item) => (
+                <Link 
+                  key={item.name} 
+                  href={item.href}
+                  className={`flex items-center space-x-1 px-3 py-2 rounded-md text-sm font-medium transition-colors relative ${
+                    isActiveLink(item.href)
+                      ? 'text-primary-600 dark:text-primary-400 bg-primary-50 dark:bg-primary-900/20'
+                      : 'text-secondary-700 dark:text-secondary-300 hover:text-primary-600 dark:hover:text-primary-400 hover:bg-secondary-50 dark:hover:bg-secondary-800'
+                  }`}
+                >
+                  {item.icon}
+                  <span>{item.name}</span>
+                </Link>
+              ))}
+              <button 
+                onClick={openSearch}
+                className="flex items-center space-x-2 px-3 py-2 bg-secondary-100 dark:bg-secondary-800 border border-secondary-200 dark:border-secondary-700 rounded-md text-sm text-secondary-600 dark:text-secondary-400 hover:bg-secondary-50 dark:hover:bg-secondary-700 hover:border-primary-300 dark:hover:border-primary-600 transition-colors"
+              >
+                <Search size={16} />
+                <span>Search</span>
+                <span className="ml-2 text-xs bg-secondary-200 dark:bg-secondary-700 px-1.5 py-0.5 rounded">
+                  ⌘K
+                </span>
+              </button>
+              <ThemeToggle size="sm" />
+            </div>
+
+            {/* Mobile menu button */}
+            <button
+              onClick={toggleMobileMenu}
+              className="md:hidden p-2 hover:bg-secondary-100 dark:hover:bg-secondary-800 rounded-md"
+            >
+              {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+            </button>
+          </div>
+        </div>
+      </nav>
+
+      {/* Mobile Menu */}
       <AnimatePresence>
         {isMobileMenuOpen && (
-          <MobileMenu
+          <motion.div
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
             transition={{ duration: 0.2 }}
+            className="fixed top-16 left-0 right-0 z-40 bg-white dark:bg-secondary-900 border-b border-secondary-200 dark:border-secondary-700 shadow-lg md:hidden"
           >
-            <MobileNavLinks>
+            <div className="px-4 py-2 space-y-1">
               {navigationItems.map((item) => (
-                <Link key={item.name} href={item.href} passHref>
-                  <MobileNavLink onClick={() => setIsMobileMenuOpen(false)}>
-                    {item.name}
-                  </MobileNavLink>
+                <Link
+                  key={item.name}
+                  href={item.href}
+                  className={`flex items-center space-x-3 px-3 py-3 rounded-md text-base font-medium transition-colors ${
+                    isActiveLink(item.href)
+                      ? 'text-primary-600 dark:text-primary-400 bg-primary-50 dark:bg-primary-900/20'
+                      : 'text-secondary-700 dark:text-secondary-300 hover:text-primary-600 dark:hover:text-primary-400 hover:bg-secondary-50 dark:hover:bg-secondary-800'
+                  }`}
+                  onClick={() => setIsMobileMenuOpen(false)}
+                >
+                  {item.icon}
+                  <span>{item.name}</span>
                 </Link>
               ))}
-              <SearchButton>
+              <button 
+                onClick={openSearch}
+                className="flex items-center space-x-3 px-3 py-3 w-full text-left bg-secondary-100 dark:bg-secondary-800 border border-secondary-200 dark:border-secondary-700 rounded-md text-base text-secondary-600 dark:text-secondary-400 hover:bg-secondary-50 dark:hover:bg-secondary-700 transition-colors"
+              >
                 <Search size={16} />
-                Search
-              </SearchButton>
-            </MobileNavLinks>
-          </MobileMenu>
+                <span>Search</span>
+              </button>
+              <div className="flex items-center justify-between px-3 py-3">
+                <span className="text-base font-medium text-secondary-700 dark:text-secondary-300">Theme</span>
+                <ThemeToggle size="sm" />
+              </div>
+            </div>
+          </motion.div>
         )}
       </AnimatePresence>
+
+      {/* Sidebar */}
+      {showSidebar && (
+        <Sidebar isOpen={isSidebarOpen} onClose={() => setIsSidebarOpen(false)}>
+          {sidebarContent}
+        </Sidebar>
+      )}
+
+      {/* Breadcrumb */}
+      {pathname !== '/' && (
+        <div className="fixed top-16 left-0 right-0 z-30 bg-white/95 dark:bg-secondary-900/95 backdrop-blur-sm border-b border-secondary-100 dark:border-secondary-800">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3">
+            <Breadcrumb items={getBreadcrumbItems()} />
+          </div>
+        </div>
+      )}
+      
+      {/* Search Modal */}
+      <SearchModal isOpen={isSearchOpen} onClose={closeSearch} />
     </>
   );
 }
+
+export { Breadcrumb, Sidebar };

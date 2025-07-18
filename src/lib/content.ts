@@ -1,6 +1,17 @@
 import fs from 'fs';
 import path from 'path';
 import matter from 'gray-matter';
+import {
+  buildContentStructure,
+  getContentNodeById,
+  getAllContentNodes,
+  getContentNodesByCategory,
+  searchContentNodes,
+  getRelatedContentNodes,
+  slugify,
+} from './content-indexer';
+import { getContentFilePath } from './content-router';
+import { ContentNode } from '../types';
 
 export interface TopicData {
   title: string;
@@ -16,110 +27,56 @@ export interface TopicData {
 // Cache for markdown content
 const contentCache = new Map<string, TopicData>();
 
-// Content directories to scan
-const CONTENT_DIRS = [
-  'src/content/frontend',
-  'frontend',
-  'src/content/leetcode',
-  'leetcode'
-];
-
-function slugify(text: string): string {
-  return text
-    .toLowerCase()
-    .replace(/[^a-z0-9]+/g, '-')
-    .replace(/(^-|-$)/g, '');
+/**
+ * Convert ContentNode to TopicData
+ */
+function contentNodeToTopicData(node: ContentNode, content: string): TopicData {
+  return {
+    title: node.title,
+    description: node.metadata?.description || '',
+    difficulty: node.metadata?.difficulty || 'intermediate',
+    category: node.metadata?.category || 'General',
+    tags: node.metadata?.tags || [],
+    content: content,
+    estimatedTime: node.metadata?.estimatedMinutes
+      ? `${Math.round(node.metadata.estimatedMinutes / 60)} hours`
+      : '2-3 hours',
+    relatedTopics: getRelatedContentNodes(node.id, 5).map(n => n.id),
+  };
 }
 
-function parseMarkdownFile(filePath: string): TopicData | null {
+/**
+ * Parse markdown file content
+ */
+function parseMarkdownFile(filePath: string): { content: string; data: any } {
   try {
     const fileContent = fs.readFileSync(filePath, 'utf8');
     const { data, content } = matter(fileContent);
-    
-    // Extract title from frontmatter or first heading
-    let title = data.title || '';
-    if (!title) {
-      const titleMatch = content.match(/^#\s+(.+)$/m);
-      title = titleMatch ? titleMatch[1] : path.basename(filePath, '.md');
-    }
-    
-    // Extract description from frontmatter or first paragraph
-    let description = data.description || '';
-    if (!description) {
-      const paragraphMatch = content.match(/(?:^|\n\n)([^#\n].*?)(?:\n\n|$)/);
-      description = paragraphMatch ? paragraphMatch[1].substring(0, 200) + '...' : '';
-    }
-    
-    return {
-      title,
-      description,
-      difficulty: data.difficulty || 'Intermediate',
-      category: data.category || 'General',
-      tags: data.tags || [],
-      content: content,
-      estimatedTime: data.estimatedTime || '2-3 hours',
-      relatedTopics: data.relatedTopics || []
-    };
+    return { content, data };
   } catch (error) {
     console.error(`Error reading file ${filePath}:`, error);
-    return null;
+    return { content: '', data: {} };
   }
 }
 
-function scanContentDirectory(dir: string): Map<string, TopicData> {
-  const topicMap = new Map<string, TopicData>();
-  
-  if (!fs.existsSync(dir)) {
-    return topicMap;
-  }
-  
-  function scanRecursive(currentDir: string, prefix: string = '') {
-    const entries = fs.readdirSync(currentDir, { withFileTypes: true });
-    
-    for (const entry of entries) {
-      const fullPath = path.join(currentDir, entry.name);
-      
-      if (entry.isDirectory()) {
-        // Recursively scan subdirectories
-        const subPrefix = prefix ? `${prefix}-${entry.name}` : entry.name;
-        scanRecursive(fullPath, subPrefix);
-      } else if (entry.name.endsWith('.md') && entry.name !== 'README.md') {
-        // Process markdown files
-        const topicData = parseMarkdownFile(fullPath);
-        if (topicData) {
-          const slug = prefix ? `${prefix}-${slugify(path.basename(entry.name, '.md'))}` : slugify(path.basename(entry.name, '.md'));
-          topicMap.set(slug, topicData);
-        }
-      } else if (entry.name === 'README.md') {
-        // Handle README.md files with directory name
-        const topicData = parseMarkdownFile(fullPath);
-        if (topicData) {
-          const dirName = path.basename(currentDir);
-          const slug = prefix ? `${prefix}-${slugify(dirName)}` : slugify(dirName);
-          topicMap.set(slug, topicData);
-        }
-      }
-    }
-  }
-  
-  scanRecursive(dir);
-  return topicMap;
-}
-
+/**
+ * Load all content from the content structure
+ */
 function loadAllContent(): Map<string, TopicData> {
   if (contentCache.size > 0) {
     return contentCache;
   }
-  
+
   const allContent = new Map<string, TopicData>();
-  
+
   // Add some hardcoded content for common topics
   const hardcodedContent = {
     'javascript-fundamentals': {
       title: 'JavaScript Fundamentals',
       difficulty: 'Beginner',
       category: 'JavaScript',
-      description: 'Master the core concepts of JavaScript including variables, functions, objects, and modern ES6+ features.',
+      description:
+        'Master the core concepts of JavaScript including variables, functions, objects, and modern ES6+ features.',
       tags: ['Variables', 'Functions', 'Objects', 'ES6+', 'Closures', 'Scope'],
       estimatedTime: '2-3 hours',
       content: `# JavaScript Fundamentals
@@ -141,13 +98,14 @@ Learn about promises, async/await, and the event loop.
 
 ## Best Practices
 Follow modern JavaScript best practices for clean, maintainable code.`,
-      relatedTopics: ['react-fundamentals', 'typescript-basics', 'async-javascript']
+      relatedTopics: ['react-fundamentals', 'typescript-basics', 'async-javascript'],
     },
     'react-fundamentals': {
       title: 'React Fundamentals',
       difficulty: 'Intermediate',
       category: 'React',
-      description: 'Learn the core concepts of React including components, props, state, and modern hooks.',
+      description:
+        'Learn the core concepts of React including components, props, state, and modern hooks.',
       tags: ['Components', 'Props', 'State', 'Hooks', 'JSX', 'Virtual DOM'],
       estimatedTime: '3-4 hours',
       content: `# React Fundamentals
@@ -166,13 +124,14 @@ Handle user interactions and form submissions.
 
 ## Best Practices
 Follow React best practices for performance and maintainability.`,
-      relatedTopics: ['javascript-fundamentals', 'react-hooks', 'component-patterns']
+      relatedTopics: ['javascript-fundamentals', 'react-hooks', 'component-patterns'],
     },
     'html-css-fundamentals': {
       title: 'HTML & CSS Fundamentals',
       difficulty: 'Beginner',
       category: 'Frontend',
-      description: 'Master semantic HTML and modern CSS techniques including Flexbox, Grid, and responsive design.',
+      description:
+        'Master semantic HTML and modern CSS techniques including Flexbox, Grid, and responsive design.',
       tags: ['HTML5', 'CSS3', 'Flexbox', 'Grid', 'Responsive Design', 'Accessibility'],
       estimatedTime: '2-3 hours',
       content: `# HTML & CSS Fundamentals
@@ -191,28 +150,37 @@ Create websites that work on all devices.
 
 ## Accessibility
 Make your websites accessible to all users.`,
-      relatedTopics: ['responsive-design', 'css-grid', 'accessibility']
-    }
+      relatedTopics: ['responsive-design', 'css-grid', 'accessibility'],
+    },
   };
-  
+
   // Add hardcoded content first
   for (const [key, value] of Object.entries(hardcodedContent)) {
     allContent.set(key, value);
   }
-  
-  // Scan content directories
-  for (const dir of CONTENT_DIRS) {
-    const contentMap = scanContentDirectory(dir);
-    for (const [key, value] of contentMap) {
-      allContent.set(key, value);
+
+  // Build content structure
+  buildContentStructure();
+
+  // Get all content nodes
+  const contentNodes = getAllContentNodes().filter(node => node.type === 'file');
+
+  // Convert content nodes to topic data
+  for (const node of contentNodes) {
+    const filePath = getContentFilePath(node);
+
+    if (filePath) {
+      const { content } = parseMarkdownFile(filePath);
+      const topicData = contentNodeToTopicData(node, content);
+      allContent.set(node.id, topicData);
     }
   }
-  
+
   // Cache the content
   for (const [key, value] of allContent) {
     contentCache.set(key, value);
   }
-  
+
   return allContent;
 }
 
@@ -233,30 +201,36 @@ export function generateStaticParams() {
 export function getTopicsByCategory(): Record<string, string[]> {
   const allContent = loadAllContent();
   const categories: Record<string, string[]> = {};
-  
+
   for (const [slug, data] of allContent) {
     if (!categories[data.category]) {
       categories[data.category] = [];
     }
     categories[data.category].push(slug);
   }
-  
+
   return categories;
 }
 
 export function searchTopics(query: string): string[] {
-  const allContent = loadAllContent();
-  const results: string[] = [];
-  
-  for (const [slug, data] of allContent) {
-    if (
-      data.title.toLowerCase().includes(query.toLowerCase()) ||
-      data.description.toLowerCase().includes(query.toLowerCase()) ||
-      data.tags.some(tag => tag.toLowerCase().includes(query.toLowerCase()))
-    ) {
-      results.push(slug);
-    }
+  if (!query || query.trim() === '') {
+    return [];
   }
-  
-  return results;
+
+  const searchResults = searchContentNodes(query);
+  return searchResults.map(node => node.id);
+}
+
+/**
+ * Get content structure for navigation
+ */
+export function getContentStructure() {
+  return buildContentStructure();
+}
+
+/**
+ * Clear content cache
+ */
+export function clearContentCache() {
+  contentCache.clear();
 }

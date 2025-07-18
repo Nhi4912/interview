@@ -1,9 +1,10 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
 import { BookOpen, FolderOpen, FileText, Search, Clock, Hash, ExternalLink } from 'lucide-react';
+import MainLayout from '@/components/MainLayout';
 
 const Container = styled.div`
   max-width: 1200px;
@@ -39,7 +40,7 @@ const StatsContainer = styled.div`
   justify-content: center;
   gap: 3rem;
   margin-bottom: 3rem;
-  
+
   @media (max-width: 768px) {
     flex-direction: column;
     gap: 1rem;
@@ -75,7 +76,7 @@ const SearchInput = styled.input`
   font-size: 1rem;
   outline: none;
   transition: all 0.3s ease;
-  
+
   &:focus {
     border-color: #3b82f6;
     box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
@@ -99,18 +100,18 @@ const FiltersContainer = styled.div`
 
 const FilterButton = styled.button<{ active: boolean }>`
   padding: 0.5rem 1rem;
-  border: 2px solid ${props => props.active ? '#3b82f6' : '#e2e8f0'};
-  background: ${props => props.active ? '#3b82f6' : 'transparent'};
-  color: ${props => props.active ? 'white' : '#64748b'};
+  border: 2px solid ${props => (props.active ? '#3b82f6' : '#e2e8f0')};
+  background: ${props => (props.active ? '#3b82f6' : 'transparent')};
+  color: ${props => (props.active ? 'white' : '#64748b')};
   border-radius: 0.5rem;
   font-size: 0.9rem;
   font-weight: 500;
   cursor: pointer;
   transition: all 0.3s ease;
-  
+
   &:hover {
     border-color: #3b82f6;
-    background: ${props => props.active ? '#2563eb' : '#f1f5f9'};
+    background: ${props => (props.active ? '#2563eb' : '#f1f5f9')};
   }
 `;
 
@@ -128,7 +129,7 @@ const CategoryCard = styled(motion.div)`
   padding: 2rem;
   transition: all 0.3s ease;
   cursor: pointer;
-  
+
   &:hover {
     transform: translateY(-4px);
     box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
@@ -203,7 +204,7 @@ const FileItem = styled(motion.div)`
   margin-bottom: 0.5rem;
   transition: all 0.3s ease;
   cursor: pointer;
-  
+
   &:hover {
     border-color: #3b82f6;
     transform: translateX(4px);
@@ -249,38 +250,38 @@ const MainCategories = [
     name: 'frontend',
     title: 'Frontend Development',
     description: 'React, TypeScript, HTML/CSS, and modern web technologies',
-    files: 150
+    files: 150,
   },
   {
     name: 'leetcode',
     title: 'Algorithm Problems',
     description: 'LeetCode problems organized by topic with TypeScript solutions',
-    files: 200
+    files: 200,
   },
   {
     name: 'system-design',
     title: 'System Design',
     description: 'Frontend architecture patterns and scalable system design',
-    files: 30
+    files: 30,
   },
   {
     name: 'interview-tips',
     title: 'Interview Strategy',
     description: 'Behavioral questions, negotiation, and interview preparation',
-    files: 25
+    files: 25,
   },
   {
     name: 'performance',
     title: 'Performance Optimization',
     description: 'Core Web Vitals, optimization techniques, and best practices',
-    files: 20
+    files: 20,
   },
   {
     name: 'security',
     title: 'Web Security',
     description: 'XSS, CSRF, authentication, and security best practices',
-    files: 15
-  }
+    files: 15,
+  },
 ];
 
 const SampleFiles = [
@@ -288,32 +289,32 @@ const SampleFiles = [
     title: 'Complete Frontend Interview Guide',
     path: 'README.md',
     category: 'root',
-    lastModified: '2024-12-15'
+    lastModified: '2024-12-15',
   },
   {
     title: 'JavaScript Fundamentals',
     path: 'frontend/javascript/fundamentals.md',
     category: 'frontend',
-    lastModified: '2024-12-14'
+    lastModified: '2024-12-14',
   },
   {
     title: 'React Core Concepts',
     path: 'frontend/react/core.md',
     category: 'frontend',
-    lastModified: '2024-12-13'
+    lastModified: '2024-12-13',
   },
   {
     title: 'Two Sum Problem',
     path: 'leetcode/array/problems/04-two-sum.md',
     category: 'leetcode',
-    lastModified: '2024-12-12'
+    lastModified: '2024-12-12',
   },
   {
     title: 'Frontend System Design Framework',
     path: 'frontend/system-design/frontend-system-design-interview-framework.md',
     category: 'system-design',
-    lastModified: '2024-12-11'
-  }
+    lastModified: '2024-12-11',
+  },
 ];
 
 export default function DocumentationHome() {
@@ -321,14 +322,15 @@ export default function DocumentationHome() {
   const [selectedCategory, setSelectedCategory] = useState('all');
 
   const filteredFiles = SampleFiles.filter(file => {
-    const matchesSearch = file.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                         file.path.toLowerCase().includes(searchTerm.toLowerCase());
+    const matchesSearch =
+      file.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      file.path.toLowerCase().includes(searchTerm.toLowerCase());
     const matchesCategory = selectedCategory === 'all' || file.category === selectedCategory;
     return matchesSearch && matchesCategory;
   });
 
-  return (
-    <Container>
+  const homeContent = (
+    <>
       <Header>
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -337,9 +339,9 @@ export default function DocumentationHome() {
         >
           <Title>📚 Frontend Interview Documentation</Title>
           <Description>
-            Comprehensive frontend interview preparation documentation with 634 
-            markdown files covering algorithms, React, system design, and everything 
-            you need to ace your next Big Tech interview.
+            Comprehensive frontend interview preparation documentation with 634 markdown files
+            covering algorithms, React, system design, and everything you need to ace your next Big
+            Tech interview.
           </Description>
         </motion.div>
       </Header>
@@ -382,7 +384,7 @@ export default function DocumentationHome() {
             type="text"
             placeholder="Search documentation..."
             value={searchTerm}
-            onChange={(e) => setSearchTerm(e.target.value)}
+            onChange={e => setSearchTerm(e.target.value)}
           />
         </SearchContainer>
       </motion.div>
@@ -446,7 +448,9 @@ export default function DocumentationHome() {
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.3, delay: index * 0.05 }}
-            onClick={() => window.open(`/interview/docs/${file.path.replace(/\.md$/, '')}`, '_blank')}
+            onClick={() =>
+              window.open(`/interview/docs/${file.path.replace(/\.md$/, '')}`, '_blank')
+            }
           >
             <FileHeader>
               <FileInfo>
@@ -482,6 +486,12 @@ export default function DocumentationHome() {
           <p>Try adjusting your search terms or category filter.</p>
         </motion.div>
       )}
-    </Container>
+    </>
+  );
+
+  return (
+    <MainLayout>
+      <Container>{homeContent}</Container>
+    </MainLayout>
   );
 }

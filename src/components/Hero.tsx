@@ -342,13 +342,13 @@ export default function Hero() {
             </CodeLine>
             <CodeLine></CodeLine>
             <CodeLine>
-              <CodeKeyword>const</CodeKeyword> <CodeFunction>handleSearch</CodeFunction> = (query) => {`{`}
+              <CodeKeyword>const</CodeKeyword> <CodeFunction>handleSearch</CodeFunction> = (query) =&gt; {`{`}
             </CodeLine>
             <CodeLine>
               &nbsp;&nbsp;<CodeFunction>setQuery</CodeFunction>(query);
             </CodeLine>
             <CodeLine>
-              &nbsp;&nbsp;<CodeFunction>startTransition</CodeFunction>(() => {`{`}
+              &nbsp;&nbsp;<CodeFunction>startTransition</CodeFunction>(() =&gt; {`{`}
             </CodeLine>
             <CodeLine>
               &nbsp;&nbsp;&nbsp;&nbsp;<CodeFunction>setResults</CodeFunction>(<CodeFunction>search</CodeFunction>(query));
