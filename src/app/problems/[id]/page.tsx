@@ -48,18 +48,24 @@ function getProblemData(problemId: string) {
     const problemNumber = match ? parseInt(match[1]) : parseInt(problemId);
     const problemTitle = match ? match[2].replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase()) : data.title || 'Problem';
     
+    // Clean up the content by removing Jekyll liquid tags
+    const cleanedContent = content
+      .replace(/{% raw %}/g, '')
+      .replace(/{% endraw %}/g, '')
+      .replace(/^---[\s\S]*?---/m, ''); // Remove frontmatter from content
+    
     return {
       id: problemNumber,
       title: data.title || problemTitle,
       difficulty: data.difficulty || 'Medium',
       category: data.category || 'Array',
-      description: data.description || content.substring(0, 200) + '...',
+      description: data.description || cleanedContent.substring(0, 200) + '...',
       tags: data.tags || ['Array'],
       timeComplexity: data.timeComplexity || 'O(n)',
       spaceComplexity: data.spaceComplexity || 'O(1)',
       solved: false,
       starred: false,
-      content: content,
+      content: cleanedContent,
       filePath: filePath,
       leetcodeUrl: data.leetcode_url
     };

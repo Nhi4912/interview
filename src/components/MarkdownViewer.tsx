@@ -8,11 +8,11 @@ import rehypeRaw from 'rehype-raw';
 import styled from 'styled-components';
 
 const MarkdownContainer = styled.div`
-  color: ${props => props.theme.colors.text};
+  color: #1e293b;
   line-height: 1.6;
   
   h1, h2, h3, h4, h5, h6 {
-    color: ${props => props.theme.colors.text};
+    color: #1e293b;
     margin-top: 2rem;
     margin-bottom: 1rem;
     font-weight: 600;
@@ -20,13 +20,13 @@ const MarkdownContainer = styled.div`
   
   h1 {
     font-size: 2rem;
-    border-bottom: 2px solid ${props => props.theme.colors.border};
+    border-bottom: 2px solid #e2e8f0;
     padding-bottom: 0.5rem;
   }
   
   h2 {
     font-size: 1.5rem;
-    border-bottom: 1px solid ${props => props.theme.colors.border};
+    border-bottom: 1px solid #e2e8f0;
     padding-bottom: 0.3rem;
   }
   
@@ -40,11 +40,11 @@ const MarkdownContainer = styled.div`
   
   p {
     margin-bottom: 1rem;
-    color: ${props => props.theme.colors.textSecondary};
+    color: #64748b;
   }
   
   a {
-    color: ${props => props.theme.colors.primary};
+    color: #3b82f6;
     text-decoration: none;
     
     &:hover {
@@ -58,34 +58,34 @@ const MarkdownContainer = styled.div`
     
     li {
       margin-bottom: 0.5rem;
-      color: ${props => props.theme.colors.textSecondary};
+      color: #64748b;
     }
   }
   
   blockquote {
-    border-left: 4px solid ${props => props.theme.colors.primary};
+    border-left: 4px solid #3b82f6;
     padding-left: 1rem;
     margin: 1rem 0;
     font-style: italic;
-    color: ${props => props.theme.colors.textSecondary};
-    background: ${props => props.theme.colors.surfaceLight};
+    color: #64748b;
+    background: #f1f5f9;
     padding: 1rem;
-    border-radius: ${props => props.theme.borderRadius.md};
+    border-radius: 0.5rem;
   }
   
   code {
-    background: ${props => props.theme.colors.surfaceLight};
+    background: #f1f5f9;
     padding: 0.2rem 0.4rem;
-    border-radius: ${props => props.theme.borderRadius.sm};
-    font-family: ${props => props.theme.typography.fontFamily.code};
+    border-radius: 0.25rem;
+    font-family: SFMono-Regular, Consolas, "Liberation Mono", Menlo, monospace;
     font-size: 0.9em;
-    color: ${props => props.theme.colors.accent};
+    color: #f59e0b;
   }
   
   pre {
-    background: ${props => props.theme.colors.background};
-    border: 1px solid ${props => props.theme.colors.border};
-    border-radius: ${props => props.theme.borderRadius.md};
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 0.5rem;
     padding: 1rem;
     margin: 1rem 0;
     overflow-x: auto;
@@ -93,7 +93,7 @@ const MarkdownContainer = styled.div`
     code {
       background: none;
       padding: 0;
-      color: ${props => props.theme.colors.text};
+      color: #1e293b;
       font-size: 0.9rem;
     }
   }
@@ -104,69 +104,69 @@ const MarkdownContainer = styled.div`
     margin: 1rem 0;
     
     th, td {
-      border: 1px solid ${props => props.theme.colors.border};
+      border: 1px solid #e2e8f0;
       padding: 0.5rem;
       text-align: left;
     }
     
     th {
-      background: ${props => props.theme.colors.surface};
+      background: #ffffff;
       font-weight: 600;
     }
     
     tr:nth-child(even) {
-      background: ${props => props.theme.colors.surfaceLight};
+      background: #f1f5f9;
     }
   }
   
   hr {
     border: none;
     height: 1px;
-    background: ${props => props.theme.colors.border};
+    background: #e2e8f0;
     margin: 2rem 0;
   }
   
   .highlight {
-    background: ${props => props.theme.colors.primary}20;
+    background: #3b82f620;
     padding: 0.2rem 0.4rem;
-    border-radius: ${props => props.theme.borderRadius.sm};
+    border-radius: 0.25rem;
     font-weight: 600;
   }
   
   /* Syntax highlighting styles */
   .hljs {
-    background: ${props => props.theme.colors.background};
-    color: ${props => props.theme.colors.text};
+    background: #ffffff;
+    color: #1e293b;
   }
   
   .hljs-keyword {
-    color: ${props => props.theme.colors.primary};
+    color: #3b82f6;
     font-weight: 600;
   }
   
   .hljs-string {
-    color: ${props => props.theme.colors.secondary};
+    color: #10b981;
   }
   
   .hljs-function {
-    color: ${props => props.theme.colors.accent};
+    color: #f59e0b;
   }
   
   .hljs-comment {
-    color: ${props => props.theme.colors.textMuted};
+    color: #94a3b8;
     font-style: italic;
   }
   
   .hljs-number {
-    color: ${props => props.theme.colors.warning};
+    color: #f59e0b;
   }
   
   .hljs-variable {
-    color: ${props => props.theme.colors.text};
+    color: #1e293b;
   }
   
   .hljs-title {
-    color: ${props => props.theme.colors.accent};
+    color: #f59e0b;
     font-weight: 600;
   }
 `;
