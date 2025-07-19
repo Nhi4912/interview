@@ -1,6 +1,10 @@
 import Link from 'next/link';
 import { ContentNode } from '@/types';
-import { getContentUrl } from '@/lib/content-router';
+
+// Simple client-side URL generation to avoid server imports
+const getContentUrl = (item: ContentNode): string => {
+  return `/content/${item.path}`;
+};
 
 interface BreadcrumbsProps {
   items: ContentNode[];
