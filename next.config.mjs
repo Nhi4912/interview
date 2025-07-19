@@ -1,12 +1,19 @@
-const withMDX = require('@next/mdx')({
+import withMDX from '@next/mdx';
+import remarkGfm from 'remark-gfm';
+import remarkFrontmatter from 'remark-frontmatter';
+import remarkMdxFrontmatter from 'remark-mdx-frontmatter';
+import rehypeRaw from 'rehype-raw';
+import rehypeHighlight from 'rehype-highlight';
+
+const mdxConfig = withMDX({
   extension: /\.mdx?$/,
   options: {
     remarkPlugins: [
-      require('remark-gfm'),
-      require('remark-frontmatter'),
-      [require('remark-mdx-frontmatter'), { name: 'frontMatter' }],
+      remarkGfm,
+      remarkFrontmatter,
+      [remarkMdxFrontmatter, { name: 'frontMatter' }],
     ],
-    rehypePlugins: [require('rehype-raw'), require('rehype-highlight')],
+    rehypePlugins: [rehypeRaw, rehypeHighlight],
   },
 });
 
@@ -40,4 +47,4 @@ const nextConfig = {
   pageExtensions: ['ts', 'tsx', 'js', 'jsx', 'md', 'mdx'],
 };
 
-module.exports = withMDX(nextConfig);
+export default mdxConfig(nextConfig);
