@@ -6,8 +6,8 @@ import { ContentNode } from '../types';
 // Content directories to scan
 const CONTENT_DIRS = [
   'src/content/frontend',
-  'frontend',
   'src/content/leetcode',
+  'frontend',
   'leetcode',
   'theory-and-visuals',
   'templates',
@@ -521,19 +521,25 @@ export function clearContentCache(): void {
  * Generate static paths for all content nodes
  */
 export function generateContentStaticPaths() {
-  // Build structure if not already built
-  if (!contentStructureCache) {
-    buildContentStructure();
-  }
-
-  const paths: { params: { slug: string[] } }[] = [];
-
-  for (const node of contentNodeCache.values()) {
-    if (node.type === 'file' && node.path) {
-      const slug = node.path.split('/');
-      paths.push({ params: { slug } });
+  try {
+    // Build structure if not already built
+    if (!contentStructureCache) {
+      buildContentStructure();
     }
-  }
 
-  return paths;
+    const paths: { slug: string[] }[] = [];
+
+    for (const node of contentNodeCache.values()) {
+      if (node.type === 'file' && node.path) {
+        const slug = node.path.split('/').filter(Boolean);
+        paths.push({ slug });
+      }
+    }
+
+    console.log(`Generated ${paths.length} static paths for content`);
+    return paths;
+  } catch (error) {
+    console.error('Error generating content static paths:', error);
+    return [];
+  }
 }
