@@ -35,12 +35,18 @@ const nextConfig = {
     // We'll handle TypeScript errors during development
     ignoreBuildErrors: process.env.NODE_ENV === 'production',
   },
-  webpack: config => {
-    config.resolve.fallback = {
-      fs: false,
-      path: false,
-      os: false,
-    };
+  webpack: (config, { isServer }) => {
+    if (!isServer) {
+      config.resolve.fallback = {
+        ...config.resolve.fallback,
+        fs: false,
+        path: false,
+        os: false,
+        crypto: false,
+        stream: false,
+        util: false,
+      };
+    }
     return config;
   },
   // Configure pageExtensions to include md and mdx
