@@ -332,7 +332,7 @@ export default function Hero() {
             transition={{ duration: 0.8, delay: 0.3 }}
           >
             <CodeLine>
-              <CodeComment>// React 18+ concurrent features</CodeComment>
+              <CodeComment>{`// React 18+ concurrent features`}</CodeComment>
             </CodeLine>
             <CodeLine>
               <CodeKeyword>const</CodeKeyword> [isPending, startTransition] = 

@@ -1118,18 +1118,16 @@ export default function InteractiveKnowledgeGraph() {
             isConnected={highlightedNodes.size > 0 && highlightedNodes.has(node.id)}
             style={{
               left: node.x,
-              top: node.y
-            }}
-            onClick={() => handleNodeClick(node)}
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            style={{
+              top: node.y,
               opacity: completedNodes.has(node.id) ? 0.7 : 1,
               borderColor: completedNodes.has(node.id) ? '#10b981' : 
                          bookmarkedNodes.has(node.id) ? '#f59e0b' : 
                          highlightedNodes.has(node.id) ? '#3b82f6' : 
                          highlightedNodes.size > 0 && highlightedNodes.has(node.id) ? '#10b981' : '#e2e8f0'
             }}
+            onClick={() => handleNodeClick(node)}
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
           >
             <NodeHeader>
               <NodeTitle>{node.title}</NodeTitle>
