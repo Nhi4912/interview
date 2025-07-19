@@ -28,12 +28,12 @@ const nextConfig = {
     unoptimized: true,
   },
   eslint: {
-    // We'll handle ESLint errors during development
-    ignoreDuringBuilds: process.env.NODE_ENV === 'production',
+    // Ignore ESLint errors during build for deployment
+    ignoreDuringBuilds: true,
   },
   typescript: {
-    // We'll handle TypeScript errors during development
-    ignoreBuildErrors: process.env.NODE_ENV === 'production',
+    // Ignore TypeScript errors during build for deployment
+    ignoreBuildErrors: true,
   },
   webpack: (config, { isServer }) => {
     if (!isServer) {

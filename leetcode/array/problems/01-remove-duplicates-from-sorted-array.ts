@@ -218,7 +218,7 @@ function performanceComparison() {
   console.log("=== Performance Comparison ===\n");
 
   // Create large sorted array with duplicates
-  const largeArray = [];
+  const largeArray: number[] = [];
   for (let i = 0; i < 100000; i++) {
     largeArray.push(Math.floor(i / 100)); // Creates many duplicates
   }
