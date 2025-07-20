@@ -101,14 +101,14 @@ function plusOneRecursive(digits: number[]): number[] {
  */
 function plusOneReduce(digits: number[]): number[] {
   const result = digits.reduceRight(
-    (acc, digit) => {
+    (acc: { digits: number[]; carry: number }, digit: number) => {
       const sum = digit + acc.carry;
       return {
         digits: [sum % 10, ...acc.digits],
         carry: Math.floor(sum / 10),
       };
     },
-    { digits: [], carry: 1 }
+    { digits: [] as number[], carry: 1 }
   );
 
   return result.carry > 0 ? [result.carry, ...result.digits] : result.digits;

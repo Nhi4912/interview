@@ -1,22 +1,12 @@
 'use client';
 
 import React, { useState, useEffect, useRef } from 'react';
-import styled from 'styled-components';
-import { motion, AnimatePresence } from 'framer-motion';
 import { 
   Eye, 
-  EyeOff, 
   Volume2, 
-  VolumeX, 
-  Type, 
-  Contrast,
   MousePointer2,
   Keyboard,
-  Zap,
   Settings,
-  Monitor,
-  Smartphone,
-  Tablet,
   Check,
   X,
   AlertCircle
@@ -33,277 +23,6 @@ interface AccessibilitySettings {
   fontSize: number;
   lineHeight: number;
 }
-
-const DashboardContainer = styled.div<{ settings: AccessibilitySettings }>`
-  background: ${props => props.settings.highContrast ? '#000000' : props.theme.colors.background};
-  color: ${props => props.settings.highContrast ? '#ffffff' : props.theme.colors.text};
-  font-size: ${props => props.settings.largeText ? '1.2rem' : '1rem'};
-  line-height: ${props => props.settings.lineHeight}em;
-  transition: ${props => props.settings.reduceMotion ? 'none' : 'all 0.3s ease'};
-  min-height: 100vh;
-  padding: 2rem;
-`;
-
-const ControlPanel = styled.div`
-  position: fixed;
-  top: 1rem;
-  right: 1rem;
-  background: ${props => props.theme.colors.surface};
-  border: 1px solid ${props => props.theme.colors.border};
-  border-radius: ${props => props.theme.borderRadius.lg};
-  padding: 1rem;
-  box-shadow: ${props => props.theme.shadows.lg};
-  z-index: 1000;
-  max-width: 300px;
-`;
-
-const ControlTitle = styled.h3`
-  margin: 0 0 1rem 0;
-  font-size: 1.1rem;
-  color: ${props => props.theme.colors.text};
-`;
-
-const ControlGroup = styled.div`
-  margin-bottom: 1rem;
-  
-  &:last-child {
-    margin-bottom: 0;
-  }
-`;
-
-const ControlLabel = styled.label`
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  font-size: 0.9rem;
-  color: ${props => props.theme.colors.text};
-  cursor: pointer;
-  margin-bottom: 0.5rem;
-`;
-
-const ToggleSwitch = styled.input`
-  appearance: none;
-  width: 40px;
-  height: 20px;
-  background: ${props => props.theme.colors.border};
-  border-radius: 10px;
-  position: relative;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  
-  &:checked {
-    background: ${props => props.theme.colors.primary};
-  }
-  
-  &:before {
-    content: '';
-    position: absolute;
-    width: 16px;
-    height: 16px;
-    background: white;
-    border-radius: 50%;
-    top: 2px;
-    left: 2px;
-    transition: all 0.3s ease;
-    transform: ${props => props.checked ? 'translateX(20px)' : 'translateX(0)'};
-  }
-  
-  &:focus {
-    outline: 2px solid ${props => props.theme.colors.primary};
-    outline-offset: 2px;
-  }
-`;
-
-const Slider = styled.input`
-  width: 100%;
-  height: 4px;
-  background: ${props => props.theme.colors.border};
-  border-radius: 2px;
-  outline: none;
-  cursor: pointer;
-  
-  &::-webkit-slider-thumb {
-    appearance: none;
-    width: 16px;
-    height: 16px;
-    background: ${props => props.theme.colors.primary};
-    border-radius: 50%;
-    cursor: pointer;
-  }
-  
-  &:focus {
-    outline: 2px solid ${props => props.theme.colors.primary};
-    outline-offset: 2px;
-  }
-`;
-
-const MainContent = styled.div`
-  max-width: 1200px;
-  margin: 0 auto;
-  padding-right: 320px;
-  
-  @media (max-width: 768px) {
-    padding-right: 0;
-  }
-`;
-
-const Section = styled.section`
-  margin-bottom: 3rem;
-  background: ${props => props.theme.colors.surface};
-  border: 1px solid ${props => props.theme.colors.border};
-  border-radius: ${props => props.theme.borderRadius.lg};
-  padding: 2rem;
-  box-shadow: ${props => props.theme.shadows.md};
-`;
-
-const SectionTitle = styled.h2`
-  margin: 0 0 1.5rem 0;
-  color: ${props => props.theme.colors.text};
-  font-size: 1.8rem;
-`;
-
-const FeatureCard = styled.div<{ settings: AccessibilitySettings }>`
-  background: ${props => props.settings.highContrast ? '#1a1a1a' : props.theme.colors.surfaceLight};
-  border: 1px solid ${props => props.settings.highContrast ? '#ffffff' : props.theme.colors.border};
-  border-radius: ${props => props.theme.borderRadius.md};
-  padding: 1.5rem;
-  margin-bottom: 1rem;
-  cursor: pointer;
-  transition: ${props => props.settings.reduceMotion ? 'none' : 'all 0.3s ease'};
-  
-  &:hover {
-    transform: ${props => props.settings.reduceMotion ? 'none' : 'translateY(-2px)'};
-    box-shadow: ${props => props.settings.reduceMotion ? 'none' : props.theme.shadows.lg};
-  }
-  
-  &:focus {
-    outline: 3px solid ${props => props.theme.colors.primary};
-    outline-offset: 2px;
-  }
-`;
-
-const FeatureIcon = styled.div<{ color: string }>`
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 48px;
-  height: 48px;
-  background: ${props => props.color}20;
-  color: ${props => props.color};
-  border-radius: 50%;
-  margin-bottom: 1rem;
-`;
-
-const FeatureTitle = styled.h3`
-  margin: 0 0 0.5rem 0;
-  font-size: 1.2rem;
-  color: ${props => props.theme.colors.text};
-`;
-
-const FeatureDescription = styled.p`
-  margin: 0;
-  color: ${props => props.theme.colors.textSecondary};
-  line-height: 1.6;
-`;
-
-const ComplianceGrid = styled.div`
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 1rem;
-  margin-top: 1.5rem;
-`;
-
-const ComplianceCard = styled.div<{ status: 'pass' | 'fail' | 'warning' }>`
-  background: ${props => {
-    switch (props.status) {
-      case 'pass': return props.theme.colors.success + '10';
-      case 'fail': return props.theme.colors.error + '10';
-      case 'warning': return props.theme.colors.warning + '10';
-      default: return props.theme.colors.surfaceLight;
-    }
-  }};
-  border: 1px solid ${props => {
-    switch (props.status) {
-      case 'pass': return props.theme.colors.success;
-      case 'fail': return props.theme.colors.error;
-      case 'warning': return props.theme.colors.warning;
-      default: return props.theme.colors.border;
-    }
-  }};
-  border-radius: ${props => props.theme.borderRadius.md};
-  padding: 1rem;
-  
-  h4 {
-    margin: 0 0 0.5rem 0;
-    color: ${props => props.theme.colors.text};
-    font-size: 0.9rem;
-  }
-  
-  p {
-    margin: 0;
-    color: ${props => props.theme.colors.textSecondary};
-    font-size: 0.8rem;
-  }
-`;
-
-const StatusIcon = styled.div<{ status: 'pass' | 'fail' | 'warning' }>`
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 20px;
-  height: 20px;
-  border-radius: 50%;
-  background: ${props => {
-    switch (props.status) {
-      case 'pass': return props.theme.colors.success;
-      case 'fail': return props.theme.colors.error;
-      case 'warning': return props.theme.colors.warning;
-      default: return props.theme.colors.border;
-    }
-  }};
-  color: white;
-  font-size: 0.8rem;
-  margin-right: 0.5rem;
-`;
-
-const KeyboardShortcuts = styled.div`
-  background: ${props => props.theme.colors.background};
-  border: 1px solid ${props => props.theme.colors.border};
-  border-radius: ${props => props.theme.borderRadius.md};
-  padding: 1rem;
-  margin-top: 1rem;
-  
-  h4 {
-    margin: 0 0 0.5rem 0;
-    color: ${props => props.theme.colors.text};
-  }
-  
-  ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-  }
-  
-  li {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0.5rem 0;
-    border-bottom: 1px solid ${props => props.theme.colors.border};
-    
-    &:last-child {
-      border-bottom: none;
-    }
-  }
-  
-  .shortcut {
-    background: ${props => props.theme.colors.surfaceLight};
-    padding: 0.25rem 0.5rem;
-    border-radius: 4px;
-    font-family: monospace;
-    font-size: 0.8rem;
-  }
-`;
 
 const initialSettings: AccessibilitySettings = {
   highContrast: false,
@@ -389,7 +108,6 @@ const keyboardShortcuts = [
 
 export default function AccessibilityDashboard() {
   const [settings, setSettings] = useState<AccessibilitySettings>(initialSettings);
-  const [isControlPanelOpen, setIsControlPanelOpen] = useState(true);
   const [announcement, setAnnouncement] = useState('');
   const announcementRef = useRef<HTMLDivElement>(null);
 
@@ -428,172 +146,232 @@ export default function AccessibilityDashboard() {
   const getStatusIcon = (status: 'pass' | 'fail' | 'warning') => {
     switch (status) {
       case 'pass':
-        return <Check size={12} />;
+        return <Check size={12} className="text-white" />;
       case 'fail':
-        return <X size={12} />;
+        return <X size={12} className="text-white" />;
       case 'warning':
-        return <AlertCircle size={12} />;
+        return <AlertCircle size={12} className="text-white" />;
       default:
         return null;
     }
   };
 
+  const getStatusStyles = (status: 'pass' | 'fail' | 'warning') => {
+    switch (status) {
+      case 'pass':
+        return 'bg-green-500 border-green-500 bg-opacity-10 border-opacity-100';
+      case 'fail':
+        return 'bg-red-500 border-red-500 bg-opacity-10 border-opacity-100';
+      case 'warning':
+        return 'bg-yellow-500 border-yellow-500 bg-opacity-10 border-opacity-100';
+      default:
+        return 'bg-gray-100 border-gray-300 dark:bg-gray-700 dark:border-gray-600';
+    }
+  };
+
+  const getStatusIconBg = (status: 'pass' | 'fail' | 'warning') => {
+    switch (status) {
+      case 'pass':
+        return 'bg-green-500';
+      case 'fail':
+        return 'bg-red-500';
+      case 'warning':
+        return 'bg-yellow-500';
+      default:
+        return 'bg-gray-500';
+    }
+  };
+
   return (
-    <DashboardContainer settings={settings}>
+    <div 
+      className={`min-h-screen p-8 transition-all duration-300 ${
+        settings.highContrast 
+          ? 'bg-black text-white' 
+          : 'bg-gray-50 text-gray-900 dark:bg-gray-900 dark:text-gray-100'
+      }`}
+      style={{ 
+        fontSize: settings.largeText ? '1.2rem' : '1rem',
+        lineHeight: `${settings.lineHeight}em`
+      }}
+    >
+      {/* Screen Reader Announcements */}
       <div
         ref={announcementRef}
         role="status"
         aria-live="polite"
         aria-atomic="true"
-        style={{
-          position: 'absolute',
-          left: '-10000px',
-          width: '1px',
-          height: '1px',
-          overflow: 'hidden'
-        }}
+        className="sr-only"
       >
         {announcement}
       </div>
 
-      <ControlPanel>
-        <ControlTitle>
-          <Settings size={20} style={{ marginRight: '0.5rem' }} />
+      {/* Control Panel */}
+      <div className="fixed top-4 right-4 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg p-4 shadow-lg z-50 max-w-xs">
+        <h3 className="flex items-center gap-2 text-lg font-medium text-gray-900 dark:text-gray-100 mb-4">
+          <Settings size={20} />
           Accessibility Settings
-        </ControlTitle>
+        </h3>
         
-        <ControlGroup>
-          <ControlLabel>
-            <ToggleSwitch
-              type="checkbox"
-              checked={settings.highContrast}
-              onChange={(e) => updateSetting('highContrast', e.target.checked)}
-            />
-            High Contrast Mode
-          </ControlLabel>
-          
-          <ControlLabel>
-            <ToggleSwitch
-              type="checkbox"
-              checked={settings.largeText}
-              onChange={(e) => updateSetting('largeText', e.target.checked)}
-            />
-            Large Text
-          </ControlLabel>
-          
-          <ControlLabel>
-            <ToggleSwitch
-              type="checkbox"
-              checked={settings.reduceMotion}
-              onChange={(e) => updateSetting('reduceMotion', e.target.checked)}
-            />
-            Reduce Motion
-          </ControlLabel>
-          
-          <ControlLabel>
-            <ToggleSwitch
-              type="checkbox"
-              checked={settings.screenReader}
-              onChange={(e) => updateSetting('screenReader', e.target.checked)}
-            />
-            Screen Reader Mode
-          </ControlLabel>
-        </ControlGroup>
+        <div className="space-y-4">
+          <div className="space-y-3">
+            <label className="flex items-center gap-3 cursor-pointer">
+              <input
+                type="checkbox"
+                checked={settings.highContrast}
+                onChange={(e) => updateSetting('highContrast', e.target.checked)}
+                className="w-10 h-5 bg-gray-200 rounded-full relative appearance-none cursor-pointer focus:outline-none focus:ring-2 focus:ring-blue-500 checked:bg-blue-500 transition-colors"
+              />
+              <span className="text-sm text-gray-700 dark:text-gray-300">High Contrast Mode</span>
+            </label>
+            
+            <label className="flex items-center gap-3 cursor-pointer">
+              <input
+                type="checkbox"
+                checked={settings.largeText}
+                onChange={(e) => updateSetting('largeText', e.target.checked)}
+                className="w-10 h-5 bg-gray-200 rounded-full relative appearance-none cursor-pointer focus:outline-none focus:ring-2 focus:ring-blue-500 checked:bg-blue-500 transition-colors"
+              />
+              <span className="text-sm text-gray-700 dark:text-gray-300">Large Text</span>
+            </label>
+            
+            <label className="flex items-center gap-3 cursor-pointer">
+              <input
+                type="checkbox"
+                checked={settings.reduceMotion}
+                onChange={(e) => updateSetting('reduceMotion', e.target.checked)}
+                className="w-10 h-5 bg-gray-200 rounded-full relative appearance-none cursor-pointer focus:outline-none focus:ring-2 focus:ring-blue-500 checked:bg-blue-500 transition-colors"
+              />
+              <span className="text-sm text-gray-700 dark:text-gray-300">Reduce Motion</span>
+            </label>
+            
+            <label className="flex items-center gap-3 cursor-pointer">
+              <input
+                type="checkbox"
+                checked={settings.screenReader}
+                onChange={(e) => updateSetting('screenReader', e.target.checked)}
+                className="w-10 h-5 bg-gray-200 rounded-full relative appearance-none cursor-pointer focus:outline-none focus:ring-2 focus:ring-blue-500 checked:bg-blue-500 transition-colors"
+              />
+              <span className="text-sm text-gray-700 dark:text-gray-300">Screen Reader Mode</span>
+            </label>
+          </div>
 
-        <ControlGroup>
-          <label style={{ display: 'block', marginBottom: '0.5rem', fontSize: '0.9rem' }}>
-            Font Size: {settings.fontSize}em
-          </label>
-          <Slider
-            type="range"
-            min="0.8"
-            max="2"
-            step="0.1"
-            value={settings.fontSize}
-            onChange={(e) => updateSetting('fontSize', parseFloat(e.target.value))}
-          />
-        </ControlGroup>
+          <div>
+            <label className="block text-sm text-gray-700 dark:text-gray-300 mb-2">
+              Font Size: {settings.fontSize}em
+            </label>
+            <input
+              type="range"
+              min="0.8"
+              max="2"
+              step="0.1"
+              value={settings.fontSize}
+              onChange={(e) => updateSetting('fontSize', parseFloat(e.target.value))}
+              className="w-full h-1 bg-gray-200 rounded-lg appearance-none cursor-pointer focus:outline-none focus:ring-2 focus:ring-blue-500"
+            />
+          </div>
 
-        <ControlGroup>
-          <label style={{ display: 'block', marginBottom: '0.5rem', fontSize: '0.9rem' }}>
-            Line Height: {settings.lineHeight}em
-          </label>
-          <Slider
-            type="range"
-            min="1"
-            max="2"
-            step="0.1"
-            value={settings.lineHeight}
-            onChange={(e) => updateSetting('lineHeight', parseFloat(e.target.value))}
-          />
-        </ControlGroup>
-      </ControlPanel>
+          <div>
+            <label className="block text-sm text-gray-700 dark:text-gray-300 mb-2">
+              Line Height: {settings.lineHeight}em
+            </label>
+            <input
+              type="range"
+              min="1"
+              max="2"
+              step="0.1"
+              value={settings.lineHeight}
+              onChange={(e) => updateSetting('lineHeight', parseFloat(e.target.value))}
+              className="w-full h-1 bg-gray-200 rounded-lg appearance-none cursor-pointer focus:outline-none focus:ring-2 focus:ring-blue-500"
+            />
+          </div>
+        </div>
+      </div>
 
-      <MainContent>
-        <header>
-          <h1 style={{ fontSize: '2.5rem', marginBottom: '1rem' }}>
+      {/* Main Content */}
+      <div className="max-w-6xl mx-auto pr-80 lg:pr-80 md:pr-0">
+        <header className="mb-8">
+          <h1 className="text-4xl font-bold mb-4">
             Accessibility Dashboard
           </h1>
-          <p style={{ fontSize: '1.2rem', color: '#64748b', marginBottom: '2rem' }}>
+          <p className="text-xl text-gray-600 dark:text-gray-400">
             Demonstrating inclusive design principles and WCAG compliance
           </p>
         </header>
 
-        <Section>
-          <SectionTitle>Accessibility Features</SectionTitle>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '1rem' }}>
-            {features.map((feature, index) => (
-              <FeatureCard
+        {/* Features Section */}
+        <section className="mb-12 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg p-8 shadow-md">
+          <h2 className="text-2xl font-bold mb-6">Accessibility Features</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {features.map((feature) => (
+              <div
                 key={feature.title}
-                settings={settings}
+                className={`p-6 rounded-lg border cursor-pointer transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-blue-500 ${
+                  settings.highContrast 
+                    ? 'bg-gray-800 border-white hover:bg-gray-700' 
+                    : 'bg-gray-50 dark:bg-gray-700 border-gray-200 dark:border-gray-600 hover:shadow-lg hover:-translate-y-1'
+                } ${settings.reduceMotion ? 'transition-none hover:transform-none' : ''}`}
                 tabIndex={0}
                 role="button"
                 aria-label={`Learn more about ${feature.title}`}
               >
-                <FeatureIcon color={feature.color}>
+                <div 
+                  className="inline-flex items-center justify-center w-12 h-12 rounded-full mb-4"
+                  style={{ backgroundColor: `${feature.color}20`, color: feature.color }}
+                >
                   {feature.icon}
-                </FeatureIcon>
-                <FeatureTitle>{feature.title}</FeatureTitle>
-                <FeatureDescription>{feature.description}</FeatureDescription>
-              </FeatureCard>
+                </div>
+                <h3 className="text-lg font-semibold mb-2">{feature.title}</h3>
+                <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
+                  {feature.description}
+                </p>
+              </div>
             ))}
           </div>
-        </Section>
+        </section>
 
-        <Section>
-          <SectionTitle>WCAG Compliance Status</SectionTitle>
-          <ComplianceGrid>
-            {complianceChecks.map((check, index) => (
-              <ComplianceCard key={check.title} status={check.status}>
-                <h4 style={{ display: 'flex', alignItems: 'center' }}>
-                  <StatusIcon status={check.status}>
+        {/* WCAG Compliance Section */}
+        <section className="mb-12 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg p-8 shadow-md">
+          <h2 className="text-2xl font-bold mb-6">WCAG Compliance Status</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            {complianceChecks.map((check) => (
+              <div
+                key={check.title}
+                className={`p-4 rounded-lg border ${getStatusStyles(check.status)}`}
+              >
+                <h4 className="flex items-center text-sm font-medium mb-2">
+                  <div className={`inline-flex items-center justify-center w-5 h-5 rounded-full mr-2 ${getStatusIconBg(check.status)}`}>
                     {getStatusIcon(check.status)}
-                  </StatusIcon>
+                  </div>
                   {check.title}
                 </h4>
-                <p>{check.description}</p>
-              </ComplianceCard>
+                <p className="text-xs text-gray-600 dark:text-gray-400">
+                  {check.description}
+                </p>
+              </div>
             ))}
-          </ComplianceGrid>
-        </Section>
+          </div>
+        </section>
 
-        <Section>
-          <SectionTitle>Keyboard Shortcuts</SectionTitle>
-          <p style={{ marginBottom: '1rem', color: '#64748b' }}>
+        {/* Keyboard Shortcuts Section */}
+        <section className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg p-8 shadow-md">
+          <h2 className="text-2xl font-bold mb-4">Keyboard Shortcuts</h2>
+          <p className="text-gray-600 dark:text-gray-400 mb-6">
             Navigate the interface using these keyboard shortcuts:
           </p>
-          <KeyboardShortcuts>
-            <ul>
+          <div className="bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-lg p-4">
+            <ul className="space-y-3">
               {keyboardShortcuts.map((shortcut, index) => (
-                <li key={index}>
-                  <span>{shortcut.action}</span>
-                  <span className="shortcut">{shortcut.shortcut}</span>
+                <li key={index} className="flex items-center justify-between py-2 border-b border-gray-200 dark:border-gray-700 last:border-b-0">
+                  <span className="text-gray-700 dark:text-gray-300">{shortcut.action}</span>
+                  <span className="bg-gray-200 dark:bg-gray-700 px-2 py-1 rounded text-xs font-mono">
+                    {shortcut.shortcut}
+                  </span>
                 </li>
               ))}
             </ul>
-          </KeyboardShortcuts>
-        </Section>
-      </MainContent>
-    </DashboardContainer>
+          </div>
+        </section>
+      </div>
+    </div>
   );
 }

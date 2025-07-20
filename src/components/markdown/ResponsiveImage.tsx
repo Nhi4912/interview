@@ -132,7 +132,7 @@ const ResponsiveImage: React.FC<ResponsiveImageProps> = ({
       <ImageWrapper>
         {isExternal ? (
           // For external images
-          <img src={src} alt={alt} style={{ width: '100%', height: 'auto' }} loading="lazy" />
+          <Image src={src} alt={alt} style={{ width: '100%', height: 'auto' }} width={width || 800} height={height || 600} />
         ) : (
           // For local images with Next.js Image component
           <StyledImage
@@ -155,7 +155,7 @@ const ResponsiveImage: React.FC<ResponsiveImageProps> = ({
       {isModalOpen && (
         <Modal onClick={closeModal}>
           <ModalContent onClick={e => e.stopPropagation()}>
-            <img src={isExternal ? src : src} alt={alt} />
+            <Image src={isExternal ? src : src} alt={alt} width={width || 800} height={height || 600} />
             <CloseButton onClick={closeModal}>×</CloseButton>
           </ModalContent>
         </Modal>
