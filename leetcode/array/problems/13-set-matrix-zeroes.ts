@@ -207,7 +207,7 @@ function setZeroesFunctional(matrix: number[][]): void {
 
   // Find zero positions
   const zeroPositions = matrix.flatMap((row, i) =>
-    row.map((cell, j) => (cell === 0 ? [i, j] : null)).filter(Boolean)
+    row.map((cell, j) => (cell === 0 ? [i, j] : null)).filter((pos): pos is [number, number] => pos !== null)
   );
 
   // Get unique rows and columns to zero
