@@ -283,7 +283,7 @@ export function partition6(s: string): string[][] {
         const d = new Array(n).fill(0);
         
         for (let i = 0, l = 0, r = -1; i < n; i++) {
-            const k = i > r ? 0 : Math.min(d[l + r - i + 1], r - i + 1);
+            let k = i > r ? 0 : Math.min(d[l + r - i + 1], r - i + 1);
             
             while (0 <= i - k - 1 && i + k < n && s[i - k - 1] === s[i + k]) {
                 k++;
