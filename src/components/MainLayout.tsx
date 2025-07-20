@@ -63,7 +63,7 @@ const SkipLink = styled.a`
 const MainLayout = ({
   children,
   fullWidth = false,
-  showBreadcrumbs = false,
+  showBreadcrumbs: _showBreadcrumbs = false, // eslint-disable-line @typescript-eslint/no-unused-vars
   contentClassName = '',
 }: MainLayoutProps) => {
   return (

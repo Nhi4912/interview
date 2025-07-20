@@ -3,7 +3,7 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
-import { BookOpen, CheckCircle, ArrowRight, Clock, Star, Code, Users, Zap } from 'lucide-react';
+import { BookOpen, CheckCircle, Clock, Code, Users, Zap } from 'lucide-react';
 
 const Container = styled.div`
   max-width: 1200px;

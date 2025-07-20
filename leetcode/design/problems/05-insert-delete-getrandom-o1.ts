@@ -366,10 +366,10 @@ function runTests() {
 
       switch (operation.type) {
         case "insert":
-          result = randomizedSet.insert(operation.value);
+          result = randomizedSet.insert(operation.value!);
           break;
         case "remove":
-          result = randomizedSet.remove(operation.value);
+          result = randomizedSet.remove(operation.value!);
           break;
         case "getRandom":
           result = randomizedSet.getRandom();

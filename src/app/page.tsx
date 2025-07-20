@@ -3,7 +3,7 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
-import { BookOpen, FolderOpen, FileText, Search, Clock, Hash, ExternalLink } from 'lucide-react';
+import { FolderOpen, FileText, Search, Clock, ExternalLink } from 'lucide-react';
 import MainLayout from '@/components/MainLayout';
 
 const Container = styled.div`

@@ -4,7 +4,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
-import { ArrowRight, Play, Github, Star } from 'lucide-react';
+import { ArrowRight, Play, Star } from 'lucide-react';
 
 const HeroSection = styled.section`
   min-height: 100vh;
@@ -210,25 +210,9 @@ const CodeKeyword = styled.span`
   font-weight: 600;
 `;
 
-const CodeString = styled.span`
-  color: ${props => props.theme.colors.secondary};
-`;
-
 const CodeFunction = styled.span`
   color: ${props => props.theme.colors.accent};
 `;
-
-const backgroundVariants = {
-  animate: {
-    backgroundPosition: ['0% 0%', '100% 100%'],
-    transition: {
-      duration: 20,
-      ease: 'linear',
-      repeat: Infinity,
-      repeatType: 'reverse' as const,
-    },
-  },
-};
 
 const containerVariants = {
   hidden: { opacity: 0 },

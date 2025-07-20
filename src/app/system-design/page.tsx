@@ -367,7 +367,7 @@ const caseStudies = [
 ];
 
 export default function SystemDesignPage() {
-  const [selectedConcept, setSelectedConcept] = useState<number | null>(null);
+  const [selectedConcept, setSelectedConcept] = useState<number | null>(null); // eslint-disable-line @typescript-eslint/no-unused-vars
 
   return (
     <Container>

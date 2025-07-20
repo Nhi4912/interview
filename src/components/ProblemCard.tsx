@@ -3,7 +3,7 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
-import { Clock, Star, CheckCircle, ArrowRight, Code, Tag } from 'lucide-react';
+import { Clock, Star, CheckCircle, Code } from 'lucide-react';
 
 interface Problem {
   id: number;

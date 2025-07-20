@@ -3,7 +3,7 @@
 import React, { useState, useMemo } from 'react';
 import styled from 'styled-components';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Search, Filter, Code, Clock, Star, ArrowRight } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 import SearchBar from '@/components/SearchBar';
 import ProblemCard from '@/components/ProblemCard';
 import FilterTabs from '@/components/FilterTabs';
@@ -261,7 +261,7 @@ export default function ProblemsPage() {
           transition={{ duration: 0.6, delay: 0.2 }}
         >
           <StatsBar>
-            {stats.map((stat, index) => (
+            {stats.map((stat) => (
               <Stat key={stat.label}>
                 <StatNumber>{stat.number}</StatNumber>
                 <StatLabel>{stat.label}</StatLabel>

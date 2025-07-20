@@ -258,7 +258,7 @@ interface MarkdownViewerProps {
 const MarkdownViewer: React.FC<MarkdownViewerProps> = ({
   content,
   className,
-  frontMatter = {},
+  frontMatter: _frontMatter = {}, // eslint-disable-line @typescript-eslint/no-unused-vars
 }) => {
   // Check if content is already serialized MDX content
   const isSerializedMDX = typeof content === 'object' && content !== null;

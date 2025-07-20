@@ -4,7 +4,7 @@ import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { Menu, X, Search, BookOpen, Code, Users, Award, Brain, Activity, Eye, Zap, ChevronRight, Home } from 'lucide-react';
+import { Menu, X, Search, BookOpen, Code, Users, Award, Brain, Eye, Zap, ChevronRight, Home } from 'lucide-react';
 import ThemeToggle from './ThemeToggle';
 import SearchModal from './SearchModal';
 

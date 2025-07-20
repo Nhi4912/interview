@@ -8,7 +8,6 @@ import Navigation from '@/components/Navigation';
 import { ChevronLeft, ChevronRight, Clock, Tag, User, Calendar } from 'lucide-react';
 import Link from 'next/link';
 import { 
-  mapSlugToContentNode, 
   resolveContentPath, 
   getContentNavigation, 
   getContentBreadcrumbs,

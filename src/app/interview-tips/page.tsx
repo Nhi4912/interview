@@ -1,9 +1,9 @@
 'use client';
 
-import React, { useState } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
-import { Award, MessageCircle, Clock, Target, CheckCircle, Star, Users, BookOpen, Code, Lightbulb } from 'lucide-react';
+import { MessageCircle, Clock, Target, CheckCircle, Star, Users, Code, Lightbulb } from 'lucide-react';
 
 const Container = styled.div`
   max-width: 1200px;

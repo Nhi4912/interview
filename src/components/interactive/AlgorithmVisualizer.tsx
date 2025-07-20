@@ -5,12 +5,10 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { 
   Play, 
   Pause, 
-  Square, 
   SkipBack, 
   SkipForward, 
   RotateCcw, 
   Settings, 
-  Zap,
   TrendingUp,
   BarChart3,
   Shuffle

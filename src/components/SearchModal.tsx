@@ -3,7 +3,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Search, X, ArrowRight, Clock, Tag, Star, BookOpen } from 'lucide-react';
-import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { searchService, SearchResult } from '@/lib/search-service';
 
@@ -259,7 +258,7 @@ const SearchModal: React.FC<SearchModalProps> = ({ isOpen, onClose }) => {
                     <div className="text-xs font-semibold text-secondary-500 dark:text-secondary-400 uppercase tracking-wider mb-2 px-2">
                       Popular Content
                     </div>
-                    {popularContent.map((result, index) => (
+                    {popularContent.map((result) => (
                       <button
                         key={result.id}
                         onClick={() => handleResultClick(result)}
@@ -285,7 +284,7 @@ const SearchModal: React.FC<SearchModalProps> = ({ isOpen, onClose }) => {
                     <div className="text-xs font-semibold text-secondary-500 dark:text-secondary-400 uppercase tracking-wider mb-2 px-2">
                       Recent Updates
                     </div>
-                    {recentContent.map((result, index) => (
+                    {recentContent.map((result) => (
                       <button
                         key={result.id}
                         onClick={() => handleResultClick(result)}

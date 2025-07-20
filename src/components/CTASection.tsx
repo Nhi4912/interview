@@ -4,7 +4,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
-import { ArrowRight, Github, ExternalLink } from 'lucide-react';
+import { ArrowRight, Github } from 'lucide-react';
 
 const Section = styled.section`
   padding: 5rem 0;

@@ -1,13 +1,11 @@
 'use client';
 
-import React, { ReactNode, useEffect, useState } from 'react';
+import React, { ReactNode, useEffect } from 'react';
 import styled from 'styled-components';
 import MainLayout from './MainLayout';
-import { ChevronLeft, ChevronRight, Home, Tag } from 'lucide-react';
+import { ChevronLeft, ChevronRight, Tag } from 'lucide-react';
 import Link from 'next/link';
 import Breadcrumbs from './Breadcrumbs';
-// Import types only to avoid bundling server-side modules
-import type { ContentNode } from '@/types';
 
 interface ContentLayoutProps {
   children: ReactNode;
@@ -204,20 +202,12 @@ const ContentLayout = ({
   showTableOfContents = true,
   tableOfContents = [],
 }: ContentLayoutProps) => {
-  const [breadcrumbItems, setBreadcrumbItems] = useState<ContentNode[]>([]);
-  const [navigation, setNavigation] = useState<{
-    prev: ContentNode | null;
-    next: ContentNode | null;
-  }>({ prev: null, next: null });
-
   // Load breadcrumbs and navigation on client side
   useEffect(() => {
     // For now, disable these server-side functions during build
     // This will be implemented with proper API routes later
     if (typeof window !== 'undefined') {
       // Client-side only logic will go here
-      // setBreadcrumbItems([]);
-      // setNavigation({ prev: null, next: null });
     }
   }, [contentPath]);
 

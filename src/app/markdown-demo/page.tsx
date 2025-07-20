@@ -5,9 +5,6 @@ import styled from 'styled-components';
 import MainLayout from '@/components/MainLayout';
 import ContentLayout from '@/components/ContentLayout';
 import MarkdownDemo from '@/components/markdown/MarkdownDemo';
-import { processMdxContent } from '@/lib/mdx-processing';
-import { MDXRemote } from 'next-mdx-remote';
-import components from '@/lib/mdx-components';
 
 const DemoContainer = styled.div`
   max-width: 1200px;

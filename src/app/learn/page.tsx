@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import { motion, AnimatePresence } from 'framer-motion';
 import { 
@@ -8,20 +8,14 @@ import {
   Code, 
   Target, 
   Users, 
-  TrendingUp,
-  CheckCircle,
   Clock,
   Star,
-  Filter,
-  Search,
   ArrowRight,
   BarChart3,
-  Brain,
-  Zap,
-  Award
+  Brain
 } from 'lucide-react';
 import InteractiveKnowledgeGraph from '@/components/visualizations/InteractiveKnowledgeGraph';
-import { knowledgeGraph, KnowledgeNode, KnowledgeCategory } from '@/data/knowledgeGraph';
+import { knowledgeGraph, KnowledgeNode } from '@/data/knowledgeGraph';
 import { companies, Company } from '@/data/companies';
 // Remove server-side imports to fix build
 // import { getAllTopics, getTopicsByCategory } from '@/lib/content';
@@ -411,19 +405,19 @@ const learningPaths = [
 
 export default function LearnPage() {
   const [activeTab, setActiveTab] = useState<TabType>('overview');
-  const [selectedCompany, setSelectedCompany] = useState<Company | null>(null);
-  const [selectedTopic, setSelectedTopic] = useState<KnowledgeNode | null>(null);
+  const [selectedCompany, setSelectedCompany] = useState<Company | null>(null); // eslint-disable-line @typescript-eslint/no-unused-vars
+  const [selectedTopic, setSelectedTopic] = useState<KnowledgeNode | null>(null); // eslint-disable-line @typescript-eslint/no-unused-vars
 
   const topTopics = knowledgeGraph
     .sort((a, b) => b.importance - a.importance)
     .slice(0, 5);
 
   const topCompanies = companies
-    .sort((a, b) => a.difficulty === 'Hard' ? -1 : 1)
+    .sort((a) => a.difficulty === 'Hard' ? -1 : 1)
     .slice(0, 6);
 
   // Temporarily disable server-side functions for build
-  const allTopics = []; // getAllTopics();
+  // const allTopics = []; // getAllTopics();
   const topicsByCategory = {}; // getTopicsByCategory();
 
   const renderTabContent = () => {
