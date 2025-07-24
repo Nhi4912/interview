@@ -1,32 +1,40 @@
-# DOM Manipulation: Complete Deep Dive
+# DOM Manipulation: Complete Deep Dive / Thao tác DOM: Tìm hiểu chuyên sâu
 
-## Table of Contents
+## Table of Contents / Mục lục
 
-- [Understanding the DOM](#understanding-the-dom)
-- [DOM Tree Structure](#dom-tree-structure)
-- [Element Selection Methods](#element-selection-methods)
-- [Creating and Modifying Elements](#creating-and-modifying-elements)
-- [Event System Deep Dive](#event-system-deep-dive)
-- [Performance Optimization](#performance-optimization)
-- [Modern DOM APIs](#modern-dom-apis)
-- [Visual Diagrams](#visual-diagrams)
-- [Best Practices](#best-practices)
-- [Interview Questions & Answers](#interview-questions--answers)
-- [Advanced Techniques](#advanced-techniques)
+- [Understanding the DOM / Hiểu về DOM](#understanding-the-dom)
+- [DOM Tree Structure / Cấu trúc cây DOM](#dom-tree-structure)
+- [Element Selection Methods / Phương thức chọn Element](#element-selection-methods)
+- [Creating and Modifying Elements / Tạo và sửa đổi Elements](#creating-and-modifying-elements)
+- [Event System Deep Dive / Tìm hiểu sâu hệ thống Sự kiện](#event-system-deep-dive)
+- [Performance Optimization / Tối ưu hiệu suất](#performance-optimization)
+- [Modern DOM APIs / DOM APIs hiện đại](#modern-dom-apis)
+- [Visual Diagrams / Sơ đồ trực quan](#visual-diagrams)
+- [Best Practices / Thực hành tốt nhất](#best-practices)
+- [Interview Questions & Answers / Câu hỏi phỏng vấn & Câu trả lời](#interview-questions--answers)
+- [Advanced Techniques / Kỹ thuật nâng cao](#advanced-techniques)
 
-## Understanding the DOM
+## Understanding the DOM / Hiểu về DOM
 
-### What is the DOM?
+### What is the DOM? / DOM là gì?
 
-The **Document Object Model (DOM)** is a programming interface for HTML and XML documents. It represents the document as a tree of objects that can be modified with JavaScript.
+**English:** The **Document Object Model (DOM)** is a programming interface for HTML and XML documents. It represents the document as a tree of objects that can be modified with JavaScript.
 
-#### Key Concepts:
+**Tiếng Việt:** **Document Object Model (DOM)** là một giao diện lập trình cho tài liệu HTML và XML. Nó đại diện cho tài liệu dưới dạng cây các đối tượng có thể được sửa đổi bằng JavaScript.
 
-**1. Live Representation**
+#### Key Concepts / Khái niệm chính:
 
+**1. Live Representation / Đại diện trực tiếp**
+
+**English:**
 - The DOM is a **live**, in-memory representation of the document
 - Changes to the DOM immediately affect the rendered page
 - JavaScript can read and modify the DOM in real-time
+
+**Tiếng Việt:**
+- DOM là một đại diện **trực tiếp**, trong bộ nhớ của tài liệu
+- Thay đổi DOM ngay lập tức ảnh hưởng đến trang được hiển thị
+- JavaScript có thể đọc và sửa đổi DOM theo thời gian thực
 
 **2. Object-Oriented Interface**
 

@@ -7,20 +7,29 @@ tags: [javascript-fundamentals, concepts, definitions, theory, interconnections]
 companies: [Google, Meta, Amazon, Microsoft, Apple]
 ---
 
-# JavaScript Fundamentals Theory - Deep Conceptual Understanding
+# JavaScript Fundamentals Theory - Deep Conceptual Understanding / Lý thuyết JavaScript cơ bản - Hiểu biết sâu về khái niệm
 
-## 🧠 Core Concept Definitions & Interconnections
+## 🧠 Core Concept Definitions & Interconnections / Định nghĩa khái niệm cốt lõi & Mối liên kết
 
-### 1. **Variables & Memory Model**
+---
 
-#### **What is a Variable?**
-**Definition:** A variable is a named storage location that holds a reference to a value in memory.
+*Ghi chú: Tài liệu này cung cấp kiến thức nền tảng JavaScript với định nghĩa chi tiết, ví dụ thực tế và mối liên kết giữa các khái niệm để chuẩn bị cho phỏng vấn kỹ thuật tại các công ty công nghệ hàng đầu.*
 
-**Why Variables Exist:**
-- **Abstraction**: Hide memory addresses from developers
-- **Reusability**: Reference the same data multiple times
-- **Mutability**: Allow data to change over time
-- **Scope Management**: Control data access and lifetime
+---
+
+### 1. **Variables & Memory Model / Biến và Mô hình bộ nhớ**
+
+#### **What is a Variable? / Biến là gì?**
+
+**English Definition:** A variable is a named storage location that holds a reference to a value in memory.
+
+**Định nghĩa (Tiếng Việt):** Biến là một vị trí lưu trữ có tên, chứa tham chiếu đến một giá trị trong bộ nhớ.
+
+**Why Variables Exist / Tại sao có biến:**
+- **Abstraction / Trừu tượng hóa**: Hide memory addresses from developers / Ẩn địa chỉ bộ nhớ khỏi lập trình viên
+- **Reusability / Tái sử dụng**: Reference the same data multiple times / Tham chiếu cùng một dữ liệu nhiều lần
+- **Mutability / Khả năng thay đổi**: Allow data to change over time / Cho phép dữ liệu thay đổi theo thời gian
+- **Scope Management / Quản lý phạm vi**: Control data access and lifetime / Kiểm soát truy cập dữ liệu và vòng đời
 
 **How Variables Work in JavaScript:**
 

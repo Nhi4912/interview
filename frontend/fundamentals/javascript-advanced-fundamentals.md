@@ -1,27 +1,42 @@
-# JavaScript Advanced Fundamentals
+# JavaScript Advanced Fundamentals / Nền tảng JavaScript Nâng cao
 
-## Overview
-Deep understanding of JavaScript fundamentals is crucial for frontend interviews. This guide covers advanced concepts that separate junior from senior developers.
+## Overview / Tổng quan
+
+**English:** Deep understanding of JavaScript fundamentals is crucial for frontend interviews. This guide covers advanced concepts that separate junior from senior developers, including memory management, closures, prototypes, and performance optimization.
+
+**Tiếng Việt:** Hiểu biết sâu về nền tảng JavaScript là rất quan trọng cho các cuộc phỏng vấn frontend. Hướng dẫn này bao gồm các khái niệm nâng cao phân biệt giữa lập trình viên junior và senior, bao gồm quản lý bộ nhớ, closure, prototype và tối ưu hiệu suất.
 
 ---
 
-## Memory Management & Garbage Collection
+## Memory Management & Garbage Collection / Quản lý Bộ nhớ & Thu góp rác
 
-### **Understanding Memory Lifecycle**
+### **Understanding Memory Lifecycle / Hiểu chu trình Bộ nhớ**
+
+**English Concepts:**
+- **Memory Allocation**: How JavaScript allocates memory for variables and objects
+- **Memory Usage**: Monitoring and optimizing memory consumption patterns
+- **Garbage Collection**: Automatic cleanup of unused memory references
+- **Memory Leaks**: Common causes and prevention strategies
+
+**Khái niệm (Tiếng Việt):**
+- **Cấp phát bộ nhớ**: Cách JavaScript cấp phát bộ nhớ cho biến và đối tượng
+- **Sử dụng bộ nhớ**: Giám sát và tối ưu mô hình tiêu thụ bộ nhớ
+- **Thu góp rác**: Tự động dọn dẹp các tham chiếu bộ nhớ không sử dụng
+- **Rò rỉ bộ nhớ**: Nguyên nhân phổ biến và chiến lược phòng chống
 
 ```javascript
-// Memory allocation patterns and optimization
+// Memory allocation patterns and optimization / Mô hình cấp phát bộ nhớ và tối ưu hóa
 class MemoryOptimizedDataStructure {
   constructor() {
-    // Use typed arrays for better memory efficiency
+    // Use typed arrays for better memory efficiency / Sử dụng typed arrays để hiệu quả bộ nhớ hơn
     this.buffer = new ArrayBuffer(1024);
     this.view = new Int32Array(this.buffer);
-    this.stringPool = new Map(); // String interning
-    this.objectPool = []; // Object pooling
-    this.weakRefs = new WeakMap(); // Prevent memory leaks
+    this.stringPool = new Map(); // String interning / String interning
+    this.objectPool = []; // Object pooling / Object pooling
+    this.weakRefs = new WeakMap(); // Prevent memory leaks / Ngăn rò rỉ bộ nhớ
   }
 
-  // Object pooling to reduce garbage collection pressure
+  // Object pooling to reduce garbage collection pressure / Object pooling để giảm áp lực thu góp rác
   createObject(data) {
     let obj = this.objectPool.pop();
     if (!obj) {
@@ -36,7 +51,7 @@ class MemoryOptimizedDataStructure {
   }
 
   recycleObject(obj) {
-    // Clear references before pooling
+    // Clear references before pooling / Xóa references trước khi pooling
     obj.id = null;
     obj.data = null;
     obj.timestamp = null;
@@ -44,7 +59,7 @@ class MemoryOptimizedDataStructure {
     this.objectPool.push(obj);
   }
 
-  // String interning to reduce memory usage
+  // String interning to reduce memory usage / String interning để giảm sử dụng bộ nhớ
   internString(str) {
     if (this.stringPool.has(str)) {
       return this.stringPool.get(str);
@@ -54,14 +69,15 @@ class MemoryOptimizedDataStructure {
     return str;
   }
 
-  // WeakMap usage to prevent memory leaks
+  // WeakMap usage to prevent memory leaks / Sử dụng WeakMap để ngăn rò rỉ bộ nhớ
   associateMetadata(obj, metadata) {
     this.weakRefs.set(obj, metadata);
     // When obj is garbage collected, metadata is automatically removed
+    // Khi obj bị thu góp rác, metadata sẽ tự động bị loại bỏ
   }
 }
 
-// Demonstrating memory leaks and how to prevent them
+// Demonstrating memory leaks and how to prevent them / Miêu tả rò rỉ bộ nhớ và cách phòng chống
 class MemoryLeakExamples {
   constructor() {
     this.listeners = new Set();
@@ -69,14 +85,14 @@ class MemoryLeakExamples {
     this.observers = new Set();
   }
 
-  // ❌ Memory leak: Forgotten event listener
+  // ❌ Memory leak: Forgotten event listener / Rò rỉ bộ nhớ: Quên event listener
   addEventListenerBad() {
     const button = document.getElementById('myButton');
     button.addEventListener('click', this.handleClick.bind(this));
-    // Listener never removed, creates memory leak
+    // Listener never removed, creates memory leak / Listener không bao giờ bị xóa, gây rò rỉ bộ nhớ
   }
 
-  // ✅ Proper cleanup
+  // ✅ Proper cleanup / Dọn dẹp đúng cách
   addEventListenerGood() {
     const button = document.getElementById('myButton');
     const boundHandler = this.handleClick.bind(this);
@@ -85,15 +101,15 @@ class MemoryLeakExamples {
     this.listeners.add({ element: button, event: 'click', handler: boundHandler });
   }
 
-  // ❌ Memory leak: Forgotten timer
+  // ❌ Memory leak: Forgotten timer / Rò rỉ bộ nhớ: Quên timer
   startTimerBad() {
     setInterval(() => {
       console.log('Timer running...');
     }, 1000);
-    // Timer never cleared
+    // Timer never cleared / Timer không bao giờ bị xóa
   }
 
-  // ✅ Proper timer management
+  // ✅ Proper timer management / Quản lý timer đúng cách
   startTimerGood() {
     const timerId = setInterval(() => {
       console.log('Timer running...');
@@ -1513,5 +1529,198 @@ class PrototypeDemo {
   }
 }
 ```
+
+## Interview Questions & Answers / Câu hỏi phỏng vấn và câu trả lời
+
+### Q1: Explain JavaScript's memory management and garbage collection / Giải thích quản lý bộ nhớ và thu gom rác của JavaScript
+
+**English Answer:**
+JavaScript uses automatic memory management through garbage collection:
+
+1. **Memory Allocation**: Variables and objects are automatically allocated memory when created
+2. **Reference Tracking**: The engine tracks references to objects
+3. **Mark-and-Sweep**: Modern engines use mark-and-sweep algorithm to identify unreachable objects
+4. **Generational GC**: Objects are categorized by age (young/old generation) for efficient collection
+5. **Memory Leaks**: Common causes include forgotten event listeners, closures holding large objects, and circular references
+
+**Practical Example:**
+```javascript
+// Memory leak example
+function createLeak() {
+  const largeArray = new Array(1000000).fill('data');
+  const element = document.getElementById('button');
+  
+  // This creates a closure that holds largeArray in memory
+  element.addEventListener('click', function() {
+    console.log('Button clicked', largeArray.length);
+  });
+  // Solution: Remove event listener when no longer needed
+}
+```
+
+**Câu trả lời (Tiếng Việt):**
+JavaScript sử dụng quản lý bộ nhớ tự động thông qua thu gom rác:
+
+1. **Cấp phát bộ nhớ**: Biến và đối tượng tự động được cấp phát bộ nhớ khi tạo
+2. **Theo dõi tham chiếu**: Engine theo dõi các tham chiếu đến đối tượng
+3. **Mark-and-Sweep**: Các engine hiện đại sử dụng thuật toán mark-and-sweep để xác định các đối tượng không thể truy cập
+4. **Generational GC**: Các đối tượng được phân loại theo tuổi để thu gom hiệu quả
+5. **Rò rỉ bộ nhớ**: Nguyên nhân phổ biến bao gồm quên event listener, closure giữ đối tượng lớn, và tham chiếu vòng tròn
+
+### Q2: How do closures work and what are their practical applications? / Closure hoạt động như thế nào và ứng dụng thực tế là gì?
+
+**English Answer:**
+Closures are functions that have access to variables in their outer (enclosing) scope even after the outer function has returned:
+
+1. **Lexical Scoping**: JavaScript uses lexical scoping - inner functions have access to outer variables
+2. **Persistence**: Variables in the closure persist even after the outer function completes
+3. **Data Privacy**: Closures can create private variables and methods
+4. **Function Factories**: Create specialized functions with preset configurations
+
+**Practical Applications:**
+- Module pattern for encapsulation
+- Debouncing and throttling
+- Memoization
+- Event handlers with state
+- Currying and partial application
+
+**Câu trả lời (Tiếng Việt):**
+Closure là các hàm có quyền truy cập vào các biến trong phạm vi bên ngoài (enclosing scope) ngay cả sau khi hàm bên ngoài đã trả về:
+
+1. **Lexical Scoping**: JavaScript sử dụng lexical scoping - hàm bên trong có quyền truy cập vào biến bên ngoài
+2. **Tồn tại lâu dài**: Các biến trong closure tồn tại ngay cả sau khi hàm bên ngoài hoàn thành
+3. **Bảo mật dữ liệu**: Closure có thể tạo các biến và phương thức private
+4. **Function Factories**: Tạo các hàm chuyên biệt với cấu hình đặt trước
+
+### Q3: What is the prototype chain and how does inheritance work in JavaScript? / Prototype chain là gì và inheritance hoạt động như thế nào trong JavaScript?
+
+**English Answer:**
+The prototype chain is JavaScript's mechanism for inheritance:
+
+1. **Prototype Property**: Every function has a prototype property
+2. **__proto__ Link**: Every object has a __proto__ link to its constructor's prototype
+3. **Chain Traversal**: When accessing a property, JavaScript walks up the prototype chain
+4. **Inheritance**: Objects inherit properties and methods from their prototype chain
+
+**Key Concepts:**
+```javascript
+// Constructor function inheritance
+function Animal(name) {
+  this.name = name;
+}
+
+Animal.prototype.speak = function() {
+  return `${this.name} makes a sound`;
+};
+
+function Dog(name, breed) {
+  Animal.call(this, name); // Call parent constructor
+  this.breed = breed;
+}
+
+// Set up inheritance
+Dog.prototype = Object.create(Animal.prototype);
+Dog.prototype.constructor = Dog;
+
+Dog.prototype.bark = function() {
+  return `${this.name} barks!`;
+};
+```
+
+**Câu trả lời (Tiếng Việt):**
+Prototype chain là cơ chế inheritance của JavaScript:
+
+1. **Thuộc tính Prototype**: Mỗi hàm có thuộc tính prototype
+2. **Liên kết __proto__**: Mỗi đối tượng có liên kết __proto__ đến prototype của constructor
+3. **Duyệt chuỗi**: Khi truy cập thuộc tính, JavaScript đi lên prototype chain
+4. **Inheritance**: Các đối tượng kế thừa thuộc tính và phương thức từ prototype chain
+
+### Q4: Explain event bubbling and capturing in JavaScript / Giải thích event bubbling và capturing trong JavaScript
+
+**English Answer:**
+Event propagation has three phases:
+
+1. **Capturing Phase**: Event travels from document root down to target element
+2. **Target Phase**: Event reaches the target element
+3. **Bubbling Phase**: Event bubbles up from target back to document root
+
+**Control Mechanisms:**
+- `addEventListener(event, handler, useCapture)` - useCapture controls capture vs bubble
+- `event.stopPropagation()` - Stops further propagation
+- `event.stopImmediatePropagation()` - Stops all remaining handlers
+- `event.preventDefault()` - Prevents default browser behavior
+
+**Câu trả lời (Tiếng Việt):**
+Sự lan truyền sự kiện có ba giai đoạn:
+
+1. **Giai đoạn Capturing**: Sự kiện đi từ gốc document xuống element đích
+2. **Giai đoạn Target**: Sự kiện đến element đích
+3. **Giai đoạn Bubbling**: Sự kiện nổi lên từ đích trở lại gốc document
+
+**Cơ chế kiểm soát:**
+- `addEventListener(event, handler, useCapture)` - useCapture kiểm soát capture vs bubble
+- `event.stopPropagation()` - Dừng lan truyền tiếp
+- `event.stopImmediatePropagation()` - Dừng tất cả handler còn lại
+- `event.preventDefault()` - Ngăn hành vi mặc định của trình duyệt
+
+### Q5: What are the differences between var, let, and const? / Sự khác biệt giữa var, let, và const là gì?
+
+**English Answer:**
+Key differences in scoping, hoisting, and mutability:
+
+| Feature | var | let | const |
+|---------|-----|-----|-------|
+| Scope | Function-scoped | Block-scoped | Block-scoped |
+| Hoisting | Yes (undefined) | Yes (TDZ) | Yes (TDZ) |
+| Re-declaration | Allowed | Not allowed | Not allowed |
+| Re-assignment | Allowed | Allowed | Not allowed |
+| Temporal Dead Zone | No | Yes | Yes |
+
+**Practical Examples:**
+```javascript
+// Scope differences
+function scopeExample() {
+  if (true) {
+    var a = 1;    // Function-scoped
+    let b = 2;    // Block-scoped
+    const c = 3;  // Block-scoped
+  }
+  
+  console.log(a); // 1 (accessible)
+  console.log(b); // ReferenceError
+  console.log(c); // ReferenceError
+}
+
+// Hoisting behavior
+console.log(x); // undefined (var hoisted)
+console.log(y); // ReferenceError (TDZ)
+var x = 1;
+let y = 2;
+```
+
+**Câu trả lời (Tiếng Việt):**
+Sự khác biệt chính về phạm vi, hoisting và khả năng thay đổi:
+
+- **var**: Function-scoped, có hoisting thành undefined, cho phép khai báo lại
+- **let**: Block-scoped, có Temporal Dead Zone, không cho phép khai báo lại
+- **const**: Block-scoped, có Temporal Dead Zone, không cho phép gán lại
+
+## Performance Optimization Tips / Mẹo tối ưu hiệu suất
+
+### English Tips:
+1. **Use const and let**: Better performance and clearer intent than var
+2. **Avoid global variables**: Reduces scope chain lookup time
+3. **Use object pooling**: Reduce garbage collection pressure
+4. **Implement proper cleanup**: Remove event listeners and clear timers
+5. **Use WeakMap/WeakSet**: For automatic garbage collection of associated data
+6. **Optimize closures**: Avoid capturing unnecessary variables in closure scope
+
+### Mẹo (Tiếng Việt):
+1. **Sử dụng const và let**: Hiệu suất tốt hơn và ý định rõ ràng hơn var
+2. **Tránh biến global**: Giảm thời gian tìm kiếm scope chain
+3. **Sử dụng object pooling**: Giảm áp lực thu gom rác
+4. **Triển khai cleanup đúng cách**: Xóa event listener và clear timer
+5. **Sử dụng WeakMap/WeakSet**: Để tự động thu gom rác dữ liệu liên quan
+6. **Tối ưu closure**: Tránh capture các biến không cần thiết trong closure scope
 
 This comprehensive guide covers the fundamental JavaScript concepts that are crucial for frontend interviews, providing both theoretical understanding and practical implementation examples that demonstrate mastery of the language.

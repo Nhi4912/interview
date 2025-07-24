@@ -1,18 +1,18 @@
-# 🧠 Frontend Theory & Visualizations
+# 🧠 Frontend Theory & Visualizations / Lý thuyết và Trực quan hóa Frontend
 
-## 📋 Table of Contents
+## 📋 Table of Contents / Mục lục
 
-- [Core Concepts](#core-concepts)
-- [JavaScript Engine & Runtime](#javascript-engine--runtime)
-- [Browser Architecture](#browser-architecture)
-- [Network & Performance](#network--performance)
-- [Security Models](#security-models)
-- [Visual Diagrams](#visual-diagrams)
-- [Knowledge Graphs](#knowledge-graphs)
+- [Core Concepts / Khái niệm cơ bản](#core-concepts)
+- [JavaScript Engine & Runtime / JavaScript Engine & Runtime](#javascript-engine--runtime)
+- [Browser Architecture / Kiến trúc trình duyệt](#browser-architecture)
+- [Network & Performance / Mạng & Hiệu suất](#network--performance)
+- [Security Models / Mô hình bảo mật](#security-models)
+- [Visual Diagrams / Biểu đồ trực quan](#visual-diagrams)
+- [Knowledge Graphs / Đồ thị kiến thức](#knowledge-graphs)
 
-## 🎯 Core Concepts
+## 🎯 Core Concepts / Khái niệm cơ bản
 
-### Frontend Architecture Overview
+### Frontend Architecture Overview / Tổng quan kiến trúc Frontend
 
 ```mermaid
 graph TB

@@ -1,6 +1,8 @@
-# React Core: Definitions, Interview Questions & Answers
+# React Core: Definitions, Interview Questions & Answers / React Cốt lõi: Định nghĩa, Câu hỏi và Câu trả lời phỏng vấn
 
-## Table of Contents
+*Tài liệu này cung cấp kiến thức React cốt lõi với định nghĩa chi tiết, câu hỏi phỏng vấn thường gặp và câu trả lời hoàn chỉnh để chuẩn bị cho phỏng vấn tại các công ty Big Tech.*
+
+## Table of Contents / Mục lục
 
 - [JSX](#jsx)
 - [Components](#components)
@@ -24,13 +26,20 @@
 
 ## JSX
 
-**Definition:** JSX is a syntax extension for JavaScript that looks like HTML and is used to describe UI in React.
+**English Definition:** JSX is a syntax extension for JavaScript that looks like HTML and is used to describe UI in React.
 
-**Key Points:**
+**Định nghĩa (Tiếng Việt):** JSX là một phần mở rộng cú pháp cho JavaScript trông giống như HTML và được sử dụng để mô tả UI trong React.
 
-- Compiled to `React.createElement` calls by Babel.
-- Allows embedding JS expressions with `{}`.
-- Must return a single root element.
+**Key Points / Điểm chính:**
+
+- **English:** Compiled to `React.createElement` calls by Babel.
+- **Tiếng Việt:** Được biên dịch thành các lời gọi `React.createElement` bởi Babel.
+
+- **English:** Allows embedding JS expressions with `{}`.
+- **Tiếng Việt:** Cho phép nhúng các biểu thức JS với `{}`.
+
+- **English:** Must return a single root element.
+- **Tiếng Việt:** Phải return một phần tử gốc duy nhất.
 
 ---
 

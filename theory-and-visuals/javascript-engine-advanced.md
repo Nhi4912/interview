@@ -7,9 +7,11 @@ tags: [javascript-engine, v8, memory-management, optimization, compilation]
 companies: [Google, Meta, Amazon, Microsoft, Apple]
 ---
 
-# JavaScript Engine Internals for FAANG Interviews
+# JavaScript Engine Internals for FAANG Interviews / Nội bộ JavaScript Engine cho phỏng vấn FAANG
 
-## 🚀 V8 Engine Architecture Deep Dive
+*Tài liệu này cung cấp kiến thức sâu về JavaScript engine, V8, và tối ưu hóa hiệu suất cho phỏng vấn kỹ thuật tại các công ty công nghệ hàng đầu.*
+
+## 🚀 V8 Engine Architecture Deep Dive / Tìm hiểu sâu kiến trúc V8 Engine
 
 ### Compilation Pipeline Evolution
 
@@ -44,13 +46,19 @@ graph TB
 
 ### Critical Interview Questions & Answers
 
-#### Q1: "Explain how V8 optimizes JavaScript execution"
+#### Q1: "Explain how V8 optimizes JavaScript execution" / "Giải thích cách V8 tối ưu hóa việc thực thi JavaScript"
 
-**Answer Framework:**
+**English Answer Framework:**
 1. **Ignition Interpreter**: Fast startup, generates bytecode
 2. **TurboFan Compiler**: Optimizes hot functions based on type feedback
 3. **Inline Caching**: Speeds up property access
 4. **Hidden Classes**: Optimizes object property access
+
+**Khung trả lời (Tiếng Việt):**
+1. **Ignition Interpreter**: Khởi chạy nhanh, tạo bytecode
+2. **TurboFan Compiler**: Tối ưu hóa các hàm hot dựa trên type feedback
+3. **Inline Caching**: Tăng tốc truy cập thuộc tính
+4. **Hidden Classes**: Tối ưu hóa truy cập thuộc tính đối tượng
 
 **Detailed Explanation:**
 ```javascript
@@ -71,10 +79,13 @@ addNumbers(5, 6);        // Still number + number
 addNumbers("hello", "world"); // String concatenation - deoptimizes!
 ```
 
-#### Q2: "What are Hidden Classes and why are they important?"
+#### Q2: "What are Hidden Classes and why are they important?" / "Hidden Classes là gì và tại sao chúng quan trọng?"
 
-**Answer:**
+**English Answer:**
 Hidden Classes (Shapes/Maps) are V8's way of optimizing object property access by creating internal structures that track object layouts.
+
+**Câu trả lời (Tiếng Việt):**
+Hidden Classes (Shapes/Maps) là cách V8 tối ưu hóa truy cập thuộc tính đối tượng bằng cách tạo các cấu trúc nội bộ theo dõi layout của đối tượng.
 
 ```javascript
 // Same hidden class - GOOD

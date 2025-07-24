@@ -7,18 +7,23 @@ tags: [web-fundamentals, http, dom, css, html, browser-theory]
 companies: [Google, Meta, Amazon, Microsoft, Apple]
 ---
 
-# Web Fundamentals Theory - Core Concepts & Interconnections
+# Web Fundamentals Theory - Core Concepts & Interconnections / Lý thuyết nền tảng Web - Khái niệm cốt lõi & Mối liên kết
 
-## 🌐 HTTP Protocol Deep Theory
+*Tài liệu này cung cấp hiểu biết lý thuyết sâu về công nghệ web, giao thức và hành vi trình duyệt để chuẩn bị cho phỏng vấn kỹ thuật.*
 
-### **What is HTTP?**
-**Definition:** HTTP (HyperText Transfer Protocol) is a stateless, application-layer protocol that defines how messages are formatted and transmitted between web clients and servers.
+## 🌐 HTTP Protocol Deep Theory / Lý thuyết sâu về giao thức HTTP
 
-**Why HTTP Exists:**
-- **Standardization**: Universal communication protocol for the web
-- **Simplicity**: Text-based, human-readable protocol
-- **Statelessness**: Each request is independent, enabling scalability
-- **Extensibility**: Headers allow for protocol evolution
+### **What is HTTP? / HTTP là gì?**
+
+**English Definition:** HTTP (HyperText Transfer Protocol) is a stateless, application-layer protocol that defines how messages are formatted and transmitted between web clients and servers.
+
+**Định nghĩa (Tiếng Việt):** HTTP (HyperText Transfer Protocol) là một giao thức không trạng thái ở tầng ứng dụng, định nghĩa cách thức định dạng và truyền tải thông điệp giữa web client và server.
+
+**Why HTTP Exists / Tại sao có HTTP:**
+- **Standardization / Chuẩn hóa**: Universal communication protocol for the web / Giao thức giao tiếp phổ quát cho web
+- **Simplicity / Đơn giản**: Text-based, human-readable protocol / Giao thức dựa trên văn bản, con người có thể đọc được
+- **Statelessness / Không trạng thái**: Each request is independent, enabling scalability / Mỗi request độc lập, cho phép mở rộng
+- **Extensibility / Khả năng mở rộng**: Headers allow for protocol evolution / Headers cho phép giao thức phát triển
 
 **How HTTP Works Fundamentally:**
 
@@ -130,16 +135,19 @@ const statusCodes = {
 - **TLS/SSL**: Security layer for HTTPS
 - **Caching**: HTTP cache headers and strategies
 
-## 🏗️ DOM (Document Object Model) Theory
+## 🏗️ DOM (Document Object Model) Theory / Lý thuyết DOM (Document Object Model)
 
-### **What is the DOM?**
-**Definition:** The DOM is a programming interface that represents HTML/XML documents as a tree structure of objects that can be manipulated with JavaScript.
+### **What is the DOM? / DOM là gì?**
 
-**Why DOM Exists:**
-- **Dynamic Content**: Enable runtime modification of web pages
-- **Event Handling**: Respond to user interactions
-- **API Standardization**: Consistent interface across browsers
-- **Separation of Concerns**: Structure (HTML) separate from behavior (JS)
+**English Definition:** The DOM is a programming interface that represents HTML/XML documents as a tree structure of objects that can be manipulated with JavaScript.
+
+**Định nghĩa (Tiếng Việt):** DOM là một giao diện lập trình đại diện cho tài liệu HTML/XML dưới dạng cấu trúc cây các đối tượng có thể được thao tác bằng JavaScript.
+
+**Why DOM Exists / Tại sao có DOM:**
+- **Dynamic Content / Nội dung động**: Enable runtime modification of web pages / Cho phép thay đổi trang web trong thời gian chạy
+- **Event Handling / Xử lý sự kiện**: Respond to user interactions / Phản hồi tương tác của người dùng
+- **API Standardization / Chuẩn hóa API**: Consistent interface across browsers / Giao diện nhất quán trên các trình duyệt
+- **Separation of Concerns / Tách rời mối quan tâm**: Structure (HTML) separate from behavior (JS) / Cấu trúc (HTML) tách biệt khỏi hành vi (JS)
 
 **How DOM Works Internally:**
 

@@ -464,3 +464,67 @@ const optimizedScroller = new OptimizedVirtualScroller(container, {
   maxPoolSize: 100,
 });
 ```
+
+## Interview Questions & Answers / Câu hỏi phỏng vấn và câu trả lời
+
+### Q1: How does virtual scrolling improve performance? / Virtual scrolling cải thiện hiệu suất như thế nào?
+
+**English Answer:**
+Virtual scrolling improves performance by:
+1. **Reduced DOM Nodes**: Only renders visible items instead of all items, reducing DOM size
+2. **Lower Memory Usage**: Fewer DOM elements mean less memory consumption
+3. **Faster Rendering**: Browser only needs to layout/paint visible elements
+4. **Improved Scroll Performance**: Less elements to process during scroll events
+5. **Element Recycling**: Reuses DOM elements as they scroll out of view
+6. **Optimized Event Handling**: Throttled scroll events prevent excessive updates
+
+**Câu trả lời (Tiếng Việt):**
+Virtual scrolling cải thiện hiệu suất bằng cách:
+1. **Giảm DOM Nodes**: Chỉ render items hiển thị thay vì tất cả items, giảm kích thước DOM
+2. **Giảm sử dụng bộ nhớ**: Ít DOM elements hơn có nghĩa là tiêu thụ bộ nhớ ít hơn
+3. **Rendering nhanh hơn**: Trình duyệt chỉ cần layout/paint các elements hiển thị
+4. **Cải thiện hiệu suất cuộn**: Ít elements hơn để xử lý trong scroll events
+5. **Tái chế elements**: Tái sử dụng DOM elements khi chúng cuộn ra khỏi tầm nhìn
+6. **Tối ưu xử lý sự kiện**: Throttled scroll events ngăn cập nhật quá mức
+
+### Q2: How do you handle dynamic item heights? / Bạn xử lý chiều cao items động như thế nào?
+
+**English Answer:**
+Handling dynamic item heights requires:
+1. **Height Estimation**: Start with estimated heights for unmeasured items
+2. **Measurement on Render**: Measure actual height after rendering
+3. **Height Caching**: Store measured heights to avoid re-measurement
+4. **Position Calculation**: Recalculate item positions based on actual heights
+5. **Scroll Adjustment**: Adjust scroll position when heights change
+6. **Progressive Enhancement**: Update estimates based on measured data
+
+**Câu trả lời (Tiếng Việt):**
+Xử lý chiều cao items động đòi hỏi:
+1. **Ước tính chiều cao**: Bắt đầu với chiều cao ước tính cho items chưa đo
+2. **Đo khi render**: Đo chiều cao thực tế sau khi render
+3. **Cache chiều cao**: Lưu trữ chiều cao đã đo để tránh đo lại
+4. **Tính toán vị trí**: Tính lại vị trí items dựa trên chiều cao thực tế
+5. **Điều chỉnh cuộn**: Điều chỉnh vị trí cuộn khi chiều cao thay đổi
+6. **Cải tiến dần**: Cập nhật ước tính dựa trên dữ liệu đã đo
+
+### Q3: What are the challenges with virtual scrolling? / Thách thức với virtual scrolling là gì?
+
+**English Answer:**
+Main challenges include:
+1. **Complexity**: More complex implementation than simple scrolling
+2. **Accessibility**: Maintaining proper ARIA attributes and focus management
+3. **Search/Filter**: Integrating search while maintaining performance
+4. **Dynamic Content**: Handling variable heights and content changes
+5. **Browser Compatibility**: Different scroll behaviors across browsers
+6. **Memory Leaks**: Proper cleanup of event listeners and references
+7. **Edge Cases**: Empty lists, single items, rapid scrolling
+
+**Câu trả lời (Tiếng Việt):**
+Các thách thức chính bao gồm:
+1. **Độ phức tạp**: Triển khai phức tạp hơn cuộn đơn giản
+2. **Khả năng truy cập**: Duy trì ARIA attributes và quản lý focus đúng cách
+3. **Tìm kiếm/Lọc**: Tích hợp tìm kiếm trong khi duy trì hiệu suất
+4. **Nội dung động**: Xử lý chiều cao thay đổi và thay đổi nội dung
+5. **Tương thích trình duyệt**: Hành vi cuộn khác nhau giữa các trình duyệt
+6. **Rò rỉ bộ nhớ**: Dọn dẹp event listeners và references đúng cách
+7. **Trường hợp đặc biệt**: Danh sách trống, items đơn, cuộn nhanh

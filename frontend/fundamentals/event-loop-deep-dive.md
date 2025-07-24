@@ -1,33 +1,41 @@
-# JavaScript Event Loop: Complete Deep Dive
+# JavaScript Event Loop: Complete Deep Dive / JavaScript Event Loop: Tìm hiểu chuyên sâu
 
-## Table of Contents
+## Table of Contents / Mục lục
 
-- [Understanding the Event Loop](#understanding-the-event-loop)
-- [Call Stack Fundamentals](#call-stack-fundamentals)
-- [Web APIs and Browser Environment](#web-apis-and-browser-environment)
-- [Task Queue vs Microtask Queue](#task-queue-vs-microtask-queue)
-- [Event Loop Phases](#event-loop-phases)
-- [Visual Diagrams](#visual-diagrams)
-- [Common Misconceptions](#common-misconceptions)
-- [Performance Implications](#performance-implications)
-- [Interview Questions & Answers](#interview-questions--answers)
-- [Practical Examples](#practical-examples)
+- [Understanding the Event Loop / Hiểu về Event Loop](#understanding-the-event-loop)
+- [Call Stack Fundamentals / Nền tảng Call Stack](#call-stack-fundamentals)
+- [Web APIs and Browser Environment / Web APIs và Môi trường trình duyệt](#web-apis-and-browser-environment)
+- [Task Queue vs Microtask Queue / Task Queue vs Microtask Queue](#task-queue-vs-microtask-queue)
+- [Event Loop Phases / Các giai đoạn Event Loop](#event-loop-phases)
+- [Visual Diagrams / Sơ đồ trực quan](#visual-diagrams)
+- [Common Misconceptions / Hiểu nhầm phổ biến](#common-misconceptions)
+- [Performance Implications / Ảnh hưởng hiệu suất](#performance-implications)
+- [Interview Questions & Answers / Câu hỏi phỏng vấn & Câu trả lời](#interview-questions--answers)
+- [Practical Examples / Ví dụ thực tế](#practical-examples)
 
-## Understanding the Event Loop
+## Understanding the Event Loop / Hiểu về Event Loop
 
-### What is the Event Loop?
+### What is the Event Loop? / Event Loop là gì?
 
-The **Event Loop** is the fundamental mechanism that allows JavaScript to perform asynchronous operations despite being a single-threaded language. It's the coordination system between the JavaScript engine and the browser's Web APIs.
+**English:** The **Event Loop** is the fundamental mechanism that allows JavaScript to perform asynchronous operations despite being a single-threaded language. It's the coordination system between the JavaScript engine and the browser's Web APIs.
 
-#### Key Concepts:
+**Tiếng Việt:** **Event Loop** là cơ chế cơ bản cho phép JavaScript thực hiện các thao tác bất đồng bộ mặc dù là ngôn ngữ đơn luồng. Nó là hệ thống điều phối giữa JavaScript engine và Web APIs của trình duyệt.
 
-**1. Single-Threaded Nature**
+#### Key Concepts / Khái niệm chính:
 
+**1. Single-Threaded Nature / Bản chất Đơn luồng**
+
+**English:**
 - JavaScript has only **one call stack**
 - Only **one thing can happen at a time**
 - But it can handle **asynchronous operations** through the event loop
 
-**2. Non-Blocking I/O**
+**Tiếng Việt:**
+- JavaScript chỉ có **một call stack**
+- Chỉ **một việc có thể xảy ra tại một thời điểm**
+- Nhưng nó có thể xử lý **các thao tác bất đồng bộ** thông qua event loop
+
+**2. Non-Blocking I/O / I/O không chặn**
 
 - Long-running operations don't freeze the UI
 - Callbacks are scheduled for later execution
