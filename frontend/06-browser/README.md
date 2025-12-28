@@ -1,166 +1,102 @@
-# Browser Internals - Hiểu Cách Browser Hoạt Động
+# Browser Internals - How Browsers Work
 
-> Hiểu browser internals giúp bạn optimize performance và debug issues hiệu quả hơn.
-
----
-
-## Tổng Quan
-
-Browser là môi trường runtime cho frontend code. Hiểu cách browser hoạt động là essential cho:
-- Performance optimization
-- Debugging
-- Security awareness
-- Senior-level interviews
+> Hiểu browser internals giúp optimize performance và debug issues hiệu quả. Kiến thức quan trọng cho senior interviews.
 
 ---
 
-## Cấu Trúc Module
-
-| File | Chủ Đề | Độ Quan Trọng |
-|------|--------|---------------|
-| [01-browser-architecture.md](./01-browser-architecture.md) | Multi-process Architecture | ⭐⭐⭐⭐ |
-| [02-rendering-pipeline.md](./02-rendering-pipeline.md) | DOM, CSSOM, Layout, Paint | ⭐⭐⭐⭐⭐ |
-| [03-javascript-engine.md](./03-javascript-engine.md) | V8, JIT Compilation | ⭐⭐⭐⭐ |
-| [04-browser-storage.md](./04-browser-storage.md) | localStorage, IndexedDB, Cookies | ⭐⭐⭐⭐ |
-| [05-browser-apis.md](./05-browser-apis.md) | Web APIs Deep Dive | ⭐⭐⭐ |
-| [06-devtools-mastery.md](./06-devtools-mastery.md) | Chrome DevTools | ⭐⭐⭐⭐ |
-| [mindmap-browser.md](./mindmap-browser.md) | Sơ Đồ Tổng Hợp | Review |
-
----
-
-## Browser Architecture
+## 🎯 Module Overview
 
 ```
-┌─────────────────────────────────────────────────────────────────────┐
-│                         BROWSER PROCESS                              │
-├─────────────────────────────────────────────────────────────────────┤
-│  UI │ Network │ Storage │ GPU │ Device │ Plugin                      │
-└──────────────────────────┬──────────────────────────────────────────┘
-                           │
-        ┌──────────────────┼──────────────────┐
-        │                  │                  │
-        ▼                  ▼                  ▼
-┌───────────────┐  ┌───────────────┐  ┌───────────────┐
-│   Renderer    │  │   Renderer    │  │   Renderer    │
-│   Process     │  │   Process     │  │   Process     │
-│   (Tab 1)     │  │   (Tab 2)     │  │   (Tab 3)     │
-├───────────────┤  ├───────────────┤  ├───────────────┤
-│ • Main Thread │  │ • Main Thread │  │ • Main Thread │
-│ • Compositor  │  │ • Compositor  │  │ • Compositor  │
-│ • Raster      │  │ • Raster      │  │ • Raster      │
-│ • Worker      │  │ • Worker      │  │ • Worker      │
-└───────────────┘  └───────────────┘  └───────────────┘
+┌─────────────────────────────────────────────────────────────────┐
+│                    BROWSER INTERNALS                             │
+├─────────────────────────────────────────────────────────────────┤
+│                                                                   │
+│   ┌─────────────┐   ┌─────────────┐   ┌─────────────┐           │
+│   │ ARCHITECTURE│   │  RENDERING  │   │  JS ENGINE  │           │
+│   │             │   │  PIPELINE   │   │             │           │
+│   │ Multi-proc  │   │ DOM→Layout  │   │ V8, JIT    │           │
+│   │ IPC         │   │ Paint→Comp  │   │ Optimization│          │
+│   └─────────────┘   └─────────────┘   └─────────────┘           │
+│                                                                   │
+│   ┌─────────────┐   ┌─────────────┐   ┌─────────────┐           │
+│   │   STORAGE   │   │    APIS     │   │  DEVTOOLS   │           │
+│   │             │   │             │   │             │           │
+│   │ localStorage│   │ Web APIs    │   │ Performance │           │
+│   │ IndexedDB   │   │ Timers      │   │ Debugging   │           │
+│   └─────────────┘   └─────────────┘   └─────────────┘           │
+│                                                                   │
+│   Tại sao quan trọng:                                            │
+│   • Optimize rendering performance                               │
+│   • Debug complex issues                                         │
+│   • Avoid common pitfalls                                        │
+│   • Senior-level interview questions                             │
+│                                                                   │
+└─────────────────────────────────────────────────────────────────┘
 ```
 
 ---
 
-## Critical Rendering Path
+## 📚 Nội Dung Module
 
-```
-HTML ──► DOM ──┐
-               ├──► Render Tree ──► Layout ──► Paint ──► Composite
-CSS ──► CSSOM ─┘
-```
+### 1. [Browser Architecture](./01-browser-architecture.md)
+- Multi-process architecture
+- Browser process vs Renderer process
+- Site isolation
+- IPC (Inter-Process Communication)
 
-### Các Bước Chi Tiết
+### 2. [Rendering Pipeline](./02-rendering-pipeline.md)
+- Critical rendering path
+- DOM, CSSOM, Render Tree
+- Layout (Reflow)
+- Paint và Composite
 
-1. **Parse HTML → DOM Tree**
-   - Byte → Characters → Tokens → Nodes → DOM
+### 3. [JavaScript Engine](./03-javascript-engine.md)
+- V8 engine internals
+- JIT compilation
+- Hidden classes
+- Inline caching
 
-2. **Parse CSS → CSSOM**
-   - CSS rules được parse thành tree structure
+### 4. [Browser Storage](./04-browser-storage.md)
+- localStorage vs sessionStorage
+- IndexedDB
+- Cookies
+- Cache API
 
-3. **Combine → Render Tree**
-   - DOM + CSSOM = Render Tree
-   - Chỉ visible elements
+### 5. [Browser APIs](./05-browser-apis.md)
+- Intersection Observer
+- Mutation Observer
+- ResizeObserver
+- Web Workers
 
-4. **Layout (Reflow)**
-   - Tính toán size và position của mỗi element
-   - Expensive operation!
-
-5. **Paint**
-   - Vẽ pixels lên layers
-
-6. **Composite**
-   - Gom layers thành final image
-
----
-
-## Performance Implications
-
-### Reflow Triggers (Expensive)
-```javascript
-// ❌ Forces reflow
-element.offsetHeight;
-element.getBoundingClientRect();
-window.getComputedStyle();
-
-// ❌ Multiple reflows
-for (let i = 0; i < 100; i++) {
-    element.style.left = i + 'px';
-    console.log(element.offsetLeft); // Reflow!
-}
-
-// ✅ Batch reads/writes
-const height = element.offsetHeight; // Read
-element.style.height = height + 10 + 'px'; // Write
-```
-
-### Paint Triggers
-- color, background-color
-- visibility, outline
-- box-shadow, border-radius
-
-### Composite Only (Cheap)
-- transform
-- opacity
-- Use for animations!
+### 6. [DevTools Mastery](./06-devtools-mastery.md)
+- Performance profiling
+- Memory debugging
+- Network analysis
+- Rendering debugging
 
 ---
 
-## Browser Storage
+## 🎯 Learning Objectives
 
-| Storage | Size | Persistence | Access |
-|---------|------|-------------|--------|
-| localStorage | ~5-10MB | Permanent | Sync |
-| sessionStorage | ~5-10MB | Tab lifetime | Sync |
-| IndexedDB | Large | Permanent | Async |
-| Cookies | ~4KB | Configurable | Auto-sent |
-| Cache API | Large | Until cleared | Async |
+Sau khi hoàn thành module này, bạn sẽ:
 
-```javascript
-// localStorage
-localStorage.setItem('user', JSON.stringify(user));
-const user = JSON.parse(localStorage.getItem('user'));
+- [ ] Hiểu multi-process architecture của modern browsers
+- [ ] Giải thích được critical rendering path
+- [ ] Optimize JavaScript performance với V8 internals
+- [ ] Chọn đúng storage mechanism cho use case
+- [ ] Sử dụng advanced Browser APIs
+- [ ] Master Chrome DevTools cho debugging
 
-// IndexedDB (async)
-const request = indexedDB.open('myDB', 1);
-request.onsuccess = (e) => {
-    const db = e.target.result;
-    // Use db...
-};
+---
+
+## 📖 Recommended Path
+
+```
+Week 1: Architecture + Rendering Pipeline
+Week 2: JavaScript Engine + Storage
+Week 3: Browser APIs + DevTools
 ```
 
 ---
 
-## Top Interview Questions
-
-| Question | Difficulty |
-|----------|------------|
-| Explain Critical Rendering Path | 🔴 |
-| Reflow vs Repaint | 🟡 |
-| How V8 compiles JavaScript? | 🔴 |
-| localStorage vs sessionStorage vs cookies | 🟢 |
-| How to optimize rendering performance? | 🟡 |
-
----
-
-## Resources
-
-- [How Browsers Work](https://web.dev/howbrowserswork/)
-- [Inside look at modern web browser](https://developer.chrome.com/blog/inside-browser-part1/)
-- [Rendering Performance](https://web.dev/rendering-performance/)
-
----
-
-> **Thời gian ước tính:** 1 tuần
+> **Tiếp theo:** [01-browser-architecture.md](./01-browser-architecture.md) - Browser Architecture
